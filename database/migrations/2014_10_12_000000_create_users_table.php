@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration {
             $table->char('phone_number', 10)->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->boolean('active')->default(false);
+            $table->boolean('activated')->default(false);
 			$table->rememberToken();
 			$table->timestamps();
 		});
