@@ -7,7 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddFkBooksTable' => $baseDir . '/database/migrations/2015_04_15_145548_add_fk_books_table.php',
-    'AddFkProductsTable' => $baseDir . '/database/migrations/2015_04_15_151014_add_fk_products_table.php',
+    'AddFkProductsTable' => $baseDir . '/database/migrations/2015_04_15_163816_add_fk_products_table.php',
     'CreateBookAmazonInfosTable' => $baseDir . '/database/migrations/2015_04_15_145349_create_book_amazon_infos_table.php',
     'CreateBookBindingsTable' => $baseDir . '/database/migrations/2015_04_15_144819_create_book_bindings_table.php',
     'CreateBookImageSetsTable' => $baseDir . '/database/migrations/2015_04_15_145000_create_book_image_sets_table.php',

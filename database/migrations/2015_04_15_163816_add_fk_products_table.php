@@ -27,7 +27,12 @@ class AddFkProductsTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+        Schema::table('products', function(Blueprint $table)
+        {
+            $table->dropForeign('products_book_id_foreign');
+            $table->dropForeign('products_seller_id_foreign');
+            $table->dropForeign('products_condition_id_foreign');
+        });
 	}
 
 }

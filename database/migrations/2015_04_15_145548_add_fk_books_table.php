@@ -30,7 +30,10 @@ class AddFkBooksTable extends Migration {
 	{
 		Schema::table('books', function(Blueprint $table)
 		{
-			//
+            $table->dropForeign('books_binding_id_foreign');
+            $table->dropForeign('books_image_set_id_foreign');
+            $table->dropForeign('books_language_id_foreign');
+            $table->dropForeign('books_amazon_info_id_foreign');
 		});
 	}
 
