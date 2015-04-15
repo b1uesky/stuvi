@@ -13,9 +13,35 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
+
+/*
+|--------------------------------------------------------------------------
+| Textbook Routes
+|--------------------------------------------------------------------------
+*/
 Route::get('/textbook', 'TextBookController@index');
+Route::get('/textbook/buy', 'TextBookController@buy');
+Route::get('/textbook/sell', 'TextBookController@sell');
+
+/*
+|--------------------------------------------------------------------------
+| Housing Routes
+|--------------------------------------------------------------------------
+*/
 Route::get('/housing', 'HousingController@index');
+
+/*
+|--------------------------------------------------------------------------
+| Club Routes
+|--------------------------------------------------------------------------
+*/
 Route::get('/club', 'ClubController@index');
+
+/*
+|--------------------------------------------------------------------------
+| Group Routes
+|--------------------------------------------------------------------------
+*/
 Route::get('/group', 'GroupController@index');
 
 Route::controllers([

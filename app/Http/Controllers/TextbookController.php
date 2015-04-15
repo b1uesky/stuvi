@@ -14,8 +14,18 @@ class TextbookController extends Controller {
 	 */
 	public function index()
 	{
-		return view('textbook.index');
+		return view('textbook.buy');
 	}
+
+    public function buy()
+    {
+        return view('textbook.buy');
+    }
+
+    public function sell()
+    {
+        return view('textbook.sell');
+    }
 
 	/**
 	 * Show the form for creating a new resource.
