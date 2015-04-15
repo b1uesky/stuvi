@@ -14,7 +14,7 @@ class TextbookController extends Controller {
 	 */
 	public function index()
 	{
-		return view('textbook.search');
+		return view('textbook.index');
 	}
 
 	/**
