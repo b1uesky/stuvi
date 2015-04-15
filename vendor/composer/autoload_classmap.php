@@ -7,12 +7,14 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddFkBooksTable' => $baseDir . '/database/migrations/2015_04_15_145548_add_fk_books_table.php',
+    'AddFkProductsTable' => $baseDir . '/database/migrations/2015_04_15_151014_add_fk_products_table.php',
     'CreateBookAmazonInfosTable' => $baseDir . '/database/migrations/2015_04_15_145349_create_book_amazon_infos_table.php',
     'CreateBookBindingsTable' => $baseDir . '/database/migrations/2015_04_15_144819_create_book_bindings_table.php',
     'CreateBookImageSetsTable' => $baseDir . '/database/migrations/2015_04_15_145000_create_book_image_sets_table.php',
     'CreateBookLanguagesTable' => $baseDir . '/database/migrations/2015_04_15_145227_create_book_languages_table.php',
     'CreateBooksTable' => $baseDir . '/database/migrations/2015_04_15_144206_create_books_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateProductConditionsTable' => $baseDir . '/database/migrations/2015_04_15_151321_create_product_conditions_table.php',
     'CreateProductImagesTable' => $baseDir . '/database/migrations/2015_04_15_150728_create_product_images_table.php',
     'CreateProductsTable' => $baseDir . '/database/migrations/2015_04_15_150513_create_products_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
