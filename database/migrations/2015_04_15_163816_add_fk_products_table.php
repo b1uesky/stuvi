@@ -12,11 +12,12 @@ class AddFkProductsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('products', function(Blueprint $table)
-		{
-			$table->foreign('book_id')->references('id')->on('books');
+        Schema::table('products', function(Blueprint $table)
+        {
+            $table->foreign('book_id')->references('id')->on('books');
             $table->foreign('seller_id')->references('id')->on('users');
-		});
+            $table->foreign('condition_id')->references('id')->on('product_conditions');
+        });
 	}
 
 	/**
@@ -26,10 +27,7 @@ class AddFkProductsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('products', function(Blueprint $table)
-		{
-			//
-		});
+		//
 	}
 
 }
