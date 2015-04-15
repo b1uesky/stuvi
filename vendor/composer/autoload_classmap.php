@@ -13,6 +13,7 @@ return array(
     'CreateBookLanguagesTable' => $baseDir . '/database/migrations/2015_04_15_145227_create_book_languages_table.php',
     'CreateBooksTable' => $baseDir . '/database/migrations/2015_04_15_144206_create_books_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateProductImagesTable' => $baseDir . '/database/migrations/2015_04_15_150728_create_product_images_table.php',
     'CreateProductsTable' => $baseDir . '/database/migrations/2015_04_15_150513_create_products_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
