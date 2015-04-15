@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'CreateBookAmazonInfosTable' => $baseDir . '/database/migrations/2015_04_15_145349_create_book_amazon_infos_table.php',
     'CreateBookBindingsTable' => $baseDir . '/database/migrations/2015_04_15_144819_create_book_bindings_table.php',
     'CreateBookImageSetsTable' => $baseDir . '/database/migrations/2015_04_15_145000_create_book_image_sets_table.php',
     'CreateBookLanguagesTable' => $baseDir . '/database/migrations/2015_04_15_145227_create_book_languages_table.php',
