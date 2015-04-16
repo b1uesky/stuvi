@@ -42,6 +42,8 @@ class DatabaseSeeder extends Seeder {
                                     'book_id'   => $book->id,
                                     'seller_id' => $seller->id
         ]);
+		$this->call('UserTableSeeder');
+
 	}
 
 }
