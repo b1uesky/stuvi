@@ -23,9 +23,9 @@ class CreateBooksTable extends Migration {
             $table->date('publication_date');
             $table->string('manufacturer');
             $table->smallInteger('num_pages');
-            $table->integer('binding_id')->unsigned();
-            $table->integer('image_set_id')->unsigned();
-            $table->integer('language_id')->unsigned();
+            $table->integer('binding_id')->unsigned()->nullable();
+            $table->integer('image_set_id')->unsigned()->nullable();
+            $table->integer('language_id')->unsigned()->nullable();
             $table->integer('amazon_info_id')->unsigned()->nullable();
             $table->timestamps();
 		});

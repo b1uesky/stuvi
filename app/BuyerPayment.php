@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Payment extends Model
+class BuyerPayment extends Model
 {
     /**
      * The attributes that are mass assignable.

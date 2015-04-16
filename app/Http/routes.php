@@ -26,7 +26,7 @@ Route::controllers([
 Route::group(['middleware'=>'auth', 'prefix'=>'order'], function()
 {
     Route::get('/', 'OrderController@index');
-    Route::get('/create', 'OrderController@create');
+    Route::get('/create/{id}', 'OrderController@create');
     Route::post('/store', 'OrderController@store');
     Route::get('/show/{id}', 'OrderController@index');
     Route::get('/edit/{id}', 'OrderController@edit');

@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration {
             $table->integer('buyer_id')->unsigned();
             $table->boolean('cancelled')->default(false);
             $table->integer('buyer_payment_id')->unsigned();
-            $table->integer('seller_payment_id')->unsigned();
+            $table->integer('seller_payment_id')->unsigned()->nullable();
             $table->string('scheduled_pickup_time')->nullable();
             $table->string('pickup_time')->nullable();
             $table->string('deliver_time')->nullable();

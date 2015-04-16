@@ -16,8 +16,8 @@ class AddFkOrdersTable extends Migration {
         {
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('buyer_id')->references('id')->on('users');
-            $table->foreign('buyer_payment_id')->references('id')->on('payments');
-            $table->foreign('seller_payment_id')->references('id')->on('payments');
+            $table->foreign('buyer_payment_id')->references('id')->on('buyer_payments');
+            //$table->foreign('seller_payment_id')->references('id')->on('seller_payments');
         });
 	}
 
@@ -33,7 +33,7 @@ class AddFkOrdersTable extends Migration {
             $table->dropForeign('orders_product_id_foreign');
             $table->dropForeign('orders_buyer_id_foreign');
             $table->dropForeign('orders_buyer_payment_id_foreign');
-            $table->dropForeign('orders_seller_payment_id_foreign');
+            //$table->dropForeign('orders_seller_payment_id_foreign');
         });
 	}
 
