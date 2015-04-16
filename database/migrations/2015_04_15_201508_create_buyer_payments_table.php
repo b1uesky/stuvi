@@ -15,6 +15,10 @@ class CreatePaymentsTable extends Migration {
 		Schema::create('payments', function(Blueprint $table)
 		{
 			$table->increments('id');
+            $table->string('stripe_token');
+            $table->string('stripe_token_type');
+            $table->string('stripe_email');
+            $table->integer('stripe_amount');
 			$table->timestamps();
 		});
 	}
