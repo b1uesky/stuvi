@@ -1,0 +1,21 @@
+/* LOGIN PAGE */
+
+/* space between panel and navigation */
+#login-panel {
+    margin-top: 5%;
+}
+
+#login-heading {
+    background: #F9AA62;
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+#login-button {
+    background: #7AB4DE;
+    border: none;
+}
+
+#forgot-password {
+    color: #7AB4DE;
+}
