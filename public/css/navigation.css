@@ -4,6 +4,12 @@
     background: #241729;
 }
 
-/*.nav-list li a {*/
-    /*color: #FFFFFF;*/
-/*}*/
+.logo-container {
+    width: 125px;
+    height: 50px;
+}
+
+.logo-container img {
+    width: 100%;
+    height: auto;
+}

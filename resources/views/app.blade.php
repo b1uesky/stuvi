@@ -29,12 +29,14 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/">Laravel</a>
+                <div class="logo-container">
+                    <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive">
+                </div>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-                    <li><a href="{{ url('/textbook') }}">Textbook</a></li>
+                    <li><a href="{{ url('/textbook') }}" id="test">Textbook</a></li>
                     <li><a href="{{ url('/housing') }}">Housing</a></li>
                     <li><a href="{{ url('/club') }}">Club</a></li>
                     <li><a href="{{ url('/group') }}">Group</a></li>
