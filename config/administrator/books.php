@@ -55,6 +55,18 @@
             'verified' => array(
                 'verified' => 'Verified'
             ),
+            'binding_id' => array(
+                'binding_id' => 'Binding ID'
+            ),
+            'image_set_id' => array(
+                'image_set_id' => 'Image Set ID'
+            ),
+            'language_id' => array(
+                'language_id' => 'Language ID'
+            ),
+            'amazon_info_id' => array(
+                'amazon_info_id' => 'Amazon Info ID'
+            ),
         ),
 
         /**
@@ -98,6 +110,22 @@
             'verified' => array(
                 'verified' => 'Verified',
                 'type' => 'bool',
+            ),
+            'binding_id' => array(
+                'binding_id' => 'Binding ID',
+                'type' => 'number',
+            ),
+            'image_set_id' => array(
+                'image_set_id' => 'Image Set ID',
+                'type' => 'number',
+            ),
+            'language_id' => array(
+                'language_id' => 'Language ID',
+                'type' => 'number',
+            ),
+            'amazon_info_id' => array(
+                'amazon_info_id' => 'Amazon Info ID',
+                'type' => 'number',
             ),
         ),
     );
