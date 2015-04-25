@@ -52,6 +52,9 @@
             'num_pages' => array(
                 'num_pages' => 'Number of Pages'
             ),
+            'verified' => array(
+                'verified' => 'Verified'
+            ),
         ),
 
         /**
@@ -91,6 +94,10 @@
             'num_pages' => array(
                 'num_pages' => 'Number of Pages',
                 'type' => 'number',
+            ),
+            'verified' => array(
+                'verified' => 'Verified',
+                'type' => 'bool',
             ),
         ),
     );
