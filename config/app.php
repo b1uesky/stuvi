@@ -148,7 +148,12 @@ return [
         /*
          * Payment Service Providers...
          */
-        'Laravel\Cashier\CashierServiceProvider'
+        'Laravel\Cashier\CashierServiceProvider',
+
+        /*
+         * Administrator Service Providers...
+         */
+        'Frozennode\Administrator\AdministratorServiceProvider',
 	],
 
 	/*
