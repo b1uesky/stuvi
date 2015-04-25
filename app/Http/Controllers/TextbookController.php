@@ -5,8 +5,10 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-use App\User;
 use App\Book;
+use App\BookImageSet;
+
+use Input;
 
 class TextbookController extends Controller {
 
@@ -32,7 +34,7 @@ class TextbookController extends Controller {
 
     public function search(Request $request)
     {
-        $isbn = $request->input('isbn');
+        $isbn = Input::get('isbn');
         $books = Book::where('isbn', '=', $isbn);
 
         if ($books->count() > 0)
@@ -68,14 +70,60 @@ class TextbookController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		$isbn = $request->input('isbn');
-        $title = $request->input('title');
-        $author = $request->input('author');
-        $edition = $request->input('edition');
-        $publisher = $request->input('publisher');
-        $publication_date = $request->input('publication_date');
-        $manufacturer = $request->input('manufacturer');
-        $num_pages = $request->input('num_pages');
+        // validations could be done in Validation class
+        if (Input::hasFile('image'))
+        {
+            if (!Input::file('image')->isValid())
+            {
+                return response('Please upload a valid image.');
+            }
+
+            // create a book image set
+            $book_image_set = new BookImageSet();
+
+            // get the uploaded file
+            $image = Input::file('image');
+            $filename = $image->getClientOriginalName();
+
+            // dd($image);
+
+            // TODO: image storage
+            $destination_path = storage_path().'/img/';
+
+            Input::file('image')->move($destination_path, $filename);
+
+            // retrieve the path to an uploaded image
+            // may be store relative path?
+            $path = $destination_path . $filename;
+
+            // TODO: generate images with different sizes
+            $book_image_set->large_image = $path;
+
+            $book_image_set->save();
+        }
+        else
+        {
+            return response('Please upload a textbook image.');
+        }
+
+        // create a textbook
+//        $book = new Book();
+//        $book->isbn             = Input::get('isbn');
+//        $book->title            = Input::get('title');
+//        $book->author           = Input::get('author');
+//        $book->edition          = Input::get('edition');
+//        $book->publisher        = Input::get('publisher');
+//        $book->publication_date = Input::get('publication_date');
+//        $book->manufacturer     = Input::get('manufacturer');
+//        $book->num_pages        = Input::get('num_pages');
+//        $book->binding_id       = Input::get('binding');
+//        $book->language_id      = Input::get('language');
+//        $book->image_set_id     = $book_image_set->id;
+//        // TODO: $book->amazon_info_id
+//
+//        $book->save();
+//
+//        return view('textbook.sell');
 	}
 
 	/**
