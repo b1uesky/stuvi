@@ -1,5 +1,9 @@
 /* LOGIN PAGE */
 
+html body {
+    background: #36175E;
+}
+
 /* space between panel and navigation */
 #login-panel {
     margin-top: 5%;
