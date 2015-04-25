@@ -22,6 +22,9 @@ Route::get('/home', 'HomeController@index');
 Route::get('/textbook', 'TextBookController@index');
 Route::get('/textbook/buy', 'TextBookController@buy');
 Route::get('/textbook/sell', 'TextBookController@sell');
+Route::get('/textbook/sell/create', 'TextBookController@create');
+Route::post('/textbook/sell/search', 'TextBookController@search');
+Route::post('/textbook/sell/store', 'TextBookController@store');
 
 /*
 |--------------------------------------------------------------------------

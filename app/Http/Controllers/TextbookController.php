@@ -5,6 +5,9 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use App\User;
+use App\Book;
+
 class TextbookController extends Controller {
 
 	/**
@@ -27,6 +30,27 @@ class TextbookController extends Controller {
         return view('textbook.sell');
     }
 
+    public function search(Request $request)
+    {
+        $isbn = $request->input('isbn');
+        $books = Book::where('isbn', '=', $isbn);
+
+        if ($books->count() > 0)
+        {
+            $data = array(
+                'books' => $books
+            );
+
+            return view('textbook.result', $data);
+        }
+        else
+        {
+            return redirect('textbook/sell/create')->with(
+                'message',
+                'Looks like your textbook is currently not in our database, please fill in the textbook information below.');
+        }
+    }
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -34,7 +58,7 @@ class TextbookController extends Controller {
 	 */
 	public function create()
 	{
-		//
+        return view('textbook.create');
 	}
 
 	/**
@@ -42,9 +66,16 @@ class TextbookController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$isbn = $request->input('isbn');
+        $title = $request->input('title');
+        $author = $request->input('author');
+        $edition = $request->input('edition');
+        $publisher = $request->input('publisher');
+        $publication_date = $request->input('publication_date');
+        $manufacturer = $request->input('manufacturer');
+        $num_pages = $request->input('num_pages');
 	}
 
 	/**
