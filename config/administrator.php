@@ -51,7 +51,7 @@ return array(
 	 * 		'Analytics' => array('E-Commerce' => 'page.ecommerce.analytics'),
 	 *	)
 	 */
-	'menu' => array(),
+	'menu' => array('books'),
 
 	/**
 	 * The permission option is the highest-level authentication check that lets you define a closure that should return true if the current user
@@ -84,7 +84,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'home_page' => '',
+	'home_page' => 'books',
 
 	/**
 	 * The route to which the user will be taken when they click the "back to site" button
