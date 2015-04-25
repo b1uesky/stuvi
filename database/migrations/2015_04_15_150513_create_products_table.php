@@ -18,7 +18,8 @@ class CreateProductsTable extends Migration {
             $table->decimal('price');
             $table->integer('book_id')->unsigned();
             $table->integer('seller_id')->unsigned();
-            $table->integer('condition_id')->unsigned();
+            $table->integer('condition_id')->unsigned()->nullable();
+            $table->boolean('sold')->default(false);
 			$table->timestamps();
 		});
 	}
