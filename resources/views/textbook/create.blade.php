@@ -61,12 +61,6 @@
                         <option value="2">Chinese</option>
                     </select>
                 </div>
-
-                {{--TODO: upload multiple images--}}
-                <div class="form-group">
-                    <label>Image</label>
-                    <input type="file" id="image" name="image" accept="image/*"/>
-                </div>
                 <input type="submit" name="submit" class="btn btn-primary" value="Submit"/>
             </form>
         </div>

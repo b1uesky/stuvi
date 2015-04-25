@@ -71,42 +71,32 @@ class TextbookController extends Controller {
 	public function store(Request $request)
 	{
         // validations could be done in Validation class
-        if (Input::hasFile('image'))
-        {
-            if (!Input::file('image')->isValid())
-            {
-                return response('Please upload a valid image.');
-            }
+//        if (Input::hasFile('image'))
+//        {
+//            if (!Input::file('image')->isValid())
+//            {
+//                return response('Please upload a valid image.');
+//            }
+//
+//            // get the uploaded file
+//            $image = Input::file('image');
+//            $filename = $image->getClientOriginalName();
+//
+//            // TODO: image storage
+//            $destination_path = storage_path().'/img/';
+//
+//            Input::file('image')->move($destination_path, $filename);
+//
+//            // retrieve the path to an uploaded image
+//            // may be store relative path?
+//            $path = $destination_path . $filename;
+//        }
+//        else
+//        {
+//            return response('Please upload a textbook image.');
+//        }
 
-            // create a book image set
-            $book_image_set = new BookImageSet();
-
-            // get the uploaded file
-            $image = Input::file('image');
-            $filename = $image->getClientOriginalName();
-
-            // dd($image);
-
-            // TODO: image storage
-            $destination_path = storage_path().'/img/';
-
-            Input::file('image')->move($destination_path, $filename);
-
-            // retrieve the path to an uploaded image
-            // may be store relative path?
-            $path = $destination_path . $filename;
-
-            // TODO: generate images with different sizes
-            $book_image_set->large_image = $path;
-
-            $book_image_set->save();
-        }
-        else
-        {
-            return response('Please upload a textbook image.');
-        }
-
-        // create a textbook
+        // TODO: upload book information for verification
 //        $book = new Book();
 //        $book->isbn             = Input::get('isbn');
 //        $book->title            = Input::get('title');
@@ -118,8 +108,6 @@ class TextbookController extends Controller {
 //        $book->num_pages        = Input::get('num_pages');
 //        $book->binding_id       = Input::get('binding');
 //        $book->language_id      = Input::get('language');
-//        $book->image_set_id     = $book_image_set->id;
-//        // TODO: $book->amazon_info_id
 //
 //        $book->save();
 //

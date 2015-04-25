@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-		// $this->call('UserTableSeeder');
+        $this->call('UserTableSeeder');
 
         // create some test instances.
         $seller = User::create([    'username'  => 'seller',
@@ -42,8 +42,6 @@ class DatabaseSeeder extends Seeder {
                                     'book_id'   => $book->id,
                                     'seller_id' => $seller->id
         ]);
-		$this->call('UserTableSeeder');
-
 	}
 
 }
