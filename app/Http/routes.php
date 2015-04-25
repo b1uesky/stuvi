@@ -19,12 +19,12 @@ Route::get('/home', 'HomeController@index');
 | Textbook Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/textbook', 'TextBookController@index');
-Route::get('/textbook/buy', 'TextBookController@buy');
-Route::get('/textbook/sell', 'TextBookController@sell');
-Route::get('/textbook/sell/create', 'TextBookController@create');
-Route::post('/textbook/sell/search', 'TextBookController@search');
-Route::post('/textbook/sell/store', 'TextBookController@store');
+Route::get('/textbook', 'TextbookController@index');
+Route::get('/textbook/buy', 'TextbookController@buy');
+Route::get('/textbook/sell', 'TextbookController@sell');
+Route::get('/textbook/sell/create', 'TextbookController@create');
+Route::post('/textbook/sell/search', 'TextbookController@search');
+Route::post('/textbook/sell/store', 'TextbookController@store');
 
 /*
 |--------------------------------------------------------------------------
