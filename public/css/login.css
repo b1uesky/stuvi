@@ -5,14 +5,8 @@ html body {
 }
 
 /* space between panel and navigation */
-#login-panel {
-    margin-top: 5%;
-}
-
-#login-heading {
-    background: #F9AA62;
-    color: #FFFFFF;
-    font-size: 20px;
+.vertical-center {
+    margin-top: 150px;
 }
 
 #login-button {
@@ -22,4 +16,8 @@ html body {
 
 #forgot-password {
     color: #7AB4DE;
+}
+
+#login-form {
+    margin-top: 30px;
 }
