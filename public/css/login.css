@@ -4,9 +4,21 @@ html body {
     background: #241729;
 }
 
-/* space between panel and navigation */
+img {
+    width: 350px;
+    height: 140px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* space between form and top of the page */
 .vertical-center {
     margin-top: 150px;
+}
+
+#form-container {
+    max-width: 500px;
 }
 
 .login-button {
@@ -21,3 +33,10 @@ html body {
 #login-form {
     margin-top: 30px;
 }
+
+label {
+    color: #FFFFFF;
+}
+
+
+
