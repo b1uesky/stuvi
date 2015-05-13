@@ -20,6 +20,7 @@
 	<![endif]-->
 </head>
 <body>
+@section('nav')
 	<nav class="navbar navbar-default" id="nav">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -58,7 +59,7 @@
 			</div>
 		</div>
 	</nav>
-
+@endsection
 	@yield('content')
 
 	<!-- Scripts -->
