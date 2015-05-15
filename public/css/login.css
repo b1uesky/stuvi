@@ -21,22 +21,20 @@ img {
     max-width: 500px;
 }
 
-.login-button {
+.form-group .login-button {
     background: #7AB4DE;
     border: none;
+    width: 100px;
 }
 
 #forgot-password {
     color: #7AB4DE;
 }
 
-#login-form {
-    margin-top: 30px;
-}
-
 label {
     color: #FFFFFF;
 }
+
 
 
 
