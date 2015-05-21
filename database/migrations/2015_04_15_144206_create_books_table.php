@@ -23,6 +23,7 @@ class CreateBooksTable extends Migration {
             $table->date('publication_date');
             $table->string('manufacturer');
             $table->smallInteger('num_pages');
+            $table->boolean('verified')->default(false);
             $table->integer('binding_id')->unsigned()->nullable();
             $table->integer('image_set_id')->unsigned()->nullable();
             $table->integer('language_id')->unsigned()->nullable();
