@@ -7,7 +7,7 @@
 </head>
 @section('content')
     <div class="container-fluid">
-        <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive">
+        <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive" id="logo">
         <div class="row vertical-center">
             <div class="col-sm-6 col-sm-offset-3">
                 <div class="container" id="form-container">
@@ -36,17 +36,17 @@
                             <form class="form-horizontal login-form" role="form" method="POST" action="{{ url('/auth/login') }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-6">
                                         <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-6">
                                         <input type="password" class="form-control" name="password" placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-6">
+                                    <div class="col-sm-6">
                                         <div class="checkbox">
                                             <label>
                                                 <input type="checkbox" name="remember"> Remember Me
@@ -69,32 +69,32 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">\
 
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-offset-6 col-sm-6">
                                         <input type="text" class="form-control" name="first_name" placeholder="First Name" value="{{ old('first_name') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-offset-6 col-sm-6">
                                         <input type="text" class="form-control" name="last_name" placeholder="Last Name" value="{{ old('last_name') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-offset-6 col-sm-6">
                                         <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-offset-6 col-sm-6">
                                         <input type="password" class="form-control" name="password" placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-offset-6 col-sm-6">
                                         <input type="number" class="form-control" name="phone_number" placeholder="Phone Number" value="{{ old('phone_number') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-6">
+                                    <div class="col-sm-offset-6 col-sm-6">
                                         <button type="submit" class="btn btn-primary login-button">Register</button>
                                     </div>
                                 </div>

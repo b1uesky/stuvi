@@ -7,24 +7,32 @@ html body {
 img {
     width: 350px;
     height: 140px;
-    position: absolute;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* space between form and top of the page */
+/* space between form and logo */
 .vertical-center {
-    margin-top: 150px;
+    margin-top: 40px;
 }
 
 #form-container {
     max-width: 500px;
 }
 
+.form-control {
+    margin-bottom: 10px;
+}
+
+.form-control:focus {
+    border: 3px solid #7AB4DE;
+}
+
 .form-group .login-button {
     background: #7AB4DE;
-    border: none;
-    width: 100px;
+    border-color: #6395BB;
+    border-width: 0 0 3px;
+    width: 50%;
 }
 
 #forgot-password {
