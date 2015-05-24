@@ -7,7 +7,7 @@
 </head>
 @section('content')
     <div class="container-fluid">
-        <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive" id="logo">
+        <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive">
         <div class="row vertical-center">
             <div class="col-sm-6 col-sm-offset-3">
                 <div class="container" id="form-container">
@@ -36,7 +36,7 @@
                             <form class="form-horizontal login-form" role="form" method="POST" action="{{ url('/auth/login') }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6" id="space-offset">
                                         <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}">
                                     </div>
                                 </div>

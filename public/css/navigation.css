@@ -1,11 +1,14 @@
 /* NAVIGATION BAR */
 
 #nav {
-    background: #36175E;
+    background: #241729;
+    border-radius: 0;
+    border: none;
 }
 
 .logo-container {
-    margin: auto;
+    width: 120px;
+    height: 48px;
 }
 
 .logo-container img {

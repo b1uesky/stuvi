@@ -20,7 +20,6 @@
 	<![endif]-->
 </head>
 <body>
-@section('nav')
 	<nav class="navbar navbar-default" id="nav">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -59,8 +58,7 @@
 			</div>
 		</div>
 	</nav>
-@endsection
-	@yield('content')
+    @yield('content')
 
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

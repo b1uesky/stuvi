@@ -28,6 +28,11 @@ img {
     border: 3px solid #7AB4DE;
 }
 
+/* space between login form email input and tabs */
+#space-offset {
+    margin-top: 20px;
+}
+
 .form-group .login-button {
     background: #7AB4DE;
     border-color: #6395BB;
