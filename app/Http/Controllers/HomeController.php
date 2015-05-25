@@ -34,13 +34,13 @@ class HomeController extends Controller {
 	}
 
     public function login() {
-        $loginType = 'login';
-        return view('auth.login')->with($loginType);
+        $loginData = ['loginType' => 'login'];
+        return view('auth.login')->with($loginData);
     }
 
     public function register(){
-        $loginType = 'register';
-        return view('auth.login')->with($loginType);
+        $loginData = ['loginType' => 'register'];
+        return view('auth.login')->with($loginData);
     }
 
 }
