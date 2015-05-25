@@ -21,10 +21,22 @@
             <div class="jumbotron col-md-8">
                 <h1 id = "head1" >Get ready for Stuvi's Launch Party!</h1>
 
-                <!--	    <p>Farm-to-table roof party High Life, VHS actually 8-bit artisan freegan food truck vegan fixie art party ethical drinking vinegar. Pork belly fap Truffaut 3 wolf moon, Pinterest irony cliche umami. McSweeney's Pinterest tote bag, Echo Park VHS fanny pack gastropub High Life literally drinking vinegar authentic art party Vice. PBR viral Kickstarter, small batch Tumblr normcore High Life kale chips mumblecore flannel Echo Park Pitchfork Truffaut fap. Cardigan fingerstache forage, hoodie PBR&B B#anksy lumbersexual cray literally McSweeney's Helvetica Wes Anderson. Keffiyeh post-ironic artisan disrupt literally High Life, YOLO try-hard bicycle rights forage. DIY Blue Bottle master cleanse craft beer, four dollar toast semiotics 90's occupy next level.</p>  -->
+                <p>
+                    Farm-to-table roof party High Life, VHS actually 8-bit artisan freegan food truck vegan fixie art
+                    party ethical drinking vinegar. Pork belly fap Truffaut 3 wolf moon, Pinterest irony cliche umami.
+                    McSweeney's Pinterest tote bag, Echo Park VHS fanny pack gastropub High Life literally drinking vinegar
+                    authentic art party Vice. PBR viral Kickstarter, small batch Tumblr normcore High Life kale chips mumblecore
+                    flannel Echo Park Pitchfork Truffaut fap. Cardigan fingerstache forage, hoodie PBR&B B#anksy lumbersexual
+                    cray literally McSweeney's Helvetica Wes Anderson. Keffiyeh post-ironic artisan disrupt literally High Life,
+                    YOLO try-hard bicycle rights forage. DIY Blue Bottle master cleanse craft beer, four dollar toast semiotics
+                    90's occupy next level.
+                </p>
 
                 <!-- The container is used to define the width of the slideshow -->
+
+                <!-- Slider currently not working.. 5/25/15 4PM.. but we might not have wanted to keep it anyways  -->
                 <div class="container">
+
                     <div id="slides">
                         <img src="{{asset('img/example-slide-1.jpg')}}" alt="Photo by: Missy S Link: http://www.flickr.com/photos/listenmissy/5087404401/">
                         <img src="{{asset('img/example-slide-2.jpg')}}" alt="Photo by: Daniel Parks Link: http://www.flickr.com/photos/parksdh/5227623068/">
@@ -46,8 +58,11 @@
     <div class = "container-fluid">
 
         <div class = "container">
-            <h2> Our Services </h2>
+
+            <h2 id= "head2"> Our Services </h2> <!-- Fix color -->
             <hr>
+
+            <!-- Fix alignment for sm and md.. -->
             <div class = "container" style = "text-align:center;">
                 <div class = "row">
                     <div class = "col-md-5 col-buff">
@@ -58,7 +73,6 @@
                         <img src = "http://placehold.it/500x300" class="img-responsive">
                     </div>
                 </div>
-
 
 
                 <div class = "row grid-buff">
@@ -73,8 +87,6 @@
 
             </div>
         </div>
-
-
 
 
     </div>
