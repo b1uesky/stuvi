@@ -34,7 +34,13 @@ class HomeController extends Controller {
 	}
 
     public function login() {
-        return view('auth.login');
+        $loginType = 'login';
+        return view('auth.login')->with($loginType);
+    }
+
+    public function register(){
+        $loginType = 'register';
+        return view('auth.login')->with($loginType);
     }
 
 }

@@ -1,7 +1,7 @@
 @extends('app')
 <head>
     <link href="{{ asset('/css/login.css') }}" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
 </head>
@@ -31,22 +31,32 @@
                             </ul>
                         </div>
                     @endif
+
+                    {{--error - loginType variable is undefined--}}
+                    @if (isset($loginType) && $loginType == 'login')
+                        {{--*/ $loginActive = ' active' /*--}}
+                        {{--*/ $signupActive = '' /*--}}
+                    @else
+                        {{--*/ $loginActive = '' /*--}}
+                        {{--*/ $signupActive = ' active' /*--}}
+                    @endif
+
                     <div class="tab-content">
-                        <div class="tab-pane active" id="login-body">
+                        <div class="tab-pane {{ $loginActive }}" id="login-body">
                             <form class="form-horizontal login-form" role="form" method="POST" action="{{ url('/auth/login') }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
-                                    <div class="col-sm-6" id="space-offset">
+                                    <div class="col-sm-offset-3 col-sm-6 form-space-offset">
                                         <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-offset-3 col-sm-6">
                                         <input type="password" class="form-control" name="password" placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-offset-3 col-sm-6">
                                         <div class="checkbox">
                                             <label>
                                                 <input type="checkbox" name="remember"> Remember Me
@@ -55,7 +65,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-12">
+                                    <div class="col-sm-offset-3 col-sm-8">
                                         <button type="submit" class="btn btn-primary login-button">Login</button>
                                         <a class="btn btn-link" id="forgot-password" href="{{ url('/password/email') }}">
                                             Forgot Your Password?
@@ -64,37 +74,37 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane" id="signup-body">
+                        <div class="tab-pane {{ $signupActive }}" id="signup-body">
                             <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">\
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                 <div class="form-group">
-                                    <div class="col-sm-offset-6 col-sm-6">
+                                    <div class="col-sm-offset-3 col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" name="first_name" placeholder="First Name" value="{{ old('first_name') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-6 col-sm-6">
+                                    <div class="col-sm-offset-3 col-sm-6">
                                         <input type="text" class="form-control" name="last_name" placeholder="Last Name" value="{{ old('last_name') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-6 col-sm-6">
+                                    <div class="col-sm-offset-3 col-sm-6">
                                         <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-6 col-sm-6">
+                                    <div class="col-sm-offset-3 col-sm-6">
                                         <input type="password" class="form-control" name="password" placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-6 col-sm-6">
+                                    <div class="col-sm-offset-3 col-sm-6">
                                         <input type="number" class="form-control" name="phone_number" placeholder="Phone Number" value="{{ old('phone_number') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-6 col-sm-6">
+                                    <div class="col-sm-offset-3 col-sm-6">
                                         <button type="submit" class="btn btn-primary login-button">Register</button>
                                     </div>
                                 </div>
