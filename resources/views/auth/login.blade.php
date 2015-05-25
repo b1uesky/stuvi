@@ -5,6 +5,16 @@
     <script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
 </head>
+
+{{--set starting tab based on clicked nav button--}}
+@if (isset($loginType) && $loginType == 'login')
+    {{--*/ $loginActive = ' active' /*--}}
+    {{--*/ $signupActive = '' /*--}}
+@else
+    {{--*/ $loginActive = '' /*--}}
+    {{--*/ $signupActive = ' active' /*--}}
+@endif
+
 @section('content')
     <div class="container-fluid">
         <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive">
@@ -12,15 +22,9 @@
             <div class="col-sm-6 col-sm-offset-3">
                 <div class="container" id="form-container">
                     <ul class="nav nav-tabs nav-justified" role="tablist" id="tabs">
-                        <li role="presentation" class="active" id="login-tab"><a href="#login-body" aria-controls="login-body" role="tab" data-toggle="tab">Log In</a></li>
-                        <li role="presentation" id="signup-tab"><a href="#signup-body" aria-controls="signup-body" role="tab" data-toggle="tab">Sign Up</a></li>
+                        <li role="presentation" class="{{ $loginActive }}" id="login-tab"><a href="#login-body" aria-controls="login-body" role="tab" data-toggle="tab">Log In</a></li>
+                        <li role="presentation" class="{{ $signupActive }}" id="signup-tab"><a href="#signup-body" aria-controls="signup-body" role="tab" data-toggle="tab">Sign Up</a></li>
                     </ul>
-                    {{--<div class="panel-heading" id="login-heading">--}}
-                        {{--<ul class="nav nav-tabs">--}}
-                            {{--<li class="active"><a href="#">Log in</a></li>--}}
-                            {{--<li><a href="#">Sign up</a></li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
                             <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -30,15 +34,6 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif
-
-                    {{--error - loginType variable is undefined--}}
-                    @if (isset($loginType) && $loginType == 'login')
-                        {{--*/ $loginActive = ' active' /*--}}
-                        {{--*/ $signupActive = '' /*--}}
-                    @else
-                        {{--*/ $loginActive = '' /*--}}
-                        {{--*/ $signupActive = ' active' /*--}}
                     @endif
 
                     <div class="tab-content">
@@ -108,19 +103,6 @@
                                         <button type="submit" class="btn btn-primary login-button">Register</button>
                                     </div>
                                 </div>
-                                {{--<div class="form-group">--}}
-                                {{--<label class="col-md-4 control-label">Username</label>--}}
-                                {{--<div class="col-md-6">--}}
-                                {{--<input type="text" class="form-control" name="username" value="{{ old('username') }}">--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-
-                                {{--<div class="form-group">--}}
-                                {{--<label class="col-md-4 control-label">Confirm Password</label>--}}
-                                {{--<div class="col-md-6">--}}
-                                {{--<input type="password" class="form-control" name="password_confirmation">--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
                             </form>
                         </div>
                     </div>
