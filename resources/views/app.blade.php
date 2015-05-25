@@ -30,7 +30,7 @@
 					<span class="icon-bar"></span>
 				</button>
                 <div class="logo-container">
-                    <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive">
+                    <a href="{{url('/home')}}">   <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive">  </a>
                 </div>
 			</div>
 
