@@ -16,7 +16,7 @@
     height: auto;
 }
 
-/*.active-nav {*/
-    /*background-color: #435C7F;*/
-    /*border-bottom: solid 5px #90B4DF;*/
-/*}*/
+.active-nav {
+    background-color: #435C7F;
+    border-bottom: solid 5px #90B4DF;
+}
