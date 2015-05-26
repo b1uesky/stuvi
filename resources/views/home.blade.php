@@ -21,15 +21,20 @@
             <div class="jumbotron col-md-8">
                 <h1 id = "head1" >Get ready for Stuvi's Launch Party!</h1>
 
-                <p>
-                    Farm-to-table roof party High Life, VHS actually 8-bit artisan freegan food truck vegan fixie art
-                    party ethical drinking vinegar. Pork belly fap Truffaut 3 wolf moon, Pinterest irony cliche umami.
-                    McSweeney's Pinterest tote bag, Echo Park VHS fanny pack gastropub High Life literally drinking vinegar
-                    authentic art party Vice. PBR viral Kickstarter, small batch Tumblr normcore High Life kale chips mumblecore
-                    flannel Echo Park Pitchfork Truffaut fap. Cardigan fingerstache forage, hoodie PBR&B B#anksy lumbersexual
-                    cray literally McSweeney's Helvetica Wes Anderson. Keffiyeh post-ironic artisan disrupt literally High Life,
-                    YOLO try-hard bicycle rights forage. DIY Blue Bottle master cleanse craft beer, four dollar toast semiotics
-                    90's occupy next level.
+                <!-- Temp cover image...(c)Nicholas Louie All Rights Reserved. I Nicholas Louie, hereby allow a limited license
+                 to display this image on Stuvi's website with proper name and link credit. This photo may not be distributed, used
+                 or changed in any other way other than on the homepage -->
+                <img src="{{asset('/img/cover.jpg')}}" class = "img-responsive"
+                     alt="Photo by Nick Louie Link: https://flic.kr/p/kSKWtK">
+
+                <p id = "p1">
+                    Stuvi is designed to provide convenient, and valuable services to maximize a college student’s campus life experience.
+                    In order to ensure our users, a happy, simple, and great college life, we're dedicated to create
+                    a "Student Village" where we can learn, share and grow. Whether you're new to the area, or a die-hard local, you'll need
+                    info such as: course information, professor ratings, discount textbooks, and living
+                    spaces. Our goal is to provide you, the student, with all the things you need to conquer college.
+                    <br/><br/>
+                    We are a group of college students based in Boston, MA and hope to use our experience to help you succeed.
                 </p>
 
                 <!-- The container is used to define the width of the slideshow -->
@@ -55,12 +60,19 @@
 
     <!-- End top half -->
 
-    <div class = "container-fluid">
+    <div class = "container-fluid" id = "bottom-half">
 
         <div class = "container">
 
             <h2 id= "head2"> Our Services </h2> <!-- Fix color -->
-            <hr>
+
+            <!-- Divider Line -->
+            <div class = "row">
+                <div class = "span12" id = "hr-style-one">
+                    <hr>
+                </div>
+            </div>
+
 
             <!-- Fix alignment for sm and md.. -->
             <div class = "container" style = "text-align:center;">
@@ -96,7 +108,7 @@
      End SlidesJS Required -->
 
     <!-- SlidesJS Required: Link to jquery.slides.js -->
-    <script src="js/jquery.slides.min.js"></script>
+    <script src="{{asset('js/jquery.slides.min.js')}}"></script>
     <!-- End SlidesJS Required -->
 
 
