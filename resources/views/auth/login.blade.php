@@ -7,6 +7,7 @@
 </head>
 
 {{--set starting tab based on clicked nav button--}}
+{{--the code below is not commented, it's blade syntax for variables--}}
 @if (isset($loginType) && $loginType == 'login')
     {{--*/ $loginActive = ' active' /*--}}
     {{--*/ $signupActive = '' /*--}}
@@ -95,7 +96,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-6">
-                                        <input type="number" class="form-control" name="phone_number" placeholder="Phone Number" value="{{ old('phone_number') }}">
+                                        <input type="tel" class="form-control" name="phone_number" placeholder="Phone Number" value="{{ old('phone_number') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
