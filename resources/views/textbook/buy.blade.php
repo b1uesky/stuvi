@@ -8,11 +8,11 @@
 
     <div class="tab-filter-container">
         <ul class="tab-filters">
-            <li class="filter">
-                <a href="#0" data-type="color-1">Color 1</a>
+            <li class="filter active">
+                <a class="filter-link active" href="{{ url('/textbook/buy') }}">Buy</a>
             </li>
             <li class="filter">
-                <a href="#0" data-type="color-2">Color 2</a>
+                <a class="filter-link" href="{{ url('/textbook/sell') }}">Sell</a>
             </li>
         </ul>
     </div>
