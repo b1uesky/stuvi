@@ -37,10 +37,15 @@ img {
 
 .form-control {
     margin-bottom: 10px;
+    padding: 10px !important;
+    border: solid 1px #fff !important;
+    box-shadow: inset 1px 1px 2px 0 #707070 !important;
+    transition: box-shadow 0.3s !important;
+
 }
 
 .form-control:focus {
-    border: 3px solid #7AB4DE;
+    border: 3px solid #7AB4DE !important;
 }
 
 /* space between first form input and tabs */
@@ -53,6 +58,12 @@ img {
     border-color: #6395BB;
     border-width: 0 0 3px;
     width: 50%;
+}
+
+.form-group .login-button.active {
+    box-shadow: 0 5px #27496d;
+    transform: translateY(5px);
+    border: none !important;
 }
 
 #forgot-password {
