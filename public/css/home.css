@@ -1,0 +1,129 @@
+@charset "utf-8";
+/* CSS Document */
+/* (c) Stuvi LLC 2015
+* Used for the home page styling.
+
+                    */
+
+
+/********* Classes  ************/
+
+
+/*Top background*/
+.backgnd {
+    background-image: url("../img/bg.jpg");
+    background-size: cover;
+}
+
+
+/* Bottom half of home page, grid buffer */
+.grid-buff {
+    margin-top : 40px;
+    margin-bottom: 40px;
+}
+
+/* Column buffer for smaller screen compatiblity */
+.col-buff {
+    padding: 10px;
+}
+
+
+
+/************** IDs   *************/
+
+#head1 { font-size: 3em; }
+
+#head2 { color: black; }
+
+#bottom-half{ background-color: #e7e6e6;}
+
+#p1 { font-size: medium; }
+
+/* Gradient color1 - color2 - color1
+https://css-tricks.com/examples/hrs/ */
+#hr-style-one { border: 0; height: 3; background: #333; background-image: linear-gradient(to right, #ccc, #f16521, #ccc); }
+
+
+
+/******************* SlidesJS *******************/
+
+body {
+    -webkit-font-smoothing: antialiased;
+    font: normal 15px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #232525;
+}
+
+#slides {
+    display: none
+}
+
+#slides .slidesjs-navigation {
+    margin-top:3px;
+}
+
+#slides .slidesjs-previous {
+    margin-right: 5px;
+    float: left;
+}
+
+#slides .slidesjs-next {
+    margin-right: 5px;
+    float: left;
+}
+
+.slidesjs-pagination {
+    margin: 6px 0 0;
+    float: right;
+    list-style: none;
+}
+
+.slidesjs-pagination li {
+    float: left;
+    margin: 0 1px;
+}
+
+.slidesjs-pagination li a {
+    display: block;
+    width: 13px;
+    height: 0;
+    padding-top: 13px;
+    background-image: url(img/pagination.png);
+    background-position: 0 0;
+    float: left;
+    overflow: hidden;
+}
+
+.slidesjs-pagination li a.active,
+.slidesjs-pagination li a:hover.active {
+    background-position: 0 -13px
+}
+
+.slidesjs-pagination li a:hover {
+    background-position: 0 -26px
+}
+
+#slides a:link,
+#slides a:visited {
+    color: #333
+}
+
+#slides a:hover,
+#slides a:active {
+    color: #9e2020
+}
+
+.navbar {
+    overflow: hidden
+}
+
+/* SlideJS Required */
+
+#slides {
+    display: none
+}
+
+.container {
+    margin: 0 auto
+}
+
+
