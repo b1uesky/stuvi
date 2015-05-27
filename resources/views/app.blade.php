@@ -18,6 +18,10 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+{{--    <script src="{{asset('/js/navigation.js')}}" type="text/javascript"></script>--}}
 </head>
 <body>
 	<nav class="navbar navbar-default" id="nav">
@@ -36,7 +40,7 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-                    <li><a href="{{ url('/textbook') }}" class="active-nav">Textbook</a></li>
+                    <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbook</a></li>
                     <li><a href="{{ url('/housing') }}">Housing</a></li>
                     <li><a href="{{ url('/club') }}">Club</a></li>
                     <li><a href="{{ url('/group') }}">Group</a></li>
@@ -44,7 +48,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
-						<li><a href="{{ url('/login') }}">Login</a></li>
+						<li><a href="{{ url('/login') }}" id="login-nav">Login</a></li>
 						<li><a href="{{ url('/register') }}">Register</a></li>
 					@else
 						<li class="dropdown">
@@ -63,6 +67,5 @@
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="{{asset('/js/navigation.js')}}" type="text/javascript"></script>
 </body>
 </html>

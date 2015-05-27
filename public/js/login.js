@@ -4,6 +4,8 @@
 
 $(document).ready(function(){
     $("#tabs").tab();
+    $('.active-nav').removeClass('active-nav');
+    $('#login-nav').addClass('active-nav');
 });
 
 

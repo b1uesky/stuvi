@@ -3,8 +3,5 @@
  */
 
 $(document).ready(function(){
-    $(".nav a").on("click", function(){
-        $(".nav").find(".active-nav").removeClass("active-nav");
-        $(this).parent().addClass("active-nav");
-    });
+
 });
