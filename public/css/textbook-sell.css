@@ -1,0 +1,35 @@
+/******* TEXTBOOK NAVIGATION BAR ******/
+.tab-filter-container {
+    width: 100%;
+    background: #F9AA62;
+    height: 40px;
+}
+
+.tab-filters {
+    list-style-type: none;
+    text-align: center;
+    padding-top: 5px;
+    padding-right: 40px;
+}
+
+.filter {
+    display: inline-block;
+    height: 35px;
+}
+
+.filter.active {
+    border-bottom: 5px solid #241729;
+}
+
+.filter-link {
+    font-size: 20px;
+    color: #FFFFFF;
+    margin: 0 40px;
+}
+
+.filter-link:hover,
+.filter-link:focus,
+.filter-link.active {
+    text-decoration: none;
+    color: #241729;
+}
