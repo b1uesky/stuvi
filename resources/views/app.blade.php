@@ -46,8 +46,8 @@
 				<ul class="nav navbar-nav">
                     <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbooks</a></li>
                     <li><a href="{{ url('/housing') }}">Housing</a></li>
-                    <li><a href="{{ url('/club') }}">Club</a></li>
-                    <li><a href="{{ url('/group') }}">Group</a></li>
+                    <li><a href="{{ url('/club') }}">Clubs</a></li>
+                    <li><a href="{{ url('/group') }}">Groups</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -87,15 +87,15 @@
                 ·
                 <a href="{{url('/textbook')}}">Textbooks</a>
                 ·
-                <a href="#">Housing</a>
+                <a href="{{url('/housing')}}">Housing</a>
                 ·
-                <a href="#">Club</a>
+                <a href="{{url('/club')}}">Clubs</a>
                 ·
-                <a href="#">Group</a>
+                <a href="{{url('/group')}}">Groups</a>
                 ·
-                <a href="#">About</a>
+                <a href="{{ url('/') }}">About</a>
                 ·
-                <a href="#">Contact</a>
+                <a href="{{ url('/') }}">Contact</a>
             </p>
 
             <p>Stuvi &copy; 2015</p>
