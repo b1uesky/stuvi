@@ -59,7 +59,7 @@ class OrderController extends Controller {
         {
             return response('Invalid payment.');
         }
-        // check if this book exist
+        // check if this product exist
         if (!(Product::find(Input::get('product_id'))->exists()))
         {
             return response('Sorry, this product is not exist.');

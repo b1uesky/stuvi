@@ -1,0 +1,20 @@
+/********************************
+ * Stylesheet for footer
+ * Footer html at app.blade.php
+ * Created by Nick
+ * 5/26/15
+ *******************************/
+
+
+/*************
+ * CLASSES
+ ************/
+
+hr {
+    border: 0px;
+    height: 1px;
+    background: rgba(179, 179, 179, 0.87);
+}
+/*************
+ * IDS
+ *************/
