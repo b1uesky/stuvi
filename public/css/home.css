@@ -34,7 +34,10 @@
 }
 
 /* Column buffer for smaller screen compatibility */
-.col-buff   { padding: 10px; }
+.col-buff {
+    padding-top: 4%;
+    padding-bottom: 5%;
+}
 
 
 /************** IDs   *************/
