@@ -101,6 +101,16 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-6">
+                                        <input type="text" class="form-control" name="username" placeholder="Username" value="{{ old('username') }}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-6">
+                                        <input type="password" class="form-control" name="password_confirmation" placeholder="Re-enter Password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-6">
                                         <button type="submit" class="btn btn-primary login-button">Register</button>
                                     </div>
                                 </div>
