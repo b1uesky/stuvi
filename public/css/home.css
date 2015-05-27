@@ -47,6 +47,8 @@
 
 #bottom-half     {background-color: #e7e6e6;}
 
+#services        {text-align: center;}
+
 
 /* Gradient color1 - color2 - color1
 https://css-tricks.com/examples/hrs/ */
@@ -62,7 +64,7 @@ https://css-tricks.com/examples/hrs/ */
 #jumbotron1 {
     background: rgb(242, 248, 255);             /* This is for ie8 and below */
     background: rgba(242, 248, 255, 0.80);
-    margin-top: 5%
+    margin-top: 5%;
 }
 
 
@@ -73,15 +75,15 @@ https://css-tricks.com/examples/hrs/ */
 
     /****** CLASSES *****/
 
-    .backgnd { padding-bottom: 0%; }
+    .backgnd        {padding-bottom: 0%;}
 
     /******* IDS *******/
 
-    #head1          {font-size: medium}
-    #head2          {font-size: large }
-    #p1             {font-size: small}
-    #hr-style-one   {height: 2px}
-    #jumbotron1     {margin-top: 2%}
+    #head1          {font-size: medium;}
+    #head2          {font-size: large;}
+    #p1             {font-size: small;}
+    #hr-style-one   {height: 2px;}
+    #jumbotron1     {margin-top: 2%;}
 
 
 }

@@ -7,7 +7,7 @@
     <script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
     <link type="text/css" href="{{asset('css/home.css')}}" rel="stylesheet" >
-    <title>Stuvi Index</title>
+    <title>Stuvi Home - Student Village - Textbooks, Housing, Clubs, & More </title>
 </head>
 
 @section('content')
@@ -21,12 +21,13 @@
                     Stuvi is designed to provide convenient, and valuable services to maximize a college student’s campus
                     life experience. In order to ensure our users a streamlined, and self-sufficient college life,
                     we're dedicated to create a "Student Village" where we can learn, share and grow. Whether you're
-                    new to the area, or a die-hard local, you'll need info such as: course information, professor
+                    new to the area, or a die-hard local, you're going to need info such as: course information, professor
                     ratings, discount textbooks, and living spaces. Our goal is to provide you, the student, with all the
                     tools you need to conquer college.
                     <br/><br/>
-                    We are a group of college students based in Boston, MA and hope to use our experience to help you succeed.
-                    Welcome to Stuvi. Welcome home.
+                    We are a group of college students currently based in Boston, MA and hope to use our experience
+                    to help you succeed.
+                    <b><i> Welcome to Stuvi. Welcome home.</i></b>
                 </p>
             </div>
         </div>
