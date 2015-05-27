@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-8">
-                                        <button type="submit" class="btn btn-primary login-button">Login</button>
+                                        <button type="submit" class="btn login-button">Login</button>
                                         <a class="btn btn-link" id="forgot-password" href="{{ url('/password/email') }}">
                                             Forgot Your Password?
                                         </a>
@@ -111,7 +111,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-6">
-                                        <button type="submit" class="btn btn-primary login-button">Register</button>
+                                        <button type="submit" class="btn login-button">Register</button>
                                     </div>
                                 </div>
                             </form>

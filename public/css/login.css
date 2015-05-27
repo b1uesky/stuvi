@@ -1,7 +1,10 @@
 /* LOGIN PAGE */
-
 html body {
     background: #241729;
+}
+
+button:focus {
+    outline: 0 !important;
 }
 
 img {

@@ -3,7 +3,6 @@
  */
 
 $(document).ready(function(){
-    //$('#textbook-nav').attr('class', 'null');
     $('.active-nav').removeClass('active-nav');
     $('#textbook-nav').addClass('active-nav');
 });

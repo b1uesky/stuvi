@@ -21,7 +21,7 @@
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-{{--    <script src="{{asset('/js/navigation.js')}}" type="text/javascript"></script>--}}
+    <script src="{{asset('/js/navigation.js')}}" type="text/javascript"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default" id="nav">
@@ -52,9 +52,9 @@
 						<li><a href="{{ url('/register') }}">Register</a></li>
 					@else
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false ">{{ Auth::user()->name }} <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li role="presentation"><a role="menuitem" href="{{ url('/auth/logout') }}">Logout</a></li>
+							<a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button" aria-expanded="true">{{ Auth::user()->name }} <span class="caret nav-caret"></span></a>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="nav-dropdown">
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/auth/logout') }}">Logout</a></li>
 							</ul>
 						</li>
 					@endif
@@ -63,9 +63,5 @@
 		</div>
 	</nav>
     @yield('content')
-
-	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

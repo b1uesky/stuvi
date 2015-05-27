@@ -1,5 +1,8 @@
-/* NAVIGATION BAR */
+a:focus {
+    outline: 0;
+}
 
+/* NAVIGATION BAR */
 #nav {
     background: #241729;
     border-radius: 0;
@@ -19,4 +22,20 @@
 .active-nav {
     background-color: #435C7F;
     border-bottom: solid 5px #90B4DF;
+}
+
+/* NAVIGATION DROPDOWN */
+.nav-dropdown:focus {
+    background-color: #435C7F !important;
+    border-bottom: solid 5px #90B4DF !important;
+}
+
+.nav-caret {
+    color: #FFFFFF;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus {
+    background-color: #7AB4DE;
+    color: #FFFFFF;
 }
