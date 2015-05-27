@@ -78,6 +78,14 @@ https://css-tricks.com/examples/hrs/ */
     padding-right: 2%;*/
 }
 
+/**************  NAV DROPDOWN FIX  *************/
+.nav-caret {
+    margin-top: 9px;
+}
+
+.nav-dropdown {
+    height: 50px;
+}
 
 /************* @media SMALL SCREENS ********/
 

@@ -25,6 +25,10 @@ a:focus {
 }
 
 /* NAVIGATION DROPDOWN */
+/*.dropdown {*/
+    /*padding-top: 10px;*/
+/*}*/
+
 .nav-dropdown:focus {
     background-color: #435C7F !important;
     border-bottom: solid 5px #90B4DF !important;
