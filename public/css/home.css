@@ -14,7 +14,7 @@
     /*****************
     * Temp cover image...(c)Nicholas Louie All Rights Reserved. I Nicholas Louie, hereby allow a limited license
     * to display this image on Stuvi's website with proper name and link credit. This photo may not be distributed, used
-    * or changed in any other way other than on the homepage
+    * or altered (except sizing/cropping) in any other way other than on the homepage
     * Photo by Nick Louie. Link: https://flic.kr/p/kSKWtK
     ******************/
 
@@ -58,8 +58,6 @@
 
 #services    {text-align: center;}
 
-
-
 /* Gradient color1 - color2 - color1
 https://css-tricks.com/examples/hrs/ */
 #hr-style-one {
@@ -77,8 +75,6 @@ https://css-tricks.com/examples/hrs/ */
     margin-top: 5%;
     padding-top: 1%;
     padding-bottom: 1%;
-/*    padding-left: 2%;
-    padding-right: 2%;*/
 }
 
 

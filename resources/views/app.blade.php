@@ -6,8 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Laravel</title>
 
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/navigation.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/app.css') }}"                rel="stylesheet">
+    <link href="{{ asset('/css/navigation.css') }}"         rel="stylesheet">
+    <link href="{{ asset('/css/footer.css') }}"             rel="stylesheet">
+    <link href="{{ asset('css/footer-distributed.css') }}"  rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}"    rel="stylesheet">   <!-- Footer required -->
+    <link href="{{ asset('css/font-awesome.css') }}"        rel="stylesheet">   <!-- Footer required -->
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -40,7 +44,7 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-                    <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbook</a></li>
+                    <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbooks</a></li>
                     <li><a href="{{ url('/housing') }}">Housing</a></li>
                     <li><a href="{{ url('/club') }}">Club</a></li>
                     <li><a href="{{ url('/group') }}">Group</a></li>
@@ -63,5 +67,42 @@
 		</div>
 	</nav>
     @yield('content')
+
+    <footer class="footer-distributed">
+
+        <!-- Fix alignment!!!! -->
+        <div class="footer-right">
+
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-github"></i></a>
+
+        </div>
+
+        <div class="footer-left">
+
+            <p class="footer-links">
+                <a href="{{url('/home')}}">Home</a>
+                ·
+                <a href="{{url('/textbook')}}">Textbooks</a>
+                ·
+                <a href="#">Housing</a>
+                ·
+                <a href="#">Club</a>
+                ·
+                <a href="#">Group</a>
+                ·
+                <a href="#">About</a>
+                ·
+                <a href="#">Contact</a>
+            </p>
+
+            <p>Stuvi &copy; 2015</p>
+        </div>
+
+    </footer>
+
+
 </body>
 </html>

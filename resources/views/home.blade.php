@@ -4,7 +4,7 @@
 @extends('app')    <!-- app.blade.php -->
 <head>
     <link href="{{ asset('/css/login.css') }}" rel="stylesheet">
-    <link type="text/css" href="{{asset('css/home.css')}}" rel="stylesheet" >               <!-- Home style sheet -->
+    <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet" >               <!-- Home style sheet -->
 
     <!-- Content Info -->
     <title>Stuvi Home - Student Village - Textbooks, Housing, Clubs, & More </title>
@@ -79,6 +79,6 @@
 
 
     <!-- JAVASCRIPT at end for faster loading -->
-    <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('/js/login.js')}} " type="text/javascript"></script>
 
 @endsection
