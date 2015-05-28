@@ -71,6 +71,8 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button" aria-expanded="true">{{ Auth::user()->name }} <span class="caret nav-caret"></span></a>
 							<ul class="dropdown-menu" role="menu" aria-labelledby="nav-dropdown">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/user/profile') }}">Profile</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/user/account') }}">My Account</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/auth/logout') }}">Logout</a></li>
 							</ul>
 						</li>

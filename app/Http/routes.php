@@ -49,6 +49,15 @@ Route::get('/club', 'ClubController@index');
 */
 Route::get('/group', 'GroupController@index');
 
+/*
+|--------------------------------------------------------------------------
+| User Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/user/profile', 'UserController@profile');
+Route::get('/user/account', 'UserController@account');
+
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
