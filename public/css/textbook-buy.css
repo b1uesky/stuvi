@@ -36,8 +36,13 @@
 
 /******* TEXTBOOK-BUY SEARCH AREA ******/
 .search {
-    margin-top: 3em;
-    margin-bottom: 6em;
+    /* Photo by Brittany Stevens https://flic.kr/p/nfwhCe */
+    /* Licensed under creative commons BY 2.0*/
+    /* https://creativecommons.org/licenses/by/2.0/ */
+    background-image: url('../img/books.jpg');
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 50px;
 }
 
 
