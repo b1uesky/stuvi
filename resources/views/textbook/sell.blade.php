@@ -52,7 +52,7 @@
             </div>
 
             <!-- Row 1 -->
-            <div class = "row" id="row1">
+            <div class = "row row-b" id="row1">
                 <div class = "container col-md-2 col-sm-0" id = "buffer1-1"> </div>
                 <div class = "container col-md-4 col-sm-12">        <!-- r1c1 for regular. stack for small-->
                     <img src="http://placehold.it/250x250">
@@ -69,7 +69,7 @@
             </div>
 
             <!-- Row 2 -->
-            <div class = "row" id = "row2">
+            <div class = "row row-b" id = "row2">
 
                 <div class = "container col-md-5 col-sm-12 hidden-xs hidden-sm">        <!-- r2c2 for regular. stack for small-->
                     <h3 id = "h3-1"> Header Example 2</h3>
