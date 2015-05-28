@@ -3,7 +3,7 @@
 
 @section('content')
     <head>
-        <link href="{{ asset('/css/textbook-buy.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/textbook.css') }}" rel="stylesheet">
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
     </head>
@@ -27,16 +27,13 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <div class="col-sm-8 col-sm-offset-2 search-row">
-                        <input id="search-bar" type="text" name="isbn" class="form-control" placeholder="Enter the textbook ISBN"/>
+                        <input id="search-bar" type="text" name="isbn" class="form-control" placeholder="Enter the textbook ISBN, Title, or Author"/>
                     </div>
-                    <button class="btn btn-default search-btn" type="submit" name="search" >
+                    <button class="btn btn-default search-btn" type="submit" name="search" value="Search" >
                         <i class="fa fa-search search-icon"></i>
                     </button>
                 </div>
-
-                {{--<input type="submit" name="search" class="btn btn-primary" value="Search"/>--}}
             </form>
-
         </div>
     </div>
 

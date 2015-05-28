@@ -3,7 +3,7 @@
 @section('content')
 
     <head>
-        <link href="{{ asset('/css/textbook-sell.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/textbook.css') }}" rel="stylesheet">
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
         <title> Stuvi - Sell Textbooks</title>
@@ -23,21 +23,21 @@
 
     <!-- Add styling -->
     <!-- Search Bar Container-->
-    <div class="container-fluid" id = "textbook-search">
-        <div class = "container col-md-3"></div>                <!-- Buffer -->
-        <div class = "container col-md-6" id = "search-container">
-            <div class="row">
-                <form action="/textbook/sell/search" method="post">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <div class="form-group">
-                        <h1>Sell your used textbooks</h1>
-                        <input type="text" name="isbn" class="form-control" placeholder="Enter the ISBN of your book"/>
+    <div class="container-fluid search">
+        <div class="row">
+            <h1 id="buy-title">Buy or Rent Textbooks</h1>
+            <form action="/textbook/sell/search" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="form-group">
+                    <div class="col-sm-8 col-sm-offset-2 search-row">
+                        <input id="search-bar" type="text" name="isbn" class="form-control" placeholder="Enter the textbook ISBN"/>
                     </div>
-                    <input type="submit" name="search" class="btn btn-primary" value="Search"/>
-                </form>
-            </div>
+                    <button class="btn btn-default search-btn" type="submit" name="search" value="Search" >
+                        <i class="fa fa-search search-icon"></i>
+                    </button>
+                </div>
+            </form>
         </div>
-
     </div>
 
     <!-- Bottom half info -->
