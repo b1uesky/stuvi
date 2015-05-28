@@ -23,7 +23,7 @@
             <div class="col-sm-6 col-sm-offset-3">
                 <div class="container" id="form-container">
                     <ul class="nav nav-tabs nav-justified" role="tablist" id="tabs">
-                        <li role="presentation" class="{{ $loginActive }}" id="login-tab"><a href="#login-body" aria-controls="login-body" role="tab" data-toggle="tab">Log In</a></li>
+                        <li role="presentation" class="{{ $loginActive }}" id="login-tab"><a href="#login-body" aria-controls="login-body" role="tab" data-toggle="tab">Login</a></li>
                         <li role="presentation" class="{{ $signupActive }}" id="signup-tab"><a href="#signup-body" aria-controls="signup-body" role="tab" data-toggle="tab">Sign Up</a></li>
                     </ul>
                     @if (count($errors) > 0)
@@ -61,7 +61,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-8">
+                                    <div class="col-sm-offset-3 col-sm-6">
                                         <button type="submit" class="btn login-button">Login</button>
                                         <a class="btn btn-link" id="forgot-password" href="{{ url('/password/email') }}">
                                             Forgot Your Password?
@@ -99,19 +99,19 @@
                                         <input type="tel" class="form-control" name="phone_number" placeholder="Phone Number" value="{{ old('phone_number') }}">
                                     </div>
                                 </div>
+                                {{--<div class="form-group">--}}
+                                    {{--<div class="col-sm-offset-3 col-sm-6">--}}
+                                        {{--<input type="text" class="form-control" name="username" placeholder="Username" value="{{ old('username') }}">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group">--}}
+                                    {{--<div class="col-sm-offset-3 col-sm-6">--}}
+                                        {{--<input type="password" class="form-control" name="password_confirmation" placeholder="Re-enter Password">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-6">
-                                        <input type="text" class="form-control" name="username" placeholder="Username" value="{{ old('username') }}">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
-                                        <input type="password" class="form-control" name="password_confirmation" placeholder="Re-enter Password">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
-                                        <button type="submit" class="btn login-button">Register</button>
+                                        <button type="submit" class="btn login-button">Sign Up</button>
                                     </div>
                                 </div>
                             </form>
