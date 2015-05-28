@@ -55,6 +55,7 @@
 
             <div class = "container" id = "servicesTable">                         <!-- begin table -->
                 <div class = "row">                                                     <!-- row1 -->
+                    <div class = "col-md-1"></div>                                          <!-- Buffer -->
                     <div class = "col-md-5 col-buff">                                       <!-- r1c1 -->
                         <img src = "http://placehold.it/350x350" class="img-responsive">
                     </div>  <!-- end r1c1-->
@@ -65,6 +66,7 @@
                 </div>  <!-- end row1 -->
 
                 <div class = "row grid-buff">                                           <!-- row 2 -->
+                    <div class = "col-md-1"></div>                                            <!-- Buffer -->
                     <div class = "col-md-5 col-buff">                                       <!-- r2c1 -->
                         <img src = "http://placehold.it/350x350" class="img-responsive">
                     </div>  <!-- end r2c1 -->

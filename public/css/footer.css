@@ -3,6 +3,7 @@
  * Footer html at app.blade.php
  * Created by Nick
  * 5/26/15
+ * Currently unused
  *******************************/
 
 
@@ -10,11 +11,11 @@
  * CLASSES
  ************/
 
-hr {
+/*hr {
     border: 0px;
     height: 1px;
     background: rgba(179, 179, 179, 0.87);
-}
+}*/
 /*************
  * IDS
  *************/
