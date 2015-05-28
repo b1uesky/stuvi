@@ -45,7 +45,7 @@
 
         <div class = "container">
 
-            <h2> Sell Your Books</h2>
+            <h2> Buy Used Books</h2>
             <!-- Divider -->
             <div>
                 <hr id = "hr1">
