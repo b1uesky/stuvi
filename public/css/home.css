@@ -19,7 +19,7 @@
     ******************/
 
     background-image: url("../img/cover.jpg") ;
-    background-size: cover;
+    background-size: cover;                         /* Fill entire container */
     background-repeat: no-repeat;
     background-position: center;
     padding-bottom: 5%;
@@ -46,6 +46,7 @@
 
 #p1          {font-size: medium;}     /* Jumbotron text */
 
+/* Liftoff on: */
 #liftoff {
              text-align: right;
              font-size: small;
@@ -59,7 +60,9 @@
 #services    {text-align: center;}
 
 /* Gradient color1 - color2 - color1
-https://css-tricks.com/examples/hrs/ */
+ * https://css-tricks.com/examples/hrs/
+ * Used for divider line under Our Services
+ */
 #hr-style-one {
     border: 0;
     height: 3px;
@@ -67,7 +70,7 @@ https://css-tricks.com/examples/hrs/ */
     background-image: linear-gradient(to right, #ccc, #f16521, #ccc);
 }
 
-/* Jumbotron styling. Last argument of rgba() represent opacity
+/* Jumbotron styling for main text. Last argument of rgba() represent opacity
  * Note that rbga does not work in ie8 and lower*/
 #jumbotron1 {
     background: rgb(242, 248, 255);             /* This is for ie8 and below */
