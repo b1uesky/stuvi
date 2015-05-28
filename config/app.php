@@ -154,6 +154,11 @@ return [
          * Administrator Service Providers...
          */
         'Frozennode\Administrator\AdministratorServiceProvider',
+
+        /*
+         * Moltin Cart Service Providers...
+         */
+        'Moltin\Cart\CartServiceProvider',
 	],
 
 	/*
@@ -175,6 +180,7 @@ return [
 		'Blade'     => 'Illuminate\Support\Facades\Blade',
 		'Bus'       => 'Illuminate\Support\Facades\Bus',
 		'Cache'     => 'Illuminate\Support\Facades\Cache',
+        'Cart'      => 'Moltin\Cart\Facade',
 		'Config'    => 'Illuminate\Support\Facades\Config',
 		'Cookie'    => 'Illuminate\Support\Facades\Cookie',
 		'Crypt'     => 'Illuminate\Support\Facades\Crypt',
