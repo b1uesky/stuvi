@@ -61,7 +61,7 @@
                 </div>
 
                 <div class = "container col-md-5 col-sm-12">        <!-- r1c2 for regular. stack for small-->
-                    <h3 id = "h3-1"> Header Example</h3>
+                    <h3 id = "h3-1"> Header Example 1</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
                     tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
                     Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>
@@ -74,6 +74,9 @@
 
                 <div class = "container col-md-5 col-sm-12 hidden-xs hidden-sm">        <!-- r2c2 for regular. stack for small-->
                     <h3 id = "h3-1"> Header Example 2</h3>
+
+                    <!-- Note!!! The third paragraph on the bottom assumes the same content. It is there for smaller screens
+                    so it all stacks nicely -->
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
                     tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
                     Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius.</p>
@@ -84,6 +87,13 @@
                 <div class = "container col-md-4 col-sm-12">        <!-- r2c1 for regular. stack for small-->
                     <img src="http://placehold.it/250x250">
 
+                </div>
+
+                <div class = "container col-sm-12 hidden-md hidden-lg">        <!-- For sm and xs screen -->
+                    <h3 id = "h3-1"> Header Example 2</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
+                        tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
+                        Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius.</p>
                 </div>
 
                 <div class = "container col-md-1 col-sm-0" id = "buffer2-2"> </div>
