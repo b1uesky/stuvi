@@ -23,7 +23,7 @@
     <!-- Search Bar Container-->
     <div class="container-fluid search">
         <div class="row">
-            <h1 id="title1">Buy or Rent Textbooks</h1>
+            <h1 id="title">Buy or Rent Textbooks</h1>
             <form action="/textbook/sell/search" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
