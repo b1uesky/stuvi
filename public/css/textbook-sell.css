@@ -45,11 +45,16 @@
 h1 {
     font-size: xx-large;
     color: whitesmoke;
-    text-shadow: .4px .5px #000000;
+    text-shadow: 1.5px 1.5px #000000;
 }
 
 /* Top fluid container */
 #textbook-search {
+    /* Photo by Brittany Stevens https://flic.kr/p/nfwhCe */
+    /* Licensed under creative commons BY 2.0*/
+    /* https://creativecommons.org/licenses/by/2.0/ */
+    background-image: url('../img/books.jpg');
+    background-size: cover;
     background-color: rgba(0, 0, 0, 0.3);
     padding: 4%;
 }
@@ -64,5 +69,14 @@ h1 {
 
 #textbook-bottom {
     background-color: #E7E6E6;
+
+}
+
+#hr1 {
+    border-color: rgba(0, 0, 0, .64);
+}
+
+.row{
+    padding: 3%;
 
 }
