@@ -1,5 +1,8 @@
 /* STYLING FOR TEXTBOOK PAGE ***/
 
+body {
+    background: #241729;
+}
 
 /******* TEXTBOOK NAVIGATION BAR ******/
 .tab-filter-container {
