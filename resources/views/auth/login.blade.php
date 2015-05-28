@@ -1,9 +1,7 @@
 @extends('app2')
 <head>
     <link href="{{ asset('/css/login.css') }}" rel="stylesheet">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
+    <title> Stuvi - login & register</title>
 </head>
 
 {{--set starting tab based on clicked nav button--}}
@@ -121,4 +119,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Scripts here for faster loading -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
 @endsection
