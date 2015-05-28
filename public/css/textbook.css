@@ -1,3 +1,6 @@
+/* STYLING FOR TEXTBOOK PAGE ***/
+
+
 /******* TEXTBOOK NAVIGATION BAR ******/
 .tab-filter-container {
     width: 100%;
@@ -88,4 +91,21 @@
 .search-icon {
     font-size: 1.2em;
     color: #FFFFFF;
+}
+
+
+/******  TEXTBOOK BOTTOM HALF ****/
+
+#textbook-bottom {
+    background-color: #E7E6E6;
+
+}
+
+#hr1 {
+    border-color: rgba(0, 0, 0, .64);
+}
+
+.row{
+    padding: 3%;
+
 }
