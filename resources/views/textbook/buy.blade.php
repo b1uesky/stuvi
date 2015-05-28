@@ -8,6 +8,7 @@
         <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
     </head>
 
+    {{--textbook navigation bar--}}
     <div class="tab-filter-container">
         <ul class="tab-filters">
             <li class="filter active">

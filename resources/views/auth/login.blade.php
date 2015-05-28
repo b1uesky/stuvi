@@ -1,4 +1,4 @@
-@extends('app')
+@extends('app2')
 <head>
     <link href="{{ asset('/css/login.css') }}" rel="stylesheet">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -18,7 +18,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive">
+        <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive" id="login-logo">
         <div class="row vertical-center">
             <div class="col-sm-6 col-sm-offset-3">
                 <div class="container" id="form-container">
