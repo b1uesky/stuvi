@@ -36,6 +36,7 @@ a:focus {
 
 .nav-caret {
     color: #FFFFFF;
+    margin-top: 0px;
 }
 
 .dropdown-menu li a:hover,
