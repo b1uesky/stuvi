@@ -72,7 +72,7 @@
             <!-- Row 2 -->
             <div class = "row" id = "row2">
 
-                <div class = "container col-md-5 col-sm-12">        <!-- r2c2 for regular. stack for small-->
+                <div class = "container col-md-5 col-sm-12 hidden-xs hidden-sm">        <!-- r2c2 for regular. stack for small-->
                     <h3 id = "h3-1"> Header Example 2</h3>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
                     tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
