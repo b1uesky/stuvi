@@ -4,8 +4,7 @@
 @section('content')
     <head>
         <link href="{{ asset('/css/textbook.css') }}" rel="stylesheet">
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
+        <title> Stuvi - Buy Used Textbook</title>
     </head>
 
     {{--textbook navigation bar--}}
@@ -108,6 +107,10 @@
 
 
     </div>
+
+    <!--- Scripts at bottom for faster page loading-->
+
+    <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
 
 
 @endsection
