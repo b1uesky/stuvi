@@ -1,3 +1,10 @@
+{{--
+  -- app.blade for Stuvi.
+  -- Contains the code for the navbar and footer
+  -- May 2015
+  --}}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +16,9 @@
 	<link href="{{ asset('/css/app.css') }}"                rel="stylesheet">
     <link href="{{ asset('/css/navigation.css') }}"         rel="stylesheet">
     <link href="{{ asset('/css/footer.css') }}"             rel="stylesheet">
-    <link href="{{ asset('css/footer-distributed.css') }}"  rel="stylesheet">
-    <link href="{{ asset('css/font-awesome.min.css') }}"    rel="stylesheet">   <!-- Footer required -->
-    <link href="{{ asset('css/font-awesome.css') }}"        rel="stylesheet">   <!-- Footer required -->
+    <link href="{{ asset('css/footer-distributed.css') }}"  rel="stylesheet">   <!-- Footer required -->
+    <link href="{{ asset('css/font-awesome.min.css') }}"    rel="stylesheet">   <!-- Footer & Nav required -->
+    <link href="{{ asset('css/font-awesome.css') }}"        rel="stylesheet">   <!-- Footer & Nav required -->
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -28,9 +35,12 @@
     <script src="{{asset('/js/navigation.js')}}" type="text/javascript"></script>
 </head>
 <body>
+
+    <!-- NAV BAR -->
 	<nav class="navbar navbar-default" id="nav">
-		<div class="container-fluid">
+		<div class="container-fluid">               <!-- Expand to full width -->
 			<div class="navbar-header">
+                <!-- Toggle Nav into hamburger menu for small screens -->
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle Navigation</span>
 					<span class="icon-bar"></span>
@@ -40,20 +50,23 @@
                 <div class="logo-container">
                     <a href="{{url('/home')}}">   <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive">  </a>
                 </div>
-			</div>
+			</div>  <!-- End Navbar header -->
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <!-- Nav Bar Links-->
 				<ul class="nav navbar-nav">
                     <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbooks</a></li>
                     <li><a href="{{ url('/housing') }}">Housing</a></li>
                     <li><a href="{{ url('/club') }}">Clubs</a></li>
                     <li><a href="{{ url('/group') }}">Groups</a></li>
 				</ul>
-
+                <!-- Navbar right -->
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
-						<li><a href="{{ url('/login') }}" id="login-nav">Login</a></li>
-						<li><a href="{{ url('/register') }}">Register</a></li>
+						<li><a href="{{ url('/login') }}" id="login-nav">
+                                <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
+						<li><a href="{{ url('/register') }}">
+                                <i class="fa fa-heart"></i> Register</a></li>
 					@else
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button" aria-expanded="true">{{ Auth::user()->name }} <span class="caret nav-caret"></span></a>
@@ -65,16 +78,20 @@
 						</li>
 					@endif
 				</ul>
-			</div>
-		</div>
+			</div>  <!-- End collapse container -->
+		</div>  <!-- End navbar container -->
 	</nav>
+
+    <!-- End Nav Bar -->
+
+    <!-- Displays page content -->
     @yield('content')
 
+    <!-- FOOTER -->
     <footer class="footer-distributed">
-
-        <!-- Fix alignment!!!! -->
+        <!-- Social Media -->
         <div class="footer-right">
-
+            <!-- Uses font-awesome.css -->
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
             <a href="#"><i class="fa fa-linkedin"></i></a>
@@ -104,7 +121,7 @@
         </div>
 
     </footer>
-
+    <!-- END FOOTER -->
 
 </body>
 </html>

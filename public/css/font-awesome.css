@@ -16,6 +16,7 @@
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
   text-rendering: auto;
+  line-height: 1.7em;                    /* Added to fit the icon in the box   */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transform: translate(0, 0);
