@@ -154,6 +154,11 @@ return [
          * Administrator Service Providers...
          */
         'Frozennode\Administrator\AdministratorServiceProvider',
+
+        /*
+         * Gloudemans Shopping Cart
+         */
+        'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
 	],
 
 	/*
@@ -201,6 +206,8 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
+        'Cart'      => 'Gloudemans\Shoppingcart\Facades\Cart',
 
 	],
 
