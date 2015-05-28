@@ -62,9 +62,9 @@
 
                 <div class = "container col-md-5 col-sm-12">        <!-- r1c2 for regular. stack for small-->
                     <h3 id = "h3-1"> Header Example</h3>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
                     tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
-                    Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius.
+                    Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>
                 </div>
                 <div class = "container col-md-1 col-sm-0" id = "buffer1-2"> </div>
             </div>
@@ -74,9 +74,9 @@
 
                 <div class = "container col-md-5 col-sm-12 hidden-xs hidden-sm">        <!-- r2c2 for regular. stack for small-->
                     <h3 id = "h3-1"> Header Example 2</h3>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
                     tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
-                    Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius.
+                    Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius.</p>
                 </div>
 
                 <div class = "container col-md-2 col-sm-0" id = "buffer2-1"> </div>
