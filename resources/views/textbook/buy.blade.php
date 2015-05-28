@@ -20,4 +20,24 @@
         </ul>
     </div>
 
+    <div class="container-fluid search">
+        <div class="row">
+            <h1 id="buy-title">Buy or Rent Textbooks</h1>
+            <form action="/textbook/sell/search" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="form-group">
+                    <div class="col-sm-8 col-sm-offset-2 search-row">
+                        <input id="search-bar" type="text" name="isbn" class="form-control" placeholder="Enter the textbook ISBN"/>
+                    </div>
+                    <button class="btn btn-default search-btn" type="submit" name="search" >
+                        <i class="fa fa-search search-icon"></i>
+                    </button>
+                </div>
+
+                {{--<input type="submit" name="search" class="btn btn-primary" value="Search"/>--}}
+            </form>
+
+        </div>
+    </div>
+
 @endsection
