@@ -21,13 +21,14 @@ Route::get('/register', 'HomeController@register');
 | Textbook Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/textbook', 'TextbookController@index');
-Route::get('/textbook/buy', 'TextbookController@buy');
-Route::get('/textbook/sell', 'TextbookController@sell');
-Route::get('/textbook/sell/create', 'TextbookController@create');
-Route::post('/textbook/sell/search', 'TextbookController@search');
-Route::post('/textbook/sell/store', 'TextbookController@store');
-
+Route::group(['middleware'=>'auth', 'prefix'=>'textbook'], function() {
+    Route::get('/', 'TextbookController@index');
+    Route::get('/buy', 'TextbookController@buy');
+    Route::get('/sell', 'TextbookController@sell');
+    Route::get('/sell/create', 'TextbookController@create');
+    Route::post('/sell/search', 'TextbookController@search');
+    Route::post('/sell/store', 'TextbookController@store');
+});
 /*
 |--------------------------------------------------------------------------
 | Housing Routes
