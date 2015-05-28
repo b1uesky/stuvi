@@ -28,6 +28,8 @@
     <script src="{{asset('/js/navigation.js')}}" type="text/javascript"></script>
 </head>
 <body>
+
+    <!-- NAV BAR -->
 	<nav class="navbar navbar-default" id="nav">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -52,8 +54,10 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
-						<li><a href="{{ url('/login') }}" id="login-nav">Login</a></li>
-						<li><a href="{{ url('/register') }}">Register</a></li>
+						<li><a href="{{ url('/login') }}" id="login-nav">
+                                <i class="fa fa-sign-in"></i> Login </a></li>
+						<li><a href="{{ url('/register') }}">
+                                <i class="fa fa-clipboard"></i> Register</a></li>
 					@else
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button" aria-expanded="true">{{ Auth::user()->name }} <span class="caret nav-caret"></span></a>
@@ -66,8 +70,13 @@
 			</div>
 		</div>
 	</nav>
+
+    <!-- End Nav Bar -->
+
+    <!-- Displays page content -->
     @yield('content')
 
+    <!-- FOOTER -->
     <footer class="footer-distributed">
 
         <!-- Fix alignment!!!! -->
@@ -102,7 +111,7 @@
         </div>
 
     </footer>
-
+    <!-- END FOOTER -->s
 
 </body>
 </html>
