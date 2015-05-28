@@ -40,6 +40,12 @@
 }
 
 
+/* Fix Nav Caret Align*/
+.nav-caret{
+    margin-top: 0px;
+}
+
+
 /************** IDs   *************/
 
 #head1       {font-size: xx-large;}   /* Welcome */
