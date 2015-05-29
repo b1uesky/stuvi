@@ -8,116 +8,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	{{--<title>Laravel</title>--}}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{--<title>Laravel</title>--}}
 
-	<link href="{{ asset('/css/app.css') }}"                rel="stylesheet">
+    <link href="{{ asset('/css/app.css') }}"                rel="stylesheet">
     <link href="{{ asset('/css/navigation.css') }}"         rel="stylesheet">
     {{--<link href="{{ asset('/css/footer.css') }}"         rel="stylesheet">--}}
     <link href="{{ asset('css/footer-distributed.css') }}"  rel="stylesheet">   <!-- Footer required -->
     <link href="{{ asset('css/font-awesome.min.css') }}"    rel="stylesheet">   <!-- Footer & Nav required -->
     <link href="{{ asset('css/font-awesome.css') }}"        rel="stylesheet">   <!-- Footer & Nav required -->
 
-	<!-- Fonts -->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
 
 </head>
 <body>
 
-    <!-- NAV BAR -->
-	<nav class="navbar navbar-default" id="nav">
-		<div class="container-fluid">               <!-- Expand to full width -->
-			<div class="navbar-header">
-                <!-- Toggle Nav into hamburger menu for small screens -->
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle Navigation</span>
-                    <i class="fa fa-bars fa-lg"></i>
-					{{--<span class="icon-bar"></span>--}}
-					{{--<span class="icon-bar"></span>--}}
-					{{--<span class="icon-bar"></span>--}}
-				</button>
-                <div class="logo-container">
-                    <a href="{{url('/home')}}">   <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive">  </a>
-                </div>
-			</div>  <!-- End Navbar header -->
+<!-- NAV BAR -->
+<nav class="navbar navbar-default" id="nav" role ="navigation">
+    <div class="container-fluid">               <!-- Expand to full width -->
+        <div class="navbar-header">
+            <!-- Toggle Nav into hamburger menu for small screens -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle Navigation</span>
+                <i class="fa fa-bars fa-lg"></i>
+                {{--<span class="icon-bar"></span>--}}
+                {{--<span class="icon-bar"></span>--}}
+                {{--<span class="icon-bar"></span>--}}
+            </button>
+            <div class="logo-container">
+                <a href="{{url('/home')}}">   <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive">  </a>
+            </div>
+        </div>  <!-- End Navbar header -->
 
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <!-- Nav Bar Links-->
-				<ul class="nav navbar-nav">
-                    <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbooks</a></li>
-                    <li><a href="{{ url('/housing') }}">Housing</a></li>
-                    <li><a href="{{ url('/club') }}">Clubs</a></li>
-                    <li><a href="{{ url('/group') }}">Groups</a></li>
-				</ul>
-                <!-- Navbar right -->
-				<ul class="nav navbar-nav navbar-right">
-					@if (Auth::guest())
-						<li><a href="{{ url('/login') }}">
-                                <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
-						<li><a href="{{ url('/register') }}">
-                                <i class="fa fa-user"></i> Register</a></li>
-					@else
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button"
-                               aria-expanded="true">{{ Auth::user()->name }}<span nav-caret id = "account-name">My Stuvi</span> <span class="caret nav-caret"></span></a>
-							<ul class="dropdown-menu" role="menu" aria-labelledby="nav-dropdown">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/user/profile') }}">
-                                        Profile</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/user/account') }}">
-                                        My Account</a></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/auth/logout') }}">
-                                        Logout</a></li>
-							</ul>
-						</li>
-					@endif
-				</ul>
-			</div>  <!-- End collapse container -->
-		</div>  <!-- End navbar container -->
-	</nav>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <!-- Nav Bar Links-->
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbooks</a></li>
+                <li><a href="{{ url('/housing') }}">Housing</a></li>
+                <li><a href="{{ url('/club') }}">Clubs</a></li>
+                <li><a href="{{ url('/group') }}">Groups</a></li>
+            </ul>
+            <!-- Navbar right -->
+            <ul class="nav navbar-nav navbar-right">
+                @if (Auth::guest())
+                    <li><a href="{{ url('/login') }}">
+                            <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
+                    <li><a href="{{ url('/register') }}">
+                            <i class="fa fa-user"></i> Register</a></li>
+                @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button"
+                           aria-expanded="true">{{ Auth::user()->name }}<span nav-caret id = "account-name">My Stuvi</span> <span class="caret nav-caret"></span></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="nav-dropdown">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/user/profile') }}">
+                                    Profile</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/user/account') }}">
+                                    My Account</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/auth/logout') }}">
+                                    Logout</a></li>
+                        </ul>
+                    </li>
+                @endif
+            </ul>
+        </div>  <!-- End collapse container -->
+    </div>  <!-- End navbar container -->
+</nav>
 
-    <!-- End Nav Bar -->
+<!-- End Nav Bar -->
 
-    <!-- Displays page content -->
-    @yield('content')
+<!-- Displays page content -->
+@yield('content')
 
-    <!-- FOOTER -->
-    <footer class="footer-distributed">
-        <!-- Social Media -->
-        <div class="footer-right">
-            <!-- Uses font-awesome.css -->
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-github"></i></a>
+<!-- FOOTER -->
+<footer class="footer-distributed">
+    <!-- Social Media -->
+    <div class="footer-right">
+        <!-- Uses font-awesome.css -->
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-github"></i></a>
 
-        </div>
+    </div>
 
-        <div class="footer-left">
+    <div class="footer-left">
 
-            <p class="footer-links">
-                <a href="{{url('/home')}}">Home</a>
-                ·
-                <a href="{{url('/textbook')}}">Textbooks</a>
-                ·
-                <a href="{{url('/housing')}}">Housing</a>
-                ·
-                <a href="{{url('/club')}}">Clubs</a>
-                ·
-                <a href="{{url('/group')}}">Groups</a>
-                ·
-                <a href="{{ url('/') }}">About</a>
-                ·
-                <a href="{{ url('/') }}">Contact</a>
-            </p>
+        <p class="footer-links">
+            <a href="{{url('/home')}}">Home</a>
+            ·
+            <a href="{{url('/textbook')}}">Textbooks</a>
+            ·
+            <a href="{{url('/housing')}}">Housing</a>
+            ·
+            <a href="{{url('/club')}}">Clubs</a>
+            ·
+            <a href="{{url('/group')}}">Groups</a>
+            ·
+            <a href="{{ url('/') }}">About</a>
+            ·
+            <a href="{{ url('/') }}">Contact</a>
+        </p>
 
-            <p>Stuvi &copy; 2015</p>
-        </div>
+        <p>Stuvi &copy; 2015</p>
+    </div>
 
-    </footer>
-    <!-- END FOOTER -->
+</footer>
+<!-- END FOOTER -->
 
 </body>
 
