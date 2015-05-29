@@ -26,8 +26,8 @@
             <form action="/textbook/sell/search" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
-                    <div class="col-sm-8 col-sm-offset-2 search-row">
-                        <input id="search-bar" type="text" name="isbn" class="form-control" placeholder="Enter the textbook ISBN, Title, or Author"/>
+                    <div class="col-xs-8 col-xs-offset-2 search-row">
+                        <input type="text" name="isbn" class="form-control" placeholder="Enter the textbook ISBN, Title, or Author"/>
                     </div>
                     <button class="btn btn-default search-btn" type="submit" name="search" value="Search" >
                         <i class="fa fa-search search-icon"></i>
@@ -109,7 +109,7 @@
     </div>
 
     <!--- Scripts at bottom for faster page loading-->
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
 
 

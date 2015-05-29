@@ -98,6 +98,12 @@ body {
     color: #FFFFFF;
 }
 
+@media (max-width: 535px) {
+    .form-control {
+        width: 80%;
+        margin: 0;
+    }
+}
 
 /******  TEXTBOOK BOTTOM HALF ****/
 
