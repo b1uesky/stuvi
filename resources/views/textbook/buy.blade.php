@@ -83,6 +83,13 @@
                 </div>
             </div>
         </div> <!-- end container -->
+
+        <!-- books.jpg licensing -->
+        <p style="text-align: right;"><small>Books Photo by
+                <a href="https://flic.kr/p/nfwhCe" target = "_blank"> Brittany Stevens </a>
+                under <a href="https://creativecommons.org/licenses/by/2.0/" target = "_blank"> CC-BY-2.0</a>
+                Cropped and levels adjusted. </small>
+        </p>
     </div>  <!-- end container fluid -->
 
 @endsection
