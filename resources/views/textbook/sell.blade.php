@@ -38,13 +38,41 @@
         </div>
     </div>
 
+
+    <!-- Trying out to redo  -->
+    <div class="container-fluid" id = "textbook-bottom">
+        <div class = "container">
+            <h2>Buy Used Books</h2>
+            <!-- Divider -->
+            <div>
+                <hr id = "hr1">
+            </div>
+            <!-- Row 1 -->
+            <div class = "row row-b" id="row1">
+                <!-- Row 1 Col 1 -->
+                <div class = "container col-sm-4 col-sm-offset-1">
+                    <img src="http://placehold.it/250x250" alt = "placeholder">
+                </div>
+                <!-- Row 1 Col 2 -->
+                <div class = "container col-sm-7">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
+                        tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
+                        Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>
+                </div>
+            </div>
+
+        </div> <!-- end container -->
+    </div>  <!-- end container fluid -->
+
+
+ {{--
     <!-- Bottom half info -->
     <!-- Put important info about the features and details of our service -->
     <div class = "container-fluid" id = "textbook-bottom">
 
         <div class = "container">
 
-            <h2> Sell Your Books</h2>
+            <h2> Buy Used Books</h2>
             <!-- Divider -->
             <div>
                 <hr id = "hr1">
@@ -61,8 +89,8 @@
                 <div class = "container col-md-5 col-sm-12">        <!-- r1c2 for regular. stack for small-->
                     <h3 id = "h3-1"> Header Example 1</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
-                    tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
-                    Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>
+                        tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
+                        Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>
                 </div>
                 <div class = "container col-md-1 col-sm-0" id = "buffer1-2"> </div>
             </div>
@@ -76,8 +104,8 @@
                     <!-- Note!!! The third paragraph on the bottom assumes the same content. It is there for smaller screens
                     so it all stacks nicely -->
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
-                    tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
-                    Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius.</p>
+                        tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
+                        Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius.</p>
                 </div>
 
                 <div class = "container col-md-2 col-sm-0" id = "buffer2-1"> </div>
@@ -100,16 +128,16 @@
 
         <!-- books.jpg licensing -->
         <p style="text-align: right;"><small>Books Photo by
-                <a href="https://flic.kr/p/nfwhCe" target = "_blank"> Brittany Stevens</a>
+                <a href="https://flic.kr/p/nfwhCe" target = "_blank"> Brittany Stevens </a>
                 under <a href="https://creativecommons.org/licenses/by/2.0/" target = "_blank"> CC-BY-2.0</a>
                 Cropped and levels adjusted. </small>
-                </p>
+        </p>
 
 
-    </div>
+    </div>--}}
 
     <!--- Scripts at bottom for faster page loading-->
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
 
 
