@@ -51,29 +51,30 @@
                 </div>
             </div>
             <!-- end divider -->
-
+            <!-- Columns stack when xs -->
             <div class = "container" id = "servicesTable">                         <!-- begin table -->
-                <div class = "row">                                                     <!-- row1 -->
-                    {{--<div class = "col-md-1"></div>                                          <!-- Buffer -->--}}
+                <!-- row 1 -->
+                <div class = "row">
+                    <!-- row 1 column 1 -->
                     <div class = "col-xs-12 col-xs-offset-3 col-sm-4 col-sm-offset-1 col-md-4 col-md-offset-1 col-buff" >                                       <!-- r1c1 -->
                         <img src = "http://placehold.it/350x350" class="img-responsive">
                     </div>  <!-- end r1c1-->
 
-                    <div class = "col-xs-12 col-xs-offset-3 col-sm-4 col-sm-offset-1 col-md-4 col-md-offset-1 col-buff">                      <!-- r1c2 -->
+                    <div class = "col-xs-12 col-xs-offset-3 col-sm-4 col-sm-offset-1 col-md-4 col-md-offset-2 col-buff">                      <!-- r1c2 -->
                         <img src = "http://placehold.it/350x350" class="img-responsive">
                     </div>  <!-- end r1c2 -->
                 </div>  <!-- end row1 -->
 
-{{--                <div class = "row grid-buff">                                           <!-- row 2 -->
-                    <div class = "col-md-1"></div>                                            <!-- Buffer -->
-                    <div class = "col-md-5 col-buff">                                       <!-- r2c1 -->
+                <!-- row 2 -->
+                <div class = "row">
+                    <div class = "col-xs-12 col-xs-offset-3 col-sm-4 col-sm-offset-1 col-md-4 col-md-offset-1 col-buff" >                                       <!-- r1c1 -->
                         <img src = "http://placehold.it/350x350" class="img-responsive">
-                    </div>  <!-- end r2c1 -->
+                    </div>  <!-- end r2c1-->
 
-                    <div class = " col-sm-offset-1 col-md-5 col-buff">                      <!-- r2c2 -->
+                    <div class = "col-xs-12 col-xs-offset-3 col-sm-4 col-sm-offset-1 col-md-4 col-md-offset-2 col-buff">                      <!-- r1c2 -->
                         <img src = "http://placehold.it/350x350" class="img-responsive">
                     </div>  <!-- end r2c2 -->
-                </div>   <!-- end row2 -->--}}
+                </div>  <!-- end row2 -->
             </div>   <!-- end container for table -->
         </div>    <!-- end container for hr and table -->
     </div>   <!-- end container bottom-half -->
