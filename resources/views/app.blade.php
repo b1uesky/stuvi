@@ -88,31 +88,31 @@
     <!-- Social Media -->
     <div class="footer-right">
         <!-- Uses font-awesome.css -->
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-linkedin"></i></a>
-        <a href="#"><i class="fa fa-github"></i></a>
+        <a class="social" href="#"><i class="fa fa-facebook"></i></a>
+        <a class="social" href="#"><i class="fa fa-twitter"></i></a>
+        <a class="social" href="#"><i class="fa fa-linkedin"></i></a>
+        <a class="social" href="#"><i class="fa fa-github"></i></a>
 
     </div>
 
     <div class="footer-left">
 
         <p class="footer-links">
-            <a href="{{url('/home')}}">Home</a>
+            <a class="footer-link" href="{{url('/home')}}">Home</a>
             ·
-            <a href="{{url('/textbook')}}">Textbooks</a>
+            <a class="footer-link"  href="{{url('/textbook')}}">Textbooks</a>
             ·
-            <a href="{{url('/housing')}}">Housing</a>
+            <a class="footer-link"  href="{{url('/housing')}}">Housing</a>
             ·
-            <a href="{{url('/club')}}">Clubs</a>
+            <a class="footer-link"  href="{{url('/club')}}">Clubs</a>
             ·
-            <a href="{{url('/group')}}">Groups</a>
+            <a class="footer-link"  href="{{url('/group')}}">Groups</a>
             ·
-            <a href="{{ url('/') }}">About</a>
+            <a class="footer-link"  href="{{ url('/') }}">About</a>
             ·
-            <a href="{{ url('/') }}">Contact</a>
+            <a class="footer-link"  href="{{ url('/') }}">Contact</a>
         </p>
-
+        <hr>
         <p>Stuvi &copy; 2015</p>
     </div>
 
