@@ -6,11 +6,15 @@
         {{--<li class="active"><a href="{{ url('/textbook/sell') }}">Sell</a></li>--}}
     {{--</ul>--}}
 
-    <div class="container">
+<div class = "container-fluid">
+    <!-- add padding -->
+    <div class="container col-md-8 col-md-offset-2">
         <div class="row">
             @if (Session::has('message'))
                 <div class="flash-message">{{ Session::get('message') }}</div>
             @endif
+
+            <h1> SOME STUFF HERE</h1>
 
             <form action="/textbook/sell/store" method="post" id="textbook-create" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -65,4 +69,5 @@
             </form>
         </div>
     </div>
+</div>
 @endsection

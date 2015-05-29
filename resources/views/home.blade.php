@@ -22,8 +22,8 @@
                     Stuvi is designed to provide convenient, and valuable services to maximize a college student’s campus
                     life experience. In order to ensure our users a streamlined, and self-sufficient college life,
                     we're dedicated to create a "Student Village" where we can learn, share and grow. Whether you're
-                    new to the area, or a die-hard local, you're going to need info such as: course information, professor
-                    ratings, discount textbooks, and living spaces. Our goal is to provide you, the student, with all the
+                    new to the area, or a die-hard local, you're going to need course information, professor
+                    ratings, discount textbooks, and a living space. Our goal is to provide you, the student, with all the
                     tools you need to conquer college.
                     <br/><br/>
                     We are a group of college students currently based in Boston, MA and hope to use our experience
