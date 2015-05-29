@@ -1,3 +1,7 @@
+/*  CSS FOR NAVIGATION BAR  */
+
+
+
 a:focus {
     outline: 0;
 }
@@ -43,5 +47,10 @@ a:focus {
 .dropdown-menu li a:hover,
 .dropdown-menu li a:focus {
     background-color: #7AB4DE;
+    color: #FFFFFF;
+}
+
+/* Fix for when dropdown is open, the text was getting changed to dark*/
+#account-name {
     color: #FFFFFF;
 }
