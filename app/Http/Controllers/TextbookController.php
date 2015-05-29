@@ -149,7 +149,7 @@ class TextbookController extends Controller {
         // if the book is in our db, show the book information and let seller edit it
         if ($book)
         {
-            return view('textbook.create')->withBook($book);
+            return view('textbook.result')->withBook($book);
         }
         // if not, allow the seller fill in book information and create a new book record
         else
@@ -170,10 +170,22 @@ class TextbookController extends Controller {
         return view('textbook.create');
     }
 
+    /**
+     * Show the form for creating a product, eg. price, pictures..
+     *
+     * @param $book
+     * @return int
+     * @internal param $book
+     */
+    public function createProduct($book)
+    {
+        return view('textbook.createProduct')->withBook($book);
+    }
+
 
 
     /***************************************************/
-    /******************   Sell Part   ******************/
+    /******************   Buy Part   *******************/
     /***************************************************/
 
     /**
