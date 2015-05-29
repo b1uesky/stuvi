@@ -73,6 +73,7 @@ body {
 
 .search-row {
     padding: 0;
+    margin-left: 15%;
 }
 
 .search-btn {
@@ -99,9 +100,11 @@ body {
 }
 
 @media (max-width: 535px) {
-    .form-control {
-        width: 80%;
+    .search-btn {
         margin: 0;
+    }
+    .search-row {
+        margin-left: 11%;
     }
 }
 
