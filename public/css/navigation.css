@@ -29,6 +29,17 @@ a:focus {
     border-bottom: solid 5px #90B4DF;
 }
 
+/******* NAVIGATION HAMBURGER MENU *******/
+
+.fa-bars {
+    color: #FFFFFF;
+}
+
+.navbar-toggle:hover,
+.navbar-toggle:focus {
+    background: #7AB4DE !important;
+}
+
 /******* NAVIGATION DROPDOWN *******/
 
 .nav-dropdown:focus {
