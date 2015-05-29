@@ -41,6 +41,7 @@ body {
 .col-buff {
     padding-top: 4%;
     padding-bottom: 5%;
+    margin-left: 0%;
 }
 
 
@@ -48,6 +49,7 @@ body {
 .nav-caret{
     margin-top: 0px;
 }
+
 
 
 /************** IDs   *************/

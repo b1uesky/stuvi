@@ -23,12 +23,12 @@
     <!-- Search Bar Container-->
     <div class="container-fluid search">
         <div class="row">
-            <h1 id="title">Sell your used textbooks</h1>
+            <h1 id="title">Buy or Rent Textbooks</h1>
             <form action="/textbook/sell/search" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
-                    <div class="col-sm-8 col-sm-offset-2 search-row">
-                        <input id="search-bar" type="text" name="isbn" class="form-control" placeholder="Enter the textbook ISBN"/>
+                    <div class="col-xs-8 col-xs-offset-2 search-row">
+                        <input type="text" name="isbn" class="form-control" placeholder="Enter the textbook ISBN, Title, or Author"/>
                     </div>
                     <button class="btn btn-default search-btn" type="submit" name="search" value="Search" >
                         <i class="fa fa-search search-icon"></i>
@@ -82,13 +82,17 @@
                 </div>
             </div>
         </div> <!-- end container -->
+    </div>  <!-- end container fluid -->
+
         <!-- books.jpg licensing -->
         <p style="text-align: right;"><small>Books Photo by
                 <a href="https://flic.kr/p/nfwhCe" target = "_blank"> Brittany Stevens </a>
                 under <a href="https://creativecommons.org/licenses/by/2.0/" target = "_blank"> CC-BY-2.0</a>
                 Cropped and levels adjusted. </small>
         </p>
-    </div>  <!-- end container fluid -->
+
+
+    </div>--}}
 
     <!--- Scripts at bottom for faster page loading-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
