@@ -123,3 +123,12 @@ body {
     padding: 3%;
 
 }
+
+@media(max-width: 767px) {
+    #shrink-xs{
+        text-align: center;
+        margin-top: 0%;
+        padding-bottom: 2%;
+    }
+
+}
