@@ -16,10 +16,8 @@
             <li class="filter">
                 <a class="filter-link" href="{{ url('/textbook/sell') }}">Sell</a>
             </li>
-            <li class="filter">
-                <button class="btn btn-default cart-btn">
-                    <i class="fa fa-shopping-cart"></i>
-                </button>
+            <li class="cart">
+                <a href="#" class="cart-link"><i class="fa fa-shopping-cart fa-2x"></i></a>
             </li>
         </ul>
     </div>

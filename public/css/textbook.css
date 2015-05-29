@@ -15,13 +15,13 @@ body {
 .tab-filters {
     list-style-type: none;
     text-align: center;
-    padding-top: 5px;
     padding-right: 40px;
 }
 
 .filter {
     display: inline-block;
-    height: 35px;
+    height: 40px;
+    padding-top: 5px;
 }
 
 .filter.active {
@@ -43,7 +43,22 @@ body {
 
 /******* SHOPPING CART ******/
 
+.cart {
+    position: absolute;
+    display: inline-block;
+    margin-top: -3px;
+    right: 30px;
+    padding-top: 0 !important;
+}
 
+.cart-link {
+    color: #FFFFFF;
+}
+
+.cart-link:hover,
+.cart-link:focus {
+    color: #7AB4DE;
+}
 
 /******* TEXTBOOK SEARCH AREA ******/
 
