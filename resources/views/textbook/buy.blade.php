@@ -90,4 +90,8 @@
         </div> <!-- end container -->
     </div>  <!-- end container fluid -->
 
+    <!--- Scripts at bottom for faster page loading-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
+
 @endsection
