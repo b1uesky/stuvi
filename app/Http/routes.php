@@ -26,9 +26,25 @@ Route::group(['middleware'=>'auth', 'prefix'=>'textbook'], function() {
     Route::get('/buy', 'TextbookController@buy');
     Route::get('/sell', 'TextbookController@sell');
     Route::get('/sell/create', 'TextbookController@create');
-    Route::post('/sell/search', 'TextbookController@search');
+    Route::post('/sell/search', 'TextbookController@isbnSearch');
     Route::post('/sell/store', 'TextbookController@store');
 });
+
+Route::group(['middleware'=>'auth', 'prefix'=>'order'], function()
+{
+    Route::get('/', 'OrderController@index');
+    Route::get('/create/{id}', 'OrderController@create');
+    Route::post('/store', 'OrderController@store');
+    Route::get('/show/{id}', 'OrderController@index');
+    Route::get('/edit/{id}', 'OrderController@edit');
+    Route::post('/update/{id}', 'OrderController@update');
+});
+
+Route::group(['middleware'=>'auth', 'prefix'=>'cart'], function()
+{
+    Route::get('/', 'CartController@index');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Housing Routes
@@ -55,12 +71,3 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::group(['middleware'=>'auth', 'prefix'=>'order'], function()
-{
-    Route::get('/', 'OrderController@index');
-    Route::get('/create/{id}', 'OrderController@create');
-    Route::post('/store', 'OrderController@store');
-    Route::get('/show/{id}', 'OrderController@index');
-    Route::get('/edit/{id}', 'OrderController@edit');
-    Route::post('/update/{id}', 'OrderController@update');
-});
