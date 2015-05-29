@@ -3,7 +3,6 @@
 
 @extends('app')    <!-- app.blade.php -->
 <head>
-    <link href="{{ asset('/css/login.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet" >               <!-- Home style sheet -->
 
     <!-- Content Info -->
@@ -80,7 +79,5 @@
     </div>   <!-- end container bottom-half -->
 
 
-    <!-- JAVASCRIPT at end for faster loading -->
-    <script src="{{ asset('/js/login.js')}} " type="text/javascript"></script>
 
 @endsection
