@@ -38,79 +38,51 @@
     </div>
 
 
-    <!-- Bottom half info -->
-    <!-- Put important info about the features and details of our service -->
-    <div class = "container-fluid" id = "textbook-bottom">
 
+
+    <!-- Textbook page bottom half -->
+    <div class="container-fluid" id = "textbook-bottom">
         <div class = "container">
-
-            <h2> Buy Used Books</h2>
+            <h2>Buy Used Books</h2>
             <!-- Divider -->
-            <div>
+            <div class="container">
                 <hr id = "hr1">
             </div>
-
             <!-- Row 1 -->
             <div class = "row row-b" id="row1">
-                <div class = "container col-md-2 col-sm-0" id = "buffer1-1"> </div>
-                <div class = "container col-md-4 col-sm-12">        <!-- r1c1 for regular. stack for small-->
-                    <img src="http://placehold.it/250x250">
-
+                <!-- Row 1 Col 1 -->
+                <!-- xs: stack-->
+                <div class = "container col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id = "shrink-xs">
+                    <img src="http://placehold.it/250x250" alt = "placeholder">
                 </div>
-
-                <div class = "container col-md-5 col-sm-12">        <!-- r1c2 for regular. stack for small-->
+                <!-- Row 1 Col 2 -->
+                <div class = "container col-xs-10 col-sm-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
+                     id="shrink-xs">
                     <h3 id = "h3-1"> Header Example 1</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
                         tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
                         Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>
                 </div>
-                <div class = "container col-md-1 col-sm-0" id = "buffer1-2"> </div>
             </div>
 
-            <!-- Row 2 -->
-            <div class = "row row-b" id = "row2">
-
-                <div class = "container col-md-5 col-sm-12 hidden-xs hidden-sm">        <!-- r2c2 for regular. stack for small-->
-                    <h3 id = "h3-1"> Header Example 2</h3>
-
-                    <!-- Note!!! The third paragraph on the bottom assumes the same content. It is there for smaller screens
-                    so it all stacks nicely -->
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
-                        tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
-                        Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius.</p>
+            <div class = "row row-b" id="row1">
+                <!-- Row 1 Col 1 -->
+                <!-- xs: stack-->
+                <!-- col-xs-push/pull changes the ordering when it is not xs -->
+                <!-- need to fix xs -->
+                <div class = "container col-xs-8 col-sm-3 col-xs-offset-2 col-sm-offset-0 col-md-offset-1 col-sm-push-7" id="shrink-xs">
+                    <img src="http://placehold.it/250x250" alt = "placeholder">
                 </div>
-
-                <div class = "container col-md-2 col-sm-0" id = "buffer2-1"> </div>
-
-                <div class = "container col-md-4 col-sm-12">        <!-- r2c1 for regular. stack for small-->
-                    <img src="http://placehold.it/250x250">
-
-                </div>
-
-                <div class = "container col-sm-12 hidden-md hidden-lg">        <!-- For sm and xs screen -->
+                <!-- Row 1 Col 2 -->
+                <div class = "container col-xs-10 col-sm-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
+                     id="shrink-xs">
                     <h3 id = "h3-1"> Header Example 2</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
                         tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
-                        Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius.</p>
+                        Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>
                 </div>
-
-                <div class = "container col-md-1 col-sm-0" id = "buffer2-2"> </div>
             </div>
-        </div>
-
-        <!-- books.jpg licensing -->
-        <p style="text-align: right;"><small>Books Photo by
-                <a href="https://flic.kr/p/nfwhCe" target = "_blank"> Brittany Stevens </a>
-                under <a href="https://creativecommons.org/licenses/by/2.0/" target = "_blank"> CC-BY-2.0</a>
-                Cropped and levels adjusted. </small>
-        </p>
-
-
-    </div>
-
-    <!--- Scripts at bottom for faster page loading-->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
-
+        </div> <!-- end container -->
+    </div>  <!-- end container fluid -->
 
 @endsection

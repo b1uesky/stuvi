@@ -39,7 +39,7 @@
     </div>
 
 
-    <!-- Trying out to redo  -->
+    <!-- Textbook page bottom half -->
     <div class="container-fluid" id = "textbook-bottom">
         <div class = "container">
             <h2>Buy Used Books</h2>
