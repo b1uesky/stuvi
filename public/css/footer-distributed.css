@@ -64,6 +64,24 @@
 	margin-left: 3px;
 }
 
+/* Additional styling */
+
+.social:hover {
+    background: #F16521 !important;
+}
+
+.footer-link:hover {
+    color: #F16521 !important;
+}
+
+.divider {
+    color: #FFFFFF;
+}
+
+hr {
+    opacity: 0.3;
+}
+
 /* If you don't want the footer to be responsive, remove these media queries */
 
 @media (max-width: 600px) {
