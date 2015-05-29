@@ -130,11 +130,16 @@ body {
 
 }
 
+.row-b{
+    padding-top: 1%;
+    padding-bottom: 2%
+}
+
 @media(max-width: 767px) {
     #shrink-xs{
         text-align: center;
         margin-top: 0%;
-        padding-bottom: 2%;
+        padding-bottom: 0%;
     }
 
 }
