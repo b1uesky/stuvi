@@ -44,17 +44,17 @@
         <div class = "container">
             <h2>Buy Used Books</h2>
             <!-- Divider -->
-            <div>
+            <div class="container">
                 <hr id = "hr1">
             </div>
             <!-- Row 1 -->
             <div class = "row row-b" id="row1">
                 <!-- Row 1 Col 1 -->
-                <div class = "container col-sm-4 col-sm-offset-1">
+                <div class = "container col-sm-4 col-sm-offset-0 col-md-offset-1" id = "shrink-xs">
                     <img src="http://placehold.it/250x250" alt = "placeholder">
                 </div>
                 <!-- Row 1 Col 2 -->
-                <div class = "container col-sm-7">
+                <div class = "container col-xs-10 col-sm-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-0" id="shrink-xs">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
                         tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
                         Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>
