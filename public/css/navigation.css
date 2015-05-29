@@ -6,7 +6,8 @@ a:focus {
     outline: 0;
 }
 
-/* NAVIGATION BAR */
+/******* NAVIGATION BAR *******/
+
 #nav {
     background: #241729;
     border-radius: 0;
@@ -28,11 +29,7 @@ a:focus {
     border-bottom: solid 5px #90B4DF;
 }
 
-.navbar-right li a {
-    height: 50px;
-}
-
-/* NAVIGATION DROPDOWN */
+/******* NAVIGATION DROPDOWN *******/
 
 .nav-dropdown:focus {
     background-color: #435C7F !important;
