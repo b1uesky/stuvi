@@ -34,9 +34,10 @@
                 <!-- Toggle Nav into hamburger menu for small screens -->
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle Navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
+                    <i class="fa fa-bars fa-lg"></i>
+					{{--<span class="icon-bar"></span>--}}
+					{{--<span class="icon-bar"></span>--}}
+					{{--<span class="icon-bar"></span>--}}
 				</button>
                 <div class="logo-container">
                     <a href="{{url('/home')}}">   <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive">  </a>

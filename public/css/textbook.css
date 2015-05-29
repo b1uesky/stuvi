@@ -5,6 +5,7 @@ body {
 }
 
 /******* TEXTBOOK NAVIGATION BAR ******/
+
 .tab-filter-container {
     width: 100%;
     background: #F9AA62;
@@ -40,7 +41,12 @@ body {
     color: #241729;
 }
 
+/******* SHOPPING CART ******/
+
+
+
 /******* TEXTBOOK SEARCH AREA ******/
+
 .search {
     /* Photo by Brittany Stevens https://flic.kr/p/nfwhCe */
     /* Licensed under creative commons BY 2.0*/
