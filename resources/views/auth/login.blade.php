@@ -16,7 +16,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <a href="{{ url('/') }}"><img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive" id="login-logo"></a>
+        <a href="{{ url('/') }}" id="logo-link"><img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive" id="login-logo"></a>
         <div class="row vertical-center">
             <div class="col-sm-6 col-sm-offset-3">
                 <div class="container" id="form-container">
