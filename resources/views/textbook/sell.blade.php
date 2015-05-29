@@ -50,11 +50,13 @@
             <!-- Row 1 -->
             <div class = "row row-b" id="row1">
                 <!-- Row 1 Col 1 -->
+                <!-- xs: stack-->
                 <div class = "container col-sm-4 col-sm-offset-0 col-md-offset-1" id = "shrink-xs">
                     <img src="http://placehold.it/250x250" alt = "placeholder">
                 </div>
                 <!-- Row 1 Col 2 -->
                 <div class = "container col-xs-10 col-sm-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-0" id="shrink-xs">
+                    <h3 id = "h3-1"> Header Example 1</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
                         tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
                         Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>

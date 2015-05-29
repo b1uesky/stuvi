@@ -127,9 +127,8 @@ body {
 @media(max-width: 767px) {
     #shrink-xs{
         text-align: center;
+        margin-top: 0%;
+        padding-bottom: 2%;
     }
-    #pad-xs{
-        margin-top: 5%;
-        text-align: center;
-    }
+
 }
