@@ -85,7 +85,6 @@
                 </div>
             </div>
         </div> <!-- end container -->
-    </div>  <!-- end container fluid -->
 
         <!-- books.jpg licensing -->
         <p style="text-align: right;"><small>Books Photo by
@@ -93,9 +92,10 @@
                 under <a href="https://creativecommons.org/licenses/by/2.0/" target = "_blank"> CC-BY-2.0</a>
                 Cropped and levels adjusted. </small>
         </p>
+    </div>  <!-- end container fluid -->
 
 
-    </div>--}}
+
 
     <!--- Scripts at bottom for faster page loading-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
