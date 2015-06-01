@@ -16,23 +16,23 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <label>ISBN</label>
-                    <input type="number" name="isbn" class="form-control"/>
+                    <input type="string" name="isbn" value="{{ $book->isbn or "" }}" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label>Title</label>
-                    <input type="text" name="title" class="form-control"/>
+                    <input type="text" name="title" value="{{ $book->title or "" }}" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label>Author</label>
-                    <input type="text" name="author" class="form-control"/>
+                    <input type="text" name="author" value="{{ $book->author or "" }}" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label>Edition</label>
-                    <input type="number" name="edition" class="form-control"/>
+                    <input type="number" name="edition" value="{{ $book->edition or 0 }}" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label>Publisher</label>
-                    <input type="text" name="publisher" class="form-control"/>
+                    <input type="text" name="publisher" value="{{ $book->publisher or "" }}" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label>Publication Date</label>
@@ -40,11 +40,11 @@
                 </div>
                 <div class="form-group">
                     <label>Manufacturer</label>
-                    <input type="text" name="manufacturer" class="form-control"/>
+                    <input type="text" name="manufacturer" value="{{ $book->manufacturer or "" }}" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label>Number of Pages</label>
-                    <input type="number" name="num_pages" class="form-control"/>
+                    <input type="number" name="num_pages" value="{{ $book->num_pages or 0 }}" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label>Binding</label>
