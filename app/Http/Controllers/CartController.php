@@ -24,18 +24,6 @@ class CartController extends Controller
      */
     public function index()
     {
-        /*
-        Cart::destroy();
-
-        Cart::add(array(
-            array('id' => '293ad', 'name' => 'Product 1', 'qty' => 1, 'price' => 10.00),
-            array('id' => '4832k', 'name' => 'Product 2', 'qty' => 1, 'price' => 10.00, 'options' => array('size' => 'large'))
-        ));
-        */
-        //Cart::associate('App\Product')->add('1', 'Product 1', 1, 9.99);
-
-
-
         $content = Cart::content();
 
         return view('cart.index')->withItems($content);
@@ -70,9 +58,27 @@ class CartController extends Controller
         return redirect('/cart');
     }
 
-    public function removeItem($product)
+    /**
+     * Remove a item from Cart.
+     *
+     * @param $id  The ID of the row to fetch
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function removeItem($id)
     {
+        try
+        {
+            Cart::remove($id);
+            Session::flash('message', 'The item is removed from Cart');
+        }
+        catch (\Exception $e)
+        {
+            Session::flash('message', 'Sorry, the item has already been removed.');
+            return redirect('/cart');
+        }
 
+        return redirect('/cart');
     }
 
 }
