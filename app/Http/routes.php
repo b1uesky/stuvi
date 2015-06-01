@@ -41,7 +41,7 @@ Route::group(['middleware'=>'auth', 'prefix'=>'textbook'], function() {
 Route::group(['middleware'=>'auth', 'prefix'=>'order'], function()
 {
     Route::get('/', 'OrderController@index');
-    Route::get('/create/{id}', 'OrderController@create');
+    Route::get('/create', 'OrderController@createBuyerOrder');
     Route::post('/store', 'OrderController@store');
     Route::get('/show/{id}', 'OrderController@index');
     Route::get('/edit/{id}', 'OrderController@edit');
@@ -51,6 +51,9 @@ Route::group(['middleware'=>'auth', 'prefix'=>'order'], function()
 Route::group(['middleware'=>'auth', 'prefix'=>'cart'], function()
 {
     Route::get('/', 'CartController@index');
+    Route::get('add/{id}', 'CartController@addItem');
+    Route::get('rmv/{id}', 'CartController@removeItem');
+    Route::get('empty', 'CartController@emptyCart');
 });
 
 /*
