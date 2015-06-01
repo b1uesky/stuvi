@@ -81,4 +81,12 @@ class CartController extends Controller
         return redirect('/cart');
     }
 
+    public function emptyCart()
+    {
+        Cart::destroy();
+
+        return redirect('/cart');
+    }
+
+
 }

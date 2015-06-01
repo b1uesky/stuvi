@@ -18,5 +18,6 @@
             <p>You don't have any product in shopping cart.</p>
         @endforelse
 
+        <br><a href="{{ url('/cart/empty') }}"><h2>!!Empty Cart!!</h2></a><br>
     </div>
 @endsection
