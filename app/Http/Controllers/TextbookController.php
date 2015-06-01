@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Book;
 use App\BookImageSet;
+use Illuminate\Support\Facades\DB;
 
 use Input;
 
@@ -22,46 +23,7 @@ class TextbookController extends Controller {
 		return view('textbook.buy');
 	}
 
-    public function buy()
-    {
-        return view('textbook.buy');
-    }
 
-    public function sell()
-    {
-        return view('textbook.sell');
-    }
-
-    public function search(Request $request)
-    {
-        $isbn = Input::get('isbn');
-        $books = Book::where('isbn', '=', $isbn);
-
-        if ($books->count() > 0)
-        {
-            $data = array(
-                'books' => $books
-            );
-
-            return view('textbook.result', $data);
-        }
-        else
-        {
-            return redirect('textbook/sell/create')->with(
-                'message',
-                'Looks like your textbook is currently not in our database, please fill in the textbook information below.');
-        }
-    }
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-        return view('textbook.create');
-	}
 
 	/**
 	 * Store a newly created resource in storage.
@@ -158,4 +120,81 @@ class TextbookController extends Controller {
 		//
 	}
 
+
+
+
+    /***************************************************/
+    /******************   Sell Part   ******************/
+    /***************************************************/
+
+    /**
+     * Show the sell page, which is a search box of isbn.
+     *
+     * @return Response
+     */
+    public function sell()
+    {
+        return view('textbook.sell');
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function isbnSearch(Request $request)
+    {
+        $isbn = Input::get('isbn');
+        $book = DB::table('books')->where('isbn', $isbn)->first();
+
+        // if the book is in our db, show the book information and let seller edit it
+        if ($book)
+        {
+            return view('textbook.result')->withBook($book);
+        }
+        // if not, allow the seller fill in book information and create a new book record
+        else
+        {
+            return redirect('textbook/sell/create')->with(
+                'message',
+                'Looks like your textbook is currently not in our database, please fill in the textbook information below.');
+        }
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('textbook.create');
+    }
+
+    /**
+     * Show the form for creating a product, eg. price, pictures..
+     *
+     * @param $book
+     * @return int
+     * @internal param $book
+     */
+    public function createProduct($book)
+    {
+        return view('textbook.createProduct')->withBook($book);
+    }
+
+
+
+    /***************************************************/
+    /******************   Buy Part   *******************/
+    /***************************************************/
+
+    /**
+     * Show the buy page.
+     *
+     * @return Response
+     */
+    public function buy()
+    {
+        return view('textbook.buy');
+    }
 }

@@ -1,14 +1,13 @@
 @extends('textbook')
 
 @section('content')
-    <!-- Second layer nav bar -->
-    <ul class="nav nav-tabs">
-        <li><a href="{{ url('/textbook/buy') }}">Buy</a></li>
-        <li class="active"><a href="{{ url('/textbook/sell') }}">Sell</a></li>
-    </ul>
-
-
-    @foreach($books as $book)
-        <div>{{ $book->title }}</div>
-    @endforeach
+    <p>Book with isbn {{ $book->isbn }} found in our db.</p>
+    <div>
+        <p>Title:  {{ $book->title }}</p></br>
+        <p>edition {{ $book->edition }}th</p></br>
+        <p>Author: {{ $book->author }}</p></br>
+        <p>isbn:   {{ $book->isbn }}</p></br>
+    </div>
+    <a href="{{ url('textbook/sell/product/'.$book->id) }}">Yes, it's the one I have.</a><br>
+    <a href="{{ url('textbook/sell/create') }}">No, it's no the one I have.</a>
 @endsection
