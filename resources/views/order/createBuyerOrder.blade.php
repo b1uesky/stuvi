@@ -22,18 +22,20 @@
 
                         <form action="{{ action('OrderController@store') }}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="product_id" value="{{ $product['id'] }}">
-                            <input type="hidden" name="stripeAmount" value="{{ $product['price']*100 }}">
-                            <p>{{ $book['title'] }}</p>
-                            <p>{{ $book['author'] }}</p>
-                            <p>{{ $book['isbn'] }}</p>
-                            <p>{{ $product['price'] }}</p>
+                            <input type="hidden" name="stripeAmount" value="{{ $total*100 }}">
+                            <h1>Confirm order items:</h1></br>
+                            @foreach ($items as $item)
+                                Book title: {{ $item->name }} </br>
+                                isbn:  {{ $item->options['item']->book->isbn }} </br>
+                                price: {{ $item->price }} </br>
+                                ----------------------------------------------------------------------------------------</br>
+                            @endforeach
                             <script
                                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                     data-key="pk_test_GWm6W90Pr0nrjbzWjPjZa8Ou"
-                                    data-amount={{ $product['price']*100 }}
+                                    data-amount={{ $total*100 }}
                                     data-name="Demo Site"
-                                    data-description="2 widgets (${{ $product['price'] }})"
+                                    data-description="2 widgets (${{ $total }})"
                                     data-image="/128x128.png">
                             </script>
                         </form>

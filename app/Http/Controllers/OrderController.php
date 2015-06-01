@@ -9,7 +9,7 @@ use App\Product;
 use App\Order;
 use App\BuyerPayment;
 
-use Auth, Input ;
+use Auth, Input, Cart;
 
 class OrderController extends Controller {
 
@@ -20,18 +20,18 @@ class OrderController extends Controller {
 	 */
 	public function index()
 	{
-		return view('order.index')->withOrders(Order::all());
+		return view('order.index')->withOrders(BuyerOrder::all());
 	}
 
 	/**
 	 * Show the form for creating a new order.
 	 *
-     * @param  int  $id  product_id
 	 * @return Response
 	 */
-	public function create($id)
+	public function createBuyerOrder()
 	{
-		return view('order.create')->withProduct(Product::find($id))->withBook(Product::find($id)->book);
+		return view('order.createBuyerOrder')->withItems(Cart::content())
+                                   ->withTotal(Cart::total());
 	}
 
 	/**
