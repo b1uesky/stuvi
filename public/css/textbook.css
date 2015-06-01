@@ -148,6 +148,8 @@ body {
 .row-b{
     padding-top: 1%;
     padding-bottom: 2%;
+    padding-left: 0%;
+    padding-right: 0%;
 }
 
 @media(max-width: 767px) {

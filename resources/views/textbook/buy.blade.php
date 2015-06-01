@@ -59,7 +59,7 @@
                     <img src="http://placehold.it/250x250" alt = "placeholder">
                 </div>
                 <!-- Row 1 Col 2 -->
-                <div class = "container col-xs-10 col-sm-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
+                <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
                      id="shrink-xs">
                     <h3 id = "h3-1"> Header Example 1</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
@@ -68,18 +68,18 @@
                 </div>
             </div>
 
-            <div class = "row row-b" id="row1">
-                <!-- Row 1 Col 1 -->
+            <div class = "row row-b" id="row2">
+                <!-- Row 2 Col 1 -->
                 <!-- xs: stack-->
                 <!-- col-xs-push/pull changes the ordering when it is not xs -->
                 <!-- need to fix xs -->
-                <div class = "container col-xs-8 col-sm-3 col-xs-offset-2 col-sm-offset-0 col-md-offset-1 col-sm-push-7" id="shrink-xs">
+                <div class = "container col-xs-12 col-sm-3 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-sm-push-7" id="shrink-xs">
                     <img src="http://placehold.it/250x250" alt = "placeholder">
                 </div>
-                <!-- Row 1 Col 2 -->
-                <div class = "container col-xs-10 col-sm-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
+                <!-- Row 2 Col 2 -->
+                <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
                      id="shrink-xs">
-                    <h3 id = "h3-1"> Header Example 2</h3>
+                    <h3 id = "h3-2"> Header Example 2</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
                         tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
                         Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>
