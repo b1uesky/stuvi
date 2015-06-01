@@ -80,6 +80,8 @@
 
 <!-- End Nav Bar -->
 
+
+
 <!-- Displays page content -->
 @yield('content')
 
@@ -118,6 +120,8 @@
 
 </footer>
 <!-- END FOOTER -->
+
+
 
 </body>
 

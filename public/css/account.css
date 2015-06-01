@@ -1,1 +1,12 @@
 /*  CSS FOR account.blade.php* /
+
+/* Remove padding inherited from container-fluid (app.css) */
+#pad {
+    padding-left: 0%;
+    padding-right: 0%;
+    padding-top: 2%;
+}
+
+.bg {
+    background-color: #E7E6E6;
+}
