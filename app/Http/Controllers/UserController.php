@@ -3,7 +3,7 @@
 class UserController extends Controller {
     
     public function profile(){
-        return view('user.account');
+        return view('user.profile');
     }
 
     public function account(){

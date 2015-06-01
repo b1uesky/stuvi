@@ -6,4 +6,10 @@
 
 @section('content')
 
+    <div class = "container-fluid bg" id = "pad">
+
+
+
+    </div>
+
 @endsection
