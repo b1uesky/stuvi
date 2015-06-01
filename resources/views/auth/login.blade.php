@@ -1,9 +1,7 @@
-@extends('app')
+@extends('app2')
 <head>
     <link href="{{ asset('/css/login.css') }}" rel="stylesheet">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
+    <title> Stuvi - login & register</title>
 </head>
 
 {{--set starting tab based on clicked nav button--}}
@@ -18,12 +16,12 @@
 
 @section('content')
     <div class="container-fluid">
-        <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive">
+        <a href="{{ url('/') }}" id="logo-link"><img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive" id="login-logo"></a>
         <div class="row vertical-center">
             <div class="col-sm-6 col-sm-offset-3">
                 <div class="container" id="form-container">
                     <ul class="nav nav-tabs nav-justified" role="tablist" id="tabs">
-                        <li role="presentation" class="{{ $loginActive }}" id="login-tab"><a href="#login-body" aria-controls="login-body" role="tab" data-toggle="tab">Log In</a></li>
+                        <li role="presentation" class="{{ $loginActive }}" id="login-tab"><a href="#login-body" aria-controls="login-body" role="tab" data-toggle="tab">Login</a></li>
                         <li role="presentation" class="{{ $signupActive }}" id="signup-tab"><a href="#signup-body" aria-controls="signup-body" role="tab" data-toggle="tab">Sign Up</a></li>
                     </ul>
                     @if (count($errors) > 0)
@@ -61,7 +59,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-8">
+                                    <div class="col-sm-offset-3 col-sm-6">
                                         <button type="submit" class="btn login-button">Login</button>
                                         <a class="btn btn-link" id="forgot-password" href="{{ url('/password/email') }}">
                                             Forgot Your Password?
@@ -99,19 +97,19 @@
                                         <input type="tel" class="form-control" name="phone_number" placeholder="Phone Number" value="{{ old('phone_number') }}">
                                     </div>
                                 </div>
+                                {{--<div class="form-group">--}}
+                                    {{--<div class="col-sm-offset-3 col-sm-6">--}}
+                                        {{--<input type="text" class="form-control" name="username" placeholder="Username" value="{{ old('username') }}">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group">--}}
+                                    {{--<div class="col-sm-offset-3 col-sm-6">--}}
+                                        {{--<input type="password" class="form-control" name="password_confirmation" placeholder="Re-enter Password">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-6">
-                                        <input type="text" class="form-control" name="username" placeholder="Username" value="{{ old('username') }}">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
-                                        <input type="password" class="form-control" name="password_confirmation" placeholder="Re-enter Password">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
-                                        <button type="submit" class="btn login-button">Register</button>
+                                        <button type="submit" class="btn login-button">Sign Up</button>
                                     </div>
                                 </div>
                             </form>
@@ -121,4 +119,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Scripts here for faster loading -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
 @endsection
