@@ -5,3 +5,7 @@
 
 .pad {padding: 2%; }
 
+#message {
+    font-style: italic;
+    color: #ff0000;
+}

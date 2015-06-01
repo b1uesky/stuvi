@@ -1,4 +1,8 @@
 @extends('textbook')
+    <head>
+        <title>Stuvi - Create textbook</title>
+        <link href="{{ asset('/css/create.css') }}" rel="stylesheet">
+    </head>
 
 @section('content')
     {{--<ul class="nav nav-tabs">--}}
@@ -8,10 +12,10 @@
 
 <div class = "container-fluid">
     <!-- add padding -->
-    <div class="container col-md-8 col-md-offset-2">
+    <div class="container col-md-8 col-md-offset-2 pad">
         <div class="row">
             @if (Session::has('message'))
-                <div class="flash-message">{{ Session::get('message') }}</div>
+                <div class="flash-message" id="message">{{ Session::get('message') }}</div>
             @endif
             <!-- TODO: These fields are not specific enough. Please see http://easybib.com/mla-format/book-citation for an example -->
             <h1>Enter your textbook information</h1>
