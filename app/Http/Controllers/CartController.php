@@ -26,7 +26,7 @@ class CartController extends Controller
     {
         $content = Cart::content();
 
-        return view('cart.index')->withItems($content);
+        return view('cart.index')->withItems($content)->with('total_price', Cart::total());
     }
 
     /**
