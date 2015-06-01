@@ -5,11 +5,13 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use Auth;
+use Input;
+
 use App\Book;
 use App\BookImageSet;
 use Illuminate\Support\Facades\DB;
 
-use Input;
 
 class TextbookController extends Controller {
 
@@ -158,28 +160,6 @@ class TextbookController extends Controller {
                 'message',
                 'Looks like your textbook is currently not in our database, please fill in the textbook information below.');
         }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        return view('textbook.create');
-    }
-
-    /**
-     * Show the form for creating a product, eg. price, pictures..
-     *
-     * @param $book
-     * @return int
-     * @internal param $book
-     */
-    public function createProduct($book)
-    {
-        return view('textbook.createProduct')->withBook($book);
     }
 
 
