@@ -13,52 +13,52 @@
             @if (Session::has('message'))
                 <div class="flash-message">{{ Session::get('message') }}</div>
             @endif
-
-            <h1> SOME STUFF HERE</h1>
+            <!-- TODO: These fields are not specific enough. Please see http://easybib.com/mla-format/book-citation for an example -->
+            <h1>Enter your textbook information</h1>
 
             <form action="/textbook/sell/store" method="post" id="textbook-create" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
-                    <label>ISBN</label>
+                    <label><b>ISBN</b></label>
                     <input type="string" name="isbn" value="{{ $book->isbn or "" }}" class="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label>Title</label>
+                    <label><b>Title</b></label>
                     <input type="text" name="title" value="{{ $book->title or "" }}" class="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label>Author</label>
+                    <label><b>Author</b></label>
                     <input type="text" name="author" value="{{ $book->author or "" }}" class="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label>Edition</label>
+                    <label><b>Edition</b></label>
                     <input type="number" name="edition" value="{{ $book->edition or 0 }}" class="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label>Publisher</label>
+                    <label><b>Publisher</b></label>
                     <input type="text" name="publisher" value="{{ $book->publisher or "" }}" class="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label>Publication Date</label>
+                    <label><b>Publication Date</b></label>
                     <input type="date" name="publication_date" class="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label>Manufacturer</label>
+                    <label><b>Manufacturer</b></label>
                     <input type="text" name="manufacturer" value="{{ $book->manufacturer or "" }}" class="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label>Number of Pages</label>
+                    <label><b>Number of Pages</b></label>
                     <input type="number" name="num_pages" value="{{ $book->num_pages or 0 }}" class="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label>Binding</label>
+                    <label><b>Binding</b></label>
                     <input type="radio" name="binding" value="0" checked/> Hard
                     <input type="radio" name="binding" value="1"/> Soft
                 </div>
 
-                {{--TODO: a complete list of languages and their ids--}}
+                <!-- TODO: a complete list of languages and their ids -->
                 <div class="form-group">
-                    <label>Language</label>
+                    <label><b>Language</b></label>
                     <select name="language" id="textbook-create">
                         <option value="0">English</option>
                         <option value="1">Spanish</option>
