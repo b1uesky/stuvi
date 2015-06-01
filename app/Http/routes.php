@@ -29,6 +29,7 @@ Route::group(['middleware'=>'auth', 'prefix'=>'textbook'], function() {
     Route::post('/sell/search', 'TextbookController@isbnSearch');
     Route::post('/sell/store', 'TextbookController@store');
     Route::get('/sell/product/{book}', 'TextbookController@createProduct');
+
 });
 
 Route::group(['middleware'=>'auth', 'prefix'=>'order'], function()
@@ -44,6 +45,8 @@ Route::group(['middleware'=>'auth', 'prefix'=>'order'], function()
 Route::group(['middleware'=>'auth', 'prefix'=>'cart'], function()
 {
     Route::get('/', 'CartController@index');
+    Route::get('add/{id}', 'CartController@addItem');
+    Route::get('rmv/{id}', 'CartController@removeItem');
 });
 
 /*
