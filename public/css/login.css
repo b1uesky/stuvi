@@ -85,7 +85,33 @@ label {
     color: #FFFFFF;
 }
 
+/****** RESET PASSWORD ******/
+
+.reset-container {
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
 
 
+.reset-label {
+    color: #535353;
+}
 
+.reset-button {
+    width: 60% !important;
+}
+
+.panel {
+    border: 2px solid #7AB4DE;
+}
+
+.panel-heading {
+    background: #7AB4DE !important;
+    color: #2c404a !important;
+    border-radius: 0;
+}
+
+.panel-body {
+    background: #FEFEFE;
+}
 

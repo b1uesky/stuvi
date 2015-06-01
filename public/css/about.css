@@ -1,0 +1,19 @@
+/*********  ABOUT PAGE  *********/
+
+
+.about-background {
+    padding: 0;
+}
+
+.about-background img {
+    width: 100%;
+    height: 100%;
+}
+
+.about-stuvi {
+    margin-top: 50px;
+}
+
+.team {
+    margin-top: 75px;
+}

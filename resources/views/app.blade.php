@@ -110,7 +110,7 @@
             ·
             <a class="footer-link"  href="{{url('/group')}}">Groups</a>
             ·
-            <a class="footer-link"  href="{{ url('/') }}">About</a>
+            <a class="footer-link"  href="{{ url('/about') }}">About</a>
             ·
             <a class="footer-link"  href="{{ url('/') }}">Contact</a>
         </p>
