@@ -21,6 +21,8 @@ Route::get('/register', 'HomeController@register');
 | Textbook Routes
 |--------------------------------------------------------------------------
 */
+
+// textbook
 Route::group(['middleware'=>'auth', 'prefix'=>'textbook'], function() {
     Route::get('/', 'TextbookController@index');
     Route::get('/buy', 'TextbookController@buy');
@@ -28,10 +30,9 @@ Route::group(['middleware'=>'auth', 'prefix'=>'textbook'], function() {
     Route::get('/sell/create', 'TextbookController@create');
     Route::post('/sell/search', 'TextbookController@isbnSearch');
     Route::post('/sell/store', 'TextbookController@store');
-//    Route::get('/sell/product/{book}', 'TextbookController@createProduct');
-//    Route::post('/sell/storeProduct', 'TextbookController@storeProduct');
 });
 
+// product
 Route::group(['middleware'=>'auth', 'prefix'=>'textbook'], function() {
     Route::get('/sell/product/create/{book}', 'TextbookProductController@create');
     Route::post('/sell/product/store', 'TextbookProductController@store');
