@@ -2,18 +2,33 @@
     <head>
         <title> Stuvi - Profile </title>
         <link href="{{ asset('/css/profile.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{asset('/css/user-bar.css')}}"
     </head>
 
 
 
 @section('content')
 
+
+{{--    <div id = "user-bar" class= "container col-md-12">
+        @include('user.user-bar')
+    </div>--}}
+
+    <!-- top bar -->
+    <div class="container-fluid" id = "user-bar">
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+            <li class="active"><a href="{{url('/user/profile')}}">Profile</a></li>
+            <li><a href="{{url('/user/account')}}">Account</a></li>
+            <li><a href="#">Orders</a></li>
+            <li class = "disabled"><a href="#">Clubs</a></li>
+            <li class = "disabled"><a href="#">Groups</a></li>
+        </ul>
+    </div>
+
+
     <div class = "container-fluid bg" id = "pad">
 
-        <!-- sidebar content -->
-        <div id = "user-bar" class= "container col-md-12" style = "padding: 0%;">
-            @include('user.user-bar')
-        </div>
+        <div class = "container"><h1>My Profile</h1></div>
 
         <div class="container well span6 profile">
             <div class="row-fluid">

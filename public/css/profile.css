@@ -7,6 +7,12 @@
     padding-top: 1%;
 }
 
+#user-bar {
+    padding: 0%;
+    background-color: #F9AA62;
+}
+
+
 .bg {
     background-color: #E7E6E6;
 }
@@ -14,3 +20,4 @@
 .profile {
     text-align: center;
 }
+
