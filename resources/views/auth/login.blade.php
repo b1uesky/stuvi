@@ -34,7 +34,6 @@
                             </ul>
                         </div>
                     @endif
-
                     <div class="tab-content">
                         <div class="tab-pane {{ $loginActive }}" id="login-body">
                             <form class="form-horizontal login-form" role="form" method="POST" action="{{ url('/auth/login') }}">

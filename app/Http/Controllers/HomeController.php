@@ -43,4 +43,8 @@ class HomeController extends Controller {
         return view('auth.login')->with($loginData);
     }
 
+    public function about(){
+        return view('about');
+    }
+
 }
