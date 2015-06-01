@@ -10,6 +10,8 @@ use Input;
 
 use App\Book;
 use App\BookImageSet;
+use App\BookBinding;
+use App\BookLanguage;
 use Illuminate\Support\Facades\DB;
 
 
@@ -43,47 +45,53 @@ class TextbookController extends Controller {
 	public function store(Request $request)
 	{
         // validations could be done in Validation class
-//        if (Input::hasFile('image'))
-//        {
-//            if (!Input::file('image')->isValid())
-//            {
-//                return response('Please upload a valid image.');
-//            }
-//
-//            // get the uploaded file
-//            $image = Input::file('image');
-//            $filename = $image->getClientOriginalName();
-//
-//            // TODO: image storage
-//            $destination_path = storage_path().'/img/';
-//
-//            Input::file('image')->move($destination_path, $filename);
-//
-//            // retrieve the path to an uploaded image
-//            // may be store relative path?
-//            $path = $destination_path . $filename;
-//        }
-//        else
-//        {
-//            return response('Please upload a textbook image.');
-//        }
+        if (Input::hasFile('image'))
+        {
+            if (!Input::file('image')->isValid())
+            {
+                return response('Please upload a valid image.');
+            }
+
+            // get the uploaded file
+            $image = Input::file('image');
+            $filename = Input::get('title') . '_' . $image->getClientOriginalName();
+
+            // TODO: image storage
+            $destination_path = storage_path().'/img/';
+
+            // retrieve the path to an uploaded image
+            // may be store relative path?
+            $path = $destination_path . $filename;
+        }
+        else
+        {
+            return response('Please upload a textbook image.');
+        }
+
+        $image_set = new BookImageSet();
+        $image_set->large_image = $path;
+        $image_set->save();
 
         // TODO: upload book information for verification
-//        $book = new Book();
-//        $book->isbn             = Input::get('isbn');
-//        $book->title            = Input::get('title');
-//        $book->author           = Input::get('author');
-//        $book->edition          = Input::get('edition');
-//        $book->publisher        = Input::get('publisher');
-//        $book->publication_date = Input::get('publication_date');
-//        $book->manufacturer     = Input::get('manufacturer');
-//        $book->num_pages        = Input::get('num_pages');
-//        $book->binding_id       = Input::get('binding');
-//        $book->language_id      = Input::get('language');
-//
-//        $book->save();
-//
-//        return view('textbook.sell');
+        $book = new Book();
+        $book->isbn             = Input::get('isbn');
+        $book->title            = Input::get('title');
+        $book->author           = Input::get('author');
+        $book->edition          = Input::get('edition');
+        $book->publisher        = Input::get('publisher');
+        $book->publication_date = Input::get('publication_date');
+        $book->manufacturer     = Input::get('manufacturer');
+        $book->num_pages        = Input::get('num_pages');
+        $book->binding_id       = Input::get('binding');
+        $book->image_set_id     = $image_set->id;
+        $book->language_id      = Input::get('language');
+
+        // save the book image
+        Input::file('image')->move($destination_path, $filename);
+
+        $book->save();
+
+        return view('textbook.createProduct')->withBook($book);
 	}
 
 	/**
