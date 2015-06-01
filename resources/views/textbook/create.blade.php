@@ -15,7 +15,10 @@
     <div class="container col-md-8 col-md-offset-2 pad">
         <div class="row">
             @if (Session::has('message'))
-                <div class="flash-message" id="message">{{ Session::get('message') }}</div>
+                <div id = "message-cont">
+                    <div class="flash-message" id="message"> <i class="fa fa-exclamation-triangle"></i> {{ Session::get('message') }}</div>
+                </div>
+
             @endif
             <!-- TODO: These fields are not specific enough. Please see http://easybib.com/mla-format/book-citation for an example -->
             <h1>Enter your textbook information</h1>
