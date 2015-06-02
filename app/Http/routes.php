@@ -26,6 +26,7 @@ Route::get('/register', 'HomeController@register');
 Route::group(['middleware'=>'auth', 'prefix'=>'textbook'], function() {
     Route::get('/', 'TextbookController@index');
     Route::get('/buy', 'TextbookController@buy');
+    Route::get('/buy/textbook/{book}', 'TextbookController@show');
     Route::get('/sell', 'TextbookController@sell');
     Route::get('/sell/create', 'TextbookController@create');
     Route::post('/sell/search', 'TextbookController@isbnSearch');

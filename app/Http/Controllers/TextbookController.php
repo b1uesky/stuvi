@@ -100,9 +100,11 @@ class TextbookController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($book)
 	{
-		//
+		return view("textbook.show", [
+			'book' => $book
+		]);
 	}
 
 	/**
