@@ -2,7 +2,9 @@
     <head>
         <title> Stuvi - Profile </title>
         <link href="{{ asset('/css/profile.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="{{asset('/css/user-bar.css')}}"
+        <link rel="stylesheet" type="text/css" href="{{asset('/css/user-bar.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick-theme.css')}}">
     </head>
 
 @section('content')
@@ -104,15 +106,21 @@ User Profile Sidebar by @keenthemes
                         <h6><b>Expected Graduation:</b> 2070</h6>
                         <h6><b>Area of Study:</b> Compooters</h6>
                         <h6><b>Bio:</b> I have a 3.0 KDR on Club Penguin</h6>
-                        <br>
                     </div>
                     <!-- END SIDEBAR USER TITLE -->
                     <!-- SIDEBAR BUTTONS -->
-                    <div class="profile-userbuttons">
+
+                    <div class="social-media-buttons">
+                        <a href=""> <i class="fa fa-facebook-official"></i></a>
+                        <a href=""><i class="fa fa-twitter-square"></i></a>
+                        <a href=""><i class="fa fa-linkedin-square"></i></a>
+                        <a href=""><i class="fa fa-github-square"></i></a>
+                    </div>
+{{--                    <div class="profile-userbuttons">
                         <button type="button" class="btn btn-success btn-sm">Follow</button>
                         <button type="button" class="btn btn-danger btn-sm">Message</button>
 
-                    </div>
+                    </div>--}}
                     <div class="edit">
                         <div class="btn-group">
                             <a class="btn btn-info btm-sm" href="#">
@@ -151,7 +159,20 @@ User Profile Sidebar by @keenthemes
             </div>
             <div class="col-md-9">
                 <div class="profile-content">
-                    Some user related content goes here...
+                    <div class="container col-md-12" id = "books-for-sale">
+                        <h2 id = "for-sale">Books for Sale</h2>
+                        <hr id ="hr1">
+
+                        <div class="container col-md-11 col-md-offset-1 slider responsive books">
+                            <div><img src="http://placehold.it/100x150"></div>
+                            <div><img src="http://placehold.it/100x150"></div>
+                            <div><img src="http://placehold.it/100x150"></div>
+                            <div><img src="http://placehold.it/100x150"></div>
+                            <div><img src="http://placehold.it/100x150"></div>
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -159,7 +180,11 @@ User Profile Sidebar by @keenthemes
     <br>
     <br>
 
-
+    <!-- Slick required -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="{{asset('/slick/slick.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/profile.js')}}"></script>
 
 </div>
 

@@ -142,9 +142,38 @@ body {
     margin-left: -2px;
 }
 
+
+.social-media-buttons{
+    text-align: center;
+    font-size: x-large;
+}
+
 /* Profile Content */
 .profile-content {
     padding: 20px;
     background: #fff;
     min-height: 460px;
+}
+
+#books-for-sale {
+
+}
+
+.books{
+    max-width: 700px;
+    max-height: 200px;
+}
+
+#for-sale{
+}
+
+#hr1{
+    margin: 1%;
+    border-color: rgba(0, 0, 0, 0.64);
+    border-width: 1px 0px 0px;
+    max-width: 770px;
+}
+
+@media (max-width: 970px) {
+    .home { max-width: 500px; }
 }
