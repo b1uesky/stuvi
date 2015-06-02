@@ -22,7 +22,8 @@ class OrderController extends Controller {
 	 */
 	public function index()
 	{
-		return view('order.index')->withOrders(BuyerOrder::all());
+        //var_dump(User::find(Auth::id())->orders);
+		return view('order.index')->withOrders(User::find(Auth::id())->buyerOrders);
 	}
 
 	/**
