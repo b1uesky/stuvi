@@ -10,7 +10,12 @@
     </head>
 
     <div class="container-fluid about-background">
-        <img src="{{asset('/img/stuvi.jpeg')}}">
+        <div class="container col-md-12">                               <!-- container -->
+            <div class = "col-md-2"></div>                                  <!-- Buffer -->
+            <div class="jumbotron col-md-8" id = "about-jumbotron">              <!-- Jumbotron1 -->
+                <h1 id = "about-title" >Welcome to our Village</h1>
+            </div> <!-- end jumbotron1 -->
+        </div>    <!-- end container -->
     </div>
 
     <div class="container-fluid">
@@ -34,27 +39,40 @@
                 </p>
             </div>
         </div>
-        <div class="row team-grid">
-            <div class="col-sm-6 col-md-4">
-                <div class="ih-item circle colored effect13 from_left_and_right"><a href="#">
-                        <div class="img"><img src="{{ asset('/img/temp.jpg') }}" alt="img"></div>
-                        <div class="info">
-                            <div class="info-back">
-                                <h3>Heading here</h3>
-                                <p>Description goes here</p>
-                            </div>
-                        </div></a>
+        <div class="container team-container">
+            <div class="row team-grid">
+                <div class="col-xs-6 col-md-4">
+                    <div class="ih-item circle colored effect13 from_left_and_right team-member"><a target="_blank" href="https://www.linkedin.com/in/patelsanam">
+                            <div class="img"><img src="{{ asset('/img/team/sanam.jpg') }}" alt="img"></div>
+                            <div class="info">
+                                <div class="info-back">
+                                    <h3>Sanam Patel</h3>
+                                    <p>Front End Developer</p>
+                                </div>
+                            </div></a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="ih-item circle colored effect13 from_left_and_right"><a href="#">
-                        <div class="img"><img src="{{ asset('/img/temp.jpg') }}" alt="img"></div>
-                        <div class="info">
-                            <div class="info-back">
-                                <h3>Heading here</h3>
-                                <p>Description goes here</p>
-                            </div>
-                        </div></a>
+                <div class="col-xs-6 col-md-4">
+                    <div class="ih-item circle colored effect13 from_left_and_right team-member"><a target="_blank" href="https://www.linkedin.com/in/louienick">
+                            <div class="img"><img src="{{ asset('/img/team/Nick.jpg') }}" alt="img"></div>
+                            <div class="info">
+                                <div class="info-back">
+                                    <h3>Nick Louie</h3>
+                                    <p>Front End Developer</p>
+                                </div>
+                            </div></a>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-md-4">
+                    <div class="ih-item circle colored effect13 from_left_and_right team-member"><a href="#">
+                            <div class="img"><img src="{{ asset('/img/team/Pengcheng-Ding.jpg') }}" alt="img"></div>
+                            <div class="info">
+                                <div class="info-back">
+                                    <h3>Desmond Ding</h3>
+                                    <p>Back End Developer</p>
+                                </div>
+                            </div></a>
+                    </div>
                 </div>
             </div>
         </div>
