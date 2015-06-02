@@ -10,9 +10,10 @@
                 <p>isbn:   {{ $book->isbn }}</p></br>
             </div>
 
-            <form action="/textbook/sell/product/store" method="post">
+            <form action="/textbook/sell/product/store" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="book_id" value="{{ $book->id }}"/>
+                <input type="hidden" name="book_title" value="{{ $book->title }}">
 
                 <div class="form-group">
                     <label>Highlights</label>
@@ -56,7 +57,7 @@
                 </div>
                 <div class="form-group">
                     <label>Upload images</label>
-                    <input type="file" name="images" multiple>
+                    <input type="file" name="images[]" multiple>
                 </div>
                 <input type="submit" name="submit" class="btn btn-primary" value="submit"/>
             </form>

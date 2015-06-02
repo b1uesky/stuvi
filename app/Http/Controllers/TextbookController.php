@@ -57,7 +57,7 @@ class TextbookController extends Controller {
             // get the uploaded file
             $image = Input::file('image');
 			$title = Input::get('title');
-			$folder = '/img/';
+			$folder = '/img/book/';
 			$file_uploader = new FileUploader($image, $title, $folder);
         }
         else

@@ -6,7 +6,8 @@ class FileUploader {
     {
         $this->file = $file;
         $this->title = $title;
-        $this->destination = storage_path() . $folder;
+        $this->folder = $folder;
+        $this->destination = public_path() . $folder;
         $this->filename = $this->generateFileName();
         $this->path = $this->generatePath();
     }
@@ -18,10 +19,7 @@ class FileUploader {
 
     function generatePath()
     {
-        // TODO: image storage
-        // retrieve the path to an uploaded image
-        // may be store relative path?
-        return storage_path() . $this->destination . $this->filename;
+        return $this->folder . $this->filename;
     }
 
     function saveFile()

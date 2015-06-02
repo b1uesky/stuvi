@@ -14,6 +14,8 @@ use App\ProductImage;
 use App\Book;
 use App\User;
 
+use App\Helpers\FileUploader;
+
 class TextbookProductController extends Controller {
 
 	/**
@@ -43,12 +45,6 @@ class TextbookProductController extends Controller {
 	 */
 	public function store()
 	{
-		$images = Input::file('images');
-
-		foreach ($images as $image) {
-			
-		}
-
         $condition = new ProductCondition();
         $condition->highlights = Input::get('highlights');
         $condition->notes = Input::get('notes');
@@ -69,6 +65,22 @@ class TextbookProductController extends Controller {
         $product->sold = false;
         $product->save();
 
+		// save multiple product images
+		$images = Input::file('images');
+		$title = Input::get('book_title');
+		$folder = '/img/product/';
+
+		foreach ($images as $image) {
+			$file_uploader = new FileUploader($image, $title, $folder);
+
+			$product_image = new ProductImage();
+			$product_image->image = $file_uploader->path;
+			$product_image->product_id = $product->id;
+			$product_image->save();
+
+			$file_uploader->saveFile();
+		}
+
         return $this->show($product);
 	}
 
@@ -82,7 +94,7 @@ class TextbookProductController extends Controller {
 	{
 		$book = Book::find($product->book_id);
 		$seller = User::find($product->seller_id);
-		$images = ProductImage::where('product_id', '=', $product->id);
+		$images = ProductImage::where('product_id', '=', $product->id)->get();
 
 		return view('product.show', [
 			'product' => $product,

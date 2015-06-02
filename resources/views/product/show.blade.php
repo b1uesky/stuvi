@@ -6,11 +6,11 @@
         <h2>{{ $book->title }}</h2>
 
         @if(!empty($images))
-        @foreach($images as $image)
-        <div class="">
-            <img src="{{ $image->image }}" alt="" />
-        </div>
-        @endforeach
+            @foreach($images as $image)
+                <div class="">
+                    <img src="{{ $image->image }}" alt="" />
+                </div>
+            @endforeach
         @endif
 
         <div class="">
