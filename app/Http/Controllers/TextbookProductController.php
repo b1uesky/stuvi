@@ -10,6 +10,9 @@ use Input;
 
 use App\Product;
 use App\ProductCondition;
+use App\ProductImage;
+use App\Book;
+use App\User;
 
 class TextbookProductController extends Controller {
 
@@ -60,18 +63,27 @@ class TextbookProductController extends Controller {
         $product->sold = false;
         $product->save();
 
-        return view('textbook.sell');
+        return $this->show($product);
 	}
 
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  Product
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($product)
 	{
-		//
+		$book = Book::find($product->book_id);
+		$seller = User::find($product->seller_id);
+		$images = ProductImage::where('product_id', '=', $product->id);
+
+		return view('product.show', [
+			'product' => $product,
+			'book' 		=> $book,
+			'seller' 	=> $seller,
+			'images'	=> $images
+		]);
 	}
 
 	/**

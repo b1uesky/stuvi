@@ -34,6 +34,7 @@ Route::group(['middleware'=>'auth', 'prefix'=>'textbook'], function() {
 
 // product
 Route::group(['middleware'=>'auth', 'prefix'=>'textbook'], function() {
+    Route::get('/buy/product/{product}', 'TextbookProductController@show');
     Route::get('/sell/product/create/{book}', 'TextbookProductController@create');
     Route::post('/sell/product/store', 'TextbookProductController@store');
 });
@@ -81,4 +82,3 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-
