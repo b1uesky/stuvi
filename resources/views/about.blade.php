@@ -41,7 +41,7 @@
         </div>
         <div class="container team-container">
             <div class="row team-grid">
-                <div class="col-xs-6 col-md-4">
+                <div class="col-sm-6 col-md-4">
                     <div class="ih-item circle colored effect13 from_left_and_right team-member"><a target="_blank" href="https://www.linkedin.com/in/patelsanam">
                             <div class="img"><img src="{{ asset('/img/team/sanam.jpg') }}" alt="img"></div>
                             <div class="info">
@@ -52,7 +52,7 @@
                             </div></a>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-4">
+                <div class="col-sm-6 col-md-4">
                     <div class="ih-item circle colored effect13 from_left_and_right team-member"><a target="_blank" href="https://www.linkedin.com/in/louienick">
                             <div class="img"><img src="{{ asset('/img/team/Nick.jpg') }}" alt="img"></div>
                             <div class="info">
@@ -63,7 +63,7 @@
                             </div></a>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-4">
+                <div class="col-sm-6 col-md-4">
                     <div class="ih-item circle colored effect13 from_left_and_right team-member"><a href="#">
                             <div class="img"><img src="{{ asset('/img/team/Pengcheng-Ding.jpg') }}" alt="img"></div>
                             <div class="info">

@@ -112,7 +112,7 @@
             ·
             <a class="footer-link"  href="{{ url('/about') }}">About</a>
             ·
-            <a class="footer-link"  href="{{ url('/') }}">Contact</a>
+            <a class="footer-link"  href="{{ url('/contact') }}">Contact</a>
         </p>
         <hr>
         <p>Stuvi &copy; 2015</p>
