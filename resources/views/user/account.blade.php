@@ -1,8 +1,8 @@
 @extends('app')
     <head>
         <title>Stuvi - Account</title>
-        <link href="{{ asset('/css/account.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="{{asset('/css/user-bar.css')}}"
+        <link href="{{ asset('/css/account.css') }}" type="text/css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{asset('/css/user-bar.css')}}"
     </head>
 
 @section('content')
@@ -55,8 +55,6 @@
                     <li><a href="#">Forgot your password?</a></li>
                 </ul>
             </div>
-
-
 
         </div>
 -
