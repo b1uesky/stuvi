@@ -1,13 +1,17 @@
 /***  Top tabbed bar when in user/ account ***/
 
+/* Sizing adjust for entire bar plus make background the orange color*/
 #user-bar {
     padding: 0%;
     background-color: #F9AA62;
 }
 
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus{
-    color: #E7E6E6;
-    background-color: #E7E6E6;
+/* Fix for color of inactive <a> text */
+.tabz{
+    color: #555;
+}
+
+/* Fix for sizing of dropdown for account */
+.acc{
+    min-width: 170px;
 }
