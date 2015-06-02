@@ -36,6 +36,21 @@
                 </div>
             </form>
         </div>
+
+        <div class="col-sm-5 social-container">
+            <h4>Connect with us on social media!</h4>
+            <div class="social-links">
+                <a href="#">
+                    <img src="{{ asset('/img/facebook.png') }}">
+                </a>
+                <a href="#">
+                    <img src="{{ asset('/img/twitter.png') }}">
+                </a>
+                <a href="#">
+                    <img src="{{ asset('/img/github.png') }}">
+                </a>
+            </div>
+        </div>
     </div>
 
 
