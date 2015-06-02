@@ -39,9 +39,21 @@
     padding-left: 4%;
 }
 
+@media (min-width: 800px) {
+    .team-grid {
+        padding-left: 20%;
+    }
+}
+
 @media (min-width: 1080px) {
     .team-grid {
-        padding-left: 7%;
+        padding-left: 10%;
+    }
+}
+
+@media (min-width: 1300px) {
+    .team-grid {
+        padding-left: 20%;
     }
 }
 
