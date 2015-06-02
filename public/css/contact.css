@@ -1,0 +1,29 @@
+/*********  CONTACT PAGE  *********/
+
+.title-container {
+    margin-left: 5%;
+    margin-top: 80px;
+}
+
+.contact-form-container {
+    margin-left: 5%;
+    margin-bottom: 80px;
+}
+
+.contact-button {
+    background: #7AB4DE;
+    border-color: #6395BB;
+    border-width: 0 0 3px;
+    width: 20%;
+    color: #FFFFFF;
+}
+
+.contact-button:focus {
+    outline: 0 !important;
+}
+
+.contact-button.active {
+    box-shadow: 0 5px #27496d;
+    transform: translateY(5px);
+    border: none !important;
+}
