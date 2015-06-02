@@ -1,4 +1,4 @@
-@extends('textbook')
+@extends('product')
 
 @section('content')
     <div class="container">

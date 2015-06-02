@@ -16,7 +16,7 @@ use App\User;
 
 use App\Helpers\FileUploader;
 
-class TextbookProductController extends Controller {
+class ProductController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -35,7 +35,7 @@ class TextbookProductController extends Controller {
 	 */
 	public function create($book)
 	{
-        return view('textbook.createProduct')->withBook($book);
+        return view('product.create')->withBook($book);
 	}
 
 	/**

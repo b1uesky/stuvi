@@ -34,9 +34,9 @@ Route::group(['middleware'=>'auth', 'prefix'=>'textbook'], function() {
 
 // product
 Route::group(['middleware'=>'auth', 'prefix'=>'textbook'], function() {
-    Route::get('/buy/product/{product}', 'TextbookProductController@show');
-    Route::get('/sell/product/create/{book}', 'TextbookProductController@create');
-    Route::post('/sell/product/store', 'TextbookProductController@store');
+    Route::get('/buy/product/{product}', 'ProductController@show');
+    Route::get('/sell/product/create/{book}', 'ProductController@create');
+    Route::post('/sell/product/store', 'ProductController@store');
 });
 
 Route::group(['middleware'=>'auth', 'prefix'=>'order'], function()
