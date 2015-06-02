@@ -1,6 +1,11 @@
 @extends('app')
 
 @section('content')
+    <div class="container" xmlns="http://www.w3.org/1999/html">
+        @if (Session::has('message'))
+            <div class="flash-message">{{ Session::get('message') }}</div>
+        @endif
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
@@ -20,7 +25,7 @@
                             </div>
                         @endif
 
-                        <form action="{{ action('OrderController@store') }}" method="POST">
+                        <form action="{{ action('OrderController@storeBuyerOrder') }}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="stripeAmount" value="{{ $total*100 }}">
                             <h1>Confirm order items:</h1></br>
