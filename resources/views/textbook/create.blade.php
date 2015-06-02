@@ -48,18 +48,23 @@
                 </div>
                 <div class="form-group">
                     <label>Binding</label>
-                    <input type="radio" name="binding" value="0" checked/> Hard
-                    <input type="radio" name="binding" value="1"/> Soft
+                    <input type="radio" name="binding" value="1" checked/> Hard
+                    <input type="radio" name="binding" value="2"/> Soft
                 </div>
 
                 {{--TODO: a complete list of languages and their ids--}}
                 <div class="form-group">
                     <label>Language</label>
                     <select name="language" id="textbook-create">
-                        <option value="0">English</option>
-                        <option value="1">Spanish</option>
-                        <option value="2">Chinese</option>
+                        <option value="1">English</option>
+                        <option value="2">Spanish</option>
+                        <option value="3">Chinese</option>
                     </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Cover Image</label>
+                    <input type="file" name="image"/>
                 </div>
                 <input type="submit" name="submit" class="btn btn-primary" value="Submit"/>
             </form>

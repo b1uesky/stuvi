@@ -5,11 +5,15 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use Auth;
+use Input;
+
 use App\Book;
 use App\BookImageSet;
+use App\BookBinding;
+use App\BookLanguage;
 use Illuminate\Support\Facades\DB;
 
-use Input;
 
 class TextbookController extends Controller {
 
@@ -23,7 +27,15 @@ class TextbookController extends Controller {
 		return view('textbook.buy');
 	}
 
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('textbook.create');
+    }
 
 	/**
 	 * Store a newly created resource in storage.
@@ -33,47 +45,53 @@ class TextbookController extends Controller {
 	public function store(Request $request)
 	{
         // validations could be done in Validation class
-//        if (Input::hasFile('image'))
-//        {
-//            if (!Input::file('image')->isValid())
-//            {
-//                return response('Please upload a valid image.');
-//            }
-//
-//            // get the uploaded file
-//            $image = Input::file('image');
-//            $filename = $image->getClientOriginalName();
-//
-//            // TODO: image storage
-//            $destination_path = storage_path().'/img/';
-//
-//            Input::file('image')->move($destination_path, $filename);
-//
-//            // retrieve the path to an uploaded image
-//            // may be store relative path?
-//            $path = $destination_path . $filename;
-//        }
-//        else
-//        {
-//            return response('Please upload a textbook image.');
-//        }
+        if (Input::hasFile('image'))
+        {
+            if (!Input::file('image')->isValid())
+            {
+                return response('Please upload a valid image.');
+            }
+
+            // get the uploaded file
+            $image = Input::file('image');
+            $filename = Input::get('title') . '_' . $image->getClientOriginalName();
+
+            // TODO: image storage
+            $destination_path = storage_path().'/img/';
+
+            // retrieve the path to an uploaded image
+            // may be store relative path?
+            $path = $destination_path . $filename;
+        }
+        else
+        {
+            return response('Please upload a textbook image.');
+        }
+
+        $image_set = new BookImageSet();
+        $image_set->large_image = $path;
+        $image_set->save();
 
         // TODO: upload book information for verification
-//        $book = new Book();
-//        $book->isbn             = Input::get('isbn');
-//        $book->title            = Input::get('title');
-//        $book->author           = Input::get('author');
-//        $book->edition          = Input::get('edition');
-//        $book->publisher        = Input::get('publisher');
-//        $book->publication_date = Input::get('publication_date');
-//        $book->manufacturer     = Input::get('manufacturer');
-//        $book->num_pages        = Input::get('num_pages');
-//        $book->binding_id       = Input::get('binding');
-//        $book->language_id      = Input::get('language');
-//
-//        $book->save();
-//
-//        return view('textbook.sell');
+        $book = new Book();
+        $book->isbn             = Input::get('isbn');
+        $book->title            = Input::get('title');
+        $book->author           = Input::get('author');
+        $book->edition          = Input::get('edition');
+        $book->publisher        = Input::get('publisher');
+        $book->publication_date = Input::get('publication_date');
+        $book->manufacturer     = Input::get('manufacturer');
+        $book->num_pages        = Input::get('num_pages');
+        $book->binding_id       = Input::get('binding');
+        $book->image_set_id     = $image_set->id;
+        $book->language_id      = Input::get('language');
+
+        // save the book image
+        Input::file('image')->move($destination_path, $filename);
+
+        $book->save();
+
+        return view('textbook.createProduct')->withBook($book);
 	}
 
 	/**
@@ -158,28 +176,6 @@ class TextbookController extends Controller {
                 'message',
                 'Looks like your textbook is currently not in our database, please fill in the textbook information below.');
         }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        return view('textbook.create');
-    }
-
-    /**
-     * Show the form for creating a product, eg. price, pictures..
-     *
-     * @param $book
-     * @return int
-     * @internal param $book
-     */
-    public function createProduct($book)
-    {
-        return view('textbook.createProduct')->withBook($book);
     }
 
 

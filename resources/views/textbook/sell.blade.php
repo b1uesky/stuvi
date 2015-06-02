@@ -26,7 +26,7 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <label>Find the Textbook You'd Like to Trade In</label>
-                    <input type="text" name="isbn" class="form-control" placeholder="Enter the textbook ISBN"/>
+                    <input type="text" name="isbn" class="form-control" placeholder="Enter the textbook ISBN" required/>
                 </div>
                 <input type="submit" name="search" class="btn btn-primary" value="Search"/>
             </form>

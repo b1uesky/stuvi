@@ -10,8 +10,10 @@
                 <p>isbn:   {{ $book->isbn }}</p></br>
             </div>
 
-            <form action="/textbook/sell/storeProduct" method="post">
+            <form action="/textbook/sell/product/store" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="book_id" value="{{ $book->id }}"/>
+
                 <div class="form-group">
                     <label>Highlights</label>
                     <input type="number" name="highlights" class="form-control">
@@ -50,7 +52,7 @@
                 </div>
                 <div class="form-group">
                     <label>Price</label>
-                    <input type="number" name="price" class="form-control">
+                    <input type="number" step="0.01" name="price" class="form-control">
                 </div>
                 <input type="submit" name="submit" class="btn btn-primary" value="submit"/>
             </form>
