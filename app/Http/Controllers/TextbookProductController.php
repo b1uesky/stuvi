@@ -43,6 +43,12 @@ class TextbookProductController extends Controller {
 	 */
 	public function store()
 	{
+		$images = Input::file('images');
+
+		foreach ($images as $image) {
+			
+		}
+
         $condition = new ProductCondition();
         $condition->highlights = Input::get('highlights');
         $condition->notes = Input::get('notes');

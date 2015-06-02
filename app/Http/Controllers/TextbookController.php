@@ -14,6 +14,8 @@ use App\BookBinding;
 use App\BookLanguage;
 use Illuminate\Support\Facades\DB;
 
+use App\Helpers\FileUploader;
+
 
 class TextbookController extends Controller {
 
@@ -54,14 +56,9 @@ class TextbookController extends Controller {
 
             // get the uploaded file
             $image = Input::file('image');
-            $filename = Input::get('title') . '_' . $image->getClientOriginalName();
-
-            // TODO: image storage
-            $destination_path = storage_path().'/img/';
-
-            // retrieve the path to an uploaded image
-            // may be store relative path?
-            $path = $destination_path . $filename;
+			$title = Input::get('title');
+			$folder = '/img/';
+			$file_uploader = new FileUploader($image, $title, $folder);
         }
         else
         {
@@ -69,7 +66,7 @@ class TextbookController extends Controller {
         }
 
         $image_set = new BookImageSet();
-        $image_set->large_image = $path;
+        $image_set->large_image = $file_uploader->path;
         $image_set->save();
 
         // TODO: upload book information for verification
@@ -87,7 +84,7 @@ class TextbookController extends Controller {
         $book->language_id      = Input::get('language');
 
         // save the book image
-        Input::file('image')->move($destination_path, $filename);
+		$file_uploader->saveFile();
 
         $book->save();
 

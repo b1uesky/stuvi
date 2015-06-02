@@ -54,6 +54,10 @@
                     <label>Price</label>
                     <input type="number" step="0.01" name="price" class="form-control">
                 </div>
+                <div class="form-group">
+                    <label>Upload images</label>
+                    <input type="file" name="images" multiple>
+                </div>
                 <input type="submit" name="submit" class="btn btn-primary" value="submit"/>
             </form>
         </div>
