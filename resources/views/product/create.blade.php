@@ -1,4 +1,4 @@
-@extends('product')
+@extends('textbook')
 
 @section('content')
     <div class="container">
@@ -18,39 +18,39 @@
 
                 <div class="form-group">
                     <label>Highlights</label>
-                    <input type="number" name="highlights" class="form-control">
+                    <input type="number" name="highlights" value="0" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Notes</label>
-                    <input type="number" name="notes" class="form-control">
+                    <input type="number" name="notes" value="0" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Number of missing, torn, or loose pages</label>
-                    <input type="number" name="num_damaged_pages" class="form-control">
+                    <input type="number" name="num_damaged_pages" value="0" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Broken book spine</label>
-                    <input type="number" name="broken_spine" class="form-control">
+                    <input type="number" name="broken_spine" value="0" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Broken book binding</label>
-                    <input type="number" name="broken_binding" class="form-control">
+                    <input type="number" name="broken_binding" value="0" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Water damage</label>
-                    <input type="number" name="water_damage" class="form-control">
+                    <input type="number" name="water_damage" value="0" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Stains</label>
-                    <input type="number" name="stains" class="form-control">
+                    <input type="number" name="stains" value="0" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Burns</label>
-                    <input type="number" name="burns" class="form-control">
+                    <input type="number" name="burns" value="0" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Rips</label>
-                    <input type="number" name="rips" class="form-control">
+                    <input type="number" name="rips" value="0" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Price</label>
