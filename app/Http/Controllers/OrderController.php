@@ -3,13 +3,15 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\SellerOrder;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Product;
-use App\Order;
+use App\BuyerOrder;
 use App\BuyerPayment;
 
-use Auth, Input, Cart;
+use Auth, Input, Cart, Session, DB;
 
 class OrderController extends Controller {
 
@@ -24,7 +26,7 @@ class OrderController extends Controller {
 	}
 
 	/**
-	 * Show the form for creating a new order.
+	 * Show the form for creating a new buyer order along with Stripe payment.
 	 *
 	 * @return Response
 	 */
@@ -35,41 +37,35 @@ class OrderController extends Controller {
 	}
 
 	/**
-	 * Store a newly created resource in storage.
+	 * Store a newly created buyer order and corresponding seller order(s) in storage.
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function storeBuyerOrder(Request $request)
     {
-        /* doesn't work even with $fillable set.
-        $payment = Payment::create([
-            'stripe_token'      => Input::get('stripeToken'),
-            'stripe_token_type' => Input::get('stripeTokenType'),
-            'stripe_email'      => Input::get('stripeEmail'),
-            'stripe_amount'     => Input::get('stripeAmount')
-        ]);
-        $order = Order::create([
-            'product_id'        => Input::get('product_id'),
-            'buyer_id'          => Auth::id(),
-            'buyer_payment_id'  => $payment->id
-        ]);
-        */
+        //return response('check');
         // check if this payment already exist
         if (BuyerPayment::where('stripe_token','=',Input::get('stripeToken'))->exists())
         {
-            return response('Invalid payment.');
+            Session::flash('message', 'Invalid payment.');
+            return redirect('/order/createBuyerOrder');
         }
-        // check if this product exist
-        if (!(Product::find(Input::get('product_id'))->exists()))
+//        // check if all products exist
+//        foreach (Cart::content() as $product)
+//        if (!(Product::find()->exists()))
+//        {
+//            return response('Sorry, this product is not exist.');
+//        }
+        // check if any product in Cart is already traded
+        foreach (Cart::content() as $row)
         {
-            return response('Sorry, this product is not exist.');
+            $product = Product::find($row->id);
+            if ($product->sold()) {
+                Session::flash('message', 'Sorry,'.$product->book->title.' has been sold. Please remove it from Cart');
+                return redirect('/cart');
+            }
         }
-        // check if this product is already traded
-        if (Product::find(Input::get('product_id'))->sold())
-        {
-            return response('Sorry, this product has been sold.');
-        }
-
+        //return response('check');
         // create a payment
         $payment = new BuyerPayment;
         $payment->stripe_token      = Input::get('stripeToken');
@@ -79,18 +75,38 @@ class OrderController extends Controller {
         $payment->save();
 
         // create an buyer payed order
-        $order = new Order;
-        $order->product_id          = Input::get('product_id');
+        $order = new BuyerOrder;
         $order->buyer_id            = Auth::id();
         $order->buyer_payment_id    = $payment->id;
         $order->save();
 
-        // change the status of the product to be traded.
-        $order->product->sold = true;
-        $order->product->save();
+        // create seller order(s) according to the Cart items
+        OrderController::createSellerOrders($order->id);
 
-        return view('order.store')->withOrder($order);
+        // remove payed items from Cart
+        Cart::destroy();
+
+        return view('order.storeBuyerOrder')->withOrder($order);
 	}
+
+    protected function createSellerOrders($buyer_order_id)
+    {
+        // create seller order(s) according to the Cart items
+        foreach (Cart::content() as $row)
+        {
+            $product = Product::find($row->id);
+
+            // change the status of the product to be sold.
+            $product->sold  = true;
+            $product->save();
+
+            // create seller orders
+            $order = new SellerOrder;
+            $order->product_id      = $product->id;
+            $order->buyer_order_id  = $buyer_order_id;
+            $order->save();
+        }
+    }
 
 	/**
 	 * Display the specified resource.

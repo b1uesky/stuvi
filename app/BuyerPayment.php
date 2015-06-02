@@ -11,9 +11,9 @@ class BuyerPayment extends Model
      */
 	protected $fillable = ['*'];
 
-    public function order()
+    public function buyerOrder()
     {
-        return $this->belongsTo('App\Order');
+        return $this->belongsTo('App\BuyerOrder');
     }
 
 }
