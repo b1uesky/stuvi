@@ -1,15 +1,22 @@
 /*  CSS FOR account.blade.php* /
 
 /* Remove padding inherited from container-fluid (app.css) */
-.pad {
-    padding: 0%;
+.account {
+    padding: 2%;
+    margin: 3%;
+    background-color: whitesmoke;
 }
 
-#accJumbotron {
-    background-color: whitesmoke;
+#hr1{
+    margin: 1%;
+    border-color: rgba(0, 0, 0, 0.64);
+    border-width: 1px 0px 0px;
 }
 
 .bg {
     background-color: #E7E6E6;
 }
+
+
+
 

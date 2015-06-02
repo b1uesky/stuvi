@@ -39,24 +39,33 @@
         </ul>
     </div>
 
-    <div class = "container-fluid bg" id = "pad">
-        <div class = "container pad"><h1>My Account</h1></div>
-        <div class = "container jumbotron span8 col-offset-2 pad" id = "accJumbotron">
-            <h3>Quick Links</h3>
-            <hr id="hr1">
-            <ul>
-                <li><a href="#">Account Settings</a></li>
-                <li><a href="#">Messages</a></li>
-                <li><a href="#">My Courses</a></li>
-                <li><a href="#">Forgot your password?</a></li>
 
-            </ul>
+    <!-- My account container -->
+    <div class = "container-fluid bg" id = "pad">
+
+        <div class="container">
+            <div class = "container pad"><h1>My Account</h1></div>
+            <div class = "container span6 account">
+                <h3>Quick Links</h3>
+                <hr id="hr1">
+                <ul>
+                    <li><a href="#">Account Settings</a></li>
+                    <li><a href="#">Messages</a></li>
+                    <li><a href="#">My Courses</a></li>
+                    <li><a href="#">Forgot your password?</a></li>
+                </ul>
+            </div>
 
 
 
         </div>
+-
 
 
-    </div>
+
+    </div> <!-- My account container end -->
+
+
+    <script src="{{asset('/js/account.js')}}" type="text/javascript"></script>
 
 @endsection
