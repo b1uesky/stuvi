@@ -97,7 +97,7 @@ class TextbookProductController extends Controller {
 		$images = ProductImage::where('product_id', '=', $product->id)->get();
 
 		return view('product.show', [
-			'product' => $product,
+			'product' 	=> $product,
 			'book' 		=> $book,
 			'seller' 	=> $seller,
 			'images'	=> $images

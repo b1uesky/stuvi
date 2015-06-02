@@ -88,7 +88,10 @@ class TextbookController extends Controller {
 
         $book->save();
 
-        return view('textbook.createProduct')->withBook($book);
+        return view('textbook.createProduct', [
+			'book' 	=> $book,
+			'image' => $image_set
+			]);
 	}
 
 	/**

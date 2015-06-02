@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row">
             <div>
+                <img src="{{ $image->large_image }}" alt="" />
                 <p>Title:  {{ $book->title }}</p></br>
                 <p>edition {{ $book->edition }}th</p></br>
                 <p>Author: {{ $book->author }}</p></br>
