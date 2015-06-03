@@ -163,7 +163,7 @@ return [
         /*
          * Addresses Service Providers
          */
-        'Conner\Addresses\AddressesServiceProvider',
+        //'Conner\Addresses\AddressesServiceProvider',
 	],
 
 	/*

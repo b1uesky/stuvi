@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder {
 		Model::unguard();
 
         $this->call('UserTableSeeder');
+        $this->call('CountryTableSeeder');
+        $this->call('StateTableSeeder');
+
 
         // create some test instances.
         $BU = University::create([  'name'  => 'BOSTON UNIVERSITY',
@@ -34,12 +37,12 @@ class DatabaseSeeder extends Seeder {
                                     'email_suffix'  => 'mit.edu'
         ]);
 
-        $seller = User::create([    'username'  => 'seller',
+        $seller = User::create([    //'username'  => 'seller',
                                     'email'     => 'seller@stuvi.com',
                                     'password'  => bcrypt('123456'),
                                     'university_id' =>  $BU->id
         ]);
-        $buyer = User::create([ 'username'  => 'buyer',
+        $buyer = User::create([ //'username'  => 'buyer',
                                 'email'     => 'buyer@stuvi.com',
                                 'password'  => bcrypt('123456'),
                                 'university_id' =>  $BU->id
