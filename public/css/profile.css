@@ -176,5 +176,6 @@ body {
 }
 
 @media (max-width: 970px) {
-    .home { max-width: 500px; }
+    .home   {max-width: 500px;}
+    .books  {max-width: 500px;}
 }

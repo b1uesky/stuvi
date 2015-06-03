@@ -11,9 +11,9 @@
     <!-- top bar -->
     <div class="container-fluid" id = "user-bar">
         <ul class="nav nav-tabs nav-justified" role="tablist">
-            <li class="active"><a href="{{url('/user/profile')}}">Profile</a></li>
+            <li class="pro-a"><a href="{{url('/user/profile')}}">Profile</a></li>
             <!-- Account dropdown -->
-            <li class="dropdown">
+            <li class="active dropdown">
                 <a href="#" class="dropdown-toggle tabz" data-toggle="dropdown"> Account<span class="caret"></span> </a>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="{{url('/user/account')}}" class="acc">Account Settings</a></li>
@@ -44,7 +44,7 @@
     <!-- My account container -->
     <div class = "container-fluid bg" id = "pad">
 
-        <div class="container col-md-10">
+        <div class="container col-xs-12 col-md-10">
             <div class = "container"><h1>My Account</h1></div>
             <!-- account container -->
             <div class = "container span6 account">
@@ -102,7 +102,7 @@
                         </div>
                         <!-- Save changes button -->
                         <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-6">
+                            <div class=" col-sm-offset-2 col-sm-6">
                                 <button type="submit" class="btn btn-default">Save Changes</button>
                             </div>
                         </div>
