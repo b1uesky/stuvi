@@ -1,7 +1,7 @@
 /*********  CONTACT PAGE  *********/
 
 .background {
-    /*image link -> https://www.flickr.com/photos/120921053@N05/17055390372/in/photolist-rZ8kmG-bJBZ3c-rGEm7A-8HZvDE-9s272W-aDYW2H-9s1TGy-vgNpx-fPZyjS-9rXCB8-9s1TH5-9s1wq3-jFPTu-k4Ty4-k4TuQ-k4Tad-fwDMAs-dfaBqP-dfgyy4-bMfow-a9nWVL-nd6XbY-cn6iVb-pNtMZT-jb83g-pLBZGm-nEdP6q-nEqWRp-cX2RQd-nWRxhj-afEehA-atTqtz-Bcdwo-ehnN6b-mLtCE9-zy1ap-zxZFf-zxYzo-kivKva-oQhGB9-h6Ndoy-L8og1-ehh4Z8-oVUL5E-nsb9j5-gkVtYS-L8AUz-L8sJS-a1yWNc-qh7r4z */
+    /*image link -> https://flic.kr/p/rZ8kmG */
     background: url("../img/boston-night.jpg") no-repeat center;
     background-size: cover;
 }
@@ -95,4 +95,10 @@
     width: 80px;
     height: 80px;
 
+}
+
+/****  PHOTO LICENSE  ****/
+
+#license {
+    color: #FFFFFF;
 }
