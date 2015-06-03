@@ -1,5 +1,9 @@
 /*********  CONTACT PAGE  *********/
 
+.background {
+    background: #E7E6E6;
+}
+
 .title-container {
     margin-left: 5%;
     margin-top: 80px;
@@ -18,6 +22,11 @@
         border-right: 1px solid #CCCCCC;
         padding-right: 5%;
     }
+}
+
+.form-control:focus {
+    border: 2px solid #7AB4DE;
+    box-shadow: none;
 }
 
 .contact-button {
@@ -54,4 +63,5 @@
     display: inline-block;
     width: 80px;
     height: 80px;
+
 }

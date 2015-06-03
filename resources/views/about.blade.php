@@ -1,7 +1,6 @@
 @extends('app')
 
 @section('content')
-    {{-- image link -> http://commons.wikimedia.org/wiki/File:Stuvi.JPG--}}
 
     <head>
         <link href="{{ asset('/css/about.css') }}" rel="stylesheet">
