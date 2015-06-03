@@ -1,10 +1,10 @@
-/*  CSS FOR account.blade.php* /
+/*  CSS FOR account.blade.php */
 
-/* Remove padding inherited from container-fluid (app.css) */
-.account {
-    padding: 2%;
-    margin: 3%;
-    background-color: whitesmoke;
+
+.edit{
+    text-align: center;
+    margin: 2%;
+
 }
 
 hr{
@@ -12,12 +12,7 @@ hr{
     margin-left: 0%;
     border-color: rgba(0, 0, 0, 0.64);
     border-width: 1px 0px 0px;
+    max-width: 770px;
 }
-
-.bg {
-    background-color: #E7E6E6;
-}
-
-
 
 

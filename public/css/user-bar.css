@@ -15,3 +15,25 @@
 .acc{
     min-width: 170px;
 }
+
+.nav-tabs.nav-justified > li > a {
+    border-bottom: 1px solid #E7E6E6!important;
+    color: #fff !important;
+}
+
+.nav-tabs.nav-justified > li.active > a {
+    color: #241729 !important;
+    background-color: #E7E6E6;
+}
+
+.nav-tabs.nav-justified > .active > a{
+    border-bottom-color: #E7E6E6;}
+
+.nav > li > a:hover, .nav > li > a:focus {background-color: #241729;}
+
+.nav-tabs > li > a:hover    {border-color: #241729;}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: #241729;
+    border-color: #241729;
+}

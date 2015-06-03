@@ -6,6 +6,7 @@
         <title> Stuvi - Profile </title>
         <link href="{{ asset('/css/profile.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{asset('/css/user-bar.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('/css/user-profile.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick-theme.css')}}">
     </head>
@@ -129,8 +130,8 @@ User Profile Sidebar by @keenthemes
             </div>
             <div class="col-md-9">
                 <div class="profile-content">
-
-                    <div class="container col-md-12" id = "profile-details">
+                    <!-- User Stats -->
+                    <div class="container col-xs-9 col-md-8" id = "profile-details">
                         <h2 id = "details"><i class="fa fa-bar-chart"></i>
                             User Stats</h2>
                         {{--<hr class="hr">--}}
@@ -170,7 +171,7 @@ User Profile Sidebar by @keenthemes
 
 
 
-                    <div class="container col-md-12" id = "books-for-sale">
+                    <div class="container col-xs-11 col-md-12" id = "books-for-sale">
                         <h2 id = "for-sale"><i class="fa fa-book"></i>
                             Books for Sale</h2>
                         <hr class="hr">

@@ -33,11 +33,13 @@
                 </p> <!-- end p1 -->
 
                 <p id = "liftoff"> Liftoff on: August 2015</p>
-
-                <div class=" home-btn">
-                    <a class="btn ghost-btn" href="{{ url('/login') }}" role="button">LOGIN</a>
-                    <a class="btn ghost-btn" href="{{ url('/register') }}" role="button">SIGN UP</a>
-                </div>
+                @if (Auth::guest())
+                    <div class=" home-btn">
+                        <a class="btn ghost-btn" href="{{ url('/login') }}" role="button">LOGIN</a>
+                        <a class="btn ghost-btn" href="{{ url('/register') }}" role="button">SIGN UP</a>
+                    </div>
+                @else
+                @endif
             </div> <!-- end jumbotron1 -->
         </div>    <!-- end container -->
     </div>    <!-- end contain-top backgnd -->
