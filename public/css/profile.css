@@ -152,7 +152,7 @@ body {
 .profile-content {
     padding: 20px;
     background: #fff;
-    min-height: 460px;
+    min-height: 600px;
 }
 
 #books-for-sale {
@@ -167,8 +167,9 @@ body {
 #for-sale{
 }
 
-#hr1{
+.hr{
     margin: 1%;
+    margin-left: 0%;
     border-color: rgba(0, 0, 0, 0.64);
     border-width: 1px 0px 0px;
     max-width: 770px;
