@@ -6,7 +6,7 @@
         <title>Contact Us</title>
     </head>
 
-    <div class="container-fluid">
+    <div class="container-fluid background">
         <div class="title-container">
             <h2 id="contact-title">Contact Us</h2>
             <p>Please feel free to ask a question or give us feedback</p>

@@ -2,6 +2,7 @@
 
 
 .about-background {
+    /*image link -> http://commons.wikimedia.org/wiki/File:Stuvi.JPG*/
     background-image: url("../img/stuvi.jpeg") ;
     background-size: cover;                         /* Fill entire container */
     background-repeat: no-repeat;
