@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\User;
 use App\Book;
+use App\BookBinding;
+use App\BookLanguage;
 use App\Product;
 use App\University;
 
@@ -65,6 +67,26 @@ class DatabaseSeeder extends Seeder {
                                 'publisher' => 'Boston University',
                                 'manufacturer'  => 'Boston University',
                                 'num_pages' => 1122
+        ]);
+
+        $book_binding_hard = BookBinding::create([
+            'binding'   => 'hard'
+        ]);
+
+        $book_binding_soft = BookBinding::create([
+            'binding'   => 'soft'
+        ]);
+
+        $book_language_english = BookLanguage::create([
+            'language'  => 'English'
+        ]);
+
+        $book_language_spanish = BookLanguage::create([
+            'language'  => 'Spanish'
+        ]);
+
+        $book_language_chinese = BookLanguage::create([
+            'language'  => 'Chinese'
         ]);
 
         $product = Product::create(['price'     => 99.99,

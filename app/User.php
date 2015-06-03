@@ -31,4 +31,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+    public function buyerOrders()
+    {
+        return $this->hasMany('App\BuyerOrder', 'buyer_id', 'id');
+    }
+
 }
