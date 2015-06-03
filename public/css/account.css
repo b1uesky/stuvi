@@ -7,17 +7,32 @@
     background-color: whitesmoke;
 }
 
+/*
 hr{
     margin: 1%;
     margin-left: 0%;
     border-color: rgba(0, 0, 0, 0.64);
     border-width: 1px 0px 0px;
 }
+*/
 
-.bg {
-    background-color: #E7E6E6;
+
+.pro{
+    background: #F1F3FA;
 }
 
+.edit{
+    text-align: center;
+    margin: 2%;
 
+}
+
+hr{
+    margin: 1%;
+    margin-left: 0%;
+    border-color: rgba(0, 0, 0, 0.64);
+    border-width: 1px 0px 0px;
+    max-width: 770px;
+}
 
 

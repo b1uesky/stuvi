@@ -6,6 +6,7 @@
         <title> Stuvi - Profile </title>
         <link href="{{ asset('/css/profile.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{asset('/css/user-bar.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('/css/user-profile.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick-theme.css')}}">
     </head>
