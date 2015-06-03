@@ -11,11 +11,6 @@
         <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick-theme.css')}}">
     </head>
 
-
-{{--    <div id = "user-bar" class= "container col-md-12">
-        @include('user.user-bar')
-    </div>--}}
-
     <!-- top bar -->
     <div class="container-fluid" id = "user-bar">
         <ul class="nav nav-tabs nav-justified" role="tablist">
@@ -67,12 +62,12 @@ User Profile Sidebar by @keenthemes
                     <!-- SIDEBAR USER TITLE -->
                     <div class="profile-usertitle">
                         <div class="profile-usertitle-name">
-                            Jeremy noSc0peH4x420
+                            {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
                         </div>
                         <div class="profile-usertitle-job">
                             Developer
                         </div>
-                        <h6><b>Email:</b> SupremeLeader@stuvi.com </h6>
+                        <h6><b>Email:</b> {{ Auth::user()->email }}</h6>
                         <h6><b>School/University:</b> Boston University</h6>
                         <h6><b>Expected Graduation:</b> 2070</h6>
                         <h6><b>Area of Study:</b> Compooters</h6>
