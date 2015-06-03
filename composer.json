@@ -8,7 +8,8 @@
 		"laravel/framework": "5.0.*",
 		"laravel/cashier": "~5.0",
         "frozennode/administrator": "5.*",
-        "gloudemans/shoppingcart": "dev-master"
+        "gloudemans/shoppingcart": "dev-master",
+        "rtconner/laravel-addresses": "dev-master"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
