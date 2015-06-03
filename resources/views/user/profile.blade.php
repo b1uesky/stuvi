@@ -1,4 +1,7 @@
 @extends('app')
+
+
+@section('content')
     <head>
         <title> Stuvi - Profile </title>
         <link href="{{ asset('/css/profile.css') }}" rel="stylesheet">
@@ -6,8 +9,6 @@
         <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick-theme.css')}}">
     </head>
-
-@section('content')
 
 
 {{--    <div id = "user-bar" class= "container col-md-12">
@@ -45,37 +46,6 @@
             <li class = "disabled"><a href="#">Groups</a></li>
         </ul>
     </div>
-
-{{--
-    <div class = "container-fluid bg" id = "pad">
-
-        <div class = "container"><h1>My Profile</h1></div>
-
-        <div class="container well span6 profile">
-            <div class="row-fluid">
-                <div class="span2" >
-                    <img src="http://puu.sh/i8GdU/ae7b5d63a8.png" class="img-circle" height="100px" width="100px">
-                </div>
-
-                <!-- TODO: Link profile with backend -->
-                <div class="span8">
-                    <h3>Jeremy noSc0peH4x420</h3>
-                    <h6><b>Email:</b> SupremeLeader@stuvi.com </h6>
-                    <h6><b>School/University:</b> Boston University</h6>
-                    <h6><b>Expected Graduation:</b> 2070</h6>
-                    <h6><b>Area of Study:</b> Compooters</h6>
-                    <h6><b>Bio:</b> I have a 3.0 KDR on Club Penguin</h6>
-                </div>
-
-                <div class="span2">
-                    <div class="btn-group">
-                        <a class="btn btn-info" href="#">
-                            Edit Profile
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>--}}
 
 
 <!--
@@ -159,9 +129,51 @@ User Profile Sidebar by @keenthemes
             </div>
             <div class="col-md-9">
                 <div class="profile-content">
+
+                    <div class="container col-md-12" id = "profile-details">
+                        <h2 id = "details"><i class="fa fa-bar-chart"></i>
+                            User Stats</h2>
+                        {{--<hr class="hr">--}}
+
+                        <div class="table-responsive">
+                            <table class="table table-condensed">
+                                <tr id ="details-joined">
+                                    <td><i class="fa fa-users"></i>
+                                        <b> Joined: </b></td>
+                                    <td>08/01/15</td>
+                                    <td></td>
+                                </tr>
+                                <tr id ="details-rep">
+                                    <td><i class="fa fa-thumbs-o-up"></i>
+                                        <b> Reputation: </b></td>
+                                    <td>9001</td>
+                                    <td></td>
+                                </tr>
+
+                                <tr id="details-books-sold">
+                                    <td><i class="fa fa-share"></i>
+                                            <b> Books Sold: </b></td>
+                                    <td>69</td>
+                                    <td></td>
+                                </tr>
+                                <tr id="details-books-purchased">
+                                    <td><i class="fa fa-reply"></i>
+                                        <b> Books Purchased: </b></td>
+                                    <td>0</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+
+
+                    </div>
+
+
+
                     <div class="container col-md-12" id = "books-for-sale">
-                        <h2 id = "for-sale">Books for Sale</h2>
-                        <hr id ="hr1">
+                        <h2 id = "for-sale"><i class="fa fa-book"></i>
+                            Books for Sale</h2>
+                        <hr class="hr">
 
                         <div class="container col-md-11 col-md-offset-1 slider responsive books">
                             <div><img src="http://placehold.it/100x150"></div>
