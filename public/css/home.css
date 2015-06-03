@@ -50,7 +50,33 @@ body {
     margin-top: 0px;
 }
 
+.home-btn {
+    text-align: center;
+}
 
+/***** GHOST BUTTONS *****/
+
+.ghost-btn {
+    width: 150px;
+    height: 50px;
+    border-radius: 0 !important;
+    font-weight: bold !important;
+    font-size: 1.3em !important;
+    color: #F16521;
+    border: 3px solid #F16521 !important;
+    background: none;
+    margin: 20px 20px 0;
+    padding-top: 9px !important;
+}
+
+.ghost-btn:hover {
+    background: #F16521;
+    color: #FFFFFF !important;
+}
+
+.ghost-btn:focus {
+    outline: 0 !important;
+}
 
 /************** IDs   *************/
 
@@ -119,6 +145,7 @@ body {
     #hr-style-one   {height: 2px;}
     #jumbotron1     {margin-top: 2%;}
     #liftoff        {font-size: x-small}
+
 
 
 }
