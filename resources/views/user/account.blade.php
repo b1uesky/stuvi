@@ -61,12 +61,12 @@ User Profile Sidebar by @keenthemes
                         <!-- SIDEBAR USER TITLE -->
                         <div class="profile-usertitle">
                             <div class="profile-usertitle-name">
-                                Jeremy noSc0peH4x420
+                                {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
                             </div>
                             <div class="profile-usertitle-job">
                                 Developer
                             </div>
-                            <h6><b>Email:</b> SupremeLeader@stuvi.com </h6>
+                            <h6><b>Email:</b> {{ Auth::user()->email }}</h6>
                             <h6><b>School/University:</b> Boston University</h6>
                             <h6><b>Expected Graduation:</b> 2070</h6>
                             <h6><b>Area of Study:</b> Compooters</h6>
@@ -139,7 +139,8 @@ User Profile Sidebar by @keenthemes
                                 <div class="form-group">
                                     <label class="control-label col-sm-3" for="first-name">First name:</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="first-name" id="fname" placeholder="First name">
+                                        <input type="text" class="form-control" name="first-name" id="fname"
+                                               placeholder="First name" value = "{{ Auth::user()->first_name }}">
                                     </div>
                                 </div>
 
@@ -147,7 +148,8 @@ User Profile Sidebar by @keenthemes
                                 <div class="form-group">
                                     <label class="control-label col-sm-3" for="first-name">Last name:</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="last-name" id="lname" placeholder="Last name">
+                                        <input type="text" class="form-control" name="last-name" id="lname"
+                                               placeholder="Last name" value = "{{ Auth::user()->last_name }}">
                                     </div>
                                 </div>
 
@@ -155,7 +157,16 @@ User Profile Sidebar by @keenthemes
                                 <div class="form-group">
                                     <label class="control-label col-sm-3" for="email">Email:</label>
                                     <div class="col-sm-6">
-                                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                        <input type="email" class="form-control" id="email"
+                                               placeholder="Enter email" value="{{ Auth::user()->email }}">
+                                    </div>
+                                </div>
+                                <!-- Phone -->
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3" for="tel">Phone Number:</label>
+                                    <div class="col-sm-6">
+                                        <input type="tel" class="form-control" id="phone"
+                                               placeholder="Enter phone number" value="{{ Auth::user()->phone_number }}">
                                     </div>
                                 </div>
                                 <!-- Change password...current password -->
