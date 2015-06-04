@@ -164,6 +164,12 @@ class TextbookController extends Controller {
     public function isbnSearch(Request $request)
     {
         $isbn = Input::get('isbn');
+
+		if ($this->validateIsbn($isbn) == false)
+		{
+			return redirect('textbook/sell')->with('message', 'Please enter a valid 10 or 13 digits ISBN.');
+		}
+
         $db_book = DB::table('books')->where('isbn', $isbn)->first();
 
         // if the book is in our db, show the book information and let seller edit it
@@ -196,6 +202,19 @@ class TextbookController extends Controller {
                 'Looks like your textbook is currently not in our database, please fill in the textbook information below.');
         }
     }
+
+	/**
+	* Validate the input ISBN (10 or 13 digits)
+	*
+	* @param String $isbn
+	* @return Bool
+	*/
+	public function validateIsbn($isbn)
+	{
+		$len = strlen($isbn);
+
+		return ($len == 10 || $len == 13);
+	}
 
 
 
