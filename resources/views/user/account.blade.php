@@ -1,6 +1,6 @@
+{{--User Account Settings page--}}
+
 @extends('app')
-
-
 
 @section('content')
     <head>
@@ -8,10 +8,11 @@
         <link href="{{ asset('/css/account.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{asset('/css/user-bar.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('/css/user-profile.css')}}">
-        <script src="{{asset('/js/account.js')}}" type="text/javascript"></script>
-    </head>
 
+    </head>
+    <!-- User template has the second nav bar and the profile side bar -->
     @include('user-template')
+                <!-- right side bar-->
                 <div class="col-md-9">
                     <div class="profile-content">
 
@@ -92,6 +93,7 @@
         </div>
     </div>
 
+    <!-- required for active class in nav to work -->
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="{{asset('/js/account.js')}}" type="text/javascript"></script>
 

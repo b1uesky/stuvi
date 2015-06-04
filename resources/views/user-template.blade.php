@@ -1,4 +1,6 @@
-{{-- TEMPLATE FOR USER --}}
+{{-- TEMPLATE FOR USER
+     CONTAINS USER-BAR AND PROFILE SIDE BAR
+--}}
 
 <html>
 
@@ -9,11 +11,12 @@
     </head>
 
     <body>
+    <!-- Second nav bar -->
     @section('user-bar')
         @parent
         <div class="container-fluid" id = "user-bar">
             <ul class="nav nav-tabs nav-justified" role="tablist">
-                <!-- Profiel -->
+                <!-- Profile -->
                 <li id="profile-nav" ><a href="{{url('/user/profile')}}">Profile</a></li>
                 <!-- Account dropdown -->
                 <li class="dropdown" id="account-nav" >
@@ -126,9 +129,6 @@
                             <!-- END MENU -->
                         </div>
                     </div>
-{{--                </div>
-            </div>
-        </div> <!-- user-bar end -->--}}
 
     @show
 
@@ -137,6 +137,6 @@
         @yield('content')
     </div>
     </body>
-
+    <!-- yes i know it's missing divs -->
 
 </html>

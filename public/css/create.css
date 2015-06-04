@@ -3,49 +3,39 @@
  */
 
 
-.pad {padding: 2%; }
+.pad {padding: 2%;}
 
-#message {
-    font-style: italic;
-}
+#message {font-style: italic;}
 
 #message-cont {
     background-color: rgba(255, 0, 12, 0.30);
     padding: 2%;
 }
 
+/* https://flic.kr/p/iEvVHU */
+/* BACKGROUND */
 .create{
-
     background-image: url("../img/lib.jpg");
     background-size: cover;
     background-position: center;
 }
 
-h1{
-    color: black;
-}
+/* Enter your textbook information */
+h1  {color: black;}
 
-b{
-    color: whitesmoke;
-}
+/* ISBN...Title..etc*/
+b   {color: whitesmoke;}
 
 /* Color some text in .form-group */
-.ws{
-    color: whitesmoke;
-}
+.ws {color: whitesmoke;}
 
+/* Box around all the forms*/
 #textbook-create{
     background-color: rgba(0,0,0,.2);
     padding: 5%;
 }
 
-#lang{
-    color: black !important;
-    /*background-color: white;*/
+#lang{color: black !important;}
 
-}
-
-.lang-select{
-    color: black !important;
-}
+.lang-select{color: black !important;}
 

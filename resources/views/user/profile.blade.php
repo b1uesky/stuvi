@@ -1,3 +1,7 @@
+{{--User Profile page--}}
+
+
+
 @extends('app')
 @section('title', 'Profile')
 
@@ -8,12 +12,13 @@
         <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick-theme.css')}}">
     </head>
-
+    <!-- User template has the second nav bar and the profile side bar -->
     @include('user-template')
     <div class="col-md-9">
         <div class="profile-content">
-            <!-- User Stats -->
+            <!-- right box -->
             <div class="container col-xs-9 col-md-8" id = "profile-details">
+                <!-- User Stats -->
                 <h2 id = "details"><i class="fa fa-bar-chart"></i>
                     User Stats</h2>
                         <div class="table-responsive">
@@ -49,12 +54,11 @@
                             </table>
                         </div>  <!-- end user stats -->
                     </div>
-
+                    <!-- books selling -->
                     <div class="container col-xs-11 col-md-12" id = "books-for-sale">
                         <h2 id = "for-sale"><i class="fa fa-book"></i>
                             Books for Sale</h2>
                         <hr class="hr">
-
                         <div class="container col-md-11 col-md-offset-1 slider responsive books">
                             <div><img src="http://placehold.it/100x150"></div>
                             <div><img src="http://placehold.it/100x150"></div>

@@ -18,6 +18,9 @@
     min-width: 170px;
 }
 
+
+/* ALL COLOR FIXING FOR TABS*/
+
 .nav-tabs.nav-justified > li > a {
     border-bottom: 1px solid #E7E6E6!important;
     color: #fff !important;
