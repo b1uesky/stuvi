@@ -1,11 +1,14 @@
 @extends('app')
 
+
+
 @section('content')
     <head>
         <title> Stuvi - {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} - Account </title>
         <link href="{{ asset('/css/account.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{asset('/css/user-bar.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('/css/user-profile.css')}}">
+        <script src="{{asset('/js/account.js')}}" type="text/javascript"></script>
     </head>
 
     @include('user-template')
@@ -87,11 +90,10 @@
                 </div>
             </div>
         </div>
-        <br>
-        <br>
     </div>
 
-
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="{{asset('/js/account.js')}}" type="text/javascript"></script>
+
 
 @endsection

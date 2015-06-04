@@ -13,19 +13,21 @@
         @parent
         <div class="container-fluid" id = "user-bar">
             <ul class="nav nav-tabs nav-justified" role="tablist">
-                <li class="active"><a href="{{url('/user/profile')}}">Profile</a></li>
+                <!-- Profiel -->
+                <li id="profile-nav" ><a href="{{url('/user/profile')}}">Profile</a></li>
                 <!-- Account dropdown -->
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle tabz" data-toggle="dropdown"> Account<span class="caret"></span> </a>
+                <li class="dropdown" id="account-nav" >
+                    <a href="#" class="dropdown-toggle tabz" data-toggle="dropdown">
+                        Account<span class="caret"></span> </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{url('/user/account')}}" class="acc">Account Settings</a></li>
-                        <li><a href="#"                        class="acc">Your Courses</a></li>
-                        <li><a href="#"                        class="acc">Messages</a></li>
+                        <li id="acc-settings-nav"><a href="{{url('/user/account')}}" class="acc">Account Settings</a></li>
+                        <li id="your-courses-nav"><a href="#"                        class="acc">Your Courses</a></li>
+                        <li id="messages-nav"><a href="#"                        class="acc">Messages</a></li>
                     </ul>
                 </li> <!-- end account dropdown -->
                 <!-- Textbooks dropdown -->
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle tabz" data-toggle="dropdown">Books <span class="caret"></span> </a>
+                    <a href="#" class="dropdown-toggle tabz" id ="books-nav" data-toggle="dropdown">Books <span class="caret"></span> </a>
                     <ul class="dropdown-menu" role="menu">
                         <li role="presentation" class="dropdown-header">Buy</li>
                         <li><a href="#" data-toggle="tab" class="">Your Orders</a></li>
@@ -37,8 +39,8 @@
                         <li><a href="#" data-toggle="tab">Sold</a></li>
                     </ul>
                 </li> <!-- end textbooks dropdown -->
-                <li class = "disabled"><a href="#">Clubs</a></li>
-                <li class = "disabled"><a href="#">Groups</a></li>
+                <li class = "disabled" id="clubs-nav"><a href="#">Clubs</a></li>
+                <li class = "disabled" id="groups-nav"><a href="#">Groups</a></li>
             </ul>
         </div> <!-- end user-bar -->
     @show
@@ -99,22 +101,22 @@
                             <!-- SIDEBAR MENU -->
                             <div class="profile-usermenu">
                                 <ul class="nav">
-                                    <li class="active">
+                                    <li class="side-overview">
                                         <a href="#">
                                             <i class="glyphicon glyphicon-home"></i>
                                             Overview </a>
                                     </li>
-                                    <li>
+                                    <li class="side-settings">
                                         <a href="{{asset('/user/account')}}">
                                             <i class="glyphicon glyphicon-user"></i>
                                             Account Settings </a>
                                     </li>
-                                    <li>
+                                    <li class="side-messages">
                                         <a href="#" target="_blank">
                                             <i class="glyphicon glyphicon-envelope"></i>
                                             Messages </a>
                                     </li>
-                                    <li>
+                                    <li class="side-help">
                                         <a href="#">
                                             <i class="glyphicon glyphicon-flag"></i>
                                             Help </a>
@@ -135,5 +137,6 @@
         @yield('content')
     </div>
     </body>
+
 
 </html>

@@ -4,12 +4,13 @@
 #user-bar {
     padding: 0%;
     background-color: #F9AA62;
-    margin-top: 0%;
+    margin-top: -20px;
 }
 
 /* Fix for color of inactive <a> text */
 .tabz{
     color: #555;
+    border-bottom-color: #E7E6E6 !important;
 }
 
 /* Fix for sizing of dropdown for account */
@@ -27,14 +28,14 @@
     background-color: #E7E6E6;
 }
 
-.nav-tabs.nav-justified > .active > a{
-    border-bottom-color: #E7E6E6;}
+.nav-tabs.nav-justified > .active > a    {border-bottom-color: #E7E6E6;}
 
 .nav > li > a:hover, .nav > li > a:focus {background-color: #241729;}
 
-.nav-tabs > li > a:hover    {border-color: #241729;}
+.nav-tabs > li > a:hover                 {border-color: #241729;}
 
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
     background-color: #241729;
     border-color: #241729;
 }
+

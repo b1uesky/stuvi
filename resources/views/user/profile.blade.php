@@ -3,7 +3,6 @@
 
 @section('content')
     <head>
-
         <title> Stuvi - {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} - Profile </title>
         <link href="{{ asset('/css/profile.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick.css')}}">
@@ -17,28 +16,30 @@
             <div class="container col-xs-9 col-md-8" id = "profile-details">
                 <h2 id = "details"><i class="fa fa-bar-chart"></i>
                     User Stats</h2>
-
                         <div class="table-responsive">
                             <table class="table table-condensed">
+                                <!-- joined -->
                                 <tr id ="details-joined">
                                     <td><i class="fa fa-users"></i>
                                         <b> Joined: </b></td>
                                     <td>08/01/15</td>
                                     <td></td>
                                 </tr>
+                                <!-- rep -->
                                 <tr id ="details-rep">
                                     <td><i class="fa fa-thumbs-o-up"></i>
                                         <b> Reputation: </b></td>
                                     <td>9001</td>
                                     <td></td>
                                 </tr>
-
+                                <!-- books sold -->
                                 <tr id="details-books-sold">
                                     <td><i class="fa fa-share"></i>
                                             <b> Books Sold: </b></td>
                                     <td>69</td>
                                     <td></td>
                                 </tr>
+                                <!-- books purchased -->
                                 <tr id="details-books-purchased">
                                     <td><i class="fa fa-reply"></i>
                                         <b> Books Purchased: </b></td>
@@ -46,12 +47,8 @@
                                     <td></td>
                                 </tr>
                             </table>
-                        </div>
-
-
+                        </div>  <!-- end user stats -->
                     </div>
-
-
 
                     <div class="container col-xs-11 col-md-12" id = "books-for-sale">
                         <h2 id = "for-sale"><i class="fa fa-book"></i>
@@ -87,4 +84,3 @@
 @endsection
 
 
-@endsection
