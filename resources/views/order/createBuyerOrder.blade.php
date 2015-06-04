@@ -35,6 +35,13 @@
                                 price: {{ $item->price }} </br>
                                 ----------------------------------------------------------------------------------------</br>
                             @endforeach
+
+                            @include('addresses::fields') <!-- bootstrap fields with no form tags -->
+
+                            @foreach($addresses as $address)
+                                @include('addresses::view', compact('separator'=>'<br>')) <!-- read-only html of address -->
+                            @endforeach
+
                             <script
                                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                     data-key="pk_test_GWm6W90Pr0nrjbzWjPjZa8Ou"
