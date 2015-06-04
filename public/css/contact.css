@@ -76,25 +76,56 @@
 
 /****  SOCIAL MEDIA LINKS  ****/
 
-.social-container {
+.right-container {
     text-align: center;
 }
 
-.social-container h4 {
+.right-container h3 {
     color: #FFFFFF;
 }
 
 @media (max-width: 768px) {
-    .social-container {
+    .right-container {
         display: none;
     }
 }
 
-.social-links a img {
-    display: inline-block;
-    width: 80px;
-    height: 80px;
+.contact-info-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    padding: 20px 0;
+}
 
+.contact-info {
+    text-align: left;
+    list-style-type: none;
+}
+
+.contact-info li {
+    margin: 10px 0;
+}
+
+.contact-info li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.contact-info li a i {
+    margin-right: 10px;
+    text-align: center;
+}
+
+.fa-map-marker,
+.fa-facebook {
+    margin-left: 4px;
+    margin-right: 14px !important;
+}
+
+.fa-linkedin,
+.fa-github {
+    margin-right: 12px !important;
 }
 
 /****  PHOTO LICENSE  ****/
