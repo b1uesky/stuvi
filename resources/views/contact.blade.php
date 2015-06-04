@@ -47,18 +47,17 @@
                 </form>
             </div>
 
-            <div class="col-sm-5 social-container">
-                <h4>Connect with us on social media!</h4>
-                <div class="social-links">
-                    <a href="#">
-                        <img src="{{ asset('/img/facebook.png') }}">
-                    </a>
-                    <a href="#">
-                        <img src="{{ asset('/img/twitter.png') }}">
-                    </a>
-                    <a href="#">
-                        <img src="{{ asset('/img/github.png') }}">
-                    </a>
+            <div class="col-sm-5 right-container">
+                <h3>Contact Details</h3>
+                <div class="contact-info-container">
+                    <ul class="contact-info">
+                        <li><a href="#"><i class="fa fa-map-marker fa-lg"></i> Boston, MA</a></li>
+                        <li><a href="mailto:contact@stuvi.com"><i class="fa fa-envelope-o fa-lg"></i> contact@stuvi.com</a></li>
+                        <li><a href="#"><i class="fa fa-facebook fa-lg"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fa fa-twitter fa-lg"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fa fa-linkedin fa-lg"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fa fa-github fa-lg"></i> Github</a></li>
+                    </ul>
                 </div>
             </div>
         </div>

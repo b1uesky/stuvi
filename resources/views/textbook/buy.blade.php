@@ -25,7 +25,7 @@
     <!-- Search Bar Container-->
     <div class="container-fluid search">
         <div class="row">
-            <h1 id="title">Buy or Rent Textbooks</h1>
+            <h1 id="title">Buy Used Textbooks</h1>
             <form action="/textbook/sell/search" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
@@ -61,10 +61,11 @@
                 <!-- Row 1 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
                      id="shrink-xs">
-                    <h3 id = "h3-1"> Header Example 1</h3>
+                    <h3 id = "h3-1">Save Money</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
                         tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
-                        Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>
+                        Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius.
+                    </p>
                 </div>
             </div>
 
@@ -79,7 +80,7 @@
                 <!-- Row 2 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
                      id="shrink-xs">
-                    <h3 id = "h3-2"> Header Example 2</h3>
+                    <h3 id = "h3-2">Same Day Delivery</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
                         tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
                         Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>
