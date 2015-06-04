@@ -23,6 +23,13 @@
         </ul>
     </div>
 
+    {{-- Error message --}}
+    @if (Session::has('message'))
+        <div id = "message-cont">
+            <div class="flash-message" id="message"> <i class="fa fa-exclamation-triangle"></i> {{ Session::get('message') }}</div>
+        </div>
+    @endif
+
     <!-- Search Bar Container-->
     <div class="container-fluid search">
         <div class="row">
@@ -31,7 +38,7 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <div class="col-xs-8 col-xs-offset-2 search-row">
-                        <input type="text" name="isbn" class="form-control" placeholder="Enter the textbook ISBN, Title, or Author"/>
+                        <input type="text" name="isbn" class="form-control" placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
                     </div>
                     <button class="btn btn-default search-btn" type="submit" name="search" value="Search" >
                         <i class="fa fa-search search-icon"></i>
