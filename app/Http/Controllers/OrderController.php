@@ -121,14 +121,20 @@ class OrderController extends Controller {
     }
 
 	/**
-	 * Display the specified resource.
+	 * Display a specific buyer order.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function showBuyerOrder($id)
 	{
-		//
+		$buyer_order = BuyerOrder::find((int)$id);
+        var_dump($buyer_order->sellerOrder);
+        // check if this order belongs to the current user.
+        if ($buyer_order->isBelongTo(Auth::id()))
+        {
+            return view('order.showBuyerOrder')->withBuyerOrder($buyer_order);
+        }
 	}
 
 	/**
