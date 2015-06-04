@@ -13,6 +13,7 @@
 
 @section('content')
 
+
     <div class = "container-fluid container-top backgnd">           <!-- Top half -->
         <div class="container col-md-12">                               <!-- container -->
             <div class = "col-md-2"></div>                                  <!-- Buffer -->
@@ -32,11 +33,15 @@
                 </p> <!-- end p1 -->
 
                 <p id = "liftoff"> Liftoff on: August 2015</p>
-
+                @if (Auth::guest())
+                    <div class=" home-btn">
+                        <a class="btn ghost-btn" href="{{ url('/login') }}" role="button">LOGIN</a>
+                        <a class="btn ghost-btn" href="{{ url('/register') }}" role="button">SIGN UP</a>
+                    </div>
+                @endif
             </div> <!-- end jumbotron1 -->
         </div>    <!-- end container -->
     </div>    <!-- end contain-top backgnd -->
-
     <!-- End Top Half
          Begin Bottom Half-->
 
