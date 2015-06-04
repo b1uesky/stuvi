@@ -1,4 +1,4 @@
-/* LOGIN PAGE */
+/******** LOGIN PAGE ********/
 html body {
     background: #241729;
 }
@@ -18,6 +18,8 @@ button:focus {
     width: 350px;
     height: 140px;
 }
+
+/******** LOGIN/REGISTER FORM ********/
 
 /* space between form and logo */
 .vertical-center {
@@ -46,19 +48,26 @@ button:focus {
 .form-control {
     margin-bottom: 10px;
     padding: 10px !important;
-    border: solid 1px #fff !important;
-    box-shadow: inset 1px 1px 2px 0 #707070 !important;
+    /*border: 1px solid #FFFFFF !important;*/
+    /*box-shadow: inset 1px 1px 2px 0 #707070 !important;*/
     transition: box-shadow 0.3s !important;
 
 }
 
 .form-control:focus {
     border: 3px solid #7AB4DE !important;
+    box-shadow: none !important;
 }
 
 /* space between first form input and tabs */
 .form-space-offset {
     margin-top: 25px;
+}
+
+.scrollable-dropdown {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
 }
 
 .form-group .login-button {
@@ -105,6 +114,10 @@ label {
     border: 2px solid #7AB4DE;
 }
 
+/*.panel-body {*/
+    /*background-color: #E7E6E6 !important;*/
+/*}*/
+
 .panel-heading {
     background: #7AB4DE !important;
     color: #2c404a !important;
@@ -114,4 +127,3 @@ label {
 .panel-body {
     background: #FEFEFE;
 }
-
