@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration {
 			$table->string('password', 60);
             $table->boolean('activated')->default(false);
             $table->char('phone_number', 10)->nullable();
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
+            $table->string('first_name');
+            $table->string('last_name');
             $table->integer('university_id')->unsigned()->nullable();
             $table->rememberToken();
 			$table->timestamps();
