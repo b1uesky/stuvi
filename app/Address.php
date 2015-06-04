@@ -67,7 +67,7 @@ class Address extends Model
      * @param $user_id  The user id of the current user.
      * @return bool|null
      */
-    public function delete($id, $user_id)
+    public function del($id, $user_id)
     {
         $address = $this->findOrFail($id);
 
@@ -80,7 +80,7 @@ class Address extends Model
     }
 
 
-    public function add($info, $user_id)
+    public static function add($info, $user_id)
     {
         $address = new Address();
         $address->user_id       = $user_id;
@@ -92,5 +92,7 @@ class Address extends Model
         $address->zip           = $info['zip'];
         $address->phone_number  = $info['phone_number'];
         $address->save();
+
+        return $address->id;
     }
 }
