@@ -19,6 +19,7 @@ class CreateBuyerOrdersTable extends Migration {
             $table->boolean('cancelled')->default(false);
             $table->integer('buyer_payment_id')->unsigned();
             $table->string('deliver_time')->nullable();
+            $table->integer('shipping_address')->unsigned();
             $table->timestamps();
 		});
 	}

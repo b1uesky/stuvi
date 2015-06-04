@@ -10,4 +10,9 @@ class BuyerOrder extends Model
         return $this->belongsTo('App\User', 'buyer_id', 'id');
     }
 
+    public function shipping_address()
+    {
+        return $this->belongsTo('App\Address', 'shipping_address_id', 'id');
+    }
+
 }
