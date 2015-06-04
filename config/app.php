@@ -159,6 +159,11 @@ return [
          * Gloudemans Shopping Cart
          */
         'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
+
+        /*
+         * Addresses Service Providers
+         */
+        //'Conner\Addresses\AddressesServiceProvider',
 	],
 
 	/*

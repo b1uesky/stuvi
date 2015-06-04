@@ -1,6 +1,7 @@
 @extends('app2')
 <head>
     <link href="{{ asset('/css/login.css') }}" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/css/bootstrap-select.min.css" rel="stylesheet">
     <title> Stuvi - login & register</title>
 </head>
 
@@ -20,7 +21,7 @@
         <div class="row vertical-center">
             <div class="col-sm-6 col-sm-offset-3">
                 <div class="container" id="form-container">
-                    <ul class="nav nav-tabs nav-justified" role="tablist" id="tabs">
+                    <ul class="nav nav-tabs nav-justified" role="tablist">
                         <li role="presentation" class="{{ $loginActive }}" id="login-tab"><a href="#login-body" aria-controls="login-body" role="tab" data-toggle="tab">Login</a></li>
                         <li role="presentation" class="{{ $signupActive }}" id="signup-tab"><a href="#signup-body" aria-controls="signup-body" role="tab" data-toggle="tab">Sign Up</a></li>
                     </ul>
@@ -96,6 +97,15 @@
                                         <input type="tel" class="form-control" name="phone_number" placeholder="Phone Number" value="{{ old('phone_number') }}">
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-6">
+                                        <select class="selectpicker">
+                                            <option>Boston University</option>
+                                            <option>MIT</option>
+                                            <option>Harvard University</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 {{--<div class="form-group">--}}
                                     {{--<div class="col-sm-offset-3 col-sm-6">--}}
                                         {{--<input type="text" class="form-control" name="username" placeholder="Username" value="{{ old('username') }}">--}}
@@ -120,7 +130,8 @@
     </div>
 
     <!-- Scripts here for faster loading -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+    {{--<script src="//cdnjs.cloudfxlare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>--}}
+{{--    <script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>--}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>
     <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
 @endsection

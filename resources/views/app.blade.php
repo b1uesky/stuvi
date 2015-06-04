@@ -62,7 +62,7 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button"
-                           aria-expanded="true">{{ Auth::user()->name }}<span nav-caret id = "account-name">My Stuvi</span> <span class="caret nav-caret"></span></a>
+                           aria-expanded="true"><span nav-caret id = "account-name">{{ Auth::user()->first_name }}</span><span class="caret nav-caret"></span></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="nav-dropdown">
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/user/profile') }}">
                                     Profile</a></li>
