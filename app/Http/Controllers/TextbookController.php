@@ -14,7 +14,7 @@ use App\BookLanguage;
 use Auth;
 use Input;
 use App\Helpers\FileUploader;
-use ISBNdb\Book;
+use ISBNdb\Book as IsbndbBook;
 
 
 class TextbookController extends Controller {
@@ -175,7 +175,7 @@ class TextbookController extends Controller {
         {
 			// search book in isbndb
 			$token = 'YPKFSSUW';
-			$isbndb_book = new Book($token, $isbn);
+			$isbndb_book = new IsbndbBook($token, $isbn);
 
 			if ($isbndb_book->isFound())
 			{
