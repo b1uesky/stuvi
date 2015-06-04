@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 
 use Auth;
+use League\Flysystem\Exception;
 
 /**
  * Created by PhpStorm.
@@ -29,7 +30,7 @@ class Address extends Model
     protected $fillable = ['*'];
 
     /**
-     * get the rules of addressee, street, city, state, zip
+     * Get the rules of addressee, street, city, state, zip
      *
      * @return array
      */
@@ -57,5 +58,39 @@ class Address extends Model
     public function userAddresses()
     {
         return Address::where('user_id','=',Auth::id());
+    }
+
+    /**
+     * Delete the given address of the user.
+     *
+     * @param $id  The address id
+     * @param $user_id  The user id of the current user.
+     * @return bool|null
+     */
+    public function delete($id, $user_id)
+    {
+        $address = $this->findOrFail($id);
+
+        // check if this address belongs to the user with $user_id
+        if ($address->user_id == $user_id) {
+            return $address->delete();
+        }
+
+        return false;
+    }
+
+
+    public function add($info, $user_id)
+    {
+        $address = new Address();
+        $address->user_id       = $user_id;
+        $address->addressee     = $info['addressee'];
+        $address->address_line1 = $info['address_line1'];
+        $address->address_line2 = $info['address_line2'];
+        $address->city          = $info['city'];
+        $address->state_a2      = $info['state_a2'];
+        $address->zip           = $info['zip'];
+        $address->phone_number  = $info['phone_number'];
+        $address->save();
     }
 }

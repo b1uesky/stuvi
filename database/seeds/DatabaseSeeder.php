@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder {
 		Model::unguard();
 
         $this->call('UserTableSeeder');
-        $this->call('CountryTableSeeder');
-        $this->call('StateTableSeeder');
+        //$this->call('CountryTableSeeder');
+        //$this->call('StateTableSeeder');
 
 
         // create some test instances.
