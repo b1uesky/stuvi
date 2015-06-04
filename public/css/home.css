@@ -1,0 +1,151 @@
+@charset "utf-8";
+/* CSS Document */
+/* (c) Stuvi LLC 2015
+* Used for the home page styling.*/
+
+/* All screen styling */
+
+body {
+    background: #241729 !important;
+}
+
+/*********  Classes  ************/
+
+
+/*Top background*/
+.backgnd {
+
+    /*****************
+    * Temp cover image...(c)Nicholas Louie All Rights Reserved. I Nicholas Louie, hereby allow a limited license
+    * to display this image on Stuvi's website with proper name and link credit. This photo may not be distributed, used
+    * or altered (except sizing/cropping) in any other way other than on the homepage
+    * Photo by Nick Louie. Link: https://flic.kr/p/kSKWtK
+    ******************/
+
+    background-image: url("../img/cover.jpg") ;
+    background-size: cover;                         /* Fill entire container */
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-bottom: 5%;
+
+}
+
+
+/* Bottom half of home page, grid buffer */
+.grid-buff {
+    margin-top : 10px;
+    margin-bottom: 20px;
+}
+
+/* Column buffer for smaller screen compatibility */
+.col-buff {
+    padding-top: 4%;
+    padding-bottom: 5%;
+    margin-left: 0%;
+}
+
+
+/* Fix Nav Caret Align*/
+.nav-caret{
+    margin-top: 0px;
+}
+
+.home-btn {
+    text-align: center;
+}
+
+/***** GHOST BUTTONS *****/
+
+.ghost-btn {
+    width: 150px;
+    height: 50px;
+    border-radius: 0 !important;
+    font-weight: bold !important;
+    font-size: 1.3em !important;
+    color: #F16521;
+    border: 3px solid #F16521 !important;
+    background: none;
+    margin: 20px 20px 0;
+    padding-top: 9px !important;
+}
+
+.ghost-btn:hover {
+    background: #F16521;
+    color: #FFFFFF !important;
+}
+
+.ghost-btn:focus {
+    outline: 0 !important;
+}
+
+/************** IDs   *************/
+
+#head1       {font-size: xx-large;}   /* Welcome */
+
+#p1          {font-size: medium;}     /* Jumbotron text */
+
+/* Liftoff on: */
+#liftoff {
+             text-align: right;
+             font-size: small;
+             font-family: Consolas, monospace;
+}
+
+#head2       {color: black;}          /* Our services */
+
+#bottom-half {background-color: #e7e6e6;}
+
+#services    {text-align: center;}
+
+/* Gradient color1 - color2 - color1
+ * https://css-tricks.com/examples/hrs/
+ * Used for divider line under Our Services
+ */
+#hr-style-one {
+    border: 0;
+    height: 3px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #f16521, #ccc);
+}
+
+/* Jumbotron styling for main text. Last argument of rgba() represent opacity
+ * Note that rbga does not work in ie8 and lower*/
+#jumbotron1 {
+    background: rgb(242, 248, 255);             /* This is for ie8 and below */
+    background: rgba(242, 248, 255, 0.80);
+    margin-top: 5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+/**************  NAV DROPDOWN FIX  *************/
+.nav-caret {
+    margin-top: 9px;
+}
+
+.nav-dropdown {
+    height: 50px;
+}
+
+/************* @media SMALL SCREENS ********/
+
+/* Shrink stuff for small screens */
+@media (max-width: 767px) {
+
+    /****** CLASSES *****/
+
+    .backgnd        {padding-bottom: 0%;}
+    .center         {text-align: center;}
+
+    /******* IDS *******/
+
+    #head1          {font-size: medium;}
+    #head2          {font-size: large;}
+    #p1             {font-size: small;}
+    #hr-style-one   {height: 2px;}
+    #jumbotron1     {margin-top: 2%;}
+    #liftoff        {font-size: x-small}
+
+
+
+}

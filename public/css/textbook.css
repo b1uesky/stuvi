@@ -1,0 +1,164 @@
+/* STYLING FOR TEXTBOOK PAGE ***/
+
+body {
+    background: #241729;
+}
+
+/******* TEXTBOOK NAVIGATION BAR ******/
+
+.tab-filter-container {
+    width: 100%;
+    background: #F9AA62;
+    height: 40px;
+}
+
+.tab-filters {
+    list-style-type: none;
+    text-align: center;
+    padding-right: 40px;
+}
+
+.filter {
+    display: inline-block;
+    height: 40px;
+    padding-top: 5px;
+}
+
+.filter.active {
+    border-bottom: 5px solid #241729;
+}
+
+.filter-link {
+    font-size: 20px;
+    color: #FFFFFF;
+    margin: 0 40px;
+}
+
+.filter-link:hover,
+.filter-link:focus,
+.filter-link.active {
+    text-decoration: none;
+    color: #241729;
+}
+
+/******* SHOPPING CART ******/
+
+.cart {
+    position: absolute;
+    display: inline-block;
+    margin-top: -3px;
+    right: 30px;
+    padding-top: 0 !important;
+}
+
+.cart-link {
+    color: #FFFFFF;
+}
+
+.cart-link:hover,
+.cart-link:focus {
+    color: #241729;
+}
+
+/******* TEXTBOOK SEARCH AREA ******/
+
+.search {
+    /* Photo by Brittany Stevens https://flic.kr/p/nfwhCe */
+    /* Licensed under creative commons BY 2.0*/
+    /* https://creativecommons.org/licenses/by/2.0/ */
+    background-image: url('../img/books.jpg');
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 60px;
+}
+
+
+#title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+.form-control {
+    height: 3em;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+}
+
+.form-control:focus {
+    border: 2px solid #F16521;
+    box-shadow: none;
+}
+
+
+.search-row {
+    padding: 0;
+    margin-left: 15%;
+}
+
+.search-btn {
+    height: 3em;
+    margin-right: 30px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background: #F16521;
+    border: none;
+}
+
+.search-btn:hover {
+    background: #F16521;
+}
+
+.search-btn:focus {
+    outline: 0 !important;
+    background: #F16521;
+}
+
+.search-icon {
+    font-size: 1.2em;
+    color: #FFFFFF;
+}
+
+@media (max-width: 535px) {
+    .search-btn {
+        margin: 0;
+    }
+    .search-row {
+        margin-left: 11%;
+    }
+}
+
+/******  TEXTBOOK BOTTOM HALF ****/
+
+#textbook-bottom {
+    background-color: #E7E6E6;
+
+}
+
+#hr1 {
+    border-color: rgba(0, 0, 0, .64);
+}
+
+.row{
+    padding: 3%;
+
+}
+
+.row-b{
+    padding-top: 1%;
+    padding-bottom: 2%;
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+@media(max-width: 767px) {
+    #shrink-xs{
+        text-align: center;
+        margin-top: 0%;
+        padding-bottom: 0%;
+        margin: 0%;
+    }
+
+}

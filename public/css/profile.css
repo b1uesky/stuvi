@@ -1,0 +1,36 @@
+/*  CSS FOR profile.blade.php */
+
+
+/* User side bar */
+
+.edit{
+    text-align: center;
+    margin: 2%;
+
+}
+
+
+#books-for-sale {
+
+}
+
+.books{
+    max-width: 700px;
+    max-height: 200px;
+}
+
+#for-sale{
+}
+
+.hr{
+    margin: 1%;
+    margin-left: 0%;
+    border-color: rgba(0, 0, 0, 0.64);
+    border-width: 1px 0px 0px;
+    max-width: 770px;
+}
+
+@media (max-width: 970px) {
+    .home   {max-width: 500px;}
+    .books  {max-width: 500px;}
+}

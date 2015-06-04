@@ -1,0 +1,64 @@
+/*  CSS FOR NAVIGATION BAR  */
+
+
+
+a:focus {
+    outline: 0;
+}
+
+/******* NAVIGATION BAR *******/
+
+#nav {
+    background: #241729;
+    border-radius: 0;
+    border: none;
+}
+
+.logo-container {
+    width: 120px;
+    height: 48px;
+}
+
+.logo-container img {
+    width: 100%;
+    height: auto;
+}
+
+.active-nav {
+    background-color: #435C7F;
+    border-bottom: solid 5px #90B4DF;
+}
+
+/******* NAVIGATION HAMBURGER MENU *******/
+
+.fa-bars {
+    color: #FFFFFF;
+}
+
+.navbar-toggle:hover,
+.navbar-toggle:focus {
+    background: #7AB4DE !important;
+}
+
+/******* NAVIGATION DROPDOWN *******/
+
+.nav-dropdown:focus {
+    background-color: #435C7F !important;
+    border-bottom: solid 5px #90B4DF !important;
+}
+
+.nav-caret {
+    color: #FFFFFF;
+    margin-top: 0px;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus {
+    background-color: #7AB4DE;
+    color: #FFFFFF;
+}
+
+/* Fix for when dropdown is open, the text was getting changed to dark*/
+#account-name {
+    color: #FFFFFF;
+}

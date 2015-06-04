@@ -145,6 +145,25 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+        /*
+         * Payment Service Providers...
+         */
+        'Laravel\Cashier\CashierServiceProvider',
+
+        /*
+         * Administrator Service Providers...
+         */
+        'Frozennode\Administrator\AdministratorServiceProvider',
+
+        /*
+         * Gloudemans Shopping Cart
+         */
+        'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
+
+        /*
+         * Addresses Service Providers
+         */
+        //'Conner\Addresses\AddressesServiceProvider',
 	],
 
 	/*
@@ -192,6 +211,8 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
+        'Cart'      => 'Gloudemans\Shoppingcart\Facades\Cart',
 
 	],
 

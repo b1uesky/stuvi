@@ -1,7 +1,13 @@
 @extends('app')
 
 @section('content')
-<div class="container-fluid">
+
+<head>
+    <link href="{{ asset('/css/login.css') }}" rel="stylesheet">
+    <title>Reset Password</title>
+</head>
+
+<div class="container-fluid reset-container">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
@@ -27,8 +33,8 @@
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
+						<div class="form-group form-space-offset">
+							<label class="col-md-4 control-label reset-label">E-Mail Address</label>
 							<div class="col-md-6">
 								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
 							</div>
@@ -36,7 +42,7 @@
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
+								<button type="submit" class="btn btn-primary login-button reset-button">
 									Send Password Reset Link
 								</button>
 							</div>
