@@ -21,7 +21,7 @@
         <div class="row vertical-center">
             <div class="col-sm-6 col-sm-offset-3">
                 <div class="container" id="form-container">
-                    <ul class="nav nav-tabs nav-justified" role="tablist" id="tabs">
+                    <ul class="nav nav-tabs nav-justified" role="tablist">
                         <li role="presentation" class="{{ $loginActive }}" id="login-tab"><a href="#login-body" aria-controls="login-body" role="tab" data-toggle="tab">Login</a></li>
                         <li role="presentation" class="{{ $signupActive }}" id="signup-tab"><a href="#signup-body" aria-controls="signup-body" role="tab" data-toggle="tab">Sign Up</a></li>
                     </ul>

@@ -38,7 +38,6 @@
                         <a class="btn ghost-btn" href="{{ url('/login') }}" role="button">LOGIN</a>
                         <a class="btn ghost-btn" href="{{ url('/register') }}" role="button">SIGN UP</a>
                     </div>
-                @else
                 @endif
             </div> <!-- end jumbotron1 -->
         </div>    <!-- end container -->
