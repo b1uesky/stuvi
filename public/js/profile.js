@@ -5,10 +5,6 @@
 $(document).ready(function(){
     $('.active').removeClass('active');
     $('#profile-nav').addClass('active');
-});
-
-$(document).ready(function(){
-    $('.active').removeClass('active');
     $('#pro-overview-nav').addClass('active');
 });
 

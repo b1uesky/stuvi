@@ -17,3 +17,20 @@
 .edit-pro{
     max-width: 700px;
 }
+
+.edit{
+    margin: 0px !important;
+    max-height: 0px;
+}
+
+.profile-usermenu{
+    margin-top: 0px !important;
+}
+
+.align{
+    padding-top:6px;
+}
+
+label{
+    text-align:left !important;
+}

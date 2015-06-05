@@ -3,7 +3,7 @@
 @extends('app')
 @section('title', 'Profile')
 
-@section('content')
+@section('content')sssss
     <head>
         <title> Stuvi - {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} - Edit Profile </title>
         <link href="{{ asset('/css/profile-edit.css') }}" rel="stylesheet">
@@ -23,8 +23,17 @@
                                     <h4 class="edit-pro-labels">Personal Information</h4>
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="pro-pic">Profile Image:</label>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6 align">
                                             <input type="file" name="image"/>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sex -->
+                                    <div class="form-group" id="sex">
+                                        <label class="control-label col-sm-3">Sex</label>
+                                        <div class = "col-sm-6 align">
+                                            <input class="control-label" type="radio" name="sex" value="1" checked/> Hard
+                                            <input class="control-label" type="radio" name="sex" value="2"/> Soft
                                         </div>
                                     </div>
 
@@ -35,14 +44,16 @@
                                             <input type="date" class="form-control" name="birth" id="birthday" placeholder="MM/DD/YYYY">
                                         </div>
                                     </div>
-                                    <!-- Sex -->
-                                    <div class="form-group" id="sex">
-                                        <label class="control-label col-sm-3">Sex</label>
-                                        <div class = "col-sm-6">
-                                            <input class="control-label" type="radio" name="sex" value="1" checked/> Hard
-                                            <input class="control-label" type="radio" name="sex" value="2"/> Soft
+
+                                    <!-- title -->
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3" for="birthday">Title:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="title" id="title" placeholder="">
                                         </div>
                                     </div>
+
+
                                     <!-- Bio / About me -->
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="bio">Bio/About me:</label>
@@ -112,6 +123,7 @@
                                             <button type="submit" class="btn btn-default">Save Changes</button>
                                         </div>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
