@@ -31,6 +31,11 @@
     margin-bottom: 30px;
 }
 
+.form-group textarea {
+    max-width: 100%;
+    max-height: 300px;
+}
+
 .form-control {
     background-color: rgba(0, 0, 0, 0.7);
     color: #FFFFFF;
@@ -58,43 +63,72 @@
 
 .contact-button {
     background: #7AB4DE;
-    border-color: #6395BB;
-    border-width: 0 0 3px;
     width: 20%;
     color: #FFFFFF;
+    box-shadow: 0 5px #5B86AA;
 }
 
 .contact-button:focus {
     outline: 0 !important;
 }
 
-.contact-button.active {
-    box-shadow: 0 5px #27496d;
+.contact-button:active {
+    box-shadow: 0 2px #5B86AA;
     transform: translateY(5px);
-    border: none !important;
 }
 
 /****  SOCIAL MEDIA LINKS  ****/
 
-.social-container {
+.right-container {
     text-align: center;
 }
 
-.social-container h4 {
+.right-container h3 {
     color: #FFFFFF;
 }
 
 @media (max-width: 768px) {
-    .social-container {
+    .right-container {
         display: none;
     }
 }
 
-.social-links a img {
-    display: inline-block;
-    width: 80px;
-    height: 80px;
+.contact-info-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    padding: 20px 0;
+}
 
+.contact-info {
+    text-align: left;
+    list-style-type: none;
+}
+
+.contact-info li {
+    margin: 10px 0;
+}
+
+.contact-info li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.contact-info li a i {
+    margin-right: 10px;
+    text-align: center;
+}
+
+.contact-info .fa-map-marker,
+.contact-info .fa-facebook {
+    margin-left: 4px;
+    margin-right: 14px !important;
+}
+
+.contact-info .fa-linkedin,
+.contact-info .fa-github {
+    margin-right: 12px !important;
 }
 
 /****  PHOTO LICENSE  ****/

@@ -1,31 +1,17 @@
 /*  CSS FOR account.blade.php */
 
+.quick-links,
+.account-edit{
+    padding-right: 0%;
+    max-width: 700px;
+}
 
-.edit{
-    text-align: center;
-    margin: 2%;
+@media (max-width: 970px) {
 
 }
 
 
-hr{
-    margin: 1%;
-    margin-left: 0%;
-    border-color: rgba(0, 0, 0, 0.64);
-    border-width: 1px 0px 0px;
-    max-width: 770px;
+
+label{
+    text-align:left !important;
 }
-
-@media (max-width: 900px){
-    hr{
-        max-width: 600px;
-    }
-    .nav,
-     h1  {
-        text-align: center;
-    }
-
-
-}
-
-

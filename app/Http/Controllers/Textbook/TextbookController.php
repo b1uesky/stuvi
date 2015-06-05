@@ -210,6 +210,11 @@ class TextbookController extends Controller {
 
 		$classifier = new SearchClassifier($info);
 
-		return view('textbook.buy');
+		if ($classifier->isIsbn())
+		{
+			$db_book = DB::table('books')->where('isbn', $info)->first();
+
+			return view('textbook.show')->withBook($db_book);
+		}
 	}
 }
