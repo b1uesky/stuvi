@@ -7,6 +7,11 @@ $(document).ready(function(){
     $('#profile-nav').addClass('active');
 });
 
+$(document).ready(function(){
+    $('.active').removeClass('active');
+    $('#pro-overview-nav').addClass('active');
+});
+
 $('.responsive').slick({
     //dots: true,
     arrows:true,

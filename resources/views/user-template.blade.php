@@ -104,12 +104,12 @@
                             <!-- SIDEBAR MENU -->
                             <div class="profile-usermenu">
                                 <ul class="nav">
-                                    <li class="side-overview">
+                                    <li class="side-overview" id="pro-overview-nav">
                                         <a href="#">
                                             <i class="glyphicon glyphicon-home"></i>
                                             Overview </a>
                                     </li>
-                                    <li class="side-settings">
+                                    <li class="side-settings" id="pro-acc-nav">
                                         <a href="{{asset('/user/account')}}">
                                             <i class="glyphicon glyphicon-user"></i>
                                             Account Settings </a>
