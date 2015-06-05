@@ -190,6 +190,7 @@ class TextbookController extends Controller {
 				$book->title = $isbndb_book->getTitle();
 				$book->author = $isbndb_book->getAuthorName();
 				$book->publisher = $isbndb_book->getPublisherName(); // Text or Name?
+				$book->num_pages = $isbndb_book->getNumPages();
 				// TODO: language conversion
 				// $book->language = $isbndb_book->getLanguage();
 
