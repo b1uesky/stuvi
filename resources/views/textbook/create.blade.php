@@ -93,6 +93,4 @@
     </div> <!-- end container -->
 </div> <!-- End fluid container (background) -->
 
-    <div id = "photo-license">Photo by</div>
-
 @endsection

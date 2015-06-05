@@ -34,6 +34,7 @@ b   {color: whitesmoke;}
 #textbook-create{
     /*background-color: rgba(0,0,0,.2);*/
     padding: 5%;
+    padding-top: 1%;
 }
 
 #lang{color: black !important;}
