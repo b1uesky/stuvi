@@ -15,23 +15,24 @@
 /* https://flic.kr/p/iEvVHU */
 /* BACKGROUND */
 .create{
-    background-image: url("../img/lib.jpg");
+/*    background-image: url("../img/lib.jpg");
     background-size: cover;
-    background-position: center;
+    background-position: center;*/
+    background-color: whitesmoke;
 }
 
-/* Enter your textbook information */
+/* Enter your textbook information *//*
 h1  {color: black;}
 
-/* ISBN...Title..etc*/
+*//* ISBN...Title..etc*//*
 b   {color: whitesmoke;}
 
-/* Color some text in .form-group */
-.ws {color: whitesmoke;}
+*//* Color some text in .form-group *//*
+.ws {color: whitesmoke;}*/
 
 /* Box around all the forms*/
 #textbook-create{
-    background-color: rgba(0,0,0,.2);
+    /*background-color: rgba(0,0,0,.2);*/
     padding: 5%;
 }
 
