@@ -232,4 +232,16 @@ class TextbookController extends Controller {
     {
         return view('textbook.buy');
     }
+
+	/**
+     * Search function for the buy page.
+     *
+     * @return Response
+     */
+	public function buySearch()
+	{
+		$info = Input::get('info');
+
+		
+	}
 }
