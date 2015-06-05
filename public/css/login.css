@@ -72,16 +72,14 @@ button:focus {
 
 .form-group .login-button {
     background: #7AB4DE;
-    border-color: #6395BB;
-    border-width: 0 0 3px;
     width: 50%;
     color: #FFFFFF;
+    box-shadow: 0 5px #5B86AA;
 }
 
-.form-group .login-button.active {
-    box-shadow: 0 5px #27496d;
+.form-group .login-button:active {
+    box-shadow: 0 2px #5B86AA;
     transform: translateY(5px);
-    border: none !important;
 }
 
 #forgot-password {
