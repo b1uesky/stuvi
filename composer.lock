@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kingdido999/isbndb.git",
-                "reference": "09848dcf475b1ca86cf6c309f19b4c30f8ac3c48"
+                "reference": "a28b702f7d29fcc34e0e96d1a1acfe8d82c74e69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kingdido999/isbndb/zipball/09848dcf475b1ca86cf6c309f19b4c30f8ac3c48",
-                "reference": "09848dcf475b1ca86cf6c309f19b4c30f8ac3c48",
+                "url": "https://api.github.com/repos/kingdido999/isbndb/zipball/a28b702f7d29fcc34e0e96d1a1acfe8d82c74e69",
+                "reference": "a28b702f7d29fcc34e0e96d1a1acfe8d82c74e69",
                 "shasum": ""
             },
             "require": {
@@ -200,7 +200,7 @@
                 }
             ],
             "description": "ISBNdb API",
-            "time": "2015-06-05 00:26:23"
+            "time": "2015-06-04 19:16:43"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
