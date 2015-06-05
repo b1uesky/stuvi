@@ -15,26 +15,36 @@
 /* https://flic.kr/p/iEvVHU */
 /* BACKGROUND */
 .create{
-/*    background-image: url("../img/lib.jpg");
-    background-size: cover;
-    background-position: center;*/
-    background-color: whitesmoke;
+    /*background-image: url("../img/lib.jpg");*/
+    /*background-size: cover;*/
+    /*background-position: center;*/
+    background-color: #F2F2F2;
 }
 
-/* Enter your textbook information *//*
+/* Enter your textbook information */
 h1  {color: black;}
 
-*//* ISBN...Title..etc*//*
-b   {color: whitesmoke;}
+/***** CREATE FORM *****/
 
-*//* Color some text in .form-group *//*
-.ws {color: whitesmoke;}*/
+/* ISBN...Title..etc*/
+b   {
+    color: #757575;
+}
+
+/* Color some text in .form-group */
+.ws {
+    color: #757575;
+}
 
 /* Box around all the forms*/
 #textbook-create{
-    /*background-color: rgba(0,0,0,.2);*/
-    padding: 5%;
-    padding-top: 1%;
+     padding: 5%;
+ }
+
+.form-control:focus {
+    border: 3px solid #FFFFFF;
+    box-shadow: none !important;
+
 }
 
 #lang{color: black !important;}
