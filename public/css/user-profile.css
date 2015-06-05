@@ -4,6 +4,7 @@ A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themefores
 Licensed under MIT
 ***/
 
+
 body {
     background: #F1F3FA;
 }
@@ -119,6 +120,37 @@ body {
     min-height: 700px;
 }
 
+
+/* Added by Nick */
+
+/* Entire background is whitesmoke */
+
 .pro{
     background-color: #E7E6E6;
+}
+
+.edit{
+    text-align: center;
+    margin: 2%;
+
+}
+
+hr{
+    margin: 1%;
+    margin-left: 0%;
+    border-color: rgba(0, 0, 0, 0.64);
+    border-width: 1px 0px 0px;
+    max-width: 770px;
+}
+
+@media (max-width: 900px){
+    hr{
+        max-width: 600px;
+    }
+    .nav,
+    h1  {
+        text-align: center;
+    }
+
+
 }

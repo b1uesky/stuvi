@@ -96,6 +96,7 @@ Route::get('/group', 'GroupController@index');
 |--------------------------------------------------------------------------
 */
 Route::get('/user/profile', 'UserController@profile');
+Route::get('/user/profile-edit', 'UserController@profileEdit');
 Route::get('/user/account', 'UserController@account');
 
 
