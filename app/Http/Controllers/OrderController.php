@@ -129,12 +129,14 @@ class OrderController extends Controller {
 	public function showBuyerOrder($id)
 	{
 		$buyer_order = BuyerOrder::find((int)$id);
-        var_dump($buyer_order->sellerOrder);
+
         // check if this order belongs to the current user.
-        if ($buyer_order->isBelongTo(Auth::id()))
+        if (!is_null($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
         {
             return view('order.showBuyerOrder')->withBuyerOrder($buyer_order);
         }
+
+        return redirect('order')->with('message', 'order not found.');
 	}
 
 	/**

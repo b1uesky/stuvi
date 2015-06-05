@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 class BuyerOrder extends Model
 {
 
+    protected $table = 'buyer_orders';
+
     public function buyer()
     {
         return $this->belongsTo('App\User', 'buyer_id', 'id');
@@ -20,17 +22,22 @@ class BuyerOrder extends Model
      */
     public function products()
     {
-        $seller_orders = $this->sellerOrders();
+        $seller_orders = $this->seller_orders;
         foreach ($seller_orders as $order)
         {
             $products[] = $order->product;
         }
         return $products;
+
+        //return $this->hasManyThrough('App\Product','App\SellerOrder', 'buyer_order_id', 'product_id');
     }
 
-    public function sellerOrders()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function seller_orders()
     {
-        return $this->hasMany('App\SellerOrder');
+        return $this->hasMany('App\SellerOrder', 'buyer_order_id', 'id');
     }
 
     /**
