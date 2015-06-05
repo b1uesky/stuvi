@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\Textbook;
 /**
  * Created by PhpStorm.
  * User: Tianyou Luo
