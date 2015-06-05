@@ -5,6 +5,7 @@
 $(document).ready(function(){
     $('.active').removeClass('active');
     $('#profile-nav').addClass('active');
+    $('#pro-overview-nav').addClass('active');
 });
 
 $('.responsive').slick({

@@ -95,7 +95,7 @@
                                                 </div>--}}
                             <div class="edit">
                                 <div class="btn-group">
-                                    <a class="btn btn-info btm-sm" href="#">
+                                    <a class="btn btn-info btm-sm" id="edit-but" href="{{url('/user/profile-edit')}}">
                                         Edit Profile
                                     </a>
                                 </div>
@@ -104,12 +104,12 @@
                             <!-- SIDEBAR MENU -->
                             <div class="profile-usermenu">
                                 <ul class="nav">
-                                    <li class="side-overview">
-                                        <a href="#">
+                                    <li class="side-overview" id="pro-overview-nav">
+                                        <a href="{{asset('/user/profile')}}">
                                             <i class="glyphicon glyphicon-home"></i>
                                             Overview </a>
                                     </li>
-                                    <li class="side-settings">
+                                    <li class="side-settings" id="pro-acc-nav">
                                         <a href="{{asset('/user/account')}}">
                                             <i class="glyphicon glyphicon-user"></i>
                                             Account Settings </a>

@@ -1,3 +1,17 @@
 /*  CSS FOR account.blade.php */
 
+.quick-links,
+.account-edit{
+    padding-right: 0%;
+    max-width: 700px;
+}
 
+@media (max-width: 970px) {
+
+}
+
+
+
+label{
+    text-align:left !important;
+}

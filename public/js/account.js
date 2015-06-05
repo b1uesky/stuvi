@@ -5,4 +5,6 @@
 $(document).ready(function(){
     $('.active').removeClass('active');
     $('#account-nav').addClass('active');
+    $('#pro-acc-nav').addClass('active');
 });
+

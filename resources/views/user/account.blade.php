@@ -15,19 +15,19 @@
                 <!-- right side bar-->
                 <div class="col-md-9">
                     <div class="profile-content">
-
+                        <!-- Account Settings -->
                         <h1>Account Settings</h1>
-                        <div class="container col-md-9 quick-links">
+                        <div class="container col-md-11 quick-links">
+                            <!-- Quick Links -->
                             <h3>Quick Links</h3>
                             <hr>
                             <ul>
-                                <li><a href="#">Messages</a></li>
                                 <li><a href="#">Your Courses</a></li>
                                 <li><a href="{{url('/password/email')}}">Forgot your password?</a></li>
                             </ul>
                         </div>
                         <!-- change account info -->
-                        <div class="container col-md-9 account-edit">
+                        <div class="container col-md-11 account-edit">
                             <h3>Edit your information</h3>
                             <hr>
                             <form class="form-horizontal" role="form">
