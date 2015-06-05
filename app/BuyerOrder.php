@@ -61,4 +61,20 @@ class BuyerOrder extends Model
         return ($this->buyer_id == $id);
     }
 
+    /**
+     * Cancel this buyer order and corresponding seller orders.
+     */
+    public function cancel()
+    {
+        // cancel buyer order
+        $this->cancelled = true;
+        $this->save();
+
+        // cancel seller orders
+        foreach ($this->seller_orders as $seller_order)
+        {
+            $seller_order->cancel();
+        }
+    }
+
 }

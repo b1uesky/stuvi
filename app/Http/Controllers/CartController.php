@@ -46,6 +46,10 @@ class CartController extends Controller
             {
                 Session::flash('message', 'Item has been added into Cart.');
             }
+            elseif ($item->sold())
+            {
+                Session::flash('message', 'Product has been sold.');
+            }
             else
             {
                 Cart::add($id, $item->book->title, 1, $item->price, array('item' => $item));

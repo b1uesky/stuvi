@@ -128,7 +128,7 @@ class OrderController extends Controller {
 	 */
 	public function showBuyerOrder($id)
 	{
-		$buyer_order = BuyerOrder::find((int)$id);
+		$buyer_order = BuyerOrder::find($id);
 
         // check if this order belongs to the current user.
         if (!is_null($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
@@ -136,8 +136,22 @@ class OrderController extends Controller {
             return view('order.showBuyerOrder')->withBuyerOrder($buyer_order);
         }
 
-        return redirect('order')->with('message', 'order not found.');
+        return redirect('order')->with('message', 'Order not found.');
 	}
+
+    public function cancelBuyerOrder($id)
+    {
+        $buyer_order = BuyerOrder::find($id);
+
+        // check if this order belongs to the current user.
+        if (!is_null($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
+        {
+            $buyer_order->cancel();
+            return view('order.showBuyerOrder')->withBuyerOrder($buyer_order);
+        }
+
+        return redirect('order')->with('message', 'Order not found.');
+    }
 
 	/**
 	 * Show the form for editing the specified resource.

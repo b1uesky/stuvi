@@ -13,4 +13,12 @@ class SellerOrder extends Model
     {
         return $this->belongsTo('App\Product');
     }
+
+    public function cancel()
+    {
+        $this->cancelled = true;
+        $this->product->sold = false;
+        $this->push();
+    }
+
 }

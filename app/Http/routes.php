@@ -48,6 +48,7 @@ Route::group(['middleware'=>'auth', 'prefix'=>'order'], function()
     Route::get('/create', 'OrderController@createBuyerOrder');
     Route::post('/store', 'OrderController@storeBuyerOrder');
     Route::get('/{id}', 'OrderController@showBuyerOrder');
+    Route::get('/cancel/{id}', 'OrderController@cancelBuyerOrder');
     Route::get('/edit/{id}', 'OrderController@edit');
     Route::post('/update/{id}', 'OrderController@update');
 });
