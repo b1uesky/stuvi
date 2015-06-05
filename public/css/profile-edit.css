@@ -1,0 +1,19 @@
+/* CSS FOR EDITING YOUR PROFILE */
+
+
+#bio{
+    max-width: 500px;
+    max-height: 300px;
+}
+
+.edit-pro-labels{
+
+}
+
+.profile-content{
+    min-height: 900px !important;
+}
+
+.edit-pro{
+    max-width: 700px;
+}

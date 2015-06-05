@@ -95,7 +95,7 @@
                                                 </div>--}}
                             <div class="edit">
                                 <div class="btn-group">
-                                    <a class="btn btn-info btm-sm" href="#">
+                                    <a class="btn btn-info btm-sm" href="{{url('/user/profile-edit')}}">
                                         Edit Profile
                                     </a>
                                 </div>

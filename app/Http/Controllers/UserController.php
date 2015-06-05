@@ -6,6 +6,10 @@ class UserController extends Controller {
         return view('user.profile');
     }
 
+    public function profileEdit(){
+        return view('user.profile-edit');
+    }
+
     public function account(){
         return view('user.account');
     }
