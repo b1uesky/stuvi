@@ -210,11 +210,19 @@ class TextbookController extends Controller {
 
 		$classifier = new SearchClassifier($info);
 
+		// if ISBN, return the specific textbook page
 		if ($classifier->isIsbn())
 		{
-			$db_book = DB::table('books')->where('isbn', $info)->first();
+			$book = DB::table('books')->where('isbn', $info)->first();
 
-			return view('textbook.show')->withBook($db_book);
+			return view('textbook.show')->withBook($book);
+		}
+		else
+		{
+			// TODO: author
+			$books = DB::table('books')->where('title', 'LIKE', "%$info%")->get();
+
+			return view('textbook.list')->withBooks($books);
 		}
 	}
 }
