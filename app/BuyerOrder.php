@@ -41,6 +41,16 @@ class BuyerOrder extends Model
     }
 
     /**
+     * Get buyer payment of this buyer order.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function buyer_payment()
+    {
+        return $this->belongsTo('App\BuyerPayment', 'buyer_payment_id', 'id');
+    }
+
+    /**
      * Check whether this buyer order is belong to a given user.
      *
      * @param $id  A user id

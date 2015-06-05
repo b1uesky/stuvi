@@ -11,12 +11,13 @@
         <p>{{ $buyer_order->created_at }}</p>
         <?php $shipping_address = $buyer_order->shipping_address ?>
         <p>To {{ $shipping_address->addressee }} @ {{ $shipping_address->address_line1 }}  {{ $shipping_address->city }}, {{ $shipping_address->state_a2 }}  {{ $shipping_address->zip }}</p>
+        <p>Total: ${{ $buyer_order->buyer_payment->stripe_amount/100 }}</p>
 
         <div class="container">
-            <?php $products = $buyer_orders->products ?>
-            @foreach ($products as $product)
-                <div class="row">
 
+            @foreach ($buyer_order->products() as $product)
+                <div class="row">
+                    {{ var_dump($product) }}
                 </div>
             @endforeach
         </div>
