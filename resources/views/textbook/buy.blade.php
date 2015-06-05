@@ -61,10 +61,9 @@
                 <!-- Row 1 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
                      id="shrink-xs">
-                    <h3 id = "h3-1">Save Money</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
-                        tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
-                        Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius.
+                    <h3 id = "h3-1">Buy from your classmates</h3>
+                    <p>
+                        Choose from a wide range of books that are being sold at your campus.
                     </p>
                 </div>
             </div>
@@ -80,10 +79,25 @@
                 <!-- Row 2 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
                      id="shrink-xs">
-                    <h3 id = "h3-2">Same Day Delivery</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
-                        tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
-                        Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>
+                    <h3 id = "h3-2">Same day delivery</h3>
+                    <p>
+                        We will deliver the book directly to you after you make a purchase.
+                    </p>
+                </div>
+            </div>
+            <div class = "row row-b" id="row3">
+                <!-- Row 3 Col 1 -->
+                <!-- xs: stack-->
+                <div class = "container col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id = "shrink-xs">
+                    <img src="http://placehold.it/250x250" alt = "placeholder">
+                </div>
+                <!-- Row 3 Col 2 -->
+                <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
+                     id="shrink-xs">
+                    <h3 id = "h3-3">Save money</h3>
+                    <p>
+                        Find the best prices for textbooks.
+                    </p>
                 </div>
             </div>
         </div> <!-- end container -->
