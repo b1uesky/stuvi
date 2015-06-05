@@ -1,5 +1,7 @@
 @extends('app')
 
+<!-- TODO: Nick do dis -->
+
 @section('content')
     <div class="container" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
