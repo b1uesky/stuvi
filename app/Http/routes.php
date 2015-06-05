@@ -25,34 +25,43 @@ Route::get('/contact', 'HomeController@contact');
 */
 
 // textbook
-Route::group(['middleware'=>'auth', 'prefix'=>'textbook'], function() {
+Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook'], function() {
     Route::get('/', 'TextbookController@index');
-    Route::get('/buy', 'TextbookController@buy');
-    Route::get('/buy/textbook/{book}', 'TextbookController@show');
-    Route::get('/sell', 'TextbookController@sell');
-    Route::get('/sell/create', 'TextbookController@create');
-    Route::post('/sell/search', 'TextbookController@isbnSearch');
-    Route::post('/sell/store', 'TextbookController@store');
+
+    // buy
+    Route::group(['prefix'=>'buy'], function() {
+        Route::get('/', 'TextbookController@showBuyPage');
+        Route::get('/textbook/{book}', 'TextbookController@show');
+        Route::get('/product/{product}', 'ProductController@show');
+        Route::post('/search', 'TextbookController@buySearch');
+    });
+
+    // sell
+    Route::group(['prefix'=>'sell'], function() {
+        Route::get('/', 'TextbookController@sell');
+        Route::get('/create', 'TextbookController@create');
+        Route::get('/product/create/{book}', 'ProductController@create');
+        Route::post('/search', 'TextbookController@isbnSearch');
+        Route::post('/store', 'TextbookController@store');
+        Route::post('/product/store', 'ProductController@store');
+    });
+
 });
 
-// product
-Route::group(['middleware'=>'auth', 'prefix'=>'textbook'], function() {
-    Route::get('/buy/product/{product}', 'ProductController@show');
-    Route::get('/sell/product/create/{book}', 'ProductController@create');
-    Route::post('/sell/product/store', 'ProductController@store');
-});
-
-Route::group(['middleware'=>'auth', 'prefix'=>'order'], function()
+// order
+Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'], function()
 {
     Route::get('/', 'OrderController@index');
     Route::get('/create', 'OrderController@createBuyerOrder');
     Route::post('/store', 'OrderController@storeBuyerOrder');
-    Route::get('/show/{id}', 'OrderController@index');
+    Route::get('/{id}', 'OrderController@showBuyerOrder');
+    Route::get('/cancel/{id}', 'OrderController@cancelBuyerOrder');
     Route::get('/edit/{id}', 'OrderController@edit');
     Route::post('/update/{id}', 'OrderController@update');
 });
 
-Route::group(['middleware'=>'auth', 'prefix'=>'cart'], function()
+// cart
+Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], function()
 {
     Route::get('/', 'CartController@index');
     Route::get('add/{id}', 'CartController@addItem');

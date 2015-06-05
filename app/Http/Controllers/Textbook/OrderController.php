@@ -1,14 +1,13 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\Textbook;
 
-use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\SellerOrder;
 use App\User;
-use Illuminate\Http\Request;
-
+use App\Address;
 use App\Product;
 use App\BuyerOrder;
+use App\SellerOrder;
 use App\BuyerPayment;
 
 use Auth, Input, Cart, Session, DB;
@@ -75,11 +74,23 @@ class OrderController extends Controller {
         $payment->stripe_amount     = Input::get('stripeAmount');
         $payment->save();
 
+        // store the buyer shipping address
+        $address = array(   'addressee'     => Input::get('addressee'),
+            'address_line1' => Input::get('address_line1'),
+            'address_line2' => Input::get('address_line2'),
+            'city'          => Input::get('city'),
+            'state_a2'      => Input::get('state_a2'),
+            'zip'           => Input::get('zip'),
+            'phone_number'  => Input::get('phone_number'));
+        $shipping_address_id = Address::add($address, Auth::id());
+
         // create an buyer payed order
         $order = new BuyerOrder;
         $order->buyer_id            = Auth::id();
         $order->buyer_payment_id    = $payment->id;
+        $order->shipping_address_id = $shipping_address_id;
         $order->save();
+
 
         // create seller order(s) according to the Cart items
         OrderController::createSellerOrders($order->id);
@@ -110,15 +121,37 @@ class OrderController extends Controller {
     }
 
 	/**
-	 * Display the specified resource.
+	 * Display a specific buyer order.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function showBuyerOrder($id)
 	{
-		//
+		$buyer_order = BuyerOrder::find($id);
+
+        // check if this order belongs to the current user.
+        if (!is_null($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
+        {
+            return view('order.showBuyerOrder')->withBuyerOrder($buyer_order);
+        }
+
+        return redirect('order')->with('message', 'Order not found.');
 	}
+
+    public function cancelBuyerOrder($id)
+    {
+        $buyer_order = BuyerOrder::find($id);
+
+        // check if this order belongs to the current user.
+        if (!is_null($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
+        {
+            $buyer_order->cancel();
+            return view('order.showBuyerOrder')->withBuyerOrder($buyer_order);
+        }
+
+        return redirect('order')->with('message', 'Order not found.');
+    }
 
 	/**
 	 * Show the form for editing the specified resource.

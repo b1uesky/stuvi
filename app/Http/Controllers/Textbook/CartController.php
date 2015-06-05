@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\Textbook;
 /**
  * Created by PhpStorm.
  * User: Tianyou Luo
@@ -45,6 +45,10 @@ class CartController extends Controller
             if ( Cart::search(array('id' => (string)$item->id)))
             {
                 Session::flash('message', 'Item has been added into Cart.');
+            }
+            elseif ($item->sold())
+            {
+                Session::flash('message', 'Product has been sold.');
             }
             else
             {

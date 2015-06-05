@@ -1,13 +1,20 @@
 @extends('textbook')
 
 @section('content')
-    <p>Book with isbn {{ $book->isbn }} found in our db.</p>
-    <div>
-        <p>Title:  {{ $book->title }}</p></br>
-        <p>edition {{ $book->edition }}th</p></br>
-        <p>Author: {{ $book->author }}</p></br>
-        <p>isbn:   {{ $book->isbn }}</p></br>
+    <div class="container">
+        <div class="row">
+            <div>
+                <p>ISBN:  {{ $book->isbn }}</p>
+                <p>Title:  {{ $book->title }}</p>
+                <p>edition {{ $book->edition }}th</p>
+                <p>Author: {{ $book->author }}</p>
+            </div>
+
+            <a href="{{ url('textbook/sell/product/create/'.$book->id) }}">
+                Sell Book
+            </a>
+        </div>
+
+
     </div>
-    <a href="{{ url('textbook/sell/product/create/'.$book->id) }}">Yes, it's the one I have.</a><br>
-    <a href="{{ url('textbook/sell/create') }}">No, it's no the one I have.</a>
 @endsection
