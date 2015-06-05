@@ -9,6 +9,7 @@
 
 @section('content')
 
+
 <!-- top container..determines background -->
 <div class = "container-fluid create">
     <!-- center the forms -->
@@ -76,7 +77,7 @@
                 <!-- TODO: a complete list of languages and their ids -->
                 <div class="form-group">
                     <label><b>Language</b></label>
-                    <select name="language" id="textbook-create lang">
+                    <select class="selectpicker" name="language" id="textbook-create lang">
                         <option value="1" class="lang-select">English</option>
                         <option value="2" class="lang-select">Spanish</option>
                         <option value="3" class="lang-select">Chinese</option>
@@ -93,6 +94,6 @@
     </div> <!-- end container -->
 </div> <!-- End fluid container (background) -->
 
-    <div id = "photo-license">Photo by</div>
+    {{--<div id = "photo-license">Photo by</div>--}}
 
 @endsection

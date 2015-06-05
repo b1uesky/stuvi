@@ -64,11 +64,11 @@ button:focus {
     margin-top: 25px;
 }
 
-.scrollable-dropdown {
-    height: auto;
-    max-height: 200px;
-    overflow-x: hidden;
-}
+/*.scrollable-dropdown {*/
+    /*height: auto;*/
+    /*max-height: 200px;*/
+    /*overflow-x: hidden;*/
+/*}*/
 
 .form-group .login-button {
     background: #7AB4DE;

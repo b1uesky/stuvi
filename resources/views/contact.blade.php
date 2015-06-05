@@ -38,7 +38,6 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        {{--<label>Message</label>--}}
                         <textarea class="form-control" rows="5" placeholder="Message"></textarea>
                     </div>
                     <div class="form-group">
