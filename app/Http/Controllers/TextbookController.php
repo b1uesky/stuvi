@@ -14,6 +14,7 @@ use App\BookLanguage;
 use Auth;
 use Input;
 use App\Helpers\FileUploader;
+use App\Helpers\SearchClassifier;
 use ISBNdb\Book as IsbndbBook;
 
 
@@ -232,4 +233,18 @@ class TextbookController extends Controller {
     {
         return view('textbook.buy');
     }
+
+	/**
+     * Search function for the buy page.
+     *
+     * @return Response
+     */
+	public function buySearch()
+	{
+		$info = Input::get('info');
+
+		$classifier = new SearchClassifier($info);
+
+		return view('textbook.buy');
+	}
 }
