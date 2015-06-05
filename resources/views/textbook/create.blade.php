@@ -22,7 +22,7 @@
                 </div>
 
             @endif
-            <h1>Enter your textbook information</h1>
+            <h1 id="create-title">Enter your textbook information</h1>
             <!-- form begin -->
             <form action="/textbook/sell/store" method="post" id="textbook-create" class="form" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -88,7 +88,7 @@
                     <label >Cover Image</label>
                     <input type="file" name="image"/>
                 </div>
-                <input type="submit" name="submit" class="btn btn-primary" value="Submit"/>
+                <input type="submit" name="submit" class="btn btn-primary" id="create-btn" value="Submit"/>
             </form>
         </div> <!-- End row -->
     </div> <!-- end container -->

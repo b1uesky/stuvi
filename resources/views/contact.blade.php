@@ -50,7 +50,7 @@
                 <h3>Contact Details</h3>
                 <div class="contact-info-container">
                     <ul class="contact-info">
-                        <li><a href="#"><i class="fa fa-map-marker fa-lg"></i> Boston, MA</a></li>
+                        <li><a href="http://bit.ly/1AStBAY" target="_blank"><i class="fa fa-map-marker fa-lg"></i> Boston, MA</a></li>
                         <li><a href="mailto:contact@stuvi.com"><i class="fa fa-envelope-o fa-lg"></i> contact@stuvi.com</a></li>
                         <li><a href="#"><i class="fa fa-facebook fa-lg"></i> Facebook</a></li>
                         <li><a href="#"><i class="fa fa-twitter fa-lg"></i> Twitter</a></li>
