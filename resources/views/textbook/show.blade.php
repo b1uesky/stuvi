@@ -16,6 +16,9 @@
             <div class="">
                 Author: {{ $book->author }}
             </div>
+            <div class="">
+                Number of Pages: {{ $book->num_pages }}
+            </div>
         </div>
     </div>
 
