@@ -51,24 +51,18 @@ class DatabaseSeeder extends Seeder {
         $book0 = Book::create([  'title'     => 'Advanced Algorithm 0',
                                 'author'    => 'Snyder Wayne',
                                 'isbn'      => '1010101010',
-                                'publisher' => 'Boston University',
-                                'manufacturer'  => 'Boston University',
                                 'num_pages' => 1122
         ]);
 
         $book1 = Book::create([  'title'     => 'Advanced Algorithm 1',
                                 'author'    => 'Snyder Wayne',
                                 'isbn'      => '1010101011',
-                                'publisher' => 'Boston University',
-                                'manufacturer'  => 'Boston University',
                                 'num_pages' => 1122
         ]);
 
         $book2 = Book::create([  'title'     => 'Advanced Algorithm 2',
                                 'author'    => 'Snyder Wayne',
                                 'isbn'      => '10101010102',
-                                'publisher' => 'Boston University',
-                                'manufacturer'  => 'Boston University',
                                 'num_pages' => 1122
         ]);
 
