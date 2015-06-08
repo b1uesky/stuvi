@@ -139,6 +139,13 @@ class OrderController extends Controller {
         return redirect('order')->with('message', 'Order not found.');
 	}
 
+    /**
+     * Cancel a specific buyer order and corresponding seller orders.
+     *
+     * @param $id  The buyer order id.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function cancelBuyerOrder($id)
     {
         $buyer_order = BuyerOrder::find($id);
@@ -153,37 +160,32 @@ class OrderController extends Controller {
         return redirect('order')->with('message', 'Order not found.');
     }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
+    public function sellerOrderIndex()
+    {
+        return view('order.sellerOrderIndex')->withOrders(User::find(Auth::id())->sellerOrders);
+    }
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+    /**
+     * Display a specific seller order.
+     *
+     * @param $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function showSellerOrder($id)
+    {
+        $seller_order = SellerOrder::find($id);
+
+        // check if this order belongs to the current user.
+        if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
+        {
+            return view('order.showSellerOrder')->withSellerOrder($seller_order);
+        }
+
+        return redirect('order/sellOrders')->with('message', 'Order not found');
+
+
+    }
 
 }
