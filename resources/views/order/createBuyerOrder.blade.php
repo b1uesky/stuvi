@@ -11,8 +11,14 @@
             <div class="flash-message">{{ Session::get('message') }}</div>
         @endif
     </div>
-    <div class="container">
+    <div class="row back-row">
         <a id="back-to-cart" href="{{ url('/cart') }}"><i class="fa fa-arrow-circle-left"></i>Back to Cart</a>
+    </div>
+    <div class="container col-xs-12 col-xs-offset-2 col-sm-8 col-sm-offset-2 cart-progress">
+
+        <img class="img-responsive cart-line col-sm-offset-3" src="{{asset('/img/CHECKOUT.png')}}" alt="Your cart progress">
+    </div>
+    <div class="container">
         <h1 id="checkout-title">Checkout Books</h1>
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
@@ -32,12 +38,34 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="stripeAmount" value="{{ $total*100 }}">
                         <h1>1. Confirm order items:</h1></br>
-                        @foreach ($items as $item)
-                            Book title: {{ $item->name }} </br>
-                            Isbn:  {{ $item->options['item']->book->isbn }} </br>
-                            Price: ${{ $item->price }} </br>
-                            ----------------------------------------------------------------------------------------</br>
-                        @endforeach
+                        {{--@foreach ($items as $item)--}}
+                            {{--Book title: {{ $item->name }} </br>--}}
+                            {{--Isbn:  {{ $item->options['item']->book->isbn }} </br>--}}
+                            {{--Price: ${{ $item->price }} </br>--}}
+                            {{------------------------------------------------------------------------------------------</br>--}}
+                        {{--@endforeach--}}
+
+                        <table class="table table-striped table-responsive cart-table">
+                            <tr>
+                                <th>Book Title</th>
+                                <th>ISBN</th>
+                                <th>Price</th>
+                            </tr>
+
+                            @forelse ($items as $item)
+                                <tr>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->options['item']->book->isbn }}</td>
+                                    <td>${{ $item->price }}</td>
+                                    @if ($item->options['item']->sold())
+                                        <p>Warning: This product has been sold.</p>
+                                    @endif
+                                </tr>
+                            @empty
+                                <p>You don't have any products in shopping cart.</p>
+                            @endforelse
+
+                        </table>
 
                         <h1>2. Shipping address:</h1></br>
                         <div class="form-group">
