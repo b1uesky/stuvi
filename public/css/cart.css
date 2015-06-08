@@ -1,0 +1,23 @@
+/* CSS for /cart/index.blade.php */
+
+/* Cart progress bar */
+.cart-progress{
+    /*background-image: url('../img/CART.png');*/
+
+}
+.cart-line{
+    max-width: 50% !important;
+}
+@media(max-width: 767px){
+    .cart-line{
+        max-width: 70% !important;
+    }
+}
+
+
+.shopping-cart{
+    min-height: 500px;
+}
+
+.total-checkout{
+}

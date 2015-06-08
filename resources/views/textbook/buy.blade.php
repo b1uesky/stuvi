@@ -3,7 +3,7 @@
 
 @section('content')
     <head>
-        <link href="{{ asset('/css/textbook.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/textbook.css') }}" rel="stylesheet" type="text/css">
         <title> Stuvi - Buy Used Textbook</title>
     </head>
 
