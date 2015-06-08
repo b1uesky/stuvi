@@ -16,7 +16,6 @@
         <a id="back-to-cart" href="{{ url('/cart') }}"><i class="fa fa-arrow-circle-left"></i>Back to Cart</a>
     </div>
     <div class="container col-xs-12 col-xs-offset-2 col-sm-8 col-sm-offset-2 cart-progress">
-
         <img class="img-responsive cart-line col-sm-offset-3" src="{{asset('/img/CHECKOUT.png')}}" alt="Your cart progress">
     </div>
     <div class="container">
@@ -122,7 +121,7 @@
 
                         <h2>3. Payment <small>Secure Payment via Stripe</small></h2></br>
                         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                data-key="pk_test_GWm6W90Pr0nrjbzWjPjZa8Ou"
+                                data-key="pk_test_1buT5EQ82ha2RhVa4nfXqifR"
                                 data-amount={{ $total*100 }}
                                 data-name="Demo Site"
                         data-description="2 widgets (${{ $total }})"
