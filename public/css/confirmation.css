@@ -1,0 +1,14 @@
+/******* ORDER CONFIRMATION PAGE *******/
+
+body {
+    background-color: #F2F2F2;
+}
+
+.cart-line{
+    max-width: 50% !important;
+}
+@media(max-width: 767px){
+    .cart-line{
+        max-width: 70% !important;
+    }
+}
