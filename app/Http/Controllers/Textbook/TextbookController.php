@@ -67,7 +67,7 @@ class TextbookController extends Controller {
         }
 
         $image_set = new BookImageSet();
-        $image_set->large_image = $file_uploader->path;
+        $image_set->large_image = $file_uploader->getPath();
         $image_set->save();
 
         // TODO: upload book information for verification
