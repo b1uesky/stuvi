@@ -1,5 +1,11 @@
 /* CSS for /cart/index.blade.php */
 
+#message {font-style: italic;}
+
+#message-cont {
+    background-color: #F9AA62;
+    padding: 2%;
+}
 
 body {
     background-color: #F2F2F2 !important;
@@ -64,4 +70,9 @@ body {
 
     color: #FFFFFF;
     box-shadow: 0 5px #5B86AA;
+}
+
+
+.btn-close > a :focus{
+    color: #0044cc;
 }

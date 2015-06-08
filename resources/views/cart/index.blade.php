@@ -9,14 +9,14 @@
         <link rel="stylesheet" type="text/css" href="{{asset('/css/cart.css')}}">
     </head>
 
-    <div class="container" xmlns="http://www.w3.org/1999/html">
-        @if (Session::has('message'))
-            <div class="flash-message">{{ Session::get('message') }}</div>
-        @endif
+    @if (Session::has('message'))
+    <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
+        <div class="flash-message" id="message"><i class="fa fa-exclamation-triangle"></i> {{ Session::get('message') }}</div>
     </div>
+    @endif
 
     <div class="row back-row">
-        <a id="back-to-cart" href="{{ url('/textbooks') }}"><i class="fa fa-arrow-circle-left"></i>Back to Shopping</a>
+        <a id="back-to-cart" href="javascript:history.back()" ><i class="fa fa-arrow-circle-left"></i>Back to Shopping</a>
     </div>
     <div class="container col-xs-12 col-xs-offset-2 col-sm-8 col-sm-offset-2 cart-progress">
         <img class="img-responsive cart-line col-sm-offset-3" src="{{asset('/img/CART.png')}}" alt="Your cart progress">
@@ -24,7 +24,7 @@
 
     <!-- all of shopping cart info -->
     <div class="container shopping-cart">
-        <h1>Shopping Cart:
+        <h1>Shopping Cart
             @if ($items->count() < 1)
                 <a href="{{ url('/cart/empty') }}">Your cart is empty</a>
             @endif
@@ -55,7 +55,9 @@
                     @if ($item->options['item']->sold())
                         <p>Warning: This product has been sold.</p>
                     @endif
-                    <td><a href="{{ url('/cart/rmv/'.$item->rowid) }}">Remove from Cart</a></td>
+                    <!-- remove -->
+                    <td><a href="{{ url('/cart/rmv/'.$item->rowid) }}"><i class="fa fa-times btn-close"></i>
+                        </a></td>
                 </tr>
             @empty
                 <p>You don't have any product in shopping cart.</p>
@@ -74,13 +76,14 @@
                             </div>
                         </form>
                     </td>
-                    <!-- buffer -->
-                    <td></td>
+
                     <!-- update cart -->
                     <td><a class="btn btn-default" href="#" role="button">Update Cart</a></td>
                     <!-- checkout -->
-                    <td><a class="btn btn-checkout" href="{{ url('/order/create') }}" role="button">
+                    <td ><a class="btn btn-checkout" href="{{ url('/order/create') }}" role="button">
                             Proceed to Checkout</a></td>
+                    <!-- buffer -->
+                    <td></td>
                 </tr>
             </tfoot>
             @endif

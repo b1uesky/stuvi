@@ -6,11 +6,12 @@
         <title>Stuvi - Checkout</title>
     </head>
 
-    <div class="container" xmlns="http://www.w3.org/1999/html">
-        @if (Session::has('message'))
-            <div class="flash-message">{{ Session::get('message') }}</div>
-        @endif
-    </div>
+    @if (Session::has('message'))
+        <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
+            <div class="flash-message" id="message"><i class="fa fa-exclamation-triangle"></i> {{ Session::get('message') }}</div>
+        </div>
+    @endif
+
     <div class="row back-row">
         <a id="back-to-cart" href="{{ url('/cart') }}"><i class="fa fa-arrow-circle-left"></i>Back to Cart</a>
     </div>

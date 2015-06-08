@@ -1,5 +1,13 @@
 /******* CHECKOUT PAGE *******/
 
+#message {font-style: italic;}
+
+#message-cont {
+    background-color: #F9AA62;
+    padding: 2%;
+}
+
+
 body {
     background-color: #F2F2F2;
 }
