@@ -118,6 +118,16 @@ body {
     padding-bottom: 1%;
 }
 
+
+/* BOTTOM HALF FEATURES NEW */
+
+.features{
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 /**************  NAV DROPDOWN FIX  *************/
 .nav-caret {
     margin-top: 9px;

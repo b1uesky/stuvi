@@ -42,7 +42,7 @@
             </div> <!-- end jumbotron1 -->
         </div>    <!-- end container -->
     </div>    <!-- end contain-top backgnd -->
-    <!-- End Top Half
+   <!-- End Top Half
          Begin Bottom Half-->
 
     <div class = "container-fluid" id = "bottom-half">   <!-- Bottom Half -->
@@ -83,6 +83,18 @@
             </div>   <!-- end container for table -->
         </div>    <!-- end container for hr and table -->
     </div>   <!-- end container bottom-half -->
+
+
+{{--    <!-- new bottom half -->
+    <div class="container-fluid" id="bottom-half">
+        <div class="container features">
+            dsfasdfsdafasdf
+        </div>
+
+
+
+
+    </div>--}}
 
 
 
