@@ -121,7 +121,7 @@
 
                         <h2>3. Payment <small>Secure Payment via Stripe</small></h2></br>
                         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                data-key="pk_test_GWm6W90Pr0nrjbzWjPjZa8Ou"
+                                data-key="pk_test_1buT5EQ82ha2RhVa4nfXqifR"
                                 data-amount={{ $total*100 }}
                                 data-name="Demo Site"
                         data-description="2 widgets (${{ $total }})"
