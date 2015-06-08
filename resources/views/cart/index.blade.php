@@ -6,7 +6,7 @@
 
 <head>
     <title> Stuvi - Your Cart</title>
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/cart.css')}}"
+    <link rel="stylesheet" type="text/css" href="{{asset('/css/cart.css')}}">
 </head>
 
 @section('content')
