@@ -1,0 +1,33 @@
+/******* CHECKOUT PAGE *******/
+
+body {
+    background-color: #F2F2F2;
+}
+
+#back-to-cart {
+    text-align: left;
+}
+
+.fa-arrow-circle-left {
+    padding-right: 5px;
+}
+
+#checkout-title {
+    text-align: center;
+}
+
+/**** CONFIRM ORDER ****/
+
+.form-control:focus {
+    border: 3px solid #7AB4DE;
+    box-shadow: none !important;
+}
+
+/**** SHIPPING ADDRESS ****/
+
+
+/**** PAYMENT ****/
+
+.stripe-button-el {
+    margin-bottom: 50px;
+}
