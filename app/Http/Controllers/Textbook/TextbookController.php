@@ -67,7 +67,7 @@ class TextbookController extends Controller {
         }
 
         $image_set = new BookImageSet();
-        $image_set->large_image = $file_uploader->path;
+        $image_set->large_image = $file_uploader->getPath();
         $image_set->save();
 
         // TODO: upload book information for verification
@@ -76,9 +76,6 @@ class TextbookController extends Controller {
         $book->title            = Input::get('title');
         $book->author           = Input::get('author');
         $book->edition          = Input::get('edition');
-        $book->publisher        = Input::get('publisher');
-        $book->publication_date = Input::get('publication_date');
-        $book->manufacturer     = Input::get('manufacturer');
         $book->num_pages        = Input::get('num_pages');
         $book->binding_id       = Input::get('binding');
         $book->image_set_id     = $image_set->id;
@@ -89,7 +86,7 @@ class TextbookController extends Controller {
 
         $book->save();
 
-        return view('textbook.createProduct', [
+        return view('product.create', [
 			'book' 	=> $book,
 			'image' => $image_set
 			]);
@@ -155,7 +152,6 @@ class TextbookController extends Controller {
 				$book->isbn = $isbndb_book->getIsbn13();
 				$book->title = $isbndb_book->getTitle();
 				$book->author = $isbndb_book->getAuthorName();
-				$book->publisher = $isbndb_book->getPublisherName(); // Text or Name?
 				$book->num_pages = $isbndb_book->getNumPages();
 				// TODO: language conversion
 				// $book->language = $isbndb_book->getLanguage();
@@ -210,11 +206,19 @@ class TextbookController extends Controller {
 
 		$classifier = new SearchClassifier($info);
 
+		// if ISBN, return the specific textbook page
 		if ($classifier->isIsbn())
 		{
-			$db_book = DB::table('books')->where('isbn', $info)->first();
+			$book = DB::table('books')->where('isbn', $info)->first();
 
-			return view('textbook.show')->withBook($db_book);
+			return view('textbook.show')->withBook($book);
+		}
+		else
+		{
+			// TODO: author
+			$books = DB::table('books')->where('title', 'LIKE', "%$info%")->get();
+
+			return view('textbook.list')->withBooks($books);
 		}
 	}
 }
