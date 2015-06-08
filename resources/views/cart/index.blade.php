@@ -50,15 +50,16 @@
                     <td>{{ $item->options['item']->book->isbn }}</td>
                     <!-- price -->
                     <td>${{ $item->price }}</td>
-
-                    <!-- how will this style?? -->
-                    @if ($item->options['item']->sold())
-                        <p>Warning: This product has been sold.</p>
-                    @endif
                     <!-- remove -->
                     <td><a href="{{ url('/cart/rmv/'.$item->rowid) }}"><i class="fa fa-times btn-close"></i>
                         </a></td>
                 </tr>
+                <!-- how will this style?? -->
+                @if ($item->options['item']->sold())
+                    <tr class="warning" colspan="4">
+                        <td>Warning: This product has been sold.</td>
+                    </tr>
+                @endif
             @empty
                 <p>You don't have any product in shopping cart.</p>
             @endforelse
