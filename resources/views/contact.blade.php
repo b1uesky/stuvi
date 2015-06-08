@@ -61,7 +61,7 @@
             </div>
         </div>
         <!-- boston.jpg licensing -->
-        <p id="license" style="text-align: right;"><small>Background Photo by
+        <p id="license"><small>Background Photo by
                 <a href="https://flic.kr/p/rZ8kmG" target = "_blank"> John Collins </a>
                 under <a href="https://creativecommons.org/licenses/by/2.0/" target = "_blank"> CC-BY-2.0</a>
                 </small>

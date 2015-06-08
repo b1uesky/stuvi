@@ -12,12 +12,8 @@
     padding: 2%;
 }
 
-/* https://flic.kr/p/iEvVHU */
 /* BACKGROUND */
-.create{
-    /*background-image: url("../img/lib.jpg");*/
-    /*background-size: cover;*/
-    /*background-position: center;*/
+.create {
     background-color: #F2F2F2;
 }
 
@@ -45,9 +41,8 @@ b   {
  }
 
 .form-control:focus {
-    border: 3px solid #FFFFFF;
+    border: 3px solid #7AB4DE;
     box-shadow: none !important;
-
 }
 
 #lang{color: black !important;}
