@@ -6,17 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use App\Book;
-use App\BookImageSet;
-use App\BookBinding;
-use App\BookLanguage;
-
 use Auth;
 use Input;
 use App\Helpers\FileUploader;
 use App\Helpers\SearchClassifier;
 use ISBNdb\Book as IsbndbBook;
 
+use App\Book;
+use App\BookImageSet;
+use App\BookBinding;
+use App\BookLanguage;
+use App\Product;
+use App\ProductContion;
 
 class TextbookController extends Controller {
 
@@ -100,8 +101,11 @@ class TextbookController extends Controller {
 	 */
 	public function show($book)
 	{
+		$products = Product::where('book_id', '=', $book->id)->get();
+
 		return view("textbook.show", [
-			'book' => $book
+			'book' 		=> $book,
+			'products'	=> $products
 		]);
 	}
 

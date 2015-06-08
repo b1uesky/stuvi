@@ -21,6 +21,8 @@
             Price: {{ $product->price }}
         </div>
 
+
+
     </div>
 
 </div>
