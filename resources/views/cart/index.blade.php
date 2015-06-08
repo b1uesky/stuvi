@@ -33,12 +33,14 @@
 
         <!-- cart items -->
         <table class="table table-responsive cart-table">
+        <thead>
             <tr class="active">
                 <th>Book Title</th>
                 <th>ISBN</th>
                 <th>Price</th>
                 <th>Remove</th>
             </tr>
+        </thead>
             <!-- add a row for each item -->
             @forelse ($items as $item)
                 <tr>
@@ -61,6 +63,7 @@
 
             <!-- coupon code, update cart, checkout -->
             @if ($items->count() > 0)
+            <tfoot>
                 <tr class="active row-cart-bottom">
                     <!-- apply coupon -->
                     <td><form class="form-inline coupon-form">
@@ -79,6 +82,7 @@
                     <td><a class="btn btn-checkout" href="{{ url('/order/create') }}" role="button">
                             Proceed to Checkout</a></td>
                 </tr>
+            </tfoot>
             @endif
 
         </table>
