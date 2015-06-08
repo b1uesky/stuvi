@@ -1,5 +1,24 @@
 /* CSS for /cart/index.blade.php */
 
+
+body {
+    background-color: #F2F2F2 !important;
+}
+
+.back-row {
+    margin-left: 25px !important;
+    margin-top: 10px !important;
+}
+
+#back-to-cart {
+    text-align: left;
+}
+
+
+.fa-arrow-circle-left {
+    padding-right: 5px;
+}
+
 /* Cart progress bar */
 .cart-progress{
     /*background-image: url('../img/CART.png');*/
@@ -17,7 +36,31 @@
 
 .shopping-cart{
     min-height: 500px;
+
 }
 
-.total-checkout{
+.cart-table{
+    background-color: white;
+    border: solid;
+    border-color: #DDD;
+}
+
+.row-cart-bottom{
+
+}
+
+.subtotal{
+    border-top: hidden;
+    background-color: white;
+}
+
+.coupon-form{
+    margin-bottom: 0%;
+}
+
+.btn-checkout {
+    background: #7AB4DE;
+
+    color: #FFFFFF;
+    box-shadow: 0 5px #5B86AA;
 }
