@@ -3,14 +3,15 @@
 @section('content')
     <head>
         <link href="{{ asset('/css/createBuyerOrder.css') }}" rel="stylesheet">
-        <title>Checkout</title>
+        <title>Stuvi - Checkout</title>
     </head>
 
-    <div class="container" xmlns="http://www.w3.org/1999/html">
-        @if (Session::has('message'))
-            <div class="flash-message">{{ Session::get('message') }}</div>
-        @endif
-    </div>
+    @if (Session::has('message'))
+        <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
+            <div class="flash-message" id="message"><i class="fa fa-exclamation-triangle"></i> {{ Session::get('message') }}</div>
+        </div>
+    @endif
+
     <div class="row back-row">
         <a id="back-to-cart" href="{{ url('/cart') }}"><i class="fa fa-arrow-circle-left"></i>Back to Cart</a>
     </div>
@@ -36,7 +37,7 @@
                     <form action="{{ action('Textbook\OrderController@storeBuyerOrder') }}" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="stripeAmount" value="{{ $total*100 }}">
-                        <h1>1. Confirm order items:</h1></br>
+                        <h2>1. Confirm order items</h2></br>
                         {{--@foreach ($items as $item)--}}
                             {{--Book title: {{ $item->name }} </br>--}}
                             {{--Isbn:  {{ $item->options['item']->book->isbn }} </br>--}}
@@ -66,7 +67,7 @@
 
                         </table>
 
-                        <h1>2. Shipping address:</h1></br>
+                        <h2>2. Shipping address</h2></br>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Full name</label>
                             <div class="col-md-6">
@@ -118,7 +119,7 @@
                         </br>
 
 
-                        <h1>3. Payment:</h1></br>
+                        <h2>3. Payment <small>Secure Payment via Stripe</small></h2></br>
                         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                 data-key="pk_test_GWm6W90Pr0nrjbzWjPjZa8Ou"
                                 data-amount={{ $total*100 }}
