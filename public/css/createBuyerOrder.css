@@ -7,6 +7,7 @@ body {
 .back-row {
     margin-left: 20px;
     margin-top: 10px;
+    max-width: 700px; /* Prevents going out of container*/
 }
 
 #back-to-cart {
