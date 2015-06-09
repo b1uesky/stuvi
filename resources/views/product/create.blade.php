@@ -14,45 +14,47 @@
                 <p>isbn:   {{ $book->isbn }}</p>
             </div>
 
+            <h2>Book Conditions</h2>
+
             <form action="/textbook/sell/product/store" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="book_id" value="{{ $book->id }}"/>
                 <input type="hidden" name="book_title" value="{{ $book->title }}">
 
                 <div class="form-group">
-                    <label>Highlights</label>
+                    <label>{{ $condition['highlights'] }}</label>
                     <input type="number" name="highlights" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Notes</label>
+                    <label>{{ $condition['notes'] }}</label>
                     <input type="number" name="notes" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Number of missing, torn, or loose pages</label>
+                    <label>{{ $condition['num_damaged_pages'] }}</label>
                     <input type="number" name="num_damaged_pages" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Broken book spine</label>
+                    <label>{{ $condition['broken_spine'] }}</label>
                     <input type="number" name="broken_spine" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Broken book binding</label>
+                    <label>{{ $condition['broken_binding'] }}</label>
                     <input type="number" name="broken_binding" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Water damage</label>
+                    <label>{{ $condition['water_damage'] }}</label>
                     <input type="number" name="water_damage" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Stains</label>
+                    <label>{{ $condition['stains'] }}</label>
                     <input type="number" name="stains" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Burns</label>
+                    <label>{{ $condition['burns'] }}</label>
                     <input type="number" name="burns" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Rips</label>
+                    <label>{{ $condition['rips'] }}</label>
                     <input type="number" name="rips" value="0" class="form-control">
                 </div>
                 <div class="form-group">
