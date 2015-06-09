@@ -51,7 +51,7 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->options['item']->book->isbn }}</td>
                                     <td>${{ $item->price }}</td>
-                                    @if ($item->options['item']->sold())
+                                    @if ($item->options['item']->sold)
                                         <p>Warning: This product has been sold.</p>
                                     @endif
                                 </tr>
