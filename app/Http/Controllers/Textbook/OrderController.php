@@ -160,7 +160,6 @@ class OrderController extends Controller {
         return redirect('order/buyer')->with('message', 'Order not found.');
     }
 
-
     /**
      * Display a listing of seller orders for an user.
      *
