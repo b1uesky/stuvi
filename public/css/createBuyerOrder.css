@@ -42,13 +42,20 @@ body {
 
 /**** CONFIRM ORDER ****/
 
+/**** SHIPPING ADDRESS ****/
+
 .form-control:focus {
     border: 3px solid #7AB4DE;
     box-shadow: none !important;
 }
 
-/**** SHIPPING ADDRESS ****/
+.form-group {
+    margin-bottom: 25px;
+}
 
+.form-group label {
+    padding-top: 7px;
+}
 
 /**** PAYMENT ****/
 
