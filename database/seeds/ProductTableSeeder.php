@@ -16,6 +16,7 @@ class ProductTableSeeder extends Seeder {
 
         $book_algorithms = Book::where('title', '=', 'Algorithms')->get()->first();
         $book_mechanics = Book::where('title', '=', 'Principles of solid mechanics')->get()->first();
+        $book_pp = Book::where('title', '=', 'Programming Problems: Advanced Algorithms (Volume 2)')->get()->first();
         $seller = User::where('email', '=', 'seller@stuvi.com')->get()->first();
         $folder = '/img/product/';
 
@@ -56,7 +57,6 @@ class ProductTableSeeder extends Seeder {
             ]);
 
         // Algorithms
-
         $p_alg0 = Product::create([
             'price'             =>  49.99,
             'book_id'           =>  $book_algorithms->id,
@@ -78,8 +78,29 @@ class ProductTableSeeder extends Seeder {
             'condition_id'      =>  $pd2->id
         ]);
 
-        // Principles of solid mechanics
+        // Programming Problems
+        $p_pp0 = Product::create([
+            'price'             =>  49.99,
+            'book_id'           =>  $book_pp->id,
+            'seller_id'         =>  $seller->id,
+            'condition_id'      =>  $pd0->id
+        ]);
 
+        $p_pp1 = Product::create([
+            'price'             =>  39.99,
+            'book_id'           =>  $book_pp->id,
+            'seller_id'         =>  $seller->id,
+            'condition_id'      =>  $pd1->id
+        ]);
+
+        $p_pp2 = Product::create([
+            'price'             =>  29.99,
+            'book_id'           =>  $book_pp->id,
+            'seller_id'         =>  $seller->id,
+            'condition_id'      =>  $pd2->id
+        ]);
+
+        // Principles of solid mechanics
         $p_mech0 = Product::create([
             'price'             =>  129.99,
             'book_id'           =>  $book_mechanics->id,
@@ -117,17 +138,32 @@ class ProductTableSeeder extends Seeder {
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Principles of solid mechanics.png',
+            'image'             =>  $folder . 'Programming-Problems.png',
+            'product_id'        =>  $p_pp0->id
+            ]);
+
+        ProductImage::create([
+            'image'             =>  $folder . 'Programming-Problems.png',
+            'product_id'        =>  $p_pp1->id
+            ]);
+
+        ProductImage::create([
+            'image'             =>  $folder . 'Programming-Problems.png',
+            'product_id'        =>  $p_pp2->id
+            ]);
+
+        ProductImage::create([
+            'image'             =>  $folder . 'Principles-of-solid-mechanics.png',
             'product_id'        =>  $p_mech0->id
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Principles of solid mechanics.png',
+            'image'             =>  $folder . 'Principles-of-solid-mechanics.png',
             'product_id'        =>  $p_mech1->id
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Principles of solid mechanics.png',
+            'image'             =>  $folder . 'Principles-of-solid-mechanics.png',
             'product_id'        =>  $p_mech2->id
             ]);
     }
