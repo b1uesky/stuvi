@@ -138,32 +138,32 @@ class ProductTableSeeder extends Seeder {
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Programming-Problems.png',
+            'image'             =>  $folder . 'Programming-Problems.jpg',
             'product_id'        =>  $p_pp0->id
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Programming-Problems.png',
+            'image'             =>  $folder . 'Programming-Problems.jpg',
             'product_id'        =>  $p_pp1->id
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Programming-Problems.png',
+            'image'             =>  $folder . 'Programming-Problems.jpg',
             'product_id'        =>  $p_pp2->id
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Principles-of-solid-mechanics.png',
+            'image'             =>  $folder . 'Principles-of-solid-mechanics.jpg',
             'product_id'        =>  $p_mech0->id
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Principles-of-solid-mechanics.png',
+            'image'             =>  $folder . 'Principles-of-solid-mechanics.jpg',
             'product_id'        =>  $p_mech1->id
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Principles-of-solid-mechanics.png',
+            'image'             =>  $folder . 'Principles-of-solid-mechanics.jpg',
             'product_id'        =>  $p_mech2->id
             ]);
     }
