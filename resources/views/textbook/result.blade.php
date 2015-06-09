@@ -4,6 +4,10 @@
     <div class="container">
         <div class="row">
             <div>
+                @if($image->large_image)
+                    <img src="{{ $image->large_image }}" alt="" />
+                @endif
+                
                 <p>ISBN:  {{ $book->isbn }}</p>
                 <p>Title:  {{ $book->title }}</p>
                 <p>edition {{ $book->edition }}th</p>

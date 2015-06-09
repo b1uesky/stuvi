@@ -16,8 +16,6 @@ use ISBNdb\Book as IsbndbBook;
 
 use App\Book;
 use App\BookImageSet;
-use App\BookBinding;
-use App\BookLanguage;
 use App\Product;
 use App\ProductContion;
 
@@ -50,44 +48,43 @@ class TextbookController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-        // validations could be done in Validation class
-        if (Input::hasFile('image'))
-        {
-            if (!Input::file('image')->isValid())
-            {
-                return response('Please upload a valid image.');
-            }
-
-            // get the uploaded file
-            $image = Input::file('image');
-			$title = Input::get('title');
-			$folder = '/img/book/';
-			$file_uploader = new FileUploader($image, $title, $folder);
-        }
-        else
-        {
-            return response('Please upload a textbook image.');
-        }
-
-        $image_set = new BookImageSet();
-        $image_set->large_image = $file_uploader->getPath();
-        $image_set->save();
-
-        // TODO: upload book information for verification
+		// create book
         $book = new Book();
         $book->isbn             = Input::get('isbn');
         $book->title            = Input::get('title');
         $book->author           = Input::get('author');
         $book->edition          = Input::get('edition');
         $book->num_pages        = Input::get('num_pages');
-        $book->binding_id       = Input::get('binding');
-        $book->image_set_id     = $image_set->id;
-        $book->language_id      = Input::get('language');
-
-        // save the book image
-		$file_uploader->saveFile();
-
+		$book->binding_id		= Input::get('binding');
+		$book->language_id		= Input::get('language');
         $book->save();
+
+		// create book image set
+		if (Input::hasFile('image'))
+		{
+			if (!Input::file('image')->isValid())
+			{
+				return response('Please upload a valid image.');
+			}
+
+			// get the uploaded file
+			$image = Input::file('image');
+			$title = Input::get('title');
+			$folder = '/img/book/';
+			$file_uploader = new FileUploader($image, $title, $folder);
+		}
+		else
+		{
+			return response('Please upload a textbook image.');
+		}
+
+		$image_set = new BookImageSet();
+		$image_set->book_id = $book->id;
+		$image_set->large_image = $file_uploader->getPath();
+		$image_set->save();
+
+		// save the book image
+		$file_uploader->saveFile();
 
         return view('product.create', [
 			'book' 	=> $book,
@@ -103,11 +100,10 @@ class TextbookController extends Controller {
 	 */
 	public function show($book)
 	{
-		$products = Product::where('book_id', '=', $book->id)->get();
-
 		return view("textbook.show", [
 			'book' 		=> $book,
-			'products'	=> $products
+			'products'	=> $book->products,
+			'image'		=> $book->imageSet
 		]);
 	}
 
@@ -135,17 +131,27 @@ class TextbookController extends Controller {
         $isbn = Input::get('isbn');
 		$isbn_validator = new Isbn();
 
+		// check if the input is a valid ISBN
 		if ($isbn_validator->validation->isbn($isbn) == false)
 		{
 			return redirect('textbook/sell')->with('message', 'Please enter a valid 10 or 13 digits ISBN.');
 		}
 
-        $db_book = DB::table('books')->where('isbn', $isbn)->first();
+		// if the input ISBN is 10 digits, convert it to 13 digits
+		if (strlen($isbn) == 10)
+		{
+			$isbn = $isbn_validator->translate->to13($isbn);
+		}
+
+        $db_book = Book::where('isbn', '=', $isbn)->first();
 
         // if the book is in our db, show the book information and let seller edit it
         if ($db_book)
         {
-            return view('textbook.result')->withBook($db_book);
+            return view('textbook.result', [
+				'book'	=>	$db_book,
+				'image' =>	$db_book->imageSet
+				]);
         }
         else
         {
@@ -201,14 +207,17 @@ class TextbookController extends Controller {
 		// if ISBN, return the specific textbook page
 		if ($classifier->isIsbn())
 		{
-			$book = DB::table('books')->where('isbn', $info)->first();
+			$book = Book::where('isbn', $info)->first();
 
-			return view('textbook.show')->withBook($book);
+			return view('textbook.show', [
+				'book'	=>	$book,
+				'image'	=>	$book->imageSet
+				]);
 		}
 		else
 		{
 			// TODO: author
-			$books = DB::table('books')->where('title', 'LIKE', "%$info%")->get();
+			$books = Book::where('title', 'LIKE', "%$info%")->get();
 
 			return view('textbook.list')->withBooks($books);
 		}
