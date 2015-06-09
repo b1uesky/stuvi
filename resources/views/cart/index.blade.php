@@ -10,7 +10,7 @@
     </head>
 
     @if (Session::has('message'))
-    <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
+    <div class="container {{ Session::get('alert-class') }}" id="message-cont" xmlns="http://www.w3.org/1999/html">
         <div class="flash-message" id="message"><i class="fa fa-exclamation-triangle"></i> {{ Session::get('message') }}</div>
     </div>
     @endif
