@@ -7,7 +7,7 @@
         @endif
     </div>
     <div class="container">
-        <h1>Your orders:</h1>
+        <h1>Your seller orders:</h1>
         @forelse ($orders as $order)
             <div class="row">
             <li>Order #{{ $order->id }}</li>

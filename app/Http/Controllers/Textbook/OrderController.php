@@ -19,7 +19,7 @@ class OrderController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function buyerOrderIndex()
 	{
         //var_dump(User::find(Auth::id())->orders);
 		return view('order.index')->withOrders(User::find(Auth::id())->buyerOrders);
@@ -136,7 +136,7 @@ class OrderController extends Controller {
             return view('order.showBuyerOrder')->withBuyerOrder($buyer_order);
         }
 
-        return redirect('order')->with('message', 'Order not found.');
+        return redirect('order/buyer')->with('message', 'Order not found.');
 	}
 
     /**
@@ -157,10 +157,14 @@ class OrderController extends Controller {
             return view('order.showBuyerOrder')->withBuyerOrder($buyer_order);
         }
 
-        return redirect('order')->with('message', 'Order not found.');
+        return redirect('order/buyer')->with('message', 'Order not found.');
     }
 
-
+    /**
+     * Display a listing of seller orders for an user.
+     *
+     * @return Response
+     */
     public function sellerOrderIndex()
     {
         return view('order.sellerOrderIndex')->withOrders(User::find(Auth::id())->sellerOrders);
@@ -183,9 +187,28 @@ class OrderController extends Controller {
             return view('order.showSellerOrder')->withSellerOrder($seller_order);
         }
 
-        return redirect('order/sellOrders')->with('message', 'Order not found');
+        return redirect('order/seller')->with('message', 'Order not found');
+    }
 
+    /**
+     * Cancel a specific seller order.
+     *
+     * @param $id  The buyer order id.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function cancelSellerOrder($id)
+    {
+        $seller_order = SellerOrder::find($id);
 
+        // check if this order belongs to the current user.
+        if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
+        {
+            $seller_order->cancel();
+            return view('order.showSellerOrder')->withSellerOrder($seller_order);
+        }
+
+        return redirect('order/seller')->with('message', 'Order not found.');
     }
 
 }
