@@ -12,3 +12,7 @@ body {
         max-width: 70% !important;
     }
 }
+
+.confirmation-container {
+    margin-bottom: 200px;
+}

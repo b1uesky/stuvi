@@ -1,10 +1,16 @@
 /* CSS for /cart/index.blade.php */
 
-#message {font-style: italic;}
+
+
+#message {
+    font-style: italic;
+    color: #461919;
+}
 
 #message-cont {
-    background-color: #F9AA62;
-    padding: 2%;
+    background-color: #D9534F;
+    padding: 1%;
+    margin-top: 10px;
 }
 
 body {
