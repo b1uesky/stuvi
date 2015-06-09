@@ -31,19 +31,6 @@ body {
 }
 
 
-/* Bottom half of home page, grid buffer */
-.grid-buff {
-    margin-top : 10px;
-    margin-bottom: 20px;
-}
-
-/* Column buffer for smaller screen compatibility */
-.col-buff {
-    padding-top: 4%;
-    padding-bottom: 5%;
-    margin-left: 0%;
-}
-
 
 /* Fix Nav Caret Align*/
 .nav-caret{
@@ -137,8 +124,13 @@ body {
     text-align: center;
 }
 
-.img-service {
+.img-services {
     margin-bottom:10px;
+}
+
+.h3-services{
+    text-align: center;
+    color: #f17b32;
 }
 
 
