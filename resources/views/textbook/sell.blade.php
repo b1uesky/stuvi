@@ -23,9 +23,10 @@
         </ul>
     </div>
 
+
     {{-- Error message --}}
     @if (Session::has('message'))
-        <div id = "message-cont">
+        <div class="alert-danger" id="message-cont">
             <div class="flash-message" id="message"> <i class="fa fa-exclamation-triangle"></i> {{ Session::get('message') }}</div>
         </div>
     @endif

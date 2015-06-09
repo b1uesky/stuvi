@@ -133,7 +133,7 @@ class TextbookController extends Controller {
 
 		if ($this->validateIsbn($isbn) == false)
 		{
-			return redirect('textbook/sell')->with('message', 'Please enter a valid 10 or 13 digits ISBN.');
+            return redirect('textbook/sell')->with('message', 'Please enter a valid 10 or 13 digit ISBN number.');
 		}
 
         $db_book = DB::table('books')->where('isbn', $isbn)->first();
