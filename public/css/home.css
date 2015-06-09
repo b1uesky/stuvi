@@ -103,7 +103,7 @@ body {
  */
 #hr-style-one {
     border: 0;
-    height: 3px;
+    /*height: 3px;*/
     background: #333;
     background-image: linear-gradient(to right, #ccc, #f16521, #ccc);
 }
@@ -117,6 +117,31 @@ body {
     padding-top: 1%;
     padding-bottom: 1%;
 }
+
+
+
+/* BOTTOM HALF FEATURES NEW */
+
+.features{
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.services{
+    margin-bottom: 10px;
+}
+
+.p-services{
+    text-align: center;
+}
+
+.img-service {
+    margin-bottom:10px;
+}
+
+
 
 /**************  NAV DROPDOWN FIX  *************/
 .nav-caret {
@@ -136,7 +161,6 @@ body {
 
     .backgnd        {padding-bottom: 0%;}
     .center         {text-align: center;}
-
     /******* IDS *******/
 
     #head1          {font-size: medium;}

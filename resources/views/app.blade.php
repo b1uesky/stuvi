@@ -90,9 +90,9 @@
     <!-- Social Media -->
     <div class="footer-right">
         <!-- Uses font-awesome.css -->
-        <a class="social" href="#"><i class="fa fa-facebook"></i></a>
-        <a class="social" href="#"><i class="fa fa-twitter"></i></a>
-        <a class="social" href="#"><i class="fa fa-linkedin"></i></a>
+        <a class="social" href="https://www.facebook.com/StuviBoston" target="_blank"><i class="fa fa-facebook"></i></a>
+        <a class="social" href="https://twitter.com/StuviBoston" target="_blank"><i class="fa fa-twitter"></i></a>
+        <a class="social" href="https://www.linkedin.com/company/stuvi?trk=biz-companies-cym" target="_blank"><i class="fa fa-linkedin"></i></a>
         <a class="social" href="#"><i class="fa fa-github"></i></a>
 
     </div>

@@ -98,7 +98,8 @@ class OrderController extends Controller {
         // remove payed items from Cart
         Cart::destroy();
 
-        return view('order.storeBuyerOrder')->withOrder($order);
+        //return view('order.storeBuyerOrder')->withOrder($order);
+        return redirect('order/confirmation')->withOrder($order);
 	}
 
     protected function createSellerOrders($buyer_order_id)
@@ -168,6 +169,10 @@ class OrderController extends Controller {
     public function sellerOrderIndex()
     {
         return view('order.sellerOrderIndex')->withOrders(User::find(Auth::id())->sellerOrders);
+    }
+
+    public function confirmation(){
+        return view('order/confirmation');
     }
 
     /**

@@ -52,6 +52,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'], function()
 {
     Route::get('/buyer', 'OrderController@buyerOrderIndex');
+    Route::get('/confirmation', 'OrderController@confirmation');
     Route::get('/create', 'OrderController@createBuyerOrder');
     Route::post('/store', 'OrderController@storeBuyerOrder');
     Route::get('/buyer/{id}', 'OrderController@showBuyerOrder');

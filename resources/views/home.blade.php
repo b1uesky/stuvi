@@ -13,7 +13,7 @@
 
 @section('content')
 
-
+<!-- top jumbotron -->
     <div class = "container-fluid container-top backgnd">           <!-- Top half -->
         <div class="container col-md-12">                               <!-- container -->
             <div class = "col-md-2"></div>                                  <!-- Buffer -->
@@ -42,11 +42,11 @@
             </div> <!-- end jumbotron1 -->
         </div>    <!-- end container -->
     </div>    <!-- end contain-top backgnd -->
-    <!-- End Top Half
+   <!-- End Top Half
          Begin Bottom Half-->
-
-    <div class = "container-fluid" id = "bottom-half">   <!-- Bottom Half -->
-        <div class = "container">                           <!-- container -->
+  <!-- new bottom half -->
+    <div class="container-fluid" id="bottom-half">
+        <div class="container col-sm-10 col-sm-offset-1 features">
             <h2 id= "head2"> Our Services </h2>
 
             <!-- Divider Line -->
@@ -55,34 +55,32 @@
                     <hr>
                 </div>
             </div>
-            <!-- end divider -->
-            <!-- Columns stack when xs -->
-            <div class = "container" id = "servicesTable">                         <!-- begin table -->
-                <!-- row 1 -->
-                <div class = "row">
-                    <!-- row 1 column 1 -->
-                    <div class = "col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-1 col-md-4 col-md-offset-1 col-buff" >                                       <!-- r1c1 -->
-                        <img src = "http://placehold.it/350x350" class="img-responsive">
-                    </div>  <!-- end r1c1-->
 
-                    <div class = "col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-1 col-md-4 col-md-offset-2 col-buff">                      <!-- r1c2 -->
-                        <img src = "http://placehold.it/350x350" class="img-responsive">
-                    </div>  <!-- end r1c2 -->
-                </div>  <!-- end row1 -->
+            <div class="row services" id="service1">
+                <img class="img-responsive img-service col-xs-12 col-md-8 col-md-offset-2" src="http://placehold.it/500x200"> <br>
 
-                <!-- row 2 -->
-                <div class = "row">
-                    <div class = "col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-1 col-md-4 col-md-offset-1 col-buff" >                                       <!-- r1c1 -->
-                        <img src = "http://placehold.it/350x350" class="img-responsive">
-                    </div>  <!-- end r2c1-->
+                <p class="p-services col-xs-12 col-md-10 col-md-offset-1"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac metus nisi.
+                Praesent ac magna nunc. Nullam in imperdiet elit. In eu pellentesque tellus.
+                Praesent consequat ultricies tellus, ut scelerisque tortor dictum at.
+                Nullam ornare libero sed est consectetur tincidunt. Nam metus libero, ultrices a tempus in,
+                posuere auctor enim. Proin eu mauris quis lectus semper viverra. Fusce accumsan nulla accumsan
+                interdum convallis. Sed venenatis mauris metus, facilisis faucibus eros vestibulum ac. Phasellus
+                placerat lectus porttitor aliquam commodo.
+                </p> <br>
+            </div>
 
-                    <div class = "col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-1 col-md-4 col-md-offset-2 col-buff">                      <!-- r1c2 -->
-                        <img src = "http://placehold.it/350x350" class="img-responsive">
-                    </div>  <!-- end r2c2 -->
-                </div>  <!-- end row2 -->
-            </div>   <!-- end container for table -->
-        </div>    <!-- end container for hr and table -->
-    </div>   <!-- end container bottom-half -->
+            <div class="row services" id="service2">
+                <img class="img-responsive img-service col-xs-12 col-md-8 col-md-offset-2" src="http://placehold.it/500x200"> <br>
+
+                <p class="p-services col-xs-12 col-md-10 col-md-offset-1">  In at lacus augue. Ut efficitur turpis nec auctor consequat.
+                    Donec lacinia leo ut sapien vehicula pellentesque. Etiam porta vulputate felis a venenatis.
+                    Praesent quis porttitor nisi, ut eleifend orci. Aliquam aliquet tincidunt risus quis porta.
+                    Fusce non auctor ante. Sed ultricies urna sit amet risus convallis, quis congue neque varius.
+                    Nam a mollis neque.
+                </p> <br>
+            </div>
+        </div>
+    </div>
 
 
 
