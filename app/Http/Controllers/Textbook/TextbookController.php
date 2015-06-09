@@ -16,8 +16,6 @@ use ISBNdb\Book as IsbndbBook;
 
 use App\Book;
 use App\BookImageSet;
-use App\BookBinding;
-use App\BookLanguage;
 use App\Product;
 use App\ProductContion;
 
@@ -57,6 +55,8 @@ class TextbookController extends Controller {
         $book->author           = Input::get('author');
         $book->edition          = Input::get('edition');
         $book->num_pages        = Input::get('num_pages');
+		$book->binding_id		= Input::get('binding');
+		$book->language_id		= Input::get('language');
         $book->save();
 
 		// create book image set
@@ -102,7 +102,8 @@ class TextbookController extends Controller {
 	{
 		return view("textbook.show", [
 			'book' 		=> $book,
-			'products'	=> $book->products
+			'products'	=> $book->products,
+			'image'		=> $book->imageSet
 		]);
 	}
 
@@ -142,7 +143,7 @@ class TextbookController extends Controller {
 			$isbn = $isbn_validator->translate->to13($isbn);
 		}
 
-        $db_book = DB::table('books')->where('isbn', '=', $isbn)->first();
+        $db_book = Book::where('isbn', '=', $isbn)->first();
 
         // if the book is in our db, show the book information and let seller edit it
         if ($db_book)
@@ -206,14 +207,17 @@ class TextbookController extends Controller {
 		// if ISBN, return the specific textbook page
 		if ($classifier->isIsbn())
 		{
-			$book = DB::table('books')->where('isbn', $info)->first();
+			$book = Book::where('isbn', $info)->first();
 
-			return view('textbook.show')->withBook($book);
+			return view('textbook.show', [
+				'book'	=>	$book,
+				'image'	=>	$book->imageSet
+				]);
 		}
 		else
 		{
 			// TODO: author
-			$books = DB::table('books')->where('title', 'LIKE', "%$info%")->get();
+			$books = Book::where('title', 'LIKE', "%$info%")->get();
 
 			return view('textbook.list')->withBooks($books);
 		}

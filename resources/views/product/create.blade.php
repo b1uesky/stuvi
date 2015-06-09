@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div>
-                @if(!empty($image))
+                @if($image->large_image)
                     <img src="{{ $image->large_image }}" alt="" />
                 @endif
 

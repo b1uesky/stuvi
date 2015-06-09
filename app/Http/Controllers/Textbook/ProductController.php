@@ -36,7 +36,10 @@ class ProductController extends Controller {
 	 */
 	public function create($book)
 	{
-        return view('product.create')->withBook($book);
+        return view('product.create', [
+			'book'	=> $book,
+			'image'	=> $book->imageSet
+			]);
 	}
 
 	/**

@@ -16,27 +16,33 @@ public function run()
     $folder = '/img/book/';
 
     $mech = Book::create([
-        'title'     => 'Principles of solid mechanics',
-        'author'    => 'Richards, Rowland',
-        'edition'   => 1,
-        'isbn'      => '9780849303159',
-        'num_pages' => 446
+        'title'         => 'Principles of solid mechanics',
+        'author'        => 'Richards, Rowland',
+        'edition'       => 1,
+        'isbn'          => '9780849303159',
+        'num_pages'     => 446,
+        'binding_id'    => 1,
+        'language_id'   => 1
     ]);
 
     $alg = Book::create([
-        'title'     => 'Algorithms',
-        'author'    => 'Robert Sedgewick, Kevin Wayne',
-        'edition'   => 4,
-        'isbn'      => '9780321573513',
-        'num_pages' => 992
+        'title'         => 'Algorithms',
+        'author'        => 'Robert Sedgewick, Kevin Wayne',
+        'edition'       => 4,
+        'isbn'          => '9780321573513',
+        'num_pages'     => 992,
+        'binding_id'    => 2,
+        'language_id'   => 1
     ]);
 
     $pp = Book::create([
-        'title'     => 'Programming Problems: Advanced Algorithms (Volume 2)',
-        'author'    => 'Bradley Green',
-        'edition'   => 1,
-        'isbn'      => '9781484964095',
-        'num_pages' => 200
+        'title'         => 'Programming Problems: Advanced Algorithms (Volume 2)',
+        'author'        => 'Bradley Green',
+        'edition'       => 1,
+        'isbn'          => '9781484964095',
+        'num_pages'     => 200,
+        'binding_id'    => 2,
+        'language_id'   => 1
     ]);
 
     BookImageSet::create([
