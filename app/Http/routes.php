@@ -51,13 +51,15 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 // order
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'], function()
 {
-    Route::get('/', 'OrderController@index');
+    Route::get('/buyer', 'OrderController@buyerOrderIndex');
     Route::get('/create', 'OrderController@createBuyerOrder');
     Route::post('/store', 'OrderController@storeBuyerOrder');
-    Route::get('/{id}', 'OrderController@showBuyerOrder');
-    Route::get('/cancel/{id}', 'OrderController@cancelBuyerOrder');
-    Route::get('/edit/{id}', 'OrderController@edit');
-    Route::post('/update/{id}', 'OrderController@update');
+    Route::get('/buyer/{id}', 'OrderController@showBuyerOrder');
+    Route::get('/buyer/cancel/{id}', 'OrderController@cancelBuyerOrder');
+
+    Route::get('/seller', 'OrderController@sellerOrderIndex');
+    Route::get('/seller/cancel/{id}', 'OrderController@cancelSellerOrder');
+    Route::get('/seller/{id}', 'OrderController@showSellerOrder');
 });
 
 // cart

@@ -12,7 +12,7 @@
             Book title: {{ $item->name }} </br>
                  isbn:  {{ $item->options['item']->book->isbn }} </br>
                  price: {{ $item->price }} </br>
-            @if ($item->options['item']->sold())
+            @if ($item->options['item']->sold)
                 <p>Warning: This product has been sold.</p>
             @endif
             <a href="{{ url('/cart/rmv/'.$item->rowid) }}">Remove from Cart</a></br>

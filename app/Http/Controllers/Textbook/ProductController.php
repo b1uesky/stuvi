@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 use Input;
+use Config;
 
 use App\Product;
 use App\ProductCondition;
@@ -92,15 +93,13 @@ class ProductController extends Controller {
 	 */
 	public function show($product)
 	{
-		$book = Book::find($product->book_id);
-		$seller = User::find($product->seller_id);
-		$images = ProductImage::where('product_id', '=', $product->id)->get();
-
 		return view('product.show', [
 			'product' 	=> $product,
-			'book' 		=> $book,
-			'seller' 	=> $seller,
-			'images'	=> $images
+			'condition'	=> $product->condition,
+			'book' 		=> $product->book,
+			'seller' 	=> $product->seller,
+			'images'	=> $product->images,
+			'product_conditions'	=>	Config::get('productconditions')
 		]);
 	}
 

@@ -17,7 +17,7 @@
                 <a class="filter-link" href="{{ url('/textbook/sell') }}">Sell</a>
             </li>
             <li class="cart">
-                <a href="#" class="cart-link"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                <a href="{{ action('Textbook\CartController@index') }}" class="cart-link"><i class="fa fa-shopping-cart fa-2x"></i></a>
             </li>
         </ul>
     </div>
@@ -26,7 +26,7 @@
     <div class="container-fluid search">
         <div class="row">
             <h1 id="title">Buy Used Textbooks</h1>
-            <form action="/textbook/sell/search" method="post">
+            <form action="/textbook/buy/search" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <div class="col-xs-8 col-xs-offset-2 search-row">

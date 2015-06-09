@@ -7,10 +7,10 @@
         @endif
     </div>
     <div class="container">
-        <h1>Your buyer orders:</h1>
+        <h1>Your seller orders:</h1>
         @forelse ($orders as $order)
             <div class="row">
-            <li><a href="{{ url('order/buyer/'.$order->id) }}">Order #{{ $order->id }}</a></li>
+            <li>Order #{{ $order->id }}</li>
                 {{--
             <li>{{ $order->buyer_payment()->stripe_amount/100 }}</li>
             <p>Product info:</p><br>

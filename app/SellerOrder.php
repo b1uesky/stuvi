@@ -21,4 +21,14 @@ class SellerOrder extends Model
         $this->push();
     }
 
+    /**
+     * Check whether this seller order is belong to a given user.
+     *
+     * @param $id  A user id
+     * @return bool
+     */
+    public function isBelongTo($id)
+    {
+        return ($this->product->seller_id == $id);
+    }
 }

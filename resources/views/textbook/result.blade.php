@@ -8,6 +8,7 @@
                 <p>Title:  {{ $book->title }}</p>
                 <p>edition {{ $book->edition }}th</p>
                 <p>Author: {{ $book->author }}</p>
+                <p>Number of Pages: {{ $book->num_pages }}</p>
             </div>
 
             <a href="{{ url('textbook/sell/product/create/'.$book->id) }}">
