@@ -14,10 +14,6 @@
         @endif
 
         <div class="">
-            Sell by: {{ $seller->email }}
-        </div>
-
-        <div class="">
             Price: {{ $product->price }}
         </div>
 

@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 use Auth;
 use Input;
+use Config;
 use App\Helpers\FileUploader;
 use App\Helpers\SearchClassifier;
+use Isbn\Isbn;
 use ISBNdb\Book as IsbndbBook;
 
 use App\Book;
@@ -131,8 +133,9 @@ class TextbookController extends Controller {
     public function isbnSearch(Request $request)
     {
         $isbn = Input::get('isbn');
+		$isbn_validator = new Isbn();
 
-		if ($this->validateIsbn($isbn) == false)
+		if ($isbn_validator->validation->isbn($isbn) == false)
 		{
 			return redirect('textbook/sell')->with('message', 'Please enter a valid 10 or 13 digits ISBN.');
 		}
@@ -147,7 +150,7 @@ class TextbookController extends Controller {
         else
         {
 			// search book in isbndb
-			$token = 'YPKFSSUW';
+			$token = Config::get('isbndb.token');
 			$isbndb_book = new IsbndbBook($token, $isbn);
 
 			if ($isbndb_book->isFound())
@@ -169,21 +172,6 @@ class TextbookController extends Controller {
                 'Looks like your textbook is currently not in our database, please fill in the textbook information below.');
         }
     }
-
-	/**
-	* Validate the input ISBN (10 or 13 digits)
-	*
-	* @param String $isbn
-	* @return Bool
-	*/
-	public function validateIsbn($isbn)
-	{
-		$len = strlen($isbn);
-
-		return ($len == 10 || $len == 13);
-	}
-
-
 
     /***************************************************/
     /******************   Buy Part   *******************/
