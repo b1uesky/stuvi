@@ -8,10 +8,10 @@
                     <img src="{{ $image->large_image }}" alt="" />
                 @endif
 
-                <p>Title:  {{ $book->title }}</p></br>
-                <p>edition {{ $book->edition }}th</p></br>
-                <p>Author: {{ $book->author }}</p></br>
-                <p>isbn:   {{ $book->isbn }}</p></br>
+                <p>Title:  {{ $book->title }}</p>
+                <p>edition {{ $book->edition }}th</p>
+                <p>Author: {{ $book->author }}</p>
+                <p>isbn:   {{ $book->isbn }}</p>
             </div>
 
             <form action="/textbook/sell/product/store" method="post" enctype="multipart/form-data">

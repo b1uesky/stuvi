@@ -135,17 +135,27 @@ class TextbookController extends Controller {
         $isbn = Input::get('isbn');
 		$isbn_validator = new Isbn();
 
+		// check if the input is a valid ISBN
 		if ($isbn_validator->validation->isbn($isbn) == false)
 		{
 			return redirect('textbook/sell')->with('message', 'Please enter a valid 10 or 13 digits ISBN.');
 		}
 
-        $db_book = DB::table('books')->where('isbn', $isbn)->first();
+		// if the input ISBN is 10 digits, convert it to 13 digits
+		if (strlen($isbn) == 10)
+		{
+			$isbn = $isbn_validator->translate->to13($isbn);
+		}
+
+        $db_book = DB::table('books')->where('isbn', '=', $isbn)->first();
 
         // if the book is in our db, show the book information and let seller edit it
         if ($db_book)
         {
-            return view('textbook.result')->withBook($db_book);
+            return view('textbook.result', [
+				'book'	=>	$db_book,
+				//'image' =>	$db_book->imageSet
+				]);
         }
         else
         {
