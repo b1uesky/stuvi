@@ -56,7 +56,7 @@
                         </a></td>
                 </tr>
                 <!-- how will this style?? -->
-                @if ($item->options['item']->sold())
+                @if ($item->options['item']->sold)
                     <tr class="warning" colspan="4">
                         <td>Warning: This product has been sold.</td>
                     </tr>

@@ -1,0 +1,25 @@
+/******* BUYER ORDERS PAGE *******/
+
+body {
+    background-color: #F2F2F2;
+}
+
+.buyer-order-container {
+    margin-bottom: 100px;
+}
+
+.order-container {
+    border: 2px solid #DDDDDD;
+}
+
+.book-row {
+    padding: 10px 0;
+}
+
+.book-info h3 {
+    margin-top: 10px;
+}
+
+.book-price h4 {
+    margin-top: 15px;
+}
