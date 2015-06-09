@@ -129,8 +129,16 @@ body {
     margin-right: 10%;
 }
 
+.services{
+    margin-bottom: 10px;
+}
+
 .p-services{
     text-align: center;
+}
+
+.img-service {
+    margin-bottom:10px;
 }
 
 
