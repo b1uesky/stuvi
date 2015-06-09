@@ -92,7 +92,7 @@
         <!-- Uses font-awesome.css -->
         <a class="social" href="#"><i class="fa fa-facebook"></i></a>
         <a class="social" href="https://twitter.com/StuviBoston"><i class="fa fa-twitter"></i></a>
-        <a class="social" href="#"><i class="fa fa-linkedin"></i></a>
+        <a class="social" href="https://www.facebook.com/StuviBoston"><i class="fa fa-linkedin"></i></a>
         <a class="social" href="#"><i class="fa fa-github"></i></a>
 
     </div>
