@@ -57,8 +57,8 @@
             </div>
 
             <div class="row services" id="service1">
-                <img class="img-responsive img-service col-xs-12 col-md-8 col-md-offset-2" src="http://placehold.it/500x200"> <br>
-
+                <img class="img-responsive img-services col-xs-12 col-md-8 col-md-offset-2" src="http://placehold.it/500x200"> <br>
+                <h3 class="col-md-12 h3-services">Lap Dance by Jeremy</h3>
                 <p class="p-services col-xs-12 col-md-10 col-md-offset-1"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac metus nisi.
                 Praesent ac magna nunc. Nullam in imperdiet elit. In eu pellentesque tellus.
                 Praesent consequat ultricies tellus, ut scelerisque tortor dictum at.
@@ -70,8 +70,8 @@
             </div>
 
             <div class="row services" id="service2">
-                <img class="img-responsive img-service col-xs-12 col-md-8 col-md-offset-2" src="http://placehold.it/500x200"> <br>
-
+                <img class="img-responsive img-services col-xs-12 col-md-8 col-md-offset-2" src="http://placehold.it/500x200"> <br>
+                <h3 class="col-md-12 h3-services">Jeremy delivered to your door the same day</h3>
                 <p class="p-services col-xs-12 col-md-10 col-md-offset-1">  In at lacus augue. Ut efficitur turpis nec auctor consequat.
                     Donec lacinia leo ut sapien vehicula pellentesque. Etiam porta vulputate felis a venenatis.
                     Praesent quis porttitor nisi, ut eleifend orci. Aliquam aliquet tincidunt risus quis porta.
