@@ -44,6 +44,7 @@
     </div>    <!-- end contain-top backgnd -->
    <!-- End Top Half
          Begin Bottom Half-->
+{{--
 
     <div class = "container-fluid" id = "bottom-half">   <!-- Bottom Half -->
         <div class = "container">                           <!-- container -->
@@ -84,17 +85,50 @@
         </div>    <!-- end container for hr and table -->
     </div>   <!-- end container bottom-half -->
 
+--}}
 
-{{--    <!-- new bottom half -->
+  <!-- new bottom half -->
     <div class="container-fluid" id="bottom-half">
-        <div class="container features">
-            dsfasdfsdafasdf
+        <div class="container col-sm-10 col-sm-offset-1 features">
+            <h2 id= "head2"> Our Services </h2>
+
+            <!-- Divider Line -->
+            <div class = "row">
+                <div class = "span12" id = "hr-style-one">
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row" id="service1">
+                <img class="img-responsive img-service col-xs-12" src="http://placehold.it/500x200"> <br>
+
+                <p class="p-services"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac metus nisi.
+                Praesent ac magna nunc. Nullam in imperdiet elit. In eu pellentesque tellus.
+                Praesent consequat ultricies tellus, ut scelerisque tortor dictum at.
+                Nullam ornare libero sed est consectetur tincidunt. Nam metus libero, ultrices a tempus in,
+                posuere auctor enim. Proin eu mauris quis lectus semper viverra. Fusce accumsan nulla accumsan
+                interdum convallis. Sed venenatis mauris metus, facilisis faucibus eros vestibulum ac. Phasellus
+                placerat lectus porttitor aliquam commodo.
+                </p> <br>
+            </div>
+
+            <div class="row" id="service2">
+                <img class="img-responsive img-service col-xs-12" src="http://placehold.it/500x200"> <br>
+
+                <p class="p-services"> In at lacus augue. Ut efficitur turpis nec auctor consequat.
+                    Donec lacinia leo ut sapien vehicula pellentesque. Etiam porta vulputate felis a venenatis.
+                    Praesent quis porttitor nisi, ut eleifend orci. Aliquam aliquet tincidunt risus quis porta.
+                    Fusce non auctor ante. Sed ultricies urna sit amet risus convallis, quis congue neque varius.
+                    Nam a mollis neque.
+                </p> <br>
+            </div>
+
         </div>
 
 
 
 
-    </div>--}}
+    </div>
 
 
 
