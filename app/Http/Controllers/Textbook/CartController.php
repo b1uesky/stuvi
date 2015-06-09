@@ -45,10 +45,12 @@ class CartController extends Controller
             if ( Cart::search(array('id' => (string)$item->id)))
             {
                 Session::flash('message', 'Item has been added into Cart.');
+                Session::flash('alert-class', 'alert-success');
             }
             elseif ($item->sold())
             {
                 Session::flash('message', 'Product has been sold.');
+                Session::flash('alert-class', 'alert-danger');
             }
             else
             {
@@ -57,7 +59,8 @@ class CartController extends Controller
         }
         else
         {
-            Session::flash('message', 'Sorry, can not find the product.');
+            Session::flash('message', 'Sorry, cannot find the product.');
+            Session::flash('alert-class', 'alert-danger');
         }
         return redirect('/cart');
     }
