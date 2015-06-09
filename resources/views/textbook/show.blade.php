@@ -4,6 +4,9 @@
 @section('content')
     <div class="container">
         <div class="row">
+            @if($image->large_image)
+                <img src="{{ $image->large_image }}" alt="" />
+            @endif
             <div class="">
                 ISBN: {{ $book->isbn }}
             </div>
