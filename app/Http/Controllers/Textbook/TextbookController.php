@@ -50,44 +50,41 @@ class TextbookController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-        // validations could be done in Validation class
-        if (Input::hasFile('image'))
-        {
-            if (!Input::file('image')->isValid())
-            {
-                return response('Please upload a valid image.');
-            }
-
-            // get the uploaded file
-            $image = Input::file('image');
-			$title = Input::get('title');
-			$folder = '/img/book/';
-			$file_uploader = new FileUploader($image, $title, $folder);
-        }
-        else
-        {
-            return response('Please upload a textbook image.');
-        }
-
-        $image_set = new BookImageSet();
-        $image_set->large_image = $file_uploader->getPath();
-        $image_set->save();
-
-        // TODO: upload book information for verification
+		// create book
         $book = new Book();
         $book->isbn             = Input::get('isbn');
         $book->title            = Input::get('title');
         $book->author           = Input::get('author');
         $book->edition          = Input::get('edition');
         $book->num_pages        = Input::get('num_pages');
-        $book->binding_id       = Input::get('binding');
-        $book->image_set_id     = $image_set->id;
-        $book->language_id      = Input::get('language');
-
-        // save the book image
-		$file_uploader->saveFile();
-
         $book->save();
+
+		// create book image set
+		if (Input::hasFile('image'))
+		{
+			if (!Input::file('image')->isValid())
+			{
+				return response('Please upload a valid image.');
+			}
+
+			// get the uploaded file
+			$image = Input::file('image');
+			$title = Input::get('title');
+			$folder = '/img/book/';
+			$file_uploader = new FileUploader($image, $title, $folder);
+		}
+		else
+		{
+			return response('Please upload a textbook image.');
+		}
+
+		$image_set = new BookImageSet();
+		$image_set->book_id = $book->id;
+		$image_set->large_image = $file_uploader->getPath();
+		$image_set->save();
+
+		// save the book image
+		$file_uploader->saveFile();
 
         return view('product.create', [
 			'book' 	=> $book,
@@ -103,11 +100,9 @@ class TextbookController extends Controller {
 	 */
 	public function show($book)
 	{
-		$products = Product::where('book_id', '=', $book->id)->get();
-
 		return view("textbook.show", [
 			'book' 		=> $book,
-			'products'	=> $products
+			'products'	=> $book->products
 		]);
 	}
 
@@ -154,7 +149,7 @@ class TextbookController extends Controller {
         {
             return view('textbook.result', [
 				'book'	=>	$db_book,
-				//'image' =>	$db_book->imageSet
+				'image' =>	$db_book->imageSet
 				]);
         }
         else
