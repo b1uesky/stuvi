@@ -77,14 +77,12 @@
                             </div>
                         </form>
                     </td>
-
-                    <!-- update cart -->
-                    <td><a class="btn btn-default" href="#" role="button">Update Cart</a></td>
-                    <!-- checkout -->
-                    <td ><a class="btn btn-checkout" href="{{ url('/order/create') }}" role="button">
-                            Proceed to Checkout</a></td>
                     <!-- buffer -->
                     <td></td>
+                    <!-- buffer -->
+                    <td></td>
+                    <!-- update cart -->
+                    <td><a class="btn btn-default" href="#" role="button">Update Cart</a></td>
                 </tr>
             </tfoot>
             @endif
@@ -100,7 +98,9 @@
                     <td>${{ $total_price }}</td>
                 </tr>
             </table>
-
+            <a class="btn btn-checkout" href="{{ url('/order/create') }}" role="button">
+                Proceed to Checkout
+            </a>
         </div>
 
         @endif

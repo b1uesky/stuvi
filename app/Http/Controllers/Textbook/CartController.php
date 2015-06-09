@@ -77,12 +77,14 @@ class CartController extends Controller
         try
         {
             Cart::remove($id);
-            Session::flash('message', 'The item is removed from Cart');
+            Session::flash('message', 'The item has been removed from Cart');
+            Session::flash('alert-class', 'alert-info');
         }
         catch (\Exception $e)
         {
             Session::flash('message', 'Sorry, the item has already been removed.');
-            return redirect('/cart');
+            Session::flash('alert-class', 'alert-warning');
+//            return redirect('/cart');
         }
 
         return redirect('/cart');
