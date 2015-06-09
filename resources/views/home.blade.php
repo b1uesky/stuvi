@@ -99,10 +99,10 @@
                 </div>
             </div>
 
-            <div class="row" id="service1">
-                <img class="img-responsive img-service col-xs-12" src="http://placehold.it/500x200"> <br>
+            <div class="row services" id="service1">
+                <img class="img-responsive img-service col-xs-12 col-md-8 col-md-offset-2" src="http://placehold.it/500x200"> <br>
 
-                <p class="p-services"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac metus nisi.
+                <p class="p-services col-xs-12 col-md-10 col-md-offset-1"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac metus nisi.
                 Praesent ac magna nunc. Nullam in imperdiet elit. In eu pellentesque tellus.
                 Praesent consequat ultricies tellus, ut scelerisque tortor dictum at.
                 Nullam ornare libero sed est consectetur tincidunt. Nam metus libero, ultrices a tempus in,
@@ -112,10 +112,10 @@
                 </p> <br>
             </div>
 
-            <div class="row" id="service2">
-                <img class="img-responsive img-service col-xs-12" src="http://placehold.it/500x200"> <br>
+            <div class="row services" id="service2">
+                <img class="img-responsive img-service col-xs-12 col-md-8 col-md-offset-2" src="http://placehold.it/500x200"> <br>
 
-                <p class="p-services"> In at lacus augue. Ut efficitur turpis nec auctor consequat.
+                <p class="p-services col-xs-12 col-md-10 col-md-offset-1">  In at lacus augue. Ut efficitur turpis nec auctor consequat.
                     Donec lacinia leo ut sapien vehicula pellentesque. Etiam porta vulputate felis a venenatis.
                     Praesent quis porttitor nisi, ut eleifend orci. Aliquam aliquet tincidunt risus quis porta.
                     Fusce non auctor ante. Sed ultricies urna sit amet risus convallis, quis congue neque varius.
