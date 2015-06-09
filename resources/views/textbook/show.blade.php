@@ -38,7 +38,7 @@
                             {{-- TODO: product condition score --}}
                         </td>
                         <td>
-                            <a href="{{ url('textbook/buy/product/'.$product->id) }}">Buy</a>
+                            <a href="{{ url('textbook/buy/product/'.$product->id) }}">Details</a>
                         </td>
 
                     </tr>
