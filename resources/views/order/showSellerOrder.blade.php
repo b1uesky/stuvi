@@ -9,7 +9,7 @@
     <div class="container">
         <h1>Order #{{ $seller_order->id }} @if ($seller_order->cancelled) (CANCELLED) @endif</h1>
         @if (!$seller_order->cancelled)
-            <p><a href="/order/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
+            <p><a href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
         @endif
 
         <p>{{ $seller_order->created_at }}</p>
