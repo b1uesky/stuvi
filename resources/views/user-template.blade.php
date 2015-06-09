@@ -1,4 +1,4 @@
-{{-- TEMPLATE FOR USER
+{{-- TEMPLATE FOR USER ACCOUNT AND PROFILE
      CONTAINS USER-BAR AND PROFILE SIDE BAR
 --}}
 
@@ -33,7 +33,7 @@
                     <a href="#" class="dropdown-toggle tabz" id ="books-nav" data-toggle="dropdown">Books <span class="caret"></span> </a>
                     <ul class="dropdown-menu" role="menu">
                         <li role="presentation" class="dropdown-header">Buy</li>
-                        <li><a href="#" data-toggle="tab" class="">Your Orders</a></li>
+                        <li><a href="{{asset('/order/')}}" data-toggle="tab" class="">Your Orders</a></li>
                         <li><a href="#" data-toggle="tab" class="">Your Wish List</a></li>
                         <li><a href="#" data-toggle="tab" class="">Returns</a></li>
                         <li role="presentation" class="divider"></li>
