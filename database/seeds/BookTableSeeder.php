@@ -16,7 +16,7 @@ public function run()
     $folder = '/img/book/';
 
     $mechanics_image_sets = BookImageSet::create([
-        'large_image'   => $folder . 'Principles of solid mechanics.jpg'
+        'large_image'   => $folder . 'Principles-of-solid-mechanics.jpg'
         ]);
 
     $algorithms_image_sets = BookImageSet::create([
@@ -24,7 +24,7 @@ public function run()
         ]);
 
     $pp_image_sets = BookImageSet::create([
-        'large_image'   => $folder . 'Programming Problems.jpg'
+        'large_image'   => $folder . 'Programming-Problems.jpg'
         ]);
 
     Book::create([
