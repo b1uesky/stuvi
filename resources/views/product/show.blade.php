@@ -25,39 +25,39 @@
                 <th>Rating</th>
             </tr>
             <tr>
-                <td>Highlights</td>
+                <td>{{ $product_conditions['highlights'] }}</td>
                 <td>{{ $condition->highlights }}</td>
             </tr>
             <tr>
-                <td>Notes</td>
+                <td>{{ $product_conditions['notes'] }}</td>
                 <td>{{ $condition->notes }}</td>
             </tr>
             <tr>
-                <td>Number of Damaged Pages</td>
+                <td>{{ $product_conditions['num_damaged_pages'] }}</td>
                 <td>{{ $condition->num_damaged_pages }}</td>
             </tr>
             <tr>
-                <td>Broken Spine</td>
+                <td>{{ $product_conditions['broken_spine'] }}</td>
                 <td>{{ $condition->broken_spine }}</td>
             </tr>
             <tr>
-                <td>Broken Binding</td>
+                <td>{{ $product_conditions['broken_binding'] }}</td>
                 <td>{{ $condition->broken_binding }}</td>
             </tr>
             <tr>
-                <td>Water Damage</td>
+                <td>{{ $product_conditions['water_damage'] }}</td>
                 <td>{{ $condition->water_damage }}</td>
             </tr>
             <tr>
-                <td>Stains</td>
+                <td>{{ $product_conditions['stains'] }}</td>
                 <td>{{ $condition->stains }}</td>
             </tr>
             <tr>
-                <td>Burns</td>
+                <td>{{ $product_conditions['burns'] }}</td>
                 <td>{{ $condition->burns }}</td>
             </tr>
             <tr>
-                <td>Rips</td>
+                <td>{{ $product_conditions['rips'] }}</td>
                 <td>{{ $condition->rips }}</td>
             </tr>
         </table>

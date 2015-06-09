@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 use Input;
+use Config;
 
 use App\Product;
 use App\ProductCondition;
@@ -97,7 +98,8 @@ class ProductController extends Controller {
 			'condition'	=> $product->condition,
 			'book' 		=> $product->book,
 			'seller' 	=> $product->seller,
-			'images'	=> $product->images
+			'images'	=> $product->images,
+			'product_conditions'	=>	Config::get('productconditions')
 		]);
 	}
 
