@@ -10,7 +10,7 @@ use App\BuyerOrder;
 use App\SellerOrder;
 use App\BuyerPayment;
 
-use Auth, Input, Cart, Session, DB;
+use Auth, Input, Cart, Session, DB, Config;
 
 class OrderController extends Controller {
 
@@ -22,7 +22,8 @@ class OrderController extends Controller {
 	public function buyerOrderIndex()
 	{
         //var_dump(User::find(Auth::id())->orders);
-		return view('order.index')->withOrders(User::find(Auth::id())->buyerOrders);
+		return view('order.index')
+            ->with('orders', User::find(Auth::id())->buyerOrders);
 	}
 
 	/**
@@ -32,8 +33,9 @@ class OrderController extends Controller {
 	 */
 	public function createBuyerOrder()
 	{
-		return view('order.createBuyerOrder')->withItems(Cart::content())
-                                   ->withTotal(Cart::total());
+		return view('order.createBuyerOrder')
+            ->with('items', Cart::content())
+            ->with('total', Cart::total());
 	}
 
 	/**
@@ -47,8 +49,8 @@ class OrderController extends Controller {
         // check if this payment already exist
         if (BuyerPayment::where('stripe_token','=',Input::get('stripeToken'))->exists())
         {
-            Session::flash('message', 'Invalid payment.');
-            return redirect('/order/createBuyerOrder');
+            return redirect('/order/createBuyerOrder')
+                ->with('message', 'Invalid payment.');
         }
 //        // check if all products exist
 //        foreach (Cart::content() as $product)
@@ -60,9 +62,9 @@ class OrderController extends Controller {
         foreach (Cart::content() as $row)
         {
             $product = Product::find($row->id);
-            if ($product->sold()) {
-                Session::flash('message', 'Sorry,'.$product->book->title.' has been sold. Please remove it from Cart');
-                return redirect('/cart');
+            if ($product->sold) {
+                return redirect('/cart')
+                    ->with('message', 'Sorry,'.$product->book->title.' has been sold. Please remove it from Cart');
             }
         }
         //return response('check');
@@ -98,8 +100,8 @@ class OrderController extends Controller {
         // remove payed items from Cart
         Cart::destroy();
 
-        //return view('order.storeBuyerOrder')->withOrder($order);
-        return redirect('order/confirmation')->withOrder($order);
+        return view('order.storeBuyerOrder')
+            ->with('order', $order);
 	}
 
     protected function createSellerOrders($buyer_order_id)
@@ -134,10 +136,12 @@ class OrderController extends Controller {
         // check if this order belongs to the current user.
         if (!is_null($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
         {
-            return view('order.showBuyerOrder')->withBuyerOrder($buyer_order);
+            return view('order.showBuyerOrder')
+                ->with('buyer_order', $buyer_order);
         }
 
-        return redirect('order/buyer')->with('message', 'Order not found.');
+        return redirect('order/buyer')
+            ->with('message', 'Order not found.');
 	}
 
     /**
@@ -155,10 +159,12 @@ class OrderController extends Controller {
         if (!is_null($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
         {
             $buyer_order->cancel();
-            return view('order.showBuyerOrder')->withBuyerOrder($buyer_order);
+            return view('order.showBuyerOrder')
+                ->with('buyer_order', $buyer_order);
         }
 
-        return redirect('order/buyer')->with('message', 'Order not found.');
+        return redirect('order/buyer')
+            ->with('message', 'Order not found.');
     }
 
     /**
@@ -168,11 +174,8 @@ class OrderController extends Controller {
      */
     public function sellerOrderIndex()
     {
-        return view('order.sellerOrderIndex')->withOrders(User::find(Auth::id())->sellerOrders);
-    }
-
-    public function confirmation(){
-        return view('order/confirmation');
+        return view('order.sellerOrderIndex')
+            ->with('orders', User::find(Auth::id())->sellerOrders);
     }
 
     /**
@@ -189,10 +192,13 @@ class OrderController extends Controller {
         // check if this order belongs to the current user.
         if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
         {
-            return view('order.showSellerOrder')->withSellerOrder($seller_order);
+            return view('order.showSellerOrder')
+                ->withSellerOrder($seller_order)
+                ->with('datetime_format', Config::get('app.datetime_format'));
         }
 
-        return redirect('order/seller')->with('message', 'Order not found');
+        return redirect('order/seller')
+            ->with('message', 'Order not found');
     }
 
     /**
@@ -210,10 +216,38 @@ class OrderController extends Controller {
         if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
         {
             $seller_order->cancel();
-            return view('order.showSellerOrder')->withSellerOrder($seller_order);
+            return view('order.showSellerOrder')
+                ->with('seller_order', $seller_order);
         }
 
-        return redirect('order/seller')->with('message', 'Order not found.');
+        return redirect('order/seller')
+            ->with('message', 'Order not found.');
+    }
+
+    public function setScheduledPickupTime()
+    {
+        $scheduled_pickup_time  = strtotime(Input::get('scheduled_pickup_time'));
+        $id                     = (int)Input::get('id');
+
+        $seller_order           = SellerOrder::find($id);
+
+        // check if this seller order belongs to the current user.
+        if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
+        {
+            // if this seller order is cancelled, user cannot set up pickup time
+            if ($seller_order->cancelled)
+            {
+                return redirect('order/seller/'.$id)
+                    ->with('message', 'Fail to set pickup time because this order has been cancelled.');
+            }
+
+            $seller_order->scheduled_pickup_time    = $scheduled_pickup_time;
+            $seller_order->save();
+            return redirect('order/seller/'.$id);
+        }
+
+        return redirect('order/seller')
+            ->with('message', 'Order not found');
     }
 
 }
