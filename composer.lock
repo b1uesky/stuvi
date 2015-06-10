@@ -164,45 +164,6 @@
             "time": "2015-02-10 06:19:18"
         },
         {
-            "name": "desmond/isbndb",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kingdido999/isbndb.git",
-                "reference": "03f211822474ca171ff9505e122e95c2c9e747e4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kingdido999/isbndb/zipball/03f211822474ca171ff9505e122e95c2c9e747e4",
-                "reference": "03f211822474ca171ff9505e122e95c2c9e747e4",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "ISBNdb": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Pengcheng Ding",
-                    "email": "kingdido999@gmail.com"
-                }
-            ],
-            "description": "ISBNdb API",
-            "time": "2015-06-07 17:03:59"
-        },
-        {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
             "source": {
@@ -2201,16 +2162,16 @@
         },
         {
             "name": "fzaninotto/faker",
-            "version": "dev-master",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27"
+                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27",
-                "reference": "bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d0190b156bcca848d401fb80f31f504f37141c8d",
+                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
                 "shasum": ""
             },
             "require": {
@@ -2249,7 +2210,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-05-20 13:03:42"
+            "time": "2015-05-29 06:29:14"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -2474,18 +2435,6 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-<<<<<<< HEAD
-            "version": "2.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "3703c4bb67c8700957dd41c843254658539d091d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/3703c4bb67c8700957dd41c843254658539d091d",
-                "reference": "3703c4bb67c8700957dd41c843254658539d091d",
-=======
             "version": "2.1.5",
             "source": {
                 "type": "git",
@@ -2496,7 +2445,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/be2286cb8c7e1773eded49d9719219e6f74f9e3e",
                 "reference": "be2286cb8c7e1773eded49d9719219e6f74f9e3e",
->>>>>>> back-end
                 "shasum": ""
             },
             "require": {
@@ -2545,11 +2493,7 @@
                 "testing",
                 "xunit"
             ],
-<<<<<<< HEAD
-            "time": "2015-06-06 08:33:23"
-=======
             "time": "2015-06-09 13:05:42"
->>>>>>> back-end
         },
         {
             "name": "phpunit/php-file-iterator",
