@@ -116,9 +116,9 @@ body {
     margin-right: 10%;
 }
 
-.services{
-    margin-bottom: 10px;
-}
+/*.services{*/
+/*margin-bottom: 10px;*/
+/*}*/
 
 .p-services{
     text-align: center;
@@ -136,9 +136,6 @@ body {
 
 
 /**************  NAV DROPDOWN FIX  *************/
-.nav-caret {
-    margin-top: 9px;
-}
 
 .nav-dropdown {
     height: 50px;
@@ -160,7 +157,29 @@ body {
     #p1             {font-size: small;}
     #jumbotron1     {margin-top: 2%;}
     #liftoff        {font-size: x-small}
+}
 
+/******** BOTTOM HALF ********/
 
+#bottom-half {
+    padding: 0;
+}
 
+.services {
+    background-color: #F16521;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.services h4 {
+    font-weight: 900;
+}
+
+.service-row {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.service {
+    margin-bottom: 30px;
 }
