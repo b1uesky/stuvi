@@ -4,29 +4,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model {
 
-	public function binding()
-    {
-        return $this->hasOne('BookBinding');
-    }
-
     public function imageSet()
     {
-        return $this->hasOne('BookImageSet');
-    }
-
-    public function language()
-    {
-        return $this->hasOne('BookLanguage');
-    }
-
-    public function amazonInfo()
-    {
-        return $this->hasOne('BookAmazonInfo');
+        return $this->hasOne('App\BookImageSet');
     }
 
     public function products()
     {
-        return $this->hasMany('Product');
+        return $this->hasMany('App\Product');
     }
 
 }

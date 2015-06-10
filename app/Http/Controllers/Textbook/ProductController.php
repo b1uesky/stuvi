@@ -36,7 +36,11 @@ class ProductController extends Controller {
 	 */
 	public function create($book)
 	{
-        return view('product.create')->withBook($book);
+        return view('product.create', [
+			'book'		=> $book,
+			'image'		=> $book->imageSet,
+			'condition'	=> Config::get('productconditions')
+			]);
 	}
 
 	/**
@@ -46,25 +50,25 @@ class ProductController extends Controller {
 	 */
 	public function store()
 	{
-        $condition = new ProductCondition();
-        $condition->highlights = Input::get('highlights');
-        $condition->notes = Input::get('notes');
-        $condition->num_damaged_pages = Input::get('num_damaged_pages');
-        $condition->broken_spine = Input::get('broken_spine');
-        $condition->broken_binding = Input::get('broken_binding');
-        $condition->water_damage = Input::get('water_damage');
-        $condition->stains = Input::get('stains');
-        $condition->burns = Input::get('burns');
-        $condition->rips = Input::get('rips');
-        $condition->save();
-
         $product = new Product();
         $product->price = Input::get('price');
         $product->book_id = Input::get('book_id');
         $product->seller_id = Auth::user()->id;
-        $product->condition_id = $condition->id;
         $product->sold = false;
         $product->save();
+
+		$condition = new ProductCondition();
+		$condition->product_id = $product->id;
+		$condition->highlights = Input::get('highlights');
+		$condition->notes = Input::get('notes');
+		$condition->num_damaged_pages = Input::get('num_damaged_pages');
+		$condition->broken_spine = Input::get('broken_spine');
+		$condition->broken_binding = Input::get('broken_binding');
+		$condition->water_damage = Input::get('water_damage');
+		$condition->stains = Input::get('stains');
+		$condition->burns = Input::get('burns');
+		$condition->rips = Input::get('rips');
+		$condition->save();
 
 		// save multiple product images
 		$images = Input::file('images');
