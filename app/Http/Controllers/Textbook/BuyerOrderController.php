@@ -22,7 +22,6 @@ class BuyerOrderController extends Controller
 	 */
 	public function buyerOrderIndex()
 	{
-        //var_dump(User::find(Auth::id())->orders);
 		return view('order.index')
             ->with('orders', User::find(Auth::id())->buyerOrders);
 	}
@@ -46,18 +45,23 @@ class BuyerOrderController extends Controller
 	 */
 	public function storeBuyerOrder(Request $request)
     {
+        // validate the address info
+        $this->validate($request, Address::rules());
+
         // check if this payment already exist
         if (BuyerPayment::where('stripe_token','=',Input::get('stripeToken'))->exists())
         {
             return redirect('/order/createBuyerOrder')
                 ->with('message', 'Invalid payment.');
         }
-//        // check if all products exist
-//        foreach (Cart::content() as $product)
-//        if (!(Product::find()->exists()))
-//        {
-//            return response('Sorry, this product is not exist.');
-//        }
+
+        // check if this payment amount the same as the Cart total
+        if ((int)Input::get('stripeAmount') != Cart::total())
+        {
+            return redirect('/cart')
+                ->with('message', 'Payment amount is not the same as Cart total');
+        }
+
         // check if any product in Cart is already traded
         foreach (Cart::content() as $row)
         {
@@ -77,13 +81,15 @@ class BuyerOrderController extends Controller
         $payment->save();
 
         // store the buyer shipping address
-        $address = array(   'addressee'     => Input::get('addressee'),
+        $address = array(
+            'addressee'     => Input::get('addressee'),
             'address_line1' => Input::get('address_line1'),
             'address_line2' => Input::get('address_line2'),
             'city'          => Input::get('city'),
             'state_a2'      => Input::get('state_a2'),
             'zip'           => Input::get('zip'),
-            'phone_number'  => Input::get('phone_number'));
+            'phone_number'  => Input::get('phone_number')
+        );
         $shipping_address_id = Address::add($address, Auth::id());
 
         // create an buyer payed order
