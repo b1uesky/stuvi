@@ -27,7 +27,7 @@
                 <p><label class="col-md-4 control-label">Scheduled pick-up time:</label>
                     @if ($seller_order->scheduled_pickup_time)
                         {{ date($datetime_format, $seller_order->scheduled_pickup_time) }}
-                    @else
+                    @elseif (!$seller_order->cancelled)
                     <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="id" value="{{ $seller_order->id }}">
@@ -61,6 +61,8 @@
 
                         </div>
                     </form>
+                    @else
+                        N/A
                     @endif
                 </p>
 
