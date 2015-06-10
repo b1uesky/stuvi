@@ -3,7 +3,7 @@
 @section('content')
     <head>
         <title>Stuvi - Bookshelf</title>
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/bookshelf.css')}}"
+        <link rel="stylesheet" type="text/css" href="{{asset('/css/bookshelf.css')}}">
     </head>
 
 
