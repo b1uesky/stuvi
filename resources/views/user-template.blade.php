@@ -39,7 +39,7 @@
                         <li role="presentation" class="divider"></li>
                         <li role="presentation" class="dropdown-header">Sell</li>
                         <li><a href="#">All Selling</a></li>
-                        <li><a href="#">Sold</a></li>
+                        <li><a href="{{ url('/order/seller') }}">Sold</a></li>
                     </ul>
                 </li> <!-- end textbooks dropdown -->
                 <li class = "disabled" id="clubs-nav"><a href="#">Clubs</a></li>

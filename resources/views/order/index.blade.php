@@ -16,25 +16,27 @@
         @forelse ($orders as $order)
             <div class="row">
                 <div class="container order-container">
-                    <div class="row book-row">
-                        <div class="col-xs-2 col-xs-offset-1">
-                            <img src="http://placehold.it/100x100">
-                        </div>
-                        <div class="col-xs-5 book-info">
-                            <h3>The Catcher in the Rye</h3>
-                            <h4>J.D. Salinger</h4>
+                    @foreach($order->products() as $product)
+                        <div class="row book-row">
+                            <div class="col-xs-2 col-xs-offset-1">
+                                <img src="http://placehold.it/100x100">
+                            </div>
+                            <div class="col-xs-5 book-info">
+                                <h3>{{ $product->book->title }}</h3>
+                                <h4>{{ $product->book->author}}</h4>
 
-                            <p>9788976100146</p>
+                                <p>{{ $product->book->isbn }}</p>
+                            </div>
+                            <div class="col-xs-2 col-xs-offset-2 book-price">
+                                <h4>${{ $product->price }}</h4>
+                            </div>
                         </div>
-                        <div class="col-xs-2 col-xs-offset-2 book-price">
-                            <h4>$10.00</h4>
-                        </div>
-                    </div>
+                    @endforeach
                     <div class="row order-row">
                         <div class="col-xs-2 col-xs-offset-1 order-date">
                             <h5>Order Placed</h5>
 
-                            <p>June 12, 2015</p>
+                            <p>{{ date('M d, Y', strtotime($order->created_at)) }}</p>
                         </div>
                         <div class="col-xs-3 col-xs-offset-2 order-number">
                             <h5>Order Number</h5>
@@ -44,7 +46,7 @@
                         <div class="col-xs-2 col-xs-offset-2 order-total">
                             <h5>Total</h5>
 
-                            <p>$10.00</p>
+                            <p>${{ $order->buyer_payment->stripe_amount/100 }}</p>
                         </div>
                     </div>
                 </div>

@@ -68,7 +68,7 @@
                                     Profile</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/user/account') }}">
                                     Your Account</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/order') }}">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/order/buyer') }}">
                                     Your Orders</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/cart') }}">
                                     Shopping Cart</a></li>

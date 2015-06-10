@@ -9,7 +9,8 @@ body {
 }
 
 .order-container {
-    border: 2px solid #DDDDDD;
+    border: 2px solid #F9AA62;
+    margin-bottom: 30px;
 }
 
 .book-row {
