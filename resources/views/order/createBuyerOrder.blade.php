@@ -34,7 +34,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ action('Textbook\OrderController@storeBuyerOrder') }}" method="POST">
+                    <form action="{{ url('/order/store') }}" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="stripeAmount" value="{{ $total*100 }}">
                         <h2>1. Confirm order items</h2></br>
