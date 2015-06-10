@@ -70,7 +70,7 @@
                     <i class="fa fa-book fa-5x"></i>
                     <h4>Textbooks</h4>
 
-                    <p>Buy and sell textbook at your campus</p>
+                    <p>Buy and sell textbooks at your campus</p>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-lg-3 service">
                     <i class="fa fa-home fa-5x"></i>

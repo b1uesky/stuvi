@@ -69,6 +69,18 @@ body {
     margin-bottom: 0%;
 }
 
+.cart-button {
+    background: #F16521;
+    color: #FFFFFF;
+    border: none;
+}
+
+.cart-button:hover,
+.cart-button:focus {
+    background: #F16521;
+    color: #FFFFFF;
+}
+
 .btn-checkout {
     background: #7AB4DE;
     color: #FFFFFF;
