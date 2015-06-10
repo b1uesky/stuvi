@@ -33,12 +33,16 @@ public function run()
     User::create([
         'email'         => 'seller@stuvi.com',
         'password'      => bcrypt('123456'),
+        'first_name'    => 'Seller',
+        'last_name'     => 'Stuvi',
         'university_id' => $bu->id
     ]);
 
     User::create([
         'email'     => 'buyer@stuvi.com',
         'password'  => bcrypt('123456'),
+        'first_name'    => 'Buyer',
+        'last_name'     => 'Stuvi',
         'university_id' =>  $bu->id
     ]);
 
