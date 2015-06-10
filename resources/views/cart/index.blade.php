@@ -89,8 +89,9 @@
                     <td><form class="form-inline coupon-form">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="coupon" placeholder="">
-                                <label for="coupon"><a class="btn btn-default" href="#" role="button">
-                                        Apply Coupon</a></label>
+                                <label for="coupon">
+                                    <a class="btn btn-default cart-button" href="#" role="button">Apply Coupon</a>
+                                </label>
                             </div>
                         </form>
                     </td>
@@ -99,7 +100,7 @@
                     <!-- buffer -->
                     <td></td>
                     <!-- update cart -->
-                    <td><a class="btn btn-default" href="#" role="button">Update Cart</a></td>
+                    <td><a class="btn btn-default cart-button" href="#" role="button">Update Cart</a></td>
                 </tr>
             </tfoot>
 
