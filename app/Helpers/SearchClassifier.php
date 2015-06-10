@@ -19,7 +19,7 @@ class SearchClassifier
         $isbn = new Isbn();
 
         // check if the isbn is valid
-        if ($isbn->check->identify($this->string))
+        if ($isbn->validation->isbn($this->string))
         {
             $this->isIsbn = true;
         }

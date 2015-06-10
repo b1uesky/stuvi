@@ -40,15 +40,6 @@
             'author' => array(
                 'author' => 'Author'
             ),
-            'publisher' => array(
-                'publisher' => 'Publisher'
-            ),
-            'publication_date' => array(
-                'publication_date' => 'Publication Date'
-            ),
-            'manufacturer' => array(
-                'manufacturer' => 'Manufacturer'
-            ),
             'num_pages' => array(
                 'num_pages' => 'Number of Pages'
             ),
@@ -89,18 +80,6 @@
             ),
             'author' => array(
                 'author' => 'Author',
-                'type' => 'text',
-            ),
-            'publisher' => array(
-                'publisher' => 'Publisher',
-                'type' => 'text',
-            ),
-            'publication_date' => array(
-                'publication_date' => 'Publication Date',
-                'type' => 'date',
-            ),
-            'manufacturer' => array(
-                'manufacturer' => 'Manufacturer',
                 'type' => 'text',
             ),
             'num_pages' => array(

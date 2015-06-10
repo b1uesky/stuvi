@@ -18,14 +18,15 @@
                 <a class="filter-link active" href="{{ url('/textbook/sell') }}">Sell</a>
             </li>
             <li class="cart">
-                <a href="#" class="cart-link"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                <a href="{{ url('/cart') }}" class="cart-link"><i class="fa fa-shopping-cart fa-2x"></i></a>
             </li>
         </ul>
     </div>
 
+
     {{-- Error message --}}
     @if (Session::has('message'))
-        <div id = "message-cont">
+        <div class="alert-danger" id="message-cont">
             <div class="flash-message" id="message"> <i class="fa fa-exclamation-triangle"></i> {{ Session::get('message') }}</div>
         </div>
     @endif
@@ -67,7 +68,7 @@
                 <!-- Row 1 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
                      id="shrink-xs">
-                    <h3 id = "h3-1"> Header Example 1</h3>
+                    <h3 id = "h3-1">Sell to your classmates</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
                         tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
                         Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>
@@ -85,7 +86,7 @@
                 <!-- Row 2 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
                      id="shrink-xs">
-                    <h3 id = "h3-2"> Header Example 2</h3>
+                    <h3 id = "h3-2">Set your own price</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
                         tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
                         Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>

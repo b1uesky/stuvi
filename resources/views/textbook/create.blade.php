@@ -36,30 +36,16 @@
                     <label><b>Title</b></label>
                     <input type="text" name="title" value="{{ $book->title or "" }}" class="form-control"/>
                 </div>
-                <!-- Author -->
+                <!-- Authors -->
                 <div class="form-group">
-                    <label><b>Author</b></label>
-                    <input type="text" name="author" value="{{ $book->author or "" }}" class="form-control"/>
+                    <label><b>Author(s)</b></label>
+                    <small>Seperate authors by ,</small>
+                    <input type="text" name="authors" value="{{ $authors or "" }}" class="form-control"/>
                 </div>
                 <!-- Edition -->
                 <div class="form-group">
                     <label><b>Edition</b></label>
-                    <input type="number" name="edition" value="{{ $book->edition or 0 }}" class="form-control"/>
-                </div>
-                <!-- Publisher -->
-                <div class="form-group">
-                    <label><b>Publisher</b></label>
-                    <input type="text" name="publisher" value="{{ $book->publisher or "" }}" class="form-control"/>
-                </div>
-                <!-- Pub date -->
-                <div class="form-group">
-                    <label><b>Publication Date</b></label>
-                    <input type="date" name="publication_date" class="form-control"/>
-                </div>
-                <!-- Manufac. -->
-                <div class="form-group">
-                    <label><b>Manufacturer</b></label>
-                    <input type="text" name="manufacturer" value="{{ $book->manufacturer or "" }}" class="form-control"/>
+                    <input type="number" name="edition" value="{{ $book->edition or 1 }}" class="form-control"/>
                 </div>
                 <!-- Num pg -->
                 <div class="form-group">

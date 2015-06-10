@@ -13,9 +13,18 @@ class Product extends Model
         return $this->belongsTo('App\Book');
     }
 
-    public function sold()
+    public function seller()
     {
-        return $this->sold;
+        return $this->belongsTo('App\User');
     }
 
+    public function condition()
+    {
+        return $this->hasOne('App\ProductCondition');
+    }
+
+    public function images()
+    {
+        return $this->hasMany('App\ProductImage');
+    }
 }

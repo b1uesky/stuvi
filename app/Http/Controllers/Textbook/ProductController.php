@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 use Input;
+use Config;
 
 use App\Product;
 use App\ProductCondition;
@@ -35,7 +36,11 @@ class ProductController extends Controller {
 	 */
 	public function create($book)
 	{
-        return view('product.create')->withBook($book);
+        return view('product.create', [
+			'book'		=> $book,
+			'image'		=> $book->imageSet,
+			'condition'	=> Config::get('productconditions')
+			]);
 	}
 
 	/**
@@ -45,25 +50,25 @@ class ProductController extends Controller {
 	 */
 	public function store()
 	{
-        $condition = new ProductCondition();
-        $condition->highlights = Input::get('highlights');
-        $condition->notes = Input::get('notes');
-        $condition->num_damaged_pages = Input::get('num_damaged_pages');
-        $condition->broken_spine = Input::get('broken_spine');
-        $condition->broken_binding = Input::get('broken_binding');
-        $condition->water_damage = Input::get('water_damage');
-        $condition->stains = Input::get('stains');
-        $condition->burns = Input::get('burns');
-        $condition->rips = Input::get('rips');
-        $condition->save();
-
         $product = new Product();
         $product->price = Input::get('price');
         $product->book_id = Input::get('book_id');
         $product->seller_id = Auth::user()->id;
-        $product->condition_id = $condition->id;
         $product->sold = false;
         $product->save();
+
+		$condition = new ProductCondition();
+		$condition->product_id = $product->id;
+		$condition->highlights = Input::get('highlights');
+		$condition->notes = Input::get('notes');
+		$condition->num_damaged_pages = Input::get('num_damaged_pages');
+		$condition->broken_spine = Input::get('broken_spine');
+		$condition->broken_binding = Input::get('broken_binding');
+		$condition->water_damage = Input::get('water_damage');
+		$condition->stains = Input::get('stains');
+		$condition->burns = Input::get('burns');
+		$condition->rips = Input::get('rips');
+		$condition->save();
 
 		// save multiple product images
 		$images = Input::file('images');
@@ -92,15 +97,13 @@ class ProductController extends Controller {
 	 */
 	public function show($product)
 	{
-		$book = Book::find($product->book_id);
-		$seller = User::find($product->seller_id);
-		$images = ProductImage::where('product_id', '=', $product->id)->get();
-
 		return view('product.show', [
 			'product' 	=> $product,
-			'book' 		=> $book,
-			'seller' 	=> $seller,
-			'images'	=> $images
+			'condition'	=> $product->condition,
+			'book' 		=> $product->book,
+			'seller' 	=> $product->seller,
+			'images'	=> $product->images,
+			'product_conditions'	=>	Config::get('productconditions')
 		]);
 	}
 
