@@ -119,7 +119,7 @@
             <a class="footer-link"  href="{{ url('/contact') }}">Contact</a>
         </p>
         <hr>
-        <p>Stuvi &copy; 2015</p>
+        <p>&copy; Stuvi LLC. 2015</p>
     </div>
 
 </footer>
