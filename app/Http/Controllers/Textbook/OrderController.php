@@ -45,7 +45,6 @@ class OrderController extends Controller {
 	 */
 	public function storeBuyerOrder(Request $request)
     {
-        //return response('check');
         // check if this payment already exist
         if (BuyerPayment::where('stripe_token','=',Input::get('stripeToken'))->exists())
         {
@@ -67,7 +66,7 @@ class OrderController extends Controller {
                     ->with('message', 'Sorry,'.$product->book->title.' has been sold. Please remove it from Cart');
             }
         }
-        //return response('check');
+
         // create a payment
         $payment = new BuyerPayment;
         $payment->stripe_token      = Input::get('stripeToken');
@@ -249,5 +248,4 @@ class OrderController extends Controller {
         return redirect('order/seller')
             ->with('message', 'Order not found');
     }
-
 }
