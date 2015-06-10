@@ -16,7 +16,7 @@
 
 <!-- top jumbotron -->
     <div class = "container-fluid container-top backgnd">           <!-- Top half -->
-        <div class="container col-md-12">                               <!-- container -->
+        {{--<div class="container col-md-12">                               <!-- container -->
             <div class = "col-md-2"></div>                                  <!-- Buffer -->
             <div class="jumbotron col-md-8" id = "jumbotron1">              <!-- Jumbotron1 -->
                 <h1 id = "head1" >Get ready for Stuvi's Launch Party!</h1>
@@ -41,7 +41,14 @@
                     </div>
                 @endif
             </div> <!-- end jumbotron1 -->
-        </div>    <!-- end container -->
+        </div>    <!-- end container -->--}}
+        <div class="container col-md-12">
+            <h1 id="head1-temp">Welcome to Stuvi</h1>
+            <p class="lead tagline">Because it takes a village to conquer college.</p>
+
+
+        </div>
+
     </div>    <!-- end contain-top backgnd -->
    <!-- End Top Half
          Begin Bottom Half-->
