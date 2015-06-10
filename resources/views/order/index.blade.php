@@ -1,4 +1,4 @@
-@extends('app')
+p@extends('app')
 
 @section('content')
     <head>

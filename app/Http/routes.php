@@ -59,8 +59,10 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::get('/buyer/cancel/{id}', 'OrderController@cancelBuyerOrder');
 
     Route::get('/seller', 'OrderController@sellerOrderIndex');
+    Route::get('/seller/bookshelf', 'OrderController@sellerBookshelfIndex');
     Route::get('/seller/cancel/{id}', 'OrderController@cancelSellerOrder');
     Route::get('/seller/{id}', 'OrderController@showSellerOrder');
+
 });
 
 // cart

@@ -216,4 +216,14 @@ class OrderController extends Controller {
         return redirect('order/seller')->with('message', 'Order not found.');
     }
 
+
+    /**
+     * Display list of seller's unsold books
+     *
+     */
+
+    public function sellerBookshelfIndex()
+    {
+        return view('order.sellerBookshelfIndex');
+    }
 }
