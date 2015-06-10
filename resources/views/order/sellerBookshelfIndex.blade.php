@@ -14,12 +14,46 @@
     </div>
 
 
-    <div class="container-fluid">
+    <div class="container-fluid bookshelf-page">
+        <!-- back button -->
+        <a id="btn-back" href="javascript:history.back()" ><i class="fa fa-arrow-circle-left"></i>Back</a>
 
+        <!-- search bar-->
+
+
+        <!-- user info -->
         <div class="container">
-            <h1>{{ Auth::user()->first_name }}'s Bookshelf <small>Books for sale</small></h1>
+            <h1>{{ Auth::user()->first_name }}'s Bookshelf
+                <small><a>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</a>
+                    <i class="fa fa-star" id="reputation"></i>(<a href="#">80</a>)
+                </small></h1>
         </div>
 
+        <!-- sort and search -->
+        <div class="container">
+            <span class="text-muted">Sort by</span>
+            <ul class="nav nav-pills">
+                <li role="presentation"><a href="#">Title</a></li>
+                <li role="presentation"><a href="#">Author</a></li>
+                <li role="presentation"><a href="#">Price (Low to High)</a></li>
+                <li role="presentation"><a href="#">Price (High to Low)</a></li>
+
+                <div class="col-sm-4 col-md-4 pull-right bookshelf-sort">
+                    <form class="navbar-form" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </ul>
+
+        </div>
+
+        <!-- books -->
         <div class="container">
             <table class="table table-responsive for-sale-table">
                 <!-- new row for each book -->
@@ -38,7 +72,7 @@
                     <td class="for-sale-info-2">
                         <span class="for-sale-pub-date text-muted">September 15, 1998</span><br>
                         <span class="for-sale-isbn">ISBN-10: 0395925037</span><br>
-                        <span class="for-sale-lang">Language: German</span>
+                        <span class="for-sale-lang">Language: German</span><br>
                         <span class="for-sale-pages">Pages:123</span><br>
 
                     </td>

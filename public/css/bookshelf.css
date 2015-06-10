@@ -1,3 +1,19 @@
+/* CSS FOR sellerBookshelfIndex.php */
+
+.bookshelf-page{
+    background-color: whitesmoke;
+}
+
+
+/* Title */
+.fa-star{
+    color: #32adf1;
+}
+
+.bookshelf-sort{}
+
+
+
 /* BOOKS FOR SALE */
 
 
@@ -53,4 +69,16 @@ h5{ margin:0px;
 
 .for-sale-btn-add-cart{
     padding: 0px;
+}
+
+
+/* back button */
+
+#btn-back {
+    text-align: left;
+    padding-left: 5px;
+}
+
+.fa-arrow-circle-left{
+    padding: 10px;
 }
