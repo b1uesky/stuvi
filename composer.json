@@ -6,12 +6,18 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.0.*",
-		"laravel/cashier": "~5.0",
-        "frozennode/administrator": "5.*",
+		"frozennode/administrator": "5.*",
         "gloudemans/shoppingcart": "dev-master",
 		"desmond/isbndb": "dev-master",
-		"fale/isbn": "2.0.0"
+		"fale/isbn": "2.0.0",
+        "cartalyst/stripe-laravel": "2.0.*"
 	},
+    "repositories": [
+      {
+        "type": "composer",
+        "url": "https://packages.cartalyst.com"
+      }
+    ],
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",

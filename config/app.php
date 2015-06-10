@@ -160,7 +160,8 @@ return [
         /*
          * Payment Service Providers...
          */
-        'Laravel\Cashier\CashierServiceProvider',
+        //'Laravel\Cashier\CashierServiceProvider',
+        'Cartalyst\Stripe\Laravel\StripeServiceProvider',
 
         /*
          * Administrator Service Providers...
@@ -225,6 +226,7 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
         'Cart'      => 'Gloudemans\Shoppingcart\Facades\Cart',
+        'Stripe' => 'Cartalyst\Stripe\Laravel\Facades\Stripe',
 
 	],
 

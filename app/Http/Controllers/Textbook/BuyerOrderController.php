@@ -33,6 +33,13 @@ class BuyerOrderController extends Controller
 	 */
 	public function createBuyerOrder()
 	{
+        // if the Cart is empty, return to cart page
+        if (Cart::content()->count() < 1)
+        {
+            return redirect('/cart')
+                ->with('message', 'Cannot proceed to checkout because Cart is empty.');
+        }
+
 		return view('order.createBuyerOrder')
             ->with('items', Cart::content())
             ->with('total', Cart::total());
@@ -56,7 +63,7 @@ class BuyerOrderController extends Controller
         }
 
         // check if this payment amount the same as the Cart total
-        if ((int)Input::get('stripeAmount') != Cart::total())
+        if ((int)Input::get('stripeAmount') != Cart::total()*100)
         {
             return redirect('/cart')
                 ->with('message', 'Payment amount is not the same as Cart total');
@@ -101,7 +108,7 @@ class BuyerOrderController extends Controller
 
 
         // create seller order(s) according to the Cart items
-        OrderController::createSellerOrders($order->id);
+        $this->createSellerOrders($order->id);
 
         // remove payed items from Cart
         Cart::destroy();

@@ -29,9 +29,8 @@ return [
 		'region' => 'us-east-1',
 	],
 
-	'stripe' => [
-		'model'  => 'App\User',
-		'secret' => '',
-	],
+    'stripe' => [
+        'secret' => 'sk_test_1z2tEIbWtbZVvpWnnzgfymyC',
+    ],
 
 ];
