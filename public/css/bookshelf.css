@@ -1,32 +1,26 @@
-/*  CSS FOR profile.blade.php */
+/* CSS FOR sellerBookshelfIndex.php */
 
-
-/* User side bar */
-
-.edit{
-    text-align: center;
-    margin: 2%;
-
+.bookshelf-page{
+    background-color: whitesmoke;
 }
 
 
-
-.hr{
-    margin: 1%;
-    margin-left: 0%;
-    border-color: rgba(0, 0, 0, 0.64);
-    border-width: 1px 0px 0px;
-    max-width: 770px;
+/* Title */
+.fa-star{
+    color: #32adf1;
 }
 
-h2{}
+.bookshelf-sort{}
+
+
+
+/* BOOKS FOR SALE */
+
 
 h5{ margin:0px;
     margin-bottom: 3px;
 }
 
-
-/* BOOKS FOR SALE */
 .for-sale-img{
     width: 100px !important;
 }
@@ -49,6 +43,7 @@ h5{ margin:0px;
 }
 
 .for-sale-info-2{
+    width: 200px;
 
 }
 
@@ -56,12 +51,6 @@ h5{ margin:0px;
     font-size: medium;
     font-weight: bold;
 }
-
-
-.for-sale-author {}
-.for-sale-binding{}
-.for-sale-isbn {}
-.for-sale-class {}
 
 .for-sale-price{
     color: #B12704;
@@ -73,13 +62,23 @@ h5{ margin:0px;
 }
 
 
+.for-sale-author {}
+.for-sale-binding{}
+.for-sale-isbn {}
+.for-sale-class {}
+
 .for-sale-btn-add-cart{
     padding: 0px;
 }
-@media (max-width: 970px) {
-    .home       {max-width: 500px;}
-    .books      {max-width: 650px;}
-    #details,#for-sale    {
-        text-align: center;}
+
+
+/* back button */
+
+#btn-back {
+    text-align: left;
+    padding-left: 5px;
 }
 
+.fa-arrow-circle-left{
+    padding: 10px;
+}

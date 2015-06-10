@@ -22,7 +22,7 @@ body {
     * Photo by Nick Louie. Link: https://flic.kr/p/kSKWtK
     ******************/
 
-    background-image: url("../img/cover.jpg") ;
+    background-image: url("../img/cover-blur.png") ;
     background-size: cover;                         /* Fill entire container */
     background-repeat: no-repeat;
     background-position: center;
@@ -40,6 +40,26 @@ body {
 .home-btn {
     text-align: center;
 }
+
+
+#head1-temp{
+    color: whitesmoke;
+    text-align: center;
+    font-size: 5em;
+    font-weight: bold;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    padding-top: 6%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+.tagline{
+    color: whitesmoke;
+    text-align: center;
+    padding-bottom: 5%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+
 
 /***** GHOST BUTTONS *****/
 
