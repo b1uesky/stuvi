@@ -40,6 +40,10 @@ h5{ margin:0px;
     width: 100%;
 }
 
+.for-sale-item{
+    font-size: small
+}
+
 .for-sale-info-1{
     width: 150px;
 }
@@ -48,18 +52,30 @@ h5{ margin:0px;
 
 }
 
-.for-sale-title,
-.for-sale-author
-.for-sale-binding,{
-    font-size: small;
+.for-sale-title{
+    font-size: medium;
+    font-weight: bold;
 }
 
+
+.for-sale-author {}
+.for-sale-binding{}
+.for-sale-isbn {}
+.for-sale-class {}
+
 .for-sale-price{
-    font-size:small;
     color: #B12704;
     font-weight: bold;
 }
 
+.for-sale-pub-date{
+    font-size: medium;
+}
+
+
+.for-sale-btn-add-cart{
+    padding: 0px;
+}
 @media (max-width: 970px) {
     .home       {max-width: 500px;}
     .books      {max-width: 650px;}
