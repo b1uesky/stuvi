@@ -9,7 +9,7 @@
     <div class="container">
         <h1>Order #{{ $buyer_order->id }} @if ($buyer_order->cancelled) (CANCELLED) @endif</h1>
         @if (!$buyer_order->cancelled)
-            <p><a href="/order/cancel/{{ $buyer_order->id }}">Cancel Order</a></p>
+            <p><a href="/order/buyer/cancel/{{ $buyer_order->id }}">Cancel Order</a></p>
         @endif
         @if ($buyer_order->deliver_time)
             <p><a href="">Return or replace items</a></p>
