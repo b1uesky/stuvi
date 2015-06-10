@@ -35,6 +35,7 @@ class BuyerOrder extends Model
     public function products()
     {
         $seller_orders = $this->seller_orders;
+        $products = array();
         foreach ($seller_orders as $order)
         {
             $products[] = $order->product;
