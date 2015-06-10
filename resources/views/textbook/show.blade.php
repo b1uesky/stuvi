@@ -4,21 +4,37 @@
 @section('content')
     <div class="container">
         <div class="row">
-            @if($image->large_image)
-                <img src="{{ $image->large_image }}" alt="" />
+            @if($book->imageSet->large_image)
+                <img src="{{ $book->imageSet->large_image }}" alt="" />
             @endif
+
             <div class="">
                 ISBN: {{ $book->isbn }}
             </div>
+
             <div class="">
                 Title: {{ $book->title }}
+
             </div>
+
             <div class="">
                 Edition: {{ $book->edition }}
             </div>
+
+            {{-- Author(s) --}}
+            {{-- TODO: Make each author name looks like a tag --}}
             <div class="">
-                Author: {{ $book->author }}
+                @if(count($book->authors) > 1)
+                    <span>Authors:</span>
+                    @foreach($book->authors as $author)
+                        <span>{{ $author->full_name }}</span>
+                    @endforeach
+                @else
+                    <span>Author:</span>
+                    {{ $book->authors[0]->full_name }}
+                @endif
             </div>
+
             <div class="">
                 Number of Pages: {{ $book->num_pages }}
             </div>
@@ -32,7 +48,7 @@
                   <th>Condition</th>
                 </tr>
 
-                @foreach($products as $product)
+                @foreach($book->products as $product)
                     <tr>
                         <td>
                             {{ $product->price }}

@@ -52,12 +52,21 @@ class TextbookController extends Controller {
         $book = new Book();
         $book->isbn             = Input::get('isbn');
         $book->title            = Input::get('title');
-        $book->author           = Input::get('author');
         $book->edition          = Input::get('edition');
         $book->num_pages        = Input::get('num_pages');
 		$book->binding_id		= Input::get('binding');
 		$book->language_id		= Input::get('language');
         $book->save();
+
+		// create book authors
+		$authors_str = Input::get('authors');
+		$authors_array = explode(',', $authors_str);
+
+		foreach ($authors_array as $author) {
+			$book_author = new BookAuthor();
+			$book_author->book_id = $book->id;
+			$book_author->full_name = trim($author);
+		}
 
 		// create book image set
 		if (Input::hasFile('image'))
@@ -86,10 +95,7 @@ class TextbookController extends Controller {
 		// save the book image
 		$file_uploader->saveFile();
 
-        return view('product.create', [
-			'book' 	=> $book,
-			'image' => $image_set
-			]);
+        return view('product.create')->withBook($book);
 	}
 
 	/**
@@ -100,11 +106,7 @@ class TextbookController extends Controller {
 	 */
 	public function show($book)
 	{
-		return view("textbook.show", [
-			'book' 		=> $book,
-			'products'	=> $book->products,
-			'image'		=> $book->imageSet
-		]);
+		return view("textbook.show")->withBook($book);
 	}
 
 
@@ -148,10 +150,7 @@ class TextbookController extends Controller {
         // if the book is in our db, show the book information and let seller edit it
         if ($db_book)
         {
-            return view('textbook.result', [
-				'book'	=>	$db_book,
-				'image' =>	$db_book->imageSet
-				]);
+            return view('textbook.result')->withBook($db_book);
         }
         else
         {
@@ -164,12 +163,12 @@ class TextbookController extends Controller {
 				$book = new Book();
 				$book->isbn = $isbndb_book->getIsbn13();
 				$book->title = $isbndb_book->getTitle();
-				$book->author = $isbndb_book->getAuthorName();
 				$book->num_pages = $isbndb_book->getNumPages();
 				// TODO: language conversion
 				// $book->language = $isbndb_book->getLanguage();
+				$authors = $isbndb_book->getAuthorName();
 
-				return view('textbook.create')->withBook($book);
+				return view('textbook.create')->withBook($book)->withAuthors($authors);
 			}
 
 			// allow the seller fill in book information and create a new book record
@@ -209,10 +208,7 @@ class TextbookController extends Controller {
 		{
 			$book = Book::where('isbn', $info)->first();
 
-			return view('textbook.show', [
-				'book'	=>	$book,
-				'image'	=>	$book->imageSet
-				]);
+			return view('textbook.show')->withBook($books);
 		}
 		else
 		{
