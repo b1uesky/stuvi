@@ -29,6 +29,10 @@ a:focus {
     border-bottom: solid 5px #90B4DF;
 }
 
+.nav-login {
+    height: 50px;
+}
+
 /******* NAVIGATION HAMBURGER MENU *******/
 
 .fa-bars {

@@ -46,7 +46,7 @@
             <h1 id="head1-temp">Welcome to Stuvi</h1>
             <p class="lead tagline">Because it takes a village to conquer college.</p>
             @if (Auth::guest())
-                <div class=" home-btn">
+                <div class="home-btn">
                     <a class="btn ghost-btn" href="{{ url('/login') }}" role="button">LOGIN</a>
                     <a class="btn ghost-btn" href="{{ url('/register') }}" role="button">SIGN UP</a>
                 </div>

@@ -55,9 +55,9 @@
             <!-- Navbar right -->
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">
+                    <li><a class="nav-login" href="{{ url('/login') }}">
                             <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
-                    <li><a href="{{ url('/register') }}">
+                    <li><a class="nav-login" href="{{ url('/register') }}">
                             <i class="fa fa-user"></i> Register</a></li>
                 @else
                     <li class="dropdown">

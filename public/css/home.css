@@ -57,6 +57,7 @@ body {
     text-align: center;
     padding-bottom: 5%;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    font-weight: 400;
 }
 
 
@@ -69,16 +70,18 @@ body {
     border-radius: 0 !important;
     font-weight: bold !important;
     font-size: 1.3em !important;
-    color: #F16521;
-    border: 3px solid #F16521 !important;
+    color: #FFFFFF;
+    border: 3px solid #FFFFFF !important;
     background: none;
     margin: 0 20px 0;
     padding-top: 9px !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
 .ghost-btn:hover {
     background: #F16521;
     color: #FFFFFF !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .7);
 }
 
 .ghost-btn:focus {
