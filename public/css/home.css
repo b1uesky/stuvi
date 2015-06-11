@@ -88,6 +88,12 @@ body {
     outline: 0 !important;
 }
 
+
+@media(max-width: 767px){
+    .ghost-btn{
+        margin-bottom:10px;
+    }
+}
 /************** IDs   *************/
 
 #head1       {font-size: xx-large;}   /* Welcome */
