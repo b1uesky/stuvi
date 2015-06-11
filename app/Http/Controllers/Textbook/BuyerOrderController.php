@@ -150,7 +150,8 @@ class BuyerOrderController extends Controller
         if (!is_null($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
         {
             return view('order.showBuyerOrder')
-                ->with('buyer_order', $buyer_order);
+                ->with('buyer_order', $buyer_order)
+                ->with('datetime_format', Config::get('app.datetime_format'));
         }
 
         return redirect('order/buyer')
