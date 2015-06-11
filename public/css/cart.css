@@ -47,7 +47,17 @@ body {
 
 .shopping-cart{
     min-height: 500px;
+}
 
+.shopping-cart h1 {
+    text-align: center;
+    padding-top: 70px;
+}
+
+@media (max-width: 768px) {
+    .shopping-cart h1 {
+        padding-top: 20px;
+    }
 }
 
 .cart-table{
