@@ -24,7 +24,7 @@
                                     <table class="table table-condensed">
                                         <!-- joined -->
                                         <tr id ="details-joined">
-                                            <td><i class="fa fa-users"></i>
+                                            <td><i class="fa fa-user-plus"></i>
                                                 <b> Joined: </b></td>
                                             <td>08/01/15</td>
                                             <td></td>

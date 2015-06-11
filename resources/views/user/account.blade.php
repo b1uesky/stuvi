@@ -23,7 +23,7 @@
                             <hr>
                             <ul>
                                 <li><a href="#">Your Courses</a></li>
-                                <li><a href="{{url('/password/email')}}">Forgot your password?</a></li>
+                                <li><a href="{{ url('/password/email') }}">Forgot your password?</a></li>
                             </ul>
                         </div>
                         <!-- change account info -->
