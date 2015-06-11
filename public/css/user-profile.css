@@ -113,6 +113,20 @@ body {
     font-size: x-large;
 }
 
+#edit-btn {
+    color: #FFFFFF;
+    background-color: #7AB4DE;
+    border: none;
+    box-shadow: 0 5px #5B86AA;
+    width: 100px;
+    outline: 0;
+}
+
+#edit-btn:active {
+    box-shadow: 0 2px #5B86AA;
+    transform: translateY(5px);
+}
+
 /* Profile Content */
 .profile-content {
     padding: 20px;

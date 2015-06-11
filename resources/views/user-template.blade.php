@@ -95,7 +95,7 @@
                                                 </div>--}}
                             <div class="edit">
                                 <div class="btn-group">
-                                    <a class="btn btn-info btm-sm" id="edit-but" href="{{url('/user/profile-edit')}}">
+                                    <a class="btn btn-default" id="edit-btn" href="{{url('/user/profile-edit')}}">
                                         Edit Profile
                                     </a>
                                 </div>
