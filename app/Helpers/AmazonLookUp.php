@@ -45,11 +45,6 @@ class AmazonLookUp
         $this->dom = $apaiIO->runOperation($lookup);
     }
 
-    public function getDOM()
-    {
-        return $this->dom;
-    }
-
     public function success()
     {
         if ($this->dom->getElementsByTagName('Item')->length == 0)
@@ -83,6 +78,13 @@ class AmazonLookUp
         return $this->getValuesByTag('Binding')[0];
     }
 
+    public function getLanguage()
+    {
+        $language = $this->dom->getElementsByTagName('Language')->item(0);
+        $language_name = $language->getElementsByTagName('Name')->item(0)->nodeValue;
+        return $language_name;
+    }
+
     public function getNumPages()
     {
         return $this->getValuesByTag('NumberOfPages')[0];
@@ -97,4 +99,29 @@ class AmazonLookUp
     {
         return $this->getValuesByTag('Edition')[0];
     }
+
+    public function getImageURL($image_size)
+    {
+        $image_set = $this->dom->getElementsByTagName('ImageSet')->item(0);
+        $image = $image_set->getElementsByTagName($image_size)->item(0);
+        $url = $image->getElementsByTagName('URL')->item(0)->nodeValue;
+
+        return $url;
+    }
+
+    public function getSmallImage()
+    {
+        return $this->getImageURL('SmallImage');
+    }
+
+    public function getMediumImage()
+    {
+        return $this->getImageURL('MediumImage');
+    }
+
+    public function getLargeImage()
+    {
+        return $this->getImageURL('LargeImage');
+    }
+
 }
