@@ -8,6 +8,8 @@ use ApaiIO\ApaiIO;
 
 class AmazonLookUp
 {
+    const DEFAULT_EDITION = 1;
+
     public function __construct($item_id, $id_type)
     {
         $this->item_id = $item_id;
@@ -97,7 +99,16 @@ class AmazonLookUp
 
     public function getEdition()
     {
-        return $this->getValuesByTag('Edition')[0];
+        $edition = $this->getValuesByTag('Edition');
+
+        if (count($edition) > 0)
+        {
+            return $edition[0];
+        }
+        else
+        {
+            return AmazonLookUp::DEFAULT_EDITION;
+        }
     }
 
     public function getImageURL($image_size)
