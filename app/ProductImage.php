@@ -6,6 +6,6 @@ class ProductImage extends Model {
 
 	public function product()
 	{
-		return $this->belongsTo('App\Product')l
+		return $this->belongsTo('App\Product');
 	}
 }
