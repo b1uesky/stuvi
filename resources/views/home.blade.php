@@ -78,25 +78,25 @@
             </div>
             <div class="row service-row">
                 <div class="col-xs-12 col-sm-6 col-lg-3 service">
-                    <i class="fa fa-book fa-5x"></i>
+                    <a href="{{ url('/textbook') }}"><i class="fa fa-book fa-5x"></i></a>
                     <h4>Textbooks</h4>
 
                     <p>Buy and sell textbooks at your campus</p>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-lg-3 service">
-                    <i class="fa fa-home fa-5x"></i>
+                    <a href="{{ url('/') }}"><i class="fa fa-home fa-5x"></i></a>
                     <h4>Housing</h4>
 
                     <p>Find off campus housing near your campus</p>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-lg-3 service">
-                    <i class="fa fa-university fa-5x"></i>
+                    <a href="{{ url('/') }}"><i class="fa fa-university fa-5x"></i></a>
                     <h4>Clubs</h4>
 
                     <p>Get involved with clubs and organizations</p>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-lg-3 service">
-                    <i class="fa fa-users fa-5x"></i>
+                    <a href="{{ url('/') }}"><i class="fa fa-users fa-5x"></i></a>
                     <h4>Groups</h4>
 
                     <p>Connect with students in your classes</p>
