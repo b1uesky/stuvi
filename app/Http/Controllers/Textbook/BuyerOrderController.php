@@ -173,8 +173,7 @@ class BuyerOrderController extends Controller
         if (!is_null($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
         {
             $buyer_order->cancel();
-            return view('order.showBuyerOrder')
-                ->with('buyer_order', $buyer_order);
+            return redirect('order/buyer/'.$id);
         }
 
         return redirect('order/buyer')

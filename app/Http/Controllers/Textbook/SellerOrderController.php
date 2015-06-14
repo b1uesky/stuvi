@@ -64,17 +64,23 @@ class SellerOrderController extends Controller
         if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
         {
             $seller_order->cancel();
-            return view('order.showSellerOrder')
-                ->with('seller_order', $seller_order);
+            return redirect('order/seller/'.$id);
         }
 
         return redirect('order/seller')
             ->with('message', 'Order not found.');
     }
 
+    /**
+     * Set the schedule pickup time for a seller order.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function setScheduledPickupTime()
     {
-        $scheduled_pickup_time  = strtotime(Input::get('scheduled_pickup_time'));
+        // TODO: convert scheduled_pickup_time to a form that can be assigned to column `scheduled_pickup_time`.
+        $scheduled_pickup_time  = (Input::get('scheduled_pickup_time'));
+        //return $scheduled_pickup_time;
         $id                     = (int)Input::get('id');
 
         $seller_order           = SellerOrder::find($id);

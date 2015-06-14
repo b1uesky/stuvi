@@ -10,7 +10,7 @@
         <h1>Order #{{ $buyer_order->id }}
             @if ($buyer_order->cancelled) (CANCELLED) @endif
             @if ($buyer_order->pickup_time)
-                Delivered @ {{ date($datetime_format, $buyer_order->pickup_time) }}
+                Delivered @ {{ date($datetime_format, strtotime($buyer_order->pickup_time)) }}
             @endif
             </p>
         </h1>
@@ -39,14 +39,14 @@
                     <?php $seller_order = $buyer_order->seller_order($product->id) ?>
                     <p>Scheduled pickup time:
                         @if ($seller_order->scheduled_pickup_time)
-                            {{ date($datetime_format, $seller_order->scheduled_pickup_time) }}
+                            {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}
                         @else
                             N/A
                         @endif
                     </p>
                     <p>Pickup time:
                         @if ($seller_order->pickup_time)
-                            {{ date($datetime_format, $seller_order->pickup_time) }}
+                            {{ date($datetime_format, strtotime($seller_order->pickup_time)) }}
                         @else
                             N/A
                         @endif
