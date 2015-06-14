@@ -19,27 +19,27 @@ public function run()
         'title'         => 'Principles of solid mechanics',
         'edition'       => 1,
         'isbn'          => '9780849303159',
-        'num_pages'     => 446,
-        'binding_id'    => 1,
-        'language_id'   => 1
+        'binding'       => 'Hardcover',
+        'language'      => 'English',
+        'num_pages'     => 446
     ]);
 
     $alg = Book::create([
         'title'         => 'Algorithms',
         'edition'       => 4,
         'isbn'          => '9780321573513',
-        'num_pages'     => 992,
-        'binding_id'    => 2,
-        'language_id'   => 1
+        'binding'       => 'Hardcover',
+        'language'      => 'English',
+        'num_pages'     => 992
     ]);
 
     $pp = Book::create([
         'title'         => 'Programming Problems: Advanced Algorithms (Volume 2)',
         'edition'       => 1,
         'isbn'          => '9781484964095',
-        'num_pages'     => 200,
-        'binding_id'    => 2,
-        'language_id'   => 1
+        'binding'       => 'Paperback',
+        'language'      => 'English',
+        'num_pages'     => 200
     ]);
 
     BookAuthor::create([

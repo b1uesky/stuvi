@@ -32,31 +32,28 @@
                 'title' => 'Title'
             ),
             'isbn' => array(
-                'isbn' => 'ISBN'
+                'title' => 'ISBN'
             ),
             'edition' => array(
-                'edition' => 'Edition'
+                'title' => 'Edition'
             ),
-            'author' => array(
-                'author' => 'Author'
+            'image' => array(
+                'title' => 'Image',
+                'relationship' => 'imageSet',
+                'select' => '(:table).medium_image',
+                'output' => '<img src="(:value)" />'
+            ),
+            'binding' => array(
+                'title' => 'Binding'
+            ),
+            'language' => array(
+                'title' => 'Language'
             ),
             'num_pages' => array(
-                'num_pages' => 'Number of Pages'
+                'title' => 'Number of Pages'
             ),
             'verified' => array(
-                'verified' => 'Verified'
-            ),
-            'binding_id' => array(
-                'binding_id' => 'Binding ID'
-            ),
-            'image_set_id' => array(
-                'image_set_id' => 'Image Set ID'
-            ),
-            'language_id' => array(
-                'language_id' => 'Language ID'
-            ),
-            'amazon_info_id' => array(
-                'amazon_info_id' => 'Amazon Info ID'
+                'title' => 'Verified'
             ),
         ),
 
@@ -68,43 +65,31 @@
         'edit_fields' => array(
             'title' => array(
                 'title' => 'Title',
-                'type' => 'text',
+                'type' => 'text'
             ),
             'isbn' => array(
-                'isbn' => 'ISBN',
-                'type' => 'number',
+                'title' => 'ISBN',
+                'type' => 'number'
             ),
             'edition' => array(
-                'edition' => 'Edition',
-                'type' => 'number',
+                'title' => 'Edition',
+                'type' => 'number'
             ),
-            'author' => array(
-                'author' => 'Author',
-                'type' => 'text',
+            'binding' => array(
+                'title' => 'Binding',
+                'type'  => 'text'
+            ),
+            'language' => array(
+                'title' => 'Language',
+                'type'  => 'text'
             ),
             'num_pages' => array(
-                'num_pages' => 'Number of Pages',
-                'type' => 'number',
+                'title' => 'Number of Pages',
+                'type' => 'number'
             ),
             'verified' => array(
-                'verified' => 'Verified',
-                'type' => 'bool',
-            ),
-            'binding_id' => array(
-                'binding_id' => 'Binding ID',
-                'type' => 'number',
-            ),
-            'image_set_id' => array(
-                'image_set_id' => 'Image Set ID',
-                'type' => 'number',
-            ),
-            'language_id' => array(
-                'language_id' => 'Language ID',
-                'type' => 'number',
-            ),
-            'amazon_info_id' => array(
-                'amazon_info_id' => 'Amazon Info ID',
-                'type' => 'number',
+                'title' => 'Verified',
+                'type' => 'bool'
             ),
         ),
     );

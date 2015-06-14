@@ -11,11 +11,12 @@ use Input;
 use Config;
 use App\Helpers\FileUploader;
 use App\Helpers\SearchClassifier;
+use App\Helpers\AmazonLookUp;
 use Isbn\Isbn;
-use ISBNdb\Book as IsbndbBook;
 
 use App\Book;
 use App\BookImageSet;
+use App\BookAuthor;
 use App\Product;
 use App\ProductContion;
 
@@ -154,21 +155,38 @@ class TextbookController extends Controller {
         }
         else
         {
-			// search book in isbndb
-			$token = Config::get('isbndb.token');
-			$isbndb_book = new IsbndbBook($token, $isbn);
+			// search book using Amazon API
+			$amazon = new AmazonLookUp($isbn, 'ISBN');
 
-			if ($isbndb_book->isFound())
+			if ($amazon->success())
 			{
+				// save this book to our database
 				$book = new Book();
-				$book->isbn = $isbndb_book->getIsbn13();
-				$book->title = $isbndb_book->getTitle();
-				$book->num_pages = $isbndb_book->getNumPages();
-				// TODO: language conversion
-				// $book->language = $isbndb_book->getLanguage();
-				$authors = $isbndb_book->getAuthorName();
+				$book->isbn = $isbn;
+				$book->title = $amazon->getTitle();
+				$book->edition = $amazon->getEdition();
+				$book->binding = $amazon->getBinding();
+				$book->language = $amazon->getLanguage();
+				$book->num_pages = $amazon->getNumPages();
+				$book->save();
 
-				return view('textbook.create')->withBook($book)->withAuthors($authors);
+				// save book image set
+				$book_image_set = new BookImageSet();
+				$book_image_set->book_id = $book->id;
+				$book_image_set->small_image = $amazon->getSmallImage();
+				$book_image_set->medium_image = $amazon->getMediumImage();
+				$book_image_set->large_image = $amazon->getLargeImage();
+				$book_image_set->save();
+
+				// save book authors
+				foreach ($amazon->getAuthors() as $author_name) {
+					$book_author = new BookAuthor();
+					$book_author->book_id = $book->id;
+					$book_author->full_name = $author_name;
+					$book_author->save();
+				}
+
+				return view('textbook.result')->withBook($book);
 			}
 
 			// allow the seller fill in book information and create a new book record
