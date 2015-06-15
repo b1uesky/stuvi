@@ -195,47 +195,47 @@ class ProductTableSeeder extends Seeder {
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Algorithms.png',
+            'path'             =>  $folder . 'Algorithms.png',
             'product_id'        =>  $p_alg0->id
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Algorithms.png',
+            'path'             =>  $folder . 'Algorithms.png',
             'product_id'        =>  $p_alg1->id
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Algorithms.png',
+            'path'             =>  $folder . 'Algorithms.png',
             'product_id'        =>  $p_alg2->id
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Programming-Problems.jpg',
+            'path'             =>  $folder . 'Programming-Problems.jpg',
             'product_id'        =>  $p_pp0->id
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Programming-Problems.jpg',
+            'path'             =>  $folder . 'Programming-Problems.jpg',
             'product_id'        =>  $p_pp1->id
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Programming-Problems.jpg',
+            'path'             =>  $folder . 'Programming-Problems.jpg',
             'product_id'        =>  $p_pp2->id
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Principles-of-solid-mechanics.jpg',
+            'path'             =>  $folder . 'Principles-of-solid-mechanics.jpg',
             'product_id'        =>  $p_mech0->id
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Principles-of-solid-mechanics.jpg',
+            'path'             =>  $folder . 'Principles-of-solid-mechanics.jpg',
             'product_id'        =>  $p_mech1->id
             ]);
 
         ProductImage::create([
-            'image'             =>  $folder . 'Principles-of-solid-mechanics.jpg',
+            'path'             =>  $folder . 'Principles-of-solid-mechanics.jpg',
             'product_id'        =>  $p_mech2->id
             ]);
     }

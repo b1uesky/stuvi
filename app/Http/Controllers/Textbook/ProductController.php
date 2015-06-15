@@ -79,11 +79,15 @@ class ProductController extends Controller {
 			$file_uploader = new FileUploader($image, $title, $folder);
 
 			$product_image = new ProductImage();
-			$product_image->image = $file_uploader->path;
 			$product_image->product_id = $product->id;
 			$product_image->save();
 
+			$file_uploader->setFilename($product_image->id);
+			$file_uploader->setPath();
 			$file_uploader->saveFile();
+
+			$product_image->path = $file_uploader->getPath();
+			$product_image->save();
 		}
 
         return $this->show($product);

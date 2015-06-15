@@ -8,7 +8,7 @@
         @if(!empty($images))
             @foreach($images as $image)
                 <div class="">
-                    <img src="{{ $image->image }}" alt="" />
+                    <img src="{{ $image->path }}" alt="" />
                 </div>
             @endforeach
         @endif
