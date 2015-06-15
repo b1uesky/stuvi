@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-xs-3 col-xs-offset-5 order-number">
                             <h5>Order Number # {{ $order->id }}</h5>
-                            <a href="#">View Order Details <i class="fa fa-caret-right"></i>
+                            <a href="/order/buyer/{{$order->id}}">View Order Details <i class="fa fa-caret-right"></i>
                             </a>
                         </div>
                     </div>
