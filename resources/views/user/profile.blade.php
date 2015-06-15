@@ -93,7 +93,6 @@
                                         <h5>Classes</h5>
                                         <span class="for-sale-class"><a href="#">BU:SMG SM131</a></span>
                                     </td>
-                                            </td>
                                     </tr>
 
                                     </table>
