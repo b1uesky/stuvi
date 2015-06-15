@@ -69,8 +69,9 @@
                         the compact, yet vibrant city, that we call home.
                     </p>
                 </div>
-                <div class="container col-md-6" id="img-info1">
-                    <img src="http://placehold.it/350x350">
+                <div class="container col-md-6" id="img-info-1">
+                    {{--<img src="http://placehold.it/350x350">--}}
+                    <img class="img-responsive" src="{{asset('/img/art-boston.jpg')}}" width="350px">
                 </div>
             </div>
         </div>

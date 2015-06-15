@@ -134,39 +134,9 @@ body {
     padding-bottom: 1%;
 }
 
-
-
-/* BOTTOM HALF FEATURES NEW */
-/*
-
-.features{
-    padding-left: 10%;
-    padding-right: 10%;
-    margin-left: 10%;
-    margin-right: 10%;
+#img-info-1{
+    padding: 30px;
 }
-*/
-
-/*.services{*/
-/*margin-bottom: 10px;*/
-/*}
-/*
-
-.p-services{
-    text-align: center;
-}
-
-.img-services {
-    margin-bottom:10px;
-}
-
-.h3-services{
-    text-align: center;
-    color: #f17b32;
-}
-*/
-
-
 
 /**************  NAV DROPDOWN FIX  *************/
 
