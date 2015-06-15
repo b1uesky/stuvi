@@ -1,9 +1,12 @@
+<!-- http://homestead.app/order/buyer -->
+
+
 @extends('app')
 
 @section('content')
     <head>
-        <link href="{{ asset('/css/order.css') }}" rel="stylesheet">
-        <title>Your Orders</title>
+        <link href="{{ asset('/css/order.css') }}" rel="stylesheet" type="text/css">
+        <title>Stuvi - Your Orders</title>
     </head>
 
     <div class="container" xmlns="http://www.w3.org/1999/html">
@@ -12,43 +15,53 @@
         @endif
     </div>
     <div class="container buyer-order-container">
-        <h1>Your orders:</h1>
+        <h1>Your orders</h1>
         @forelse ($orders as $order)
             <div class="row">
                 <div class="container order-container">
-                    @foreach($order->products() as $product)
-                        <div class="row book-row">
-                            <div class="col-xs-2 col-xs-offset-1">
-                                <img src="http://placehold.it/100x100">
-                            </div>
-                            <div class="col-xs-5 book-info">
-                                <h3>{{ $product->book->title }}</h3>
-                                <h4>{{ $product->book->author}}</h4>
-
-                                <p>{{ $product->book->isbn }}</p>
-                            </div>
-                            <div class="col-xs-2 col-xs-offset-2 book-price">
-                                <h4>${{ $product->price }}</h4>
-                            </div>
-                        </div>
-                    @endforeach
                     <div class="row order-row">
-                        <div class="col-xs-2 col-xs-offset-1 order-date">
+                        <div class="col-xs-2 order-date">
                             <h5>Order Placed</h5>
 
                             <p>{{ date('M d, Y', strtotime($order->created_at)) }}</p>
                         </div>
-                        <div class="col-xs-3 col-xs-offset-2 order-number">
-                            <h5>Order Number</h5>
 
-                            <p>0123456789</p>
-                        </div>
-                        <div class="col-xs-2 col-xs-offset-2 order-total">
+                        <div class="col-xs-2 col-xs-offset-0 order-total">
                             <h5>Total</h5>
 
                             <p>${{ $order->buyer_payment->stripe_amount/100 }}</p>
                         </div>
+                        <div class="col-xs-3 col-xs-offset-5 order-number">
+                            <h5>Order Number # {{ $order->id }}</h5>
+                            <a href="#">View Order Details <i class="fa fa-caret-right"></i>
+                            </a>
+                        </div>
                     </div>
+                    <!-- order status -->
+                    <h3>Order Processing</h3>
+                    <small>Your order is being processed by the Stuvi team.</small>
+                    @foreach($order->products() as $product)
+                        <div class="row book-row">
+                            <div class="col-xs-2 book-img">
+                                <img src="http://placehold.it/75x115">
+                            </div>
+                            <div class="col-xs-5 book-info">
+                                <h5>{{ $product->book->title }}</h5>
+                                <h5><small>{{ $product->book->author}}</small></h5>
+
+                                <p>{{ $product->book->isbn }}</p>
+                                <h6 id="book-price">${{ $product->price }}</h6>
+                            </div>
+                            <div class="col-xs-2 col-xs-offset-3">
+                                <a class="btn btn-default order-button-1" href="#" role="button">Track Package</a>
+                                <a class="btn btn-default order-button-2" href="#" role="button">Return or Replace Item</a>
+                                <a class="btn btn-default order-button-2" href="#" role="button">Leave Seller Feedback</a>
+                        </div>
+
+
+                        </div>
+                    @endforeach
+
                 </div>
             </div>
         @empty

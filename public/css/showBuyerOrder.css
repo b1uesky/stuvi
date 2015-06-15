@@ -1,0 +1,34 @@
+/*http://homestead.app/order/buyer/#*/
+
+.print{
+    text-align: right;
+    margin: 10px;
+    padding-right: 10px;
+}
+
+#details1{
+    font-weight: bold;
+}
+
+#details2{
+    outline: 1px solid rgba(0, 0, 0, 0.30);
+}
+
+#details3{
+    /*outline: 1px solid rgba(0, 0, 0, 0.30);*/
+    border: 2px solid #F9AA62;
+    margin-top: 10px;
+    margin-bottom: 30px;
+
+
+}
+
+.row-items{
+    background-color: rgba(0, 0, 0, 0.09);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.30);
+    margin-bottom: 10px;
+}
+
+hr{
+    border-color: black;
+}

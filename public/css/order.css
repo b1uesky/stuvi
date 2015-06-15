@@ -13,14 +13,37 @@ body {
     margin-bottom: 30px;
 }
 
+.order-row{
+    background-color: rgba(0, 0, 0, 0.09);
+}
+
 .book-row {
     padding: 10px 0;
+}
+
+.book-img{
+    max-width: 100px;
+    margin: 10px;
 }
 
 .book-info h3 {
     margin-top: 10px;
 }
 
-.book-price h4 {
-    margin-top: 15px;
+#book-price{
+    color: #b61f17;
+}
+
+.order-button-1 {
+    background: #F16521;
+    color: #FFFFFF;
+    border: none;
+    margin: 5px;
+}
+
+.order-button-2 {
+    background: rgba(0, 0, 0, 0.28)
+    color: #FFFFFF;
+    border: none;
+    margin: 5px;
 }
