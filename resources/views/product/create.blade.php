@@ -78,7 +78,7 @@
                 </div>
                 <div class="form-group">
                     <label>{{ $condition['description'] }}</label>
-                    <textarea class="form-control" rows="5" placeholder="{{ $condition['description_placeholder'] }}"></textarea>
+                    <textarea name="description" class="form-control" rows="5" placeholder="{{ $condition['description_placeholder'] }}"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Price</label>

@@ -68,6 +68,7 @@ class ProductController extends Controller {
 		$condition->stains = Input::get('stains');
 		$condition->burns = Input::get('burns');
 		$condition->rips = Input::get('rips');
+		$condition->description = Input::get('description');
 		$condition->save();
 
 		// save multiple product images

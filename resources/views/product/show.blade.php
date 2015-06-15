@@ -62,6 +62,13 @@
             </tr>
         </table>
 
+        @if($condition->description != '')
+            <h4>Seller's description on the book conditions:</h4>
+            <div class="">
+                {{ $condition->description }}
+            </div>
+        @endif
+
     </div>
 
 </div>

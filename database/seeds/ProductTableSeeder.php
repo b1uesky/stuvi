@@ -87,7 +87,8 @@ class ProductTableSeeder extends Seeder {
             'water_damage'      =>  0,
             'stains'            =>  0,
             'burns'             =>  0,
-            'rips'              =>  0
+            'rips'              =>  0,
+            'description'       =>  'Very good'
             ]);
 
         ProductCondition::create([
@@ -100,7 +101,8 @@ class ProductTableSeeder extends Seeder {
             'water_damage'      =>  1,
             'stains'            =>  1,
             'burns'             =>  1,
-            'rips'              =>  1
+            'rips'              =>  1,
+            'description'       =>  'Good'
             ]);
 
         ProductCondition::create([
@@ -113,7 +115,8 @@ class ProductTableSeeder extends Seeder {
             'water_damage'      =>  2,
             'stains'            =>  2,
             'burns'             =>  2,
-            'rips'              =>  2
+            'rips'              =>  2,
+            'description'       =>  'Okay'
             ]);
 
         ProductCondition::create([
@@ -126,7 +129,8 @@ class ProductTableSeeder extends Seeder {
             'water_damage'      =>  0,
             'stains'            =>  0,
             'burns'             =>  0,
-            'rips'              =>  0
+            'rips'              =>  0,
+            'description'       =>  'Very good'
             ]);
 
         ProductCondition::create([
@@ -139,7 +143,8 @@ class ProductTableSeeder extends Seeder {
             'water_damage'      =>  1,
             'stains'            =>  1,
             'burns'             =>  1,
-            'rips'              =>  1
+            'rips'              =>  1,
+            'description'       =>  'Good'
             ]);
 
         ProductCondition::create([
@@ -152,7 +157,8 @@ class ProductTableSeeder extends Seeder {
             'water_damage'      =>  2,
             'stains'            =>  2,
             'burns'             =>  2,
-            'rips'              =>  2
+            'rips'              =>  2,
+            'description'       =>  'Okay'
             ]);
 
         ProductCondition::create([
@@ -165,7 +171,8 @@ class ProductTableSeeder extends Seeder {
             'water_damage'      =>  0,
             'stains'            =>  0,
             'burns'             =>  0,
-            'rips'              =>  0
+            'rips'              =>  0,
+            'description'       =>  'Very good'
             ]);
 
         ProductCondition::create([
@@ -178,7 +185,8 @@ class ProductTableSeeder extends Seeder {
             'water_damage'      =>  1,
             'stains'            =>  1,
             'burns'             =>  1,
-            'rips'              =>  1
+            'rips'              =>  1,
+            'description'       =>  'Good'
             ]);
 
         ProductCondition::create([
@@ -191,7 +199,8 @@ class ProductTableSeeder extends Seeder {
             'water_damage'      =>  2,
             'stains'            =>  2,
             'burns'             =>  2,
-            'rips'              =>  2
+            'rips'              =>  2,
+            'description'       =>  'Okay'
             ]);
 
         ProductImage::create([
