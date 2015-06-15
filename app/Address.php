@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-use Auth;
+use Auth, Config;
 use League\Flysystem\Exception;
 
 /**
@@ -37,7 +37,8 @@ class Address extends Model
     public static function rules() {
         $rules = array(
             'addressee'=>'Max:100',
-            'street'=>'required|Max:100',
+            'address_line1'=>'required|Max:100',
+            'address_line2'=>'Max:100',
             'city'=>'required',
             'state_a2'=>'required|Alpha|size:2',
             'zip'=>'required|AlphaDash|Min:5|Max:10', // https://www.barnesandnoble.com/help/cds2.asp?PID=8134

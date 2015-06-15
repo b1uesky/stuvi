@@ -42,12 +42,16 @@
     <!-- all of shopping cart info -->
     <div class="container shopping-cart">
         <h1>Shopping Cart
+            @if ($items->count() > 0)
+                <a href="{{ url('/cart/empty') }}">Clear Cart</a>
+            @endif
         </h1>
 {{--        @if ($items->count() < 1)
             <a href="{{ url('/cart/empty') }}">Your cart is empty</a>
         @endif--}}
         <br>
 
+        @if ($items->count() > 0)
         <!-- cart items -->
         <table class="table table-responsive cart-table">
         <thead>
@@ -58,6 +62,7 @@
                 <th>Remove</th>
             </tr>
         </thead>
+        @endif
             <!-- add a row for each item -->
             @forelse ($items as $item)
                 <tr>

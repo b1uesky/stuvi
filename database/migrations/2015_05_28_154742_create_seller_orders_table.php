@@ -18,8 +18,8 @@ class CreateSellerOrdersTable extends Migration {
             $table->integer('product_id')->unsigned();
             $table->boolean('cancelled')->default(false);
             $table->integer('seller_payment_id')->unsigned()->nullable();
-            $table->string('scheduled_pickup_time')->nullable();
-            $table->string('pickup_time')->nullable();
+            $table->timestamp('scheduled_pickup_time')->nullable();
+            $table->timestamp('pickup_time')->nullable();
             $table->integer('buyer_order_id')->unsigned();
             $table->timestamps();
 		});
