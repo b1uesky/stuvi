@@ -60,14 +60,16 @@
     <div class="container-fluid" id="bottom-half">
         <div class="container-fluid stuvi-container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="container col-md-4 col-md-offset-2" id="info1">
                     <h1>What is Stuvi?</h1>
 
                     <p>
-                        Stuvi is a marketplace built for college students.
+                        Stuvi is a marketplace built for college students, by college students. We're here to provide
+                        relevant services to help you succeed at school. We're launching here in Boston, Massachusetts,
+                        the compact, yet vibrant city, that we call home.
                     </p>
                 </div>
-                <div class="col-md-6">
+                <div class="container col-md-6" id="img-info1">
                     <img src="http://placehold.it/350x350">
                 </div>
             </div>
