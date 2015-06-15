@@ -27,6 +27,7 @@
                 <small><a>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</a>
                     <i class="fa fa-star" id="reputation"></i>(<a href="#">80</a>)
                 </small></h1>
+            <hr id="hr1">
         </div>
 
         <!-- sort and search -->
