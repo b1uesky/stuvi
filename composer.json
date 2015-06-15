@@ -9,7 +9,7 @@
 		"frozennode/administrator": "5.*",
         "gloudemans/shoppingcart": "dev-master",
 		"fale/isbn": "2.0.0",
-		"exeu/apai-io": "dev-master"
+		"exeu/apai-io": "dev-master",
         "cartalyst/stripe-laravel": "2.0.*"
 	},
     "repositories": [
