@@ -99,7 +99,8 @@ body {
     box-shadow: 0 5px #5B86AA;
 }
 
-.btn-checkout:hover {
+.btn-checkout:hover,
+.btn-checkout:focus {
     color: #FFFFFF;
 }
 

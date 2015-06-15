@@ -16,7 +16,7 @@
         @forelse ($orders as $order)
             <div class="row">
                 <div class="container order-container">
-                    @foreach($order->products() as $product)
+                    @foreach($order->product() as $product)
                         <div class="row book-row">
                             <div class="col-xs-2 col-xs-offset-1">
                                 <img src="http://placehold.it/100x100">
