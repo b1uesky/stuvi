@@ -99,6 +99,10 @@ body {
     box-shadow: 0 5px #5B86AA;
 }
 
+.btn-checkout:hover {
+    color: #FFFFFF;
+}
+
 .btn-checkout:active {
     box-shadow: 0 2px #5B86AA;
     transform: translateY(5px);
