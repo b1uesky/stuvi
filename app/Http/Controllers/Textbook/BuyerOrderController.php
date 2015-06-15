@@ -10,9 +10,10 @@ use App\BuyerOrder;
 use App\SellerOrder;
 use App\BuyerPayment;
 
-use Auth, Input, Cart, Session, DB;
+use Auth, Input, Cart, Session, DB, Config;
 
-class OrderController extends Controller {
+class BuyerOrderController extends Controller
+{
 
 	/**
 	 * Display a listing of buyer orders for an user.
@@ -21,8 +22,8 @@ class OrderController extends Controller {
 	 */
 	public function buyerOrderIndex()
 	{
-        //var_dump(User::find(Auth::id())->orders);
-		return view('order.index')->withOrders(User::find(Auth::id())->buyerOrders);
+		return view('order.index')
+            ->with('orders', User::find(Auth::id())->buyerOrders);
 	}
 
 	/**
@@ -32,8 +33,16 @@ class OrderController extends Controller {
 	 */
 	public function createBuyerOrder()
 	{
-		return view('order.createBuyerOrder')->withItems(Cart::content())
-                                   ->withTotal(Cart::total());
+        // if the Cart is empty, return to cart page
+        if (Cart::content()->count() < 1)
+        {
+            return redirect('/cart')
+                ->with('message', 'Cannot proceed to checkout because Cart is empty.');
+        }
+
+		return view('order.createBuyerOrder')
+            ->with('items', Cart::content())
+            ->with('total', Cart::total());
 	}
 
 	/**
@@ -43,29 +52,33 @@ class OrderController extends Controller {
 	 */
 	public function storeBuyerOrder(Request $request)
     {
-        //return response('check');
+        // validate the address info
+        $this->validate($request, Address::rules());
+
         // check if this payment already exist
         if (BuyerPayment::where('stripe_token','=',Input::get('stripeToken'))->exists())
         {
-            Session::flash('message', 'Invalid payment.');
-            return redirect('/order/createBuyerOrder');
+            return redirect('/order/createBuyerOrder')
+                ->with('message', 'Invalid payment.');
         }
-//        // check if all products exist
-//        foreach (Cart::content() as $product)
-//        if (!(Product::find()->exists()))
+
+        // check if this payment amount the same as the Cart total
+//        if ((int)Input::get('stripeAmount') != Cart::total()*100)
 //        {
-//            return response('Sorry, this product is not exist.');
+//            return redirect('/cart')
+//                ->with('message', 'Payment amount is not the same as Cart total');
 //        }
+
         // check if any product in Cart is already traded
         foreach (Cart::content() as $row)
         {
             $product = Product::find($row->id);
-            if ($product->sold()) {
-                Session::flash('message', 'Sorry,'.$product->book->title.' has been sold. Please remove it from Cart');
-                return redirect('/cart');
+            if ($product->sold) {
+                return redirect('/cart')
+                    ->with('message', 'Sorry,'.$product->book->title.' has been sold. Please remove it from Cart');
             }
         }
-        //return response('check');
+
         // create a payment
         $payment = new BuyerPayment;
         $payment->stripe_token      = Input::get('stripeToken');
@@ -75,13 +88,15 @@ class OrderController extends Controller {
         $payment->save();
 
         // store the buyer shipping address
-        $address = array(   'addressee'     => Input::get('addressee'),
+        $address = array(
+            'addressee'     => Input::get('addressee'),
             'address_line1' => Input::get('address_line1'),
             'address_line2' => Input::get('address_line2'),
             'city'          => Input::get('city'),
             'state_a2'      => Input::get('state_a2'),
             'zip'           => Input::get('zip'),
-            'phone_number'  => Input::get('phone_number'));
+            'phone_number'  => Input::get('phone_number')
+        );
         $shipping_address_id = Address::add($address, Auth::id());
 
         // create an buyer payed order
@@ -93,13 +108,13 @@ class OrderController extends Controller {
 
 
         // create seller order(s) according to the Cart items
-        OrderController::createSellerOrders($order->id);
+        $this->createSellerOrders($order->id);
 
         // remove payed items from Cart
         Cart::destroy();
 
-        //return view('order.storeBuyerOrder')->withOrder($order);
-        return redirect('order/confirmation')->withOrder($order);
+        return view('order.storeBuyerOrder')
+            ->with('order', $order);
 	}
 
     protected function createSellerOrders($buyer_order_id)
@@ -134,10 +149,13 @@ class OrderController extends Controller {
         // check if this order belongs to the current user.
         if (!is_null($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
         {
-            return view('order.showBuyerOrder')->withBuyerOrder($buyer_order);
+            return view('order.showBuyerOrder')
+                ->with('buyer_order', $buyer_order)
+                ->with('datetime_format', Config::get('app.datetime_format'));
         }
 
-        return redirect('order/buyer')->with('message', 'Order not found.');
+        return redirect('order/buyer')
+            ->with('message', 'Order not found.');
 	}
 
     /**
@@ -155,65 +173,11 @@ class OrderController extends Controller {
         if (!is_null($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
         {
             $buyer_order->cancel();
-            return view('order.showBuyerOrder')->withBuyerOrder($buyer_order);
+            return redirect('order/buyer/'.$id);
         }
 
-        return redirect('order/buyer')->with('message', 'Order not found.');
-    }
-
-    /**
-     * Display a listing of seller orders for an user.
-     *
-     * @return Response
-     */
-    public function sellerOrderIndex()
-    {
-        return view('order.sellerOrderIndex')->withOrders(User::find(Auth::id())->sellerOrders);
-    }
-
-    public function confirmation(){
-        return view('order/confirmation');
-    }
-
-    /**
-     * Display a specific seller order.
-     *
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function showSellerOrder($id)
-    {
-        $seller_order = SellerOrder::find($id);
-
-        // check if this order belongs to the current user.
-        if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
-        {
-            return view('order.showSellerOrder')->withSellerOrder($seller_order);
-        }
-
-        return redirect('order/seller')->with('message', 'Order not found');
-    }
-
-    /**
-     * Cancel a specific seller order.
-     *
-     * @param $id  The buyer order id.
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function cancelSellerOrder($id)
-    {
-        $seller_order = SellerOrder::find($id);
-
-        // check if this order belongs to the current user.
-        if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
-        {
-            $seller_order->cancel();
-            return view('order.showSellerOrder')->withSellerOrder($seller_order);
-        }
-
-        return redirect('order/seller')->with('message', 'Order not found.');
+        return redirect('order/buyer')
+            ->with('message', 'Order not found.');
     }
 
 }

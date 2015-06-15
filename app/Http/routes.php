@@ -51,16 +51,17 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 // order
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'], function()
 {
-    Route::get('/buyer', 'OrderController@buyerOrderIndex');
-    Route::get('/confirmation', 'OrderController@confirmation');
-    Route::get('/create', 'OrderController@createBuyerOrder');
-    Route::post('/store', 'OrderController@storeBuyerOrder');
-    Route::get('/buyer/{id}', 'OrderController@showBuyerOrder');
-    Route::get('/buyer/cancel/{id}', 'OrderController@cancelBuyerOrder');
+    Route::get('/buyer', 'BuyerOrderController@buyerOrderIndex');
+    Route::get('/confirmation', 'BuyerOrderController@confirmation');
+    Route::get('/create', 'BuyerOrderController@createBuyerOrder');
+    Route::post('/store', 'BuyerOrderController@storeBuyerOrder');
+    Route::get('/buyer/{id}', 'BuyerOrderController@showBuyerOrder');
+    Route::get('/buyer/cancel/{id}', 'BuyerOrderController@cancelBuyerOrder');
 
-    Route::get('/seller', 'OrderController@sellerOrderIndex');
-    Route::get('/seller/cancel/{id}', 'OrderController@cancelSellerOrder');
-    Route::get('/seller/{id}', 'OrderController@showSellerOrder');
+    Route::get('/seller', 'SellerOrderController@sellerOrderIndex');
+    Route::get('/seller/cancel/{id}', 'SellerOrderController@cancelSellerOrder');
+    Route::post('/seller/setscheduledtime', 'SellerOrderController@setScheduledPickupTime');
+    Route::get('/seller/{id}', 'SellerOrderController@showSellerOrder');
 });
 
 // cart
@@ -77,21 +78,21 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], 
 | Housing Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/housing', 'HousingController@index');
+//Route::get('/housing', 'HousingController@index');
 
 /*
 |--------------------------------------------------------------------------
 | Club Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/club', 'ClubController@index');
+//Route::get('/club', 'ClubController@index');
 
 /*
 |--------------------------------------------------------------------------
 | Group Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/group', 'GroupController@index');
+//Route::get('/group', 'GroupController@index');
 
 /*
 |--------------------------------------------------------------------------

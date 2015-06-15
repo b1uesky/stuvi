@@ -11,11 +11,12 @@ use Input;
 use Config;
 use App\Helpers\FileUploader;
 use App\Helpers\SearchClassifier;
+use App\Helpers\AmazonLookUp;
 use Isbn\Isbn;
-use ISBNdb\Book as IsbndbBook;
 
 use App\Book;
 use App\BookImageSet;
+use App\BookAuthor;
 use App\Product;
 use App\ProductContion;
 
@@ -52,12 +53,21 @@ class TextbookController extends Controller {
         $book = new Book();
         $book->isbn             = Input::get('isbn');
         $book->title            = Input::get('title');
-        $book->author           = Input::get('author');
         $book->edition          = Input::get('edition');
         $book->num_pages        = Input::get('num_pages');
 		$book->binding_id		= Input::get('binding');
 		$book->language_id		= Input::get('language');
         $book->save();
+
+		// create book authors
+		$authors_str = Input::get('authors');
+		$authors_array = explode(',', $authors_str);
+
+		foreach ($authors_array as $author) {
+			$book_author = new BookAuthor();
+			$book_author->book_id = $book->id;
+			$book_author->full_name = trim($author);
+		}
 
 		// create book image set
 		if (Input::hasFile('image'))
@@ -86,10 +96,7 @@ class TextbookController extends Controller {
 		// save the book image
 		$file_uploader->saveFile();
 
-        return view('product.create', [
-			'book' 	=> $book,
-			'image' => $image_set
-			]);
+        return view('product.create')->withBook($book);
 	}
 
 	/**
@@ -100,11 +107,7 @@ class TextbookController extends Controller {
 	 */
 	public function show($book)
 	{
-		return view("textbook.show", [
-			'book' 		=> $book,
-			'products'	=> $book->products,
-			'image'		=> $book->imageSet
-		]);
+		return view("textbook.show")->withBook($book);
 	}
 
 
@@ -148,28 +151,42 @@ class TextbookController extends Controller {
         // if the book is in our db, show the book information and let seller edit it
         if ($db_book)
         {
-            return view('textbook.result', [
-				'book'	=>	$db_book,
-				'image' =>	$db_book->imageSet
-				]);
+            return view('textbook.result')->withBook($db_book);
         }
         else
         {
-			// search book in isbndb
-			$token = Config::get('isbndb.token');
-			$isbndb_book = new IsbndbBook($token, $isbn);
+			// search book using Amazon API
+			$amazon = new AmazonLookUp($isbn, 'ISBN');
 
-			if ($isbndb_book->isFound())
+			if ($amazon->success())
 			{
+				// save this book to our database
 				$book = new Book();
-				$book->isbn = $isbndb_book->getIsbn13();
-				$book->title = $isbndb_book->getTitle();
-				$book->author = $isbndb_book->getAuthorName();
-				$book->num_pages = $isbndb_book->getNumPages();
-				// TODO: language conversion
-				// $book->language = $isbndb_book->getLanguage();
+				$book->isbn = $isbn;
+				$book->title = $amazon->getTitle();
+				$book->edition = $amazon->getEdition();
+				$book->binding = $amazon->getBinding();
+				$book->language = $amazon->getLanguage();
+				$book->num_pages = $amazon->getNumPages();
+				$book->save();
 
-				return view('textbook.create')->withBook($book);
+				// save book image set
+				$book_image_set = new BookImageSet();
+				$book_image_set->book_id = $book->id;
+				$book_image_set->small_image = $amazon->getSmallImage();
+				$book_image_set->medium_image = $amazon->getMediumImage();
+				$book_image_set->large_image = $amazon->getLargeImage();
+				$book_image_set->save();
+
+				// save book authors
+				foreach ($amazon->getAuthors() as $author_name) {
+					$book_author = new BookAuthor();
+					$book_author->book_id = $book->id;
+					$book_author->full_name = $author_name;
+					$book_author->save();
+				}
+
+				return view('textbook.result')->withBook($book);
 			}
 
 			// allow the seller fill in book information and create a new book record
@@ -209,10 +226,7 @@ class TextbookController extends Controller {
 		{
 			$book = Book::where('isbn', $info)->first();
 
-			return view('textbook.show', [
-				'book'	=>	$book,
-				'image'	=>	$book->imageSet
-				]);
+			return view('textbook.show')->withBook($books);
 		}
 		else
 		{

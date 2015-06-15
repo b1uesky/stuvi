@@ -41,6 +41,18 @@ return [
 
 	'timezone' => 'UTC',
 
+    /*
+	|--------------------------------------------------------------------------
+	| Application Datetime Format
+	|--------------------------------------------------------------------------
+	|
+	| Here you may specify the default datetime format for your application,
+    | which can be passed to views to display date.
+	|
+	*/
+
+    'datetime_format' => 'M d, Y  H:i A',
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Locale Configuration
@@ -148,7 +160,8 @@ return [
         /*
          * Payment Service Providers...
          */
-        'Laravel\Cashier\CashierServiceProvider',
+        //'Laravel\Cashier\CashierServiceProvider',
+        'Cartalyst\Stripe\Laravel\StripeServiceProvider',
 
         /*
          * Administrator Service Providers...
@@ -213,6 +226,7 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
         'Cart'      => 'Gloudemans\Shoppingcart\Facades\Cart',
+        'Stripe' => 'Cartalyst\Stripe\Laravel\Facades\Stripe',
 
 	],
 
