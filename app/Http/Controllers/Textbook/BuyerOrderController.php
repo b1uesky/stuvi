@@ -63,11 +63,11 @@ class BuyerOrderController extends Controller
         }
 
         // check if this payment amount the same as the Cart total
-        if ((int)Input::get('stripeAmount') != Cart::total()*100)
-        {
-            return redirect('/cart')
-                ->with('message', 'Payment amount is not the same as Cart total');
-        }
+//        if ((int)Input::get('stripeAmount') != Cart::total()*100)
+//        {
+//            return redirect('/cart')
+//                ->with('message', 'Payment amount is not the same as Cart total');
+//        }
 
         // check if any product in Cart is already traded
         foreach (Cart::content() as $row)

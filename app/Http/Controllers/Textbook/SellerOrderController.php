@@ -10,7 +10,7 @@ use App\BuyerOrder;
 use App\SellerOrder;
 use App\BuyerPayment;
 
-use Auth, Input, Cart, Session, DB, Config;
+use Auth, Input, Cart, Session, DB, Config, \DateTime;
 
 class SellerOrderController extends Controller
 {
@@ -78,9 +78,7 @@ class SellerOrderController extends Controller
      */
     public function setScheduledPickupTime()
     {
-        // TODO: convert scheduled_pickup_time to a form that can be assigned to column `scheduled_pickup_time`.
-        $scheduled_pickup_time  = (Input::get('scheduled_pickup_time'));
-        //return $scheduled_pickup_time;
+        $scheduled_pickup_time = DateTime::createFromFormat("d/m/Y G:i", Input::get('scheduled_pickup_time'))->format('Y-m-d G:i:s');
         $id                     = (int)Input::get('id');
 
         $seller_order           = SellerOrder::find($id);
