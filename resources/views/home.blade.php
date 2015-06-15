@@ -59,17 +59,32 @@
   <!-- new bottom half -->
     <div class="container-fluid" id="bottom-half">
         <div class="container-fluid stuvi-container">
+            <!-- row 1-->
             <div class="row">
                 <div class="container col-md-4 col-md-offset-2" id="info1">
                     <h1>What is Stuvi?</h1>
 
                     <p>
                         Stuvi is a marketplace built for college students, by college students. We're here to provide
-                        relevant services to help you succeed at school. We're launching here in Boston, Massachusetts,
-                        the compact, yet vibrant city, that we call home.
+                        relevant services to help you succeed at school, and we're launching here in Boston, Massachusetts!
                     </p>
                 </div>
-                <div class="container col-md-6" id="img-info-1">
+                <div class="container col-md-4" id="img-info-1">
+                    {{--<img src="http://placehold.it/350x350">--}}
+                    <img class="img-responsive" src="{{asset('/img/art-boston.jpg')}}" width="350px">
+                </div>
+            </div>
+            <!-- row 2-->
+            <div class="row">
+                <div class="container col-md-4 col-md-offset-2" id="info1">
+                    <h1>What is Stuvi?</h1>
+
+                    <p>
+                        Stuvi is a marketplace built for college students, by college students. We're here to provide
+                        relevant services to help you succeed at school, and we're launching here in Boston, Massachusetts!
+                    </p>
+                </div>
+                <div class="container col-md-4" id="img-info-1">
                     {{--<img src="http://placehold.it/350x350">--}}
                     <img class="img-responsive" src="{{asset('/img/art-boston.jpg')}}" width="350px">
                 </div>
