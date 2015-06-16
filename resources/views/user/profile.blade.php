@@ -8,8 +8,8 @@
     <head>
         <title> Stuvi - {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} - Profile </title>
         <link href="{{ asset('/css/profile.css') }}" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick-theme.css')}}">
+   {{--     <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick-theme.css')}}">--}}
     </head>
     <!-- User template has the second nav bar and the profile side bar -->
     @include('user-template')
@@ -24,7 +24,7 @@
                                     <table class="table table-condensed">
                                         <!-- joined -->
                                         <tr id ="details-joined">
-                                            <td><i class="fa fa-users"></i>
+                                            <td><i class="fa fa-user-plus"></i>
                                                 <b> Joined: </b></td>
                                             <td>08/01/15</td>
                                             <td></td>
@@ -55,15 +55,50 @@
                             </div>
                             <!-- books selling -->
                             <div class="container col-xs-12 col-md-12" id = "books-for-sale">
-                                <h2 id = "for-sale"><i class="fa fa-book"></i>
-                                    Books for Sale</h2>
-                                <hr class="hr">
-                                <div class="container col-md-11 col-md-offset-1 slider responsive books">
-                                    <div><img src="http://placehold.it/100x150"></div>
-                                    <div><img src="http://placehold.it/100x150"></div>
-                                    <div><img src="http://placehold.it/100x150"></div>
-                                    <div><img src="http://placehold.it/100x150"></div>
-                                    <div><img src="http://placehold.it/100x150"></div>
+                                <a href="{{url('order/seller/bookshelf')}}"><h2 id = "for-sale"><i class="fa fa-book"></i>
+                                    Books for Sale</h2></a>
+                                {{-- <hr class="hr">
+                             <div class="container col-md-11 col-md-offset-1 slider responsive books">
+                                     <div><img src="http://placehold.it/100x150"></div>
+                                     <div><img src="http://placehold.it/100x150"></div>
+                                     <div><img src="http://placehold.it/100x150"></div>
+                                     <div><img src="http://placehold.it/100x150"></div>
+                                     <div><img src="http://placehold.it/100x150"></div>
+                                 </div>--}}
+
+                                <!-- display max 10 books? -->
+                                <div class="container col-md-12 books">
+                                    <table class="table table-responsive for-sale-table">
+                                        <!-- new row for each book -->
+                                        <tr class="for-sale-item">
+                                            <td class="for-sale-img">
+                                                <img class="img-responsive" src="http://puu.sh/ijDe0/422ea24ff0.png" width="100px" height="150px"></td>
+                                            <td class="for-sale-info-1">
+                                                <span class="for-sale-title"><a href="#">Mein Kampf</a></span><br>
+                                                <span class="for-sale-author">by <a href="#">Adolf Hitler</a></span><br>
+
+                                                <span class="for-sale-binding">Hardcover</span><br>
+                                                <span class="for-sale-price">$18.00</span> <br>
+                                                <button type="button" class="btn btn-link for-sale-btn-add-cart">
+                                                    Add to Cart</button>
+                                            </td>
+                                            <td class="for-sale-info-2">
+                                        <span class="for-sale-pub-date text-muted">September 15, 1998</span><br>
+                                        <span class="for-sale-isbn">ISBN-10: 0395925037</span>
+
+                                    </td>
+
+                                    <td class="for-sale-info-3">
+                                        <!-- each class the book support -->
+                                        <h5>Classes</h5>
+                                        <span class="for-sale-class"><a href="#">BU:SMG SM131</a></span>
+                                    </td>
+                                    </tr>
+
+                                    </table>
+
+
+
                                 </div>
                             </div>
                         </div>
@@ -77,9 +112,11 @@
 
     <!-- Slick required -->
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script> <!-- .active required -->
+{{--
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="{{asset('/slick/slick.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/profile.js')}}"></script>
+--}}
 
 @endsection
 

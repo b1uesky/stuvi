@@ -5,5 +5,5 @@
 $(document).ready(function(){
     $('.active').removeClass('active');
     $('#profile-nav').addClass('active');
-    $('#edit-but').addClass('hidden');
+    $('#edit-btn').addClass('hidden');
 });

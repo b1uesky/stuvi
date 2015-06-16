@@ -22,7 +22,7 @@ body {
     * Photo by Nick Louie. Link: https://flic.kr/p/kSKWtK
     ******************/
 
-    background-image: url("../img/cover.jpg") ;
+    background-image: url("../img/cover-2-1.png") ;
     background-size: cover;                         /* Fill entire container */
     background-repeat: no-repeat;
     background-position: center;
@@ -30,18 +30,29 @@ body {
 
 }
 
-
-
-/* Fix Nav Caret Align*/
-.nav-caret{
-    margin-top: 0px;
+#head1-temp{
+    color: whitesmoke;
+    text-align: center;
+    font-size: 5em;
+    font-weight: bold;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    padding-top: 6%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
-.home-btn {
+.tagline{
+    color: whitesmoke;
     text-align: center;
+    padding-bottom: 5%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    font-weight: 400;
 }
 
 /***** GHOST BUTTONS *****/
+
+.ghost-btn-container {
+    text-align: center;
+}
 
 .ghost-btn {
     width: 150px;
@@ -49,20 +60,38 @@ body {
     border-radius: 0 !important;
     font-weight: bold !important;
     font-size: 1.3em !important;
-    color: #F16521;
-    border: 3px solid #F16521 !important;
+    color: #FFFFFF;
+    border: 3px solid #FFFFFF !important;
     background: none;
-    margin: 20px 20px 0;
+    margin: 0 20px 0;
     padding-top: 9px !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
 .ghost-btn:hover {
     background: #F16521;
     color: #FFFFFF !important;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
 }
 
 .ghost-btn:focus {
     outline: 0 !important;
+}
+
+@media (max-width: 767px) {
+    .ghost-btn-container {
+        margin-bottom: 35px;
+    }
+
+    .ghost-btn {
+        margin: 0 8px 0;
+    }
+}
+
+@media (max-width: 399px) {
+    .ghost-btn {
+        margin-bottom: 20px;
+    }
 }
 
 /************** IDs   *************/
@@ -105,40 +134,11 @@ body {
     padding-bottom: 1%;
 }
 
-
-
-/* BOTTOM HALF FEATURES NEW */
-
-.features{
-    padding-left: 10%;
-    padding-right: 10%;
-    margin-left: 10%;
-    margin-right: 10%;
+#img-info-1{
+    padding: 30px;
 }
-
-.services{
-    margin-bottom: 10px;
-}
-
-.p-services{
-    text-align: center;
-}
-
-.img-services {
-    margin-bottom:10px;
-}
-
-.h3-services{
-    text-align: center;
-    color: #f17b32;
-}
-
-
 
 /**************  NAV DROPDOWN FIX  *************/
-.nav-caret {
-    margin-top: 9px;
-}
 
 .nav-dropdown {
     height: 50px;
@@ -158,10 +158,35 @@ body {
     #head1          {font-size: medium;}
     #head2          {font-size: large;}
     #p1             {font-size: small;}
-    #hr-style-one   {height: 2px;}
     #jumbotron1     {margin-top: 2%;}
     #liftoff        {font-size: x-small}
+}
 
+/******** BOTTOM HALF ********/
 
+#bottom-half {
+    padding: 0;
+}
 
+.services {
+    background-color: #F16521;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.services h4 {
+    font-weight: 900;
+}
+
+.service-row {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.service {
+    margin-bottom: 30px;
+}
+
+.service a {
+    color: #FFFFFF;
 }

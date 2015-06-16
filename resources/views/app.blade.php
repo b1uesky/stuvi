@@ -55,9 +55,9 @@
             <!-- Navbar right -->
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">
+                    <li><a class="nav-login" href="{{ url('/login') }}">
                             <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
-                    <li><a href="{{ url('/register') }}">
+                    <li><a class="nav-login" href="{{ url('/register') }}">
                             <i class="fa fa-user"></i> Register</a></li>
                 @else
                     <li class="dropdown">
@@ -68,7 +68,7 @@
                                     Profile</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/user/account') }}">
                                     Your Account</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/order') }}">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/order/buyer') }}">
                                     Your Orders</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/cart') }}">
                                     Shopping Cart</a></li>
@@ -119,7 +119,7 @@
             <a class="footer-link"  href="{{ url('/contact') }}">Contact</a>
         </p>
         <hr>
-        <p>Stuvi &copy; 2015</p>
+        <p>&copy; Stuvi LLC. 2015</p>
     </div>
 
 </footer>

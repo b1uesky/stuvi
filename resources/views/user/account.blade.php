@@ -23,7 +23,7 @@
                             <hr>
                             <ul>
                                 <li><a href="#">Your Courses</a></li>
-                                <li><a href="{{url('/password/email')}}">Forgot your password?</a></li>
+                                <li><a href="{{ url('/password/email') }}">Forgot your password?</a></li>
                             </ul>
                         </div>
                         <!-- change account info -->
@@ -82,7 +82,8 @@
                                 <!-- Save changes button -->
                                 <div class="form-group">
                                     <div class=" col-sm-offset-3 col-sm-6">
-                                        <button type="submit" class="btn btn-default">Save Changes</button>
+                                        <button id="save-info-btn" type="submit" class="btn btn-default">Save Changes
+                                        </button>
                                     </div>
                                 </div>
                             </form>

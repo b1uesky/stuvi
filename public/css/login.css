@@ -105,7 +105,8 @@ label {
 }
 
 .reset-button {
-    width: 60% !important;
+    width: 200px !important;
+    border: none;
 }
 
 .panel {
