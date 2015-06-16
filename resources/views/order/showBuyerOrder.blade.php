@@ -26,8 +26,8 @@
             @endif
         </h2>
         <div class="row" id="details1">
-            <p class="col-xs-3">Ordered on {{ $buyer_order->created_at }}</p>
-            <p class="col-xs-4">Order #{{ $buyer_order->id }}</p>
+            <p class="col-xs-12 col-sm-3">Ordered on {{ $buyer_order->created_at }}</p>
+            <p class="col-xs-12 col-sm-4">Order #{{ $buyer_order->id }}</p>
         </div>
         @if ($buyer_order->deliver_time)
             <p><a class="btn btn-default" href="">Return or replace items</a></p>
@@ -37,17 +37,17 @@
         @endif
     <div class="container" id="details2">
         <div class="row">
-            <div class="details-shipping col-xs-3">
+            <div class="details-shipping col-xs-12 col-sm-3">
                 <?php $shipping_address = $buyer_order->shipping_address ?>
                 <h4>Shipping Address</h4>
                 <p>{{ $shipping_address->addressee }} <br> {{ $shipping_address->address_line1 }}
                     <br> {{ $shipping_address->city }}, {{ $shipping_address->state_a2 }}  {{ $shipping_address->zip }}</p>
             </div>
-            <div class="details-payment col-xs-3">
+            <div class="details-payment col-xs-12 col-sm-3">
                 <h4>Payment Method</h4>
                 <p>Visa **** 4242</p>
             </div>
-            <div class="details-pricing col-xs-3 col-xs-offset-3">
+            <div class="details-pricing col-xs-12 col-sm-3 col-sm-offset-3">
                 <h4>Order Summary</h4>
                 <p>Total: ${{ $buyer_order->buyer_payment->stripe_amount/100 }}</p>
             </div>
