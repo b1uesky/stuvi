@@ -5,12 +5,16 @@
         <link href="{{ asset('/css/showBuyerOrder.css') }}" rel="stylesheet" type="text/css">
         <title>Stuvi - Order Details</title>
     </head>
-    <div class="print"><a href="#"><i class="fa fa-print"></i> Print Invoice
-        </a></div>
 
-    <div class="container" xmlns="http://www.w3.org/1999/html">
+    <!-- print button -->
+    <div class="print"><a href="" onclick="printWindow()"><i class="fa fa-print"></i> Print Invoice
+        </a>
+    </div>
+
+    <!-- flash message -->
+    <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
-            <div class="flash-message">{{ Session::get('message') }}</div>
+            <div class="flash-message" id="message">{{ Session::get('message') }}</div>
         @endif
     </div>
     <div class="container">
@@ -29,7 +33,7 @@
             <p><a class="btn btn-default" href="">Return or replace items</a></p>
         @endif
         @if (!$buyer_order->cancelled)
-            <p><a class="btn btn-default" href="/order/buyer/cancel/{{ $buyer_order->id }}">Cancel Order</a></p>
+            <p><a class="btn btn-default btn-cancel" href="/order/buyer/cancel/{{ $buyer_order->id }}">Cancel Order</a></p>
         @endif
     <div class="container" id="details2">
         <div class="row">
@@ -89,5 +93,8 @@
         </div>
 
     </div>
+
+    <!-- print window required -->
+    <script src="{{asset('/js/showBuyerOrder.js')}}" type="text/javascript"></script>
 
 @endsection

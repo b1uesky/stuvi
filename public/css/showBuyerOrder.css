@@ -1,8 +1,19 @@
 /*http://homestead.app/order/buyer/#*/
 
+#message {
+    font-style: italic;
+}
+
+#message-cont {
+    padding: 1%;
+    margin-top: 5px;
+}
+
+
 .print{
     text-align: right;
-    margin: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
     padding-right: 10px;
 }
 
@@ -31,4 +42,10 @@
 
 hr{
     border-color: black;
+}
+
+.btn-cancel {
+    background: #F16521;
+    color: #FFFFFF;
+    border: none;
 }
