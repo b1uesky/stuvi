@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\Input;
 class UserController extends Controller {
     
     public function profile(){
-        return view('user.profile');
+        var_dump(Auth::user()->productsBought());
+        return view('user.profile')
+            ->with('num_books_sold', Auth::user()->productsSold()->count())
+            ->with('num_books_bought', count(Auth::user()->productsBought()));
     }
 
     public function profileEdit(){
