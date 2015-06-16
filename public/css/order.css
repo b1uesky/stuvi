@@ -65,3 +65,7 @@ body {
     border: none;
     margin: 5px;
 }
+
+#cancelled h3{
+    color: red;
+}

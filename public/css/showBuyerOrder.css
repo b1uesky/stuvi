@@ -49,3 +49,7 @@ hr{
     color: #FFFFFF;
     border: none;
 }
+
+#cancelled{
+    color: red;
+}
