@@ -42,6 +42,11 @@
             'price' => array(
                 'title' => 'Price'
             ),
+            'images' => array(
+                'title' => 'Images',
+                'relationship' => 'product_image',
+                'select' => '(:table).path'
+            ),
             'sold' => array(
                 'title' => 'Sold'
             ),
