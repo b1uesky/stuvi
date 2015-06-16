@@ -16,7 +16,7 @@
     </div>
     <div class="container buyer-order-container">
         <h1>Your orders</h1>
-        @forelse ($orders as $order)
+        @forelse ($orders->reverse() as $order)
             <div class="row">
                 <div class="container order-container">
                     <div class="row order-row">
