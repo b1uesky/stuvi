@@ -1,12 +1,24 @@
 /******* TEXTBOOK SEARCH LIST *******/
 
+#search-term {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
 .textbook-list-container {
     background-color: #F2F2F2;
+
 }
 
 /* TEXTBOOK LIST */
-.textbook-img {
+.textbook-img-container {
     width: 100px !important;
+
+}
+
+.textbook-img {
+    width: 100px;
+    height: 135px;
 }
 
 .textbook-list {

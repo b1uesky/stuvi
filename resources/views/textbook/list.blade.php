@@ -7,16 +7,16 @@
     </head>
 
     <div class="container-fluid textbook-list-container">
-        <h1>Search results for *search term*</h1>
+        <h1 id="search-term">Search results for *search term*</h1>
 
-        <div class="container col-md-12 textbook-list">
+        <div class="container textbook-list">
             <table class="table table-responsive textbook-table">
                 <!-- new row for each book -->
                 @foreach($books as $book)
                     <tr class="textbook-item">
-                        <td class="textbook-img">
-                            <img class="img-responsive" src="http://puu.sh/ijDe0/422ea24ff0.png" width="100px"
-                                 height="150px"></td>
+                        <td class="textbook-img-container">
+                            <img class="textbook-img" src="{{ $book->imageSet->large_image }}">
+                        </td>
                         <td class="textbook-info-1">
                             <span class="textbook-title"><a href="#">{{ $book->title }}</a></span><br>
                             <span class="textbook-author">by {{ $book->author }}</span><br>
