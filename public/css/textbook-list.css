@@ -10,6 +10,22 @@
 
 }
 
+/* SORT SECTION */
+
+.search-btn {
+    background: #F16521;
+}
+
+.search-btn:hover {
+    background: #F16521;
+}
+
+.search-btn:focus {
+    outline: 0 !important;
+    background: #F16521;
+}
+
+
 /* TEXTBOOK LIST */
 .textbook-img-container {
     width: 100px !important;
