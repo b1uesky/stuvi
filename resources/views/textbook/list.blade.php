@@ -7,7 +7,7 @@
     </head>
 
     <div class="container-fluid textbook-list-container">
-        <h1 id="search-term">Search results for *search term*</h1>
+        <h1 id="search-term">Search results for "{{ $info }}"</h1>
 
         <div class="container textbook-list">
             <table class="table table-responsive textbook-table">
@@ -18,13 +18,20 @@
                             <img class="textbook-img" src="{{ $book->imageSet->large_image }}">
                         </td>
                         <td class="textbook-info-1">
-                            <span class="textbook-title"><a href="#">{{ $book->title }}</a></span><br>
-                            <span class="textbook-author">by {{ $book->author }}</span><br>
+                            <span class="textbook-title"><a
+                                        href="{{ url("textbook/buy/textbook/".$book->id) }}">{{ $book->title }}</a></span><br>
+                            @if(count($book->authors) > 1)
+                                <span>Authors:</span>
+                                @foreach($book->authors as $author)
+                                    <span>{{ $author->full_name }}</span>
+                                @endforeach
+                            @else
+                                <span>Author:</span>
+                                {{ $book->authors[0]->full_name }}
+                            @endif
+                            <br>
                             <span class="textbook-isbn">ISBN: {{ $book->isbn }}</span>
                             <br>
-                            <span class="textbook-price">$18.00</span> <br>
-                            {{--<button type="button" class="btn btn-link textbook-btn-add-cart">--}}
-                            {{--Add to Cart</button>--}}
                         </td>
                         <td class="table-offset"></td>
                         <td class="textbook-info-2">
