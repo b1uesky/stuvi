@@ -9,9 +9,9 @@
         <title>Stuvi - Your Orders</title>
     </head>
 
-    <div class="container" xmlns="http://www.w3.org/1999/html">
+    <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
-            <div class="flash-message">{{ Session::get('message') }}</div>
+            <div class="flash-message" id="message" >{{ Session::get('message') }}</div>
         @endif
     </div>
     <div class="container buyer-order-container">
@@ -42,7 +42,7 @@
                     <small>Your order is being processed by the Stuvi team.</small>
                     @foreach($order->products() as $product)
                         <div class="row book-row">
-                            <div class="col-xs-2 book-img">
+                            <div class="col-xs-0 col-sm-2 book-img">
                                 <img src="http://placehold.it/75x115">
                             </div>
                             <div class="col-xs-5 book-info">
@@ -52,8 +52,8 @@
                                 <p>{{ $product->book->isbn }}</p>
                                 <h6 id="book-price">${{ $product->price }}</h6>
                             </div>
-                            <div class="col-xs-2 col-xs-offset-3">
-                                <a class="btn btn-default order-button-1" href="#" role="button">Track Package</a>
+                            <div class="col-xs-2 col-xs-offset-0 col-sm-offset-1 col-md-offset-3">
+                                {{--<a class="btn btn-default order-button-1" href="#" role="button">Track Package</a>--}}
                                 <a class="btn btn-default order-button-2" href="#" role="button">Return or Replace Item</a>
                                 <a class="btn btn-default order-button-2" href="#" role="button">Leave Seller Feedback</a>
                         </div>

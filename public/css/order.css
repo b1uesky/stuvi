@@ -1,5 +1,15 @@
 /******* BUYER ORDERS PAGE *******/
 
+#message {
+    font-style: italic;
+}
+
+#message-cont {
+    padding: 1%;
+    margin-top: 5px;
+}
+
+
 body {
     background-color: #F2F2F2;
 }
