@@ -9,6 +9,32 @@
     <div class="container-fluid textbook-list-container">
         <h1 id="search-term">Search results for "{{ $info }}"</h1>
 
+        <div class="container">
+            <span class="text-muted">Sort by</span>
+            <ul class="nav nav-pills">
+                <li role="presentation"><a href="#">Title</a></li>
+                <li role="presentation"><a href="#">Author</a></li>
+                <li role="presentation"><a href="#">Price (Low to High)</a></li>
+                <li role="presentation"><a href="#">Price (High to Low)</a></li>
+
+                <div class="col-sm-4 col-md-4 pull-right bookshelf-sort">
+                    <form class="navbar-form" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" name="srch-term"
+                                   id="srch-term">
+
+                            <div class="input-group-btn">
+                                <button class="btn btn-default search-btn"><i class="glyphicon glyphicon-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </ul>
+
+        </div>
+
         <div class="container textbook-list">
             <table class="table table-responsive textbook-table">
                 <!-- new row for each book -->
