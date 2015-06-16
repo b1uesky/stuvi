@@ -8,7 +8,7 @@
         @if(!empty($images))
             @foreach($images as $image)
                 <div class="">
-                    <img src="{{ $image->image }}" alt="" />
+                    <img src="{{ $image->path }}" alt="" />
                 </div>
             @endforeach
         @endif
@@ -61,6 +61,13 @@
                 <td>{{ $condition->rips }}</td>
             </tr>
         </table>
+
+        @if($condition->description != '')
+            <h4>Seller's description on the book conditions:</h4>
+            <div class="">
+                {{ $condition->description }}
+            </div>
+        @endif
 
     </div>
 
