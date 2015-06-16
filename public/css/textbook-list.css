@@ -46,38 +46,8 @@
     font-weight: bold;
 }
 
-.for-sale-author {
-}
-
-.for-sale-binding {
-}
-
-.for-sale-isbn {
-}
-
-.for-sale-class {
-}
-
 .textbook-pub-date {
     font-size: medium;
-}
-
-.add-cart-btn {
-    background: #7AB4DE;
-    color: #FFFFFF;
-    border: none;
-    width: 100px;
-    box-shadow: 0 5px #5B86AA;
-}
-
-.add-cart-btn:hover,
-.add-cart-btn:focus {
-    color: #FFFFFF;
-}
-
-.add-cart-btn:active {
-    box-shadow: 0 2px #5B86AA;
-    transform: translateY(5px);
 }
 
 @media (max-width: 970px) {

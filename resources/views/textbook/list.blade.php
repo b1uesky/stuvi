@@ -38,7 +38,6 @@
                             <!-- each class the book support -->
                             {{--<h5>Classes</h5>--}}
                             {{--<span class="textbook-class"><a href="#">BU:SMG SM131</a></span>--}}
-                            <a class="btn add-cart-btn" href="#" role="button">Add To Cart</a>
                         </td>
                     </tr>
                 @endforeach
