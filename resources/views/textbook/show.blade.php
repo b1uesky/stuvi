@@ -19,7 +19,7 @@
                 <h1>{{ $book->title }}</h1>
 
                 <div class="authors-container">
-                    <span>by:</span>
+                    <span>by </span>
                     @foreach($book->authors as $author)
                         <span id="authors">{{ $author->full_name }}</span>
                     @endforeach
@@ -69,7 +69,7 @@
                             {{-- TODO: product condition score --}}
                         </td>
                         <td>
-                            <a href="{{ url('textbook/buy/product/'.$product->id) }}">View Details</a>
+                            <a href="{{ url('textbook/buy/product/'.$product->id) }}" target="_blank">View Details</a>
                         </td>
                         <td class="cart-btn-col">
                             <a class="btn add-cart-btn" href="#" role="button">Add To Cart</a>
