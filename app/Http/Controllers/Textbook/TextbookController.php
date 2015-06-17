@@ -85,23 +85,13 @@ class TextbookController extends Controller {
             $book_author->save();
 		}
 
-		// get image file
+		// create book image set
         $image = Input::file('image');
         $title = Input::get('title');
-        $folder = '/img/book/';
-        $file_uploader = new FileUploader($image, $title, $folder);
+        $folder = Config::get('upload.image.book');
+        $file_uploader = new FileUploader($image, $title, $folder, $book->id);
+        $file_uploader->saveBookImageSet();
 
-        // create book image set
-		$image_set = new BookImageSet();
-		$image_set->book_id = $book->id;
-        $image_set->save();
-
-        $file_uploader->setFilename($image_set->id);
-        $file_uploader->setPath();
-        $file_uploader->saveFile();
-
-		$image_set->large_image = $file_uploader->getPath();
-		$image_set->save();
 
         return view('product.create', [
             'book'  =>  $book,
