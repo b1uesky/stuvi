@@ -45,7 +45,7 @@
 
             </div>
         </div>
-        @if(!empty($book->products))
+        @if(count($book->products) > 0)
             <div class="row table-row">
 
                 <h3>Select one of our available books</h3>
