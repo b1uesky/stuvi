@@ -59,11 +59,11 @@
                                     Books for Sale</h2>
                                 <hr class="hr">
                                 <div class="container col-md-11 col-md-offset-1 slider responsive books">
-                                    <div><img src="http://placehold.it/100x150"></div>
-                                    <div><img src="http://placehold.it/100x150"></div>
-                                    <div><img src="http://placehold.it/100x150"></div>
-                                    <div><img src="http://placehold.it/100x150"></div>
-                                    <div><img src="http://placehold.it/100x150"></div>
+                                    @forelse ($productsForSale as $product)
+                                        <div><a href="{{ url('/textbook/buy/product/'.$product->id) }}"><img src="{{ $product->images->first()->path }}" height="200" width="150"></a></div>
+                                    @empty
+                                        No books for sale.
+                                    @endforelse
                                 </div>
                             </div>
                         </div>

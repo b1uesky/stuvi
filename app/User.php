@@ -7,30 +7,31 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Support\Facades\Auth;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+{
 
-	use Authenticatable, CanResetPassword;
+    use Authenticatable, CanResetPassword;
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
 
-	/**
-	 * The attributes that are mass assignable.
-	 *
-	 * @var array
-	 */
-	protected $fillable = ['username', 'email', 'password', 'phone_number', 'first_name', 'last_name', 'activated'];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['username', 'email', 'password', 'phone_number', 'first_name', 'last_name', 'activated'];
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = ['password', 'remember_token'];
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = ['password', 'remember_token'];
 
     public function buyerOrders()
     {
@@ -42,29 +43,40 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasManyThrough('App\SellerOrder', 'App\Product', 'seller_id', 'product_id');
     }
 
-    // TODO: fulfill productsBought()
+    /**
+     * Get all products the current user have post.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function products()
+    {
+        return $this->hasMany('App\Product', 'seller_id', 'id');
+    }
+
+    /**
+     * Get all products the current user have bought.
+     *
+     * @return array
+     */
     public function productsBought()
     {
         $products = array();
 
-        foreach (BuyerOrder::where('buyer_id', $this->id) as $buyer_order)
+        foreach ($this->buyerOrders()->get() as $buyer_order)
         {
-            return $buyer_order;
-            $products[] += $buyer_order;
-//            if (!$buyer_order->cancelled)
-//            {
-//                foreach ($buyer_order->seller_orders() as $seller_order)
-//                {
-//                    if (!$seller_order->cancelled)
-//                    {
-//                        $products[] = $seller_order->product();
-//                    }
-//                }
-//            }
+            if (!$buyer_order->cancelled)
+            {
+                foreach ($buyer_order->seller_orders()->get() as $seller_order)
+                {
+                    if (!$seller_order->cancelled)
+                    {
+                        $products[] = $seller_order->product();
+                    }
+                }
+            }
         }
 
         return $products;
-
     }
 
     /**
@@ -74,6 +86,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function productsSold()
     {
-        return Product::where('seller_id', $this->id)->where('sold', 1);
+        return $this->products()->where('sold', 1);
+    }
+
+    /**
+     * Get all products the current user have post but not yet sold.
+     *
+     * @return mixed
+     */
+    public function productsForSale()
+    {
+        return $this->products()->where('sold', 0);
     }
 }
