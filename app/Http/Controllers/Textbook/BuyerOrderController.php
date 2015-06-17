@@ -23,7 +23,7 @@ class BuyerOrderController extends Controller
 	public function buyerOrderIndex()
 	{
 		return view('order.index')
-            ->with('orders', User::find(Auth::id())->buyerOrders);
+            ->with('orders', User::find(Auth::id())->buyerOrders()->orderBy('id')->get());
 	}
 
 	/**

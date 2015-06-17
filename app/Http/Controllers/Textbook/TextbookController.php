@@ -226,7 +226,7 @@ class TextbookController extends Controller {
 		{
 			$book = Book::where('isbn', $info)->first();
 
-            return view('textbook.show')->withBook($book);
+			return view('textbook.show')->withBook($book);
 		}
 		else
 		{
