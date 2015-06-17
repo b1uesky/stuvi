@@ -10,7 +10,7 @@
 
 <div class="container-fluid" id="bg">
     <div class="row back-row">
-        <a id="go-back" href="" onclick="goBack()" ><i class="fa fa-arrow-circle-left"></i> Back to {{ $book->title }}</a>
+        <a id="go-back" onclick="goBack()" ><i class="fa fa-arrow-circle-left"></i> Back to {{ $book->title }}</a>
     </div>
 
     <div class="container" id="det-cont">
@@ -100,4 +100,5 @@
         window.history.back();
     }
 </script>
+
 @endsection
