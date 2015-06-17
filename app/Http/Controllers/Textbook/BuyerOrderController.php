@@ -143,6 +143,8 @@ class BuyerOrderController extends Controller
         catch (\Stripe\Error\Card $e)
         {
             // The card has been declined
+            return redirect('/order/create')
+                ->with('message', 'The card has been declined. Please try another card.');
         }
     }
 
