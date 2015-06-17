@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 use Input;
 use Config;
+use Validator;
 use App\Helpers\FileUploader;
 use App\Helpers\SearchClassifier;
 use App\Helpers\AmazonLookUp;
@@ -17,7 +18,6 @@ use Isbn\Isbn;
 use App\Book;
 use App\BookImageSet;
 use App\BookAuthor;
-use App\Product;
 use App\ProductContion;
 
 class TextbookController extends Controller {
@@ -51,9 +51,10 @@ class TextbookController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store()
 	{
-        $this->validate($request, [
+        // validation
+        $v = Validator::make(Input::all(), [
             'isbn'      =>  'required|unique:books',
             'title'     =>  'required|string',
             'authors'   =>  'required|string',
@@ -63,6 +64,28 @@ class TextbookController extends Controller {
             'language'  =>  'required|string',
             'image'     =>  'required|mimes:jpeg,png'
         ]);
+
+        $v->after(function($v)
+        {
+            // check if the input ISBN is valid
+            $isbn_validator = new Isbn();
+
+            if ($v->errors()->has('isbn') == false)
+            {
+                if ($isbn_validator->validation->isbn(Input::get('isbn')) == false)
+                {
+                    $v->errors()->add('isbn', 'Please enter a valid 10 or 13 digit ISBN number.');
+                }
+            }
+
+        });
+
+        if ($v->fails())
+        {
+            return redirect()->back()
+                ->withErrors($v->errors())
+                ->withInput(Input::all());
+        }
 
 		// create book
         $book = new Book();
@@ -137,7 +160,7 @@ class TextbookController extends Controller {
 		// check if the input is a valid ISBN
 		if ($isbn_validator->validation->isbn($isbn) == false)
 		{
-            return redirect('textbook/sell')->with('message', 'Please enter a valid 10 or 13 digit ISBN number.');
+            return redirect()->back()->withMessage('Please enter a valid 10 or 13 digit ISBN number.');
 		}
 
 		// if the input ISBN is 10 digits, convert it to 13 digits

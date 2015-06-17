@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Input;
 use Config;
+use Validator;
 
 use App\Product;
 use App\ProductCondition;
@@ -47,9 +48,10 @@ class ProductController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store()
 	{
-        $this->validate($request, [
+        // validation
+        $v = Validator::make(Input::all(), [
             'highlights'        =>  'required|integer',
             'notes'             =>  'required|integer',
             'num_damaged_pages' =>  'required|integer',
@@ -59,8 +61,16 @@ class ProductController extends Controller {
             'stains'            =>  'required|integer',
             'burns'             =>  'required|integer',
             'rips'              =>  'required|integer',
-            'price'             =>  'required|numeric'
+            'price'             =>  'required|numeric',
+            'images'            =>  'required|mimes:jpeg,png'
         ]);
+
+        if ($v->fails())
+        {
+            redirect()->back()
+                ->withErrors($v->errors())
+                ->withInput(Input::all());
+        }
 
         $product = new Product();
         $product->price     = Input::get('price');
