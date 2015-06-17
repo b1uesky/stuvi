@@ -24,6 +24,6 @@
             <p>You will receive another email in the next few days regarding the delivery time of your books.</p>
             <p>Please feel free to <a href="{{ url('/contact') }}">contact us</a> with any questions or concerns.</p>
         </div>
-    </div
+    </div>
 
 @endsection

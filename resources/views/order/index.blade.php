@@ -16,7 +16,7 @@
     </div>
     <div class="container buyer-order-container">
         <h1>Your orders</h1>
-        @forelse ($orders as $order)
+        @forelse ($orders->reverse() as $order)
             <div class="row">
                 <div class="container order-container">
                     <div class="row order-row">
@@ -38,8 +38,17 @@
                         </div>
                     </div>
                     <!-- order status -->
-                    <h3>Order Processing</h3>
-                    <small>Your order is being processed by the Stuvi team.</small>
+                    @if ($order->cancelled)
+                        <span id="cancelled"> <h3>Order Canceled</h3>
+                        <small>Your order has been cancelled.</small>
+                        </span>
+                    @elseif ($order->pickup_time)
+                        <h3>Delivered</h3>
+                        <small>Delivered at {{ date($datetime_format, strtotime($order->pickup_time)) }}</small>
+                    @else
+                        <h3>Order Processing</h3>
+                        <small>Your order is being processed by the Stuvi team.</small>
+                    @endif
                     @foreach($order->products() as $product)
                         <div class="row book-row">
                             <div class="col-xs-12 col-sm-2 book-img">

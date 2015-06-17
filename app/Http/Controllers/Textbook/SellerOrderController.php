@@ -26,6 +26,11 @@ class SellerOrderController extends Controller
             ->with('orders', Auth::user()->sellerOrders()->orderBy('id')->get());
     }
 
+    public function bookshelf()
+    {
+        return view('order.sellerBookshelfIndex');
+    }
+
     /**
      * Display a specific seller order.
      *

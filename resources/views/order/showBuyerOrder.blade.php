@@ -17,14 +17,17 @@
             <div class="flash-message" id="message">{{ Session::get('message') }}</div>
         @endif
     </div>
+    <!-- order details -->
     <div class="container">
         <h1>Order Details</h1>
         <h2>
-            @if ($buyer_order->cancelled) (CANCELLED) @endif
+            <!-- canceled order -->
+            @if ($buyer_order->cancelled)<span id="cancelled">This order has been cancelled.</span> @endif
             @if ($buyer_order->pickup_time)
                 Delivered @ {{ date($datetime_format, strtotime($buyer_order->pickup_time)) }}
             @endif
         </h2>
+
         <div class="row" id="details1">
             <p class="col-xs-12 col-sm-3">Ordered on {{ $buyer_order->created_at }}</p>
             <p class="col-xs-12 col-sm-4">Order #{{ $buyer_order->id }}</p>
@@ -53,7 +56,6 @@
             </div>
         </div>
     </div>
-
         <div class="container" id="details3">
             <div class="row row-items">
                 <h3 class="col-xs-12">Items</h3>
@@ -63,6 +65,7 @@
                     <div class="item col-xs-8">
                         <p>Title: {{ $product->book->title }}</p>
                         <p>ISBN: {{ $product->book->isbn }}</p>
+                        <p>Author: {{ $product->book->author}}</p>
                         <?php $seller_order = $buyer_order->seller_order($product->id) ?>
                         <p>Scheduled pickup time:
                             @if ($seller_order->scheduled_pickup_time)

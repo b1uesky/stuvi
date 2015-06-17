@@ -1,0 +1,81 @@
+/****** TEXTBOOK SHOW PAGE ******/
+
+body {
+    background-color: #F2F2F2;
+}
+
+/*** TEXTBOOK INFO ***/
+
+.textbook-row {
+    margin-top: 50px;
+}
+
+#textbook-img {
+    width: 300px;
+    height: 400px;
+    margin-left: 50px;
+}
+
+.textbook-info span {
+    font-size: 18px;
+}
+
+.authors-container {
+    margin-bottom: 10px;
+}
+
+.textbook-info p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/*** TEXTBOOK TABLE ***/
+
+.table-row {
+    margin-top: 40px;
+}
+
+.textbook-table {
+    background-color: white;
+    border: solid;
+    border-color: #DDD;
+}
+
+#price {
+    color: #B12704;
+}
+
+.add-cart-btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background: #7AB4DE;
+    color: #FFFFFF;
+    border: none;
+    width: 100px;
+    box-shadow: 0 5px #5B86AA;
+}
+
+.add-cart-btn:hover,
+.add-cart-btn:focus {
+    color: #FFFFFF;
+}
+
+.add-cart-btn:active {
+    box-shadow: 0 2px #5B86AA;
+    transform: translateY(5px);
+}
+
+.cart-btn-col {
+    width: 150px;
+}
+
+@media (max-width: 500px) {
+    .add-cart-btn {
+        width: 40px;
+    }
+
+    .cart-btn-col {
+        width: 90px;
+    }
+}

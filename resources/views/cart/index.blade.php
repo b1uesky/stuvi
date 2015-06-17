@@ -42,9 +42,9 @@
     <!-- all of shopping cart info -->
     <div class="container shopping-cart">
         <h1>Shopping Cart
-            @if ($items->count() > 0)
-                <a href="{{ url('/cart/empty') }}">Clear Cart</a>
-            @endif
+            {{--@if ($items->count() > 0)--}}
+            {{--<a href="{{ url('/cart/empty') }}">Clear Cart</a>--}}
+            {{--@endif--}}
         </h1>
 {{--        @if ($items->count() < 1)
             <a href="{{ url('/cart/empty') }}">Your cart is empty</a>

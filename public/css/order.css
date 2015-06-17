@@ -1,5 +1,9 @@
 /******* BUYER ORDERS PAGE *******/
 
+h1{
+    margin-left: -17px !important;
+}
+
 #message {
     font-style: italic;
 }
@@ -64,4 +68,8 @@ body {
     color: #FFFFFF;
     border: none;
     margin: 5px;
+}
+
+#cancelled h3{
+    color: red;
 }
