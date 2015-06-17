@@ -16,9 +16,6 @@
     <div class="container" id="det-cont">
         <div class="row">
             <div class="col-sm-12 col-md-4">
-                <h2>{{ $book->title }}</h2>
-                <!-- TODO: Link to Seller profile -->
-                <h4>Sold by <a href="#">{{$product->seller->first_name}} {{$product->seller->last_name}}</a></h4>
 
                 @if(!empty($images))
                     @foreach($images as $image)
@@ -27,6 +24,12 @@
                         </div>
                     @endforeach
                 @endif
+
+                <h2>{{ $book->title }}</h2>
+                <!-- TODO: Link to Seller profile -->
+                <h4>Sold by <a href="#">{{$product->seller->first_name}} {{$product->seller->last_name}}</a></h4>
+
+
 
                 <div class="price">
                     Price: <b>${{ $product->price }}</b>
