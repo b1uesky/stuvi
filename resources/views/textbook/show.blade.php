@@ -21,7 +21,7 @@
                 <div class="authors-container">
                     <span>by:</span>
                     @foreach($book->authors as $author)
-                        <span id="authors">{{ $author->full_name }}</span>
+                        <span id="authors"><button class="btn btn-default author-btn">{{ $author->full_name }}</button></span>
                     @endforeach
                 </div>
                 <p>ISBN: {{ $book->isbn }}</p>
@@ -63,7 +63,7 @@
                             <p id="price">${{ $product->price }}</p>
                         </td>
                         <td>
-                            <p>Seller's Name</p>
+                            <a href="#">Seller's Name</a>
                         </td>
                         <td>
                             {{-- TODO: product condition score --}}
