@@ -1,4 +1,72 @@
-/******* TEXTBOOK SEARCH LIST *******/
+/******* TEXTBOOK SEARCH LIST PAGE *******/
+
+/** TEXTBOOK NAVIGATION BAR **/
+
+.tab-filter-container {
+    width: 100%;
+    background: #F9AA62;
+    height: 40px;
+}
+
+.tab-filters {
+    list-style-type: none;
+    text-align: center;
+    padding-right: 40px;
+}
+
+.filter {
+    display: inline-block;
+    height: 40px;
+    padding-top: 5px;
+}
+
+.filter.active {
+    border-bottom: 5px solid #241729;
+}
+
+.filter-link {
+    font-size: 20px;
+    color: #FFFFFF;
+    margin: 0 40px;
+}
+
+.filter-link:hover,
+.filter-link:focus,
+.filter-link.active {
+    text-decoration: none;
+    color: #241729;
+}
+
+/** SHOPPING CART ICON **/
+
+.cart {
+    position: absolute;
+    display: inline-block;
+    margin-top: -3px;
+    right: 30px;
+    padding-top: 0 !important;
+}
+
+.cart-link {
+    color: #FFFFFF;
+}
+
+.cart-link:hover,
+.cart-link:focus {
+    color: #241729;
+}
+
+/** ERROR MESSAGE **/
+
+#message {
+    font-style: italic;
+}
+
+#message-cont {
+    padding: 1%;
+}
+
+/** TEXTBOOK SEARCH LIST **/
 
 .textbook-list-container {
     background-color: #F2F2F2;
