@@ -7,6 +7,8 @@
         <title>{{ $book->title }}</title>
     </head>
 
+    @include('textbook/textbook-nav')
+
     <div class="container">
         <div class="row textbook-row">
             <div class="col-sm-6">

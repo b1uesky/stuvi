@@ -67,7 +67,7 @@
             @forelse ($items as $item)
                 <tr>
                     <!-- title -->
-                    <td><a href="{{ url("textbook/buy/textbook/".$item->book_id) }}">{{ $item->name }}</a></td>
+                    <td><a href="{{ url('textbook/buy/product/'.$item->id) }}">{{ $item->name }}</a></td>
                     <!-- isbn -->
                     <td>{{ $item->options['item']->book->isbn }}</td>
                     <!-- price -->

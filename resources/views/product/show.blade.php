@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{asset('/css/product-show.css')}}" type="text/css">
 </head>
 
-
+@include('textbook/textbook-nav')
 
 <div class="container-fluid" id="bg">
     <div class="row back-row">

@@ -1,4 +1,16 @@
-/******* TEXTBOOK SEARCH LIST *******/
+/******* TEXTBOOK SEARCH LIST PAGE *******/
+
+/** ERROR MESSAGE **/
+
+#message {
+    font-style: italic;
+}
+
+#message-cont {
+    padding: 1%;
+}
+
+/** TEXTBOOK SEARCH LIST **/
 
 .textbook-list-container {
     background-color: #F2F2F2;

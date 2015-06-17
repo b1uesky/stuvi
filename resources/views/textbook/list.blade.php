@@ -6,6 +6,8 @@
         <title>Search Results</title>
     </head>
 
+    @include('textbook/textbook-nav')
+
     <div class="container-fluid textbook-list-container">
         <h1 id="search-term">Search results for "{{ $info }}"</h1>
 
