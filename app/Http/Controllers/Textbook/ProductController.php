@@ -98,7 +98,7 @@ class ProductController extends Controller {
 			'book' 		=> $product->book,
 			'seller' 	=> $product->seller,
 			'images'	=> $product->images,
-			'product_conditions'	=>	Config::get('productconditions')
+			'product_conditions'	=>	Config::get('product.conditions')
 		]);
 	}
 
