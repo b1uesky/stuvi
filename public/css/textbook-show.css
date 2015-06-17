@@ -25,13 +25,15 @@ body {
 }
 
 .author-btn {
-    background-color: #F9AA62;
+    background-color: #F16521;
+    color: #FFFFFF;
     border: none;
 }
 
 .author-btn:hover,
 .author-btn:focus {
-    background-color: #F9AA62;
+    background-color: #F16521;
+    color: #FFFFFF;
     outline: 0 !important;
 }
 
