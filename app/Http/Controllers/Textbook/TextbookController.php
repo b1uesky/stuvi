@@ -146,9 +146,9 @@ class TextbookController extends Controller {
 			$isbn = $isbn_validator->translate->to13($isbn);
 		}
 
+        // if the book is in our db, show the book information
         $db_book = Book::where('isbn', '=', $isbn)->first();
 
-        // if the book is in our db, show the book information and let seller edit it
         if ($db_book)
         {
             return view('textbook.result')->withBook($db_book);
@@ -218,21 +218,18 @@ class TextbookController extends Controller {
 	public function buySearch()
 	{
 		$info = Input::get('info');
-
-		$classifier = new SearchClassifier($info);
+        $isbn_validator = new Isbn();
 
 		// if ISBN, return the specific textbook page
-		if ($classifier->isIsbn())
+		if ($isbn_validator->validation->isbn($info))
 		{
-			$book = Book::where('isbn', $info)->first();
-
+			$book = Book::where('isbn', '=', $info)->first();
 			return view('textbook.show')->withBook($book);
 		}
 		else
 		{
 			// TODO: author
 			$books = Book::where('title', 'LIKE', "%$info%")->get();
-
             return view('textbook.list')->withBooks($books)->withInfo($info);
 		}
 	}

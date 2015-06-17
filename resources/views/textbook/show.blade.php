@@ -45,36 +45,41 @@
 
             </div>
         </div>
-        <div class="row table-row">
-            <h3>Select one of our available books</h3>
-            <table class="table table-responsive textbook-table" style="width:100%" border="1">
-                <thead>
-                <tr class="active">
-                    <th>Price</th>
-                    <th>Condition</th>
-                    <th>Details</th>
-                    <th>Add to Cart</th>
-                </tr>
-                </thead>
-                @foreach($book->products as $product)
-                    <tr>
-                        <td>
-                            <p id="price">${{ $product->price }}</p>
-                        </td>
-                        <td>
-                            {{-- TODO: product condition score --}}
-                        </td>
-                        <td>
-                            <a href="{{ url('textbook/buy/product/'.$product->id) }}">View Details</a>
-                        </td>
-                        <td class="cart-btn-col">
-                            <a class="btn add-cart-btn" href="#" role="button">Add To Cart</a>
-                        </td>
-                    </tr>
-                @endforeach
+        @if(!empty($book->products))
+            <div class="row table-row">
 
-            </table>
-        </div>
+                <h3>Select one of our available books</h3>
+                <table class="table table-responsive textbook-table" style="width:100%" border="1">
+                    <thead>
+                    <tr class="active">
+                        <th>Price</th>
+                        <th>Condition</th>
+                        <th>Details</th>
+                        <th>Add to Cart</th>
+                    </tr>
+                    </thead>
+                    @foreach($book->products as $product)
+                        <tr>
+                            <td>
+                                <p id="price">${{ $product->price }}</p>
+                            </td>
+                            <td>
+                                {{-- TODO: product condition score --}}
+                            </td>
+                            <td>
+                                <a href="{{ url('textbook/buy/product/'.$product->id) }}">View Details</a>
+                            </td>
+                            <td class="cart-btn-col">
+                                <a class="btn add-cart-btn" href="#" role="button">Add To Cart</a>
+                            </td>
+                        </tr>
+                    @endforeach
+
+                </table>
+            </div>
+        @else
+            <h3>Sorry, this book is not available for now.</h3>
+        @endif
     </div>
 
 @endsection
