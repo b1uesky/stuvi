@@ -14,21 +14,22 @@
             <ul class="nav nav-pills">
                 <li role="presentation" class="active"><a href="#" data-toggle="pill">Title</a></li>
                 <li role="presentation"><a href="#" data-toggle="pill">Author</a></li>
+                <li role="presentation"><a href="#" data-toggle="pill">Most Bought</a></li>
+                <li role="presentation"><a href="#" data-toggle="pill">Top Rated</a></li>
 
-                <div class="col-sm-4 col-md-4 pull-right bookshelf-sort">
-                    <form class="navbar-form" role="search">
+                <div class="col-sm-4 col-md-4 pull-right">
+                    <form action="/textbook/buy/search" method="post" class="navbar-form" role="search">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" name="srch-term">
+                            <input type="text" class="form-control" placeholder="Search" name="info">
                             <div class="input-group-btn">
-                                <button class="btn btn-default search-btn"><i class="fa fa-search search-icon"></i>
+                                <button class="btn btn-default search-btn" type="submit" name="search" value="Search">
+                                    <i class="fa fa-search search-icon"></i>
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
-
             </ul>
-
         </div>
 
         <div class="container textbook-list">

@@ -51,6 +51,7 @@
                 <thead>
                 <tr class="active">
                     <th>Price</th>
+                    <th>Seller</th>
                     <th>Condition</th>
                     <th>Details</th>
                     <th>Add to Cart</th>
@@ -60,6 +61,9 @@
                     <tr>
                         <td>
                             <p id="price">${{ $product->price }}</p>
+                        </td>
+                        <td>
+                            <p>Seller's Name</p>
                         </td>
                         <td>
                             {{-- TODO: product condition score --}}
