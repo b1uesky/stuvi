@@ -7,8 +7,11 @@
     </head>
 
     <div class="container-fluid textbook-list-container">
-        <h1 id="search-term">Search results for "{{ $info }}"</h1>
-
+        @if(trim($info) != "")
+            <h1 id="search-term">Search results for "{{ $info }}"</h1>
+        @else
+            <h1 id="search-term">Search results</h1>
+        @endif
         <div class="container">
             <span class="text-muted">Sort by</span>
             <ul class="nav nav-pills">
