@@ -37,9 +37,10 @@ class Registrar implements RegistrarContract {
             'last_name' => $data['last_name'],
 		]);
 
-		Mail::send('emails.welcome', ['first_name' => $data['first_name']], function($message)
+        // send an email to the user with welcome message
+		Mail::queue('emails.welcome', ['first_name' => $data['first_name']], function($message) use ($data)
 		{
-		    $message->to('kingdido999@gmail.com', $data['first_name'].$data['last_name'])->subject('Welcome!');
+		    $message->to($data['email'])->subject('Welcome to Stuvi!');
 		});
 
 		return $user;
