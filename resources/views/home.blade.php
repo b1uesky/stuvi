@@ -43,7 +43,7 @@
                         relevant services to help you succeed at school, and we're launching here in Boston, Massachusetts!
                     </p>
                 </div>
-                <div class="container col-md-4" id="img-info-1">
+                <div class="container col-sm-7 col-sm-offset-3 col-md-4" id="img-info-1">
                     {{--<img src="http://placehold.it/350x350">--}}
                     <img class="img-responsive" src="{{asset('/img/art-boston.jpg')}}" width="350px">
                 </div>
