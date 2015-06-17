@@ -39,24 +39,39 @@ class TextbookController extends Controller {
      */
     public function create()
     {
-        return view('textbook.create');
+        return view('textbook.create', [
+            'bindings'   => Config::get('book.bindings'),
+            'languages'  => Config::get('book.languages')
+        ]);
     }
 
 	/**
-	 * Store a newly created resource in storage.
+	 * Store a newly created book in storage.
+     * Only if the input ISBN is not in our database and amazon database.
 	 *
 	 * @return Response
 	 */
 	public function store(Request $request)
 	{
+        $this->validate($request, [
+            'isbn'      =>  'required|unique:books',
+            'title'     =>  'required|string',
+            'authors'   =>  'required|string',
+            'edition'   =>  'required|integer',
+            'num_pages' =>  'required|integer',
+            'binding'   =>  'required|string',
+            'language'  =>  'required|string',
+            'image'     =>  'required|mimes:jpeg,png'
+        ]);
+
 		// create book
         $book = new Book();
         $book->isbn             = Input::get('isbn');
         $book->title            = Input::get('title');
         $book->edition          = Input::get('edition');
         $book->num_pages        = Input::get('num_pages');
-		$book->binding_id		= Input::get('binding');
-		$book->language_id		= Input::get('language');
+		$book->binding		    = Input::get('binding');
+		$book->language		    = Input::get('language');
         $book->save();
 
 		// create book authors
@@ -67,36 +82,31 @@ class TextbookController extends Controller {
 			$book_author = new BookAuthor();
 			$book_author->book_id = $book->id;
 			$book_author->full_name = trim($author);
+            $book_author->save();
 		}
 
-		// create book image set
-		if (Input::hasFile('image'))
-		{
-			if (!Input::file('image')->isValid())
-			{
-				return response('Please upload a valid image.');
-			}
+		// get image file
+        $image = Input::file('image');
+        $title = Input::get('title');
+        $folder = '/img/book/';
+        $file_uploader = new FileUploader($image, $title, $folder);
 
-			// get the uploaded file
-			$image = Input::file('image');
-			$title = Input::get('title');
-			$folder = '/img/book/';
-			$file_uploader = new FileUploader($image, $title, $folder);
-		}
-		else
-		{
-			return response('Please upload a textbook image.');
-		}
-
+        // create book image set
 		$image_set = new BookImageSet();
 		$image_set->book_id = $book->id;
+        $image_set->save();
+
+        $file_uploader->setFilename($image_set->id);
+        $file_uploader->setPath();
+        $file_uploader->saveFile();
+
 		$image_set->large_image = $file_uploader->getPath();
 		$image_set->save();
 
-		// save the book image
-		$file_uploader->saveFile();
-
-        return view('product.create')->withBook($book);
+        return view('product.create', [
+            'book'  =>  $book,
+            'conditions' =>  Config::get('product.conditions')
+        ]);
 	}
 
 	/**

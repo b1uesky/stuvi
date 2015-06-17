@@ -29,50 +29,51 @@
                 <!-- ISBN -->
                 <div class="form-group">
                     <label><b>ISBN</b></label>
-                    <input type="string" name="isbn" value="{{ $book->isbn or "" }}" class="form-control"/>
+                    <input type="string" name="isbn" class="form-control" required/>
                 </div>
                 <!-- Title -->
                 <div class="form-group">
                     <label><b>Title</b></label>
-                    <input type="text" name="title" value="{{ $book->title or "" }}" class="form-control"/>
+                    <input type="text" name="title" class="form-control" required/>
                 </div>
                 <!-- Authors -->
                 <div class="form-group">
                     <label><b>Author(s)</b></label>
                     <small>Seperate authors by ,</small>
-                    <input type="text" name="authors" value="{{ $authors or "" }}" class="form-control"/>
+                    <input type="text" name="authors" class="form-control" required/>
                 </div>
                 <!-- Edition -->
                 <div class="form-group">
                     <label><b>Edition</b></label>
-                    <input type="number" name="edition" value="{{ $book->edition or 1 }}" class="form-control"/>
+                    <input type="number" name="edition" class="form-control" required/>
                 </div>
                 <!-- Num pg -->
                 <div class="form-group">
                     <label><b>Number of Pages</b></label>
-                    <input type="number" name="num_pages" value="{{ $book->num_pages or 0 }}" class="form-control"/>
+                    <input type="number" name="num_pages" class="form-control" required/>
                 </div>
-                <!-- binding -->
+                <!-- Select Binding -->
                 <div class="form-group ws" id="binding">
                     <label><b>Binding</b></label>
-                    <input type="radio" name="binding" value="1" checked/> Hard
-                    <input type="radio" name="binding" value="2"/> Soft
+                    @foreach($bindings as $key => $value)
+                        <input type="radio" name="binding" value="{{ $value }}" required/> {{ $value }}
+                    @endforeach
                 </div>
 
-                <!-- select language -->
-                <!-- TODO: a complete list of languages and their ids -->
+                <!-- Select Language -->
+                <!-- TODO: a complete list of languages -->
                 <div class="form-group">
                     <label><b>Language</b></label>
                     <select class="selectpicker" name="language" id="textbook-create lang">
-                        <option value="1" class="lang-select">English</option>
-                        <option value="2" class="lang-select">Spanish</option>
-                        <option value="3" class="lang-select">Chinese</option>
+                        @foreach($languages as $key => $value)
+                            <option value="{{ $value }}" class="lang-select" required>{{ $value }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <!-- upload image -->
                 <div class="form-group ws">
-                    <label >Cover Image</label>
-                    <input type="file" name="image"/>
+                    <label><b>Cover Image</b></label>
+                    <input type="file" name="image" required/>
                 </div>
                 <input type="submit" name="submit" class="btn btn-primary" id="create-btn" value="Submit"/>
             </form>
