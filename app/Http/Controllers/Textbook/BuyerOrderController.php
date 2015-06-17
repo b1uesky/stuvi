@@ -15,24 +15,24 @@ use Auth, Input, Cart, Session, DB, Config;
 class BuyerOrderController extends Controller
 {
 
-	/**
-	 * Display a listing of buyer orders for an user.
-	 *
-	 * @return Response
-	 */
-	public function buyerOrderIndex()
-	{
-		return view('order.index')
+    /**
+     * Display a listing of buyer orders for an user.
+     *
+     * @return Response
+     */
+    public function buyerOrderIndex()
+    {
+        return view('order.index')
             ->with('orders', Auth::user()->buyerOrders()->orderBy('id')->get());
-	}
+    }
 
-	/**
-	 * Show the form for creating a new buyer order along with Stripe payment.
-	 *
-	 * @return Response
-	 */
-	public function createBuyerOrder()
-	{
+    /**
+     * Show the form for creating a new buyer order along with Stripe payment.
+     *
+     * @return Response
+     */
+    public function createBuyerOrder()
+    {
         // if the Cart is empty, return to cart page
         if (Cart::content()->count() < 1)
         {
@@ -40,23 +40,23 @@ class BuyerOrderController extends Controller
                 ->with('message', 'Cannot proceed to checkout because Cart is empty.');
         }
 
-		return view('order.createBuyerOrder')
+        return view('order.createBuyerOrder')
             ->with('items', Cart::content())
             ->with('total', Cart::total());
-	}
+    }
 
-	/**
-	 * Store a newly created buyer order and corresponding seller order(s) in storage.
-	 *
-	 * @return Response
-	 */
-	public function storeBuyerOrder(Request $request)
+    /**
+     * Store a newly created buyer order and corresponding seller order(s) in storage.
+     *
+     * @return Response
+     */
+    public function storeBuyerOrder(Request $request)
     {
         // validate the address info
         $this->validate($request, Address::rules());
 
         // check if this payment already exist
-        if (BuyerPayment::where('stripe_token','=',Input::get('stripeToken'))->exists())
+        if (BuyerPayment::where('stripe_token', '=', Input::get('stripeToken'))->exists())
         {
             return redirect('/order/createBuyerOrder')
                 ->with('message', 'Invalid payment.');
@@ -73,19 +73,12 @@ class BuyerOrderController extends Controller
         foreach (Cart::content() as $row)
         {
             $product = Product::find($row->id);
-            if ($product->sold) {
+            if ($product->sold)
+            {
                 return redirect('/cart')
-                    ->with('message', 'Sorry,'.$product->book->title.' has been sold. Please remove it from Cart');
+                    ->with('message', 'Sorry,' . $product->book->title . ' has been sold. Please remove it from Cart');
             }
         }
-
-        // create a payment
-        $payment = new BuyerPayment;
-        $payment->stripe_token      = Input::get('stripeToken');
-        $payment->stripe_token_type = Input::get('stripeTokenType');
-        $payment->stripe_email      = Input::get('stripeEmail');
-        $payment->stripe_amount     = Input::get('stripeAmount');
-        $payment->save();
 
         // store the buyer shipping address
         $address = array(
@@ -99,23 +92,59 @@ class BuyerOrderController extends Controller
         );
         $shipping_address_id = Address::add($address, Auth::id());
 
+        // create a payment
+        $payment = $this->createBuyerPayment();
+
         // create an buyer payed order
         $order = new BuyerOrder;
-        $order->buyer_id            = Auth::id();
-        $order->buyer_payment_id    = $payment->id;
+        $order->buyer_id = Auth::id();
+        $order->buyer_payment_id = $payment->id;
         $order->shipping_address_id = $shipping_address_id;
         $order->save();
 
-
         // create seller order(s) according to the Cart items
         $this->createSellerOrders($order->id);
+
 
         // remove payed items from Cart
         Cart::destroy();
 
         return view('order.storeBuyerOrder')
             ->with('order', $order);
-	}
+    }
+
+    protected function createBuyerPayment()
+    {
+        // Set your secret key: remember to change this to your live secret key in production
+        // See your keys here https://dashboard.stripe.com/account/apikeys
+        \Stripe\Stripe::setApiKey(\App::environment('production') ? Config::get('stripe.live_secret_key') : Config::get('stripe.test_secret_key'));
+
+        // Get the credit card details submitted by the form
+        $token = Input::get('stripeToken');
+
+        // Create the charge on Stripe's servers - this will charge the user's card
+        try
+        {
+            $charge = \Stripe\Charge::create(array(
+                    "amount"      => Cart::total()*100, // amount in cents
+                    "currency"    => "usd",
+                    "source"      => $token,
+                    "description" => "Buyer order payment for buyer order")
+            );
+
+            $payment = new BuyerPayment;
+            $payment->stripe_token = Input::get('stripeToken');
+            $payment->stripe_token_type = Input::get('stripeTokenType');
+            $payment->stripe_email = Input::get('stripeEmail');
+            $payment->stripe_amount = Input::get('stripeAmount');
+            $payment->save();
+            return $payment;
+        }
+        catch (\Stripe\Error\Card $e)
+        {
+            // The card has been declined
+        }
+    }
 
     protected function createSellerOrders($buyer_order_id)
     {
@@ -125,26 +154,27 @@ class BuyerOrderController extends Controller
             $product = Product::find($row->id);
 
             // change the status of the product to be sold.
-            $product->sold  = true;
+            $product->sold = true;
             $product->save();
 
             // create seller orders
             $order = new SellerOrder;
-            $order->product_id      = $product->id;
-            $order->buyer_order_id  = $buyer_order_id;
+            $order->product_id = $product->id;
+            $order->buyer_order_id = $buyer_order_id;
             $order->save();
         }
     }
 
-	/**
-	 * Display a specific buyer order.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function showBuyerOrder($id)
-	{
-		$buyer_order = BuyerOrder::find($id);
+    /**
+     * Display a specific buyer order.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function showBuyerOrder($id)
+    {
+        $buyer_order = BuyerOrder::find($id);
 
         // check if this order belongs to the current user.
         if (!is_null($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
@@ -156,7 +186,7 @@ class BuyerOrderController extends Controller
 
         return redirect('order/buyer')
             ->with('message', 'Order not found.');
-	}
+    }
 
     /**
      * Cancel a specific buyer order and corresponding seller orders.
@@ -173,7 +203,8 @@ class BuyerOrderController extends Controller
         if (!is_null($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
         {
             $buyer_order->cancel();
-            return redirect('order/buyer/'.$id);
+
+            return redirect('order/buyer/' . $id);
         }
 
         return redirect('order/buyer')
