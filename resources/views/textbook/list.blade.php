@@ -18,13 +18,14 @@
                 <li role="presentation"><a href="#">Price (High to Low)</a></li>
 
                 <div class="col-sm-4 col-md-4 pull-right bookshelf-sort">
-                    <form class="navbar-form" role="search">
+                    <form action="/textbook/buy/search" method="post" class="navbar-form" role="search">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" name="srch-term"
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="text" class="form-control" placeholder="Search" name="info"
                                    id="srch-term">
 
                             <div class="input-group-btn">
-                                <button class="btn btn-default search-btn"><i class="glyphicon glyphicon-search"></i>
+                                <button class="btn btn-default search-btn" type="submit"><i class="glyphicon glyphicon-search"></i>
                                 </button>
                             </div>
                         </div>
