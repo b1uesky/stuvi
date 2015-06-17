@@ -10,7 +10,9 @@
         "gloudemans/shoppingcart": "dev-master",
 		"fale/isbn": "2.0.0",
 		"exeu/apai-io": "dev-master",
-        "cartalyst/stripe-laravel": "2.0.*"
+        "cartalyst/stripe-laravel": "2.0.*",
+		"doctrine/dbal": "2.5.1",
+		"guzzlehttp/guzzle": "~5.0"
 	},
     "repositories": [
       {

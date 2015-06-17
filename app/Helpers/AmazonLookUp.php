@@ -25,9 +25,9 @@ class AmazonLookUp
         try {
             $this->conf
                 ->setCountry('com')
-                ->setAccessKey(Config::get('amazon.access_key_id'))
-                ->setSecretKey(Config::get('amazon.secret_access_key'))
-                ->setAssociateTag(Config::get('amazon.associate_id'));
+                ->setAccessKey(Config::get('services.amazon.access_key_id'))
+                ->setSecretKey(Config::get('services.amazon.secret_access_key'))
+                ->setAssociateTag(Config::get('services.amazon.associate_id'));
         } catch (\Exception $e) {
             echo $e->getMessage();
         }

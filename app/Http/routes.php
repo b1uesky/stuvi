@@ -103,6 +103,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], 
 Route::get('/user/profile', 'UserController@profile');
 Route::get('/user/profile-edit', 'UserController@profileEdit');
 Route::get('/user/account', 'UserController@account');
+Route::post('/user/account/edit', 'UserController@edit');
 
 
 Route::controllers([

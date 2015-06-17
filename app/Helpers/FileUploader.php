@@ -8,18 +8,18 @@ class FileUploader {
         $this->title = $title;
         $this->folder = $folder;
         $this->destination = public_path() . $folder;
-        $this->filename = $this->generateFileName();
-        $this->path = $this->setPath();
     }
 
-    function generateFileName()
+    // The filename will be {TITLE}-{IMAGE_ID}.{EXTENSION}
+    // e.g., Algorithms-1.jpg
+    function setFilename($image_id)
     {
-        return $this->title . '_' . $this->file->getClientOriginalName();
+        $this->filename = $this->title . '-' . $image_id . '.' . $this->file->getClientOriginalExtension();
     }
 
     function setPath()
     {
-        return $this->folder . $this->filename;
+        $this->path = $this->folder . $this->filename;
     }
 
     function getPath()
@@ -29,6 +29,6 @@ class FileUploader {
 
     function saveFile()
     {
-        $this->file->move($this->destination, $this->filename);
+        $this->file->move($this->destination, $this->path);
     }
 }

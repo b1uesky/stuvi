@@ -77,6 +77,10 @@
                     <input type="number" name="rips" value="0" class="form-control">
                 </div>
                 <div class="form-group">
+                    <label>{{ $condition['description'] }}</label>
+                    <textarea name="description" class="form-control" rows="5" placeholder="{{ $condition['description_placeholder'] }}"></textarea>
+                </div>
+                <div class="form-group">
                     <label>Price</label>
                     <input type="number" step="0.01" name="price" class="form-control">
                 </div>
