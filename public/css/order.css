@@ -1,0 +1,75 @@
+/******* BUYER ORDERS PAGE *******/
+
+h1{
+    margin-left: -17px !important;
+}
+
+#message {
+    font-style: italic;
+}
+
+#message-cont {
+    padding: 1%;
+    margin-top: 5px;
+}
+
+
+body {
+    background-color: #F2F2F2;
+}
+
+.buyer-order-container {
+    margin-bottom: 100px;
+}
+
+.order-container {
+    border: 2px solid #F9AA62;
+    margin-bottom: 30px;
+}
+
+.order-row{
+    background-color: rgba(0, 0, 0, 0.09);
+}
+
+.book-row {
+    padding: 10px 0;
+}
+
+.book-img{
+    max-width: 100px;
+    margin: 10px;
+}
+
+.lg-img{
+    max-width: 100px;
+}
+
+.book-info{
+    padding-left: 25px;
+}
+
+.book-info h3 {
+    margin-top: 10px;
+}
+
+#book-price{
+    color: #b61f17;
+}
+
+.order-button-1 {
+    background: #F16521;
+    color: #FFFFFF;
+    border: none;
+    margin: 5px;
+}
+
+.order-button-2 {
+    background: rgba(0, 0, 0, 0.28)
+    color: #FFFFFF;
+    border: none;
+    margin: 5px;
+}
+
+#cancelled h3{
+    color: red;
+}

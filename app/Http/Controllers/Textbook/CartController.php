@@ -84,7 +84,7 @@ class CartController extends Controller
         {
             Session::flash('message', 'Sorry, the item has already been removed.');
             Session::flash('alert-class', 'alert-warning');
-//            return redirect('/cart');
+            return redirect('/cart');
         }
 
         return redirect('/cart');

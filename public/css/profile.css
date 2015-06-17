@@ -9,10 +9,7 @@
 
 }
 
-.books{
-    max-width: 700px;
-    max-height: 200px;
-}
+
 
 .hr{
     margin: 1%;
@@ -22,11 +19,66 @@
     max-width: 770px;
 }
 
+h2{}
+
+h5{ margin:0px;
+    margin-bottom: 3px;
+}
 
 
+/* BOOKS FOR SALE */
+.for-sale-img{
+    width: 100px !important;
+}
+
+.books{
+    max-width: 750px;
+    max-height: 200px;
+}
+
+.for-sale-table{
+    width: 100%;
+}
+
+.for-sale-item{
+    font-size: small
+}
+
+.for-sale-info-1{
+    width: 150px;
+}
+
+.for-sale-info-2{
+
+}
+
+.for-sale-title{
+    font-size: medium;
+    font-weight: bold;
+}
+
+
+.for-sale-author {}
+.for-sale-binding{}
+.for-sale-isbn {}
+.for-sale-class {}
+
+.for-sale-price{
+    color: #B12704;
+    font-weight: bold;
+}
+
+.for-sale-pub-date{
+    font-size: medium;
+}
+
+
+.for-sale-btn-add-cart{
+    padding: 0px;
+}
 @media (max-width: 970px) {
     .home       {max-width: 500px;}
-    .books      {max-width: 500px;}
+    .books      {max-width: 650px;}
     #details,#for-sale    {
         text-align: center;}
 }

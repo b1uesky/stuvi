@@ -20,7 +20,7 @@ return [
 	],
 
 	'mandrill' => [
-		'secret' => '',
+		'secret' => 'T1oq1a251BfoXUTRz8RlXw',
 	],
 
 	'ses' => [
@@ -32,5 +32,12 @@ return [
     'stripe' => [
         'secret' => 'sk_test_1z2tEIbWtbZVvpWnnzgfymyC',
     ],
+
+	// Amazon Product Advertising API credentials
+	'amazon' => [
+		'access_key_id'     =>  'AKIAICSPEAJYPA3CBSNQ',
+		'secret_access_key' =>  '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',
+		'associate_id'      =>  'stuvi07-20',
+	],
 
 ];

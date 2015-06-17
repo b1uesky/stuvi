@@ -3,7 +3,7 @@
 @extends('app')
 @section('title', 'Profile')
 
-@section('content')sssss
+@section('content')
     <head>
         <title> Stuvi - {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} - Edit Profile </title>
         <link href="{{ asset('/css/profile-edit.css') }}" rel="stylesheet">
@@ -32,8 +32,9 @@
                                     <div class="form-group" id="sex">
                                         <label class="control-label col-sm-3">Sex</label>
                                         <div class = "col-sm-6 align">
-                                            <input class="control-label" type="radio" name="sex" value="1" checked/> Hard
-                                            <input class="control-label" type="radio" name="sex" value="2"/> Soft
+                                            <input class="control-label" type="radio" name="sex" value="1" checked/>
+                                            Male
+                                            <input class="control-label" type="radio" name="sex" value="2"/> Female
                                         </div>
                                     </div>
 
@@ -58,7 +59,8 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="bio">Bio/About me:</label>
                                         <div class="col-sm-6">
-                                            <textarea id="bio" rows="4" cols = "50" placeholder="Tell us your deepest, darkest secrets.">
+                                            <textarea id="bio" class="form-control" rows="4" cols="50"
+                                                      placeholder="Tell us your deepest, darkest secrets.">
                                             </textarea>
                                         </div>
                                     </div>
@@ -120,7 +122,9 @@
                                     <!-- Save changes button -->
                                     <div class="form-group">
                                         <div class=" col-sm-offset-3 col-sm-6">
-                                            <button type="submit" class="btn btn-default">Save Changes</button>
+                                            <button id="save-info-btn" type="submit" class="btn btn-default">Save
+                                                Changes
+                                            </button>
                                         </div>
                                     </div>
                                     </form>

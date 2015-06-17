@@ -180,4 +180,14 @@ class BuyerOrderController extends Controller
             ->with('message', 'Order not found.');
     }
 
+
+    /**
+     * Display list of seller's unsold books
+     *
+     */
+
+    public function sellerBookshelfIndex()
+    {
+        return view('order.sellerBookshelfIndex');
+    }
 }

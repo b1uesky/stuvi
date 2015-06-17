@@ -1,0 +1,81 @@
+/******* TEXTBOOK SEARCH LIST *******/
+
+#search-term {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.textbook-list-container {
+    background-color: #F2F2F2;
+
+}
+
+/* SORT SECTION */
+
+.search-btn {
+    background: #F16521;
+}
+
+.search-btn:hover {
+    background: #F16521;
+}
+
+.search-btn:focus {
+    outline: 0 !important;
+    background: #F16521;
+}
+
+
+/* TEXTBOOK LIST */
+.textbook-img-container {
+    width: 100px !important;
+
+}
+
+.textbook-img {
+    width: 100px;
+    height: 135px;
+}
+
+.textbook-list {
+    max-width: 800px;
+}
+
+.textbook-table {
+    width: 100%;
+}
+
+.textbook-item {
+    font-size: small
+}
+
+.textbook-info-1 {
+    width: 350px;
+}
+
+.table-offset {
+    width: 200px;
+}
+
+.textbook-title {
+    font-size: medium;
+    font-weight: bold;
+}
+
+.textbook-pub-date {
+    font-size: medium;
+}
+
+@media (max-width: 970px) {
+    .home {
+        max-width: 500px;
+    }
+
+    .textbook-list {
+        max-width: 650px;
+    }
+
+    #details, #textbook {
+        text-align: center;
+    }
+}

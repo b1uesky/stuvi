@@ -33,13 +33,13 @@
                     <a href="#" class="dropdown-toggle tabz" id ="books-nav" data-toggle="dropdown">Books <span class="caret"></span> </a>
                     <ul class="dropdown-menu" role="menu">
                         <li role="presentation" class="dropdown-header">Buy</li>
-                        <li><a href="{{url('/order/')}}" class="">Your Orders</a></li>
+                        <li><a href="{{url('/order/buyer')}}" class="">Your Orders</a></li>
                         <li><a href="#" class="">Your Wish List</a></li>
                         <li><a href="#" class="">Returns</a></li>
                         <li role="presentation" class="divider"></li>
                         <li role="presentation" class="dropdown-header">Sell</li>
-                        <li><a href="#">All Selling</a></li>
-                        <li><a href="#">Sold</a></li>
+                        <li><a href="{{url('/order/seller/bookshelf')}}">Your Bookshelf</a></li>
+                        <li><a href="{{ url('/order/seller') }}">Sold</a></li>
                     </ul>
                 </li> <!-- end textbooks dropdown -->
                 <li class = "disabled" id="clubs-nav"><a href="#">Clubs</a></li>
@@ -95,7 +95,7 @@
                                                 </div>--}}
                             <div class="edit">
                                 <div class="btn-group">
-                                    <a class="btn btn-info btm-sm" id="edit-but" href="{{url('/user/profile-edit')}}">
+                                    <a class="btn btn-default" id="edit-btn" href="{{url('/user/profile-edit')}}">
                                         Edit Profile
                                     </a>
                                 </div>

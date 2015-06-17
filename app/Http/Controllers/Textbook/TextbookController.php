@@ -233,7 +233,7 @@ class TextbookController extends Controller {
 			// TODO: author
 			$books = Book::where('title', 'LIKE', "%$info%")->get();
 
-			return view('textbook.list')->withBooks($books);
+            return view('textbook.list')->withBooks($books)->withInfo($info);
 		}
 	}
 }

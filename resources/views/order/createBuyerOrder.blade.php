@@ -62,50 +62,57 @@
 
                         <h2>2. Shipping address</h2></br>
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Full name</label>
-                            <div class="col-md-6">
+                            <label class="col-sm-4 control-label">Full name</label>
+
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" name="addressee" value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
                             </div>
                         </div>
                         </br>
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Address line 1</label>
-                            <div class="col-md-6">
+                            <label class="col-sm-4 control-label">Address line 1</label>
+
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" name="address_line1">
                             </div>
                         </div>
                         </br>
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Address line 2</label>
-                            <div class="col-md-6">
+                            <label class="col-sm-4 control-label">Address line 2</label>
+
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" name="address_line2">
                             </div>
                         </div>
                         </br>
                         <div class="form-group">
-                            <label class="col-md-4 control-label">City</label>
-                            <div class="col-md-6">
+                            <label class="col-sm-4 control-label">City</label>
+
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" name="city">
                             </div>
                         </div>
                         </br>
                         <div class="form-group">
-                            <label class="col-md-4 control-label">State</label>
-                            <div class="col-md-6">
+                            <label class="col-sm-4 control-label">State</label>
+
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" name="state_a2">
                             </div>
                         </div>
                         </br>
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Zip</label>
-                            <div class="col-md-6">
+                            <label class="col-sm-4 control-label">Zip</label>
+
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" name="zip">
                             </div>
                         </div>
                         </br>
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Phone</label>
-                            <div class="col-md-6">
+                            <label class="col-sm-4 control-label">Phone</label>
+
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" name="phone_number">
                             </div>
                         </div>

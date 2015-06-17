@@ -1,0 +1,159 @@
+@charset "utf-8";
+/* CSS Document */
+/* (c) Stuvi LLC 2015
+* Used for the home page styling. */
+
+
+/********* Classes  ************/
+
+
+/*Bg color of nav bar  */
+.nav-color{ background-color: #241729; }
+
+/*.active{ background-color: #425c7f ; }*/
+
+/* Nav bar Spacing..sizing..   */
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+  height: 5em;
+}
+
+/* Nav bar alignment */
+bar .navbar-collapse  { 
+	text-align: right;
+}
+
+
+/* Stuvi logo */
+.brand { margin-left: auto; margin-right: auto; }
+
+.navbar .brand {
+	max-height: 40px;
+	overflow: visible;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.navbar a.navbar-brand {padding: 9px 15px 8px; }
+
+/*Top background*/
+.backgnd {
+	background-image: url("../img/bg.jpg");
+	background-size: cover;
+}
+
+
+/* Bottom half of home page, grid buffer */
+.grid-buff { 
+	margin-top : 40px;
+	margin-bottom: 40px;	
+}
+
+/* Column buffer for smaller screen compatiblity */
+.col-buff {
+	padding: 10px;	
+}
+
+
+/************** IDs   *************/
+
+#head1 { font-size: 3em; }
+	
+
+
+
+
+
+/* Unused */
+.backgnd2{
+	background-color: white;
+}
+
+
+
+
+
+
+/******************* SlidesJS *******************/
+
+    body {
+      -webkit-font-smoothing: antialiased;
+      font: normal 15px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: #232525;
+    }
+
+    #slides {
+      display: none
+    }
+
+    #slides .slidesjs-navigation {
+      margin-top:3px;
+    }
+
+    #slides .slidesjs-previous {
+      margin-right: 5px;
+      float: left;
+    }
+
+    #slides .slidesjs-next {
+      margin-right: 5px;
+      float: left;
+    }
+
+    .slidesjs-pagination {
+      margin: 6px 0 0;
+      float: right;
+      list-style: none;
+    }
+
+    .slidesjs-pagination li {
+      float: left;
+      margin: 0 1px;
+    }
+
+    .slidesjs-pagination li a {
+      display: block;
+      width: 13px;
+      height: 0;
+      padding-top: 13px;
+      background-image: url(img/pagination.png);
+      background-position: 0 0;
+      float: left;
+      overflow: hidden;
+    }
+
+    .slidesjs-pagination li a.active,
+    .slidesjs-pagination li a:hover.active {
+      background-position: 0 -13px
+    }
+
+    .slidesjs-pagination li a:hover {
+      background-position: 0 -26px
+    }
+
+    #slides a:link,
+    #slides a:visited {
+      color: #333
+    }
+
+    #slides a:hover,
+    #slides a:active {
+      color: #9e2020
+    }
+
+    .navbar {
+      overflow: hidden
+    }
+
+/* SlideJS Required */
+
+    #slides {
+      display: none
+    }
+
+    .container {
+      margin: 0 auto
+    }
+
+
