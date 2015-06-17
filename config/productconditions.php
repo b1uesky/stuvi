@@ -9,5 +9,7 @@ return [
     'water_damage'      =>  'Water Damage',
     'stains'            =>  'Stains',
     'burns'             =>  'Burns',
-    'rips'              =>  'Rips'
+    'rips'              =>  'Rips',
+    'description'       =>  'Description',
+    'description_placeholder'   =>  'More description on your book conditions.'
 ];
