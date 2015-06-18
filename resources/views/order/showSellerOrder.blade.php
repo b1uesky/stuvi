@@ -64,7 +64,7 @@
                     @else
                         N/A
                     @endif
-                </p>
+
 
             </div>
         </div>
