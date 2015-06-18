@@ -61,9 +61,11 @@ hr{
 }
 
 .input-box, .add-on {
-    padding: 1% !important;
+    padding: 16px !important;
 }
 
 .icon-calendar{
-    margin-bottom: 10px !important;
+    margin-top: -9px !important;
+    margin-left:1px;
+    margin-right: -1px;
 }

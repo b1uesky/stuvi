@@ -19,7 +19,7 @@
     </div>
     <!-- order details -->
     <div class="container">
-        <h1 id="h1-showBuy">Order Details</h1>
+        <h1 id="">Order Details</h1>
         <h2>
             <!-- canceled order -->
             @if ($buyer_order->cancelled)<span id="cancelled">This order has been cancelled.</span> @endif
@@ -48,7 +48,7 @@
             </div>
             <div class="details-payment col-xs-12 col-sm-3">
                 <h4>Payment Method</h4>
-                <p>{{ $buyer_order->buyer_payment->card_brand }} **** {{ $buyer_order->buyer_payment->card_last4 }}</p>
+                <p>Visa **** 4242</p>
             </div>
             <div class="details-pricing col-xs-12 col-sm-3 col-sm-offset-3">
                 <h4>Order Summary</h4>
@@ -65,7 +65,7 @@
                     <div class="item col-xs-8">
                         <p>Title: {{ $product->book->title }}</p>
                         <p>ISBN: {{ $product->book->isbn }}</p>
-                        <p>Author: @if ($product->book->author) {{ $product->book->author}} @else N/A @endif</p>
+                        <p>Author: {{ $product->book->author}}</p>
                         <?php $seller_order = $buyer_order->seller_order($product->id) ?>
                         <p>Scheduled pickup time:
                             @if ($seller_order->scheduled_pickup_time)
