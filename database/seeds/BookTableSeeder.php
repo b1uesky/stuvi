@@ -53,6 +53,7 @@ public function run()
             $book_image_set->large_image = $amazon->getLargeImage();
             $book_image_set->save();
 
+//            var_dump($amazon->saveToXML());
             // save book authors
             foreach ($amazon->getAuthors() as $author_name) {
                 $book_author = new BookAuthor();

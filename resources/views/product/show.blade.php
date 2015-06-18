@@ -37,7 +37,6 @@
 
                 <a class="btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
 
->>>>>>> front-end
             </div>
 
             <table class="table table-responsive details-table col-sm-12 col-md-6">
