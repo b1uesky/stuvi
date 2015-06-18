@@ -44,17 +44,12 @@ class ProductController extends Controller {
 	{
         // validation
         $v = Validator::make(Input::all(), [
-            'highlights'        =>  'required|integer',
-            'notes'             =>  'required|integer',
-            'num_damaged_pages' =>  'required|integer',
-            'broken_spine'      =>  'required|integer',
-            'broken_binding'    =>  'required|integer',
-            'water_damage'      =>  'required|integer',
-            'stains'            =>  'required|integer',
-            'burns'             =>  'required|integer',
-            'rips'              =>  'required|integer',
-            'price'             =>  'required|numeric',
-            'images'            =>  'required|mimes:jpeg,png'
+            'general_condition'     =>  'required|integer',
+            'highlights_and_notes'  =>  'required|integer',
+            'damaged_pages'         =>  'required|integer',
+            'broken_binding'        =>  'required|boolean',
+            'price'                 =>  'required|numeric',
+            'images'                =>  'required|mimes:jpeg,png'
         ]);
 
         if ($v->fails())
@@ -71,17 +66,12 @@ class ProductController extends Controller {
         $product->save();
 
 		$condition = new ProductCondition();
-		$condition->product_id          = $product->id;
-		$condition->highlights          = Input::get('highlights');
-		$condition->notes               = Input::get('notes');
-		$condition->num_damaged_pages   = Input::get('num_damaged_pages');
-		$condition->broken_spine        = Input::get('broken_spine');
-		$condition->broken_binding      = Input::get('broken_binding');
-		$condition->water_damage        = Input::get('water_damage');
-		$condition->stains              = Input::get('stains');
-		$condition->burns               = Input::get('burns');
-		$condition->rips                = Input::get('rips');
-		$condition->description         = Input::get('description');
+		$condition->product_id              = $product->id;
+        $condition->general_condition       = Input::get('general_condition');
+		$condition->highlights_and_notes    = Input::get('highlights_and_notes');
+		$condition->damaged_pages           = Input::get('damaged_pages');
+		$condition->broken_binding          = Input::get('broken_binding');
+		$condition->description             = Input::get('description');
 		$condition->save();
 
 		// save multiple product images
