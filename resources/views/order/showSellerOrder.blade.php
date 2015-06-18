@@ -32,7 +32,7 @@
 
         <!-- ordered on, order # -->
         <div class="row" id="details1">
-            <p class="col-xs-12 col-sm-3 col-sm-offset-0">Ordered on {{ $seller_order->created_at }}</p>
+            <p class="col-xs-12 col-sm-4 col-sm-offset-0">Ordered on {{ $seller_order->created_at }}</p>
             <p class="col-xs-12 col-sm-4">Order #{{ $seller_order->id }}</p>
         </div>
         @if (!$seller_order->cancelled)
@@ -52,9 +52,9 @@
                 <p><label class="col-md-4 control-label">Price: {{ $product->price }}</label></p>--}}
                     <p>Title: {{ $book->title }}</p>
                     <p>ISBN: {{ $book->isbn }}</p>
-                    <p>Price: {{ $product->price }}</p>
+                    <p>Price: ${{ $product->price }}</p>
             </div>
-            <!-- pick up -->
+            <!-- pick up form-->
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
                     <p>{{--label class="col-md-8 control-label">Scheduled pick-up time:</label>--}}
