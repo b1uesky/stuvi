@@ -10,7 +10,7 @@
 
 <div class="container-fluid" id="bg">
     <div class="row back-row">
-        <a id="go-back" onclick="goBack()" ><i class="fa fa-arrow-circle-left"></i> Back to {{ $book->title }}</a>
+        <a id="go-back" href="" onclick="goBack()" ><i class="fa fa-arrow-circle-left"></i> Back to {{ $book->title }}</a>
     </div>
 
     <div class="container" id="det-cont">
@@ -26,10 +26,6 @@
                 @endif
 
                 <h2>{{ $book->title }}</h2>
-                <!-- TODO: Link to Seller profile -->
-                <h4>Sold by <a href="#">{{$product->seller->first_name}} {{$product->seller->last_name}}</a></h4>
-
-
 
                 <div class="price">
                     Price: <b>${{ $product->price }}</b>
