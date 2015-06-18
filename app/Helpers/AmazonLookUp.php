@@ -131,17 +131,12 @@ class AmazonLookUp
 
     public function getImageURL($image_size)
     {
-        if ($this->dom->getElementsByTagName('ImageSet')->length > 0)
+        if ($this->getItem(0)->getElementsByTagName($image_size)->length > 0)
         {
-            $image_set = $this->dom->getElementsByTagName('ImageSet')->item(0);
+            $image = $this->getItem(0)->getElementsByTagName($image_size)->item(0);
+            $url = $image->getElementsByTagName('URL')->item(0)->nodeValue;
 
-            if ($image_set->getElementsByTagName($image_size)->length > 0)
-            {
-                $image = $image_set->getElementsByTagName($image_size)->item(0);
-                $url = $image->getElementsByTagName('URL')->item(0)->nodeValue;
-
-                return $url;
-            }
+            return $url;
         }
 
         return "";
