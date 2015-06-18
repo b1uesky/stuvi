@@ -41,7 +41,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
         Route::get('/', 'TextbookController@sell');
         Route::get('/create', 'TextbookController@create');
         Route::get('/product/create/{book}', 'ProductController@create');
-        Route::post('/search', 'TextbookController@isbnSearch');
+        Route::post('/search', 'TextbookController@sellSearch');
         Route::post('/store', 'TextbookController@store');
         Route::post('/product/store', 'ProductController@store');
     });

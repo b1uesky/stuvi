@@ -40,50 +40,51 @@
                 <input type="hidden" name="book_id" value="{{ $book->id }}"/>
                 <input type="hidden" name="book_title" value="{{ $book->title }}">
 
+                {{-- General Condition --}}
                 <div class="form-group">
-                    <label>{{ $conditions['highlights'] }}</label>
-                    <input type="number" name="highlights" value="0" class="form-control">
+                    <label>{{ $conditions['general_condition']['title'] }}</label>
+                    <input type="radio" name="general_condition" value="0" checked> {{ $conditions['general_condition'][0] }}
+                    <input type="radio" name="general_condition" value="1"> {{ $conditions['general_condition'][1] }}
+                    <input type="radio" name="general_condition" value="2"> {{ $conditions['general_condition'][2] }}
+                    <input type="radio" name="general_condition" value="3"> {{ $conditions['general_condition'][3] }}
                 </div>
+
+                {{-- Highlights/Notes --}}
                 <div class="form-group">
-                    <label>{{ $conditions['notes'] }}</label>
-                    <input type="number" name="notes" value="0" class="form-control">
+                    <label>{{ $conditions['highlights_and_notes']['title'] }}</label>
+                    <input type="radio" name="highlights_and_notes" value="0" checked> {{ $conditions['highlights_and_notes'][0] }}
+                    <input type="radio" name="highlights_and_notes" value="1"> {{ $conditions['highlights_and_notes'][1] }}
+                    <input type="radio" name="highlights_and_notes" value="2"> {{ $conditions['highlights_and_notes'][2] }}
                 </div>
+
+                {{-- Damaged Pages --}}
                 <div class="form-group">
-                    <label>{{ $conditions['num_damaged_pages'] }}</label>
-                    <input type="number" name="num_damaged_pages" value="0" class="form-control">
+                    <label>{{ $conditions['damaged_pages']['title'] }}</label>
+                    <input type="radio" name="damaged_pages" value="0" checked> {{ $conditions['damaged_pages'][0] }}
+                    <input type="radio" name="damaged_pages" value="1"> {{ $conditions['damaged_pages'][1] }}
+                    <input type="radio" name="damaged_pages" value="2"> {{ $conditions['damaged_pages'][2] }}
                 </div>
+
+                {{-- Broken Binding --}}
                 <div class="form-group">
-                    <label>{{ $conditions['broken_spine'] }}</label>
-                    <input type="number" name="broken_spine" value="0" class="form-control">
+                    <label>{{ $conditions['broken_binding']['title'] }}</label>
+                    <input type="radio" name="broken_binding" value="0" checked> {{ $conditions['broken_binding'][0] }}
+                    <input type="radio" name="broken_binding" value="1"> {{ $conditions['broken_binding'][1] }}
                 </div>
+
+                {{-- Description --}}
                 <div class="form-group">
-                    <label>{{ $conditions['broken_binding'] }}</label>
-                    <input type="number" name="broken_binding" value="0" class="form-control">
+                    <label>{{ $conditions['description']['title'] }}</label>
+                    <textarea name="description" class="form-control" rows="5" placeholder="{{ $conditions['description']['placeholder'] }}"></textarea>
                 </div>
-                <div class="form-group">
-                    <label>{{ $conditions['water_damage'] }}</label>
-                    <input type="number" name="water_damage" value="0" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>{{ $conditions['stains'] }}</label>
-                    <input type="number" name="stains" value="0" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>{{ $conditions['burns'] }}</label>
-                    <input type="number" name="burns" value="0" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>{{ $conditions['rips'] }}</label>
-                    <input type="number" name="rips" value="0" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>{{ $conditions['description'] }}</label>
-                    <textarea name="description" class="form-control" rows="5" placeholder="{{ $conditions['description_placeholder'] }}"></textarea>
-                </div>
+
+                {{-- Price --}}
                 <div class="form-group">
                     <label>Price</label>
                     <input type="number" step="0.01" name="price" class="form-control">
                 </div>
+
+                {{-- Upload Images --}}
                 <div class="form-group">
                     <label>Upload images</label>
                     <input type="file" name="images[]" multiple>
