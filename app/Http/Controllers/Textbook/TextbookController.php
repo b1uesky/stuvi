@@ -147,7 +147,7 @@ class TextbookController extends Controller {
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function isbnSearch(Request $request)
+    public function sellSearch(Request $request)
     {
         $isbn = Input::get('isbn');
 		$isbn_validator = new Isbn();
@@ -169,7 +169,7 @@ class TextbookController extends Controller {
 
         if ($db_book)
         {
-            return view('textbook.result')->withBook($db_book);
+            return redirect('textbook/sell/product/create/'.$db_book->id);
         }
         else
         {
@@ -204,7 +204,7 @@ class TextbookController extends Controller {
 					$book_author->save();
 				}
 
-				return view('textbook.result')->withBook($book);
+				return redirect('textbook/sell/product/create/'.$book->id);
 			}
 
 			// allow the seller fill in book information and create a new book record
