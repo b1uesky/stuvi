@@ -164,8 +164,8 @@ class TextbookController extends Controller {
      */
     public function sellSearch(Request $request)
     {
-        $isbn = Input::get('isbn');
 		$isbn_validator = new Isbn();
+        $isbn = $isbn_validator->hyphens->removeHyphens(Input::get('isbn'));
 
 		// check if the input is a valid ISBN
 		if ($isbn_validator->validation->isbn($isbn) == false)
@@ -259,13 +259,14 @@ class TextbookController extends Controller {
 		// if ISBN, return the specific textbook page
 		if ($isbn_validator->validation->isbn($info))
 		{
-            if (strlen($info) == 10)
+            $isbn = $isbn_validator->hyphens->removeHyphens($info);
+            if (strlen($isbn) == 10)
             {
-                $book = Book::where('isbn10', '=', $info)->first();
+                $book = Book::where('isbn10', '=', $isbn)->first();
             }
             else
             {
-                $book = Book::where('isbn13', '=', $info)->first();
+                $book = Book::where('isbn13', '=', $isbn)->first();
             }
 
 			return view('textbook.show')->withBook($book);
