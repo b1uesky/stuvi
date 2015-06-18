@@ -57,8 +57,8 @@
                                 <h5>{{ $product->book->title }}</h5>
                                 <h5><small>{{ $product->book->author}}</small></h5>
 
-                                <p>{{ $product->book->isbn }}</p>
-                                <h6 id="book-price">${{ $product->price }}</h6>
+                                <p>ISBN: {{ $product->book->isbn }}</p>
+                                <h6 class="book-price">${{ $product->price }}</h6>
                             </div>
                             <div class=" col-xs-12 col-sm-2 col-xs-offset-0 col-sm-offset-1 col-md-offset-3">
                                 {{--<a class="btn btn-default order-button-1" href="#" role="button">Track Package</a>--}}

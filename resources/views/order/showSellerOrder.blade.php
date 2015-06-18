@@ -3,28 +3,62 @@
 <link rel="stylesheet" type="text/css" media="screen"
       href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
 @section('content')
-    <div class="container" xmlns="http://www.w3.org/1999/html">
-        @if (Session::has('message'))
-            <div class="flash-message">{{ Session::get('message') }}</div>
-        @endif
+
+    <head>
+        <link href="{{ asset('/css/showBuyerOrder.css') }}" rel="stylesheet" type="text/css">
+        <title>Stuvi - Order Details</title>
+    </head>
+
+    <!-- print button -->
+    <div class="print"><a href="" onclick="printWindow()"><i class="fa fa-print"></i> Print Invoice
+        </a>
     </div>
+
     <div class="container">
-        <h1>Order #{{ $seller_order->id }} @if ($seller_order->cancelled) (CANCELLED) @endif</h1>
-        @if (!$seller_order->cancelled)
-            <p><a href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
-        @endif
+        <!-- message -->
+        <div class="container" xmlns="http://www.w3.org/1999/html">
+            @if (Session::has('message'))
+                <div class="flash-message">{{ Session::get('message') }}</div>
+            @endif
+        </div>
 
-        <p>{{ $seller_order->created_at }}</p>
-
+        <!-- order details -->
         <div class="container">
-            <div class="row">
-                <?php $product = $seller_order->product; $book = $product->book; ?>
-                <p><label class="col-md-4 control-label">Title: {{ $book->title }}</label></p>
-                <p><label class="col-md-4 control-label">ISBN: {{ $book->isbn }}</label></p>
-                <p><label class="col-md-4 control-label">Price: {{ $product->price }}</label></p>
+            <h1 id="h1-showBuy">Order Details</h1>
+            <h2>@if ($seller_order->cancelled)
+                    <span id="cancelled">This order has been cancelled.</span>@endif
+            </h2>
+        </div>
+
+        <!-- ordered on, order # -->
+        <div class="row" id="details1">
+            <p class="col-xs-12 col-sm-3 col-sm-offset-0">Ordered on {{ $seller_order->created_at }}</p>
+            <p class="col-xs-12 col-sm-4">Order #{{ $seller_order->id }}</p>
+        </div>
+        @if (!$seller_order->cancelled)
+            <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
+            @endif
+
+        <!-- items in order -->
+        <div class="container" id="details3">
+            <div class="row row-items">
+                <h3 class="col-xs-12">Items</h3>
             </div>
+            <!-- item info -->
+            <div class="item col-xs-8">
+                <?php $product = $seller_order->product; $book = $product->book; ?>
+{{--                <p><label class="col-md-4 control-label">Title: {{ $book->title }}</label></p>
+                <p><label class="col-md-4 control-label">ISBN: {{ $book->isbn }}</label></p>
+                <p><label class="col-md-4 control-label">Price: {{ $product->price }}</label></p>--}}
+                    <p>Title: {{ $book->title }}</p>
+                    <p>ISBN: {{ $book->isbn }}</p>
+                    <p>Price: {{ $product->price }}</p>
+            </div>
+            <!-- pick up -->
             <div class="row">
-                <p><label class="col-md-4 control-label">Scheduled pick-up time:</label>
+                <div class="col-md-12">
+                    <p>{{--label class="col-md-8 control-label">Scheduled pick-up time:</label>--}}
+                    Schedule a pick-up time </p>
                     @if ($seller_order->scheduled_pickup_time)
                         {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}
                     @elseif (!$seller_order->cancelled)
@@ -32,9 +66,9 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="id" value="{{ $seller_order->id }}">
 
-                        <div class="form-group">
+                        <div class="form-group col-md-8">
                         <div id="datetimepicker" class="input-append date">
-                            <input type="text" name="scheduled_pickup_time"></input>
+                            <input class="input-box" type="text" name="scheduled_pickup_time"></input>
                           <span class="add-on">
                             <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                           </span>
@@ -64,11 +98,8 @@
                     @else
                         N/A
                     @endif
-                </p>
-
-            </div>
+                </div>
+            </div>  <!-- end pick up row -->
         </div>
-
     </div>
-
 @endsection
