@@ -42,6 +42,25 @@ body {
     margin-bottom: 5px;
 }
 
+/*** PRODUCT CONDITION ***/
+
+.condition-btn {
+    border-radius: 0;
+    border: none;
+    background-color: #CCCCCC;
+}
+
+.condition-btn:hover,
+.condition-btn:focus {
+    outline: 0 !important;
+    background-color: #AAAAAA;
+}
+
+.condition-btn.active-btn {
+    background-color: #F16521;
+    color: #FFFFFF;
+}
+
 /*** SWITCH BUTTON - http://callmenick.com/post/css-toggle-switch-examples ***/
 
 .toggle {
@@ -63,8 +82,8 @@ body {
 
 input.toggle-yes-no + label {
     padding: 2px;
-    width: 120px;
-    height: 60px;
+    width: 80px;
+    height: 40px;
 }
 
 input.toggle-yes-no + label:before, input.toggle-yes-no + label:after {
@@ -74,15 +93,15 @@ input.toggle-yes-no + label:before, input.toggle-yes-no + label:after {
     left: 0;
     bottom: 0;
     right: 0;
-    color: #fff;
-    font-family: "Roboto Slab", serif;
+    color: #FFFFFF;
+    font-family: "Roboto", serif;
     font-size: 20px;
     text-align: center;
     line-height: 60px;
 }
 
 input.toggle-yes-no + label:before {
-    background-color: #dddddd;
+    background-color: #F16521;
     content: attr(data-off);
     -webkit-transition: -webkit-transform 0.5s;
     -moz-transition: -moz-transform 0.5s;
@@ -96,7 +115,7 @@ input.toggle-yes-no + label:before {
 }
 
 input.toggle-yes-no + label:after {
-    background-color: #8ce196;
+    background-color: #7AB4DE;
     content: attr(data-on);
     -webkit-transition: -webkit-transform 0.5s;
     -moz-transition: -moz-transform 0.5s;

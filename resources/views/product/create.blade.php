@@ -3,7 +3,7 @@
 @section('content')
     <head>
         <link href="{{ asset('/css/product-create.css') }}" rel="stylesheet">
-        <title>Create a Product</title>
+        <title>Enter book info</title>
     </head>
 
     <div class="container">
@@ -69,25 +69,55 @@
                 <input type="hidden" name="book_title" value="{{ $book->title }}">
 
                 <div class="form-group">
-                    <label>{{ $conditions['highlights'] }}</label>
+                    <label>Choose one:</label>
+
+                    <div>
+                        <button type="button" class="btn btn-default condition-btn">Brand New</button>
+                        <button type="button" class="btn btn-default condition-btn">Excellent</button>
+                        <button type="button" class="btn btn-default condition-btn">Good</button>
+                        <button type="button" class="btn btn-default condition-btn">Acceptable</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Highlights/Notes</label>
 
                     <div class="switch">
-                        <input id="toggle-condition-1" class="toggle toggle-yes-no" type="checkbox">
+                        <input id="toggle-condition-1" class="form-control toggle toggle-yes-no" type="checkbox"
+                               name="highlights">
                         <label for="toggle-condition-1" data-on="Yes" data-off="No"></label>
                     </div>
                     {{--<input type="number" name="highlights" value="0" class="form-control">--}}
                 </div>
                 <div class="form-group">
                     <label>{{ $conditions['notes'] }}</label>
-                    <input type="number" name="notes" value="0" class="form-control">
+
+                    <div class="switch">
+                        <input id="toggle-condition-2" class="form-control toggle toggle-yes-no" type="checkbox"
+                               name="notes">
+                        <label for="toggle-condition-2" data-on="Yes" data-off="No"></label>
+                    </div>
+                    {{--<input type="number" name="notes" value="0" class="form-control">--}}
                 </div>
                 <div class="form-group">
                     <label>{{ $conditions['num_damaged_pages'] }}</label>
-                    <input type="number" name="num_damaged_pages" value="0" class="form-control">
+
+                    <div class="switch">
+                        <input id="toggle-condition-3" class="form-control toggle toggle-yes-no" type="checkbox"
+                               name="num_damaged_pages">
+                        <label for="toggle-condition-3" data-on="Yes" data-off="No"></label>
+                    </div>
+                    {{--<input type="number" name="num_damaged_pages" value="0" class="form-control">--}}
                 </div>
                 <div class="form-group">
                     <label>{{ $conditions['broken_spine'] }}</label>
-                    <input type="number" name="broken_spine" value="0" class="form-control">
+
+                    <div class="switch">
+                        <input id="toggle-condition-4" class="form-control toggle toggle-yes-no" type="checkbox"
+                               name="broken_spine">
+                        <label for="toggle-condition-4d" data-on="Yes" data-off="No"></label>
+                    </div>
+                    {{--<input type="number" name="broken_spine" value="0" class="form-control">--}}
                 </div>
                 <div class="form-group">
                     <label>{{ $conditions['broken_binding'] }}</label>
@@ -125,4 +155,7 @@
             </form>
         </div>
     </div>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/product-create.js') }}"></script>
 @endsection
