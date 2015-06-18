@@ -1,37 +1,65 @@
 @extends('textbook')
 
 @section('content')
+    <head>
+        <link href="{{ asset('/css/product-create.css') }}" rel="stylesheet">
+        <title>Create a Product</title>
+    </head>
+
     <div class="container">
+        <div class="row textbook-row">
+            <div class="col-sm-6">
+                @if($book->imageSet->large_image)
+                    <img id="textbook-img" src="{{ $book->imageSet->large_image }}" alt=""/>
+                @endif
+            </div>
+
+            <div class="col-sm-6 textbook-info">
+                <h1>{{ $book->title }}</h1>
+
+                <div class="authors-container">
+                    <span>by </span>
+                    @foreach($book->authors as $author)
+                        <span id="authors"><button class="btn btn-default author-btn">{{ $author->full_name }}</button></span>
+                    @endforeach
+                </div>
+                <p>ISBN: {{ $book->isbn }}</p>
+
+                <p>Edition: {{ $book->edition }}</p>
+
+                <p>Number of Pages: {{ $book->num_pages }}</p>
+            </div>
+        </div>
         <div class="row">
-            @if($book->imageSet->large_image)
-                <img src="{{ $book->imageSet->large_image }}" alt="" />
-            @endif
+            {{--@if($book->imageSet->large_image)--}}
+            {{--<img src="{{ $book->imageSet->large_image }}" alt="" />--}}
+            {{--@endif--}}
 
-            <div class="">
-                Title: {{ $book->title }}
-            </div>
+            {{--<div class="">--}}
+            {{--Title: {{ $book->title }}--}}
+            {{--</div>--}}
 
-            <div class="">
-                Edition: {{ $book->edition }}
-            </div>
+            {{--<div class="">--}}
+            {{--Edition: {{ $book->edition }}--}}
+            {{--</div>--}}
 
-            <div class="">
-                ISBN: {{ $book->isbn }}
-            </div>
+            {{--<div class="">--}}
+            {{--ISBN: {{ $book->isbn }}--}}
+            {{--</div>--}}
 
             {{-- Author(s) --}}
             {{-- TODO: Make each author name looks like a tag --}}
-            <div class="">
-                @if(count($book->authors) > 1)
-                    <span>Authors:</span>
-                    @foreach($book->authors as $author)
-                        <span>{{ $author->full_name }}</span>
-                    @endforeach
-                @else
-                    <span>Author:</span>
-                    {{ $book->authors[0]->full_name }}
-                @endif
-            </div>
+            {{--<div class="">--}}
+            {{--@if(count($book->authors) > 1)--}}
+            {{--<span>Authors:</span>--}}
+            {{--@foreach($book->authors as $author)--}}
+            {{--<span>{{ $author->full_name }}</span>--}}
+            {{--@endforeach--}}
+            {{--@else--}}
+            {{--<span>Author:</span>--}}
+            {{--{{ $book->authors[0]->full_name }}--}}
+            {{--@endif--}}
+            {{--</div>--}}
 
             <h2>Book Conditions</h2>
 
@@ -42,7 +70,12 @@
 
                 <div class="form-group">
                     <label>{{ $conditions['highlights'] }}</label>
-                    <input type="number" name="highlights" value="0" class="form-control">
+
+                    <div class="switch">
+                        <input id="toggle-condition-1" class="toggle toggle-yes-no" type="checkbox">
+                        <label for="toggle-condition-1" data-on="Yes" data-off="No"></label>
+                    </div>
+                    {{--<input type="number" name="highlights" value="0" class="form-control">--}}
                 </div>
                 <div class="form-group">
                     <label>{{ $conditions['notes'] }}</label>
