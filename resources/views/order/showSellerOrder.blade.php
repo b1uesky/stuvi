@@ -45,7 +45,7 @@
                 <h3 class="col-xs-12">Items</h3>
             </div>
             <!-- item info -->
-            <div class="item col-xs-8">
+            <div class="item col-xs-12 col-sm-6">
                 <?php $product = $seller_order->product; $book = $product->book; ?>
 {{--                <p><label class="col-md-4 control-label">Title: {{ $book->title }}</label></p>
                 <p><label class="col-md-4 control-label">ISBN: {{ $book->isbn }}</label></p>
@@ -56,9 +56,9 @@
             </div>
             <!-- pick up -->
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-xs-12 col-sm-6">
                     <p>{{--label class="col-md-8 control-label">Scheduled pick-up time:</label>--}}
-                    Schedule a pick-up time </p>
+                     Schedule a pick-up time </p>
                     @if ($seller_order->scheduled_pickup_time)
                         {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}
                     @elseif (!$seller_order->cancelled)
