@@ -60,7 +60,7 @@ class BuyerOrderController extends Controller
      */
     public function storeBuyerOrder(Request $request)
     {
-        if ($this->checkCart())
+        if (!$this->checkCart())
         {
             return redirect('/cart')
                 ->with('message', 'Cannot proceed to checkout because you are trying to purchasing your own products.');
@@ -105,12 +105,11 @@ class BuyerOrderController extends Controller
         $order->shipping_address_id = $shipping_address_id;
         $order->save();
 
-        // create a payment
-        $payment = $this->createBuyerPayment($order);
-
         // create seller order(s) according to the Cart items
         $this->createSellerOrders($order->id);
 
+        // create a payment
+        $payment = $this->createBuyerPayment($order);
 
         // remove payed items from Cart
         Cart::destroy();
@@ -151,7 +150,12 @@ class BuyerOrderController extends Controller
             $payment->stripe_token  = Input::get('stripeToken');
             $payment->stripe_token_type = Input::get('stripeTokenType');
             $payment->stripe_email  = Input::get('stripeEmail');
-            $payment->stripe_amount = Input::get('stripeAmount');
+            $payment->stripe_amount = $charge['amount'];
+            $payment->charge_id     = $charge['id'];
+            $payment->card_id       = $charge['source']['id'];
+            $payment->card_last4    = $charge['source']['last4'];
+            $payment->card_brand    = $charge['source']['brand'];
+            $payment->card_fingerprint  = $charge['source']['fingerprint'];
             $payment->save();
             return $payment;
         }
