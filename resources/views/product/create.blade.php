@@ -16,7 +16,11 @@
             </div>
 
             <div class="">
-                ISBN: {{ $book->isbn }}
+                ISBN10: {{ $book->isbn10 }}
+            </div>
+
+            <div class="">
+                ISBN13: {{ $book->isbn13 }}
             </div>
 
             {{-- Author(s) --}}

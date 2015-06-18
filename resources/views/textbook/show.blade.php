@@ -26,7 +26,8 @@
                         <span id="authors"><button class="btn btn-default author-btn">{{ $author->full_name }}</button></span>
                     @endforeach
                 </div>
-                <p>ISBN: {{ $book->isbn }}</p>
+                <p>ISBN10: {{ $book->isbn10 }}</p>
+                <p>ISBN13: {{ $book->isbn13 }}</p>
 
                 <p>Edition: {{ $book->edition }}</p>
 

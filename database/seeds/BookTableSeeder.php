@@ -37,7 +37,8 @@ public function run()
         {
             // save this book to our database
             $book = new Book();
-            $book->isbn = $isbn;
+            $book->isbn10 = $amazon->getISBN10();
+            $book->isbn13 = $amazon->getISBN13();
             $book->title = $amazon->getTitle();
             $book->edition = $amazon->getEdition();
             $book->binding = $amazon->getBinding();
