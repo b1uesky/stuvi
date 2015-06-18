@@ -1,0 +1,53 @@
+/*product/show.blade.php*/
+
+/** PRODUCT INFO **/
+
+#bg{
+    background-color: whitesmoke;
+}
+
+#det-cont{
+    padding-bottom: 10%;
+}
+
+#go-back{
+    margin-left: 10px;
+}
+
+.details-table{
+    background-color: white;
+    border: 3px solid #DDD;
+    width: 50%;
+    margin-top: 2%;
+}
+
+.details-table th,td{
+    border: 1px solid #DDD;
+    padding-left: 2px;
+}
+
+.add-cart-btn {
+    display: block;
+/*    margin-left: auto;
+    margin-right: auto;*/
+    background: #7AB4DE;
+    color: #FFFFFF;
+    border: none;
+    width: 100px;
+    box-shadow: 0 5px #5B86AA;
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+.price b{
+    color: #B61F17;
+}
+
+@media(max-width: 768px){
+    .details-table{
+        width:100%;
+    }
+
+
+}
+

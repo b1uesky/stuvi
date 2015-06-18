@@ -6,6 +6,8 @@
         <title>Search Results</title>
     </head>
 
+    @include('textbook/textbook-nav')
+
     <div class="container-fluid textbook-list-container">
         @if(trim($info) != "")
             <h1 id="search-term">Search results for "{{ $info }}"</h1>
@@ -15,26 +17,26 @@
         <div class="container">
             <span class="text-muted">Sort by</span>
             <ul class="nav nav-pills">
-                <li role="presentation"><a href="#">Title</a></li>
-                <li role="presentation"><a href="#">Author</a></li>
+                <li role="presentation" class="active"><a href="#" data-toggle="pill">Title</a></li>
+                <li role="presentation"><a href="#" data-toggle="pill">Author</a></li>
+                <li role="presentation"><a href="#" data-toggle="pill">Most Bought</a></li>
+                <li role="presentation"><a href="#" data-toggle="pill">Top Rated</a></li>
 
-                <div class="col-sm-4 col-md-4 pull-right bookshelf-sort">
+                <div class="col-sm-4 col-md-4 pull-right">
                     <form action="/textbook/buy/search" method="post" class="navbar-form" role="search">
                         <div class="input-group">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="text" class="form-control" placeholder="Search" name="info"
-                                   id="srch-term">
+                            <input type="text" class="form-control" placeholder="Search" name="info">
 
                             <div class="input-group-btn">
-                                <button class="btn btn-default search-btn" type="submit"><i class="glyphicon glyphicon-search"></i>
+                                <button class="btn btn-default search-btn" type="submit" name="search" value="Search">
+                                    <i class="fa fa-search search-icon"></i>
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
-
             </ul>
-
         </div>
 
         <div class="container textbook-list">

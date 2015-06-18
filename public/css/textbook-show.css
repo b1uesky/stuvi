@@ -24,6 +24,20 @@ body {
     margin-bottom: 10px;
 }
 
+.author-btn {
+    background-color: #F16521;
+    color: #FFFFFF;
+    border: none;
+}
+
+.author-btn:hover,
+.author-btn:focus {
+    background-color: #F16521;
+    color: #FFFFFF;
+    outline: 0 !important;
+}
+
+
 .textbook-info p {
     font-size: 16px;
     margin-bottom: 5px;

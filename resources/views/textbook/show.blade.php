@@ -7,6 +7,8 @@
         <title>{{ $book->title }}</title>
     </head>
 
+    @include('textbook/textbook-nav')
+
     <div class="container">
         <div class="row textbook-row">
             <div class="col-sm-6">
@@ -19,9 +21,9 @@
                 <h1>{{ $book->title }}</h1>
 
                 <div class="authors-container">
-                    <span>by:</span>
+                    <span>by </span>
                     @foreach($book->authors as $author)
-                        <span id="authors">{{ $author->full_name }}</span>
+                        <span id="authors"><button class="btn btn-default author-btn">{{ $author->full_name }}</button></span>
                     @endforeach
                 </div>
                 <p>ISBN: {{ $book->isbn }}</p>
@@ -45,6 +47,7 @@
 
             </div>
         </div>
+
         @if(count($book->products) > 0)
             <div class="row table-row">
 

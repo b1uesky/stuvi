@@ -1,19 +1,57 @@
-/******* TEXTBOOK SEARCH LIST *******/
+/******* TEXTBOOK SEARCH LIST PAGE *******/
 
-#search-term {
-    text-align: center;
-    margin-bottom: 40px;
+/** ERROR MESSAGE **/
+
+#message {
+    font-style: italic;
 }
+
+#message-cont {
+    padding: 1%;
+}
+
+/** TEXTBOOK SEARCH LIST **/
 
 .textbook-list-container {
     background-color: #F2F2F2;
+}
 
+.textbook-list-container h1 {
+    margin-left: 30px;
 }
 
 /* SORT SECTION */
 
+.nav-pills li a {
+    color: #7AB4DE;
+}
+
+.nav-pills li a:hover {
+    background-color: #DDDDDD;
+}
+
+/* override bootstrap's default active pill styles */
+.nav-pills li.active a {
+    background-color: #7AB4DE !important;
+    color: #FFFFFF !important;
+}
+
+.form-control {
+    border-right: none;
+}
+
+.form-control:focus {
+    border: 1px solid #F16521;
+    border-right: none;
+    box-shadow: none;
+}
+
 .search-btn {
     background: #F16521;
+    border: none;
+    height: 34px;
+    width: 38px;
+    margin-left: 0 !important;
 }
 
 .search-btn:hover {
@@ -23,6 +61,10 @@
 .search-btn:focus {
     outline: 0 !important;
     background: #F16521;
+}
+
+.search-icon {
+    color: #FFFFFF;
 }
 
 
