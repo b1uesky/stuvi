@@ -59,8 +59,8 @@
 
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition" value="0"
-                                   checked> {{ $conditions['general_condition'][0] }}
+                            <input type="radio" name="general_condition"
+                                   value="0"> {{ $conditions['general_condition'][0] }}
                         </label>
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="general_condition"
@@ -81,29 +81,59 @@
                 <div class="form-group">
                     <label>{{ $conditions['highlights_and_notes']['title'] }}</label>
                     <br>
-                    <input type="radio" name="highlights_and_notes" value="0"
-                           checked> {{ $conditions['highlights_and_notes'][0] }}
-                    <input type="radio" name="highlights_and_notes"
-                           value="1"> {{ $conditions['highlights_and_notes'][1] }}
-                    <input type="radio" name="highlights_and_notes"
-                           value="2"> {{ $conditions['highlights_and_notes'][2] }}
+
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default condition-btn">
+                            <input type="radio" name="general_condition"
+                                   value="0"> {{ $conditions['highlights_and_notes'][0] }}
+                        </label>
+                        <label class="btn btn-default condition-btn">
+                            <input type="radio" name="general_condition"
+                                   value="1"> {{ $conditions['highlights_and_notes'][1] }}
+                        </label>
+                        <label class="btn btn-default condition-btn">
+                            <input type="radio" name="general_condition"
+                                   value="2"> {{ $conditions['highlights_and_notes'][2] }}
+                        </label>
+                    </div>
                 </div>
 
                 {{-- Damaged Pages --}}
                 <div class="form-group">
                     <label>{{ $conditions['damaged_pages']['title'] }}</label>
                     <br>
-                    <input type="radio" name="damaged_pages" value="0" checked> {{ $conditions['damaged_pages'][0] }}
-                    <input type="radio" name="damaged_pages" value="1"> {{ $conditions['damaged_pages'][1] }}
-                    <input type="radio" name="damaged_pages" value="2"> {{ $conditions['damaged_pages'][2] }}
+
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default condition-btn">
+                            <input type="radio" name="general_condition"
+                                   value="0"> {{ $conditions['damaged_pages'][0] }}
+                        </label>
+                        <label class="btn btn-default condition-btn">
+                            <input type="radio" name="general_condition"
+                                   value="1"> {{ $conditions['damaged_pages'][1] }}
+                        </label>
+                        <label class="btn btn-default condition-btn">
+                            <input type="radio" name="general_condition"
+                                   value="2"> {{ $conditions['damaged_pages'][2] }}
+                        </label>
+                    </div>
                 </div>
 
                 {{-- Broken Binding --}}
                 <div class="form-group">
                     <label>{{ $conditions['broken_binding']['title'] }}</label>
                     <br>
-                    <input type="radio" name="broken_binding" value="0" checked> {{ $conditions['broken_binding'][0] }}
-                    <input type="radio" name="broken_binding" value="1"> {{ $conditions['broken_binding'][1] }}
+
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default condition-btn">
+                            <input type="radio" name="general_condition"
+                                   value="0"> {{ $conditions['broken_binding'][0] }}
+                        </label>
+                        <label class="btn btn-default condition-btn">
+                            <input type="radio" name="general_condition"
+                                   value="1"> {{ $conditions['broken_binding'][1] }}
+                        </label>
+                    </div>
                 </div>
 
                 {{-- Description --}}
