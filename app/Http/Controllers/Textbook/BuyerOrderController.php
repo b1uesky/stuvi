@@ -69,12 +69,12 @@ class BuyerOrderController extends Controller
         // validate the address info
         $this->validate($request, Address::rules());
 
-        // check if this payment already exist
-        if (BuyerPayment::where('stripe_token', '=', Input::get('stripeToken'))->exists())
-        {
-            return redirect('/order/createBuyerOrder')
-                ->with('message', 'Invalid payment.');
-        }
+//        // check if this payment already exist
+//        if (BuyerPayment::where('charge_id', '=', Input::get('stripeToken'))->exists())
+//        {
+//            return redirect('/order/createBuyerOrder')
+//                ->with('message', 'Invalid payment.');
+//        }
 
         // check if any product in Cart is already traded
         foreach (Cart::content() as $row)
@@ -110,7 +110,7 @@ class BuyerOrderController extends Controller
 
         // create a payment
         $payment = $this->createBuyerPayment($order);
-
+        //return $payment;
         // remove payed items from Cart
         Cart::destroy();
 
@@ -147,17 +147,15 @@ class BuyerOrderController extends Controller
             $payment = new BuyerPayment;
 
             $payment->buyer_order_id    = $order->id;
-            $payment->stripe_token  = Input::get('stripeToken');
-            $payment->stripe_token_type = Input::get('stripeTokenType');
-            $payment->stripe_email  = Input::get('stripeEmail');
-            $payment->stripe_amount = $charge['amount'];
+            $payment->amount        = $charge['amount'];
             $payment->charge_id     = $charge['id'];
             $payment->card_id       = $charge['source']['id'];
+            $payment->card_object   = $charge['source']['object'];
             $payment->card_last4    = $charge['source']['last4'];
             $payment->card_brand    = $charge['source']['brand'];
             $payment->card_fingerprint  = $charge['source']['fingerprint'];
             $payment->save();
-            return $payment;
+            return $charge;
         }
         catch (\Stripe\Error\Card $e)
         {
