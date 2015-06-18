@@ -36,7 +36,7 @@
 
                     <form action="{{ url('/order/store') }}" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="stripeAmount" value="{{ $total*100 }}">
+                        {{--<input type="hidden" name="stripeAmount" value="{{ $total*100 }}">--}}
                         <h2>1. Confirm order items</h2></br>
 
                         <table class="table table-striped table-responsive cart-table">
@@ -121,7 +121,7 @@
 
                         <h2>3. Payment <small>Secure Payment via Stripe</small></h2></br>
                         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                data-key="pk_test_1buT5EQ82ha2RhVa4nfXqifR"
+                                data-key="{{ \App::environment('production') ? Config::get('stripe.live_public_key') : Config::get('stripe.test_public_key') }}"
                                 data-amount={{ $total*100 }}
                                 data-name="Demo Site"
                         data-description="2 widgets (${{ $total }})"
