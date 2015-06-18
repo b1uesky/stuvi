@@ -80,130 +80,76 @@ class ProductTableSeeder extends Seeder {
         ]);
 
         ProductCondition::create([
-            'product_id'        =>  $p_alg0->id,
-            'highlights'        =>  0,
-            'notes'             =>  0,
-            'num_damaged_pages' =>  0,
-            'broken_spine'      =>  0,
-            'broken_binding'    =>  0,
-            'water_damage'      =>  0,
-            'stains'            =>  0,
-            'burns'             =>  0,
-            'rips'              =>  0,
-            'description'       =>  'Very good'
+            'product_id'            =>  $p_alg0->id,
+            'general_condition'     =>  0,
+            'highlights_and_notes'  =>  0,
+            'damaged_pages'         =>  0,
+            'description'       =>  'Brand new!'
             ]);
 
         ProductCondition::create([
             'product_id'        =>  $p_alg1->id,
-            'highlights'        =>  1,
-            'notes'             =>  1,
-            'num_damaged_pages' =>  1,
-            'broken_spine'      =>  1,
-            'broken_binding'    =>  1,
-            'water_damage'      =>  1,
-            'stains'            =>  1,
-            'burns'             =>  1,
-            'rips'              =>  1,
-            'description'       =>  'Good'
+            'general_condition'     =>  1,
+            'highlights_and_notes'  =>  1,
+            'damaged_pages'         =>  1,
+            'description'       =>  'Excellent!'
             ]);
 
         ProductCondition::create([
             'product_id'        =>  $p_alg2->id,
-            'highlights'        =>  2,
-            'notes'             =>  2,
-            'num_damaged_pages' =>  2,
-            'broken_spine'      =>  2,
-            'broken_binding'    =>  2,
-            'water_damage'      =>  2,
-            'stains'            =>  2,
-            'burns'             =>  2,
-            'rips'              =>  2,
-            'description'       =>  'Okay'
+            'general_condition'     =>  2,
+            'highlights_and_notes'  =>  2,
+            'damaged_pages'         =>  2,
+            'description'       =>  'Good.'
             ]);
 
         ProductCondition::create([
-            'product_id'        =>  $p_pp0->id,
-            'highlights'        =>  0,
-            'notes'             =>  0,
-            'num_damaged_pages' =>  0,
-            'broken_spine'      =>  0,
-            'broken_binding'    =>  0,
-            'water_damage'      =>  0,
-            'stains'            =>  0,
-            'burns'             =>  0,
-            'rips'              =>  0,
-            'description'       =>  'Very good'
-            ]);
+            'product_id'            =>  $p_pp0->id,
+            'general_condition'     =>  0,
+            'highlights_and_notes'  =>  0,
+            'damaged_pages'         =>  0,
+            'description'       =>  'Brand new!'
+        ]);
 
         ProductCondition::create([
             'product_id'        =>  $p_pp1->id,
-            'highlights'        =>  1,
-            'notes'             =>  1,
-            'num_damaged_pages' =>  1,
-            'broken_spine'      =>  1,
-            'broken_binding'    =>  1,
-            'water_damage'      =>  1,
-            'stains'            =>  1,
-            'burns'             =>  1,
-            'rips'              =>  1,
-            'description'       =>  'Good'
-            ]);
+            'general_condition'     =>  1,
+            'highlights_and_notes'  =>  1,
+            'damaged_pages'         =>  1,
+            'description'       =>  'Excellent!'
+        ]);
 
         ProductCondition::create([
             'product_id'        =>  $p_pp2->id,
-            'highlights'        =>  2,
-            'notes'             =>  2,
-            'num_damaged_pages' =>  2,
-            'broken_spine'      =>  2,
-            'broken_binding'    =>  2,
-            'water_damage'      =>  2,
-            'stains'            =>  2,
-            'burns'             =>  2,
-            'rips'              =>  2,
-            'description'       =>  'Okay'
-            ]);
+            'general_condition'     =>  2,
+            'highlights_and_notes'  =>  2,
+            'damaged_pages'         =>  2,
+            'description'       =>  'Good.'
+        ]);
 
         ProductCondition::create([
-            'product_id'        =>  $p_mech0->id,
-            'highlights'        =>  0,
-            'notes'             =>  0,
-            'num_damaged_pages' =>  0,
-            'broken_spine'      =>  0,
-            'broken_binding'    =>  0,
-            'water_damage'      =>  0,
-            'stains'            =>  0,
-            'burns'             =>  0,
-            'rips'              =>  0,
-            'description'       =>  'Very good'
-            ]);
+            'product_id'            =>  $p_mech0->id,
+            'general_condition'     =>  0,
+            'highlights_and_notes'  =>  0,
+            'damaged_pages'         =>  0,
+            'description'       =>  'Brand new!'
+        ]);
 
         ProductCondition::create([
             'product_id'        =>  $p_mech1->id,
-            'highlights'        =>  1,
-            'notes'             =>  1,
-            'num_damaged_pages' =>  1,
-            'broken_spine'      =>  1,
-            'broken_binding'    =>  1,
-            'water_damage'      =>  1,
-            'stains'            =>  1,
-            'burns'             =>  1,
-            'rips'              =>  1,
-            'description'       =>  'Good'
-            ]);
+            'general_condition'     =>  1,
+            'highlights_and_notes'  =>  1,
+            'damaged_pages'         =>  1,
+            'description'       =>  'Excellent!'
+        ]);
 
         ProductCondition::create([
             'product_id'        =>  $p_mech2->id,
-            'highlights'        =>  2,
-            'notes'             =>  2,
-            'num_damaged_pages' =>  2,
-            'broken_spine'      =>  2,
-            'broken_binding'    =>  2,
-            'water_damage'      =>  2,
-            'stains'            =>  2,
-            'burns'             =>  2,
-            'rips'              =>  2,
-            'description'       =>  'Okay'
-            ]);
+            'general_condition'     =>  2,
+            'highlights_and_notes'  =>  2,
+            'damaged_pages'         =>  2,
+            'description'       =>  'Good.'
+        ]);
 
         ProductImage::create([
             'path'             =>  $folder . 'Algorithms.png',

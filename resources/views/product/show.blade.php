@@ -42,43 +42,23 @@
             <table class="table table-responsive details-table col-sm-12 col-md-6">
                 <tr>
                     <th>Condition</th>
-                    <th>Rating</th>
+                    <th>Description</th>
                 </tr>
                 <tr>
-                    <td>{{ $conditions['highlights'] }}</td>
-                    <td>{{ $condition->highlights }}</td>
+                    <td>{{ $conditions['general_condition']['title'] }}</td>
+                    <td>{{ $conditions['general_condition'][$condition->general_condition] }}</td>
                 </tr>
                 <tr>
-                    <td>{{ $conditions['notes'] }}</td>
-                    <td>{{ $condition->notes }}</td>
+                    <td>{{ $conditions['highlights_and_notes']['title'] }}</td>
+                    <td>{{ $conditions['highlights_and_notes'][$condition->highlights_and_notes] }}</td>
                 </tr>
                 <tr>
-                    <td>{{ $conditions['num_damaged_pages'] }}</td>
-                    <td>{{ $condition->num_damaged_pages }}</td>
+                    <td>{{ $conditions['damaged_pages']['title'] }}</td>
+                    <td>{{ $conditions['damaged_pages'][$condition->damaged_pages] }}</td>
                 </tr>
                 <tr>
-                    <td>{{ $conditions['broken_spine'] }}</td>
-                    <td>{{ $condition->broken_spine }}</td>
-                </tr>
-                <tr>
-                    <td>{{ $conditions['broken_binding'] }}</td>
-                    <td>{{ $condition->broken_binding }}</td>
-                </tr>
-                <tr>
-                    <td>{{ $conditions['water_damage'] }}</td>
-                    <td>{{ $condition->water_damage }}</td>
-                </tr>
-                <tr>
-                    <td>{{ $conditions['stains'] }}</td>
-                    <td>{{ $condition->stains }}</td>
-                </tr>
-                <tr>
-                    <td>{{ $conditions['burns'] }}</td>
-                    <td>{{ $condition->burns }}</td>
-                </tr>
-                <tr>
-                    <td>{{ $conditions['rips'] }}</td>
-                    <td>{{ $condition->rips }}</td>
+                    <td>{{ $conditions['broken_binding']['title'] }}</td>
+                    <td>{{ $conditions['broken_binding'][$condition->broken_binding] }}</td>
                 </tr>
             </table>
 
