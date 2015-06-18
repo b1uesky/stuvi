@@ -19,7 +19,7 @@
     </div>
     <!-- order details -->
     <div class="container">
-        <h1>Order Details</h1>
+        <h1 id="h1-showBuy">Order Details</h1>
         <h2>
             <!-- canceled order -->
             @if ($buyer_order->cancelled)<span id="cancelled">This order has been cancelled.</span> @endif
