@@ -47,6 +47,19 @@ class AmazonLookUp
         $this->dom = $apaiIO->runOperation($lookup);
     }
 
+    public function getDOM()
+    {
+        return $this->dom;
+    }
+
+    public function saveToXML()
+    {
+        $this->dom->formatOutput = true;
+        $filename = $this->item_id . '.xml';
+
+        echo 'Wrote: ' . $this->dom->save($filename) . ' bytes';
+    }
+
     public function success()
     {
         if ($this->dom->getElementsByTagName('Item')->length == 0)
@@ -59,7 +72,7 @@ class AmazonLookUp
 
     public function getValuesByTag($tag)
     {
-        $elems = $this->dom->getElementsByTagName($tag);
+        $elems = $this->getItem(0)->getElementsByTagName($tag);
         $values = array();
 
         foreach ($elems as $elem)
@@ -68,6 +81,11 @@ class AmazonLookUp
         }
 
         return $values;
+    }
+
+    public function getItem($index)
+    {
+        return $this->dom->getElementsByTagName('Item')->item($index);
     }
 
     public function getAuthors()
