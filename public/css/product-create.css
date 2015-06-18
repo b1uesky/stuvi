@@ -1,0 +1,150 @@
+/***** SELLER PRODUCT CREATE PAGE *****/
+
+body {
+    background-color: #F2F2F2;
+}
+
+/*** TEXTBOOK INFO ***/
+
+.textbook-row {
+    margin-top: 50px;
+}
+
+#textbook-img {
+    width: 300px;
+    height: 400px;
+    margin-left: 50px;
+}
+
+.textbook-info span {
+    font-size: 18px;
+}
+
+.authors-container {
+    margin-bottom: 10px;
+}
+
+.author-btn {
+    background-color: #F16521;
+    color: #FFFFFF;
+    border: none;
+}
+
+.author-btn:hover,
+.author-btn:focus {
+    background-color: #F16521;
+    color: #FFFFFF;
+    outline: 0 !important;
+}
+
+.textbook-info p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/*** PRODUCT CONDITION ***/
+
+.condition-btn {
+    border-radius: 0;
+    border: none;
+    background-color: #CCCCCC;
+}
+
+.condition-btn:hover,
+.condition-btn:focus {
+    outline: 0 !important;
+    background-color: #AAAAAA;
+}
+
+.condition-btn.active-btn {
+    background-color: #F16521;
+    color: #FFFFFF;
+}
+
+/*** SWITCH BUTTON - http://callmenick.com/post/css-toggle-switch-examples ***/
+
+.toggle {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+}
+
+.toggle + label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input.toggle-yes-no + label {
+    padding: 2px;
+    width: 80px;
+    height: 40px;
+}
+
+input.toggle-yes-no + label:before, input.toggle-yes-no + label:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: #FFFFFF;
+    font-family: "Roboto", serif;
+    font-size: 20px;
+    text-align: center;
+    line-height: 60px;
+}
+
+input.toggle-yes-no + label:before {
+    background-color: #F16521;
+    content: attr(data-off);
+    -webkit-transition: -webkit-transform 0.5s;
+    -moz-transition: -moz-transform 0.5s;
+    -o-transition: -o-transform 0.5s;
+    transition: transform 0.5s;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+input.toggle-yes-no + label:after {
+    background-color: #7AB4DE;
+    content: attr(data-on);
+    -webkit-transition: -webkit-transform 0.5s;
+    -moz-transition: -moz-transform 0.5s;
+    -o-transition: -o-transform 0.5s;
+    transition: transform 0.5s;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+input.toggle-yes-no:checked + label:before {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+input.toggle-yes-no:checked + label:after {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}

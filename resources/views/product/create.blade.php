@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             @if($book->imageSet->large_image)
-                <img src="{{ $book->imageSet->large_image }}" alt="" />
+                <img src="{{ $book->imageSet->large_image }}" alt=""/>
             @endif
 
             <div class="">
@@ -43,7 +43,8 @@
                 {{-- General Condition --}}
                 <div class="form-group">
                     <label>{{ $conditions['general_condition']['title'] }}</label>
-                    <input type="radio" name="general_condition" value="0" checked> {{ $conditions['general_condition'][0] }}
+                    <input type="radio" name="general_condition" value="0"
+                           checked> {{ $conditions['general_condition'][0] }}
                     <input type="radio" name="general_condition" value="1"> {{ $conditions['general_condition'][1] }}
                     <input type="radio" name="general_condition" value="2"> {{ $conditions['general_condition'][2] }}
                     <input type="radio" name="general_condition" value="3"> {{ $conditions['general_condition'][3] }}
@@ -52,9 +53,12 @@
                 {{-- Highlights/Notes --}}
                 <div class="form-group">
                     <label>{{ $conditions['highlights_and_notes']['title'] }}</label>
-                    <input type="radio" name="highlights_and_notes" value="0" checked> {{ $conditions['highlights_and_notes'][0] }}
-                    <input type="radio" name="highlights_and_notes" value="1"> {{ $conditions['highlights_and_notes'][1] }}
-                    <input type="radio" name="highlights_and_notes" value="2"> {{ $conditions['highlights_and_notes'][2] }}
+                    <input type="radio" name="highlights_and_notes" value="0"
+                           checked> {{ $conditions['highlights_and_notes'][0] }}
+                    <input type="radio" name="highlights_and_notes"
+                           value="1"> {{ $conditions['highlights_and_notes'][1] }}
+                    <input type="radio" name="highlights_and_notes"
+                           value="2"> {{ $conditions['highlights_and_notes'][2] }}
                 </div>
 
                 {{-- Damaged Pages --}}
@@ -75,7 +79,8 @@
                 {{-- Description --}}
                 <div class="form-group">
                     <label>{{ $conditions['description']['title'] }}</label>
-                    <textarea name="description" class="form-control" rows="5" placeholder="{{ $conditions['description']['placeholder'] }}"></textarea>
+                    <textarea name="description" class="form-control" rows="5"
+                              placeholder="{{ $conditions['description']['placeholder'] }}"></textarea>
                 </div>
 
                 {{-- Price --}}
