@@ -53,7 +53,6 @@
                 <thead>
                 <tr class="active">
                     <th>Price</th>
-                    <th>Seller</th>
                     <th>Condition</th>
                     <th>Details</th>
                     <th>Add to Cart</th>
@@ -65,16 +64,14 @@
                             <p id="price">${{ $product->price }}</p>
                         </td>
                         <td>
-                            <a href="#">Seller's Name</a>
-                        </td>
-                        <td>
                             {{-- TODO: product condition score --}}
                         </td>
                         <td>
                             <a href="{{ url('textbook/buy/product/'.$product->id) }}" target="_blank">View Details</a>
                         </td>
                         <td class="cart-btn-col">
-                            <a class="btn add-cart-btn" href="#" role="button">Add To Cart</a>
+                            <a class="btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}" role="button">Add To
+                                Cart</a>
                         </td>
                     </tr>
                 @endforeach
