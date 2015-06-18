@@ -6,12 +6,9 @@
  * Time: 3:25 PM
  */
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests;
 use App\Product;
-use Illuminate\Http\Request;
-
 use Cart;
 use Illuminate\Support\Facades\Session;
 

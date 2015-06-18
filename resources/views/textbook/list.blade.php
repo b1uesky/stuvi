@@ -9,8 +9,11 @@
     @include('textbook/textbook-nav')
 
     <div class="container-fluid textbook-list-container">
-        <h1 id="search-term">Search results for "{{ $info }}"</h1>
-
+        @if(trim($info) != "")
+            <h1 id="search-term">Search results for "{{ $info }}"</h1>
+        @else
+            <h1 id="search-term">Search results</h1>
+        @endif
         <div class="container">
             <span class="text-muted">Sort by</span>
             <ul class="nav nav-pills">
@@ -22,7 +25,9 @@
                 <div class="col-sm-4 col-md-4 pull-right">
                     <form action="/textbook/buy/search" method="post" class="navbar-form" role="search">
                         <div class="input-group">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="text" class="form-control" placeholder="Search" name="info">
+
                             <div class="input-group-btn">
                                 <button class="btn btn-default search-btn" type="submit" name="search" value="Search">
                                     <i class="fa fa-search search-icon"></i>
@@ -40,7 +45,7 @@
                 @foreach($books as $book)
                     <tr class="textbook-item">
                         <td class="textbook-img-container">
-                            <img class="textbook-img" src="{{ $book->imageSet->large_image }}">
+                            <img class="textbook-img" src="{{ $book->imageSet->medium_image }}">
                         </td>
                         <td class="textbook-info-1">
                             <span class="textbook-title"><a

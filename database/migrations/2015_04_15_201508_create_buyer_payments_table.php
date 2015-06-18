@@ -15,6 +15,7 @@ class CreateBuyerPaymentsTable extends Migration {
 		Schema::create('buyer_payments', function(Blueprint $table)
 		{
 			$table->increments('id');
+            $table->integer('buyer_order_id')->unsigned();
             $table->string('stripe_token');
             $table->string('stripe_token_type');
             $table->string('stripe_email');
