@@ -41,44 +41,44 @@
                 <input type="hidden" name="book_title" value="{{ $book->title }}">
 
                 <div class="form-group">
-                    <label>{{ $condition['highlights'] }}</label>
+                    <label>{{ $conditions['highlights'] }}</label>
                     <input type="number" name="highlights" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>{{ $condition['notes'] }}</label>
+                    <label>{{ $conditions['notes'] }}</label>
                     <input type="number" name="notes" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>{{ $condition['num_damaged_pages'] }}</label>
+                    <label>{{ $conditions['num_damaged_pages'] }}</label>
                     <input type="number" name="num_damaged_pages" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>{{ $condition['broken_spine'] }}</label>
+                    <label>{{ $conditions['broken_spine'] }}</label>
                     <input type="number" name="broken_spine" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>{{ $condition['broken_binding'] }}</label>
+                    <label>{{ $conditions['broken_binding'] }}</label>
                     <input type="number" name="broken_binding" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>{{ $condition['water_damage'] }}</label>
+                    <label>{{ $conditions['water_damage'] }}</label>
                     <input type="number" name="water_damage" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>{{ $condition['stains'] }}</label>
+                    <label>{{ $conditions['stains'] }}</label>
                     <input type="number" name="stains" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>{{ $condition['burns'] }}</label>
+                    <label>{{ $conditions['burns'] }}</label>
                     <input type="number" name="burns" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>{{ $condition['rips'] }}</label>
+                    <label>{{ $conditions['rips'] }}</label>
                     <input type="number" name="rips" value="0" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>{{ $condition['description'] }}</label>
-                    <textarea name="description" class="form-control" rows="5" placeholder="{{ $condition['description_placeholder'] }}"></textarea>
+                    <label>{{ $conditions['description'] }}</label>
+                    <textarea name="description" class="form-control" rows="5" placeholder="{{ $conditions['description_placeholder'] }}"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Price</label>

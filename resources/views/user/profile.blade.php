@@ -26,7 +26,7 @@
                                         <tr id ="details-joined">
                                             <td><i class="fa fa-user-plus"></i>
                                                 <b> Joined: </b></td>
-                                            <td>08/01/15</td>
+                                            <td>{{ date("m/d/Y", strtotime(Auth::user()->created_at)) }}</td>
                                             <td></td>
                                         </tr>
                                         <!-- rep -->
@@ -40,14 +40,14 @@
                                         <tr id="details-books-sold">
                                             <td><i class="fa fa-share"></i>
                                                     <b> Books Sold: </b></td>
-                                            <td>69</td>
+                                            <td>{{ $num_books_sold }}</td>
                                             <td></td>
                                         </tr>
                                         <!-- books purchased -->
                                         <tr id="details-books-purchased">
                                             <td><i class="fa fa-reply"></i>
                                                 <b> Books Purchased: </b></td>
-                                            <td>0</td>
+                                            <td>{{ $num_books_bought }}</td>
                                             <td></td>
                                         </tr>
                                     </table>

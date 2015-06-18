@@ -7,6 +7,8 @@ use App\ProductImage;
 use App\Book;
 use App\User;
 
+use Illuminate\Config\Repository;
+
 class ProductTableSeeder extends Seeder {
 
     public function run()
@@ -14,11 +16,11 @@ class ProductTableSeeder extends Seeder {
         DB::table('product_conditions')->delete();
         DB::table('products')->delete();
 
-        $book_algorithms = Book::where('title', '=', 'Algorithms')->get()->first();
-        $book_mechanics = Book::where('title', '=', 'Principles of solid mechanics')->get()->first();
-        $book_pp = Book::where('title', '=', 'Programming Problems: Advanced Algorithms (Volume 2)')->get()->first();
+        $book_algorithms = Book::where('title', 'LIKE', '%Algorithms%')->get()->first();
+        $book_mechanics = Book::where('title', 'LIKE', '%Principles of solid mechanics%')->get()->first();
+        $book_pp = Book::where('title', 'LIKE', '%Programming Problems: Advanced Algorithms (Volume 2)%')->get()->first();
         $seller = User::where('email', '=', 'seller@stuvi.com')->get()->first();
-        $folder = '/img/product/';
+        $folder = Config::get('upload.image.product');
 
         // Algorithms
         $p_alg0 = Product::create([

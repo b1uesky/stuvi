@@ -101,11 +101,13 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], 
 | User Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/user/profile', 'UserController@profile');
-Route::get('/user/profile-edit', 'UserController@profileEdit');
-Route::get('/user/account', 'UserController@account');
-Route::post('/user/account/edit', 'UserController@edit');
-
+Route::group(['middleware'=>'auth', 'prefix'=>'user'], function()
+{
+    Route::get('/profile', 'UserController@profile');
+    Route::get('/profile-edit', 'UserController@profileEdit');
+    Route::get('/account', 'UserController@account');
+    Route::post('/account/edit', 'UserController@edit');
+});
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
