@@ -108,7 +108,7 @@ class BuyerOrderController extends Controller
         // remove payed items from Cart
         Cart::destroy();
 
-        return view('order.storeBuyerOrder')
+        return redirect('/order/confirmation')
             ->with('order', $order);
     }
 
@@ -230,5 +230,16 @@ class BuyerOrderController extends Controller
     public function sellerBookshelfIndex()
     {
         return view('order.sellerBookshelfIndex');
+    }
+
+    public function confirmation()
+    {
+        // check if this page is redirected from storeBuyerOrder method
+        if (!Session::has('order'))
+        {
+            return redirect('/order/buyer');
+        }
+
+        return view('order.confirmation');
     }
 }
