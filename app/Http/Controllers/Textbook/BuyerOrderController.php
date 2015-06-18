@@ -42,6 +42,12 @@ class BuyerOrderController extends Controller
                 ->with('message', 'Cannot proceed to checkout because Cart is empty.');
         }
 
+        if (!$this->checkCart())
+        {
+            return redirect('/cart')
+                ->with('message', 'Cannot proceed to checkout because you are trying to purchasing your own products.');
+        }
+
         return view('order.createBuyerOrder')
             ->with('items', Cart::content())
             ->with('total', Cart::total());
@@ -54,6 +60,12 @@ class BuyerOrderController extends Controller
      */
     public function storeBuyerOrder(Request $request)
     {
+        if ($this->checkCart())
+        {
+            return redirect('/cart')
+                ->with('message', 'Cannot proceed to checkout because you are trying to purchasing your own products.');
+        }
+
         // validate the address info
         $this->validate($request, Address::rules());
 
@@ -63,13 +75,6 @@ class BuyerOrderController extends Controller
             return redirect('/order/createBuyerOrder')
                 ->with('message', 'Invalid payment.');
         }
-
-        // check if this payment amount the same as the Cart total
-//        if ((int)Input::get('stripeAmount') != Cart::total()*100)
-//        {
-//            return redirect('/cart')
-//                ->with('message', 'Payment amount is not the same as Cart total');
-//        }
 
         // check if any product in Cart is already traded
         foreach (Cart::content() as $row)
