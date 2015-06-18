@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFkSellerOrdersTable extends Migration {
+class AddFkBuyerPaymentsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,8 @@ class AddFkSellerOrdersTable extends Migration {
 	 */
 	public function up()
 	{
-        Schema::table('seller_orders', function(Blueprint $table)
+        Schema::table('buyer_payments', function(Blueprint $table)
         {
-            $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('buyer_order_id')->references('id')->on('buyer_orders');
         });
 	}
@@ -26,10 +25,9 @@ class AddFkSellerOrdersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('seller_orders', function(Blueprint $table)
+        Schema::table('buyer_payments', function(Blueprint $table)
         {
-            $table->dropForeign('seller_orders_product_id_foreign');
-            $table->dropForeign('seller_orders_buyer_order_id_foreign');
+            $table->dropForeign('buyer_payments_buyer_order_id_foreign');
         });
 	}
 

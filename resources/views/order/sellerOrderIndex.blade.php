@@ -16,22 +16,19 @@
         @forelse ($orders as $order)
             <div class="row">
                 <div class="container order-container">
-                    @foreach($order->product() as $product)
-                        <div class="row book-row">
-                            <div class="col-xs-2 col-xs-offset-1">
-                                <img src="http://placehold.it/100x100">
-                            </div>
-                            <div class="col-xs-5 book-info">
-                                <h3>{{ $product->book->title }}</h3>
-                                <h4>{{ $product->book->author}}</h4>
-
-                                <p>{{ $product->book->isbn }}</p>
-                            </div>
-                            <div class="col-xs-2 col-xs-offset-2 book-price">
-                                <h4>${{ $product->price }}</h4>
-                            </div>
+                    <div class="row book-row">
+                        <div class="col-xs-2 col-xs-offset-1">
+                            <img src="{{ $order->product->images->first()->path }}" width="150" height="200">
                         </div>
-                    @endforeach
+                        <div class="col-xs-5 book-info">
+                            <h3>{{ $order->product->book->title }}</h3>
+                            <h4>{{ $order->product->book->author}}</h4>
+                            <p>ISBN: {{ $order->product->book->isbn }}</p>
+                        </div>
+                        <div class="col-xs-2 col-xs-offset-2 book-price">
+                            <h4>${{ $order->product->price }}</h4>
+                        </div>
+                    </div>
                     <div class="row order-row">
                         <div class="col-xs-2 col-xs-offset-1 order-date">
                             <h5>Order Sold</h5>
@@ -41,12 +38,7 @@
                         <div class="col-xs-3 col-xs-offset-2 order-number">
                             <h5>Order Number</h5>
 
-                            <p>0123456789</p>
-                        </div>
-                        <div class="col-xs-2 col-xs-offset-2 order-total">
-                            <h5>Total</h5>
-
-                            <p>${{ $order->buyer_payment->stripe_amount/100 }}</p>
+                            <p>{{ $order->id}}</p>
                         </div>
                     </div>
                 </div>

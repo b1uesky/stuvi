@@ -13,7 +13,6 @@ class BuyerPayment extends Model
 
     public function buyerOrder()
     {
-        return $this->belongsTo('App\BuyerOrder');
+        return $this->belongsTo('App\BuyerOrder', 'buyer_order_id', 'id');
     }
-
 }

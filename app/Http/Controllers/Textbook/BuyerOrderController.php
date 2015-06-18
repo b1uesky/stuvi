@@ -92,15 +92,14 @@ class BuyerOrderController extends Controller
         );
         $shipping_address_id = Address::add($address, Auth::id());
 
-        // create a payment
-        $payment = $this->createBuyerPayment();
-
         // create an buyer payed order
         $order = new BuyerOrder;
         $order->buyer_id = Auth::id();
-        $order->buyer_payment_id = $payment->id;
         $order->shipping_address_id = $shipping_address_id;
         $order->save();
+
+        // create a payment
+        $payment = $this->createBuyerPayment($order);
 
         // create seller order(s) according to the Cart items
         $this->createSellerOrders($order->id);
@@ -113,7 +112,14 @@ class BuyerOrderController extends Controller
             ->with('order', $order);
     }
 
-    protected function createBuyerPayment()
+    /**
+     * Create buyer payment for a given order.
+     *
+     * @param $order    buyer order
+     *
+     * @return BuyerPayment|\Illuminate\Http\RedirectResponse
+     */
+    protected function createBuyerPayment($order)
     {
         // Set your secret key: remember to change this to your live secret key in production
         // See your keys here https://dashboard.stripe.com/account/apikeys
@@ -133,9 +139,11 @@ class BuyerOrderController extends Controller
             );
 
             $payment = new BuyerPayment;
-            $payment->stripe_token = Input::get('stripeToken');
+
+            $payment->buyer_order_id    = $order->id;
+            $payment->stripe_token  = Input::get('stripeToken');
             $payment->stripe_token_type = Input::get('stripeTokenType');
-            $payment->stripe_email = Input::get('stripeEmail');
+            $payment->stripe_email  = Input::get('stripeEmail');
             $payment->stripe_amount = Input::get('stripeAmount');
             $payment->save();
             return $payment;

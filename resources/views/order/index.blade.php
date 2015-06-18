@@ -28,8 +28,7 @@
 
                         <div class=" col-xs-12 col-sm-2 col-xs-offset-0 order-total">
                             <h5>Total</h5>
-
-                            <p>${{ $order->buyer_payment->stripe_amount/100 }}</p>
+                            <p>${{ $order->buyer_payment['stripe_amount']/100 }}</p>
                         </div>
                         <div class="col-xs-12 col-sm-3 col-sm-offset-5 order-number">
                             <h5>Order Number # {{ $order->id }}</h5>
