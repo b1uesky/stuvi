@@ -1,16 +1,14 @@
 <?php namespace App\Http\Controllers\Textbook;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-use App\User;
-use App\Address;
-use App\Product;
-use App\BuyerOrder;
 use App\SellerOrder;
-use App\BuyerPayment;
-
-use Auth, Input, Cart, Session, DB, Config, \DateTime;
+use Auth;
+use Cart;
+use Config;
+use DateTime;
+use DB;
+use Input;
+use Session;
 
 class SellerOrderController extends Controller
 {

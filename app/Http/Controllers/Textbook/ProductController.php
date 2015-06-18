@@ -1,22 +1,14 @@
 <?php namespace App\Http\Controllers\Textbook;
 
-use App\Http\Requests;
+use App\Helpers\FileUploader;
 use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
-
-use Auth;
-use Input;
-use Config;
-use Validator;
-
+use App\Http\Requests;
 use App\Product;
 use App\ProductCondition;
-use App\ProductImage;
-use App\Book;
-use App\User;
-
-use App\Helpers\FileUploader;
+use Auth;
+use Config;
+use Input;
+use Validator;
 
 class ProductController extends Controller {
 

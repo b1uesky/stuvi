@@ -1,24 +1,19 @@
 <?php namespace App\Http\Controllers\Textbook;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-
-use Auth;
-use Input;
-use Config;
-use Validator;
-use App\Helpers\FileUploader;
-use App\Helpers\SearchClassifier;
-use App\Helpers\AmazonLookUp;
-use Isbn\Isbn;
-
 use App\Book;
-use App\BookImageSet;
 use App\BookAuthor;
+use App\BookImageSet;
+use App\Helpers\AmazonLookUp;
+use App\Helpers\FileUploader;
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
 use App\ProductContion;
+use Auth;
+use Config;
+use Illuminate\Http\Request;
+use Input;
+use Isbn\Isbn;
+use Validator;
 
 class TextbookController extends Controller {
 
