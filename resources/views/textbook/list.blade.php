@@ -7,24 +7,26 @@
     </head>
 
     <div class="container-fluid textbook-list-container">
-        <h1 id="search-term">Search results for "{{ $info }}"</h1>
-
+        @if(trim($info) != "")
+            <h1 id="search-term">Search results for "{{ $info }}"</h1>
+        @else
+            <h1 id="search-term">Search results</h1>
+        @endif
         <div class="container">
             <span class="text-muted">Sort by</span>
             <ul class="nav nav-pills">
                 <li role="presentation"><a href="#">Title</a></li>
                 <li role="presentation"><a href="#">Author</a></li>
-                <li role="presentation"><a href="#">Price (Low to High)</a></li>
-                <li role="presentation"><a href="#">Price (High to Low)</a></li>
 
                 <div class="col-sm-4 col-md-4 pull-right bookshelf-sort">
-                    <form class="navbar-form" role="search">
+                    <form action="/textbook/buy/search" method="post" class="navbar-form" role="search">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" name="srch-term"
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="text" class="form-control" placeholder="Search" name="info"
                                    id="srch-term">
 
                             <div class="input-group-btn">
-                                <button class="btn btn-default search-btn"><i class="glyphicon glyphicon-search"></i>
+                                <button class="btn btn-default search-btn" type="submit"><i class="glyphicon glyphicon-search"></i>
                                 </button>
                             </div>
                         </div>
@@ -41,7 +43,7 @@
                 @foreach($books as $book)
                     <tr class="textbook-item">
                         <td class="textbook-img-container">
-                            <img class="textbook-img" src="{{ $book->imageSet->large_image }}">
+                            <img class="textbook-img" src="{{ $book->imageSet->medium_image }}">
                         </td>
                         <td class="textbook-info-1">
                             <span class="textbook-title"><a
