@@ -33,15 +33,17 @@
                 'relationship' => 'book',
                 'select' => '(:table).title'
             ),
-            'book_id' => array(
-                'title' => 'Book ID'
-            ),
             'seller_id' => array(
                 'title' => 'Seller ID'
             ),
             'price' => array(
                 'title' => 'Price'
             ),
+//            'images' => array(
+//                'title' => 'Images',
+//                'relationship' => 'images',
+//                'select' => 'COUNT((:table).path)'
+//            ),
             'sold' => array(
                 'title' => 'Sold'
             ),
@@ -56,24 +58,16 @@
          * @type array
          */
         'edit_fields' => array(
-            'book_id' => array(
-                'title' => 'Book ID',
-                'type' => 'number'
-            ),
-            'seller_id' => array(
-                'title' => 'Seller ID',
-                'type' => 'number'
-            ),
-            'price' => array(
-                'title' => 'Price',
-                'type' => 'number',
-                'decimals' => '2',
-                'symbol' => '$'
-            ),
-            'sold' => array(
-                'title' => 'Sold',
-                'type' => 'bool'
-            ),
+//            'price' => array(
+//                'title' => 'Price',
+//                'type' => 'number',
+//                'decimals' => '2',
+//                'symbol' => '$'
+////            ),
+//            'sold' => array(
+//                'title' => 'Sold',
+//                'type' => 'bool'
+//            ),
             'verified' => array(
                 'title' => 'Verified',
                 'type' => 'bool'

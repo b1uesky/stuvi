@@ -4,8 +4,34 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
+use App\Product;
+
+use Cart;
+use Auth;
+
 abstract class Controller extends BaseController {
 
 	use DispatchesCommands, ValidatesRequests;
+
+
+    /**
+     * check if any product in Cart belongs to the current user,
+     * that is, the user is buying the product he/her is selling.
+     *
+     * @return bool
+     */
+    protected function checkCart()
+    {
+        foreach (Cart::content() as $row)
+        {
+            $product = Product::find($row->id);
+            if ($product->seller_id == Auth::id())
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 
 }

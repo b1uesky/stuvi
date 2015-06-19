@@ -19,4 +19,13 @@ class Book extends Model {
         return $this->hasMany('App\Product');
     }
 
+    /**
+     * Get all products of this book that are not sold yet.
+     *
+     * @return mixed
+     */
+    public function availableProducts()
+    {
+        return $this->products()->where('sold', 0)->get();
+    }
 }

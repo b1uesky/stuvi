@@ -55,7 +55,7 @@
                             </div>
                             <!-- books selling -->
                             <div class="container col-xs-12 col-md-12" id = "books-for-sale">
-                                <a href="{{url('order/seller/bookshelf')}}"><h2 id = "for-sale"><i class="fa fa-book"></i>
+                                <a href="{{url('user/bookshelf')}}"><h2 id = "for-sale"><i class="fa fa-book"></i>
                                     Books for Sale</h2></a>
                                 {{-- <hr class="hr">
                              <div class="container col-md-11 col-md-offset-1 slider responsive books">
@@ -66,40 +66,7 @@
                                      <div><img src="http://placehold.it/100x150"></div>
                                  </div>--}}
 
-                                <!-- display max 10 books? -->
-                                <div class="container col-md-12 books">
-                                    <table class="table table-responsive for-sale-table">
-                                        <!-- new row for each book -->
-                                        <tr class="for-sale-item">
-                                            <td class="for-sale-img">
-                                                <img class="img-responsive" src="http://puu.sh/ijDe0/422ea24ff0.png" width="100px" height="150px"></td>
-                                            <td class="for-sale-info-1">
-                                                <span class="for-sale-title"><a href="#">Mein Kampf</a></span><br>
-                                                <span class="for-sale-author">by <a href="#">Adolf Hitler</a></span><br>
 
-                                                <span class="for-sale-binding">Hardcover</span><br>
-                                                <span class="for-sale-price">$18.00</span> <br>
-                                                <button type="button" class="btn btn-link for-sale-btn-add-cart">
-                                                    Add to Cart</button>
-                                            </td>
-                                            <td class="for-sale-info-2">
-                                        <span class="for-sale-pub-date text-muted">September 15, 1998</span><br>
-                                        <span class="for-sale-isbn">ISBN-10: 0395925037</span>
-
-                                    </td>
-
-                                    <td class="for-sale-info-3">
-                                        <!-- each class the book support -->
-                                        <h5>Classes</h5>
-                                        <span class="for-sale-class"><a href="#">BU:SMG SM131</a></span>
-                                    </td>
-                                    </tr>
-
-                                    </table>
-
-
-
-                                </div>
                             </div>
                         </div>
             <!-- needed to end user bar -->

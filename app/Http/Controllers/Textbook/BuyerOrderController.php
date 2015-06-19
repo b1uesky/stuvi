@@ -25,7 +25,7 @@ class BuyerOrderController extends Controller
     public function buyerOrderIndex()
     {
         return view('order.index')
-            ->with('orders', Auth::user()->buyerOrders()->orderBy('id')->get());
+            ->with('orders', Auth::user()->buyerOrders()->orderBy('id', 'DESC')->get());
     }
 
     /**
@@ -42,6 +42,12 @@ class BuyerOrderController extends Controller
                 ->with('message', 'Cannot proceed to checkout because Cart is empty.');
         }
 
+        if (!$this->checkCart())
+        {
+            return redirect('/cart')
+                ->with('message', 'Cannot proceed to checkout because you are trying to purchasing your own products.');
+        }
+
         return view('order.createBuyerOrder')
             ->with('items', Cart::content())
             ->with('total', Cart::total());
@@ -54,21 +60,20 @@ class BuyerOrderController extends Controller
      */
     public function storeBuyerOrder(Request $request)
     {
+        if (!$this->checkCart())
+        {
+            return redirect('/cart')
+                ->with('message', 'Cannot proceed to checkout because you are trying to purchasing your own products.');
+        }
+
         // validate the address info
         $this->validate($request, Address::rules());
 
-        // check if this payment already exist
-        if (BuyerPayment::where('stripe_token', '=', Input::get('stripeToken'))->exists())
-        {
-            return redirect('/order/createBuyerOrder')
-                ->with('message', 'Invalid payment.');
-        }
-
-        // check if this payment amount the same as the Cart total
-//        if ((int)Input::get('stripeAmount') != Cart::total()*100)
+//        // check if this payment already exist
+//        if (BuyerPayment::where('charge_id', '=', Input::get('stripeToken'))->exists())
 //        {
-//            return redirect('/cart')
-//                ->with('message', 'Payment amount is not the same as Cart total');
+//            return redirect('/order/createBuyerOrder')
+//                ->with('message', 'Invalid payment.');
 //        }
 
         // check if any product in Cart is already traded
@@ -100,13 +105,12 @@ class BuyerOrderController extends Controller
         $order->shipping_address_id = $shipping_address_id;
         $order->save();
 
-        // create a payment
-        $payment = $this->createBuyerPayment($order);
-
         // create seller order(s) according to the Cart items
         $this->createSellerOrders($order->id);
 
-
+        // create a payment
+        $payment = $this->createBuyerPayment($order);
+        //return $payment;
         // remove payed items from Cart
         Cart::destroy();
 
@@ -143,12 +147,15 @@ class BuyerOrderController extends Controller
             $payment = new BuyerPayment;
 
             $payment->buyer_order_id    = $order->id;
-            $payment->stripe_token  = Input::get('stripeToken');
-            $payment->stripe_token_type = Input::get('stripeTokenType');
-            $payment->stripe_email  = Input::get('stripeEmail');
-            $payment->stripe_amount = Input::get('stripeAmount');
+            $payment->amount        = $charge['amount'];
+            $payment->charge_id     = $charge['id'];
+            $payment->card_id       = $charge['source']['id'];
+            $payment->card_object   = $charge['source']['object'];
+            $payment->card_last4    = $charge['source']['last4'];
+            $payment->card_brand    = $charge['source']['brand'];
+            $payment->card_fingerprint  = $charge['source']['fingerprint'];
             $payment->save();
-            return $payment;
+            return $charge;
         }
         catch (\Stripe\Error\Card $e)
         {
