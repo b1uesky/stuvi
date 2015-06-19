@@ -76,6 +76,7 @@
             </div>
         @empty
             <p>You don't have any orders.</p>
+            <p>Why don't you go <a href="/textbook">make one</a>?</p>
         @endforelse
 
     </div>
