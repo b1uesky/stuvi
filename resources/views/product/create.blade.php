@@ -140,7 +140,10 @@
                                     <h3>Highlights/Notes</h3>
                                 </div>
                                 <div class="modal-body">
-
+                                    <p>
+                                        Please select the approximate number of pages that contain
+                                        highlighted/underlined material or notes.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -179,7 +182,10 @@
                                     <h3>Damaged Pages</h3>
                                 </div>
                                 <div class="modal-body">
-
+                                    <p>
+                                        Please select the approximate number of damaged pages.
+                                        This includes folded or partially torn pages and water damage.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -218,7 +224,12 @@
                                     <h3>Broken Binding</h3>
                                 </div>
                                 <div class="modal-body">
-
+                                    <p>
+                                        Please select "yes" if the binding is severely damaged
+                                        or completely broken. Please note that the buyer will be
+                                        warned about this book's poor condition and will likely not
+                                        be willing to pay full price for this book.
+                                    </p>
                                 </div>
                             </div>
                         </div>
