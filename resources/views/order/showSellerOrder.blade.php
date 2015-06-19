@@ -1,15 +1,15 @@
 @extends('app')
 
-
-<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+{{--<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" media="screen"
-      href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+      href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css"> --}}
 
 
 @section('content')
 
     <head>
-        <link href="{{ asset('/css/showBuyerOrder.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('/css/showOrder.css') }}" rel="stylesheet" type="text/css">
+
         <title>Stuvi - Order Details</title>
     </head>
 
@@ -27,7 +27,7 @@
         </div>
 
         <!-- order details -->
-        <div class="container">
+        <div class="container cont-1">
             <h1 id="h1-showBuy">Order Details</h1>
             <h2>@if ($seller_order->cancelled)
                     <span id="cancelled">This order has been cancelled.</span>@endif
@@ -63,8 +63,44 @@
                 <div class="col-xs-12 col-sm-6">
                     <p>{{--label class="col-md-8 control-label">Scheduled pick-up time:</label>--}}
                      Schedule a pick-up time </p>
-                    @if ($seller_order->scheduled_pickup_time)
+
+
+{{--                    @if ($seller_order->scheduled_pickup_time)
                         {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}
+                        <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="id" value="{{ $seller_order->id }}">
+
+                            <div class="form-group col-md-8">
+                                <div id="datetimepicker" class="input-append date">
+                                    <input class="input-box" type="text" name="scheduled_pickup_time"></input>
+                          <span class="add-on">
+                            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                              --}}{{--<i class="fa fa-calendar"></i>--}}{{--
+                          </span>
+                                    <button type="submit" class="btn btn-primary">Set</button>
+                                </div>
+                                <script type="text/javascript"
+                                        src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+                                </script>
+                                <script type="text/javascript"
+                                        src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+                                </script>
+                                <script type="text/javascript"
+                                        src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+                                </script>
+                                <script type="text/javascript"
+                                        src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+                                </script>
+                                <script type="text/javascript">
+                                    $('#datetimepicker').datetimepicker({
+                                        format: 'dd/MM/yyyy hh:mm',
+                                        language: 'us-EN'
+                                    });
+                                </script>
+
+                            </div>
+                        </form>
                     @elseif (!$seller_order->cancelled)
                     <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -75,10 +111,11 @@
                             <input class="input-box" type="text" name="scheduled_pickup_time"></input>
                           <span class="add-on">
                             <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                              --}}{{--<i class="fa fa-calendar"></i>--}}{{--
                           </span>
                             <button type="submit" class="btn btn-primary">Set</button>
                         </div>
-                        <script type="text/javascript"
+                       <script type="text/javascript"
                                 src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
                         </script>
                         <script type="text/javascript"
@@ -101,7 +138,9 @@
                     </form>
                     @else
                         N/A
-                    @endif
+                    @endif--}}
+
+
                 </div>
             </div>  <!-- end pick up row -->
         </div>
