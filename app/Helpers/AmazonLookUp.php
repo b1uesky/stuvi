@@ -157,4 +157,15 @@ class AmazonLookUp
         return $this->getImageURL('LargeImage');
     }
 
+    public function getISBN10()
+    {
+        return $this->getValuesByTag('ASIN')[0];
+    }
+
+    public function getISBN13()
+    {
+        return $this->getValuesByTag('EAN')[0];
+    }
+
+
 }

@@ -37,7 +37,7 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <!-- ISBN -->
                 <div class="form-group">
-                    <label><b>ISBN</b></label>
+                    <label><b>ISBN (10 or 13)</b></label>
                     <input type="string" name="isbn" value="{{ Input::old('isbn') }}" class="form-control"/>
                 </div>
                 <!-- Title -->

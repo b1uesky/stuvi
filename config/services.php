@@ -40,4 +40,7 @@ return [
 		'associate_id'      =>  'stuvi07-20',
 	],
 
+    'isbndb' => [
+        'token' => 'YPKFSSUW'// api key for isbndb.com
+    ]
 ];

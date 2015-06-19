@@ -27,6 +27,10 @@ public function run()
         '1479274836',       // Elements of Programming Interviews: The Insiders' Guide
         '1468108867',       // Data Structures and Algorithms Made Easy
         '1118261364',       // Programming Interviews Exposed: Secrets to Landing Your Next Job
+        '9781501100079',    // Finders Keepers: A Novel
+        '1476754470',       // Mr. Mercedes: A Novel
+        '1451627297',       // 11/22/63: A Novel
+        '1451698852',       // Doctor Sleep
     ];
 
     foreach($isbns as $isbn)
@@ -37,7 +41,8 @@ public function run()
         {
             // save this book to our database
             $book = new Book();
-            $book->isbn = $isbn;
+            $book->isbn10 = $amazon->getISBN10();
+            $book->isbn13 = $amazon->getISBN13();
             $book->title = $amazon->getTitle();
             $book->edition = $amazon->getEdition();
             $book->binding = $amazon->getBinding();

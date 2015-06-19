@@ -7,7 +7,6 @@ use App\Helpers\AmazonLookUp;
 use App\Helpers\FileUploader;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\ProductContion;
 use Auth;
 use Config;
 use Illuminate\Http\Request;
@@ -62,11 +61,11 @@ class TextbookController extends Controller {
 
         $v->after(function($v)
         {
-            // check if the input ISBN is valid
             $isbn_validator = new Isbn();
 
             if ($v->errors()->has('isbn') == false)
             {
+                // check if the input ISBN is valid
                 if ($isbn_validator->validation->isbn(Input::get('isbn')) == false)
                 {
                     $v->errors()->add('isbn', 'Please enter a valid 10 or 13 digit ISBN number.');
@@ -82,14 +81,28 @@ class TextbookController extends Controller {
                 ->withInput(Input::all());
         }
 
+        $isbn = Input::get('isbn');
+        $isbn_validator = new Isbn();
+
 		// create book
         $book = new Book();
-        $book->isbn             = Input::get('isbn');
-        $book->title            = Input::get('title');
-        $book->edition          = Input::get('edition');
-        $book->num_pages        = Input::get('num_pages');
-		$book->binding		    = Input::get('binding');
-		$book->language		    = Input::get('language');
+
+        if (strlen($isbn) == 10)
+        {
+            $book->isbn10 = $isbn;
+            $book->isbn13 = $isbn_validator->translate->to13($isbn);
+        }
+        else
+        {
+            $book->isbn13 = $isbn;
+            $book->isbn10 = $isbn_validator->translate->to10($isbn);
+        }
+
+        $book->title        = Input::get('title');
+        $book->edition      = Input::get('edition');
+        $book->num_pages    = Input::get('num_pages');
+		$book->binding		= Input::get('binding');
+		$book->language		= Input::get('language');
         $book->save();
 
 		// create book authors
@@ -144,13 +157,15 @@ class TextbookController extends Controller {
     }
 
     /**
+     * Search function for the sell page.
+     *
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function sellSearch(Request $request)
     {
-        $isbn = Input::get('isbn');
 		$isbn_validator = new Isbn();
+        $isbn = $isbn_validator->hyphens->removeHyphens(Input::get('isbn'));
 
 		// check if the input is a valid ISBN
 		if ($isbn_validator->validation->isbn($isbn) == false)
@@ -158,29 +173,32 @@ class TextbookController extends Controller {
             return redirect()->back()->withMessage('Please enter a valid 10 or 13 digit ISBN number.');
 		}
 
-		// if the input ISBN is 10 digits, convert it to 13 digits
+        // database lookup
 		if (strlen($isbn) == 10)
 		{
-			$isbn = $isbn_validator->translate->to13($isbn);
+            $db_book = Book::where('isbn10', '=', $isbn)->first();
 		}
+        else
+        {
+            $db_book = Book::where('isbn13', '=', $isbn)->first();
+        }
 
-        // if the book is in our db, show the book information
-        $db_book = Book::where('isbn', '=', $isbn)->first();
-
+        // book found in database
         if ($db_book)
         {
             return redirect('textbook/sell/product/create/'.$db_book->id);
         }
         else
         {
-			// search book using Amazon API
+			// Amazon lookup
 			$amazon = new AmazonLookUp($isbn, 'ISBN');
 
 			if ($amazon->success())
 			{
-				// save this book to our database
+				// save book
 				$book = new Book();
-				$book->isbn = $isbn;
+				$book->isbn10 = $amazon->getISBN10();
+                $book->isbn13 = $amazon->getISBN13();
 				$book->title = $amazon->getTitle();
 				$book->edition = $amazon->getEdition();
 				$book->binding = $amazon->getBinding();
@@ -241,7 +259,16 @@ class TextbookController extends Controller {
 		// if ISBN, return the specific textbook page
 		if ($isbn_validator->validation->isbn($info))
 		{
-			$book = Book::where('isbn', '=', $info)->first();
+            $isbn = $isbn_validator->hyphens->removeHyphens($info);
+            if (strlen($isbn) == 10)
+            {
+                $book = Book::where('isbn10', '=', $isbn)->first();
+            }
+            else
+            {
+                $book = Book::where('isbn13', '=', $isbn)->first();
+            }
+
 			return view('textbook.show')->withBook($book);
 		}
 		else

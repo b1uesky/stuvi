@@ -60,7 +60,9 @@
                                 {{ $book->authors[0]->full_name }}
                             @endif
                             <br>
-                            <span class="textbook-isbn">ISBN: {{ $book->isbn }}</span>
+                            <span class="textbook-isbn">ISBN10: {{ $book->isbn10 }}</span>
+                            <br>
+                            <span class="textbook-isbn">ISBN13: {{ $book->isbn13 }}</span>
                             <br>
                         </td>
                         <td class="table-offset"></td>
