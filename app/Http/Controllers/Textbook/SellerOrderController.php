@@ -26,7 +26,7 @@ class SellerOrderController extends Controller
 
     public function bookshelf()
     {
-        return view('order.sellerBookshelfIndex');
+        return view('order.sellerBookshelfIndex')->with('productsForSale', Auth::user()->productsForSale());
     }
 
     /**

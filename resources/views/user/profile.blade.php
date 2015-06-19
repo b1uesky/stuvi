@@ -66,42 +66,7 @@
                                      <div><img src="http://placehold.it/100x150"></div>
                                  </div>--}}
 
-                                <!-- display max 10 books? -->
-                                <div class="container col-md-12 books">
-                                    @forelse ($productsForSale as $product)
 
-                                    <table class="table table-responsive for-sale-table">
-                                        <tr class="for-sale-item">
-                                            <td class="for-sale-img">
-                                                <img class="img-responsive" src="{{ url($product->images()->first()->path) }}" width="100px" height="150px"></td>
-                                            <td class="for-sale-info-1">
-                                                <span class="for-sale-title"><a href="{{ url('textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a></span><br>
-                                                <span class="for-sale-author">by <a href="#">Adolf Hitler</a></span><br>
-
-                                                <span class="for-sale-binding">Hardcover</span><br>
-                                                <span class="for-sale-price">$18.00</span> <br>
-                                            </td>
-                                            <td class="for-sale-info-2">
-                                        <span class="for-sale-pub-date text-muted">September 15, 1998</span><br>
-                                        <span class="for-sale-isbn">ISBN-10: 0395925037</span>
-
-                                    </td>
-
-                                    <td class="for-sale-info-3">
-                                        <!-- each class the book support -->
-                                        <h5>Classes</h5>
-                                        <span class="for-sale-class"><a href="#">BU:SMG SM131</a></span>
-                                    </td>
-                                    </tr>
-
-                                    </table>
-                                    @empty
-                                        asdf
-                                    @endforelse
-
-
-
-                                </div>
                             </div>
                         </div>
             <!-- needed to end user bar -->

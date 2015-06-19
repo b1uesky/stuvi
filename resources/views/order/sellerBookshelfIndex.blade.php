@@ -16,7 +16,7 @@
 
     <div class="container-fluid bookshelf-page">
         <!-- back button -->
-        <a id="btn-back" href="javascript:history.back()" ><i class="fa fa-arrow-circle-left"></i>Back</a>
+        <a id="btn-back" href="javascript:history.back()"><i class="fa fa-arrow-circle-left"></i>Back</a>
 
         <!-- search bar-->
 
@@ -26,7 +26,8 @@
             <h1>{{ Auth::user()->first_name }}'s Bookshelf
                 <small><a>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</a>
                     <i class="fa fa-star" id="reputation"></i>(<a href="#">80</a>)
-                </small></h1>
+                </small>
+            </h1>
             <hr id="hr1">
         </div>
 
@@ -42,9 +43,12 @@
                 <div class="col-sm-4 col-md-4 pull-right bookshelf-sort">
                     <form class="navbar-form" role="search">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                            <input type="text" class="form-control" placeholder="Search" name="srch-term"
+                                   id="srch-term">
+
                             <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i>
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -57,33 +61,34 @@
         <!-- books -->
         <div class="container">
             <table class="table table-responsive for-sale-table">
-                <!-- new row for each book -->
-                <tr class="for-sale-item">
-                    <td class="for-sale-img">
-                        <img class="img-responsive" src="http://puu.sh/ijDe0/422ea24ff0.png" width="100px" height="150px"></td>
-                    <td class="for-sale-info-1">
-                        <span class="for-sale-title"><a href="#">Mein Kampf</a></span><br>
-                        <span class="for-sale-author">by <a href="#">Adolf Hitler</a></span><br>
+                @forelse ($productsForSale as $product)
+                    <tr class="for-sale-item">
+                        <td class="for-sale-img">
+                            <img class="img-responsive" src="{{ url($product->images()->first()->path) }}" width="100px"
+                                 height="150px"></td>
+                        <td class="for-sale-info-1">
+                            <span class="for-sale-title"><a
+                                        href="{{ url('textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a></span><br>
+                            <span class="for-sale-author">by <a href="#">Adolf Hitler</a></span><br>
 
-                        <span class="for-sale-binding">Hardcover</span><br>
-                        <span class="for-sale-price">$18.00</span><br>
-                        <button type="button" class="btn btn-link for-sale-btn-add-cart">
-                            Add to Cart</button>
-                    </td>
-                    <td class="for-sale-info-2">
-                        <span class="for-sale-pub-date text-muted">September 15, 1998</span><br>
-                        <span class="for-sale-isbn">ISBN-10: 0395925037</span><br>
-                        <span class="for-sale-lang">Language: German</span><br>
-                        <span class="for-sale-pages">Pages:123</span><br>
+                            <span class="for-sale-binding">Hardcover</span><br>
+                            <span class="for-sale-price">$18.00</span> <br>
+                        </td>
+                        <td class="for-sale-info-2">
+                            <span class="for-sale-pub-date text-muted">September 15, 1998</span><br>
+                            <span class="for-sale-isbn">ISBN-10: 0395925037</span>
 
-                    </td>
+                        </td>
 
-                    <td class="for-sale-info-3">
-                        <!-- each class the book support -->
-                        <h5>Classes</h5>
-                        <span class="for-sale-class"><a href="#">BU:SMG SM131</a></span>
-                    </td>
-                </tr>
+                        <td class="for-sale-info-3">
+                            <!-- each class the book support -->
+                            <h5>Classes</h5>
+                            <span class="for-sale-class"><a href="#">BU:SMG SM131</a></span>
+                        </td>
+                    </tr>
+                @empty
+                    You don't have book for sale.
+                @endforelse
 
             </table>
         </div>
@@ -91,22 +96,22 @@
 
 
 
-{{--        <h1>Your buyer orders:</h1>
-        @forelse ($orders as $order)
-            <div class="row">
-            <li><a href="{{ url('order/buyer/'.$order->id) }}">Order #{{ $order->id }}</a></li>
-                --}}{{--
-            <li>{{ $order->buyer_payment()->stripe_amount/100 }}</li>
-            <p>Product info:</p><br>
-            <li>{{ $order->product->book->title }}</li>
-            <li>{{ $order->product->book->isbn }}</li>
-            <li>{{ $order->product->book->author }}</li>
-            --}}{{--
-            --------------------------------------------------------------<br>
-            </div>
-        @empty
-            <p>You don't have any orders.</p>
-        @endforelse--}}
+        {{--        <h1>Your buyer orders:</h1>
+                @forelse ($orders as $order)
+                    <div class="row">
+                    <li><a href="{{ url('order/buyer/'.$order->id) }}">Order #{{ $order->id }}</a></li>
+                        --}}{{--
+                    <li>{{ $order->buyer_payment()->stripe_amount/100 }}</li>
+                    <p>Product info:</p><br>
+                    <li>{{ $order->product->book->title }}</li>
+                    <li>{{ $order->product->book->isbn }}</li>
+                    <li>{{ $order->product->book->author }}</li>
+                    --}}{{--
+                    --------------------------------------------------------------<br>
+                    </div>
+                @empty
+                    <p>You don't have any orders.</p>
+                @endforelse--}}
 
     </div>
 @endsection
