@@ -68,19 +68,18 @@
 
                                 <!-- display max 10 books? -->
                                 <div class="container col-md-12 books">
+                                    @forelse ($productsForSale as $product)
+
                                     <table class="table table-responsive for-sale-table">
-                                        <!-- new row for each book -->
                                         <tr class="for-sale-item">
                                             <td class="for-sale-img">
-                                                <img class="img-responsive" src="http://puu.sh/ijDe0/422ea24ff0.png" width="100px" height="150px"></td>
+                                                <img class="img-responsive" src="{{ url($product->images()->first()->path) }}" width="100px" height="150px"></td>
                                             <td class="for-sale-info-1">
-                                                <span class="for-sale-title"><a href="#">Mein Kampf</a></span><br>
+                                                <span class="for-sale-title"><a href="{{ url('textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a></span><br>
                                                 <span class="for-sale-author">by <a href="#">Adolf Hitler</a></span><br>
 
                                                 <span class="for-sale-binding">Hardcover</span><br>
                                                 <span class="for-sale-price">$18.00</span> <br>
-                                                <button type="button" class="btn btn-link for-sale-btn-add-cart">
-                                                    Add to Cart</button>
                                             </td>
                                             <td class="for-sale-info-2">
                                         <span class="for-sale-pub-date text-muted">September 15, 1998</span><br>
@@ -96,6 +95,9 @@
                                     </tr>
 
                                     </table>
+                                    @empty
+                                        asdf
+                                    @endforelse
 
 
 

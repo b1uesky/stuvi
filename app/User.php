@@ -86,7 +86,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function productsSold()
     {
-        return $this->products()->where('sold', 1);
+        return $this->products()->where('sold', 1)->get();
     }
 
     /**
@@ -96,6 +96,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function productsForSale()
     {
-        return $this->products()->where('sold', 0);
+        return $this->products()->where('sold', 0)->get();
     }
 }

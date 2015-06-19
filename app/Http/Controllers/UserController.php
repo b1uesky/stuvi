@@ -13,7 +13,7 @@ class UserController extends Controller
         return view('user.profile')
             ->with('num_books_sold', $user->productsSold()->count())
             ->with('num_books_bought', count($user->productsBought()))
-            ->with('productsForSale', $user->productsForSale()->get());
+            ->with('productsForSale', $user->productsForSale());
     }
 
     public function profileEdit()
