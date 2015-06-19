@@ -69,6 +69,17 @@ body {
     box-shadow: none;
 }
 
+.fa-question-circle {
+    color: #7AB4DE;
+}
+
+.close-modal-btn:hover,
+.close-modal-btn:focus {
+    outline: 0;
+    color: #F16521;
+    opacity: 1;
+}
+
 /** PRESSED BUTTON **/
 
 .sell-btn {
