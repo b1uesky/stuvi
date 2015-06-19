@@ -6,15 +6,15 @@
         <title>Enter book info</title>
     </head>
 
-    <div class="container">
-        <div class="row textbook-row">
-            <div class="col-sm-6">
+    <div class="container create-container">
+        <div class="row textbook-row col-sm-5">
+            <div>
                 @if($book->imageSet->large_image)
                     <img id="textbook-img" src="{{ $book->imageSet->large_image }}" alt=""/>
                 @endif
             </div>
 
-            <div class="col-sm-6 textbook-info">
+            <div class="textbook-info">
                 <h1>{{ $book->title }}</h1>
 
                 <div class="authors-container">
@@ -44,7 +44,7 @@
 
             </div>
         </div>
-        <div class="row">
+        <div class="row col-sm-6 col-sm-offset-1">
             <h2>Book Conditions</h2>
 
             <form action="/textbook/sell/product/store" method="post" enctype="multipart/form-data">
@@ -123,7 +123,6 @@
                 <div class="form-group">
                     <label>{{ $conditions['broken_binding']['title'] }}</label>
                     <br>
-
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="general_condition"
@@ -142,7 +141,6 @@
                     <textarea name="description" class="form-control" rows="5"
                               placeholder="{{ $conditions['description']['placeholder'] }}"></textarea>
                 </div>
-
                 {{-- Price --}}
                 <div class="form-group">
                     <label>Price</label>
@@ -154,7 +152,7 @@
                     <label>Upload images</label>
                     <input type="file" name="images[]" multiple>
                 </div>
-                <input type="submit" name="submit" class="btn btn-primary" value="submit"/>
+                <input type="submit" name="submit" class="btn sell-btn" value="Sell Book"/>
             </form>
         </div>
     </div>

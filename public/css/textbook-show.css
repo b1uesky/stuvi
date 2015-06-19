@@ -59,6 +59,8 @@ body {
     color: #B12704;
 }
 
+/** PRESSED BUTTON **/
+
 .add-cart-btn {
     display: block;
     margin-left: auto;
@@ -85,7 +87,7 @@ body {
 }
 
 @media (max-width: 500px) {
-    .add-cart-btn {
+    .sell-btn {
         width: 40px;
     }
 

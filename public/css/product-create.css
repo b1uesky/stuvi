@@ -4,6 +4,10 @@ body {
     background-color: #F2F2F2;
 }
 
+.create-container {
+    margin-bottom: 50px;
+}
+
 /*** TEXTBOOK INFO ***/
 
 .textbook-row {
@@ -13,7 +17,6 @@ body {
 #textbook-img {
     width: 300px;
     height: 400px;
-    margin-left: 50px;
 }
 
 .textbook-info span {
@@ -66,90 +69,24 @@ body {
     box-shadow: none;
 }
 
-/*** SWITCH BUTTON - http://callmenick.com/post/css-toggle-switch-examples ***/
+/** PRESSED BUTTON **/
 
-.toggle {
-    position: absolute;
-    margin-left: -9999px;
-    visibility: hidden;
-}
-
-.toggle + label {
+.sell-btn {
     display: block;
-    position: relative;
-    cursor: pointer;
-    outline: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-input.toggle-yes-no + label {
-    padding: 2px;
-    width: 80px;
-    height: 40px;
-}
-
-input.toggle-yes-no + label:before, input.toggle-yes-no + label:after {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    background: #7AB4DE;
     color: #FFFFFF;
-    font-family: "Roboto", serif;
-    font-size: 20px;
-    text-align: center;
-    line-height: 60px;
+    border: none;
+    width: 100px;
+    box-shadow: 0 5px #5B86AA;
 }
 
-input.toggle-yes-no + label:before {
-    background-color: #F16521;
-    content: attr(data-off);
-    -webkit-transition: -webkit-transform 0.5s;
-    -moz-transition: -moz-transform 0.5s;
-    -o-transition: -o-transform 0.5s;
-    transition: transform 0.5s;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    -o-backface-visibility: hidden;
-    backface-visibility: hidden;
+.sell-btn:hover,
+.sell-btn:focus {
+    color: #FFFFFF;
+    outline: 0 !important;
 }
 
-input.toggle-yes-no + label:after {
-    background-color: #7AB4DE;
-    content: attr(data-on);
-    -webkit-transition: -webkit-transform 0.5s;
-    -moz-transition: -moz-transform 0.5s;
-    -o-transition: -o-transform 0.5s;
-    transition: transform 0.5s;
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -ms-transform: rotateY(180deg);
-    -o-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    -o-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
-
-input.toggle-yes-no:checked + label:before {
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -ms-transform: rotateY(180deg);
-    -o-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-}
-
-input.toggle-yes-no:checked + label:after {
-    -webkit-transform: rotateY(0deg);
-    -moz-transform: rotateY(0deg);
-    -ms-transform: rotateY(0deg);
-    -o-transform: rotateY(0deg);
-    transform: rotateY(0deg);
+.sell-btn:active {
+    box-shadow: 0 2px #5B86AA;
+    transform: translateY(5px);
 }
