@@ -60,7 +60,6 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::get('/buyer/cancel/{id}', 'BuyerOrderController@cancelBuyerOrder');
 
     Route::get('/seller', 'SellerOrderController@sellerOrderIndex');
-    Route::get('/seller/bookshelf', 'SellerOrderController@bookshelf');
     Route::get('/seller/cancel/{id}', 'SellerOrderController@cancelSellerOrder');
     Route::post('/seller/setscheduledtime', 'SellerOrderController@setScheduledPickupTime');
     Route::get('/seller/{id}', 'SellerOrderController@showSellerOrder');
@@ -107,6 +106,7 @@ Route::group(['middleware'=>'auth', 'prefix'=>'user'], function()
     Route::get('/profile-edit', 'UserController@profileEdit');
     Route::get('/account', 'UserController@account');
     Route::post('/account/edit', 'UserController@edit');
+    Route::get('/bookshelf', 'UserController@bookshelf');
 });
 
 Route::controllers([

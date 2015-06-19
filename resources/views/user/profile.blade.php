@@ -55,7 +55,7 @@
                             </div>
                             <!-- books selling -->
                             <div class="container col-xs-12 col-md-12" id = "books-for-sale">
-                                <a href="{{url('order/seller/bookshelf')}}"><h2 id = "for-sale"><i class="fa fa-book"></i>
+                                <a href="{{url('user/bookshelf')}}"><h2 id = "for-sale"><i class="fa fa-book"></i>
                                     Books for Sale</h2></a>
                                 {{-- <hr class="hr">
                              <div class="container col-md-11 col-md-offset-1 slider responsive books">

@@ -39,4 +39,9 @@ class UserController extends Controller
         $user->save();
     }
 
+    public function bookshelf()
+    {
+        return view('user.bookshelf')->with('productsForSale', Auth::user()->productsForSale());
+    }
+
 }
