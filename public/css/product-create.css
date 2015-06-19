@@ -45,20 +45,25 @@ body {
 /*** PRODUCT CONDITION ***/
 
 .condition-btn {
-    border-radius: 0;
-    border: none;
-    background-color: #CCCCCC;
+    background-color: #DDDDDD;
+    border: 1px solid #9B9B9B;
 }
 
 .condition-btn:hover,
 .condition-btn:focus {
     outline: 0 !important;
-    background-color: #AAAAAA;
+    background-color: #BBBBBB;
 }
 
-.condition-btn.active-btn {
+.condition-btn.active {
     background-color: #F16521;
     color: #FFFFFF;
+    box-shadow: none;
+}
+
+.form-control:focus {
+    border: 2px solid #7AB4DE;
+    box-shadow: none;
 }
 
 /*** SWITCH BUTTON - http://callmenick.com/post/css-toggle-switch-examples ***/
