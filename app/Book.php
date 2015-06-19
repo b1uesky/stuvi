@@ -1,7 +1,6 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Product;
 
 class Book extends Model {
 
@@ -27,9 +26,6 @@ class Book extends Model {
      */
     public function availableProducts()
     {
-        $products = $this->products()->where('sold', 0)->get();
-        return $products;
+        return $this->products()->where('sold', 0)->get();
     }
-
-
 }
