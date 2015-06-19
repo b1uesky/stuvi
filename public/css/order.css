@@ -1,7 +1,13 @@
 /******* BUYER ORDERS PAGE *******/
 
 h1{
-    margin-left: -17px !important;
+    margin-left: -10px !important;
+}
+
+.link-to-seller{
+    margin-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 0px;
 }
 
 .back-row{
@@ -82,4 +88,8 @@ body {
 
 #cancelled h3{
     color: red;
+}
+
+.empty{
+    min-height: 400px !important;
 }

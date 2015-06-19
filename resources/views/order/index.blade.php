@@ -9,6 +9,8 @@
         <title>Stuvi - Your Orders</title>
     </head>
 
+    <div class="row link-to-seller"><a href="/order/seller">Looking for Seller Orders?</a></div>
+
     <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
             <div class="flash-message" id="message" >{{ Session::get('message') }}</div>
@@ -75,7 +77,8 @@
                 </div>
             </div>
         @empty
-            <p>You don't have any orders.</p>
+            <p>You don't have any orders.
+            Why not <a href="/textbook">make one</a>?</p>
         @endforelse
 
     </div>

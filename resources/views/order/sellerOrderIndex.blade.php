@@ -68,9 +68,10 @@
 
             </div>
         @empty
-            <div class="empty">
-                <p>You haven't sold any books.</p>
-                <a href="{{ url('/textbook/sell') }}">Sell a book</a>
+            <div class="container-fluid empty">
+                <div class="">
+                    <p>You haven't sold any books. Why not <a href="{{ url('/textbook/sell') }}">sell some</a>?</p>
+                </div>
             </div>
         @endforelse
 
