@@ -1,3 +1,5 @@
+{{--extbook/buy/product/#--}}
+
 @extends('product')
 
 @section('content')
@@ -10,26 +12,22 @@
 
 <div class="container-fluid" id="bg">
     <div class="row back-row">
-        <a id="go-back" onclick="goBack()" ><i class="fa fa-arrow-circle-left"></i> Back to {{ $book->title }}</a>
+        <a id="go-back" href="" onclick="goBack()" ><i class="fa fa-arrow-circle-left"></i> Back to {{ $book->title }}</a>
     </div>
 
     <div class="container" id="det-cont">
         <div class="row">
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-6 col-md-4">
 
                 @if(!empty($images))
                     @foreach($images as $image)
                         <div class="">
-                            <img src="{{ $image->path }}" alt="" />
+                            <img class="pro-img" src="{{ $image->path }}" alt="" />
                         </div>
                     @endforeach
                 @endif
 
                 <h2>{{ $book->title }}</h2>
-                <!-- TODO: Link to Seller profile -->
-                <h4>Sold by <a href="#">{{$product->seller->first_name}} {{$product->seller->last_name}}</a></h4>
-
-
 
                 <div class="price">
                     Price: <b>${{ $product->price }}</b>
@@ -39,7 +37,7 @@
 
             </div>
 
-            <table class="table table-responsive details-table col-sm-12 col-md-6">
+            <table class="table table-responsive details-table col-xs-12 col-sm-6 col-md-6">
                 <tr>
                     <th>Condition</th>
                     <th>Description</th>
@@ -61,13 +59,14 @@
                     <td>{{ $conditions['broken_binding'][$condition->broken_binding] }}</td>
                 </tr>
             </table>
-
-            @if($condition->description != '')
-                <h4>Seller's description on the book conditions:</h4>
-                <div class="">
-                    {{ $condition->description }}
-                </div>
-            @endif
+            <div class="container col-md-4 seller-desc">
+                @if($condition->description != '')
+                    <h4>Seller's description on the book conditions:</h4>
+                    <div class="">
+                        {{ $condition->description }}
+                    </div>
+                @endif
+            </div>
 
         </div>
     </div>

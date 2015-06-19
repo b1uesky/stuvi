@@ -9,6 +9,8 @@
         <title>Stuvi - Your Orders</title>
     </head>
 
+    <div class="row link-to-seller"><a href="/order/seller">Looking for Seller Orders?</a></div>
+
     <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
             <div class="flash-message" id="message" >{{ Session::get('message') }}</div>
@@ -57,8 +59,8 @@
                                 <h5>{{ $product->book->title }}</h5>
                                 <h5><small>{{ $product->book->author}}</small></h5>
 
-                                <p>{{ $product->book->isbn }}</p>
-                                <h6 id="book-price">${{ $product->price }}</h6>
+                                <p>ISBN: {{ $product->book->isbn }}</p>
+                                <h6 class="book-price">${{ $product->price }}</h6>
                             </div>
                             <div class=" col-xs-12 col-sm-2 col-xs-offset-0 col-sm-offset-1 col-md-offset-3">
                                 {{--<a class="btn btn-default order-button-1" href="#" role="button">Track Package</a>--}}
@@ -75,7 +77,8 @@
                 </div>
             </div>
         @empty
-            <p>You don't have any orders.</p>
+            <p>You don't have any orders.
+            Why not <a href="/textbook">make one</a>?</p>
         @endforelse
 
     </div>

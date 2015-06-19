@@ -53,3 +53,19 @@ hr{
 #cancelled{
     color: red;
 }
+
+/* showBuyerOrder*/
+
+#h1-showBuy{
+    margin-left:-15px;
+}
+
+.input-box, .add-on {
+    padding: 16px !important;
+}
+
+.icon-calendar{
+    margin-top: -9px !important;
+    margin-left:1px;
+    margin-right: -1px;
+}

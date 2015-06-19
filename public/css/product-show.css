@@ -10,8 +10,21 @@
     padding-bottom: 10%;
 }
 
+.back-row{
+    padding-top: 10px;
+}
+
 #go-back{
     margin-left: 10px;
+}
+
+.pro-img{
+    max-width: 300px;
+}
+
+#det-cont{
+    margin: inherit;
+    padding-top: 10px;
 }
 
 .details-table{

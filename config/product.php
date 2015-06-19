@@ -19,15 +19,15 @@ return [
 
         'highlights_and_notes'      =>  [
             'title' =>  'Highlights/Notes',
-            0       =>  '0 ~ 10 places',
-            1       =>  '11 ~ 30 places',
-            2       =>  '> 30 places'
+            0 => '0 - 5 pages',
+            1 => '6 - 15 pages',
+            2 => '> 15 pages'
         ],
 
         'damaged_pages'             =>  [
             'title' =>  'Damaged Pages',
             0       =>  '0',
-            1       =>  '1 ~ 3 pages',
+            1 => '1 - 3 pages',
             2       =>  '> 3 pages'
         ],
 
