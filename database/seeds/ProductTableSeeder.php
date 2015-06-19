@@ -173,6 +173,16 @@ class ProductTableSeeder extends Seeder {
 
         ProductImage::create([
             'path'             =>  $folder . 'Programming-Problems.jpg',
+            'product_id'        =>  $p_pp0->id
+        ]);
+
+        ProductImage::create([
+            'path'             =>  $folder . 'Programming-Problems.jpg',
+            'product_id'        =>  $p_pp0->id
+        ]);
+
+        ProductImage::create([
+            'path'             =>  $folder . 'Programming-Problems.jpg',
             'product_id'        =>  $p_pp1->id
             ]);
 
@@ -185,6 +195,11 @@ class ProductTableSeeder extends Seeder {
             'path'             =>  $folder . 'Principles-of-solid-mechanics.jpg',
             'product_id'        =>  $p_mech0->id
             ]);
+
+        ProductImage::create([
+            'path'             =>  $folder . 'Principles-of-solid-mechanics.jpg',
+            'product_id'        =>  $p_mech0->id
+        ]);
 
         ProductImage::create([
             'path'             =>  $folder . 'Principles-of-solid-mechanics.jpg',
