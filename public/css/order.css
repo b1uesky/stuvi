@@ -4,6 +4,16 @@ h1{
     margin-left: -17px !important;
 }
 
+.back-row{
+    margin-top:7px;
+}
+
+#go-back{
+    margin-left: 20px;
+    padding: 10px !important;
+
+}
+
 #message {
     font-style: italic;
 }

@@ -9,6 +9,10 @@
         <title>Stuvi - Sold Books</title>
     </head>
 
+    <div class="row back-row">
+        <a id="go-back" href="" onclick="goBack()" ><i class="fa fa-arrow-circle-left"></i> Back</a>
+    </div>
+
     <div class="container" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
             <div class="flash-message">{{ Session::get('message') }}</div>
@@ -71,4 +75,10 @@
         @endforelse
 
     </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 @endsection
