@@ -89,3 +89,7 @@ body {
 #cancelled h3{
     color: red;
 }
+
+.empty{
+    min-height: 400px !important;
+}
