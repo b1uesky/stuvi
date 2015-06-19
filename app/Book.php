@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Product;
 
 class Book extends Model {
 
@@ -18,5 +19,17 @@ class Book extends Model {
     {
         return $this->hasMany('App\Product');
     }
+
+    /**
+     * Get all products of this book that are not sold yet.
+     *
+     * @return mixed
+     */
+    public function availableProducts()
+    {
+        $products = $this->products()->where('sold', 0)->get();
+        return $products;
+    }
+
 
 }

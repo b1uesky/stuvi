@@ -49,7 +49,8 @@
             </div>
         </div>
 
-        @if(count($book->products) > 0)
+        @if($book->availableProducts()->count() > 0)
+
             <div class="row table-row">
 
                 <h3>Select one of our available books</h3>
@@ -62,7 +63,8 @@
                         <th>Add to Cart</th>
                     </tr>
                     </thead>
-                    @foreach($book->products as $product)
+                    @foreach($book->availableProducts() as $product)
+
                         <tr>
                             <td>
                                 <p id="price">${{ $product->price }}</p>
@@ -74,7 +76,7 @@
                                 <a href="{{ url('textbook/buy/product/'.$product->id) }}">View Details</a>
                             </td>
                             <td class="cart-btn-col">
-                                <a class="btn add-cart-btn" href="#" role="button">Add To Cart</a>
+                                <a class="btn add-cart-btn" href="{{ url('cart/add/'.$product->id) }}" role="button">Add To Cart</a>
                             </td>
                         </tr>
                     @endforeach
