@@ -108,3 +108,13 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['namespace'=>'Admin', 'middleware'=>'auth', 'prefix'=>'admin'], function()
+{
+    Route::get('/', 'UserController@index');
+});
