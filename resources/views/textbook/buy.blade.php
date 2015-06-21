@@ -26,7 +26,7 @@
     <div class="container-fluid search">
         <div class="row">
             <h1 id="title">Buy Used Textbooks</h1>
-            <form action="/textbook/buy/search" method="post">
+            <form action="/textbook/buy/search" method="post" id="autocompleteBuy">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <div class="col-xs-8 col-xs-offset-2 search-row">
