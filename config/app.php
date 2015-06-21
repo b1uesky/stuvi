@@ -164,11 +164,6 @@ return [
         'Cartalyst\Stripe\Laravel\StripeServiceProvider',
 
         /*
-         * Administrator Service Providers...
-         */
-        'Frozennode\Administrator\AdministratorServiceProvider',
-
-        /*
          * Gloudemans Shopping Cart
          */
         'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
