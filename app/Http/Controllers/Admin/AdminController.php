@@ -5,9 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-use App\User;
-
-class UserController extends Controller {
+class AdminController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -16,8 +14,7 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
-        $users = User::all();
-		return view('admin.user.index')->withUsers($users);
+		return view('admin.index');
 	}
 
 	/**
@@ -48,7 +45,7 @@ class UserController extends Controller {
 	 */
 	public function show($id)
 	{
-		return view('admin.user.show')->withUser($id);
+		//
 	}
 
 	/**
