@@ -74,12 +74,12 @@
                 <!-- col-xs-push/pull changes the ordering when it is not xs -->
                 <!-- need to fix xs -->
                 <div class = "container col-xs-12 col-sm-3 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-sm-push-7" id="shrink-xs">
-                    <img src="http://placehold.it/250x250" alt = "placeholder">
+                    <img class="textbook-bottom-img" src="{{ asset('/img/truck.png') }}" alt="placeholder">
                 </div>
                 <!-- Row 2 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
                      id="shrink-xs">
-                    <h3 id = "h3-2">Same day delivery</h3>
+                    <h3 id="h3-2">Book delivery</h3>
                     <p>
                         We will deliver the book directly to you after you make a purchase.
                     </p>
@@ -94,9 +94,9 @@
                 <!-- Row 3 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
                      id="shrink-xs">
-                    <h3 id = "h3-3">Save money</h3>
+                    <h3 id="h3-3">Save money and study</h3>
                     <p>
-                        Find the best prices for textbooks.
+                        Find the best prices for textbooks without leaving the comfort of your dorm.
                     </p>
                 </div>
             </div>

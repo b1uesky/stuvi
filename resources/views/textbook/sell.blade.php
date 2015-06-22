@@ -74,22 +74,42 @@
                         Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>
                 </div>
             </div>
-
             <div class = "row row-b" id="row2">
                 <!-- Row 2 Col 1 -->
                 <!-- xs: stack-->
                 <!-- col-xs-push/pull changes the ordering when it is not xs -->
                 <!-- need to fix xs -->
                 <div class = "container col-xs-12 col-sm-3 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-sm-push-7" id="shrink-xs">
-                    <img src="http://placehold.it/250x250" alt = "placeholder">
+                    <img class="textbook-bottom-img" src="{{ asset('/img/clock.png') }}" alt="placeholder">
                 </div>
                 <!-- Row 2 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
                      id="shrink-xs">
-                    <h3 id = "h3-2">Set your own price</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
-                        tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
-                        Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>
+                    <h3 id="h3-2">Select your pickup time</h3>
+
+                    <p>
+                        You will be notified once your book has been sold. Then you can select a time
+                        for us to come pickup your book.
+                    </p>
+                </div>
+            </div>
+            <div class="row row-b" id="row3">
+                <!-- Row 1 Col 1 -->
+                <!-- xs: stack-->
+                <div class="container col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id="shrink-xs">
+                    <img class="textbook-bottom-img" src="{{ asset('/img/dollar.png') }}" alt="placeholder">
+                </div>
+                <!-- Row 1 Col 2 -->
+                <div class="container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
+                     id="shrink-xs">
+                    <h3 id="h3-1">Let the cash pour in</h3>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis
+                        faucibus elit
+                        tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum
+                        tristique.
+                        Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius.
+                    </p>
                 </div>
             </div>
         </div> <!-- end container -->
