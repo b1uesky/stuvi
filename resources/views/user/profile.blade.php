@@ -87,9 +87,8 @@
                                                     <span class="for-sale-price">{{ $product->price }}</span> <br>
                                                 </td>
                                                 <td class="for-sale-info-2">
-                                                    <span class="for-sale-pub-date text-muted">September 15, 1998</span><br>
-                                                    <span class="for-sale-isbn">ISBN-10: 0395925037</span>
-
+                                                    <span class="for-sale-isbn">ISBN-10: {{ $product->book->isbn10 }}</span>
+                                                    <span class="for-sale-isbn">ISBN-13: {{ $product->book->isbn13 }}</span>
                                                 </td>
 
                                                 <td class="for-sale-info-3">
