@@ -42,4 +42,17 @@ class Product extends Model
 
         return 'No';
     }
+
+    /**
+     * @return string
+     */
+    public function isVerified()
+    {
+        if ($this->verified)
+        {
+            return 'Yes';
+        }
+
+        return 'No';
+    }
 }

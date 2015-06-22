@@ -121,6 +121,9 @@ Route::controllers([
 */
 Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>'admin'], function()
 {
-    Route::get('/', 'ProductController@index');
+    Route::get('/', 'AdminController@index');
+    Route::resource('user', 'UserController');
     Route::resource('product', 'ProductController');
+    Route::get('/product/{id}/approve', 'ProductController@approve');
+    Route::get('/product/{id}/disapprove', 'ProductController@disapprove');
 });

@@ -5,10 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-use App\Product;
-use Config;
-
-class ProductController extends Controller {
+class AdminController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -17,9 +14,7 @@ class ProductController extends Controller {
 	 */
 	public function index()
 	{
-		$products = Product::all();
-
-        return view('admin.product.index')->withProducts($products);
+		return view('admin.index');
 	}
 
 	/**
@@ -29,13 +24,13 @@ class ProductController extends Controller {
 	 */
 	public function create()
 	{
-        //
+		//
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @return Responser
+	 * @return Response
 	 */
 	public function store()
 	{
@@ -50,9 +45,7 @@ class ProductController extends Controller {
 	 */
 	public function show($id)
 	{
-        return view('admin.product.show')
-            ->withProduct($id)
-            ->withConditions(Config::get('product.conditions'));
+		//
 	}
 
 	/**
@@ -88,29 +81,4 @@ class ProductController extends Controller {
 		//
 	}
 
-	public function approve($id)
-	{
-		$product = Product::find($id);
-
-		if ($product->verified == false)
-		{
-			$product->verified = true;
-			$product->save();
-		}
-
-		return redirect()->back();
-	}
-
-	public function disapprove($id)
-	{
-		$product = Product::find($id);
-
-		if ($product->verified == true)
-		{
-			$product->verified = false;
-			$product->save();
-		}
-
-		return redirect()->back();
-	}
 }

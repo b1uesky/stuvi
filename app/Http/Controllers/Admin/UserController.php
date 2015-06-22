@@ -17,7 +17,7 @@ class UserController extends Controller {
 	public function index()
 	{
         $users = User::all();
-		return view('admin.user')->withUsers($users);
+		return view('admin.user.index')->withUsers($users);
 	}
 
 	/**
@@ -48,7 +48,7 @@ class UserController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		return view('admin.user.show')->withUser($id);
 	}
 
 	/**
