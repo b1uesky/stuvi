@@ -70,6 +70,8 @@
                                     Your Account</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/order/buyer') }}">
                                     Your Orders</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/order/seller') }}">
+                                    Sold Books</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/cart') }}">
                                     Shopping Cart</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/auth/logout') }}">
