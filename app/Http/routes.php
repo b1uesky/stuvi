@@ -117,4 +117,5 @@ Route::controllers([
 Route::group(['namespace'=>'Admin', 'middleware'=>'auth', 'prefix'=>'admin'], function()
 {
     Route::get('/', 'UserController@index');
+    Route::get('/user', 'UserController@index');
 });

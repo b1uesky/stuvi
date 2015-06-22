@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use App\User;
+
 class UserController extends Controller {
 
 	/**
@@ -14,7 +16,8 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
-		return view('admin.user');
+        $users = User::all();
+		return view('admin.user')->withUsers($users);
 	}
 
 	/**
