@@ -1,7 +1,6 @@
 /* CSS for /cart/index.blade.php */
 
 
-
 #message {
     font-style: italic;
 }
@@ -66,9 +65,7 @@ body {
     border-color: #DDD;
 }
 
-.row-cart-bottom{
-
-}
+.row-cart-bottom{  }
 
 .subtotal{
     border-top: hidden;

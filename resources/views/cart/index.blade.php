@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="{{asset('/css/cart.css')}}">
     </head>
 
+    <!-- different icon and bg color depending on alert. add to other pages??? -->
     @if (Session::has('message'))
         @if (Session::get('alert-class') == 'alert-danger' or Session::get('alert-class') == 'alert-warning')
             <div class="container {{ Session::get('alert-class') }}" id="message-cont"
@@ -31,10 +32,12 @@
         @endif
     @endif
 
+    <!-- back link -->
     <div class="row back-row">
         <a id="back-to-cart" href="{{url('/textbook')}}" ><i class="fa fa-arrow-circle-left"></i>Back to Shopping</a>
     </div>
 
+    <!-- img of cart progress bar -->
     <div class="container col-xs-12 col-xs-offset-2 col-sm-8 col-sm-offset-2 cart-progress">
         <img class="img-responsive cart-line col-sm-offset-3" src="{{asset('/img/CART.png')}}" alt="Your cart progress">
     </div>
@@ -54,6 +57,7 @@
         @if ($items->count() > 0)
         <!-- cart items -->
         <table class="table table-responsive cart-table">
+        <!-- table headers -->
         <thead>
             <tr class="active">
                 <th>Book Title</th>
@@ -108,12 +112,9 @@
                     <td><a class="btn btn-default cart-button" href="#" role="button">Update Cart</a></td>
                 </tr>
             </tfoot>
-
             @endif
-
         </table>
-
-        <!-- total -->
+        <!-- total & checkout-->
         @if ($items->count() > 0)
         <div class="container col-sm-4 col-sm-offset-8 total-checkout">
             <table class="table table-responsive subtotal">
@@ -126,8 +127,6 @@
                 Proceed to Checkout
             </a>
         </div>
-
         @endif
-
     </div>
 @endsection
