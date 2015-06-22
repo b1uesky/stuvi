@@ -59,7 +59,7 @@
                                 <h5>{{ $product->book->title }}</h5>
                                 <h5><small>{{ $product->book->author}}</small></h5>
 
-                                <p>ISBN: {{ $product->book->isbn }}</p>
+                                <p>ISBN: {{ $product->book->isbn10 }}</p>
                                 <h6 class="book-price">${{ $product->price }}</h6>
                             </div>
                             <div class=" col-xs-12 col-sm-2 col-xs-offset-0 col-sm-offset-1 col-md-offset-3">
@@ -77,8 +77,10 @@
                 </div>
             </div>
         @empty
-            <p>You don't have any orders.
-            Why not <a href="/textbook">make one</a>?</p>
+            <div class="container-fluid empty">
+                <p>You don't have any orders.
+                Why not <a href="/textbook">make one</a>?</p>
+            </div>
         @endforelse
 
     </div>

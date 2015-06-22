@@ -91,6 +91,8 @@ body {
     color: red;
 }
 
+
 .empty{
-    min-height: 400px !important;
+    height: 70vh;
+
 }
