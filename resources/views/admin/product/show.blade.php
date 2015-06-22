@@ -39,5 +39,23 @@
                 <th>{{ $conditions['highlights_and_notes']['title'] }}</th>
                 <td>{{ $conditions['highlights_and_notes'][$product->condition->highlights_and_notes] }}</td>
             </tr>
+            <tr>
+                <th>{{ $conditions['damaged_pages']['title'] }}</th>
+                <td>{{ $conditions['damaged_pages'][$product->condition->damaged_pages] }}</td>
+            </tr>
+            <tr>
+                <th>{{ $conditions['broken_binding']['title'] }}</th>
+                <td>{{ $conditions['broken_binding'][$product->condition->broken_binding] }}</td>
+            </tr>
+            <tr>
+                <th>{{ $conditions['description']['title'] }}</th>
+                <td>{{ $product->condition->description }}</td>
+            </tr>
+            @foreach($product->images as $image)
+                <tr>
+                    <th>Image</th>
+                    <td><img src="{{ $image->path }}" alt="" /></td>
+                </tr>
+            @endforeach
         </table>
 @endsection

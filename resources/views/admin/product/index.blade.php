@@ -8,7 +8,6 @@
         </div>
         <ul class="nav navbar-nav">
             <li><a href="{{ URL::to('admin/product') }}">View All Products</a></li>
-            {{--<li><a href="{{ URL::to('product/create') }}">Create a Product</a>--}}
         </ul>
     </nav>
 
@@ -32,7 +31,7 @@
                     <td>{{ $product->seller->email }}</td>
                     <td>
                         @foreach($product->images as $image)
-                            <a href="{{ $image->path }}" target="_blank"><img src="{{ $image->path }}" alt=""/></a>
+                            <a href="{{ $image->path }}" target="_blank"><img src="{{ $image->path }}" class="admin-img-preview" alt=""/></a>
                         @endforeach
                     </td>
                     <td>{{ $product->isSold() }}</td>
