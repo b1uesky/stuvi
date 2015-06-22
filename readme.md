@@ -38,8 +38,4 @@ php artisan migrate --seed
 
 url: `/admin`
 
-If you cannot go to `/admin`, try:
-
-```bash
-mkdir config/administrator/settings
-```
+See `routes.php` for details.
