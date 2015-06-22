@@ -9,16 +9,19 @@
         <title>Stuvi - Sold Books</title>
     </head>
 
+    {{-- Go back link --}}
     <div class="row back-row">
         <a id="go-back" onclick="goBack()" ><i class="fa fa-arrow-circle-left"></i> Back</a>
     </div>
 
+    <!-- Message -->
     <div class="container" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
             <div class="flash-message">{{ Session::get('message') }}</div>
         @endif
     </div>
-    <div class="container">
+    <!-- Main container -->
+    <div class="container seller-order-container">
         <h1>Your sold books:</h1>
         @forelse ($orders->reverse() as $order)
             <div class="row">

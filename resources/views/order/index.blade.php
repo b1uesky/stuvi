@@ -18,6 +18,7 @@
             <div class="flash-message" id="message" >{{ Session::get('message') }}</div>
         @endif
     </div>
+    <!-- main container -->
     <div class="container buyer-order-container">
         <h1>Your orders</h1>
         @forelse ($orders as $order)

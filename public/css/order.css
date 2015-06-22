@@ -28,9 +28,7 @@ h1{
 }
 
 /* alert message */
-#message {
-    font-style: italic;
-}
+#message { font-style: italic; }
 
 /* alert message container */
 #message-cont {
@@ -38,13 +36,11 @@ h1{
     margin-top: 5px;
 }
 
-body {
-    background-color: #F2F2F2;
-}
+body { background-color: #F2F2F2;}
 
-.buyer-order-container {
-    /*margin-bottom: 100px;*/
-}
+.buyer-order-container {  }
+
+.seller-order-container{}
 
 /* Orange border around each order */
 .order-container {
@@ -56,31 +52,21 @@ body {
     background-color: rgba(0, 0, 0, 0.09);
 }
 
-.book-row {
-    padding: 10px 0;
-}
+.book-row { padding: 10px 0; }
 
 .book-img{
     max-width: 100px;
     margin: 10px;
 }
 
-.lg-img{
-    max-width: 100px;
-}
+.lg-img     {  max-width: 100px;  }
 
-.book-info{
-    padding-left: 25px;
-}
+.book-info  {  padding-left: 25px;  }
 
-.book-info h3 {
-    margin-top: 10px;
-}
+.book-info h3 {  margin-top: 10px;  }
 
 /* Price of book a deep red.. */
-.book-price{
-    color: #b61f17;
-}
+.book-price{  color: #b61f17;  }
 
 .order-button-1 {
     background: #F16521;
@@ -97,12 +83,7 @@ body {
 }
 
 /* Canceled order header color */
-#cancelled h3{
-    color: red;
-}
+#cancelled h3 {  color: red;  }
 
 /* If no orders, then make the container fill 65% of the viewport height */
-.empty{
-    height: 65vh;
-
-}
+.empty{  height: 65vh;  }

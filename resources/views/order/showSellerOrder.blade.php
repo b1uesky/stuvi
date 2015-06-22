@@ -1,3 +1,6 @@
+{{-- Your orders page --}}
+
+
 @extends('app')
 
 @section('content')
