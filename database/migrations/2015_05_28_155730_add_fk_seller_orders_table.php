@@ -15,7 +15,6 @@ class AddFkSellerOrdersTable extends Migration {
         Schema::table('seller_orders', function(Blueprint $table)
         {
             $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('seller_payment_id')->references('id')->on('seller_payments');
             $table->foreign('buyer_order_id')->references('id')->on('buyer_orders');
         });
 	}
@@ -30,7 +29,6 @@ class AddFkSellerOrdersTable extends Migration {
 		Schema::table('seller_orders', function(Blueprint $table)
         {
             $table->dropForeign('seller_orders_product_id_foreign');
-            $table->dropForeign('seller_orders_seller_payment_id_foreign');
             $table->dropForeign('seller_orders_buyer_order_id_foreign');
         });
 	}

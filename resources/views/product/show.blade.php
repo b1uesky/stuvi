@@ -1,75 +1,83 @@
+{{--extbook/buy/product/#--}}
+
 @extends('product')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <h2>{{ $book->title }}</h2>
+<head>
+    <title>Stuvi - Book Details</title>
+    <link rel="stylesheet" href="{{asset('/css/product-show.css')}}" type="text/css">
+</head>
 
-        @if(!empty($images))
-            @foreach($images as $image)
-                <div class="">
-                    <img src="{{ $image->path }}" alt="" />
+@include('textbook/textbook-nav')
+
+<div class="container-fluid" id="bg">
+    <div class="row back-row">
+        <a id="go-back" href="" onclick="goBack()" ><i class="fa fa-arrow-circle-left"></i> Back to {{ $book->title }}</a>
+    </div>
+
+    <div class="container" id="det-cont">
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+
+                @if(!empty($images))
+                    @foreach($images as $image)
+                        <div class="">
+                            <img class="pro-img" src="{{ $image->path }}" alt="" />
+                        </div>
+                    @endforeach
+                @endif
+
+                <h2>{{ $book->title }}</h2>
+
+                <div class="price">
+                    Price: <b>${{ $product->price }}</b>
                 </div>
-            @endforeach
-        @endif
 
-        <div class="">
-            Price: {{ $product->price }}
-        </div>
+                <a class="btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
 
-        <a href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
-
-        <table style="width:100%" border="1">
-            <tr>
-                <th>Condition</th>
-                <th>Rating</th>
-            </tr>
-            <tr>
-                <td>{{ $product_conditions['highlights'] }}</td>
-                <td>{{ $condition->highlights }}</td>
-            </tr>
-            <tr>
-                <td>{{ $product_conditions['notes'] }}</td>
-                <td>{{ $condition->notes }}</td>
-            </tr>
-            <tr>
-                <td>{{ $product_conditions['num_damaged_pages'] }}</td>
-                <td>{{ $condition->num_damaged_pages }}</td>
-            </tr>
-            <tr>
-                <td>{{ $product_conditions['broken_spine'] }}</td>
-                <td>{{ $condition->broken_spine }}</td>
-            </tr>
-            <tr>
-                <td>{{ $product_conditions['broken_binding'] }}</td>
-                <td>{{ $condition->broken_binding }}</td>
-            </tr>
-            <tr>
-                <td>{{ $product_conditions['water_damage'] }}</td>
-                <td>{{ $condition->water_damage }}</td>
-            </tr>
-            <tr>
-                <td>{{ $product_conditions['stains'] }}</td>
-                <td>{{ $condition->stains }}</td>
-            </tr>
-            <tr>
-                <td>{{ $product_conditions['burns'] }}</td>
-                <td>{{ $condition->burns }}</td>
-            </tr>
-            <tr>
-                <td>{{ $product_conditions['rips'] }}</td>
-                <td>{{ $condition->rips }}</td>
-            </tr>
-        </table>
-
-        @if($condition->description != '')
-            <h4>Seller's description on the book conditions:</h4>
-            <div class="">
-                {{ $condition->description }}
             </div>
-        @endif
 
+            <table class="table table-responsive details-table col-xs-12 col-sm-6 col-md-6">
+                <tr>
+                    <th>Condition</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>{{ $conditions['general_condition']['title'] }}</td>
+                    <td>{{ $conditions['general_condition'][$condition->general_condition] }}</td>
+                </tr>
+                <tr>
+                    <td>{{ $conditions['highlights_and_notes']['title'] }}</td>
+                    <td>{{ $conditions['highlights_and_notes'][$condition->highlights_and_notes] }}</td>
+                </tr>
+                <tr>
+                    <td>{{ $conditions['damaged_pages']['title'] }}</td>
+                    <td>{{ $conditions['damaged_pages'][$condition->damaged_pages] }}</td>
+                </tr>
+                <tr>
+                    <td>{{ $conditions['broken_binding']['title'] }}</td>
+                    <td>{{ $conditions['broken_binding'][$condition->broken_binding] }}</td>
+                </tr>
+            </table>
+            <div class="container col-md-4 seller-desc">
+                @if($condition->description != '')
+                    <h4>Seller's description on the book conditions:</h4>
+                    <div class="">
+                        {{ $condition->description }}
+                    </div>
+                @endif
+            </div>
+
+        </div>
     </div>
 
 </div>
+
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
 @endsection

@@ -39,7 +39,7 @@ return [
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'EST5EDT',
 
     /*
 	|--------------------------------------------------------------------------
@@ -161,7 +161,7 @@ return [
          * Payment Service Providers...
          */
         //'Laravel\Cashier\CashierServiceProvider',
-        'Cartalyst\Stripe\Laravel\StripeServiceProvider',
+        //'Cartalyst\Stripe\Laravel\StripeServiceProvider',
 
         /*
          * Gloudemans Shopping Cart
@@ -221,7 +221,6 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
         'Cart'      => 'Gloudemans\Shoppingcart\Facades\Cart',
-        'Stripe' => 'Cartalyst\Stripe\Laravel\Facades\Stripe',
 
 	],
 

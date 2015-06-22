@@ -1,16 +1,14 @@
 <?php namespace App\Http\Controllers\Textbook;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-use App\User;
-use App\Address;
-use App\Product;
-use App\BuyerOrder;
 use App\SellerOrder;
-use App\BuyerPayment;
-
-use Auth, Input, Cart, Session, DB, Config, \DateTime;
+use Auth;
+use Cart;
+use Config;
+use DateTime;
+use DB;
+use Input;
+use Session;
 
 class SellerOrderController extends Controller
 {
@@ -23,8 +21,9 @@ class SellerOrderController extends Controller
     public function sellerOrderIndex()
     {
         return view('order.sellerOrderIndex')
-            ->with('orders', User::find(Auth::id())->sellerOrders);
+            ->with('orders', Auth::user()->sellerOrders()->orderBy('id', 'DESC')->get());
     }
+
 
     /**
      * Display a specific seller order.
@@ -78,7 +77,7 @@ class SellerOrderController extends Controller
      */
     public function setScheduledPickupTime()
     {
-        $scheduled_pickup_time = DateTime::createFromFormat("d/m/Y G:i", Input::get('scheduled_pickup_time'))->format('Y-m-d G:i:s');
+        $scheduled_pickup_time  = Input::get('scheduled_pickup_time');
         $id                     = (int)Input::get('id');
 
         $seller_order           = SellerOrder::find($id);
@@ -92,6 +91,8 @@ class SellerOrderController extends Controller
                 return redirect('order/seller/'.$id)
                     ->with('message', 'Fail to set pickup time because this order has been cancelled.');
             }
+
+            $scheduled_pickup_time = DateTime::createFromFormat("d/m/Y G:i", $scheduled_pickup_time)->format('Y-m-d G:i:s');
 
             $seller_order->scheduled_pickup_time    = $scheduled_pickup_time;
             $seller_order->save();

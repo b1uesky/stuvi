@@ -41,7 +41,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
         Route::get('/', 'TextbookController@sell');
         Route::get('/create', 'TextbookController@create');
         Route::get('/product/create/{book}', 'ProductController@create');
-        Route::post('/search', 'TextbookController@isbnSearch');
+        Route::post('/search', 'TextbookController@sellSearch');
         Route::post('/store', 'TextbookController@store');
         Route::post('/product/store', 'ProductController@store');
     });
@@ -51,6 +51,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 // order
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'], function()
 {
+
     Route::get('/buyer', 'BuyerOrderController@buyerOrderIndex');
     Route::get('/confirmation', 'BuyerOrderController@confirmation');
     Route::get('/create', 'BuyerOrderController@createBuyerOrder');
@@ -99,10 +100,14 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], 
 | User Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/user/profile', 'UserController@profile');
-Route::get('/user/profile-edit', 'UserController@profileEdit');
-Route::get('/user/account', 'UserController@account');
-
+Route::group(['middleware'=>'auth', 'prefix'=>'user'], function()
+{
+    Route::get('/profile', 'UserController@profile');
+    Route::get('/profile-edit', 'UserController@profileEdit');
+    Route::get('/account', 'UserController@account');
+    Route::post('/account/edit', 'UserController@edit');
+    Route::get('/bookshelf', 'UserController@bookshelf');
+});
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

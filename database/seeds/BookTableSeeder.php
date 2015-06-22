@@ -4,6 +4,9 @@ use Illuminate\Database\Seeder;
 use App\Book;
 use App\BookAuthor;
 use App\BookImageSet;
+use App\Helpers\AmazonLookUp;
+
+use Illuminate\Config\Repository;
 
 class BookTableSeeder extends Seeder {
 
@@ -13,69 +16,58 @@ public function run()
     DB::table('book_image_sets')->delete();
     DB::table('books')->delete();
 
-    $folder = '/img/book/';
+    $folder = Config::get('upload.image.book');
 
-    $mech = Book::create([
-        'title'         => 'Principles of solid mechanics',
-        'edition'       => 1,
-        'isbn'          => '9780849303159',
-        'binding'       => 'Hardcover',
-        'language'      => 'English',
-        'num_pages'     => 446
-    ]);
+    $isbns = [
+        '9780849303159',    // Principles of solid mechanics
+        '9780321573513',    // Algorithms
+        '9781484964095',    // Programming Problems: Advanced Algorithms (Volume 2)
+        '098478280X',       // Cracking the Coding Interview
+        '0262033844',       // Introduction to Algorithms
+        '1479274836',       // Elements of Programming Interviews: The Insiders' Guide
+        '1468108867',       // Data Structures and Algorithms Made Easy
+        '1118261364',       // Programming Interviews Exposed: Secrets to Landing Your Next Job
+        '9781501100079',    // Finders Keepers: A Novel
+        '1476754470',       // Mr. Mercedes: A Novel
+        '1451627297',       // 11/22/63: A Novel
+        '1451698852',       // Doctor Sleep
+    ];
 
-    $alg = Book::create([
-        'title'         => 'Algorithms',
-        'edition'       => 4,
-        'isbn'          => '9780321573513',
-        'binding'       => 'Hardcover',
-        'language'      => 'English',
-        'num_pages'     => 992
-    ]);
+    foreach($isbns as $isbn)
+    {
+        $amazon = new AmazonLookUp($isbn, 'ISBN');
 
-    $pp = Book::create([
-        'title'         => 'Programming Problems: Advanced Algorithms (Volume 2)',
-        'edition'       => 1,
-        'isbn'          => '9781484964095',
-        'binding'       => 'Paperback',
-        'language'      => 'English',
-        'num_pages'     => 200
-    ]);
+        if ($amazon->success())
+        {
+            // save this book to our database
+            $book = new Book();
+            $book->isbn10 = $amazon->getISBN10();
+            $book->isbn13 = $amazon->getISBN13();
+            $book->title = $amazon->getTitle();
+            $book->edition = $amazon->getEdition();
+            $book->binding = $amazon->getBinding();
+            $book->language = $amazon->getLanguage();
+            $book->num_pages = $amazon->getNumPages();
+            $book->save();
 
-    BookAuthor::create([
-        'book_id'       => $mech->id,
-        'full_name'     => 'Richards Rowland'
-        ]);
+            // save book image set
+            $book_image_set = new BookImageSet();
+            $book_image_set->book_id = $book->id;
+            $book_image_set->small_image = $amazon->getSmallImage();
+            $book_image_set->medium_image = $amazon->getMediumImage();
+            $book_image_set->large_image = $amazon->getLargeImage();
+            $book_image_set->save();
 
-    BookAuthor::create([
-        'book_id'       => $alg->id,
-        'full_name'     => 'Robert Sedgewick'
-        ]);
-
-    BookAuthor::create([
-        'book_id'       => $alg->id,
-        'full_name'     => 'Kevin Wayne'
-        ]);
-
-    BookAuthor::create([
-        'book_id'       => $pp->id,
-        'full_name'     => 'Bradley Green'
-        ]);
-
-    BookImageSet::create([
-        'book_id'       => $mech->id,
-        'large_image'   => $folder . 'Principles-of-solid-mechanics.jpg'
-        ]);
-
-    BookImageSet::create([
-        'book_id'       => $alg->id,
-        'large_image'   => $folder . 'Algorithms.png'
-        ]);
-
-    BookImageSet::create([
-        'book_id'       => $pp->id,
-        'large_image'   => $folder . 'Programming-Problems.jpg'
-        ]);
+//            var_dump($amazon->saveToXML());
+            // save book authors
+            foreach ($amazon->getAuthors() as $author_name) {
+                $book_author = new BookAuthor();
+                $book_author->book_id = $book->id;
+                $book_author->full_name = $author_name;
+                $book_author->save();
+            }
+        }
+    }
 }
 
 }

@@ -207,6 +207,48 @@
                 "stripe"
             ],
             "time": "2015-06-09 16:19:26"
+    "hash": "5d93956d08259a20e94c687fe65f29f9",
+    "packages": [
+        {
+            "name": "ckeditor/ckeditor",
+            "version": "4.4.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ckeditor/ckeditor-releases.git",
+                "reference": "cc324415302784eb1abe33a3762fbdd3b48c558b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ckeditor/ckeditor-releases/zipball/cc324415302784eb1abe33a3762fbdd3b48c558b",
+                "reference": "cc324415302784eb1abe33a3762fbdd3b48c558b",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+",
+                "LGPL-2.1+",
+                "MPL-1.1+"
+            ],
+            "authors": [
+                {
+                    "name": "CKSource",
+                    "homepage": "http://cksource.com"
+                }
+            ],
+            "description": "JavaScript WYSIWYG web text editor.",
+            "homepage": "http://ckeditor.com",
+            "keywords": [
+                "CKEditor",
+                "editor",
+                "fckeditor",
+                "html",
+                "javascript",
+                "richtext",
+                "text",
+                "wysiwyg"
+            ],
+            "time": "2015-01-27 15:13:53"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -1901,6 +1943,61 @@
             "time": "2014-12-30 13:32:42"
         },
         {
+            "name": "stripe/stripe-php",
+            "version": "v2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stripe/stripe-php.git",
+                "reference": "c58a8b221a37ff8641ff88342c42681b37605a38"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/c58a8b221a37ff8641ff88342c42681b37605a38",
+                "reference": "c58a8b221a37ff8641ff88342c42681b37605a38",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~0.6.1",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stripe\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stripe and contributors",
+                    "homepage": "https://github.com/stripe/stripe-php/contributors"
+                }
+            ],
+            "description": "Stripe PHP Library",
+            "homepage": "https://stripe.com/",
+            "keywords": [
+                "api",
+                "payment processing",
+                "stripe"
+            ],
+            "time": "2015-06-01 21:09:44"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.1",
             "source": {
@@ -2767,16 +2864,16 @@
         },
         {
             "name": "fzaninotto/faker",
-            "version": "v1.5.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d"
+                "reference": "bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d0190b156bcca848d401fb80f31f504f37141c8d",
-                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27",
+                "reference": "bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27",
                 "shasum": ""
             },
             "require": {
@@ -2815,7 +2912,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-05-29 06:29:14"
+            "time": "2015-05-20 13:03:42"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -3280,6 +3377,7 @@
         },
         {
             "name": "phpunit/phpunit",
+<<<<<<< HEAD
             "version": "4.7.5",
             "source": {
                 "type": "git",
@@ -3290,6 +3388,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f6701ef3faea759acd1910a7751d8d102a7fd5bc",
                 "reference": "f6701ef3faea759acd1910a7751d8d102a7fd5bc",
+=======
+            "version": "4.7.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/phpunit.git",
+                "reference": "e5f851f324f7add846316f39e668e9deac97a103"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e5f851f324f7add846316f39e668e9deac97a103",
+                "reference": "e5f851f324f7add846316f39e668e9deac97a103",
+>>>>>>> 508191e76e1da8e47833fec28656e092c8988981
                 "shasum": ""
             },
             "require": {

@@ -47,7 +47,17 @@ body {
 
 .shopping-cart{
     min-height: 500px;
+}
 
+.shopping-cart h1 {
+    text-align: center;
+    padding-top: 70px;
+}
+
+@media (max-width: 768px) {
+    .shopping-cart h1 {
+        padding-top: 20px;
+    }
 }
 
 .cart-table{
@@ -69,12 +79,29 @@ body {
     margin-bottom: 0%;
 }
 
+.cart-button {
+    background: #F16521;
+    color: #FFFFFF;
+    border: none;
+}
+
+.cart-button:hover,
+.cart-button:focus {
+    background: #F16521;
+    color: #FFFFFF;
+}
+
 .btn-checkout {
     background: #7AB4DE;
     color: #FFFFFF;
     border: none;
     width: 100%;
     box-shadow: 0 5px #5B86AA;
+}
+
+.btn-checkout:hover,
+.btn-checkout:focus {
+    color: #FFFFFF;
 }
 
 .btn-checkout:active {

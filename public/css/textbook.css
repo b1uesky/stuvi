@@ -99,6 +99,7 @@ body {
 
 .form-control:focus {
     border: 2px solid #F16521;
+    border-right: none;
     box-shadow: none;
 }
 

@@ -6,13 +6,11 @@
  * Time: 3:25 PM
  */
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests;
 use App\Product;
-use Illuminate\Http\Request;
-
 use Cart;
+use Auth;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
@@ -25,6 +23,13 @@ class CartController extends Controller
     public function index()
     {
         $content = Cart::content();
+
+        // check the Cart
+        if (!$this->checkCart())
+        {
+            Session::flash('message', 'Please remove your own products from the Cart before proceeding to checkout.');
+            Session::flash('alert-class', 'alert-danger');
+        }
 
         return view('cart.index')->withItems($content)->with('total_price', Cart::total());
     }
@@ -50,6 +55,11 @@ class CartController extends Controller
             elseif ($item->sold)
             {
                 Session::flash('message', 'Product has been sold.');
+                Session::flash('alert-class', 'alert-danger');
+            }
+            elseif ($item->seller_id == Auth::id())
+            {
+                Session::flash('message', 'Can not add your own product to the Cart.');
                 Session::flash('alert-class', 'alert-danger');
             }
             else
@@ -84,7 +94,7 @@ class CartController extends Controller
         {
             Session::flash('message', 'Sorry, the item has already been removed.');
             Session::flash('alert-class', 'alert-warning');
-//            return redirect('/cart');
+            return redirect('/cart');
         }
 
         return redirect('/cart');

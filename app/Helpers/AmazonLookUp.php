@@ -25,9 +25,9 @@ class AmazonLookUp
         try {
             $this->conf
                 ->setCountry('com')
-                ->setAccessKey(Config::get('amazon.access_key_id'))
-                ->setSecretKey(Config::get('amazon.secret_access_key'))
-                ->setAssociateTag(Config::get('amazon.associate_id'));
+                ->setAccessKey(Config::get('services.amazon.access_key_id'))
+                ->setSecretKey(Config::get('services.amazon.secret_access_key'))
+                ->setAssociateTag(Config::get('services.amazon.associate_id'));
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
@@ -47,6 +47,19 @@ class AmazonLookUp
         $this->dom = $apaiIO->runOperation($lookup);
     }
 
+    public function getDOM()
+    {
+        return $this->dom;
+    }
+
+    public function saveToXML()
+    {
+        $this->dom->formatOutput = true;
+        $filename = $this->item_id . '.xml';
+
+        echo 'Wrote: ' . $this->dom->save($filename) . ' bytes';
+    }
+
     public function success()
     {
         if ($this->dom->getElementsByTagName('Item')->length == 0)
@@ -59,7 +72,7 @@ class AmazonLookUp
 
     public function getValuesByTag($tag)
     {
-        $elems = $this->dom->getElementsByTagName($tag);
+        $elems = $this->getItem(0)->getElementsByTagName($tag);
         $values = array();
 
         foreach ($elems as $elem)
@@ -68,6 +81,11 @@ class AmazonLookUp
         }
 
         return $values;
+    }
+
+    public function getItem($index)
+    {
+        return $this->dom->getElementsByTagName('Item')->item($index);
     }
 
     public function getAuthors()
@@ -113,11 +131,15 @@ class AmazonLookUp
 
     public function getImageURL($image_size)
     {
-        $image_set = $this->dom->getElementsByTagName('ImageSet')->item(0);
-        $image = $image_set->getElementsByTagName($image_size)->item(0);
-        $url = $image->getElementsByTagName('URL')->item(0)->nodeValue;
+        if ($this->getItem(0)->getElementsByTagName($image_size)->length > 0)
+        {
+            $image = $this->getItem(0)->getElementsByTagName($image_size)->item(0);
+            $url = $image->getElementsByTagName('URL')->item(0)->nodeValue;
 
-        return $url;
+            return $url;
+        }
+
+        return "";
     }
 
     public function getSmallImage()
@@ -134,5 +156,16 @@ class AmazonLookUp
     {
         return $this->getImageURL('LargeImage');
     }
+
+    public function getISBN10()
+    {
+        return $this->getValuesByTag('ASIN')[0];
+    }
+
+    public function getISBN13()
+    {
+        return $this->getValuesByTag('EAN')[0];
+    }
+
 
 }
