@@ -69,10 +69,13 @@
                         <td class="for-sale-info-1">
                             <span class="for-sale-title"><a
                                         href="{{ url('textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a></span><br>
-                            <span class="for-sale-author">by <a href="#">Adolf Hitler</a></span><br>
+                            <span>by </span>
+                            @foreach($product->book->authors as $author)
+                                <span class="for-sale-author"><a href="#">{{ $author->full_name }}</a></span>
+                            @endforeach
 
                             <span class="for-sale-binding">Hardcover</span><br>
-                            <span class="for-sale-price">$18.00</span> <br>
+                            <span class="for-sale-price">{{ $product->price }}</span> <br>
                         </td>
                         <td class="for-sale-info-2">
                             <span class="for-sale-pub-date text-muted">September 15, 1998</span><br>
@@ -89,7 +92,6 @@
                 @empty
                     You don't have book for sale.
                 @endforelse
-
             </table>
         </div>
 
