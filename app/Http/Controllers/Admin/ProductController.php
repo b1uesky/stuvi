@@ -88,4 +88,29 @@ class ProductController extends Controller {
 		//
 	}
 
+	public function approve($id)
+	{
+		$product = Product::find($id);
+
+		if ($product->verified == false)
+		{
+			$product->verified = true;
+			$product->save();
+		}
+
+		return redirect()->back();
+	}
+
+	public function disapprove($id)
+	{
+		$product = Product::find($id);
+
+		if ($product->verified == true)
+		{
+			$product->verified = false;
+			$product->save();
+		}
+
+		return redirect()->back();
+	}
 }

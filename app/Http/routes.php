@@ -123,4 +123,6 @@ Route::group(['namespace'=>'Admin', 'middleware'=>'auth', 'prefix'=>'admin'], fu
 {
     Route::get('/', 'ProductController@index');
     Route::resource('product', 'ProductController');
+    Route::get('/product/{id}/approve', 'ProductController@approve');
+    Route::get('/product/{id}/disapprove', 'ProductController@disapprove');
 });

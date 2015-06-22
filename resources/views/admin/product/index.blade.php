@@ -35,7 +35,7 @@
                         @endforeach
                     </td>
                     <td>{{ $product->isSold() }}</td>
-                    <td>{{ $product->verified }}</td>
+                    <td>{{ $product->isVerified() }}</td>
 
                     <!-- we will also add show, edit, and delete buttons -->
                     <td>
@@ -44,7 +44,15 @@
                         <!-- we will add this later since its a little more complicated than the other two buttons -->
 
                         <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
-                        <a class="btn btn-small btn-success" href="{{ URL::to('admin/product/' . $product->id) }}">Detail</a>
+                        <div class="btn-group-vertical" role="group">
+                            <a class="btn btn-default" role="button" href="{{ URL::to('admin/product/' . $product->id) }}">View Details</a>
+                            @if(!$product->verified)
+                                <a class="btn btn-success" role="button" href="{{ URL::to('admin/product/' . $product->id . '/approve') }}">Approve</a>
+                            @else
+                                <a class="btn btn-danger" role="button" href="{{ URL::to('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
+                            @endif
+                        </div>
+
                     </td>
                 </tr>
             @endforeach
