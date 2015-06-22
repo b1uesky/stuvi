@@ -35,5 +35,9 @@
                 <th>{{ $conditions['general_condition']['title'] }}</th>
                 <td>{{ $conditions['general_condition'][$product->condition->general_condition] }}</td>
             </tr>
+            <tr>
+                <th>{{ $conditions['highlights_and_notes']['title'] }}</th>
+                <td>{{ $conditions['highlights_and_notes'][$product->condition->highlights_and_notes] }}</td>
+            </tr>
         </table>
 @endsection
