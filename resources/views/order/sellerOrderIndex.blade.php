@@ -9,16 +9,19 @@
         <title>Stuvi - Sold Books</title>
     </head>
 
+    {{-- Go back link --}}
     <div class="row back-row">
-        <a id="go-back" href="" onclick="goBack()" ><i class="fa fa-arrow-circle-left"></i> Back</a>
+        <a id="go-back" onclick="goBack()" ><i class="fa fa-arrow-circle-left"></i> Back</a>
     </div>
 
+    <!-- Message -->
     <div class="container" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
             <div class="flash-message">{{ Session::get('message') }}</div>
         @endif
     </div>
-    <div class="container">
+    <!-- Main container -->
+    <div class="container seller-order-container">
         <h1>Your sold books:</h1>
         @forelse ($orders->reverse() as $order)
             <div class="row">
@@ -46,7 +49,7 @@
                         <div class="col-xs-12 col-sm-5 book-info">
                             <h5><a href="{{ url('/textbook/buy/product/'.$order->product->id) }}">{{ $order->product->book->title }}</a></h5>
                             <h5><small>{{ $order->product->book->author}}</small></h5>
-                            <h6>ISBN: {{ $order->product->book->isbn }}</h6>
+                            <h6>ISBN: {{ $order->product->book->isbn10 }}</h6>
                         </div>
                         <div class="col-xs-12 col-sm-2 col-xs-offset-0 col-sm-offset-1 col-md-offset-3 book-price">
                             <h4>${{ $order->product->price }}</h4>
@@ -54,18 +57,6 @@
                     </div>
 
                 </div>
-
-
-                {{--<li>Order #{{ $order->id }}</li>--}}
-                {{----}}
-                {{--<li>{{ $order->buyer_payment()->stripe_amount/100 }}</li>--}}
-                {{--<p>Product info:</p><br>--}}
-                {{--<li>{{ $order->product->book->title }}</li>--}}
-                {{--<li>{{ $order->product->book->isbn }}</li>--}}
-                {{--<li>{{ $order->product->book->author }}</li>--}}
-                {{----}}
-                {{----------------------------------------------------------------<br>--}}
-
             </div>
         @empty
             <div class="container-fluid empty">
@@ -77,9 +68,5 @@
 
     </div>
 
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+    <script src="{{asset('/js/order.js')}}" type="text/javascript"></script>
 @endsection

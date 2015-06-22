@@ -98,6 +98,6 @@
     </div>
 
     <!-- print window required -->
-    <script src="{{asset('/js/showBuyerOrder.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/showOrder.js')}}" type="text/javascript"></script>
 
 @endsection

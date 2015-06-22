@@ -56,7 +56,7 @@
                         <li><a href="https://www.facebook.com/StuviBoston" target="_blank"><i class="fa fa-facebook fa-lg"></i> Facebook</a></li>
                         <li><a href="https://twitter.com/StuviBoston" target="_blank"><i class="fa fa-twitter fa-lg"></i> Twitter</a></li>
                         <li><a href="https://www.linkedin.com/company/stuvi?trk=biz-companies-cym" target="_blank"><i class="fa fa-linkedin fa-lg"></i> LinkedIn</a></li>
-                        <li><a href="#"><i class="fa fa-github fa-lg"></i> Github</a></li>
+                        {{--<li><a href="#"><i class="fa fa-github fa-lg"></i> Github</a></li>--}}
                     </ul>
                 </div>
             </div>

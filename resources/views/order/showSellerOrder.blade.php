@@ -1,15 +1,14 @@
+{{-- Your orders page --}}
+
+
 @extends('app')
-
-{{--<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" media="screen"
-      href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css"> --}}
-
 
 @section('content')
 
     <head>
         <link href="{{ asset('/css/showOrder.css') }}" rel="stylesheet" type="text/css">
-
+        {{-- date time picker required--}}
+        <link rel="stylesheet" type="text/css" href="{{asset('/datetimepicker/jquery.datetimepicker.css')}}"/>
         <title>Stuvi - Order Details</title>
     </head>
 
@@ -61,6 +60,7 @@
             <!-- pick up form-->
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
+                    <!-- if order is cancelled, don't show -->
                     @if($seller_order->cancelled)
                         {{--nothing--}}
                     @elseif ($seller_order->scheduled_pickup_time)
@@ -93,23 +93,10 @@
         </div>
     </div>
 
-
-    <!-- New date time picker
-    http://xdsoft.net/jqplugins/datetimepicker/ -->
-    <link rel="stylesheet" type="text/css" href="{{asset('/datetimepicker/jquery.datetimepicker.css')}}"/>
+    <!-- Date time picker required scripts -->
+    <script src="{{asset('/js/showOrder.js')}}" type="text/javascript"></script>
     <script src="{{asset('datetimepicker/jquery.js')}}"></script>
     <script src="{{asset('datetimepicker/jquery.datetimepicker.js')}}"></script>
     {{--<script src="http://momentjs.com/downloads/moment.min.js"></script>--}}
-    <script type="text/javascript">
-        jQuery('#datetimepicker').datetimepicker({
-            format: 'm/d/Y H:i',
-            minDate:'-1970/01/01',//yesterday is minimum date(for today use 0 or -1970/01/01)
-            //maxDate:'+1970/01/02'//tommorow is maximum date calendar
-            minTime: 0,
-            //mask:true, // '9999/19/39 29:59' - digit is the maximum possible for a cell
-            lang: 'en',
-            step: 30
-        });
 
-    </script>
 @endsection

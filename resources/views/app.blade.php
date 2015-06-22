@@ -70,6 +70,8 @@
                                     Your Account</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/order/buyer') }}">
                                     Your Orders</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/order/seller') }}">
+                                    Sold Books</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/cart') }}">
                                     Shopping Cart</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/auth/logout') }}">
@@ -89,7 +91,7 @@
 <!-- Displays page content -->
 @yield('content')
 
-<!-- FOOTER -->
+<!-- FOOTER. See footer styling at footer-distribyted.css -->
 <footer class="footer-distributed">
     <!-- Social Media -->
     <div class="footer-right">
@@ -97,7 +99,7 @@
         <a class="social" href="https://www.facebook.com/StuviBoston" target="_blank"><i class="fa fa-facebook"></i></a>
         <a class="social" href="https://twitter.com/StuviBoston" target="_blank"><i class="fa fa-twitter"></i></a>
         <a class="social" href="https://www.linkedin.com/company/stuvi?trk=biz-companies-cym" target="_blank"><i class="fa fa-linkedin"></i></a>
-        <a class="social" href="#"><i class="fa fa-github"></i></a>
+        {{--<a class="social" href="#"><i class="fa fa-github"></i></a>--}}
 
     </div>
 

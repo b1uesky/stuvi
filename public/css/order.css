@@ -1,44 +1,48 @@
-/******* BUYER ORDERS PAGE *******/
+/******* This CSS page used for both buyer order index and seller order index
+         Find them at /order/index and order/sellOrderIndex
+ *******/
 
 h1{
     margin-left: -10px !important;
 }
 
+/* Under nav bar. "Look for seller orders? */
 .link-to-seller{
     margin-left: 15px;
     padding-top: 10px;
     padding-bottom: 0px;
+    margin-right: 0px;   /* Need this or else it goes off screen*/
 }
 
+/* Go back link container. Found in sellerOrderIndex */
 .back-row{
     margin-top:7px;
-    margin-right: 0px;
+    margin-right: 0px; /* Need this or else it goes off screen*/
 }
 
+/* Go Back link Found in sellerOrderIndex */
 #go-back{
     margin-left: 20px;
     padding: 10px !important;
 
 }
 
-#message {
-    font-style: italic;
-}
+/* alert message */
+#message { font-style: italic; }
 
+/* alert message container */
 #message-cont {
     padding: 1%;
     margin-top: 5px;
 }
 
+body { background-color: #F2F2F2;}
 
-body {
-    background-color: #F2F2F2;
-}
+.buyer-order-container {  }
 
-.buyer-order-container {
-    margin-bottom: 100px;
-}
+.seller-order-container{}
 
+/* Orange border around each order */
 .order-container {
     border: 2px solid #F9AA62;
     margin-bottom: 30px;
@@ -48,30 +52,21 @@ body {
     background-color: rgba(0, 0, 0, 0.09);
 }
 
-.book-row {
-    padding: 10px 0;
-}
+.book-row { padding: 10px 0; }
 
 .book-img{
     max-width: 100px;
     margin: 10px;
 }
 
-.lg-img{
-    max-width: 100px;
-}
+.lg-img     {  max-width: 100px;  }
 
-.book-info{
-    padding-left: 25px;
-}
+.book-info  {  padding-left: 25px;  }
 
-.book-info h3 {
-    margin-top: 10px;
-}
+.book-info h3 {  margin-top: 10px;  }
 
-.book-price{
-    color: #b61f17;
-}
+/* Price of book a deep red.. */
+.book-price{  color: #b61f17;  }
 
 .order-button-1 {
     background: #F16521;
@@ -87,10 +82,8 @@ body {
     margin: 5px;
 }
 
-#cancelled h3{
-    color: red;
-}
+/* Canceled order header color */
+#cancelled h3 {  color: red;  }
 
-.empty{
-    min-height: 400px !important;
-}
+/* If no orders, then make the container fill 65% of the viewport height */
+.empty{  height: 65vh;  }

@@ -45,7 +45,9 @@
                 @foreach($books as $book)
                     <tr class="textbook-item">
                         <td class="textbook-img-container">
-                            <img class="textbook-img" src="{{ $book->imageSet->medium_image }}">
+                            <a href="{{ url("textbook/buy/textbook/".$book->id) }}">
+                                <img class="textbook-img" src="{{ $book->imageSet->medium_image }}">
+                            </a>
                         </td>
                         <td class="textbook-info-1">
                             <span class="textbook-title"><a

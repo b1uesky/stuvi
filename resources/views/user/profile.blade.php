@@ -99,7 +99,7 @@
                                             </tr>
                                         @endif
                                     @empty
-                                        You don't have book for sale.
+                                        You don't have any books for sale.
                                     @endforelse
                                 </table>
                             </div>
@@ -112,13 +112,15 @@
     </div>
 
 
-    <!-- Slick required -->
+
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script> <!-- .active required -->
+    <!-- Slick required -->
 {{--
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="{{asset('/slick/slick.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/profile.js')}}"></script>
+
 --}}
+    <script type="text/javascript" src="{{asset('js/profile.js')}}"></script>
 
 @endsection
 
