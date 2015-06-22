@@ -9,7 +9,9 @@
         <title>Stuvi - Your Orders</title>
     </head>
 
-    <div class="row link-to-seller"><a href="/order/seller">Looking for Seller Orders?</a></div>
+    <div class="row link-to-seller"><a href="/order/seller">Looking for Seller Orders?</a><br>
+        <small><a onclick="goBack()">or go back</a></small>
+    </div>
 
     <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
@@ -68,12 +70,9 @@
                                 <a class="btn btn-default order-button-2" href="#" role="button">Return or Replace Item</a>
                                 <a class="btn btn-default order-button-2" href="#" role="button">Leave Seller Feedback</a>
                                 @endif
-                        </div>
-
-
+                            </div>
                         </div>
                     @endforeach
-
                 </div>
             </div>
         @empty
@@ -82,6 +81,6 @@
                 Why not <a href="/textbook">make one</a>?</p>
             </div>
         @endforelse
-
     </div>
+    <script src="{{asset('/js/order.js')}}" type="text/javascript"></script>
 @endsection

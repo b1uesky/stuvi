@@ -1,18 +1,24 @@
 /*http://homestead.app/order/buyer/#*/
 /*http://homestead.app/order/seller/#*/
 
-/*CSS For both showSellerOrder and showBuyerOrder*/
+/*CSS For both showSellerOrder and showBuyerOrder
+ *
+ * Page is accessed when viewing more details of an order
+ */
 
+
+/* Alert message */
 #message {
     font-style: italic;
 }
 
+/* Alert message container */
 #message-cont {
     padding: 1%;
     margin-top: 5px;
 }
 
-
+/* Print invoice link */
 .print{
     text-align: right;
     margin-top: 10px;
@@ -20,21 +26,25 @@
     padding-right: 10px;
 }
 
+/* Ordered on, order #, order canceled */
 #details1{
     font-weight: bold;
 }
+
+/* outline is basically like border
+ * Only used in showbuyerorder
+ */
 
 #details2{
     outline: 1px solid rgba(0, 0, 0, 0.30);
 }
 
+/* Bulk of the details */
 #details3{
     /*outline: 1px solid rgba(0, 0, 0, 0.30);*/
     border: 2px solid #F9AA62;
     margin-top: 10px;
     margin-bottom: 30px;
-
-
 }
 
 .row-items{
@@ -47,6 +57,7 @@ hr{
     border-color: black;
 }
 
+/* Cancel order button */
 .btn-cancel {
     background: #F16521;
     color: #FFFFFF;
@@ -57,18 +68,9 @@ hr{
     color: red;
 }
 
-/* showBuyerOrder*/
+/* showBuyerOrder only*/
 
+/* "Order Details" */
 #h1-showBuy{
     margin-left:-15px;
-}
-
-.input-box, .add-on {
-    padding: 16px !important;
-}
-
-.icon-calendar{
-    margin-top: -9px !important;
-    margin-left:1px;
-    margin-right: -1px;
 }

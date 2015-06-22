@@ -10,7 +10,7 @@
     </head>
 
     <div class="row back-row">
-        <a id="go-back" href="" onclick="goBack()" ><i class="fa fa-arrow-circle-left"></i> Back</a>
+        <a id="go-back" onclick="goBack()" ><i class="fa fa-arrow-circle-left"></i> Back</a>
     </div>
 
     <div class="container" xmlns="http://www.w3.org/1999/html">
@@ -54,18 +54,6 @@
                     </div>
 
                 </div>
-
-
-                {{--<li>Order #{{ $order->id }}</li>--}}
-                {{----}}
-                {{--<li>{{ $order->buyer_payment()->stripe_amount/100 }}</li>--}}
-                {{--<p>Product info:</p><br>--}}
-                {{--<li>{{ $order->product->book->title }}</li>--}}
-                {{--<li>{{ $order->product->book->isbn }}</li>--}}
-                {{--<li>{{ $order->product->book->author }}</li>--}}
-                {{----}}
-                {{----------------------------------------------------------------<br>--}}
-
             </div>
         @empty
             <div class="container-fluid empty">
@@ -77,9 +65,5 @@
 
     </div>
 
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+    <script src="{{asset('/js/order.js')}}" type="text/javascript"></script>
 @endsection
