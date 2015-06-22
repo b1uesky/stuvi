@@ -61,8 +61,10 @@
             <!-- pick up form-->
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
-                    <label class="control-label"><b>Schedule a pick-up time</b></label><br>
-                    @if ($seller_order->scheduled_pickup_time)
+                    @if($seller_order->cancelled)
+                        {{--nothing--}}
+                    @elseif ($seller_order->scheduled_pickup_time)
+                        <label class="control-label"><b>Schedule a pick-up time</b></label><br>
                         <mark>{{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}</mark><br>
                         <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -73,6 +75,7 @@
                             </div>
                         </form>
                     @elseif (!$seller_order->cancelled)
+                        <label class="control-label"><b>Schedule a pick-up time</b></label><br>
                         {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}<br>
                         <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
