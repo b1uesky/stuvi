@@ -54,95 +54,59 @@
 {{--                <p><label class="col-md-4 control-label">Title: {{ $book->title }}</label></p>
                 <p><label class="col-md-4 control-label">ISBN: {{ $book->isbn }}</label></p>
                 <p><label class="col-md-4 control-label">Price: {{ $product->price }}</label></p>--}}
-                    <p>Title: {{ $book->title }}</p>
+                    <p>Title: <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $book->title }}</a></p>
                     <p>ISBN: {{ $book->isbn }}</p>
                     <p>Price: ${{ $product->price }}</p>
             </div>
             <!-- pick up form-->
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
-                    <p>{{--label class="col-md-8 control-label">Scheduled pick-up time:</label>--}}
-                     Schedule a pick-up time </p>
-
-
-{{--                    @if ($seller_order->scheduled_pickup_time)
-                        {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}
+                    <label class="control-label"><b>Schedule a pick-up time</b></label><br>
+                    @if ($seller_order->scheduled_pickup_time)
+                        <mark>{{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}</mark><br>
                         <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="id" value="{{ $seller_order->id }}">
-
-                            <div class="form-group col-md-8">
-                                <div id="datetimepicker" class="input-append date">
-                                    <input class="input-box" type="text" name="scheduled_pickup_time"></input>
-                          <span class="add-on">
-                            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                              --}}{{--<i class="fa fa-calendar"></i>--}}{{--
-                          </span>
-                                    <button type="submit" class="btn btn-primary">Set</button>
-                                </div>
-                                <script type="text/javascript"
-                                        src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-                                </script>
-                                <script type="text/javascript"
-                                        src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
-                                </script>
-                                <script type="text/javascript"
-                                        src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
-                                </script>
-                                <script type="text/javascript"
-                                        src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-                                </script>
-                                <script type="text/javascript">
-                                    $('#datetimepicker').datetimepicker({
-                                        format: 'dd/MM/yyyy hh:mm',
-                                        language: 'us-EN'
-                                    });
-                                </script>
-
+                            <div class="form-group">
+                                <input id="datetimepicker" class="input-append date" type="text" name="scheduled_pickup_time">
+                                <button type="submit" class="btn btn-primary">Reschedule</button>
                             </div>
                         </form>
                     @elseif (!$seller_order->cancelled)
-                    <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="id" value="{{ $seller_order->id }}">
-
-                        <div class="form-group col-md-8">
-                        <div id="datetimepicker" class="input-append date">
-                            <input class="input-box" type="text" name="scheduled_pickup_time"></input>
-                          <span class="add-on">
-                            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                              --}}{{--<i class="fa fa-calendar"></i>--}}{{--
-                          </span>
-                            <button type="submit" class="btn btn-primary">Set</button>
-                        </div>
-                       <script type="text/javascript"
-                                src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-                        </script>
-                        <script type="text/javascript"
-                                src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
-                        </script>
-                        <script type="text/javascript"
-                                src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
-                        </script>
-                        <script type="text/javascript"
-                                src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-                        </script>
-                        <script type="text/javascript">
-                            $('#datetimepicker').datetimepicker({
-                                format: 'dd/MM/yyyy hh:mm',
-                                language: 'us-EN'
-                            });
-                        </script>
-
-                        </div>
-                    </form>
+                        {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}<br>
+                        <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="id" value="{{ $seller_order->id }}">
+                            <div class="form-group">
+                                <input id="datetimepicker" class="input-append date" type="text" name="scheduled_pickup_time" >
+                                <button type="submit" class="btn btn-primary">Set</button>
+                            </div>
+                        </form>
                     @else
                         N/A
-                    @endif--}}
-
-
+                    @endif
                 </div>
             </div>  <!-- end pick up row -->
         </div>
     </div>
+
+
+    <!-- New date time picker
+    http://xdsoft.net/jqplugins/datetimepicker/ -->
+    <link rel="stylesheet" type="text/css" href="{{asset('/datetimepicker/jquery.datetimepicker.css')}}"/>
+    <script src="{{asset('datetimepicker/jquery.js')}}"></script>
+    <script src="{{asset('datetimepicker/jquery.datetimepicker.js')}}"></script>
+    {{--<script src="http://momentjs.com/downloads/moment.min.js"></script>--}}
+    <script type="text/javascript">
+        jQuery('#datetimepicker').datetimepicker({
+            format: 'm/d/Y H:i',
+            minDate:'-1970/01/01',//yesterday is minimum date(for today use 0 or -1970/01/01)
+            //maxDate:'+1970/01/02'//tommorow is maximum date calendar
+            minTime: 0,
+            //mask:true, // '9999/19/39 29:59' - digit is the maximum possible for a cell
+            lang: 'en',
+            step: 30
+        });
+
+    </script>
 @endsection

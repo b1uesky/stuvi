@@ -44,7 +44,7 @@
                             <img class="lg-img" src="{{ $order->product->images->first()->path }}">
                         </div>
                         <div class="col-xs-12 col-sm-5 book-info">
-                            <h5>{{ $order->product->book->title }}</h5>
+                            <h5><a href="{{ url('/textbook/buy/product/'.$order->product->id) }}">{{ $order->product->book->title }}</a></h5>
                             <h5><small>{{ $order->product->book->author}}</small></h5>
                             <h6>ISBN: {{ $order->product->book->isbn }}</h6>
                         </div>

@@ -78,6 +78,7 @@ class SellerOrderController extends Controller
     public function setScheduledPickupTime()
     {
         $scheduled_pickup_time  = Input::get('scheduled_pickup_time');
+        //return $scheduled_pickup_time;
         $id                     = (int)Input::get('id');
 
         $seller_order           = SellerOrder::find($id);
@@ -92,7 +93,7 @@ class SellerOrderController extends Controller
                     ->with('message', 'Fail to set pickup time because this order has been cancelled.');
             }
 
-            $scheduled_pickup_time = DateTime::createFromFormat("d/m/Y G:i", $scheduled_pickup_time)->format('Y-m-d G:i:s');
+            $scheduled_pickup_time = DateTime::createFromFormat("m/d/Y H:i", $scheduled_pickup_time)->format('Y-m-d G:i:s');
 
             $seller_order->scheduled_pickup_time    = $scheduled_pickup_time;
             $seller_order->save();
