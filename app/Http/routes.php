@@ -119,7 +119,7 @@ Route::controllers([
 | Admin Routes
 |--------------------------------------------------------------------------
 */
-Route::group(['namespace'=>'Admin', 'middleware'=>'auth', 'prefix'=>'admin'], function()
+Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>'admin'], function()
 {
     Route::get('/', 'ProductController@index');
     Route::resource('product', 'ProductController');
