@@ -98,4 +98,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->products()->where('sold', 0)->get();
     }
+
+    /**
+     * Check if the user has a given role.
+     *
+     * @param null $role
+     *
+     * @return bool
+     */
+    public function hasRole($role=null)
+    {
+        if (!is_null($role) && (strpos($this->role, $role) !== false))
+        {
+            return true;
+        }
+
+        return false;
+    }
 }
