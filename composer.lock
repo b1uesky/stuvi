@@ -4,252 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fec376289c7573737f2b444a53fc383b",
+    "hash": "7603595dd225f9823357f3ed4bfd105a",
     "packages": [
-        {
-            "name": "cartalyst/collections",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cartalyst/collections.git",
-                "reference": "2b39755c52cb69e9ac4014891d857629f682da90"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cartalyst/collections/zipball/2b39755c52cb69e9ac4014891d857629f682da90",
-                "reference": "2b39755c52cb69e9ac4014891d857629f682da90",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4.4"
-            },
-            "type": "library",
-            "extra": {
-                "component": "package",
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cartalyst\\Collections\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Cartalyst LLC",
-                    "email": "help@cartalyst.com"
-                },
-                {
-                    "name": "Bruno Gaspar",
-                    "email": "bruno.gaspar@cartalyst.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Dan Syme",
-                    "email": "dan.syme@cartalyst.com",
-                    "role": "Project Lead"
-                },
-                {
-                    "name": "Suhayb Wardany",
-                    "email": "su.wardany@cartalyst.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Collection Abstaction library for PHP.",
-            "keywords": [
-                "cartalyst",
-                "collections",
-                "php"
-            ],
-            "time": "2015-03-06 21:10:35"
-        },
-        {
-            "name": "cartalyst/stripe",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cartalyst/stripe.git",
-                "reference": "7bd0803f052767783de997e3430bfc6dc40ce261"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cartalyst/stripe/zipball/7bd0803f052767783de997e3430bfc6dc40ce261",
-                "reference": "7bd0803f052767783de997e3430bfc6dc40ce261",
-                "shasum": ""
-            },
-            "require": {
-                "cartalyst/collections": "~1.0",
-                "guzzlehttp/guzzle": "~5.2",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4.5"
-            },
-            "type": "library",
-            "extra": {
-                "component": "package",
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cartalyst\\Stripe\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Cartalyst LLC",
-                    "email": "help@cartalyst.com"
-                },
-                {
-                    "name": "Bruno Gaspar",
-                    "email": "bruno.gaspar@cartalyst.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Dan Syme",
-                    "email": "dan.syme@cartalyst.com",
-                    "role": "Project Lead"
-                },
-                {
-                    "name": "Suhayb Wardany",
-                    "email": "su.wardany@cartalyst.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A comprehensive Stripe API package.",
-            "keywords": [
-                "cartalyst",
-                "php",
-                "stripe"
-            ],
-            "time": "2015-06-03 20:26:50"
-        },
-        {
-            "name": "cartalyst/stripe-laravel",
-            "version": "v2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cartalyst/stripe-laravel.git",
-                "reference": "a33350068abfe51b16919c8bbf4c9994c6f1b0dd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cartalyst/stripe-laravel/zipball/a33350068abfe51b16919c8bbf4c9994c6f1b0dd",
-                "reference": "a33350068abfe51b16919c8bbf4c9994c6f1b0dd",
-                "shasum": ""
-            },
-            "require": {
-                "cartalyst/stripe": "1.0.*",
-                "illuminate/support": "~5.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.5"
-            },
-            "type": "library",
-            "extra": {
-                "component": "implementation",
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cartalyst\\Stripe\\Laravel\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Cartalyst LLC",
-                    "email": "help@cartalyst.com"
-                },
-                {
-                    "name": "Bruno Gaspar",
-                    "email": "bruno.gaspar@cartalyst.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Dan Syme",
-                    "email": "dan.syme@cartalyst.com",
-                    "role": "Project Lead"
-                },
-                {
-                    "name": "Suhayb Wardany",
-                    "email": "su.wardany@cartalyst.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Laravel 5 integration for the Cartalyst Stripe package.",
-            "keywords": [
-                "cartalyst",
-                "laravel",
-                "php",
-                "stripe"
-            ],
-            "time": "2015-06-09 16:19:26"
-    "hash": "5d93956d08259a20e94c687fe65f29f9",
-    "packages": [
-        {
-            "name": "ckeditor/ckeditor",
-            "version": "4.4.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ckeditor/ckeditor-releases.git",
-                "reference": "cc324415302784eb1abe33a3762fbdd3b48c558b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ckeditor/ckeditor-releases/zipball/cc324415302784eb1abe33a3762fbdd3b48c558b",
-                "reference": "cc324415302784eb1abe33a3762fbdd3b48c558b",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+",
-                "LGPL-2.1+",
-                "MPL-1.1+"
-            ],
-            "authors": [
-                {
-                    "name": "CKSource",
-                    "homepage": "http://cksource.com"
-                }
-            ],
-            "description": "JavaScript WYSIWYG web text editor.",
-            "homepage": "http://ckeditor.com",
-            "keywords": [
-                "CKEditor",
-                "editor",
-                "fckeditor",
-                "html",
-                "javascript",
-                "richtext",
-                "text",
-                "wysiwyg"
-            ],
-            "time": "2015-01-27 15:13:53"
-        },
         {
             "name": "classpreloader/classpreloader",
             "version": "1.4.0",
@@ -2864,16 +2620,16 @@
         },
         {
             "name": "fzaninotto/faker",
-            "version": "dev-master",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27"
+                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27",
-                "reference": "bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d0190b156bcca848d401fb80f31f504f37141c8d",
+                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
                 "shasum": ""
             },
             "require": {
@@ -2912,7 +2668,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-05-20 13:03:42"
+            "time": "2015-05-29 06:29:14"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -3377,7 +3133,6 @@
         },
         {
             "name": "phpunit/phpunit",
-<<<<<<< HEAD
             "version": "4.7.5",
             "source": {
                 "type": "git",
@@ -3388,18 +3143,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f6701ef3faea759acd1910a7751d8d102a7fd5bc",
                 "reference": "f6701ef3faea759acd1910a7751d8d102a7fd5bc",
-=======
-            "version": "4.7.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "e5f851f324f7add846316f39e668e9deac97a103"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e5f851f324f7add846316f39e668e9deac97a103",
-                "reference": "e5f851f324f7add846316f39e668e9deac97a103",
->>>>>>> 508191e76e1da8e47833fec28656e092c8988981
                 "shasum": ""
             },
             "require": {
