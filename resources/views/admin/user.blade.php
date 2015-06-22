@@ -3,8 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <table style="width:100%" border="1">
-                <caption>Users</caption>
+            <table class="table table-hover">
                 <tr>
                     <th>Email</th>
                     <th>First Name</th>

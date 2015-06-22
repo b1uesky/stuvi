@@ -23,8 +23,24 @@ class Product extends Model
         return $this->hasOne('App\ProductCondition');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function images()
     {
         return $this->hasMany('App\ProductImage');
+    }
+
+    /**
+     * @return string
+     */
+    public function isSold()
+    {
+        if ($this->sold)
+        {
+            return 'Yes';
+        }
+
+        return 'No';
     }
 }
