@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Product;
+use Config;
 
 class ProductController extends Controller {
 
@@ -49,7 +50,9 @@ class ProductController extends Controller {
 	 */
 	public function show($id)
 	{
-        return view('admin.product.show')->withProduct($id);
+        return view('admin.product.show')
+            ->withProduct($id)
+            ->withConditions(Config::get('product.conditions'));
 	}
 
 	/**
