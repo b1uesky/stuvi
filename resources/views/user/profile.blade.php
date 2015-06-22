@@ -99,7 +99,7 @@
                                             </tr>
                                         @endif
                                     @empty
-                                        You don't have book for sale.
+                                        You don't have any books for sale.
                                     @endforelse
                                 </table>
                             </div>
