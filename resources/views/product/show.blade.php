@@ -1,11 +1,11 @@
-{{--extbook/buy/product/#--}}
+{{--textbook/buy/product/#--}}
 
 @extends('product')
 
 @section('content')
 <head>
-    <title>Stuvi - Book Details</title>
-    <link rel="stylesheet" href="{{asset('/css/product-show.css')}}" type="text/css">
+    <title>Stuvi - Book Details - {{ $book->title }} </title>
+    <link rel="stylesheet" href="{{asset('/css/product/product-show.css')}}" type="text/css">
 </head>
 
 @include('textbook/textbook-nav')
@@ -22,7 +22,11 @@
                 @if(!empty($images))
                     @foreach($images as $image)
                         <div class="">
-                            <img class="pro-img" src="{{ $image->path }}" alt="" />
+                            <a class="lightbox-product-link" href="{{ $image->path }}"
+                               data-lightbox="image {{$image->id}}" data-title="">
+                                <img class="pro-img" src="{{ $image->path }}" alt="" />
+                            </a>
+                            {{--<img class="pro-img" src="{{ $image->path }}" alt="" />--}}
                         </div>
                     @endforeach
                 @endif
@@ -70,7 +74,6 @@
 
         </div>
     </div>
-
 </div>
 
 
@@ -79,5 +82,12 @@
         window.history.back();
     }
 </script>
+
+<!-- lightbox required -->
+<script src="{{asset('/js/jquery.min.js')}}"></script>
+<script src="{{asset('lightbox2-master/dist/js/lightbox.min.js')}}"></script>
+<link href="{{asset('lightbox2-master/dist/css/lightbox.css')}}" rel="stylesheet">
+
+
 
 @endsection

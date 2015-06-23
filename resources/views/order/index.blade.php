@@ -5,7 +5,7 @@
 
 @section('content')
     <head>
-        <link href="{{ asset('/css/order.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('/css/order/order.css') }}" rel="stylesheet" type="text/css">
         <title>Stuvi - Your Orders</title>
     </head>
 

@@ -1,6 +1,6 @@
 @extends('app2')
 <head>
-    <link href="{{ asset('/css/login.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/auth/login.css') }}" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/css/bootstrap-select.min.css" rel="stylesheet">
     <title> Stuvi - login & register</title>
 </head>
