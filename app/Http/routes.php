@@ -122,8 +122,14 @@ Route::controllers([
 Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>'admin'], function()
 {
     Route::get('/', 'AdminController@index');
+
+    // user
     Route::resource('user', 'UserController');
-    Route::resource('product', 'ProductController');
+
+    // product
+    Route::get('/product/verified', 'ProductController@showVerified');
+    Route::get('/product/unverified', 'ProductController@showUnverified');
     Route::get('/product/{id}/approve', 'ProductController@approve');
     Route::get('/product/{id}/disapprove', 'ProductController@disapprove');
+    Route::resource('product', 'ProductController');
 });

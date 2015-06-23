@@ -14,6 +14,12 @@
         </div>
     @endif
 
+        <div class="btn-group" role="group">
+            <a href="{{ URL::to('admin/product') }}" class="btn btn-default">All</a>
+            <a href="{{ URL::to('admin/product/unverified') }}" class="btn btn-default">Unverified Only</a>
+            <a href="{{ URL::to('admin/product/verified') }}" class="btn btn-default">Verified Only</a>
+        </div>
+
     <table class="table table-hover">
         <tr>
             <th>ID</th>
@@ -61,5 +67,4 @@
         @endforeach
 
     </table>
-
 @endsection

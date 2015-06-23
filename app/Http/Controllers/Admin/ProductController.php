@@ -22,6 +22,21 @@ class ProductController extends Controller {
         return view('admin.product.index')->withProducts($products);
 	}
 
+    public function showUnverified()
+    {
+        $unverified = Product::where('verified', '=', false)->get();
+
+        return view('admin.product.index')->withProducts($unverified);
+    }
+
+    public function showVerified()
+    {
+        $verified = Product::where('verified', '=', true)->get();
+
+        return view('admin.product.index')->withProducts($verified);
+    }
+
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
