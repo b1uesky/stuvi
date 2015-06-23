@@ -15,6 +15,14 @@
     </head>
 
 <!-- top jumbotron -->
+
+    {{--
+    * Temp cover image...(c)Nicholas Louie All Rights Reserved. I Nicholas Louie, hereby allow a limited license
+    * to display this image on Stuvi's website with proper name and link credit. This photo may not be distributed, used
+    * or altered (except sizing/cropping) in any other way other than on the homepage
+    * Photo by Nick Louie. Link: https://flic.kr/p/kSKWtK
+    --}}
+
     <div class = "container-fluid container-top backgnd">           <!-- Top half -->
         <div class="container col-md-12">
             <h1 id="head1-temp">Welcome to Stuvi</h1>
@@ -48,6 +56,7 @@
                     <img class="img-responsive" src="{{asset('/img/art-boston.jpg')}}" width="350px">
                 </div>
             </div>
+
 
         </div>
         <div class="container-fluid services">

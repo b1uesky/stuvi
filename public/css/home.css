@@ -26,8 +26,8 @@ body {
     background-size: cover;                         /* Fill entire container */
     background-repeat: no-repeat;
     background-position: center;
-    padding-bottom: 5%;
-
+    /*padding-bottom: 27%;*/
+    height: 80vh;     /* Height is equal to 80% of the viewport height */
 }
 
 #head1-temp{
