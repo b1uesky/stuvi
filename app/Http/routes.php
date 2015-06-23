@@ -113,3 +113,17 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>'admin'], function()
+{
+    Route::get('/', 'AdminController@index');
+    Route::resource('user', 'UserController');
+    Route::resource('product', 'ProductController');
+    Route::get('/product/{id}/approve', 'ProductController@approve');
+    Route::get('/product/{id}/disapprove', 'ProductController@disapprove');
+});

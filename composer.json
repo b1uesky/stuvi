@@ -5,8 +5,7 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "5.0.*",
-		"frozennode/administrator": "5.*",
+		"laravel/framework": "5.1.*",
         "gloudemans/shoppingcart": "dev-master",
 		"fale/isbn": "2.0.0",
 		"exeu/apai-io": "dev-master",

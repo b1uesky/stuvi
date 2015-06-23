@@ -18,16 +18,16 @@ public function run()
         'password'      => bcrypt('123456'),
         'phone_number'  => '8572064789',
         'first_name'    => 'Tianyou',
-        'last_name'     => 'Luo'
-
+        'last_name'     => 'Luo',
+        'role'          => 'uac'
     ]);
 
     User::create([
         'email'         => 'test@bu.edu',
         'password'      => bcrypt('123456'),
         'first_name'    => 'Pengcheng',
-        'last_name'     => 'Ding'
-
+        'last_name'     => 'Ding',
+        'role'          => 'uac'
     ]);
 
     User::create([
