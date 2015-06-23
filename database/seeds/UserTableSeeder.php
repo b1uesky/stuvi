@@ -35,7 +35,8 @@ public function run()
         'password'      => bcrypt('123456'),
         'first_name'    => 'Seller',
         'last_name'     => 'Stuvi',
-        'university_id' => $bu->id
+        'university_id' => $bu->id,
+        'role'          => 'ua'
     ]);
 
     User::create([
@@ -43,7 +44,8 @@ public function run()
         'password'  => bcrypt('123456'),
         'first_name'    => 'Buyer',
         'last_name'     => 'Stuvi',
-        'university_id' =>  $bu->id
+        'university_id' =>  $bu->id,
+        'role'          => 'ua'
     ]);
 
     // $faker = Factory::create();
