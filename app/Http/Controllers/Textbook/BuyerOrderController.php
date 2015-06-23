@@ -25,8 +25,12 @@ class BuyerOrderController extends Controller
      */
     public function buyerOrderIndex()
     {
+        $order = Input::get('ord');
+        // check column existence
+        $order = $this->hasColumn('buyer_orders', $order) ? $order : 'id';
+
         return view('order.index')
-            ->with('orders', Auth::user()->buyerOrders()->orderBy('id', 'DESC')->get());
+            ->with('orders', Auth::user()->buyerOrders()->orderBy($order, 'DESC')->get());
     }
 
     /**
