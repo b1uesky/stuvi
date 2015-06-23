@@ -2,7 +2,7 @@
 
 @section('content')
     <head>
-        <link href="{{ asset('/css/showOrder.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('/css/order/showOrder.css') }}" rel="stylesheet" type="text/css">
         <title>Stuvi - Order Details</title>
     </head>
 
@@ -87,7 +87,7 @@
                         @endif
 
                     </div>
-                    <div class="price col-xs-4">
+                    <div class="price col-xs-3 col-xs-offset-1">
                         <p><b>${{ $product->price }}</b></p>
                     </div>
                 </div>
