@@ -46,12 +46,19 @@ body {  background: #241729 !important;  }
     font-weight: 400;
 }
 
+.top-content{
+    padding-top: 5%;
+}
+
 /***** GHOST BUTTONS
 *      Login, sign in
 *
  *****/
 
-.ghost-btn-container {  text-align: center;  }
+.ghost-btn-container {
+    text-align: center;
+    padding-top: 3%;
+}
 
 .ghost-btn {
     width: 150px;
