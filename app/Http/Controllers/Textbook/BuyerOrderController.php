@@ -18,6 +18,12 @@ use Mail;
 class BuyerOrderController extends Controller
 {
 
+    public function test()
+    {
+        $order = BuyerOrder::find(1);
+        $this->emailBuyerOrderConfirmation($order);
+    }
+
     /**
      * Display a listing of buyer orders for an user.
      *
@@ -199,7 +205,11 @@ class BuyerOrderController extends Controller
      */
     protected function emailBuyerOrderConfirmation(BuyerOrder $order)
     {
-        Mail::queue('emails.buyerOrderConfirmation', ['buyer_order' => $order], function($message) use ($order)
+        Mail::queue('emails.buyerOrderConfirmation', ['buyer_order' => $order,
+            'shipping_address' => $order->shipping_address,
+            'buyer_payment' => $order->buyer_payment,
+            'products' => $order->products()
+        ], function ($message) use ($order)
         {
             $message->to($order->buyer->email)->subject('Confirmation of your order #'.$order->id);
         });

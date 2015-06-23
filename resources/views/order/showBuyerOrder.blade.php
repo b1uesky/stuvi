@@ -64,8 +64,13 @@
                 <div class="row">
                     <div class="item col-xs-8">
                         <p>Title: {{ $product->book->title }}</p>
-                        <p>ISBN: {{ $product->book->isbn }}</p>
-                        <p>Author: {{ $product->book->author}}</p>
+
+                        <p>ISBN: {{ $product->book->isbn13 }}</p>
+                        <span>Author(s): </span>
+                        @foreach($product->book->authors as $author)
+                            <span>{{ $author->full_name }}</span>
+                        @endforeach
+                        <br>
                         <?php $seller_order = $buyer_order->seller_order($product->id) ?>
                         <p>Scheduled pickup time:
                             @if ($seller_order->scheduled_pickup_time)
