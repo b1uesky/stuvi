@@ -64,7 +64,8 @@
                      id="shrink-xs">
                     <h3 id="h3-1">Find your books</h3>
                     <p>
-                        Search the Stuvi database to find books from students at your college.
+                        Search the Stuvi database to find books from students near you. We are currently servicing Boston area
+                        students. Search by book name, author or ISBN to continue!
                     </p>
                 </div>
             </div>
@@ -82,7 +83,8 @@
                      id="shrink-xs">
                     <h3 id="h3-2">Book delivery</h3>
                     <p>
-                        We will deliver the book directly to you after you make a purchase.
+                        We will deliver the book directly to you after you make a purchase. Our own team of couriers will
+                        make sure your book is delivered quickly, and check that your book is in its advertised condition.
                     </p>
                 </div>
             </div>
