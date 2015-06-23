@@ -11,9 +11,10 @@ class RoleMiddleware {
 	 * @param  \Closure  $next
 	 * @return mixed
 	 */
-	public function handle($request, Closure $next)
+	public function handle($request, Closure $next, $role)
 	{
-        if (! $request->user()->hasRole('a')) {
+        if (! $request->user()->hasRole($role))
+        {
             return redirect('auth/login');
         }
 
