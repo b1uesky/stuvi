@@ -14,6 +14,7 @@
         <ul class="nav navbar-nav">
             <li><a href="{{ URL::to('admin/user') }}">User</a></li>
             <li><a href="{{ URL::to('admin/product') }}">Product</a></li>
+            <li><a href="{{ URL::to('admin/sellerOrder') }}">SellerOrder</a></li>
         </ul>
     </nav>
 

@@ -1,3 +1,5 @@
+{{--Textbook sell page--}}
+
 @extends('textbook')
 
 @section('content')
@@ -68,9 +70,8 @@
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
                      id="shrink-xs">
                     <h3 id = "h3-1">Sell to your classmates</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
-                        tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
-                        Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius. </p>
+                    <p>Sell to students near you with the same classes. We make the the entire process smooth and easy, so you
+                    can spend less time selling and more time doing the things you enjoy.</p>
                 </div>
             </div>
             <div class = "row row-b" id="row2">
@@ -88,7 +89,7 @@
 
                     <p>
                         You will be notified once your book has been sold. Then you can select a time
-                        for us to come pickup your book.
+                        for us to come pickup your book. You will then be paid via _________ in __ - __ days.
                     </p>
                 </div>
             </div>
@@ -121,12 +122,8 @@
         </p>
     </div>  <!-- end container fluid -->
 
-
-
-
     <!--- Scripts at bottom for faster page loading-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
-
+    <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script
 
 @endsection

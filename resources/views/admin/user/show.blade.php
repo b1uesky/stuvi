@@ -20,6 +20,18 @@
             <td>{{ $user->last_name }}</td>
         </tr>
         <tr>
+            <th>Phone Number</th>
+            <td>{{ $user->phone_number }}</td>
+        </tr>
+        <tr>
+            <th>Activated</th>
+            <td>{{ $user->isActivated() }}</td>
+        </tr>
+        <tr>
+            <th>Role</th>
+            <td>{{ $user->role }}</td>
+        </tr>
+        <tr>
             <th>Created At</th>
             <td>{{ $user->created_at }}</td>
         </tr>
