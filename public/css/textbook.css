@@ -1,9 +1,5 @@
 /* STYLING FOR TEXTBOOK PAGE ***/
 
-body {
-    background: #F2F2F2;
-}
-
 /******* TEXTBOOK NAVIGATION BAR ******/
 
 .tab-filter-container {
@@ -144,8 +140,7 @@ body {
 /******  TEXTBOOK BOTTOM HALF ****/
 
 #textbook-bottom {
-    background-color: #E7E6E6;
-
+    background-color: #F2F2F2;
 }
 
 #hr1 {
@@ -178,3 +173,14 @@ body {
     width: 250px;
     height: 250px;
 }
+
+#truck-img {
+    width: 300px;
+    height: 168px;
+}
+
+#library-book-img {
+    font-size: 17em;
+    color: #7AB4DE;
+}
+
