@@ -88,6 +88,12 @@ class ProductController extends Controller {
 		//
 	}
 
+    /**
+     * Approve a product ($product->verified = true)
+     *
+     * @param $id
+     * @return mixed
+     */
 	public function approve($id)
 	{
 		$product = Product::find($id);
@@ -96,9 +102,15 @@ class ProductController extends Controller {
 		{
 			$product->verified = true;
 			$product->save();
+
+            return redirect()
+                ->back()
+                ->withSuccess('Product ' . $product->id . ' has been approved.');
 		}
 
-		return redirect()->back();
+		return redirect()
+            ->back()
+            ->withError('Product ' . $product->id . ' has already been approved.');
 	}
 
 	public function disapprove($id)
@@ -109,8 +121,14 @@ class ProductController extends Controller {
 		{
 			$product->verified = false;
 			$product->save();
+
+            return redirect()
+                ->back()
+                ->withSuccess('Product ' . $product->id . ' has been disapproved.');
 		}
 
-		return redirect()->back();
+		return redirect()
+            ->back()
+            ->withError('Product ' . $product->id . ' has already been disapproved');
 	}
 }
