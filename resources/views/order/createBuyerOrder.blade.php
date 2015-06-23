@@ -2,7 +2,7 @@
 
 @section('content')
     <head>
-        <link href="{{ asset('/css/createBuyerOrder.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/order/createBuyerOrder.css') }}" rel="stylesheet">
         <title>Stuvi - Checkout</title>
 
         <script type="text/javascript" src="https://js.stripe.com/v2/"></script>

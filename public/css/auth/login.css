@@ -1,4 +1,7 @@
 /******** LOGIN PAGE ********/
+
+/* Used by login.blade.php and register.blade.php */
+
 html body {
     background: #241729;
 }

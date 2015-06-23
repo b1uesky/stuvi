@@ -1,5 +1,4 @@
-<!-- Prototype Homepage Copyright Stuvi 2015
-     Made by Nick                            -->
+<!-- Prototype Homepage Copyright Stuvi 2015 -->
 
 @extends('app')    <!-- app.blade.php -->
 
@@ -27,6 +26,7 @@
         <div class="container col-md-12">
             <h1 id="head1-temp">Welcome to Stuvi</h1>
             <p class="lead tagline">Because it takes a village to conquer college.</p>
+            <!-- ghost buttons -->
             @if (Auth::guest())
                 <div class="ghost-btn-container">
                     <a class="btn ghost-btn" href="{{ url('/login') }}" role="button">LOGIN</a>
@@ -35,9 +35,7 @@
             @endif
         </div>
 
-    </div>    <!-- end contain-top backgnd -->
-   <!-- End Top Half
-         Begin Bottom Half-->
+    </div> <!-- end contain-top backgnd -->
   <!-- new bottom half -->
     <div class="container-fluid" id="bottom-half">
         <div class="container-fluid stuvi-container">
@@ -57,8 +55,10 @@
                 </div>
             </div>
 
+            <!-- TODO: Add more content -->
 
         </div>
+        <!-- services-->
         <div class="container-fluid services">
             <div class="row">
                 <h1>Our Services</h1>
@@ -89,9 +89,9 @@
                     <p>Connect with students in your classes</p>
                 </div>
             </div>
-        </div>
+        </div> <!-- end services -->
 
-    </div>
+    </div> <!-- end bottom half -->
 
 
 

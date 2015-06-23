@@ -5,9 +5,7 @@
 
 /* All screen styling */
 
-body {
-    background: #241729 !important;
-}
+body {  background: #241729 !important;  }
 
 /*********  Classes  ************/
 
@@ -48,11 +46,12 @@ body {
     font-weight: 400;
 }
 
-/***** GHOST BUTTONS *****/
+/***** GHOST BUTTONS
+*      Login, sign in
+*
+ *****/
 
-.ghost-btn-container {
-    text-align: center;
-}
+.ghost-btn-container {  text-align: center;  }
 
 .ghost-btn {
     width: 150px;
@@ -80,19 +79,13 @@ body {
 }
 
 @media (max-width: 767px) {
-    .ghost-btn-container {
-        margin-bottom: 35px;
-    }
+    .ghost-btn-container {  margin-bottom: 35px;  }
 
-    .ghost-btn {
-        margin: 0 8px 0;
-    }
+    .ghost-btn {  margin: 0 8px 0;  }
 }
 
 @media (max-width: 399px) {
-    .ghost-btn {
-        margin-bottom: 20px;
-    }
+    .ghost-btn {  margin-bottom: 20px;  }
 }
 
 /************** IDs   *************/
@@ -135,15 +128,11 @@ body {
     padding-bottom: 1%;
 }
 
-#img-info-1{
-    padding: 30px;
-}
+#img-info-1{  padding: 30px;  }
 
 /**************  NAV DROPDOWN FIX  *************/
 
-.nav-dropdown {
-    height: 50px;
-}
+.nav-dropdown {  height: 50px;  }
 
 /************* @media SMALL SCREENS ********/
 
@@ -165,9 +154,7 @@ body {
 
 /******** BOTTOM HALF ********/
 
-#bottom-half {
-    padding: 0;
-}
+#bottom-half { padding: 0; }
 
 .services {
     background-color: #F16521;
@@ -175,19 +162,13 @@ body {
     color: #FFFFFF;
 }
 
-.services h4 {
-    font-weight: 900;
-}
+.services h4 {  font-weight: 900;  }
 
 .service-row {
     margin-top: 40px;
     margin-bottom: 40px;
 }
 
-.service {
-    margin-bottom: 30px;
-}
+.service {  margin-bottom: 30px;  }
 
-.service a {
-    color: #FFFFFF;
-}
+.service a {  color: #FFFFFF;  }
