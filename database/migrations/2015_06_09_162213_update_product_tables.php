@@ -17,12 +17,6 @@ class UpdateProductTables extends Migration {
 			$table->integer('product_id')->unsigned();
 			$table->foreign('product_id')->references('id')->on('products');
 		});
-
-		Schema::table('products', function(Blueprint $table)
-		{
-			$table->dropForeign(['condition_id']);
-			$table->dropColumn('condition_id');
-		});
 	}
 
 	/**

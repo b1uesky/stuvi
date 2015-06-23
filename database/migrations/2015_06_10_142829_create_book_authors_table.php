@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddBookAuthorsTable extends Migration {
+class CreateBookAuthorsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -21,11 +21,6 @@ class AddBookAuthorsTable extends Migration {
 			$table->string('first_name')->nullable();
 			$table->string('last_name')->nullable();
 			$table->timestamps();
-		});
-
-		Schema::table('books', function(Blueprint $table)
-		{
-			$table->dropColumn('author');
 		});
 	}
 
