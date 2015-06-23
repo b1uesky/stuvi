@@ -4,7 +4,6 @@
 
     <head>
         <link href="{{ asset('/css/textbook.css') }}" rel="stylesheet">
-
         <title> Stuvi - Sell Textbooks</title>
     </head>
 
@@ -80,7 +79,7 @@
                 <!-- col-xs-push/pull changes the ordering when it is not xs -->
                 <!-- need to fix xs -->
                 <div class = "container col-xs-12 col-sm-3 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-sm-push-7" id="shrink-xs">
-                    <img class="textbook-bottom-img" src="{{ asset('/img/clock.png') }}" alt="placeholder">
+                    <img class="textbook-bottom-img" src="{{ asset('/img/clock2.png') }}" alt="placeholder">
                 </div>
                 <!-- Row 2 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
@@ -102,7 +101,7 @@
                 <!-- Row 1 Col 2 -->
                 <div class="container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
                      id="shrink-xs">
-                    <h3 id="h3-1">Let the cash pour in</h3>
+                    <h3 id="h3-1">No more student debt!</h3>
 
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis
                         faucibus elit

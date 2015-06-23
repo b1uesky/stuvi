@@ -3,6 +3,7 @@
 
 @section('content')
     <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="{{ asset('/css/textbook.css') }}" rel="stylesheet" type="text/css">
         <title> Stuvi - Buy Used Textbook</title>
     </head>
@@ -56,14 +57,14 @@
                 <!-- Row 1 Col 1 -->
                 <!-- xs: stack-->
                 <div class = "container col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id = "shrink-xs">
-                    <img src="http://placehold.it/250x250" alt = "placeholder">
+                    <img class="textbook-bottom-img" src="{{ asset('/img/search.png') }}" alt="placeholder">
                 </div>
                 <!-- Row 1 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
                      id="shrink-xs">
-                    <h3 id = "h3-1">Buy from your classmates</h3>
+                    <h3 id="h3-1">Find your books</h3>
                     <p>
-                        Choose from a wide range of books that are being sold at your campus.
+                        Search the Stuvi database to find books from students at your college.
                     </p>
                 </div>
             </div>
@@ -74,7 +75,7 @@
                 <!-- col-xs-push/pull changes the ordering when it is not xs -->
                 <!-- need to fix xs -->
                 <div class = "container col-xs-12 col-sm-3 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-sm-push-7" id="shrink-xs">
-                    <img class="textbook-bottom-img" src="{{ asset('/img/truck.png') }}" alt="placeholder">
+                    <img id="truck-img" src="{{ asset('/img/truck.png') }}" alt="placeholder">
                 </div>
                 <!-- Row 2 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
@@ -89,7 +90,8 @@
                 <!-- Row 3 Col 1 -->
                 <!-- xs: stack-->
                 <div class = "container col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id = "shrink-xs">
-                    <img src="http://placehold.it/250x250" alt = "placeholder">
+                    {{--<img src="http://placehold.it/250x250" alt = "placeholder">--}}
+                    <i id="library-book-img" class="material-icons">library_books</i>
                 </div>
                 <!-- Row 3 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
