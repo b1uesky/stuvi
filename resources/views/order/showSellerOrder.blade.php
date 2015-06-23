@@ -6,7 +6,7 @@
 @section('content')
 
     <head>
-        <link href="{{ asset('/css/showOrder.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('/css/order/showOrder.css') }}" rel="stylesheet" type="text/css">
         {{-- date time picker required--}}
         <link rel="stylesheet" type="text/css" href="{{asset('/datetimepicker/jquery.datetimepicker.css')}}"/>
         <title>Stuvi - Order Details</title>
@@ -63,6 +63,7 @@
                     <!-- if order is cancelled, don't show -->
                     @if($seller_order->cancelled)
                         {{--nothing--}}
+                    <!-- scheduled already and not cancelled. allows for reschedule -->
                     @elseif ($seller_order->scheduled_pickup_time)
                         <label class="control-label"><b>Schedule a pick-up time</b></label><br>
                         <mark>{{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}</mark><br>
@@ -74,9 +75,9 @@
                                 <button type="submit" class="btn btn-primary">Reschedule</button>
                             </div>
                         </form>
+                        <!-- Else must be Not cancelled and scheduled yet -->
                     @elseif (!$seller_order->cancelled)
                         <label class="control-label"><b>Schedule a pick-up time</b></label><br>
-                        {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}<br>
                         <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="id" value="{{ $seller_order->id }}">
@@ -94,9 +95,9 @@
     </div>
 
     <!-- Date time picker required scripts -->
-    <script src="{{asset('/js/showOrder.js')}}" type="text/javascript"></script>
     <script src="{{asset('datetimepicker/jquery.js')}}"></script>
     <script src="{{asset('datetimepicker/jquery.datetimepicker.js')}}"></script>
+    <script src="{{asset('/js/showOrder.js')}}" type="text/javascript"></script>
     {{--<script src="http://momentjs.com/downloads/moment.min.js"></script>--}}
 
 @endsection

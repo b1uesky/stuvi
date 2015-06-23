@@ -7,7 +7,7 @@
 @section('content')
     <head>
         <title> Stuvi - {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} - Profile </title>
-        <link href="{{ asset('/css/profile.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/user/profile.css') }}" rel="stylesheet">
    {{--     <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick-theme.css')}}">--}}
     </head>

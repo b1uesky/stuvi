@@ -2,7 +2,7 @@
 
 @section('content')
     <head>
-        <link href="{{ asset('/css/product-create.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/product/product-create.css') }}" rel="stylesheet">
         <title>Enter book info</title>
     </head>
 

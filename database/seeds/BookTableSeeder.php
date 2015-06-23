@@ -16,8 +16,6 @@ public function run()
     DB::table('book_image_sets')->delete();
     DB::table('books')->delete();
 
-    $folder = Config::get('upload.image.book');
-
     $isbns = [
         '9780849303159',    // Principles of solid mechanics
         '9780321573513',    // Algorithms
