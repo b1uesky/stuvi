@@ -22,10 +22,8 @@ class CreateBooksTable extends Migration {
             $table->string('isbn13', 13);
             $table->smallInteger('num_pages');
             $table->boolean('verified')->default(false);
-            $table->integer('binding_id')->unsigned()->nullable();
-            $table->integer('image_set_id')->unsigned()->nullable();
-            $table->integer('language_id')->unsigned()->nullable();
-            $table->integer('amazon_info_id')->unsigned()->nullable();
+            $table->string('binding');
+            $table->string('language');
             $table->timestamps();
 		});
 	}
