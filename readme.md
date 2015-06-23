@@ -38,8 +38,18 @@ php artisan migrate --seed
 
 url: `/admin`
 
+See `routes.php` for details.
+
 If you cannot go to `/admin`, try:
 
 ```bash
 mkdir config/administrator/settings
 ```
+
+update Laravel from 5.0 to 5.1
+
+```bash
+mkdir bootstrap/cache
+composer update
+```
+

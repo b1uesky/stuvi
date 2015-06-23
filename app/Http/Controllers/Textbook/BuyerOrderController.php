@@ -13,6 +13,7 @@ use DB;
 use Illuminate\Http\Request;
 use Input;
 use Session;
+use Mail;
 
 class BuyerOrderController extends Controller
 {
@@ -110,9 +111,12 @@ class BuyerOrderController extends Controller
 
         // create a payment
         $payment = $this->createBuyerPayment($order);
-        //return $payment;
+
         // remove payed items from Cart
         Cart::destroy();
+
+        // send confirmation email to buyer
+        $this->emailBuyerOrderConfirmation($order);
 
         return redirect('/order/confirmation')
             ->with('order', $order);
@@ -182,6 +186,19 @@ class BuyerOrderController extends Controller
             $order->buyer_order_id = $buyer_order_id;
             $order->save();
         }
+    }
+
+    /**
+     * Email buyer the buyer order confirmation
+     *
+     * @param BuyerOrder $order
+     */
+    protected function emailBuyerOrderConfirmation(BuyerOrder $order)
+    {
+        Mail::queue('emails.buyerOrderConfirmation', ['buyer_order' => $order], function($message) use ($order)
+        {
+            $message->to($order->buyer->email)->subject('Confirmation of your order #'.$order->id);
+        });
     }
 
     /**

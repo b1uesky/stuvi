@@ -48,11 +48,11 @@
             </div>
             <div class="details-payment col-xs-12 col-sm-3">
                 <h4>Payment Method</h4>
-                <p>Visa **** 4242</p>
+                <p>{{ $buyer_order->buyer_payment->card_brand }} **** {{ $buyer_order->buyer_payment->card_last4 }}</p>
             </div>
             <div class="details-pricing col-xs-12 col-sm-3 col-sm-offset-3">
                 <h4>Order Summary</h4>
-                <p>Total: ${{ $buyer_order->buyer_payment->stripe_amount/100 }}</p>
+                <p>Total: ${{ $buyer_order->buyer_payment->amount/100 }}</p>
             </div>
         </div>
     </div>
