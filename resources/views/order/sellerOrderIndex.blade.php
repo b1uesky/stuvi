@@ -44,7 +44,9 @@
                     </div>
                     <div class="row book-row">
                         <div class="col-xs-12 col-sm-2 book-img">
-                            <img class="lg-img" src="{{ $order->product->images->first()->path }}">
+                            <a href="{{ url('/textbook/buy/product/'.$order->product->id) }}">
+                                <img class="lg-img" src="{{ $order->product->images->first()->path }}">
+                            </a>
                         </div>
                         <div class="col-xs-12 col-sm-5 book-info">
                             <h5><a href="{{ url('/textbook/buy/product/'.$order->product->id) }}">{{ $order->product->book->title }}</a></h5>
