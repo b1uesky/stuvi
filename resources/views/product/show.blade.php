@@ -5,7 +5,7 @@
 @section('content')
 <head>
     <title>Stuvi - Book Details</title>
-    <link rel="stylesheet" href="{{asset('/css/product-show.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('/css/product/product-show.css')}}" type="text/css">
 </head>
 
 @include('textbook/textbook-nav')

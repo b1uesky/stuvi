@@ -20,8 +20,12 @@ class SellerOrderController extends Controller
      */
     public function sellerOrderIndex()
     {
+        $order = Input::get('ord');
+        // check column existence
+        $order = $this->hasColumn('seller_orders', $order) ? $order : 'id';
+
         return view('order.sellerOrderIndex')
-            ->with('orders', Auth::user()->sellerOrders()->orderBy('id', 'DESC')->get());
+            ->with('orders', Auth::user()->sellerOrders()->orderBy($order, 'DESC')->get());
     }
 
 

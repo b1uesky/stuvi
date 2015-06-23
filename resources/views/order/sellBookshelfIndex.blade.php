@@ -1,3 +1,5 @@
+{{-- Unused. wtf this this? --}}
+
 @extends('app')
 
 @section('content')

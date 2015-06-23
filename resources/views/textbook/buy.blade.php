@@ -4,7 +4,7 @@
 @section('content')
     <head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="{{ asset('/css/textbook.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('/css/textbook/textbook.css') }}" rel="stylesheet" type="text/css">
         <title> Stuvi - Buy Used Textbook</title>
     </head>
 

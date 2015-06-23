@@ -2,7 +2,7 @@
 
 @section('content')
     <head>
-        <link href="{{ asset('/css/textbook-list.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/textbook/textbook-list.css') }}" rel="stylesheet">
         <title>Search Results</title>
     </head>
 
