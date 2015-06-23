@@ -2,7 +2,7 @@
 
 @section('content')
     <head>
-        <link href="{{ asset('/css/showOrder.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('/css/order/showOrder.css') }}" rel="stylesheet" type="text/css">
         <title>Stuvi - Order Details</title>
     </head>
 

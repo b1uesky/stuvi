@@ -4,7 +4,7 @@
 @extends('textbook')
     <head>
         <title>Stuvi - Create textbook</title>
-        <link href="{{ asset('/css/create.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/textbook/create.css') }}" rel="stylesheet">
     </head>
 
 @section('content')

@@ -1,6 +1,6 @@
 @section('nav')
     <head>
-        <link href="{{ asset('/css/textbook-nav.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/textbook/textbook-nav.css') }}" rel="stylesheet">
     </head>
 
     {{--textbook navigation bar--}}

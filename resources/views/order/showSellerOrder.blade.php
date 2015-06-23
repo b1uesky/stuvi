@@ -6,7 +6,7 @@
 @section('content')
 
     <head>
-        <link href="{{ asset('/css/showOrder.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('/css/order/showOrder.css') }}" rel="stylesheet" type="text/css">
         {{-- date time picker required--}}
         <link rel="stylesheet" type="text/css" href="{{asset('/datetimepicker/jquery.datetimepicker.css')}}"/>
         <title>Stuvi - Order Details</title>
