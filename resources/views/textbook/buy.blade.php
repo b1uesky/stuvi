@@ -1,5 +1,6 @@
-@extends('textbook')
+{{--Textbook buy page--}}
 
+@extends('textbook')
 
 @section('content')
     <head>
