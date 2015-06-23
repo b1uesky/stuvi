@@ -132,4 +132,7 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
     Route::get('/product/{id}/approve', 'ProductController@approve');
     Route::get('/product/{id}/disapprove', 'ProductController@disapprove');
     Route::resource('product', 'ProductController');
+
+    // seller order
+    Route::resource('sellerOrder', 'SellerOrderController');
 });
