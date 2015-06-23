@@ -48,6 +48,14 @@ public function run()
         'role'          => 'ua'
     ]);
 
+    User::create([
+        'email'     => 'courier@stuvi.com',
+        'password'  => bcrypt('123456'),
+        'first_name'    => 'Courier',
+        'last_name'     => 'Stuvi',
+        'role'          => 'c'
+    ]);
+
     // $faker = Factory::create();
     //
     // for ($i = 0; $i < 10; $i++)
