@@ -22,6 +22,21 @@ class ProductController extends Controller {
         return view('admin.product.index')->withProducts($products);
 	}
 
+    public function showUnverified()
+    {
+        $unverified = Product::where('verified', '=', false)->get();
+
+        return view('admin.product.index')->withProducts($unverified);
+    }
+
+    public function showVerified()
+    {
+        $verified = Product::where('verified', '=', true)->get();
+
+        return view('admin.product.index')->withProducts($verified);
+    }
+
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -88,6 +103,12 @@ class ProductController extends Controller {
 		//
 	}
 
+    /**
+     * Approve a product ($product->verified = true)
+     *
+     * @param $id
+     * @return mixed
+     */
 	public function approve($id)
 	{
 		$product = Product::find($id);
@@ -96,9 +117,15 @@ class ProductController extends Controller {
 		{
 			$product->verified = true;
 			$product->save();
+
+            return redirect()
+                ->back()
+                ->withSuccess('Product ' . $product->id . ' has been approved.');
 		}
 
-		return redirect()->back();
+		return redirect()
+            ->back()
+            ->withError('Product ' . $product->id . ' has already been approved.');
 	}
 
 	public function disapprove($id)
@@ -109,8 +136,14 @@ class ProductController extends Controller {
 		{
 			$product->verified = false;
 			$product->save();
+
+            return redirect()
+                ->back()
+                ->withSuccess('Product ' . $product->id . ' has been disapproved.');
 		}
 
-		return redirect()->back();
+		return redirect()
+            ->back()
+            ->withError('Product ' . $product->id . ' has already been disapproved');
 	}
 }

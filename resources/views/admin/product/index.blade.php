@@ -2,6 +2,24 @@
 
 @section('content')
 
+    @if(Session::has('success'))
+        <div class="alert alert-success" role="alert">
+            {{ Session::get('success') }}
+        </div>
+    @endif
+
+    @if (Session::has('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ Session::get('error') }}
+        </div>
+    @endif
+
+        <div class="btn-group" role="group">
+            <a href="{{ URL::to('admin/product') }}" class="btn btn-default">All</a>
+            <a href="{{ URL::to('admin/product/unverified') }}" class="btn btn-default">Unverified Only</a>
+            <a href="{{ URL::to('admin/product/verified') }}" class="btn btn-default">Verified Only</a>
+        </div>
+
     <table class="table table-hover">
         <tr>
             <th>ID</th>
@@ -11,6 +29,7 @@
             <th>Images</th>
             <th>Sold</th>
             <th>Verified</th>
+            <th>Updated At</th>
             <th>Actions</th>
         </tr>
 
@@ -27,6 +46,7 @@
                 </td>
                 <td>{{ $product->isSold() }}</td>
                 <td>{{ $product->isVerified() }}</td>
+                <td>{{ $product->updated_at }}</td>
 
                 <!-- we will also add show, edit, and delete buttons -->
                 <td>
@@ -36,7 +56,7 @@
 
                     <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
                     <div class="btn-group-vertical" role="group">
-                        <a class="btn btn-default" role="button" href="{{ URL::to('admin/product/' . $product->id) }}">View Details</a>
+                        <a class="btn btn-info" role="button" href="{{ URL::to('admin/product/' . $product->id) }}">Details</a>
                         @if(!$product->verified)
                             <a class="btn btn-success" role="button" href="{{ URL::to('admin/product/' . $product->id . '/approve') }}">Approve</a>
                         @else
@@ -49,5 +69,4 @@
         @endforeach
 
     </table>
-
 @endsection
