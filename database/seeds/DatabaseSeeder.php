@@ -18,12 +18,13 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
+        $this->call('BookTableSeeder');
 		$this->call('UniversityTableSeeder');
         $this->call('UserTableSeeder');
+        $this->call('ProductTableSeeder');
         $this->call('AddressTableSeeder');
         $this->call('BuyerOrderSeeder');
-		$this->call('BookTableSeeder');
-		$this->call('ProductTableSeeder');
+        $this->call('SellerOrderSeeder');
 
         Model::reguard();
 	}

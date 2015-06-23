@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Faker\Factory;
 
 use App\User;
 use App\BuyerOrder;
