@@ -18,7 +18,10 @@ use Mail;
 class BuyerOrderController extends Controller
 {
 
-    public function test()
+    /**
+     * For test email functionality
+     */
+    public function testEmail()
     {
         $order = BuyerOrder::find(1);
         $this->emailBuyerOrderConfirmation($order);
@@ -205,13 +208,34 @@ class BuyerOrderController extends Controller
      */
     protected function emailBuyerOrderConfirmation(BuyerOrder $order)
     {
-        Mail::queue('emails.buyerOrderConfirmation', ['buyer_order' => $order,
-            'shipping_address' => $order->shipping_address,
-            'buyer_payment' => $order->buyer_payment,
-            'products' => $order->products()
-        ], function ($message) use ($order)
+        // convert the buyer order and corresponding objects to an array
+        $buyer_order_arr                        = $order->toArray();
+        $buyer_order_arr['shipping_address']    = $order->shipping_address->toArray();
+        $buyer_order_arr['buyer_payment']       = $order->buyer_payment->toArray();
+        $buyer_order_arr['products']            = $order->products();
+
+        Mail::queue('emails.buyerOrderConfirmation', ['buyer_order' => $buyer_order_arr], function($message) use ($order)
         {
             $message->to($order->buyer->email)->subject('Confirmation of your order #'.$order->id);
+        });
+    }
+
+    /**
+     * Email seller the buyer order confirmation
+     *
+     * @param SellerOrder $order
+     */
+    protected function emailSellerOrderConfirmation(SellerOrder $order)
+    {
+        // convert the seller order and corresponding objects to an array
+        $seller_order_arr                       = $order->toArray();
+        $seller_order_arr['product']            = $order->product->toArray();
+        $seller_order_arr['product']['book']    = $order->product->book->toArray();
+
+        Mail::queue('emails.sellerOrderConfirmation', ['seller_order'  => $seller_order_arr],
+            function($message) use ($order)
+        {
+            $message->to($order->product->seller->email)->subject('Your book '.$order->product->book->title.' is sold!' );
         });
     }
 

@@ -17,8 +17,11 @@ class CreateBuyerOrdersTable extends Migration {
             $table->increments('id');
             $table->integer('buyer_id')->unsigned();
             $table->boolean('cancelled')->default(false);
+            $table->integer('courier_id')->unsigned();
             $table->timestamp('deliver_time')->nullable();
             $table->timestamps();
+
+            $table->foreign('courier_id')->references('id')->on('users');
 		});
 	}
 

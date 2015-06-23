@@ -51,7 +51,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 // order
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'], function()
 {
-    Route::get('/test', 'BuyerOrderController@test');
+    Route::get('/test', 'BuyerOrderController@testEmail');
 
     Route::get('/buyer', 'BuyerOrderController@buyerOrderIndex');
     Route::get('/confirmation', 'BuyerOrderController@confirmation');
@@ -137,3 +137,4 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
     // seller order
     Route::resource('sellerOrder', 'SellerOrderController');
 });
+
