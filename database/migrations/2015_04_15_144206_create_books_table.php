@@ -18,10 +18,8 @@ class CreateBooksTable extends Migration {
             $table->string('title');
             $table->tinyInteger('edition')->default(1);
             $table->string('author');
-            $table->string('isbn', 13);
-            $table->string('publisher');
-            $table->date('publication_date');
-            $table->string('manufacturer');
+            $table->string('isbn10', 10);
+            $table->string('isbn13', 13);
             $table->smallInteger('num_pages');
             $table->boolean('verified')->default(false);
             $table->integer('binding_id')->unsigned()->nullable();
