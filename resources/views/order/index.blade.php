@@ -56,10 +56,14 @@
                     @foreach($order->products() as $product)
                         <div class="row book-row">
                             <div class="col-xs-12 col-sm-2 book-img">
-                                <img class="lg-img" src="{{$product->book->imageSet->large_image}}">
+                                <a href="{{ url('/textbook/buy/product/'.$product->id) }}">
+                                    <img class="lg-img" src="{{$product->book->imageSet->large_image}}">
+                                </a>
                             </div>
                             <div class="col-xs-12 col-sm-5 book-info">
-                                <h5>{{ $product->book->title }}</h5>
+                                <a href="{{ url('/textbook/buy/product/'.$product->id) }}">
+                                    <h5>{{ $product->book->title }}</h5>
+                                </a>
                                 <h5><small>{{ $product->book->author}}</small></h5>
 
                                 <p>ISBN: {{ $product->book->isbn10 }}</p>
