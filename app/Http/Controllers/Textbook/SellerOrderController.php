@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Controller;
 use App\SellerOrder;
-use App\User;
 use Auth;
 use Cart;
 use Config;
@@ -128,9 +127,7 @@ class SellerOrderController extends Controller
             {
                 $message->to('kingdido999@gmail.com')->subject('Your textbook pickup time has been scheduled.');
             });
-
-
-            // return redirect('order/seller/'.$id);
+            
             return redirect()->back()
                 ->withSuccess("You have successfully scheduled the pickup time and we'll email you the details shortly.");
         }
