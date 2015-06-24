@@ -23,6 +23,8 @@ class CreateSellerOrdersTable extends Migration {
             $table->integer('buyer_order_id')->unsigned();
             $table->timestamps();
 
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('buyer_order_id')->references('id')->on('buyer_orders');
             $table->foreign('courier_id')->references('id')->on('users');
 		});
 	}

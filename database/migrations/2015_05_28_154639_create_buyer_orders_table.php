@@ -21,6 +21,7 @@ class CreateBuyerOrdersTable extends Migration {
             $table->timestamp('deliver_time')->nullable();
             $table->timestamps();
 
+            $table->foreign('buyer_id')->references('id')->on('users');
             $table->foreign('courier_id')->references('id')->on('users');
 		});
 	}
