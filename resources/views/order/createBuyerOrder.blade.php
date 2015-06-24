@@ -192,25 +192,28 @@
                                         </label>
                                     </div>
                                     <div class="form-row">
-                                        <label>
-                                            <span>Expiration (MM/YYYY)</span>
-                                            <select class="form-control">
-                                                <option>01</option>
-                                                <option>02</option>
-                                                <option>03</option>
-                                                <option>04</option>
-                                                <option>05</option>
-                                                <option>06</option>
-                                                <option>07</option>
-                                                <option>08</option>
-                                                <option>10</option>
-                                                <option>11</option>
-                                                <option>12</option>
-                                            </select>
-                                            {{--<input class="form-control" type="text" size="2" data-stripe="exp-month"/>--}}
-                                        </label>
-                                        <span> / </span>
-                                        <select class="form-control">
+                                        <label>Expiration (MM/YY)</label>
+                                        <label class="col-xs-offset-3">Security Code</label>
+                                        {{--<span></span>--}}
+                                        <br>
+                                        <select class="form-control card-exp col-xs-2">
+                                            <option disabled selected>Month</option>
+                                            <option>01</option>
+                                            <option>02</option>
+                                            <option>03</option>
+                                            <option>04</option>
+                                            <option>05</option>
+                                            <option>06</option>
+                                            <option>07</option>
+                                            <option>08</option>
+                                            <option>10</option>
+                                            <option>11</option>
+                                            <option>12</option>
+                                        </select>
+                                        {{--<input class="form-control" type="text" size="2" data-stripe="exp-month"/>--}}
+                                        <span class="col-xs-1"> / </span>
+                                        <select class="form-control card-exp col-xs-2">
+                                            <option disabled selected>Year</option>
                                             <option>15</option>
                                             <option>16</option>
                                             <option>17</option>
@@ -220,13 +223,14 @@
                                             <option>21</option>
                                         </select>
                                         {{--<input class="form-control" type="text" size="2" data-stripe="exp-year"/>--}}
+                                        <input id="security-code"
+                                               class="form-control col-xs-3 col-xs-offset-0 col-sm-offset-1" type="text"
+                                               size="4" data-stripe="cvc"/>
                                     </div>
-                                    <div class="form-row">
-                                        <label>
-                                            <span>Security Code</span>
-                                            <input class="form-control" type="text" size="4" data-stripe="cvc"/>
-                                        </label>
-                                    </div>
+                                    <br>
+                                </div>
+                                <div class="panel-footer">
+                                    <p>Your total is <span id="total"> ${{ $total }} </span></p>
                                     <button class="btn payment-btn" type="submit">Complete Order</button>
                                 </div>
                             </div>
