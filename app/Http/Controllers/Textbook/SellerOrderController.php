@@ -11,6 +11,7 @@ use DB;
 use Input;
 use Session;
 use Mail;
+use Validator;
 
 class SellerOrderController extends Controller
 {
@@ -83,7 +84,18 @@ class SellerOrderController extends Controller
      */
     public function setScheduledPickupTime()
     {
-        // TODO: validation
+        // validation
+        $v = Validator::make(Input::all(), [
+            'scheduled_pickup_time' => 'required|date'
+        ]);
+
+        if ($v->fails())
+        {
+            return redirect()->back()
+                ->withErrors($v->errors())
+                ->withInput(Input::all());
+        }
+
         $scheduled_pickup_time  = Input::get('scheduled_pickup_time');
         $id                     = (int)Input::get('id');
         $seller_order           = SellerOrder::find($id);
@@ -118,7 +130,9 @@ class SellerOrderController extends Controller
             });
 
 
-            return redirect('order/seller/'.$id);
+            // return redirect('order/seller/'.$id);
+            return redirect()->back()
+                ->withSuccess("You have successfully scheduled the pickup time and we'll email you the details shortly.");
         }
 
         return redirect('order/seller')
