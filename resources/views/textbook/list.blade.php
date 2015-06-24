@@ -61,6 +61,7 @@
                                 <span>Author:</span>
                                 {{ $book->authors[0]->full_name }}
                             @endif
+
                             <br>
                             <span class="textbook-isbn">ISBN10: {{ $book->isbn10 }}</span>
                             <br>

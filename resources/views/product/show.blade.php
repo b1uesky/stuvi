@@ -20,15 +20,23 @@
             <div class="col-sm-6 col-md-4">
 
                 <!-- images use lightbox -->
+                {{-- Only shows first image, but will show the rest in lightbox--}}
                 @if(!empty($images))
+                    <?php $x = 0; ?>
                     @foreach($images as $image)
-                        {{--<div class="">--}}
+                        <?php $x += + 1 ?>
+                        @if($x == 1)
                             <a class="lightbox-product-link" href="{{ $image->path }}"
                                data-lightbox="pro-img" data-title="Image {{$image->id}}">
                                 <img class="pro-img" src="{{ $image->path }}" alt="Book Image" />
                             </a>
-                            {{--<img class="pro-img" src="{{ $image->path }}" alt="" />--}}
-                        {{--</div>--}}
+                            <br>
+                        @else
+                            <a class="lightbox-product-link" href="{{ $image->path }}"
+                               data-lightbox="pro-img" data-title="Image {{$image->id}}">
+                                <img class="pro-img-small" src="{{ $image->path }}" alt="Book Image" />
+                            </a>
+                        @endif
                     @endforeach
                 @endif
 
