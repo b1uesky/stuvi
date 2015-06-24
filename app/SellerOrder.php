@@ -43,7 +43,7 @@ class SellerOrder extends Model
     }
 
     /**
-     * Generate a 4-digit verification code for the seller order
+     * Generate a 4-digit pickup code for the seller order
      * to verify that the courier has picked up the book.
      *
      * This code will be sent to the seller once he/she has
@@ -51,10 +51,10 @@ class SellerOrder extends Model
      *
      * @return int
      */
-    public function generateVerificationCode()
+    public function generatePickupCode()
     {
         $digits = 4;
-        $code = rand(pow(10, $digits-1), pow(10, $digits)-1);
-        return $code;
+        $this->pickup_code = rand(pow(10, $digits-1), pow(10, $digits)-1);
+        $this->save();
     }
 }

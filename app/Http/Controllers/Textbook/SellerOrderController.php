@@ -83,8 +83,8 @@ class SellerOrderController extends Controller
      */
     public function setScheduledPickupTime()
     {
+        // TODO: validation
         $scheduled_pickup_time  = Input::get('scheduled_pickup_time');
-        //return $scheduled_pickup_time;
         $id                     = (int)Input::get('id');
         $seller_order           = SellerOrder::find($id);
 
@@ -106,11 +106,12 @@ class SellerOrderController extends Controller
             // send an email with a verification code to the seller to verify
             // that the courier has picked up the book
             $seller = $seller_order->seller();
+            $seller_order->generatePickupCode();
 
             Mail::queue('emails.sellerOrderScheduledPickupTime', [
                 'first_name'            => $seller->first_name,
                 'scheduled_pickup_time' => $scheduled_pickup_time,
-                'code'                  => $seller_order->generateVerificationCode()
+                'pickup_code'             => $seller_order->pickup_code
             ], function($message) use ($seller)
             {
                 $message->to('kingdido999@gmail.com')->subject('Your textbook pickup time has been scheduled.');
