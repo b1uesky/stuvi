@@ -125,9 +125,9 @@ class SellerOrderController extends Controller
                 'pickup_code'           => $seller_order->pickup_code
             ], function($message) use ($seller)
             {
-                $message->to('kingdido999@gmail.com')->subject('Your textbook pickup time has been scheduled.');
+                $message->to($seller->email)->subject('Your textbook pickup time has been scheduled.');
             });
-            
+
             return redirect()->back()
                 ->withSuccess("You have successfully scheduled the pickup time and we'll email you the details shortly.");
         }
