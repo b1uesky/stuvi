@@ -17,11 +17,25 @@
         </a>
     </div>
 
-    <div class="container">
+    <div class="container show-order-container">
         <!-- message -->
         <div class="container" xmlns="http://www.w3.org/1999/html">
             @if (Session::has('message'))
                 <div class="flash-message">{{ Session::get('message') }}</div>
+            @endif
+
+            {{-- Errors for invalid data --}}
+            @if ($errors->has())
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}<br>
+                    @endforeach
+                </div>
+            @endif
+
+            {{-- Successfully scheduled a pickup time --}}
+            @if(Session::has('success'))
+                <div class="alert alert-success">{{ Session::get('success') }}</div>
             @endif
         </div>
 
@@ -50,11 +64,8 @@
             <!-- item info -->
             <div class="item col-xs-12 col-sm-6">
                 <?php $product = $seller_order->product; $book = $product->book; ?>
-{{--                <p><label class="col-md-4 control-label">Title: {{ $book->title }}</label></p>
-                <p><label class="col-md-4 control-label">ISBN: {{ $book->isbn }}</label></p>
-                <p><label class="col-md-4 control-label">Price: {{ $product->price }}</label></p>--}}
                     <p>Title: <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $book->title }}</a></p>
-                    <p>ISBN: {{ $book->isbn }}</p>
+                    <p>ISBN: {{ $book->isbn10 }}</p>
                     <p>Price: ${{ $product->price }}</p>
             </div>
             <!-- pick up form-->

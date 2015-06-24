@@ -72,11 +72,6 @@ body {
 
 /**** PAYMENT ****/
 
-.stripe-button-el {
-    margin-bottom: 50px;
-    margin-left: 25px;
-}
-
 .panel-heading {
     background-color: #7AB4DE !important;
     color: #FFFFFF !important;
@@ -90,6 +85,15 @@ body {
 .fa-lock {
     font-size: 1.5em;
     line-height: 0.3em;
+}
+
+.card-row {
+    margin-bottom: 10px;
+}
+
+.card-img {
+    width: 50px;
+    height: 31px;
 }
 
 .payment-btn {
@@ -109,3 +113,52 @@ body {
     box-shadow: 0 2px #5B86AA;
     transform: translateY(5px);
 }
+
+.card-exp {
+    width: 80px;
+    margin-right: 4.16%;
+}
+
+.card-exp:focus {
+    border: 1px solid #CCCCCC;
+}
+
+#stripe-logo {
+    width: 120px;
+    height: 26px;
+    float: right;
+    margin-top: 15px;
+}
+
+#security-code {
+    width: 100px;
+}
+
+@media (min-width: 1200px) {
+    #security-code {
+        margin-left: 60px;
+    }
+}
+
+@media (max-width: 767px) {
+    #security-code {
+        margin-left: 10%;
+    }
+}
+
+@media (max-width: 425px) {
+    #security-code {
+        margin-left: 5%;
+    }
+
+    #stripe-logo {
+        width: 80px;
+        height: 17px;
+    }
+}
+
+#total {
+    font-size: 20px;
+    color: #B12704;
+}
+
