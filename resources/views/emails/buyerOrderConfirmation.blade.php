@@ -50,10 +50,9 @@
                         <span>{{ $author['full_name'] }}</span>
                     @endforeach
                     <br>
-                    <?php $seller_order = $buyer_order['seller_orders']['product_id'] ?>
                 </div>
                 <div class="price col-xs-3 col-xs-offset-1">
-                    <p><b>${{ $product->price }}</b></p>
+                    <p><b>${{ $product['price'] }}</b></p>
                 </div>
             </div>
             <hr>

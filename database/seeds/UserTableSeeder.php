@@ -53,7 +53,7 @@ public function run()
         'password'  => bcrypt('123456'),
         'first_name'    => 'Courier',
         'last_name'     => 'Stuvi',
-        'role'          => 'c'
+        'role'          => 'ac'
     ]);
 
     // $faker = Factory::create();

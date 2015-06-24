@@ -102,20 +102,31 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     /**
      * Check if the user has a given role.
      *
-     * @param null $role
+     * @param null $role    can be a multi-role string, e.g. ac
      *
      * @return bool
      */
     public function hasRole($role=null)
     {
-        if (!is_null($role) && (strpos($this->role, $role) !== false))
+        if (!is_null($role))
         {
-            return true;
+            foreach (str_split($role) as $r)
+            {
+                if (strpos($this->role, $r) !== false)
+                {
+                    return true;
+                }
+            }
         }
 
         return false;
     }
 
+    /**
+     * Return Yes/No to indicate if the user is activated
+     *
+     * @return string
+     */
     public function isActivated()
     {
         if ($this->activated)
