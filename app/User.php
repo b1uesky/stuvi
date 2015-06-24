@@ -116,6 +116,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return false;
     }
 
+    /**
+     * Return Yes/No to indicate if the user is activated
+     *
+     * @return string
+     */
     public function isActivated()
     {
         if ($this->activated)
