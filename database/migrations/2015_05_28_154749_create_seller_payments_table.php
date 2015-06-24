@@ -21,6 +21,8 @@ class CreateSellerPaymentsTable extends Migration {
             $table->string('stripe_email');
             $table->integer('stripe_amount');
             $table->timestamps();
+
+            $table->foreign('seller_order_id')->references('id')->on('seller_orders');
         });
 	}
 
