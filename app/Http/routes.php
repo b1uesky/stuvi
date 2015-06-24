@@ -143,7 +143,7 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
 | Delivery Routes
 |--------------------------------------------------------------------------
 */
-Route::group(['namespace'=>'Delivery', 'middleware'=>['auth', 'role:a'], 'prefix'=>'delivery'], function()
+Route::group(['namespace'=>'Delivery', 'middleware'=>['auth', 'role:ac'], 'prefix'=>'delivery'], function()
 {
     Route::get('/', 'DeliveryController@index');
 });
