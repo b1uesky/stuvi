@@ -22,7 +22,7 @@
                 </div>
             @endif
 
-            {{-- Errors for invalid data --}}
+            {{-- Errors for datetime input --}}
             @if ($errors->has())
                 <div class="alert alert-danger">
                     @foreach ($errors->all() as $error)
@@ -30,6 +30,8 @@
                     @endforeach
                 </div>
             @endif
+
+
 
             <h1 id="create-title">Enter your textbook information</h1>
             <!-- form begin -->
