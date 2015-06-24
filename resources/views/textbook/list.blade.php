@@ -76,7 +76,7 @@
                     </tr>
                 @empty
                     <br>
-                    <p>Sorry, there are no search results matching "<i>{{ $info }}</i>."</p>
+                    <p class="empty">Sorry, there are no search results matching "<i>{{ $info }}</i>."</p>
                 @endforelse
             </table>
         </div>

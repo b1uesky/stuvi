@@ -19,6 +19,7 @@
         <div class="row">
             <div class="col-sm-6 col-md-4">
 
+                <!-- images use lightbox -->
                 @if(!empty($images))
                     @foreach($images as $image)
                         {{--<div class="">--}}
