@@ -39,21 +39,20 @@
         <div class="row row-items">
             <h3 class="col-xs-12">Items</h3>
         </div>
-        @foreach ($buyer_order['seller_orders']['product'] as $product)
+        @foreach ($buyer_order['products'] as $product)
             <div class="row">
                 <div class="item col-xs-8">
-                    <p>Title: {{ $product->book->title }}</p>
+                    <p>Title: {{ $product['book']['title'] }}</p>
 
-                    <p>ISBN: {{ $product->book->isbn13 }}</p>
+                    <p>ISBN: {{ $product['book']['isbn13'] }}</p>
                     <span>Author(s): </span>
-                    @foreach($product->book->authors as $author)
-                        <span>{{ $author->full_name }}</span>
+                    @foreach($product['book']['authors'] as $author)
+                        <span>{{ $author['full_name'] }}</span>
                     @endforeach
                     <br>
-                    <?php $seller_order = $buyer_order['seller_orders']['product_id'] ?>
                 </div>
                 <div class="price col-xs-3 col-xs-offset-1">
-                    <p><b>${{ $product->price }}</b></p>
+                    <p><b>${{ $product['price'] }}</b></p>
                 </div>
             </div>
             <hr>

@@ -20,7 +20,7 @@ class CreateSellerOrdersTable extends Migration {
             $table->timestamp('scheduled_pickup_time')->nullable();
             $table->timestamp('pickup_time')->nullable();
             $table->integer('pickup_code')->nullable();
-            $table->integer('courier_id')->unsigned();
+            $table->integer('courier_id')->unsigned()->nullable();
             $table->integer('buyer_order_id')->unsigned();
             $table->timestamps();
 
