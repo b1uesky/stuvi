@@ -23,7 +23,8 @@
                         <span id="authors"><button class="btn btn-default author-btn">{{ $author->full_name }}</button></span>
                     @endforeach
                 </div>
-                <p>ISBN: {{ $book->isbn }}</p>
+                <p>ISBN-10: {{ $book->isbn10 }}</p>
+                <p>ISBN-13: {{ $book->isbn13 }}</p>
 
                 <p>Edition: {{ $book->edition }}</p>
 
@@ -151,15 +152,15 @@
 
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition"
+                            <input type="radio" name="highlights_and_notes"
                                    value="0"> {{ $conditions['highlights_and_notes'][0] }}
                         </label>
                         <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition"
+                            <input type="radio" name="highlights_and_notes"
                                    value="1"> {{ $conditions['highlights_and_notes'][1] }}
                         </label>
                         <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition"
+                            <input type="radio" name="highlights_and_notes"
                                    value="2"> {{ $conditions['highlights_and_notes'][2] }}
                         </label>
                     </div>
@@ -193,15 +194,15 @@
 
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition"
+                            <input type="radio" name="damaged_pages"
                                    value="0"> {{ $conditions['damaged_pages'][0] }}
                         </label>
                         <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition"
+                            <input type="radio" name="damaged_pages"
                                    value="1"> {{ $conditions['damaged_pages'][1] }}
                         </label>
                         <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition"
+                            <input type="radio" name="damaged_pages"
                                    value="2"> {{ $conditions['damaged_pages'][2] }}
                         </label>
                     </div>
@@ -237,11 +238,11 @@
 
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition"
+                            <input type="radio" name="broken_binding"
                                    value="0"> {{ $conditions['broken_binding'][0] }}
                         </label>
                         <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition"
+                            <input type="radio" name="broken_binding"
                                    value="1"> {{ $conditions['broken_binding'][1] }}
                         </label>
                     </div>
