@@ -20,7 +20,7 @@ return [
 	],
 
 	'mandrill' => [
-		'secret' => 'T1oq1a251BfoXUTRz8RlXw',
+		'secret' => '52J8eOGSRB_Zu1FPoPfdWA',
 	],
 
 	'ses' => [
@@ -29,9 +29,9 @@ return [
 		'region' => 'us-east-1',
 	],
 
-    'stripe' => [
-        'secret' => 'sk_test_1z2tEIbWtbZVvpWnnzgfymyC',
-    ],
+//    'stripe' => [
+//        'secret' => 'sk_test_1z2tEIbWtbZVvpWnnzgfymyC',
+//    ],
 
 	// Amazon Product Advertising API credentials
 	'amazon' => [
