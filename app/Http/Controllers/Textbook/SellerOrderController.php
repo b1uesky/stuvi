@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\SellerOrder;
+use App\User;
 use Auth;
 use Cart;
 use Config;
@@ -9,6 +10,7 @@ use DateTime;
 use DB;
 use Input;
 use Session;
+use Mail;
 
 class SellerOrderController extends Controller
 {
@@ -84,7 +86,6 @@ class SellerOrderController extends Controller
         $scheduled_pickup_time  = Input::get('scheduled_pickup_time');
         //return $scheduled_pickup_time;
         $id                     = (int)Input::get('id');
-
         $seller_order           = SellerOrder::find($id);
 
         // check if this seller order belongs to the current user.
@@ -101,6 +102,21 @@ class SellerOrderController extends Controller
 
             $seller_order->scheduled_pickup_time    = $scheduled_pickup_time;
             $seller_order->save();
+
+            // send an email with a verification code to the seller to verify
+            // that the courier has picked up the book
+            $seller = $seller_order->seller();
+
+            Mail::queue('emails.sellerOrderScheduledPickupTime', [
+                'first_name'            => $seller->first_name,
+                'scheduled_pickup_time' => $scheduled_pickup_time,
+                'code'                  => $seller_order->generateVerificationCode()
+            ], function($message) use ($seller)
+            {
+                $message->to('kingdido999@gmail.com')->subject('Your textbook pickup time has been scheduled.');
+            });
+
+
             return redirect('order/seller/'.$id);
         }
 
