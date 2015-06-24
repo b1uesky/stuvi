@@ -31,4 +31,30 @@ class SellerOrder extends Model
     {
         return ($this->product->seller_id == $id);
     }
+
+    /**
+     * Return the seller that owns this seller order.
+     *
+     * @return User
+     */
+    public function seller()
+    {
+        return $this->product->seller;
+    }
+
+    /**
+     * Generate a 4-digit pickup code for the seller order
+     * to verify that the courier has picked up the book.
+     *
+     * This code will be sent to the seller once he/she has
+     * scheduled a pickup time.
+     *
+     * @return int
+     */
+    public function generatePickupCode()
+    {
+        $digits = 4;
+        $this->pickup_code = rand(pow(10, $digits-1), pow(10, $digits)-1);
+        $this->save();
+    }
 }
