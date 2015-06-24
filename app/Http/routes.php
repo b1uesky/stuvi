@@ -138,3 +138,13 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
     Route::resource('sellerOrder', 'SellerOrderController');
 });
 
+/*
+|--------------------------------------------------------------------------
+| Delivery Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['namespace'=>'Delivery', 'middleware'=>['auth', 'role:a'], 'prefix'=>'delivery'], function()
+{
+    Route::get('/', 'DeliveryController@index');
+});
+

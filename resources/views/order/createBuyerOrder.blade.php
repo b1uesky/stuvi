@@ -172,7 +172,7 @@
                         </script>--}}
                         <span class="payment-errors"></span>
 
-                        <div class="col-sm-7">
+                        <div class="col-sm-8">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <i class="fa fa-lock fa-lg"></i>
@@ -182,9 +182,19 @@
                                     {{--<div class="form-row">--}}
                                     {{--<label>--}}
                                     {{--<span>Full Name (only required if name on card is different than your account name)</span>--}}
-                                    {{--<input class="form-control col-sm-2" type="text" size="20" data-stripe="name"/>--}}
+                                    {{--<input class="form-control col-sm-2" type="text" size="20"/>--}}
                                     {{--</label>--}}
                                     {{--</div>--}}
+                                    <div class="form-row card-row">
+                                        <span><img class="card-img" src="{{ asset('/img/cards/visa.jpg') }}"></span>
+                                        <span><img class="card-img"
+                                                   src="{{ asset('/img/cards/master-card.png') }}"></span>
+                                        <span><img class="card-img" src="{{ asset('/img/cards/amex.png') }}"></span>
+                                        <span><img class="card-img" src="{{ asset('/img/cards/discover.jpg') }}"></span>
+                                        <span><img class="card-img"
+                                                   src="{{ asset('/img/cards/diners-club.jpg') }}"></span>
+                                    </div>
+
                                     <div class="form-row">
                                         <label>
                                             <span>Card Number</span>
@@ -196,7 +206,7 @@
                                         <label class="col-xs-offset-3">Security Code</label>
                                         {{--<span></span>--}}
                                         <br>
-                                        <select class="form-control card-exp col-xs-2">
+                                        <select class="form-control card-exp col-xs-2" data-stripe="exp-month">
                                             <option disabled selected>Month</option>
                                             <option>01</option>
                                             <option>02</option>
@@ -211,8 +221,8 @@
                                             <option>12</option>
                                         </select>
                                         {{--<input class="form-control" type="text" size="2" data-stripe="exp-month"/>--}}
-                                        <span class="col-xs-1"> / </span>
-                                        <select class="form-control card-exp col-xs-2">
+                                        {{--<span class="col-xs-1"></span>--}}
+                                        <select class="form-control card-exp col-xs-2" data-stripe="exp-year">
                                             <option disabled selected>Year</option>
                                             <option>15</option>
                                             <option>16</option>
@@ -229,9 +239,11 @@
                                     </div>
                                     <br>
                                 </div>
-                                <div class="panel-footer">
+                                <div class="panel-footer payment-footer">
                                     <p>Your total is <span id="total"> ${{ $total }} </span></p>
                                     <button class="btn payment-btn" type="submit">Complete Order</button>
+                                    <span><a href="https://stripe.com/" target="_blank"><img id="stripe-logo"
+                                                                                             src="{{ asset('/img/stripe.png') }}"></a></span>
                                 </div>
                             </div>
                         </div>
