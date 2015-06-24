@@ -17,7 +17,7 @@
         </a>
     </div>
 
-    <div class="container">
+    <div class="container show-order-container">
         <!-- message -->
         <div class="container" xmlns="http://www.w3.org/1999/html">
             @if (Session::has('message'))
