@@ -24,6 +24,8 @@ class CreateBuyerPaymentsTable extends Migration {
             $table->string('card_brand', 20);
             $table->string('card_fingerprint', 16);
 			$table->timestamps();
+
+            $table->foreign('buyer_order_id')->references('id')->on('buyer_orders');
 		});
 
 	}

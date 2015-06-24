@@ -15,7 +15,6 @@ class CreateUsersTable extends Migration {
 		Schema::create('users', function(Blueprint $table)
 		{
 			$table->increments('id');
-			//$table->string('username');
 			$table->string('email')->unique();
 			$table->string('password', 60);
             $table->boolean('activated')->default(false);
@@ -26,6 +25,8 @@ class CreateUsersTable extends Migration {
             $table->rememberToken();
             $table->string('role')->default('u');
 			$table->timestamps();
+
+            $table->foreign('university_id')->references('id')->on('universities');
 		});
 	}
 

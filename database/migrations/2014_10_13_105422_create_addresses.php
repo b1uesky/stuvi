@@ -21,6 +21,8 @@ class CreateAddresses extends Migration {
 			$table->string('country_name', 60)->default(Config::get('addresses.default_country_name'));
 			$table->string('phone_number', 20)->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
 		});
 		
 	}
