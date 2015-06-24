@@ -111,7 +111,7 @@ class SellerOrderController extends Controller
             Mail::queue('emails.sellerOrderScheduledPickupTime', [
                 'first_name'            => $seller->first_name,
                 'scheduled_pickup_time' => $scheduled_pickup_time,
-                'pickup_code'             => $seller_order->pickup_code
+                'pickup_code'           => $seller_order->pickup_code
             ], function($message) use ($seller)
             {
                 $message->to('kingdido999@gmail.com')->subject('Your textbook pickup time has been scheduled.');
