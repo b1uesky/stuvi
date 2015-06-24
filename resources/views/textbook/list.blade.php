@@ -42,7 +42,7 @@
         <div class="container textbook-list">
             <table class="table table-responsive textbook-table">
                 <!-- new row for each book -->
-                @foreach($books as $book)
+                @forelse($books as $book)
                     <tr class="textbook-item">
                         <td class="textbook-img-container">
                             <a href="{{ url("textbook/buy/textbook/".$book->id) }}">
@@ -74,20 +74,11 @@
                             {{--<span class="textbook-class"><a href="#">BU:SMG SM131</a></span>--}}
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <br>
+                    <p>Sorry, there are no search results matching "<i>{{ $info }}</i>."</p>
+                @endforelse
             </table>
         </div>
-        {{--@foreach($books as $book)--}}
-        {{--<div class="">--}}
-        {{--<div class="">--}}
-                        {{-- Link to each individual book --}}
-        {{--<a href="{{ url('textbook/buy/textbook/'.$book->id) }}">--}}
-        {{--Title: {{ $book->title }}--}}
-        {{--</a>--}}
-        {{--</div>--}}
-        {{--<div class="">ISBN: {{ $book->isbn }}</div>--}}
-        {{--</div>--}}
-        {{--<hr>--}}
-        {{--@endforeach--}}
     </div>
 @endsection

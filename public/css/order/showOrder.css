@@ -24,6 +24,12 @@
     padding-right: 10px;
 }
 
+/* entire container for the content */
+/* This prevents showing white space below the footer */
+.show-order-container{
+    height: 70vh;
+}
+
 /* Ordered on, order #, order canceled */
 #details1{  font-weight: bold;  }
 

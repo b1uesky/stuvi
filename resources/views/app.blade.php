@@ -58,7 +58,7 @@
                     <li><a class="nav-login" href="{{ url('/login') }}">
                             <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
                     <li><a class="nav-login" href="{{ url('/register') }}">
-                            <i class="fa fa-user"></i> Register</a></li>
+                            <i class="fa fa-user"></i> Sign Up</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button"
