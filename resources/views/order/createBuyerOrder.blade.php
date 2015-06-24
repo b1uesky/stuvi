@@ -162,7 +162,7 @@
                         </br>
 
 
-                        <h2>3. Payment <small>Secure Payment via Stripe</small></h2></br>
+                        <h2>3. Payment</h2></br>
                         {{--<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                 data-key="{{ \App::environment('production') ? Config::get('stripe.live_public_key') : Config::get('stripe.test_public_key') }}"
                                 data-amount={{ $total*100 }}
@@ -172,31 +172,65 @@
                         </script>--}}
                         <span class="payment-errors"></span>
 
-                        <div class="form-row">
-                            <label>
-                                <span>Card Number</span>
-                                <input type="text" size="20" data-stripe="number"/>
-                            </label>
+                        <div class="col-sm-7">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-lock fa-lg"></i>
+                                    <span class="panel-title">Secure Payment via Stripe</span>
+                                </div>
+                                <div class="panel-body">
+                                    {{--<div class="form-row">--}}
+                                    {{--<label>--}}
+                                    {{--<span>Full Name (only required if name on card is different than your account name)</span>--}}
+                                    {{--<input class="form-control col-sm-2" type="text" size="20" data-stripe="name"/>--}}
+                                    {{--</label>--}}
+                                    {{--</div>--}}
+                                    <div class="form-row">
+                                        <label>
+                                            <span>Card Number</span>
+                                            <input class="form-control" type="text" size="20" data-stripe="number"/>
+                                        </label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label>
+                                            <span>Expiration (MM/YYYY)</span>
+                                            <select class="form-control">
+                                                <option>01</option>
+                                                <option>02</option>
+                                                <option>03</option>
+                                                <option>04</option>
+                                                <option>05</option>
+                                                <option>06</option>
+                                                <option>07</option>
+                                                <option>08</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                            </select>
+                                            {{--<input class="form-control" type="text" size="2" data-stripe="exp-month"/>--}}
+                                        </label>
+                                        <span> / </span>
+                                        <select class="form-control">
+                                            <option>15</option>
+                                            <option>16</option>
+                                            <option>17</option>
+                                            <option>18</option>
+                                            <option>19</option>
+                                            <option>20</option>
+                                            <option>21</option>
+                                        </select>
+                                        {{--<input class="form-control" type="text" size="2" data-stripe="exp-year"/>--}}
+                                    </div>
+                                    <div class="form-row">
+                                        <label>
+                                            <span>Security Code</span>
+                                            <input class="form-control" type="text" size="4" data-stripe="cvc"/>
+                                        </label>
+                                    </div>
+                                    <button class="btn payment-btn" type="submit">Complete Order</button>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="form-row">
-                            <label>
-                                <span>CVC</span>
-                                <input type="text" size="4" data-stripe="cvc"/>
-                            </label>
-                        </div>
-
-                        <div class="form-row">
-                            <label>
-                                <span>Expiration (MM/YYYY)</span>
-                                <input type="text" size="2" data-stripe="exp-month"/>
-                            </label>
-                            <span> / </span>
-                            <input type="text" size="4" data-stripe="exp-year"/>
-                        </div>
-
-                        <button type="submit">Pay</button>
-
                     </form>
                 </div>
             </div>
