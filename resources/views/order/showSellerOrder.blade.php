@@ -23,6 +23,20 @@
             @if (Session::has('message'))
                 <div class="flash-message">{{ Session::get('message') }}</div>
             @endif
+
+            {{-- Errors for invalid data --}}
+            @if ($errors->has())
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}<br>
+                    @endforeach
+                </div>
+            @endif
+
+            {{-- Successfully scheduled a pickup time --}}
+            @if(Session::has('success'))
+                <div class="alert alert-success">{{ Session::get('success') }}</div>
+            @endif
         </div>
 
         <!-- order details -->
