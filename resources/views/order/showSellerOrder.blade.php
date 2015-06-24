@@ -54,7 +54,7 @@
                 <p><label class="col-md-4 control-label">ISBN: {{ $book->isbn }}</label></p>
                 <p><label class="col-md-4 control-label">Price: {{ $product->price }}</label></p>--}}
                     <p>Title: <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $book->title }}</a></p>
-                    <p>ISBN: {{ $book->isbn }}</p>
+                    <p>ISBN: {{ $book->isbn10 }}</p>
                     <p>Price: ${{ $product->price }}</p>
             </div>
             <!-- pick up form-->
