@@ -141,6 +141,10 @@ body {
     margin-top: 15px;
 }
 
+.security-code-label{
+    padding-left: 5%;
+}
+
 #security-code {
     width: 100px;
 }

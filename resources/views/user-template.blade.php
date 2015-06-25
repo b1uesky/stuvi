@@ -114,7 +114,7 @@
                                             <i class="glyphicon glyphicon-user"></i>
                                             Account Settings </a>
                                     </li>
-                                    <li class="side-messages">
+{{--                                    <li class="side-messages">
                                         <a href="#" target="_blank">
                                             <i class="glyphicon glyphicon-envelope"></i>
                                             Messages </a>
@@ -122,7 +122,7 @@
                                     <li class="side-help">
                                         <a href="#">
                                             <i class="glyphicon glyphicon-flag"></i>
-                                            Help </a>
+                                            Help </a>--}}
                                     </li>
                                 </ul>
                             </div>

@@ -2,8 +2,6 @@
   --  For stripe API: https://stripe.com/docs/stripe.js
                 --}}
 
-<!-- TODO: NICK WORK ON STRIPE. VALIDATE CREDIT CARD NUMBER AND EXP DATE..etc -->
-
 @extends('app')
 
 @section('content')
@@ -214,14 +212,12 @@
                                             <input class="form-control" type="text" size="20" data-stripe="number"/>
                                         </label>
 
-
-
                                     </div>
                                     <!-- expiration -->
+                                    {{-- Doesn't really style well for super small screens --}}
                                     <div class="form-row" id="expiration-form">
                                         <label>Expiration (MM/YYYY)</label>
-                                        <label class="col-xs-offset-3">Security Code</label>
-                                        {{--<span></span>--}}
+                                        <label class="col-xs-offset-2 security-code-label">Security Code</label>
                                         <br>
                                         <select class="form-control card-exp col-xs-2" data-stripe="exp-month">
                                             <option disabled selected>Month</option>
