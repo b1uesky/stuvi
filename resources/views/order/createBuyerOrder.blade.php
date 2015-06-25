@@ -11,7 +11,7 @@
 
         <script type="text/javascript">
             // This identifies your website in the createToken call below
-            Stripe.setPublishableKey("{{ \App::environment('production') ? Config::get('stripe.live_public_key') : Config::get('stripe.test_public_key') }}");
+            Stripe.setPublishableKey("{{ \App\Helpers\StripeKey::getStripePublicKey() }}");
 
             var stripeResponseHandler = function(status, response) {
                 var $form = $('#payment-form');
