@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Delivery;
+namespace App\Http\Controllers\Express;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class DeliveryController extends Controller
+class DeliverController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class DeliveryController extends Controller
      */
     public function index()
     {
-        return view('delivery.index');
+        return view('express.deliver');
     }
 
     /**

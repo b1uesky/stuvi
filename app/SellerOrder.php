@@ -57,4 +57,35 @@ class SellerOrder extends Model
         $this->pickup_code = rand(pow(10, $digits-1), pow(10, $digits)-1);
         $this->save();
     }
+
+    /**
+     * Return if the seller has scheduled a pickup
+     *
+     * @return bool
+     */
+    public function scheduled()
+    {
+        return (!empty($this->scheduled_pickup_time) && !empty($this->address_id));
+    }
+
+
+    /**
+     *
+     *
+     * @return Book
+     */
+    public function book()
+    {
+        return $this->product->book;
+    }
+
+    /**
+     * Return the seller order address
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function address()
+    {
+        return $this->belongsTo('App\Address');
+    }
 }

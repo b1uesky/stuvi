@@ -140,11 +140,15 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
 
 /*
 |--------------------------------------------------------------------------
-| Delivery Routes
+| Express Routes
 |--------------------------------------------------------------------------
 */
-Route::group(['namespace'=>'Delivery', 'middleware'=>['auth', 'role:ac'], 'prefix'=>'delivery'], function()
+Route::group(['namespace'=>'Express', 'middleware'=>['auth', 'role:ac'], 'prefix'=>'express'], function()
 {
-    Route::get('/', 'DeliveryController@index');
+    Route::get('/', 'PickupController@index');
+    Route::get('/pickup', 'PickupController@index');
+    Route::get('/pickup/{id}', 'PickupController@show');
+
+    Route::get('/deliver', 'DeliverController@index');
 });
 
