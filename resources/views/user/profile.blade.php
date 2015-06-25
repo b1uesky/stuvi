@@ -57,14 +57,6 @@
                             <div class="container col-xs-12 col-md-12" id = "books-for-sale">
                                 <a href="{{url('user/bookshelf')}}"><h2 id = "for-sale"><i class="fa fa-book"></i>
                                     Books for Sale</h2></a>
-                                {{-- <hr class="hr">
-                             <div class="container col-md-11 col-md-offset-1 slider responsive books">
-                                     <div><img src="http://placehold.it/100x150"></div>
-                                     <div><img src="http://placehold.it/100x150"></div>
-                                     <div><img src="http://placehold.it/100x150"></div>
-                                     <div><img src="http://placehold.it/100x150"></div>
-                                     <div><img src="http://placehold.it/100x150"></div>
-                                 </div>--}}
                                 <table class="table table-responsive for-sale-table">
                                     @forelse ($productsForSale as $key => $product)
                                         @if ($key < 2)
@@ -75,8 +67,9 @@
                                                          width="100px"
                                                          height="150px"></td>
                                                 <td class="for-sale-info-1">
-                            <span class="for-sale-title"><a
-                                        href="{{ url('textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a></span><br>
+                                                <span class="for-sale-title">
+                                                    <a href="{{ url('textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a>
+                                                </span><br>
                                                     <span>by </span>
                                                     @foreach($product->book->authors as $author)
                                                         <span class="for-sale-author"><a
@@ -87,7 +80,7 @@
                                                     <span class="for-sale-price">{{ $product->price }}</span> <br>
                                                 </td>
                                                 <td class="for-sale-info-2">
-                                                    <span class="for-sale-isbn">ISBN-10: {{ $product->book->isbn10 }}</span>
+                                                    <span class="for-sale-isbn">ISBN-10: {{ $product->book->isbn10 }}</span><br>
                                                     <span class="for-sale-isbn">ISBN-13: {{ $product->book->isbn13 }}</span>
                                                 </td>
 

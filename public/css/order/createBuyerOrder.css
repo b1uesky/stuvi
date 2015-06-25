@@ -114,6 +114,17 @@ body {
     transform: translateY(5px);
 }
 
+.payment-errors{
+    color: red;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.payment-errors-row{
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
 .card-exp {
     width: 80px;
     margin-right: 4.16%;

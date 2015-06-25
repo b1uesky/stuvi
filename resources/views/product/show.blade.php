@@ -20,11 +20,11 @@
             <div class="col-sm-6 col-md-4">
 
                 <!-- images use lightbox -->
-                {{-- Only shows first image, but will show the rest in lightbox--}}
+                {{-- Only shows first image as large, the rest will be below it as smaller images--}}
                 @if(!empty($images))
                     <?php $x = 0; ?>
                     @foreach($images as $image)
-                        <?php $x += + 1 ?>
+                        <?php $x++ ?>
                         @if($x == 1)
                             <a class="lightbox-product-link" href="{{ $image->path }}"
                                data-lightbox="pro-img" data-title="Image {{$image->id}}">

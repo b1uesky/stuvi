@@ -1,3 +1,9 @@
+{{-- Checkout page
+  --  For stripe API: https://stripe.com/docs/stripe.js
+                --}}
+
+<!-- TODO: NICK WORK ON STRIPE. VALIDATE CREDIT CARD NUMBER AND EXP DATE..etc -->
+
 @extends('app')
 
 @section('content')
@@ -9,6 +15,7 @@
         <!-- jQuery is used only for this example; it isn't required to use Stripe -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+        <!-- stripe -->
         <script type="text/javascript">
             // This identifies your website in the createToken call below
             Stripe.setPublishableKey("{{ \App::environment('production') ? Config::get('stripe.live_public_key') : Config::get('stripe.test_public_key') }}");
@@ -77,6 +84,7 @@
                         </div>
                     @endif
 
+                    <!-- begin stripe form -->
                     <form action="{{ url('/order/store') }}" method="POST" id="payment-form">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         {{--<input type="hidden" name="stripeAmount" value="{{ $total*100 }}">--}}
@@ -161,7 +169,7 @@
                         </div>
                         </br>
 
-
+                        <!-- payment form here -->
                         <h2>3. Payment</h2></br>
                         {{--<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                 data-key="{{ \App::environment('production') ? Config::get('stripe.live_public_key') : Config::get('stripe.test_public_key') }}"
@@ -170,7 +178,10 @@
                         data-description="2 widgets (${{ $total }})"
                         data-image="/128x128.png">
                         </script>--}}
-                        <span class="payment-errors"></span>
+                        <div class="row payment-errors-row">
+                            <span class="payment-errors"></span>
+                        </div>
+
 
                         <div class="col-sm-8">
                             <div class="panel panel-default">
@@ -185,6 +196,7 @@
                                     {{--<input class="form-control col-sm-2" type="text" size="20"/>--}}
                                     {{--</label>--}}
                                     {{--</div>--}}
+                                    <!-- payment card accepted badges -->
                                     <div class="form-row card-row">
                                         <span><img class="card-img" src="{{ asset('/img/cards/visa.jpg') }}"></span>
                                         <span><img class="card-img"
@@ -195,14 +207,19 @@
                                                    src="{{ asset('/img/cards/diners-club.jpg') }}"></span>
                                     </div>
 
-                                    <div class="form-row">
+                                    <!-- card number -->
+                                    <div class="form-row" id="card-number-form">
                                         <label>
                                             <span>Card Number</span>
                                             <input class="form-control" type="text" size="20" data-stripe="number"/>
                                         </label>
+
+
+
                                     </div>
-                                    <div class="form-row">
-                                        <label>Expiration (MM/YY)</label>
+                                    <!-- expiration -->
+                                    <div class="form-row" id="expiration-form">
+                                        <label>Expiration (MM/YYYY)</label>
                                         <label class="col-xs-offset-3">Security Code</label>
                                         {{--<span></span>--}}
                                         <br>
@@ -224,13 +241,13 @@
                                         {{--<span class="col-xs-1"></span>--}}
                                         <select class="form-control card-exp col-xs-2" data-stripe="exp-year">
                                             <option disabled selected>Year</option>
-                                            <option>15</option>
-                                            <option>16</option>
-                                            <option>17</option>
-                                            <option>18</option>
-                                            <option>19</option>
-                                            <option>20</option>
-                                            <option>21</option>
+                                            <option>2015</option>
+                                            <option>2016</option>
+                                            <option>2017</option>
+                                            <option>2018</option>
+                                            <option>2019</option>
+                                            <option>2020</option>
+                                            <option>2021</option>
                                         </select>
                                         {{--<input class="form-control" type="text" size="2" data-stripe="exp-year"/>--}}
                                         <input id="security-code"

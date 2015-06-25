@@ -24,7 +24,7 @@
         <!-- user info -->
         <div class="container">
             <h1>Your Bookshelf
-                <small><a>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</a>
+                <small><a href="/user/profile">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</a>
                     <i class="fa fa-star" id="reputation"></i>(<a href="#">80</a>)
                 </small>
             </h1>
