@@ -24,8 +24,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
+                <li><a href="#">Signed in as {{ Auth::user()->first_name }}</a></li>
                 <li><a href="{{ URL::to('express/pickup') }}">Pickup</a></li>
                 <li><a href="{{ URL::to('express/deliver') }}">Deliver</a></li>
+                <li><a href="{{ URL::to('auth/logout') }}">Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

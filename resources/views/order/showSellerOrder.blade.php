@@ -75,8 +75,8 @@
                     @endif
             </div>
 
+            {{-- Show the pickup form if the order is not cancelled and not picked up --}}
             @if(!$seller_order->cancelled && !$seller_order->pickedUp())
-                <!-- pick up form-->
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
                         <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
