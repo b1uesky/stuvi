@@ -148,6 +148,7 @@ Route::group(['namespace'=>'Express', 'middleware'=>['auth', 'role:ac'], 'prefix
     Route::get('/', 'PickupController@index');
     Route::get('/pickup', 'PickupController@index');
     Route::get('/pickup/{id}', 'PickupController@show');
+    Route::post('/pickup/{id}/confirm', 'PickupController@confirmPickup');
 
     Route::get('/deliver', 'DeliverController@index');
 });
