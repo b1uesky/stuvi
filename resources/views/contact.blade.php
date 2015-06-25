@@ -3,7 +3,7 @@
 @section('content')
     <head>
         <link href="{{ asset('/css/contact.css') }}" rel="stylesheet">
-        <title>Contact Us</title>
+        <title>Stuvi - Contact Us</title>
     </head>
 
     <div class="container-fluid background">
@@ -61,12 +61,12 @@
                 </div>
             </div>
         </div>
-        <!-- boston.jpg licensing -->
-        <p id="license"><small>Background Photo by
-                <a href="https://flic.kr/p/rZ8kmG" target = "_blank"> John Collins </a>
-                under <a href="https://creativecommons.org/licenses/by/2.0/" target = "_blank"> CC-BY-2.0</a>
-                </small>
-        </p>
+        {{--<!-- boston.jpg licensing -->--}}
+        {{--<p id="license"><small>Background Photo by--}}
+                {{--<a href="https://flic.kr/p/rZ8kmG" target = "_blank"> John Collins </a>--}}
+                {{--under <a href="https://creativecommons.org/licenses/by/2.0/" target = "_blank"> CC-BY-2.0</a>--}}
+                {{--</small>--}}
+        {{--</p>--}}
     </div>
 
 
