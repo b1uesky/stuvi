@@ -18,7 +18,27 @@
     </div>
 
     <div class="container show-order-container">
-        <!-- message -->
+        <!-- order details -->
+        <div class="container cont-1">
+            <h1 id="h1-showBuy">Order Details</h1>
+        </div>
+
+        <!-- ordered on, order # -->
+        <div class="row" id="details1">
+            <p class="col-xs-12 col-sm-4 col-sm-offset-0">Ordered on {{ $seller_order->created_at }}</p>
+            <p class="col-xs-12 col-sm-4">Order #{{ $seller_order->id }}</p>
+        </div>
+
+        {{-- Order has been picked up --}}
+        @if($seller_order->pickedUp())
+            <div class="alert alert-success">The textbook has been picked up by our courier.</div>
+        @elseif(!$seller_order->cancelled)
+            <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
+        @else
+            <div class="alert alert-danger">This order has been cancelled.</div>
+        @endif
+
+        {{-- Messages --}}
         <div class="container" xmlns="http://www.w3.org/1999/html">
             @if (Session::has('message'))
                 <div class="flash-message">{{ Session::get('message') }}</div>
@@ -39,27 +59,10 @@
             @endif
         </div>
 
-        <!-- order details -->
-        <div class="container cont-1">
-            <h1 id="h1-showBuy">Order Details</h1>
-            <h2>@if ($seller_order->cancelled)
-                    <span id="cancelled">This order has been cancelled.</span>@endif
-            </h2>
-        </div>
-
-        <!-- ordered on, order # -->
-        <div class="row" id="details1">
-            <p class="col-xs-12 col-sm-4 col-sm-offset-0">Ordered on {{ $seller_order->created_at }}</p>
-            <p class="col-xs-12 col-sm-4">Order #{{ $seller_order->id }}</p>
-        </div>
-        @if (!$seller_order->cancelled)
-            <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
-            @endif
-
         <!-- items in order -->
         <div class="container" id="details3">
             <div class="row row-items">
-                <h3 class="col-xs-12">Items</h3>
+                <h3 class="col-xs-12">Item</h3>
             </div>
             <!-- item info -->
             <div class="item col-xs-12 col-sm-6">
@@ -67,41 +70,34 @@
                     <p>Title: <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $book->title }}</a></p>
                     <p>ISBN: {{ $book->isbn10 }}</p>
                     <p>Price: ${{ $product->price }}</p>
-            </div>
-            <!-- pick up form-->
-            <div class="row">
-                <div class="col-xs-12 col-sm-6">
-                    <!-- if order is cancelled, don't show -->
-                    @if($seller_order->cancelled)
-                        {{--nothing--}}
-                    <!-- scheduled already and not cancelled. allows for reschedule -->
-                    @elseif ($seller_order->scheduled_pickup_time)
-                        <label class="control-label"><b>Schedule a pick-up time</b></label><br>
-                        <mark>{{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}</mark><br>
-                        <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="id" value="{{ $seller_order->id }}">
-                            <div class="form-group">
-                                <input id="datetimepicker" class="input-append date" type="text" name="scheduled_pickup_time">
-                                <button type="submit" class="btn btn-primary">Reschedule</button>
-                            </div>
-                        </form>
-                        <!-- Else must be Not cancelled and scheduled yet -->
-                    @elseif (!$seller_order->cancelled)
-                        <label class="control-label"><b>Schedule a pick-up time</b></label><br>
-                        <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="id" value="{{ $seller_order->id }}">
-                            <div class="form-group">
-                                <input id="datetimepicker" class="input-append date" type="text" name="scheduled_pickup_time" >
-                                <button type="submit" class="btn btn-primary">Set</button>
-                            </div>
-                        </form>
-                    @else
-                        N/A
+                    @if($seller_order->scheduled())
+                        <p>Scheduled Pickup Time: {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}</p>
                     @endif
-                </div>
-            </div>  <!-- end pick up row -->
+            </div>
+
+            @if(!$seller_order->cancelled && !$seller_order->pickedUp())
+                <!-- pick up form-->
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="id" value="{{ $seller_order->id }}">
+                            <div class="form-group">
+                                <label for="datetimepicker">Schedule a pickup time</label>
+                                <input class="form-control" id="datetimepicker" class="input-append date" type="text" name="scheduled_pickup_time">
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <!-- scheduled already and not cancelled. allows for reschedule -->
+                                @if($seller_order->scheduled() && !$seller_order->cancelled)
+                                    Reschedule
+                                @else
+                                    Schedule
+                                @endif
+                            </button>
+                        </form>
+                    </div>
+                </div>  <!-- end pick up row -->
+            @endif
         </div>
     </div>
 
