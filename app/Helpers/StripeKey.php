@@ -13,7 +13,7 @@ class StripeKey
      *
      * @return string
      */
-    public static function getStripeSecretKey()
+    public static function getSecretKey()
     {
         return isProductionEnv() ? Config::get('stripe.live_secret_key') : Config::get('stripe.test_secret_key');
     }
@@ -23,8 +23,18 @@ class StripeKey
      *
      * @return string
      */
-    public static function getStripePublicKey()
+    public static function getPublicKey()
     {
         return isProductionEnv() ? Config::get('stripe.live_public_key') : Config::get('stripe.test_public_key');
+    }
+
+    /**
+     * Get Stripe client id according to the current app environment.
+     *
+     * @return string
+     */
+    public static function getClientId()
+    {
+        return isProductionEnv() ? Config::get('stripe.live_client_id') : Config::get('stripe.test_client_id');
     }
 }

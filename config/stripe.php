@@ -66,6 +66,6 @@ return [
     | Stripe live client id
     |
     */
-    'test_client_id'    => 'ca_6UbSnyOaMcUW89dZLqr4RGFA9YIfNsxF',
+    'live_client_id'    => '',
 
 ];
