@@ -11,7 +11,7 @@ class StripeKey
     /**
      * Get Stripe secret key according to the current app environment.
      *
-     * @return mixed
+     * @return string
      */
     public static function getStripeSecretKey()
     {
@@ -21,7 +21,7 @@ class StripeKey
     /**
      * Get Stripe public key according to the current app environment.
      *
-     * @return mixed
+     * @return string
      */
     public static function getStripePublicKey()
     {
