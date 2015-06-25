@@ -13,16 +13,21 @@
 
         {{-- Seller Order Details --}}
         <div class="list-group">
+            {{-- Book Info --}}
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">{{ $seller_order->book()->title }}</h4>
                 <div class="media">
                     <img class="img-responsive" src="{{ $seller_order->book()->imageSet->large_image }}" alt=""/>
                 </div>
             </li>
+
+            {{-- Scheduled Pickup Time --}}
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">Scheduled Pickup Time</h4>
                 <p class="list-group-item-text">{{ $seller_order->scheduled_pickup_time }}</p>
             </li>
+
+            {{-- Address --}}
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">Address</h4>
                 <p class="list-group-item-text">
@@ -38,6 +43,8 @@
                     {{ $seller_order->address->zip }}
                 </p>
             </li>
+
+            {{-- Phone Number --}}
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">Phone Number</h4>
                 <p class="list-group-item-text">

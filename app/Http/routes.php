@@ -151,5 +151,6 @@ Route::group(['namespace'=>'Express', 'middleware'=>['auth', 'role:ac'], 'prefix
     Route::post('/pickup/{id}/confirm', 'PickupController@confirmPickup');
 
     Route::get('/deliver', 'DeliverController@index');
+    Route::get('/deliver/{id}', 'DeliverController@show');
 });
 

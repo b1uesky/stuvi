@@ -2,41 +2,30 @@
 
 namespace App\Http\Controllers\Express;
 
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
+use App\BuyerOrder;
+
 
 class DeliverController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the buyer orders.
+     *
+     * Only show orders that are not assigned to a specific courier,
+     * not cancelled and not delivered.
      *
      * @return Response
      */
     public function index()
     {
-        return view('express.deliver');
-    }
+        $buyer_orders = BuyerOrder::whereNull('courier_id')
+            ->where('cancelled', '=', false)
+            ->whereNull('time_delivered')
+            ->get();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        //
+        return view('express.deliver.index')->withBuyerOrders($buyer_orders);
     }
 
     /**
@@ -47,7 +36,8 @@ class DeliverController extends Controller
      */
     public function show($id)
     {
-        //
+        $buyer_order = BuyerOrder::find($id);
+        return view('express.deliver.show')->withBuyerOrder($buyer_order);
     }
 
     /**

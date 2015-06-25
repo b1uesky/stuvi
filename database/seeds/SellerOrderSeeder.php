@@ -29,6 +29,16 @@ class SellerOrderSeeder extends Seeder
                 'buyer_order_id'=> $i,
                 'address_id'    => $i
             ]);
+
+            SellerOrder::create([
+                'product_id'    => $i,
+                'cancelled'     => false,
+                'scheduled_pickup_time' => $date,
+                'pickup_code'   => 1234,
+                'courier_id'    => $courier->id,
+                'buyer_order_id'=> $i,
+                'address_id'    => $i
+            ]);
         }
     }
 }
