@@ -3,6 +3,7 @@
 use App\Address;
 use App\BuyerOrder;
 use App\BuyerPayment;
+use App\Helpers\StripeKey;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\SellerOrder;
@@ -101,6 +102,9 @@ class BuyerOrderController extends Controller
             }
         }
 
+        // create Stripe charge, if it fails, go to checkout page.
+        $charge = $this->createBuyerCharge();
+
         // store the buyer shipping address
         $address = array(
             'addressee'     => Input::get('addressee'),
@@ -114,8 +118,8 @@ class BuyerOrderController extends Controller
         $shipping_address_id = Address::add($address, Auth::id());
 
         // create an buyer payed order
-        $order = new BuyerOrder;
-        $order->buyer_id = Auth::id();
+        $order                      = new BuyerOrder;
+        $order->buyer_id            = Auth::id();
         $order->shipping_address_id = $shipping_address_id;
         $order->save();
 
@@ -123,7 +127,7 @@ class BuyerOrderController extends Controller
         $this->createSellerOrders($order->id);
 
         // create a payment
-        $payment = $this->createBuyerPayment($order);
+        $this->createBuyerPayment($order, $charge);
 
         // remove payed items from Cart
         Cart::destroy();
@@ -136,17 +140,15 @@ class BuyerOrderController extends Controller
     }
 
     /**
-     * Create buyer payment for a given order.
-     *
-     * @param $order    buyer order
+     * Create buyer charge with Stripe for a given order.
      *
      * @return BuyerPayment|\Illuminate\Http\RedirectResponse
      */
-    protected function createBuyerPayment($order)
+    protected function createBuyerCharge()
     {
         // Set your secret key: remember to change this to your live secret key in production
         // See your keys here https://dashboard.stripe.com/account/apikeys
-        \Stripe\Stripe::setApiKey(\App::environment('production') ? Config::get('stripe.live_secret_key') : Config::get('stripe.test_secret_key'));
+        \Stripe\Stripe::setApiKey(StripeKey::getStripeSecretKey());
 
         // Get the credit card details submitted by the form
         $token = Input::get('stripeToken');
@@ -161,17 +163,6 @@ class BuyerOrderController extends Controller
                     "description" => "Buyer order payment for buyer order")
             );
 
-            $payment = new BuyerPayment;
-
-            $payment->buyer_order_id    = $order->id;
-            $payment->amount        = $charge['amount'];
-            $payment->charge_id     = $charge['id'];
-            $payment->card_id       = $charge['source']['id'];
-            $payment->card_object   = $charge['source']['object'];
-            $payment->card_last4    = $charge['source']['last4'];
-            $payment->card_brand    = $charge['source']['brand'];
-            $payment->card_fingerprint  = $charge['source']['fingerprint'];
-            $payment->save();
             return $charge;
         }
         catch (\Stripe\Error\Card $e)
@@ -180,6 +171,23 @@ class BuyerOrderController extends Controller
             return redirect('/order/create')
                 ->with('message', 'The card has been declined. Please try another card.');
         }
+    }
+
+    protected function createBuyerPayment($order, $charge)
+    {
+        $payment = new BuyerPayment;
+
+        $payment->buyer_order_id    = $order->id;
+        $payment->amount            = $charge['amount'];
+        $payment->charge_id         = $charge['id'];
+        $payment->card_id           = $charge['source']['id'];
+        $payment->card_object       = $charge['source']['object'];
+        $payment->card_last4        = $charge['source']['last4'];
+        $payment->card_brand        = $charge['source']['brand'];
+        $payment->card_fingerprint  = $charge['source']['fingerprint'];
+        $payment->save();
+
+        return $payment;
     }
 
     protected function createSellerOrders($buyer_order_id)

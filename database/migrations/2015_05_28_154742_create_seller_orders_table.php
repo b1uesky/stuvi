@@ -22,11 +22,13 @@ class CreateSellerOrdersTable extends Migration {
             $table->integer('pickup_code')->nullable();
             $table->integer('courier_id')->unsigned()->nullable();
             $table->integer('buyer_order_id')->unsigned();
+            $table->integer('address_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('buyer_order_id')->references('id')->on('buyer_orders');
             $table->foreign('courier_id')->references('id')->on('users');
+            $table->foreign('address_id')->references('id')->on('addresses');
 		});
 	}
 
