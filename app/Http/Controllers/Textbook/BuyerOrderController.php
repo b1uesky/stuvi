@@ -181,7 +181,7 @@ class BuyerOrderController extends Controller
         $payment->amount            = $charge['amount'];
         $payment->charge_id         = $charge['id'];
         $payment->card_id           = $charge['source']['id'];
-        $payment->card_object       = $charge['source']['object'];
+        $payment->object            = $charge['source']['object'];
         $payment->card_last4        = $charge['source']['last4'];
         $payment->card_brand        = $charge['source']['brand'];
         $payment->card_fingerprint  = $charge['source']['fingerprint'];

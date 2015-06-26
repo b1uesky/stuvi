@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class SellerOrder extends Model
 {
@@ -17,6 +18,7 @@ class SellerOrder extends Model
     public function cancel()
     {
         $this->cancelled = true;
+        $this->cancelled_time = Carbon::now();
         $this->product->sold = false;
         $this->push();
     }
