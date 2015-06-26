@@ -90,7 +90,7 @@ class SellerOrder extends Model
 
 
     /**
-     *
+     * Return the seller order book.
      *
      * @return Book
      */
@@ -100,7 +100,7 @@ class SellerOrder extends Model
     }
 
     /**
-     * Return the seller order address
+     * Return the seller order address.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
