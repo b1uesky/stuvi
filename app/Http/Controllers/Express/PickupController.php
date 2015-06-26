@@ -14,7 +14,10 @@ use Validator;
 class PickupController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the seller orders.
+     *
+     * Only show orders with assigned courier, scheduled pickup time
+     * and not picked up.
      *
      * @return Response
      */
@@ -30,7 +33,7 @@ class PickupController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified seller order.
      *
      * @param  int  $id
      * @return Response
@@ -38,11 +41,6 @@ class PickupController extends Controller
     public function show($id)
     {
         $seller_order = SellerOrder::find($id);
-
-//        if ($seller_order->pickedUp())
-//        {
-//            return redirect('express/pickup')->withError('This seller order has already been picked up.');
-//        }
 
         if (!$seller_order->scheduled())
         {
@@ -52,11 +50,18 @@ class PickupController extends Controller
         return view('express.pickup.show')->withSellerOrder($seller_order);
     }
 
+    /**
+     * Confirm the seller order has been picked up.
+     *
+     * @param $id
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function confirmPickup($id)
     {
         $code = Input::get('code');
         $seller_order = SellerOrder::find($id);
 
+        // validation
         $v = Validator::make(Input::all(), [
             'code'  => 'required|digits:4'
         ]);
@@ -73,6 +78,7 @@ class PickupController extends Controller
                 return redirect('express/pickup')->withError('This seller order has not been scheduled yet.');
             }
 
+            // validate the code
             if ($code != $seller_order->pickup_code)
             {
                 $v->errors()->add('code', 'Sorry, the code is incorrect. Please try again.');
@@ -85,7 +91,7 @@ class PickupController extends Controller
                 ->withErrors($v->errors());
         }
 
-
+        // add pickup time to the seller order
         $seller_order->pickup_time = date('Y/m/d H:i:s');
         $seller_order->save();
 

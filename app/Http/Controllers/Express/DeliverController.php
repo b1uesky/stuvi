@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 
 use App\BuyerOrder;
 
+use Auth;
+use Mail;
+
 
 class DeliverController extends Controller
 {
@@ -29,7 +32,8 @@ class DeliverController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified buyer order.
+     * Only show an order that is not cancelled and not delivered yet.
      *
      * @param  int  $id
      * @return Response
@@ -37,39 +41,84 @@ class DeliverController extends Controller
     public function show($id)
     {
         $buyer_order = BuyerOrder::find($id);
+
+        if ($buyer_order->cancelled)
+        {
+            return redirect('express/deliver')->withError('This buyer order has been cancelled.');
+        }
+
         return view('express.deliver.show')->withBuyerOrder($buyer_order);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Assign an order to the current courier and notify the buyer by email.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function edit($id)
+    public function readyToShip($id)
     {
-        //
+        $buyer_order = BuyerOrder::find($id);
+
+        if ($buyer_order->cancelled)
+        {
+            return redirect('express/deliver')->withError('This buyer order has been cancelled.');
+        }
+
+        if ($buyer_order->delivered())
+        {
+            return redirect('express/deliver')->withError('This buyer order has already been delivered.');
+        }
+
+        if ($buyer_order->assignedToCourier())
+        {
+            return redirect('express/deliver')->withError('This buyer order has already been taken by another courier.');
+        }
+
+        // assign the order to the current courier
+        $buyer_order->courier_id = Auth::user()->id;
+        $buyer_order->save();
+
+        // send an email notification to the buyer
+        Mail::queue('emails.buyerOrder.ready', [
+            'first_name' => $buyer_order->buyer->first_name
+        ], function($message) use ($buyer_order)
+        {
+            $message->to($buyer_order->buyer->email)->subject('Your order is on the way!');
+        });
+
+        return redirect()->back();
     }
 
     /**
-     * Update the specified resource in storage.
+     * Confirm the textbook has been delivered.
      *
-     * @param  int  $id
-     * @return Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id)
+    public function confirmDelivery($id)
     {
-        //
-    }
+        $buyer_order = BuyerOrder::find($id);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
+        if ($buyer_order->cancelled)
+        {
+            return redirect('express/deliver')->withError('This buyer order has been cancelled.');
+        }
+
+        if (!$buyer_order->assignedToCourier())
+        {
+            return redirect('express/deliver')->withError('This buyer order is not assigned to any courier.');
+        }
+
+        if ($buyer_order->delivered())
+        {
+            return redirect('express/deliver')->withError('This buyer order has already been delivered.');
+        }
+
+        // add pickup time to the seller order
+        $buyer_order->time_delivered = date('Y/m/d H:i:s');
+        $buyer_order->save();
+
+        return redirect()->back();
     }
 }

@@ -146,11 +146,16 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
 Route::group(['namespace'=>'Express', 'middleware'=>['auth', 'role:ac'], 'prefix'=>'express'], function()
 {
     Route::get('/', 'PickupController@index');
+
+    // pickup
     Route::get('/pickup', 'PickupController@index');
     Route::get('/pickup/{id}', 'PickupController@show');
     Route::post('/pickup/{id}/confirm', 'PickupController@confirmPickup');
 
+    // deliver
     Route::get('/deliver', 'DeliverController@index');
     Route::get('/deliver/{id}', 'DeliverController@show');
+    Route::get('/deliver/{id}/readyToShip', 'DeliverController@readyToShip');
+    Route::get('/deliver/{id}/confirmDelivery', 'DeliverController@confirmDelivery');
 });
 

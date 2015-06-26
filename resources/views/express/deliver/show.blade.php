@@ -48,5 +48,16 @@
                 </p>
             </li>
         </div>
+
+        {{-- Show Ready to ship button if the order is not yet assigned --}}
+        @if(!$buyer_order->assignedToCourier())
+            <a href="{{ URL::to('express/deliver/' . $buyer_order->id . '/readyToShip') }}" class="btn btn-primary btn-lg btn-block">Ready to ship!</a>
+        @elseif(!$buyer_order->delivered())
+            {{-- Show Confirm Delivery button --}}
+            <a href="{{ URL::to('express/deliver/' . $buyer_order->id . '/confirmDelivery') }}" class="btn btn-warning btn-lg btn-block">Confirm Delivery</a>
+        @else
+            {{-- The order has been delivered --}}
+            <div class="alert alert-success" role="alert">The textbook has been delivered.</div>
+        @endif
     </div>
 @endsection
