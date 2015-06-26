@@ -53,7 +53,7 @@
                             <h5><small>{{ $order->product->book->author}}</small></h5>
                             <h6>ISBN: {{ $order->product->book->isbn10 }}</h6>
                         </div>
-                        <div class="col-xs-12 col-sm-2 col-xs-offset-0 col-sm-offset-1 col-md-offset-3 book-price">
+                        <div class="col-xs-12 col-sm-2 col-xs-offset-0 col-sm-offset-3 col-md-offset-3 book-price">
                             <h4>${{ $order->product->price }}</h4>
                         </div>
                     </div>

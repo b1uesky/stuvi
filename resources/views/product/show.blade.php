@@ -19,15 +19,24 @@
         <div class="row">
             <div class="col-sm-6 col-md-4">
 
+                <!-- images use lightbox -->
+                {{-- Only shows first image as large, the rest will be below it as smaller images--}}
                 @if(!empty($images))
+                    <?php $x = 0; ?>
                     @foreach($images as $image)
-                        <div class="">
+                        <?php $x++ ?>
+                        @if($x == 1)
                             <a class="lightbox-product-link" href="{{ $image->path }}"
-                               data-lightbox="image {{$image->id}}" data-title="">
-                                <img class="pro-img" src="{{ $image->path }}" alt="" />
+                               data-lightbox="pro-img" data-title="Image {{$image->id}}">
+                                <img class="pro-img" src="{{ $image->path }}" alt="Book Image" />
                             </a>
-                            {{--<img class="pro-img" src="{{ $image->path }}" alt="" />--}}
-                        </div>
+                            <br>
+                        @else
+                            <a class="lightbox-product-link" href="{{ $image->path }}"
+                               data-lightbox="pro-img" data-title="Image {{$image->id}}">
+                                <img class="pro-img-small" src="{{ $image->path }}" alt="Book Image" />
+                            </a>
+                        @endif
                     @endforeach
                 @endif
 
@@ -84,6 +93,7 @@
 </script>
 
 <!-- lightbox required -->
+{{--http://lokeshdhakar.com/projects/lightbox2/--}}
 <script src="{{asset('/js/jquery.min.js')}}"></script>
 <script src="{{asset('lightbox2-master/dist/js/lightbox.min.js')}}"></script>
 <link href="{{asset('lightbox2-master/dist/css/lightbox.css')}}" rel="stylesheet">
