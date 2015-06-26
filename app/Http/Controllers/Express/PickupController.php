@@ -9,6 +9,7 @@ use App\SellerOrder;
 
 use Auth;
 use Input;
+use Config;
 use Validator;
 
 class PickupController extends Controller
@@ -108,7 +109,7 @@ class PickupController extends Controller
         }
 
         // add pickup time to the seller order
-        $seller_order->pickup_time = date('Y/m/d H:i:s');
+        $seller_order->pickup_time = date(Config::get('app.datetime_format'));
         $seller_order->save();
 
         return redirect()->back();

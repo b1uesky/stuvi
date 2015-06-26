@@ -145,7 +145,7 @@ class DeliverController extends Controller
         }
 
         // add pickup time to the seller order
-        $buyer_order->time_delivered = date('Y/m/d H:i:s');
+        $buyer_order->time_delivered = date(Config::get('app.datetime_format'));
         $buyer_order->save();
 
         // send an email notification to the buyer
