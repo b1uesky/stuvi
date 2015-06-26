@@ -2,7 +2,7 @@
 
 .background {
     /*image link -> https://flic.kr/p/rZ8kmG */
-    background: url("../img/boston-night.jpg") no-repeat center;
+    background: url("../img/art-boston.jpg") no-repeat center;
     background-size: cover;
 }
 
@@ -10,6 +10,11 @@
     margin-left: 5%;
     margin-top: 80px;
     color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+h3{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
 /****  CONTACT FORM  ****/

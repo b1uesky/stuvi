@@ -3,7 +3,7 @@
 @section('content')
     <head>
         <link href="{{ asset('/css/contact.css') }}" rel="stylesheet">
-        <title>Contact Us</title>
+        <title>Stuvi - Contact Us</title>
     </head>
 
     <div class="container-fluid background">
@@ -56,17 +56,17 @@
                         <li><a href="https://www.facebook.com/StuviBoston" target="_blank"><i class="fa fa-facebook fa-lg"></i> Facebook</a></li>
                         <li><a href="https://twitter.com/StuviBoston" target="_blank"><i class="fa fa-twitter fa-lg"></i> Twitter</a></li>
                         <li><a href="https://www.linkedin.com/company/stuvi?trk=biz-companies-cym" target="_blank"><i class="fa fa-linkedin fa-lg"></i> LinkedIn</a></li>
-                        <li><a href="#"><i class="fa fa-github fa-lg"></i> Github</a></li>
+                        {{--<li><a href="#"><i class="fa fa-github fa-lg"></i> Github</a></li>--}}
                     </ul>
                 </div>
             </div>
         </div>
-        <!-- boston.jpg licensing -->
-        <p id="license"><small>Background Photo by
-                <a href="https://flic.kr/p/rZ8kmG" target = "_blank"> John Collins </a>
-                under <a href="https://creativecommons.org/licenses/by/2.0/" target = "_blank"> CC-BY-2.0</a>
-                </small>
-        </p>
+        {{--<!-- boston.jpg licensing -->--}}
+        {{--<p id="license"><small>Background Photo by--}}
+                {{--<a href="https://flic.kr/p/rZ8kmG" target = "_blank"> John Collins </a>--}}
+                {{--under <a href="https://creativecommons.org/licenses/by/2.0/" target = "_blank"> CC-BY-2.0</a>--}}
+                {{--</small>--}}
+        {{--</p>--}}
     </div>
 
 

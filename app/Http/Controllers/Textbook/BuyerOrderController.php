@@ -3,6 +3,7 @@
 use App\Address;
 use App\BuyerOrder;
 use App\BuyerPayment;
+use App\Helpers\StripeKey;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\SellerOrder;
@@ -13,9 +14,19 @@ use DB;
 use Illuminate\Http\Request;
 use Input;
 use Session;
+use Mail;
 
 class BuyerOrderController extends Controller
 {
+
+    /**
+     * For test email functionality
+     */
+    public function test()
+    {
+        $order = BuyerOrder::find(13);
+        $this->emailBuyerOrderConfirmation($order);
+    }
 
     /**
      * Display a listing of buyer orders for an user.
@@ -24,8 +35,12 @@ class BuyerOrderController extends Controller
      */
     public function buyerOrderIndex()
     {
+        $order = Input::get('ord');
+        // check column existence
+        $order = $this->hasColumn('buyer_orders', $order) ? $order : 'id';
+
         return view('order.index')
-            ->with('orders', Auth::user()->buyerOrders()->orderBy('id')->get());
+            ->with('orders', Auth::user()->buyerOrders()->orderBy($order, 'DESC')->get());
     }
 
     /**
@@ -69,12 +84,12 @@ class BuyerOrderController extends Controller
         // validate the address info
         $this->validate($request, Address::rules());
 
-        // check if this payment already exist
-        if (BuyerPayment::where('stripe_token', '=', Input::get('stripeToken'))->exists())
-        {
-            return redirect('/order/createBuyerOrder')
-                ->with('message', 'Invalid payment.');
-        }
+//        // check if this payment already exist
+//        if (BuyerPayment::where('charge_id', '=', Input::get('stripeToken'))->exists())
+//        {
+//            return redirect('/order/createBuyerOrder')
+//                ->with('message', 'Invalid payment.');
+//        }
 
         // check if any product in Cart is already traded
         foreach (Cart::content() as $row)
@@ -86,6 +101,9 @@ class BuyerOrderController extends Controller
                     ->with('message', 'Sorry,' . $product->book->title . ' has been sold. Please remove it from Cart');
             }
         }
+
+        // create Stripe charge, if it fails, go to checkout page.
+        $charge = $this->createBuyerCharge();
 
         // store the buyer shipping address
         $address = array(
@@ -100,8 +118,8 @@ class BuyerOrderController extends Controller
         $shipping_address_id = Address::add($address, Auth::id());
 
         // create an buyer payed order
-        $order = new BuyerOrder;
-        $order->buyer_id = Auth::id();
+        $order                      = new BuyerOrder;
+        $order->buyer_id            = Auth::id();
         $order->shipping_address_id = $shipping_address_id;
         $order->save();
 
@@ -109,27 +127,28 @@ class BuyerOrderController extends Controller
         $this->createSellerOrders($order->id);
 
         // create a payment
-        $payment = $this->createBuyerPayment($order);
+        $this->createBuyerPayment($order, $charge);
 
         // remove payed items from Cart
         Cart::destroy();
+
+        // send confirmation email to buyer
+        $this->emailBuyerOrderConfirmation($order);
 
         return redirect('/order/confirmation')
             ->with('order', $order);
     }
 
     /**
-     * Create buyer payment for a given order.
-     *
-     * @param $order    buyer order
+     * Create buyer charge with Stripe for a given order.
      *
      * @return BuyerPayment|\Illuminate\Http\RedirectResponse
      */
-    protected function createBuyerPayment($order)
+    protected function createBuyerCharge()
     {
         // Set your secret key: remember to change this to your live secret key in production
         // See your keys here https://dashboard.stripe.com/account/apikeys
-        \Stripe\Stripe::setApiKey(\App::environment('production') ? Config::get('stripe.live_secret_key') : Config::get('stripe.test_secret_key'));
+        \Stripe\Stripe::setApiKey(StripeKey::getStripeSecretKey());
 
         // Get the credit card details submitted by the form
         $token = Input::get('stripeToken');
@@ -144,20 +163,7 @@ class BuyerOrderController extends Controller
                     "description" => "Buyer order payment for buyer order")
             );
 
-            $payment = new BuyerPayment;
-
-            $payment->buyer_order_id    = $order->id;
-            $payment->stripe_token  = Input::get('stripeToken');
-            $payment->stripe_token_type = Input::get('stripeTokenType');
-            $payment->stripe_email  = Input::get('stripeEmail');
-            $payment->stripe_amount = $charge['amount'];
-            $payment->charge_id     = $charge['id'];
-            $payment->card_id       = $charge['source']['id'];
-            $payment->card_last4    = $charge['source']['last4'];
-            $payment->card_brand    = $charge['source']['brand'];
-            $payment->card_fingerprint  = $charge['source']['fingerprint'];
-            $payment->save();
-            return $payment;
+            return $charge;
         }
         catch (\Stripe\Error\Card $e)
         {
@@ -165,6 +171,23 @@ class BuyerOrderController extends Controller
             return redirect('/order/create')
                 ->with('message', 'The card has been declined. Please try another card.');
         }
+    }
+
+    protected function createBuyerPayment($order, $charge)
+    {
+        $payment = new BuyerPayment;
+
+        $payment->buyer_order_id    = $order->id;
+        $payment->amount            = $charge['amount'];
+        $payment->charge_id         = $charge['id'];
+        $payment->card_id           = $charge['source']['id'];
+        $payment->object            = $charge['source']['object'];
+        $payment->card_last4        = $charge['source']['last4'];
+        $payment->card_brand        = $charge['source']['brand'];
+        $payment->card_fingerprint  = $charge['source']['fingerprint'];
+        $payment->save();
+
+        return $payment;
     }
 
     protected function createSellerOrders($buyer_order_id)
@@ -183,7 +206,59 @@ class BuyerOrderController extends Controller
             $order->product_id = $product->id;
             $order->buyer_order_id = $buyer_order_id;
             $order->save();
+
+            // send confirmation email to seller
+            $this->emailSellerOrderConfirmation($order);
+
         }
+    }
+
+    /**
+     * Email buyer the buyer order confirmation
+     *
+     * @param BuyerOrder $order
+     */
+    protected function emailBuyerOrderConfirmation(BuyerOrder $order)
+    {
+        // convert the buyer order and corresponding objects to an array
+        $buyer_order_arr                        = $order->toArray();
+        $buyer_order_arr['shipping_address']    = $order->shipping_address->toArray();
+        $buyer_order_arr['buyer_payment']       = $order->buyer_payment->toArray();
+        foreach ($order->products() as $product)
+        {
+            $temp           = $product->toArray();
+            $temp['book']   = $product->book->toArray();
+            $temp['book']['authors']        = $product->book->authors->toArray();
+            $temp['book']['image_set']      = $product->book->imageSet->toArray();
+            $buyer_order_arr['products'][]   = $temp;
+        }
+
+
+        Mail::queue('emails.buyerOrderConfirmation', ['buyer_order' => $buyer_order_arr], function($message) use ($order)
+        {
+            $message->to($order->buyer->email)->subject('Confirmation of your order #'.$order->id);
+        });
+    }
+
+    /**
+     * Email seller the buyer order confirmation
+     *
+     * @param SellerOrder $order
+     */
+    protected function emailSellerOrderConfirmation(SellerOrder $order)
+    {
+        // convert the seller order and corresponding objects to an array
+        $seller_order_arr                       = $order->toArray();
+        $seller_order_arr['product']            = $order->product->toArray();
+        $seller_order_arr['product']['book']    = $order->product->book->toArray();
+        $seller_order_arr['product']['book']['authors']     = $order->product->book->authors->toArray();
+        $seller_order_arr['product']['book']['image_set']   = $order->product->book->imageSet->toArray();
+
+        Mail::queue('emails.sellerOrderConfirmation', ['seller_order'  => $seller_order_arr],
+            function($message) use ($order)
+        {
+            $message->to($order->product->seller->email)->subject('Your book '.$order->product->book->title.' is sold!' );
+        });
     }
 
     /**

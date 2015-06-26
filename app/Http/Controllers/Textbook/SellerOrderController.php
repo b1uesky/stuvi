@@ -1,14 +1,19 @@
 <?php namespace App\Http\Controllers\Textbook;
 
+use App\Helpers\StripeKey;
 use App\Http\Controllers\Controller;
 use App\SellerOrder;
+use App\StripeAuthorizationCredential;
 use Auth;
 use Cart;
 use Config;
-use DateTime;
 use DB;
 use Input;
 use Session;
+use Mail;
+use Validator;
+
+use Carbon\Carbon;
 
 class SellerOrderController extends Controller
 {
@@ -20,14 +25,31 @@ class SellerOrderController extends Controller
      */
     public function sellerOrderIndex()
     {
+        $order = Input::get('ord');
+        // check column existence
+        $order = $this->hasColumn('seller_orders', $order) ? $order : 'id';
+
         return view('order.sellerOrderIndex')
-            ->with('orders', Auth::user()->sellerOrders()->orderBy('id')->get());
+            ->with('orders',    Auth::user()->sellerOrders()->orderBy($order, 'DESC')->get());
     }
 
-    public function bookshelf()
+    /**
+     * Build and return Stripe Connect account authorize url.
+     * @return string
+     */
+    protected function buildStripeAuthRequestUrl()
     {
-        return view('order.sellerBookshelfIndex');
+        $authorize_request_body = array(
+            'response_type' => 'code',
+            'scope' => Config::get('stripe.scope'),
+            'client_id' => StripeKey::getClientId()
+        );
+
+        $url = Config::get('stripe.authorize_url') . '?' . http_build_query($authorize_request_body);
+
+        return $url;
     }
+
 
     /**
      * Display a specific seller order.
@@ -44,8 +66,9 @@ class SellerOrderController extends Controller
         if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
         {
             return view('order.showSellerOrder')
-                ->withSellerOrder($seller_order)
-                ->with('datetime_format', Config::get('app.datetime_format'));
+                ->with('seller_order',      $seller_order)
+                ->with('datetime_format',   Config::get('app.datetime_format'))
+                ->with('stripe_authorize_url',  $this->buildStripeAuthRequestUrl());
         }
 
         return redirect('order/seller')
@@ -67,7 +90,8 @@ class SellerOrderController extends Controller
         if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
         {
             $seller_order->cancel();
-            return redirect('order/seller/'.$id);
+
+            return redirect('order/seller/' . $id);
         }
 
         return redirect('order/seller')
@@ -81,10 +105,21 @@ class SellerOrderController extends Controller
      */
     public function setScheduledPickupTime()
     {
-        $scheduled_pickup_time  = Input::get('scheduled_pickup_time');
-        $id                     = (int)Input::get('id');
+        // validation
+        $v = Validator::make(Input::all(), [
+            'scheduled_pickup_time' => 'required|date'
+        ]);
 
-        $seller_order           = SellerOrder::find($id);
+        if ($v->fails())
+        {
+            return redirect()->back()
+                ->withErrors($v->errors())
+                ->withInput(Input::all());
+        }
+
+        $scheduled_pickup_time = Input::get('scheduled_pickup_time');
+        $id = (int)Input::get('id');
+        $seller_order = SellerOrder::find($id);
 
         // check if this seller order belongs to the current user.
         if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
@@ -92,18 +127,84 @@ class SellerOrderController extends Controller
             // if this seller order is cancelled, user cannot set up pickup time
             if ($seller_order->cancelled)
             {
-                return redirect('order/seller/'.$id)
+                return redirect('order/seller/' . $id)
                     ->with('message', 'Fail to set pickup time because this order has been cancelled.');
             }
 
-            $scheduled_pickup_time = DateTime::createFromFormat("d/m/Y G:i", $scheduled_pickup_time)->format('Y-m-d G:i:s');
-
-            $seller_order->scheduled_pickup_time    = $scheduled_pickup_time;
+            $seller_order->scheduled_pickup_time    = Carbon::now();
             $seller_order->save();
-            return redirect('order/seller/'.$id);
+
+            // send an email with a verification code to the seller to verify
+            // that the courier has picked up the book
+            $seller = $seller_order->seller();
+            $seller_order->generatePickupCode();
+
+            Mail::queue('emails.sellerOrderScheduledPickupTime', [
+                'first_name'            => $seller->first_name,
+                'scheduled_pickup_time' => $scheduled_pickup_time,
+                'pickup_code'           => $seller_order->pickup_code
+            ], function ($message) use ($seller)
+            {
+                $message->to($seller->email)->subject('Your textbook pickup time has been scheduled.');
+            });
+
+            return redirect()->back()
+                ->withSuccess("You have successfully scheduled the pickup time and we'll email you the details shortly.");
         }
 
         return redirect('order/seller')
             ->with('message', 'Order not found');
+    }
+
+    /**
+     * Transfer money of this order to seller's debit card
+     */
+    public function transfer()
+    {
+        if (isset($_GET['code'])) { // Redirect w/ code
+            $code = $_GET['code'];
+
+            $token_request_body = array(
+                'grant_type' => 'authorization_code',
+                'client_id' => StripeKey::getClientId(),
+                'code' => $code,
+                'client_secret' => StripeKey::getSecretKey(),
+            );
+
+            $req = curl_init('https://connect.stripe.com/oauth/token');
+            curl_setopt($req, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($req, CURLOPT_POST, true );
+            curl_setopt($req, CURLOPT_POSTFIELDS, http_build_query($token_request_body));
+
+            // TODO: Additional error handling
+            $respCode = curl_getinfo($req, CURLINFO_HTTP_CODE);
+            $resp = json_decode(curl_exec($req), true);
+            curl_close($req);
+
+//            return var_dump($resp);
+
+            $credential = StripeAuthorizationCredential::add($resp, Auth::id());
+
+            return $credential;
+
+            $account_id = $resp['stripe_user_id'];
+            \Stripe\Stripe::setApiKey(StripeKey::getSecretKey());
+
+            return \Stripe\Transfer::create(array(
+                'amount'        => 1000,
+                'currency'      => 'usd',
+                'destination'   => $account_id,
+                'application_fee'   => 200,
+            ));
+
+        }
+        else if (isset($_GET['error'])) // Error
+        {
+            echo $_GET['error_description'];
+        }
+        else
+        {
+            return Input::all();
+        }
     }
 }

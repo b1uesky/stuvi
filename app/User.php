@@ -86,7 +86,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function productsSold()
     {
-        return $this->products()->where('sold', 1);
+        return $this->products()->where('sold', 1)->get();
     }
 
     /**
@@ -96,6 +96,60 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function productsForSale()
     {
-        return $this->products()->where('sold', 0);
+        return $this->products()->where('sold', 0)->get();
     }
+
+    /**
+     * Check if the user has a given role.
+     *
+     * @param null $role    can be a multi-role string, e.g. ac
+     *
+     * @return bool
+     */
+    public function hasRole($role=null)
+    {
+        if (!is_null($role))
+        {
+            foreach (str_split($role) as $r)
+            {
+                if (strpos($this->role, $r) !== false)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Return Yes/No to indicate if the user is activated
+     *
+     * @return string
+     */
+    public function isActivated()
+    {
+        if ($this->activated)
+        {
+            return 'Yes';
+        }
+
+        return 'No';
+    }
+
+    public function address()
+    {
+        return $this->hasMany('App\Address');
+    }
+
+    /**
+     * Get the Stripe authorization credential of this user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function stripeAuthorizationCredential()
+    {
+        return $this->hasOne('App\StripeAuthorizationCredential', 'user_id', 'id');
+    }
+
 }

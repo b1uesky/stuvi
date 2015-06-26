@@ -6,7 +6,7 @@
 @section('content')
     <head>
         <title> Stuvi - {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} - Edit Profile </title>
-        <link href="{{ asset('/css/profile-edit.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/user/profile-edit.css') }}" rel="stylesheet">
     </head>
     <!-- User template has the second nav bar and the profile side bar -->
     @include('user-template')

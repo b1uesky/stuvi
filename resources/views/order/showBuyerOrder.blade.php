@@ -2,7 +2,7 @@
 
 @section('content')
     <head>
-        <link href="{{ asset('/css/showBuyerOrder.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('/css/order/showOrder.css') }}" rel="stylesheet" type="text/css">
         <title>Stuvi - Order Details</title>
     </head>
 
@@ -19,7 +19,7 @@
     </div>
     <!-- order details -->
     <div class="container">
-        <h1>Order Details</h1>
+        <h1 id="">Order Details</h1>
         <h2>
             <!-- canceled order -->
             @if ($buyer_order->cancelled)<span id="cancelled">This order has been cancelled.</span> @endif
@@ -52,7 +52,7 @@
             </div>
             <div class="details-pricing col-xs-12 col-sm-3 col-sm-offset-3">
                 <h4>Order Summary</h4>
-                <p>Total: ${{ $buyer_order->buyer_payment->stripe_amount/100 }}</p>
+                <p>Total: ${{ $buyer_order->buyer_payment->amount/100 }}</p>
             </div>
         </div>
     </div>
@@ -64,8 +64,13 @@
                 <div class="row">
                     <div class="item col-xs-8">
                         <p>Title: {{ $product->book->title }}</p>
-                        <p>ISBN: {{ $product->book->isbn }}</p>
-                        <p>Author: @if ($product->book->author) {{ $product->book->author}} @else N/A @endif</p>
+
+                        <p>ISBN: {{ $product->book->isbn13 }}</p>
+                        <span>Author(s): </span>
+                        @foreach($product->book->authors as $author)
+                            <span>{{ $author->full_name }}</span>
+                        @endforeach
+                        <br>
                         <?php $seller_order = $buyer_order->seller_order($product->id) ?>
                         <p>Scheduled pickup time:
                             @if ($seller_order->scheduled_pickup_time)
@@ -87,7 +92,7 @@
                         @endif
 
                     </div>
-                    <div class="price col-xs-4">
+                    <div class="price col-xs-3 col-xs-offset-1">
                         <p><b>${{ $product->price }}</b></p>
                     </div>
                 </div>
@@ -98,6 +103,6 @@
     </div>
 
     <!-- print window required -->
-    <script src="{{asset('/js/showBuyerOrder.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/showOrder.js')}}" type="text/javascript"></script>
 
 @endsection

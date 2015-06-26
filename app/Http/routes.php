@@ -51,19 +51,20 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 // order
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'], function()
 {
+    Route::get('/test', 'BuyerOrderController@test');
 
-    Route::get('/buyer', 'BuyerOrderController@buyerOrderIndex');
-    Route::get('/confirmation', 'BuyerOrderController@confirmation');
-    Route::get('/create', 'BuyerOrderController@createBuyerOrder');
-    Route::post('/store', 'BuyerOrderController@storeBuyerOrder');
-    Route::get('/buyer/{id}', 'BuyerOrderController@showBuyerOrder');
-    Route::get('/buyer/cancel/{id}', 'BuyerOrderController@cancelBuyerOrder');
+    Route::get  ('/buyer', 'BuyerOrderController@buyerOrderIndex');
+    Route::get  ('/confirmation', 'BuyerOrderController@confirmation');
+    Route::get  ('/create', 'BuyerOrderController@createBuyerOrder');
+    Route::post ('/store', 'BuyerOrderController@storeBuyerOrder');
+    Route::get  ('/buyer/{id}', 'BuyerOrderController@showBuyerOrder');
+    Route::get  ('/buyer/cancel/{id}', 'BuyerOrderController@cancelBuyerOrder');
 
-    Route::get('/seller', 'SellerOrderController@sellerOrderIndex');
-    Route::get('/seller/bookshelf', 'SellerOrderController@bookshelf');
-    Route::get('/seller/cancel/{id}', 'SellerOrderController@cancelSellerOrder');
-    Route::post('/seller/setscheduledtime', 'SellerOrderController@setScheduledPickupTime');
-    Route::get('/seller/{id}', 'SellerOrderController@showSellerOrder');
+    Route::get  ('/seller', 'SellerOrderController@sellerOrderIndex');
+    Route::get  ('/seller/cancel/{id}', 'SellerOrderController@cancelSellerOrder');
+    Route::post ('/seller/setscheduledtime', 'SellerOrderController@setScheduledPickupTime');
+    Route::get ('/seller/transfer', 'SellerOrderController@transfer');
+    Route::get  ('/seller/{id}', 'SellerOrderController@showSellerOrder');
 });
 
 // cart
@@ -107,9 +108,60 @@ Route::group(['middleware'=>'auth', 'prefix'=>'user'], function()
     Route::get('/profile-edit', 'UserController@profileEdit');
     Route::get('/account', 'UserController@account');
     Route::post('/account/edit', 'UserController@edit');
+    Route::get('/bookshelf', 'UserController@bookshelf');
 });
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>'admin'], function()
+{
+    Route::get('/', 'AdminController@index');
+
+    // user
+    Route::resource('user', 'UserController');
+
+    // product
+    Route::get('/product/verified', 'ProductController@showVerified');
+    Route::get('/product/unverified', 'ProductController@showUnverified');
+    Route::get('/product/{id}/approve', 'ProductController@approve');
+    Route::get('/product/{id}/disapprove', 'ProductController@disapprove');
+    Route::resource('product', 'ProductController');
+
+    // seller order
+    Route::resource('sellerOrder', 'SellerOrderController');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Express Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['namespace'=>'Express', 'middleware'=>['auth', 'role:ac'], 'prefix'=>'express'], function()
+{
+    Route::get('/', 'PickupController@index');
+
+    // pickup
+    Route::get('/pickup', 'PickupController@index');
+    Route::get('/pickup/todo', 'PickupController@indexTodo');
+    Route::get('/pickup/pickedUp', 'PickupController@indexPickedUp');
+    Route::get('/pickup/{id}', 'PickupController@show');
+    Route::get('/pickup/{id}/readyToPickUp', 'PickupController@readyToPickUp');
+    Route::post('/pickup/{id}/confirm', 'PickupController@confirmPickup');
+
+    // deliver
+    Route::get('/deliver', 'DeliverController@index');
+    Route::get('/deliver/todo', 'DeliverController@indexTodo');
+    Route::get('/deliver/delivered', 'DeliverController@indexDelivered');
+    Route::get('/deliver/{id}', 'DeliverController@show');
+    Route::get('/deliver/{id}/readyToShip', 'DeliverController@readyToShip');
+    Route::get('/deliver/{id}/confirmDelivery', 'DeliverController@confirmDelivery');
+});
+

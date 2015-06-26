@@ -5,9 +5,7 @@
 
 /* All screen styling */
 
-body {
-    background: #241729 !important;
-}
+body {  background: #241729 !important;  }
 
 /*********  Classes  ************/
 
@@ -26,8 +24,8 @@ body {
     background-size: cover;                         /* Fill entire container */
     background-repeat: no-repeat;
     background-position: center;
-    padding-bottom: 5%;
-
+    /*padding-bottom: 27%;*/
+    height: 80vh;     /* Height is equal to 80% of the viewport height */
 }
 
 #head1-temp{
@@ -48,50 +46,53 @@ body {
     font-weight: 400;
 }
 
-/***** GHOST BUTTONS *****/
+.top-content{
+    padding-top: 5%;
+}
+
+/***** GHOST BUTTONS
+*      Login, sign in
+*
+ *****/
 
 .ghost-btn-container {
     text-align: center;
+    padding-top: 3%;
 }
 
 .ghost-btn {
     width: 150px;
     height: 50px;
-    border-radius: 0 !important;
-    font-weight: bold !important;
-    font-size: 1.3em !important;
+    border-radius: 0;
+    font-weight: bold;
+    font-size: 1.3em;
     color: #FFFFFF;
-    border: 3px solid #FFFFFF !important;
+    border: 3px solid #FFFFFF;
     background: none;
     margin: 0 20px 0;
-    padding-top: 9px !important;
+    padding-top: 9px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
 .ghost-btn:hover {
     background: #F16521;
-    color: #FFFFFF !important;
+    color: #FFFFFF;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
 }
 
 .ghost-btn:focus {
-    outline: 0 !important;
+    outline: 0;
+    color: #FFFFFF;
 }
 
 @media (max-width: 767px) {
-    .ghost-btn-container {
-        margin-bottom: 35px;
-    }
+    .ghost-btn-container {  margin-bottom: 35px;  }
 
-    .ghost-btn {
-        margin: 0 8px 0;
-    }
+    .ghost-btn {  margin: 0 8px 0;  }
 }
 
 @media (max-width: 399px) {
-    .ghost-btn {
-        margin-bottom: 20px;
-    }
+    .ghost-btn {  margin-bottom: 20px;  }
 }
 
 /************** IDs   *************/
@@ -134,15 +135,11 @@ body {
     padding-bottom: 1%;
 }
 
-#img-info-1{
-    padding: 30px;
-}
+#img-info-1{  padding: 30px;  }
 
 /**************  NAV DROPDOWN FIX  *************/
 
-.nav-dropdown {
-    height: 50px;
-}
+.nav-dropdown {  height: 50px;  }
 
 /************* @media SMALL SCREENS ********/
 
@@ -164,9 +161,7 @@ body {
 
 /******** BOTTOM HALF ********/
 
-#bottom-half {
-    padding: 0;
-}
+#bottom-half { padding: 0; }
 
 .services {
     background-color: #F16521;
@@ -174,19 +169,13 @@ body {
     color: #FFFFFF;
 }
 
-.services h4 {
-    font-weight: 900;
-}
+.services h4 {  font-weight: 900;  }
 
 .service-row {
     margin-top: 40px;
     margin-bottom: 40px;
 }
 
-.service {
-    margin-bottom: 30px;
-}
+.service {  margin-bottom: 30px;  }
 
-.service a {
-    color: #FFFFFF;
-}
+.service a {  color: #FFFFFF;  }

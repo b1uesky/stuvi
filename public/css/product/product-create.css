@@ -1,0 +1,103 @@
+/***** SELLER PRODUCT CREATE PAGE *****/
+
+body {
+    background-color: #F2F2F2;
+}
+
+.create-container {
+    margin-bottom: 50px;
+}
+
+/*** TEXTBOOK INFO ***/
+
+.textbook-row {
+    margin-top: 50px;
+}
+
+#textbook-img {
+    width: 300px;
+    height: 400px;
+}
+
+.textbook-info span {
+    font-size: 18px;
+}
+
+.authors-container {
+    margin-bottom: 10px;
+}
+
+.author-btn {
+    background-color: #F16521;
+    color: #FFFFFF;
+    border: none;
+}
+
+.author-btn:hover,
+.author-btn:focus {
+    background-color: #F16521;
+    color: #FFFFFF;
+    outline: 0 !important;
+}
+
+.textbook-info p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/*** PRODUCT CONDITION ***/
+
+.condition-btn {
+    background-color: #DDDDDD;
+    border: 1px solid #9B9B9B;
+}
+
+.condition-btn:hover,
+.condition-btn:focus {
+    outline: 0 !important;
+    background-color: #BBBBBB;
+}
+
+.condition-btn.active {
+    background-color: #F16521;
+    color: #FFFFFF;
+    box-shadow: none;
+}
+
+.form-control:focus {
+    border: 2px solid #7AB4DE;
+    box-shadow: none;
+}
+
+.fa-question-circle {
+    color: #7AB4DE;
+}
+
+.close-modal-btn:hover,
+.close-modal-btn:focus {
+    outline: 0;
+    color: #F16521;
+    opacity: 1;
+}
+
+/** PRESSED BUTTON **/
+
+.sell-btn {
+    display: block;
+    background: #7AB4DE;
+    color: #FFFFFF;
+    border: none;
+    width: 100px;
+    box-shadow: 0 5px #5B86AA;
+}
+
+.sell-btn:hover,
+.sell-btn:focus {
+    color: #FFFFFF;
+    outline: 0 !important;
+}
+
+.sell-btn:active {
+    box-shadow: 0 2px #5B86AA;
+    transform: translateY(5px);
+}

@@ -1,0 +1,97 @@
+/* CSS FOR sellerBookshelfIndex.php */
+
+.message {
+    font-style: italic;
+}
+
+.message-cont {
+    padding: 1%;
+    margin-top: 10px;
+}
+
+.bookshelf-page{
+    background-color: whitesmoke;
+}
+
+
+/* Title */
+.fa-star{
+    color: #32adf1;
+}
+
+.bookshelf-sort{}
+
+
+
+/* BOOKS FOR SALE */
+
+
+h5{ margin:0px;
+    margin-bottom: 3px;
+}
+
+.for-sale-img{
+    width: 100px !important;
+}
+
+.books{
+    max-width: 750px;
+    max-height: 200px;
+}
+
+.for-sale-table{
+    width: 100%;
+}
+
+.for-sale-item{
+    font-size: small
+}
+
+.for-sale-info-1{
+    width: 150px;
+}
+
+.for-sale-info-2{
+    width: 200px;
+
+}
+
+.for-sale-title{
+    font-size: medium;
+    font-weight: bold;
+}
+
+.for-sale-price{
+    color: #B12704;
+    font-weight: bold;
+}
+
+.for-sale-pub-date{
+    font-size: medium;
+}
+
+
+.for-sale-author {}
+.for-sale-binding{}
+.for-sale-isbn {}
+.for-sale-class {}
+
+.for-sale-btn-add-cart{
+    padding: 0px;
+}
+
+
+/* back button */
+
+#btn-back {
+    text-align: left;
+    padding-left: 5px;
+}
+
+.fa-arrow-circle-left{
+    padding: 10px;
+}
+
+#hr1 {
+    border-color: rgba(0, 0, 0, .3);
+}

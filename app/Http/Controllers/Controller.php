@@ -3,11 +3,10 @@
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-
 use App\Product;
-
 use Cart;
 use Auth;
+use Illuminate\Support\Facades\Schema;
 
 abstract class Controller extends BaseController {
 
@@ -32,6 +31,19 @@ abstract class Controller extends BaseController {
         }
 
         return true;
+    }
+
+    /**
+     * Check if a column exists on a given table.
+     *
+     * @param $table
+     * @param $column
+     *
+     * @return mixed
+     */
+    protected function hasColumn($table, $column)
+    {
+        return Schema::hasColumn($table, $column);
     }
 
 }

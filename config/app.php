@@ -39,7 +39,7 @@ return [
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'EST5EDT',
 
     /*
 	|--------------------------------------------------------------------------
@@ -147,6 +147,7 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+        'Illuminate\Broadcasting\BroadcastServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -162,11 +163,6 @@ return [
          */
         //'Laravel\Cashier\CashierServiceProvider',
         //'Cartalyst\Stripe\Laravel\StripeServiceProvider',
-
-        /*
-         * Administrator Service Providers...
-         */
-        'Frozennode\Administrator\AdministratorServiceProvider',
 
         /*
          * Gloudemans Shopping Cart

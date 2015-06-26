@@ -13,7 +13,7 @@ class UserController extends Controller
         return view('user.profile')
             ->with('num_books_sold', $user->productsSold()->count())
             ->with('num_books_bought', count($user->productsBought()))
-            ->with('productsForSale', $user->productsForSale()->get());
+            ->with('productsForSale', $user->productsForSale());
     }
 
     public function profileEdit()
@@ -37,6 +37,11 @@ class UserController extends Controller
         $user = Auth::user();   // User::find($id)
         $user->first_name = $first_name;
         $user->save();
+    }
+
+    public function bookshelf()
+    {
+        return view('user.bookshelf')->with('productsForSale', Auth::user()->productsForSale());
     }
 
 }

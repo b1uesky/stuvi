@@ -2,7 +2,7 @@
 
 @section('content')
     <head>
-        <link href="{{ asset('/css/textbook-list.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/textbook/textbook-list.css') }}" rel="stylesheet">
         <title>Search Results</title>
     </head>
 
@@ -42,10 +42,12 @@
         <div class="container textbook-list">
             <table class="table table-responsive textbook-table">
                 <!-- new row for each book -->
-                @foreach($books as $book)
+                @forelse($books as $book)
                     <tr class="textbook-item">
                         <td class="textbook-img-container">
-                            <img class="textbook-img" src="{{ $book->imageSet->medium_image }}">
+                            <a href="{{ url("textbook/buy/textbook/".$book->id) }}">
+                                <img class="textbook-img" src="{{ $book->imageSet->medium_image }}">
+                            </a>
                         </td>
                         <td class="textbook-info-1">
                             <span class="textbook-title"><a
@@ -59,6 +61,7 @@
                                 <span>Author:</span>
                                 {{ $book->authors[0]->full_name }}
                             @endif
+
                             <br>
                             <span class="textbook-isbn">ISBN10: {{ $book->isbn10 }}</span>
                             <br>
@@ -72,20 +75,11 @@
                             {{--<span class="textbook-class"><a href="#">BU:SMG SM131</a></span>--}}
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <br>
+                    <p class="empty">Sorry, there are no search results matching "<i>{{ $info }}</i>."</p>
+                @endforelse
             </table>
         </div>
-        {{--@foreach($books as $book)--}}
-        {{--<div class="">--}}
-        {{--<div class="">--}}
-                        {{-- Link to each individual book --}}
-        {{--<a href="{{ url('textbook/buy/textbook/'.$book->id) }}">--}}
-        {{--Title: {{ $book->title }}--}}
-        {{--</a>--}}
-        {{--</div>--}}
-        {{--<div class="">ISBN: {{ $book->isbn }}</div>--}}
-        {{--</div>--}}
-        {{--<hr>--}}
-        {{--@endforeach--}}
     </div>
 @endsection
