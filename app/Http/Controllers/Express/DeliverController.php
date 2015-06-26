@@ -148,6 +148,14 @@ class DeliverController extends Controller
         $buyer_order->time_delivered = date('Y/m/d H:i:s');
         $buyer_order->save();
 
+        // send an email notification to the buyer
+        Mail::queue('emails.buyerOrder.confirmDelivery', [
+            'first_name' => $buyer_order->buyer->first_name
+        ], function($message) use ($buyer_order)
+        {
+            $message->to($buyer_order->buyer->email)->subject('Your order has been delivered!');
+        });
+
         return redirect()->back();
     }
 }
