@@ -76,7 +76,7 @@ return [
     | Stripe Connect Scope
     |
     */
-    'scope'    => 'read_only',
+    'scope'             => 'read_only',
 
     /*
     |--------------------------------------------------------------------------
@@ -86,8 +86,19 @@ return [
     | Stripe Connect authorize url
     |
     */
-    'authorize_url'    => 'https://connect.stripe.com/oauth/authorize',
+    'authorize_url'     => 'https://connect.stripe.com/oauth/authorize',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Connect Authorization Token URL
+    |--------------------------------------------------------------------------
+    |
+    | Stripe Connect authorize token url
+    |
+    */
+    'token_url'         => 'https://connect.stripe.com/oauth/token',
 
+    'application_fee'   => 200,
 
+    'currency'          => 'usd',
 ];
