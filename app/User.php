@@ -136,4 +136,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
         return 'No';
     }
+
+    /**
+     * Get the Stripe authorization credential of this user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function stripeAuthorizationCredential()
+    {
+        return $this->hasOne('App\StripeAuthorizationCredential', 'user_id', 'id');
+    }
+
 }
