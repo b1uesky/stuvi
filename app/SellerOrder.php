@@ -76,6 +76,16 @@ class SellerOrder extends Model
         return !empty($this->pickup_time);
     }
 
+    /**
+     * Check if the seller order has been assigned to a courier.
+     *
+     * @return bool
+     */
+    public function assignedToCourier()
+    {
+        return !empty($this->courier_id);
+    }
+
 
     /**
      *

@@ -14,6 +14,7 @@
         {{-- New/Picked Up switch buttons --}}
         <div class="btn-group btn-group-justified" role="group">
             <a href="{{ URL::to('express/pickup') }}" role="button" class="btn btn-default">New</a>
+            <a href="{{ URL::to('express/pickup/todo') }}" role="button" class="btn btn-default">Todo</a>
             <a href="{{ URL::to('express/pickup/pickedUp') }}" role="button" class="btn btn-default">Picked Up</a>
         </div>
 
@@ -59,8 +60,13 @@
             </li>
         </div>
 
+        {{-- Ready to pick up --}}
+        @if(!$seller_order->assignedToCourier())
+            <a href="{{ URL::to('express/pickup/'. $seller_order->id . '/readyToPickUp') }}" class="btn btn-primary btn-lg btn-block">
+                Ready to pick up
+            </a>
         {{-- Verification Code --}}
-        @if(!$seller_order->pickedUp())
+        @elseif(!$seller_order->pickedUp())
             <form action="{{ URL::to('express/pickup/' . $seller_order->id . '/confirm') }}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
@@ -70,7 +76,7 @@
                 <button type="submit" class="btn btn-warning btn-lg btn-block">Confirm Pickup</button>
             </form>
         @else
-            <div class="alert alert-success" role="alert">Well Done! The textbook has been picked up.</div>
+            <div class="alert alert-success" role="alert">The textbook has been picked up.</div>
         @endif
 
     </div>
