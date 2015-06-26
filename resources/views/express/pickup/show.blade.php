@@ -70,7 +70,7 @@
             <form action="{{ URL::to('express/pickup/' . $seller_order->id . '/confirm') }}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
-                    <input type="number" class="form-control input-lg" name="code" placeholder="Enter the 4-digit verification code"/>
+                    <input type="number" class="form-control input-lg" name="code" placeholder="Enter the 4-digit verification code" required/>
                 </div>
 
                 <button type="submit" class="btn btn-warning btn-lg btn-block">Confirm Pickup</button>

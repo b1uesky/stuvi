@@ -92,7 +92,7 @@ class PickupController extends Controller
     }
 
     /**
-     * Assign an order to the current courier.
+     *
      *
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
@@ -151,8 +151,8 @@ class PickupController extends Controller
                 return redirect('express/pickup')->withError('This seller order has not been scheduled yet.');
             }
 
-            // validate the code
-            if ($code != $seller_order->pickup_code)
+            // check if the code is correct
+            if ($v->errors()->has('code') == false && $code != $seller_order->pickup_code)
             {
                 $v->errors()->add('code', 'Sorry, the code is incorrect. Please try again.');
             }
