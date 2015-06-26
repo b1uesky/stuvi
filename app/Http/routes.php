@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
-Route::get('/login', 'HomeController@login');
-Route::get('/register', 'HomeController@register');
-Route::get('/about', 'HomeController@about');
-Route::get('/contact', 'HomeController@contact');
+Route::get  ('/', 'HomeController@index');
+Route::get  ('/home', 'HomeController@index');
+Route::get  ('/login', 'HomeController@login');
+Route::get  ('/register', 'HomeController@register');
+Route::get  ('/about', 'HomeController@about');
+Route::get  ('/contact', 'HomeController@contact');
 
 /*
 |--------------------------------------------------------------------------
@@ -26,24 +26,24 @@ Route::get('/contact', 'HomeController@contact');
 
 // textbook
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook'], function() {
-    Route::get('/', 'TextbookController@index');
+    Route::get  ('/', 'TextbookController@index');
 
     // buy
     Route::group(['prefix'=>'buy'], function() {
-        Route::get('/', 'TextbookController@showBuyPage');
-        Route::get('/textbook/{book}', 'TextbookController@show');
-        Route::get('/product/{product}', 'ProductController@show');
-        Route::post('/search', 'TextbookController@buySearch');
+        Route::get  ('/', 'TextbookController@showBuyPage');
+        Route::get  ('/textbook/{book}', 'TextbookController@show');
+        Route::get  ('/product/{product}', 'ProductController@show');
+        Route::post ('/search', 'TextbookController@buySearch');
     });
 
     // sell
     Route::group(['prefix'=>'sell'], function() {
-        Route::get('/', 'TextbookController@sell');
-        Route::get('/create', 'TextbookController@create');
-        Route::get('/product/create/{book}', 'ProductController@create');
-        Route::post('/search', 'TextbookController@sellSearch');
-        Route::post('/store', 'TextbookController@store');
-        Route::post('/product/store', 'ProductController@store');
+        Route::get  ('/', 'TextbookController@sell');
+        Route::get  ('/create', 'TextbookController@create');
+        Route::get  ('/product/create/{book}', 'ProductController@create');
+        Route::post ('/search', 'TextbookController@sellSearch');
+        Route::post ('/store', 'TextbookController@store');
+        Route::post ('/product/store', 'ProductController@store');
     });
 
 });
@@ -63,8 +63,14 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::get  ('/seller', 'SellerOrderController@sellerOrderIndex');
     Route::get  ('/seller/cancel/{id}', 'SellerOrderController@cancelSellerOrder');
     Route::post ('/seller/setscheduledtime', 'SellerOrderController@setScheduledPickupTime');
-    Route::get ('/seller/transfer', 'SellerOrderController@transfer');
+    Route::post ('/seller/transfer', 'SellerOrderController@transfer');
     Route::get  ('/seller/{id}', 'SellerOrderController@showSellerOrder');
+});
+
+// Stripe authorization
+Route::group(['middleware'=>'auth', 'prefix'=>'stripe'], function()
+{
+    Route::get  ('/store', 'StripeAuthorizationCredentialController@store');
 });
 
 // cart
