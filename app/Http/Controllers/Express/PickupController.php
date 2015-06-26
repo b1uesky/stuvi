@@ -33,6 +33,22 @@ class PickupController extends Controller
     }
 
     /**
+     * Display a listing of the seller orders that have been picked up.
+     *
+     * @return Response
+     */
+    public function indexPickedUp()
+    {
+        $seller_orders = SellerOrder::where('courier_id', '=', Auth::user()->id)
+            ->whereNotNull('scheduled_pickup_time')
+            ->whereNotNull('pickup_time')
+            ->get();
+
+        return view('express.pickup.index')
+            ->withSellerOrders($seller_orders);
+    }
+
+    /**
      * Display the specified seller order.
      *
      * @param  int  $id

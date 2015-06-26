@@ -11,6 +11,12 @@
             </div>
         @endif
 
+        {{-- New/Picked Up switch buttons --}}
+        <div class="btn-group btn-group-justified" role="group">
+            <a href="{{ URL::to('express/pickup') }}" role="button" class="btn btn-default">New</a>
+            <a href="{{ URL::to('express/pickup/pickedUp') }}" role="button" class="btn btn-default">Picked Up</a>
+        </div>
+
         {{-- Seller Order Details --}}
         <div class="list-group">
             {{-- Book Info --}}
