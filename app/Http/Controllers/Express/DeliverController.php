@@ -14,10 +14,8 @@ use Mail;
 class DeliverController extends Controller
 {
     /**
-     * Display a listing of the buyer orders.
-     *
-     * Only show orders that are not assigned to a specific courier,
-     * not cancelled and not delivered.
+     * Display a listing of the buyer orders that are not assigned to
+     * couriers, not cancelled and not delivered.
      *
      * @return Response
      */
@@ -26,6 +24,37 @@ class DeliverController extends Controller
         $buyer_orders = BuyerOrder::whereNull('courier_id')
             ->where('cancelled', '=', false)
             ->whereNull('time_delivered')
+            ->get();
+
+        return view('express.deliver.index')->withBuyerOrders($buyer_orders);
+    }
+
+    /**
+     * Display a listing of the buyer orders waited to be delivered by
+     * this courier. They must not be cancelled or delivered.
+     *
+     * @return Response
+     */
+    public function indexTodo()
+    {
+        $buyer_orders = BuyerOrder::where('courier_id', '=', Auth::user()->id)
+            ->where('cancelled', '=', false)
+            ->whereNull('time_delivered')
+            ->get();
+
+        return view('express.deliver.index')->withBuyerOrders($buyer_orders);
+    }
+
+    /**
+     * Display a listing of the buyer orders delivered by this courier.
+     *
+     * @return Response
+     */
+    public function indexDelivered()
+    {
+        $buyer_orders = BuyerOrder::where('courier_id', '=', Auth::user()->id)
+            ->where('cancelled', '=', false)
+            ->whereNotNull('time_delivered')
             ->get();
 
         return view('express.deliver.index')->withBuyerOrders($buyer_orders);
