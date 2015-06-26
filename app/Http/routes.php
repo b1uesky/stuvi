@@ -141,11 +141,25 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
 
 /*
 |--------------------------------------------------------------------------
-| Delivery Routes
+| Express Routes
 |--------------------------------------------------------------------------
 */
-Route::group(['namespace'=>'Delivery', 'middleware'=>['auth', 'role:ac'], 'prefix'=>'delivery'], function()
+Route::group(['namespace'=>'Express', 'middleware'=>['auth', 'role:ac'], 'prefix'=>'express'], function()
 {
-    Route::get('/', 'DeliveryController@index');
+    Route::get('/', 'PickupController@index');
+
+    // pickup
+    Route::get('/pickup', 'PickupController@index');
+    Route::get('/pickup/pickedUp', 'PickupController@indexPickedUp');
+    Route::get('/pickup/{id}', 'PickupController@show');
+    Route::post('/pickup/{id}/confirm', 'PickupController@confirmPickup');
+
+    // deliver
+    Route::get('/deliver', 'DeliverController@index');
+    Route::get('/deliver/todo', 'DeliverController@indexTodo');
+    Route::get('/deliver/delivered', 'DeliverController@indexDelivered');
+    Route::get('/deliver/{id}', 'DeliverController@show');
+    Route::get('/deliver/{id}/readyToShip', 'DeliverController@readyToShip');
+    Route::get('/deliver/{id}/confirmDelivery', 'DeliverController@confirmDelivery');
 });
 

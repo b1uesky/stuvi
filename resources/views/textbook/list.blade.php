@@ -61,6 +61,7 @@
                                 <span>Author:</span>
                                 {{ $book->authors[0]->full_name }}
                             @endif
+
                             <br>
                             <span class="textbook-isbn">ISBN10: {{ $book->isbn10 }}</span>
                             <br>
@@ -76,7 +77,7 @@
                     </tr>
                 @empty
                     <br>
-                    <p>Sorry, there are no search results matching "<i>{{ $info }}</i>."</p>
+                    <p class="empty">Sorry, there are no search results matching "<i>{{ $info }}</i>."</p>
                 @endforelse
             </table>
         </div>

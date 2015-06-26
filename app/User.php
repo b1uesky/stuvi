@@ -137,6 +137,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return 'No';
     }
 
+    public function address()
+    {
+        return $this->hasMany('App\Address');
+    }
+
     /**
      * Get the Stripe authorization credential of this user.
      *

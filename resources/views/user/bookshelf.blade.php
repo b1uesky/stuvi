@@ -6,13 +6,11 @@
         <link rel="stylesheet" type="text/css" href="{{asset('/css/user/bookshelf.css')}}">
     </head>
 
-
-    <div class="container" xmlns="http://www.w3.org/1999/html">
+    <div class="container message-cont" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
-            <div class="flash-message">{{ Session::get('message') }}</div>
+            <div class="flash-message message">{{ Session::get('message') }}</div>
         @endif
     </div>
-
 
     <div class="container-fluid bookshelf-page">
         <!-- back button -->
@@ -24,7 +22,7 @@
         <!-- user info -->
         <div class="container">
             <h1>Your Bookshelf
-                <small><a>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</a>
+                <small><a href="/user/profile">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</a>
                     <i class="fa fa-star" id="reputation"></i>(<a href="#">80</a>)
                 </small>
             </h1>
