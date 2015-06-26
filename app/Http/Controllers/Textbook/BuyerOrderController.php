@@ -22,10 +22,9 @@ class BuyerOrderController extends Controller
     /**
      * For test email functionality
      */
-    public function testEmail()
+    public function test()
     {
-        $order = BuyerOrder::find(11);
-        $this->emailBuyerOrderConfirmation($order);
+
     }
 
     /**
@@ -148,7 +147,7 @@ class BuyerOrderController extends Controller
     {
         // Set your secret key: remember to change this to your live secret key in production
         // See your keys here https://dashboard.stripe.com/account/apikeys
-        \Stripe\Stripe::setApiKey(StripeKey::getStripeSecretKey());
+        \Stripe\Stripe::setApiKey(StripeKey::getS1tripeSecretKey());
 
         // Get the credit card details submitted by the form
         $token = Input::get('stripeToken');
