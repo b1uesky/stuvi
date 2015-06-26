@@ -3,6 +3,7 @@
 use App\Helpers\StripeKey;
 use App\Http\Controllers\Controller;
 use App\SellerOrder;
+use App\StripeAuthorizationCredential;
 use Auth;
 use Cart;
 use Config;
@@ -161,33 +162,14 @@ class SellerOrderController extends Controller
      */
     public function transfer()
     {
-//        return Input::all();
-//
-//        // Set your secret key: remember to change this to your live secret key in production
-//        // See your keys here https://dashboard.stripe.com/account/apikeys
-//        \Stripe\Stripe::setApiKey(StripeKey::getStripeSecretKey());
-//
-//        // Get the bank account details submitted by the form
-//        $token_id = Input::get('stripeToken');
-//        var_dump($token_id);
-//        // Create a Recipient
-//        $recipient = \Stripe\Recipient::create(array(
-//                "name" => Input::get('full_name'),
-//                "type" => "individual",
-//                "card" => $token_id,
-//                "email" => Input::get('email'))
-//        );
-//
-//        return $recipient;
-
         if (isset($_GET['code'])) { // Redirect w/ code
             $code = $_GET['code'];
 
             $token_request_body = array(
                 'grant_type' => 'authorization_code',
-                'client_id' => 'ca_6UbSnyOaMcUW89dZLqr4RGFA9YIfNsxF',
+                'client_id' => StripeKey::getClientId(),
                 'code' => $code,
-                'client_secret' => 'sk_test_1z2tEIbWtbZVvpWnnzgfymyC'
+                'client_secret' => StripeKey::getSecretKey(),
             );
 
             $req = curl_init('https://connect.stripe.com/oauth/token');
@@ -200,7 +182,11 @@ class SellerOrderController extends Controller
             $resp = json_decode(curl_exec($req), true);
             curl_close($req);
 
-            return $resp;
+//            return var_dump($resp);
+
+            $credential = StripeAuthorizationCredential::add($resp, Auth::id());
+
+            return $credential;
 
             $account_id = $resp['stripe_user_id'];
             \Stripe\Stripe::setApiKey(StripeKey::getSecretKey());
@@ -216,6 +202,10 @@ class SellerOrderController extends Controller
         else if (isset($_GET['error'])) // Error
         {
             echo $_GET['error_description'];
+        }
+        else
+        {
+            return Input::all();
         }
     }
 }
