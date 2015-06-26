@@ -12,6 +12,8 @@ use Session;
 use Mail;
 use Validator;
 
+use Carbon\Carbon;
+
 class SellerOrderController extends Controller
 {
 
@@ -109,9 +111,7 @@ class SellerOrderController extends Controller
                     ->with('message', 'Fail to set pickup time because this order has been cancelled.');
             }
 
-            $scheduled_pickup_time = DateTime::createFromFormat("m/d/Y H:i", $scheduled_pickup_time)->format('Y-m-d G:i:s');
-
-            $seller_order->scheduled_pickup_time    = $scheduled_pickup_time;
+            $seller_order->scheduled_pickup_time    = Carbon::now();
             $seller_order->save();
 
             // send an email with a verification code to the seller to verify
