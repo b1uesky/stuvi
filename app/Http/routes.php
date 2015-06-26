@@ -63,7 +63,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::get  ('/seller', 'SellerOrderController@sellerOrderIndex');
     Route::get  ('/seller/cancel/{id}', 'SellerOrderController@cancelSellerOrder');
     Route::post ('/seller/setscheduledtime', 'SellerOrderController@setScheduledPickupTime');
-    Route::post ('/seller/transfer', 'SellerOrderController@transfer');
+    Route::get ('/seller/transfer', 'SellerOrderController@transfer');
     Route::get  ('/seller/{id}', 'SellerOrderController@showSellerOrder');
 });
 
