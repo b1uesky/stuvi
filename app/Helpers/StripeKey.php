@@ -1,4 +1,7 @@
 <?php namespace App\Helpers;
+
+use Config;
+
 /**
  * Created by PhpStorm.
  * User: Tianyou Luo
@@ -8,6 +11,11 @@
 
 class StripeKey
 {
+//    public function __construct()
+//    {
+//        require_once('function.php');
+//    }
+
     /**
      * Get Stripe secret key according to the current app environment.
      *
