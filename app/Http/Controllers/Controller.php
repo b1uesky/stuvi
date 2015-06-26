@@ -33,6 +33,14 @@ abstract class Controller extends BaseController {
         return true;
     }
 
+    /**
+     * Check if a column exists on a given table.
+     *
+     * @param $table
+     * @param $column
+     *
+     * @return mixed
+     */
     protected function hasColumn($table, $column)
     {
         return Schema::hasColumn($table, $column);
