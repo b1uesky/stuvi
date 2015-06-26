@@ -147,7 +147,11 @@
     </div>
 
     <!-- Get order money back to seller debit card -->
-    <a href={{ $stripe_authorize_url }}><h2>Get money back</h2></a>
+    <form action="{{ url('/order/seller/transfer') }}" method="POST">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
+        <button type="submit" class="btn btn-primary">Get money back</button>
+    </form>
 
             <!-- Date time picker required scripts -->
     <script src="{{asset('datetimepicker/jquery.js')}}"></script>
