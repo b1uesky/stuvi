@@ -108,4 +108,9 @@ class SellerOrder extends Model
     {
         return $this->belongsTo('App\Address');
     }
+
+    public function buyerOrder()
+    {
+        return $this->belongsTo('App\BuyerOrder', 'buyer_order_id', 'id');
+    }
 }

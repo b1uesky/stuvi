@@ -3,14 +3,13 @@
 use App\Helpers\StripeKey;
 use App\Http\Controllers\Controller;
 use App\SellerOrder;
-use App\StripeAuthorizationCredential;
 use Auth;
 use Cart;
 use Config;
 use DB;
 use Input;
-use Session;
 use Mail;
+use Session;
 use Validator;
 
 use Carbon\Carbon;
@@ -32,24 +31,6 @@ class SellerOrderController extends Controller
         return view('order.sellerOrderIndex')
             ->with('orders',    Auth::user()->sellerOrders()->orderBy($order, 'DESC')->get());
     }
-
-    /**
-     * Build and return Stripe Connect account authorize url.
-     * @return string
-     */
-    protected function buildStripeAuthRequestUrl()
-    {
-        $authorize_request_body = array(
-            'response_type' => 'code',
-            'scope' => Config::get('stripe.scope'),
-            'client_id' => StripeKey::getClientId()
-        );
-
-        $url = Config::get('stripe.authorize_url') . '?' . http_build_query($authorize_request_body);
-
-        return $url;
-    }
-
 
     /**
      * Display a specific seller order.
@@ -161,50 +142,59 @@ class SellerOrderController extends Controller
      */
     public function transfer()
     {
-        if (isset($_GET['code'])) { // Redirect w/ code
-            $code = $_GET['code'];
+        $seller_order_id    = Input::get('seller_order_id');
+        $seller_order       = SellerOrder::find($seller_order_id);
 
-            $token_request_body = array(
-                'grant_type' => 'authorization_code',
-                'client_id' => StripeKey::getClientId(),
-                'code' => $code,
-                'client_secret' => StripeKey::getSecretKey(),
-            );
-
-            $req = curl_init('https://connect.stripe.com/oauth/token');
-            curl_setopt($req, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($req, CURLOPT_POST, true );
-            curl_setopt($req, CURLOPT_POSTFIELDS, http_build_query($token_request_body));
-
-            // TODO: Additional error handling
-            $respCode = curl_getinfo($req, CURLINFO_HTTP_CODE);
-            $resp = json_decode(curl_exec($req), true);
-            curl_close($req);
-
-//            return var_dump($resp);
-
-            $credential = StripeAuthorizationCredential::add($resp, Auth::id());
-
-            return $credential;
-
-            $account_id = $resp['stripe_user_id'];
-            \Stripe\Stripe::setApiKey(StripeKey::getSecretKey());
-
-            return \Stripe\Transfer::create(array(
-                'amount'        => 1000,
-                'currency'      => 'usd',
-                'destination'   => $account_id,
-                'application_fee'   => 200,
-            ));
-
-        }
-        else if (isset($_GET['error'])) // Error
+        // TODO: check if this seller order belongs to the current user, or null.
+        if (false)
         {
-            echo $_GET['error_description'];
+            return redirect('/order/seller')
+                ->with('message', 'Order not found.');
         }
-        else
+
+        // TODO: check if this seller order is transferred.
+        if (false)
         {
-            return Input::all();
+            return redirect('/order/seller/'.$seller_order_id)
+                ->with('message', 'You have already transferred the balance of this order to your Stripe account.');
         }
+
+        $credential = Auth::user()->stripeAuthorizationCredential;
+        // check if this user has a stripe authorization credential
+        if (is_null($credential))
+        {
+            return redirect($this->buildStripeAuthRequestUrl());
+        }
+
+        \Stripe\Stripe::setApiKey(StripeKey::getSecretKey());
+
+        $transfer = \Stripe\Transfer::create(array(
+            'amount'                => (int)($seller_order->product->price*100),
+            'currency'              => Config::get('stripe.currency'),
+            'destination'           => $credential->stripe_user_id,
+            'application_fee'       => Config::get('stripe.application_fee'),
+            'source_transaction'    => $seller_order->buyerOrder->buyer_payment->charge_id, // TODO: test source_transaction after finish create buyer order.
+        ));
+
+        return $transfer;
     }
+
+    /**
+     * Build and return Stripe Connect account authorize url.
+     * @return string
+     */
+    protected function buildStripeAuthRequestUrl()
+    {
+        $authorize_request_body = array(
+            'response_type' => 'code',
+            'scope'         => Config::get('stripe.scope'),
+            'client_id'     => StripeKey::getClientId(),
+            'state'         => ''   // TODO: for CSRF Protection
+        );
+
+        $url = Config::get('stripe.authorize_url') . '?' . http_build_query($authorize_request_body);
+
+        return $url;
+    }
+
 }
