@@ -1,4 +1,4 @@
-<!-- This is the html that will be sent out for order confirmation emails
+<!-- This is the html that will be sent out for buyer order confirmation emails
    For more info visit: http://webdesign.tutsplus.com/series/mastering-html-email--webdesign-17696
      Please read up on that before beginning to edit/product any email pages...very important..
 
@@ -11,11 +11,6 @@
         <meta http-equiv="Content-Type" content="text/html" charset=UTF-8" />
         <title>Stuvi Order Confirmation #{{ $buyer_order['id'] }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-        <style>
-            @import url(http://fonts.googleapis.com/css?family=Roboto);
-            /* All your usual CSS here */
-        </style>
 
     </head>
     <body style="margin: 0; padding: 0;">
@@ -85,7 +80,9 @@
                                                                             <td>
                                                                                 <table border="0" cellspacing="0" cellpadding="0">
                                                                                     <tr>
-                                                                                        <td align="center" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" bgcolor="#e9703e"><a href="{{url('order/buyer/'.$buyer_order['id'])}}" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #e9703e; display: inline-block;">View Order &rarr;</a></td>
+                                                                                        <td align="center" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" bgcolor="#e9703e">
+                                                                                            <a href="{{url('order/buyer/'.$buyer_order['id'])}}" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #e9703e; display: inline-block;">View Order &rarr;</a>
+                                                                                        </td>
                                                                                     </tr>
                                                                                 </table>
                                                                             </td>
