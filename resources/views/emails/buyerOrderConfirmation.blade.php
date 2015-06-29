@@ -1,9 +1,8 @@
-{{-- This is the html that will be sent out for order confirmation emails--}}
-{{-- For more info visit: http://webdesign.tutsplus.com/series/mastering-html-email--webdesign-17696
+<!-- This is the html that will be sent out for order confirmation emails
+   For more info visit: http://webdesign.tutsplus.com/series/mastering-html-email--webdesign-17696
      Please read up on that before beginning to edit/product any email pages...very important..
-                                                                                                    --}}
 
-{{-- Send an email with order/test--}}
+   Send an email with order/test -->
 
 <!-- new redo -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -15,11 +14,10 @@
     </head>
     <body style="margin: 0; padding: 0;">
         <!-- container table. Style things in here. not body -->
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border: 1px solid #cccccc; padding: 20px 0px 30px 0px;">
-            <!-- row 1/1 -->
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style=" padding: 20px 0px 30px 0px;">
             <tr>
                 <td>
-                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border: 1px solid #cccccc; border-collapse: collapse;">
                         <tr>
                             <td>
                                 <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
@@ -62,7 +60,7 @@
                                                             <tr style="color: #153643; font-family: Arial, sans-serif; font-size: 17px;">
                                                                 <td width="100%">
                                                                     Ordered on {{ $buyer_order['created_at'] }}<br>
-                                                                    Order #{{ $buyer_order['id'] }}
+                                                                    Order #{{ $buyer_order['id'] }} <br>
                                                                 </td>
                                                             </tr>
 
@@ -75,7 +73,7 @@
                                                                             <b>Shipping Address</b><br>
                                                                             {{ $shipping_address['addressee']}}<br>
                                                                             {{ $shipping_address['address_line1']}}&nbsp;{{ $shipping_address['address_line2']}}<br>
-                                                                            {{ $shipping_address['city'] }}, {{ $shipping_address['state_a2'] }}&nbsp;{{ $shipping_address['zip'] }}
+                                                                            {{ $shipping_address['city'] }}, {{ $shipping_address['state_a2'] }}&nbsp;{{ $shipping_address['zip'] }}<br>
 
                                                                         </td>
 
@@ -87,11 +85,12 @@
                                                                         <!-- payment details row 2 column 3-->
                                                                         <td style="color: #153643; font-family: Arial, sans-serif; font-size: 16px;" width="40%" align="left">
                                                                             <b>Payment Method</b><br>
-                                                                            {{ $buyer_order['buyer_payment']['card_brand'] }}&nbsp;**** {{ $buyer_order['buyer_payment']['card_last4'] }}
+                                                                            {{ $buyer_order['buyer_payment']['card_brand'] }}&nbsp;**** {{ $buyer_order['buyer_payment']['card_last4'] }}<br>
                                                                         </td>
                                                                     </tr>
                                                                 </table>
                                                             </tr>
+                                                            <hr style="border-bottom: 1px solid rgba(0, 0, 0, 0.30);">
 
                                                             <!-- items -->
                                                             <tr>
