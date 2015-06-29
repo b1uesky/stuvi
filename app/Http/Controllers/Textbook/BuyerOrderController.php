@@ -223,6 +223,7 @@ class BuyerOrderController extends Controller
     {
         // convert the buyer order and corresponding objects to an array
         $buyer_order_arr                        = $order->toArray();
+        $buyer_order_arr['buyer']               = $order->buyer->toArray();
         $buyer_order_arr['shipping_address']    = $order->shipping_address->toArray();
         $buyer_order_arr['buyer_payment']       = $order->buyer_payment->toArray();
         foreach ($order->products() as $product)
