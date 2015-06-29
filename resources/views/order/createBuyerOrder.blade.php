@@ -122,7 +122,7 @@
                             <label class="col-sm-4 control-label">Address line 1</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="address_line1">
+                                <input type="text" class="form-control" name="address_line1" value="185 Freeman St.">
                             </div>
                         </div>
                         </br>
@@ -130,7 +130,7 @@
                             <label class="col-sm-4 control-label">Address line 2</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="address_line2">
+                                <input type="text" class="form-control" name="address_line2" value="Apt. 739">
                             </div>
                         </div>
                         </br>
@@ -138,7 +138,7 @@
                             <label class="col-sm-4 control-label">City</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="city">
+                                <input type="text" class="form-control" name="city" value="Brookline">
                             </div>
                         </div>
                         </br>
@@ -146,7 +146,7 @@
                             <label class="col-sm-4 control-label">State</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="state_a2">
+                                <input type="text" class="form-control" name="state_a2" value="MA">
                             </div>
                         </div>
                         </br>
@@ -154,7 +154,7 @@
                             <label class="col-sm-4 control-label">Zip</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="zip">
+                                <input type="text" class="form-control" name="zip" value="02446">
                             </div>
                         </div>
                         </br>
@@ -162,7 +162,7 @@
                             <label class="col-sm-4 control-label">Phone</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="phone_number">
+                                <input type="text" class="form-control" name="phone_number" value="(857) 206 4789">
                             </div>
                         </div>
                         </br>
@@ -209,7 +209,7 @@
                                     <div class="form-row" id="card-number-form">
                                         <label>
                                             <span>Card Number</span>
-                                            <input class="form-control" type="text" size="20" data-stripe="number"/>
+                                            <input class="form-control" type="text" size="20" data-stripe="number" value="4242 4242 4242 4242"/>
                                         </label>
 
                                     </div>
@@ -221,7 +221,7 @@
                                         <br>
                                         <select class="form-control card-exp col-xs-2" data-stripe="exp-month">
                                             <option disabled selected>Month</option>
-                                            <option>01</option>
+                                            <option selected>01</option>
                                             <option>02</option>
                                             <option>03</option>
                                             <option>04</option>
@@ -239,7 +239,7 @@
                                             <option disabled selected>Year</option>
                                             <option>2015</option>
                                             <option>2016</option>
-                                            <option>2017</option>
+                                            <option selected>2017</option>
                                             <option>2018</option>
                                             <option>2019</option>
                                             <option>2020</option>
@@ -248,7 +248,7 @@
                                         {{--<input class="form-control" type="text" size="2" data-stripe="exp-year"/>--}}
                                         <input id="security-code"
                                                class="form-control col-xs-3 col-xs-offset-0 col-sm-offset-1" type="text"
-                                               size="4" data-stripe="cvc"/>
+                                               size="4" data-stripe="cvc" value="111"/>
                                     </div>
                                     <br>
                                 </div>
