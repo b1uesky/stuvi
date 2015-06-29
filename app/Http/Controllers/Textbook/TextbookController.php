@@ -282,7 +282,7 @@ class TextbookController extends Controller {
 
     /**
      * Search AutoComplete for the buy page.
-     * Return book titles in JSON format.
+     * Return book data in JSON format.
      *
      * @return JSON
      */
@@ -298,7 +298,10 @@ class TextbookController extends Controller {
 
         foreach ($queries as $query)
         {
-            $results[] = [ 'id' => $query->id, 'value' => $query->title ];
+            $results[] = [
+                'id' => $query->id,
+                'value' => $query->title
+            ];
         }
 
         return Response::json($results);

@@ -3,10 +3,11 @@ $(document).ready(function() {
         source: "textbook/buy/searchAutoComplete",
         minLength: 3,
         response: function( event, ui ) {
-          return ui.content;
+            return ui.content;
         },
         select: function(event, ui) {
-            $('#autocompleteBuy').val(ui.item.value);
+            // go to the book's url
+            window.location.href = "/textbook/buy/textbook/" + ui.item.id;
         }
     });
 });
