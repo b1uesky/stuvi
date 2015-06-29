@@ -130,11 +130,6 @@
 
 /* Search AutoComplete Suggestions */
 
-.ui-autocomplete {
-    background: #FFFFFF;
-    list-style-type: none;
-}
-
 .ui-helper-hidden-accessible { display: none; }
 
 @media (max-width: 535px) {
