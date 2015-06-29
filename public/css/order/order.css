@@ -38,9 +38,10 @@ h1{
 
 body { background-color: #F2F2F2;}
 
-.buyer-order-container {  }
+/* Prevent white space below footer */
+.buyer-order-container {height: 65vh;}
 
-.seller-order-container{}
+.seller-order-container{height: 65vh;}
 
 /* Orange border around each order */
 .order-container {

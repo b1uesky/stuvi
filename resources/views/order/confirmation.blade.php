@@ -3,7 +3,7 @@
 @section('content')
     <head>
         <link href="{{ asset('/css/order/confirmation.css') }}" rel="stylesheet">
-        <title>Order Confirmation</title>
+        <title>Stuvi - Order Confirmation</title>
     </head>
 
     <div class="row">
