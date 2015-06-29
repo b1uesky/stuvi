@@ -19,7 +19,7 @@ class CreateBuyerPaymentsTable extends Migration {
             $table->integer('amount');
             $table->string('charge_id', 40);
             $table->string('card_id', 40);
-            $table->string('card_object');
+            $table->string('object');
             $table->string('card_last4', 4);
             $table->string('card_brand', 20);
             $table->string('card_fingerprint', 16);

@@ -22,7 +22,7 @@ class BuyerOrderController extends Controller
     /**
      * For test email functionality
      */
-    public function testEmail()
+    public function test()
     {
         $order = BuyerOrder::find(13);
         $this->emailBuyerOrderConfirmation($order);
@@ -65,7 +65,8 @@ class BuyerOrderController extends Controller
 
         return view('order.createBuyerOrder')
             ->with('items', Cart::content())
-            ->with('total', Cart::total());
+            ->with('total', Cart::total())
+            ->with('stripe_public_key', StripeKey::getPublicKey());
     }
 
     /**
@@ -91,7 +92,7 @@ class BuyerOrderController extends Controller
 //                ->with('message', 'Invalid payment.');
 //        }
 
-        // check if any product in Cart is already traded
+        // check if any product in Cart is already sold
         foreach (Cart::content() as $row)
         {
             $product = Product::find($row->id);
@@ -148,7 +149,7 @@ class BuyerOrderController extends Controller
     {
         // Set your secret key: remember to change this to your live secret key in production
         // See your keys here https://dashboard.stripe.com/account/apikeys
-        \Stripe\Stripe::setApiKey(StripeKey::getStripeSecretKey());
+        \Stripe\Stripe::setApiKey(StripeKey::getSecretKey());
 
         // Get the credit card details submitted by the form
         $token = Input::get('stripeToken');
@@ -181,7 +182,7 @@ class BuyerOrderController extends Controller
         $payment->amount            = $charge['amount'];
         $payment->charge_id         = $charge['id'];
         $payment->card_id           = $charge['source']['id'];
-        $payment->card_object       = $charge['source']['object'];
+        $payment->object            = $charge['source']['object'];
         $payment->card_last4        = $charge['source']['last4'];
         $payment->card_brand        = $charge['source']['brand'];
         $payment->card_fingerprint  = $charge['source']['fingerprint'];

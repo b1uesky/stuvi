@@ -16,13 +16,14 @@ class CreateSellerOrdersTable extends Migration {
 		{
             $table->increments('id');
             $table->integer('product_id')->unsigned();
-            $table->boolean('cancelled')->default(false);
             $table->timestamp('scheduled_pickup_time')->nullable();
             $table->timestamp('pickup_time')->nullable();
             $table->integer('pickup_code')->nullable();
             $table->integer('courier_id')->unsigned()->nullable();
             $table->integer('buyer_order_id')->unsigned();
             $table->integer('address_id')->unsigned();
+            $table->boolean('cancelled')->default(false);
+            $table->timestamp('cancelled_time')->nullable();
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products');

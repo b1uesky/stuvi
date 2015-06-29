@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class SellerOrder extends Model
 {
@@ -17,6 +18,7 @@ class SellerOrder extends Model
     public function cancel()
     {
         $this->cancelled = true;
+        $this->cancelled_time = Carbon::now();
         $this->product->sold = false;
         $this->push();
     }
@@ -76,9 +78,19 @@ class SellerOrder extends Model
         return !empty($this->pickup_time);
     }
 
+    /**
+     * Check if the seller order has been assigned to a courier.
+     *
+     * @return bool
+     */
+    public function assignedToCourier()
+    {
+        return !empty($this->courier_id);
+    }
+
 
     /**
-     *
+     * Return the seller order book.
      *
      * @return Book
      */
@@ -88,12 +100,17 @@ class SellerOrder extends Model
     }
 
     /**
-     * Return the seller order address
+     * Return the seller order address.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function address()
     {
         return $this->belongsTo('App\Address');
+    }
+
+    public function buyerOrder()
+    {
+        return $this->belongsTo('App\BuyerOrder', 'buyer_order_id', 'id');
     }
 }

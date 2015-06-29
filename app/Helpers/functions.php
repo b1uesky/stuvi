@@ -1,4 +1,5 @@
 <?php namespace App\Helpers;
+
 /**
  * This file contains common use helper functions.
  *
@@ -8,11 +9,10 @@
  * Time: 2:10 PM
  */
 
-
 /**
  * Check if the current app environment is production environment.
  *
- * @return mixed
+ * @return bool
  */
 function isProductionEnv()
 {

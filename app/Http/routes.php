@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
-Route::get('/login', 'HomeController@login');
-Route::get('/register', 'HomeController@register');
-Route::get('/about', 'HomeController@about');
-Route::get('/contact', 'HomeController@contact');
+Route::get  ('/', 'HomeController@index');
+Route::get  ('/home', 'HomeController@index');
+Route::get  ('/login', 'HomeController@login');
+Route::get  ('/register', 'HomeController@register');
+Route::get  ('/about', 'HomeController@about');
+Route::get  ('/contact', 'HomeController@contact');
 
 /*
 |--------------------------------------------------------------------------
@@ -26,24 +26,24 @@ Route::get('/contact', 'HomeController@contact');
 
 // textbook
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook'], function() {
-    Route::get('/', 'TextbookController@index');
+    Route::get  ('/', 'TextbookController@index');
 
     // buy
     Route::group(['prefix'=>'buy'], function() {
-        Route::get('/', 'TextbookController@showBuyPage');
-        Route::get('/textbook/{book}', 'TextbookController@show');
-        Route::get('/product/{product}', 'ProductController@show');
-        Route::post('/search', 'TextbookController@buySearch');
+        Route::get  ('/', 'TextbookController@showBuyPage');
+        Route::get  ('/textbook/{book}', 'TextbookController@show');
+        Route::get  ('/product/{product}', 'ProductController@show');
+        Route::post ('/search', 'TextbookController@buySearch');
     });
 
     // sell
     Route::group(['prefix'=>'sell'], function() {
-        Route::get('/', 'TextbookController@sell');
-        Route::get('/create', 'TextbookController@create');
-        Route::get('/product/create/{book}', 'ProductController@create');
-        Route::post('/search', 'TextbookController@sellSearch');
-        Route::post('/store', 'TextbookController@store');
-        Route::post('/product/store', 'ProductController@store');
+        Route::get  ('/', 'TextbookController@sell');
+        Route::get  ('/create', 'TextbookController@create');
+        Route::get  ('/product/create/{book}', 'ProductController@create');
+        Route::post ('/search', 'TextbookController@sellSearch');
+        Route::post ('/store', 'TextbookController@store');
+        Route::post ('/product/store', 'ProductController@store');
     });
 
 });
@@ -51,19 +51,26 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 // order
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'], function()
 {
-    Route::get('/test', 'BuyerOrderController@testEmail');
+    Route::get('/test', 'BuyerOrderController@test');
 
-    Route::get('/buyer', 'BuyerOrderController@buyerOrderIndex');
-    Route::get('/confirmation', 'BuyerOrderController@confirmation');
-    Route::get('/create', 'BuyerOrderController@createBuyerOrder');
-    Route::post('/store', 'BuyerOrderController@storeBuyerOrder');
-    Route::get('/buyer/{id}', 'BuyerOrderController@showBuyerOrder');
-    Route::get('/buyer/cancel/{id}', 'BuyerOrderController@cancelBuyerOrder');
+    Route::get  ('/buyer', 'BuyerOrderController@buyerOrderIndex');
+    Route::get  ('/confirmation', 'BuyerOrderController@confirmation');
+    Route::get  ('/create', 'BuyerOrderController@createBuyerOrder');
+    Route::post ('/store', 'BuyerOrderController@storeBuyerOrder');
+    Route::get  ('/buyer/{id}', 'BuyerOrderController@showBuyerOrder');
+    Route::get  ('/buyer/cancel/{id}', 'BuyerOrderController@cancelBuyerOrder');
 
-    Route::get('/seller', 'SellerOrderController@sellerOrderIndex');
-    Route::get('/seller/cancel/{id}', 'SellerOrderController@cancelSellerOrder');
-    Route::post('/seller/setscheduledtime', 'SellerOrderController@setScheduledPickupTime');
-    Route::get('/seller/{id}', 'SellerOrderController@showSellerOrder');
+    Route::get  ('/seller', 'SellerOrderController@sellerOrderIndex');
+    Route::get  ('/seller/cancel/{id}', 'SellerOrderController@cancelSellerOrder');
+    Route::post ('/seller/setscheduledtime', 'SellerOrderController@setScheduledPickupTime');
+    Route::post ('/seller/transfer', 'SellerOrderController@transfer');
+    Route::get  ('/seller/{id}', 'SellerOrderController@showSellerOrder');
+});
+
+// Stripe authorization
+Route::group(['middleware'=>'auth', 'prefix'=>'stripe'], function()
+{
+    Route::get  ('/store', 'StripeAuthorizationCredentialController@store');
 });
 
 // cart
@@ -149,8 +156,10 @@ Route::group(['namespace'=>'Express', 'middleware'=>['auth', 'role:ac'], 'prefix
 
     // pickup
     Route::get('/pickup', 'PickupController@index');
+    Route::get('/pickup/todo', 'PickupController@indexTodo');
     Route::get('/pickup/pickedUp', 'PickupController@indexPickedUp');
     Route::get('/pickup/{id}', 'PickupController@show');
+    Route::get('/pickup/{id}/readyToPickUp', 'PickupController@readyToPickUp');
     Route::post('/pickup/{id}/confirm', 'PickupController@confirmPickup');
 
     // deliver

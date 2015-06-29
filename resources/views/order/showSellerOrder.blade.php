@@ -10,6 +10,51 @@
         {{-- date time picker required--}}
         <link rel="stylesheet" type="text/css" href="{{asset('/datetimepicker/jquery.datetimepicker.css')}}"/>
         <title>Stuvi - Order Details</title>
+
+
+        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+        <!-- jQuery is used only for this example; it isn't required to use Stripe -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+        <script type="text/javascript">
+            // This identifies your website in the createToken call below
+            Stripe.setPublishableKey("{{ \App::environment('production') ? Config::get('stripe.live_public_key') : Config::get('stripe.test_public_key') }}");
+
+            var stripeResponseHandler = function(status, response) {
+                var $form = $('#payment-form');
+
+                if (response.error) {
+                    // Show the errors on the form
+                    $form.find('.payment-errors').text(response.error.message);
+                    $form.find('button').prop('disabled', false);
+                } else {
+                    // token contains id, last4, and card type
+                    var token = response.id;
+                    // Insert the token into the form so it gets submitted to the server
+                    $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+                    // and re-submit
+                    $form.get(0).submit();
+                }
+            };
+
+            jQuery(function($) {
+                $('#payment-form').submit(function(event) {
+
+                    var $form = $(this);
+
+                    // Disable the submit button to prevent repeated clicks
+                    $form.find('button').prop('disabled', true);
+
+                    Stripe.card.createToken($form, stripeResponseHandler);
+
+                    // Prevent the form from submitting with the default action
+                    return false;
+                });
+            });
+
+        </script>
+
+
     </head>
 
     <!-- print button -->
@@ -75,8 +120,9 @@
                     @endif
             </div>
 
-            {{-- Show the pickup form if the order is not cancelled and not picked up --}}
+            {{-- If the order is not cancelled and not picked up --}}
             @if(!$seller_order->cancelled && !$seller_order->pickedUp())
+                {{-- Schedule pickup time --}}
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
                         <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
@@ -97,14 +143,25 @@
                         </form>
                     </div>
                 </div>  <!-- end pick up row -->
+
+                {{-- TODO: Add New Address --}}
+                {{-- TODO: Save New Address --}}
+                {{-- TODO: Choose Address --}}
             @endif
         </div>
     </div>
 
-    <!-- Date time picker required scripts -->
+    <!-- Get order money back to seller debit card -->
+    <form action="{{ url('/order/seller/transfer') }}" method="POST">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
+        <button type="submit" class="btn btn-primary">Get money back</button>
+    </form>
+
+            <!-- Date time picker required scripts -->
     <script src="{{asset('datetimepicker/jquery.js')}}"></script>
     <script src="{{asset('datetimepicker/jquery.datetimepicker.js')}}"></script>
     <script src="{{asset('/js/showOrder.js')}}" type="text/javascript"></script>
-    {{--<script src="http://momentjs.com/downloads/moment.min.js"></script>--}}
+
 
 @endsection

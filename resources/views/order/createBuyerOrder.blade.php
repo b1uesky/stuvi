@@ -1,5 +1,5 @@
 {{-- Checkout page
-  --  For stripe API: https://stripe.com/docs/stripe.js
+--  For stripe API: https://stripe.com/docs/stripe.js
                 --}}
 
 @extends('app')
@@ -16,7 +16,7 @@
         <!-- stripe -->
         <script type="text/javascript">
             // This identifies your website in the createToken call below
-            Stripe.setPublishableKey("{{ \App\Helpers\StripeKey::getStripePublicKey() }}");
+            Stripe.setPublishableKey("pk_test_1buT5EQ82ha2RhVa4nfXqifR");
 
             var stripeResponseHandler = function(status, response) {
                 var $form = $('#payment-form');

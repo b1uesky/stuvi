@@ -1,16 +1,18 @@
 <?php namespace App\Http\Controllers\Textbook;
 
+use App\Helpers\StripeKey;
 use App\Http\Controllers\Controller;
 use App\SellerOrder;
 use Auth;
 use Cart;
 use Config;
-use DateTime;
 use DB;
 use Input;
-use Session;
 use Mail;
+use Session;
 use Validator;
+
+use Carbon\Carbon;
 
 class SellerOrderController extends Controller
 {
@@ -27,9 +29,8 @@ class SellerOrderController extends Controller
         $order = $this->hasColumn('seller_orders', $order) ? $order : 'id';
 
         return view('order.sellerOrderIndex')
-            ->with('orders', Auth::user()->sellerOrders()->orderBy($order, 'DESC')->get());
+            ->with('orders',    Auth::user()->sellerOrders()->orderBy($order, 'DESC')->get());
     }
-
 
     /**
      * Display a specific seller order.
@@ -46,8 +47,9 @@ class SellerOrderController extends Controller
         if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
         {
             return view('order.showSellerOrder')
-                ->withSellerOrder($seller_order)
-                ->with('datetime_format', Config::get('app.datetime_format'));
+                ->with('seller_order',      $seller_order)
+                ->with('datetime_format',   Config::get('app.datetime_format'))
+                ->with('stripe_authorize_url',  $this->buildStripeAuthRequestUrl());
         }
 
         return redirect('order/seller')
@@ -69,7 +71,8 @@ class SellerOrderController extends Controller
         if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
         {
             $seller_order->cancel();
-            return redirect('order/seller/'.$id);
+
+            return redirect('order/seller/' . $id);
         }
 
         return redirect('order/seller')
@@ -95,9 +98,9 @@ class SellerOrderController extends Controller
                 ->withInput(Input::all());
         }
 
-        $scheduled_pickup_time  = Input::get('scheduled_pickup_time');
-        $id                     = (int)Input::get('id');
-        $seller_order           = SellerOrder::find($id);
+        $scheduled_pickup_time = Input::get('scheduled_pickup_time');
+        $id = (int)Input::get('id');
+        $seller_order = SellerOrder::find($id);
 
         // check if this seller order belongs to the current user.
         if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
@@ -105,13 +108,11 @@ class SellerOrderController extends Controller
             // if this seller order is cancelled, user cannot set up pickup time
             if ($seller_order->cancelled)
             {
-                return redirect('order/seller/'.$id)
+                return redirect('order/seller/' . $id)
                     ->with('message', 'Fail to set pickup time because this order has been cancelled.');
             }
 
-            $scheduled_pickup_time = DateTime::createFromFormat("m/d/Y H:i", $scheduled_pickup_time)->format('Y-m-d G:i:s');
-
-            $seller_order->scheduled_pickup_time    = $scheduled_pickup_time;
+            $seller_order->scheduled_pickup_time    = Carbon::now();
             $seller_order->save();
 
             // send an email with a verification code to the seller to verify
@@ -123,7 +124,7 @@ class SellerOrderController extends Controller
                 'first_name'            => $seller->first_name,
                 'scheduled_pickup_time' => $scheduled_pickup_time,
                 'pickup_code'           => $seller_order->pickup_code
-            ], function($message) use ($seller)
+            ], function ($message) use ($seller)
             {
                 $message->to($seller->email)->subject('Your textbook pickup time has been scheduled.');
             });
@@ -135,4 +136,65 @@ class SellerOrderController extends Controller
         return redirect('order/seller')
             ->with('message', 'Order not found');
     }
+
+    /**
+     * Transfer money of this order to seller's debit card
+     */
+    public function transfer()
+    {
+        $seller_order_id    = Input::get('seller_order_id');
+        $seller_order       = SellerOrder::find($seller_order_id);
+
+        // TODO: check if this seller order belongs to the current user, or null.
+        if (false)
+        {
+            return redirect('/order/seller')
+                ->with('message', 'Order not found.');
+        }
+
+        // TODO: check if this seller order is transferred.
+        if (false)
+        {
+            return redirect('/order/seller/'.$seller_order_id)
+                ->with('message', 'You have already transferred the balance of this order to your Stripe account.');
+        }
+
+        $credential = Auth::user()->stripeAuthorizationCredential;
+        // check if this user has a stripe authorization credential
+        if (is_null($credential))
+        {
+            return redirect($this->buildStripeAuthRequestUrl());
+        }
+
+        \Stripe\Stripe::setApiKey(StripeKey::getSecretKey());
+
+        $transfer = \Stripe\Transfer::create(array(
+            'amount'                => (int)($seller_order->product->price*100),
+            'currency'              => Config::get('stripe.currency'),
+            'destination'           => $credential->stripe_user_id,
+            'application_fee'       => Config::get('stripe.application_fee'),
+            'source_transaction'    => $seller_order->buyerOrder->buyer_payment->charge_id, // TODO: test source_transaction after finish create buyer order.
+        ));
+
+        return $transfer;
+    }
+
+    /**
+     * Build and return Stripe Connect account authorize url.
+     * @return string
+     */
+    protected function buildStripeAuthRequestUrl()
+    {
+        $authorize_request_body = array(
+            'response_type' => 'code',
+            'scope'         => Config::get('stripe.scope'),
+            'client_id'     => StripeKey::getClientId(),
+            'state'         => ''   // TODO: for CSRF Protection
+        );
+
+        $url = Config::get('stripe.authorize_url') . '?' . http_build_query($authorize_request_body);
+
+        return $url;
+    }
+
 }

@@ -20,7 +20,7 @@ class BuyerPaymentSeeder extends Seeder
             BuyerPayment::create([
                 'buyer_order_id'    => $i,
                 'amount'            => 2999,
-                'card_object'       => $i,
+                'object'            => $i,
                 'charge_id'         => $i,
                 'card_id'           => $i,
                 'card_last4'        => '1234',
