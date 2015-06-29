@@ -120,8 +120,9 @@
                     @endif
             </div>
 
-            {{-- Show the pickup form if the order is not cancelled and not picked up --}}
+            {{-- If the order is not cancelled and not picked up --}}
             @if(!$seller_order->cancelled && !$seller_order->pickedUp())
+                {{-- Schedule pickup time --}}
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
                         <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
@@ -142,6 +143,10 @@
                         </form>
                     </div>
                 </div>  <!-- end pick up row -->
+
+                {{-- TODO: Add New Address --}}
+                {{-- TODO: Save New Address --}}
+                {{-- TODO: Choose Address --}}
             @endif
         </div>
     </div>
@@ -157,7 +162,6 @@
     <script src="{{asset('datetimepicker/jquery.js')}}"></script>
     <script src="{{asset('datetimepicker/jquery.datetimepicker.js')}}"></script>
     <script src="{{asset('/js/showOrder.js')}}" type="text/javascript"></script>
-    {{--<script src="http://momentjs.com/downloads/moment.min.js"></script>--}}
 
 
 @endsection

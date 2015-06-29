@@ -11,13 +11,6 @@ composer update
 php artisan migrate --seed
 ```
 
-After adding a database table seeder:
-
-```bash
-composer dump-autoload
-php artisan db:seed
-```
-
 To fix database SQL error message when migrating, go to mysql shell:
 
 ```bash
@@ -34,22 +27,14 @@ Go back (ctrl+d) to vagrant:
 php artisan migrate --seed
 ```
 
-## Administrator
-
-url: `/admin`
-
-See `routes.php` for details.
-
-If you cannot go to `/admin`, try:
+After adding a database table seeder:
 
 ```bash
-mkdir config/administrator/settings
+composer dump-autoload
+php artisan db:seed
 ```
 
-update Laravel from 5.0 to 5.1
+## Routes
 
-```bash
-mkdir bootstrap/cache
-composer update
-```
-
+- Admin: `/admin`
+- Express: `/express`
