@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use Input;
 use Isbn\Isbn;
 use Validator;
+use DB;
+use Response;
 
 class TextbookController extends Controller {
 
@@ -273,9 +275,44 @@ class TextbookController extends Controller {
 		}
 		else
 		{
-			// TODO: author
 			$books = Book::where('title', 'LIKE', "%$info%")->get();
             return view('textbook.list')->withBooks($books)->withInfo($info);
 		}
 	}
+
+    /**
+     * Search AutoComplete for the buy page.
+     * Return book data in JSON format.
+     *
+     * @return JSON
+     */
+    public function buySearchAutoComplete()
+    {
+        $term = Input::get('term');
+
+        $results = array();
+
+        $books = Book::where('title', 'LIKE', '%'.$term.'%')->take(10)->get();
+
+        foreach ($books as $book)
+        {
+            $authors = array();
+
+            foreach ($book->authors as $author)
+            {
+                array_push($authors, $author->full_name);
+            }
+
+            $results[] = [
+                'id'        => $book->id,
+                'title'     => $book->title,
+                'isbn10'    => $book->isbn10,
+                'isbn13'    => $book->isbn13,
+                'authors'   => $authors,
+                'image'     => $book->imageSet->small_image
+            ];
+        }
+
+        return Response::json($results);
+    }
 }
