@@ -275,31 +275,31 @@ class TextbookController extends Controller {
 		}
 		else
 		{
-			// TODO: author
 			$books = Book::where('title', 'LIKE', "%$info%")->get();
             return view('textbook.list')->withBooks($books)->withInfo($info);
 		}
 	}
 
+    /**
+     * Search AutoComplete for the buy page.
+     * Return book titles in JSON format.
+     *
+     * @return JSON
+     */
     public function buySearchAutoComplete()
     {
         $term = Input::get('term');
-
-//        var_dump($term);
 
         $results = array();
 
         $queries = DB::table('books')
             ->where('title', 'LIKE', '%'.$term.'%')
-//            ->orWhere('last_name', 'LIKE', '%'.$term.'%')
-            ->take(5)->get();
+            ->take(10)->get();
 
         foreach ($queries as $query)
         {
             $results[] = [ 'id' => $query->id, 'value' => $query->title ];
         }
-
-//        var_dump(Response::json($results));
 
         return Response::json($results);
     }
