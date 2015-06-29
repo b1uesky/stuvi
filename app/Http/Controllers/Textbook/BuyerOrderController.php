@@ -65,7 +65,8 @@ class BuyerOrderController extends Controller
 
         return view('order.createBuyerOrder')
             ->with('items', Cart::content())
-            ->with('total', Cart::total());
+            ->with('total', Cart::total())
+            ->with('stripe_public_key', StripeKey::getPublicKey());
     }
 
     /**
