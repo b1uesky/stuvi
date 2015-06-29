@@ -3,6 +3,7 @@
 use App\Helpers\StripeKey;
 use App\Http\Controllers\Controller;
 use App\SellerOrder;
+use App\StripeTransfer;
 use Auth;
 use Cart;
 use Config;
@@ -11,7 +12,6 @@ use Input;
 use Mail;
 use Session;
 use Validator;
-
 use Carbon\Carbon;
 
 class SellerOrderController extends Controller
@@ -159,24 +159,66 @@ class SellerOrderController extends Controller
                 ->with('message', 'You have already transferred the balance of this order to your Stripe account.');
         }
 
+        // check if this seller order is delivered
+//        if (!$seller_order->isDelivered())
+//        {
+//            return redirect('/order/seller/'.$seller_order_id)
+//                ->with('message', 'This order is not delivered yet. You can get your money back once the buyer get the book.');
+//        }
+
         $credential = Auth::user()->stripeAuthorizationCredential;
         // check if this user has a stripe authorization credential
-        if (is_null($credential))
+        if (empty($credential))
         {
             return redirect($this->buildStripeAuthRequestUrl());
         }
 
         \Stripe\Stripe::setApiKey(StripeKey::getSecretKey());
 
-        $transfer = \Stripe\Transfer::create(array(
-            'amount'                => (int)($seller_order->product->price*100),
-            'currency'              => Config::get('stripe.currency'),
-            'destination'           => $credential->stripe_user_id,
-            'application_fee'       => Config::get('stripe.application_fee'),
-            'source_transaction'    => $seller_order->buyerOrder->buyer_payment->charge_id, // TODO: test source_transaction after finish create buyer order.
-        ));
+        // TODO: handle error messages
+        try
+        {
+            $transfer = \Stripe\Transfer::create(array(
+                'amount'             => (int)($seller_order->product->price * 100),
+                'currency'           => Config::get('stripe.currency'),
+                'destination'        => $credential->stripe_user_id,
+                'application_fee'    => Config::get('stripe.application_fee'),
+                'source_transaction' => $seller_order->buyerOrder->buyer_payment->charge_id,
+            ));
 
-        return $transfer;
+            // save this transfer
+            $stripe_transfer    = new StripeTransfer;
+            $stripe_transfer->seller_order_id   = $seller_order_id;
+            $stripe_transfer->transfer_id       = $transfer['id'];
+            $stripe_transfer->object            = $transfer['object'];
+            $stripe_transfer->amount            = $transfer['amount'];
+            $stripe_transfer->currency          = $transfer['currency'];
+            $stripe_transfer->status            = $transfer['status'];
+            $stripe_transfer->type              = $transfer['type'];
+            $stripe_transfer->balance_transaction   = $transfer['balance_transaction'];
+            $stripe_transfer->destination       = $transfer['destination'];
+            $stripe_transfer->destination_payment   = $transfer['destination_payment'];
+            $stripe_transfer->source_transaction    = $transfer['source_transaction'];
+            $stripe_transfer->application_fee   = $transfer['application_fee'];
+            $stripe_transfer->save();
+
+            return redirect('/order/seller/'.$seller_order_id)
+                ->with('message', 'Balance has been transferred to your Stripe account. You can transfer it onto your bank account on Stripe.');
+
+        }
+        catch (\Stripe\Error\InvalidRequest $e)
+        {
+            // Invalid parameters were supplied to Stripe's API
+            $error2 = $e->getMessage();
+            return redirect()->back()
+                ->with('message', 'Sorry, transaction failed. Please contact Stuvi.');
+        }
+        catch (Exception $e)
+        {
+            // Something else happened, completely unrelated to Stripe
+            $error6 = $e->getMessage();
+        }
+
     }
 
     /**

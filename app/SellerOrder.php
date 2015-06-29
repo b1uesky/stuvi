@@ -113,4 +113,14 @@ class SellerOrder extends Model
     {
         return $this->belongsTo('App\BuyerOrder', 'buyer_order_id', 'id');
     }
+
+    /**
+     * Check whether this seller order has been delivered or not
+     *
+     * @return bool
+     */
+    public function isDelivered()
+    {
+        return $this->buyerOrder->delivered();
+    }
 }
