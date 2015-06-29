@@ -175,13 +175,15 @@ class SellerOrderController extends Controller
 
         \Stripe\Stripe::setApiKey(StripeKey::getSecretKey());
 
-        $transfer = \Stripe\Transfer::create(array(
-            'amount'                => (int)($seller_order->product->price*100),
-            'currency'              => Config::get('stripe.currency'),
-            'destination'           => $credential->stripe_user_id,
-            'application_fee'       => Config::get('stripe.application_fee'),
-            'source_transaction'    => $seller_order->buyerOrder->buyer_payment->charge_id, // TODO: test source_transaction after finish create buyer order.
-        ));
+        try
+        {
+            $transfer = \Stripe\Transfer::create(array(
+                'amount'                => (int)($seller_order->product->price*100),
+                'currency'              => Config::get('stripe.currency'),
+                'destination'           => $credential->stripe_user_id,
+                'application_fee'       => Config::get('stripe.application_fee'),
+                'source_transaction'    => $seller_order->buyerOrder->buyer_payment->charge_id, // TODO: test source_transaction after finish create buyer order.
+            ));
 
             // save this transfer
             $stripe_transfer    = new StripeTransfer;
