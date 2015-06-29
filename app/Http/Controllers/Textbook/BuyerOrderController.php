@@ -24,7 +24,7 @@ class BuyerOrderController extends Controller
      */
     public function test()
     {
-        $order = BuyerOrder::find(13);
+        $order = BuyerOrder::find(11);
         $this->emailBuyerOrderConfirmation($order);
     }
 
