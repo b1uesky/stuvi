@@ -34,6 +34,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
         Route::get('/textbook/{book}', 'TextbookController@show');
         Route::get('/product/{product}', 'ProductController@show');
         Route::post('/search', 'TextbookController@buySearch');
+        Route::get('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
     });
 
     // sell
@@ -75,27 +76,6 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], 
     Route::get('rmv/{id}', 'CartController@removeItem');
     Route::get('empty', 'CartController@emptyCart');
 });
-
-/*
-|--------------------------------------------------------------------------
-| Housing Routes
-|--------------------------------------------------------------------------
-*/
-//Route::get('/housing', 'HousingController@index');
-
-/*
-|--------------------------------------------------------------------------
-| Club Routes
-|--------------------------------------------------------------------------
-*/
-//Route::get('/club', 'ClubController@index');
-
-/*
-|--------------------------------------------------------------------------
-| Group Routes
-|--------------------------------------------------------------------------
-*/
-//Route::get('/group', 'GroupController@index');
 
 /*
 |--------------------------------------------------------------------------
@@ -165,3 +145,23 @@ Route::group(['namespace'=>'Express', 'middleware'=>['auth', 'role:ac'], 'prefix
     Route::get('/deliver/{id}/confirmDelivery', 'DeliverController@confirmDelivery');
 });
 
+/*
+|--------------------------------------------------------------------------
+| Housing Routes
+|--------------------------------------------------------------------------
+*/
+//Route::get('/housing', 'HousingController@index');
+
+/*
+|--------------------------------------------------------------------------
+| Club Routes
+|--------------------------------------------------------------------------
+*/
+//Route::get('/club', 'ClubController@index');
+
+/*
+|--------------------------------------------------------------------------
+| Group Routes
+|--------------------------------------------------------------------------
+*/
+//Route::get('/group', 'GroupController@index');

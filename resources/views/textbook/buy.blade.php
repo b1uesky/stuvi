@@ -28,11 +28,11 @@
     <div class="container-fluid search">
         <div class="row">
             <h1 id="title">Buy Used Textbooks</h1>
-            <form action="/textbook/buy/search" method="post" id="autocompleteBuy">
+            <form action="/textbook/buy/search" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <div class="col-xs-8 col-xs-offset-2 search-row">
-                        <input type="text" name="info" class="form-control" placeholder="Enter the textbook ISBN, Title, or Author"/>
+                        <input type="text" name="info" id="autocompleteBuy" class="form-control" placeholder="Enter the textbook ISBN, Title, or Author"/>
                     </div>
                     <button class="btn btn-default search-btn" type="submit" name="search" value="Search" >
                         <i class="fa fa-search search-icon"></i>
@@ -41,9 +41,6 @@
             </form>
         </div>
     </div>
-
-
-
 
     <!-- Textbook page bottom half -->
     <div class="container-fluid" id = "textbook-bottom">
@@ -117,6 +114,8 @@
 
     <!--- Scripts at bottom for faster page loading-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="{{asset('/js/jquery-ui.min.js')}}"></script>
     <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/autocompleteBuy.js')}}" type="text/javascript"></script>
 
 @endsection

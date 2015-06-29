@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use Input;
 use Isbn\Isbn;
 use Validator;
+use DB;
+use Response;
 
 class TextbookController extends Controller {
 
@@ -278,4 +280,27 @@ class TextbookController extends Controller {
             return view('textbook.list')->withBooks($books)->withInfo($info);
 		}
 	}
+
+    public function buySearchAutoComplete()
+    {
+        $term = Input::get('term');
+
+//        var_dump($term);
+
+        $results = array();
+
+        $queries = DB::table('books')
+            ->where('title', 'LIKE', '%'.$term.'%')
+//            ->orWhere('last_name', 'LIKE', '%'.$term.'%')
+            ->take(5)->get();
+
+        foreach ($queries as $query)
+        {
+            $results[] = [ 'id' => $query->id, 'value' => $query->title ];
+        }
+
+//        var_dump(Response::json($results));
+
+        return Response::json($results);
+    }
 }
