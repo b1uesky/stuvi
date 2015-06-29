@@ -92,7 +92,7 @@ class BuyerOrderController extends Controller
 //                ->with('message', 'Invalid payment.');
 //        }
 
-        // check if any product in Cart is already traded
+        // check if any product in Cart is already sold
         foreach (Cart::content() as $row)
         {
             $product = Product::find($row->id);
@@ -149,7 +149,7 @@ class BuyerOrderController extends Controller
     {
         // Set your secret key: remember to change this to your live secret key in production
         // See your keys here https://dashboard.stripe.com/account/apikeys
-        \Stripe\Stripe::setApiKey(StripeKey::getStripeSecretKey());
+        \Stripe\Stripe::setApiKey(StripeKey::getSecretKey());
 
         // Get the credit card details submitted by the form
         $token = Input::get('stripeToken');
