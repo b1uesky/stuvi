@@ -61,9 +61,12 @@ class AuthController extends Controller {
             'first_name'    => $data['first_name'],
             'last_name'     => $data['last_name'],
         ]);
+        $user->assignActivationCode();
 
         // send an email to the user with welcome message
-        Mail::queue('emails.welcome', ['first_name' => $data['first_name']], function($message) use ($data)
+        $user_arr               = $user->toArray();
+        $user_arr['university'] = $user->university->toArray();
+        Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($data)
         {
             $message->to($data['email'])->subject('Welcome to Stuvi!');
         });
