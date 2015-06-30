@@ -292,15 +292,24 @@ class TextbookController extends Controller {
 
         $results = array();
 
-        $queries = DB::table('books')
-            ->where('title', 'LIKE', '%'.$term.'%')
-            ->take(10)->get();
+        $books = Book::where('title', 'LIKE', '%'.$term.'%')->take(10)->get();
 
-        foreach ($queries as $query)
+        foreach ($books as $book)
         {
+            $authors = array();
+
+            foreach ($book->authors as $author)
+            {
+                array_push($authors, $author->full_name);
+            }
+
             $results[] = [
-                'id' => $query->id,
-                'value' => $query->title
+                'id'        => $book->id,
+                'title'     => $book->title,
+                'isbn10'    => $book->isbn10,
+                'isbn13'    => $book->isbn13,
+                'authors'   => $authors,
+                'image'     => $book->imageSet->small_image
             ];
         }
 
