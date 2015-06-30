@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration {
 			$table->string('email')->unique();
 			$table->string('password', 60);
             $table->boolean('activated')->default(false);
+            $table->string('activation_code')->nullable();
             $table->char('phone_number', 10)->nullable();
             $table->string('first_name');
             $table->string('last_name');

@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\University;
+use Illuminate\Support\Facades\Config;
+
 // use Faker\Factory;
 
 class UserTableSeeder extends Seeder {
@@ -20,7 +22,9 @@ public function run()
         'first_name'    => 'Tianyou',
         'last_name'     => 'Luo',
         'university_id' => $bu->id,
-        'role'          => 'uac'
+        'role'          => 'uac',
+        'activated'     => true,
+        'activation_code' => \App\Helpers\generateRandomCode(Config::get('user.activation_code_length')),
     ]);
 
     User::create([
@@ -29,7 +33,9 @@ public function run()
         'first_name'    => 'Pengcheng',
         'last_name'     => 'Ding',
         'university_id' => $bu->id,
-        'role'          => 'uac'
+        'role'          => 'uac',
+        'activated'     => true,
+        'activation_code' => \App\Helpers\generateRandomCode(Config::get('user.activation_code_length')),
     ]);
 
     User::create([
@@ -38,7 +44,9 @@ public function run()
         'first_name'    => 'Seller',
         'last_name'     => 'Stuvi',
         'university_id' => $bu->id,
-        'role'          => 'ua'
+        'role'          => 'ua',
+        'activated'     => true,
+        'activation_code' => \App\Helpers\generateRandomCode(Config::get('user.activation_code_length')),
     ]);
 
     User::create([
@@ -47,7 +55,9 @@ public function run()
         'first_name'    => 'Buyer',
         'last_name'     => 'Stuvi',
         'university_id' =>  $bu->id,
-        'role'          => 'ua'
+        'role'          => 'ua',
+        'activated'     => true,
+        'activation_code' => \App\Helpers\generateRandomCode(Config::get('user.activation_code_length')),
     ]);
 
     User::create([
@@ -56,7 +66,9 @@ public function run()
         'first_name'    => 'Courier',
         'last_name'     => 'Stuvi',
         'university_id' => $bu->id,
-        'role'          => 'ac'
+        'role'          => 'ac',
+        'activated'     => true,
+        'activation_code' => \App\Helpers\generateRandomCode(Config::get('user.activation_code_length')),
     ]);
 
     // $faker = Factory::create();
