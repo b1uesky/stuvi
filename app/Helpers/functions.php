@@ -18,3 +18,15 @@ function isProductionEnv()
 {
     return \App::environment('production');
 }
+
+/**
+ * Generate a random code with a given length.
+ *
+ * @param $length How many characters for this code (<= 32)
+ *
+ * @return string
+ */
+function generateRandomCode($length)
+{
+    return substr(md5(uniqid(mt_rand(), true)) , 0, $length);
+}
