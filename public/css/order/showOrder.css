@@ -27,7 +27,7 @@
 /* entire container for the content */
 /* This prevents showing white space below the footer */
 .show-order-container{
-    height: 70vh;
+    /*height: 70vh;*/ /* BUG */
 }
 
 /* Ordered on, order #, order canceled */
