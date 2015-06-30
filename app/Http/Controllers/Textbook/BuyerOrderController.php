@@ -261,7 +261,7 @@ class BuyerOrderController extends Controller
         Mail::queue('emails.sellerOrderConfirmation', ['seller_order'  => $seller_order_arr],
             function($message) use ($order)
         {
-            $message->to($order->product->seller->email)->subject('Your book '.$order->product->book->title.' is sold!' );
+            $message->to($order->product->seller->email)->subject('Your book '.$order->product->book->title.' has sold!' );
         });
     }
 
