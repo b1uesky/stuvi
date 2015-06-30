@@ -99,23 +99,14 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-6">
-                                        <select class="selectpicker">
-                                            <option>Boston University</option>
-                                            <option>MIT</option>
-                                            <option>Harvard University</option>
+                                        <select class="selectpicker" name="university_id">
+                                            @foreach($universities as $university)
+                                                <option value="{{ $university->id }}">{{ $university->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                {{--<div class="form-group">--}}
-                                    {{--<div class="col-sm-offset-3 col-sm-6">--}}
-                                        {{--<input type="text" class="form-control" name="username" placeholder="Username" value="{{ old('username') }}">--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="form-group">--}}
-                                    {{--<div class="col-sm-offset-3 col-sm-6">--}}
-                                        {{--<input type="password" class="form-control" name="password_confirmation" placeholder="Re-enter Password">--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
+                                By creating an account, you agree to Stuvi's <a href="#">Term of Use</a> and <a href="#">Privacy Notice</a>.
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-6">
                                         <button type="submit" class="btn login-button">Sign Up</button>
