@@ -57,7 +57,7 @@ class AuthController extends Controller {
             'university_id' => $data['university_id'],
             'email'         => $data['email'],
             'password'      => bcrypt($data['password']),
-            'phone_number'  => $data['phone_number'],
+            'phone_number'  => preg_replace("/[^0-9 ]/", '', $data['phone_number']),
             'first_name'    => $data['first_name'],
             'last_name'     => $data['last_name'],
         ]);

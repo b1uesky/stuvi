@@ -2,6 +2,7 @@
 
 
 use Auth, Input;
+use Illuminate\Support\Facades\Config;
 
 class UserController extends Controller
 {
@@ -42,6 +43,27 @@ class UserController extends Controller
     public function bookshelf()
     {
         return view('user.bookshelf')->with('productsForSale', Auth::user()->productsForSale());
+    }
+
+    public function activateAccount($code)
+    {
+        // check if the current user is activated
+        if (Auth::user()->activated)
+        {
+            $message = 'Your account has already been activated.';
+        }
+        elseif (Auth::user()->activate($code))
+        {
+            $message = 'Your account is successfully activated.';
+        }
+        else
+        {
+            $message = 'Sorry, account activation failed because of invalid activation code.';
+        }
+        var_dump($code);
+        var_dump($message);
+        return redirect('/home')
+            ->with('message', $message);
     }
 
 }

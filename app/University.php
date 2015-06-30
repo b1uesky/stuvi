@@ -7,7 +7,11 @@ class University extends Model {
 
 	public function matchEmailSuffix($email)
     {
-        return substr($email, strlen($this->email_suffix)-1) === $this->email_suffix;
+        if (preg_match('/.*@'.$this->email_suffix.'\z/i', $email))
+        {
+            return true;
+        }
+        return false;
     }
 
 }
