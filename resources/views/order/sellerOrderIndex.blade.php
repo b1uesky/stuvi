@@ -1,6 +1,8 @@
 
 {{--http://homestead.app/order/seller--}}
 
+<!-- TODO: Profile dropdown is broken -->
+
 @extends('app')
 
 @section('content')

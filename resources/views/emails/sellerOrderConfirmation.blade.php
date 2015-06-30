@@ -1,4 +1,6 @@
-{{--{{ var_dump($seller_order) }}--}}
+
+{{--{{ var_dump($seller_order['product']['book']) }}--}}
+
 
 {{--<a href="{{ url('/order/seller/'.$seller_order['id']) }}">To schedule a pickup time</a>--}}
 
@@ -15,11 +17,16 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset=UTF-8" />
     <!-- TODO: variable to order id # -->
-    <title>Stuvi Seller Order Confirmation #ID</title>
+    <title>Stuvi Seller Order Confirmation #{{$seller_order['id']}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 
 </head>
+
+{{-- Testing variables --}}
+
+{{--{{$seller_order['product']['book']['title']}}--}}
+
 <body style="margin: 0; padding: 0;">
 <!-- container table. Style things in here. not body -->
 <table border="0" cellpadding="0" cellspacing="0" width="100%" style=" padding: 20px 0px 30px 0px;">
@@ -35,7 +42,7 @@
                             <tr>
                                 <!-- header image/logo -->
                                 <td align="center" bgcolor="#241729" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
-                                    <!--TODO: must be replaced with a real url once website is online -->
+                                    <!--TODO: puush must be replaced with a real url once website is online -->
                                     <a href="{{url('/home')}}">
                                         <img src="http://puu.sh/iDvTG/18b055e116.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
                                     </a>
@@ -50,8 +57,8 @@
                                         <!-- content row 1 -->
                                         <tr>
                                             <!-- header/tag line.. -->
-                                            <td style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 36px;">
-                                                <b>Your Stuvi Order Confirmation</b>
+                                            <td style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 30px;">
+                                                <b>Congratulations, your book sold!</b>
                                             </td>
                                         </tr>
                                         <!-- content row 2 -->
@@ -65,7 +72,7 @@
                                                     <tr>
                                                         <td style="color: #F16521; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 17px;" width="100%">
                                                             <!-- TODO: Name -->
-                                                            Name, your book has sold! Please schedule a pick-up time that's right for you.</span>
+                                                            {{$seller_order['seller']['first_name']}}, your book has sold! Please schedule a pick-up time that's right for you.</span>
                                                             <br>
                                                             <br>
                                                             <hr style="border-bottom: .5px solid #737373;">
@@ -76,11 +83,11 @@
                                                     <tr style="color: #000000; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 15px;">
                                                         <td width="100%">
                                                             <!-- TODO: Details -->
-                                                            Ordered on<br>
-                                                            Order #
+                                                            Sale date: {{ $seller_order['created_at'] }}<br>
+                                                            Order #{{$seller_order['id']}}
                                                         </td>
                                                     </tr>
-                                                    <!-- view order button -->
+                                                    <!-- schedule pick-up button -->
                                                     <tr>
                                                         <td>
                                                             <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding: 10px 0px 0px 0px">
@@ -90,7 +97,7 @@
                                                                             <tr>
                                                                                 <td align="center" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" bgcolor="#e9703e">
                                                                                     <!-- TODO: Schedule order -->
-                                                                                    <a href="" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #e9703e; display: inline-block;">View Order &rarr;</a>
+                                                                                    <a href="{{ url('/order/seller/'.$seller_order['id']) }}" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #e9703e; display: inline-block;">Schedule Pick-up &rarr;</a>
                                                                                 </td>
                                                                             </tr>
                                                                         </table>
@@ -101,7 +108,7 @@
                                                     <br>
 
                                                     <!-- ship and pay details. row 2 row 2-->
-                                                    <tr>
+                                                   {{-- <tr>
                                                         <!-- ship and pay table -->
                                                         <table border="0" align="center" cellpadding="0" cellspacing="0" width="100%">
                                                             <tr>
@@ -119,18 +126,39 @@
                                                                 <!-- payment details row 2 column 3-->
                                                                 <td valign="top" style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;" width="40%" align="left">
                                                                     <b style="color: #737373;">Payment Method</b><br>
-                                                                    <!-- TODO: this shit -->
+
                                                                 </td>
                                                             </tr>
                                                         </table> <!-- end ship and pay table -->
-                                                    </tr> <!-- end shipping address and payment method -->
+                                                    </tr> <!-- end shipping address and payment method -->--}}
 
 
                                                     <!-- items -->
                                                     <tr>
                                                         <td style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;" width="100%">
-                                                            <b style="color: #737373;">Items</b><br>
-                                                            <!-- TODO: Items sold -->
+                                                            <table border="0" align="center" cellpadding="0" cellspacing="0" width="100%">
+                                                                <tr><b style="color: #737373;">Details</b>
+                                                                    <br><br>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td valign="top" style="color: #000000;">
+                                                                        <a href="{{ url('/order/seller/'.$seller_order['id']) }}">
+                                                                            <img src="{{$seller_order['product']['book']['image_set']['small_image']}}" alt="sold book image">
+                                                                        </a>
+                                                                        <br>
+                                                                    </td>
+                                                                    <td valign="top" style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;">
+                                                                        Title: <a href="{{ url('/order/seller/'.$seller_order['id']) }}">
+                                                                            {{$seller_order['product']['book']['title']}}</a> <br>
+                                                                        ISBN: {{$seller_order['product']['book']['isbn13']}} <br>
+                                                                        Author(s):
+                                                                        @foreach($seller_order['product']['book']['authors'] as $author)
+                                                                            <span>{{ $author['full_name'] }}</span>
+                                                                        @endforeach
+                                                                        <br>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
                                                         <td>
                                                     </tr>
 

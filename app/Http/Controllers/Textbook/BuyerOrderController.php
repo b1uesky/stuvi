@@ -251,10 +251,12 @@ class BuyerOrderController extends Controller
     {
         // convert the seller order and corresponding objects to an array
         $seller_order_arr                       = $order->toArray();
+        $seller_order_arr['seller']             = $order->seller()->toArray();
         $seller_order_arr['product']            = $order->product->toArray();
         $seller_order_arr['product']['book']    = $order->product->book->toArray();
         $seller_order_arr['product']['book']['authors']     = $order->product->book->authors->toArray();
         $seller_order_arr['product']['book']['image_set']   = $order->product->book->imageSet->toArray();
+
 
         Mail::queue('emails.sellerOrderConfirmation', ['seller_order'  => $seller_order_arr],
             function($message) use ($order)
