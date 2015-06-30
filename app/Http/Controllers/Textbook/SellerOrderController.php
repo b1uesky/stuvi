@@ -141,7 +141,7 @@ class SellerOrderController extends Controller
     }
 
     /**
-     * Page for adding a new address
+     * Page for adding a new address.
      *
      * @return \Illuminate\View\View
      */
@@ -150,6 +150,24 @@ class SellerOrderController extends Controller
         $seller_order = SellerOrder::find($id);
 
         return view('sellerOrder.address')->withSellerOrder($seller_order);
+    }
+
+    /**
+     * Assign an address for the seller order.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function assignAddress()
+    {
+        var_dump(1);
+        $address_id = Input::get('address_id');
+        $seller_order_id = Input::get('seller_order_id');
+
+        $seller_order = SellerOrder::find($seller_order_id);
+        $seller_order->address_id = $address_id;
+        $seller_order->save();
+
+        return redirect()->back();
     }
 
     /**

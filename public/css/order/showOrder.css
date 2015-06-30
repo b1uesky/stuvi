@@ -71,3 +71,17 @@ hr{  border-color: black;  }
 #h1-showBuy{
     margin-left:-15px;
 }
+
+/* Address */
+
+.seller-address {
+    border: 1px solid #eee;
+    display: inline-block;
+    margin: 20px;
+    padding: 5px;
+}
+
+.seller-address ul {
+    list-style-type: none;
+    padding: 0px;
+}

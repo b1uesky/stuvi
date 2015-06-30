@@ -20,7 +20,7 @@
             // This identifies your website in the createToken call below
             Stripe.setPublishableKey("{{ \App::environment('production') ? Config::get('stripe.live_public_key') : Config::get('stripe.test_public_key') }}");
 
-            var stripeResponseHandler = function(status, response) {
+            var stripeResponseHandler = function (status, response) {
                 var $form = $('#payment-form');
 
                 if (response.error) {
@@ -37,8 +37,8 @@
                 }
             };
 
-            jQuery(function($) {
-                $('#payment-form').submit(function(event) {
+            jQuery(function ($) {
+                $('#payment-form').submit(function (event) {
 
                     var $form = $(this);
 
@@ -71,6 +71,7 @@
         <!-- ordered on, order # -->
         <div class="row" id="details1">
             <p class="col-xs-12 col-sm-4 col-sm-offset-0">Ordered on {{ $seller_order->created_at }}</p>
+
             <p class="col-xs-12 col-sm-4">Order #{{ $seller_order->id }}</p>
         </div>
 
@@ -78,7 +79,8 @@
         @if($seller_order->pickedUp())
             <div class="alert alert-success">The textbook has been picked up by our courier.</div>
         @elseif(!$seller_order->cancelled)
-            <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
+            <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel
+                    Order</a></p>
         @else
             <div class="alert alert-danger">This order has been cancelled.</div>
         @endif
@@ -121,63 +123,96 @@
             <!-- item info -->
             <div class="item col-xs-12 col-sm-6">
                 <?php $product = $seller_order->product; $book = $product->book; ?>
-                    <p>Title: <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $book->title }}</a></p>
-                    <p>ISBN: {{ $book->isbn10 }}</p>
-                    <p>Price: ${{ $product->price }}</p>
-                    @if($seller_order->scheduled())
-                        <p>Scheduled Pickup Time: {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}</p>
-                    @endif
+                <p>Title: <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $book->title }}</a></p>
+
+                <p>ISBN: {{ $book->isbn10 }}</p>
+
+                <p>Price: ${{ $product->price }}</p>
+                @if($seller_order->scheduled())
+                    <p>Scheduled Pickup
+                        Time: {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}</p>
+                @endif
             </div>
         </div>
 
-        {{-- If the order is not cancelled and not picked up --}}
-        @if(!$seller_order->cancelled && !$seller_order->pickedUp())
-            {{-- Schedule pickup time --}}
-            <div class="row">
-                    <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="id" value="{{ $seller_order->id }}">
-                        <div class="form-group">
-                            <label for="datetimepicker">Schedule a pickup time</label>
-                            <input class="form-control" id="datetimepicker" class="input-append date" type="text" name="scheduled_pickup_time">
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <!-- scheduled already and not cancelled. allows for reschedule -->
-                            @if($seller_order->scheduled() && !$seller_order->cancelled)
-                                Reschedule
-                            @else
-                                Schedule
-                            @endif
-                        </button>
-                    </form>
-            </div>  <!-- end pick up row -->
+        <div class="row">
+            {{-- If the order is not cancelled and not picked up --}}
+            @if(!$seller_order->cancelled && !$seller_order->pickedUp())
 
-            {{-- TODO: Add New Address --}}
-            {{-- TODO: Save New Address --}}
-            {{-- TODO: Choose Address --}}
-            {{-- If the seller has more than one address --}}
-            @if(count($seller_order->seller()->address) > 0)
-                @foreach($seller_order->seller()->address as $index => $address)
-                    <div class="seller-address">
-                        <ul>
-                            <li>{{ $address->addressee }}</li>
-                            <li>{{ $address->address_line1 }}</li>
-                            <li>{{ $address->address_line2 }}</li>
-                            <li>{{ $address->city }}</li>
-                            <li>{{ $address->state_a2 }}</li>
-                            <li>{{ $address->zip }}</li>
-                            <li>{{ $address->phone_number }}</li>
-                            <li>{{ $address->country_name }}</li>
-                        </ul>
+                {{-- Schedule pickup time --}}
+                <h2>Schedule a pickup time</h2>
+
+                <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="id" value="{{ $seller_order->id }}">
+
+                    <div class="form-group">
+                        <input class="form-control" id="datetimepicker" class="input-append date" type="text"
+                               name="scheduled_pickup_time">
                     </div>
-                @endforeach
-            @else
-                {{-- If the seller has no address, add a new address --}}
-                <div>
-                    <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}">Add a new address</a>
-                </div>
-            @endif
+                    <button type="submit" class="btn btn-primary">
+                        <!-- scheduled already and not cancelled. allows for reschedule -->
+                        @if($seller_order->scheduled() && !$seller_order->cancelled)
+                            Reschedule
+                        @else
+                            Schedule
+                        @endif
+                    </button>
+                </form>
 
+                {{-- Select pickup address --}}
+                <h2>Select a pickup address</h2>
+                {{-- If the seller has more than one address --}}
+                @if(count($seller_order->seller()->address) > 0)
+                    {{-- Show existing addresses --}}
+                    <div class="seller-address-box">
+                        @foreach($seller_order->seller()->address as $index => $address)
+                            <div class="seller-address">
+                                <ul>
+                                    <li>{{ $address->addressee }}</li>
+                                    <li>
+                                        <span>{{ $address->address_line1 }}</span>
+                                        @if($address->address_line2)
+                                            <span>, {{ $address->address_line2 }}</span>
+                                        @endif
+                                    </li>
+                                    <li>
+                                        <span>{{ $address->city }}, </span>
+                                        <span>{{ $address->state_a2 }} </span>
+                                        <span>{{ $address->zip }}</span>
+                                    </li>
+                                    <li>{{ $address->country_name }}</li>
+                                    <li>{{ $address->phone_number }}</li>
+                                </ul>
+
+                                {{-- Select address button --}}
+                                @if($seller_order->address_id == $address->id)
+                                    <button type="button" class="btn btn-success btn-assigned-address" disabled>
+                                        Selected address
+                                    </button>
+                                @else
+                                    <form action="/order/seller/assignAddress" method="get">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="address_id" value="{{ $address->id }}"/>
+                                        <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}"/>
+                                        <input type="submit" name="submit" value="Use this address"
+                                               class="btn btn-warning"/>
+                                    </form>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+
+                {{-- Add a new address --}}
+                <div>
+                    <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}" class="btn btn-primary">Add
+                        a new
+                        address</a>
+                </div>
+
+                {{-- TODO: Submit --}}
+        </div>
         @endif
     </div>
 @endsection
