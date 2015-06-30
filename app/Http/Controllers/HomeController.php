@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\University;
+
 class HomeController extends Controller {
 
 	/*
@@ -35,12 +37,16 @@ class HomeController extends Controller {
 
     public function login() {
         $loginData = ['loginType' => 'login'];
-        return view('auth.login')->with($loginData);
+        return view('auth.login')
+            ->with($loginData)
+            ->with('universities', University::all());
     }
 
     public function register(){
         $loginData = ['loginType' => 'register'];
-        return view('auth.login')->with($loginData);
+        return view('auth.login')
+            ->with($loginData)
+            ->with('universities', University::all());
     }
 
     public function about(){
