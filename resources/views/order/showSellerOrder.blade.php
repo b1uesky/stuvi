@@ -128,42 +128,63 @@
                         <p>Scheduled Pickup Time: {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}</p>
                     @endif
             </div>
-
-            {{-- If the order is not cancelled and not picked up --}}
-            @if(!$seller_order->cancelled && !$seller_order->pickedUp())
-                {{-- Schedule pickup time --}}
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-                        <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="id" value="{{ $seller_order->id }}">
-                            <div class="form-group">
-                                <label for="datetimepicker">Schedule a pickup time</label>
-                                <input class="form-control" id="datetimepicker" class="input-append date" type="text" name="scheduled_pickup_time">
-                            </div>
-                            <button type="submit" class="btn btn-primary">
-                                <!-- scheduled already and not cancelled. allows for reschedule -->
-                                @if($seller_order->scheduled() && !$seller_order->cancelled)
-                                    Reschedule
-                                @else
-                                    Schedule
-                                @endif
-                            </button>
-                        </form>
-                    </div>
-                </div>  <!-- end pick up row -->
-
-                {{-- TODO: Add New Address --}}
-                {{-- TODO: Save New Address --}}
-                {{-- TODO: Choose Address --}}
-            @endif
         </div>
-    </div>
 
-            <!-- Date time picker required scripts -->
+        {{-- If the order is not cancelled and not picked up --}}
+        @if(!$seller_order->cancelled && !$seller_order->pickedUp())
+            {{-- Schedule pickup time --}}
+            <div class="row">
+                    <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="id" value="{{ $seller_order->id }}">
+                        <div class="form-group">
+                            <label for="datetimepicker">Schedule a pickup time</label>
+                            <input class="form-control" id="datetimepicker" class="input-append date" type="text" name="scheduled_pickup_time">
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <!-- scheduled already and not cancelled. allows for reschedule -->
+                            @if($seller_order->scheduled() && !$seller_order->cancelled)
+                                Reschedule
+                            @else
+                                Schedule
+                            @endif
+                        </button>
+                    </form>
+            </div>  <!-- end pick up row -->
+
+            {{-- TODO: Add New Address --}}
+            {{-- TODO: Save New Address --}}
+            {{-- TODO: Choose Address --}}
+            {{-- If the seller has more than one address --}}
+            @if(count($seller_order->seller()->address) > 0)
+                @foreach($seller_order->seller()->address as $index => $address)
+                    <div class="seller-address">
+                        <ul>
+                            <li>{{ $address->addressee }}</li>
+                            <li>{{ $address->address_line1 }}</li>
+                            <li>{{ $address->address_line2 }}</li>
+                            <li>{{ $address->city }}</li>
+                            <li>{{ $address->state_a2 }}</li>
+                            <li>{{ $address->zip }}</li>
+                            <li>{{ $address->phone_number }}</li>
+                            <li>{{ $address->country_name }}</li>
+                        </ul>
+                    </div>
+                @endforeach
+            @else
+                {{-- If the seller has no address, add a new address --}}
+                <div>
+                    <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}">Add a new address</a>
+                </div>
+            @endif
+
+        @endif
+    </div>
+@endsection
+
+@section('javascript')
+    <!-- Date time picker required scripts -->
     <script src="{{asset('datetimepicker/jquery.js')}}"></script>
     <script src="{{asset('datetimepicker/jquery.datetimepicker.js')}}"></script>
     <script src="{{asset('/js/showOrder.js')}}" type="text/javascript"></script>
-
-
 @endsection

@@ -88,6 +88,15 @@ class SellerOrder extends Model
         return !empty($this->courier_id);
     }
 
+    /**
+     * Check if the seller order has been assigned an address
+     *
+     * @return bool
+     */
+    public function assignedAddress()
+    {
+        return !empty($this->address_id);
+    }
 
     /**
      * Return the seller order book.

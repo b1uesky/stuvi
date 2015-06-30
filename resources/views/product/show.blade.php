@@ -85,19 +85,19 @@
     </div>
 </div>
 
+@endsection
 
-<script>
-    function goBack() {
-        window.history.back();
-    }
-</script>
+@section('javascript')
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 
-<!-- lightbox required -->
-{{--http://lokeshdhakar.com/projects/lightbox2/--}}
-<script src="{{asset('/js/jquery.min.js')}}"></script>
-<script src="{{asset('lightbox2-master/dist/js/lightbox.min.js')}}"></script>
-<link href="{{asset('lightbox2-master/dist/css/lightbox.css')}}" rel="stylesheet">
-
-
-
+    <!-- lightbox required -->
+    {{--http://lokeshdhakar.com/projects/lightbox2/--}}
+    <script src="{{asset('/js/jquery.min.js')}}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="{{asset('lightbox2-master/dist/js/lightbox.min.js')}}"></script>
+    <link href="{{asset('lightbox2-master/dist/css/lightbox.css')}}" rel="stylesheet">
 @endsection

@@ -2,8 +2,11 @@
 
 use App\Helpers\StripeKey;
 use App\Http\Controllers\Controller;
+use App\User;
+use App\Address;
 use App\SellerOrder;
 use App\StripeTransfer;
+
 use Auth;
 use Cart;
 use Config;
@@ -135,6 +138,49 @@ class SellerOrderController extends Controller
 
         return redirect('order/seller')
             ->with('message', 'Order not found');
+    }
+
+    /**
+     * Page for adding a new address
+     *
+     * @return \Illuminate\View\View
+     */
+    public function addAddress($id)
+    {
+        $seller_order = SellerOrder::find($id);
+
+        return view('sellerOrder.address')->withSellerOrder($seller_order);
+    }
+
+    /**
+     * Store the new address for seller.
+     *
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
+    public function storeAddress()
+    {
+        // validation
+        $v = Validator::make(Input::all(), Address::rules());
+
+        if ($v->fails())
+        {
+            return redirect()->back()->withErrors($v->errors());
+        }
+
+        $address = new Address();
+        $address->user_id       = Auth::user()->id;
+        $address->addressee     = Input::get('addressee');
+        $address->address_line1 = Input::get('address_line1');
+        $address->address_line2 = Input::get('address_line2');
+        $address->city          = Input::get('city');
+        $address->state_a2      = Input::get('state_a2');
+        $address->zip           = Input::get('zip');
+        $address->phone_number  = Input::get('phone_number');
+        $address->save();
+
+        $seller_order_id = Input::get('seller_order_id');
+
+        return redirect('order/seller/' . $seller_order_id);
     }
 
     /**
