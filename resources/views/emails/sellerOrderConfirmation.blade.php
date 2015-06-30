@@ -6,7 +6,7 @@
 <!-- This is the html that will be sent out for seller order confirmation emails
    For more info visit: http://webdesign.tutsplus.com/series/mastering-html-email--webdesign-17696
      Please read up on that before beginning to edit/product any email pages...very important..
-
+    See: BuyerOrderController.php
    Send an email with order/test -->
 
 <!-- new redo -->
