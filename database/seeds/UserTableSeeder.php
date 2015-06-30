@@ -19,6 +19,7 @@ public function run()
         'phone_number'  => '8572064789',
         'first_name'    => 'Tianyou',
         'last_name'     => 'Luo',
+        'university_id' => $bu->id,
         'role'          => 'uac'
     ]);
 
@@ -27,6 +28,7 @@ public function run()
         'password'      => bcrypt('123456'),
         'first_name'    => 'Pengcheng',
         'last_name'     => 'Ding',
+        'university_id' => $bu->id,
         'role'          => 'uac'
     ]);
 
@@ -53,6 +55,7 @@ public function run()
         'password'  => bcrypt('123456'),
         'first_name'    => 'Courier',
         'last_name'     => 'Stuvi',
+        'university_id' => $bu->id,
         'role'          => 'ac'
     ]);
 
