@@ -135,4 +135,25 @@ class BuyerOrder extends Model
     {
         return !empty($this->time_delivered);
     }
+
+    /**
+     * Convert all attributes and related model instances of this buyer order to an array.
+     *
+     * @return array
+     */
+    public function allToArray()
+    {
+        $buyer_order_arr                        = $this->toArray();
+        $buyer_order_arr['buyer']               = $this->buyer->toArray();
+        $buyer_order_arr['shipping_address']    = $this->shipping_address->toArray();
+        $buyer_order_arr['buyer_payment']       = $this->buyer_payment->toArray();
+        foreach ($this->products() as $product)
+        {
+            $temp           = $product->toArray();
+            $temp['book']   = $product->book->toArray();
+            $temp['book']['authors']        = $product->book->authors->toArray();
+            $temp['book']['image_set']      = $product->book->imageSet->toArray();
+            $buyer_order_arr['products'][]   = $temp;
+        }
+    }
 }

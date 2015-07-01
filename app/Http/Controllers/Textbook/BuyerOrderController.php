@@ -229,18 +229,7 @@ class BuyerOrderController extends Controller
     protected function emailBuyerOrderConfirmation(BuyerOrder $order)
     {
         // convert the buyer order and corresponding objects to an array
-        $buyer_order_arr                        = $order->toArray();
-        $buyer_order_arr['buyer']               = $order->buyer->toArray();
-        $buyer_order_arr['shipping_address']    = $order->shipping_address->toArray();
-        $buyer_order_arr['buyer_payment']       = $order->buyer_payment->toArray();
-        foreach ($order->products() as $product)
-        {
-            $temp           = $product->toArray();
-            $temp['book']   = $product->book->toArray();
-            $temp['book']['authors']        = $product->book->authors->toArray();
-            $temp['book']['image_set']      = $product->book->imageSet->toArray();
-            $buyer_order_arr['products'][]   = $temp;
-        }
+
 
 
         Mail::queue('emails.buyerOrderConfirmation', ['buyer_order' => $buyer_order_arr], function($message) use ($order)
