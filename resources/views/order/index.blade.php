@@ -9,10 +9,12 @@
         <title>Stuvi - Your Orders</title>
     </head>
 
+    <!-- back link -->
     <div class="row link-to-seller"><a href="/order/seller">Looking for Seller Orders?</a><br>
-        <small><a onclick="goBack()">or go back</a></small>
+        <small><a id="or-go-back" onclick="goBack()">or go back</a></small>
     </div>
 
+    <!-- message -->
     <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
             <div class="flash-message" id="message" >{{ Session::get('message') }}</div>
@@ -25,6 +27,7 @@
             <div class="row">
                 <div class="container order-container">
                     <div class="row order-row">
+                        <!-- order details -->
                         <div class="col-xs-12 col-sm-2 order-date">
                             <h5>Order Placed</h5>
 
@@ -53,6 +56,7 @@
                         <h3>Order Processing</h3>
                         <small>Your order is being processed by the Stuvi team.</small>
                     @endif
+                    <!-- products in order -->
                     @foreach($order->products() as $product)
                         <div class="row book-row">
                             <div class="col-xs-12 col-sm-2 book-img">
@@ -90,12 +94,9 @@
 
 @endsection
 
-
-        <!-- inserted at the end of app -->
+<!-- inserted at the end of app -->
 @section('javascript')
-
     <!-- required for all pages for proper tab and drop-down functionality -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
 @endsection

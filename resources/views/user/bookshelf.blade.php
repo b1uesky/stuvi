@@ -1,3 +1,5 @@
+{{-- The bookshelf page shows all the seller's books for sale, but not yet purchased --}}
+
 @extends('app')
 
 @section('content')
@@ -6,13 +8,12 @@
         <link rel="stylesheet" type="text/css" href="{{asset('/css/user/bookshelf.css')}}">
     </head>
 
-    <div class="container message-cont" xmlns="http://www.w3.org/1999/html">
-        @if (Session::has('message'))
-            <div class="flash-message message">{{ Session::get('message') }}</div>
-        @endif
-    </div>
-
     <div class="container-fluid bookshelf-page">
+        <div class="container message-cont" xmlns="http://www.w3.org/1999/html">
+            @if (Session::has('message'))
+                <div class="flash-message message">{{ Session::get('message') }}</div>
+            @endif
+        </div>
         <!-- back button -->
         <a id="btn-back" href="javascript:history.back()"><i class="fa fa-arrow-circle-left"></i>Back</a>
 

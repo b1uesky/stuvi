@@ -9,6 +9,8 @@
     margin-top: 10px;
 }
 
+#btn-back{cursor:pointer;}
+
 .bookshelf-page{
     background-color: whitesmoke;
 }

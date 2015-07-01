@@ -24,8 +24,11 @@ h1{
 #go-back{
     margin-left: 20px;
     padding: 10px !important;
-
+    cursor:pointer;
 }
+
+/* Found at order/buyer (order/index) */
+#or-go-back{cursor:pointer; }
 
 /* alert message */
 #message { font-style: italic; }

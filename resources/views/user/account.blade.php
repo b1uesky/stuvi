@@ -17,15 +17,6 @@
                     <div class="profile-content">
                         <!-- Account Settings -->
                         <h1>Account Settings</h1>
-                        <div class="container col-md-11 quick-links">
-                            <!-- Quick Links -->
-                            <h3>Quick Links</h3>
-                            <hr>
-                            <ul>
-                                <li><a href="#">Your Courses</a></li>
-                                <li><a href="{{ url('/password/email') }}">Forgot your password?</a></li>
-                            </ul>
-                        </div>
                         <!-- change account info -->
                         <div class="container col-md-11 account-edit">
                             <h3>Edit your information</h3>

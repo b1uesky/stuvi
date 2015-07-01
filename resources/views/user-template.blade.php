@@ -25,7 +25,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <li id="acc-settings-nav"><a href="{{url('/user/account')}}" class="acc">Account Settings</a></li>
                         <li id="your-courses-nav"><a href="#"                        class="acc">Your Courses</a></li>
-                        <li id="messages-nav"><a href="#"                        class="acc">Messages</a></li>
+                        <li id="messages-nav">    <a href="#"                        class="acc">Messages</a></li>
                     </ul>
                 </li> <!-- end account dropdown -->
                 <!-- Textbooks dropdown -->
@@ -38,7 +38,7 @@
                         <li><a href="#" class="">Returns</a></li>
                         <li role="presentation" class="divider"></li>
                         <li role="presentation" class="dropdown-header">Sell</li>
-                        <li><a href="{{url('/order/seller/bookshelf')}}">Your Bookshelf</a></li>
+                        <li><a href="{{url('/user/bookshelf')}}">Your Bookshelf</a></li>
                         <li><a href="{{ url('/order/seller') }}">Sold</a></li>
                     </ul>
                 </li> <!-- end textbooks dropdown -->
