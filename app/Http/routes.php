@@ -100,7 +100,7 @@ Route::group(['middleware'=>'auth', 'prefix'=>'user'], function()
 });
 
 Route::controllers([
-	'auth' => 'Auth\AuthController',
+	//'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
