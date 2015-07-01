@@ -40,7 +40,7 @@ class StripeAuthorizationCredentialController extends Controller
     {
         if (isset($_GET['code']))
         { // Redirect w/ code
-            $code = $_GET['code'];
+            $code = Input::get('code');
 
             $token_request_body = array(
                 'grant_type'    => 'authorization_code',
@@ -66,7 +66,7 @@ class StripeAuthorizationCredentialController extends Controller
         }
         else if (isset($_GET['error'])) // Error
         {
-            return $_GET['error_description'];
+            return Input::get('error_description');
         }
         else
         {

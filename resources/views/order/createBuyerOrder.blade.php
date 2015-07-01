@@ -16,7 +16,7 @@
         <!-- stripe -->
         <script type="text/javascript">
             // This identifies your website in the createToken call below
-            Stripe.setPublishableKey("pk_test_1buT5EQ82ha2RhVa4nfXqifR");
+            Stripe.setPublishableKey("{{ $stripe_public_key }}");
 
             var stripeResponseHandler = function(status, response) {
                 var $form = $('#payment-form');

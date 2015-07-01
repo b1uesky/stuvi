@@ -41,7 +41,7 @@ class AuthController extends Controller {
     {
         return Validator::make($data, [
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6', // without |confirmed
+            'password' => 'required|min:6',
         ]);
     }
 
@@ -54,15 +54,19 @@ class AuthController extends Controller {
     public function create(array $data)
     {
         $user = User::create([
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'phone_number' => $data['phone_number'],
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
+            'university_id' => $data['university_id'],
+            'email'         => $data['email'],
+            'password'      => bcrypt($data['password']),
+            'phone_number'  => preg_replace("/[^0-9 ]/", '', $data['phone_number']),
+            'first_name'    => $data['first_name'],
+            'last_name'     => $data['last_name'],
         ]);
+        $user->assignActivationCode();
 
         // send an email to the user with welcome message
-        Mail::queue('emails.welcome', ['first_name' => $data['first_name']], function($message) use ($data)
+        $user_arr               = $user->toArray();
+        $user_arr['university'] = $user->university->toArray();
+        Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($data)
         {
             $message->to($data['email'])->subject('Welcome to Stuvi!');
         });

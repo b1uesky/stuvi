@@ -83,6 +83,15 @@
             <div class="alert alert-danger">This order has been cancelled.</div>
         @endif
 
+        @if ($seller_order->isDelivered())
+            <!-- Get order money back to seller debit card -->
+            <form action="{{ url('/order/seller/transfer') }}" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
+                <button type="submit" class="btn btn-primary">Get money back</button>
+            </form>
+        @endif
+
         {{-- Messages --}}
         <div class="container" xmlns="http://www.w3.org/1999/html">
             @if (Session::has('message'))
@@ -150,13 +159,6 @@
             @endif
         </div>
     </div>
-
-    <!-- Get order money back to seller debit card -->
-    <form action="{{ url('/order/seller/transfer') }}" method="POST">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
-        <button type="submit" class="btn btn-primary">Get money back</button>
-    </form>
 
             <!-- Date time picker required scripts -->
     <script src="{{asset('datetimepicker/jquery.js')}}"></script>
