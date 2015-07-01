@@ -1,9 +1,5 @@
 
-{{--{{ var_dump($seller_order['product']['book']) }}--}}
-
-
-{{--<a href="{{ url('/order/seller/'.$seller_order['id']) }}">To schedule a pickup time</a>--}}
-
+{{--{{ var_dump($seller_order) }}--}}
 
 <!-- This is the html that will be sent out for seller order confirmation emails
    For more info visit: http://webdesign.tutsplus.com/series/mastering-html-email--webdesign-17696
@@ -23,9 +19,6 @@
 
 </head>
 
-{{-- Testing variables --}}
-
-{{--{{$seller_order['product']['book']['title']}}--}}
 
 <body style="margin: 0; padding: 0;">
 <!-- container table. Style things in here. not body -->
@@ -71,8 +64,7 @@
                                                     <!-- thank you. Row 2 row 1 -->
                                                     <tr>
                                                         <td style="color: #F16521; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 17px;" width="100%">
-                                                            <!-- TODO: Name -->
-                                                            {{$seller_order['seller']['first_name']}}, your book has sold! Please schedule a pick-up time that's right for you.</span>
+                                                            {{$seller_order['seller']['first_name']}}, your book has sold! Please schedule a pick-up time that's right for you.
                                                             <br>
                                                             <br>
                                                             <hr style="border-bottom: .5px solid #737373;">
@@ -82,7 +74,6 @@
                                                     <!-- details 1 row 2 row 2-->
                                                     <tr style="color: #000000; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 15px;">
                                                         <td width="100%">
-                                                            <!-- TODO: Details -->
                                                             Sale date: {{ $seller_order['created_at'] }}<br>
                                                             Order #{{$seller_order['id']}}
                                                         </td>
@@ -96,7 +87,6 @@
                                                                         <table border="0" cellspacing="0" cellpadding="0">
                                                                             <tr>
                                                                                 <td align="center" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" bgcolor="#e9703e">
-                                                                                    <!-- TODO: Schedule order -->
                                                                                     <a href="{{ url('/order/seller/'.$seller_order['id']) }}" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #e9703e; display: inline-block;">Schedule Pick-up &rarr;</a>
                                                                                 </td>
                                                                             </tr>
