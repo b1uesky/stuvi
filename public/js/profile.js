@@ -7,6 +7,7 @@ $(document).ready(function(){
     $('#profile-nav').addClass('active');
     $('#pro-overview-nav').addClass('active');
 });
+/*
 
 $('.responsive').slick({
     //dots: true,
@@ -43,4 +44,4 @@ $('.responsive').slick({
         // settings: "unslick"
         // instead of a settings object
     ]
-});
+});*/

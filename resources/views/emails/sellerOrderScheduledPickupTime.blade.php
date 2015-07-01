@@ -42,7 +42,7 @@
                                         <tr>
                                             <!-- header/tag line.. -->
                                             <td style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 30px;">
-                                                <b>Welcome to Stuvi, {{ $user['first_name'] }}!</b>
+                                                <b>You have successfully scheduled your pick-up time!</b>
                                             </td>
                                         </tr>
                                         <!-- content row 2 -->
@@ -54,10 +54,15 @@
                                                     <tr>
                                                         <td style="color: #F16521; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 17px;" width="100%">
                                                             <!-- CONTENT HERE! -->
-                                                            <p>Hi {{ $first_name }},</p>
+                                                            <p>Hey {{$seller_order['seller']['first_name']}},</p>
                                                             <!-- TODO: textbook name -->
-                                                            <p>You have scheduled your textbook (TEXTBOOK NAME) pickup time at {{ $scheduled_pickup_time }}</p>
-                                                            <p>Once our courier has picked up your textbook, please show the following code to the courier: <stong>{{ $pickup_code }}</stong></p>
+                                                            <p>You have scheduled your textbook
+                                                                <a href="{{ url('/order/seller/'.$seller_order['id']) }}">
+                                                                    {{$seller_order['product']['book']['title']}}
+                                                                </a>
+                                                                pickup time at {{$seller_order['scheduled_pickup_time'] }}
+                                                            </p>
+                                                            <p>Once our courier has picked up your textbook, please show the following code to the courier: <stong>{{$seller_order['pickup_code']}}</stong></p>
                                                             <p>If you need to reschedule your textbook pickup time, click the button below.></p>
                                                             <br>
                                                             <br>
@@ -73,7 +78,7 @@
                                                                         <table border="0" cellspacing="0" cellpadding="0">
                                                                             <tr>
                                                                                 <td align="center" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" bgcolor="#e9703e">
-                                                                                    <a href="{{ url('/order/seller/')}}" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #e9703e; display: inline-block;">
+                                                                                    <a href="{{ url('/order/seller/'.$seller_order['id']) }}" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #e9703e; display: inline-block;">
                                                                                         Reschedule Pick-up &rarr;</a>
                                                                                 </td>
                                                                             </tr>
