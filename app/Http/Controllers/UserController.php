@@ -50,25 +50,36 @@ class UserController extends Controller
         // check if the current user is activated
         if (Auth::user()->activated)
         {
-            $message = 'Your account has already been activated.';
+            $url        = '/home';
+            $message    = 'Your account has already been activated.';
         }
         elseif (Auth::user()->activate($code))
         {
+            $url        = '/home';
             $message = 'Your account is successfully activated.';
         }
         else
         {
+            $url        = '/user/activate';
             $message = 'Sorry, account activation failed because of invalid activation code.';
         }
-        var_dump($code);
-        var_dump($message);
-        return redirect('/home')
+        return redirect($url)
             ->with('message', $message);
     }
 
+    /**
+     * After registering an account, it will redirect to this page waiting for activation.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
     public function waitForActivation()
     {
+        if (Auth::user()->isActivated())
+        {
+            return redirect('/home');
+        }
 
+        return view('user.waitForActivation');
     }
 
 }
