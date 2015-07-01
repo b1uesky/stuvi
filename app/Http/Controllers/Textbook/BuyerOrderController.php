@@ -7,6 +7,7 @@ use App\Helpers\StripeKey;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\SellerOrder;
+use App\User;
 use Auth;
 use Cart;
 use Config;
@@ -24,8 +25,14 @@ class BuyerOrderController extends Controller
      */
     public function test()
     {
-        $order = SellerOrder::find(20);
-        $this->emailSellerOrderConfirmation($order);
+        $user = User::find(7);
+        // send an email to the user with welcome message
+        $user_arr               = $user->toArray();
+        $user_arr['university'] = $user->university->toArray();
+        Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($user_arr)
+        {
+            $message->to($user_arr['email'])->subject('Welcome to Stuvi!');
+        });
     }
 
     /**
