@@ -57,6 +57,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::get  ('/buyer', 'BuyerOrderController@buyerOrderIndex');
     Route::get  ('/confirmation', 'BuyerOrderController@confirmation');
     Route::get  ('/create', 'BuyerOrderController@createBuyerOrder');
+    Route::get  ('/storeAddress','BuyerOrderController@storeBuyerAddress');
     Route::post ('/store', 'BuyerOrderController@storeBuyerOrder');
     Route::get  ('/buyer/{id}', 'BuyerOrderController@showBuyerOrder');
     Route::get  ('/buyer/cancel/{id}', 'BuyerOrderController@cancelBuyerOrder');

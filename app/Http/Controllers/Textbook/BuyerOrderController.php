@@ -63,10 +63,32 @@ class BuyerOrderController extends Controller
                 ->with('message', 'Cannot proceed to checkout because you are trying to purchasing your own products.');
         }
 
-        return view('order.createBuyerOrder')
-            ->with('items', Cart::content())
-            ->with('total', Cart::total())
-            ->with('stripe_public_key', StripeKey::getPublicKey());
+        $user = Auth::user();
+        $address = Address::where('user_id', $user -> id)->get();
+        $address->toArray();
+
+        if($address){
+            return view('order.createBuyerOrder')
+                ->with('items', Cart::content())
+                ->with('total', Cart::total())
+                ->with('addresses', $address)
+                ->with('stripe_public_key', StripeKey::getPublicKey());
+        }else{
+            return view('order.createBuyerOrder')
+                ->with('items', Cart::content())
+                ->with('total', Cart::total())
+                ->with('addresses', NULL)
+                ->with('stripe_public_key', StripeKey::getPublicKey());
+        }
+    }
+
+    /**
+     * Display a buyer's addresses if has this information in database
+     */
+    public function storeBuyerAddress(Request $request)
+    {
+        $address_ID = $_GET['id'];
+        return Address::where('id', $address_ID)->get()->toJson();
     }
 
     /**
@@ -83,7 +105,7 @@ class BuyerOrderController extends Controller
         }
 
         // validate the address info
-        $this->validate($request, Address::rules());
+        //$this->validate($request, Address::rules());
 
 //        // check if this payment already exist
 //        if (BuyerPayment::where('charge_id', '=', Input::get('stripeToken'))->exists())
@@ -107,15 +129,15 @@ class BuyerOrderController extends Controller
         $charge = $this->createBuyerCharge();
 
         // store the buyer shipping address
-        $address = array(
-            'addressee'     => Input::get('addressee'),
-            'address_line1' => Input::get('address_line1'),
-            'address_line2' => Input::get('address_line2'),
-            'city'          => Input::get('city'),
-            'state_a2'      => Input::get('state_a2'),
-            'zip'           => Input::get('zip'),
-            'phone_number'  => Input::get('phone_number')
-        );
+//        $address = array(
+//            'addressee'     => Input::get('addressee'),
+//            'address_line1' => Input::get('address_line1'),
+//            'address_line2' => Input::get('address_line2'),
+//            'city'          => Input::get('city'),
+//            'state_a2'      => Input::get('state_a2'),
+//            'zip'           => Input::get('zip'),
+//            'phone_number'  => Input::get('phone_number')
+//        );
         $shipping_address_id = Address::add($address, Auth::id());
 
         // create an buyer payed order
