@@ -108,12 +108,26 @@ class DeliverController extends Controller
         $buyer_order->courier_id = Auth::user()->id;
         $buyer_order->save();
 
+        // convert the buyer order and corresponding objects to an array
+        $buyer_order_arr                        = $buyer_order->toArray();
+        $buyer_order_arr['buyer']               = $buyer_order->buyer->toArray();
+        $buyer_order_arr['shipping_address']    = $buyer_order->shipping_address->toArray();
+        $buyer_order_arr['buyer_payment']       = $buyer_order->buyer_payment->toArray();
+        foreach ($buyer_order->products() as $product)
+        {
+            $temp           = $product->toArray();
+            $temp['book']   = $product->book->toArray();
+            $temp['book']['authors']        = $product->book->authors->toArray();
+            $temp['book']['image_set']      = $product->book->imageSet->toArray();
+            $buyer_order_arr['products'][]   = $temp;
+        }
+
         // send an email notification to the buyer
         Mail::queue('emails.buyerOrder.ready', [
-            'first_name' => $buyer_order->buyer->first_name
+            'buyer_order' => $buyer_order_arr
         ], function($message) use ($buyer_order)
         {
-            $message->to($buyer_order->buyer->email)->subject('Your order is on the way!');
+            $message->to($buyer_order->buyer->email)->subject('Your order #'.$buyer_order->id.' is on the way!');
         });
 
         return redirect()->back();
@@ -144,16 +158,35 @@ class DeliverController extends Controller
             return redirect('express/deliver')->withError('This buyer order has already been delivered.');
         }
 
-        // add pickup time to the seller order
+        // add deliver time to the seller order
         $buyer_order->time_delivered = date(Config::get('app.datetime_format'));
         $buyer_order->save();
 
+        // assign the order to the current courier
+        $buyer_order->courier_id = Auth::user()->id;
+        $buyer_order->save();
+
+        // convert the buyer order and corresponding objects to an array
+        $buyer_order_arr                        = $buyer_order->toArray();
+        $buyer_order_arr['buyer']               = $buyer_order->buyer->toArray();
+        $buyer_order_arr['shipping_address']    = $buyer_order->shipping_address->toArray();
+        $buyer_order_arr['buyer_payment']       = $buyer_order->buyer_payment->toArray();
+        foreach ($buyer_order->products() as $product)
+        {
+            $temp           = $product->toArray();
+            $temp['book']   = $product->book->toArray();
+            $temp['book']['authors']        = $product->book->authors->toArray();
+            $temp['book']['image_set']      = $product->book->imageSet->toArray();
+            $buyer_order_arr['products'][]   = $temp;
+        }
+
+
         // send an email notification to the buyer
         Mail::queue('emails.buyerOrder.confirmDelivery', [
-            'first_name' => $buyer_order->buyer->first_name
+            'buyer_order'   => $buyer_order_arr
         ], function($message) use ($buyer_order)
         {
-            $message->to($buyer_order->buyer->email)->subject('Your order has been delivered!');
+            $message->to($buyer_order->buyer->email)->subject('Your order #'.$buyer_order->id.' has been delivered!');
         });
 
         return redirect()->back();
