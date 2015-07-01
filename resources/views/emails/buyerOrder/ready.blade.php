@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset=UTF-8" />
-    <title>Your order is on its way</title>
+    <title>Your order is on its way - Order #{{ $buyer_order['id'] }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 
@@ -42,7 +42,7 @@
                                         <tr>
                                             <!-- header/tag line.. -->
                                             <td style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 30px;">
-                                                <b>Order Ready</b>
+                                                <b>Order #{{ $buyer_order['id'] }} has been deployed.</b>
                                             </td>
                                         </tr>
                                         <!-- content row 2 -->
@@ -54,7 +54,7 @@
                                                     <tr>
                                                         <td style="color: #F16521; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 17px;" width="100%">
                                                             <!-- CONTENT HERE! -->
-                                                            <p>Hi, {{ $first_name }}</p>
+                                                            <p>Hey, {{$buyer_order['buyer']['first_name']}}</p>
                                                             <p>Your order is on the way! Click the button below for your order details.</p>
                                                             <br>
                                                             <br>

@@ -7,9 +7,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset=UTF-8" />
-    <title>Your order has been delivered</title>
+    <title>Your order has been delivered - Order #{{ $buyer_order['id'] }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
+
 
 <body style="margin: 0; padding: 0;">
 <!-- container table. Style things in here. not body -->
@@ -42,7 +43,7 @@
                                         <tr>
                                             <!-- header/tag line.. -->
                                             <td style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 30px;">
-                                                <b>Order Delivered</b>
+                                                <b>Order #{{ $buyer_order['id'] }} Delivered</b>
                                             </td>
                                         </tr>
                                         <!-- content row 2 -->
@@ -54,8 +55,8 @@
                                                     <tr>
                                                         <td style="color: #F16521; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 17px;" width="100%">
                                                             <!-- CONTENT HERE! -->
-                                                            <p>Hi, {{ $first_name }}</p>
-                                                            <p>Your order has been delivered!</p>
+                                                            <p>Hey, {{$buyer_order['buyer']['first_name']}}</p>
+                                                            <p>Your order has been delivered! Thanks for choosing Stuvi!</p>
                                                             <br>
                                                             <br>
                                                         </td>
