@@ -156,10 +156,14 @@
             </div>
         </div>
     </div>
+    
+@endsection
 
-    <!-- Scripts here for faster loading -->
-    {{--<script src="//cdnjs.cloudfxlare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>--}}
-    {{--    <script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>--}}
+
+@section('javascript')
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>
     <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
 @endsection
+

@@ -160,12 +160,20 @@
         </div>
     </div>
 
-            <!-- Date time picker required scripts -->
+@endsection
+
+
+@section('javascript')
+
+    <!-- required for all pages for proper tab and drop-down functionality -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="{{asset('/js/order.js')}}" type="text/javascript"></script>
+
+    <!-- Date time picker required scripts -->
     <script src="{{asset('datetimepicker/jquery.js')}}"></script>
     <script src="{{asset('datetimepicker/jquery.datetimepicker.js')}}"></script>
     <script src="{{asset('/js/showOrder.js')}}" type="text/javascript"></script>
 
-
 @endsection
-
 

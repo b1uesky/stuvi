@@ -121,6 +121,7 @@ class SellerOrderController extends Controller
             $seller_order->generatePickupCode();
 
             $seller_order_arr                       = $seller_order->toArray();
+
             $seller_order_arr['seller']             = $seller_order->seller()->toArray();
             $seller_order_arr['product']            = $seller_order->product->toArray();
             $seller_order_arr['product']['book']    = $seller_order->product->book->toArray();

@@ -60,7 +60,9 @@
                                                                 <a href="{{ url('/order/seller/'.$seller_order['id']) }}">
                                                                     {{$seller_order['product']['book']['title']}}
                                                                 </a>
-                                                                pickup time at {{$seller_order['scheduled_pickup_time'] }}
+                                                                <!-- TODO: fix php for scheduled pick up time b/c it is not a string, it's a carbon object?? -->
+                                                                {{--pickup time at {{$seller_order['scheduled_pickup_time'] }}--}}
+                                                                pickup time at: DATE HERE
                                                             </p>
                                                             <p>Once our courier has picked up your textbook, please show the following code to the courier: <stong>{{$seller_order['pickup_code']}}</stong></p>
                                                             <p>If you need to reschedule your textbook pickup time, click the button below.></p>

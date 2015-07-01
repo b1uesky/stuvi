@@ -61,13 +61,12 @@
                 </div>
             </div>
         </div>
-        {{--<!-- boston.jpg licensing -->--}}
-        {{--<p id="license"><small>Background Photo by--}}
-                {{--<a href="https://flic.kr/p/rZ8kmG" target = "_blank"> John Collins </a>--}}
-                {{--under <a href="https://creativecommons.org/licenses/by/2.0/" target = "_blank"> CC-BY-2.0</a>--}}
-                {{--</small>--}}
-        {{--</p>--}}
     </div>
 
 
+@endsection
+
+@section('javascript')
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 @endsection
