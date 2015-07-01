@@ -95,6 +95,7 @@ Route::group(['middleware'=>'auth', 'prefix'=>'user'], function()
     Route::get('/account', 'UserController@account');
     Route::post('/account/edit', 'UserController@edit');
     Route::get('/bookshelf', 'UserController@bookshelf');
+    Route::get('activate', 'UserController@waitForActivation');
     Route::get('/activate/{code}', 'UserController@activateAccount');
 });
 
