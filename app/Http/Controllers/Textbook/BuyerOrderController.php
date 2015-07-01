@@ -257,13 +257,7 @@ class BuyerOrderController extends Controller
     protected function emailSellerOrderConfirmation(SellerOrder $order)
     {
         // convert the seller order and corresponding objects to an array
-        $seller_order_arr                       = $order->toArray();
-        $seller_order_arr['seller']             = $order->seller()->toArray();
-        $seller_order_arr['product']            = $order->product->toArray();
-        $seller_order_arr['product']['book']    = $order->product->book->toArray();
-        $seller_order_arr['product']['book']['authors']     = $order->product->book->authors->toArray();
-        $seller_order_arr['product']['book']['image_set']   = $order->product->book->imageSet->toArray();
-
+        $seller_order_arr                       = $order->allToArray();
 
         Mail::queue('emails.sellerOrderConfirmation', ['seller_order'  => $seller_order_arr],
             function($message) use ($order)
@@ -284,7 +278,7 @@ class BuyerOrderController extends Controller
         $buyer_order = BuyerOrder::find($id);
 
         // check if this order belongs to the current user.
-        if (!is_null($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
+        if (!empty($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
         {
             return view('order.showBuyerOrder')
                 ->with('buyer_order', $buyer_order)

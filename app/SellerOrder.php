@@ -123,4 +123,21 @@ class SellerOrder extends Model
     {
         return $this->buyerOrder->delivered();
     }
+
+    /**
+     * Convert all attributes and related model instances of this seller order to an array.
+     *
+     * @return array
+     */
+    public function allToArray()
+    {
+        $seller_order_arr                       = $this->toArray();
+        $seller_order_arr['seller']             = $this->seller()->toArray();
+        $seller_order_arr['product']            = $this->product->toArray();
+        $seller_order_arr['product']['book']    = $this->product->book->toArray();
+        $seller_order_arr['product']['book']['authors']     = $this->product->book->authors->toArray();
+        $seller_order_arr['product']['book']['image_set']   = $this->product->book->imageSet->toArray();
+
+        return $seller_order_arr;
+    }
 }
