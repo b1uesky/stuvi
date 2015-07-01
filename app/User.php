@@ -133,7 +133,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @return string
      */
-    public function isActivated()
+    public function isActivated2()
     {
         if ($this->activated)
         {
