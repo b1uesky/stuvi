@@ -1,8 +1,14 @@
 @extends('app')
 
 @section('content')
-<div class="container-fluid">
-	<div class="row">
+<head>
+    <title>Reset your password</title>
+    <link rel="stylesheet" href="{{asset('/css/auth/reset.css')}}" type="text/css">
+</head>
+
+
+<div class="container-fluid container-main">
+	<div class="row row-main">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
 				<div class="panel-heading">Reset Password</div>
