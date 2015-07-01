@@ -11,7 +11,8 @@
 
     </head>
 
-    <p>Please check your email box and activate your account via the link sent with our welcome email. Thank you!</p>
+    <p>In order to keep our village safe, we need to verify every user.</p>
+    <p>So please check your email box and activate your account via the link sent with our welcome email. Thank you!</p>
 
     <!-- required for active class in nav to work -->
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
