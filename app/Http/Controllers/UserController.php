@@ -66,4 +66,9 @@ class UserController extends Controller
             ->with('message', $message);
     }
 
+    public function waitForActivation()
+    {
+
+    }
+
 }
