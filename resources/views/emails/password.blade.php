@@ -52,7 +52,8 @@
                                                     <tr>
                                                         <td style="color: #F16521; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 17px;" width="100%">
                                                             <!-- CONTENT HERE! -->
-                                                            Click the button below to reset your password.
+                                                            <!-- TODO: NAME -->
+                                                            Hey NAME, it looks like you or someone else tried to reset your password. Please click the button below to reset it.
                                                             <br>
                                                             <br>
                                                         </td>
