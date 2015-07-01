@@ -10,7 +10,7 @@ public function run()
     DB::table('universities')->delete();
 
     University::create([
-        'name'  => 'BOSTON UNIVERSITY',
+        'name'  => 'Boston University',
         'abbreviation'  => 'BU',
         'email_suffix'  => 'bu.edu'
     ]);
