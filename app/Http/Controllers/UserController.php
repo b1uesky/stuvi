@@ -79,7 +79,8 @@ class UserController extends Controller
             return redirect('/home');
         }
 
-        return view('user.waitForActivation');
+        return view('user.waitForActivation')
+            ->with('user', Auth::user());
     }
 
 }

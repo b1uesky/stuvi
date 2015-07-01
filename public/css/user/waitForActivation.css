@@ -1,0 +1,22 @@
+/* CSS for waitForActivation.blade.php */
+
+
+.container-main{
+
+    height: 70vh;
+    background-image: url('../../img/activation(2).jpg');
+    background-size: cover;
+    background-color: #F2F2F2;
+}
+
+.container-content{
+    padding: 1%;
+    color: #ffffff;
+    margin-top: 5%;
+    background-color: rgba(115, 115, 115, 0.4);
+}
+
+.container-content a{
+    color: #44c1ff;
+
+}
