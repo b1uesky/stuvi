@@ -93,6 +93,10 @@
 
 <!-- FOOTER. See footer styling at footer-distribyted.css -->
 <footer class="footer-distributed">
+    <div class="row">
+        <hr style="    border: 0;height: 2px;background: #333; background-image: linear-gradient(to right, #ccc, #f16521, #ccc);">
+    </div>
+
     <!-- Social Media -->
     <div class="footer-right">
         <!-- Uses font-awesome.css -->
