@@ -10,7 +10,7 @@
 /* Fix for color of inactive <a> text */
 .tabz{
     color: #555;
-    border-bottom-color: #E7E6E6 !important;
+    border-bottom-color: #F2F2F2 !important;
 }
 
 /* Fix for sizing of dropdown for account */
@@ -22,16 +22,16 @@
 /* ALL COLOR FIXING FOR TABS*/
 
 .nav-tabs.nav-justified > li > a {
-    border-bottom: 1px solid #E7E6E6!important;
+    border-bottom: 1px solid #F2F2F2!important;
     color: #fff !important;
 }
 
 .nav-tabs.nav-justified > li.active > a {
     color: #241729 !important;
-    background-color: #E7E6E6;
+    background-color: #F2F2F2;
 }
 
-.nav-tabs.nav-justified > .active > a    {border-bottom-color: #E7E6E6;}
+.nav-tabs.nav-justified > .active > a    {border-bottom-color: #F2F2F2;}
 
 .nav > li > a:hover, .nav > li > a:focus {background-color: #241729;}
 
