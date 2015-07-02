@@ -120,13 +120,7 @@ class SellerOrderController extends Controller
             $seller = $seller_order->seller();
             $seller_order->generatePickupCode();
 
-            $seller_order_arr                       = $seller_order->toArray();
-
-            $seller_order_arr['seller']             = $seller_order->seller()->toArray();
-            $seller_order_arr['product']            = $seller_order->product->toArray();
-            $seller_order_arr['product']['book']    = $seller_order->product->book->toArray();
-            $seller_order_arr['product']['book']['authors']     = $seller_order->product->book->authors->toArray();
-            $seller_order_arr['product']['book']['image_set']   = $seller_order->product->book->imageSet->toArray();
+            $seller_order_arr   = $seller_order->allToArray();
 
             Mail::queue('emails.sellerOrderScheduledPickupTime', [
                 'seller_order'            => $seller_order_arr,
