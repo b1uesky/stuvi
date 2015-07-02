@@ -123,13 +123,13 @@
                 <h3 class="col-xs-12">Item</h3>
             </div>
             <!-- item info -->
-            <div class="item col-xs-12 col-sm-6">
+            <div class="item col-xs-12 col-sm-6 row">
                 <?php $product = $seller_order->product; $book = $product->book; ?>
                     <p>Title: <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $book->title }}</a></p>
                     <p>ISBN: {{ $book->isbn10 }}</p>
                     <p>Price: ${{ $product->price }}</p>
                     @if($seller_order->scheduled())
-                        <p>Scheduled Pickup Time: {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}</p>
+                        <p>Scheduled Pickup Time: <mark>{{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}</mark></p>
                     @endif
             </div>
 

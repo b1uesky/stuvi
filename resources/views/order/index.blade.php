@@ -73,7 +73,7 @@
                                 <p>ISBN: {{ $product->book->isbn10 }}</p>
                                 <h6 class="book-price">${{ $product->price }}</h6>
                             </div>
-                            <div class=" col-xs-12 col-sm-2 col-xs-offset-0 col-sm-offset-1 col-md-offset-3">
+                            <div class="col-xs-12 col-sm-2 col-xs-offset-0 col-sm-offset-2 col-md-offset-3 btn-right">
                                 {{--<a class="btn btn-default order-button-1" href="#" role="button">Track Package</a>--}}
                                 @if (!$order->cancelled)
                                 <a class="btn btn-default order-button-2" href="#" role="button">Return or Replace Item</a>

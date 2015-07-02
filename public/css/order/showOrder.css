@@ -31,7 +31,7 @@
 /* entire container for the content */
 /* This prevents showing white space below the footer */
 .show-order-container{
-    height: 70vh;
+    min-height: 70vh;
 }
 
 /* Ordered on, order #, order canceled */
@@ -49,7 +49,9 @@
     border: 2px solid #F9AA62;
     margin-top: 10px;
     margin-bottom: 30px;
+    padding-bottom: 10px;
 }
+
 
 .row-items{
     background-color: rgba(0, 0, 0, 0.09);
