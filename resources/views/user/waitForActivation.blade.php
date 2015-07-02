@@ -15,15 +15,13 @@
         <h1>Please Activate Your Account</h1>
         <p>In order to keep our village safe, we need to verify every user.</p>
         <p>Check your email at <code>{{ $user->email }}</code> and activate your account via the link sent with our welcome email. Thank you!</p>
-        <p>Problems receiving the email? Check your Spam inbox, or <a href="">resend your code</a>.</p>
+        <p>Problems receiving the email? Check your spam inbox, or <a href="#">resend your code</a>.</p>
             <!-- TODO: Link for resending code -->
 
         </div>
 
 
     </div>
-
-
 
 
 
