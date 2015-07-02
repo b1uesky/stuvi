@@ -12,8 +12,12 @@
 
 /* Alert message container */
 #message-cont {
-    padding: 1%;
+    padding-left: 0px !important;
     margin-top: 5px;
+}
+
+.alert-sucess-container{
+    padding-left: 0px;
 }
 
 /* Print invoice link */

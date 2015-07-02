@@ -74,14 +74,16 @@
             <p class="col-xs-12 col-sm-4">Order #{{ $seller_order->id }}</p>
         </div>
 
-        {{-- Order has been picked up --}}
-        @if($seller_order->pickedUp())
-            <div class="alert alert-success">The textbook has been picked up by our courier.</div>
-        @elseif(!$seller_order->cancelled)
-            <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
-        @else
-            <div class="alert alert-danger">This order has been cancelled.</div>
-        @endif
+        <div class="alert-container">
+            {{-- Order has been picked up --}}
+            @if($seller_order->pickedUp())
+                <div class="alert alert-success">The textbook has been picked up by our courier.</div>
+            @elseif(!$seller_order->cancelled)
+                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
+            @else
+                <div class="alert alert-danger">This order has been cancelled.</div>
+            @endif
+        </div>
 
         @if ($seller_order->isDelivered())
             <!-- Get order money back to seller debit card -->
@@ -93,9 +95,9 @@
         @endif
 
         {{-- Messages --}}
-        <div class="container" xmlns="http://www.w3.org/1999/html">
+        <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
             @if (Session::has('message'))
-                <div class="flash-message">{{ Session::get('message') }}</div>
+                <div class="flash-message" id="message">{{ Session::get('message') }}</div>
             @endif
 
             {{-- Errors for invalid data --}}
@@ -107,10 +109,12 @@
                 </div>
             @endif
 
-            {{-- Successfully scheduled a pickup time --}}
-            @if(Session::has('success'))
-                <div class="alert alert-success">{{ Session::get('success') }}</div>
-            @endif
+            <div class="alert-success-container">
+                {{-- Successfully scheduled a pickup time --}}
+                @if(Session::has('success'))
+                    <div class="alert alert-success">{{ Session::get('success') }}</div>
+                @endif
+            </div>
         </div>
 
         <!-- items in order -->

@@ -64,7 +64,7 @@
                 <!-- Row 1 Col 1 -->
                 <!-- xs: stack-->
                 <div class = "container col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id = "shrink-xs">
-                    <img src="http://placehold.it/250x250" alt = "placeholder">
+                    <img src="{{asset('/img/Books-3.jpg')}}" alt = "books" height="250px" width="250px" style="border: 1px solid">
                 </div>
                 <!-- Row 1 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
@@ -114,12 +114,14 @@
             </div>
         </div> <!-- end container -->
 
-        <!-- books.jpg licensing -->
-        <p style="text-align: right;"><small>Books Photo by
-                <a href="https://flic.kr/p/nfwhCe" target = "_blank"> Brittany Stevens </a>
-                under <a href="https://creativecommons.org/licenses/by/2.0/" target = "_blank"> CC-BY-2.0</a>
-                Cropped and levels adjusted. </small>
-        </p>
+        <div class="row">
+            <!-- books.jpg licensing -->
+            <p style="text-align: right;"><small>Books Photo by
+                    <a href="https://flic.kr/p/nfwhCe" target = "_blank"> Brittany Stevens </a>
+                    under <a href="https://creativecommons.org/licenses/by/2.0/" target = "_blank"> CC-BY-2.0</a>
+                    Cropped and levels adjusted. </small>
+            </p>
+        </div>
     </div>  <!-- end container fluid -->
 
 @endsection
