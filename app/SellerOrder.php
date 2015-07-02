@@ -61,16 +61,13 @@ class SellerOrder extends Model
     }
 
     /**
-     * Return if this seller order has been scheduled for pick up
-     * It must not be already picked up.
+     * Return if this seller order has been scheduled a pickup time.
      *
      * @return bool
      */
-    public function scheduled()
+    public function scheduledPickupTime()
     {
-        return (
-            !empty($this->scheduled_pickup_time) &&
-            !empty($this->address_id));
+        return !empty($this->scheduled_pickup_time);
     }
 
     public function pickedUp()

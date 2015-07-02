@@ -118,22 +118,8 @@ class SellerOrderController extends Controller
             $seller_order->scheduled_pickup_time    = Carbon::now();
             $seller_order->save();
 
-            // send an email with a verification code to the seller to verify
-            // that the courier has picked up the book
-            $seller = $seller_order->seller();
-            $seller_order->generatePickupCode();
-
-            Mail::queue('emails.sellerOrderScheduledPickupTime', [
-                'first_name'            => $seller->first_name,
-                'scheduled_pickup_time' => $scheduled_pickup_time,
-                'pickup_code'           => $seller_order->pickup_code
-            ], function ($message) use ($seller)
-            {
-                $message->to($seller->email)->subject('Your textbook pickup time has been scheduled.');
-            });
-
             return redirect()->back()
-                ->withSuccess("You have successfully scheduled the pickup time and we'll email you the details shortly.");
+                ->withSuccess("You have successfully scheduled the pickup time.");
         }
 
         return redirect('order/seller')
@@ -159,7 +145,6 @@ class SellerOrderController extends Controller
      */
     public function assignAddress()
     {
-        var_dump(1);
         $address_id = Input::get('address_id');
         $seller_order_id = Input::get('seller_order_id');
 
@@ -199,6 +184,35 @@ class SellerOrderController extends Controller
         $seller_order_id = Input::get('seller_order_id');
 
         return redirect('order/seller/' . $seller_order_id);
+    }
+
+    /**
+     * The pickup has been confirmed and send an email to the seller about the pickup details.
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function confirmPickup($id)
+    {
+        $seller_order = SellerOrder::find($id);
+
+        // send an email with a verification code to the seller to verify
+        // that the courier has picked up the book
+        $seller = $seller_order->seller();
+        $seller_order->generatePickupCode();
+
+        Mail::queue('emails.sellerOrderScheduledPickupTime', [
+            'first_name'            => $seller->first_name,
+            'scheduled_pickup_time' => $seller_order->scheduled_pickup_time,
+            'pickup_address'        => $seller_order->address,
+            'pickup_code'           => $seller_order->pickup_code
+        ], function ($message) use ($seller)
+        {
+            $message->to($seller->email)->subject('Your textbook pickup has been scheduled.');
+        });
+
+        return redirect()->back()
+            ->withSuccess("You have successfully scheduled the pickup and we'll email you the details shortly.");
     }
 
     /**

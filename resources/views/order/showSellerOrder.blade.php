@@ -10,51 +10,6 @@
         {{-- date time picker required--}}
         <link rel="stylesheet" type="text/css" href="{{asset('/datetimepicker/jquery.datetimepicker.css')}}"/>
         <title>Stuvi - Order Details</title>
-
-
-        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-        <!-- jQuery is used only for this example; it isn't required to use Stripe -->
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-        <script type="text/javascript">
-            // This identifies your website in the createToken call below
-            Stripe.setPublishableKey("{{ \App::environment('production') ? Config::get('stripe.live_public_key') : Config::get('stripe.test_public_key') }}");
-
-            var stripeResponseHandler = function (status, response) {
-                var $form = $('#payment-form');
-
-                if (response.error) {
-                    // Show the errors on the form
-                    $form.find('.payment-errors').text(response.error.message);
-                    $form.find('button').prop('disabled', false);
-                } else {
-                    // token contains id, last4, and card type
-                    var token = response.id;
-                    // Insert the token into the form so it gets submitted to the server
-                    $form.append($('<input type="hidden" name="stripeToken" />').val(token));
-                    // and re-submit
-                    $form.get(0).submit();
-                }
-            };
-
-            jQuery(function ($) {
-                $('#payment-form').submit(function (event) {
-
-                    var $form = $(this);
-
-                    // Disable the submit button to prevent repeated clicks
-                    $form.find('button').prop('disabled', true);
-
-                    Stripe.card.createToken($form, stripeResponseHandler);
-
-                    // Prevent the form from submitting with the default action
-                    return false;
-                });
-            });
-
-        </script>
-
-
     </head>
 
     <!-- print button -->
@@ -128,10 +83,6 @@
                 <p>ISBN: {{ $book->isbn10 }}</p>
 
                 <p>Price: ${{ $product->price }}</p>
-                @if($seller_order->scheduled())
-                    <p>Scheduled Pickup
-                        Time: {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}</p>
-                @endif
             </div>
         </div>
 
@@ -141,6 +92,11 @@
 
                 {{-- Schedule pickup time --}}
                 <h2>Schedule a pickup time</h2>
+
+                @if($seller_order->scheduledPickupTime())
+                    <p>Scheduled Pickup
+                        Time: {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}</p>
+                @endif
 
                 <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -152,7 +108,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">
                         <!-- scheduled already and not cancelled. allows for reschedule -->
-                        @if($seller_order->scheduled() && !$seller_order->cancelled)
+                        @if($seller_order->scheduledPickupTime() && !$seller_order->cancelled)
                             Reschedule
                         @else
                             Schedule
@@ -171,9 +127,10 @@
                                 <ul>
                                     <li>{{ $address->addressee }}</li>
                                     <li>
-                                        <span>{{ $address->address_line1 }}</span>
                                         @if($address->address_line2)
-                                            <span>, {{ $address->address_line2 }}</span>
+                                            {{ $address->address_line1 }}, {{ $address->address_line2 }}
+                                        @else
+                                            {{ $address->address_line1 }}
                                         @endif
                                     </li>
                                     <li>
@@ -201,17 +158,19 @@
                                 @endif
                             </div>
                         @endforeach
+
+                        @endif
+
+                        {{-- Add a new address --}}
+                        <div class="seller-address">
+                            <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
+                               class="btn btn-default">Add a new address</a>
+                        </div>
+
                     </div>
-                @endif
 
-                {{-- Add a new address --}}
-                <div>
-                    <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}" class="btn btn-primary">Add
-                        a new
-                        address</a>
-                </div>
-
-                {{-- TODO: Submit --}}
+                    {{-- Confirm pickup --}}
+                    <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm Pickup</a>
         </div>
         @endif
     </div>
@@ -222,4 +181,46 @@
     <script src="{{asset('datetimepicker/jquery.js')}}"></script>
     <script src="{{asset('datetimepicker/jquery.datetimepicker.js')}}"></script>
     <script src="{{asset('/js/showOrder.js')}}" type="text/javascript"></script>
+
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <!-- jQuery is used only for this example; it isn't required to use Stripe -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        // This identifies your website in the createToken call below
+        Stripe.setPublishableKey("{{ \App::environment('production') ? Config::get('stripe.live_public_key') : Config::get('stripe.test_public_key') }}");
+
+        var stripeResponseHandler = function (status, response) {
+            var $form = $('#payment-form');
+
+            if (response.error) {
+                // Show the errors on the form
+                $form.find('.payment-errors').text(response.error.message);
+                $form.find('button').prop('disabled', false);
+            } else {
+                // token contains id, last4, and card type
+                var token = response.id;
+                // Insert the token into the form so it gets submitted to the server
+                $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+                // and re-submit
+                $form.get(0).submit();
+            }
+        };
+
+        jQuery(function ($) {
+            $('#payment-form').submit(function (event) {
+
+                var $form = $(this);
+
+                // Disable the submit button to prevent repeated clicks
+                $form.find('button').prop('disabled', true);
+
+                Stripe.card.createToken($form, stripeResponseHandler);
+
+                // Prevent the form from submitting with the default action
+                return false;
+            });
+        });
+
+    </script>
 @endsection

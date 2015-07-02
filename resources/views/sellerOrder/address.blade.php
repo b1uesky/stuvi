@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        <h2>Add a new address</h2>
 
         {{-- Errors --}}
         @if ($errors->has())
