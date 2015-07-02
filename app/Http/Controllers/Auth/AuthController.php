@@ -1,10 +1,14 @@
 <?php namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\University;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\User;
+use Illuminate\Http\Request;
+use Input;
 use Validator;
 use Mail;
+use Auth;
 
 class AuthController extends Controller {
 
@@ -78,4 +82,44 @@ class AuthController extends Controller {
         return $user;
     }
 
+    /**
+     * @override
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postRegister(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        // check whether the email address is matched with the university email suffix.
+        if (!(University::find(Input::get('university_id'))->matchEmailSuffix(Input::get('email'))))
+        {
+            return redirect('/register')
+                ->with('message', 'You have to use your collage email.');
+        }
+
+        Auth::login($this->create($request->all()));
+
+        return redirect($this->redirectPath());
+    }
+
+    /**
+     * @override
+     *
+     * Get the failed login message.
+     *
+     * @return string
+     */
+    protected function getFailedLoginMessage()
+    {
+        return 'Your email and/or password is not correct. Please try again.';
+    }
 }
