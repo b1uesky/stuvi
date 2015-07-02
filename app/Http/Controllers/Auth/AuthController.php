@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Input;
 use Validator;
 use Mail;
+use Auth;
 
 class AuthController extends Controller {
 
@@ -82,9 +83,9 @@ class AuthController extends Controller {
     }
 
     /**
+     * @override
      * Handle a registration request for the application.
      *
-     * @override
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -110,4 +111,15 @@ class AuthController extends Controller {
         return redirect($this->redirectPath());
     }
 
+    /**
+     * @override
+     *
+     * Get the failed login message.
+     *
+     * @return string
+     */
+    protected function getFailedLoginMessage()
+    {
+        return 'Your email and/or password is not correct. Please try again.';
+    }
 }
