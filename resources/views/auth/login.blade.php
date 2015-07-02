@@ -142,8 +142,11 @@
                                         </select>
                                     </div>
                                 </div>
-                                By creating an account, you agree to Stuvi's <a href="#">Term of Use</a> and <a
-                                        href="#">Privacy Notice</a>.
+                                <div class="tos">
+                                    By creating an account, you agree to Stuvi's <a href="#">Term of Use</a> and
+                                    <a href="#">Privacy Notice</a>.
+                                </div>
+
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-6">
                                         <button type="submit" class="btn login-button">Sign Up</button>
