@@ -31,7 +31,7 @@
 /* entire container for the content */
 /* This prevents showing white space below the footer */
 .show-order-container{
-    height: 70vh;
+    /*height: 70vh;*/ /* BUG */
 }
 
 /* Ordered on, order #, order canceled */
@@ -74,4 +74,18 @@ hr{  border-color: black;  }
 /* "Order Details" */
 #h1-showBuy{
     margin-left:-15px;
+}
+
+/* Address */
+
+.seller-address {
+    border: 1px solid #eee;
+    display: inline-block;
+    margin: 20px;
+    padding: 5px;
+}
+
+.seller-address ul {
+    list-style-type: none;
+    padding: 0px;
 }

@@ -8,59 +8,9 @@
     <head>
         <link href="{{ asset('/css/order/showOrder.css') }}" rel="stylesheet" type="text/css">
         {{-- date time picker required--}}
-        <link rel="stylesheet" type="text/css" href="{{asset('/datetimepicker/jquery.datetimepicker.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('/js/datetimepicker/jquery.datetimepicker.css')}}"/>
         <title>Stuvi - Order Details</title>
-
-
-        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-        <!-- jQuery is used only for this example; it isn't required to use Stripe -->
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-        <script type="text/javascript">
-            // This identifies your website in the createToken call below
-            Stripe.setPublishableKey("{{ \App::environment('production') ? Config::get('stripe.live_public_key') : Config::get('stripe.test_public_key') }}");
-
-            var stripeResponseHandler = function(status, response) {
-                var $form = $('#payment-form');
-
-                if (response.error) {
-                    // Show the errors on the form
-                    $form.find('.payment-errors').text(response.error.message);
-                    $form.find('button').prop('disabled', false);
-                } else {
-                    // token contains id, last4, and card type
-                    var token = response.id;
-                    // Insert the token into the form so it gets submitted to the server
-                    $form.append($('<input type="hidden" name="stripeToken" />').val(token));
-                    // and re-submit
-                    $form.get(0).submit();
-                }
-            };
-
-            jQuery(function($) {
-                $('#payment-form').submit(function(event) {
-
-                    var $form = $(this);
-
-                    // Disable the submit button to prevent repeated clicks
-                    $form.find('button').prop('disabled', true);
-
-                    Stripe.card.createToken($form, stripeResponseHandler);
-
-                    // Prevent the form from submitting with the default action
-                    return false;
-                });
-            });
-
-        </script>
-
-
     </head>
-
-    <!-- print button -->
-    <div class="print"><a href="" onclick="printWindow()"><i class="fa fa-print"></i> Print Invoice
-        </a>
-    </div>
 
     <div class="container show-order-container">
         <!-- order details -->
@@ -71,6 +21,7 @@
         <!-- ordered on, order # -->
         <div class="row" id="details1">
             <p class="col-xs-12 col-sm-4 col-sm-offset-0">Ordered on {{ $seller_order->created_at }}</p>
+
             <p class="col-xs-12 col-sm-4">Order #{{ $seller_order->id }}</p>
         </div>
 
@@ -125,59 +76,112 @@
             <!-- item info -->
             <div class="item col-xs-12 col-sm-6">
                 <?php $product = $seller_order->product; $book = $product->book; ?>
-                    <p>Title: <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $book->title }}</a></p>
-                    <p>ISBN: {{ $book->isbn10 }}</p>
-                    <p>Price: ${{ $product->price }}</p>
-                    @if($seller_order->scheduled())
-                        <p>Scheduled Pickup Time: {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}</p>
-                    @endif
-            </div>
+                <p>Title: <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $book->title }}</a></p>
 
+                <p>ISBN: {{ $book->isbn10 }}</p>
+
+                <p>Price: ${{ $product->price }}</p>
+            </div>
+        </div>
+
+        <div class="row">
             {{-- If the order is not cancelled and not picked up --}}
             @if(!$seller_order->cancelled && !$seller_order->pickedUp())
+
                 {{-- Schedule pickup time --}}
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-                        <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="id" value="{{ $seller_order->id }}">
-                            <div class="form-group">
-                                <label for="datetimepicker">Schedule a pickup time</label>
-                                <input class="form-control" id="datetimepicker" class="input-append date" type="text" name="scheduled_pickup_time">
-                            </div>
-                            <button type="submit" class="btn btn-primary">
-                                <!-- scheduled already and not cancelled. allows for reschedule -->
-                                @if($seller_order->scheduled() && !$seller_order->cancelled)
-                                    Reschedule
-                                @else
-                                    Schedule
-                                @endif
-                            </button>
-                        </form>
+                <h2>Schedule a pickup time</h2>
+
+                <div class="text-scheduled-pickup-time">
+                    @if($seller_order->scheduledPickupTime())
+                        Scheduled pickup time: {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}
+                    @else
+                        {{-- Nothing --}}
+                    @endif
+                </div>
+
+                <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST" id="schedule-pickup-time">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="schedule-token">
+                    <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
+
+                    {{-- TODO: Add a calendar logo --}}
+                    <div class="form-group">
+                        <input class="form-control" id="datetimepicker" class="input-append date" type="text"
+                               name="scheduled_pickup_time">
                     </div>
-                </div>  <!-- end pick up row -->
+                    <button type="submit" class="btn btn-primary">
+                        <!-- scheduled already and not cancelled. allows for reschedule -->
+                        @if($seller_order->scheduledPickupTime() && !$seller_order->cancelled)
+                            Reschedule
+                        @else
+                            Schedule
+                        @endif
+                    </button>
+                </form>
 
-                {{-- TODO: Add New Address --}}
-                {{-- TODO: Save New Address --}}
-                {{-- TODO: Choose Address --}}
-            @endif
+                {{-- Select pickup address --}}
+                <h2>Select a pickup address</h2>
+                {{-- If the seller has more than one address --}}
+                @if(count($seller_order->seller()->address) > 0)
+                    {{-- Show existing addresses --}}
+                    <div class="seller-address-box">
+                        @foreach($seller_order->seller()->address as $index => $address)
+                            <div class="seller-address">
+                                <ul>
+                                    <li>{{ $address->addressee }}</li>
+                                    <li>
+                                        @if($address->address_line2)
+                                            {{ $address->address_line1 }}, {{ $address->address_line2 }}
+                                        @else
+                                            {{ $address->address_line1 }}
+                                        @endif
+                                    </li>
+                                    <li>
+                                        <span>{{ $address->city }}, </span>
+                                        <span>{{ $address->state_a2 }} </span>
+                                        <span>{{ $address->zip }}</span>
+                                    </li>
+                                    <li>{{ $address->country_name }}</li>
+                                    <li>{{ $address->phone_number }}</li>
+                                </ul>
+
+                                {{-- Select address button --}}
+                                @if($seller_order->address_id == $address->id)
+                                    <button type="button" class="btn btn-success btn-assigned-address" disabled>
+                                        Selected address
+                                    </button>
+                                @else
+                                    <form action="/order/seller/assignAddress" method="get">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="address_id" value="{{ $address->id }}"/>
+                                        <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}"/>
+                                        <input type="submit" name="submit" value="Use this address"
+                                               class="btn btn-warning"/>
+                                    </form>
+                                @endif
+                            </div>
+                        @endforeach
+
+                        @endif
+
+                        {{-- Add a new address --}}
+                        <div class="seller-address">
+                            <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
+                               class="btn btn-default">Add a new address</a>
+                        </div>
+
+                    </div>
+
+                    {{-- Confirm pickup --}}
+                    <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm Pickup</a>
         </div>
+        @endif
     </div>
-
 @endsection
-
 
 @section('javascript')
-
-    <!-- required for all pages for proper tab and drop-down functionality -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="{{asset('/js/order.js')}}" type="text/javascript"></script>
-
     <!-- Date time picker required scripts -->
-    <script src="{{asset('datetimepicker/jquery.js')}}"></script>
-    <script src="{{asset('datetimepicker/jquery.datetimepicker.js')}}"></script>
-    <script src="{{asset('/js/showOrder.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/datetimepicker/jquery.js')}}"></script>
+    <script src="{{asset('/js/datetimepicker/jquery.datetimepicker.js')}}"></script>
 
+    <script src="{{asset('/js/order/seller/showSellerOrder.js')}}" type="text/javascript"></script>
 @endsection
-

@@ -9,11 +9,6 @@
         <title>Stuvi - Your Orders</title>
     </head>
 
-    <!-- back link -->
-    <div class="row link-to-seller"><a href="/order/seller">Looking for Seller Orders?</a><br>
-        <small><a id="or-go-back" onclick="goBack()">or go back</a></small>
-    </div>
-
     <!-- message -->
     <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
@@ -91,12 +86,9 @@
             </div>
         @endforelse
     </div>
-
 @endsection
 
-<!-- inserted at the end of app -->
 @section('javascript')
-    <!-- required for all pages for proper tab and drop-down functionality -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 @endsection

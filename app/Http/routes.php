@@ -1,5 +1,7 @@
 <?php
 
+Route::pattern('id', '[0-9]+');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -62,10 +64,14 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::get  ('/buyer/cancel/{id}', 'BuyerOrderController@cancelBuyerOrder');
 
     Route::get  ('/seller', 'SellerOrderController@sellerOrderIndex');
-    Route::get  ('/seller/cancel/{id}', 'SellerOrderController@cancelSellerOrder');
-    Route::post ('/seller/setscheduledtime', 'SellerOrderController@setScheduledPickupTime');
-    Route::post ('/seller/transfer', 'SellerOrderController@transfer');
     Route::get  ('/seller/{id}', 'SellerOrderController@showSellerOrder');
+    Route::get  ('/seller/cancel/{id}', 'SellerOrderController@cancelSellerOrder');
+    Route::post ('/seller/schedulePickupTime', 'SellerOrderController@schedulePickupTime');
+    Route::get  ('/seller/{id}/addAddress', 'SellerOrderController@addAddress');
+    Route::get  ('/seller/assignAddress', 'SellerOrderController@assignAddress');
+    Route::post ('/seller/storeAddress', 'SellerOrderController@storeAddress');
+    Route::get  ('/seller/{id}/confirmPickup', 'SellerOrderController@confirmPickup');
+    Route::post ('/seller/transfer', 'SellerOrderController@transfer');
 });
 
 // Stripe authorization

@@ -11,11 +11,6 @@
         <title>Stuvi - Sold Books</title>
     </head>
 
-    {{-- Go back link --}}
-    <div class="row back-row">
-        <a id="go-back" onclick="goBack()" ><i class="fa fa-arrow-circle-left"></i> Back</a>
-    </div>
-
     <!-- Message -->
     <div class="container" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
@@ -71,17 +66,9 @@
         @endforelse
 
     </div>
-
-
 @endsection
 
-
-        <!-- inserted at the end of app -->
 @section('javascript')
-
-    <!-- required for all pages for proper tab and drop-down functionality -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="{{asset('/js/order.js')}}" type="text/javascript"></script>
-
 @endsection
