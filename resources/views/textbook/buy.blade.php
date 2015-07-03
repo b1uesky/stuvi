@@ -2,12 +2,14 @@
 
 @extends('textbook')
 
+@section('title', 'Buy Used Textbook')
+
 @section('content')
     <head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="{{ asset('/css/textbook/textbook.css') }}" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-        <title> Stuvi - Buy Used Textbook</title>
+        {{--<title> Stuvi - Buy Used Textbook</title>--}}
     </head>
 
     {{--textbook navigation bar--}}
