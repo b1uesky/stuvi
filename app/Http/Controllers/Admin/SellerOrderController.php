@@ -51,7 +51,8 @@ class SellerOrderController extends Controller
      */
     public function show($id)
     {
-        return view('admin.sellerOrder.show')->withSellerOrder($id);
+        return view('admin.sellerOrder.show')
+            ->with('seller_order', SellerOrder::find($id));
     }
 
     /**

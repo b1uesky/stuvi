@@ -12,6 +12,7 @@ use Auth;
 use Cart;
 use Config;
 use DB;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Input;
 use Session;
@@ -47,7 +48,8 @@ class BuyerOrderController extends Controller
         $order = $this->hasColumn('buyer_orders', $order) ? $order : 'id';
 
         return view('order.buyer.index')
-            ->with('orders', Auth::user()->buyerOrders()->orderBy($order, 'DESC')->get());
+            ->with('orders', Auth::user()->buyerOrders()->orderBy($order, 'DESC')->get())
+            ->with('datetime_format', Config::get('app.datetime_format'));
     }
 
     /**
@@ -150,7 +152,7 @@ class BuyerOrderController extends Controller
     /**
      * Create buyer charge with Stripe for a given order.
      *
-     * @return BuyerPayment|\Illuminate\Http\RedirectResponse
+     * @return BuyerPayment|RedirectResponse
      */
     protected function createBuyerCharge()
     {
@@ -231,7 +233,6 @@ class BuyerOrderController extends Controller
         // convert the buyer order and corresponding objects to an array
         $buyer_order_arr = $order->allToArray();
 
-
         Mail::queue('emails.buyerOrderConfirmation', ['buyer_order' => $buyer_order_arr], function($message) use ($order)
         {
             $message->to($order->buyer->email)->subject('Confirmation of your order #'.$order->id);
@@ -283,7 +284,7 @@ class BuyerOrderController extends Controller
      *
      * @param $id  The buyer order id.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function cancel($id)
     {

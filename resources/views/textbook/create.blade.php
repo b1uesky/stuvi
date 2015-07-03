@@ -2,13 +2,14 @@
 
 
 @extends('textbook')
-    <head>
-        <title>Stuvi - Create textbook</title>
-        <link href="{{ asset('/css/textbook/create.css') }}" rel="stylesheet">
-    </head>
+
+@section('title', 'Create textbook')
+
+@section('css')
+    <link href="{{ asset('/css/textbook/create.css') }}" rel="stylesheet">
+@endsection
 
 @section('content')
-
 
 <!-- top container..determines background -->
 <div class = "container-fluid create">

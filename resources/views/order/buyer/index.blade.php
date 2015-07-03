@@ -44,7 +44,7 @@
                         <span id="cancelled"> <h3>Order Canceled</h3>
                         <small>Your order has been cancelled.</small>
                         </span>
-                    @elseif ($order->pickup_time)
+                    @elseif ($order->delivered())
                         <h3>Delivered</h3>
                         <small>Delivered at {{ date($datetime_format, strtotime($order->pickup_time)) }}</small>
                     @else
@@ -70,9 +70,11 @@
                             </div>
                             <div class=" col-xs-12 col-sm-2 col-xs-offset-0 col-sm-offset-1 col-md-offset-3">
                                 {{--<a class="btn btn-default order-button-1" href="#" role="button">Track Package</a>--}}
-                                @if (!$order->cancelled)
-                                <a class="btn btn-default order-button-2" href="#" role="button">Return or Replace Item</a>
-                                <a class="btn btn-default order-button-2" href="#" role="button">Leave Seller Feedback</a>
+                                @if ($order->delivered())
+                                    <a class="btn btn-default order-button-2" href="#" role="button">Return or Replace Item</a>
+                                    {{--<a class="btn btn-default order-button-2" href="#" role="button">Leave Seller Feedback</a>--}}
+                                @else
+                                    <a class="btn btn-default order-button-2" href="/order/buyer/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
                                 @endif
                             </div>
                         </div>

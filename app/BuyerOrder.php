@@ -155,5 +155,7 @@ class BuyerOrder extends Model
             $temp['book']['image_set']      = $product->book->imageSet->toArray();
             $buyer_order_arr['products'][]   = $temp;
         }
+
+        return $buyer_order_arr;
     }
 }
