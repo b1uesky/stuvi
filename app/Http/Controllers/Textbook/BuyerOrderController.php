@@ -48,7 +48,8 @@ class BuyerOrderController extends Controller
         $order = $this->hasColumn('buyer_orders', $order) ? $order : 'id';
 
         return view('order.buyer.index')
-            ->with('orders', Auth::user()->buyerOrders()->orderBy($order, 'DESC')->get());
+            ->with('orders', Auth::user()->buyerOrders()->orderBy($order, 'DESC')->get())
+            ->with('datetime_format', Config::get('app.datetime_format'));
     }
 
     /**

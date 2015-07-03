@@ -83,7 +83,7 @@ class PickupController extends Controller
             return redirect('express/pickup')->withError('This seller order has been cancelled.');
         }
 
-        if (!$seller_order->scheduled())
+        if (!$seller_order->isScheduled())
         {
             return redirect('express/pickup')->withError('This seller order has not been scheduled yet.');
         }
@@ -106,7 +106,7 @@ class PickupController extends Controller
             return redirect('express/pickup')->withError('This seller order has been cancelled.');
         }
 
-        if (!$seller_order->scheduled())
+        if (!$seller_order->isScheduled())
         {
             return redirect('express/pickup')->withError('This seller order has not been scheduled yet.');
         }
@@ -146,7 +146,7 @@ class PickupController extends Controller
                 return redirect('express/pickup')->withError('This seller order has already been picked up.');
             }
 
-            if (!$seller_order->scheduled())
+            if (!$seller_order->isScheduled())
             {
                 return redirect('express/pickup')->withError('This seller order has not been scheduled yet.');
             }

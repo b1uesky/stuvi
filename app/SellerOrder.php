@@ -120,6 +120,11 @@ class SellerOrder extends Model
         return $this->belongsTo('App\BuyerOrder', 'buyer_order_id', 'id');
     }
 
+    public function isScheduled()
+    {
+        return (!empty($this->scheduled_pickup_time));
+    }
+
     /**
      * Check whether this seller order has been delivered or not
      *

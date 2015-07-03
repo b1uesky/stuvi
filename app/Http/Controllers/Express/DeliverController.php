@@ -8,7 +8,9 @@ use App\Http\Controllers\Controller;
 use App\BuyerOrder;
 
 use Auth;
+use Illuminate\Http\RedirectResponse;
 use Mail;
+use Config;
 
 
 class DeliverController extends Controller
@@ -83,7 +85,7 @@ class DeliverController extends Controller
      * Assign an order to the current courier and notify the buyer by email.
      *
      * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function readyToShip($id)
     {
@@ -137,7 +139,7 @@ class DeliverController extends Controller
      * Confirm the textbook has been delivered.
      *
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function confirmDelivery($id)
     {

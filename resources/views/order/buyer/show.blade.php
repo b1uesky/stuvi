@@ -27,10 +27,9 @@
             <p class="col-xs-12 col-sm-3">Ordered on {{ $buyer_order->created_at }}</p>
             <p class="col-xs-12 col-sm-4">Order #{{ $buyer_order->id }}</p>
         </div>
-        @if ($buyer_order->deliver_time)
+        @if ($buyer_order->delivered())
             <p><a class="btn btn-default" href="">Return or replace items</a></p>
-        @endif
-        @if (!$buyer_order->cancelled)
+        @elseif (!$buyer_order->cancelled)
             <p><a class="btn btn-default btn-cancel" href="/order/buyer/cancel/{{ $buyer_order->id }}">Cancel Order</a></p>
         @endif
     <div class="container" id="details2">
@@ -81,6 +80,13 @@
                                 N/A
                             @endif
                         </p>
+                        <p>Delivered time:
+                            @if ($buyer_order->delivered())
+                                {{ date($datetime_format, strtotime($buyer_order->time_delivered)) }}
+                            @else
+                                N/A
+                            @endif
+                        </p>
 
                         @if (!$buyer_order->cancelled && $seller_order->cancelled)
                             <p>NOTE: this product is CANCELLED by the seller.</p>
@@ -97,7 +103,6 @@
 
     </div>
 
-<<<<<<< HEAD
 @endsection
 
 @section('javascript')
@@ -105,6 +110,4 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <!-- print window required -->
     <script src="{{asset('/js/showOrder.js')}}" type="text/javascript"></script>
-=======
->>>>>>> seller_order_address
 @endsection
