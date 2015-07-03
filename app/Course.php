@@ -16,5 +16,13 @@ class Course extends Model
         return $this->belongsTo('App\Major', 'major_id', 'id');
     }
 
-
+    /**
+     * Get the professor that teaches this course.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function professor()
+    {
+        return $this->belongsTo('App\Professor', 'professor_id', 'id');
+    }
 }
