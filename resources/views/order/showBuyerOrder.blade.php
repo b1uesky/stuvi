@@ -6,11 +6,6 @@
         <title>Stuvi - Order Details</title>
     </head>
 
-    <!-- print button -->
-    <div class="print"><a href="" onclick="printWindow()"><i class="fa fa-print"></i> Print Invoice
-        </a>
-    </div>
-
     <!-- flash message -->
     <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
@@ -101,8 +96,5 @@
         </div>
 
     </div>
-
-    <!-- print window required -->
-    <script src="{{asset('/js/showOrder.js')}}" type="text/javascript"></script>
 
 @endsection

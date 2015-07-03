@@ -180,5 +180,6 @@
     <!-- Date time picker required scripts -->
     <script src="{{asset('/js/datetimepicker/jquery.js')}}"></script>
     <script src="{{asset('/js/datetimepicker/jquery.datetimepicker.js')}}"></script>
-    <script src="{{asset('/js/showOrder.js')}}" type="text/javascript"></script>
+
+    <script src="{{asset('/js/order/seller/showSellerOrder.js')}}" type="text/javascript"></script>
 @endsection
