@@ -2,11 +2,6 @@
  * Created by nlouie on 6/16/15.
  */
 
-
-function printWindow() {
-    window.print();
-}
-
 /*
 <!-- New date time picker
 http://xdsoft.net/jqplugins/datetimepicker/ */
