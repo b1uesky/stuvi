@@ -8,7 +8,7 @@
     <head>
         <link href="{{ asset('/css/order/showOrder.css') }}" rel="stylesheet" type="text/css">
         {{-- date time picker required--}}
-        <link rel="stylesheet" type="text/css" href="{{asset('/datetimepicker/jquery.datetimepicker.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('/js/datetimepicker/jquery.datetimepicker.css')}}"/>
         <title>Stuvi - Order Details</title>
     </head>
 
@@ -178,7 +178,7 @@
 
 @section('javascript')
     <!-- Date time picker required scripts -->
-    <script src="{{asset('datetimepicker/jquery.js')}}"></script>
-    <script src="{{asset('datetimepicker/jquery.datetimepicker.js')}}"></script>
+    <script src="{{asset('/js/datetimepicker/jquery.js')}}"></script>
+    <script src="{{asset('/js/datetimepicker/jquery.datetimepicker.js')}}"></script>
     <script src="{{asset('/js/showOrder.js')}}" type="text/javascript"></script>
 @endsection
