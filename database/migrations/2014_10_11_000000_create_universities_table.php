@@ -16,9 +16,8 @@ class CreateUniversitiesTable extends Migration {
 		{
 			$table->increments('id');
             $table->string('name');
-            $table->string('abbreviation');
+            $table->string('abbreviation')->nullable();
             $table->string('email_suffix');
-			$table->timestamps();
 		});
 	}
 
