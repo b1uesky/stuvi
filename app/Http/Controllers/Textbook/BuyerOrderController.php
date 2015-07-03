@@ -229,7 +229,7 @@ class BuyerOrderController extends Controller
     protected function emailBuyerOrderConfirmation(BuyerOrder $order)
     {
         // convert the buyer order and corresponding objects to an array
-
+        $buyer_order_arr = $order->allToArray();
 
 
         Mail::queue('emails.buyerOrderConfirmation', ['buyer_order' => $buyer_order_arr], function($message) use ($order)
