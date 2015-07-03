@@ -28,13 +28,13 @@ class SellerOrderController extends Controller
      *
      * @return Response
      */
-    public function sellerOrderIndex()
+    public function index()
     {
         $order = Input::get('ord');
         // check column existence
         $order = $this->hasColumn('seller_orders', $order) ? $order : 'id';
 
-        return view('order.sellerOrderIndex')
+        return view('order.seller.index')
             ->with('orders',    Auth::user()->sellerOrders()->orderBy($order, 'DESC')->get());
     }
 
@@ -45,14 +45,14 @@ class SellerOrderController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function showSellerOrder($id)
+    public function show($id)
     {
         $seller_order = SellerOrder::find($id);
 
         // check if this order belongs to the current user.
         if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
         {
-            return view('order.showSellerOrder')
+            return view('order.seller.show')
                 ->with('seller_order',      $seller_order)
                 ->with('datetime_format',   Config::get('app.datetime_format'))
                 ->with('stripe_authorize_url',  $this->buildStripeAuthRequestUrl());
@@ -69,7 +69,7 @@ class SellerOrderController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function cancelSellerOrder($id)
+    public function cancel($id)
     {
         $seller_order = SellerOrder::find($id);
 
@@ -154,7 +154,7 @@ class SellerOrderController extends Controller
     public function addAddress($id)
     {
         $seller_order = SellerOrder::find($id);
-        return view('sellerOrder.address')->withSellerOrder($seller_order);
+        return view('order.seller.addAddress')->withSellerOrder($seller_order);
     }
 
     /**
