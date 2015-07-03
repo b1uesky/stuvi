@@ -66,7 +66,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::get  ('/seller', 'SellerOrderController@sellerOrderIndex');
     Route::get  ('/seller/{id}', 'SellerOrderController@showSellerOrder');
     Route::get  ('/seller/cancel/{id}', 'SellerOrderController@cancelSellerOrder');
-    Route::post ('/seller/setscheduledtime', 'SellerOrderController@setScheduledPickupTime');
+    Route::post ('/seller/schedulePickupTime', 'SellerOrderController@schedulePickupTime');
     Route::get  ('/seller/{id}/addAddress', 'SellerOrderController@addAddress');
     Route::get  ('/seller/assignAddress', 'SellerOrderController@assignAddress');
     Route::post ('/seller/storeAddress', 'SellerOrderController@storeAddress');

@@ -13,8 +13,11 @@ use Config;
 use DB;
 use Input;
 use Mail;
+use Request;
+use Response;
 use Session;
 use Validator;
+use DateTime;
 use Carbon\Carbon;
 
 class SellerOrderController extends Controller
@@ -83,47 +86,64 @@ class SellerOrderController extends Controller
     }
 
     /**
-     * Set the schedule pickup time for a seller order.
+     * AJAX: set a pickup time for the seller order.
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return Json Response
      */
-    public function setScheduledPickupTime()
+    public function schedulePickupTime()
     {
-        // validation
-        $v = Validator::make(Input::all(), [
-            'scheduled_pickup_time' => 'required|date'
-        ]);
-
-        if ($v->fails())
+        if (Request::ajax())
         {
-            return redirect()->back()
-                ->withErrors($v->errors())
-                ->withInput(Input::all());
-        }
+            // validation
+            $v = Validator::make(Input::all(), [
+                'scheduled_pickup_time' => 'required|date'
+            ]);
 
-        $scheduled_pickup_time = Input::get('scheduled_pickup_time');
-        $id = (int)Input::get('id');
-        $seller_order = SellerOrder::find($id);
-
-        // check if this seller order belongs to the current user.
-        if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
-        {
-            // if this seller order is cancelled, user cannot set up pickup time
-            if ($seller_order->cancelled)
+            if ($v->fails())
             {
-                return redirect('order/seller/' . $id)
-                    ->with('message', 'Fail to set pickup time because this order has been cancelled.');
+                return Response::json([
+                    'success' => false,
+                    'errors'  => $v->getMessageBag()->toArray()
+                ], 400);
             }
 
-            $seller_order->scheduled_pickup_time    = Carbon::now();
-            $seller_order->save();
+            $scheduled_pickup_time = Input::get('scheduled_pickup_time');
+            $seller_order_id = Input::get('seller_order_id');
+            $seller_order = SellerOrder::find($seller_order_id);
 
-            return redirect()->back()
-                ->withSuccess("You have successfully scheduled the pickup time.");
+            // check if this seller order belongs to the current user.
+            if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
+            {
+                // if this seller order is cancelled, user cannot set up pickup time
+                if ($seller_order->cancelled)
+                {
+                    return Response::json([
+                        'success' => false,
+                        'errors' => [
+                            'cancelled' => 'Fail to set pickup time because this order has been cancelled.'
+                        ]
+                    ], 400);
+                }
+
+                $seller_order->scheduled_pickup_time = DateTime::createFromFormat(
+                    Config::get('app.datetime_format'), $scheduled_pickup_time)
+                    ->format(Config::get('database.datetime_format'));
+
+                $seller_order->save();
+
+                return Response::json([
+                    'success' => true,
+                    'scheduled_pickup_time' => $scheduled_pickup_time
+                ]);
+            }
+
+            return Response::json([
+                'success' => false,
+                'errors' => [
+                    'order_not_found' => 'Order not found'
+                ]
+            ]);
         }
-
-        return redirect('order/seller')
-            ->with('message', 'Order not found');
     }
 
     /**

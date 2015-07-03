@@ -93,15 +93,19 @@
                 {{-- Schedule pickup time --}}
                 <h2>Schedule a pickup time</h2>
 
-                @if($seller_order->scheduledPickupTime())
-                    <p>Scheduled Pickup
-                        Time: {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}</p>
-                @endif
+                <div class="text-scheduled-pickup-time">
+                    @if($seller_order->scheduledPickupTime())
+                        Scheduled pickup time: {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}
+                    @else
+                        {{-- Nothing --}}
+                    @endif
+                </div>
 
-                <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="hidden" name="id" value="{{ $seller_order->id }}">
+                <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST" id="schedule-pickup-time">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="schedule-token">
+                    <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
 
+                    {{-- TODO: Add a calendar logo --}}
                     <div class="form-group">
                         <input class="form-control" id="datetimepicker" class="input-append date" type="text"
                                name="scheduled_pickup_time">
