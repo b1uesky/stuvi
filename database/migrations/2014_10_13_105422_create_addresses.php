@@ -10,6 +10,7 @@ class CreateAddresses extends Migration {
 		Schema::create('addresses', function($table) {
 			$table->increments('id');
             $table->integer('user_id')->unsigned()->index();
+            $table->boolean('default_address')->default(false);
 			$table->string('addressee', 50);
 			$table->string('address_line1', 225);
             $table->string('address_line2', 225)->nullable();

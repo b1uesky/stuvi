@@ -1,3 +1,4 @@
+
 {{-- Checkout page
 --  For stripe API: https://stripe.com/docs/stripe.js
                 --}}
@@ -111,7 +112,20 @@
                     </table>
                     <h2>2. Shipping address</h2></br>
                     @forelse ($addresses as $address)
-                        <div class="displayAddress">
+                        @if ($address -> default_address)
+                            <div class="displayDefaultAddress">
+                                <ul>
+                                    <li id="addressee">{{ $address -> addressee }}</li>
+                                    <li id="address_line1">{{ $address -> address_line1}}</li>
+                                    <li id="address_line2">{{ $address -> address_line2}}</li>
+                                    <li id="city">{{ $address -> city }}</li>
+                                    <li id="state_a2">{{ $address -> state_a2 }}</li>
+                                    <li id="zip">{{ $address -> zip }}</li>
+                                </ul>
+                            </div>
+                            <button id="change_address" onclick="showAllAddress()">Change Address</button>
+                        @endif
+                        <div class="displayAllAddresses">
                             <ul>
                                 <li id="addressee">{{ $address -> addressee }}</li>
                                 <li id="address_line1">{{ $address -> address_line1}}</li>
@@ -120,8 +134,10 @@
                                 <li id="state_a2">{{ $address -> state_a2 }}</li>
                                 <li id="zip">{{ $address -> zip }}</li>
                             </ul>
+                            <button id="selectThisAddress" onclick="selectAddress({{ $address -> id }})">click here to
+                                select this address
+                            </button>
                         </div>
-                        <button id="selectThisAddress" onclick="selectAddress({{ $address -> id }})">click here to select this address</button>
                     @empty
                         <form action="{{ url('/order/storeAddress') }}" method="POST" id="address-form">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -185,6 +201,8 @@
                             </div>
                             </br>
                         </form>
+                            <button id="storeAddress" onclick="storeAddress()">Add Address
+                            </button>
                         @endforelse
 
                                 <!-- payment form here -->

@@ -84,14 +84,15 @@ class Address extends Model
     public static function add($info, $user_id)
     {
         $address = new Address();
-        $address->user_id       = $user_id;
-        $address->addressee     = $info['addressee'];
-        $address->address_line1 = $info['address_line1'];
-        $address->address_line2 = $info['address_line2'];
-        $address->city          = $info['city'];
-        $address->state_a2      = $info['state_a2'];
-        $address->zip           = $info['zip'];
-        $address->phone_number  = $info['phone_number'];
+        $address->user_id         = $user_id;
+        $address->default_address = $info['default_address'];
+        $address->addressee       = $info['addressee'];
+        $address->address_line1   = $info['address_line1'];
+        $address->address_line2   = $info['address_line2'];
+        $address->city            = $info['city'];
+        $address->state_a2        = $info['state_a2'];
+        $address->zip             = $info['zip'];
+        $address->phone_number    = $info['phone_number'];
         $address->save();
 
         return $address->id;

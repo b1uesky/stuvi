@@ -87,8 +87,25 @@ class BuyerOrderController extends Controller
      */
     public function storeBuyerAddress(Request $request)
     {
-        $address_ID = $_GET['id'];
-        return Address::where('id', $address_ID)->get()->toJson();
+        // validate the address info
+        $this->validate($request, Address::rules());
+
+        // store the buyer shipping address
+        $address = array(
+            'default_address' => true,
+            'addressee'     => Input::get('addressee'),
+            'address_line1' => Input::get('address_line1'),
+            'address_line2' => Input::get('address_line2'),
+            'city'          => Input::get('city'),
+            'state_a2'      => Input::get('state_a2'),
+            'zip'           => Input::get('zip'),
+            'phone_number'  => Input::get('phone_number')
+        );
+
+        $shipping_address_id = Address::add($address,Auth::id());
+        return response()->view('order.createBuyerOrder',['items'=> Cart::content(),'total'=> Cart::total(),'stripe_public_key'=> StripeKey::getPublicKey(),'addresses' => Auth::user()->address()]);
+
+
     }
 
     /**
@@ -104,8 +121,7 @@ class BuyerOrderController extends Controller
                 ->with('message', 'Cannot proceed to checkout because you are trying to purchasing your own products.');
         }
 
-        // validate the address info
-        //$this->validate($request, Address::rules());
+
 
 //        // check if this payment already exist
 //        if (BuyerPayment::where('charge_id', '=', Input::get('stripeToken'))->exists())
@@ -128,17 +144,8 @@ class BuyerOrderController extends Controller
         // create Stripe charge, if it fails, go to checkout page.
         $charge = $this->createBuyerCharge();
 
-        // store the buyer shipping address
-//        $address = array(
-//            'addressee'     => Input::get('addressee'),
-//            'address_line1' => Input::get('address_line1'),
-//            'address_line2' => Input::get('address_line2'),
-//            'city'          => Input::get('city'),
-//            'state_a2'      => Input::get('state_a2'),
-//            'zip'           => Input::get('zip'),
-//            'phone_number'  => Input::get('phone_number')
-//        );
-        $shipping_address_id = Address::add($address, Auth::id());
+
+        $shipping_address_id = Input::get('selected_address_id');
 
         // create an buyer payed order
         $order                      = new BuyerOrder;
