@@ -123,9 +123,9 @@
                                     <li id="zip">{{ $address -> zip }}</li>
                                 </ul>
                             </div>
-                            <button id="change_address" onclick="showAllAddress()">Change Address</button>
+                            <button id="change_address" class="show-button">Change Address</button>
                         @endif
-                        <div class="displayAllAddresses">
+                        <div class="displayAllAddresses" style="display: none">
                             <ul>
                                 <li id="addressee">{{ $address -> addressee }}</li>
                                 <li id="address_line1">{{ $address -> address_line1}}</li>
@@ -137,6 +137,7 @@
                             <button id="selectThisAddress" onclick="selectAddress({{ $address -> id }})">click here to
                                 select this address
                             </button>
+                            <button class="hide-button">Hide</button>
                         </div>
                     @empty
                         <form action="{{ url('/order/storeAddress') }}" method="POST" id="address-form">
