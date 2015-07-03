@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Professor extends Model
 {
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['*'];
+
+
+    /**
      * Get all universities that this professor belongs to.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

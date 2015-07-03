@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Major extends Model
 {
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['*'];
+
+    /**
      * Get the college that this major belongs to.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

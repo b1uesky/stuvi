@@ -2,7 +2,14 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class University extends Model {
+class University extends Model
+{
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['*'];
 
     /**
      * Check if the given email has the same email suffix as this university.

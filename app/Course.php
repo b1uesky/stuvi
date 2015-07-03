@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['*'];
+
+    /**
      * Get the major that this class belongs to.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
