@@ -11,7 +11,14 @@ class Course extends Model
      *
      * @var array
      */
-    protected $fillable = ['*'];
+    protected $fillable = ['code', 'name', 'major_id', 'professor_id'];
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * Get the major that this class belongs to.

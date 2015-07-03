@@ -11,7 +11,14 @@ class Major extends Model
      *
      * @var array
      */
-    protected $fillable = ['*'];
+    protected $fillable = ['name', 'abbreviation', 'college_id'];
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * Get the college that this major belongs to.
@@ -30,6 +37,6 @@ class Major extends Model
      */
     public function courses()
     {
-        return $this->hasMany('App\Course', 'college_id', 'id');
+        return $this->hasMany('App\Course', 'major_id', 'id');
     }
 }

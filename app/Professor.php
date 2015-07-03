@@ -11,8 +11,14 @@ class Professor extends Model
      *
      * @var array
      */
-    protected $fillable = ['*'];
+    protected $fillable = ['first_name', 'middle_name', 'last_name'];
 
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * Get all universities that this professor belongs to.
@@ -21,7 +27,7 @@ class Professor extends Model
      */
     public function universities()
     {
-        return $this->belongsToMany('App\University', 'professor_university', 'professor_id', 'university_id');
+        return $this->belongsToMany('App\University');
     }
 
     /**

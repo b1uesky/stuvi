@@ -11,7 +11,14 @@ class College extends Model
      *
      * @var array
      */
-    protected $fillable = ['*'];
+    protected $fillable = ['name', 'abbreviation', 'university_id'];
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * Get the university that this college belongs to.

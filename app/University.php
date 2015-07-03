@@ -9,7 +9,14 @@ class University extends Model
      *
      * @var array
      */
-    protected $fillable = ['*'];
+    protected $fillable = ['name', 'abbreviation', 'email_suffix'];
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * Check if the given email has the same email suffix as this university.
@@ -44,7 +51,7 @@ class University extends Model
      */
     public function professors()
     {
-        return $this->belongsToMany('App\Professor', 'professor_university', 'university_id','professor_id');
+        return $this->belongsToMany('App\Professor');
     }
 
 }
