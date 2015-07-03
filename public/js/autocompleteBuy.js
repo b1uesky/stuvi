@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('#autocompleteBuy').autocomplete({
-        source: "textbook/buy/searchAutoComplete",
+        source: "buy/searchAutoComplete",
         minLength: 3,
         focus: function(event, ui) {
             // prevent updating input
