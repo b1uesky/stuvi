@@ -5,9 +5,7 @@
 
 /* All screen styling */
 
-body {
-    background: #241729 !important;
-}
+body {  background: #241729 !important;  }
 
 /*********  Classes  ************/
 
@@ -22,60 +20,79 @@ body {
     * Photo by Nick Louie. Link: https://flic.kr/p/kSKWtK
     ******************/
 
-    background-image: url("../img/cover.jpg") ;
+    background-image: url("../img/cover-2-1.png") ;
     background-size: cover;                         /* Fill entire container */
     background-repeat: no-repeat;
     background-position: center;
-    padding-bottom: 5%;
-
+    /*padding-bottom: 27%;*/
+    height: 80vh;     /* Height is equal to 80% of the viewport height */
 }
 
-
-/* Bottom half of home page, grid buffer */
-.grid-buff {
-    margin-top : 10px;
-    margin-bottom: 20px;
-}
-
-/* Column buffer for smaller screen compatibility */
-.col-buff {
-    padding-top: 4%;
-    padding-bottom: 5%;
-    margin-left: 0%;
-}
-
-
-/* Fix Nav Caret Align*/
-.nav-caret{
-    margin-top: 0px;
-}
-
-.home-btn {
+#head1-temp{
+    color: whitesmoke;
     text-align: center;
+    font-size: 5em;
+    font-weight: bold;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    padding-top: 6%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
-/***** GHOST BUTTONS *****/
+.tagline{
+    color: whitesmoke;
+    text-align: center;
+    padding-bottom: 5%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    font-weight: 400;
+}
+
+.top-content{
+    padding-top: 5%;
+}
+
+/***** GHOST BUTTONS
+*      Login, sign in
+*
+ *****/
+
+.ghost-btn-container {
+    text-align: center;
+    padding-top: 3%;
+}
 
 .ghost-btn {
     width: 150px;
     height: 50px;
-    border-radius: 0 !important;
-    font-weight: bold !important;
-    font-size: 1.3em !important;
-    color: #F16521;
-    border: 3px solid #F16521 !important;
+    border-radius: 0;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #FFFFFF;
+    border: 3px solid #FFFFFF;
     background: none;
-    margin: 20px 20px 0;
-    padding-top: 9px !important;
+    margin: 0 20px 0;
+    padding-top: 9px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
 .ghost-btn:hover {
     background: #F16521;
-    color: #FFFFFF !important;
+    color: #FFFFFF;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
 }
 
 .ghost-btn:focus {
-    outline: 0 !important;
+    outline: 0;
+    color: #FFFFFF;
+}
+
+@media (max-width: 767px) {
+    .ghost-btn-container {  margin-bottom: 35px;  }
+
+    .ghost-btn {  margin: 0 8px 0;  }
+}
+
+@media (max-width: 399px) {
+    .ghost-btn {  margin-bottom: 20px;  }
 }
 
 /************** IDs   *************/
@@ -103,7 +120,7 @@ body {
  */
 #hr-style-one {
     border: 0;
-    height: 3px;
+    /*height: 3px;*/
     background: #333;
     background-image: linear-gradient(to right, #ccc, #f16521, #ccc);
 }
@@ -118,14 +135,11 @@ body {
     padding-bottom: 1%;
 }
 
-/**************  NAV DROPDOWN FIX  *************/
-.nav-caret {
-    margin-top: 9px;
-}
+#img-info-1{  padding: 30px;  }
 
-.nav-dropdown {
-    height: 50px;
-}
+/**************  NAV DROPDOWN FIX  *************/
+
+.nav-dropdown {  height: 50px;  }
 
 /************* @media SMALL SCREENS ********/
 
@@ -136,16 +150,32 @@ body {
 
     .backgnd        {padding-bottom: 0%;}
     .center         {text-align: center;}
-
     /******* IDS *******/
 
     #head1          {font-size: medium;}
     #head2          {font-size: large;}
     #p1             {font-size: small;}
-    #hr-style-one   {height: 2px;}
     #jumbotron1     {margin-top: 2%;}
     #liftoff        {font-size: x-small}
-
-
-
 }
+
+/******** BOTTOM HALF ********/
+
+#bottom-half { padding: 0; }
+
+.services {
+    background-color: #F16521;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.services h4 {  font-weight: 900;  }
+
+.service-row {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.service {  margin-bottom: 30px;  }
+
+.service a {  color: #FFFFFF;  }

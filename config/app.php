@@ -39,7 +39,19 @@ return [
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'EST5EDT',
+
+    /*
+	|--------------------------------------------------------------------------
+	| Application Datetime Format
+	|--------------------------------------------------------------------------
+	|
+	| Here you may specify the default datetime format for your application,
+    | which can be passed to views to display date.
+	|
+	*/
+
+    'datetime_format' => 'Y-m-d G:i',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -135,6 +147,7 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+        'Illuminate\Broadcasting\BroadcastServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -148,12 +161,8 @@ return [
         /*
          * Payment Service Providers...
          */
-        'Laravel\Cashier\CashierServiceProvider',
-
-        /*
-         * Administrator Service Providers...
-         */
-        'Frozennode\Administrator\AdministratorServiceProvider',
+        //'Laravel\Cashier\CashierServiceProvider',
+        //'Cartalyst\Stripe\Laravel\StripeServiceProvider',
 
         /*
          * Gloudemans Shopping Cart

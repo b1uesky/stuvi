@@ -1,29 +1,66 @@
 <?php namespace App\Helpers;
 
+use App\BookImageSet;
+use App\ProductImage;
+
 class FileUploader {
 
-    function __construct($file, $title, $folder)
+    function __construct($file, $title, $folder, $id)
     {
         $this->file = $file;
         $this->title = $title;
         $this->folder = $folder;
+        $this->id = $id;
         $this->destination = public_path() . $folder;
-        $this->filename = $this->generateFileName();
-        $this->path = $this->generatePath();
     }
 
-    function generateFileName()
+    // The filename will be {TITLE}-{IMAGE_ID}.{EXTENSION}
+    // e.g., Algorithms-1.jpg
+    function setFilename($image_id)
     {
-        return $this->title . '_' . $this->file->getClientOriginalName();
+        $this->filename = $this->title . '-' . $image_id . '.' . $this->file->getClientOriginalExtension();
     }
 
-    function generatePath()
+    function setPath()
     {
-        return $this->folder . $this->filename;
+        $this->path = $this->folder . $this->filename;
+    }
+
+    function getPath()
+    {
+        return $this->path;
     }
 
     function saveFile()
     {
-        $this->file->move($this->destination, $this->filename);
+        $this->file->move($this->destination, $this->path);
+    }
+
+    function saveBookImageSet()
+    {
+        $image_set = new BookImageSet();
+        $image_set->book_id = $this->id;
+        $image_set->save();
+
+        $this->setFilename($image_set->id);
+        $this->setPath();
+        $this->saveFile();
+
+        $image_set->large_image = $this->path;
+        $image_set->save();
+    }
+
+    function saveProductImage()
+    {
+        $product_image = new ProductImage();
+        $product_image->product_id = $this->id;
+        $product_image->save();
+
+        $this->setFilename($product_image->id);
+        $this->setPath();
+        $this->saveFile();
+
+        $product_image->path = $this->path;
+        $product_image->save();
     }
 }

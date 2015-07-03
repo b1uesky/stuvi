@@ -40,9 +40,23 @@ class Authenticate {
 			}
 			else
 			{
-				return redirect()->guest('auth/login');
+				return redirect()->guest('login');
 			}
 		}
+
+        // check if the current route is 'user/activate'
+//        var_dump($request->route());
+//        return 'asdf';
+        if ($request->is('user/activate') || $request->is('user/activate/*'))
+        {
+            return $next($request);
+        }
+
+        // for those users who are not activated yet.
+        if (!$this->auth->user()->isActivated())
+        {
+            return redirect('user/activate');
+        }
 
 		return $next($request);
 	}

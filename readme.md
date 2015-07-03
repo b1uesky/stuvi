@@ -6,13 +6,35 @@
 
 In your homestead VM (homestead ssh):
 
+```bash
+composer update
+php artisan migrate --seed
 ```
-composer install
-php artisan migrate
+
+To fix database SQL error message when migrating, go to mysql shell:
+
+```bash
+mysql -u root -p
+password: secret
+
+drop database homestead;
+create database homestead;
+```
+
+Go back (ctrl+d) to vagrant:
+
+```bash
+php artisan migrate --seed
+```
+
+After adding a database table seeder:
+
+```bash
+composer dump-autoload
 php artisan db:seed
-mkdir config/administrator/settings
 ```
 
-## Administrator
+## Routes
 
-url: `/admin`
+- Admin: `/admin`
+- Express: `/express`

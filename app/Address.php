@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-use Auth;
+use Auth, Config;
 use League\Flysystem\Exception;
 
 /**
@@ -36,11 +36,13 @@ class Address extends Model
      */
     public static function rules() {
         $rules = array(
-            'addressee'=>'Max:100',
-            'street'=>'required|Max:100',
-            'city'=>'required',
-            'state_a2'=>'required|Alpha|size:2',
-            'zip'=>'required|AlphaDash|Min:5|Max:10', // https://www.barnesandnoble.com/help/cds2.asp?PID=8134
+            'addressee'     => 'required|string|Max:100',
+            'address_line1' => 'required|string|Max:100',
+            'address_line2' => 'string|Max:100',
+            'city'          => 'required|string',
+            'state_a2'      => 'required|Alpha|size:2',
+            'zip'           => 'required|AlphaDash|Min:5|Max:10', // https://www.barnesandnoble.com/help/cds2.asp?PID=8134
+            'phone_number'  => 'required|string'
         );
 
         if(Config::get('addresses::show_country')) {
@@ -67,7 +69,7 @@ class Address extends Model
      * @param $user_id  The user id of the current user.
      * @return bool|null
      */
-    public function delete($id, $user_id)
+    public function del($id, $user_id)
     {
         $address = $this->findOrFail($id);
 
@@ -80,7 +82,7 @@ class Address extends Model
     }
 
 
-    public function add($info, $user_id)
+    public static function add($info, $user_id)
     {
         $address = new Address();
         $address->user_id       = $user_id;
@@ -92,5 +94,7 @@ class Address extends Model
         $address->zip           = $info['zip'];
         $address->phone_number  = $info['phone_number'];
         $address->save();
+
+        return $address->id;
     }
 }

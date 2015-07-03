@@ -122,4 +122,14 @@ return [
 
 	],
 
+    /*
+	|--------------------------------------------------------------------------
+	| Database datetime format
+	|--------------------------------------------------------------------------
+	|
+	| Default datetime format for database timestamp.
+	|
+	*/
+    'datetime_format' => 'Y-m-d G:i:s',
+
 ];

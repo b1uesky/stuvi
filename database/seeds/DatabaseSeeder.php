@@ -4,9 +4,6 @@ use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
 use App\User;
-use App\Book;
-use App\BookBinding;
-use App\BookLanguage;
 use App\Product;
 use App\University;
 
@@ -21,81 +18,16 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
+        $this->call('BookTableSeeder');
+		$this->call('UniversityTableSeeder');
         $this->call('UserTableSeeder');
-        //$this->call('CountryTableSeeder');
-        //$this->call('StateTableSeeder');
+        $this->call('ProductTableSeeder');
+        $this->call('AddressTableSeeder');
+        $this->call('BuyerOrderSeeder');
+        $this->call('BuyerPaymentSeeder');
+        $this->call('SellerOrderSeeder');
 
-
-        // create some test instances.
-        $BU = University::create([  'name'  => 'BOSTON UNIVERSITY',
-                                    'abbreviation'  => 'BU',
-                                    'email_suffix'  => 'bu.edu'
-        ]);
-
-        $MIT = University::create([  'name'  => 'Massachusetts Institute of Technology',
-                                    'abbreviation'  => 'MIT',
-                                    'email_suffix'  => 'mit.edu'
-        ]);
-
-        $seller = User::create([    //'username'  => 'seller',
-                                    'email'     => 'seller@stuvi.com',
-                                    'password'  => bcrypt('123456'),
-                                    'university_id' =>  $BU->id
-        ]);
-        $buyer = User::create([ //'username'  => 'buyer',
-                                'email'     => 'buyer@stuvi.com',
-                                'password'  => bcrypt('123456'),
-                                'university_id' =>  $BU->id
-        ]);
-
-        $book0 = Book::create([  'title'     => 'Advanced Algorithm 0',
-                                'author'    => 'Snyder Wayne',
-                                'isbn'      => '1010101010',
-                                'publisher' => 'Boston University',
-                                'manufacturer'  => 'Boston University',
-                                'num_pages' => 1122
-        ]);
-
-        $book1 = Book::create([  'title'     => 'Advanced Algorithm 1',
-                                'author'    => 'Snyder Wayne',
-                                'isbn'      => '1010101011',
-                                'publisher' => 'Boston University',
-                                'manufacturer'  => 'Boston University',
-                                'num_pages' => 1122
-        ]);
-
-        $book2 = Book::create([  'title'     => 'Advanced Algorithm 2',
-                                'author'    => 'Snyder Wayne',
-                                'isbn'      => '10101010102',
-                                'publisher' => 'Boston University',
-                                'manufacturer'  => 'Boston University',
-                                'num_pages' => 1122
-        ]);
-
-        $book_binding_hard = BookBinding::create([
-            'binding'   => 'hard'
-        ]);
-
-        $book_binding_soft = BookBinding::create([
-            'binding'   => 'soft'
-        ]);
-
-        $book_language_english = BookLanguage::create([
-            'language'  => 'English'
-        ]);
-
-        $book_language_spanish = BookLanguage::create([
-            'language'  => 'Spanish'
-        ]);
-
-        $book_language_chinese = BookLanguage::create([
-            'language'  => 'Chinese'
-        ]);
-
-        $product = Product::create(['price'     => 99.99,
-                                    'book_id'   => $book0->id,
-                                    'seller_id' => $seller->id
-        ]);
+        Model::reguard();
 	}
 
 }

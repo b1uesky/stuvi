@@ -3,7 +3,7 @@
 @section('content')
     <head>
         <link href="{{ asset('/css/contact.css') }}" rel="stylesheet">
-        <title>Contact Us</title>
+        <title>Stuvi - Contact Us</title>
     </head>
 
     <div class="container-fluid background">
@@ -38,37 +38,35 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        {{--<label>Message</label>--}}
                         <textarea class="form-control" rows="5" placeholder="Message"></textarea>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn contact-button">Submit</button>
+                        <button type="submit" class="btn contact-btn">Submit</button>
                     </div>
                 </form>
             </div>
 
-            <div class="col-sm-5 social-container">
-                <h4>Connect with us on social media!</h4>
-                <div class="social-links">
-                    <a href="#">
-                        <img src="{{ asset('/img/facebook.png') }}">
-                    </a>
-                    <a href="#">
-                        <img src="{{ asset('/img/twitter.png') }}">
-                    </a>
-                    <a href="#">
-                        <img src="{{ asset('/img/github.png') }}">
-                    </a>
+            <div class="col-sm-5 right-container">
+                <h3>Contact Details</h3>
+                <div class="contact-info-container">
+                    <ul class="contact-info">
+                        <li><a href="http://bit.ly/1AStBAY" target="_blank"><i class="fa fa-map-marker fa-lg"></i> Boston, MA</a></li>
+                        <li><a href="mailto:official@stuvi.com"><i class="fa fa-envelope-o fa-lg"></i> official@stuvi
+                                .com</a></li>
+                        <li><a href="https://www.facebook.com/StuviBoston" target="_blank"><i class="fa fa-facebook fa-lg"></i> Facebook</a></li>
+                        <li><a href="https://twitter.com/StuviBoston" target="_blank"><i class="fa fa-twitter fa-lg"></i> Twitter</a></li>
+                        <li><a href="https://www.linkedin.com/company/stuvi?trk=biz-companies-cym" target="_blank"><i class="fa fa-linkedin fa-lg"></i> LinkedIn</a></li>
+                        {{--<li><a href="#"><i class="fa fa-github fa-lg"></i> Github</a></li>--}}
+                    </ul>
                 </div>
             </div>
         </div>
-        <!-- boston.jpg licensing -->
-        <p id="license" style="text-align: right;"><small>Background Photo by
-                <a href="https://flic.kr/p/rZ8kmG" target = "_blank"> John Collins </a>
-                under <a href="https://creativecommons.org/licenses/by/2.0/" target = "_blank"> CC-BY-2.0</a>
-                </small>
-        </p>
     </div>
 
 
+@endsection
+
+@section('javascript')
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 @endsection

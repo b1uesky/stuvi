@@ -13,9 +13,46 @@ class Product extends Model
         return $this->belongsTo('App\Book');
     }
 
-    public function sold()
+    public function seller()
     {
-        return $this->sold;
+        return $this->belongsTo('App\User');
     }
 
+    public function condition()
+    {
+        return $this->hasOne('App\ProductCondition');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images()
+    {
+        return $this->hasMany('App\ProductImage');
+    }
+    /**
+     * @return string
+     */
+    public function isSold()
+    {
+        if ($this->sold)
+        {
+            return 'Yes';
+        }
+
+        return 'No';
+    }
+
+    /**
+     * @return string
+     */
+    public function isVerified()
+    {
+        if ($this->verified)
+        {
+            return 'Yes';
+        }
+
+        return 'No';
+    }
 }

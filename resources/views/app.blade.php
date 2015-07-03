@@ -11,6 +11,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf_token" content="{{ csrf_token() }}">
     {{--<title>Laravel</title>--}}
 
     <link href="{{ asset('/css/app.css') }}"                rel="stylesheet">
@@ -55,10 +56,10 @@
             <!-- Navbar right -->
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">
+                    <li><a class="nav-login" href="{{ url('/login') }}">
                             <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
-                    <li><a href="{{ url('/register') }}">
-                            <i class="fa fa-user"></i> Register</a></li>
+                    <li><a class="nav-login" href="{{ url('/register') }}">
+                            <i class="fa fa-user"></i> Sign Up</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button"
@@ -67,7 +68,13 @@
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/user/profile') }}">
                                     Profile</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/user/account') }}">
-                                    My Account</a></li>
+                                    Your Account</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/order/buyer') }}">
+                                    Your Orders</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/order/seller') }}">
+                                    Sold Books</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/cart') }}">
+                                    Shopping Cart</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/auth/logout') }}">
                                     Logout</a></li>
                         </ul>
@@ -85,15 +92,19 @@
 <!-- Displays page content -->
 @yield('content')
 
-<!-- FOOTER -->
+<!-- FOOTER. See footer styling at footer-distribyted.css -->
 <footer class="footer-distributed">
+    <div class="row">
+        <hr style="    border: 0;height: 2px;background: #333; background-image: linear-gradient(to right, #ccc, #f16521, #ccc);">
+    </div>
+
     <!-- Social Media -->
     <div class="footer-right">
         <!-- Uses font-awesome.css -->
-        <a class="social" href="#"><i class="fa fa-facebook"></i></a>
-        <a class="social" href="#"><i class="fa fa-twitter"></i></a>
-        <a class="social" href="#"><i class="fa fa-linkedin"></i></a>
-        <a class="social" href="#"><i class="fa fa-github"></i></a>
+        <a class="social" href="https://www.facebook.com/StuviBoston" target="_blank"><i class="fa fa-facebook"></i></a>
+        <a class="social" href="https://twitter.com/StuviBoston" target="_blank"><i class="fa fa-twitter"></i></a>
+        <a class="social" href="https://www.linkedin.com/company/stuvi?trk=biz-companies-cym" target="_blank"><i class="fa fa-linkedin"></i></a>
+        {{--<a class="social" href="#"><i class="fa fa-github"></i></a>--}}
 
     </div>
 
@@ -115,7 +126,7 @@
             <a class="footer-link"  href="{{ url('/contact') }}">Contact</a>
         </p>
         <hr>
-        <p>Stuvi &copy; 2015</p>
+        <p>&copy; Stuvi, LLC. 2015</p>
     </div>
 
 </footer>
@@ -134,9 +145,6 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="{{asset('/js/navigation.js')}}" type="text/javascript"></script>
-
+@yield('javascript')
 
 </html>

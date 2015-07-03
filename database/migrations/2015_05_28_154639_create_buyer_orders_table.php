@@ -16,11 +16,16 @@ class CreateBuyerOrdersTable extends Migration {
 		{
             $table->increments('id');
             $table->integer('buyer_id')->unsigned();
+            $table->integer('courier_id')->unsigned()->nullable();
+            $table->timestamp('time_delivered')->nullable();
+            $table->integer('shipping_address_id')->unsigned();
             $table->boolean('cancelled')->default(false);
-            $table->integer('buyer_payment_id')->unsigned();
-            $table->string('deliver_time')->nullable();
-            $table->integer('shipping_address')->unsigned();
+            $table->timestamp('cancelled_time')->nullable();
             $table->timestamps();
+
+            $table->foreign('shipping_address_id')->references('id')->on('addresses');
+            $table->foreign('buyer_id')->references('id')->on('users');
+            $table->foreign('courier_id')->references('id')->on('users');
 		});
 	}
 

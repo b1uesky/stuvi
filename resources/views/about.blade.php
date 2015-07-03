@@ -87,8 +87,16 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid google-map-container">
+        <div class="overlay" onclick="style.pointerEvents='none'"></div>
+        <iframe class="google-map" width="100%" height="400" frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?q=Boston%20University%2C%20Boston%2C%20MA%2C%20United%20States&key=AIzaSyDPkT04jkZa3K8UO1K6cVQ1df0GjbA8LG4"></iframe>
+    </div>
 
 
+@endsection
 
-
+@section('javascript')
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 @endsection

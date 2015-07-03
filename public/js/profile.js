@@ -2,6 +2,13 @@
  * Created by nlouie on 6/2/15.
  */
 
+$(document).ready(function(){
+    $('.active').removeClass('active');
+    $('#profile-nav').addClass('active');
+    $('#pro-overview-nav').addClass('active');
+});
+/*
+
 $('.responsive').slick({
     //dots: true,
     arrows:true,
@@ -15,7 +22,7 @@ $('.responsive').slick({
             settings: {
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                infinite: true,
+                infinite: true //,
                 //dots: true
             }
         },
@@ -37,4 +44,4 @@ $('.responsive').slick({
         // settings: "unslick"
         // instead of a settings object
     ]
-});
+});*/

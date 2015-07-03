@@ -29,6 +29,10 @@ a:focus {
     border-bottom: solid 5px #90B4DF;
 }
 
+.nav-login {
+    height: 50px;
+}
+
 /******* NAVIGATION HAMBURGER MENU *******/
 
 .fa-bars {
@@ -52,8 +56,7 @@ a:focus {
     margin-top: 0px;
 }
 
-.dropdown-menu li a:hover,
-.dropdown-menu li a:focus {
+.dropdown-menu li a:hover {
     background-color: #7AB4DE;
     color: #FFFFFF;
 }
