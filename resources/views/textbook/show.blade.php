@@ -1,11 +1,16 @@
 @extends('textbook')
 
+{{-- Not sure how to have title in @section('title') as a variable --}}
+<head>
+    <title>Stuvi - {{ $book->title }}</title>
+</head>
+
+@section('css')
+    <link href="{{ asset('/css/textbook/textbook-show.css') }}" rel="stylesheet">
+@endsection
+
 
 @section('content')
-    <head>
-        <link href="{{ asset('/css/textbook/textbook-show.css') }}" rel="stylesheet">
-        <title>{{ $book->title }}</title>
-    </head>
 
     @include('textbook/textbook-nav')
 

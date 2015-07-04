@@ -2,12 +2,13 @@
 
 @extends('textbook')
 
-@section('content')
+@section('title', 'Sell textbooks')
 
-    <head>
-        <link href="{{ asset('/css/textbook/textbook.css') }}" rel="stylesheet">
-        <title> Stuvi - Sell Textbooks</title>
-    </head>
+@section('css')
+    <link href="{{ asset('/css/textbook/textbook.css') }}" rel="stylesheet">
+@endsection
+
+@section('content')
 
     {{--textbook navigation bar--}}
     <div class="tab-filter-container">
