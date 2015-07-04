@@ -1,6 +1,6 @@
 {{--Textbook sell page--}}
 
-@extends('textbook')
+@extends('app')
 
 @section('title', 'Sell textbooks')
 

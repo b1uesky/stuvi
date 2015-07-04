@@ -1,6 +1,6 @@
 {{--Textbook buy page--}}
 
-@extends('textbook')
+@extends('app')
 
 @section('title', 'Buy Used Textbook')
 

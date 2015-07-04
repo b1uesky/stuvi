@@ -2,16 +2,13 @@
 
 @extends('app')    <!-- app.blade.php -->
 
-@section('content')
-    <head>
-        <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
-        <!-- Home style sheet -->
+@section('title', 'Textbooks, Housing, Clubs, & More')
 
-        <!-- Content Info -->
-        <title>Stuvi Home - Student Village - Textbooks, Housing, Clubs, & More </title>
-        <meta name="description" content="Student Village, college service provider">
-        <meta name="author" content="Stuvi">
-    </head>
+@section('css')
+    <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
+@endsection
+
+@section('content')
 
 <!-- top jumbotron -->
 

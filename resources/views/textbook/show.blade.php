@@ -1,4 +1,4 @@
-@extends('textbook')
+@extends('app')
 
 {{-- Not sure how to have title in @section('title') as a variable --}}
 <head>

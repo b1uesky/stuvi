@@ -1,7 +1,7 @@
 {{-- Page for creating a new textbook --}}
 
 
-@extends('textbook')
+@extends('app')
 
 @section('title', 'Create textbook')
 

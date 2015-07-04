@@ -1,6 +1,6 @@
 {{--textbook/buy/product/#--}}
 
-@extends('product')
+@extends('app')
 
 @section('content')
 <head>
