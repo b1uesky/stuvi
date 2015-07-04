@@ -84,7 +84,7 @@ class ProductController extends Controller {
             $file_uploader->saveProductImage();
 		}
 
-        return $this->show($product);
+        return redirect('textbook/buy/product/'.$product->id);
 	}
 
 	/**
