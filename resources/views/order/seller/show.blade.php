@@ -3,14 +3,14 @@
 
 @extends('app')
 
-@section('content')
+@section('title', 'Order details')
 
-    <head>
-        <link href="{{ asset('/css/order/showOrder.css') }}" rel="stylesheet" type="text/css">
-        {{-- date time picker required--}}
-        <link rel="stylesheet" type="text/css" href="{{asset('/js/datetimepicker/jquery.datetimepicker.css')}}"/>
-        <title>Stuvi - Order Details</title>
-    </head>
+@section('css')
+    <link href="{{ asset('/css/order/showOrder.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('/js/datetimepicker/jquery.datetimepicker.css')}}"/>
+@endsection
+
+@section('content')
 
     <div class="container show-order-container">
         <!-- order details -->

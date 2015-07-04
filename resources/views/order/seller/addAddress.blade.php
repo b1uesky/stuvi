@@ -1,5 +1,7 @@
 @extends('app')
 
+@section('title', 'Add a new address')
+
 @section('content')
     <div class="container">
         <h2>Add a new address</h2>

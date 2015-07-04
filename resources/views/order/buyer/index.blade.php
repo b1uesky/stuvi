@@ -3,11 +3,13 @@
 
 @extends('app')
 
+@section('title', 'Your orders')
+
+@section('css')
+    <link href="{{ asset('/css/order/order.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
-    <head>
-        <link href="{{ asset('/css/order/order.css') }}" rel="stylesheet" type="text/css">
-        <title>Stuvi - Your Orders</title>
-    </head>
 
     <!-- message -->
     <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
