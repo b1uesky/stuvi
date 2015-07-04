@@ -51,7 +51,7 @@
                 </div>
                 <div class="container col-xs-offset-1 col-sm-7 col-sm-offset-3 col-md-offset-0 col-md-4" id="img-info-1">
                     {{--<img src="http://placehold.it/350x350">--}}
-                    <img class="img-responsive" src="{{asset('/img/art-boston.jpg')}}" width="350px">
+                    <img class="img-responsive" src="{{asset('/img/scaled/art-boston.jpg')}}" width="350px">
                 </div>
             </div>
 
