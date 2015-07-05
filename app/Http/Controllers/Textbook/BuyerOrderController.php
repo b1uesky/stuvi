@@ -102,8 +102,19 @@ class BuyerOrderController extends Controller
             'phone_number'  => Input::get('phone_number')
         );
 
+        $stored_address = Address::where('user_id',Auth::user()->id)->get();
+        foreach($stored_address as $user_address)
+        {
+            if($user_address -> default_address == true)
+            {
+                $user_address -> default_address = false;
+                $user_address -> save();
+            }
+
+        }
+
         $shipping_address_id = Address::add($address,Auth::id());
-        return response()->view('order.createBuyerOrder',['items'=> Cart::content(),'total'=> Cart::total(),'stripe_public_key'=> StripeKey::getPublicKey(),'addresses' => Auth::user()->address()]);
+        return view('order.createBuyerOrder',['items'=> Cart::content(),'total'=> Cart::total(),'stripe_public_key'=> StripeKey::getPublicKey(),'addresses' => Auth::user()->address]);
 
 
     }

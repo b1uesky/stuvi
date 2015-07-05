@@ -3,45 +3,26 @@
  */
 function showAllAddress(){
     $(document).ready(function(){
-            $('div[name=displayAllAddresses]').toggle(1000);
+        $('.displayDefaultAddress').hide();
+        $('.displayAllAddresses > button').remove('#change_address').show(400);
+        $('.add_new_address').show(1000);
+        $('.displayAllAddresses').show(1000);
     });
 }
 
 function selectAddress(address_ID){
     $(document).ready(function(){
+        $('.displayAllAddresses').hide();
+        $('.'+address_ID).append('<button id="change_address" class="btn btn-primary btn-md" onclick="showAllAddress()">Change Address</button>');
+        $('.'+address_ID+'> button:first').hide();
+        $('.add_new_address').hide();
+        $('.'+address_ID).show(1000);
         $('input[name=selected_address_id]').val(address_ID);
     });
 }
 
 function storeAddress() {
-    $(document).ready(function(){
-            var formData = $('#address-form').serialize();
-            $.ajax({
-                url: '/order/storeAddress',
-                data: formData,
-                type:"POST",
-
-                success:function(response){
-                    $("#address-form").replaceWith(response);
-                },
-
-                // Code to run if the request fails; the raw request and
-                // status codes are passed to the function
-                error: function( xhr, status, errorThrown ) {
-                    alert( "Sorry, there was a problem!" );
-                    console.log( "Error: " + errorThrown );
-                    console.log( "Status: " + status );
-                    console.dir( xhr );
-                },
-
-                // Code to run regardless of success or failure
-                complete: function( xhr, status ) {
-                    alert("The request is complete!");
-                }
-
-            });
-
+    $(document).ready(function () {
+        $('.address-form').submit();
     });
-
-
 }
