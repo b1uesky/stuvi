@@ -5,11 +5,13 @@
 
 @extends('app')
 
+@section('title', 'Sold books')
+
+@section('css')
+    <link href="{{ asset('/css/order/order.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
-    <head>
-        <link href="{{ asset('/css/order/order.css') }}" rel="stylesheet">
-        <title>Stuvi - Sold Books</title>
-    </head>
 
     <!-- Message -->
     <div class="container" xmlns="http://www.w3.org/1999/html">

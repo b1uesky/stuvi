@@ -4,11 +4,13 @@
 
 @extends('app')
 
+@section('title', 'Checkout')
+
+@section('css')
+    <link href="{{ asset('/css/order/createBuyerOrder.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
-    <head>
-        <link href="{{ asset('/css/order/createBuyerOrder.css') }}" rel="stylesheet">
-        <title>Stuvi - Checkout</title>
-    </head>
 
     @if (Session::has('message'))
         <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">

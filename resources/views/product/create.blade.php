@@ -1,4 +1,4 @@
-@extends('textbook')
+@extends('app')
 
 @section('content')
     <head>

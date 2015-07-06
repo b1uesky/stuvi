@@ -1,12 +1,13 @@
 @extends('app')
 
-@section('content')
+@section('title', 'About us')
 
-    <head>
-        <link href="{{ asset('/css/about.css') }}" rel="stylesheet">
-        <link href="{{ asset('/css/ihover.css') }}" rel="stylesheet">
-        <title>About Us</title>
-    </head>
+@section('css')
+    <link href="{{ asset('/css/about.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/ihover.css') }}" rel="stylesheet">
+@endsection
+
+@section('content')
 
     <div class="container-fluid about-background">
         <div class="container col-md-12">                               <!-- container -->

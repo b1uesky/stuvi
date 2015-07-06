@@ -2,16 +2,13 @@
 
 @extends('app')    <!-- app.blade.php -->
 
-@section('content')
-    <head>
-        <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
-        <!-- Home style sheet -->
+@section('title', 'Textbooks, Housing, Clubs, & More')
 
-        <!-- Content Info -->
-        <title>Stuvi Home - Student Village - Textbooks, Housing, Clubs, & More </title>
-        <meta name="description" content="Student Village, college service provider">
-        <meta name="author" content="Stuvi">
-    </head>
+@section('css')
+    <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
+@endsection
+
+@section('content')
 
 <!-- top jumbotron -->
 
@@ -51,7 +48,7 @@
                 </div>
                 <div class="container col-xs-offset-1 col-sm-7 col-sm-offset-3 col-md-offset-0 col-md-4" id="img-info-1">
                     {{--<img src="http://placehold.it/350x350">--}}
-                    <img class="img-responsive" src="{{asset('/img/art-boston.jpg')}}" width="350px">
+                    <img class="img-responsive" src="{{asset('/img/scaled/art-boston.jpg')}}" width="350px">
                 </div>
             </div>
 

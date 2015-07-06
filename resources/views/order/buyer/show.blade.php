@@ -1,10 +1,12 @@
 @extends('app')
 
+@section('title', 'Order details')
+
+@section('css')
+    <link href="{{ asset('/css/order/showOrder.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
-    <head>
-        <link href="{{ asset('/css/order/showOrder.css') }}" rel="stylesheet" type="text/css">
-        <title>Stuvi - Order Details</title>
-    </head>
 
     <!-- flash message -->
     <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">

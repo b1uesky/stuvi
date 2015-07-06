@@ -1,10 +1,12 @@
-@extends('textbook')
+@extends('app')
+
+@section('title', 'Search results')
+
+@section('css')
+    <link href="{{ asset('/css/textbook/textbook-list.css') }}" rel="stylesheet">
+@endsection
 
 @section('content')
-    <head>
-        <link href="{{ asset('/css/textbook/textbook-list.css') }}" rel="stylesheet">
-        <title>Search Results</title>
-    </head>
 
     @include('textbook/textbook-nav')
 

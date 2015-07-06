@@ -1,10 +1,12 @@
 @extends('app')
 
+@section('title', 'Contact us')
+
+@section('css')
+    <link href="{{ asset('/css/contact.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
-    <head>
-        <link href="{{ asset('/css/contact.css') }}" rel="stylesheet">
-        <title>Stuvi - Contact Us</title>
-    </head>
 
     <div class="container-fluid background">
         <div class="container-fluid">
@@ -62,7 +64,6 @@
             </div>
         </div>
     </div>
-
 
 @endsection
 

@@ -25,7 +25,7 @@ class TextbookController extends Controller {
 	 */
 	public function index()
 	{
-		return view('textbook.buy');
+		return redirect('textbook/buy');
 	}
 
     /**
