@@ -16,6 +16,14 @@ class SellerOrderSeeder extends Seeder
     {
         DB::table('seller_orders')->delete();
 
+        for ($i = 1; $i < 5; $i++)
+        {
+            SellerOrder::create([
+                'product_id'    => $i,
+                'buyer_order_id'=> $i
+            ]);
+        }
+
         for ($i = 1; $i < 10; $i++)
         {
             SellerOrder::create([

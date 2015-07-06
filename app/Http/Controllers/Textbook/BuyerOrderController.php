@@ -12,6 +12,7 @@ use Auth;
 use Cart;
 use Config;
 use DB;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Input;
 use Session;
@@ -40,14 +41,15 @@ class BuyerOrderController extends Controller
      *
      * @return Response
      */
-    public function buyerOrderIndex()
+    public function index()
     {
         $order = Input::get('ord');
         // check column existence
         $order = $this->hasColumn('buyer_orders', $order) ? $order : 'id';
 
-        return view('order.index')
-            ->with('orders', Auth::user()->buyerOrders()->orderBy($order, 'DESC')->get());
+        return view('order.buyer.index')
+            ->with('orders', Auth::user()->buyerOrders()->orderBy($order, 'DESC')->get())
+            ->with('datetime_format', Config::get('app.datetime_format'));
     }
 
     /**
@@ -55,7 +57,7 @@ class BuyerOrderController extends Controller
      *
      * @return Response
      */
-    public function createBuyerOrder()
+    public function create()
     {
         // if the Cart is empty, return to cart page
         if (Cart::content()->count() < 1)
@@ -70,7 +72,7 @@ class BuyerOrderController extends Controller
                 ->with('message', 'Cannot proceed to checkout because you are trying to purchasing your own products.');
         }
 
-        return view('order.createBuyerOrder')
+        return view('order.buyer.create')
             ->with('items', Cart::content())
             ->with('total', Cart::total())
             ->with('stripe_public_key', StripeKey::getPublicKey());
@@ -81,7 +83,7 @@ class BuyerOrderController extends Controller
      *
      * @return Response
      */
-    public function storeBuyerOrder(Request $request)
+    public function store(Request $request)
     {
         if (!$this->checkCart())
         {
@@ -150,7 +152,7 @@ class BuyerOrderController extends Controller
     /**
      * Create buyer charge with Stripe for a given order.
      *
-     * @return BuyerPayment|\Illuminate\Http\RedirectResponse
+     * @return BuyerPayment|RedirectResponse
      */
     protected function createBuyerCharge()
     {
@@ -229,8 +231,7 @@ class BuyerOrderController extends Controller
     protected function emailBuyerOrderConfirmation(BuyerOrder $order)
     {
         // convert the buyer order and corresponding objects to an array
-
-
+        $buyer_order_arr = $order->allToArray();
 
         Mail::queue('emails.buyerOrderConfirmation', ['buyer_order' => $buyer_order_arr], function($message) use ($order)
         {
@@ -262,14 +263,14 @@ class BuyerOrderController extends Controller
      *
      * @return Response
      */
-    public function showBuyerOrder($id)
+    public function show($id)
     {
         $buyer_order = BuyerOrder::find($id);
 
         // check if this order belongs to the current user.
         if (!empty($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
         {
-            return view('order.showBuyerOrder')
+            return view('order.buyer.show')
                 ->with('buyer_order', $buyer_order)
                 ->with('datetime_format', Config::get('app.datetime_format'));
         }
@@ -283,9 +284,9 @@ class BuyerOrderController extends Controller
      *
      * @param $id  The buyer order id.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function cancelBuyerOrder($id)
+    public function cancel($id)
     {
         $buyer_order = BuyerOrder::find($id);
 
@@ -320,6 +321,6 @@ class BuyerOrderController extends Controller
             return redirect('/order/buyer');
         }
 
-        return view('order.confirmation');
+        return view('order.buyer.confirmation');
     }
 }

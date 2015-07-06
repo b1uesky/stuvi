@@ -61,16 +61,13 @@ class SellerOrder extends Model
     }
 
     /**
-     * Return if this seller order has been scheduled for pick up
-     * It must not be already picked up.
+     * Return if this seller order has been scheduled a pickup time.
      *
      * @return bool
      */
-    public function scheduled()
+    public function scheduledPickupTime()
     {
-        return (
-            !empty($this->scheduled_pickup_time) &&
-            !empty($this->address_id));
+        return !empty($this->scheduled_pickup_time);
     }
 
     public function pickedUp()
@@ -88,6 +85,15 @@ class SellerOrder extends Model
         return !empty($this->courier_id);
     }
 
+    /**
+     * Check if the seller order has been assigned an address
+     *
+     * @return bool
+     */
+    public function assignedAddress()
+    {
+        return !empty($this->address_id);
+    }
 
     /**
      * Return the seller order book.
@@ -112,6 +118,11 @@ class SellerOrder extends Model
     public function buyerOrder()
     {
         return $this->belongsTo('App\BuyerOrder', 'buyer_order_id', 'id');
+    }
+
+    public function isScheduled()
+    {
+        return (!empty($this->scheduled_pickup_time));
     }
 
     /**

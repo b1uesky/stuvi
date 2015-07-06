@@ -5,27 +5,27 @@
     <table class="table table-hover">
         <tr>
             <th>ID</th>
-            <td>{{ $sellerOrder->id }}</td>
+            <td>{{ $seller_order->id }}</td>
         </tr>
         <tr>
             <th>Product ID</th>
-            <td>{{ $sellerOrder->product_id }}</td>
+            <td>{{ $seller_order->product_id }}</td>
         </tr>
         <tr>
             <th>BuyerOrder ID</th>
-            <td>{{ $sellerOrder->buyer_order_id }}</td>
+            <td>{{ $seller_order->buyer_order_id }}</td>
         </tr>
         <tr>
             <th>Cancelled</th>
-            <td>{{ $sellerOrder->cancelled }}</td>
+            <td>{{ $seller_order->cancelled }}</td>
         </tr>
         <tr>
             <th>Scheduled Pickup Time</th>
-            <td>{{ $sellerOrder->scheduled_pickup_time }}</td>
+            <td>{{ $seller_order->scheduled_pickup_time }}</td>
         </tr>
         <tr>
             <th>Pickup Time</th>
-            <td>{{ $sellerOrder->pickup_time }}</td>
+            <td>{{ $seller_order->pickup_time }}</td>
         </tr>
     </table>
 

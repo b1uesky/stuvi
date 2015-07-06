@@ -1,5 +1,7 @@
 <?php
 
+Route::pattern('id', '[0-9]+');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -54,18 +56,22 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
 {
     Route::get('/test', 'BuyerOrderController@test');
 
-    Route::get  ('/buyer', 'BuyerOrderController@buyerOrderIndex');
+    Route::get  ('/buyer', 'BuyerOrderController@index');
     Route::get  ('/confirmation', 'BuyerOrderController@confirmation');
-    Route::get  ('/create', 'BuyerOrderController@createBuyerOrder');
-    Route::post ('/store', 'BuyerOrderController@storeBuyerOrder');
-    Route::get  ('/buyer/{id}', 'BuyerOrderController@showBuyerOrder');
-    Route::get  ('/buyer/cancel/{id}', 'BuyerOrderController@cancelBuyerOrder');
+    Route::get  ('/create', 'BuyerOrderController@create');
+    Route::post ('/store', 'BuyerOrderController@store');
+    Route::get  ('/buyer/{id}', 'BuyerOrderController@show');
+    Route::get  ('/buyer/cancel/{id}', 'BuyerOrderController@cancel');
 
-    Route::get  ('/seller', 'SellerOrderController@sellerOrderIndex');
-    Route::get  ('/seller/cancel/{id}', 'SellerOrderController@cancelSellerOrder');
-    Route::post ('/seller/setscheduledtime', 'SellerOrderController@setScheduledPickupTime');
+    Route::get  ('/seller', 'SellerOrderController@index');
+    Route::get  ('/seller/{id}', 'SellerOrderController@show');
+    Route::get  ('/seller/cancel/{id}', 'SellerOrderController@cancel');
+    Route::post ('/seller/schedulePickupTime', 'SellerOrderController@schedulePickupTime');
+    Route::get  ('/seller/{id}/addAddress', 'SellerOrderController@addAddress');
+    Route::get  ('/seller/assignAddress', 'SellerOrderController@assignAddress');
+    Route::post ('/seller/storeAddress', 'SellerOrderController@storeAddress');
+    Route::get  ('/seller/{id}/confirmPickup', 'SellerOrderController@confirmPickup');
     Route::post ('/seller/transfer', 'SellerOrderController@transfer');
-    Route::get  ('/seller/{id}', 'SellerOrderController@showSellerOrder');
 });
 
 // Stripe authorization

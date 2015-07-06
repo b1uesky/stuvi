@@ -3,16 +3,13 @@
 
 @extends('app')
 
-@section('content')
-    <head>
-        <link href="{{ asset('/css/order/order.css') }}" rel="stylesheet" type="text/css">
-        <title>Stuvi - Your Orders</title>
-    </head>
+@section('title', 'Your orders')
 
-    <!-- back link -->
-    <div class="row link-to-seller"><a href="/order/seller">Looking for Seller Orders?</a><br>
-        <small><a id="or-go-back" onclick="goBack()">or go back</a></small>
-    </div>
+@section('css')
+    <link href="{{ asset('/css/order/order.css') }}" rel="stylesheet">
+@endsection
+
+@section('content')
 
     <!-- message -->
     <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
@@ -49,7 +46,7 @@
                         <span id="cancelled"> <h3>Order Canceled</h3>
                         <small>Your order has been cancelled.</small>
                         </span>
-                    @elseif ($order->pickup_time)
+                    @elseif ($order->delivered())
                         <h3>Delivered</h3>
                         <small>Delivered at {{ date($datetime_format, strtotime($order->pickup_time)) }}</small>
                     @else
@@ -75,9 +72,11 @@
                             </div>
                             <div class="col-xs-12 col-sm-2 col-xs-offset-0 col-sm-offset-2 col-md-offset-3 btn-right">
                                 {{--<a class="btn btn-default order-button-1" href="#" role="button">Track Package</a>--}}
-                                @if (!$order->cancelled)
-                                <a class="btn btn-default order-button-2" href="#" role="button">Return or Replace Item</a>
-                                <a class="btn btn-default order-button-2" href="#" role="button">Leave Seller Feedback</a>
+                                @if ($order->delivered())
+                                    <a class="btn btn-default order-button-2" href="#" role="button">Return or Replace Item</a>
+                                    {{--<a class="btn btn-default order-button-2" href="#" role="button">Leave Seller Feedback</a>--}}
+                                @else
+                                    <a class="btn btn-default order-button-2" href="/order/buyer/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
                                 @endif
                             </div>
                         </div>
@@ -91,12 +90,9 @@
             </div>
         @endforelse
     </div>
-
 @endsection
 
-<!-- inserted at the end of app -->
 @section('javascript')
-    <!-- required for all pages for proper tab and drop-down functionality -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 @endsection

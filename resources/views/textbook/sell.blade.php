@@ -1,13 +1,14 @@
 {{--Textbook sell page--}}
 
-@extends('textbook')
+@extends('app')
+
+@section('title', 'Sell textbooks')
+
+@section('css')
+    <link href="{{ asset('/css/textbook/textbook.css') }}" rel="stylesheet">
+@endsection
 
 @section('content')
-
-    <head>
-        <link href="{{ asset('/css/textbook/textbook.css') }}" rel="stylesheet">
-        <title> Stuvi - Sell Textbooks</title>
-    </head>
 
     {{--textbook navigation bar--}}
     <div class="tab-filter-container">
@@ -64,7 +65,7 @@
                 <!-- Row 1 Col 1 -->
                 <!-- xs: stack-->
                 <div class = "container col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id = "shrink-xs">
-                    <img src="{{asset('/img/Books-3.jpg')}}" alt = "books" height="250px" width="250px" style="border: 1px solid">
+                    <img src="{{asset('/img/scaled/Books-3.jpg')}}" alt = "books" height="250px" width="250px" style="border: 1px solid">
                 </div>
                 <!-- Row 1 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"

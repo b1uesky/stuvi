@@ -1,15 +1,12 @@
 @extends('app')
 
-@section('content')
-    <head>
-        <link href="{{ asset('/css/order/showOrder.css') }}" rel="stylesheet" type="text/css">
-        <title>Stuvi - Order Details</title>
-    </head>
+@section('title', 'Order details')
 
-    <!-- print button -->
-    <div class="print"><a href="" onclick="printWindow()"><i class="fa fa-print"></i> Print Invoice
-        </a>
-    </div>
+@section('css')
+    <link href="{{ asset('/css/order/showOrder.css') }}" rel="stylesheet">
+@endsection
+
+@section('content')
 
     <!-- flash message -->
     <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
@@ -32,10 +29,9 @@
             <p class="col-xs-12 col-sm-3">Ordered on {{ $buyer_order->created_at }}</p>
             <p class="col-xs-12 col-sm-4">Order #{{ $buyer_order->id }}</p>
         </div>
-        @if ($buyer_order->deliver_time)
+        @if ($buyer_order->delivered())
             <p><a class="btn btn-default" href="">Return or replace items</a></p>
-        @endif
-        @if (!$buyer_order->cancelled)
+        @elseif (!$buyer_order->cancelled)
             <p><a class="btn btn-default btn-cancel" href="/order/buyer/cancel/{{ $buyer_order->id }}">Cancel Order</a></p>
         @endif
     <div class="container" id="details2">
@@ -82,6 +78,13 @@
                         <p>Pickup time:
                             @if ($seller_order->pickup_time)
                                 {{ date($datetime_format, strtotime($seller_order->pickup_time)) }}
+                            @else
+                                N/A
+                            @endif
+                        </p>
+                        <p>Delivered time:
+                            @if ($buyer_order->delivered())
+                                {{ date($datetime_format, strtotime($buyer_order->time_delivered)) }}
                             @else
                                 N/A
                             @endif

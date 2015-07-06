@@ -1,10 +1,12 @@
 @extends('app')
 
+@section('title', 'Order confirmation')
+
+@section('css')
+    <link href="{{ asset('/css/order/confirmation.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
-    <head>
-        <link href="{{ asset('/css/order/confirmation.css') }}" rel="stylesheet">
-        <title>Stuvi - Order Confirmation</title>
-    </head>
 
     <div class="row">
         <div class="container col-xs-12 col-xs-offset-2 col-sm-8 col-sm-offset-2 cart-progress">
