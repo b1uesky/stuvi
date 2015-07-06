@@ -76,9 +76,33 @@
     }
 }
 
+.seller-desc{
+    margin: 0px;
+    padding: 0px;
+}
+
 
 /* Lightbox */
 
 .lightbox-product-link{
 
+}
+
+
+/*** PRODUCT CONDITION ***/
+
+.form-group{
+    margin-bottom: 0px !important;
+}
+
+.fa-question-circle {
+    color: #7AB4DE;
+    cursor: pointer;
+}
+
+.close-modal-btn:hover,
+.close-modal-btn:focus {
+    outline: 0;
+    color: #F16521;
+    opacity: 1;
 }
