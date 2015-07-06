@@ -22,7 +22,7 @@
                                     <!-- personal info -->
                                     <h4 class="edit-pro-labels">Personal Information</h4>
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="pro-pic">Profile Image:</label>
+                                        <label class="control-label col-sm-3" for="pro-pic">Profile Image</label>
                                         <div class="col-sm-6 align">
                                             <input type="file" name="image"/>
                                         </div>
@@ -40,7 +40,7 @@
 
                                     <!-- birthday -->
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="birthday">Birthday:</label>
+                                        <label class="control-label col-sm-3" for="birthday">Birthday</label>
                                         <div class="col-sm-6">
                                             <input type="date" class="form-control" name="birth" id="birthday" placeholder="MM/DD/YYYY">
                                         </div>
@@ -57,7 +57,7 @@
 
                                     <!-- Bio / About me -->
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="bio">Bio/About me:</label>
+                                        <label class="control-label col-sm-3" for="bio">Bio/About me</label>
                                         <div class="col-sm-6">
                                             <textarea id="bio" class="form-control" rows="4" cols="50"
                                                       placeholder="Tell us your deepest, darkest secrets.">
@@ -68,7 +68,7 @@
                                     <h4 class="edit-pro-labels">Education Information</h4>
                                     <!-- School -->
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="school">School/University:</label>
+                                        <label class="control-label col-sm-3" for="school">School/University</label>
                                         <div class="col-sm-6">
                                             <input type="text" class="form-control" name="school" id="school"
                                                    value = "">
@@ -76,14 +76,14 @@
                                     </div>
                                     <!-- Grad -->
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="grad">Expected Graduation:</label>
+                                        <label class="control-label col-sm-3" for="grad">Expected Graduation</label>
                                         <div class="col-sm-6 col-sm-offset-0">
                                             <input type="date" class="form-control" name="grad" id="grad" placeholder="MM/YYYY">
                                         </div>
                                     </div>
                                     <!-- Area of Study / Major -->
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="major">Area of Study/Major:</label>
+                                        <label class="control-label col-sm-3" for="major">Area of Study/Major</label>
                                         <div class="col-sm-6">
                                             <input type="text" class="form-control" name="major" id="major">
                                         </div>
@@ -93,7 +93,7 @@
                                     <h4 class="edit-pro-labels">Links</h4>
                                     <!-- facebook -->
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="facebook">Facebook URL:</label>
+                                        <label class="control-label col-sm-3" for="facebook">Facebook URL</label>
                                         <div class="col-sm-6">
                                             <input type="url" class="form-control" name="facebook" id="facebook" value="https://www.facebook.com/">
                                         </div>
@@ -106,14 +106,14 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="linkedin">LinkedIn URL:</label>
+                                        <label class="control-label col-sm-3" for="linkedin">LinkedIn URL</label>
                                         <div class="col-sm-6">
                                             <input type="url" class="form-control" name="linkedin" id="linkedin" value="https://www.linkedin.com/in/">
                                         </div>
                                     </div>
                                     <!-- website -->
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="website">Website URL:</label>
+                                        <label class="control-label col-sm-3" for="website">Website URL</label>
                                         <div class="col-sm-6">
                                             <input type="url" class="form-control" name="site" id="site" placeholder="http://">
                                         </div>

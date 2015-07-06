@@ -88,6 +88,12 @@ body { background-color: #F2F2F2;}
     }
 }
 
+@media(min-width: 1200px){
+    .book-price{
+        padding-left: 26px;
+    }
+}
+
 .order-button-1 {
     background: #F16521;
     color: #FFFFFF;
