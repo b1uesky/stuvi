@@ -99,4 +99,9 @@ class Cart extends Model
 
     }
 
+    public function total_price()
+    {
+
+    }
+
 }
