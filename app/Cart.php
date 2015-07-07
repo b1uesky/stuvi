@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
+
+    protected $fillable = ['user_id', 'quantity'];
+
     /**
      * Get the user that this cart belongs to.
      *
@@ -15,7 +18,6 @@ class Cart extends Model
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
-
 
 
 }
