@@ -1,8 +1,9 @@
-<!-- FOOTER. See footer styling at footer-distribyted.css -->
+<!-- FOOTER. See footer styling at footer-distributed.css -->
+
 <footer class="footer-distributed">
-    <div class="row">
+    {{--<div class="row">
         <hr style="    border: 0;height: 2px;background: #333; background-image: linear-gradient(to right, #ccc, #f16521, #ccc);">
-    </div>
+    </div>--}}
 
     <!-- Social Media -->
     <div class="footer-right">
@@ -20,13 +21,13 @@
             <a class="footer-link" href="{{url('/home')}}">Home</a>
             ·
             <a class="footer-link"  href="{{url('/textbook')}}">Textbooks</a>
-            ·
+        ·
             <a class="footer-link"  href="{{url('/housing')}}">Housing</a>
-            ·
-            <a class="footer-link"  href="{{url('/club')}}">Clubs</a>
-            ·
-            <a class="footer-link"  href="{{url('/group')}}">Groups</a>
-            ·
+                ·
+                <a class="footer-link"  href="{{url('/club')}}">Clubs</a>
+                ·
+                <a class="footer-link"  href="{{url('/group')}}">Groups</a>
+                ·
             <a class="footer-link"  href="{{ url('/about') }}">About</a>
             ·
             <a class="footer-link"  href="{{ url('/contact') }}">Contact</a>

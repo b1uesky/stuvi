@@ -88,5 +88,35 @@ class Cart extends Model
 
 
 
+    /**
+     * Get all cart items.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cartItems()
+    {
+        return $this->hasMany('App\CartItem', 'cart_id', 'id');
+    }
+
+    public function add(Product $item)
+    {
+
+    }
+
+    public function updateItem($cart_item_id, $quantity)
+    {
+
+    }
+
+    public function content()
+    {
+
+    }
+
+
+    public function clear()
+    {
+
+    }
 
 }
