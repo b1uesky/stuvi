@@ -7,6 +7,9 @@ use App\CartItem;
 
 class Cart extends Model
 {
+
+    protected $fillable = ['user_id', 'quantity'];
+
     /**
      * Get the user that this cart belongs to.
      *
@@ -43,7 +46,6 @@ class Cart extends Model
 
 
     }
-
 
 
 
