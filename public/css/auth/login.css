@@ -14,7 +14,7 @@ button:focus {
     width: 350px;
     height: 140px;
     display: block;
-    margin: 80px auto 50px;
+    margin: 80px auto 40px;
 }
 
 #login-logo {
@@ -58,7 +58,7 @@ button:focus {
 }
 
 .form-control:focus {
-    border: 1px solid #7AB4DE !important;
+    border: 2px solid #7AB4DE !important;
     box-shadow: none !important;
 }
 
@@ -78,6 +78,7 @@ button:focus {
     width: 50%;
     color: #FFFFFF;
     box-shadow: 0 5px #5B86AA;
+    margin-top: -7px;
 }
 
 .form-group .login-button:active {
@@ -85,14 +86,24 @@ button:focus {
     transform: translateY(5px);
 }
 
+#password-group {
+    margin-bottom: 0;
+}
+
 #forgot-password {
     color: #7AB4DE;
     padding: 0;
-    margin-top: 8px;
+    margin-top: 10px;
+    text-align: center;
+    padding-left: 2px;
 }
 
 label {
     color: #FFFFFF;
+}
+
+#remember-me{
+    margin-left: 5px;
 }
 
 /****** RESET PASSWORD ******/
@@ -133,4 +144,5 @@ label {
 .tos{
     color: #F2F2F2;
     padding-bottom: 10px;
+    margin-bottom: 10px;
 }

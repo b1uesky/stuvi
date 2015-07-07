@@ -71,6 +71,7 @@ body {
 
 .fa-question-circle {
     color: #7AB4DE;
+    cursor: pointer;
 }
 
 .close-modal-btn:hover,
@@ -79,6 +80,7 @@ body {
     color: #F16521;
     opacity: 1;
 }
+
 
 /** PRESSED BUTTON **/
 

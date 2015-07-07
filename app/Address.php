@@ -27,7 +27,17 @@ class Address extends Model
      *
      * @var array
      */
-    protected $fillable = ['*'];
+    protected $fillable = [
+        'user_id',
+        'is_default',
+        'addressee',
+        'address_line1',
+        'address_line2',
+        'city' ,
+        'state_a2' ,
+        'zip',
+        'phone_number'
+    ];
 
     /**
      * Get the rules of addressee, street, city, state, zip
@@ -85,16 +95,34 @@ class Address extends Model
     public static function add($info, $user_id)
     {
         $address = new Address();
-        $address->user_id       = $user_id;
-        $address->addressee     = $info['addressee'];
-        $address->address_line1 = $info['address_line1'];
-        $address->address_line2 = $info['address_line2'];
-        $address->city          = $info['city'];
-        $address->state_a2      = $info['state_a2'];
-        $address->zip           = $info['zip'];
-        $address->phone_number  = $info['phone_number'];
+        $address->user_id         = $user_id;
+        $address->is_default = $info['is_default'];
+        $address->addressee       = $info['addressee'];
+        $address->address_line1   = $info['address_line1'];
+        $address->address_line2   = $info['address_line2'];
+        $address->city            = $info['city'];
+        $address->state_a2        = $info['state_a2'];
+        $address->zip             = $info['zip'];
+        $address->phone_number    = $info['phone_number'];
         $address->save();
 
         return $address->id;
+    }
+
+    public function isBelongTo($user_id)
+    {
+        return $this -> user_id == $user_id;
+    }
+
+    public function setDefault()
+    {
+        $stored_addresses = Address::where('user_id',$this -> user_id)->get();
+        foreach ($stored_addresses as $user_address) {
+            if ($user_address->is_default == true && $user_address->id != $this -> id) {
+                $user_address->update([
+                    "is_default" => false
+                ]);
+            }
+        }
     }
 }

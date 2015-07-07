@@ -21,9 +21,9 @@
                 <!-- Nav Bar Links-->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbooks</a></li>
-                    <li><a href="{{ url('/housing') }}">Housing</a></li>
-                    <li><a href="{{ url('/club') }}">Clubs</a></li>
-                    <li><a href="{{ url('/group') }}">Groups</a></li>
+                    <li><a href="{{ url('/coming') }}">Housing</a></li>
+                    <li><a href="{{ url('/coming') }}">Clubs</a></li>
+                    <li><a href="{{ url('/coming') }}">Groups</a></li>
                 </ul>
                 <!-- Navbar right -->
                 <ul class="nav navbar-nav navbar-right">
