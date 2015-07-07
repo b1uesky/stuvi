@@ -79,8 +79,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
-                                        <div class="checkbox">
+                                    <div class="col-sm-offset-4 col-sm-6">
+                                        <div class="checkbox" id="remember-me">
                                             <label>
                                                 <input type="checkbox" name="remember"> Remember Me
                                             </label>
@@ -88,9 +88,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
-                                        <button type="submit" class="btn login-button">Login</button>
-                                        <a class="btn btn-link" id="forgot-password"
+                                    <div class="col-sm-offset-2 col-sm-6">
+                                        <button type="submit" class="btn login-button col-sm-offset-5">Login</button>
+                                        <a class="btn btn-link col-sm-offset-4" id="forgot-password"
                                            href="{{ url('/password/email') }}">
                                             Forgot Your Password?
                                         </a>

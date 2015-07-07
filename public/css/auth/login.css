@@ -89,10 +89,16 @@ button:focus {
     color: #7AB4DE;
     padding: 0;
     margin-top: 8px;
+    text-align: center;
+    padding-left: 2px;
 }
 
 label {
     color: #FFFFFF;
+}
+
+#remember-me{
+    margin-left: 5px;
 }
 
 /****** RESET PASSWORD ******/
