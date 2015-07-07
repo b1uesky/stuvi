@@ -41,96 +41,281 @@
                                 @endforeach
                             </ul>
                         </div>
-                        @endif
+                    @endif
 
-                                <!-- begin stripe form -->
+
+                    <h2>1. Confirm order items</h2></br>
+
+                    <table class="table table-striped table-responsive cart-table">
+                        <tr>
+                            <th>Book Title</th>
+                            <th>ISBN</th>
+                            <th>Price</th>
+                        </tr>
+
+                        @forelse ($items as $item)
+                            <tr>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->options['item']->book->isbn }}</td>
+                                <td>${{ $item->price }}</td>
+                                @if ($item->options['item']->sold)
+                                    <p>Warning: This product has been sold.</p>
+                                @endif
+                            </tr>
+                        @empty
+                            <p>You don't have any products in shopping cart.</p>
+                        @endforelse
+                    </table>
+                    <h2>2. Shipping address</h2></br>
+                    <div class="address row">
+                        @forelse ($addresses as $address)
+                            @if ($address -> is_default)
+                                <div class="displayDefaultAddress col-sm-3 panel address-panel">
+                                    <div class="panel-body">
+                                        <ul class="address-list">
+                                            <li class="address" id="default_addressee">{{ $address -> addressee }}</li>
+                                            <li class="address"
+                                                id="default_address_line1">{{ $address -> address_line1}}</li>
+                                            @if($address -> address_line2 != null)
+                                                <li class="address"
+                                                    id="default_address_line2">{{ $address -> address_line2}}</li>
+                                            @endif
+                                            <li class="address" id="default_city">{{ $address -> city }}
+                                                , {{ $address -> state_a2 }} {{ $address -> zip }}</li>
+                                            {{--<li class="address" id="default_city">{{ $address -> city }}</li>--}}
+                                            {{--<li class="address" id="default_state_a2">{{ $address -> state_a2 }}</li>--}}
+                                            {{--<li class="address" id="default_zip">{{ $address -> zip }}</li>--}}
+                                        </ul>
+                                        <button class="btn btn-default address-btn show-addresses">
+                                            <i class="fa fa-pencil"></i>
+                                            Change Address
+                                        </button>
+                                        <button class="btn btn-default address-btn">
+                                            <i class="fa fa-trash"></i>
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                                {{--<button class="btn btn-default btn-md" id="change_address"--}}
+                                {{--onclick="showAllAddress()">Change Address--}}
+                                {{--</button>--}}
+                            @endif
+                            <div class="panel address-panel col-md-4 displayAllAddresses {{ $address -> id }}"
+                                 style="display: none">
+                                <div class="panel-body">
+                                    <ul class="address-list">
+                                        <li class="address" id="address_id"
+                                            style="display: none">{{ $address -> id }}</li>
+                                        <li class="address" id="addressee">{{ $address -> addressee }}</li>
+                                        <li class="address" id="address_line1">{{ $address -> address_line1}}</li>
+                                        @if($address -> address_line2 != null)
+                                            <li class="address"
+                                                id="default_address_line2">{{ $address -> address_line2}}</li>
+                                        @endif
+                                        <li class="address" id="city">{{ $address -> city }}</li>
+                                        <li class="address" id="state_a2">{{ $address -> state_a2 }}</li>
+                                        <li class="address" id="zip">{{ $address -> zip }}</li>
+                                    </ul>
+                                    <button class="btn btn-default address-btn selectThisAddress">
+                                        <i class="fa fa-check-square"></i>
+                                        Select
+                                    </button>
+                                    <button class="btn btn-default address-btn editThisAddress" data-toggle="modal" data-target="#myModal">
+                                        <i class="fa fa-pencil"></i>
+                                        Edit
+                                    </button>
+                                    <button class="btn btn-default address-btn">
+                                        <i class="fa fa-trash"></i>
+                                        Delete
+                                    </button>
+                                    {{--<button class="btn btn-primary btn-md selectThisAddress"--}}
+                                    {{--onclick="selectAddress({{ $address -> id }})">click here--}}
+                                    {{--to--}}
+                                    {{--select this address--}}
+                                    {{--</button>--}}
+                                </div>
+                            </div>
+                        @empty
+                            <form action="{{ url('/order/storeAddress') }}" method="POST"
+                                  class="address-form">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Full name</label>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="addressee"
+                                               value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Address line 1</label>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="address_line1"
+                                               value="185 Freeman St.">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Address line 2</label>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="address_line2"
+                                               value="Apt. 739">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">City</label>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="city"
+                                               value="Brookline">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">State</label>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="state_a2" value="MA">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Zip</label>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="zip" value="02446">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Phone</label>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="phone_number"
+                                               value="(857) 206 4789">
+                                    </div>
+                                </div>
+                                </br>
+                                <button class="btn btn-primary btn-md" id="storeAddress" type="submit">Add
+                                    Address
+                                </button>
+                            </form>
+                        @endforelse
+                        <button type="button" class="add_new_address btn btn-primary btn-md"
+                                data-toggle="modal"
+                                data-target="#myModal" style="display: none">
+                            Add New Address
+                        </button>
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                             aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Please Enter Address</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{{ url('/order/storeAddress') }}" method="POST"
+                                              class="address-form">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Full name</label>
+
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" name="addressee"
+                                                           value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
+                                                </div>
+                                            </div>
+                                            </br>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Address line 1</label>
+
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control"
+                                                           name="address_line1"
+                                                           value="185 Freeman St.">
+                                                </div>
+                                            </div>
+                                            </br>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Address line 2</label>
+
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control"
+                                                           name="address_line2"
+                                                           value="Apt. 739">
+                                                </div>
+                                            </div>
+                                            </br>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">City</label>
+
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" name="city"
+                                                           value="Brookline">
+                                                </div>
+                                            </div>
+                                            </br>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">State</label>
+
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" name="state_a2"
+                                                           value="MA">
+                                                </div>
+                                            </div>
+                                            </br>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Zip</label>
+
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" name="zip"
+                                                           value="02446">
+                                                </div>
+                                            </div>
+                                            </br>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Phone</label>
+
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control"
+                                                           name="phone_number"
+                                                           value="(857) 206 4789">
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="address_id" value="">
+                                            </br>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <button id="storeAddress" type="button" class="btn btn-primary">
+                                            Add Address
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- payment form here -->
+                    <!-- begin stripe form -->
+                    @if ($display_payment)
                         <form action="{{ url('/order/store') }}" method="POST" id="payment-form">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="selected_address_id" value="">
                             {{--<input type="hidden" name="stripeAmount" value="{{ $total*100 }}">--}}
-                            <h2>1. Confirm order items</h2></br>
-
-                            <table class="table table-striped table-responsive cart-table">
-                                <tr>
-                                    <th>Book Title</th>
-                                    <th>ISBN</th>
-                                    <th>Price</th>
-                                </tr>
-
-                                @forelse ($items as $item)
-                                    <tr>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->options['item']->book->isbn }}</td>
-                                        <td>${{ $item->price }}</td>
-                                        @if ($item->options['item']->sold)
-                                            <p>Warning: This product has been sold.</p>
-                                        @endif
-                                    </tr>
-                                @empty
-                                    <p>You don't have any products in shopping cart.</p>
-                                @endforelse
-                            </table>
-
-                            <h2>2. Shipping address</h2></br>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">Full name</label>
-
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="addressee"
-                                           value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
-                                </div>
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">Address line 1</label>
-
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="address_line1"
-                                           value="185 Freeman St.">
-                                </div>
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">Address line 2</label>
-
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="address_line2" value="Apt. 739">
-                                </div>
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">City</label>
-
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="city" value="Brookline">
-                                </div>
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">State</label>
-
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="state_a2" value="MA">
-                                </div>
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">Zip</label>
-
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="zip" value="02446">
-                                </div>
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">Phone</label>
-
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="phone_number" value="(857) 206 4789">
-                                </div>
-                            </div>
-                            </br>
-
-                            <!-- payment form here -->
                             <h2>3. Payment</h2></br>
                             {{--<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                     data-key="{{ \App::environment('production') ? Config::get('stripe.live_public_key') : Config::get('stripe.test_public_key') }}"
@@ -159,10 +344,12 @@
                                         {{--</div>--}}
                                         <!-- payment card accepted badges -->
                                         <div class="form-row card-row">
-                                            <span><img class="card-img" src="{{ asset('/img/cards/visa.jpg') }}"></span>
+                                                        <span><img class="card-img"
+                                                                   src="{{ asset('/img/cards/visa.jpg') }}"></span>
                                         <span><img class="card-img"
                                                    src="{{ asset('/img/cards/master-card.png') }}"></span>
-                                            <span><img class="card-img" src="{{ asset('/img/cards/amex.png') }}"></span>
+                                                        <span><img class="card-img"
+                                                                   src="{{ asset('/img/cards/amex.png') }}"></span>
                                             <span><img class="card-img"
                                                        src="{{ asset('/img/cards/discover.jpg') }}"></span>
                                         <span><img class="card-img"
@@ -173,7 +360,8 @@
                                         <div class="form-row" id="card-number-form">
                                             <label>
                                                 <span>Card Number</span>
-                                                <input class="form-control" type="text" size="20" data-stripe="number"
+                                                <input class="form-control" type="text" size="20"
+                                                       data-stripe="number"
                                                        value="4242 4242 4242 4242"/>
                                             </label>
 
@@ -182,9 +370,11 @@
                                         {{-- Doesn't really style well for super small screens --}}
                                         <div class="form-row" id="expiration-form">
                                             <label>Expiration (MM/YYYY)</label>
-                                            <label class="col-xs-offset-2 security-code-label">Security Code</label>
+                                            <label class="col-xs-offset-2 security-code-label">Security
+                                                Code</label>
                                             <br>
-                                            <select class="form-control card-exp col-xs-2" data-stripe="exp-month">
+                                            <select class="form-control card-exp col-xs-2"
+                                                    data-stripe="exp-month">
                                                 <option disabled selected>Month</option>
                                                 <option selected>01</option>
                                                 <option>02</option>
@@ -200,7 +390,8 @@
                                             </select>
                                             {{--<input class="form-control" type="text" size="2" data-stripe="exp-month"/>--}}
                                             {{--<span class="col-xs-1"></span>--}}
-                                            <select class="form-control card-exp col-xs-2" data-stripe="exp-year">
+                                            <select class="form-control card-exp col-xs-2"
+                                                    data-stripe="exp-year">
                                                 <option disabled selected>Year</option>
                                                 <option>2015</option>
                                                 <option>2016</option>
@@ -220,13 +411,15 @@
                                     </div>
                                     <div class="panel-footer payment-footer">
                                         <p>Your total is <span id="total"> ${{ $total }} </span></p>
-                                        <button class="btn payment-btn" type="submit">Complete Order</button>
+                                        <button class="btn payment-btn" type="submit">Complete Order
+                                        </button>
                                     <span><a href="https://stripe.com/" target="_blank"><img id="stripe-logo"
                                                                                              src="{{ asset('/img/stripe.png') }}"></a></span>
                                     </div>
                                 </div>
                             </div>
                         </form>
+                    @endif
                 </div>
             </div>
         </div>
@@ -239,6 +432,7 @@
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <!-- jQuery is used only for this example; it isn't required to use Stripe -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('/js/address.js') }}"></script>
 
     <!-- stripe -->
     <script type="text/javascript">

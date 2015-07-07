@@ -52,6 +52,14 @@ body { background-color: #F2F2F2;}
     margin-bottom: 30px;
 }
 
+
+@media (min-width: 1200px) {
+    .order-number{
+        padding-left: 4%;
+    }
+}
+
+
 .order-row{
     background-color: rgba(0, 0, 0, 0.09);
 }
@@ -77,6 +85,12 @@ body { background-color: #F2F2F2;}
 @media(max-width: 767px){
     .book-price{
         padding-left: 25px;
+    }
+}
+
+@media(min-width: 1200px){
+    .book-price{
+        padding-left: 26px;
     }
 }
 

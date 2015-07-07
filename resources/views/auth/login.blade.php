@@ -67,20 +67,20 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6 form-space-offset">
+                                    <div class="col-sm-offset-2 col-sm-8 form-space-offset">
                                         <input type="email" class="form-control" name="email" placeholder="Email"
                                                value="{{ old('email') }}">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
+                                <div id="password-group" class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-8">
                                         <input type="password" class="form-control" name="password"
                                                placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
-                                        <div class="checkbox">
+                                    <div class="col-sm-offset-2 col-sm-8">
+                                        <div class="checkbox" id="remember-me">
                                             <label>
                                                 <input type="checkbox" name="remember"> Remember Me
                                             </label>
@@ -88,8 +88,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
-                                        <button type="submit" class="btn login-button">Login</button>
+                                    <div class="col-sm-offset-2 col-sm-8">
+                                        <button type="submit" class="btn login-button ">Login</button>
                                         <a class="btn btn-link" id="forgot-password"
                                            href="{{ url('/password/email') }}">
                                             Forgot Your Password?
@@ -104,37 +104,37 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6 form-space-offset">
+                                    <div class="col-sm-offset-2 col-sm-8 form-space-offset">
                                         <input type="text" class="form-control" name="first_name"
                                                placeholder="First Name" value="{{ old('first_name') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
+                                    <div class="col-sm-offset-2 col-sm-8">
                                         <input type="text" class="form-control" name="last_name" placeholder="Last Name"
                                                value="{{ old('last_name') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
+                                    <div class="col-sm-offset-2 col-sm-8">
                                         <input type="email" class="form-control" name="email" placeholder="Email"
                                                value="{{ old('email') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
+                                    <div class="col-sm-offset-2 col-sm-8">
                                         <input type="password" class="form-control" name="password"
                                                placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
+                                    <div class="col-sm-offset-2 col-sm-8">
                                         <input type="tel" class="form-control" name="phone_number"
                                                placeholder="Phone Number" value="{{ old('phone_number') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
+                                    <div class="col-sm-offset-2 col-sm-8">
                                         <select class="selectpicker" name="university_id">
                                             @foreach($universities as $university)
                                                 <option value="{{ $university->id }}">{{ $university->name }}</option>
@@ -143,17 +143,51 @@
                                     </div>
                                 </div>
                                 <div class="tos">
-                                    By creating an account, you agree to Stuvi's <a href="#">Term of Use</a> and
-                                    <a href="#">Privacy Notice</a>.
+                                    By creating an account, you agree to Stuvi's <a href="#" data-toggle="modal"
+                                                                                    data-target=".terms-modal">Term of
+                                        Use</a> and
+                                    <a href="#" data-toggle="modal" data-target=".privacy-modal">Privacy Notice</a>.
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
+                                    <div class="col-sm-offset-2 col-sm-8">
                                         <button type="submit" class="btn login-button">Sign Up</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade terms-modal" tabindex="-1" role="dialog" aria-labelledby="Terms of Use">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close close-modal-btn" data-dismiss="modal"
+                                aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h3>Terms of Use</h3>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade privacy-modal" tabindex="-1" role="dialog" aria-labelledby="Privacy Notice">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close close-modal-btn" data-dismiss="modal"
+                                aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h3>Privacy Notice</h3>
+                    </div>
+                    <div class="modal-body">
+
                     </div>
                 </div>
             </div>
