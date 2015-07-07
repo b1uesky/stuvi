@@ -1,6 +1,17 @@
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| Route Patterns
+|--------------------------------------------------------------------------
+| Define some route parameter patterns so they won't confuse with other routes, e.g.,
+| Route::get('/{book}', 'TextbookController@show');
+| Route::get('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
+|
+ */
 Route::pattern('id', '[0-9]+');
+Route::pattern('book', '[0-9]+');
+Route::pattern('product', '[0-9]+');
 
 /*
 |--------------------------------------------------------------------------
@@ -34,19 +45,19 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
     // buy
     Route::group(['prefix'=>'buy'], function() {
         Route::get('/', 'TextbookController@showBuyPage');
-        Route::get('/textbook/{book}', 'TextbookController@show');
-        Route::get('/product/{product}', 'ProductController@show');
+        Route::get('/{book}', 'TextbookController@show');
         Route::post('/search', 'TextbookController@buySearch');
         Route::get('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
+        Route::get('/product/{product}', 'ProductController@show');
     });
 
     // sell
     Route::group(['prefix'=>'sell'], function() {
         Route::get  ('/', 'TextbookController@sell');
         Route::get  ('/create', 'TextbookController@create');
-        Route::get  ('/product/create/{book}', 'ProductController@create');
         Route::post ('/search', 'TextbookController@sellSearch');
         Route::post ('/store', 'TextbookController@store');
+        Route::get  ('/product/{book}/create', 'ProductController@create');
         Route::post ('/product/store', 'ProductController@store');
     });
 

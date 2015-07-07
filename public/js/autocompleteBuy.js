@@ -10,7 +10,7 @@ $(document).ready(function() {
             // prevent updating input
             event.preventDefault();
             // go to the book's url
-            window.location.href = "/textbook/buy/textbook/" + ui.item.id;
+            window.location.href = "/textbook/buy/" + ui.item.id;
         }
     }).autocomplete('instance')._renderItem = function(ul, item) {
         return $("<li>")
