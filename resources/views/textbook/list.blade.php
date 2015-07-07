@@ -53,7 +53,7 @@
                         </td>
                         <td class="textbook-info-1">
                             <span class="textbook-title"><a
-                                        href="{{ url("textbook/buy/textbook/".$book->id) }}">{{ $book->title }}</a></span><br>
+                                        href="{{ url("textbook/buy/".$book->id) }}">{{ $book->title }}</a></span><br>
                             @if(count($book->authors) > 1)
                                 <span>Authors:</span>
                                 @foreach($book->authors as $author)
