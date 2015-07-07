@@ -64,20 +64,22 @@ class BuyerOrderController extends Controller
         }
 
         $user = Auth::user();
-        $address = Address::where('user_id', $user -> id)->get();
-        $address->toArray();
+        $addresses = Address::where('user_id', $user -> id)->get();
+        $addresses->toArray();
 
-        if($address){
+        if(count($addresses) > 0){
             return view('order.createBuyerOrder')
                 ->with('items', Cart::content())
                 ->with('total', Cart::total())
-                ->with('addresses', $address)
+                ->with('addresses', $addresses)
+                ->with('display_payment', true)
                 ->with('stripe_public_key', StripeKey::getPublicKey());
         }else{
             return view('order.createBuyerOrder')
                 ->with('items', Cart::content())
                 ->with('total', Cart::total())
-                ->with('addresses', NULL)
+                ->with('addresses', $addresses)
+                ->with('display_payment', false)
                 ->with('stripe_public_key', StripeKey::getPublicKey());
         }
     }
@@ -90,31 +92,44 @@ class BuyerOrderController extends Controller
         // validate the address info
         $this->validate($request, Address::rules());
 
-        // store the buyer shipping address
-        $address = array(
-            'default_address' => true,
-            'addressee'     => Input::get('addressee'),
-            'address_line1' => Input::get('address_line1'),
-            'address_line2' => Input::get('address_line2'),
-            'city'          => Input::get('city'),
-            'state_a2'      => Input::get('state_a2'),
-            'zip'           => Input::get('zip'),
-            'phone_number'  => Input::get('phone_number')
-        );
-
-        $stored_address = Address::where('user_id',Auth::user()->id)->get();
-        foreach($stored_address as $user_address)
+        if (Input::has('address_id'))
         {
-            if($user_address -> default_address == true)
+            $address_id = Input::get('address_id');
+            $address = Address::find($address_id);
+            if ($address -> isBelongTo(Auth::id()))
             {
-                $user_address -> default_address = false;
-                $user_address -> save();
+                $address -> update([
+                    'default_address' => true,
+                    'addressee' => Input::get('addressee'),
+                    'address_line1' => Input::get('address_line1'),
+                    'address_line2' => Input::get('address_line2'),
+                    'city' => Input::get('city'),
+                    'state_a2' => Input::get('state_a2'),
+                    'zip' => Input::get('zip'),
+                    'phone_number' => Input::get('phone_number')
+                ]);
+
+                $address -> setDefault();
+                return view('order.createBuyerOrder', ['items' => Cart::content(), 'total' => Cart::total(), 'stripe_public_key' => StripeKey::getPublicKey(), 'addresses' => Auth::user()->address, 'display_payment' => true]);
             }
+        }else {
+            // store the buyer shipping address
+            $address = Address::create([
+                'user_id' => Auth::id(),
+                'default_address' => true,
+                'addressee' => Input::get('addressee'),
+                'address_line1' => Input::get('address_line1'),
+                'address_line2' => Input::get('address_line2'),
+                'city' => Input::get('city'),
+                'state_a2' => Input::get('state_a2'),
+                'zip' => Input::get('zip'),
+                'phone_number' => Input::get('phone_number')
+            ]);
 
+
+            $address -> setDefault();
+            return view('order.createBuyerOrder', ['items' => Cart::content(), 'total' => Cart::total(), 'stripe_public_key' => StripeKey::getPublicKey(), 'addresses' => Auth::user()->address, 'display_payment' => true]);
         }
-
-        $shipping_address_id = Address::add($address,Auth::id());
-        return view('order.createBuyerOrder',['items'=> Cart::content(),'total'=> Cart::total(),'stripe_public_key'=> StripeKey::getPublicKey(),'addresses' => Auth::user()->address]);
 
 
     }

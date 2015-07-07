@@ -27,7 +27,17 @@ class Address extends Model
      *
      * @var array
      */
-    protected $fillable = ['*'];
+    protected $fillable = [
+        'user_id',
+        'default_address',
+        'addressee',
+        'address_line1',
+        'address_line2',
+        'city' ,
+        'state_a2' ,
+        'zip',
+        'phone_number'
+    ];
 
     /**
      * Get the rules of addressee, street, city, state, zip
@@ -96,5 +106,22 @@ class Address extends Model
         $address->save();
 
         return $address->id;
+    }
+
+    public function isBelongTo($user_id)
+    {
+        return $this -> user_id == $user_id;
+    }
+
+    public function setDefault()
+    {
+        $stored_addresses = Address::where('user_id',$this -> user_id)->get();
+        foreach ($stored_addresses as $user_address) {
+            if ($user_address->default_address == true && $user_address->id != $this -> id) {
+                $user_address->update([
+                    "default_address" => false
+                ]);
+            }
+        }
     }
 }

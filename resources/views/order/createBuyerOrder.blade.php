@@ -5,7 +5,7 @@
 @extends('app')
 
 @section('content')
-    <head>
+    <head xmlns="http://www.w3.org/1999/html">
         <link href="{{ asset('/css/order/createBuyerOrder.css') }}" rel="stylesheet">
         <title>Stuvi - Checkout</title>
 
@@ -138,9 +138,10 @@
                                     <li id="zip">{{ $address -> zip }}</li>
                                 </ul>
                                 <button class="btn btn-primary btn-md" id="selectThisAddress"
-                                        onclick="selectAddress({{ $address -> id }})">click here
-                                    to
-                                    select this address
+                                        onclick="selectAddress({{ $address -> id }})">Select
+                                </button>
+                                <button class="btn btn-primary btn-md" id="editThisAddress" data-toggle="modal"
+                                        data-target="#myModal" onclick="editAddress({{ $address -> id }})">Edit
                                 </button>
                             </div>
                         @empty
@@ -220,7 +221,7 @@
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                        <h4 class="modal-title" id="myModalLabel">Please Enter Address</h4>
                                     </div>
                                     <div class="modal-body">
                                         <form action="{{ url('/order/storeAddress') }}" method="POST"
@@ -287,6 +288,7 @@
                                                            value="(857) 206 4789">
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="address_id" value="">
                                             </br>
                                         </form>
                                     </div>
@@ -305,106 +307,110 @@
 
                     <!-- payment form here -->
                     <!-- begin stripe form -->
-                    <form action="{{ url('/order/store') }}" method="POST" id="payment-form">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="selected_address_id" value="">
-                        {{--<input type="hidden" name="stripeAmount" value="{{ $total*100 }}">--}}
-                        <h2>3. Payment</h2></br>
-                        {{--<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                data-key="{{ \App::environment('production') ? Config::get('stripe.live_public_key') : Config::get('stripe.test_public_key') }}"
-                                data-amount={{ $total*100 }}
-                                data-name="Demo Site"
-                        data-description="2 widgets (${{ $total }})"
-                        data-image="/128x128.png">
-                        </script>--}}
-                        <div class="row payment-errors-row">
-                            <span class="payment-errors"></span>
-                        </div>
+                    @if ($display_payment)
+                        <form action="{{ url('/order/store') }}" method="POST" id="payment-form">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="selected_address_id" value="">
+                            {{--<input type="hidden" name="stripeAmount" value="{{ $total*100 }}">--}}
+                            <h2>3. Payment</h2></br>
+                            {{--<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                    data-key="{{ \App::environment('production') ? Config::get('stripe.live_public_key') : Config::get('stripe.test_public_key') }}"
+                                    data-amount={{ $total*100 }}
+                                    data-name="Demo Site"
+                            data-description="2 widgets (${{ $total }})"
+                            data-image="/128x128.png">
+                            </script>--}}
+                            <div class="row payment-errors-row">
+                                <span class="payment-errors"></span>
+                            </div>
 
 
-                        <div class="col-sm-8">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <i class="fa fa-lock fa-lg"></i>
-                                    <span class="panel-title">Secure Payment via Stripe</span>
-                                </div>
-                                <div class="panel-body">
-                                    {{--<div class="form-row">--}}
-                                    {{--<label>--}}
-                                    {{--<span>Full Name (only required if name on card is different than your account name)</span>--}}
-                                    {{--<input class="form-control col-sm-2" type="text" size="20"/>--}}
-                                    {{--</label>--}}
-                                    {{--</div>--}}
-                                    <!-- payment card accepted badges -->
-                                    <div class="form-row card-row">
-                                        <span><img class="card-img" src="{{ asset('/img/cards/visa.jpg') }}"></span>
+                            <div class="col-sm-8">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-lock fa-lg"></i>
+                                        <span class="panel-title">Secure Payment via Stripe</span>
+                                    </div>
+                                    <div class="panel-body">
+                                        {{--<div class="form-row">--}}
+                                        {{--<label>--}}
+                                        {{--<span>Full Name (only required if name on card is different than your account name)</span>--}}
+                                        {{--<input class="form-control col-sm-2" type="text" size="20"/>--}}
+                                        {{--</label>--}}
+                                        {{--</div>--}}
+                                        <!-- payment card accepted badges -->
+                                        <div class="form-row card-row">
+                                            <span><img class="card-img" src="{{ asset('/img/cards/visa.jpg') }}"></span>
                                         <span><img class="card-img"
                                                    src="{{ asset('/img/cards/master-card.png') }}"></span>
-                                        <span><img class="card-img" src="{{ asset('/img/cards/amex.png') }}"></span>
+                                            <span><img class="card-img" src="{{ asset('/img/cards/amex.png') }}"></span>
                                             <span><img class="card-img"
                                                        src="{{ asset('/img/cards/discover.jpg') }}"></span>
                                         <span><img class="card-img"
                                                    src="{{ asset('/img/cards/diners-club.jpg') }}"></span>
-                                    </div>
+                                        </div>
 
-                                    <!-- card number -->
-                                    <div class="form-row" id="card-number-form">
-                                        <label>
-                                            <span>Card Number</span>
-                                            <input class="form-control" type="text" size="20" data-stripe="number"
-                                                   value="4242 4242 4242 4242"/>
-                                        </label>
+                                        <!-- card number -->
+                                        <div class="form-row" id="card-number-form">
+                                            <label>
+                                                <span>Card Number</span>
+                                                <input class="form-control" type="text" size="20" data-stripe="number"
+                                                       value="4242 4242 4242 4242"/>
+                                            </label>
 
-                                    </div>
-                                    <!-- expiration -->
-                                    {{-- Doesn't really style well for super small screens --}}
-                                    <div class="form-row" id="expiration-form">
-                                        <label>Expiration (MM/YYYY)</label>
-                                        <label class="col-xs-offset-2 security-code-label">Security Code</label>
+                                        </div>
+                                        <!-- expiration -->
+                                        {{-- Doesn't really style well for super small screens --}}
+                                        <div class="form-row" id="expiration-form">
+                                            <label>Expiration (MM/YYYY)</label>
+                                            <label class="col-xs-offset-2 security-code-label">Security Code</label>
+                                            <br>
+                                            <select class="form-control card-exp col-xs-2" data-stripe="exp-month">
+                                                <option disabled selected>Month</option>
+                                                <option selected>01</option>
+                                                <option>02</option>
+                                                <option>03</option>
+                                                <option>04</option>
+                                                <option>05</option>
+                                                <option>06</option>
+                                                <option>07</option>
+                                                <option>08</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                            </select>
+                                            {{--<input class="form-control" type="text" size="2" data-stripe="exp-month"/>--}}
+                                            {{--<span class="col-xs-1"></span>--}}
+                                            <select class="form-control card-exp col-xs-2" data-stripe="exp-year">
+                                                <option disabled selected>Year</option>
+                                                <option>2015</option>
+                                                <option>2016</option>
+                                                <option selected>2017</option>
+                                                <option>2018</option>
+                                                <option>2019</option>
+                                                <option>2020</option>
+                                                <option>2021</option>
+                                            </select>
+                                            {{--<input class="form-control" type="text" size="2" data-stripe="exp-year"/>--}}
+                                            <input id="security-code"
+                                                   class="form-control col-xs-3 col-xs-offset-0 col-sm-offset-1"
+                                                   type="text"
+                                                   size="4" data-stripe="cvc" value="111"/>
+                                        </div>
                                         <br>
-                                        <select class="form-control card-exp col-xs-2" data-stripe="exp-month">
-                                            <option disabled selected>Month</option>
-                                            <option selected>01</option>
-                                            <option>02</option>
-                                            <option>03</option>
-                                            <option>04</option>
-                                            <option>05</option>
-                                            <option>06</option>
-                                            <option>07</option>
-                                            <option>08</option>
-                                            <option>10</option>
-                                            <option>11</option>
-                                            <option>12</option>
-                                        </select>
-                                        {{--<input class="form-control" type="text" size="2" data-stripe="exp-month"/>--}}
-                                        {{--<span class="col-xs-1"></span>--}}
-                                        <select class="form-control card-exp col-xs-2" data-stripe="exp-year">
-                                            <option disabled selected>Year</option>
-                                            <option>2015</option>
-                                            <option>2016</option>
-                                            <option selected>2017</option>
-                                            <option>2018</option>
-                                            <option>2019</option>
-                                            <option>2020</option>
-                                            <option>2021</option>
-                                        </select>
-                                        {{--<input class="form-control" type="text" size="2" data-stripe="exp-year"/>--}}
-                                        <input id="security-code"
-                                               class="form-control col-xs-3 col-xs-offset-0 col-sm-offset-1"
-                                               type="text"
-                                               size="4" data-stripe="cvc" value="111"/>
                                     </div>
-                                    <br>
-                                </div>
-                                <div class="panel-footer payment-footer">
-                                    <p>Your total is <span id="total"> ${{ $total }} </span></p>
-                                    <button class="btn payment-btn" type="submit">Complete Order</button>
+                                    <div class="panel-footer payment-footer">
+                                        <p>Your total is <span id="total"> ${{ $total }} </span></p>
+                                        <button class="btn payment-btn" type="submit">Complete Order</button>
                                     <span><a href="https://stripe.com/" target="_blank"><img id="stripe-logo"
                                                                                              src="{{ asset('/img/stripe.png') }}"></a></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                        @else
+                        </br>
+                    @endif
                 </div>
             </div>
         </div>
