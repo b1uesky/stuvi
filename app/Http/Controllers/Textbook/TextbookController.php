@@ -188,7 +188,7 @@ class TextbookController extends Controller {
         // book found in database
         if ($db_book)
         {
-            return redirect('textbook/sell/product/create/'.$db_book->id);
+            return redirect('textbook/sell/product/' . $db_book->id. '/create');
         }
         else
         {

@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Config;
 
 class Product extends Model
 {
@@ -21,6 +22,16 @@ class Product extends Model
     public function condition()
     {
         return $this->hasOne('App\ProductCondition');
+    }
+
+    /**
+     * Return the text description of product's general condition as defined in config/product.php.
+     *
+     * @return mixed
+     */
+    public function general_condition()
+    {
+        return Config::get('product.conditions.general_condition')[$this->condition->general_condition];
     }
 
     /**

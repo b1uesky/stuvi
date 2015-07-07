@@ -209,4 +209,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->belongsTo('App\University', 'university_id', 'id');
     }
 
+    /**
+     * Get the user's shopping cart.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function cart()
+    {
+        return $this->hasOne('App\Cart', 'user_id', 'id');
+    }
 }
