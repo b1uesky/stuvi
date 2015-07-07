@@ -93,7 +93,7 @@
 
                 {{-- Highlights/Notes --}}
                 <div class="form-group">
-                    <label>{{ $conditions['highlights_and_notes']['title'] }}</label>
+                    <label>{{ Config::get('product.conditions.highlights_and_notes.title') }}</label>
                     <i class="fa fa-question-circle" data-toggle="modal" data-target=".highlight-modal"></i>
                     <br>
 
@@ -118,22 +118,22 @@
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="highlights_and_notes"
-                                   value="0"> {{ $conditions['highlights_and_notes'][0] }}
+                                   value="0"> {{ Config::get('product.conditions.highlights_and_notes')[0] }}
                         </label>
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="highlights_and_notes"
-                                   value="1"> {{ $conditions['highlights_and_notes'][1] }}
+                                   value="1"> {{ Config::get('product.conditions.highlights_and_notes')[1] }}
                         </label>
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="highlights_and_notes"
-                                   value="2"> {{ $conditions['highlights_and_notes'][2] }}
+                                   value="2"> {{ Config::get('product.conditions.highlights_and_notes')[2] }}
                         </label>
                     </div>
                 </div>
 
                 {{-- Damaged Pages --}}
                 <div class="form-group">
-                    <label>{{ $conditions['damaged_pages']['title'] }}</label>
+                    <label>{{ Config::get('product.conditions.damaged_pages.title') }}</label>
                     <i class="fa fa-question-circle" data-toggle="modal" data-target=".damage-modal"></i>
                     <br>
 
@@ -157,15 +157,15 @@
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="damaged_pages"
-                                   value="0"> {{ $conditions['damaged_pages'][0] }}
+                                   value="0"> {{ Config::get('product.conditions.damaged_pages')[0] }}
                         </label>
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="damaged_pages"
-                                   value="1"> {{ $conditions['damaged_pages'][1] }}
+                                   value="1"> {{ Config::get('product.conditions.damaged_pages')[1] }}
                         </label>
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="damaged_pages"
-                                   value="2"> {{ $conditions['damaged_pages'][2] }}
+                                   value="2"> {{ Config::get('product.conditions.damaged_pages')[2] }}
                         </label>
                     </div>
                 </div>
@@ -196,20 +196,20 @@
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="broken_binding"
-                                   value="0"> {{ $conditions['broken_binding'][0] }}
+                                   value="0"> {{ Config::get('product.conditions.broken_binding')[0] }}
                         </label>
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="broken_binding"
-                                   value="1"> {{ $conditions['broken_binding'][1] }}
+                                   value="1"> {{ Config::get('product.conditions.broken_binding')[1] }}
                         </label>
                     </div>
                 </div>
 
                 {{-- Description --}}
                 <div class="form-group">
-                    <label>{{ $conditions['description']['title'] }}</label>
+                    <label>{{ Config::get('product.conditions.description.title') }}</label>
                     <textarea name="description" class="form-control" rows="5"
-                              placeholder="{{ $conditions['description']['placeholder'] }}"></textarea>
+                              placeholder="{{ Config::get('product.conditions.description.place_holder') }}"></textarea>
                 </div>
                 {{-- Price --}}
                 <div class="form-group">
