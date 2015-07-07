@@ -220,21 +220,22 @@
                 </div>
 
                 {{-- Upload Images --}}
-                <div class="upload-error-message"></div>
-
                 <div class="form-group">
                     <label>Front cover image</label>
                     <input type="file" name="front-cover-image" class="upload-file"/>
+                    <div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>
                 </div>
 
                 <div class="form-group">
                     <label>Back cover image</label>
                     <input type="file" name="back-cover-image" class="upload-file"/>
+                    <div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>
                 </div>
 
                 <div class="form-group">
                     <label>Page image</label>
                     <input type="file" name="page-image" class="upload-file"/>
+                    <div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>
                 </div>
 
                 <input type="submit" name="submit" class="btn sell-btn" value="Sell Book"/>

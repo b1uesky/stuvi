@@ -6,8 +6,13 @@ $(document).ready(function() {
         var file_size = this.files[0].size;
 
         if (file_size > max_file_size) {
+            // clear the file input
             $(this).val('');
-            $('.upload-error-message').text('The file size is too large. Please make sure the file size is under 3MB.');
+            // show error message
+            $(this).next('.upload-error-message').show();
+        } else {
+            // hide error message
+            $(this).next('.upload-error-message').hide();
         }
     });
 });
