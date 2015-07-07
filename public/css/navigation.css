@@ -14,6 +14,10 @@ a:focus {
     border: none;
 }
 
+.navbar-link:hover{
+    color: #FFF !important;
+}
+
 .logo-container {
     width: 120px;
     height: 48px;
@@ -33,6 +37,10 @@ a:focus {
     height: 50px;
 }
 
+.navbar-right{
+    /*margin-right: -30px;*/
+}
+
 /******* NAVIGATION HAMBURGER MENU *******/
 
 .fa-bars {
@@ -49,6 +57,21 @@ a:focus {
 .nav-dropdown:focus {
     background-color: #435C7F !important;
     border-bottom: solid 5px #90B4DF !important;
+}
+
+.dropdown-menu{
+    background-color: transparent;
+    margin: 0px;
+    padding: 0px;
+    width: 30px !important;
+    text-align: center;
+}
+
+.dropdown-toggle{
+}
+
+.nav-dropdown{
+
 }
 
 .nav-caret {
