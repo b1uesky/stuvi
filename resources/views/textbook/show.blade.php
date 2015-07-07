@@ -54,7 +54,7 @@
             </div>
         </div>
 
-        @if($book->availableProducts()->count() > 0)
+        @if(count($book->availableProducts()) > 0)
 
             <div class="row table-row">
 
@@ -69,13 +69,12 @@
                     </tr>
                     </thead>
                     @foreach($book->availableProducts() as $product)
-
                         <tr>
                             <td>
                                 <p id="price">${{ $product->price }}</p>
                             </td>
                             <td>
-                                {{-- TODO: product condition score --}}
+                                {{ $product->general_condition() }}
                             </td>
                             <td>
                                 <a href="{{ url('textbook/buy/product/'.$product->id) }}">View Details</a>

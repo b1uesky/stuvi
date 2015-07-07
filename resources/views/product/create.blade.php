@@ -25,24 +25,8 @@
                 </div>
                 <p>ISBN-10: {{ $book->isbn10 }}</p>
                 <p>ISBN-13: {{ $book->isbn13 }}</p>
-
                 <p>Edition: {{ $book->edition }}</p>
-
                 <p>Number of Pages: {{ $book->num_pages }}</p>
-                {{-- Author(s) --}}
-                {{-- TODO: Make each author name looks like a tag --}}
-                {{--<div class="">--}}
-                {{--@if(count($book->authors) > 1)--}}
-                {{--<span>Authors:</span>--}}
-                {{--@foreach($book->authors as $author)--}}
-                {{--<span>{{ $author->full_name }}</span>--}}
-                {{--@endforeach--}}
-                {{--@else--}}
-                {{--<span>Author:</span>--}}
-                {{--{{ $book->authors[0]->full_name }}--}}
-                {{--@endif--}}
-                {{--</div>--}}
-
             </div>
         </div>
         <div class="row col-sm-6 col-sm-offset-1">
@@ -55,7 +39,7 @@
 
                 {{-- General Condition --}}
                 <div class="form-group">
-                    <label>{{ $conditions['general_condition']['title'] }}</label>
+                    <label>{{ Config::get('product.conditions.general_condition.title') }}</label>
                     <i class="fa fa-question-circle" data-toggle="modal" data-target=".condition-modal"></i>
                     <br>
 
@@ -72,32 +56,16 @@
                                 </div>
                                 <div class="modal-body">
                                     <h4>Brand New</h4>
+                                    <p>{{ Config::get('product.conditions.general_condition.description')[0] }}</p>
 
-                                    <p>
-                                        A new, unread, unused book in perfect condition with no missing or damaged
-                                        pages.
-                                    </p>
                                     <h4>Excellent</h4>
+                                    <p>{{ Config::get('product.conditions.general_condition.description')[1] }}</p>
 
-                                    <p>
-                                        No missing or damaged pages, no creases or tears,and no underlining/highlighting
-                                        of text or writing in the margins. Very minimal wear and tear.
-                                    </p>
                                     <h4>Good</h4>
+                                    <p>{{ Config::get('product.conditions.general_condition.description')[2] }}</p>
 
-                                    <p>
-                                        Very minimal damage to the cover, but no holes or tears.
-                                        The majority of pages are undamaged with minimal creasing
-                                        or tearing. Minimal underlining or highlighting. No missing pages.
-                                    </p>
                                     <h4>Acceptable</h4>
-
-                                    <p>
-                                        A book with obvious wear. The binding may be slightly damaged but not broken.
-                                        Possible writing in margins, possible underlining and highlighting of text,
-                                        but no missing pages or anything that would compromise the legibility or
-                                        understanding of the text.
-                                    </p>
+                                    <p>{{ Config::get('product.conditions.general_condition.description')[3] }}</p>
                                 </div>
                             </div>
                         </div>
@@ -106,26 +74,26 @@
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="general_condition"
-                                   value="0"> {{ $conditions['general_condition'][0] }}
+                                   value="0"> {{ Config::get('product.conditions.general_condition')[0] }}
                         </label>
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="general_condition"
-                                   value="1"> {{ $conditions['general_condition'][1] }}
+                                   value="1"> {{ Config::get('product.conditions.general_condition')[1] }}
                         </label>
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="general_condition"
-                                   value="2"> {{ $conditions['general_condition'][2] }}
+                                   value="2"> {{ Config::get('product.conditions.general_condition')[2] }}
                         </label>
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="general_condition"
-                                   value="3"> {{ $conditions['general_condition'][3] }}
+                                   value="3"> {{ Config::get('product.conditions.general_condition')[3] }}
                         </label>
                     </div>
                 </div>
 
                 {{-- Highlights/Notes --}}
                 <div class="form-group">
-                    <label>{{ $conditions['highlights_and_notes']['title'] }}</label>
+                    <label>{{ Config::get('product.conditions.highlights_and_notes.title') }}</label>
                     <i class="fa fa-question-circle" data-toggle="modal" data-target=".highlight-modal"></i>
                     <br>
 
@@ -141,10 +109,7 @@
                                     <h3>Highlights/Notes</h3>
                                 </div>
                                 <div class="modal-body">
-                                    <p>
-                                        Please select the approximate number of pages that contain
-                                        highlighted/underlined material or notes.
-                                    </p>
+                                    <p>{{ Config::get('product.conditions.highlights_and_notes.description') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -153,22 +118,22 @@
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="highlights_and_notes"
-                                   value="0"> {{ $conditions['highlights_and_notes'][0] }}
+                                   value="0"> {{ Config::get('product.conditions.highlights_and_notes')[0] }}
                         </label>
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="highlights_and_notes"
-                                   value="1"> {{ $conditions['highlights_and_notes'][1] }}
+                                   value="1"> {{ Config::get('product.conditions.highlights_and_notes')[1] }}
                         </label>
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="highlights_and_notes"
-                                   value="2"> {{ $conditions['highlights_and_notes'][2] }}
+                                   value="2"> {{ Config::get('product.conditions.highlights_and_notes')[2] }}
                         </label>
                     </div>
                 </div>
 
                 {{-- Damaged Pages --}}
                 <div class="form-group">
-                    <label>{{ $conditions['damaged_pages']['title'] }}</label>
+                    <label>{{ Config::get('product.conditions.damaged_pages.title') }}</label>
                     <i class="fa fa-question-circle" data-toggle="modal" data-target=".damage-modal"></i>
                     <br>
 
@@ -183,10 +148,7 @@
                                     <h3>Damaged Pages</h3>
                                 </div>
                                 <div class="modal-body">
-                                    <p>
-                                        Please select the approximate number of damaged pages.
-                                        This includes folded or partially torn pages and water damage.
-                                    </p>
+                                    <p>{{ Config::get('product.conditions.damaged_pages.description') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -195,15 +157,15 @@
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="damaged_pages"
-                                   value="0"> {{ $conditions['damaged_pages'][0] }}
+                                   value="0"> {{ Config::get('product.conditions.damaged_pages')[0] }}
                         </label>
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="damaged_pages"
-                                   value="1"> {{ $conditions['damaged_pages'][1] }}
+                                   value="1"> {{ Config::get('product.conditions.damaged_pages')[1] }}
                         </label>
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="damaged_pages"
-                                   value="2"> {{ $conditions['damaged_pages'][2] }}
+                                   value="2"> {{ Config::get('product.conditions.damaged_pages')[2] }}
                         </label>
                     </div>
                 </div>
@@ -225,12 +187,7 @@
                                     <h3>Broken Binding</h3>
                                 </div>
                                 <div class="modal-body">
-                                    <p>
-                                        Please select "yes" if the binding is severely damaged
-                                        or completely broken. Please note that the buyer will be
-                                        warned about this book's poor condition and will likely not
-                                        be willing to pay full price for this book.
-                                    </p>
+                                    <p>{{ Config::get('product.conditions.broken_binding.description') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -239,20 +196,20 @@
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="broken_binding"
-                                   value="0"> {{ $conditions['broken_binding'][0] }}
+                                   value="0"> {{ Config::get('product.conditions.broken_binding')[0] }}
                         </label>
                         <label class="btn btn-default condition-btn">
                             <input type="radio" name="broken_binding"
-                                   value="1"> {{ $conditions['broken_binding'][1] }}
+                                   value="1"> {{ Config::get('product.conditions.broken_binding')[1] }}
                         </label>
                     </div>
                 </div>
 
                 {{-- Description --}}
                 <div class="form-group">
-                    <label>{{ $conditions['description']['title'] }}</label>
+                    <label>{{ Config::get('product.conditions.description.title') }}</label>
                     <textarea name="description" class="form-control" rows="5"
-                              placeholder="{{ $conditions['description']['placeholder'] }}"></textarea>
+                              placeholder="{{ Config::get('product.conditions.description.place_holder') }}"></textarea>
                 </div>
                 {{-- Price --}}
                 <div class="form-group">
