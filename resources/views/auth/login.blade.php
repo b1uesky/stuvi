@@ -135,7 +135,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
-                                        <select class="selectpicker" name="university_id">
+                                        <select class="form-control" name="university_id">
                                             @foreach($universities as $university)
                                                 <option value="{{ $university->id }}">{{ $university->name }}</option>
                                             @endforeach
