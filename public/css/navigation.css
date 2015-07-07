@@ -60,18 +60,23 @@ a:focus {
 }
 
 .dropdown-menu{
-    background-color: transparent;
-    margin: 0px;
-    padding: 0px;
-    width: 30px !important;
+    background-color: #241729;
+    margin :     0;
+    padding:     0;
+    border :     0;
     text-align: center;
 }
+
 
 .dropdown-toggle{
 }
 
 .nav-dropdown{
 
+}
+
+.dropdown-list{
+    background-color: #fff;
 }
 
 .nav-caret {
