@@ -23,7 +23,9 @@ class Cart extends Model
     /**
      * Delete items in cart by items' id.
      *
-     * @param $cart_items_id
+     * @param $item_id
+     *
+     * @internal param $cart_items_id
      */
 
     public function remove($item_id)
@@ -35,7 +37,8 @@ class Cart extends Model
     /**
      * Check whether all items is valid in given cart; Return boolean;
      *
-     * @param $cart_id
+     * @return bool
+     * @internal param $cart_id
      */
     public function isValid()
     {
