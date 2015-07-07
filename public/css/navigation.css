@@ -14,10 +14,6 @@ a:focus {
     border: none;
 }
 
-.navbar-link:hover{
-    color: #FFF !important;
-}
-
 .logo-container {
     width: 120px;
     height: 48px;
@@ -37,10 +33,6 @@ a:focus {
     height: 50px;
 }
 
-.navbar-right{
-    margin-right: -25px;
-}
-
 /******* NAVIGATION HAMBURGER MENU *******/
 
 .fa-bars {
@@ -57,33 +49,6 @@ a:focus {
 .nav-dropdown:focus {
     background-color: #435C7F !important;
     border-bottom: solid 5px #90B4DF !important;
-}
-
-.dropdown-menu{
-    /*background-color: #241729;*/
-    background-color: inherit;
-    margin :     0;
-    padding:     0;
-    border :     0 !important;
-    text-align: center;
-    max-width:   50px !important;
-}
-
-
-.dropdown-toggle{
-}
-
-.nav-dropdown{
-
-}
-
-.dropdown-user{
-    margin-right: 80px;
-}
-
-.dropdown-list{
-    background-color: #fff;
-    text-align: left;
 }
 
 .nav-caret {
