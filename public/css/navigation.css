@@ -38,7 +38,7 @@ a:focus {
 }
 
 .navbar-right{
-    /*margin-right: -30px;*/
+    margin-right: -25px;
 }
 
 /******* NAVIGATION HAMBURGER MENU *******/
@@ -60,11 +60,13 @@ a:focus {
 }
 
 .dropdown-menu{
-    background-color: #241729;
+    /*background-color: #241729;*/
+    background-color: inherit;
     margin :     0;
     padding:     0;
-    border :     0;
+    border :     0 !important;
     text-align: center;
+    max-width:   50px !important;
 }
 
 
@@ -75,8 +77,12 @@ a:focus {
 
 }
 
+.dropdown-user{
+}
+
 .dropdown-list{
     background-color: #fff;
+    text-align: left;
 }
 
 .nav-caret {

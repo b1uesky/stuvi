@@ -22,12 +22,12 @@
             ·
             <a class="footer-link"  href="{{url('/textbook')}}">Textbooks</a>
         ·
-            {{--       <a class="footer-link"  href="{{url('/housing')}}">Housing</a>
+            <a class="footer-link"  href="{{url('/housing')}}">Housing</a>
                 ·
                 <a class="footer-link"  href="{{url('/club')}}">Clubs</a>
                 ·
                 <a class="footer-link"  href="{{url('/group')}}">Groups</a>
-                · --}}
+                ·
             <a class="footer-link"  href="{{ url('/about') }}">About</a>
             ·
             <a class="footer-link"  href="{{ url('/contact') }}">Contact</a>

@@ -23,14 +23,14 @@
                 <!-- Nav Bar Links-->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/textbook') }}" class="navbar-link" id="textbook-nav">Textbooks</a></li>
-{{--                    <li><a href="{{ url('/housing') }}">Housing</a></li>
+                    <li><a href="{{ url('/housing') }}">Housing</a></li>
                     <li><a href="{{ url('/club') }}">Clubs</a></li>
-                    <li><a href="{{ url('/group') }}">Groups</a></li>--}}
-                    <li><a class="navbar-link"  href="{{ url('/about') }}">About</a></li>
-                   <li><a class="navbar-link"  href="{{ url('/contact') }}">Contact</a></li>
+                    <li><a href="{{ url('/group') }}">Groups</a></li>
+               {{--     <li><a class="navbar-link"  href="{{ url('/about') }}">About</a></li>
+                   <li><a class="navbar-link"  href="{{ url('/contact') }}">Contact</a></li>--}}
                 </ul>
                 <!-- Navbar right -->
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right dropdown-user">
                     @if (Auth::guest())
                         <li><a class="nav-login" href="{{ url('/login') }}">
                                 <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
