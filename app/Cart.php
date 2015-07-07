@@ -26,26 +26,65 @@ class Cart extends Model
      * @param $cart_items_id
      */
 
-    public function remove_items($,$cart_items_id) {
-        $cart_item =
+    public function remove($item_id)
+    {
+        CartItem::destroy($item_id);
 
     }
 
-    public function isValid(){
-        $cart_items =  CartItem::where('cart_id','=', )->get();
-        foreach ($cart_items as $items) {
+    /**
+     * Check whether all items is valid in given cart; Return boolean;
+     *
+     * @param $cart_id
+     */
+    public function isValid()
+    {
+        $cart_items = CartItem::where('cart_id', '=', $this->id)->get();
+        foreach ($cart_items as $item) {
+            if ($this->__validate($item) == false) {
+                return false;
+            }
+        }
+        return true;
+    }
 
+    /**
+     *
+     *
+     */
+    public function validate()
+    {
+        $cart_items =  CartItem::where('cart_id','=',$this->id)->get();
+        foreach ($cart_items as $item) {
+            if ($this->__validate($item) == false) {
+                $this->remove($item->id);
+            }
 
         }
+    }
 
+    /**
+     * helper function for both isValid() and validate();
+     * return bool;
+     *
+     * @param $item
+     * @return bool
+     *
+     */
+
+    public function __validate($item)
+    {
+        $product_id = $item->product_id;
+        $product = Product::findOrFail($product_id);
+        if ($product->isSold() == 'Yes' or $product->isVerified() == 'No') {
+            return false;
+        }
+        return true;
 
     }
 
-    public function validate(){
 
 
-
-    }
 
 
 
