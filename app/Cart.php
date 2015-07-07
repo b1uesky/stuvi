@@ -80,15 +80,13 @@ class Cart extends Model
 
     public function add(Product $item)
     {
-
+        CartItem::create([
+            'cart_id'       => $this->id,
+            'product_id'    => $item->id,
+        ]);
     }
 
     public function updateItem($cart_item_id, $quantity)
-    {
-
-    }
-
-    public function content()
     {
 
     }
