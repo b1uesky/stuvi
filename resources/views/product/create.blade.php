@@ -218,10 +218,23 @@
                 </div>
 
                 {{-- Upload Images --}}
+                <div class="upload-error-message"></div>
+
                 <div class="form-group">
-                    <label>Upload images</label>
-                    <input type="file" name="images[]" multiple>
+                    <label>Front cover image</label>
+                    <input type="file" name="front-cover-image" class="upload-file"/>
                 </div>
+
+                <div class="form-group">
+                    <label>Back cover image</label>
+                    <input type="file" name="back-cover-image" class="upload-file"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Page image</label>
+                    <input type="file" name="page-image" class="upload-file"/>
+                </div>
+
                 <input type="submit" name="submit" class="btn sell-btn" value="Sell Book"/>
             </form>
         </div>
@@ -231,4 +244,5 @@
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/validator/file-upload.js') }}"></script>
 @endsection
