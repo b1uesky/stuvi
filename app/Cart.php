@@ -39,9 +39,9 @@ class Cart extends Model
      */
     public function isValid()
     {
-        $cart_items = CartItem::where('cart_id', '=', $this->id)->get();
+        $cart_items = $this->cartItems();
         foreach ($cart_items as $item) {
-            if ($this->__validate($item) == false) {
+            if ($item->product()->isSold()) {
                 return false;
             }
         }
@@ -54,38 +54,15 @@ class Cart extends Model
      */
     public function validate()
     {
-        $cart_items =  CartItem::where('cart_id','=',$this->id)->get();
+        $cart_items = $this->cartItems();
         foreach ($cart_items as $item) {
-            if ($this->__validate($item) == false) {
+            if ($item->product()->isSold()) {
                 $this->remove($item->id);
             }
 
         }
-    }
-
-    /**
-     * helper function for both isValid() and validate();
-     * return bool;
-     *
-     * @param $item
-     * @return bool
-     *
-     */
-
-    public function __validate($item)
-    {
-        $product_id = $item->product_id;
-        $product = Product::findOrFail($product_id);
-        if ($product->isSold() == 'Yes' or $product->isVerified() == 'No') {
-            return false;
-        }
-        return true;
 
     }
-
-
-
-
 
 
     /**
