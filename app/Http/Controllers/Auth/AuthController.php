@@ -103,7 +103,7 @@ class AuthController extends Controller {
         if (!(University::find(Input::get('university_id'))->matchEmailSuffix(Input::get('email'))))
         {
             return redirect('/register')
-                ->with('message', 'You have to use your collage email.');
+                ->with('message', 'Please use your college email address.');
         }
 
         Auth::login($this->create($request->all()));

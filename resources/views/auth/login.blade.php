@@ -67,19 +67,19 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6 form-space-offset">
+                                    <div class="col-sm-offset-2 col-sm-8 form-space-offset">
                                         <input type="email" class="form-control" name="email" placeholder="Email"
                                                value="{{ old('email') }}">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
+                                <div id="password-group" class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-8">
                                         <input type="password" class="form-control" name="password"
                                                placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-4 col-sm-6">
+                                    <div class="col-sm-offset-2 col-sm-8">
                                         <div class="checkbox" id="remember-me">
                                             <label>
                                                 <input type="checkbox" name="remember"> Remember Me
@@ -88,9 +88,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-6">
-                                        <button type="submit" class="btn login-button col-sm-offset-5">Login</button>
-                                        <a class="btn btn-link col-sm-offset-4" id="forgot-password"
+                                    <div class="col-sm-offset-2 col-sm-8">
+                                        <button type="submit" class="btn login-button ">Login</button>
+                                        <a class="btn btn-link" id="forgot-password"
                                            href="{{ url('/password/email') }}">
                                             Forgot Your Password?
                                         </a>
@@ -104,37 +104,37 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6 form-space-offset">
+                                    <div class="col-sm-offset-2 col-sm-8 form-space-offset">
                                         <input type="text" class="form-control" name="first_name"
                                                placeholder="First Name" value="{{ old('first_name') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
+                                    <div class="col-sm-offset-2 col-sm-8">
                                         <input type="text" class="form-control" name="last_name" placeholder="Last Name"
                                                value="{{ old('last_name') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
+                                    <div class="col-sm-offset-2 col-sm-8">
                                         <input type="email" class="form-control" name="email" placeholder="Email"
                                                value="{{ old('email') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
+                                    <div class="col-sm-offset-2 col-sm-8">
                                         <input type="password" class="form-control" name="password"
                                                placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
+                                    <div class="col-sm-offset-2 col-sm-8">
                                         <input type="tel" class="form-control" name="phone_number"
                                                placeholder="Phone Number" value="{{ old('phone_number') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
+                                    <div class="col-sm-offset-2 col-sm-8">
                                         <select class="selectpicker" name="university_id">
                                             @foreach($universities as $university)
                                                 <option value="{{ $university->id }}">{{ $university->name }}</option>
@@ -148,7 +148,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-6">
+                                    <div class="col-sm-offset-2 col-sm-8">
                                         <button type="submit" class="btn login-button">Sign Up</button>
                                     </div>
                                 </div>
