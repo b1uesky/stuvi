@@ -29,7 +29,7 @@ class Address extends Model
      */
     protected $fillable = [
         'user_id',
-        'default_address',
+        'is_default',
         'addressee',
         'address_line1',
         'address_line2',
@@ -95,7 +95,7 @@ class Address extends Model
     {
         $address = new Address();
         $address->user_id         = $user_id;
-        $address->default_address = $info['default_address'];
+        $address->is_default = $info['is_default'];
         $address->addressee       = $info['addressee'];
         $address->address_line1   = $info['address_line1'];
         $address->address_line2   = $info['address_line2'];
@@ -117,9 +117,9 @@ class Address extends Model
     {
         $stored_addresses = Address::where('user_id',$this -> user_id)->get();
         foreach ($stored_addresses as $user_address) {
-            if ($user_address->default_address == true && $user_address->id != $this -> id) {
+            if ($user_address->is_default == true && $user_address->id != $this -> id) {
                 $user_address->update([
-                    "default_address" => false
+                    "is_default" => false
                 ]);
             }
         }

@@ -25,6 +25,7 @@ class AddressTableSeeder extends Seeder
          {
              Address::create(array(
                  'user_id' => $buyer->id,
+                 'is_default' => false,
                  'addressee' => $faker->name,
                  'address_line1' => $faker->streetAddress,
                  'address_line2' => $faker->secondaryAddress,
@@ -37,5 +38,6 @@ class AddressTableSeeder extends Seeder
                  'phone_number' => $faker->phoneNumber
              ));
          }
+        Address::find(1) -> is_default = true;
     }
 }

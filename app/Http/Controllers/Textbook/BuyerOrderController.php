@@ -99,7 +99,7 @@ class BuyerOrderController extends Controller
             if ($address -> isBelongTo(Auth::id()))
             {
                 $address -> update([
-                    'default_address' => true,
+                    'is_default' => true,
                     'addressee' => Input::get('addressee'),
                     'address_line1' => Input::get('address_line1'),
                     'address_line2' => Input::get('address_line2'),
@@ -116,7 +116,7 @@ class BuyerOrderController extends Controller
             // store the buyer shipping address
             $address = Address::create([
                 'user_id' => Auth::id(),
-                'default_address' => true,
+                'is_default' => true,
                 'addressee' => Input::get('addressee'),
                 'address_line1' => Input::get('address_line1'),
                 'address_line2' => Input::get('address_line2'),
