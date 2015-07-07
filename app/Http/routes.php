@@ -96,8 +96,8 @@ Route::group(['middleware'=>'auth', 'prefix'=>'stripe'], function()
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], function()
 {
     Route::get('/', 'CartController@index');
-    Route::get('add/{id}', 'CartController@addItem');
-    Route::get('rmv/{id}', 'CartController@removeItem');
+    Route::get('add/{cart_id}', 'CartController@addItem');
+    Route::get('rmv/{cart_id}', 'CartController@removeItem');
     Route::get('empty', 'CartController@emptyCart');
 });
 
