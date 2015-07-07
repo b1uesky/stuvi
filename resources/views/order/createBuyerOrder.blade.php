@@ -114,34 +114,69 @@
                     <div class="address row">
                         @forelse ($addresses as $address)
                             @if ($address -> default_address)
-                                <div class="displayDefaultAddress">
-                                    <ul>
-                                        <li id="default_addressee">{{ $address -> addressee }}</li>
-                                        <li id="default_address_line1">{{ $address -> address_line1}}</li>
-                                        <li id="default_address_line2">{{ $address -> address_line2}}</li>
-                                        <li id="default_city">{{ $address -> city }}</li>
-                                        <li id="default_state_a2">{{ $address -> state_a2 }}</li>
-                                        <li id="default_zip">{{ $address -> zip }}</li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-md" id="change_address"
-                                            onclick="showAllAddress()">Change Address
-                                    </button>
+                                <div class="displayDefaultAddress col-sm-3 panel address-panel">
+                                    <div class="panel-body">
+                                        <ul class="address-list">
+                                            <li class="address" id="default_addressee">{{ $address -> addressee }}</li>
+                                            <li class="address"
+                                                id="default_address_line1">{{ $address -> address_line1}}</li>
+                                            @if($address -> address_line2 != null)
+                                                <li class="address"
+                                                    id="default_address_line2">{{ $address -> address_line2}}</li>
+                                            @endif
+                                            <li class="address" id="default_city">{{ $address -> city }}
+                                                , {{ $address -> state_a2 }} {{ $address -> zip }}</li>
+                                            {{--<li class="address" id="default_city">{{ $address -> city }}</li>--}}
+                                            {{--<li class="address" id="default_state_a2">{{ $address -> state_a2 }}</li>--}}
+                                            {{--<li class="address" id="default_zip">{{ $address -> zip }}</li>--}}
+                                        </ul>
+                                        <button class="btn btn-default address-btn" onclick="showAllAddress()">
+                                            <i class="fa fa-pencil"></i>
+                                            Edit
+                                        </button>
+                                        <button class="btn btn-default address-btn">
+                                            <i class="fa fa-trash"></i>
+                                            Delete
+                                        </button>
+                                    </div>
                                 </div>
+                                {{--<button class="btn btn-default btn-md" id="change_address"--}}
+                                {{--onclick="showAllAddress()">Change Address--}}
+                                {{--</button>--}}
                             @endif
-                            <div class="col-md-4 displayAllAddresses {{ $address -> id }}" style="display: none">
-                                <ul>
-                                    <li id="addressee">{{ $address -> addressee }}</li>
-                                    <li id="address_line1">{{ $address -> address_line1}}</li>
-                                    <li id="address_line2">{{ $address -> address_line2}}</li>
-                                    <li id="city">{{ $address -> city }}</li>
-                                    <li id="state_a2">{{ $address -> state_a2 }}</li>
-                                    <li id="zip">{{ $address -> zip }}</li>
-                                </ul>
-                                <button class="btn btn-primary btn-md" id="selectThisAddress"
-                                        onclick="selectAddress({{ $address -> id }})">click here
-                                    to
-                                    select this address
-                                </button>
+                            <div class="panel address-panel col-md-4 displayAllAddresses {{ $address -> id }}"
+                                 style="display: none">
+                                <div class="panel-body">
+                                    <ul class="address-list">
+                                        <li class="address" id="addressee">{{ $address -> addressee }}</li>
+                                        <li class="address" id="address_line1">{{ $address -> address_line1}}</li>
+                                        @if($address -> address_line2 != null)
+                                            <li class="address"
+                                                id="default_address_line2">{{ $address -> address_line2}}</li>
+                                        @endif
+                                        <li class="address" id="city">{{ $address -> city }}</li>
+                                        <li class="address" id="state_a2">{{ $address -> state_a2 }}</li>
+                                        <li class="address" id="zip">{{ $address -> zip }}</li>
+                                    </ul>
+                                    <button class="btn btn-default address-btn" id="selectThisAddress"
+                                            onclick="selectAddress({{ $address -> id }})">
+                                        <i class="fa fa-check-square"></i>
+                                        Select
+                                    </button>
+                                    <button class="btn btn-default address-btn">
+                                        <i class="fa fa-pencil"></i>
+                                        Edit
+                                    </button>
+                                    <button class="btn btn-default address-btn">
+                                        <i class="fa fa-trash"></i>
+                                        Delete
+                                    </button>
+                                    {{--<button class="btn btn-primary btn-md" id="selectThisAddress"--}}
+                                    {{--onclick="selectAddress({{ $address -> id }})">click here--}}
+                                    {{--to--}}
+                                    {{--select this address--}}
+                                    {{--</button>--}}
+                                </div>
                             </div>
                         @empty
                             <form action="{{ url('/order/storeAddress') }}" method="POST" class="address-form">
