@@ -1,5 +1,14 @@
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| Route Patterns
+|--------------------------------------------------------------------------
+| Define some route parameter patterns so they won't confuse with other routes, e.g.,
+| Route::get('/{book}', 'TextbookController@show');
+| Route::get('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
+|
+ */
 Route::pattern('id', '[0-9]+');
 Route::pattern('book', '[0-9]+');
 Route::pattern('product', '[0-9]+');
