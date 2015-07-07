@@ -13,7 +13,7 @@
         <!-- jQuery is used only for this example; it isn't required to use Stripe -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript" src="{{ asset('/js/address.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('/packages/bootstrap-3.3.5-dist/js/bootstrap.min.js') }}"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
         <!-- stripe -->
         <script type="text/javascript">
