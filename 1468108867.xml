@@ -1,0 +1,444 @@
+<?xml version="1.0"?>
+<ItemLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01">
+  <OperationRequest>
+    <HTTPHeaders>
+      <Header Name="UserAgent" Value="ApaiIO [2.0.0-DEV]"/>
+    </HTTPHeaders>
+    <RequestId>bfd90550-6306-42cc-9878-5e1e7017cbf9</RequestId>
+    <Arguments>
+      <Argument Name="AWSAccessKeyId" Value="AKIAICSPEAJYPA3CBSNQ"/>
+      <Argument Name="AssociateTag" Value="stuvi07-20"/>
+      <Argument Name="IdType" Value="ISBN"/>
+      <Argument Name="ItemId" Value="1468108867"/>
+      <Argument Name="Operation" Value="ItemLookup"/>
+      <Argument Name="ResponseGroup" Value="Large,Small"/>
+      <Argument Name="SearchIndex" Value="All"/>
+      <Argument Name="Service" Value="AWSECommerceService"/>
+      <Argument Name="Timestamp" Value="2015-07-08T20:24:23Z"/>
+      <Argument Name="Version" Value="2011-08-01"/>
+      <Argument Name="Signature" Value="3h39on16tzp6rlwPqxsZ8NYvWzLbESa61U6OuaBYRtI="/>
+    </Arguments>
+    <RequestProcessingTime>0.0461280000000000</RequestProcessingTime>
+  </OperationRequest>
+  <Items>
+    <Request>
+      <IsValid>True</IsValid>
+      <ItemLookupRequest>
+        <IdType>ISBN</IdType>
+        <ItemId>1468108867</ItemId>
+        <ResponseGroup>Large</ResponseGroup>
+        <ResponseGroup>Small</ResponseGroup>
+        <SearchIndex>All</SearchIndex>
+        <VariationPage>All</VariationPage>
+      </ItemLookupRequest>
+    </Request>
+    <Item>
+      <ASIN>1468108867</ASIN>
+      <DetailPageURL>http://www.amazon.com/Data-Structures-Algorithms-Made-Easy/dp/1468108867%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D1468108867</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Technical Details</Description>
+          <URL>http://www.amazon.com/Data-Structures-Algorithms-Made-Easy/dp/tech-data/1468108867%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1468108867</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Baby Registry</Description>
+          <URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3D1468108867%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1468108867</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Wedding Registry</Description>
+          <URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3D1468108867%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1468108867</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3D1468108867%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1468108867</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.com/gp/pdp/taf/1468108867%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1468108867</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.com/review/product/1468108867%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1468108867</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.com/gp/offer-listing/1468108867%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1468108867</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SalesRank>13008</SalesRank>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/513E0i3NoAL._SL75_.jpg</URL>
+        <Height Units="pixels">75</Height>
+        <Width Units="pixels">58</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/513E0i3NoAL._SL160_.jpg</URL>
+        <Height Units="pixels">160</Height>
+        <Width Units="pixels">124</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/513E0i3NoAL.jpg</URL>
+        <Height Units="pixels">500</Height>
+        <Width Units="pixels">386</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category="primary">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/513E0i3NoAL._SL30_.jpg</URL>
+            <Height Units="pixels">30</Height>
+            <Width Units="pixels">23</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/513E0i3NoAL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">58</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/513E0i3NoAL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">58</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/513E0i3NoAL._SL110_.jpg</URL>
+            <Height Units="pixels">110</Height>
+            <Width Units="pixels">85</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/513E0i3NoAL._SL160_.jpg</URL>
+            <Height Units="pixels">160</Height>
+            <Width Units="pixels">124</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/513E0i3NoAL.jpg</URL>
+            <Height Units="pixels">500</Height>
+            <Width Units="pixels">386</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Narasimha Karumanchi</Author>
+        <Binding>Paperback</Binding>
+        <Brand>Brand: CreateSpace Independent Publishing Platform</Brand>
+        <EAN>9781468108866</EAN>
+        <EANList>
+          <EANListElement>9781468108866</EANListElement>
+        </EANList>
+        <Edition>2</Edition>
+        <Feature>Used Book in Good Condition</Feature>
+        <ISBN>1468108867</ISBN>
+        <IsEligibleForTradeIn>1</IsEligibleForTradeIn>
+        <ItemDimensions>
+          <Height Units="hundredths-inches">1100</Height>
+          <Length Units="hundredths-inches">850</Length>
+          <Weight Units="hundredths-pounds">217</Weight>
+          <Width Units="hundredths-inches">98</Width>
+        </ItemDimensions>
+        <Label>CreateSpace Independent Publishing Platform</Label>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Original Language</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Unknown</Type>
+          </Language>
+        </Languages>
+        <ListPrice>
+          <Amount>3999</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$39.99</FormattedPrice>
+        </ListPrice>
+        <Manufacturer>CreateSpace Independent Publishing Platform</Manufacturer>
+        <NumberOfItems>1</NumberOfItems>
+        <NumberOfPages>434</NumberOfPages>
+        <PackageDimensions>
+          <Height Units="hundredths-inches">110</Height>
+          <Length Units="hundredths-inches">1087</Length>
+          <Weight Units="hundredths-pounds">216</Weight>
+          <Width Units="hundredths-inches">843</Width>
+        </PackageDimensions>
+        <ProductGroup>Book</ProductGroup>
+        <ProductTypeName>ABIS_BOOK</ProductTypeName>
+        <PublicationDate>2011-12-19</PublicationDate>
+        <Publisher>CreateSpace Independent Publishing Platform</Publisher>
+        <Studio>CreateSpace Independent Publishing Platform</Studio>
+        <Title>Data Structures and Algorithms Made Easy: Data Structure and Algorithmic Puzzles, Second Edition</Title>
+        <TradeInValue>
+          <Amount>1307</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$13.07</FormattedPrice>
+        </TradeInValue>
+      </ItemAttributes>
+      <OfferSummary>
+        <LowestNewPrice>
+          <Amount>2499</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$24.99</FormattedPrice>
+        </LowestNewPrice>
+        <LowestUsedPrice>
+          <Amount>2447</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$24.47</FormattedPrice>
+        </LowestUsedPrice>
+        <TotalNew>28</TotalNew>
+        <TotalUsed>17</TotalUsed>
+        <TotalCollectible>0</TotalCollectible>
+        <TotalRefurbished>0</TotalRefurbished>
+      </OfferSummary>
+      <Offers>
+        <TotalOffers>1</TotalOffers>
+        <TotalOfferPages>1</TotalOfferPages>
+        <MoreOffersUrl>http://www.amazon.com/gp/offer-listing/1468108867%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1468108867</MoreOffersUrl>
+        <Offer>
+          <OfferAttributes>
+            <Condition>New</Condition>
+          </OfferAttributes>
+          <OfferListing>
+            <OfferListingId>Kw3%2FcVQOmh%2FwBSSc%2B3GWwPpP0qSkWwZTBHWEyFotlb7xDl2sqOq%2FvnNMdCe70zeCoezijFnNb7H7v6OtLaKZMj%2FOnVovs%2FlOqKd5jFAUN8kkFcklBSNVaQ%3D%3D</OfferListingId>
+            <Price>
+              <Amount>3599</Amount>
+              <CurrencyCode>USD</CurrencyCode>
+              <FormattedPrice>$35.99</FormattedPrice>
+            </Price>
+            <AmountSaved>
+              <Amount>400</Amount>
+              <CurrencyCode>USD</CurrencyCode>
+              <FormattedPrice>$4.00</FormattedPrice>
+            </AmountSaved>
+            <PercentageSaved>10</PercentageSaved>
+            <Availability>Usually ships in 24 hours</Availability>
+            <AvailabilityAttributes>
+              <AvailabilityType>now</AvailabilityType>
+              <MinimumHours>24</MinimumHours>
+              <MaximumHours>24</MaximumHours>
+            </AvailabilityAttributes>
+            <IsEligibleForSuperSaverShipping>1</IsEligibleForSuperSaverShipping>
+          </OfferListing>
+        </Offer>
+      </Offers>
+      <CustomerReviews>
+        <IFrameURL>http://www.amazon.com/reviews/iframe?akid=AKIAICSPEAJYPA3CBSNQ&amp;alinkCode=xm2&amp;asin=1468108867&amp;atag=stuvi07-20&amp;exp=2015-07-09T20%3A24%3A59Z&amp;v=2&amp;sig=zhxYsq62pZ5TwJh4LAB1kQoF6JxBOVg0e5Geap8jdnw%3D</IFrameURL>
+        <HasReviews>true</HasReviews>
+      </CustomerReviews>
+      <EditorialReviews>
+        <EditorialReview>
+          <Source>Product Description</Source>
+          <Content>&lt;div&gt;&lt;div&gt;&lt;b&gt;Peeling&#xA0;&lt;/b&gt;Data Structures and Algorithms&lt;b&gt;&#xA0;&lt;/b&gt;&lt;b&gt;for interviews&#xA0;&lt;/b&gt;&lt;b&gt;[re-printed with corrections and new problems]:&#xA0;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;&lt;b&gt;Table of Contents&lt;/b&gt;:&#xA0;goo.gl/UeLODK&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Sample Chapter&lt;/b&gt;:&#xA0;goo.gl/remIdp&lt;/div&gt;&lt;div&gt;&lt;b&gt;Found Issue?&#xA0;&lt;/b&gt;goo.gl/forms/4Gt72YO81I&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;div&gt;"Data Structures And Algorithms Made Easy: Data Structure And Algorithmic Puzzles" is a book that offers solutions to complex data structures and algorithms. There are multiple solutions for each problem and the book is coded in C/C++, it comes handy as an interview and exam guide for computer scientists.&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;A handy guide of sorts for any computer science professional,&#xA0;&lt;i&gt;Data Structures And Algorithms Made Easy: Data Structure And Algorithmic Puzzles&lt;/i&gt;&#xA0;is a solution bank for various complex problems related to data structures and algorithms. It can be used as a reference manual by those readers in the computer science industry.&#xA0;&lt;br&gt;&lt;br&gt;The book has around 21 chapters and covers Recursion and Backtracking, Linked Lists, Stacks, Queues,Trees, Priority Queue and Heaps, Disjoint Sets ADT, Graph Algorithms, Sorting, Searching, Selection Algorithms [Medians], Symbol Tables, Hashing, String Algorithms, Algorithms Design Techniques, Greedy Algorithms, Divide and Conquer Algorithms, Dynamic Programming, Complexity Classes, and other Miscellaneous Concepts.&lt;br&gt;&lt;br&gt;Data Structures And Algorithms Made Easy: Data Structure And Algorithmic Puzzles by Narasimha Karumanchi was published in March, and it is coded in C/C++ language. This book serves as guide to prepare for interviews, exams, and campus work. It is also available in Java. In short, this book offers solutions to various complex data structures and algorithmic problems.&lt;/div&gt;&lt;br&gt;&lt;b&gt;What is unique?&lt;/b&gt;&lt;br&gt;&#xA0;&#xA0;&#xA0;&lt;br&gt;Our main objective isn't to propose theorems and proofs about DS and Algorithms. We&#xA0;took the direct route and&#xA0;solved problems&#xA0;of&#xA0;varying complexities. That is, each problem corresponds to multiple solutions with&#xA0;different complexities.&#xA0; In other words, we enumerated possible solutions. With this approach, even&#xA0;when a&#xA0;new question arises,&#xA0;we&#xA0;offer a choice of&#xA0;different solution strategies based on&#xA0;your priorities.&lt;br&gt;&lt;br&gt;&lt;b&gt;Topics Covered:&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Introduction&lt;/li&gt;&lt;li&gt;Recursion and Backtracking&lt;/li&gt;&lt;li&gt;Linked Lists&lt;/li&gt;&lt;li&gt;Stacks&lt;/li&gt;&lt;li&gt;Queues&lt;/li&gt;&lt;li&gt;Trees&lt;/li&gt;&lt;li&gt;Priority Queue and Heaps&lt;/li&gt;&lt;li&gt;Disjoint Sets ADT&lt;/li&gt;&lt;li&gt;Graph Algorithms&lt;/li&gt;&lt;li&gt;Sorting&#xA0;&#xA0;&#xA0;&lt;/li&gt;&lt;li&gt;Searching&#xA0;&#xA0;&#xA0;&lt;/li&gt;&lt;li&gt;Selection Algorithms [Medians]&#xA0;&#xA0;&#xA0;&lt;/li&gt;&lt;li&gt;Symbol Tables&#xA0;&#xA0;&#xA0;&lt;/li&gt;&lt;li&gt;Hashing&#xA0;&#xA0;&#xA0;&lt;/li&gt;&lt;li&gt;String Algorithms&#xA0;&#xA0;&#xA0;&lt;/li&gt;&lt;li&gt;Algorithms Design Techniques&#xA0;&#xA0;&#xA0;&lt;/li&gt;&lt;li&gt;Greedy Algorithms&#xA0;&#xA0;&#xA0;&lt;/li&gt;&lt;li&gt;Divide and Conquer Algorithms&#xA0;&#xA0;&#xA0;&lt;/li&gt;&lt;li&gt;Dynamic Programming&#xA0;&#xA0;&#xA0;&lt;/li&gt;&lt;li&gt;Complexity Classes&#xA0;&#xA0;&#xA0;&lt;/li&gt;&lt;li&gt;Miscellaneous Concepts&#xA0;&#xA0;&#xA0;&lt;/li&gt;&lt;/ul&gt;&lt;b&gt;Target Audience?&lt;/b&gt;&lt;br&gt;&#xA0;&#xA0;&#xA0;&lt;br&gt;These books prepare readers for interviews, exams, and campus work.&#xA0;&lt;br&gt;&lt;br&gt;&lt;b&gt;Language?&lt;/b&gt;&lt;br&gt;&lt;br&gt;All code was written in C/C++. If you are using&#xA0;Java, please search for "Data Structures and Algorithms Made Easy in Java".&lt;br&gt;&lt;b&gt;&lt;/b&gt;&lt;br&gt;Also, check out sample chapters and the&#xA0;blog at: CareerMonk.com</Content>
+          <IsLinkSuppressed>0</IsLinkSuppressed>
+        </EditorialReview>
+      </EditorialReviews>
+      <SimilarProducts>
+        <SimilarProduct>
+          <ASIN>1479274836</ASIN>
+          <Title>Elements of Programming Interviews: The Insiders' Guide</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>098478280X</ASIN>
+          <Title>Cracking the Coding Interview: 150 Programming Questions and Solutions</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>1468101277</ASIN>
+          <Title>Data Structures and Algorithms Made Easy in Java: Data Structure and Algorithmic Puzzles, Second Edition</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>8192107590</ASIN>
+          <Title>Data Structure and Algorithmic Thinking with Python: Data Structure and Algorithmic Puzzles</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>1475293534</ASIN>
+          <Title>Coding Interview Questions</Title>
+        </SimilarProduct>
+      </SimilarProducts>
+      <BrowseNodes>
+        <BrowseNode>
+          <BrowseNodeId>2576</BrowseNodeId>
+          <Name>Job Hunting</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>2572</BrowseNodeId>
+              <Name>Job Hunting &amp; Careers</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>3</BrowseNodeId>
+                  <Name>Business &amp; Money</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>1000</BrowseNodeId>
+                      <Name>Subjects</Name>
+                      <IsCategoryRoot>1</IsCategoryRoot>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>283155</BrowseNodeId>
+                          <Name>Books</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>3870</BrowseNodeId>
+          <Name>Algorithms</Name>
+          <Children>
+            <BrowseNode>
+              <BrowseNodeId>132570011</BrowseNodeId>
+              <Name>Data Structures</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>3880</BrowseNodeId>
+              <Name>Genetic</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>3882</BrowseNodeId>
+              <Name>Memory Management</Name>
+            </BrowseNode>
+          </Children>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>3839</BrowseNodeId>
+              <Name>Programming</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>5</BrowseNodeId>
+                  <Name>Computers &amp; Technology</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>1000</BrowseNodeId>
+                      <Name>Subjects</Name>
+                      <IsCategoryRoot>1</IsCategoryRoot>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>283155</BrowseNodeId>
+                          <Name>Books</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>9045759011</BrowseNodeId>
+          <Name>C</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>3956</BrowseNodeId>
+              <Name>C &amp; C++</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>3952</BrowseNodeId>
+                  <Name>Languages &amp; Tools</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>3839</BrowseNodeId>
+                      <Name>Programming</Name>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>5</BrowseNodeId>
+                          <Name>Computers &amp; Technology</Name>
+                          <Ancestors>
+                            <BrowseNode>
+                              <BrowseNodeId>1000</BrowseNodeId>
+                              <Name>Subjects</Name>
+                              <IsCategoryRoot>1</IsCategoryRoot>
+                              <Ancestors>
+                                <BrowseNode>
+                                  <BrowseNodeId>283155</BrowseNodeId>
+                                  <Name>Books</Name>
+                                </BrowseNode>
+                              </Ancestors>
+                            </BrowseNode>
+                          </Ancestors>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>4016</BrowseNodeId>
+          <Name>Software Development</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>4011</BrowseNodeId>
+              <Name>Software Design, Testing &amp; Engineering</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>3839</BrowseNodeId>
+                  <Name>Programming</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>5</BrowseNodeId>
+                      <Name>Computers &amp; Technology</Name>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>1000</BrowseNodeId>
+                          <Name>Subjects</Name>
+                          <IsCategoryRoot>1</IsCategoryRoot>
+                          <Ancestors>
+                            <BrowseNode>
+                              <BrowseNodeId>283155</BrowseNodeId>
+                              <Name>Books</Name>
+                            </BrowseNode>
+                          </Ancestors>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>13983</BrowseNodeId>
+          <Name>Probability &amp; Statistics</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>226699</BrowseNodeId>
+              <Name>Applied</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>13884</BrowseNodeId>
+                  <Name>Mathematics</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>75</BrowseNodeId>
+                      <Name>Science &amp; Math</Name>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>1000</BrowseNodeId>
+                          <Name>Subjects</Name>
+                          <IsCategoryRoot>1</IsCategoryRoot>
+                          <Ancestors>
+                            <BrowseNode>
+                              <BrowseNodeId>283155</BrowseNodeId>
+                              <Name>Books</Name>
+                            </BrowseNode>
+                          </Ancestors>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+      </BrowseNodes>
+    </Item>
+  </Items>
+</ItemLookupResponse>

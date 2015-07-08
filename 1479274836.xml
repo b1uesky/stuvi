@@ -1,0 +1,360 @@
+<?xml version="1.0"?>
+<ItemLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01">
+  <OperationRequest>
+    <HTTPHeaders>
+      <Header Name="UserAgent" Value="ApaiIO [2.0.0-DEV]"/>
+    </HTTPHeaders>
+    <RequestId>35e20857-219f-4d97-a885-c5bdd02d3669</RequestId>
+    <Arguments>
+      <Argument Name="AWSAccessKeyId" Value="AKIAICSPEAJYPA3CBSNQ"/>
+      <Argument Name="AssociateTag" Value="stuvi07-20"/>
+      <Argument Name="IdType" Value="ISBN"/>
+      <Argument Name="ItemId" Value="1479274836"/>
+      <Argument Name="Operation" Value="ItemLookup"/>
+      <Argument Name="ResponseGroup" Value="Large,Small"/>
+      <Argument Name="SearchIndex" Value="All"/>
+      <Argument Name="Service" Value="AWSECommerceService"/>
+      <Argument Name="Timestamp" Value="2015-07-08T20:24:23Z"/>
+      <Argument Name="Version" Value="2011-08-01"/>
+      <Argument Name="Signature" Value="XUp2CSUZGr8RQr2Ep6utAtRbpmzpC87QnLcswcTb4Dc="/>
+    </Arguments>
+    <RequestProcessingTime>0.0401030000000000</RequestProcessingTime>
+  </OperationRequest>
+  <Items>
+    <Request>
+      <IsValid>True</IsValid>
+      <ItemLookupRequest>
+        <IdType>ISBN</IdType>
+        <ItemId>1479274836</ItemId>
+        <ResponseGroup>Large</ResponseGroup>
+        <ResponseGroup>Small</ResponseGroup>
+        <SearchIndex>All</SearchIndex>
+        <VariationPage>All</VariationPage>
+      </ItemLookupRequest>
+    </Request>
+    <Item>
+      <ASIN>1479274836</ASIN>
+      <DetailPageURL>http://www.amazon.com/Elements-Programming-Interviews-Insiders-Guide/dp/1479274836%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D1479274836</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Technical Details</Description>
+          <URL>http://www.amazon.com/Elements-Programming-Interviews-Insiders-Guide/dp/tech-data/1479274836%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1479274836</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Baby Registry</Description>
+          <URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3D1479274836%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1479274836</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Wedding Registry</Description>
+          <URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3D1479274836%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1479274836</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3D1479274836%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1479274836</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.com/gp/pdp/taf/1479274836%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1479274836</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.com/review/product/1479274836%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1479274836</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.com/gp/offer-listing/1479274836%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1479274836</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SalesRank>2979</SalesRank>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/51syw%2B29LVL._SL75_.jpg</URL>
+        <Height Units="pixels">75</Height>
+        <Width Units="pixels">50</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/51syw%2B29LVL._SL160_.jpg</URL>
+        <Height Units="pixels">160</Height>
+        <Width Units="pixels">107</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/51syw%2B29LVL.jpg</URL>
+        <Height Units="pixels">500</Height>
+        <Width Units="pixels">333</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category="primary">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/51syw%2B29LVL._SL30_.jpg</URL>
+            <Height Units="pixels">30</Height>
+            <Width Units="pixels">20</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/51syw%2B29LVL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">50</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/51syw%2B29LVL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">50</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/51syw%2B29LVL._SL110_.jpg</URL>
+            <Height Units="pixels">110</Height>
+            <Width Units="pixels">73</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/51syw%2B29LVL._SL160_.jpg</URL>
+            <Height Units="pixels">160</Height>
+            <Width Units="pixels">107</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/51syw%2B29LVL.jpg</URL>
+            <Height Units="pixels">500</Height>
+            <Width Units="pixels">333</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Adnan Aziz</Author>
+        <Author>Tsung-Hsien Lee</Author>
+        <Author>Amit Prakash</Author>
+        <Binding>Paperback</Binding>
+        <EAN>9781479274833</EAN>
+        <EANList>
+          <EANListElement>9781479274833</EANListElement>
+        </EANList>
+        <Edition>1st</Edition>
+        <ISBN>1479274836</ISBN>
+        <IsEligibleForTradeIn>1</IsEligibleForTradeIn>
+        <ItemDimensions>
+          <Height Units="hundredths-inches">900</Height>
+          <Length Units="hundredths-inches">600</Length>
+          <Weight Units="hundredths-pounds">134</Weight>
+          <Width Units="hundredths-inches">109</Width>
+        </ItemDimensions>
+        <Label>CreateSpace Independent Publishing Platform</Label>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Original Language</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Unknown</Type>
+          </Language>
+        </Languages>
+        <ListPrice>
+          <Amount>3995</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$39.95</FormattedPrice>
+        </ListPrice>
+        <Manufacturer>CreateSpace Independent Publishing Platform</Manufacturer>
+        <NumberOfItems>1</NumberOfItems>
+        <NumberOfPages>484</NumberOfPages>
+        <PackageDimensions>
+          <Height Units="hundredths-inches">120</Height>
+          <Length Units="hundredths-inches">890</Length>
+          <Weight Units="hundredths-pounds">140</Weight>
+          <Width Units="hundredths-inches">600</Width>
+        </PackageDimensions>
+        <ProductGroup>Book</ProductGroup>
+        <ProductTypeName>ABIS_BOOK</ProductTypeName>
+        <PublicationDate>2012-10-11</PublicationDate>
+        <Publisher>CreateSpace Independent Publishing Platform</Publisher>
+        <Studio>CreateSpace Independent Publishing Platform</Studio>
+        <Title>Elements of Programming Interviews: The Insiders' Guide</Title>
+        <TradeInValue>
+          <Amount>1015</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$10.15</FormattedPrice>
+        </TradeInValue>
+      </ItemAttributes>
+      <OfferSummary>
+        <LowestNewPrice>
+          <Amount>1779</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$17.79</FormattedPrice>
+        </LowestNewPrice>
+        <LowestUsedPrice>
+          <Amount>1886</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$18.86</FormattedPrice>
+        </LowestUsedPrice>
+        <TotalNew>30</TotalNew>
+        <TotalUsed>20</TotalUsed>
+        <TotalCollectible>0</TotalCollectible>
+        <TotalRefurbished>0</TotalRefurbished>
+      </OfferSummary>
+      <Offers>
+        <TotalOffers>1</TotalOffers>
+        <TotalOfferPages>1</TotalOfferPages>
+        <MoreOffersUrl>http://www.amazon.com/gp/offer-listing/1479274836%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1479274836</MoreOffersUrl>
+        <Offer>
+          <OfferAttributes>
+            <Condition>New</Condition>
+          </OfferAttributes>
+          <OfferListing>
+            <OfferListingId>m9%2Fu%2FqooBN66AA94yZXuCLjYNS%2FF7IolH1lnrtMxymqkU0sVtayLbDy2h5xroipbtK%2FKmiBnC0jGXm%2B098KL3VAD2OW%2F2v5AjPnnTr8ULlzt3ETnrZk3Xg%3D%3D</OfferListingId>
+            <Price>
+              <Amount>2115</Amount>
+              <CurrencyCode>USD</CurrencyCode>
+              <FormattedPrice>$21.15</FormattedPrice>
+            </Price>
+            <AmountSaved>
+              <Amount>1880</Amount>
+              <CurrencyCode>USD</CurrencyCode>
+              <FormattedPrice>$18.80</FormattedPrice>
+            </AmountSaved>
+            <PercentageSaved>47</PercentageSaved>
+            <Availability>Usually ships in 24 hours</Availability>
+            <AvailabilityAttributes>
+              <AvailabilityType>now</AvailabilityType>
+              <MinimumHours>24</MinimumHours>
+              <MaximumHours>24</MaximumHours>
+            </AvailabilityAttributes>
+            <IsEligibleForSuperSaverShipping>1</IsEligibleForSuperSaverShipping>
+          </OfferListing>
+        </Offer>
+      </Offers>
+      <CustomerReviews>
+        <IFrameURL>http://www.amazon.com/reviews/iframe?akid=AKIAICSPEAJYPA3CBSNQ&amp;alinkCode=xm2&amp;asin=1479274836&amp;atag=stuvi07-20&amp;exp=2015-07-09T20%3A24%3A58Z&amp;v=2&amp;sig=R4943D5l5EpdCprgcc5FlPGATZa4rh7gOD2BX6MVXDQ%3D</IFrameURL>
+        <HasReviews>true</HasReviews>
+      </CustomerReviews>
+      <EditorialReviews>
+        <EditorialReview>
+          <Source>Product Description</Source>
+          <Content>&lt;div&gt;&lt;div&gt;Don't buy this book (&lt;b&gt;yet&lt;/b&gt;)!&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;First head over to our sample page - &lt;b&gt;elementsofprogramminginterviews.com/sample&lt;/b&gt;&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;b&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;The sampler should give you a very good idea of the &lt;b&gt;quality&lt;/b&gt; and &lt;b&gt;style&lt;/b&gt; of our book. In particular, be sure you are &lt;b&gt;comfortable with the level and with our C++ coding style&lt;/b&gt;.&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;/b&gt;&lt;/div&gt;&lt;br&gt;&lt;div&gt;Solutions include code snippets which are primarily in &lt;b&gt;C++&lt;/b&gt;. Programs concerned with concurrency are in Java.&#xA0;Complete programs are available at &lt;b&gt;epibook.github.io&lt;/b&gt;.&#xA0;Java versions of the C++ programs in the book can be found at the website.&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;br&gt;Since different candidates have different time constraints, EPI includes a &lt;b&gt;study guide&lt;/b&gt; with several&lt;b&gt;&#xA0;scenarios, &lt;/b&gt;ranging from weekend&lt;b&gt; Hackathon&lt;/b&gt;&lt;b&gt;&#xA0;&lt;/b&gt;to &lt;b&gt;semester long preparation&#xA0;&lt;/b&gt;with a recommended a subset of problems for each scenario.&#xA0;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;All problems are classified in terms of their &lt;b&gt;difficulty level &lt;/b&gt;and include many&#xA0;&lt;b&gt;variants&lt;/b&gt;&#xA0;to help you apply what you have learned more widely.&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;br&gt;&lt;div&gt;All problems includes &lt;b&gt;hints&lt;/b&gt;&#xA0;for readers who get stuck. This simulates what you will face in the &lt;b&gt;real interview&lt;/b&gt;.&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;br&gt;&lt;div&gt;The version being sold by Amazon itself is always current. Some resellers may have older versions, especially if they sell used copies.&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;      &lt;/div&gt;</Content>
+          <IsLinkSuppressed>0</IsLinkSuppressed>
+        </EditorialReview>
+      </EditorialReviews>
+      <SimilarProducts>
+        <SimilarProduct>
+          <ASIN>1118261364</ASIN>
+          <Title>Programming Interviews Exposed: Secrets to Landing Your Next Job</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>098478280X</ASIN>
+          <Title>Cracking the Coding Interview: 150 Programming Questions and Solutions</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>0984782850</ASIN>
+          <Title>Cracking the Coding Interview, 6th Edition: 189 Programming Questions and Solutions</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>1468108867</ASIN>
+          <Title>Data Structures and Algorithms Made Easy: Data Structure and Algorithmic Puzzles, Second Edition</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>111851856X</ASIN>
+          <Title>Ace the Programming Interview: 160 Questions and Answers for Success</Title>
+        </SimilarProduct>
+      </SimilarProducts>
+      <BrowseNodes>
+        <BrowseNode>
+          <BrowseNodeId>2578</BrowseNodeId>
+          <Name>Interviewing</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>2572</BrowseNodeId>
+              <Name>Job Hunting &amp; Careers</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>3</BrowseNodeId>
+                  <Name>Business &amp; Money</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>1000</BrowseNodeId>
+                      <Name>Subjects</Name>
+                      <IsCategoryRoot>1</IsCategoryRoot>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>283155</BrowseNodeId>
+                          <Name>Books</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>132570011</BrowseNodeId>
+          <Name>Data Structures</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>3870</BrowseNodeId>
+              <Name>Algorithms</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>3839</BrowseNodeId>
+                  <Name>Programming</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>5</BrowseNodeId>
+                      <Name>Computers &amp; Technology</Name>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>1000</BrowseNodeId>
+                          <Name>Subjects</Name>
+                          <IsCategoryRoot>1</IsCategoryRoot>
+                          <Ancestors>
+                            <BrowseNode>
+                              <BrowseNodeId>283155</BrowseNodeId>
+                              <Name>Books</Name>
+                            </BrowseNode>
+                          </Ancestors>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>4016</BrowseNodeId>
+          <Name>Software Development</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>4011</BrowseNodeId>
+              <Name>Software Design, Testing &amp; Engineering</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>3839</BrowseNodeId>
+                  <Name>Programming</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>5</BrowseNodeId>
+                      <Name>Computers &amp; Technology</Name>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>1000</BrowseNodeId>
+                          <Name>Subjects</Name>
+                          <IsCategoryRoot>1</IsCategoryRoot>
+                          <Ancestors>
+                            <BrowseNode>
+                              <BrowseNodeId>283155</BrowseNodeId>
+                              <Name>Books</Name>
+                            </BrowseNode>
+                          </Ancestors>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+      </BrowseNodes>
+    </Item>
+  </Items>
+</ItemLookupResponse>

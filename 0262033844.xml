@@ -1,0 +1,1110 @@
+<?xml version="1.0"?>
+<ItemLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01">
+  <OperationRequest>
+    <HTTPHeaders>
+      <Header Name="UserAgent" Value="ApaiIO [2.0.0-DEV]"/>
+    </HTTPHeaders>
+    <RequestId>37c8f24a-36b9-4781-9e88-6732850832d6</RequestId>
+    <Arguments>
+      <Argument Name="AWSAccessKeyId" Value="AKIAICSPEAJYPA3CBSNQ"/>
+      <Argument Name="AssociateTag" Value="stuvi07-20"/>
+      <Argument Name="IdType" Value="ISBN"/>
+      <Argument Name="ItemId" Value="0262033844"/>
+      <Argument Name="Operation" Value="ItemLookup"/>
+      <Argument Name="ResponseGroup" Value="Large,Small"/>
+      <Argument Name="SearchIndex" Value="All"/>
+      <Argument Name="Service" Value="AWSECommerceService"/>
+      <Argument Name="Timestamp" Value="2015-07-08T20:24:22Z"/>
+      <Argument Name="Version" Value="2011-08-01"/>
+      <Argument Name="Signature" Value="YiwYX9WegM+BFEtBk983PSK7KhhzC6AyhgMFwSKmdt8="/>
+    </Arguments>
+    <RequestProcessingTime>0.2295180000000000</RequestProcessingTime>
+  </OperationRequest>
+  <Items>
+    <Request>
+      <IsValid>True</IsValid>
+      <ItemLookupRequest>
+        <IdType>ISBN</IdType>
+        <ItemId>0262033844</ItemId>
+        <ResponseGroup>Large</ResponseGroup>
+        <ResponseGroup>Small</ResponseGroup>
+        <SearchIndex>All</SearchIndex>
+        <VariationPage>All</VariationPage>
+      </ItemLookupRequest>
+    </Request>
+    <Item>
+      <ASIN>0262033844</ASIN>
+      <DetailPageURL>http://www.amazon.com/Introduction-Algorithms-Edition-Thomas-Cormen/dp/0262033844%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D0262033844</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Technical Details</Description>
+          <URL>http://www.amazon.com/Introduction-Algorithms-Edition-Thomas-Cormen/dp/tech-data/0262033844%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D0262033844</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Baby Registry</Description>
+          <URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3D0262033844%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D0262033844</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Wedding Registry</Description>
+          <URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3D0262033844%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D0262033844</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3D0262033844%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D0262033844</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.com/gp/pdp/taf/0262033844%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D0262033844</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.com/review/product/0262033844%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D0262033844</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.com/gp/offer-listing/0262033844%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D0262033844</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SalesRank>5380</SalesRank>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/51WLL1XC30L._SL75_.jpg</URL>
+        <Height Units="pixels">75</Height>
+        <Width Units="pixels">67</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/51WLL1XC30L._SL160_.jpg</URL>
+        <Height Units="pixels">160</Height>
+        <Width Units="pixels">142</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/51WLL1XC30L.jpg</URL>
+        <Height Units="pixels">500</Height>
+        <Width Units="pixels">444</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category="variant">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/51Oju2bqUaL._SL30_.jpg</URL>
+            <Height Units="pixels">30</Height>
+            <Width Units="pixels">27</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/51Oju2bqUaL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">67</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/51Oju2bqUaL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">67</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/51Oju2bqUaL._SL110_.jpg</URL>
+            <Height Units="pixels">110</Height>
+            <Width Units="pixels">98</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/51Oju2bqUaL._SL160_.jpg</URL>
+            <Height Units="pixels">160</Height>
+            <Width Units="pixels">143</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/51Oju2bqUaL.jpg</URL>
+            <Height Units="pixels">500</Height>
+            <Width Units="pixels">447</Width>
+          </LargeImage>
+        </ImageSet>
+        <ImageSet Category="primary">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/51WLL1XC30L._SL30_.jpg</URL>
+            <Height Units="pixels">30</Height>
+            <Width Units="pixels">27</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/51WLL1XC30L._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">67</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/51WLL1XC30L._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">67</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/51WLL1XC30L._SL110_.jpg</URL>
+            <Height Units="pixels">110</Height>
+            <Width Units="pixels">98</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/51WLL1XC30L._SL160_.jpg</URL>
+            <Height Units="pixels">160</Height>
+            <Width Units="pixels">142</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/51WLL1XC30L.jpg</URL>
+            <Height Units="pixels">500</Height>
+            <Width Units="pixels">444</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Thomas H. Cormen</Author>
+        <Author>Charles E. Leiserson</Author>
+        <Author>Ronald L. Rivest</Author>
+        <Author>Clifford Stein</Author>
+        <Binding>Hardcover</Binding>
+        <EAN>9780262033848</EAN>
+        <EANList>
+          <EANListElement>9780262033848</EANListElement>
+        </EANList>
+        <Edition>3rd</Edition>
+        <Feature>Hard Cover</Feature>
+        <ISBN>0262033844</ISBN>
+        <IsEligibleForTradeIn>1</IsEligibleForTradeIn>
+        <ItemDimensions>
+          <Height Units="hundredths-inches">900</Height>
+          <Length Units="hundredths-inches">800</Length>
+          <Weight Units="hundredths-pounds">485</Weight>
+          <Width Units="hundredths-inches">175</Width>
+        </ItemDimensions>
+        <Label>The MIT Press</Label>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Original Language</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Unknown</Type>
+          </Language>
+        </Languages>
+        <ListPrice>
+          <Amount>9400</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$94.00</FormattedPrice>
+        </ListPrice>
+        <Manufacturer>The MIT Press</Manufacturer>
+        <MPN>9780262033848</MPN>
+        <NumberOfItems>1</NumberOfItems>
+        <NumberOfPages>1312</NumberOfPages>
+        <PackageDimensions>
+          <Height Units="hundredths-inches">200</Height>
+          <Length Units="hundredths-inches">910</Length>
+          <Weight Units="hundredths-pounds">471</Weight>
+          <Width Units="hundredths-inches">830</Width>
+        </PackageDimensions>
+        <PackageQuantity>1</PackageQuantity>
+        <PartNumber>9780262033848</PartNumber>
+        <ProductGroup>Book</ProductGroup>
+        <ProductTypeName>ABIS_BOOK</ProductTypeName>
+        <PublicationDate>2009-07-31</PublicationDate>
+        <Publisher>The MIT Press</Publisher>
+        <Studio>The MIT Press</Studio>
+        <Title>Introduction to Algorithms, 3rd Edition</Title>
+        <TradeInValue>
+          <Amount>3846</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$38.46</FormattedPrice>
+        </TradeInValue>
+      </ItemAttributes>
+      <OfferSummary>
+        <LowestNewPrice>
+          <Amount>6993</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$69.93</FormattedPrice>
+        </LowestNewPrice>
+        <LowestUsedPrice>
+          <Amount>4832</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$48.32</FormattedPrice>
+        </LowestUsedPrice>
+        <TotalNew>46</TotalNew>
+        <TotalUsed>85</TotalUsed>
+        <TotalCollectible>0</TotalCollectible>
+        <TotalRefurbished>0</TotalRefurbished>
+      </OfferSummary>
+      <Offers>
+        <TotalOffers>1</TotalOffers>
+        <TotalOfferPages>1</TotalOfferPages>
+        <MoreOffersUrl>http://www.amazon.com/gp/offer-listing/0262033844%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D0262033844</MoreOffersUrl>
+        <Offer>
+          <OfferAttributes>
+            <Condition>New</Condition>
+          </OfferAttributes>
+          <OfferListing>
+            <OfferListingId>KHnAoKiMseJZjLYB96bEjYfKFGYf1IVHmNazbuObU5lxrrMSi%2F3peUe3Z91t0k%2Fi9XRBgdMoIneVhUDhzu%2Be%2F8l6YR76y0ZlPPayqpTZ3pp5jmRGxBUMEA%3D%3D</OfferListingId>
+            <Price>
+              <Amount>7915</Amount>
+              <CurrencyCode>USD</CurrencyCode>
+              <FormattedPrice>$79.15</FormattedPrice>
+            </Price>
+            <AmountSaved>
+              <Amount>1485</Amount>
+              <CurrencyCode>USD</CurrencyCode>
+              <FormattedPrice>$14.85</FormattedPrice>
+            </AmountSaved>
+            <PercentageSaved>16</PercentageSaved>
+            <Availability>Usually ships in 24 hours</Availability>
+            <AvailabilityAttributes>
+              <AvailabilityType>now</AvailabilityType>
+              <MinimumHours>0</MinimumHours>
+              <MaximumHours>0</MaximumHours>
+            </AvailabilityAttributes>
+            <IsEligibleForSuperSaverShipping>1</IsEligibleForSuperSaverShipping>
+          </OfferListing>
+        </Offer>
+      </Offers>
+      <CustomerReviews>
+        <IFrameURL>http://www.amazon.com/reviews/iframe?akid=AKIAICSPEAJYPA3CBSNQ&amp;alinkCode=xm2&amp;asin=0262033844&amp;atag=stuvi07-20&amp;exp=2015-07-09T20%3A24%3A58Z&amp;v=2&amp;sig=V0%2BtyxGBPmIc4ivVyVBVRsEvjRfDnnOKbUjR%2BbrAIQk%3D</IFrameURL>
+        <HasReviews>true</HasReviews>
+      </CustomerReviews>
+      <EditorialReviews>
+        <EditorialReview>
+          <Source>Product Description</Source>
+          <Content>&lt;P&gt;Some books on algorithms are rigorous but incomplete; others cover masses                 of material but lack rigor. &lt;I&gt;Introduction to Algorithms&lt;/I&gt; uniquely                 combines rigor and comprehensiveness. The book covers a broad range of algorithms in                 depth, yet makes their design and analysis accessible to all levels of readers. Each                 chapter is relatively self-contained and can be used as a unit of study. The                 algorithms are described in English and in a pseudocode designed to be readable by                 anyone who has done a little programming. The explanations have been kept elementary                 without sacrificing depth of coverage or mathematical rigor.&lt;/P&gt;&lt;P&gt;The                 first edition became a widely used text in universities worldwide as well as the                 standard reference for professionals. The second edition featured new chapters on                 the role of algorithms, probabilistic analysis and randomized algorithms, and linear                 programming. The third edition has been revised and updated throughout. It includes                 two completely new chapters, on van Emde Boas trees and multithreaded algorithms,                 substantial additions to the chapter on recurrence (now called                 "Divide-and-Conquer"), and an appendix on matrices. It features improved                 treatment of dynamic programming and greedy algorithms and a new notion of                 edge-based flow in the material on flow networks. Many new exercises and problems                 have been added for this edition. As of the third edition, this textbook is                 published exclusively by the MIT Press.&lt;/P&gt;</Content>
+          <IsLinkSuppressed>0</IsLinkSuppressed>
+        </EditorialReview>
+      </EditorialReviews>
+      <SimilarProducts>
+        <SimilarProduct>
+          <ASIN>098478280X</ASIN>
+          <Title>Cracking the Coding Interview: 150 Programming Questions and Solutions</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>032157351X</ASIN>
+          <Title>Algorithms (4th Edition)</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>0201657880</ASIN>
+          <Title>Programming Pearls (2nd Edition)</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>0262518805</ASIN>
+          <Title>Algorithms Unlocked</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>0984782850</ASIN>
+          <Title>Cracking the Coding Interview, 6th Edition: 189 Programming Questions and Solutions</Title>
+        </SimilarProduct>
+      </SimilarProducts>
+      <BrowseNodes>
+        <BrowseNode>
+          <BrowseNodeId>132559011</BrowseNodeId>
+          <Name>Computer Simulation</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>3508</BrowseNodeId>
+              <Name>Computer Science</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>5</BrowseNodeId>
+                  <Name>Computers &amp; Technology</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>1000</BrowseNodeId>
+                      <Name>Subjects</Name>
+                      <IsCategoryRoot>1</IsCategoryRoot>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>283155</BrowseNodeId>
+                          <Name>Books</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>3870</BrowseNodeId>
+          <Name>Algorithms</Name>
+          <Children>
+            <BrowseNode>
+              <BrowseNodeId>132570011</BrowseNodeId>
+              <Name>Data Structures</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>3880</BrowseNodeId>
+              <Name>Genetic</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>3882</BrowseNodeId>
+              <Name>Memory Management</Name>
+            </BrowseNode>
+          </Children>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>3839</BrowseNodeId>
+              <Name>Programming</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>5</BrowseNodeId>
+                  <Name>Computers &amp; Technology</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>1000</BrowseNodeId>
+                      <Name>Subjects</Name>
+                      <IsCategoryRoot>1</IsCategoryRoot>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>283155</BrowseNodeId>
+                          <Name>Books</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>21</BrowseNodeId>
+          <Name>Reference &amp; Test Preparation</Name>
+          <Children>
+            <BrowseNode>
+              <BrowseNodeId>11444</BrowseNodeId>
+              <Name>Almanacs &amp; Yearbooks</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11448</BrowseNodeId>
+              <Name>Atlases &amp; Maps</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>2572</BrowseNodeId>
+              <Name>Careers</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11626</BrowseNodeId>
+              <Name>Catalogs &amp; Directories</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11472</BrowseNodeId>
+              <Name>Consumer Guides</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11475</BrowseNodeId>
+              <Name>Dictionaries &amp; Thesauruses</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11713</BrowseNodeId>
+              <Name>Encyclopedias &amp; Subject Guides</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11823</BrowseNodeId>
+              <Name>English as a Second Language</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11761</BrowseNodeId>
+              <Name>Etiquette</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11773</BrowseNodeId>
+              <Name>Foreign Language Study &amp; Reference</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11880</BrowseNodeId>
+              <Name>Genealogy</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11902</BrowseNodeId>
+              <Name>Quotations</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>8975382011</BrowseNodeId>
+              <Name>Survival &amp; Emergency Preparedness</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>5267710011</BrowseNodeId>
+              <Name>Test Preparation</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11970</BrowseNodeId>
+              <Name>Words, Language &amp; Grammar</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>5267707011</BrowseNodeId>
+              <Name>Writing, Research &amp; Publishing Guides</Name>
+            </BrowseNode>
+          </Children>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>1000</BrowseNodeId>
+              <Name>Subjects</Name>
+              <IsCategoryRoot>1</IsCategoryRoot>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>283155</BrowseNodeId>
+                  <Name>Books</Name>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>491298</BrowseNodeId>
+          <Name>Algorithms</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>468204</BrowseNodeId>
+              <Name>Computer Science</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>465600</BrowseNodeId>
+                  <Name>New, Used &amp; Rental Textbooks</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>2349030011</BrowseNodeId>
+                      <Name>Specialty Boutique</Name>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>283155</BrowseNodeId>
+                          <Name>Books</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+      </BrowseNodes>
+    </Item>
+    <Item>
+      <ASIN>B007YXXTRM</ASIN>
+      <DetailPageURL>http://www.amazon.com/Introduction-To-Algorithms-Charles-Leiserson/dp/B007YXXTRM%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB007YXXTRM</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Technical Details</Description>
+          <URL>http://www.amazon.com/Introduction-To-Algorithms-Charles-Leiserson/dp/tech-data/B007YXXTRM%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB007YXXTRM</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Baby Registry</Description>
+          <URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB007YXXTRM%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB007YXXTRM</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Wedding Registry</Description>
+          <URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB007YXXTRM%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB007YXXTRM</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB007YXXTRM%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB007YXXTRM</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.com/gp/pdp/taf/B007YXXTRM%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB007YXXTRM</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.com/review/product/B007YXXTRM%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB007YXXTRM</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.com/gp/offer-listing/B007YXXTRM%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB007YXXTRM</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/219KuzipKXL._SL75_.jpg</URL>
+        <Height Units="pixels">75</Height>
+        <Width Units="pixels">66</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/219KuzipKXL._SL160_.jpg</URL>
+        <Height Units="pixels">160</Height>
+        <Width Units="pixels">141</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/219KuzipKXL.jpg</URL>
+        <Height Units="pixels">170</Height>
+        <Width Units="pixels">150</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category="primary">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/219KuzipKXL._SL30_.jpg</URL>
+            <Height Units="pixels">30</Height>
+            <Width Units="pixels">26</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/219KuzipKXL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">66</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/219KuzipKXL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">66</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/219KuzipKXL._SL110_.jpg</URL>
+            <Height Units="pixels">110</Height>
+            <Width Units="pixels">97</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/219KuzipKXL._SL160_.jpg</URL>
+            <Height Units="pixels">160</Height>
+            <Width Units="pixels">141</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/219KuzipKXL.jpg</URL>
+            <Height Units="pixels">170</Height>
+            <Width Units="pixels">150</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Charles E. Leiserson</Author>
+        <Binding>Paperback</Binding>
+        <EAN>9780262033848</EAN>
+        <EANList>
+          <EANListElement>9780262033848</EANListElement>
+        </EANList>
+        <Edition>Cincias Exatas</Edition>
+        <ISBN>0262033844</ISBN>
+        <Label>MIT PRESS</Label>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Original Language</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Unknown</Type>
+          </Language>
+        </Languages>
+        <Manufacturer>MIT PRESS</Manufacturer>
+        <ProductGroup>Book</ProductGroup>
+        <ProductTypeName>BOOKS_1973_AND_LATER</ProductTypeName>
+        <PublicationDate>2009</PublicationDate>
+        <Publisher>MIT PRESS</Publisher>
+        <Studio>MIT PRESS</Studio>
+        <Title>Introduction To Algorithms</Title>
+      </ItemAttributes>
+      <OfferSummary>
+        <LowestNewPrice>
+          <Amount>10200</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$102.00</FormattedPrice>
+        </LowestNewPrice>
+        <TotalNew>2</TotalNew>
+        <TotalUsed>0</TotalUsed>
+        <TotalCollectible>0</TotalCollectible>
+        <TotalRefurbished>0</TotalRefurbished>
+      </OfferSummary>
+      <Offers>
+        <TotalOffers>0</TotalOffers>
+        <TotalOfferPages>0</TotalOfferPages>
+        <MoreOffersUrl>0</MoreOffersUrl>
+      </Offers>
+      <CustomerReviews>
+        <IFrameURL>http://www.amazon.com/reviews/iframe?akid=AKIAICSPEAJYPA3CBSNQ&amp;alinkCode=xm2&amp;asin=B007YXXTRM&amp;atag=stuvi07-20&amp;exp=2015-07-09T20%3A24%3A58Z&amp;v=2&amp;sig=We2xPBsZljscVTwQ%2F2EE8SgF0TMvF1ZOvUNXYQIZ8r4%3D</IFrameURL>
+        <HasReviews>false</HasReviews>
+      </CustomerReviews>
+      <BrowseNodes>
+        <BrowseNode>
+          <BrowseNodeId>1000</BrowseNodeId>
+          <Name>Subjects</Name>
+          <IsCategoryRoot>1</IsCategoryRoot>
+          <Children>
+            <BrowseNode>
+              <BrowseNodeId>1</BrowseNodeId>
+              <Name>Arts &amp; Photography</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>2</BrowseNodeId>
+              <Name>Biographies &amp; Memoirs</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>3</BrowseNodeId>
+              <Name>Business &amp; Money</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>3248857011</BrowseNodeId>
+              <Name>Calendars</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>4</BrowseNodeId>
+              <Name>Children's Books</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>12290</BrowseNodeId>
+              <Name>Christian Books &amp; Bibles</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>4366</BrowseNodeId>
+              <Name>Comics &amp; Graphic Novels</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>5</BrowseNodeId>
+              <Name>Computers &amp; Technology</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>6</BrowseNodeId>
+              <Name>Cookbooks, Food &amp; Wine</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>48</BrowseNodeId>
+              <Name>Crafts, Hobbies &amp; Home</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>8975347011</BrowseNodeId>
+              <Name>Education &amp; Teaching</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>173507</BrowseNodeId>
+              <Name>Engineering &amp; Transportation</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>301889</BrowseNodeId>
+              <Name>Gay &amp; Lesbian</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>10</BrowseNodeId>
+              <Name>Health, Fitness &amp; Dieting</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>9</BrowseNodeId>
+              <Name>History</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>86</BrowseNodeId>
+              <Name>Humor &amp; Entertainment</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>10777</BrowseNodeId>
+              <Name>Law</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>17</BrowseNodeId>
+              <Name>Literature &amp; Fiction</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>173514</BrowseNodeId>
+              <Name>Medical Books</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>18</BrowseNodeId>
+              <Name>Mystery, Thriller &amp; Suspense</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>20</BrowseNodeId>
+              <Name>Parenting &amp; Relationships</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>3377866011</BrowseNodeId>
+              <Name>Politics &amp; Social Sciences</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>21</BrowseNodeId>
+              <Name>Reference &amp; Test Preparation</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>22</BrowseNodeId>
+              <Name>Religion &amp; Spirituality</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>23</BrowseNodeId>
+              <Name>Romance</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>75</BrowseNodeId>
+              <Name>Science &amp; Math</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>25</BrowseNodeId>
+              <Name>Science Fiction &amp; Fantasy</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>4736</BrowseNodeId>
+              <Name>Self-Help</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>26</BrowseNodeId>
+              <Name>Sports &amp; Outdoors</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>28</BrowseNodeId>
+              <Name>Teen &amp; Young Adult</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>27</BrowseNodeId>
+              <Name>Travel</Name>
+            </BrowseNode>
+          </Children>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>283155</BrowseNodeId>
+              <Name>Books</Name>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+      </BrowseNodes>
+    </Item>
+    <Item>
+      <ASIN>B007CNRCAO</ASIN>
+      <DetailPageURL>http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen-ebook/dp/B007CNRCAO%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB007CNRCAO</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Technical Details</Description>
+          <URL>http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen-ebook/dp/tech-data/B007CNRCAO%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB007CNRCAO</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Baby Registry</Description>
+          <URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB007CNRCAO%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB007CNRCAO</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Wedding Registry</Description>
+          <URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB007CNRCAO%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB007CNRCAO</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB007CNRCAO%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB007CNRCAO</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.com/gp/pdp/taf/B007CNRCAO%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB007CNRCAO</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.com/review/product/B007CNRCAO%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB007CNRCAO</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.com/gp/offer-listing/B007CNRCAO%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB007CNRCAO</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SalesRank>66954</SalesRank>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/51fgDX37U7L._SL75_.jpg</URL>
+        <Height Units="pixels">75</Height>
+        <Width Units="pixels">67</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/51fgDX37U7L._SL160_.jpg</URL>
+        <Height Units="pixels">160</Height>
+        <Width Units="pixels">142</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/51fgDX37U7L.jpg</URL>
+        <Height Units="pixels">500</Height>
+        <Width Units="pixels">444</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category="primary">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/51fgDX37U7L._SL30_.jpg</URL>
+            <Height Units="pixels">30</Height>
+            <Width Units="pixels">27</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/51fgDX37U7L._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">67</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/51fgDX37U7L._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">67</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/51fgDX37U7L._SL110_.jpg</URL>
+            <Height Units="pixels">110</Height>
+            <Width Units="pixels">98</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/51fgDX37U7L._SL160_.jpg</URL>
+            <Height Units="pixels">160</Height>
+            <Width Units="pixels">142</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/51fgDX37U7L.jpg</URL>
+            <Height Units="pixels">500</Height>
+            <Width Units="pixels">444</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Thomas H. Cormen</Author>
+        <Author>Charles E. Leiserson</Author>
+        <Author>Ronald L. Rivest</Author>
+        <Author>Clifford Stein</Author>
+        <Binding>Kindle Edition</Binding>
+        <Edition>3</Edition>
+        <EISBN>9780262258104</EISBN>
+        <Format>Kindle eBook</Format>
+        <Label>The MIT Press</Label>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+        </Languages>
+        <Manufacturer>The MIT Press</Manufacturer>
+        <NumberOfPages>1312</NumberOfPages>
+        <ProductGroup>eBooks</ProductGroup>
+        <ProductTypeName>ABIS_EBOOKS</ProductTypeName>
+        <PublicationDate>2009-07-31</PublicationDate>
+        <Publisher>The MIT Press</Publisher>
+        <ReleaseDate>2009-07-31</ReleaseDate>
+        <Studio>The MIT Press</Studio>
+        <Title>Introduction to Algorithms</Title>
+      </ItemAttributes>
+      <CustomerReviews>
+        <IFrameURL>http://www.amazon.com/reviews/iframe?akid=AKIAICSPEAJYPA3CBSNQ&amp;alinkCode=xm2&amp;asin=B007CNRCAO&amp;atag=stuvi07-20&amp;exp=2015-07-09T20%3A24%3A58Z&amp;v=2&amp;sig=AzC8r%2FywStu5I%2FzddFTqxL%2FwpOby05h6u9UfAQZHY8U%3D</IFrameURL>
+        <HasReviews>true</HasReviews>
+      </CustomerReviews>
+      <EditorialReviews>
+        <EditorialReview>
+          <Source>Product Description</Source>
+          <Content>&lt;DIV&gt;Some books on algorithms are rigorous but incomplete; others cover masses of material but lack rigor. Introduction to Algorithms uniquely combines rigor and comprehensiveness. The book covers a broad range of algorithms in depth, yet makes their design and analysis accessible to all levels of readers. Each chapter is relatively self-contained and can be used as a unit of study. The algorithms are described in English and in a pseudocode designed to be readable by anyone who has done a little programming. The explanations have been kept elementary without sacrificing depth of coverage or mathematical rigor.The first edition became a widely used text in universities worldwide as well as the standard reference for professionals. The second edition featured new chapters on the role of algorithms, probabilistic analysis and randomized algorithms, and linear programming. The third edition has been revised and updated throughout. It includes two completely new chapters, on van Emde Boas trees and multithreaded algorithms, substantial additions to the chapter on recurrence (now called "Divide-and-Conquer"), and an appendix on matrices. It features improved treatment of dynamic programming and greedy algorithms and a new notion of edge-based flow in the material on flow networks. Many new exercises and problems have been added for this edition. As of the third edition, this textbook is published exclusively by the MIT Press.&lt;/DIV&gt;</Content>
+          <IsLinkSuppressed>0</IsLinkSuppressed>
+        </EditorialReview>
+        <EditorialReview>
+          <Source>Product Description</Source>
+          <Content>&lt;DIV&gt;Some books on algorithms are rigorous but incomplete; others cover masses of material but lack rigor. Introduction to Algorithms uniquely combines rigor and comprehensiveness. The book covers a broad range of algorithms in depth, yet makes their design and analysis accessible to all levels of readers. Each chapter is relatively self-contained and can be used as a unit of study. The algorithms are described in English and in a pseudocode designed to be readable by anyone who has done a little programming. The explanations have been kept elementary without sacrificing depth of coverage or mathematical rigor.The first edition became a widely used text in universities worldwide as well as the standard reference for professionals. The second edition featured new chapters on the role of algorithms, probabilistic analysis and randomized algorithms, and linear programming. The third edition has been revised and updated throughout. It includes two completely new chapters, on van Emde Boas trees and multithreaded algorithms, substantial additions to the chapter on recurrence (now called "Divide-and-Conquer"), and an appendix on matrices. It features improved treatment of dynamic programming and greedy algorithms and a new notion of edge-based flow in the material on flow networks. Many new exercises and problems have been added for this edition. As of the third edition, this textbook is published exclusively by the MIT Press.&lt;/DIV&gt;</Content>
+          <IsLinkSuppressed>0</IsLinkSuppressed>
+        </EditorialReview>
+      </EditorialReviews>
+      <SimilarProducts>
+        <SimilarProduct>
+          <ASIN>B00B8139Z8</ASIN>
+          <Title>The Algorithm Design Manual</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>B004P8J1NA</ASIN>
+          <Title>Algorithms (4th Edition)</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>B008SGNJOW</ASIN>
+          <Title>Programming Interviews Exposed: Secrets to Landing Your Next Job</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>B00J9IJ5R8</ASIN>
+          <Title>The Art of Computer Programming: Volume 1: Fundamental Algorithms (3rd Edition)</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>B00PKH9XAG</ASIN>
+          <Title>From Mathematics to Generic Programming</Title>
+        </SimilarProduct>
+      </SimilarProducts>
+      <BrowseNodes>
+        <BrowseNode>
+          <BrowseNodeId>3870</BrowseNodeId>
+          <Name>Algorithms</Name>
+          <Children>
+            <BrowseNode>
+              <BrowseNodeId>132570011</BrowseNodeId>
+              <Name>Data Structures</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>3880</BrowseNodeId>
+              <Name>Genetic</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>3882</BrowseNodeId>
+              <Name>Memory Management</Name>
+            </BrowseNode>
+          </Children>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>3839</BrowseNodeId>
+              <Name>Programming</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>5</BrowseNodeId>
+                  <Name>Computers &amp; Technology</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>1000</BrowseNodeId>
+                      <Name>Subjects</Name>
+                      <IsCategoryRoot>1</IsCategoryRoot>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>283155</BrowseNodeId>
+                          <Name>Books</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>21</BrowseNodeId>
+          <Name>Reference &amp; Test Preparation</Name>
+          <Children>
+            <BrowseNode>
+              <BrowseNodeId>11444</BrowseNodeId>
+              <Name>Almanacs &amp; Yearbooks</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11448</BrowseNodeId>
+              <Name>Atlases &amp; Maps</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>2572</BrowseNodeId>
+              <Name>Careers</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11626</BrowseNodeId>
+              <Name>Catalogs &amp; Directories</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11472</BrowseNodeId>
+              <Name>Consumer Guides</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11475</BrowseNodeId>
+              <Name>Dictionaries &amp; Thesauruses</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11713</BrowseNodeId>
+              <Name>Encyclopedias &amp; Subject Guides</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11823</BrowseNodeId>
+              <Name>English as a Second Language</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11761</BrowseNodeId>
+              <Name>Etiquette</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11773</BrowseNodeId>
+              <Name>Foreign Language Study &amp; Reference</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11880</BrowseNodeId>
+              <Name>Genealogy</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11902</BrowseNodeId>
+              <Name>Quotations</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>8975382011</BrowseNodeId>
+              <Name>Survival &amp; Emergency Preparedness</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>5267710011</BrowseNodeId>
+              <Name>Test Preparation</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11970</BrowseNodeId>
+              <Name>Words, Language &amp; Grammar</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>5267707011</BrowseNodeId>
+              <Name>Writing, Research &amp; Publishing Guides</Name>
+            </BrowseNode>
+          </Children>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>1000</BrowseNodeId>
+              <Name>Subjects</Name>
+              <IsCategoryRoot>1</IsCategoryRoot>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>283155</BrowseNodeId>
+                  <Name>Books</Name>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>2349030011</BrowseNodeId>
+          <Name>Specialty Boutique</Name>
+          <Children>
+            <BrowseNode>
+              <BrowseNodeId>465600</BrowseNodeId>
+              <Name>New, Used &amp; Rental Textbooks</Name>
+            </BrowseNode>
+          </Children>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>283155</BrowseNodeId>
+              <Name>Books</Name>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>156140011</BrowseNodeId>
+          <Name>Programming</Name>
+          <Children>
+            <BrowseNode>
+              <BrowseNodeId>156141011</BrowseNodeId>
+              <Name>C &amp; C++</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>6361571011</BrowseNodeId>
+              <Name>Games</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>156143011</BrowseNodeId>
+              <Name>Java</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>6361573011</BrowseNodeId>
+              <Name>PHP</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>6361572011</BrowseNodeId>
+              <Name>Perl</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>6361574011</BrowseNodeId>
+              <Name>Python</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>6361576011</BrowseNodeId>
+              <Name>Ruby</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>156144011</BrowseNodeId>
+              <Name>Software Design</Name>
+            </BrowseNode>
+          </Children>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>156116011</BrowseNodeId>
+              <Name>Computers &amp; Technology</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>154606011</BrowseNodeId>
+                  <Name>Kindle eBooks</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>133141011</BrowseNodeId>
+                      <Name>Categories</Name>
+                      <IsCategoryRoot>1</IsCategoryRoot>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>133140011</BrowseNodeId>
+                          <Name>Kindle Store</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+      </BrowseNodes>
+    </Item>
+  </Items>
+</ItemLookupResponse>

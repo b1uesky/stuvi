@@ -1,0 +1,989 @@
+<?xml version="1.0"?>
+<ItemLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01">
+  <OperationRequest>
+    <HTTPHeaders>
+      <Header Name="UserAgent" Value="ApaiIO [2.0.0-DEV]"/>
+    </HTTPHeaders>
+    <RequestId>08303ab3-a9cd-4d50-a719-b663c98008c5</RequestId>
+    <Arguments>
+      <Argument Name="AWSAccessKeyId" Value="AKIAICSPEAJYPA3CBSNQ"/>
+      <Argument Name="AssociateTag" Value="stuvi07-20"/>
+      <Argument Name="IdType" Value="ISBN"/>
+      <Argument Name="ItemId" Value="9780321573513"/>
+      <Argument Name="Operation" Value="ItemLookup"/>
+      <Argument Name="ResponseGroup" Value="Large,Small"/>
+      <Argument Name="SearchIndex" Value="All"/>
+      <Argument Name="Service" Value="AWSECommerceService"/>
+      <Argument Name="Timestamp" Value="2015-07-08T20:24:21Z"/>
+      <Argument Name="Version" Value="2011-08-01"/>
+      <Argument Name="Signature" Value="/QccbpQmkPQSro1h5uvrVc3/0/7IoFgR+GoqRhUxw9E="/>
+    </Arguments>
+    <RequestProcessingTime>0.1288760000000000</RequestProcessingTime>
+  </OperationRequest>
+  <Items>
+    <Request>
+      <IsValid>True</IsValid>
+      <ItemLookupRequest>
+        <IdType>ISBN</IdType>
+        <ItemId>9780321573513</ItemId>
+        <ResponseGroup>Large</ResponseGroup>
+        <ResponseGroup>Small</ResponseGroup>
+        <SearchIndex>All</SearchIndex>
+        <VariationPage>All</VariationPage>
+      </ItemLookupRequest>
+    </Request>
+    <Item>
+      <ASIN>032157351X</ASIN>
+      <DetailPageURL>http://www.amazon.com/Algorithms-4th-Edition-Robert-Sedgewick/dp/032157351X%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D032157351X</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Technical Details</Description>
+          <URL>http://www.amazon.com/Algorithms-4th-Edition-Robert-Sedgewick/dp/tech-data/032157351X%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D032157351X</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Baby Registry</Description>
+          <URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3D032157351X%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D032157351X</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Wedding Registry</Description>
+          <URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3D032157351X%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D032157351X</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3D032157351X%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D032157351X</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.com/gp/pdp/taf/032157351X%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D032157351X</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.com/review/product/032157351X%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D032157351X</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.com/gp/offer-listing/032157351X%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D032157351X</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SalesRank>11042</SalesRank>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/51UDgHU9z9L._SL75_.jpg</URL>
+        <Height Units="pixels">75</Height>
+        <Width Units="pixels">61</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/51UDgHU9z9L._SL160_.jpg</URL>
+        <Height Units="pixels">160</Height>
+        <Width Units="pixels">130</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/51UDgHU9z9L.jpg</URL>
+        <Height Units="pixels">500</Height>
+        <Width Units="pixels">406</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category="variant">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/61PsY2AiJvL._SL30_.jpg</URL>
+            <Height Units="pixels">30</Height>
+            <Width Units="pixels">24</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/61PsY2AiJvL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">61</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/61PsY2AiJvL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">61</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/61PsY2AiJvL._SL110_.jpg</URL>
+            <Height Units="pixels">110</Height>
+            <Width Units="pixels">89</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/61PsY2AiJvL._SL160_.jpg</URL>
+            <Height Units="pixels">160</Height>
+            <Width Units="pixels">130</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/61PsY2AiJvL.jpg</URL>
+            <Height Units="pixels">500</Height>
+            <Width Units="pixels">406</Width>
+          </LargeImage>
+        </ImageSet>
+        <ImageSet Category="variant">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/31cT7VBl2zL._SL30_.jpg</URL>
+            <Height Units="pixels">30</Height>
+            <Width Units="pixels">22</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/31cT7VBl2zL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">56</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/31cT7VBl2zL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">56</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/31cT7VBl2zL._SL110_.jpg</URL>
+            <Height Units="pixels">110</Height>
+            <Width Units="pixels">82</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/31cT7VBl2zL._SL160_.jpg</URL>
+            <Height Units="pixels">160</Height>
+            <Width Units="pixels">120</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/31cT7VBl2zL.jpg</URL>
+            <Height Units="pixels">500</Height>
+            <Width Units="pixels">375</Width>
+          </LargeImage>
+        </ImageSet>
+        <ImageSet Category="primary">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/51UDgHU9z9L._SL30_.jpg</URL>
+            <Height Units="pixels">30</Height>
+            <Width Units="pixels">24</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/51UDgHU9z9L._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">61</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/51UDgHU9z9L._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">61</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/51UDgHU9z9L._SL110_.jpg</URL>
+            <Height Units="pixels">110</Height>
+            <Width Units="pixels">89</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/51UDgHU9z9L._SL160_.jpg</URL>
+            <Height Units="pixels">160</Height>
+            <Width Units="pixels">130</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/51UDgHU9z9L.jpg</URL>
+            <Height Units="pixels">500</Height>
+            <Width Units="pixels">406</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Robert Sedgewick</Author>
+        <Author>Kevin Wayne</Author>
+        <Binding>Hardcover</Binding>
+        <EAN>9780321573513</EAN>
+        <EANList>
+          <EANListElement>9780321573513</EANListElement>
+        </EANList>
+        <Edition>4th</Edition>
+        <ISBN>032157351X</ISBN>
+        <IsEligibleForTradeIn>1</IsEligibleForTradeIn>
+        <ItemDimensions>
+          <Height Units="hundredths-inches">920</Height>
+          <Length Units="hundredths-inches">760</Length>
+          <Weight Units="hundredths-pounds">320</Weight>
+          <Width Units="hundredths-inches">140</Width>
+        </ItemDimensions>
+        <Label>Addison-Wesley Professional</Label>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Original Language</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Unknown</Type>
+          </Language>
+        </Languages>
+        <ListPrice>
+          <Amount>8499</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$84.99</FormattedPrice>
+        </ListPrice>
+        <Manufacturer>Addison-Wesley Professional</Manufacturer>
+        <NumberOfItems>1</NumberOfItems>
+        <NumberOfPages>992</NumberOfPages>
+        <PackageDimensions>
+          <Height Units="hundredths-inches">150</Height>
+          <Length Units="hundredths-inches">940</Length>
+          <Weight Units="hundredths-pounds">320</Weight>
+          <Width Units="hundredths-inches">720</Width>
+        </PackageDimensions>
+        <PackageQuantity>1</PackageQuantity>
+        <ProductGroup>Book</ProductGroup>
+        <ProductTypeName>ABIS_BOOK</ProductTypeName>
+        <PublicationDate>2011-03-19</PublicationDate>
+        <Publisher>Addison-Wesley Professional</Publisher>
+        <Studio>Addison-Wesley Professional</Studio>
+        <Title>Algorithms (4th Edition)</Title>
+        <TradeInValue>
+          <Amount>3113</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$31.13</FormattedPrice>
+        </TradeInValue>
+      </ItemAttributes>
+      <OfferSummary>
+        <LowestNewPrice>
+          <Amount>5683</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$56.83</FormattedPrice>
+        </LowestNewPrice>
+        <LowestUsedPrice>
+          <Amount>5000</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$50.00</FormattedPrice>
+        </LowestUsedPrice>
+        <TotalNew>50</TotalNew>
+        <TotalUsed>52</TotalUsed>
+        <TotalCollectible>0</TotalCollectible>
+        <TotalRefurbished>0</TotalRefurbished>
+      </OfferSummary>
+      <Offers>
+        <TotalOffers>1</TotalOffers>
+        <TotalOfferPages>1</TotalOfferPages>
+        <MoreOffersUrl>http://www.amazon.com/gp/offer-listing/032157351X%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D032157351X</MoreOffersUrl>
+        <Offer>
+          <OfferAttributes>
+            <Condition>New</Condition>
+          </OfferAttributes>
+          <OfferListing>
+            <OfferListingId>nF5lSUPfe0J3XFGbTUbqnH9l2ZaVCSPp3qiUUSlD4eKJiX1YPxzT8rBF1ogvVQoO9jpso3TlyEkdYPQ8EnaX9qQe3qvhXOLeN%2BCNoHeK%2F0aM9ghnWWG8JA%3D%3D</OfferListingId>
+            <Price>
+              <Amount>6083</Amount>
+              <CurrencyCode>USD</CurrencyCode>
+              <FormattedPrice>$60.83</FormattedPrice>
+            </Price>
+            <AmountSaved>
+              <Amount>2416</Amount>
+              <CurrencyCode>USD</CurrencyCode>
+              <FormattedPrice>$24.16</FormattedPrice>
+            </AmountSaved>
+            <PercentageSaved>28</PercentageSaved>
+            <Availability>Usually ships in 24 hours</Availability>
+            <AvailabilityAttributes>
+              <AvailabilityType>now</AvailabilityType>
+              <MinimumHours>0</MinimumHours>
+              <MaximumHours>0</MaximumHours>
+            </AvailabilityAttributes>
+            <IsEligibleForSuperSaverShipping>1</IsEligibleForSuperSaverShipping>
+          </OfferListing>
+        </Offer>
+      </Offers>
+      <CustomerReviews>
+        <IFrameURL>http://www.amazon.com/reviews/iframe?akid=AKIAICSPEAJYPA3CBSNQ&amp;alinkCode=xm2&amp;asin=032157351X&amp;atag=stuvi07-20&amp;exp=2015-07-09T20%3A24%3A57Z&amp;v=2&amp;sig=VTLgBpEXEtewgXRO%2Bg4QK%2FPnILVVXfUNh7nt78ZlmxE%3D</IFrameURL>
+        <HasReviews>true</HasReviews>
+      </CustomerReviews>
+      <EditorialReviews>
+        <EditorialReview>
+          <Source>Product Description</Source>
+          <Content>&lt;p&gt;This fourth edition of Robert Sedgewick and Kevin Wayne&#x2019;s &lt;b&gt;Algorithms&lt;/b&gt; is the leading textbook on algorithms today and is widely used in colleges and universities worldwide. This book surveys the most important computer algorithms currently in use and provides a full treatment of data structures and algorithms for sorting, searching, graph processing, and string processing -- including fifty algorithms every programmer should know. In this edition, new Java implementations are written in an accessible modular programming style, where all of the code is exposed to the reader and ready to use.&lt;/p&gt;  &lt;p&gt;The algorithms in this book represent a body of knowledge developed over the last 50 years that has become indispensable, not just for professional programmers and computer science students but for any student with interests in science, mathematics, and engineering, not to mention students who use computation in the liberal arts.&lt;/p&gt;  &lt;p&gt;The companion web site, algs4.cs.princeton.edu contains &lt;/p&gt;  &lt;LI TYPE=CIRCLE&gt;An online synopsis&lt;/li&gt;  &lt;LI TYPE=CIRCLE&gt;Full Java implementations&lt;/li&gt;  &lt;LI TYPE=CIRCLE&gt;Test data&lt;/li&gt;  &lt;LI TYPE=CIRCLE&gt;Exercises and answers&lt;/li&gt;  &lt;LI TYPE=CIRCLE&gt;Dynamic visualizations&lt;/li&gt;  &lt;LI TYPE=CIRCLE&gt;Lecture slides&lt;/li&gt;  &lt;LI TYPE=CIRCLE&gt;Programming assignments with checklists&lt;/li&gt;  &lt;LI TYPE=CIRCLE&gt;Links to related material&lt;/li&gt;  &lt;br&gt;  &lt;p&gt;The MOOC related to this book is accessible via the "Online Course" link at algs4.cs.princeton.edu. The course offers more than 100 video lecture segments that are integrated with the text, extensive online assessments, and the large-scale discussion forums that have proven so valuable. Offered each fall and spring, this course regularly attracts tens of thousands of registrants.&lt;/p&gt;  &lt;p&gt;Robert Sedgewick and Kevin Wayne are developing a modern approach to disseminating knowledge that fully embraces technology, enabling people all around the world to discover new ways of learning and teaching. By integrating their textbook, online content, and MOOC, all at the state of the art, they have built a unique resource that greatly expands the breadth and depth of the educational experience.&lt;/p&gt;</Content>
+          <IsLinkSuppressed>0</IsLinkSuppressed>
+        </EditorialReview>
+      </EditorialReviews>
+      <SimilarProducts>
+        <SimilarProduct>
+          <ASIN>098478280X</ASIN>
+          <Title>Cracking the Coding Interview: 150 Programming Questions and Solutions</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>0262033844</ASIN>
+          <Title>Introduction to Algorithms, 3rd Edition</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>1479274836</ASIN>
+          <Title>Elements of Programming Interviews: The Insiders' Guide</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>0984782850</ASIN>
+          <Title>Cracking the Coding Interview, 6th Edition: 189 Programming Questions and Solutions</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>1468108867</ASIN>
+          <Title>Data Structures and Algorithms Made Easy: Data Structure and Algorithmic Puzzles, Second Edition</Title>
+        </SimilarProduct>
+      </SimilarProducts>
+      <BrowseNodes>
+        <BrowseNode>
+          <BrowseNodeId>602672</BrowseNodeId>
+          <Name>Systems Analysis &amp; Design</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>3508</BrowseNodeId>
+              <Name>Computer Science</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>5</BrowseNodeId>
+                  <Name>Computers &amp; Technology</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>1000</BrowseNodeId>
+                      <Name>Subjects</Name>
+                      <IsCategoryRoot>1</IsCategoryRoot>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>283155</BrowseNodeId>
+                          <Name>Books</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>3870</BrowseNodeId>
+          <Name>Algorithms</Name>
+          <Children>
+            <BrowseNode>
+              <BrowseNodeId>132570011</BrowseNodeId>
+              <Name>Data Structures</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>3880</BrowseNodeId>
+              <Name>Genetic</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>3882</BrowseNodeId>
+              <Name>Memory Management</Name>
+            </BrowseNode>
+          </Children>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>3839</BrowseNodeId>
+              <Name>Programming</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>5</BrowseNodeId>
+                  <Name>Computers &amp; Technology</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>1000</BrowseNodeId>
+                      <Name>Subjects</Name>
+                      <IsCategoryRoot>1</IsCategoryRoot>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>283155</BrowseNodeId>
+                          <Name>Books</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>4019</BrowseNodeId>
+          <Name>Structured Design</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>4011</BrowseNodeId>
+              <Name>Software Design, Testing &amp; Engineering</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>3839</BrowseNodeId>
+                  <Name>Programming</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>5</BrowseNodeId>
+                      <Name>Computers &amp; Technology</Name>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>1000</BrowseNodeId>
+                          <Name>Subjects</Name>
+                          <IsCategoryRoot>1</IsCategoryRoot>
+                          <Ancestors>
+                            <BrowseNode>
+                              <BrowseNodeId>283155</BrowseNodeId>
+                              <Name>Books</Name>
+                            </BrowseNode>
+                          </Ancestors>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>21</BrowseNodeId>
+          <Name>Reference &amp; Test Preparation</Name>
+          <Children>
+            <BrowseNode>
+              <BrowseNodeId>11444</BrowseNodeId>
+              <Name>Almanacs &amp; Yearbooks</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11448</BrowseNodeId>
+              <Name>Atlases &amp; Maps</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>2572</BrowseNodeId>
+              <Name>Careers</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11626</BrowseNodeId>
+              <Name>Catalogs &amp; Directories</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11472</BrowseNodeId>
+              <Name>Consumer Guides</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11475</BrowseNodeId>
+              <Name>Dictionaries &amp; Thesauruses</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11713</BrowseNodeId>
+              <Name>Encyclopedias &amp; Subject Guides</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11823</BrowseNodeId>
+              <Name>English as a Second Language</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11761</BrowseNodeId>
+              <Name>Etiquette</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11773</BrowseNodeId>
+              <Name>Foreign Language Study &amp; Reference</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11880</BrowseNodeId>
+              <Name>Genealogy</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11902</BrowseNodeId>
+              <Name>Quotations</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>8975382011</BrowseNodeId>
+              <Name>Survival &amp; Emergency Preparedness</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>5267710011</BrowseNodeId>
+              <Name>Test Preparation</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11970</BrowseNodeId>
+              <Name>Words, Language &amp; Grammar</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>5267707011</BrowseNodeId>
+              <Name>Writing, Research &amp; Publishing Guides</Name>
+            </BrowseNode>
+          </Children>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>1000</BrowseNodeId>
+              <Name>Subjects</Name>
+              <IsCategoryRoot>1</IsCategoryRoot>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>283155</BrowseNodeId>
+                  <Name>Books</Name>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>491298</BrowseNodeId>
+          <Name>Algorithms</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>468204</BrowseNodeId>
+              <Name>Computer Science</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>465600</BrowseNodeId>
+                  <Name>New, Used &amp; Rental Textbooks</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>2349030011</BrowseNodeId>
+                      <Name>Specialty Boutique</Name>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>283155</BrowseNodeId>
+                          <Name>Books</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+      </BrowseNodes>
+    </Item>
+    <Item>
+      <ASIN>B004P8J1NA</ASIN>
+      <DetailPageURL>http://www.amazon.com/Algorithms-4th-Edition-Robert-Sedgewick-ebook/dp/B004P8J1NA%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB004P8J1NA</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Technical Details</Description>
+          <URL>http://www.amazon.com/Algorithms-4th-Edition-Robert-Sedgewick-ebook/dp/tech-data/B004P8J1NA%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004P8J1NA</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Baby Registry</Description>
+          <URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB004P8J1NA%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004P8J1NA</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Wedding Registry</Description>
+          <URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB004P8J1NA%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004P8J1NA</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB004P8J1NA%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004P8J1NA</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.com/gp/pdp/taf/B004P8J1NA%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004P8J1NA</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.com/review/product/B004P8J1NA%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004P8J1NA</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.com/gp/offer-listing/B004P8J1NA%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB004P8J1NA</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SalesRank>54502</SalesRank>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/41SRhYah3AL._SL75_.jpg</URL>
+        <Height Units="pixels">75</Height>
+        <Width Units="pixels">60</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/41SRhYah3AL._SL160_.jpg</URL>
+        <Height Units="pixels">160</Height>
+        <Width Units="pixels">129</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/41SRhYah3AL.jpg</URL>
+        <Height Units="pixels">500</Height>
+        <Width Units="pixels">402</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category="primary">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/41SRhYah3AL._SL30_.jpg</URL>
+            <Height Units="pixels">30</Height>
+            <Width Units="pixels">24</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/41SRhYah3AL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">60</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/41SRhYah3AL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">60</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/41SRhYah3AL._SL110_.jpg</URL>
+            <Height Units="pixels">110</Height>
+            <Width Units="pixels">88</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/41SRhYah3AL._SL160_.jpg</URL>
+            <Height Units="pixels">160</Height>
+            <Width Units="pixels">129</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/41SRhYah3AL.jpg</URL>
+            <Height Units="pixels">500</Height>
+            <Width Units="pixels">402</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Robert Sedgewick</Author>
+        <Author>Kevin Wayne</Author>
+        <Binding>Kindle Edition</Binding>
+        <Edition>4</Edition>
+        <EISBN>9780132762564</EISBN>
+        <Format>Kindle eBook</Format>
+        <Label>Addison-Wesley Professional</Label>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+        </Languages>
+        <Manufacturer>Addison-Wesley Professional</Manufacturer>
+        <NumberOfPages>992</NumberOfPages>
+        <ProductGroup>eBooks</ProductGroup>
+        <ProductTypeName>ABIS_EBOOKS</ProductTypeName>
+        <PublicationDate>2011-02-21</PublicationDate>
+        <Publisher>Addison-Wesley Professional</Publisher>
+        <ReleaseDate>2011-02-21</ReleaseDate>
+        <Studio>Addison-Wesley Professional</Studio>
+        <Title>Algorithms (4th Edition)</Title>
+      </ItemAttributes>
+      <CustomerReviews>
+        <IFrameURL>http://www.amazon.com/reviews/iframe?akid=AKIAICSPEAJYPA3CBSNQ&amp;alinkCode=xm2&amp;asin=B004P8J1NA&amp;atag=stuvi07-20&amp;exp=2015-07-09T20%3A24%3A57Z&amp;v=2&amp;sig=DCmU9DkNese%2BgsSVX7EpsiJVR3RBSZYo%2BRKQ45fS0JY%3D</IFrameURL>
+        <HasReviews>true</HasReviews>
+      </CustomerReviews>
+      <EditorialReviews>
+        <EditorialReview>
+          <Source>Product Description</Source>
+          <Content>&lt;P&gt;This is the eBook version of the printed book.&lt;/P&gt;&lt;B&gt; &lt;P style="MARGIN: 0px"&gt;Essential Information about Algorithms and Data Structures&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&lt;/B&gt;&#xA0;&lt;/P&gt;&lt;I&gt; &lt;P style="MARGIN: 0px"&gt;A Classic Reference&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&lt;/I&gt;The latest version of Sedgewick&#x2019;s best-selling series, reflecting an indispensable body of knowledge developed over the past several decades. &lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt;&lt;I&gt; &lt;P style="MARGIN: 0px"&gt;Broad Coverage&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&lt;/I&gt;Full treatment of data structures and algorithms for sorting, searching, graph processing, and string processing, including fifty algorithms every programmer should know.&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt;&lt;I&gt; &lt;P style="MARGIN: 0px"&gt;Completely Revised Code&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&lt;/I&gt;New Java implementations written in an accessible modular programming style, where all of the code is exposed to the reader and ready to use.&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt;&lt;I&gt; &lt;P style="MARGIN: 0px"&gt;Engages with Applications&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&lt;/I&gt;Algorithms are studied in the context of important scientific, engineering, and commercial applications. Clients and algorithms are expressed in real code, not the pseudo-code found in many other books.&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt;&lt;I&gt; &lt;P style="MARGIN: 0px"&gt;Intellectually Stimulating&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&lt;/I&gt;Engages reader interest with clear, concise text, detailed examples with visuals, carefully crafted code, historical and scientific context, and exercises at all levels.&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt;&lt;I&gt; &lt;P style="MARGIN: 0px"&gt;A Scientific Approach&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&lt;/I&gt;Develops precise statements about performance, supported by appropriate mathematical models and empirical studies validating those models.&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&lt;B&gt;Contents&lt;/B&gt;&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Chapter 1: Fundamentals&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Programming Model&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Data Abstraction&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Bags, Stacks, and Queues&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Analysis of Algorithms&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Case Study: Union-Find&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Chapter 2: Sorting&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Elementary Sorts&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Mergesort&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Quicksort&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Priority Queues&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Applications&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Chapter 3: Searching&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Symbol Tables&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Binary Search Trees&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Balanced Search Trees&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Hash Tables&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Applications&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Chapter 4: Graphs&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Undirected Graphs&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Directed Graphs&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Minimum Spanning Trees&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Shortest Paths&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Chapter 5: Strings&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;String Sorts&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Tries&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Substring Search&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Regular Expressions&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Data Compression&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Chapter 6: Context&lt;/P&gt;</Content>
+          <IsLinkSuppressed>0</IsLinkSuppressed>
+        </EditorialReview>
+        <EditorialReview>
+          <Source>Product Description</Source>
+          <Content>&lt;P&gt;This is the eBook version of the printed book.&lt;/P&gt;&lt;B&gt; &lt;P style="MARGIN: 0px"&gt;Essential Information about Algorithms and Data Structures&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&lt;/B&gt;&#xA0;&lt;/P&gt;&lt;I&gt; &lt;P style="MARGIN: 0px"&gt;A Classic Reference&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&lt;/I&gt;The latest version of Sedgewick&#x2019;s best-selling series, reflecting an indispensable body of knowledge developed over the past several decades. &lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt;&lt;I&gt; &lt;P style="MARGIN: 0px"&gt;Broad Coverage&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&lt;/I&gt;Full treatment of data structures and algorithms for sorting, searching, graph processing, and string processing, including fifty algorithms every programmer should know.&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt;&lt;I&gt; &lt;P style="MARGIN: 0px"&gt;Completely Revised Code&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&lt;/I&gt;New Java implementations written in an accessible modular programming style, where all of the code is exposed to the reader and ready to use.&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt;&lt;I&gt; &lt;P style="MARGIN: 0px"&gt;Engages with Applications&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&lt;/I&gt;Algorithms are studied in the context of important scientific, engineering, and commercial applications. Clients and algorithms are expressed in real code, not the pseudo-code found in many other books.&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt;&lt;I&gt; &lt;P style="MARGIN: 0px"&gt;Intellectually Stimulating&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&lt;/I&gt;Engages reader interest with clear, concise text, detailed examples with visuals, carefully crafted code, historical and scientific context, and exercises at all levels.&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt;&lt;I&gt; &lt;P style="MARGIN: 0px"&gt;A Scientific Approach&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&lt;/I&gt;Develops precise statements about performance, supported by appropriate mathematical models and empirical studies validating those models.&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&lt;B&gt;Contents&lt;/B&gt;&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Chapter 1: Fundamentals&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Programming Model&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Data Abstraction&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Bags, Stacks, and Queues&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Analysis of Algorithms&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Case Study: Union-Find&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Chapter 2: Sorting&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Elementary Sorts&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Mergesort&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Quicksort&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Priority Queues&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Applications&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Chapter 3: Searching&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Symbol Tables&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Binary Search Trees&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Balanced Search Trees&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Hash Tables&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Applications&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Chapter 4: Graphs&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Undirected Graphs&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Directed Graphs&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Minimum Spanning Trees&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Shortest Paths&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Chapter 5: Strings&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;String Sorts&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Tries&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Substring Search&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Regular Expressions&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Data Compression&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;&#xA0;&lt;/P&gt; &lt;P style="MARGIN: 0px"&gt;Chapter 6: Context&lt;/P&gt;</Content>
+          <IsLinkSuppressed>0</IsLinkSuppressed>
+        </EditorialReview>
+      </EditorialReviews>
+      <SimilarProducts>
+        <SimilarProduct>
+          <ASIN>B007CNRCAO</ASIN>
+          <Title>Introduction to Algorithms</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>B00B8139Z8</ASIN>
+          <Title>The Algorithm Design Manual</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>B008SGNJOW</ASIN>
+          <Title>Programming Interviews Exposed: Secrets to Landing Your Next Job</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>B00B3TB7IQ</ASIN>
+          <Title>An Introduction to the Analysis of Algorithms (2nd Edition)</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>B00PKH9XAG</ASIN>
+          <Title>From Mathematics to Generic Programming</Title>
+        </SimilarProduct>
+      </SimilarProducts>
+      <BrowseNodes>
+        <BrowseNode>
+          <BrowseNodeId>602672</BrowseNodeId>
+          <Name>Systems Analysis &amp; Design</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>3508</BrowseNodeId>
+              <Name>Computer Science</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>5</BrowseNodeId>
+                  <Name>Computers &amp; Technology</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>1000</BrowseNodeId>
+                      <Name>Subjects</Name>
+                      <IsCategoryRoot>1</IsCategoryRoot>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>283155</BrowseNodeId>
+                          <Name>Books</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>3870</BrowseNodeId>
+          <Name>Algorithms</Name>
+          <Children>
+            <BrowseNode>
+              <BrowseNodeId>132570011</BrowseNodeId>
+              <Name>Data Structures</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>3880</BrowseNodeId>
+              <Name>Genetic</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>3882</BrowseNodeId>
+              <Name>Memory Management</Name>
+            </BrowseNode>
+          </Children>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>3839</BrowseNodeId>
+              <Name>Programming</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>5</BrowseNodeId>
+                  <Name>Computers &amp; Technology</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>1000</BrowseNodeId>
+                      <Name>Subjects</Name>
+                      <IsCategoryRoot>1</IsCategoryRoot>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>283155</BrowseNodeId>
+                          <Name>Books</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>4019</BrowseNodeId>
+          <Name>Structured Design</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>4011</BrowseNodeId>
+              <Name>Software Design, Testing &amp; Engineering</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>3839</BrowseNodeId>
+                  <Name>Programming</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>5</BrowseNodeId>
+                      <Name>Computers &amp; Technology</Name>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>1000</BrowseNodeId>
+                          <Name>Subjects</Name>
+                          <IsCategoryRoot>1</IsCategoryRoot>
+                          <Ancestors>
+                            <BrowseNode>
+                              <BrowseNodeId>283155</BrowseNodeId>
+                              <Name>Books</Name>
+                            </BrowseNode>
+                          </Ancestors>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>21</BrowseNodeId>
+          <Name>Reference &amp; Test Preparation</Name>
+          <Children>
+            <BrowseNode>
+              <BrowseNodeId>11444</BrowseNodeId>
+              <Name>Almanacs &amp; Yearbooks</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11448</BrowseNodeId>
+              <Name>Atlases &amp; Maps</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>2572</BrowseNodeId>
+              <Name>Careers</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11626</BrowseNodeId>
+              <Name>Catalogs &amp; Directories</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11472</BrowseNodeId>
+              <Name>Consumer Guides</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11475</BrowseNodeId>
+              <Name>Dictionaries &amp; Thesauruses</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11713</BrowseNodeId>
+              <Name>Encyclopedias &amp; Subject Guides</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11823</BrowseNodeId>
+              <Name>English as a Second Language</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11761</BrowseNodeId>
+              <Name>Etiquette</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11773</BrowseNodeId>
+              <Name>Foreign Language Study &amp; Reference</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11880</BrowseNodeId>
+              <Name>Genealogy</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11902</BrowseNodeId>
+              <Name>Quotations</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>8975382011</BrowseNodeId>
+              <Name>Survival &amp; Emergency Preparedness</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>5267710011</BrowseNodeId>
+              <Name>Test Preparation</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>11970</BrowseNodeId>
+              <Name>Words, Language &amp; Grammar</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>5267707011</BrowseNodeId>
+              <Name>Writing, Research &amp; Publishing Guides</Name>
+            </BrowseNode>
+          </Children>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>1000</BrowseNodeId>
+              <Name>Subjects</Name>
+              <IsCategoryRoot>1</IsCategoryRoot>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>283155</BrowseNodeId>
+                  <Name>Books</Name>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>2349030011</BrowseNodeId>
+          <Name>Specialty Boutique</Name>
+          <Children>
+            <BrowseNode>
+              <BrowseNodeId>465600</BrowseNodeId>
+              <Name>New, Used &amp; Rental Textbooks</Name>
+            </BrowseNode>
+          </Children>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>283155</BrowseNodeId>
+              <Name>Books</Name>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>156140011</BrowseNodeId>
+          <Name>Programming</Name>
+          <Children>
+            <BrowseNode>
+              <BrowseNodeId>156141011</BrowseNodeId>
+              <Name>C &amp; C++</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>6361571011</BrowseNodeId>
+              <Name>Games</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>156143011</BrowseNodeId>
+              <Name>Java</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>6361573011</BrowseNodeId>
+              <Name>PHP</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>6361572011</BrowseNodeId>
+              <Name>Perl</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>6361574011</BrowseNodeId>
+              <Name>Python</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>6361576011</BrowseNodeId>
+              <Name>Ruby</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>156144011</BrowseNodeId>
+              <Name>Software Design</Name>
+            </BrowseNode>
+          </Children>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>156116011</BrowseNodeId>
+              <Name>Computers &amp; Technology</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>154606011</BrowseNodeId>
+                  <Name>Kindle eBooks</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>133141011</BrowseNodeId>
+                      <Name>Categories</Name>
+                      <IsCategoryRoot>1</IsCategoryRoot>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>133140011</BrowseNodeId>
+                          <Name>Kindle Store</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>156150011</BrowseNodeId>
+          <Name>Systems Analysis &amp; Design</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>156116011</BrowseNodeId>
+              <Name>Computers &amp; Technology</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>154606011</BrowseNodeId>
+                  <Name>Kindle eBooks</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>133141011</BrowseNodeId>
+                      <Name>Categories</Name>
+                      <IsCategoryRoot>1</IsCategoryRoot>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>133140011</BrowseNodeId>
+                          <Name>Kindle Store</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+      </BrowseNodes>
+    </Item>
+  </Items>
+</ItemLookupResponse>

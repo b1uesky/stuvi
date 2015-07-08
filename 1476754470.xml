@@ -1,0 +1,555 @@
+<?xml version="1.0"?>
+<ItemLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01">
+  <OperationRequest>
+    <HTTPHeaders>
+      <Header Name="UserAgent" Value="ApaiIO [2.0.0-DEV]"/>
+    </HTTPHeaders>
+    <RequestId>089b92ca-41df-4ad2-9065-0790b6a08de5</RequestId>
+    <Arguments>
+      <Argument Name="AWSAccessKeyId" Value="AKIAICSPEAJYPA3CBSNQ"/>
+      <Argument Name="AssociateTag" Value="stuvi07-20"/>
+      <Argument Name="IdType" Value="ISBN"/>
+      <Argument Name="ItemId" Value="1476754470"/>
+      <Argument Name="Operation" Value="ItemLookup"/>
+      <Argument Name="ResponseGroup" Value="Large,Small"/>
+      <Argument Name="SearchIndex" Value="All"/>
+      <Argument Name="Service" Value="AWSECommerceService"/>
+      <Argument Name="Timestamp" Value="2015-07-08T20:24:24Z"/>
+      <Argument Name="Version" Value="2011-08-01"/>
+      <Argument Name="Signature" Value="oZC+ou7HdkrRkyyM6LrZZ6Ascqg8kUd4ogX8dgAZ6lE="/>
+    </Arguments>
+    <RequestProcessingTime>0.0663700000000000</RequestProcessingTime>
+  </OperationRequest>
+  <Items>
+    <Request>
+      <IsValid>True</IsValid>
+      <ItemLookupRequest>
+        <IdType>ISBN</IdType>
+        <ItemId>1476754470</ItemId>
+        <ResponseGroup>Large</ResponseGroup>
+        <ResponseGroup>Small</ResponseGroup>
+        <SearchIndex>All</SearchIndex>
+        <VariationPage>All</VariationPage>
+      </ItemLookupRequest>
+    </Request>
+    <Item>
+      <ASIN>1476754470</ASIN>
+      <DetailPageURL>http://www.amazon.com/Mr-Mercedes-Novel-Stephen-King/dp/1476754470%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D1476754470</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Technical Details</Description>
+          <URL>http://www.amazon.com/Mr-Mercedes-Novel-Stephen-King/dp/tech-data/1476754470%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1476754470</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Baby Registry</Description>
+          <URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3D1476754470%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1476754470</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Wedding Registry</Description>
+          <URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3D1476754470%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1476754470</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3D1476754470%26SubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1476754470</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.com/gp/pdp/taf/1476754470%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1476754470</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.com/review/product/1476754470%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1476754470</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.com/gp/offer-listing/1476754470%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1476754470</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SalesRank>501</SalesRank>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/51Dw8bn8%2BSL._SL75_.jpg</URL>
+        <Height Units="pixels">75</Height>
+        <Width Units="pixels">48</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/51Dw8bn8%2BSL._SL160_.jpg</URL>
+        <Height Units="pixels">160</Height>
+        <Width Units="pixels">103</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/51Dw8bn8%2BSL.jpg</URL>
+        <Height Units="pixels">500</Height>
+        <Width Units="pixels">323</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category="variant">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/51m8w4WBUhL._SL30_.jpg</URL>
+            <Height Units="pixels">30</Height>
+            <Width Units="pixels">19</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/51m8w4WBUhL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">48</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/51m8w4WBUhL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">48</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/51m8w4WBUhL._SL110_.jpg</URL>
+            <Height Units="pixels">110</Height>
+            <Width Units="pixels">71</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/51m8w4WBUhL._SL160_.jpg</URL>
+            <Height Units="pixels">160</Height>
+            <Width Units="pixels">103</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/51m8w4WBUhL.jpg</URL>
+            <Height Units="pixels">500</Height>
+            <Width Units="pixels">323</Width>
+          </LargeImage>
+        </ImageSet>
+        <ImageSet Category="primary">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/51Dw8bn8%2BSL._SL30_.jpg</URL>
+            <Height Units="pixels">30</Height>
+            <Width Units="pixels">19</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/51Dw8bn8%2BSL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">48</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/51Dw8bn8%2BSL._SL75_.jpg</URL>
+            <Height Units="pixels">75</Height>
+            <Width Units="pixels">48</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/51Dw8bn8%2BSL._SL110_.jpg</URL>
+            <Height Units="pixels">110</Height>
+            <Width Units="pixels">71</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/51Dw8bn8%2BSL._SL160_.jpg</URL>
+            <Height Units="pixels">160</Height>
+            <Width Units="pixels">103</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/51Dw8bn8%2BSL.jpg</URL>
+            <Height Units="pixels">500</Height>
+            <Width Units="pixels">323</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Stephen King</Author>
+        <Binding>Paperback</Binding>
+        <Brand>Stephen King</Brand>
+        <CatalogNumberList>
+          <CatalogNumberListElement>316468</CatalogNumberListElement>
+        </CatalogNumberList>
+        <EAN>9781476754475</EAN>
+        <EANList>
+          <EANListElement>9781476754475</EANListElement>
+        </EANList>
+        <Edition>Reprint</Edition>
+        <ISBN>1476754470</ISBN>
+        <ItemDimensions>
+          <Height Units="hundredths-inches">825</Height>
+          <Length Units="hundredths-inches">531</Length>
+          <Weight Units="hundredths-pounds">120</Weight>
+          <Width Units="hundredths-inches">130</Width>
+        </ItemDimensions>
+        <Label>Gallery Books</Label>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Original Language</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Unknown</Type>
+          </Language>
+        </Languages>
+        <ListPrice>
+          <Amount>1700</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$17.00</FormattedPrice>
+        </ListPrice>
+        <Manufacturer>Gallery Books</Manufacturer>
+        <MPN>316468</MPN>
+        <NumberOfItems>1</NumberOfItems>
+        <NumberOfPages>448</NumberOfPages>
+        <PackageDimensions>
+          <Height Units="hundredths-inches">130</Height>
+          <Length Units="hundredths-inches">820</Length>
+          <Weight Units="hundredths-pounds">85</Weight>
+          <Width Units="hundredths-inches">530</Width>
+        </PackageDimensions>
+        <PackageQuantity>1</PackageQuantity>
+        <PartNumber>316468</PartNumber>
+        <ProductGroup>Book</ProductGroup>
+        <ProductTypeName>ABIS_BOOK</ProductTypeName>
+        <PublicationDate>2015-01-06</PublicationDate>
+        <Publisher>Gallery Books</Publisher>
+        <ReleaseDate>2015-01-06</ReleaseDate>
+        <Studio>Gallery Books</Studio>
+        <Title>Mr. Mercedes: A Novel</Title>
+      </ItemAttributes>
+      <OfferSummary>
+        <LowestNewPrice>
+          <Amount>534</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$5.34</FormattedPrice>
+        </LowestNewPrice>
+        <LowestUsedPrice>
+          <Amount>510</Amount>
+          <CurrencyCode>USD</CurrencyCode>
+          <FormattedPrice>$5.10</FormattedPrice>
+        </LowestUsedPrice>
+        <TotalNew>71</TotalNew>
+        <TotalUsed>42</TotalUsed>
+        <TotalCollectible>0</TotalCollectible>
+        <TotalRefurbished>0</TotalRefurbished>
+      </OfferSummary>
+      <Offers>
+        <TotalOffers>1</TotalOffers>
+        <TotalOfferPages>1</TotalOfferPages>
+        <MoreOffersUrl>http://www.amazon.com/gp/offer-listing/1476754470%3FSubscriptionId%3DAKIAICSPEAJYPA3CBSNQ%26tag%3Dstuvi07-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3D1476754470</MoreOffersUrl>
+        <Offer>
+          <OfferAttributes>
+            <Condition>New</Condition>
+          </OfferAttributes>
+          <OfferListing>
+            <OfferListingId>K9wjvx6sCVS0BeGTjnK0UPPDzCzFn0PI6fQFuOuRH4yQqhYr6ipX%2Bu8Ry12G3VLkaUu5NX8wjMpPCYiJ5icGkh4kTNic9IRH5MycgRq1x5sRbiHooxYC3Q%3D%3D</OfferListingId>
+            <Price>
+              <Amount>1164</Amount>
+              <CurrencyCode>USD</CurrencyCode>
+              <FormattedPrice>$11.64</FormattedPrice>
+            </Price>
+            <AmountSaved>
+              <Amount>536</Amount>
+              <CurrencyCode>USD</CurrencyCode>
+              <FormattedPrice>$5.36</FormattedPrice>
+            </AmountSaved>
+            <PercentageSaved>32</PercentageSaved>
+            <Availability>Usually ships in 24 hours</Availability>
+            <AvailabilityAttributes>
+              <AvailabilityType>now</AvailabilityType>
+              <MinimumHours>0</MinimumHours>
+              <MaximumHours>0</MaximumHours>
+            </AvailabilityAttributes>
+            <IsEligibleForSuperSaverShipping>1</IsEligibleForSuperSaverShipping>
+          </OfferListing>
+        </Offer>
+      </Offers>
+      <CustomerReviews>
+        <IFrameURL>http://www.amazon.com/reviews/iframe?akid=AKIAICSPEAJYPA3CBSNQ&amp;alinkCode=xm2&amp;asin=1476754470&amp;atag=stuvi07-20&amp;exp=2015-07-09T20%3A24%3A59Z&amp;v=2&amp;sig=jgoh1pAXuvPbrPRGuoRLMff546%2BAN0wxVTDFeC5lBJU%3D</IFrameURL>
+        <HasReviews>true</HasReviews>
+      </CustomerReviews>
+      <EditorialReviews>
+        <EditorialReview>
+          <Source>Product Description</Source>
+          <Content>WINNER OF THE 2015 EDGAR AWARD FOR BEST NOVEL&lt;BR&gt; #1 &lt;i&gt;New York Times &lt;/i&gt;bestseller! In a high-suspense race against time, three of the most unlikely heroes Stephen King has ever created try to stop a lone killer from blowing up thousands. &#x201C;&lt;i&gt;Mr. Mercedes&lt;/i&gt; is a rich, resonant, exceptionally readable accomplishment by a man who can write in whatever genre he chooses&#x201D; (&lt;i&gt;The Washington Post&lt;/i&gt;).&lt;BR&gt;&lt;BR&gt;In the frigid pre-dawn hours, in a distressed Midwestern city, desperate unemployed folks are lined up for a spot at a job fair. Without warning, a lone driver plows through the crowd in a stolen Mercedes, running over the innocent, backing up, and charging again. Eight people are killed; fifteen are wounded. The killer escapes.&lt;BR&gt; &lt;BR&gt; In another part of town, months later, a retired cop named Bill Hodges is still haunted by the unsolved crime. When he gets a crazed letter from someone who self-identifies as the &#x201C;perk&#x201D; and threatens an even more diabolical attack, Hodges wakes up from his depressed and vacant retirement, hell-bent on preventing another tragedy.&lt;BR&gt; &lt;BR&gt; Brady Hartsfield lives with his alcoholic mother in the house where he was born. He loved the feel of death under the wheels of the Mercedes, and he wants that rush again. Only Bill Hodges, with two new, unusual allies, can apprehend the killer before he strikes again. And they have no time to lose, because Brady&#x2019;s next mission, if it succeeds, will kill or maim thousands.&lt;BR&gt; &lt;BR&gt; &lt;i&gt;Mr. Mercedes&lt;/i&gt; is a war between good and evil, from the master of suspense whose insight into the mind of this obsessed, insane killer is chilling and unforgettable.</Content>
+          <IsLinkSuppressed>0</IsLinkSuppressed>
+        </EditorialReview>
+      </EditorialReviews>
+      <SimilarProducts>
+        <SimilarProduct>
+          <ASIN>1501100076</ASIN>
+          <Title>Finders Keepers: A Novel</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>1451698852</ASIN>
+          <Title>Doctor Sleep</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>1476770395</ASIN>
+          <Title>Revival: A Novel</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>1451627297</ASIN>
+          <Title>11/22/63: A Novel</Title>
+        </SimilarProduct>
+        <SimilarProduct>
+          <ASIN>0393350789</ASIN>
+          <Title>Dry Bones in the Valley: A Novel</Title>
+        </SimilarProduct>
+      </SimilarProducts>
+      <BrowseNodes>
+        <BrowseNode>
+          <BrowseNodeId>49</BrowseNodeId>
+          <Name>Horror</Name>
+          <Children>
+            <BrowseNode>
+              <BrowseNodeId>5434</BrowseNodeId>
+              <Name>Anthologies</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>9805</BrowseNodeId>
+              <Name>British &amp; Irish</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>9803</BrowseNodeId>
+              <Name>Dark Fantasy</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>9807</BrowseNodeId>
+              <Name>Erotic Horror</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>9810</BrowseNodeId>
+              <Name>Ghosts</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>9814</BrowseNodeId>
+              <Name>Occult</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>9815</BrowseNodeId>
+              <Name>Reference</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>5432</BrowseNodeId>
+              <Name>United States</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>9817</BrowseNodeId>
+              <Name>Vampires</Name>
+            </BrowseNode>
+          </Children>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>10134</BrowseNodeId>
+              <Name>Genre Fiction</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>17</BrowseNodeId>
+                  <Name>Literature &amp; Fiction</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>1000</BrowseNodeId>
+                      <Name>Subjects</Name>
+                      <IsCategoryRoot>1</IsCategoryRoot>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>283155</BrowseNodeId>
+                          <Name>Books</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>9822</BrowseNodeId>
+          <Name>United States</Name>
+          <Children>
+            <BrowseNode>
+              <BrowseNodeId>9823</BrowseNodeId>
+              <Name>African American</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>9857</BrowseNodeId>
+              <Name>Asian American</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>9882</BrowseNodeId>
+              <Name>Classics</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>524198</BrowseNodeId>
+              <Name>Anthologies</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>2160</BrowseNodeId>
+              <Name>Drama</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>9926</BrowseNodeId>
+              <Name>Hispanic</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>16004731</BrowseNodeId>
+              <Name>Humor</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>9955</BrowseNodeId>
+              <Name>Native American</Name>
+            </BrowseNode>
+            <BrowseNode>
+              <BrowseNodeId>9966</BrowseNodeId>
+              <Name>Poetry</Name>
+            </BrowseNode>
+          </Children>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>17</BrowseNodeId>
+              <Name>Literature &amp; Fiction</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>1000</BrowseNodeId>
+                  <Name>Subjects</Name>
+                  <IsCategoryRoot>1</IsCategoryRoot>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>283155</BrowseNodeId>
+                      <Name>Books</Name>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>10495</BrowseNodeId>
+          <Name>Suspense</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>10484</BrowseNodeId>
+              <Name>Thrillers &amp; Suspense</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>18</BrowseNodeId>
+                  <Name>Mystery, Thriller &amp; Suspense</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>1000</BrowseNodeId>
+                      <Name>Subjects</Name>
+                      <IsCategoryRoot>1</IsCategoryRoot>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>283155</BrowseNodeId>
+                          <Name>Books</Name>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>9536065011</BrowseNodeId>
+          <Name>Murder</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>7538392011</BrowseNodeId>
+              <Name>Crime</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>10484</BrowseNodeId>
+                  <Name>Thrillers &amp; Suspense</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>18</BrowseNodeId>
+                      <Name>Mystery, Thriller &amp; Suspense</Name>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>1000</BrowseNodeId>
+                          <Name>Subjects</Name>
+                          <IsCategoryRoot>1</IsCategoryRoot>
+                          <Ancestors>
+                            <BrowseNode>
+                              <BrowseNodeId>283155</BrowseNodeId>
+                              <Name>Books</Name>
+                            </BrowseNode>
+                          </Ancestors>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>9536067011</BrowseNodeId>
+          <Name>Serial Killers</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>7538392011</BrowseNodeId>
+              <Name>Crime</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>10484</BrowseNodeId>
+                  <Name>Thrillers &amp; Suspense</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>18</BrowseNodeId>
+                      <Name>Mystery, Thriller &amp; Suspense</Name>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>1000</BrowseNodeId>
+                          <Name>Subjects</Name>
+                          <IsCategoryRoot>1</IsCategoryRoot>
+                          <Ancestors>
+                            <BrowseNode>
+                              <BrowseNodeId>283155</BrowseNodeId>
+                              <Name>Books</Name>
+                            </BrowseNode>
+                          </Ancestors>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+        <BrowseNode>
+          <BrowseNodeId>9536077011</BrowseNodeId>
+          <Name>Psychics</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>9059890011</BrowseNodeId>
+              <Name>Supernatural</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>10484</BrowseNodeId>
+                  <Name>Thrillers &amp; Suspense</Name>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>18</BrowseNodeId>
+                      <Name>Mystery, Thriller &amp; Suspense</Name>
+                      <Ancestors>
+                        <BrowseNode>
+                          <BrowseNodeId>1000</BrowseNodeId>
+                          <Name>Subjects</Name>
+                          <IsCategoryRoot>1</IsCategoryRoot>
+                          <Ancestors>
+                            <BrowseNode>
+                              <BrowseNodeId>283155</BrowseNodeId>
+                              <Name>Books</Name>
+                            </BrowseNode>
+                          </Ancestors>
+                        </BrowseNode>
+                      </Ancestors>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+      </BrowseNodes>
+    </Item>
+  </Items>
+</ItemLookupResponse>

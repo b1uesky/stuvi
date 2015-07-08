@@ -37,6 +37,8 @@ public function run()
 
         if ($amazon->success())
         {
+            $amazon->saveToXML();
+
             // save this book to our database
             $book = new Book();
             $book->isbn10 = $amazon->getISBN10();
