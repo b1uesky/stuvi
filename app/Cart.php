@@ -41,7 +41,7 @@ class Cart extends Model
      */
     public function isValid()
     {
-        $cart_items = $this->cartItems();
+        $cart_items = $this->items();
         foreach ($cart_items as $item) {
             if ($item->product()->isSold()) {
                 return false;
@@ -55,7 +55,7 @@ class Cart extends Model
      */
     public function validate()
     {
-        foreach ($this->cartItems() as $item) {
+        foreach ($this->items() as $item) {
             if ($item->product()->isSold()) {
                 $this->remove($item->id);
             }
@@ -105,7 +105,7 @@ class Cart extends Model
      */
     public function clear()
     {
-        foreach ($this->cartItems as $cart_item)
+        foreach ($this->items as $cart_item)
         {
             $cart_item->delete();
         }
@@ -120,7 +120,7 @@ class Cart extends Model
     {
         $price = 0;
 
-        foreach ($this->cartItems as $cart_item)
+        foreach ($this->items as $cart_item)
         {
             $price += $cart_item->product->price;
         }
@@ -137,7 +137,7 @@ class Cart extends Model
      */
     public function hasItem($item_id)
     {
-        return !$this->cartItems->where('id', $item_id)->isEmpty();
+        return !$this->items->where('id', $item_id)->isEmpty();
     }
 
 
