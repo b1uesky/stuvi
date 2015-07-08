@@ -297,7 +297,7 @@
                                         <button type="button" class="btn btn-default" data-dismiss="modal">
                                             Close
                                         </button>
-                                        <button id="storeAddress" type="button" class="btn btn-primary">
+                                        <button id="storeAddress" type="button" class="btn btn-default address-btn">
                                             Add Address
                                         </button>
                                     </div>
