@@ -31,6 +31,9 @@ Route::get  ('/register', 'HomeController@register');
 Route::get  ('/about', 'HomeController@about');
 Route::get  ('/contact', 'HomeController@contact');
 Route::get  ('/coming', 'HomeController@coming');
+Route::post ('/storeAddress','AddressController@store');
+Route::post ('/updateAddress','AddressController@update');
+Route::post ('/deleteAddress','AddressController@ajaxDelete');
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +75,6 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::get  ('/confirmation', 'BuyerOrderController@confirmation');
     Route::get  ('/create', 'BuyerOrderController@create');
     Route::post ('/store', 'BuyerOrderController@store');
-    Route::post  ('/storeAddress','BuyerOrderController@storeBuyerAddress');
     Route::get  ('/buyer/{id}', 'BuyerOrderController@show');
     Route::get  ('/buyer/cancel/{id}', 'BuyerOrderController@cancel');
 

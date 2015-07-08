@@ -93,53 +93,6 @@ class BuyerOrderController extends Controller
         }
     }
 
-    /**
-     * Display a buyer's addresses if has this information in database
-     */
-    public function storeBuyerAddress(Request $request)
-    {
-        // validate the address info
-        $this->validate($request, Address::rules());
-
-        if (Input::has('address_id'))
-        {
-            $address_id = Input::get('address_id');
-            $address = Address::find($address_id);
-            if ($address -> isBelongTo(Auth::id()))
-            {
-                $address -> update([
-                    'is_default' => true,
-                    'addressee' => Input::get('addressee'),
-                    'address_line1' => Input::get('address_line1'),
-                    'address_line2' => Input::get('address_line2'),
-                    'city' => Input::get('city'),
-                    'state_a2' => Input::get('state_a2'),
-                    'zip' => Input::get('zip'),
-                    'phone_number' => Input::get('phone_number')
-                ]);
-
-                $address -> setDefault();
-                return view('order.buyer.create', ['items' => Cart::content(), 'total' => Cart::total(), 'stripe_public_key' => StripeKey::getPublicKey(), 'addresses' => Auth::user()->address, 'display_payment' => true]);
-            }
-        }else {
-            // store the buyer shipping address
-            $address = Address::create([
-                'user_id' => Auth::id(),
-                'is_default' => true,
-                'addressee' => Input::get('addressee'),
-                'address_line1' => Input::get('address_line1'),
-                'address_line2' => Input::get('address_line2'),
-                'city' => Input::get('city'),
-                'state_a2' => Input::get('state_a2'),
-                'zip' => Input::get('zip'),
-                'phone_number' => Input::get('phone_number')
-            ]);
-
-
-            $address -> setDefault();
-            return view('order.buyer.create', ['items' => Cart::content(), 'total' => Cart::total(), 'stripe_public_key' => StripeKey::getPublicKey(), 'addresses' => Auth::user()->address, 'display_payment' => true]);
-        }
-    }
 
     /**
      * Store a newly created buyer order and corresponding seller order(s) in storage.

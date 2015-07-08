@@ -4,8 +4,7 @@
 $(document).ready(function () {
     $('.show-addresses').click(function() {
         $('.displayDefaultAddress').hide();
-        $('.displayAllAddresses > button').remove('.show_addresses').show(400);
-        $('.add_new_address').show(1000);
+        $('.add_new_address').show();
         $('.displayAllAddresses').show(1000);
     });
 
@@ -18,12 +17,16 @@ $(document).ready(function () {
         $('input[name=selected_address_id]').val(address_ID);
     });
 
-    $('#storeAddress').click(function(){
-        $('.address-form').submit();
+    $('#storeAddedAddress').click(function(){
+        $('.add-address-form').submit();
+    });
+
+    $('#storeUpdatedAddress').click(function(){
+        $('.update-address-form').submit();
     });
 
     $('.editThisAddress').click(function() {
-        var address_ID = $(this).prev().find("#address_id").text();
+        var address_ID = $(this).parent().find("#address_id").text();
         var address_array = [];
         $(this).parent().find('.address').each(function (i, elem) {
             address_array.push($(elem).text());
@@ -35,5 +38,28 @@ $(document).ready(function () {
         $('input[name=state_a2]').val(address_array[5]);
         $('input[name=zip]').val(address_array[6]);
         $('input[name=address_id]').val(address_ID);
+    });
+
+    $('.deleteThisAddress').click(function(){
+        var address_ID = $(this).parent().find("#address_id").text();
+        $.ajax({
+            url: '/deleteAddress',
+
+            data:{
+                _token: $('[name="csrf_token"]').attr('content'),
+                address_id : address_ID
+            },
+
+            type:"POST",
+
+            success:function(response){
+                if(response['is_deleted'] === true){
+                    $('.'+address_ID).hide(1000);
+                    if(response['num_of_user_addresses'] < 1){
+                        $('#payment-form').hide(1000);
+                    }
+                }
+            }
+        });
     });
 });

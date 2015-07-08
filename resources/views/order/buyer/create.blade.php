@@ -120,11 +120,12 @@
                                         <i class="fa fa-check-square"></i>
                                         Select
                                     </button>
-                                    <button class="btn btn-default address-btn editThisAddress" data-toggle="modal" data-target="#myModal">
+                                    <button class="btn btn-default address-btn editThisAddress" data-toggle="modal"
+                                            data-target="#update-address-modal">
                                         <i class="fa fa-pencil"></i>
                                         Edit
                                     </button>
-                                    <button class="btn btn-default address-btn">
+                                    <button class="btn btn-default address-btn deleteThisAddress">
                                         <i class="fa fa-trash"></i>
                                         Delete
                                     </button>
@@ -136,7 +137,7 @@
                                 </div>
                             </div>
                         @empty
-                            <form action="{{ url('/order/storeAddress') }}" method="POST"
+                            <form action="{{ url('/storeAddress') }}" method="POST"
                                   class="address-form">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -208,10 +209,12 @@
                         @endforelse
                         <button type="button" class="add_new_address btn btn-primary btn-md"
                                 data-toggle="modal"
-                                data-target="#myModal" style="display: none">
+                                data-target="#add-address-modal" style="display: none">
                             Add New Address
                         </button>
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+
+                        <!--Modals-->
+                        <div class="modal fade" id="update-address-modal" tabindex="-1" role="dialog"
                              aria-labelledby="myModalLabel">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -222,8 +225,8 @@
                                         <h4 class="modal-title" id="myModalLabel">Please Enter Address</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="{{ url('/order/storeAddress') }}" method="POST"
-                                              class="address-form">
+                                        <form action="{{ url('/updateAddress') }}" method="POST"
+                                              class="update-address-form">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                             <div class="form-group">
@@ -299,13 +302,109 @@
                                         <button type="button" class="btn btn-default" data-dismiss="modal">
                                             Close
                                         </button>
-                                        <button id="storeAddress" type="button" class="btn btn-primary">
-                                            Add Address
+                                        <button id="storeUpdatedAddress" type="button" class="btn btn-primary">
+                                            Update Address
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                            <div class="modal fade" id="add-address-modal" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Please Enter Address</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ url('/storeAddress') }}" method="POST"
+                                                  class="add-address-form">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Full name</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="addressee"
+                                                               value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
+                                                    </div>
+                                                </div>
+                                                </br>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Address line 1</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control"
+                                                               name="address_line1"
+                                                               value="185 Freeman St.">
+                                                    </div>
+                                                </div>
+                                                </br>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Address line 2</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control"
+                                                               name="address_line2"
+                                                               value="Apt. 739">
+                                                    </div>
+                                                </div>
+                                                </br>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">City</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="city"
+                                                               value="Brookline">
+                                                    </div>
+                                                </div>
+                                                </br>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">State</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="state_a2"
+                                                               value="MA">
+                                                    </div>
+                                                </div>
+                                                </br>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Zip</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="zip"
+                                                               value="02446">
+                                                    </div>
+                                                </div>
+                                                </br>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Phone</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control"
+                                                               name="phone_number"
+                                                               value="(857) 206 4789">
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="address_id" value="">
+                                                </br>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                Close
+                                            </button>
+                                            <button id="storeAddedAddress" type="button" class="btn btn-primary">
+                                                Add Address
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
 
 
