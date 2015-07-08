@@ -93,7 +93,7 @@
                                     </div>
                                 </div>
                             @endif
-                            <div class="col-sm-5 panel address-panel  displayAllAddresses {{ $address -> id }}"
+                                <div class="col-sm-5 panel address-panel displayAllAddresses {{ $address -> id }}"
                                  style="display: none">
                                 <div class="panel-body">
                                     <ul class="address-list">
@@ -123,11 +123,6 @@
                                         <i class="fa fa-trash"></i>
                                         Delete
                                     </button>
-                                    {{--<button class="btn btn-primary btn-md selectThisAddress"--}}
-                                    {{--onclick="selectAddress({{ $address -> id }})">click here--}}
-                                    {{--to--}}
-                                    {{--select this address--}}
-                                    {{--</button>--}}
                                 </div>
                             </div>
                         @empty
@@ -207,12 +202,6 @@
                                 <i class="fa fa-plus-square fa-4x"
                                    data-toggle="modal" data-target="#myModal">
                                 </i>
-                                {{--<button type="button" class="add-new-address btn btn-primary btn-md address-btn"--}}
-                                {{--data-toggle="modal"--}}
-                                {{--data-target="#myModal">--}}
-                                {{--style="display: none"--}}
-                                {{--<i class="fa fa-plus fa-4x"></i>--}}
-                                {{--</button>--}}
                             </div>
                         </div>
                         {{--<button type="button" class="add_new_address btn btn-primary btn-md address-btn"--}}
@@ -308,7 +297,7 @@
                                         <button type="button" class="btn btn-default" data-dismiss="modal">
                                             Close
                                         </button>
-                                        <button id="storeAddress" type="button" class="btn btn-primary">
+                                        <button id="storeAddress" type="button" class="btn btn-default address-btn">
                                             Add Address
                                         </button>
                                     </div>

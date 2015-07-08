@@ -5,6 +5,7 @@
 @section('title', 'Sell textbooks')
 
 @section('css')
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('/css/textbook/textbook.css') }}" rel="stylesheet">
 @endsection
 
@@ -65,7 +66,7 @@
                 <!-- Row 1 Col 1 -->
                 <!-- xs: stack-->
                 <div class = "container col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id = "shrink-xs">
-                    <img src="{{asset('/img/scaled/Books-3.jpg')}}" alt = "books" height="250px" width="250px" style="border: 1px solid">
+                    <i class="material-icons google-img">school</i>
                 </div>
                 <!-- Row 1 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
