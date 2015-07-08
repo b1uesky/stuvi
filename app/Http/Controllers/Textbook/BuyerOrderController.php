@@ -85,7 +85,7 @@ class BuyerOrderController extends Controller
 
         if(count($addresses) > 0){
             return view('order.buyer.create')
-                ->with('items', $this->items)
+                ->with('items', $this->cart->items)
                 ->with('total', $this->cart->totalPrice())
                 ->with('addresses', $addresses)
                 ->with('display_payment', true)
