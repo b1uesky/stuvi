@@ -5,7 +5,7 @@ $(document).ready(function () {
     $('.show-addresses').click(function() {
         $('.displayDefaultAddress').hide();
         $('.displayAllAddresses > button').remove('.show_addresses').show(400);
-        $('.add_new_address').show(1000);
+        $('#new-address-panel').show(1000);
         $('.displayAllAddresses').show(1000);
     });
 
@@ -16,6 +16,7 @@ $(document).ready(function () {
         $('.displayDefaultAddress').find('.address-list').html(address_info);
         $('.displayDefaultAddress').show(1000);
         $('input[name=selected_address_id]').val(address_ID);
+        $('#new-address-panel').hide();
     });
 
     $('#storeAddress').click(function(){

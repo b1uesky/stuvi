@@ -195,7 +195,7 @@
                                 </button>
                             </form>
                         @endforelse
-                        <div class="col-sm-5 panel address-panel new-address-panel">
+                            <div id="new-address-panel" class="col-sm-5 panel address-panel">
                             <div class="panel-body">
                                 <h4>Add New Address</h4>
                                 <i class="fa fa-plus-square fa-4x"
@@ -430,6 +430,7 @@
     <!-- jQuery is used only for this example; it isn't required to use Stripe -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ asset('/js/address.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js.') }}"
 
     <!-- stripe -->
     <script type="text/javascript">

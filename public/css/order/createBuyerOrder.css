@@ -98,12 +98,13 @@ body {
     padding-right: 0;
 }
 
-.new-address-panel {
+#new-address-panel {
     text-align: center;
     margin-left: 5px;
+    display: none;
 }
 
-.new-address-panel h4 {
+#new-address-panel h4 {
     margin-bottom: 0;
 }
 
