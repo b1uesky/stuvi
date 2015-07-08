@@ -19,7 +19,7 @@ use Response;
 class TextbookController extends Controller {
 
 	/**
-	 * Display a listing of the resource.
+	 * Display the textbook buy page.
 	 *
 	 * @return Response
 	 */
@@ -35,10 +35,7 @@ class TextbookController extends Controller {
      */
     public function create()
     {
-        return view('textbook.create', [
-            'bindings'   => Config::get('book.bindings'),
-            'languages'  => Config::get('book.languages')
-        ]);
+        return view('textbook.create');
     }
 
 	/**
