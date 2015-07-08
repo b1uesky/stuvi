@@ -80,11 +80,12 @@
                                                 <li class="address"
                                                     id="default_address_line2">{{ $address -> address_line2}}</li>
                                             @endif
-                                            <li class="address" id="default_city">{{ $address -> city }}
-                                                , {{ $address -> state_a2 }} {{ $address -> zip }}</li>
-                                            {{--<li class="address" id="default_city">{{ $address -> city }}</li>--}}
-                                            {{--<li class="address" id="default_state_a2">{{ $address -> state_a2 }}</li>--}}
-                                            {{--<li class="address" id="default_zip">{{ $address -> zip }}</li>--}}
+                                            {{--<li class="address" id="default_city">{{ $address -> city }}--}}
+                                            {{--, {{ $address -> state_a2 }} {{ $address -> zip }}</li>--}}
+                                            <li class="address inline" id="default_city">{{ $address -> city }},</li>
+                                            <li class="address inline"
+                                                id="default_state_a2">{{ $address -> state_a2 }}</li>
+                                            <li class="address inline" id="default_zip">{{ $address -> zip }}</li>
                                         </ul>
                                         <button class="btn btn-default address-btn show-addresses">
                                             <i class="fa fa-pencil"></i>
@@ -105,11 +106,9 @@
                                             <li class="address"
                                                 id="default_address_line2">{{ $address -> address_line2}}</li>
                                         @endif
-                                        <li class="address" id="default_city">{{ $address -> city }}
-                                            , {{ $address -> state_a2 }} {{ $address -> zip }}</li>
-                                        {{--<li class="address" id="city">{{ $address -> city }}</li>--}}
-                                        {{--<li class="address" id="state_a2">{{ $address -> state_a2 }}</li>--}}
-                                        {{--<li class="address" id="zip">{{ $address -> zip }}</li>--}}
+                                        <li class="address inline" id="default_city">{{ $address -> city }},</li>
+                                        <li class="address inline" id="default_state_a2">{{ $address -> state_a2 }}</li>
+                                        <li class="address inline" id="default_zip">{{ $address -> zip }}</li>
                                     </ul>
                                     <button class="btn btn-default address-btn selectThisAddress">
                                         <i class="fa fa-check-square"></i>
@@ -214,12 +213,12 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal"
+                                        <button type="button" class="close close-modal-btn" data-dismiss="modal"
                                                 aria-label="Close">
                                             <span aria-hidden="true">&times;</span></button>
                                         <h4 class="modal-title" id="myModalLabel">Please Enter Address</h4>
                                     </div>
-                                    <div class="modal-body">
+                                    <div class="modal-body address-form-body">
                                         <form action="{{ url('/order/storeAddress') }}" method="POST"
                                               class="address-form">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -227,7 +226,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-4 control-label">Full name</label>
 
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6 form-space-offset">
                                                     <input type="text" class="form-control" name="addressee"
                                                            value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
                                                 </div>
@@ -236,7 +235,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-4 control-label">Address line 1</label>
 
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6 form-space-offset">
                                                     <input type="text" class="form-control"
                                                            name="address_line1"
                                                            value="185 Freeman St.">
@@ -246,7 +245,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-4 control-label">Address line 2</label>
 
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6 form-space-offset">
                                                     <input type="text" class="form-control"
                                                            name="address_line2"
                                                            value="Apt. 739">
@@ -256,7 +255,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-4 control-label">City</label>
 
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6 form-space-offset">
                                                     <input type="text" class="form-control" name="city"
                                                            value="Brookline">
                                                 </div>
@@ -265,7 +264,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-4 control-label">State</label>
 
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6 form-space-offset">
                                                     <input type="text" class="form-control" name="state_a2"
                                                            value="MA">
                                                 </div>
@@ -274,7 +273,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-4 control-label">Zip</label>
 
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6 form-space-offset">
                                                     <input type="text" class="form-control" name="zip"
                                                            value="02446">
                                                 </div>
@@ -283,7 +282,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-4 control-label">Phone</label>
 
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6 form-space-offset">
                                                     <input type="text" class="form-control"
                                                            name="phone_number"
                                                            value="(857) 206 4789">
@@ -294,11 +293,11 @@
                                         </form>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                        <button type="button" class="btn btn-default close-btn" data-dismiss="modal">
                                             Close
                                         </button>
                                         <button id="storeAddress" type="button" class="btn btn-default address-btn">
-                                            Add Address
+                                            Save Address
                                         </button>
                                     </div>
                                 </div>
