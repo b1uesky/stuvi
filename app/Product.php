@@ -5,6 +5,8 @@ use Config;
 
 class Product extends Model
 {
+    protected $fillable = ['price', 'book_id', 'seller_id', 'sold', 'verified'];
+
     /**
      * Get the book this product belongs to.
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

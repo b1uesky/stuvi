@@ -2,13 +2,14 @@
 
 @extends('app')
 
-@section('title','Enter book info')
+@section('title', 'Enter book info')
 
 @section('css')
     <link href="{{ asset('/css/product/product-create.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
+
     <div class="container create-container">
         <div class="row textbook-row col-sm-5">
             <div>
@@ -175,7 +176,7 @@
 
                 {{-- Broken Binding --}}
                 <div class="form-group">
-                    <label>{{ $conditions['broken_binding']['title'] }}</label>
+                    <label>{{ Config::get('product.conditions.broken_binding.title') }}</label>
                     <i class="fa fa-question-circle" data-toggle="modal" data-target=".binding-modal"></i>
                     <br>
 

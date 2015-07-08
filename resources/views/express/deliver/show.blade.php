@@ -1,5 +1,7 @@
 @extends('express')
 
+@section('title', 'Deliver')
+
 @section('content')
     <div class="container">
         {{-- Errors --}}
@@ -59,7 +61,7 @@
         {{-- Show Ready to ship button if the order is not yet assigned --}}
         @if(!$buyer_order->assignedToCourier())
             <a href="{{ URL::to('express/deliver/' . $buyer_order->id . '/readyToShip') }}" class="btn btn-primary btn-lg btn-block">Ready to ship!</a>
-        @elseif(!$buyer_order->delivered())
+        @elseif(!$buyer_order->isDelivered())
             {{-- Show Confirm Delivery button --}}
             <a href="{{ URL::to('express/deliver/' . $buyer_order->id . '/confirmDelivery') }}" class="btn btn-warning btn-lg btn-block">Confirm Delivery</a>
         @else

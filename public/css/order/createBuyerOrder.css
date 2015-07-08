@@ -46,9 +46,6 @@ body {
     }
 }
 
-/**** CONFIRM ORDER ****/
-
-
 /**** SHIPPING ADDRESS ****/
 
 .form-control:focus {
@@ -101,12 +98,13 @@ body {
     padding-right: 0;
 }
 
-.new-address-panel {
+#new-address-panel {
     text-align: center;
     margin-left: 5px;
+    display: none;
 }
 
-.new-address-panel h4 {
+#new-address-panel h4 {
     margin-bottom: 0;
 }
 
@@ -116,6 +114,31 @@ body {
     width: 48px;
     height: 48px;
     margin-bottom: 48px;
+}
+
+.close-modal-btn:hover,
+.close-modal-btn:focus {
+    outline: 0;
+    color: #F16521;
+    opacity: 1;
+}
+
+.close-btn,
+.close-btn:focus {
+    outline: 0 !important;
+}
+
+.inline {
+    display: inline;
+}
+
+.form-space-offset {
+    margin-bottom: 10px;
+}
+
+.address-form-body {
+    padding-top: 0;
+    padding-bottom: 30px;
 }
 
 /**** PAYMENT ****/

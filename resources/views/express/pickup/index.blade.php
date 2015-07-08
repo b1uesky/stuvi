@@ -1,5 +1,7 @@
 @extends('express')
 
+@section('title', 'Pickup')
+
 @section('content')
     <div class="container">
         {{-- Error --}}

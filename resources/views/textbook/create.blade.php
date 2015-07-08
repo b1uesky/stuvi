@@ -67,7 +67,7 @@
                 <!-- Select Binding -->
                 <div class="form-group ws" id="binding">
                     <label><b>Binding</b></label>
-                    @foreach($bindings as $key => $value)
+                    @foreach(Config::get('book.bindings') as $key => $value)
                         <input type="radio" name="binding" value="{{ $value }}"/> {{ $value }}
                     @endforeach
                 </div>
@@ -77,7 +77,7 @@
                 <div class="form-group">
                     <label><b>Language</b></label>
                     <select class="selectpicker" name="language" id="textbook-create lang">
-                        @foreach($languages as $key => $value)
+                        @foreach(Config::get('book.languages') as $key => $value)
                             <option value="{{ $value }}" class="lang-select">{{ $value }}</option>
                         @endforeach
                     </select>

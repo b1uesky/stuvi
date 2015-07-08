@@ -1,5 +1,7 @@
 @extends('admin')
 
+@section('title', 'Product')
+
 @section('content')
 
     @if(Session::has('success'))

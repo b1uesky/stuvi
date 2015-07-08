@@ -13,26 +13,13 @@ use Validator;
 class ProductController extends Controller {
 
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
-
-	/**
-	 * Show the form for creating a new resource.
+	 * Show the form for creating a new product.
 	 *
 	 * @return Response
 	 */
 	public function create($book)
 	{
-        return view('product.create', [
-			'book'		    => $book,
-			'conditions'	=> Config::get('product.conditions')
-			]);
+        return view('product.create')->withBook($book);
 	}
 
 	/**
@@ -82,11 +69,11 @@ class ProductController extends Controller {
             $file_uploader->saveProductImage();
 		}
 
-        return redirect('textbook/buy/product/'.$product->id);
+        return redirect('textbook/buy/product/' . $product->id);
 	}
 
 	/**
-	 * Display the specified resource.
+	 * Display the specified product.
 	 *
 	 * @param  Product
 	 * @return Response
@@ -95,9 +82,6 @@ class ProductController extends Controller {
 	{
 		return view('product.show', [
 			'product' 	=> $product,
-			'condition'	=> $product->condition,
-			'book' 		=> $product->book,
-			'seller' 	=> $product->seller,
 			'images'	=> $product->images,
 			'conditions'	=>	Config::get('product.conditions')
 		]);
