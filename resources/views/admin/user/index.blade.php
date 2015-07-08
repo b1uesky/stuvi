@@ -1,5 +1,7 @@
 @extends('admin')
 
+@section('title', 'User')
+
 @section('content')
 <table class="table table-hover">
     <tr>

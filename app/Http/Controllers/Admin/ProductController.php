@@ -22,6 +22,11 @@ class ProductController extends Controller {
         return view('admin.product.index')->withProducts($products);
 	}
 
+    /**
+     * Display unverified products.
+     *
+     * @return mixed
+     */
     public function showUnverified()
     {
         $unverified = Product::where('verified', '=', false)->get();
@@ -29,33 +34,17 @@ class ProductController extends Controller {
         return view('admin.product.index')->withProducts($unverified);
     }
 
+    /**
+     * Display verified products.
+     *
+     * @return mixed
+     */
     public function showVerified()
     {
         $verified = Product::where('verified', '=', true)->get();
 
         return view('admin.product.index')->withProducts($verified);
     }
-
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-        //
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Responser
-	 */
-	public function store()
-	{
-		//
-	}
 
 	/**
 	 * Display the specified resource.
@@ -68,39 +57,6 @@ class ProductController extends Controller {
         return view('admin.product.show')
             ->withProduct($id)
             ->withConditions(Config::get('product.conditions'));
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
 	}
 
     /**
@@ -128,6 +84,12 @@ class ProductController extends Controller {
             ->withError('Product ' . $product->id . ' has already been approved.');
 	}
 
+    /**
+     * Disapprove a product ($product->verified = false)
+     *
+     * @param $id
+     * @return mixed
+     */
 	public function disapprove($id)
 	{
 		$product = Product::find($id);
