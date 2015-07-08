@@ -1,5 +1,7 @@
 @extends('admin')
 
+@section('title', 'Product')
+
 @section('content')
 
     @if(Session::has('success'))
@@ -14,11 +16,11 @@
         </div>
     @endif
 
-        <div class="btn-group" role="group">
-            <a href="{{ URL::to('admin/product') }}" class="btn btn-default">All</a>
-            <a href="{{ URL::to('admin/product/unverified') }}" class="btn btn-default">Unverified Only</a>
-            <a href="{{ URL::to('admin/product/verified') }}" class="btn btn-default">Verified Only</a>
-        </div>
+    <div class="btn-group" role="group">
+        <a href="{{ URL::to('admin/product') }}" class="btn btn-default">All</a>
+        <a href="{{ URL::to('admin/product/unverified') }}" class="btn btn-default">Unverified Only</a>
+        <a href="{{ URL::to('admin/product/verified') }}" class="btn btn-default">Verified Only</a>
+    </div>
 
     <table class="table table-hover">
         <tr>
@@ -41,7 +43,8 @@
                 <td>{{ $product->seller->email }}</td>
                 <td>
                     @foreach($product->images as $image)
-                        <a href="{{ $image->path }}" target="_blank"><img src="{{ $image->path }}" class="admin-img-preview" alt=""/></a>
+                        <a href="{{ $image->path }}" target="_blank"><img src="{{ $image->path }}"
+                                                                          class="admin-img-preview" alt=""/></a>
                     @endforeach
                 </td>
                 <td>{{ $product->isSold2() }}</td>
@@ -58,9 +61,11 @@
                     <div class="btn-group-vertical" role="group">
                         <a class="btn btn-info" role="button" href="{{ URL::to('admin/product/' . $product->id) }}">Details</a>
                         @if(!$product->verified)
-                            <a class="btn btn-success" role="button" href="{{ URL::to('admin/product/' . $product->id . '/approve') }}">Approve</a>
+                            <a class="btn btn-success" role="button"
+                               href="{{ URL::to('admin/product/' . $product->id . '/approve') }}">Approve</a>
                         @else
-                            <a class="btn btn-danger" role="button" href="{{ URL::to('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
+                            <a class="btn btn-danger" role="button"
+                               href="{{ URL::to('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
                         @endif
                     </div>
 

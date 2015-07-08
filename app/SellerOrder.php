@@ -132,7 +132,7 @@ class SellerOrder extends Model
      */
     public function isDelivered()
     {
-        return $this->buyerOrder->delivered();
+        return $this->buyerOrder->isDelivered();
     }
 
     /**

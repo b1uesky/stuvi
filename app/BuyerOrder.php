@@ -131,7 +131,7 @@ class BuyerOrder extends Model
      *
      * @return bool
      */
-    public function delivered()
+    public function isDelivered()
     {
         return !empty($this->time_delivered);
     }

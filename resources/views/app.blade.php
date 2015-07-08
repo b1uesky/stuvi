@@ -10,16 +10,16 @@
 {{-- Page title --}}
 @section('title', 'Home')
 
-@include('includes.head')
+@include('includes.textbook.head')
 
 <body>
 {{-- Nav bar --}}
-@include('includes.header')
+@include('includes.textbook.header')
 
 {{-- Page content --}}
 @yield('content')
 
-@include('includes.footer')
+@include('includes.textbook.footer')
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -58,8 +58,8 @@ class CartController extends Controller
         {
             if ($this->cart->hasItem($item->id))
             {
-                Session::flash('message', 'Item has already been added into Cart.');
-                Session::flash('alert-class', 'alert-success');
+                Session::flash('message', 'Item has already been added to the cart.');
+                Session::flash('alert-class', 'alert-danger');
             }
             elseif ($item->sold)
             {
@@ -68,7 +68,7 @@ class CartController extends Controller
             }
             elseif ($item->seller_id == Auth::id())
             {
-                Session::flash('message', 'Can not add your own product to the Cart.');
+                Session::flash('message', 'Can not add your own product to the cart.');
                 Session::flash('alert-class', 'alert-danger');
             }
             else
