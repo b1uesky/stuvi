@@ -75,4 +75,25 @@ class Product extends Model
 
         return 'No';
     }
+
+    /**
+     * Validation rules
+     *
+     * @return array
+     */
+    public static function rules()
+    {
+        $rules = array(
+            'general_condition'     =>  'required|integer',
+            'highlights_and_notes'  =>  'required|integer',
+            'damaged_pages'         =>  'required|integer',
+            'broken_binding'        =>  'required|boolean',
+            'price'                 =>  'required|numeric',
+            'front-cover-image'     =>  'required|mimes:jpeg,png|max:3072',  // maximum 3MB
+            'back-cover-image'      =>  'required|mimes:jpeg,png|max:3072',
+            'page-image'            =>  'required|mimes:jpeg,png|max:3072'
+        );
+
+        return $rules;
+    }
 }
