@@ -153,7 +153,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return 'No';
     }
 
-    public function address()
+    public function addresses()
     {
         return $this->hasMany('App\Address');
     }
