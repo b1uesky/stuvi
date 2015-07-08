@@ -91,24 +91,6 @@ class Address extends Model
         return false;
     }
 
-
-    public static function add($info, $user_id)
-    {
-        $address = new Address();
-        $address->user_id         = $user_id;
-        $address->is_default = $info['is_default'];
-        $address->addressee       = $info['addressee'];
-        $address->address_line1   = $info['address_line1'];
-        $address->address_line2   = $info['address_line2'];
-        $address->city            = $info['city'];
-        $address->state_a2        = $info['state_a2'];
-        $address->zip             = $info['zip'];
-        $address->phone_number    = $info['phone_number'];
-        $address->save();
-
-        return $address->id;
-    }
-
     public function isBelongTo($user_id)
     {
         return $this -> user_id == $user_id;
