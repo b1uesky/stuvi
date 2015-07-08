@@ -132,7 +132,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">Full name</label>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" name="addressee"
                                                value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
                                     </div>
@@ -141,7 +141,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">Address line 1</label>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" name="address_line1"
                                                value="185 Freeman St.">
                                     </div>
@@ -150,7 +150,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">Address line 2</label>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" name="address_line2"
                                                value="Apt. 739">
                                     </div>
@@ -159,7 +159,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">City</label>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" name="city"
                                                value="Brookline">
                                     </div>
@@ -168,7 +168,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">State</label>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" name="state_a2" value="MA">
                                     </div>
                                 </div>
@@ -176,7 +176,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">Zip</label>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" name="zip" value="02446">
                                     </div>
                                 </div>
@@ -184,13 +184,13 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">Phone</label>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" name="phone_number"
                                                value="(857) 206 4789">
                                     </div>
                                 </div>
                                 </br>
-                                <button class="btn btn-primary btn-md" id="storeAddress" type="submit">
+                                <button class="col-sm-3 btn btn-default address-btn" id="storeAddress" type="submit">
                                     Add Address
                                 </button>
                             </form>
