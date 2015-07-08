@@ -55,8 +55,8 @@ class Cart extends Model
      */
     public function validate()
     {
-        foreach ($this->items() as $item) {
-            if ($item->product()->isSold()) {
+        foreach ($this->items as $item) {
+            if ($item->product->sold) {
                 $this->remove($item->id);
             }
         }

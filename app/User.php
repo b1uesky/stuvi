@@ -216,7 +216,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function cart()
     {
-        if (!Cart::where('user_id', $this->id)->count())
+        if ($this->hasOne('App\Cart')->count() <= 0)
         {
             Cart::create([
                 'user_id'   => $this->id,
