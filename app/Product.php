@@ -44,7 +44,7 @@ class Product extends Model
     /**
      * @return string
      */
-    public function isSold()
+    public function isSold2()
     {
         if ($this->sold)
         {
@@ -52,6 +52,15 @@ class Product extends Model
         }
 
         return 'No';
+    }
+
+
+    /**
+     * @return mixed
+     *
+     */
+    public function isSold(){
+        return $this->sold;
     }
 
     /**

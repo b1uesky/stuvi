@@ -37,7 +37,7 @@
         </tr>
         <tr>
             <th>Sold</th>
-            <td>{{ $product->isSold() }}</td>
+            <td>{{ $product->isSold2() }}</td>
         </tr>
         <tr>
             <th>Verified</th>

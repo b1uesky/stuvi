@@ -44,7 +44,7 @@
                         <a href="{{ $image->path }}" target="_blank"><img src="{{ $image->path }}" class="admin-img-preview" alt=""/></a>
                     @endforeach
                 </td>
-                <td>{{ $product->isSold() }}</td>
+                <td>{{ $product->isSold2() }}</td>
                 <td>{{ $product->isVerified() }}</td>
                 <td>{{ $product->updated_at }}</td>
 
