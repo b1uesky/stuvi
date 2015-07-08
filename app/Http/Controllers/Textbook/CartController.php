@@ -49,8 +49,8 @@ class CartController extends Controller
         {
             if ( Cart::search(array('id' => (string)$item->id)))
             {
-                Session::flash('message', 'Item has been added into Cart.');
-                Session::flash('alert-class', 'alert-success');
+                Session::flash('message', 'Item has already been added to the cart.');
+                Session::flash('alert-class', 'alert-danger');
             }
             elseif ($item->sold)
             {
@@ -59,7 +59,7 @@ class CartController extends Controller
             }
             elseif ($item->seller_id == Auth::id())
             {
-                Session::flash('message', 'Can not add your own product to the Cart.');
+                Session::flash('message', 'Can not add your own product to the cart.');
                 Session::flash('alert-class', 'alert-danger');
             }
             else
