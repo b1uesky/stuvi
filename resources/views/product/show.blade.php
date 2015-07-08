@@ -113,7 +113,7 @@
                             </div>
                         </div>
                     </td>
-                    <td>{{ Config::get('product.conditions.general_condition')[$product->condition->highlights_and_notes] }}</td>
+                    <td>{{ Config::get('product.conditions.highlights_and_notes')[$product->condition->highlights_and_notes] }}</td>
                 </tr>
                 <!-- Damaged Pages -->
                 <tr>
