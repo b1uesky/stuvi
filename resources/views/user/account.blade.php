@@ -2,14 +2,15 @@
 
 @extends('app')
 
-@section('content')
-    <head>
-        <title> Stuvi - {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} - Account </title>
-        <link href="{{ asset('/css/user/account.css') }}" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/user-bar.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/user-profile.css')}}">
+@section('title','Account Settings - '.Auth::user()->first_name.' '.Auth::user()->last_name)
 
-    </head>
+@section('css')
+    <link href="{{ asset('/css/user/account.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('/css/user-bar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/css/user-profile.css')}}">
+@endsection
+
+@section('content')
     <!-- User template has the second nav bar and the profile side bar -->
     @include('user-template')
                 <!-- right side bar-->

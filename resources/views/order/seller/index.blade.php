@@ -1,11 +1,9 @@
 
 {{--http://homestead.app/order/seller--}}
 
-<!-- TODO: Profile dropdown is broken -->
-
 @extends('app')
 
-@section('title', 'Sold books')
+@section('title', 'Your Sold books')
 
 @section('css')
     <link href="{{ asset('/css/order/order.css') }}" rel="stylesheet">

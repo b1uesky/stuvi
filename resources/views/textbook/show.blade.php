@@ -1,9 +1,6 @@
 @extends('app')
 
-{{-- Not sure how to have title in @section('title') as a variable --}}
-<head>
-    <title>Stuvi - {{ $book->title }}</title>
-</head>
+@section('title',$book->title)
 
 @section('css')
     <link href="{{ asset('/css/textbook/textbook-show.css') }}" rel="stylesheet">

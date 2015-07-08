@@ -2,7 +2,7 @@
 
 @extends('app')
 
-@section('title', 'Buy Used Textbook')
+@section('title', 'Buy Used Textbooks')
 
 @section('css')
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
