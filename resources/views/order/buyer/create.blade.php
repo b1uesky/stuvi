@@ -70,7 +70,7 @@
                     <div class="address row">
                         @forelse ($addresses as $address)
                             @if ($address -> is_default)
-                                <div class="displayDefaultAddress col-sm-3 panel address-panel">
+                                <div class="col-sm-4 panel address-panel displayDefaultAddress">
                                     <div class="panel-body">
                                         <ul class="address-list">
                                             <li class="address" id="default_addressee">{{ $address -> addressee }}</li>
@@ -90,17 +90,10 @@
                                             <i class="fa fa-pencil"></i>
                                             Change Address
                                         </button>
-                                        <button class="btn btn-default address-btn">
-                                            <i class="fa fa-trash"></i>
-                                            Delete
-                                        </button>
                                     </div>
                                 </div>
-                                {{--<button class="btn btn-default btn-md" id="change_address"--}}
-                                {{--onclick="showAllAddress()">Change Address--}}
-                                {{--</button>--}}
                             @endif
-                            <div class="panel address-panel col-md-4 displayAllAddresses {{ $address -> id }}"
+                            <div class="col-sm-5 panel address-panel  displayAllAddresses {{ $address -> id }}"
                                  style="display: none">
                                 <div class="panel-body">
                                     <ul class="address-list">
@@ -112,9 +105,11 @@
                                             <li class="address"
                                                 id="default_address_line2">{{ $address -> address_line2}}</li>
                                         @endif
-                                        <li class="address" id="city">{{ $address -> city }}</li>
-                                        <li class="address" id="state_a2">{{ $address -> state_a2 }}</li>
-                                        <li class="address" id="zip">{{ $address -> zip }}</li>
+                                        <li class="address" id="default_city">{{ $address -> city }}
+                                            , {{ $address -> state_a2 }} {{ $address -> zip }}</li>
+                                        {{--<li class="address" id="city">{{ $address -> city }}</li>--}}
+                                        {{--<li class="address" id="state_a2">{{ $address -> state_a2 }}</li>--}}
+                                        {{--<li class="address" id="zip">{{ $address -> zip }}</li>--}}
                                     </ul>
                                     <button class="btn btn-default address-btn selectThisAddress">
                                         <i class="fa fa-check-square"></i>
@@ -201,16 +196,30 @@
                                     </div>
                                 </div>
                                 </br>
-                                <button class="btn btn-primary btn-md" id="storeAddress" type="submit">Add
-                                    Address
+                                <button class="btn btn-primary btn-md" id="storeAddress" type="submit">
+                                    Add Address
                                 </button>
                             </form>
                         @endforelse
-                        <button type="button" class="add_new_address btn btn-primary btn-md"
-                                data-toggle="modal"
-                                data-target="#myModal" style="display: none">
-                            Add New Address
-                        </button>
+                        <div class="col-sm-5 panel address-panel new-address-panel">
+                            <div class="panel-body">
+                                <h4>Add New Address</h4>
+                                <i class="fa fa-plus-square fa-4x"
+                                   data-toggle="modal" data-target="#myModal">
+                                </i>
+                                {{--<button type="button" class="add-new-address btn btn-primary btn-md address-btn"--}}
+                                {{--data-toggle="modal"--}}
+                                {{--data-target="#myModal">--}}
+                                {{--style="display: none"--}}
+                                {{--<i class="fa fa-plus fa-4x"></i>--}}
+                                {{--</button>--}}
+                            </div>
+                        </div>
+                        {{--<button type="button" class="add_new_address btn btn-primary btn-md address-btn"--}}
+                        {{--data-toggle="modal"--}}
+                        {{--data-target="#myModal" style="display: none">--}}
+                        {{--Add New Address--}}
+                        {{--</button>--}}
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
                              aria-labelledby="myModalLabel">
                             <div class="modal-dialog" role="document">

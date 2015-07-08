@@ -43,14 +43,7 @@ class ProductController extends Controller {
 	public function store()
 	{
         // validation
-        $v = Validator::make(Input::all(), [
-            'general_condition'     =>  'required|integer',
-            'highlights_and_notes'  =>  'required|integer',
-            'damaged_pages'         =>  'required|integer',
-            'broken_binding'        =>  'required|boolean',
-            'price'                 =>  'required|numeric',
-            'images'                =>  'required|mimes:jpeg,png'
-        ]);
+        $v = Validator::make(Input::all(), Product::rules());
 
         if ($v->fails())
         {
@@ -75,9 +68,14 @@ class ProductController extends Controller {
 		$condition->save();
 
 		// save multiple product images
-		$images = Input::file('images');
-		$title = Input::get('book_title');
-		$folder = Config::get('upload.image.product');
+        $images = array(
+            Input::file('front-cover-image'),
+            Input::file('back-cover-image'),
+            Input::file('page-image')
+        );
+
+        $title = Input::get('book_title');
+        $folder = Config::get('upload.image.product');
 
 		foreach ($images as $image) {
 			$file_uploader = new FileUploader($image, $title, $folder, $product->id);
