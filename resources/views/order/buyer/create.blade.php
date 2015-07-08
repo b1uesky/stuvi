@@ -55,10 +55,10 @@
 
                         @forelse ($items as $item)
                             <tr>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->options['item']->book->isbn }}</td>
-                                <td>${{ $item->price }}</td>
-                                @if ($item->options['item']->sold)
+                                <td>{{ $item->product->book->title }}</td>
+                                <td>{{ $item->product->book->isbn10 }}</td>
+                                <td>${{ $item->product->price }}</td>
+                                @if ($item->product->sold)
                                     <p>Warning: This product has been sold.</p>
                                 @endif
                             </tr>

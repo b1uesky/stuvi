@@ -9,7 +9,7 @@ use App\Product;
 use App\SellerOrder;
 use App\User;
 use Auth;
-use Cart;
+//use Cart;
 use Config;
 use DB;
 use Illuminate\Http\RedirectResponse;
@@ -20,6 +20,13 @@ use Mail;
 
 class BuyerOrderController extends Controller
 {
+
+    protected $cart;
+
+    public function __construct()
+    {
+        $this->cart = Auth::user()->cart;
+    }
 
     /**
      * For test email functionality
@@ -59,17 +66,17 @@ class BuyerOrderController extends Controller
      */
     public function create()
     {
-        // if the Cart is empty, return to cart page
-        if (Cart::content()->count() < 1)
+        // if the cart is empty, return to cart page
+        if ($this->cart->items->count() < 1)
         {
             return redirect('/cart')
-                ->with('message', 'Cannot proceed to checkout because Cart is empty.');
+                ->with('message', 'Cannot proceed to checkout because cart is empty.');
         }
 
-        if (!$this->checkCart())
+        if (!$this->cart->isValid())
         {
             return redirect('/cart')
-                ->with('message', 'Cannot proceed to checkout because you are trying to purchasing your own products.');
+                ->with('message', 'Cannot proceed to checkout because one or more items in your cart are sold. Please press "Update" button.');
         }
 
         $user = Auth::user();
@@ -78,15 +85,15 @@ class BuyerOrderController extends Controller
 
         if(count($addresses) > 0){
             return view('order.buyer.create')
-                ->with('items', Cart::content())
-                ->with('total', Cart::total())
+                ->with('items', $this->items)
+                ->with('total', $this->cart->totalPrice())
                 ->with('addresses', $addresses)
                 ->with('display_payment', true)
                 ->with('stripe_public_key', StripeKey::getPublicKey());
         }else{
             return view('order.buyer.create')
-                ->with('items', Cart::content())
-                ->with('total', Cart::total())
+                ->with('items', $this->cart->items)
+                ->with('total', $this->cart->totalPrice())
                 ->with('addresses', $addresses)
                 ->with('display_payment', false)
                 ->with('stripe_public_key', StripeKey::getPublicKey());
@@ -119,7 +126,13 @@ class BuyerOrderController extends Controller
                 ]);
 
                 $address -> setDefault();
-                return view('order.buyer.create', ['items' => Cart::content(), 'total' => Cart::total(), 'stripe_public_key' => StripeKey::getPublicKey(), 'addresses' => Auth::user()->address, 'display_payment' => true]);
+                return view('order.buyer.create')
+                    ->with('items', $this->cart->items)
+                    ->with('total', $this->cart->totalPrice())
+                    ->with('stripe_public_key', StripeKey::getPublicKey())
+                    ->with('addresses',Auth::user()->addresses)
+                    ->with('display_payment', true);
+//                    ['items' => Cart::content(), 'total' => Cart::total(), 'stripe_public_key' => StripeKey::getPublicKey(), 'addresses' => Auth::user()->address, 'display_payment' => true]);
             }
         }else {
             // store the buyer shipping address
@@ -137,7 +150,14 @@ class BuyerOrderController extends Controller
 
 
             $address -> setDefault();
-            return view('order.buyer.create', ['items' => Cart::content(), 'total' => Cart::total(), 'stripe_public_key' => StripeKey::getPublicKey(), 'addresses' => Auth::user()->address, 'display_payment' => true]);
+            return view('order.buyer.create')
+                ->with('items', $this->cart->items)
+                ->with('total', $this->cart->totalPrice())
+                ->with('stripe_public_key', StripeKey::getPublicKey())
+                ->with('addresses',Auth::user()->addresses)
+                ->with('display_payment', true);
+
+            //    ['items' => Cart::content(), 'total' => Cart::total(), 'stripe_public_key' => StripeKey::getPublicKey(), 'addresses' => Auth::user()->address, 'display_payment' => true]);
         }
     }
 
@@ -148,30 +168,10 @@ class BuyerOrderController extends Controller
      */
     public function store(Request $request)
     {
-        if (!$this->checkCart())
+        if (!$this->cart->isValid())
         {
             return redirect('/cart')
-                ->with('message', 'Cannot proceed to checkout because you are trying to purchasing your own products.');
-        }
-
-
-
-//        // check if this payment already exist
-//        if (BuyerPayment::where('charge_id', '=', Input::get('stripeToken'))->exists())
-//        {
-//            return redirect('/order/createBuyerOrder')
-//                ->with('message', 'Invalid payment.');
-//        }
-
-        // check if any product in Cart is already sold
-        foreach (Cart::content() as $row)
-        {
-            $product = Product::find($row->id);
-            if ($product->sold)
-            {
-                return redirect('/cart')
-                    ->with('message', 'Sorry,' . $product->book->title . ' has been sold. Please remove it from Cart');
-            }
+                ->with('message', 'Cannot proceed to checkout because one or more items in your cart are sold. Please press "Update" button.');
         }
 
         // create Stripe charge, if it fails, go to checkout page.
@@ -193,7 +193,7 @@ class BuyerOrderController extends Controller
         $this->createBuyerPayment($order, $charge);
 
         // remove payed items from Cart
-        Cart::destroy();
+        $this->cart->clear();
 
         // send confirmation email to buyer
         $this->emailBuyerOrderConfirmation($order);
@@ -220,7 +220,7 @@ class BuyerOrderController extends Controller
         try
         {
             $charge = \Stripe\Charge::create(array(
-                    "amount"      => Cart::total()*100, // amount in cents
+                    "amount"      => $this->cart->totalPrice()*100, // amount in cents
                     "currency"    => "usd",
                     "source"      => $token,
                     "description" => "Buyer order payment for buyer order")
@@ -238,17 +238,26 @@ class BuyerOrderController extends Controller
 
     protected function createBuyerPayment($order, $charge)
     {
-        $payment = new BuyerPayment;
+        $payment = BuyerPayment::create([
+            'buyer_order_id'    => $order->id,
+            'amount'            => $charge['amount'],
+            'charge_id'         => $charge['id'],
+            'card_id'           => $charge['source']['id'],
+            'object'            => $charge['source']['object'],
+            'card_last4'        => $charge['source']['last4'],
+            'card_brand'        => $charge['source']['brand'],
+            'card_fingerprint'  => $charge['source']['fingerprint'],
+        ]);
 
-        $payment->buyer_order_id    = $order->id;
-        $payment->amount            = $charge['amount'];
-        $payment->charge_id         = $charge['id'];
-        $payment->card_id           = $charge['source']['id'];
-        $payment->object            = $charge['source']['object'];
-        $payment->card_last4        = $charge['source']['last4'];
-        $payment->card_brand        = $charge['source']['brand'];
-        $payment->card_fingerprint  = $charge['source']['fingerprint'];
-        $payment->save();
+//        $payment->buyer_order_id    = $order->id;
+//        $payment->amount            = $charge['amount'];
+//        $payment->charge_id         = $charge['id'];
+//        $payment->card_id           = $charge['source']['id'];
+//        $payment->object            = $charge['source']['object'];
+//        $payment->card_last4        = $charge['source']['last4'];
+//        $payment->card_brand        = $charge['source']['brand'];
+//        $payment->card_fingerprint  = $charge['source']['fingerprint'];
+//        $payment->save();
 
         return $payment;
     }
@@ -256,13 +265,14 @@ class BuyerOrderController extends Controller
     protected function createSellerOrders($buyer_order_id)
     {
         // create seller order(s) according to the Cart items
-        foreach (Cart::content() as $row)
+        foreach ($this->cart->items as $item)
         {
-            $product = Product::find($row->id);
+            $product = $item->product;
 
             // change the status of the product to be sold.
-            $product->sold = true;
-            $product->save();
+            $product->update([
+                'sold'  => true,
+            ]);
 
             // create seller orders
             $order = new SellerOrder;

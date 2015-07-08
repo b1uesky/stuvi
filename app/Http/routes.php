@@ -100,6 +100,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], 
     Route::get('add/{cart_id}', 'CartController@addItem');
     Route::get('rmv/{cart_id}', 'CartController@removeItem');
     Route::get('empty', 'CartController@emptyCart');
+    Route::get('update', 'CartController@updateCart');
 });
 
 /*
