@@ -19,7 +19,7 @@ use Response;
 class TextbookController extends Controller {
 
 	/**
-	 * Display a listing of the resource.
+	 * Display the textbook buy page.
 	 *
 	 * @return Response
 	 */
@@ -29,16 +29,13 @@ class TextbookController extends Controller {
 	}
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new textbook.
      *
      * @return Response
      */
     public function create()
     {
-        return view('textbook.create', [
-            'bindings'   => Config::get('book.bindings'),
-            'languages'  => Config::get('book.languages')
-        ]);
+        return view('textbook.create');
     }
 
 	/**
@@ -50,30 +47,21 @@ class TextbookController extends Controller {
 	public function store()
 	{
         // validation
-        $v = Validator::make(Input::all(), [
-            'isbn'      =>  'required|unique:books',
-            'title'     =>  'required|string',
-            'authors'   =>  'required|string',
-            'edition'   =>  'required|integer',
-            'num_pages' =>  'required|integer',
-            'binding'   =>  'required|string',
-            'language'  =>  'required|string',
-            'image'     =>  'required|mimes:jpeg,png'
-        ]);
+        $v = Validator::make(Input::all(), Book::rules());
+        $isbn = Input::get('isbn');
 
-        $v->after(function($v)
+        $v->after(function($v) use ($isbn)
         {
             $isbn_validator = new Isbn();
 
             if ($v->errors()->has('isbn') == false)
             {
                 // check if the input ISBN is valid
-                if ($isbn_validator->validation->isbn(Input::get('isbn')) == false)
+                if ($isbn_validator->validation->isbn($isbn) == false)
                 {
                     $v->errors()->add('isbn', 'Please enter a valid 10 or 13 digit ISBN number.');
                 }
             }
-
         });
 
         if ($v->fails())
@@ -83,7 +71,6 @@ class TextbookController extends Controller {
                 ->withInput(Input::all());
         }
 
-        $isbn = Input::get('isbn');
         $isbn_validator = new Isbn();
 
 		// create book
@@ -125,19 +112,15 @@ class TextbookController extends Controller {
         $file_uploader = new FileUploader($image, $title, $folder, $book->id);
         $file_uploader->saveBookImageSet();
 
-
-        return view('product.create', [
-            'book'  =>  $book,
-            'conditions' =>  Config::get('product.conditions')
-        ]);
+        return view('product.create')->withBook($book);
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+    /**
+     * Display a specified textbook.
+     *
+     * @param $book
+     * @return mixed
+     */
 	public function show($book)
 	{
 		return view("textbook.show")->withBook($book);
@@ -167,12 +150,15 @@ class TextbookController extends Controller {
     public function sellSearch(Request $request)
     {
 		$isbn_validator = new Isbn();
+
+        // remove isbn hyphens
         $isbn = $isbn_validator->hyphens->removeHyphens(Input::get('isbn'));
 
 		// check if the input is a valid ISBN
 		if ($isbn_validator->validation->isbn($isbn) == false)
 		{
-            return redirect()->back()->withMessage('Please enter a valid 10 or 13 digit ISBN number.');
+            return redirect()->back()
+                ->withMessage('Please enter a valid 10 or 13 digit ISBN number.');
 		}
 
         // database lookup
@@ -224,13 +210,12 @@ class TextbookController extends Controller {
 					$book_author->save();
 				}
 
-				return redirect('textbook/sell/product/create/'.$book->id);
+				return redirect('textbook/sell/product/' . $book->id . '/create');
 			}
 
 			// allow the seller fill in book information and create a new book record
-            return redirect('textbook/sell/create')->with(
-                'message',
-                'Looks like your textbook is currently not in our database, please fill in the textbook information below.');
+            return redirect('textbook/sell/create')
+                ->withMessage('Looks like your textbook is currently not in our database, please fill in the textbook information below.');
         }
     }
 
@@ -239,7 +224,7 @@ class TextbookController extends Controller {
     /***************************************************/
 
     /**
-     * Show the buy page.
+     * Show the textbook buy page.
      *
      * @return Response
      */
@@ -275,8 +260,12 @@ class TextbookController extends Controller {
 		}
 		else
 		{
+            // search by title
 			$books = Book::where('title', 'LIKE', "%$info%")->get();
-            return view('textbook.list')->withBooks($books)->withInfo($info);
+
+            return view('textbook.list')
+                ->withBooks($books)
+                ->withInfo($info);
 		}
 	}
 
@@ -284,15 +273,14 @@ class TextbookController extends Controller {
      * Search AutoComplete for the buy page.
      * Return book data in JSON format.
      *
-     * @return JSON
+     * @return JSON Response
      */
     public function buySearchAutoComplete()
     {
         $term = Input::get('term');
-
-        $results = array();
-
         $books = Book::where('title', 'LIKE', '%'.$term.'%')->take(10)->get();
+
+        $book_data = array();
 
         foreach ($books as $book)
         {
@@ -303,7 +291,7 @@ class TextbookController extends Controller {
                 array_push($authors, $author->full_name);
             }
 
-            $results[] = [
+            $book_data[] = [
                 'id'        => $book->id,
                 'title'     => $book->title,
                 'isbn10'    => $book->isbn10,
@@ -313,6 +301,6 @@ class TextbookController extends Controller {
             ];
         }
 
-        return Response::json($results);
+        return Response::json($book_data);
     }
 }

@@ -153,7 +153,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return 'No';
     }
 
-    public function address()
+    public function addresses()
     {
         return $this->hasMany('App\Address');
     }
@@ -216,6 +216,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function cart()
     {
+        if ($this->hasOne('App\Cart')->count() <= 0)
+        {
+            Cart::create([
+                'user_id'   => $this->id,
+                'quantity'  => 0,
+            ]);
+        }
+
         return $this->hasOne('App\Cart', 'user_id', 'id');
     }
 }
