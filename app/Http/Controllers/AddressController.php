@@ -68,7 +68,13 @@ class AddressController extends Controller
 
 
         $address->setDefault();
-        return view('order.buyer.create', ['items' => Cart::content(), 'total' => Cart::total(), 'stripe_public_key' => StripeKey::getPublicKey(), 'addresses' => Auth::user()->address, 'display_payment' => true]);
+        return view('order.buyer.create', [
+            'items' => Cart::content(),
+            'total' => Cart::total(),
+            'stripe_public_key' => StripeKey::getPublicKey(),
+            'addresses' => Auth::user()->address,
+            'display_payment' => true
+        ]);
     }
 
     /**
@@ -118,14 +124,19 @@ class AddressController extends Controller
             ]);
 
             $address->setDefault();
-            return view('order.buyer.create', ['items' => Cart::content(), 'total' => Cart::total(), 'stripe_public_key' => StripeKey::getPublicKey(), 'addresses' => Auth::user()->address, 'display_payment' => true]);
+            return view('order.buyer.create', [
+                'items' => Cart::content(),
+                'total' => Cart::total(),
+                'stripe_public_key' => StripeKey::getPublicKey(),
+                'addresses' => Auth::user()->address,
+                'display_payment' => true
+            ]);
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
      * @return Response
      */
     public function ajaxDelete()
@@ -136,7 +147,10 @@ class AddressController extends Controller
             $address_to_be_deleted->update([
                 'is_default' => false
             ]);
-            return response()->json(['is_deleted' => $address_to_be_deleted->delete(),'num_of_user_addresses' => Auth::user()->address->count()]);
+            return response()->json([
+                'is_deleted' => $address_to_be_deleted->delete(),
+                'num_of_user_addresses' => Auth::user()->address->count()
+            ]);
         }
 
         return response()->json([false]);

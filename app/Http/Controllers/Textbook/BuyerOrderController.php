@@ -73,7 +73,13 @@ class BuyerOrderController extends Controller
         }
 
         $user = Auth::user();
+        $default_address_id = -1;
         $addresses = Address::where('user_id', $user -> id)->get();
+        foreach($addresses as $address){
+            if($address -> is_default == true){
+                $default_address_id = $address -> id;
+            }
+        }
         $addresses->toArray();
 
         if(count($addresses) > 0){
@@ -81,6 +87,7 @@ class BuyerOrderController extends Controller
                 ->with('items', Cart::content())
                 ->with('total', Cart::total())
                 ->with('addresses', $addresses)
+                ->with('default_address_id', $default_address_id)
                 ->with('display_payment', true)
                 ->with('stripe_public_key', StripeKey::getPublicKey());
         }else{
@@ -88,6 +95,7 @@ class BuyerOrderController extends Controller
                 ->with('items', Cart::content())
                 ->with('total', Cart::total())
                 ->with('addresses', $addresses)
+                ->with('default_address_id', $default_address_id)
                 ->with('display_payment', false)
                 ->with('stripe_public_key', StripeKey::getPublicKey());
         }

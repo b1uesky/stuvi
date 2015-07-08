@@ -41,9 +41,9 @@ $(document).ready(function () {
     });
 
     $('.deleteThisAddress').click(function(){
-        var address_ID = $(this).parent().find("#address_id").text();
+        var address_ID = $(this).parent().find(".address_id").text();
         $.ajax({
-            url: '/deleteAddress',
+            url: '/address/delete',
 
             data:{
                 _token: $('[name="csrf_token"]').attr('content'),

@@ -31,9 +31,18 @@ Route::get  ('/register', 'HomeController@register');
 Route::get  ('/about', 'HomeController@about');
 Route::get  ('/contact', 'HomeController@contact');
 Route::get  ('/coming', 'HomeController@coming');
-Route::post ('/storeAddress','AddressController@store');
-Route::post ('/updateAddress','AddressController@update');
-Route::post ('/deleteAddress','AddressController@ajaxDelete');
+
+/*
+|--------------------------------------------------------------------------
+| Address Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
+    Route::post ('/store','AddressController@store');
+    Route::post ('/update','AddressController@update');
+    Route::post ('/delete','AddressController@ajaxDelete');
+});
+
 
 /*
 |--------------------------------------------------------------------------
