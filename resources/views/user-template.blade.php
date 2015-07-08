@@ -5,7 +5,6 @@
 <html>
 
     <head>
-        {{--<title> Stuvi - @yield('title')</title>--}}
         <link rel="stylesheet" type="text/css" href="{{asset('/css/user-bar.css')}}"> 
         <link rel="stylesheet" type="text/css" href="{{asset('/css/user-profile.css')}}">
     </head>

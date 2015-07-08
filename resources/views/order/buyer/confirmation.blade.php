@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Order confirmation')
+@section('title', 'Order confirmation #'.Session::get('order')->id )
 
 @section('css')
     <link href="{{ asset('/css/order/confirmation.css') }}" rel="stylesheet">

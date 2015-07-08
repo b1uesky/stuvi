@@ -4,13 +4,11 @@
 @extends('app')
 @section('title', 'Profile -'.Auth::user()->first_name.' '.Auth::user()->last_name )
 
+@section('css')
+    <link href="{{ asset('/css/user/profile.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
-    <head>
-        <title> Stuvi - {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} - Profile </title>
-        <link href="{{ asset('/css/user/profile.css') }}" rel="stylesheet">
-   {{--     <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('/slick/slick-theme.css')}}">--}}
-    </head>
     <!-- User template has the second nav bar and the profile side bar -->
     @include('user-template')
             <div class="col-md-9">

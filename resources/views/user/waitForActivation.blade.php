@@ -1,12 +1,13 @@
 
 @extends('app')
 
-@section('content')
-    <head>
-        <title> Stuvi - Activation Required </title>
-        <link rel="stylesheet" href="{{asset('/css/user/waitForActivation.css')}}"
+@section('title','Activation Required')
 
-    </head>
+@section('css')
+    <link rel="stylesheet" href="{{asset('/css/user/waitForActivation.css')}}">
+@endsection
+
+@section('content')
 
     <div class="container-fluid container-main">
 
@@ -17,14 +18,8 @@
         <p>Check your email at <code>{{ $user->email }}</code> and activate your account via the link sent with our welcome email. Thank you!</p>
         <p>Problems receiving the email? Check your spam inbox, or <a href="#">resend your code</a>.</p>
             <!-- TODO: Link for resending code -->
-
         </div>
-
-
     </div>
-
-
-
 @endsection
 
 @section('javascript')

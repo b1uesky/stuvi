@@ -2,12 +2,13 @@
 
 @extends('app')
 
-@section('content')
-    <head>
-        <link href="{{ asset('/css/product/product-create.css') }}" rel="stylesheet">
-        <title>Enter book info</title>
-    </head>
+@section('title','Enter book info')
 
+@section('css')
+    <link href="{{ asset('/css/product/product-create.css') }}" rel="stylesheet">
+@endsection
+
+@section('content')
     <div class="container create-container">
         <div class="row textbook-row col-sm-5">
             <div>

@@ -3,11 +3,11 @@
 @extends('app')
 @section('title', 'Edit Profile - '.Auth::user()->first_name.' '.Auth::user()->last_name)
 
+@section('css')
+    <link href="{{ asset('/css/user/profile-edit.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
-    <head>
-        <title> Stuvi - {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} - Edit Profile </title>
-        <link href="{{ asset('/css/user/profile-edit.css') }}" rel="stylesheet">
-    </head>
     <!-- User template has the second nav bar and the profile side bar -->
     @include('user-template')
                 <div class="col-md-9">

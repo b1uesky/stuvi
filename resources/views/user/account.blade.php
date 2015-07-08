@@ -11,10 +11,6 @@
 @endsection
 
 @section('content')
-    <head>
-        <title> Stuvi - {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} - Account </title>
-    </head>
-
     <!-- User template has the second nav bar and the profile side bar -->
     @include('user-template')
                 <!-- right side bar-->

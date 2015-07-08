@@ -11,9 +11,6 @@
 @endsection
 
 @section('content')
-<head>
-    <title>Stuvi - Book Details - {{ $book->title }} </title>
-</head>
 
 @include('textbook/textbook-nav')
 
