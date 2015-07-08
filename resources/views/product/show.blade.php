@@ -6,10 +6,13 @@
 
 @section('title', 'Book Details')
 
+@section('css')
+    <link rel="stylesheet" href="{{asset('/css/product/product-show.css')}}" type="text/css">
+@endsection
+
 @section('content')
 <head>
     <title>Stuvi - Book Details - {{ $book->title }} </title>
-    <link rel="stylesheet" href="{{asset('/css/product/product-show.css')}}" type="text/css">
 </head>
 
 @include('textbook/textbook-nav')
