@@ -4,7 +4,7 @@
 
 @extends('app')
 
-@section('title', 'Book Details')
+@section('title', 'Book Details- '.$book->title)
 
 @section('css')
     <link rel="stylesheet" href="{{asset('/css/product/product-show.css')}}" type="text/css">

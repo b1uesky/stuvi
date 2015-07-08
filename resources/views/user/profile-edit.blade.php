@@ -1,7 +1,7 @@
 {{--Edit Profile page--}}
 
 @extends('app')
-@section('title', 'Profile')
+@section('title', 'Edit Profile - '.Auth::user()->first_name.' '.Auth::user()->last_name)
 
 @section('content')
     <head>

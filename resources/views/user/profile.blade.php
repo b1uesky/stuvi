@@ -2,7 +2,7 @@
 
 
 @extends('app')
-@section('title', 'Profile')
+@section('title', 'Profile -'.Auth::user()->first_name.' '.Auth::user()->last_name )
 
 @section('content')
     <head>
