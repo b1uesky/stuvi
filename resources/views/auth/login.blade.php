@@ -142,7 +142,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="tos">
+                                <div class="tos col-sm-offset-2 col-sm-8">
                                     By creating an account, you agree to Stuvi's <a href="#" data-toggle="modal"
                                                                                     data-target=".terms-modal">Term of
                                         Use</a> and

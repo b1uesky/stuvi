@@ -24,7 +24,7 @@
             <div class="col-sm-6 col-md-4">
 
                 <!-- images use lightbox -->
-                {{-- Only shows first image as large, the rest will be below it as smaller images--}}
+                <!-- Only shows first image as large, the rest will be below it as smaller images -->
                 @if(!empty($images))
                     <?php $x = 0; ?>
                     @foreach($images as $image)
