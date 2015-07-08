@@ -67,7 +67,7 @@ class Cart extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function cartItems()
+    public function items()
     {
         return $this->hasMany('App\CartItem');
     }
