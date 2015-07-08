@@ -139,4 +139,6 @@ class Cart extends Model
     {
         return !$this->cartItems->where('id', $item_id)->isEmpty();
     }
+
+
 }
