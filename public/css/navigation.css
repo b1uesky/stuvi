@@ -56,6 +56,10 @@ a:focus {
     margin-top: 0px;
 }
 
+.dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
 .dropdown-menu li a:hover {
     background-color: #7AB4DE;
     color: #FFFFFF;
@@ -66,11 +70,16 @@ a:focus {
     color: #FFFFFF;
 }
 
+
 /** SHOPPING CART ICON **/
 
 .cart {
     position: relative;
     display: block;
+/*    right: 0px !important;
+    padding: 0 !important;
+    margin: 0 !important; */
+
 }
 
 .cart-link {
@@ -86,5 +95,5 @@ a:focus {
 }
 
 .fa-2x {
-    font-size: 1.51em !important;
+    font-size: 1.5em !important;
 }
