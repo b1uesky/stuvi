@@ -3,7 +3,7 @@
 
 @extends('app')
 
-@section('title', 'Create textbook')
+@section('title', 'Create a textbook')
 
 @section('css')
     <link href="{{ asset('/css/textbook/create.css') }}" rel="stylesheet">

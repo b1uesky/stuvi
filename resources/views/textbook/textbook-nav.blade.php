@@ -1,7 +1,5 @@
 @section('nav')
-    <head>
-        <link href="{{ asset('/css/textbook/textbook-nav.css') }}" rel="stylesheet">
-    </head>
+    <link href="{{ asset('/css/textbook/textbook-nav.css') }}" rel="stylesheet">
 
     {{--textbook navigation bar--}}
     <div class="tab-filter-container">
@@ -12,9 +10,9 @@
             <li class="filter">
                 <a class="filter-link" href="{{ url('/textbook/sell') }}">Sell</a>
             </li>
-            <li class="cart">
+            {{--<li class="cart">
                 <a href="{{ url('/cart') }}" class="cart-link"><i class="fa fa-shopping-cart fa-2x"></i></a>
-            </li>
+            </li>--}}
         </ul>
     </div>
 @show

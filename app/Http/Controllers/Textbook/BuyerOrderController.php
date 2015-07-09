@@ -80,7 +80,13 @@ class BuyerOrderController extends Controller
         }
 
         $user = Auth::user();
+        $default_address_id = -1;
         $addresses = Address::where('user_id', $user -> id)->get();
+        foreach($addresses as $address){
+            if($address -> is_default == true){
+                $default_address_id = $address -> id;
+            }
+        }
         $addresses->toArray();
 
         if(count($addresses) > 0){
@@ -88,6 +94,7 @@ class BuyerOrderController extends Controller
                 ->with('items', $this->cart->items)
                 ->with('total', $this->cart->totalPrice())
                 ->with('addresses', $addresses)
+                ->with('default_address_id', $default_address_id)
                 ->with('display_payment', true)
                 ->with('stripe_public_key', StripeKey::getPublicKey());
         }else{
@@ -95,69 +102,9 @@ class BuyerOrderController extends Controller
                 ->with('items', $this->cart->items)
                 ->with('total', $this->cart->totalPrice())
                 ->with('addresses', $addresses)
+                ->with('default_address_id', $default_address_id)
                 ->with('display_payment', false)
                 ->with('stripe_public_key', StripeKey::getPublicKey());
-        }
-    }
-
-    /**
-     * Display a buyer's addresses if has this information in database
-     */
-    public function storeBuyerAddress(Request $request)
-    {
-        // validate the address info
-        $this->validate($request, Address::rules());
-
-        if (Input::has('address_id'))
-        {
-            $address_id = Input::get('address_id');
-            $address = Address::find($address_id);
-            if ($address -> isBelongTo(Auth::id()))
-            {
-                $address -> update([
-                    'is_default' => true,
-                    'addressee' => Input::get('addressee'),
-                    'address_line1' => Input::get('address_line1'),
-                    'address_line2' => Input::get('address_line2'),
-                    'city' => Input::get('city'),
-                    'state_a2' => Input::get('state_a2'),
-                    'zip' => Input::get('zip'),
-                    'phone_number' => Input::get('phone_number')
-                ]);
-
-                $address -> setDefault();
-                return view('order.buyer.create')
-                    ->with('items', $this->cart->items)
-                    ->with('total', $this->cart->totalPrice())
-                    ->with('stripe_public_key', StripeKey::getPublicKey())
-                    ->with('addresses',Auth::user()->addresses)
-                    ->with('display_payment', true);
-//                    ['items' => Cart::content(), 'total' => Cart::total(), 'stripe_public_key' => StripeKey::getPublicKey(), 'addresses' => Auth::user()->address, 'display_payment' => true]);
-            }
-        }else {
-            // store the buyer shipping address
-            $address = Address::create([
-                'user_id' => Auth::id(),
-                'is_default' => true,
-                'addressee' => Input::get('addressee'),
-                'address_line1' => Input::get('address_line1'),
-                'address_line2' => Input::get('address_line2'),
-                'city' => Input::get('city'),
-                'state_a2' => Input::get('state_a2'),
-                'zip' => Input::get('zip'),
-                'phone_number' => Input::get('phone_number')
-            ]);
-
-
-            $address -> setDefault();
-            return view('order.buyer.create')
-                ->with('items', $this->cart->items)
-                ->with('total', $this->cart->totalPrice())
-                ->with('stripe_public_key', StripeKey::getPublicKey())
-                ->with('addresses',Auth::user()->addresses)
-                ->with('display_payment', true);
-
-            //    ['items' => Cart::content(), 'total' => Cart::total(), 'stripe_public_key' => StripeKey::getPublicKey(), 'addresses' => Auth::user()->address, 'display_payment' => true]);
         }
     }
 
@@ -198,7 +145,7 @@ class BuyerOrderController extends Controller
         // send confirmation email to buyer
         $this->emailBuyerOrderConfirmation($order);
 
-        return redirect('/order/buyer/confirmation')
+        return redirect('/order/confirmation')
             ->with('order', $order);
     }
 

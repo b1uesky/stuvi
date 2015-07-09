@@ -46,6 +46,10 @@ a:focus {
 
 /******* NAVIGATION DROPDOWN *******/
 
+.nav-dropdown {
+    padding-bottom: 10px !important;
+}
+
 .nav-dropdown:focus {
     background-color: #435C7F !important;
     border-bottom: solid 5px #90B4DF !important;
@@ -56,6 +60,10 @@ a:focus {
     margin-top: 0px;
 }
 
+.dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
 .dropdown-menu li a:hover {
     background-color: #7AB4DE;
     color: #FFFFFF;
@@ -64,4 +72,36 @@ a:focus {
 /* Fix for when dropdown is open, the text was getting changed to dark*/
 #account-name {
     color: #FFFFFF;
+}
+
+
+/*
+/!** SHOPPING CART ICON **!/
+
+.cart {
+    position: relative;
+    display: block;
+
+}
+
+.cart-link {
+    color: #FFFFFF;
+    /!*padding: 0px 10px !important;*!/
+    padding-top: 7px !important;
+    padding-bottom: 0px !important;
+}
+
+.cart-link:hover,
+.cart-link:focus {
+    color: #241729;
+}
+
+.fa-2x {
+    font-size: 21px !important;
+    margin-bottom: 3px;
+}
+*/
+
+#cart-fix{
+    line-height: 19px !important;
 }

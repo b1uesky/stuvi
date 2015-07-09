@@ -2,12 +2,13 @@
 
 @extends('app')
 
-@section('content')
-    <head>
-        <title>Stuvi - Bookshelf</title>
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/user/bookshelf.css')}}">
-    </head>
+@section('title','Bookshelf')
 
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('/css/user/bookshelf.css')}}">
+@endsection
+
+@section('content')
     <div class="container-fluid bookshelf-page">
         <div class="container message-cont" xmlns="http://www.w3.org/1999/html">
             @if (Session::has('message'))

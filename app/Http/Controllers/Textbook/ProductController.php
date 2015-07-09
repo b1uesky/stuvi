@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Product;
 use App\ProductCondition;
+use App\Helpers\AmazonLookUp;
+
 use Auth;
 use Config;
 use Input;
@@ -80,11 +82,19 @@ class ProductController extends Controller {
 	 */
 	public function show($product)
 	{
-		return view('product.show', [
-			'product' 	=> $product,
-			'images'	=> $product->images,
-			'conditions'	=>	Config::get('product.conditions')
-		]);
+        $book = $product->book;
+        $amazon = new AmazonLookUp($book->isbn10, 'ISBN');
+
+        if ($amazon->success())
+        {
+            $list_price = $amazon->getListPriceFormattedPrice();
+
+            return view('product.show')
+                ->withProduct($product)
+                ->withListPrice($list_price);
+        }
+
+		return view('product.show')->withProduct($product);
 	}
 
 	/**

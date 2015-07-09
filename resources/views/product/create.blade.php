@@ -216,6 +216,23 @@
                               placeholder="{{ Config::get('product.conditions.description.place_holder') }}"></textarea>
                 </div>
                 {{-- Price --}}
+
+                {{-- list price --}}
+                @if($book->list_price)
+                    <div>List price: ${{ $book->list_price }}</div>
+                @endif
+
+                {{-- lowest new price --}}
+                @if($book->lowest_new_price)
+                    <div>Lowest new price: ${{ $book->lowest_new_price }}</div>
+                @endif
+
+                {{-- lowest used price --}}
+                @if($book->lowest_used_price)
+                    <div>Lowest used price: ${{ $book->lowest_used_price }}</div>
+                @endif
+
+                {{-- your price --}}
                 <div class="form-group">
                     <label>Price</label>
                     <input type="number" step="0.01" name="price" class="form-control">

@@ -68,7 +68,7 @@ body {
 }
 
 .address-panel {
-    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, .25);
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.25);
     border-top: 2px solid #F16521;
     border-radius: 0;
     margin-left: 33px;
@@ -92,18 +92,34 @@ body {
     color: #FFFFFF;
 }
 
+.add_new_address{
+    display: none;
+}
+
+.displayDefaultAddress .address_id {
+    /*display: none;*/
+}
+
 .displayAllAddresses {
     margin-left: 5px;
     margin-right: 5px;
     padding-right: 0;
+    height: 155px;
+    display: none;
 }
 
-.new-address-panel {
+.displayAllAddresses .address_id {
+    display: none;
+}
+
+#new-address-panel {
     text-align: center;
     margin-left: 5px;
+    display: none;
+    height: 155px;
 }
 
-.new-address-panel h4 {
+#new-address-panel h4 {
     margin-bottom: 0;
 }
 
