@@ -37,32 +37,35 @@ public function run()
 
         if ($amazon->success())
         {
-            $amazon->saveToXML();
+//            $amazon->saveToXML();
 
             // save this book to our database
             $book = new Book();
-            $book->isbn10 = $amazon->getISBN10();
-            $book->isbn13 = $amazon->getISBN13();
-            $book->title = $amazon->getTitle();
-            $book->edition = $amazon->getEdition();
-            $book->binding = $amazon->getBinding();
-            $book->language = $amazon->getLanguage();
-            $book->num_pages = $amazon->getNumPages();
+            $book->isbn10               = $amazon->getISBN10();
+            $book->isbn13               = $amazon->getISBN13();
+            $book->title                = $amazon->getTitle();
+            $book->edition              = $amazon->getEdition();
+            $book->binding              = $amazon->getBinding();
+            $book->language             = $amazon->getLanguage();
+            $book->num_pages            = $amazon->getNumPages();
+            $book->list_price           = $amazon->getListPriceDecimalPrice();
+            $book->lowest_new_price     = $amazon->getLowestNewPriceDecimalPrice();
+            $book->lowest_used_price    = $amazon->getLowestUsedriceDecimalPrice();
             $book->save();
 
             // save book image set
-            $book_image_set = new BookImageSet();
-            $book_image_set->book_id = $book->id;
-            $book_image_set->small_image = $amazon->getSmallImage();
-            $book_image_set->medium_image = $amazon->getMediumImage();
-            $book_image_set->large_image = $amazon->getLargeImage();
+            $book_image_set                 = new BookImageSet();
+            $book_image_set->book_id        = $book->id;
+            $book_image_set->small_image    = $amazon->getSmallImage();
+            $book_image_set->medium_image   = $amazon->getMediumImage();
+            $book_image_set->large_image    = $amazon->getLargeImage();
             $book_image_set->save();
 
 //            var_dump($amazon->saveToXML());
             // save book authors
             foreach ($amazon->getAuthors() as $author_name) {
-                $book_author = new BookAuthor();
-                $book_author->book_id = $book->id;
+                $book_author            = new BookAuthor();
+                $book_author->book_id   = $book->id;
                 $book_author->full_name = $author_name;
                 $book_author->save();
             }
