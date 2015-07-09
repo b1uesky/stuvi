@@ -169,7 +169,7 @@
             </table>
 
             <!-- Seller Description -->
-            <div class="container col-sm-12 col-md-4 seller-desc">
+            <div class=" col-xs-12 col-sm-12 col-md-4 seller-desc">
                 @if($product->condition->description != '')
                     <h4>Seller's description on the book conditions:</h4>
                     <div>{{ $product->condition->description }}</div>
