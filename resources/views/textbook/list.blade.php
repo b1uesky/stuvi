@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Search results')
+@section('title', 'Search results for '.$info)
 
 @section('css')
     <link href="{{ asset('/css/textbook/textbook-list.css') }}" rel="stylesheet">

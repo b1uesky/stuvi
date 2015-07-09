@@ -103,9 +103,10 @@
                                         @if($address -> address_line2 != null)
                                             <li class="address address_line2">{{ $address -> address_line2}}</li>
                                         @endif
-                                        <li class="address city">{{ $address -> city }}</li>
-                                        <li class="address state_a2">{{ $address -> state_a2 }}</li>
-                                        <li class="address zip">{{ $address -> zip }}</li>
+                                        <li class="address city inline" id="default_city">{{ $address -> city }},</li>
+                                        <li class="address state_a2 inline"
+                                            id="default_state_a2">{{ $address -> state_a2 }}</li>
+                                        <li class="address zip inline" id="default_zip">{{ $address -> zip }}</li>
                                     </ul>
                                     <button class="btn btn-default address-btn selectThisAddress">
                                         <i class="fa fa-check-square"></i>
@@ -130,7 +131,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">Full name</label>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" name="addressee"
                                                value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
                                     </div>
@@ -139,7 +140,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">Address line 1</label>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" name="address_line1"
                                                value="185 Freeman St.">
                                     </div>
@@ -148,7 +149,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">Address line 2</label>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" name="address_line2"
                                                value="Apt. 739">
                                     </div>
@@ -157,7 +158,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">City</label>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" name="city"
                                                value="Brookline">
                                     </div>
@@ -166,7 +167,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">State</label>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" name="state_a2" value="MA">
                                     </div>
                                 </div>
@@ -174,7 +175,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">Zip</label>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" name="zip" value="02446">
                                     </div>
                                 </div>
@@ -182,13 +183,13 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">Phone</label>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" name="phone_number"
                                                value="(857) 206 4789">
                                     </div>
                                 </div>
                                 </br>
-                                <button class="btn btn-primary btn-md" id="storeAddress" type="submit">
+                                <button class="col-sm-3 btn btn-default address-btn" id="storeAddress" type="submit">
                                     Add Address
                                 </button>
                             </form>
@@ -519,6 +520,7 @@
     <!-- jQuery is used only for this example; it isn't required to use Stripe -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ asset('/js/address.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js.') }}"></script>
 
     <!-- stripe -->
     <script type="text/javascript">

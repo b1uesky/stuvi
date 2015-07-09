@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Order details')
+@section('title', 'Order #'.$buyer_order->id)
 
 @section('css')
     <link href="{{ asset('/css/order/showOrder.css') }}" rel="stylesheet">

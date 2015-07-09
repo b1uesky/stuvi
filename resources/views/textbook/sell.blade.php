@@ -2,7 +2,7 @@
 
 @extends('app')
 
-@section('title', 'Sell textbooks')
+@section('title', 'Sell used textbooks')
 
 @section('css')
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -20,9 +20,9 @@
             <li class="filter active">
                 <a class="filter-link active" href="{{ url('/textbook/sell') }}">Sell</a>
             </li>
-            <li class="cart">
+           {{-- <li class="cart">
                 <a href="{{ url('/cart') }}" class="cart-link"><i class="fa fa-shopping-cart fa-2x"></i></a>
-            </li>
+            </li>--}}
         </ul>
     </div>
 

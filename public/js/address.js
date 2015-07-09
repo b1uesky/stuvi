@@ -27,6 +27,7 @@ $(document).ready(function () {
                 }
             }
         });
+        $('#new-address-panel').hide();
     });
 
     $('#storeAddedAddress').click(function(){
@@ -56,12 +57,14 @@ $(document).ready(function () {
         var address_ID = $(this).parent().find(".address_id").text();
         $.ajax({
             url: '/address/delete',
+
             data:{
                 _token: $('[name="csrf_token"]').attr('content'),
                 address_id : address_ID
             },
+
             type:"POST",
-            dataType:"json",
+
             success:function(response){
                 if(response['is_deleted'] === true){
                     $('.'+address_ID).hide(1000);

@@ -1,4 +1,5 @@
 @extends('app2')
+
 <head>
     <link href="{{ asset('/css/auth/login.css') }}" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/css/bootstrap-select.min.css" rel="stylesheet">
@@ -17,24 +18,27 @@
 
 @section('content')
     <div class="container-fluid">
+        <!-- logo -->
         <a href="{{ url('/') }}" id="logo-link"><img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive"
                                                      id="login-logo"></a>
 
         <div class="row vertical-center">
             <div class="col-sm-6 col-sm-offset-3">
                 <div class="container" id="form-container">
+                    <!-- tabs -->
                     <ul class="nav nav-tabs nav-justified" role="tablist" id="tabs">
+                        <!-- login tab-->
                         <li role="presentation" class="{{ $loginActive }}" id="login-tab"><a href="#login-body"
                                                                                              aria-controls="login-body"
                                                                                              role="tab"
                                                                                              data-toggle="tab">Login</a>
                         </li>
+                        <!-- signup tab-->
                         <li role="presentation" class="{{ $signupActive }}" id="signup-tab"><a href="#signup-body"
                                                                                                aria-controls="signup-body"
                                                                                                role="tab"
-                                                                                               data-toggle="tab">Sign
-                                Up</a></li>
-                    </ul>
+                                                                                               data-toggle="tab">SignUp</a></li>
+                    </ul> <!-- end tabs -->
 
                     {{-- Messages --}}
                     @if (Session::has('message'))
@@ -61,23 +65,26 @@
                         <div class="alert alert-success">{{ Session::get('success') }}</div>
                     @endif
                     <div class="tab-content">
+                        <!-- login -->
                         <div class="tab-pane {{ $loginActive }}" id="login-body">
                             <form class="form-horizontal login-form" role="form" method="POST"
                                   action="{{ url('/auth/login') }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+                                <!-- email -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8 form-space-offset">
                                         <input type="email" class="form-control" name="email" placeholder="Email"
                                                value="{{ old('email') }}">
                                     </div>
                                 </div>
+                                <!-- password -->
                                 <div id="password-group" class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
                                         <input type="password" class="form-control" name="password"
                                                placeholder="Password">
                                     </div>
                                 </div>
+                                <!-- remember -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
                                         <div class="checkbox" id="remember-me">
@@ -87,6 +94,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- forgot pw -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
                                         <button type="submit" class="btn login-button ">Login</button>
@@ -98,41 +106,47 @@
                                 </div>
                             </form>
                         </div>
+                        <!-- sign up -->
                         <div class="tab-pane {{ $signupActive }}" id="signup-body">
                             <form class="form-horizontal" role="form" method="POST"
                                   action="{{ url('/auth/register') }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+                                <!-- first name -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8 form-space-offset">
                                         <input type="text" class="form-control" name="first_name"
                                                placeholder="First Name" value="{{ old('first_name') }}">
                                     </div>
                                 </div>
+                                <!-- last name -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
                                         <input type="text" class="form-control" name="last_name" placeholder="Last Name"
                                                value="{{ old('last_name') }}">
                                     </div>
                                 </div>
+                                <!-- email -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
                                         <input type="email" class="form-control" name="email" placeholder="Email"
                                                value="{{ old('email') }}">
                                     </div>
                                 </div>
+                                <!-- password -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
                                         <input type="password" class="form-control" name="password"
                                                placeholder="Password">
                                     </div>
                                 </div>
+                                <!-- phone num -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
                                         <input type="tel" class="form-control" name="phone_number"
                                                placeholder="Phone Number" value="{{ old('phone_number') }}">
                                     </div>
                                 </div>
+                                <!-- school -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
                                         <select class="form-control" name="university_id">
@@ -143,13 +157,14 @@
                                         </select>
                                     </div>
                                 </div>
+                                <!-- tos statement-->
                                 <div class="tos col-sm-offset-2 col-sm-8">
                                     By creating an account, you agree to Stuvi's <a href="#" data-toggle="modal"
                                                                                     data-target=".terms-modal">Term of
                                         Use</a> and
                                     <a href="#" data-toggle="modal" data-target=".privacy-modal">Privacy Notice</a>.
                                 </div>
-
+                                <!-- sign up button-->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
                                         <button type="submit" class="btn login-button">Sign Up</button>
@@ -161,6 +176,8 @@
                 </div>
             </div>
         </div>
+        <!-- terms of use -->
+        <!-- TODO: Create tos page -->
         <div class="modal fade terms-modal" tabindex="-1" role="dialog" aria-labelledby="Terms of Use">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -177,6 +194,8 @@
                 </div>
             </div>
         </div>
+        <!-- privacy notice -->
+        <!-- TODO: create privacy notice page -->
         <div class="modal fade privacy-modal" tabindex="-1" role="dialog" aria-labelledby="Privacy Notice">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
