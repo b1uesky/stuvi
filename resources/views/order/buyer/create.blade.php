@@ -460,9 +460,9 @@
                                             </label>
                                             <label>
                                                 <span>Card Number</span>
-                                                <input class="form-control" type="text" size="20"
-                                                       data-stripe="number"
-                                                       value="4242 4242 4242 4242"/>
+                                                <input class="form-control" type="text" size="19" maxlength="19"
+                                                       data-stripe="number" id="card-input"
+                                                       value="4242-4242-4242-4242"/>
                                             </label>
 
                                         </div>

@@ -76,4 +76,10 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('#card-input').keyup(function () {
+        var num = $(this).val().split("-").join("");
+        num = num.match(new RegExp('.{1,4}', 'g')).join("-");
+        $(this).val(num);
+    });
 });
