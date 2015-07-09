@@ -147,6 +147,9 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
 
     // seller order
     Route::resource('sellerOrder', 'SellerOrderController');
+
+    // buyer order
+    Route::resource('buyerOrder', 'BuyerOrderController');
 });
 
 /*

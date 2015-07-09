@@ -8,6 +8,7 @@
             <li><a href="{{ URL::to('admin/user') }}">User</a></li>
             <li><a href="{{ URL::to('admin/product') }}">Product</a></li>
             <li><a href="{{ URL::to('admin/sellerOrder') }}">SellerOrder</a></li>
+            <li><a href="{{ URL::to('admin/buyerOrder') }}">BuyerOrder</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
