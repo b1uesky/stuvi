@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\CartItem;
 use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
@@ -129,7 +128,7 @@ class Cart extends Model
     }
 
     /**
-     * Check if cart has the given item.
+     * Check if cart has the given cart item.
      *
      * @param $item_id
      *
@@ -137,7 +136,19 @@ class Cart extends Model
      */
     public function hasItem($item_id)
     {
-        return !$this->items->where('id', $item_id)->isEmpty();
+        return !$this->items->where('id', (int)$item_id)->isEmpty();
+    }
+
+    /**
+     * Check if cart has the given product.
+     *
+     * @param $product_id
+     *
+     * @return bool
+     */
+    public function hasProduct($product_id)
+    {
+        return !$this->items->where('product_id', (int)$product_id)->isEmpty();
     }
 
 

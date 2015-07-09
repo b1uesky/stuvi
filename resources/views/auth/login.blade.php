@@ -150,6 +150,7 @@
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
                                         <select class="form-control" name="university_id">
+                                            <option selected disabled>University</option>
                                             @foreach($universities as $university)
                                                 <option value="{{ $university->id }}">{{ $university->name }}</option>
                                             @endforeach

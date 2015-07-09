@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class University extends Model
@@ -9,7 +10,7 @@ class University extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'abbreviation', 'email_suffix'];
+    protected $fillable = ['name', 'abbreviation', 'email_suffix', 'is_public'];
 
     /**
      * Indicates if the model should be timestamped.
@@ -52,6 +53,16 @@ class University extends Model
     public function professors()
     {
         return $this->belongsToMany('App\Professor');
+    }
+
+    /**
+     * Get all universities available for registration.
+     *
+     * @return Collection
+     */
+    public static function availableUniversities()
+    {
+        return University::where('is_public', true)->get();
     }
 
 }

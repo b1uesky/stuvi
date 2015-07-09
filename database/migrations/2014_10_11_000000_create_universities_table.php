@@ -18,6 +18,7 @@ class CreateUniversitiesTable extends Migration {
             $table->string('name');
             $table->string('abbreviation')->nullable();
             $table->string('email_suffix');
+			$table->boolean('is_public')->default(false);
 		});
 	}
 

@@ -26,8 +26,8 @@
             <!-- ghost buttons -->
             @if (Auth::guest())
                 <div class="ghost-btn-container">
-                    <a class="btn ghost-btn" href="{{ url('/login') }}" role="button">LOGIN</a>
-                    <a class="btn ghost-btn" href="{{ url('/register') }}" role="button">SIGN UP</a>
+                    <a class="btn ghost-btn" href="{{ url('/auth/login') }}" role="button">LOGIN</a>
+                    <a class="btn ghost-btn" href="{{ url('/auth/register') }}" role="button">SIGN UP</a>
                 </div>
             @endif
         </div>
