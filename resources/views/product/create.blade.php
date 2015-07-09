@@ -231,6 +231,7 @@
                 @if($book->lowest_used_price)
                     <div>Lowest used price: ${{ $book->lowest_used_price }}</div>
                 @endif
+                <br>
 
                 {{-- your price --}}
                 <div class="form-group">
@@ -253,11 +254,34 @@
 
                 <div class="form-group">
                     <label>Page image</label>
+                    <i class="fa fa-question-circle" data-toggle="modal" data-target=".page-modal"></i>
+                    <br>
+
+                    <div class="modal fade page-modal" tabindex="-1" role="dialog" aria-labelledby="Page Image">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close close-modal-btn" data-dismiss="modal"
+                                            aria-label="close">
+                                        <span id="close-span" aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h3>Page image</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Please upload an image of a page approximately in the middle of the book.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <input type="file" name="page-image" class="upload-file"/>
                     <div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>
                 </div>
 
                 <input type="submit" name="submit" class="btn sell-btn" value="Sell Book"/>
+
+
+
             </form>
         </div>
     </div>
