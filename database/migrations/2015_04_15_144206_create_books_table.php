@@ -23,6 +23,9 @@ class CreateBooksTable extends Migration {
             $table->boolean('verified')->default(false);
             $table->string('binding');
             $table->string('language');
+            $table->decimal('list_price')->nullable();
+            $table->decimal('lowest_new_price')->nullable();
+            $table->decimal('lowest_used_price')->nullable();
             $table->timestamps();
 		});
 	}

@@ -94,38 +94,36 @@
                                     </div>
                                 </div>
                             @endif
-                                <div class="col-sm-5 panel address-panel displayAllAddresses {{ $address -> id }}"
-                                 style="display: none">
+                            <div class="panel address-panel col-md-4 displayAllAddresses {{ $address -> id }}">
                                 <div class="panel-body">
                                     <ul class="address-list">
-                                        <li class="address" id="address_id"
-                                            style="display: none">{{ $address -> id }}</li>
-                                        <li class="address" id="addressee">{{ $address -> addressee }}</li>
-                                        <li class="address" id="address_line1">{{ $address -> address_line1}}</li>
+                                        <li class="address address_id">{{ $address -> id }}</li>
+                                        <li class="address addressee">{{ $address -> addressee }}</li>
+                                        <li class="address address_line1">{{ $address -> address_line1}}</li>
                                         @if($address -> address_line2 != null)
-                                            <li class="address"
-                                                id="default_address_line2">{{ $address -> address_line2}}</li>
+                                            <li class="address address_line2">{{ $address -> address_line2}}</li>
                                         @endif
-                                        <li class="address inline" id="default_city">{{ $address -> city }},</li>
-                                        <li class="address inline" id="default_state_a2">{{ $address -> state_a2 }}</li>
-                                        <li class="address inline" id="default_zip">{{ $address -> zip }}</li>
+                                        <li class="address city">{{ $address -> city }}</li>
+                                        <li class="address state_a2">{{ $address -> state_a2 }}</li>
+                                        <li class="address zip">{{ $address -> zip }}</li>
                                     </ul>
                                     <button class="btn btn-default address-btn selectThisAddress">
                                         <i class="fa fa-check-square"></i>
                                         Select
                                     </button>
-                                    <button class="btn btn-default address-btn editThisAddress" data-toggle="modal" data-target="#myModal">
+                                    <button class="btn btn-default address-btn editThisAddress" data-toggle="modal"
+                                            data-target="#update-address-modal">
                                         <i class="fa fa-pencil"></i>
                                         Edit
                                     </button>
-                                    <button class="btn btn-default address-btn">
+                                    <button class="btn btn-default address-btn deleteThisAddress">
                                         <i class="fa fa-trash"></i>
                                         Delete
                                     </button>
                                 </div>
                             </div>
                         @empty
-                            <form action="{{ url('/order/storeAddress') }}" method="POST"
+                            <form action="{{ url('/address/store') }}" method="POST"
                                   class="address-form">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -195,20 +193,14 @@
                                 </button>
                             </form>
                         @endforelse
-                            <div id="new-address-panel" class="col-sm-5 panel address-panel">
-                            <div class="panel-body">
-                                <h4>Add New Address</h4>
-                                <i class="fa fa-plus-square fa-4x"
-                                   data-toggle="modal" data-target="#myModal">
-                                </i>
-                            </div>
-                        </div>
-                        {{--<button type="button" class="add_new_address btn btn-primary btn-md address-btn"--}}
-                        {{--data-toggle="modal"--}}
-                        {{--data-target="#myModal" style="display: none">--}}
-                        {{--Add New Address--}}
-                        {{--</button>--}}
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                        <button type="button" class="add_new_address btn btn-primary btn-md"
+                                data-toggle="modal"
+                                data-target="#add-address-modal">
+                            Add New Address
+                        </button>
+
+                        <!--Modals-->
+                        <div class="modal fade" id="update-address-modal" tabindex="-1" role="dialog"
                              aria-labelledby="myModalLabel">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -218,10 +210,11 @@
                                             <span aria-hidden="true">&times;</span></button>
                                         <h4 class="modal-title" id="myModalLabel">Please Enter Address</h4>
                                     </div>
-                                    <div class="modal-body address-form-body">
-                                        <form action="{{ url('/order/storeAddress') }}" method="POST"
-                                              class="address-form">
+                                    <div class="modal-body">
+                                        <form action="{{ url('/address/update') }}" method="POST"
+                                              class="update-address-form">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <input type="hidden" name="address_id" value="">
 
                                             <div class="form-group">
                                                 <label class="col-sm-4 control-label">Full name</label>
@@ -296,13 +289,109 @@
                                         <button type="button" class="btn btn-default close-btn" data-dismiss="modal">
                                             Close
                                         </button>
-                                        <button id="storeAddress" type="button" class="btn btn-default address-btn">
-                                            Save Address
+                                        <button id="storeUpdatedAddress" type="button" class="btn btn-primary">
+                                            Update Address
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                            <div class="modal fade" id="add-address-modal" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Please Enter Address</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ url('/address/store') }}" method="POST"
+                                                  class="add-address-form">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Full name</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="addressee"
+                                                               value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
+                                                    </div>
+                                                </div>
+                                                </br>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Address line 1</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control"
+                                                               name="address_line1"
+                                                               value="185 Freeman St.">
+                                                    </div>
+                                                </div>
+                                                </br>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Address line 2</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control"
+                                                               name="address_line2"
+                                                               value="Apt. 739">
+                                                    </div>
+                                                </div>
+                                                </br>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">City</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="city"
+                                                               value="Brookline">
+                                                    </div>
+                                                </div>
+                                                </br>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">State</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="state_a2"
+                                                               value="MA">
+                                                    </div>
+                                                </div>
+                                                </br>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Zip</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="zip"
+                                                               value="02446">
+                                                    </div>
+                                                </div>
+                                                </br>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Phone</label>
+
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control"
+                                                               name="phone_number"
+                                                               value="(857) 206 4789">
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="address_id" value="">
+                                                </br>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                Close
+                                            </button>
+                                            <button id="storeAddedAddress" type="button" class="btn btn-primary">
+                                                Add Address
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
 
 
@@ -311,7 +400,7 @@
                     @if ($display_payment)
                         <form action="{{ url('/order/store') }}" method="POST" id="payment-form">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="selected_address_id" value="">
+                            <input type="hidden" name="selected_address_id" value="{{$default_address_id}}">
                             {{--<input type="hidden" name="stripeAmount" value="{{ $total*100 }}">--}}
                             <h2>3. Payment</h2></br>
                             {{--<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -430,7 +519,7 @@
     <!-- jQuery is used only for this example; it isn't required to use Stripe -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ asset('/js/address.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js.') }}"
+    <script type="text/javascript" src="{{ asset('/js.') }}"></script>
 
     <!-- stripe -->
     <script type="text/javascript">
