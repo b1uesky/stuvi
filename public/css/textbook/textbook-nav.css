@@ -35,21 +35,3 @@
     color: #241729;
 }
 
-/*/!** SHOPPING CART ICON **!/
-
-.cart {
-    position: absolute;
-    display: inline-block;
-    margin-top: -3px;
-    right: 30px;
-    padding-top: 0 !important;
-}
-
-.cart-link {
-    color: #FFFFFF;
-}
-
-.cart-link:hover,
-.cart-link:focus {
-    color: #241729;
-}*/
