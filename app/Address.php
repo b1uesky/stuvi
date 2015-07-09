@@ -110,5 +110,16 @@ class Address extends Model
                 ]);
             }
         }
+        $this->update([
+            "is_default" => true
+        ]);
+        if($this->is_default)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
