@@ -410,7 +410,7 @@
                     @if ($display_payment)
                         <form action="{{ url('/order/store') }}" method="POST" id="payment-form">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="selected_address_id" value="">
+                            <input type="hidden" name="selected_address_id" value="{{$default_address_id}}">
                             {{--<input type="hidden" name="stripeAmount" value="{{ $total*100 }}">--}}
                             <h2>3. Payment</h2></br>
                             {{--<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"

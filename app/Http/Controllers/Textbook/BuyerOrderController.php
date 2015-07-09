@@ -159,7 +159,7 @@ class BuyerOrderController extends Controller
         // send confirmation email to buyer
         $this->emailBuyerOrderConfirmation($order);
 
-        return redirect('/order/buyer/confirmation')
+        return redirect('/order/confirmation')
             ->with('order', $order);
     }
 

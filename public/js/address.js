@@ -9,7 +9,7 @@ $(document).ready(function () {
     });
 
     $('.selectThisAddress').click(function() {
-        var address_ID = $(this).prev().find("#address_id").text();
+        var address_ID = $(this).prev().find(".address_id").text();
         var address_info = $(this).prev().html();
         $('.displayAllAddresses').hide();
         $('.displayDefaultAddress').find('.address-list').html(address_info);
