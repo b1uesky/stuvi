@@ -130,7 +130,7 @@ class AuthController extends Controller {
         // check whether the email address is matched with the university email suffix.
         if (!(University::find(Input::get('university_id'))->matchEmailSuffix(Input::get('email'))))
         {
-            return redirect('/register')
+            return redirect('/auth/register')
                 ->with('message', 'Please use your college email address.');
         }
 
