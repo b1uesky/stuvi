@@ -1,6 +1,6 @@
 @extends('admin')
 
-@section('title', 'Seller Order')
+@section('title', 'Buyer Order')
 
 @section('content')
     <table class="table table-hover">
