@@ -76,9 +76,6 @@ a:focus {
 .cart {
     position: relative;
     display: block;
-/*    right: 0px !important;
-    padding: 0 !important;
-    margin: 0 !important; */
 
 }
 
@@ -95,5 +92,6 @@ a:focus {
 }
 
 .fa-2x {
-    font-size: 1.51em !important;
+    font-size: 21px !important;
+    margin-bottom: 1px;
 }

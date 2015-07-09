@@ -55,6 +55,7 @@
                                         Sold Books</a></li>
                            {{--     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/cart') }}">
                                         Shopping Cart</a></li>--}}
+                                <li role="separator" class="divider"></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1"
                                                            href="{{ url('/auth/logout') }}">
                                         Logout</a></li>
