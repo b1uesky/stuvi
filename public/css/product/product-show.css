@@ -81,6 +81,12 @@
     padding: 0px;
 }
 
+@media(max-width: 990px){
+    .seller-desc{
+        padding-left: 15px;
+    }
+}
+
 
 /* Lightbox */
 

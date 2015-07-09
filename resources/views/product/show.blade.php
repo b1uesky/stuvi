@@ -1,6 +1,5 @@
 {{--textbook/buy/product/#--}}
 
-<!-- TODO: There is an issue with javascript not working when the screensize is sm -->
 
 @extends('app')
 
@@ -168,8 +167,9 @@
                     <td>{{ Config::get('product.conditions.broken_binding')[$product->condition->broken_binding] }}</td>
                 </tr>
             </table>
+
             <!-- Seller Description -->
-            <div class="container col-md-4 seller-desc">
+            <div class="container col-sm-12 col-md-4 seller-desc">
                 @if($product->condition->description != '')
                     <h4>Seller's description on the book conditions:</h4>
                     <div>{{ $product->condition->description }}</div>
