@@ -30,8 +30,8 @@
             <p class="col-xs-12 col-sm-4">Order #{{ $buyer_order->id }}</p>
         </div>
         @if ($buyer_order->isDelivered())
-            <p><a class="btn btn-default" href="">Return or replace items</a></p>
-        @elseif (!$buyer_order->cancelled)
+            {{--<p><a class="btn btn-default" href="">Return or replace items</a></p>--}}
+        @elseif (!$buyer_order->isCancellable())
             <p><a class="btn btn-default btn-cancel" href="/order/buyer/cancel/{{ $buyer_order->id }}">Cancel Order</a></p>
         @endif
     <div class="container" id="details2">

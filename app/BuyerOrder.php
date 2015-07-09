@@ -76,6 +76,28 @@ class BuyerOrder extends Model
     }
 
     /**
+     * Check whether this buyer order is cancellable.
+     */
+    public function isCancellable()
+    {
+        if ($this->isDelivered() || $this->cancelled)
+        {
+            return false;
+        }
+
+        // if any seller order is picked up by a courier, this buyer order is not cancellable as well.
+        foreach ($this->seller_orders as $seller_order)
+        {
+            if (!$seller_order->isCancellable())
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * Cancel this buyer order and corresponding seller orders.
      */
     public function cancel()

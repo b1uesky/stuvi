@@ -15,6 +15,17 @@ class SellerOrder extends Model
         return $this->belongsTo('App\Product');
     }
 
+    /**
+     * Check whether this seller order is cancellable.
+     */
+    public function isCancellable()
+    {
+        return !$this->pickedUp() && !$this->cancelled;
+    }
+
+    /**
+     * Cancel a seller order.
+     */
     public function cancel()
     {
         $this->cancelled = true;
@@ -70,6 +81,11 @@ class SellerOrder extends Model
         return !empty($this->scheduled_pickup_time);
     }
 
+    /**
+     * Check if the seller order is picked up by a courier.
+     *
+     * @return bool
+     */
     public function pickedUp()
     {
         return !empty($this->pickup_time);
