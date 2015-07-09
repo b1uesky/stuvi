@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\CartItem;
 
 class Cart extends Model
 {
@@ -31,7 +30,6 @@ class Cart extends Model
     public function remove($item_id)
     {
         CartItem::destroy($item_id);
-
     }
 
     /**
@@ -42,7 +40,7 @@ class Cart extends Model
      */
     public function isValid()
     {
-        $cart_items = $this->cartItems();
+        $cart_items = $this->items();
         foreach ($cart_items as $item) {
             if ($item->product()->isSold()) {
                 return false;
@@ -52,54 +50,106 @@ class Cart extends Model
     }
 
     /**
-     *
-     *
+     * Remove all sold items in cart.
      */
     public function validate()
     {
-        $cart_items = $this->cartItems();
-        foreach ($cart_items as $item) {
-            if ($item->product()->isSold()) {
+        foreach ($this->items as $item) {
+            if ($item->product->sold) {
                 $this->remove($item->id);
             }
-
         }
-
     }
-
 
     /**
      * Get all cart items.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function cartItems()
+    public function items()
     {
-        return $this->hasMany('App\CartItem', 'cart_id', 'id');
+        return $this->hasMany('App\CartItem');
     }
 
+    /**
+     * Add an item into cart.
+     *
+     * @param Product $item
+     *
+     * @return CartItem
+     */
     public function add(Product $item)
     {
-        CartItem::create([
-            'cart_id'       => $this->id,
-            'product_id'    => $item->id,
+        return CartItem::create([
+            'cart_id'    => $this->id,
+            'product_id' => $item->id,
         ]);
     }
 
+    /**
+     * Update the quantity of an cart item.
+     *
+     * @param $cart_item_id
+     * @param $quantity
+     */
     public function updateItem($cart_item_id, $quantity)
     {
-
+        CartItem::find($cart_item_id)->update([
+            'quantity'  => $quantity,
+        ]);
     }
 
-
+    /**
+     * Remove all items from cart.
+     */
     public function clear()
     {
-
+        foreach ($this->items as $cart_item)
+        {
+            $cart_item->delete();
+        }
     }
 
-    public function total_price()
+    /**
+     * Get the total price of all items.
+     *
+     * @return int
+     */
+    public function totalPrice()
     {
+        $price = 0;
 
+        foreach ($this->items as $cart_item)
+        {
+            $price += $cart_item->product->price;
+        }
+
+        return $price;
     }
+
+    /**
+     * Check if cart has the given cart item.
+     *
+     * @param $item_id
+     *
+     * @return bool
+     */
+    public function hasItem($item_id)
+    {
+        return !$this->items->where('id', (int)$item_id)->isEmpty();
+    }
+
+    /**
+     * Check if cart has the given product.
+     *
+     * @param $product_id
+     *
+     * @return bool
+     */
+    public function hasProduct($product_id)
+    {
+        return !$this->items->where('product_id', (int)$product_id)->isEmpty();
+    }
+
 
 }

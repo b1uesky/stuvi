@@ -94,7 +94,7 @@
                 <!-- xs: stack-->
                 <div class = "container col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id = "shrink-xs">
                     {{--<img src="http://placehold.it/250x250" alt = "placeholder">--}}
-                    <i id="library-book-img" class="material-icons">library_books</i>
+                    <i class="material-icons google-img">library_books</i>
                 </div>
                 <!-- Row 3 Col 2 -->
                 <div class = "container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"

@@ -9,12 +9,19 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Product;
-use Cart;
+//use Cart;
 use Auth;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
+    protected $cart;
+
+    public function __construct()
+    {
+        $this->cart = Auth::user()->cart;
+    }
+
     /**
      * Display a listing of products added into Cart.
      *
@@ -22,16 +29,18 @@ class CartController extends Controller
      */
     public function index()
     {
-        $content = Cart::content();
+        $items = $this->cart->items;
 
         // check the Cart
-        if (!$this->checkCart())
+        if (!$this->cart->isValid())
         {
-            Session::flash('message', 'Please remove your own products from the Cart before proceeding to checkout.');
+            Session::flash('message', 'one or more items in your cart are sold. Please update your cart before proceeding to checkout.');
             Session::flash('alert-class', 'alert-danger');
         }
 
-        return view('cart.index')->withItems($content)->with('total_price', Cart::total());
+        return view('cart.index')
+            ->with('items', $items)
+            ->with('total_price', $this->cart->totalPrice());
     }
 
     /**
@@ -47,7 +56,7 @@ class CartController extends Controller
 
         if ($item)
         {
-            if ( Cart::search(array('id' => (string)$item->id)))
+            if ($this->cart->hasItem($item->id))
             {
                 Session::flash('message', 'Item has already been added to the cart.');
                 Session::flash('alert-class', 'alert-danger');
@@ -64,7 +73,7 @@ class CartController extends Controller
             }
             else
             {
-                Cart::add($id, $item->book->title, 1, $item->price, array('item' => $item));
+                $this->cart->add($item);
             }
         }
         else
@@ -76,35 +85,40 @@ class CartController extends Controller
     }
 
     /**
-     * Remove a item from Cart.
+     * @param $id
      *
-     * @param $id  The ID of the row to fetch
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function removeItem($id)
     {
-        try
+//        var_dump($id);
+
+        if ($this->cart->hasItem($id))
         {
-            Cart::remove($id);
-            Session::flash('message', 'The item has been removed from Cart');
-            Session::flash('alert-class', 'alert-info');
+            $this->cart->remove($id);
+            $message = 'The item is removed successfully';
         }
-        catch (\Exception $e)
+        else
         {
-            Session::flash('message', 'Sorry, the item has already been removed.');
-            Session::flash('alert-class', 'alert-warning');
-            return redirect('/cart');
+            $message = 'The item is not in cart';
         }
 
-        return redirect('/cart');
+        return redirect('/cart')
+            ->with('message', $message)
+            ->with('alert-class', 'alert-info');
     }
 
     public function emptyCart()
     {
-        Cart::destroy();
+        $this->cart->clear();
 
         return redirect('/cart');
+    }
+
+    public function updateCart()
+    {
+        $this->cart->validate();
+        return redirect('cart');
     }
 
 

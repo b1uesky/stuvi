@@ -136,13 +136,14 @@
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
                                         <select class="form-control" name="university_id">
+                                            <option selected disabled>University</option>
                                             @foreach($universities as $university)
                                                 <option value="{{ $university->id }}">{{ $university->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <div class="tos">
+                                <div class="tos col-sm-offset-2 col-sm-8">
                                     By creating an account, you agree to Stuvi's <a href="#" data-toggle="modal"
                                                                                     data-target=".terms-modal">Term of
                                         Use</a> and

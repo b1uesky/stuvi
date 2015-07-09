@@ -71,17 +71,17 @@
             @forelse ($items as $item)
                 <tr>
                     <!-- title -->
-                    <td><a href="{{ url('textbook/buy/product/'.$item->id) }}">{{ $item->name }}</a></td>
+                    <td><a href="{{ url('textbook/buy/product/'.$item->product->id) }}">{{ $item->product->book->title }}</a></td>
                     <!-- isbn -->
-                    <td>{{ $item->options['item']->book->isbn }}</td>
+                    <td>{{ $item->product->book->isbn10 }}</td>
                     <!-- price -->
-                    <td>${{ $item->price }}</td>
+                    <td>${{ $item->product->price }}</td>
                     <!-- remove -->
-                    <td><a href="{{ url('/cart/rmv/'.$item->rowid) }}"><i class="fa fa-times btn-close"></i>
+                    <td><a href="{{ url('/cart/rmv/'.$item->id) }}"><i class="fa fa-times btn-close"></i>
                         </a></td>
                 </tr>
                 <!-- how will this style?? -->
-                @if ($item->options['item']->sold)
+                @if ($item->product->sold)
                     <tr class="warning" colspan="4">
                         <td>Warning: This product has been sold.</td>
                     </tr>
@@ -109,7 +109,7 @@
                     <!-- buffer -->
                     <td></td>
                     <!-- update cart -->
-                    <td><a class="btn btn-default cart-button" href="#" role="button">Update Cart</a></td>
+                    <td><a class="btn btn-default cart-button" href="/cart/update" role="button">Update Cart</a></td>
                 </tr>
             </tfoot>
             @endif

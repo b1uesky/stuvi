@@ -4,10 +4,6 @@
 
 */
 
-
-
-
-
 .footer-distributed{
 	background-color: #292c2f;
     /*background-color: #F2F2F2;*/
@@ -15,9 +11,9 @@
 	box-sizing: border-box;
 	width: 100%;
 	text-align: left;
-	font: normal 16px sans-serif;
-
-	padding: 45px 50px;
+	/*font: normal 16px sans-serif;*/
+    font: normal 16px "Roboto", Helvetica, Arial, sans-serif;
+	padding: 30px 50px;
 	margin-top: 0px;
 }
 
@@ -30,8 +26,8 @@
 /* Footer links */
 
 .footer-distributed p.footer-links{
-	font-size:18px;
-	font-weight: bold;
+	font-size:16px;
+	/*font-weight: bold;*/
 	color:  #ffffff;
     /*color: #8f9296;*/
 	margin: 0 0 10px;
