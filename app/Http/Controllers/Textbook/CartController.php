@@ -85,14 +85,14 @@ class CartController extends Controller
     }
 
     /**
-     * Remove a item from Cart.
+     * @param $id
      *
-     * @param $id  The ID of the row to fetch
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function removeItem($id)
     {
+//        var_dump($id);
+
         if ($this->cart->hasItem($id))
         {
             $this->cart->remove($id);
@@ -100,7 +100,7 @@ class CartController extends Controller
         }
         else
         {
-            $message = 'The item is removed successfully';
+            $message = 'The item is not in cart';
         }
 
         return redirect('/cart')

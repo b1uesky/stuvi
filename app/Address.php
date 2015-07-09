@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Auth, Config;
 use League\Flysystem\Exception;
@@ -15,12 +16,15 @@ use League\Flysystem\Exception;
 
 class Address extends Model
 {
+    use softDeletes;
     /**
      * The database table used by the model.
      *
      * @var string
      */
     protected $table = 'addresses';
+
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that are mass assignable.
