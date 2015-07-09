@@ -56,6 +56,10 @@ a:focus {
     margin-top: 0px;
 }
 
+.dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
 .dropdown-menu li a:hover {
     background-color: #7AB4DE;
     color: #FFFFFF;
