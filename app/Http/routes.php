@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
     Route::post ('/store','AddressController@store');
     Route::post ('/update','AddressController@update');
     Route::post ('/delete','AddressController@ajaxDelete');
+    Route::post ('/select','AddressController@ajaxSelect');
 });
 
 

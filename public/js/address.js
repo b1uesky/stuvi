@@ -14,7 +14,19 @@ $(document).ready(function () {
         $('.displayAllAddresses').hide();
         $('.displayDefaultAddress').find('.address-list').html(address_info);
         $('.displayDefaultAddress').show(1000);
-        $('input[name=selected_address_id]').val(address_ID);
+        $.ajax({
+            url : "/address/select",
+            data:{
+                _token: $('[name="csrf_token"]').attr('content'),
+                selected_address_id:address_ID
+            },
+            type:'POST',
+            success:function(response){
+                if(response['set_as_default']){
+                    $('input[name=selected_address_id]').val(address_ID);
+                }
+            }
+        });
     });
 
     $('#storeAddedAddress').click(function(){
@@ -44,14 +56,12 @@ $(document).ready(function () {
         var address_ID = $(this).parent().find(".address_id").text();
         $.ajax({
             url: '/address/delete',
-
             data:{
                 _token: $('[name="csrf_token"]').attr('content'),
                 address_id : address_ID
             },
-
             type:"POST",
-
+            dataType:"json",
             success:function(response){
                 if(response['is_deleted'] === true){
                     $('.'+address_ID).hide(1000);
