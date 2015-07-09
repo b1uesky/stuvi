@@ -92,10 +92,23 @@ body {
     color: #FFFFFF;
 }
 
+.add_new_address{
+    display: none;
+}
+
+.displayDefaultAddress .address_id {
+    display: none;
+}
+
 .displayAllAddresses {
     margin-left: 5px;
     margin-right: 5px;
     padding-right: 0;
+    display: none;
+}
+
+.displayAllAddresses .address_id {
+    display: none;
 }
 
 .new-address-panel {

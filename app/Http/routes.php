@@ -43,6 +43,18 @@ Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
 
 /*
 |--------------------------------------------------------------------------
+| Address Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
+    Route::post ('/store','AddressController@store');
+    Route::post ('/update','AddressController@update');
+    Route::post ('/delete','AddressController@ajaxDelete');
+});
+
+
+/*
+|--------------------------------------------------------------------------
 | Textbook Routes
 |--------------------------------------------------------------------------
 */
@@ -74,7 +86,6 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::get  ('/confirmation', 'BuyerOrderController@confirmation');
     Route::get  ('/create', 'BuyerOrderController@create');
     Route::post ('/store', 'BuyerOrderController@store');
-    Route::post  ('/storeAddress','BuyerOrderController@storeBuyerAddress');
     Route::get  ('/buyer/{id}', 'BuyerOrderController@show');
     Route::get  ('/buyer/cancel/{id}', 'BuyerOrderController@cancel');
 
