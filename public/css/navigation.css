@@ -65,3 +65,31 @@ a:focus {
 #account-name {
     color: #FFFFFF;
 }
+
+
+/** SHOPPING CART ICON **/
+
+.cart {
+    position: relative;
+    display: block;
+/*    right: 0px !important;
+    padding: 0 !important;
+    margin: 0 !important; */
+
+}
+
+.cart-link {
+    color: #FFFFFF;
+    /*padding: 0px 10px !important;*/
+    padding-top: 7px !important;
+    padding-bottom: 2px !important;
+}
+
+.cart-link:hover,
+.cart-link:focus {
+    color: #241729;
+}
+
+.fa-2x {
+    font-size: 1.5em !important;
+}
