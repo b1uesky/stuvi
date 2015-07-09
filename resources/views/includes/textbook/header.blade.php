@@ -2,16 +2,13 @@
 
 <header>
     <nav class="navbar navbar-default" id="nav" role="navigation">
-        <div class="container-fluid">               <!-- Expand to full width -->
+        <div class="container-fluid">
             <div class="navbar-header">
                 <!-- Toggle Nav into hamburger menu for small screens -->
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle Navigation</span>
                     <i class="fa fa-bars fa-lg"></i>
-                    {{--<span class="icon-bar"></span>--}}
-                    {{--<span class="icon-bar"></span>--}}
-                    {{--<span class="icon-bar"></span>--}}
                 </button>
                 <div class="logo-container">
                     <a href="{{url('/home')}}"> <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive"> </a>
@@ -35,6 +32,7 @@
                         <li><a class="nav-login" href="{{ url('/auth/register') }}">
                                 <i class="fa fa-user"></i> Sign Up</a></li>
                     @else
+                        <!-- profile dropdown -->
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button"
                                aria-expanded="true"><span nav-caret
@@ -53,14 +51,13 @@
                                 <li role="presentation"><a role="menuitem" tabindex="-1"
                                                            href="{{ url('/order/seller') }}">
                                         Sold Books</a></li>
-                           {{--     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('/cart') }}">
-                                        Shopping Cart</a></li>--}}
                                 <li role="separator" class="divider"></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1"
                                                            href="{{ url('/auth/logout') }}">
                                         Logout</a></li>
                             </ul>
                         </li>
+                        <!-- cart -->
                         <li class="cart">
                             <a href="{{ url('/cart') }}" class="cart-link">Cart <i class="fa fa-shopping-cart" style="line-height: 19px;"></i></a>
                         </li>

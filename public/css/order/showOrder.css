@@ -20,14 +20,6 @@
     padding-left: 0px;
 }
 
-/* Print invoice link */
-.print{
-    text-align: right;
-    margin-top: 10px;
-    margin-right: 10px;
-    padding-right: 10px;
-}
-
 /* entire container for the content */
 /* This prevents showing white space below the footer */
 .show-order-container{
@@ -44,14 +36,14 @@
 #details2{  outline: 1px solid rgba(0, 0, 0, 0.30);  }
 
 /* Bulk of the details */
-#details3{
+.box{
     /*outline: 1px solid rgba(0, 0, 0, 0.30);*/
     border: 2px solid #F9AA62;
     margin-top: 10px;
     margin-bottom: 30px;
 }
 
-.row-items{
+.row-title{
     background-color: rgba(0, 0, 0, 0.09);
     border-bottom: 1px solid rgba(0, 0, 0, 0.30);
     margin-bottom: 10px;
@@ -60,10 +52,11 @@
 hr{  border-color: black;  }
 
 /* Cancel order button */
-.btn-cancel {
+.btn-orange {
     background: #F16521;
     color: #FFFFFF;
     border: none;
+    padding: 7px 10px !important;
 }
 
 /* Header when order is canceled */
@@ -79,10 +72,14 @@ hr{  border-color: black;  }
 /* Address */
 
 .seller-address {
-    border: 1px solid #eee;
+    /*border: 1px solid #eee;*/
     display: inline-block;
-    margin: 20px;
-    padding: 5px;
+    /*margin: 20px;*/
+    padding: 0px;
+}
+
+.seller-address a{
+    min-width: 30%;
 }
 
 .seller-address ul {

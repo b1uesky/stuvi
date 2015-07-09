@@ -20,7 +20,7 @@
 
         <!-- ordered on, order # -->
         <div class="row" id="details1">
-            <p class="col-xs-12 col-sm-4 col-sm-offset-0">Ordered on {{ $seller_order->created_at }}</p>
+            <p class="col-xs-12 col-sm-4 col-sm-offset-0">Sold on {{ $seller_order->created_at }}</p>
 
             <p class="col-xs-12 col-sm-4">Order #{{ $seller_order->id }}</p>
         </div>
@@ -30,7 +30,7 @@
             @if($seller_order->pickedUp())
                 <div class="alert alert-success">The textbook has been picked up by our courier.</div>
             @elseif(!$seller_order->cancelled)
-                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
+                <p><a class="btn btn-orange" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
             @else
                 <div class="alert alert-danger">This order has been cancelled.</div>
             @endif
@@ -69,8 +69,8 @@
         </div>
 
         <!-- items in order -->
-        <div class="container" id="details3">
-            <div class="row row-items">
+        <div class="container box" id="details3">
+            <div class="row row-title">
                 <h3 class="col-xs-12">Item</h3>
             </div>
             <!-- item info -->
@@ -84,12 +84,14 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="container box">
             {{-- If the order is not cancelled and not picked up --}}
             @if(!$seller_order->cancelled && !$seller_order->pickedUp())
 
                 {{-- Schedule pickup time --}}
-                <h2>Schedule a pickup time</h2>
+                <div class="row row-title">
+                    <h3 class="col-xs-12">Schedule a pickup time</h3>
+                </div>
 
                 <div class="text-scheduled-pickup-time">
                     @if($seller_order->scheduledPickupTime())
@@ -103,23 +105,26 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="schedule-token">
                     <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
 
-                    {{-- TODO: Add a calendar logo --}}
-                    <div class="form-group">
+                    <!-- TODO: Add a calendar logo -->
+                    <div class="form-group col-xs-8 col-sm-4">
                         <input class="form-control" id="datetimepicker" class="input-append date" type="text"
                                name="scheduled_pickup_time">
                     </div>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-orange">
                         <!-- scheduled already and not cancelled. allows for reschedule -->
                         @if($seller_order->scheduledPickupTime() && !$seller_order->cancelled)
                             Reschedule
                         @else
                             Schedule
                         @endif
-                    </button>
+                    </button></br></br>
                 </form>
-
+        </div>
+        <div class="container box">
                 {{-- Select pickup address --}}
-                <h2>Select a pickup address</h2>
+            <div class="row row-title">
+                <h3 class="col-xs-12">Select a pickup address</h3>
+            </div>
                 {{-- If the seller has more than one address --}}
                 @if(count($seller_order->seller()->address) > 0)
                     {{-- Show existing addresses --}}
@@ -166,13 +171,13 @@
                         {{-- Add a new address --}}
                         <div class="seller-address">
                             <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
-                               class="btn btn-default">Add a new address</a>
+                               class="btn btn-orange">Add a new address</a></br></br>
                         </div>
 
                     </div>
 
                     {{-- Confirm pickup --}}
-                    <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm Pickup</a>
+                    <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm Pickup</a></br></br>
         </div>
         @endif
     </div>
