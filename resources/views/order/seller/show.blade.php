@@ -117,7 +117,7 @@
                         @else
                             Schedule
                         @endif
-                    </button></br></br>
+                    </button><br><br>
                 </form>
         </div>
         <div class="container box">
@@ -171,13 +171,13 @@
                         {{-- Add a new address --}}
                         <div class="seller-address">
                             <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
-                               class="btn btn-orange">Add a new address</a></br></br>
+                               class="btn btn-orange">Add a new address</a><br><br>
                         </div>
 
                     </div>
 
                     {{-- Confirm pickup --}}
-                    <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm Pickup</a></br></br>
+                    <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm Pickup</a><br><br>
         </div>
         @endif
     </div>

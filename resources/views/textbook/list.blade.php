@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Search results for '.$info)
+@section('title', 'Search results for "'.$info.'"')
 
 @section('css')
     <link href="{{ asset('/css/textbook/textbook-list.css') }}" rel="stylesheet">
@@ -47,7 +47,7 @@
                 @forelse($books as $book)
                     <tr class="textbook-item">
                         <td class="textbook-img-container">
-                            <a href="{{ url("textbook/buy/textbook/".$book->id) }}">
+                            <a href="{{ url("textbook/buy/".$book->id) }}">
                                 <img class="textbook-img" src="{{ $book->imageSet->medium_image }}">
                             </a>
                         </td>
