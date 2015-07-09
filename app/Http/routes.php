@@ -26,11 +26,10 @@ Route::pattern('product', '[0-9]+');
 
 Route::get  ('/', 'HomeController@index');
 Route::get  ('/home', 'HomeController@index');
-Route::get  ('/login', 'HomeController@login');
-Route::get  ('/register', 'HomeController@register');
 Route::get  ('/about', 'HomeController@about');
 Route::get  ('/contact', 'HomeController@contact');
 Route::get  ('/coming', 'HomeController@coming');
+Route::get  ('/', 'Textbook\TextbookController@index');
 
 /*
 |--------------------------------------------------------------------------
@@ -40,8 +39,6 @@ Route::get  ('/coming', 'HomeController@coming');
 
 // textbook
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook'], function() {
-    Route::get  ('/', 'TextbookController@index');
-
     // buy
     Route::group(['prefix'=>'buy'], function() {
         Route::get('/', 'TextbookController@showBuyPage');

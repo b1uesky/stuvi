@@ -35,20 +35,6 @@ class HomeController extends Controller {
 		return view('home');
 	}
 
-    public function login() {
-        $loginData = ['loginType' => 'login'];
-        return view('auth.login')
-            ->with($loginData)
-            ->with('universities', University::all());
-    }
-
-    public function register(){
-        $loginData = ['loginType' => 'register'];
-        return view('auth.login')
-            ->with($loginData)
-            ->with('universities', University::all());
-    }
-
     public function about(){
         return view('about');
     }

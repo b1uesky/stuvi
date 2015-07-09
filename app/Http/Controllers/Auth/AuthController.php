@@ -26,8 +26,8 @@ class AuthController extends Controller {
 	use AuthenticatesAndRegistersUsers;
 
     protected $redirectPath         = '/user/activate';
-    protected $redirectAfterLogout  = '/login';
-    protected $loginPath            = '/login';
+    protected $redirectAfterLogout  = '/auth/login';
+    protected $loginPath            = '/auth/login';
 
 	/**
 	 * Create a new authentication controller instance.
@@ -80,6 +80,34 @@ class AuthController extends Controller {
         });
 
         return $user;
+    }
+
+    /**
+     * Show the application login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getLogin()
+    {
+        if (view()->exists('auth.authenticate')) {
+            return view('auth.authenticate');
+        }
+
+        return view('auth.login')
+            ->with('loginType', 'login')
+            ->with('universities', University::availableUniversities());
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getRegister()
+    {
+        return view('auth.login')
+            ->with('loginType', 'register')
+            ->with('universities', University::availableUniversities());
     }
 
     /**
