@@ -46,6 +46,10 @@ a:focus {
 
 /******* NAVIGATION DROPDOWN *******/
 
+.nav-dropdown {
+    padding-bottom: 9px !important;
+}
+
 .nav-dropdown:focus {
     background-color: #435C7F !important;
     border-bottom: solid 5px #90B4DF !important;
@@ -83,7 +87,7 @@ a:focus {
     color: #FFFFFF;
     /*padding: 0px 10px !important;*/
     padding-top: 7px !important;
-    padding-bottom: 2px !important;
+    padding-bottom: 0px !important;
 }
 
 .cart-link:hover,
