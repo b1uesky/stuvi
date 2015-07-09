@@ -26,7 +26,8 @@ $(document).ready(function () {
     });
 
     $('.editThisAddress').click(function() {
-        var address_ID = $(this).parent().find("#address_id").text();
+        var address_ID = $(this).parent().find(".address_id").text();
+        alert(address_ID);
         var address_array = [];
         $(this).parent().find('.address').each(function (i, elem) {
             address_array.push($(elem).text());

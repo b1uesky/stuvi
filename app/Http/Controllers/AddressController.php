@@ -68,12 +68,14 @@ class AddressController extends Controller
 
 
         $address->setDefault();
+        $default_address_id = $address->id;
         return view('order.buyer.create', [
             'items' => Cart::content(),
             'total' => Cart::total(),
             'stripe_public_key' => StripeKey::getPublicKey(),
             'addresses' => Auth::user()->address,
-            'display_payment' => true
+            'display_payment' => true,
+            'default_address_id'=> $default_address_id
         ]);
     }
 
@@ -124,12 +126,14 @@ class AddressController extends Controller
             ]);
 
             $address->setDefault();
+            $default_address_id = $address->id;
             return view('order.buyer.create', [
                 'items' => Cart::content(),
                 'total' => Cart::total(),
                 'stripe_public_key' => StripeKey::getPublicKey(),
                 'addresses' => Auth::user()->address,
-                'display_payment' => true
+                'display_payment' => true,
+                'default_address_id'=> $default_address_id
             ]);
         }
     }

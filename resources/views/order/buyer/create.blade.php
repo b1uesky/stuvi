@@ -225,6 +225,7 @@
                                         <form action="{{ url('/address/update') }}" method="POST"
                                               class="update-address-form">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <input type="hidden" name="address_id" value="">
 
                                             <div class="form-group">
                                                 <label class="col-sm-4 control-label">Full name</label>
