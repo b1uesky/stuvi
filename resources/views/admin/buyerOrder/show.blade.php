@@ -31,7 +31,13 @@
         </tr>
         <tr>
             <th>Shipping Address</th>
-            <td>{{ $buyer_order->shipping_address->address_line1 }} {{ $buyer_order->shipping_address->address_line2 }}</td>
+            <td>{{ $buyer_order->shipping_address->address_line1 }}&nbsp;
+                @if (!empty($buyer_order->shipping_address->address_line2))
+                    {{ $buyer_order->shipping_address->address_line2 }}
+                @endif
+                &nbsp;&nbsp;{{ $buyer_order->shipping_address->city }},&nbsp;{{ $buyer_order->shipping_address->state_a2 }}&nbsp;
+                {{ $buyer_order->shipping_address->zip }}
+            </td>
 
         </tr>
     </table>
