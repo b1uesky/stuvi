@@ -29,7 +29,17 @@ Route::get  ('/home', 'HomeController@index');
 Route::get  ('/about', 'HomeController@about');
 Route::get  ('/contact', 'HomeController@contact');
 Route::get  ('/coming', 'HomeController@coming');
-Route::get  ('/', 'Textbook\TextbookController@index');
+Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
+{
+    Route::get  ('/', 'TextbookController@index');
+    Route::get  ('/buy', 'TextbookController@showBuyPage');
+    Route::group(['prefix'=>'sell'], function() {
+        Route::get  ('/', 'TextbookController@sell');
+        Route::post ('/search', 'TextbookController@sellSearch');
+        Route::get  ('/create', 'TextbookController@create');
+        Route::get  ('/product/{book}/create', 'ProductController@create');
+    });
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +51,6 @@ Route::get  ('/', 'Textbook\TextbookController@index');
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook'], function() {
     // buy
     Route::group(['prefix'=>'buy'], function() {
-        Route::get('/', 'TextbookController@showBuyPage');
         Route::get('/{book}', 'TextbookController@show');
         Route::post('/search', 'TextbookController@buySearch');
         Route::get('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
@@ -50,11 +59,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 
     // sell
     Route::group(['prefix'=>'sell'], function() {
-        Route::get  ('/', 'TextbookController@sell');
-        Route::get  ('/create', 'TextbookController@create');
-        Route::post ('/search', 'TextbookController@sellSearch');
         Route::post ('/store', 'TextbookController@store');
-        Route::get  ('/product/{book}/create', 'ProductController@create');
         Route::post ('/product/store', 'ProductController@store');
     });
 
