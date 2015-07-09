@@ -21,9 +21,9 @@
         {{-- A list of scheduled seller orders --}}
         @if (!empty($seller_orders))
             <div class="list-group">
-                @foreach($seller_orders as $index => $seller_order)
+                @foreach($seller_orders as $seller_order)
                     <a href="{{ URL::to('express/pickup/' . $seller_order->id) }}" class="list-group-item">
-                        <h4 class="list-group-item-heading">#{{ $index + 1 }}: {{ $seller_order->book()->title }}</h4>
+                        <h4 class="list-group-item-heading">Order #{{ $seller_order->id }}: {{ $seller_order->book()->title }}</h4>
                         <p class="list-group-item-text">Scheduled Pickup: {{ $seller_order->scheduled_pickup_time }}</p>
                     </a>
                 @endforeach

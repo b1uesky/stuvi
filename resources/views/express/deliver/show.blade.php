@@ -22,10 +22,16 @@
 
         {{-- Buyer Order Details --}}
         <div class="list-group">
+            {{-- Order Number --}}
+            <li class="list-group-item">
+                <h4 class="list-group-item-heading">Order Number</h4>
+                <p class="list-group-item-text">{{ $buyer_order->id }}</p>
+            </li>
+
             {{-- A list of books --}}
             @foreach($buyer_order->products() as $index => $product)
                     <li class="list-group-item">
-                        <h4 class="list-group-item-heading">#{{ $index+1 }}: {{ $product->book->title }}</h4>
+                        <h4 class="list-group-item-heading">{{ $index + 1 }}. {{ $product->book->title }}</h4>
                         <div class="media">
                             <img class="img-responsive" src="{{ $product->book->imageSet->medium_image }}" alt=""/>
                         </div>
