@@ -103,9 +103,10 @@
                                         @if($address -> address_line2 != null)
                                             <li class="address address_line2">{{ $address -> address_line2}}</li>
                                         @endif
-                                        <li class="address city">{{ $address -> city }}</li>
-                                        <li class="address state_a2">{{ $address -> state_a2 }}</li>
-                                        <li class="address zip">{{ $address -> zip }}</li>
+                                        <li class="address city inline" id="default_city">{{ $address -> city }},</li>
+                                        <li class="address state_a2 inline"
+                                            id="default_state_a2">{{ $address -> state_a2 }}</li>
+                                        <li class="address zip inline" id="default_zip">{{ $address -> zip }}</li>
                                     </ul>
                                     <button class="btn btn-default address-btn selectThisAddress">
                                         <i class="fa fa-check-square"></i>

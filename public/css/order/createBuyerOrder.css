@@ -97,7 +97,7 @@ body {
 }
 
 .displayDefaultAddress .address_id {
-    display: none;
+    /*display: none;*/
 }
 
 .displayAllAddresses {
@@ -105,6 +105,10 @@ body {
     margin-right: 5px;
     padding-right: 0;
     height: 155px;
+    display: none;
+}
+
+.displayAllAddresses .address_id {
     display: none;
 }
 
