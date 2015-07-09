@@ -86,6 +86,7 @@
                                             <li class="address inline"
                                                 id="default_state_a2">{{ $address -> state_a2 }}</li>
                                             <li class="address inline" id="default_zip">{{ $address -> zip }}</li>
+                                            <li class="address" id="default_phone">{{ $address -> phone_number }}</li>
                                         </ul>
                                         <button class="btn btn-default address-btn show-addresses">
                                             <i class="fa fa-pencil"></i>
@@ -103,10 +104,11 @@
                                         @if($address -> address_line2 != null)
                                             <li class="address address_line2">{{ $address -> address_line2}}</li>
                                         @endif
-                                        <li class="address city inline" id="default_city">{{ $address -> city }},</li>
+                                        <li class="address city inline">{{ $address -> city }},</li>
                                         <li class="address state_a2 inline"
                                             id="default_state_a2">{{ $address -> state_a2 }}</li>
-                                        <li class="address zip inline" id="default_zip">{{ $address -> zip }}</li>
+                                        <li class="address zip inline">{{ $address -> zip }}</li>
+                                        <li class="address phone">{{ $address -> phone_number }}</li>
                                     </ul>
                                     <button class="btn btn-default address-btn selectThisAddress">
                                         <i class="fa fa-check-square"></i>
@@ -194,11 +196,14 @@
                                 </button>
                             </form>
                         @endforelse
-                        <button type="button" class="add_new_address btn btn-primary btn-md"
-                                data-toggle="modal"
-                                data-target="#add-address-modal">
-                            Add New Address
-                        </button>
+                        <div id="new-address-panel" class="col-sm-5 panel address-panel">
+                            <div class="panel-body">
+                                <h4>Add New Address</h4>
+                                <i class="fa fa-plus-square fa-4x"
+                                   data-toggle="modal" data-target="#add-address-modal">
+                                </i>
+                            </div>
+                        </div>
 
                         <!--Modals-->
                         <div class="modal fade" id="update-address-modal" tabindex="-1" role="dialog"
@@ -211,7 +216,7 @@
                                             <span aria-hidden="true">&times;</span></button>
                                         <h4 class="modal-title" id="myModalLabel">Please Enter Address</h4>
                                     </div>
-                                    <div class="modal-body">
+                                    <div class="modal-body address-form-body">
                                         <form action="{{ url('/address/update') }}" method="POST"
                                               class="update-address-form">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -290,7 +295,8 @@
                                         <button type="button" class="btn btn-default close-btn" data-dismiss="modal">
                                             Close
                                         </button>
-                                        <button id="storeUpdatedAddress" type="button" class="btn btn-primary">
+                                        <button id="storeUpdatedAddress" type="button"
+                                                class="btn btn-default address-btn">
                                             Update Address
                                         </button>
                                     </div>
@@ -303,12 +309,12 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"
+                                            <button type="button" class="close close-modal-btn" data-dismiss="modal"
                                                     aria-label="Close">
                                                 <span aria-hidden="true">&times;</span></button>
                                             <h4 class="modal-title" id="myModalLabel">Please Enter Address</h4>
                                         </div>
-                                        <div class="modal-body">
+                                        <div class="modal-body address-form-body">
                                             <form action="{{ url('/address/store') }}" method="POST"
                                                   class="add-address-form">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -316,7 +322,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label">Full name</label>
 
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-6 form-space-offset">
                                                         <input type="text" class="form-control" name="addressee"
                                                                value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
                                                     </div>
@@ -325,7 +331,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label">Address line 1</label>
 
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-6 form-space-offset">
                                                         <input type="text" class="form-control"
                                                                name="address_line1"
                                                                value="185 Freeman St.">
@@ -335,7 +341,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label">Address line 2</label>
 
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-6 form-space-offset">
                                                         <input type="text" class="form-control"
                                                                name="address_line2"
                                                                value="Apt. 739">
@@ -345,7 +351,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label">City</label>
 
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-6 form-space-offset">
                                                         <input type="text" class="form-control" name="city"
                                                                value="Brookline">
                                                     </div>
@@ -354,7 +360,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label">State</label>
 
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-6 form-space-offset">
                                                         <input type="text" class="form-control" name="state_a2"
                                                                value="MA">
                                                     </div>
@@ -363,7 +369,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label">Zip</label>
 
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-6 form-space-offset">
                                                         <input type="text" class="form-control" name="zip"
                                                                value="02446">
                                                     </div>
@@ -372,7 +378,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label">Phone</label>
 
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-6 form-space-offset">
                                                         <input type="text" class="form-control"
                                                                name="phone_number"
                                                                value="(857) 206 4789">
@@ -383,10 +389,12 @@
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                            <button type="button" class="btn btn-default close-btn"
+                                                    data-dismiss="modal">
                                                 Close
                                             </button>
-                                            <button id="storeAddedAddress" type="button" class="btn btn-primary">
+                                            <button id="storeAddedAddress" type="button"
+                                                    class="btn btn-default address-btn">
                                                 Add Address
                                             </button>
                                         </div>
@@ -445,6 +453,11 @@
 
                                         <!-- card number -->
                                         <div class="form-row" id="card-number-form">
+                                            <label id="name-label">
+                                                <span>Name</span>
+                                                <input class="form-control" type="text" data-stripe="name"
+                                                       value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}"/>
+                                            </label>
                                             <label>
                                                 <span>Card Number</span>
                                                 <input class="form-control" type="text" size="20"
@@ -520,8 +533,6 @@
     <!-- jQuery is used only for this example; it isn't required to use Stripe -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ asset('/js/address.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js.') }}"></script>
-
     <!-- stripe -->
     <script type="text/javascript">
         // This identifies your website in the createToken call below

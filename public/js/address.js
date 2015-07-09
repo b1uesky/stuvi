@@ -4,7 +4,7 @@
 $(document).ready(function () {
     $('.show-addresses').click(function() {
         $('.displayDefaultAddress').hide();
-        $('.add_new_address').show();
+        $('#new-address-panel').show(1000);
         $('.displayAllAddresses').show(1000);
     });
 
@@ -14,7 +14,19 @@ $(document).ready(function () {
         $('.displayAllAddresses').hide();
         $('.displayDefaultAddress').find('.address-list').html(address_info);
         $('.displayDefaultAddress').show(1000);
-        $('input[name=selected_address_id]').val(address_ID);
+        $.ajax({
+            url : "/address/select",
+            data:{
+                _token: $('[name="csrf_token"]').attr('content'),
+                selected_address_id:address_ID
+            },
+            type:'POST',
+            success:function(response){
+                if(response['set_as_default']){
+                    $('input[name=selected_address_id]').val(address_ID);
+                }
+            }
+        });
         $('#new-address-panel').hide();
     });
 
@@ -35,7 +47,7 @@ $(document).ready(function () {
         $('input[name=addressee]').val(address_array[1]);
         $('input[name=address_line1]').val(address_array[2]);
         $('input[name=address_line2]').val(address_array[3]);
-        $('input[name=city]').val(address_array[4].slice(0, -1));
+        $('input[name=city]').val(address_array[4]);
         $('input[name=state_a2]').val(address_array[5]);
         $('input[name=zip]').val(address_array[6]);
         $('input[name=address_id]').val(address_ID);
@@ -58,6 +70,7 @@ $(document).ready(function () {
                     $('.'+address_ID).hide(1000);
                     if(response['num_of_user_addresses'] < 1){
                         $('#payment-form').hide(1000);
+                        $('.add_new_address').click();
                     }
                 }
             }

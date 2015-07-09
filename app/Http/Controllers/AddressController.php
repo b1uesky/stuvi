@@ -139,10 +139,17 @@ class AddressController extends Controller
 
             return response()->json([
                 'is_deleted'            => $address_to_be_deleted->delete(),
-                'num_of_user_addresses' => Auth::user()->address->count()
+                'num_of_user_addresses' => Auth::user()->addresses->count()
             ]);
         }
 
-        return response()->json([false]);
+        return response()->json(['is_deleted' => false]);
+    }
+
+    public function ajaxSelect()
+    {
+        $selected_address_id = Input::get('selected_address_id');
+        $if_set_as_default = Address::find($selected_address_id) -> setDefault();
+        return response() -> json(['set_as_default' => $if_set_as_default]);
     }
 }
