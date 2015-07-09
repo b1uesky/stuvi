@@ -70,6 +70,7 @@ $(document).ready(function () {
                     $('.'+address_ID).hide(1000);
                     if(response['num_of_user_addresses'] < 1){
                         $('#payment-form').hide(1000);
+                        $('.add_new_address').click();
                     }
                 }
             }
