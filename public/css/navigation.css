@@ -75,7 +75,8 @@ a:focus {
 }
 
 
-/** SHOPPING CART ICON **/
+/*
+/!** SHOPPING CART ICON **!/
 
 .cart {
     position: relative;
@@ -85,7 +86,7 @@ a:focus {
 
 .cart-link {
     color: #FFFFFF;
-    /*padding: 0px 10px !important;*/
+    /!*padding: 0px 10px !important;*!/
     padding-top: 7px !important;
     padding-bottom: 0px !important;
 }
@@ -96,6 +97,11 @@ a:focus {
 }
 
 .fa-2x {
-    font-size: 21.7px !important;
-    margin-bottom: 1px;
+    font-size: 21px !important;
+    margin-bottom: 3px;
+}
+*/
+
+#cart-fix{
+    line-height: 19px !important;
 }

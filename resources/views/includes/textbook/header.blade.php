@@ -62,7 +62,7 @@
                             </ul>
                         </li>
                         <li class="cart">
-                            <a href="{{ url('/cart') }}" class="cart-link"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                            <a href="{{ url('/cart') }}" class="cart-link">Cart <i class="fa fa-shopping-cart" style="line-height: 19px;"></i></a>
                         </li>
                     @endif
 
