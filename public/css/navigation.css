@@ -47,7 +47,7 @@ a:focus {
 /******* NAVIGATION DROPDOWN *******/
 
 .nav-dropdown {
-    padding-bottom: 9px !important;
+    padding-bottom: 10px !important;
 }
 
 .nav-dropdown:focus {
