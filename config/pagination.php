@@ -7,7 +7,16 @@
  */
 
 return [
-    'textbook'  => [
-        'limit' => 10
+
+    'limit'     => [
+
+        'textbook'  => 10,
+
+        'admin'     => [
+            'user'          => 10,
+            'product'       => 10,
+            'seller_order'  => 10
+        ]
     ]
+
 ];

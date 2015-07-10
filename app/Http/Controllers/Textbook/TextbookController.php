@@ -263,7 +263,7 @@ class TextbookController extends Controller {
 		{
             // search by title
 			$books = Book::where('title', 'LIKE', "%$info%")
-                ->paginate(Config::get('pagination.textbook.limit'));
+                ->paginate(Config::get('pagination.limit.textbook'));
 
             return view('textbook.list')
                 ->withBooks($books)
