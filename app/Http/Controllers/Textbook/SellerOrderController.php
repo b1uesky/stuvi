@@ -200,6 +200,7 @@ class SellerOrderController extends Controller
 
         $address = new Address();
         $address->user_id       = Auth::user()->id;
+        $address->is_default    = true;
         $address->addressee     = Input::get('addressee');
         $address->address_line1 = Input::get('address_line1');
         $address->address_line2 = Input::get('address_line2');
