@@ -120,3 +120,13 @@ hr{  border-color: black;  }
     box-shadow: 0 2px #5B86AA;
     transform: translateY(5px);
 }
+
+#cal-icon{
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#cal-icon:hover{
+    color: #0a65cc;
+    cursor: pointer;
+}

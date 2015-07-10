@@ -85,7 +85,7 @@
                                 <a href=""> <i class="fa fa-facebook-official"></i></a>
                                 <a href=""><i class="fa fa-twitter-square"></i></a>
                                 <a href=""><i class="fa fa-linkedin-square"></i></a>
-                                <a href=""><i class="fa fa-github-square"></i></a>
+                                {{--<a href=""><i class="fa fa-github-square"></i></a>--}}
                             </div>
                             {{--                    <div class="profile-userbuttons">
                                                     <button type="button" class="btn btn-success btn-sm">Follow</button>

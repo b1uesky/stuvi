@@ -99,25 +99,32 @@
                     @else
                         {{-- Nothing --}}
                     @endif
-                </div>
+                </div><br>
 
                 <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST" id="schedule-pickup-time">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="schedule-token">
                     <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
 
-                    <!-- TODO: Add a calendar logo -->
-                    <div class="form-group col-xs-8 col-sm-4">
-                        <input class="form-control" id="datetimepicker" class="input-append date" type="text"
-                               name="scheduled_pickup_time">
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <label class="sr-only" for="datetimepicker">Date and Time</label>
+                            <div class="input-group">
+                                <div class="input-group-addon" id="cal-icon" onclick="setFocusToTextBox()"><i class="fa fa-calendar"></i></div>
+                                <input class="form-control" id="datetimepicker" class="input-append date" type="text"
+                                       name="scheduled_pickup_time">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-orange">
+                            <!-- scheduled already and not cancelled. allows for reschedule -->
+                            @if($seller_order->scheduledPickupTime() && !$seller_order->cancelled)
+                                Reschedule
+                            @else
+                                Schedule
+                            @endif
+                        </button>
                     </div>
-                    <button type="submit" class="btn btn-orange">
-                        <!-- scheduled already and not cancelled. allows for reschedule -->
-                        @if($seller_order->scheduledPickupTime() && !$seller_order->cancelled)
-                            Reschedule
-                        @else
-                            Schedule
-                        @endif
-                    </button><br><br>
+
+                    <br><br>
                 </form>
         </div>
         <div class="container box">
@@ -185,6 +192,7 @@
 @endsection
 
 @section('javascript')
+        {{--http://xdsoft.net/jqplugins/datetimepicker/--}}
     <!-- Date time picker required scripts -->
     <script src="{{asset('/js/datetimepicker/jquery.js')}}"></script>
     <script src="{{asset('/js/datetimepicker/jquery.datetimepicker.js')}}"></script>
