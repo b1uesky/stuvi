@@ -30,7 +30,7 @@
                             <input type="text" class="form-control" placeholder="Search" name="query">
 
                             <div class="input-group-btn">
-                                <button class="btn btn-default search-btn" type="submit" name="search" value="Search">
+                                <button class="btn btn-default search-btn" type="submit">
                                     <i class="fa fa-search search-icon"></i>
                                 </button>
                             </div>
