@@ -34,31 +34,25 @@ button:focus {
 }
 
 /* inactive tab font color */
-.nav-tabs>li>a {
+.tabs > li > a {
     color: #7AB4DE;
 }
 
 /* active tab color */
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus {
-    background-color: #7AB4DE !important;
-    color: #FFFFFF !important;
-    border: 1px solid #dddddd !important;
-
+#tabs > li.active > a,
+#tabs > li.active > a:hover,
+#tabs > li.active > a:focus {
+    background-color: #7AB4DE;
+    color: #FFFFFF;
+    border: 1px solid #dddddd;
 }
 
 .form-control {
     margin-bottom: 10px;
-    padding: 4px !important;
-    /*border: 1px solid #FFFFFF !important;*/
-    /*box-shadow: inset 1px 1px 2px 0 #707070 !important;*/
-    transition: box-shadow 0.3s !important;
-   /* border: 0px;*/
 }
 
 .form-control:focus {
-    border: 2px solid #7AB4DE !important;
+    border: 2px solid #7AB4DE;
     box-shadow: none !important;
 }
 
@@ -118,8 +112,7 @@ label {
 #reset-title{
     color: #FFFFFF;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
-    margin-top: 15px !important;
-    margin-left: -5px !important;
+    margin-top: 0;
 }
 
 .reset-label {
@@ -127,8 +120,8 @@ label {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
-.reset-button {
-    width: 200px !important;
+#reset-button {
+    width: 200px;
     border: none;
 }
 

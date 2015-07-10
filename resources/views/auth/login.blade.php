@@ -1,8 +1,8 @@
 @extends('app2')
 
 <head>
-    <link href="{{ asset('/css/auth/login.css') }}" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="{{ asset('/css/auth/login.css') }}" rel="stylesheet">
     <title> Stuvi - login & register</title>
 </head>
 
@@ -37,7 +37,8 @@
                         <li role="presentation" class="{{ $signupActive }}" id="signup-tab"><a href="#signup-body"
                                                                                                aria-controls="signup-body"
                                                                                                role="tab"
-                                                                                               data-toggle="tab">SignUp</a></li>
+                                                                                               data-toggle="tab">Sign
+                                Up</a></li>
                     </ul> <!-- end tabs -->
 
                     {{-- Messages --}}
@@ -73,7 +74,7 @@
                                 <!-- email -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8 form-space-offset">
-                                        <input type="email" class="form-control" name="email" placeholder="Email"
+                                        <input type="email" class="form-control input" name="email" placeholder="Email"
                                                value="{{ old('email') }}">
                                     </div>
                                 </div>
