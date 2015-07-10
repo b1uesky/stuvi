@@ -240,7 +240,7 @@ class TextbookController extends Controller {
      */
 	public function buySearch()
 	{
-		$info = Input::get('info');
+		$info = Input::get('query');
         $isbn_validator = new Isbn();
 
 		// if ISBN, return the specific textbook page
@@ -262,7 +262,8 @@ class TextbookController extends Controller {
 		else
 		{
             // search by title
-			$books = Book::where('title', 'LIKE', "%$info%")->paginate(5);
+			$books = Book::where('title', 'LIKE', "%$info%")
+                ->paginate(Config::get('pagination.textbook.limit'));
 
             return view('textbook.list')
                 ->withBooks($books)

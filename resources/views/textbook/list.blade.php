@@ -85,7 +85,7 @@
         </div>
     </div>
 
-    {!! $books->render() !!}
+    {!! $books->appends(Request::only('query'))->render() !!}
 @endsection
 
 @section('javascript')
