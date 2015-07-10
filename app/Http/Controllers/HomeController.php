@@ -46,5 +46,5 @@ class HomeController extends Controller {
     public function coming(){
         return view('coming-soon');
     }
-
+	
 }
