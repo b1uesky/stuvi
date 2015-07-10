@@ -3,6 +3,7 @@
 use App\Helpers\StripeKey;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 
 class BuyerOrder extends Model
 {
@@ -32,17 +33,14 @@ class BuyerOrder extends Model
     /**
      * Get all products that is belong to this buyer order.
      *
-     * @return array
+     * @return Collection
      */
     public function products()
     {
-        $seller_orders = $this->seller_orders;
-        $products = array();
-        foreach ($seller_orders as $order)
+        return $this->seller_orders->map(function ($item)
         {
-            $products[] = $order->product;
-        }
-        return $products;
+            return $item->product;
+        });
     }
 
     /**
