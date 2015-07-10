@@ -29,17 +29,6 @@ Route::get  ('/home', 'HomeController@index');
 Route::get  ('/about', 'HomeController@about');
 Route::get  ('/contact', 'HomeController@contact');
 Route::get  ('/coming', 'HomeController@coming');
-Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
-{
-    Route::get  ('/', 'TextbookController@index');
-    Route::get  ('/buy', 'TextbookController@showBuyPage');
-    Route::group(['prefix'=>'sell'], function() {
-        Route::get  ('/', 'TextbookController@sell');
-        Route::post ('/search', 'TextbookController@sellSearch');
-        Route::get  ('/create', 'TextbookController@create');
-        Route::get  ('/product/{book}/create', 'ProductController@create');
-    });
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -60,12 +49,25 @@ Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
 |--------------------------------------------------------------------------
 */
 
-// textbook
+// auth not required
+Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
+{
+    Route::get  ('/', 'TextbookController@index');
+    Route::get  ('/buy', 'TextbookController@showBuyPage');
+    Route::group(['prefix'=>'sell'], function() {
+        Route::get  ('/', 'TextbookController@sell');
+        Route::post ('/search', 'TextbookController@sellSearch');
+        Route::get  ('/create', 'TextbookController@create');
+        Route::get  ('/product/{book}/create', 'ProductController@create');
+    });
+});
+
+// auth required
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook'], function() {
     // buy
     Route::group(['prefix'=>'buy'], function() {
         Route::get('/{book}', 'TextbookController@show');
-        Route::post('/search', 'TextbookController@buySearch');
+        Route::get('/search', 'TextbookController@buySearch');
         Route::get('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
         Route::get('/product/{product}', 'ProductController@show');
     });
