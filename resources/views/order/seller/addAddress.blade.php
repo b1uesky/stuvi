@@ -67,7 +67,7 @@
 
                 <input type="submit" name="submit" class="btn btn-primary" value="Add this address"/>
 
-            </form>
+            </form> <br>
         </div>
     </div>
 @endsection
