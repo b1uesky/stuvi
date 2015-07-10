@@ -64,6 +64,8 @@ Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
 
 // auth required
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook'], function() {
+    Route::get('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
+
     // buy
     Route::group(['prefix'=>'buy'], function() {
         Route::get('/{book}', 'TextbookController@show');

@@ -4,6 +4,7 @@
 
 @section('css')
     <link href="{{ asset('/css/textbook/textbook-list.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 @endsection
 
 @section('content')
@@ -27,7 +28,7 @@
                 <div class="col-sm-4 col-md-4 pull-right">
                     <form action="/textbook/buy/search" method="get" class="navbar-form" role="search">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" name="query">
+                            <input type="text" class="form-control" id="autocompleteBuy" placeholder="Search" name="query">
 
                             <div class="input-group-btn">
                                 <button class="btn btn-default search-btn" type="submit">
@@ -90,4 +91,6 @@
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="{{asset('/js/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('/js/autocompleteBuy.js')}}" type="text/javascript"></script>
 @endsection
