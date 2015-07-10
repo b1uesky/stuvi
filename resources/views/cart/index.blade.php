@@ -33,12 +33,14 @@
     @endif
 
     <!-- back link -->
-    <div class="row back-row">
-        <a id="back-to-cart" onclick="goBack()" ><i class="fa fa-arrow-circle-left"></i>Go Back</a>
+            <div class="container-fluid">
+                <div class="row back-row">
+                    <a id="back-to-cart" onclick="goBack()"><i class="fa fa-arrow-circle-left"></i>Go Back</a>
+                </div>
     </div>
 
     <!-- img of cart progress bar -->
-    <div class="container col-xs-12 col-xs-offset-2 col-sm-8 col-sm-offset-2 cart-progress">
+            <div class="container col-xs-10 col-xs-offset-2 col-sm-8 col-sm-offset-2 cart-progress">
         <img class="img-responsive cart-line col-sm-offset-3" src="{{asset('/img/CART.png')}}" alt="Your cart progress">
     </div>
 

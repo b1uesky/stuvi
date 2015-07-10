@@ -11,16 +11,15 @@
 }
 
 body {
-    background-color: #F2F2F2 !important;
+    background-color: #F2F2F2;
 }
 
 .back-row {
-    margin-left: 25px !important;
-    margin-top: 10px !important;
-    max-width: 700px;
+    margin-top: 10px;
 }
 
 #back-to-cart {
+    margin-left: 25px;
     text-align: left;
     cursor: pointer;
 }
@@ -36,11 +35,11 @@ body {
 
 }
 .cart-line{
-    max-width: 50% !important;
+    max-width: 50%;
 }
 @media(max-width: 767px){
     .cart-line{
-        max-width: 70% !important;
+        max-width: 70%;
     }
 }
 
