@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Search results for '.$info)
+@section('title', 'Search results for '.$query)
 
 @section('css')
     <link href="{{ asset('/css/textbook/textbook-list.css') }}" rel="stylesheet">
@@ -11,8 +11,8 @@
     @include('textbook/textbook-nav')
 
     <div class="container-fluid textbook-list-container">
-        @if(trim($info) != "")
-            <h1 id="search-term">Search results for "{{ $info }}"</h1>
+        @if(trim($query) != "")
+            <h1 id="search-term">Search results for "{{ $query }}"</h1>
         @else
             <h1 id="search-term">Search results</h1>
         @endif
@@ -25,10 +25,9 @@
                 <li role="presentation"><a href="#" data-toggle="pill">Top Rated</a></li>
 
                 <div class="col-sm-4 col-md-4 pull-right">
-                    <form action="/textbook/buy/search" method="post" class="navbar-form" role="search">
+                    <form action="/textbook/buy/search" method="get" class="navbar-form" role="search">
                         <div class="input-group">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="text" class="form-control" placeholder="Search" name="info">
+                            <input type="text" class="form-control" placeholder="Search" name="query">
 
                             <div class="input-group-btn">
                                 <button class="btn btn-default search-btn" type="submit" name="search" value="Search">
@@ -79,7 +78,7 @@
                     </tr>
                 @empty
                     <br>
-                    <p class="empty">Sorry, there are no search results matching "<i>{{ $info }}</i>."</p>
+                    <p class="empty">Sorry, there are no search results matching "<i>{{ $query }}</i>."</p>
                 @endforelse
             </table>
         </div>
