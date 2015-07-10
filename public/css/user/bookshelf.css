@@ -17,13 +17,60 @@
 
 
 /* Title */
-.fa-star{
-    color: #32adf1;
+#bookshelf-title {
+    margin-left: 30px;
 }
 
-.bookshelf-sort{}
+/* SORT SECTION */
 
+.nav-pills li a {
+    color: #7AB4DE;
+}
 
+.nav-pills li a:hover {
+    background-color: #DDDDDD;
+}
+
+/* override bootstrap's default active pill styles */
+.nav-pills li.active a {
+    background-color: #7AB4DE !important;
+    color: #FFFFFF !important;
+}
+
+.form-control {
+    border-top-left-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-right: none;
+}
+
+.form-control:focus {
+    border: 1px solid #F16521;
+    border-right: none;
+    box-shadow: none;
+}
+
+.search-btn {
+    background: #F16521;
+    border: none;
+    height: 34px;
+    width: 38px;
+    margin-left: 0 !important;
+}
+
+.search-btn:hover {
+    background: #F16521;
+}
+
+.search-btn:focus {
+    outline: 0 !important;
+    background: #F16521;
+}
+
+.search-icon {
+    color: #FFFFFF;
+}
 
 /* BOOKS FOR SALE */
 
@@ -94,6 +141,3 @@ h5{ margin:0px;
     padding: 10px;
 }
 
-#hr1 {
-    border-color: rgba(0, 0, 0, .3);
-}
