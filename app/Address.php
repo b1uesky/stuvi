@@ -1,7 +1,6 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Auth, Config;
 use League\Flysystem\Exception;
@@ -16,7 +15,6 @@ use League\Flysystem\Exception;
 
 class Address extends Model
 {
-    use softDeletes;
     /**
      * The database table used by the model.
      *
@@ -33,6 +31,7 @@ class Address extends Model
      */
     protected $fillable = [
         'user_id',
+        'is_enabled',
         'is_default',
         'addressee',
         'address_line1',
@@ -121,5 +120,18 @@ class Address extends Model
         {
             return false;
         }
+    }
+
+    public function disable()
+    {
+        $this->update([
+            'is_enabled' => false
+        ]);
+        if($this->is_enabled)
+        {
+            return false;
+        }
+
+        return true;
     }
 }

@@ -81,7 +81,7 @@ class BuyerOrderController extends Controller
 
         $user = Auth::user();
         $default_address_id = -1;
-        $addresses = Address::where('user_id', $user -> id)->get();
+        $addresses = Address::where('user_id', $user -> id)->where('is_enabled','1')->get();
         foreach($addresses as $address){
             if($address -> is_default == true){
                 $default_address_id = $address -> id;
