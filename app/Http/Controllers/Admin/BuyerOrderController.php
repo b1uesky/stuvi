@@ -21,6 +21,24 @@ class BuyerOrderController extends Controller
     public function index()
     {
         $buyer_orders = BuyerOrder::all();
+        if (Input::has('filter'))
+        {
+            $filter = Input::get('filter');
+            if ($filter == 'refund')
+            {
+                $buyer_orders = $buyer_orders->filter(function ($item)
+                {
+                    return $item->isRefundable();
+                });
+            }
+            elseif ($filter == 'nonrefund')
+            {
+                $buyer_orders = $buyer_orders->filter(function ($item)
+                {
+                    return !$item->isRefundable();
+                });
+            }
+        }
 
         return view('admin.buyerOrder.index')->withBuyerOrders($buyer_orders);
     }

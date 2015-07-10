@@ -3,6 +3,11 @@
 @section('title', 'Buyer Order')
 
 @section('content')
+    <div class="btn-group" role="group">
+        <a href="{{ URL::to('admin/order/buyer') }}" class="btn btn-default">All</a>
+        <a href="{{ URL::to('admin/order/buyer?filter=refund') }}" class="btn btn-default">Refundable Only</a>
+        <a href="{{ URL::to('admin/order/buyer?filter=nonrefund') }}" class="btn btn-default">Nonrefundable Only</a>
+    </div>
     <table class="table table-hover">
         <tr>
             <th>ID</th>
