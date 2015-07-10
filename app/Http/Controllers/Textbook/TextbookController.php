@@ -247,6 +247,7 @@ class TextbookController extends Controller {
 		if ($isbn_validator->validation->isbn($info))
 		{
             $isbn = $isbn_validator->hyphens->removeHyphens($info);
+
             if (strlen($isbn) == 10)
             {
                 $book = Book::where('isbn10', '=', $isbn)->first();
@@ -261,7 +262,7 @@ class TextbookController extends Controller {
 		else
 		{
             // search by title
-			$books = Book::where('title', 'LIKE', "%$info%")->get();
+			$books = Book::where('title', 'LIKE', "%$info%")->paginate(5);
 
             return view('textbook.list')
                 ->withBooks($books)

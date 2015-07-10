@@ -84,6 +84,8 @@
             </table>
         </div>
     </div>
+
+    {!! $books->render() !!}
 @endsection
 
 @section('javascript')
