@@ -20,7 +20,7 @@
                 <td>{{ $buyer_order->cancelled }}</td>
                 <td>{{ $buyer_order->time_delivered }}</td>
                 <td>{{ $buyer_order->created_at }}</td>
-                <td><a class="btn btn-info" role="button" href="{{ URL::to('admin/buyerOrder/' . $buyer_order->id) }}">Details</a></td>
+                <td><a class="btn btn-info" role="button" href="{{ URL::to('admin/order/buyer/' . $buyer_order->id) }}">Details</a></td>
             </tr>
         @endforeach
     </table>

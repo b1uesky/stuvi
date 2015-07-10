@@ -157,10 +157,22 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
     Route::resource('product', 'ProductController');
 
     // seller order
-    Route::resource('sellerOrder', 'SellerOrderController');
+    Route::group(['prefix'=>'order/seller'], function()
+    {
+        Route::get  ('/', 'SellerOrderController@index');
+        Route::get  ('/{id}', 'SellerOrderController@show');
+    });
 
     // buyer order
-    Route::resource('buyerOrder', 'BuyerOrderController');
+    Route::group(['prefix'=>'order/buyer'], function()
+    {
+        Route::get  ('/', 'BuyerOrderController@index');
+        Route::get  ('/{id}', 'BuyerOrderController@show');
+        Route::post ('/refund', 'BuyerOrderController@refund');
+    });
+
+    // buyer payment
+    Route::resource('buyer/payment', 'BuyerPaymentController');
 });
 
 /*
