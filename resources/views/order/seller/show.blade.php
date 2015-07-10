@@ -29,8 +29,8 @@
             {{-- Order has been picked up --}}
             @if($seller_order->pickedUp())
                 <div class="alert alert-success">The textbook has been picked up by our courier.</div>
-            @elseif(!$seller_order->cancelled)
-                <p><a class="btn btn-orange" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
+            @elseif($seller_order->isCancellable())
+                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
             @else
                 <div class="alert alert-danger">This order has been cancelled.</div>
             @endif
