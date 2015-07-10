@@ -278,7 +278,7 @@
                     <div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>
                 </div>
 
-                <input type="submit" name="submit" class="btn sell-btn" value="Sell Book"/>
+                <input type="submit" name="submit" class="btn sell-btn" value="Post Book"/>
 
 
 

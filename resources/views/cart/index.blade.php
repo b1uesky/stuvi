@@ -34,7 +34,7 @@
 
     <!-- back link -->
     <div class="row back-row">
-        <a id="back-to-cart" href="{{url('/textbook')}}" ><i class="fa fa-arrow-circle-left"></i>Back to Shopping</a>
+        <a id="back-to-cart" onclick="goBack()" ><i class="fa fa-arrow-circle-left"></i>Go Back</a>
     </div>
 
     <!-- img of cart progress bar -->
@@ -134,4 +134,10 @@
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 @endsection
