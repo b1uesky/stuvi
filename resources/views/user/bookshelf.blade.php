@@ -10,35 +10,24 @@
 
 @section('content')
     <div class="container-fluid bookshelf-page">
+        <!-- back button -->
+        <a id="btn-back" href="javascript:history.back()"><i class="fa fa-arrow-circle-left"></i>Back</a>
         <div class="container message-cont" xmlns="http://www.w3.org/1999/html">
             @if (Session::has('message'))
                 <div class="flash-message message">{{ Session::get('message') }}</div>
             @endif
         </div>
-        <!-- back button -->
-        <a id="btn-back" href="javascript:history.back()"><i class="fa fa-arrow-circle-left"></i>Back</a>
 
-        <!-- search bar-->
-
-
-        <!-- user info -->
-        <div class="container">
-            <h1>Your Bookshelf
-                <small><a href="/user/profile">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</a>
-                    <i class="fa fa-star" id="reputation"></i>(<a href="#">80</a>)
-                </small>
-            </h1>
-            <hr id="hr1">
-        </div>
+        <h1 id="bookshelf-title">Your Bookshelf</h1>
 
         <!-- sort and search -->
         <div class="container">
             <span class="text-muted">Sort by</span>
             <ul class="nav nav-pills">
-                <li role="presentation"><a href="#">Title</a></li>
-                <li role="presentation"><a href="#">Author</a></li>
-                <li role="presentation"><a href="#">Price (Low to High)</a></li>
-                <li role="presentation"><a href="#">Price (High to Low)</a></li>
+                <li role="presentation" class="active"><a href="#" data-toggle="pill">Title</a></li>
+                <li role="presentation"><a href="#" data-toggle="pill">Author</a></li>
+                <li role="presentation"><a href="#" data-toggle="pill">Price (Low to High)</a></li>
+                <li role="presentation"><a href="#" data-toggle="pill">Price (High to Low)</a></li>
 
                 <div class="col-sm-4 col-md-4 pull-right bookshelf-sort">
                     <form class="navbar-form" role="search">
@@ -47,15 +36,14 @@
                                    id="srch-term">
 
                             <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i>
+                                <button class="btn btn-default search-btn" type="submit">
+                                    <i class="fa fa-search search-icon"></i>
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
-
             </ul>
-
         </div>
 
         <!-- books -->
