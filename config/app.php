@@ -178,6 +178,11 @@ return [
          * Twillio Service Provider
          */
         'Aloha\Twilio\Support\Laravel\ServiceProvider',
+
+        /*
+         * Phone Validation Service Provider
+         */
+        'Propaganistas\LaravelPhone\LaravelPhoneServiceProvider',
 	],
 
 	/*

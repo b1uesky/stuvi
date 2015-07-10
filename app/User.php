@@ -39,6 +39,27 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $hidden = ['password', 'remember_token'];
 
+
+    /**
+     * Validation rules.
+     *
+     * @return array
+     */
+    public static function rules()
+    {
+        $rules = [
+            'first_name'    => 'required|string',
+            'last_name'     => 'required|string',
+            'email'         => 'required|email|max:255|unique:users',
+            'password'      => 'required|min:6',
+            'phone_number'  => 'required|phone:US',
+            'university_id' => 'required|numeric'
+        ];
+
+        return $rules;
+    }
+
+
     public function buyerOrders()
     {
         return $this->hasMany('App\BuyerOrder', 'buyer_id', 'id');

@@ -37,8 +37,10 @@
                         <li role="presentation" class="{{ $signupActive }}" id="signup-tab"><a href="#signup-body"
                                                                                                aria-controls="signup-body"
                                                                                                role="tab"
-                                                                                               data-toggle="tab">SignUp</a></li>
-                    </ul> <!-- end tabs -->
+                                                                                               data-toggle="tab">SignUp</a>
+                        </li>
+                    </ul>
+                    <!-- end tabs -->
 
                     {{-- Messages --}}
                     @if (Session::has('message'))
@@ -139,7 +141,7 @@
                                                placeholder="Password">
                                     </div>
                                 </div>
-                                <!-- phone num -->
+                                <!-- phone number -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
                                         <input type="tel" class="form-control" name="phone_number"
@@ -213,7 +215,7 @@
             </div>
         </div>
     </div>
-    
+
 @endsection
 
 
