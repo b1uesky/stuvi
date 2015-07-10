@@ -44,6 +44,7 @@
                     <p>
                         Stuvi is a marketplace built for college students, by college students. We're here to provide
                         relevant services to help you succeed at school, and we're launching here in Boston, Massachusetts!
+                        <a href="{{url('/about/')}}">Learn More.</a>
                     </p>
                 </div>
                 <div class="container col-xs-offset-1 col-sm-7 col-sm-offset-3 col-md-offset-0 col-md-4" id="img-info-1">
