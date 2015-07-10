@@ -426,7 +426,7 @@
 
                             <div class="col-sm-8">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">
+                                    <div class="panel-heading" id="payment-panel-heading">
                                         <i class="fa fa-lock fa-lg"></i>
                                         <span class="panel-title">Secure Payment via Stripe</span>
                                     </div>

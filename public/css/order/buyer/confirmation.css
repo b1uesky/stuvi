@@ -5,11 +5,11 @@ body {
 }
 
 .cart-line{
-    max-width: 50% !important;
+    max-width: 50%;
 }
 @media(max-width: 767px){
     .cart-line{
-        max-width: 70% !important;
+        max-width: 70%;
     }
 }
 
