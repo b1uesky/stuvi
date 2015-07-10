@@ -3,7 +3,7 @@
  *******/
 
 h1{
-    margin-left: -15px !important;
+    margin-left: -15px;
 }
 
 /* Under nav bar. "Look for seller orders? */
@@ -23,7 +23,7 @@ h1{
 /* Go Back link Found in sellerOrderIndex */
 #go-back{
     margin-left: 20px;
-    padding: 10px !important;
+    padding: 10px;
     cursor:pointer;
 }
 

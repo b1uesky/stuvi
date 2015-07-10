@@ -6,7 +6,7 @@
 @section('title', 'Your Sold books')
 
 @section('css')
-    <link href="{{ asset('/css/order/order.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/order/seller/order.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
