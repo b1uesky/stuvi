@@ -20,9 +20,6 @@
             <li class="filter active">
                 <a class="filter-link active" href="{{ url('/textbook/sell') }}">Sell</a>
             </li>
-           {{-- <li class="cart">
-                <a href="{{ url('/cart') }}" class="cart-link"><i class="fa fa-shopping-cart fa-2x"></i></a>
-            </li>--}}
         </ul>
     </div>
 
