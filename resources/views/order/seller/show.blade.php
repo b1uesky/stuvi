@@ -6,7 +6,7 @@
 @section('title', 'Order details - Order #'.$seller_order->id)
 
 @section('css')
-    <link href="{{ asset('/css/order/showOrder.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/order/seller/showOrder.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('/js/datetimepicker/jquery.datetimepicker.css')}}"/>
 @endsection
 
@@ -177,7 +177,8 @@
                     </div>
 
                     {{-- Confirm pickup --}}
-                    <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm Pickup</a><br><br>
+                <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}"
+                   class="btn btn-default pickup-btn">Confirm Pickup</a><br><br>
         </div>
         @endif
     </div>
