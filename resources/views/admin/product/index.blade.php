@@ -74,4 +74,6 @@
         @endforeach
 
     </table>
+
+    {!! $products->render() !!}
 @endsection

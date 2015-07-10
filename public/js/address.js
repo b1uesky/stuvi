@@ -4,7 +4,7 @@
 $(document).ready(function () {
     $('.show-addresses').click(function() {
         $('.displayDefaultAddress').hide();
-        $('.add_new_address').show();
+        $('#new-address-panel').show(1000);
         $('.displayAllAddresses').show(1000);
     });
 

@@ -7,6 +7,7 @@ use App\Address;
 use App\SellerOrder;
 use App\StripeTransfer;
 
+use Log;
 use Auth;
 use Cart;
 use Config;
@@ -19,6 +20,7 @@ use Session;
 use Validator;
 use DateTime;
 use Carbon\Carbon;
+use Aloha\Twilio\Twilio;
 
 class SellerOrderController extends Controller
 {
@@ -77,6 +79,13 @@ class SellerOrderController extends Controller
         if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
         {
             $seller_order->cancel();
+
+            // if the order is assigned to a courier, send a sms to let the courier know
+            // that the order has been cancelled
+            if ($seller_order->assignedToCourier())
+            {
+                $this->notifyCourierCancelledOrder($seller_order);
+            }
 
             return redirect('order/seller/' . $id);
         }
@@ -191,6 +200,7 @@ class SellerOrderController extends Controller
 
         $address = new Address();
         $address->user_id       = Auth::user()->id;
+        $address->is_default    = true;
         $address->addressee     = Input::get('addressee');
         $address->address_line1 = Input::get('address_line1');
         $address->address_line2 = Input::get('address_line2');
@@ -313,7 +323,6 @@ class SellerOrderController extends Controller
             // Something else happened, completely unrelated to Stripe
             $error6 = $e->getMessage();
         }
-
     }
 
     /**
@@ -334,4 +343,22 @@ class SellerOrderController extends Controller
         return $url;
     }
 
+    /**
+     * Send a sms to the courier that the order has been cancelled.
+     *
+     * @param $seller_order
+     */
+    protected function notifyCourierCancelledOrder($seller_order)
+    {
+        $twilio = new Twilio(
+            Config::get('twilio.twilio.connections.twilio.sid'),
+            Config::get('twilio.twilio.connections.twilio.token'),
+            Config::get('twilio.twilio.connections.twilio.from')
+        );
+
+        $phone_number = $seller_order->courier->phone_number;
+        $message = 'Order #' . $seller_order->id . ' has been cancelled by the seller at ' . $seller_order->getCancelledTime();
+
+        $twilio->message($phone_number, $message);
+    }
 }

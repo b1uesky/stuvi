@@ -96,15 +96,17 @@ body {
     display: none;
 }
 
-.displayDefaultAddress .address_id {
-    /*display: none;*/
-}
-
 .displayAllAddresses {
     margin-left: 5px;
     margin-right: 5px;
     padding-right: 0;
-    height: 155px;
+    height: 175px;
+    width: 324px;
+    display: none;
+}
+
+/* make the user's id invisible */
+.displayDefaultAddress .address_id {
     display: none;
 }
 
@@ -116,7 +118,8 @@ body {
     text-align: center;
     margin-left: 5px;
     display: none;
-    height: 155px;
+    height: 175px;
+    width: 324px;
 }
 
 #new-address-panel h4 {
@@ -171,6 +174,10 @@ body {
 .fa-lock {
     font-size: 1.5em;
     line-height: 0.3em;
+}
+
+#name-label {
+    margin-right: 20px;
 }
 
 .card-row {

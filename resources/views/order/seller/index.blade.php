@@ -19,7 +19,7 @@
     </div>
     <!-- Main container -->
     <div class="container seller-order-container">
-        <h1>Your sold books:</h1>
+        <h1>Your sold books</h1>
         @forelse ($orders->reverse() as $order)
             <div class="row">
                 <div class="container order-container">
