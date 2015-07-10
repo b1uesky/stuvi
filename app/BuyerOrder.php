@@ -89,7 +89,7 @@ class BuyerOrder extends Model
         // if any seller order is picked up by a courier, this buyer order is not cancellable as well.
         foreach ($this->seller_orders as $seller_order)
         {
-            if (!$seller_order->isCancellable())
+            if ($seller_order->pickedUp())
             {
                 return false;
             }

@@ -29,21 +29,6 @@ class BuyerOrderController extends Controller
     }
 
     /**
-     * For test email functionality
-     */
-    public function test()
-    {
-        $user = User::find(7);
-        // send an email to the user with welcome message
-        $user_arr               = $user->toArray();
-        $user_arr['university'] = $user->university->toArray();
-        Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($user_arr)
-        {
-            $message->to($user_arr['email'])->subject('Welcome to Stuvi!');
-        });
-    }
-
-    /**
      * Display a listing of buyer orders for an user.
      *
      * @return Response
@@ -301,9 +286,9 @@ class BuyerOrderController extends Controller
         $buyer_order = BuyerOrder::find($id);
 
         // check if this order belongs to the current user.
-        if (!is_null($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
+        if ($buyer_order && $buyer_order->isBelongTo(Auth::id()))
         {
-            if ($buyer_order->cancellable())
+            if ($buyer_order->isCancellable())
             {
                 $buyer_order->cancel();
                 return redirect('order/buyer/' . $id)
@@ -311,7 +296,7 @@ class BuyerOrderController extends Controller
             }
             else
             {
-                return redirect('order/seller/'.$id)
+                return redirect('order/buyer/'.$id)
                     ->with('message', 'Sorry, this order is not cancellable. We have picked up one or more books from seller.');
             }
         }
