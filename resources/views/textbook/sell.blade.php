@@ -2,7 +2,7 @@
 
 @extends('app')
 
-@section('title', 'Sell used textbooks')
+@section('title', 'Sell Used Textbooks')
 
 @section('css')
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -104,13 +104,12 @@
                 <!-- Row 1 Col 2 -->
                 <div class="container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
                      id="shrink-xs">
-                    <h3 id="h3-1">No more student debt!</h3>
+                    <h3 id="h3-1">Save Money!</h3>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis
-                        faucibus elit
-                        tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum
-                        tristique.
-                        Suspendisse ornare dui vel turpis finibus, quis lobortis eros varius.
+                    <p>There's no need to pay for packaging supplies and shipping. We take care of the entire process. With a low
+                        <strong>9999%</strong> fee, you can spend the extra dough on important things such as: underage alcohol consumption,
+                        laser hair removal, bail fees, life insurance scams, and more!
+
                     </p>
                 </div>
             </div>
