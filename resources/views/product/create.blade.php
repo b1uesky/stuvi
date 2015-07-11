@@ -245,17 +245,8 @@
                     <div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>
                 </div>
 
-                <div class="form-group">
-                    <label>Back cover image</label>
-                    <input type="file" name="back-cover-image" class="upload-file"/>
-                    <div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>
-                </div>
-
-                <div class="form-group">
-                    <label>Page image</label>
-                    <input type="file" name="page-image" class="upload-file"/>
-                    <div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>
-                </div>
+                {{-- Add more images --}}
+                <a class="btn btn-info btn-add-input">Add image</a>
 
                 <input type="submit" name="submit" class="btn sell-btn" value="Sell Book"/>
             </form>
@@ -267,4 +258,5 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/validator/file-upload.js') }}"></script>
+    <script src="{{ asset('js/product/create.js') }}"></script>
 @endsection
