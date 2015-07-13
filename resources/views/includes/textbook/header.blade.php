@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <!-- Toggle Nav into hamburger menu for small screens -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                <button id="nav-toggle-collapse" type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle Navigation</span>
                     <i class="fa fa-bars fa-lg"></i>
@@ -25,7 +25,7 @@
                     <li><a href="{{ url('/coming') }}">Groups</a></li>
                 </ul>
                 <!-- Navbar right -->
-                <ul class="nav navbar-nav navbar-right">
+                <ul id="nav-right" class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
                         <li><a class="nav-login" href="{{ url('/auth/login') }}">
                                 <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
@@ -34,7 +34,7 @@
                     @else
                         <!-- profile dropdown -->
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button"
+                            <a href="#" id="navi-drop" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button"
                                aria-expanded="true"><span nav-caret
                                                           id="account-name">{{ Auth::user()->first_name }} </span><span
                                         class="caret nav-caret"></span></a>
