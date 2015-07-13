@@ -1,8 +1,18 @@
-/****** TEXTBOOK SHOW PAGE ******/
+/****** TEXTBOOK SHOW PAGE
+
+   This page lists all the textbook varients avaliable.
+/textbook/buy/<ID #>
+
+******/
 
 body {
     background-color: #F2F2F2;
 }
+
+.empty{
+    min-height: 90vh;
+}
+
 
 /*** TEXTBOOK INFO ***/
 
@@ -24,7 +34,7 @@ body {
     margin-bottom: 10px;
 }
 
-.author-btn {
+.author-label {
     background-color: #F16521;
     color: #FFFFFF;
     border: none;
@@ -51,8 +61,7 @@ body {
 
 .textbook-table {
     background-color: white;
-    border: solid;
-    border-color: #DDD;
+    border: solid #DDD;
 }
 
 #price {

@@ -76,14 +76,16 @@
                                 <!-- email -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8 form-space-offset">
-                                        <input type="email" class="form-control input" name="email" placeholder="Email"
+                                        <label class="sr-only" for="login-email">Email address</label>
+                                        <input type="email" class="form-control input" name="email" id="login-email" placeholder="Email"
                                                value="{{ old('email') }}">
                                     </div>
                                 </div>
                                 <!-- password -->
                                 <div id="password-group" class="form-group">
+                                    <label class="sr-only" for="login-password">Password</label>
                                     <div class="col-sm-offset-2 col-sm-8">
-                                        <input type="password" class="form-control" name="password"
+                                        <input type="password" class="form-control" name="password" id="login-password"
                                                placeholder="Password">
                                     </div>
                                 </div>
@@ -91,8 +93,8 @@
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
                                         <div class="checkbox" id="remember-me">
-                                            <label>
-                                                <input type="checkbox" name="remember"> Remember Me
+                                            <label for="remember-me-box">
+                                                <input type="checkbox" name="remember" id="remember-me-box"> Remember Me
                                             </label>
                                         </div>
                                     </div>
@@ -117,35 +119,40 @@
                                 <!-- first name -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8 form-space-offset">
-                                        <input type="text" class="form-control" name="first_name"
+                                        <label class="sr-only" for="register-first">First name</label>
+                                        <input type="text" class="form-control" name="first_name" id="register-first"
                                                placeholder="First Name" value="{{ old('first_name') }}">
                                     </div>
                                 </div>
                                 <!-- last name -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
-                                        <input type="text" class="form-control" name="last_name" placeholder="Last Name"
-                                               value="{{ old('last_name') }}">
+                                        <label class="sr-only" for="register-last">Last name</label>
+                                        <input type="text" class="form-control" name="last_name" id="register-last"
+                                               placeholder="Last Name" value="{{ old('last_name') }}">
                                     </div>
                                 </div>
                                 <!-- email -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
-                                        <input type="email" class="form-control" name="email" placeholder="Email"
-                                               value="{{ old('email') }}">
+                                        <label class="sr-only" for="register-email">Email address</label>
+                                        <input type="email" class="form-control" name="email" id="register-email"
+                                               placeholder="Email" value="{{ old('email') }}">
                                     </div>
                                 </div>
                                 <!-- password -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
-                                        <input type="password" class="form-control" name="password"
+                                        <label class="sr-only" for="register-password">Password</label>
+                                        <input type="password" class="form-control" name="password" id="register-password"
                                                placeholder="Password">
                                     </div>
                                 </div>
                                 <!-- phone number -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
-                                        <input type="tel" class="form-control phone_number" name="phone_number"
+                                        <label class="sr-only" for="register-phone">Phone Number</label>
+                                        <input type="tel" class="form-control phone_number" name="phone_number" id="register-phone"
                                                placeholder="Phone Number" value="{{ old('phone_number') }}">
                                     </div>
                                 </div>
@@ -153,7 +160,8 @@
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
                                         <select class="form-control" name="university_id">
-                                            <option selected disabled>University</option>
+                                            <label class="sr-only" for="register-uni">School</label>
+                                            <option id="register-uni" selected disabled>University</option>
                                             @foreach($universities as $university)
                                                 <option value="{{ $university->id }}">{{ $university->name }}</option>
                                             @endforeach
