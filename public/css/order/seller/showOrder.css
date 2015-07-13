@@ -12,7 +12,7 @@
 
 /* Alert message container */
 #message-cont {
-    padding-left: 0px !important;
+    padding-left: 0;
     margin-top: 5px;
 }
 
@@ -56,7 +56,7 @@ hr{  border-color: black;  }
     background: #F16521;
     color: #FFFFFF;
     border: none;
-    padding: 7px 10px !important;
+    padding: 7px 10px;
 }
 
 .btn-orange:hover,
@@ -79,7 +79,7 @@ hr{  border-color: black;  }
 
 .form-control:focus {
     border: 2px solid #7AB4DE;
-    box-shadow: none !important;
+    box-shadow: none;
 }
 
 /* Address */
@@ -88,7 +88,7 @@ hr{  border-color: black;  }
     /*border: 1px solid #eee;*/
     display: inline-block;
     /*margin: 20px;*/
-    padding: 0px;
+    padding: 0;
 }
 
 .seller-address a{
@@ -97,7 +97,7 @@ hr{  border-color: black;  }
 
 .seller-address ul {
     list-style-type: none;
-    padding: 0px;
+    padding: 0;
 }
 
 /* Pickup Button */
@@ -112,7 +112,7 @@ hr{  border-color: black;  }
 .pickup-btn:hover,
 .pickup-btn:focus {
     background: #7AB4DE;
-    outline: 0 !important;
+    outline: 0;
     color: #FFFFFF;
 }
 
