@@ -37,7 +37,6 @@ body {
 .author-btn:focus {
     background-color: #F16521;
     color: #FFFFFF;
-    outline: 0 !important;
 }
 
 .textbook-info p {
@@ -54,7 +53,6 @@ body {
 
 .condition-btn:hover,
 .condition-btn:focus {
-    outline: 0 !important;
     background-color: #BBBBBB;
 }
 

@@ -44,6 +44,7 @@
                     <p>
                         Stuvi is a marketplace built for college students, by college students. We're here to provide
                         relevant services to help you succeed at school, and we're launching here in Boston, Massachusetts!
+                        <a href="{{url('/about/')}}">Learn More.</a>
                     </p>
                 </div>
                 <div class="container col-xs-offset-1 col-sm-7 col-sm-offset-3 col-md-offset-0 col-md-4" id="img-info-1">
@@ -68,19 +69,19 @@
                     <p>Buy and sell textbooks at your campus</p>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-lg-3 service">
-                    <a href="{{ url('/') }}"><i class="fa fa-home fa-5x"></i></a>
+                    <a href="{{ url('/coming') }}"><i class="fa fa-home fa-5x"></i></a>
                     <h4>Housing</h4>
 
                     <p>Find off campus housing near your campus</p>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-lg-3 service">
-                    <a href="{{ url('/') }}"><i class="fa fa-university fa-5x"></i></a>
+                    <a href="{{ url('/coming') }}"><i class="fa fa-university fa-5x"></i></a>
                     <h4>Clubs</h4>
 
                     <p>Get involved with clubs and organizations</p>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-lg-3 service">
-                    <a href="{{ url('/') }}"><i class="fa fa-users fa-5x"></i></a>
+                    <a href="{{ url('/coming') }}"><i class="fa fa-users fa-5x"></i></a>
                     <h4>Groups</h4>
 
                     <p>Connect with students in your classes</p>

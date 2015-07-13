@@ -6,7 +6,7 @@
 @section('title', 'Order details - Order #'.$seller_order->id)
 
 @section('css')
-    <link href="{{ asset('/css/order/showOrder.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/order/seller/showOrder.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('/js/datetimepicker/jquery.datetimepicker.css')}}"/>
 @endsection
 
@@ -30,7 +30,8 @@
             @if($seller_order->pickedUp())
                 <div class="alert alert-success">The textbook has been picked up by our courier.</div>
             @elseif($seller_order->isCancellable())
-                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
+                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel
+                        Order</a></p>
             @else
                 <div class="alert alert-danger">This order has been cancelled.</div>
             @endif
@@ -100,26 +101,35 @@
                     @else
                         {{-- Nothing --}}
                     @endif
-                </div>
+                </div><br>
 
                 <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST" id="schedule-pickup-time">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="schedule-token">
                     <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
 
-                    <!-- TODO: Add a calendar logo -->
-                    <div class="form-group col-xs-8 col-sm-4">
-                        <input class="form-control" id="datetimepicker" class="input-append date" type="text"
-                               name="scheduled_pickup_time">
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <label class="sr-only" for="datetimepicker">Date and Time</label>
+
+                            <div class="input-group">
+                                <div class="input-group-addon" id="cal-icon" onclick="setFocusToTextBox()"><i
+                                            class="fa fa-calendar"></i></div>
+                                <input class="form-control" id="datetimepicker" class="input-append date" type="text"
+                                       name="scheduled_pickup_time">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-orange">
+                            <!-- scheduled already and not cancelled. allows for reschedule -->
+                            @if($seller_order->scheduledPickupTime() && !$seller_order->cancelled)
+                                Reschedule
+                            @else
+                                Schedule
+                            @endif
+                        </button>
                     </div>
-                    <button type="submit" class="btn btn-orange">
-                        <!-- scheduled already and not cancelled. allows for reschedule -->
-                        @if($seller_order->scheduledPickupTime() && !$seller_order->cancelled)
-                            Reschedule
-                        @else
-                            Schedule
-                        @endif
-                    </button>
-                    </br></br>
+
+                    <br><br>
+
                 </form>
         </div>
         <div class="container box">
@@ -175,19 +185,18 @@
                         <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
                            class="btn btn-orange">Add a new address</a></br></br>
                     </div>
-
                 </div>
 
-
+                {{-- Confirm pickup --}}
+                <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm
+                    Pickup</a></br></br>
         </div>
-        {{-- Confirm pickup --}}
-        <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm
-            Pickup</a></br></br>
         @endif
     </div>
 @endsection
 
 @section('javascript')
+    {{--http://xdsoft.net/jqplugins/datetimepicker/--}}
     <!-- Date time picker required scripts -->
     <script src="{{asset('/js/datetimepicker/jquery.js')}}"></script>
     <script src="{{asset('/js/datetimepicker/jquery.datetimepicker.js')}}"></script>

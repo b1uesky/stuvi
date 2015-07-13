@@ -27,11 +27,11 @@ body {
 }
 
 .cart-line{
-    max-width: 50% !important;
+    max-width: 50%;
 }
 @media(max-width: 767px){
     .cart-line{
-        max-width: 70% !important;
+        max-width: 70%;
     }
 }
 
@@ -49,8 +49,8 @@ body {
 /**** SHIPPING ADDRESS ****/
 
 .form-control:focus {
-    border: 3px solid #7AB4DE;
-    box-shadow: none !important;
+    border: 2px solid #7AB4DE;
+    box-shadow: none;
 }
 
 .form-group {
@@ -161,9 +161,9 @@ body {
 
 /**** PAYMENT ****/
 
-.panel-heading {
-    background-color: #7AB4DE !important;
-    color: #FFFFFF !important;
+#payment-panel-heading {
+    background-color: #7AB4DE;
+    color: #FFFFFF;
 }
 
 .panel-title {
@@ -221,10 +221,6 @@ body {
 .card-exp {
     width: 80px;
     margin-right: 4.16%;
-}
-
-.card-exp:focus {
-    border: 1px solid #CCCCCC;
 }
 
 #stripe-logo {

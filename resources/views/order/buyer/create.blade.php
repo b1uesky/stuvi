@@ -7,7 +7,7 @@
 @section('title', 'Checkout')
 
 @section('css')
-    <link href="{{ asset('/css/order/createBuyerOrder.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/order/buyer/createBuyerOrder.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -297,7 +297,7 @@
                                         </button>
                                         <button id="storeUpdatedAddress" type="button"
                                                 class="btn btn-default address-btn">
-                                            Update Addressaa
+                                            Update Address
                                         </button>
                                     </div>
                                 </div>
@@ -426,7 +426,7 @@
 
                             <div class="col-sm-8">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">
+                                    <div class="panel-heading" id="payment-panel-heading">
                                         <i class="fa fa-lock fa-lg"></i>
                                         <span class="panel-title">Secure Payment via Stripe</span>
                                     </div>
@@ -460,9 +460,9 @@
                                             </label>
                                             <label>
                                                 <span>Card Number</span>
-                                                <input class="form-control" type="text" size="20"
-                                                       data-stripe="number"
-                                                       value="4242 4242 4242 4242"/>
+                                                <input class="form-control" type="text" size="19" maxlength="19"
+                                                       data-stripe="number" id="card-input"
+                                                       value="4242-4242-4242-4242"/>
                                             </label>
 
                                         </div>
@@ -533,7 +533,6 @@
     <!-- jQuery is used only for this example; it isn't required to use Stripe -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ asset('/js/address.js') }}"></script>
-
     <!-- stripe -->
     <script type="text/javascript">
         // This identifies your website in the createToken call below

@@ -24,7 +24,7 @@
                 <div class="authors-container">
                     <span>by </span>
                     @foreach($book->authors as $author)
-                        <span id="authors"><button class="btn btn-default author-btn">{{ $author->full_name }}</button></span>
+                        <span id="authors"><a class="btn btn-default author-btn">{{ $author->full_name }}</a></span>
                     @endforeach
                 </div>
                 <p>ISBN-10: {{ $book->isbn10 }}</p>
@@ -231,6 +231,7 @@
                 @if($book->lowest_used_price)
                     <div>Lowest used price: ${{ $book->lowest_used_price }}</div>
                 @endif
+                <br>
 
                 {{-- your price --}}
                 <div class="form-group">
@@ -245,19 +246,10 @@
                     <div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>
                 </div>
 
-                <div class="form-group">
-                    <label>Back cover image</label>
-                    <input type="file" name="back-cover-image" class="upload-file"/>
-                    <div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>
-                </div>
+                {{-- Add more images --}}
+                <a class="btn btn-info btn-add-input">Add image</a>
 
-                <div class="form-group">
-                    <label>Page image</label>
-                    <input type="file" name="page-image" class="upload-file"/>
-                    <div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>
-                </div>
-
-                <input type="submit" name="submit" class="btn sell-btn" value="Sell Book"/>
+                <input type="submit" name="submit" class="btn sell-btn" value="Post Book"/>
             </form>
         </div>
     </div>
@@ -267,4 +259,5 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/validator/file-upload.js') }}"></script>
+    <script src="{{ asset('js/product/create.js') }}"></script>
 @endsection

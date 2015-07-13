@@ -3,27 +3,27 @@
  *******/
 
 h1{
-    margin-left: -10px !important;
+    margin-left: -15px;
 }
 
 /* Under nav bar. "Look for seller orders? */
 .link-to-seller{
     margin-left: 15px;
     padding-top: 10px;
-    padding-bottom: 0px;
-    margin-right: 0px;   /* Need this or else it goes off screen*/
+    padding-bottom: 0;
+    margin-right: 0; /* Need this or else it goes off screen*/
 }
 
 /* Go back link container. Found in sellerOrderIndex */
 .back-row{
     margin-top:7px;
-    margin-right: 0px; /* Need this or else it goes off screen*/
+    margin-right: 0; /* Need this or else it goes off screen*/
 }
 
 /* Go Back link Found in sellerOrderIndex */
 #go-back{
     margin-left: 20px;
-    padding: 10px !important;
+    padding: 10px;
     cursor:pointer;
 }
 
