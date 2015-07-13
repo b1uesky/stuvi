@@ -28,4 +28,6 @@
             </tr>
         @endforeach
     </table>
+
+    {!! $seller_orders->render() !!}
 @endsection
