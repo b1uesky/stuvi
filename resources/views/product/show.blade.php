@@ -18,10 +18,9 @@
     <div class="container" id="det-cont">
         <div class="row">
             <div class="col-sm-6 col-md-4">
-
                 <!-- images use lightbox -->
                 {{-- Only shows first image as large, the rest will be below it as smaller images--}}
-                @if(!empty($product->images))
+                @if($product->images)
                     @foreach($product->images as $index => $image)
                         @if($index == 0)
                             <a class="lightbox-product-link" href="{{ $image->path }}"

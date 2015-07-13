@@ -98,7 +98,7 @@
 /*** PRODUCT CONDITION ***/
 
 .form-group{
-    margin-bottom: 0px !important;
+    margin-bottom: 0;
 }
 
 .fa-question-circle {

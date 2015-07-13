@@ -7,7 +7,8 @@
         <ul class="nav navbar-nav">
             <li><a href="{{ URL::to('admin/user') }}">User</a></li>
             <li><a href="{{ URL::to('admin/product') }}">Product</a></li>
-            <li><a href="{{ URL::to('admin/sellerOrder') }}">SellerOrder</a></li>
+            <li><a href="{{ URL::to('admin/order/seller') }}">SellerOrder</a></li>
+            <li><a href="{{ URL::to('admin/order/buyer') }}">BuyerOrder</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

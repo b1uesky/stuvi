@@ -83,7 +83,7 @@ class Product extends Model
      *
      * @return array
      */
-    public static function rules()
+    public static function rules($extra_images)
     {
         $rules = array(
             'general_condition'     =>  'required|integer',
@@ -92,9 +92,13 @@ class Product extends Model
             'broken_binding'        =>  'required|boolean',
             'price'                 =>  'required|numeric',
             'front-cover-image'     =>  'required|mimes:jpeg,png|max:3072',  // maximum 3MB
-            'back-cover-image'      =>  'required|mimes:jpeg,png|max:3072',
-            'page-image'            =>  'required|mimes:jpeg,png|max:3072'
+            'extra-images'          =>  'mimes:jpeg,png|max:3072'
         );
+
+//        foreach ($extra_images as $key => $val)
+//        {
+//            $rules['extra-images'.$key] = 'mimes:jpeg,png|max:3072';
+//        }
 
         return $rules;
     }

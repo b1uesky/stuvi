@@ -7,7 +7,6 @@ use App\Http\Requests;
 use Auth;
 use Config;
 use DB;
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
 use Illuminate\Http\Request;
 use Input;
 use Mail;
@@ -105,7 +104,9 @@ class AddressController extends Controller
         $address = Address::find($address_id);
         if ($address->isBelongTo(Auth::id()))
         {
-            $address->update([
+            $address->disable();
+            $address = Address::create([
+                'user_id'       => Auth::id(),
                 'is_default'    => true,
                 'addressee'     => Input::get('addressee'),
                 'address_line1' => Input::get('address_line1'),
@@ -115,6 +116,7 @@ class AddressController extends Controller
                 'zip'           => Input::get('zip'),
                 'phone_number'  => Input::get('phone_number')
             ]);
+
 
             $address->setDefault();
 
@@ -138,7 +140,7 @@ class AddressController extends Controller
             ]);
 
             return response()->json([
-                'is_deleted'            => $address_to_be_deleted->delete(),
+                'is_deleted'            => $address_to_be_deleted->disable(),
                 'num_of_user_addresses' => Auth::user()->addresses->count()
             ]);
         }

@@ -1,7 +1,9 @@
 <?php namespace App;
 
+use App\Helpers\StripeKey;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 
 class BuyerOrder extends Model
 {
@@ -31,17 +33,14 @@ class BuyerOrder extends Model
     /**
      * Get all products that is belong to this buyer order.
      *
-     * @return array
+     * @return Collection
      */
     public function products()
     {
-        $seller_orders = $this->seller_orders;
-        $products = array();
-        foreach ($seller_orders as $order)
+        return $this->seller_orders->map(function ($item)
         {
-            $products[] = $order->product;
-        }
-        return $products;
+            return $item->product;
+        });
     }
 
     /**
@@ -73,6 +72,28 @@ class BuyerOrder extends Model
     public function isBelongTo($id)
     {
         return ($this->buyer_id == $id);
+    }
+
+    /**
+     * Check whether this buyer order is cancellable.
+     */
+    public function isCancellable()
+    {
+        if ($this->isDelivered() || $this->cancelled)
+        {
+            return false;
+        }
+
+        // if any seller order is picked up by a courier, this buyer order is not cancellable as well.
+        foreach ($this->seller_orders as $seller_order)
+        {
+            if ($seller_order->pickedUp())
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
@@ -157,5 +178,71 @@ class BuyerOrder extends Model
         }
 
         return $buyer_order_arr;
+    }
+
+    /**
+     * Get all stripe refunds.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function stripeRefunds()
+    {
+        return $this->hasMany('App\StripeRefund');
+    }
+
+    /**
+     * Check if this buyer order has amount that needs to refund.
+     *
+     * @return bool
+     */
+    public function isRefundable()
+    {
+        return $this->refundableAmount() > 0.00;
+    }
+
+    /**
+     * Calculate the total amount in cent that needs to refund.
+     *
+     * @return int
+     */
+    public function refundableAmount()
+    {
+        // get all cancelled seller orders
+        $cancelled_orders = $this->seller_orders()->where('cancelled', true)->get();
+        $amount = 0;
+        foreach ($cancelled_orders as $order)
+        {
+            $amount += $order->product->price;
+        }
+
+        // convert to cents..
+        $amount *= 100;
+        $amount = intval($amount);
+
+        // calculate the amount refunded
+        foreach ($this->stripeRefunds as $stripe_refund)
+        {
+            $amount -= $stripe_refund->amount;
+        }
+
+        return $amount;
+    }
+
+    public function refund($amount, $operator_id)
+    {
+        \Stripe\Stripe::setApiKey(StripeKey::getSecretKey());
+
+        // TODO: catch exceptions
+        $ch = \Stripe\Charge::retrieve($this->buyer_payment->charge_id);
+        $re = $ch->refunds->create(['amount'=>$amount]);
+
+        $refund = StripeRefund::create([
+            'buyer_order_id'    => $this->id,
+            'refund_id'         => $re['id'],
+            'amount'            => $re['amount'],
+            'operator_id'       => $operator_id,
+        ]);
+
+        return $refund;
     }
 }

@@ -21,12 +21,12 @@
         {{-- A list of buyer orders --}}
         @if (!empty($buyer_orders))
             <div class="list-group">
-                @foreach($buyer_orders as $index => $buyer_order)
+                @foreach($buyer_orders as $buyer_order)
                     @if(count($buyer_order->products()) > 0)
                         <a href="{{ URL::to('express/deliver/' . $buyer_order->id) }}" class="list-group-item">
-                            {{--<h4 class="list-group-item-heading">{{ $buyer_order->b }}</h4>--}}
+                            <h4 class="list-group-item-heading">Order #{{ $buyer_order->id }}</h4>
                             @foreach($buyer_order->products() as $p_index => $product)
-                                <p class="list-group-item-text">#{{ $p_index + 1 }}: {{ $product->book->title }}</p>
+                                <p class="list-group-item-text">{{ $p_index + 1 }}. {{ $product->book->title }}</p>
                             @endforeach
                         </a>
                     @endif

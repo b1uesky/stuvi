@@ -15,12 +15,34 @@ class SellerOrder extends Model
         return $this->belongsTo('App\Product');
     }
 
+    /**
+     * Cancel the order.
+     * Check whether this seller order is cancellable.
+     */
+    public function isCancellable()
+    {
+        return !$this->pickedUp() && !$this->cancelled;
+    }
+
+    /**
+     * Cancel a seller order.
+     */
     public function cancel()
     {
         $this->cancelled = true;
         $this->cancelled_time = Carbon::now();
         $this->product->sold = false;
         $this->push();
+    }
+
+    /**
+     * Get the order cancelled time.
+     *
+     * @return mixed
+     */
+    public function getCancelledTime()
+    {
+        return $this->cancelled_time->toDateTimeString();
     }
 
     /**
@@ -42,6 +64,16 @@ class SellerOrder extends Model
     public function seller()
     {
         return $this->product->seller;
+    }
+
+    /**
+     * Return the courier who is assigned to this order.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function courier()
+    {
+        return $this->belongsTo('App\User', 'courier_id');
     }
 
     /**
@@ -70,6 +102,11 @@ class SellerOrder extends Model
         return !empty($this->scheduled_pickup_time);
     }
 
+    /**
+     * Check if the seller order is picked up by a courier.
+     *
+     * @return bool
+     */
     public function pickedUp()
     {
         return !empty($this->pickup_time);

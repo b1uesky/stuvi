@@ -29,8 +29,9 @@
             {{-- Order has been picked up --}}
             @if($seller_order->pickedUp())
                 <div class="alert alert-success">The textbook has been picked up by our courier.</div>
-            @elseif(!$seller_order->cancelled)
-                <p><a class="btn btn-orange" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
+            @elseif($seller_order->isCancellable())
+                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel
+                        Order</a></p>
             @else
                 <div class="alert alert-danger">This order has been cancelled.</div>
             @endif
@@ -95,7 +96,8 @@
 
                 <div class="text-scheduled-pickup-time">
                     @if($seller_order->scheduledPickupTime())
-                        Scheduled pickup time: {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}
+                        Scheduled pickup
+                        time: {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}
                     @else
                         {{-- Nothing --}}
                     @endif
@@ -108,8 +110,10 @@
                     <div class="form-inline">
                         <div class="form-group">
                             <label class="sr-only" for="datetimepicker">Date and Time</label>
+
                             <div class="input-group">
-                                <div class="input-group-addon" id="cal-icon" onclick="setFocusToTextBox()"><i class="fa fa-calendar"></i></div>
+                                <div class="input-group-addon" id="cal-icon" onclick="setFocusToTextBox()"><i
+                                            class="fa fa-calendar"></i></div>
                                 <input class="form-control" id="datetimepicker" class="input-append date" type="text"
                                        name="scheduled_pickup_time">
                             </div>
@@ -125,74 +129,74 @@
                     </div>
 
                     <br><br>
+
                 </form>
         </div>
         <div class="container box">
-                {{-- Select pickup address --}}
+            {{-- Select pickup address --}}
             <div class="row row-title">
                 <h3 class="col-xs-12">Select a pickup address</h3>
             </div>
-                {{-- If the seller has more than one address --}}
-                @if(count($seller_order->seller()->address) > 0)
-                    {{-- Show existing addresses --}}
-                    <div class="seller-address-box">
-                        @foreach($seller_order->seller()->address as $index => $address)
-                            <div class="seller-address">
-                                <ul>
-                                    <li>{{ $address->addressee }}</li>
-                                    <li>
-                                        @if($address->address_line2)
-                                            {{ $address->address_line1 }}, {{ $address->address_line2 }}
-                                        @else
-                                            {{ $address->address_line1 }}
-                                        @endif
-                                    </li>
-                                    <li>
-                                        <span>{{ $address->city }}, </span>
-                                        <span>{{ $address->state_a2 }} </span>
-                                        <span>{{ $address->zip }}</span>
-                                    </li>
-                                    <li>{{ $address->country_name }}</li>
-                                    <li>{{ $address->phone_number }}</li>
-                                </ul>
-
-                                {{-- Select address button --}}
-                                @if($seller_order->address_id == $address->id)
-                                    <button type="button" class="btn btn-success btn-assigned-address" disabled>
-                                        Selected address
-                                    </button>
-                                @else
-                                    <form action="/order/seller/assignAddress" method="get">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="hidden" name="address_id" value="{{ $address->id }}"/>
-                                        <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}"/>
-                                        <input type="submit" name="submit" value="Use this address"
-                                               class="btn btn-warning"/>
-                                    </form>
-                                @endif
-                            </div>
-                        @endforeach
-
-                        @endif
-
-                        {{-- Add a new address --}}
+            {{-- If the seller has address --}}
+            @if(count($seller_order->seller()->addresses) > 0)
+                {{-- Show existing addresses --}}
+                <div class="seller-address-box">
+                    @foreach($seller_order->seller()->addresses as $index => $address)
                         <div class="seller-address">
-                            <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
-                               class="btn btn-orange">Add a new address</a><br><br>
+                            <ul>
+                                <li>{{ $address->addressee }}</li>
+                                <li>
+                                    @if($address->address_line2)
+                                        {{ $address->address_line1 }}, {{ $address->address_line2 }}
+                                    @else
+                                        {{ $address->address_line1 }}
+                                    @endif
+                                </li>
+                                <li>
+                                    <span>{{ $address->city }}, </span>
+                                    <span>{{ $address->state_a2 }} </span>
+                                    <span>{{ $address->zip }}</span>
+                                </li>
+                                <li>{{ $address->country_name }}</li>
+                                <li>{{ $address->phone_number }}</li>
+                            </ul>
+
+                            {{-- Select address button --}}
+                            @if($seller_order->address_id == $address->id)
+                                <button type="button" class="btn btn-success btn-assigned-address" disabled>
+                                    Selected address
+                                </button>
+                            @else
+                                <form action="/order/seller/assignAddress" method="get">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="address_id" value="{{ $address->id }}"/>
+                                    <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}"/>
+                                    <input type="submit" name="submit" value="Use this address"
+                                           class="btn btn-warning"/>
+                                </form>
+                            @endif
                         </div>
+                    @endforeach
 
+                    @endif
+
+                    {{-- Add a new address --}}
+                    <div class="seller-address">
+                        <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
+                           class="btn btn-orange">Add a new address</a></br></br>
                     </div>
+                </div>
 
-                    {{-- Confirm pickup --}}
-                <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}"
-                   class="btn btn-default pickup-btn">Confirm Pickup</a><br><br>
+                {{-- Confirm pickup --}}
+                <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm
+                    Pickup</a></br></br>
         </div>
         @endif
     </div>
 @endsection
 
 @section('javascript')
-        {{--http://xdsoft.net/jqplugins/datetimepicker/--}}
+    {{--http://xdsoft.net/jqplugins/datetimepicker/--}}
     <!-- Date time picker required scripts -->
     <script src="{{asset('/js/datetimepicker/jquery.js')}}"></script>
     <script src="{{asset('/js/datetimepicker/jquery.datetimepicker.js')}}"></script>

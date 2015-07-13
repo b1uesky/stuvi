@@ -52,6 +52,14 @@
                         <h3>Order Processing</h3>
                         <small>Your order is being processed by the Stuvi team.</small>
                     @endif
+                    {{--<a class="btn btn-default order-button-1" href="#" role="button">Track Package</a>--}}
+                    @if ($order->isDelivered())
+                        <a class="btn btn-default order-button-2" href="#" role="button">Return or Replace Item</a>
+                        {{--<a class="btn btn-default order-button-2" href="#" role="button">Leave Seller Feedback</a>--}}
+                    @else
+                        <a class="btn btn-default order-button-2" href="/order/buyer/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
+                    @endif
+
                     <!-- products in order -->
                     @foreach($order->products() as $product)
                         <div class="row book-row">
@@ -68,15 +76,6 @@
 
                                 <p>ISBN: {{ $product->book->isbn10 }}</p>
                                 <h6 class="book-price">${{ $product->price }}</h6>
-                            </div>
-                            <div class="col-xs-12 col-sm-2 col-xs-offset-0 col-sm-offset-2 col-md-offset-3 btn-right">
-                                {{--<a class="btn btn-default order-button-1" href="#" role="button">Track Package</a>--}}
-                                @if ($order->isDelivered())
-                                    <a class="btn btn-default order-button-2" href="#" role="button">Return or Replace Item</a>
-                                    {{--<a class="btn btn-default order-button-2" href="#" role="button">Leave Seller Feedback</a>--}}
-                                @else
-                                    <a class="btn btn-default order-button-2" href="/order/buyer/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
-                                @endif
                             </div>
                         </div>
                     @endforeach

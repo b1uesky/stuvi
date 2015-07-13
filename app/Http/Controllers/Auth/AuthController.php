@@ -40,20 +40,6 @@ class AuthController extends Controller {
 	}
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    public function validator(array $data)
-    {
-        return Validator::make($data, [
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6',
-        ]);
-    }
-
-    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
@@ -119,19 +105,26 @@ class AuthController extends Controller {
      */
     public function postRegister(Request $request)
     {
-        $validator = $this->validator($request->all());
+        // validation
+        $v = Validator::make(Input::all(), User::rules());
 
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
-        }
+        $v->after(function($v) {
+            $university_id = Input::get('university_id');
+            $email = Input::get('email');
 
-        // check whether the email address is matched with the university email suffix.
-        if (!(University::find(Input::get('university_id'))->matchEmailSuffix(Input::get('email'))))
-        {
+            // check whether the email address is matched with the university email suffix.
+            if ($university_id && $email && !(University::find($university_id)->matchEmailSuffix($email)))
+            {
+                $v->errors()->add('email', 'Please use your college email address.');
+            }
+        });
+
+        if ($v->fails()) {
+            $except_fields = ['password'];
+
             return redirect('/auth/register')
-                ->with('message', 'Please use your college email address.');
+                ->withErrors($v->errors())
+                ->withInput(Input::except($except_fields));
         }
 
         Auth::login($this->create($request->all()));
