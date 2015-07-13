@@ -23,7 +23,7 @@
         <!-- sort and search -->
         <div class="container">
             <span class="text-muted">Sort by</span>
-            <ul class="nav nav-pills">
+            <ul class="nav nav-pills" id="nav-sort">
                 <li role="presentation" class="active"><a href="#" data-toggle="pill">Title</a></li>
                 <li role="presentation"><a href="#" data-toggle="pill">Author</a></li>
                 <li role="presentation"><a href="#" data-toggle="pill">Price (Low to High)</a></li>
@@ -33,7 +33,7 @@
                     <form class="navbar-form" role="search">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search" name="srch-term"
-                                   id="srch-term">
+                                   id="search-term">
 
                             <div class="input-group-btn">
                                 <button class="btn btn-default search-btn" type="submit">

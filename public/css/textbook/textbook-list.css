@@ -38,12 +38,12 @@
     color: #FFFFFF;
 }
 
-#search {
+#autocompleteBuy {
     border-radius: 4px 0 0 4px;
     border-right: none;
 }
 
-#search:focus {
+#autocompleteBuy:focus {
     border: 1px solid #F16521;
     border-right: none;
     box-shadow: none;
