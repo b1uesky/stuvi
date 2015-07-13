@@ -54,7 +54,8 @@
             <div class="row row-items">
                 <h3 class="col-xs-12">Items</h3>
             </div>
-            @foreach ($buyer_order->products() as $product)
+            @foreach ($buyer_order->seller_orders as $seller_order)
+                <?php $product = $seller_order->product ?>
                 <div class="row">
                     <div class="item col-xs-8">
                         <p>Title: {{ $product->book->title }}</p>
@@ -65,7 +66,6 @@
                             <span>{{ $author->full_name }}</span>
                         @endforeach
                         <br>
-                        <?php $seller_order = $buyer_order->seller_order($product->id) ?>
                         <p>Scheduled pickup time:
                             @if ($seller_order->scheduled_pickup_time)
                                 {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}

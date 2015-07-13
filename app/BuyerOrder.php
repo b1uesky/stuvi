@@ -114,30 +114,6 @@ class BuyerOrder extends Model
     }
 
     /**
-     * Get the corresponding seller order with this buyer order by a given product id
-     *
-     * @param $id  The product id
-     *
-     * @return SellerOrder
-     */
-    public function seller_order($id)
-    {
-        $seller_orders = $this->seller_orders;
-
-        foreach ($seller_orders as $seller_order)
-        {
-            if ($seller_order->product_id == (int)$id)
-            {
-                return $seller_order;
-            }
-        }
-
-        // this product is not in this buyer order, so there is not seller order for it either.
-        // normally, it is impossible to reach here.
-        return null;
-    }
-
-    /**
      * Check whether the order has been assigned to a courier or not
      *
      * @return bool
