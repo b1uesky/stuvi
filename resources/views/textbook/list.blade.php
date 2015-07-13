@@ -1,9 +1,10 @@
 @extends('app')
 
-@section('title', 'Search results for "'.$info.'"')
+@section('title', 'Search results for '.$query)
 
 @section('css')
     <link href="{{ asset('/css/textbook/textbook-list.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 @endsection
 
 @section('content')
@@ -11,27 +12,26 @@
     @include('textbook/textbook-nav')
 
     <div class="container-fluid textbook-list-container">
-        @if(trim($info) != "")
-            <h1 id="search-term">Search results for "{{ $info }}"</h1>
+        @if(trim($query) != "")
+            <h1 id="search-term">Search results for "{{ $query }}"</h1>
         @else
             <h1 id="search-term">Search results</h1>
         @endif
         <div class="container">
             <span class="text-muted">Sort by</span>
-            <ul class="nav nav-pills" id="nav-sort">
+            <ul class="nav nav-pills">
                 <li role="presentation" class="active"><a href="#" data-toggle="pill">Title</a></li>
                 <li role="presentation"><a href="#" data-toggle="pill">Author</a></li>
                 <li role="presentation"><a href="#" data-toggle="pill">Most Bought</a></li>
                 <li role="presentation"><a href="#" data-toggle="pill">Top Rated</a></li>
 
                 <div class="col-sm-4 col-md-4 pull-right">
-                    <form action="/textbook/buy/search" method="post" class="navbar-form" role="search">
+                    <form action="/textbook/buy/search" method="get" class="navbar-form" role="search">
                         <div class="input-group">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="text" class="form-control" id="search" placeholder="Search" name="info">
+                            <input type="text" class="form-control" id="autocompleteBuy" placeholder="Search" name="query">
 
                             <div class="input-group-btn">
-                                <button class="btn btn-default search-btn" type="submit" name="search" value="Search">
+                                <button class="btn btn-default search-btn" type="submit">
                                     <i class="fa fa-search search-icon"></i>
                                 </button>
                             </div>
@@ -79,14 +79,18 @@
                     </tr>
                 @empty
                     <br>
-                    <p class="empty">Sorry, there are no search results matching "<i>{{ $info }}</i>."</p>
+                    <p class="empty">Sorry, there are no search results matching "<i>{{ $query }}</i>."</p>
                 @endforelse
             </table>
         </div>
     </div>
+
+    {!! $books->appends(Request::only('query'))->render() !!}
 @endsection
 
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="{{asset('/js/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('/js/autocompleteBuy.js')}}" type="text/javascript"></script>
 @endsection

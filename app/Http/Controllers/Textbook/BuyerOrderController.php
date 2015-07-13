@@ -29,21 +29,6 @@ class BuyerOrderController extends Controller
     }
 
     /**
-     * For test email functionality
-     */
-    public function test()
-    {
-        $user = User::find(7);
-        // send an email to the user with welcome message
-        $user_arr               = $user->toArray();
-        $user_arr['university'] = $user->university->toArray();
-        Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($user_arr)
-        {
-            $message->to($user_arr['email'])->subject('Welcome to Stuvi!');
-        });
-    }
-
-    /**
      * Display a listing of buyer orders for an user.
      *
      * @return Response
@@ -81,7 +66,7 @@ class BuyerOrderController extends Controller
 
         $user = Auth::user();
         $default_address_id = -1;
-        $addresses = Address::where('user_id', $user -> id)->get();
+        $addresses = Address::where('user_id', $user -> id)->where('is_enabled','1')->get();
         foreach($addresses as $address){
             if($address -> is_default == true){
                 $default_address_id = $address -> id;
@@ -301,11 +286,19 @@ class BuyerOrderController extends Controller
         $buyer_order = BuyerOrder::find($id);
 
         // check if this order belongs to the current user.
-        if (!is_null($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
+        if ($buyer_order && $buyer_order->isBelongTo(Auth::id()))
         {
-            $buyer_order->cancel();
-
-            return redirect('order/buyer/' . $id);
+            if ($buyer_order->isCancellable())
+            {
+                $buyer_order->cancel();
+                return redirect('order/buyer/' . $id)
+                    ->with('message', 'Your cancel request is submitted. We will process your request in 2 days.');
+            }
+            else
+            {
+                return redirect('order/buyer/'.$id)
+                    ->with('message', 'Sorry, this order is not cancellable. We have picked up one or more books from seller.');
+            }
         }
 
         return redirect('order/buyer')

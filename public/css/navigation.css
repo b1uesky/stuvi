@@ -1,7 +1,5 @@
 /*  CSS FOR NAVIGATION BAR  */
 
-
-
 a:focus {
     outline: 0;
 }
@@ -39,22 +37,26 @@ a:focus {
     color: #FFFFFF;
 }
 
-.navbar-toggle:hover,
-.navbar-toggle:focus {
-    background: #7AB4DE !important;
+#nav-toggle-collapse:hover,
+#nav-toggle-collapse:focus {
+    background: #7AB4DE;
 }
 
 /******* NAVIGATION DROPDOWN *******/
 
-.nav-dropdown {
-    padding-bottom: 10px !important;
+#navi-drop {
+    padding-bottom: 10px;
 }
 
-.nav-dropdown:focus {
-    background-color: #435C7F !important;
-    border-bottom: solid 5px #90B4DF !important;
+#navi-drop:focus {
+    background-color: #435C7F;
+    border-bottom: solid 5px #90B4DF;
 }
 
+#nav-right > .open > a{
+    background-color: #435C7F;
+    border-bottom: solid 5px #90B4DF;
+}
 .nav-caret {
     color: #FFFFFF;
     margin-top: 0px;
@@ -75,6 +77,6 @@ a:focus {
 }
 
 
-#cart-fix{
-    line-height: 19px !important;
+#cart-fix {
+    line-height: 19px;
 }

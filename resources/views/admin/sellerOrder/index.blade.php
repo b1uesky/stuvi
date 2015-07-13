@@ -24,7 +24,7 @@
                 <td>{{ $seller_order->scheduled_pickup_time }}</td>
                 <td>{{ $seller_order->pickup_time }}</td>
                 <td>{{ $seller_order->created_at }}</td>
-                <td><a class="btn btn-info" role="button" href="{{ URL::to('admin/sellerOrder/' . $seller_order->id) }}">Details</a></td>
+                <td><a class="btn btn-info" role="button" href="{{ URL::to('admin/order/seller/' . $seller_order->id) }}">Details</a></td>
             </tr>
         @endforeach
     </table>

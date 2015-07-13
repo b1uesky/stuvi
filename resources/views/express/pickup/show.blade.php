@@ -22,6 +22,12 @@
 
         {{-- Seller Order Details --}}
         <div class="list-group">
+            {{-- Order Number --}}
+            <li class="list-group-item">
+                <h4 class="list-group-item-heading">Order Number</h4>
+                <p class="list-group-item-text">{{ $seller_order->id }}</p>
+            </li>
+
             {{-- Book Info --}}
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">{{ $seller_order->book()->title }}</h4>

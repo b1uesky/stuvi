@@ -29,6 +29,10 @@ public function run()
         '1476754470',       // Mr. Mercedes: A Novel
         '1451627297',       // 11/22/63: A Novel
         '1451698852',       // Doctor Sleep
+        '0735611319',       // Code: The Hidden Language of Computer Hardware and Software
+        '1449672841',       // Computer Science Illuminated, 5th Edition
+        '0132569035',       // Computer Science: An Overview, 11/e
+        '1593271441',       // Hacking: The Art of Exploitation, 2nd Edition
     ];
 
     foreach($isbns as $isbn)

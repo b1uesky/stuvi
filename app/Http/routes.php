@@ -29,17 +29,6 @@ Route::get  ('/home', 'HomeController@index');
 Route::get  ('/about', 'HomeController@about');
 Route::get  ('/contact', 'HomeController@contact');
 Route::get  ('/coming', 'HomeController@coming');
-Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
-{
-    Route::get  ('/', 'TextbookController@index');
-    Route::get  ('/buy', 'TextbookController@showBuyPage');
-    Route::group(['prefix'=>'sell'], function() {
-        Route::get  ('/', 'TextbookController@sell');
-        Route::post ('/search', 'TextbookController@sellSearch');
-        Route::get  ('/create', 'TextbookController@create');
-        Route::get  ('/product/{book}/create', 'ProductController@create');
-    });
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -60,12 +49,27 @@ Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
 |--------------------------------------------------------------------------
 */
 
-// textbook
+// auth not required
+Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
+{
+    Route::get  ('/', 'TextbookController@index');
+    Route::get  ('/buy', 'TextbookController@showBuyPage');
+    Route::group(['prefix'=>'sell'], function() {
+        Route::get  ('/', 'TextbookController@sell');
+        Route::post ('/search', 'TextbookController@sellSearch');
+        Route::get  ('/create', 'TextbookController@create');
+        Route::get  ('/product/{book}/create', 'ProductController@create');
+    });
+});
+
+// auth required
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook'], function() {
+    Route::get('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
+
     // buy
     Route::group(['prefix'=>'buy'], function() {
         Route::get('/{book}', 'TextbookController@show');
-        Route::post('/search', 'TextbookController@buySearch');
+        Route::get('/search', 'TextbookController@buySearch');
         Route::get('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
         Route::get('/product/{product}', 'ProductController@show');
     });
@@ -158,7 +162,22 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
     Route::resource('product', 'ProductController');
 
     // seller order
-    Route::resource('sellerOrder', 'SellerOrderController');
+    Route::group(['prefix'=>'order/seller'], function()
+    {
+        Route::get  ('/', 'SellerOrderController@index');
+        Route::get  ('/{id}', 'SellerOrderController@show');
+    });
+
+    // buyer order
+    Route::group(['prefix'=>'order/buyer'], function()
+    {
+        Route::get  ('/', 'BuyerOrderController@index');
+        Route::get  ('/{id}', 'BuyerOrderController@show');
+        Route::post ('/refund', 'BuyerOrderController@refund');
+    });
+
+    // buyer payment
+    Route::resource('buyer/payment', 'BuyerPaymentController');
 });
 
 /*
