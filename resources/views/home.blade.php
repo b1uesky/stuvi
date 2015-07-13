@@ -5,7 +5,7 @@
 @section('title', 'Textbooks, Housing, Clubs, & More')
 
 @section('css')
-    <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
+    {{--<link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">--}}
 @endsection
 
 @section('content')

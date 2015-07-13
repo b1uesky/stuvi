@@ -8,15 +8,17 @@
 
     <title>Stuvi - @yield('title')</title>
 
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/css/main.css') }}"/>
+
+    {{--<link href="{{ asset('/css/app.css') }}" rel="stylesheet">--}}
 
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- Footer & Nav required -->
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('/css/navigation.css') }}" rel="stylesheet">
+    {{--<link href="{{ asset('/css/navigation.css') }}" rel="stylesheet">--}}
     {{--<link href="{{ asset('/css/footer.css') }}"         rel="stylesheet">--}}
-    <link href="{{ asset('css/footer-distributed.css') }}" rel="stylesheet">
+    {{--<link href="{{ asset('css/footer-distributed.css') }}" rel="stylesheet">--}}
     <!-- Footer required -->
 
     <!-- Footer & Nav required -->
