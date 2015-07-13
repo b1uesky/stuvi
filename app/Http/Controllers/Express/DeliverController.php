@@ -96,7 +96,7 @@ class DeliverController extends Controller
             return redirect('express/deliver')->withError('This buyer order has been cancelled.');
         }
 
-        if ($buyer_order->delivered())
+        if ($buyer_order->isDelivered())
         {
             return redirect('express/deliver')->withError('This buyer order has already been delivered.');
         }
@@ -155,7 +155,7 @@ class DeliverController extends Controller
             return redirect('express/deliver')->withError('This buyer order is not assigned to any courier.');
         }
 
-        if ($buyer_order->delivered())
+        if ($buyer_order->isDelivered())
         {
             return redirect('express/deliver')->withError('This buyer order has already been delivered.');
         }
