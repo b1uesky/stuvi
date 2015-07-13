@@ -11,7 +11,9 @@
 		"exeu/apai-io": "dev-master",
         "doctrine/dbal": "2.5.1",
 		"guzzlehttp/guzzle": "~5.0",
-        "stripe/stripe-php": "2.*"
+        "stripe/stripe-php": "2.*",
+		"aloha/twilio": "2.0.0-RC2",
+        "propaganistas/laravel-phone": "~2.0"
 	},
     "repositories": [
       {

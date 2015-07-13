@@ -1,10 +1,11 @@
-@extends('app2')
+@extends('login-register')
 
-<head>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/css/bootstrap-select.min.css" rel="stylesheet">
+@section('title', 'Login & Register')
+
+@section('css')
     <link href="{{ asset('/css/auth/login.css') }}" rel="stylesheet">
-    <title> Stuvi - login & register</title>
-</head>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/css/bootstrap-select.min.css" rel="stylesheet">
+@endsection
 
 {{--set starting tab based on clicked nav button--}}
 {{--the code below is not commented, it's blade syntax for variables--}}
@@ -37,9 +38,10 @@
                         <li role="presentation" class="{{ $signupActive }}" id="signup-tab"><a href="#signup-body"
                                                                                                aria-controls="signup-body"
                                                                                                role="tab"
-                                                                                               data-toggle="tab">Sign
-                                Up</a></li>
-                    </ul> <!-- end tabs -->
+                                                                                               data-toggle="tab">SignUp</a>
+                        </li>
+                    </ul>
+                    <!-- end tabs -->
 
                     {{-- Messages --}}
                     @if (Session::has('message'))
@@ -140,10 +142,10 @@
                                                placeholder="Password">
                                     </div>
                                 </div>
-                                <!-- phone num -->
+                                <!-- phone number -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
-                                        <input type="tel" class="form-control" name="phone_number"
+                                        <input type="tel" class="form-control phone_number" name="phone_number"
                                                placeholder="Phone Number" value="{{ old('phone_number') }}">
                                     </div>
                                 </div>
@@ -271,14 +273,15 @@
             </div>
         </div>
     </div>
-    
-@endsection
 
+@endsection
 
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>
+    <script src="{{asset('/js/navigation.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>
     <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
 @endsection
 

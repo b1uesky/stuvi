@@ -240,13 +240,14 @@ class TextbookController extends Controller {
      */
 	public function buySearch()
 	{
-		$info = Input::get('info');
+		$query = Input::get('query');
         $isbn_validator = new Isbn();
 
 		// if ISBN, return the specific textbook page
-		if ($isbn_validator->validation->isbn($info))
+		if ($isbn_validator->validation->isbn($query))
 		{
-            $isbn = $isbn_validator->hyphens->removeHyphens($info);
+            $isbn = $isbn_validator->hyphens->removeHyphens($query);
+
             if (strlen($isbn) == 10)
             {
                 $book = Book::where('isbn10', '=', $isbn)->first();
@@ -261,11 +262,12 @@ class TextbookController extends Controller {
 		else
 		{
             // search by title
-			$books = Book::where('title', 'LIKE', "%$info%")->get();
+            $books = Book::where('title', 'LIKE', "%$query%")
+                ->paginate(Config::get('pagination.limit.textbook'));
 
             return view('textbook.list')
                 ->withBooks($books)
-                ->withInfo($info);
+                ->withQuery($query);
 		}
 	}
 

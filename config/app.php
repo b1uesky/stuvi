@@ -173,6 +173,16 @@ return [
          * Addresses Service Providers
          */
         //'Conner\Addresses\AddressesServiceProvider',
+
+        /*
+         * Twillio Service Provider
+         */
+        'Aloha\Twilio\Support\Laravel\ServiceProvider',
+
+        /*
+         * Phone Validation Service Provider
+         */
+        'Propaganistas\LaravelPhone\LaravelPhoneServiceProvider',
 	],
 
 	/*
@@ -222,6 +232,7 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
         //'Cart'      => 'Gloudemans\Shoppingcart\Facades\Cart',
+        'Twilio'    => 'Aloha\Twilio\Support\Laravel\Facade',
 
 	],
 
