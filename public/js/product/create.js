@@ -20,7 +20,7 @@ $(document).ready(function () {
         if ($('.upload-file').length < total_images_limit) {
             var html_block = [
                 '<div class="form-group">',
-                '<input type="file" name="extra-image" class="upload-file" />',
+                '<input type="file" name="extra-images[]" class="upload-file" />',
                 '<div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>',
                 '<a class="btn btn-danger btn-remove-file">Delete</a>',
                 '</div>'

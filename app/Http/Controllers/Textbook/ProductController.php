@@ -31,8 +31,11 @@ class ProductController extends Controller {
 	 */
 	public function store()
 	{
+//        dd(Input::all());
+//        dd(Input::file('extra-images'));
+
         // validation
-        $v = Validator::make(Input::all(), Product::rules());
+        $v = Validator::make(Input::all(), Product::rules(Input::file('extra-images')));
 
         if ($v->fails())
         {
@@ -58,10 +61,18 @@ class ProductController extends Controller {
 
 		// save multiple product images
         $images = array(
-            Input::file('front-cover-image'),
-            Input::file('back-cover-image'),
-            Input::file('page-image')
+            Input::file('front-cover-image')
         );
+
+        $extra_images = Input::file('extra-images');
+
+        if ($extra_images)
+        {
+            foreach ($extra_images as $file)
+            {
+                array_push($images, $file);
+            }
+        }
 
         $title = Input::get('book_title');
         $folder = Config::get('upload.image.product');
@@ -82,6 +93,7 @@ class ProductController extends Controller {
 	 */
 	public function show($product)
 	{
+
         $book = $product->book;
         $amazon = new AmazonLookUp($book->isbn10, 'ISBN');
 
@@ -95,39 +107,6 @@ class ProductController extends Controller {
         }
 
 		return view('product.show')->withProduct($product);
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
 	}
 
 }
