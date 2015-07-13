@@ -33,7 +33,16 @@
                 <p>Number of Pages: {{ $book->num_pages }}</p>
             </div>
         </div>
-        <div class="row col-sm-6 col-sm-offset-1">
+
+        {{-- If the user is not logged in, show login / signup buttons. --}}
+        @if(!Auth::user())
+            <div class="row col-sm-6 col-sm-offset-1">
+                <a href="{{ url('auth/login') }}" class="btn btn-default">Login</a>
+                <a href="{{ url('auth/register') }}" class="btn btn-default">Signup</a>
+            </div>
+        @else
+            {{-- Show book conditions --}}
+            <div class="row col-sm-6 col-sm-offset-1">
             <h2>Book Conditions</h2>
 
             <form action="/textbook/sell/product/store" method="post" enctype="multipart/form-data">
@@ -252,6 +261,7 @@
                 <input type="submit" name="submit" class="btn sell-btn" value="Post Book"/>
             </form>
         </div>
+        @endif
     </div>
 @endsection
 
