@@ -1,9 +1,3 @@
-{{--
-    This page lists all the textbook varients avaliable
-/textbook/buy/<ID #>
- --}}
-
-
 @extends('app')
 
 @section('title',$book->title)
@@ -11,6 +5,7 @@
 @section('css')
     <link href="{{ asset('/css/textbook/textbook-show.css') }}" rel="stylesheet">
 @endsection
+
 
 @section('content')
 
@@ -20,10 +15,7 @@
         <div class="row textbook-row">
             <div class="col-sm-6">
                 @if($book->imageSet->large_image)
-                    <img id="textbook-img" src="{{ $book->imageSet->large_image }}" alt="Book Image"/>
-                @else
-                    <!-- TODO: Placeholder image -->
-                    <img src="http://placehold.it/400x500" alt="Image coming soon">
+                    <img id="textbook-img" src="{{ $book->imageSet->large_image }}" alt=""/>
                 @endif
             </div>
 
@@ -33,7 +25,7 @@
                 <div class="authors-container">
                     <span>by </span>
                     @foreach($book->authors as $author)
-                        <span id="authors"><label class="label label-default author-label">{{ $author->full_name }}</label></span>
+                        <span id="authors"><button class="btn btn-default author-btn">{{ $author->full_name }}</button></span>
                     @endforeach
                 </div>
                 <p>ISBN10: {{ $book->isbn10 }}</p>
@@ -42,6 +34,20 @@
                 <p>Edition: {{ $book->edition }}</p>
 
                 <p>Number of Pages: {{ $book->num_pages }}</p>
+                {{-- Author(s) --}}
+                {{-- TODO: Make each author name looks like a tag --}}
+                {{--<div class="">--}}
+                {{--@if(count($book->authors) > 1)--}}
+                {{--<span>Authors:</span>--}}
+                {{--@foreach($book->authors as $author)--}}
+                {{--<span>{{ $author->full_name }}</span>--}}
+                {{--@endforeach--}}
+                {{--@else--}}
+                {{--<span>Author:</span>--}}
+                {{--{{ $book->authors[0]->full_name }}--}}
+                {{--@endif--}}
+                {{--</div>--}}
+
             </div>
         </div>
 
@@ -50,9 +56,8 @@
             <div class="row table-row">
 
                 <h3>Select one of our available books</h3>
-                <!-- TODO: remove inline to sheet -->
                 <table class="table table-responsive textbook-table" style="width:100%" border="1">
-                    <thead id="books-table-head">
+                    <thead>
                     <tr class="active">
                         <th>Price</th>
                         <th>Condition</th>
@@ -80,9 +85,7 @@
                 </table>
             </div>
         @else
-            <div class="container empty">
-                <h3>Sorry, this book is not available for now.</h3>
-            </div>
+            <h3>Sorry, this book is not available for now.</h3>
         @endif
     </div>
 

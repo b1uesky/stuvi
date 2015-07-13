@@ -18,13 +18,13 @@
     max-width: 700px;
 }
 
-.edit{
-    margin: 0px !important;
-    max-height: 0px;
+.edit {
+    margin: 0 !important;
+    max-height: 0;
 }
 
 .profile-usermenu{
-    margin-top: 0px !important;
+    margin-top: 0 !important;
 }
 
 .align{
@@ -36,7 +36,7 @@ label{
 }
 
 .form-control:focus {
-    border: 3px solid #7AB4DE;
+    border: 2px solid #7AB4DE;
     box-shadow: none !important;
 }
 
