@@ -2,6 +2,8 @@
 
 @extends('app')
 
+@section('title', 'Cart')
+
 @section('content')
 
     <head>
