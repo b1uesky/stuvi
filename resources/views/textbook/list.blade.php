@@ -18,7 +18,7 @@
         @endif
         <div class="container">
             <span class="text-muted">Sort by</span>
-            <ul class="nav nav-pills">
+            <ul class="nav nav-pills" id="nav-sort">
                 <li role="presentation" class="active"><a href="#" data-toggle="pill">Title</a></li>
                 <li role="presentation"><a href="#" data-toggle="pill">Author</a></li>
                 <li role="presentation"><a href="#" data-toggle="pill">Most Bought</a></li>
@@ -28,7 +28,7 @@
                     <form action="/textbook/buy/search" method="post" class="navbar-form" role="search">
                         <div class="input-group">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="text" class="form-control" placeholder="Search" name="info">
+                            <input type="text" class="form-control" id="search" placeholder="Search" name="info">
 
                             <div class="input-group-btn">
                                 <button class="btn btn-default search-btn" type="submit" name="search" value="Search">

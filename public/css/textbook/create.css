@@ -2,10 +2,13 @@
  * Created originally by Nick 6/1/15
  */
 
+.pad {
+    padding: 2%;
+}
 
-.pad {padding: 2%;}
-
-#message {font-style: italic;}
+#message {
+    font-style: italic;
+}
 
 #message-cont {
     background-color: rgba(255, 0, 12, 0.30);
@@ -36,18 +39,22 @@ b   {
 }
 
 /* Box around all the forms*/
-#textbook-create{
+.textbook-create {
      padding: 5%;
  }
 
 .form-control:focus {
-    border: 3px solid #7AB4DE;
-    box-shadow: none !important;
+    border: 2px solid #7AB4DE;
+    box-shadow: none;
 }
 
-#lang{color: black !important;}
+#lang {
+    color: black;
+}
 
-.lang-select{color: black !important;}
+.lang-select {
+    color: black;
+}
 
 #create-btn {
     color: #FFFFFF;
