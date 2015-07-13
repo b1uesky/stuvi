@@ -42,22 +42,19 @@
                     </div>
                     <!-- order status -->
                     @if ($order->cancelled)
-                        <span id="cancelled"> <h3>Order Canceled</h3>
+                        <span id="cancelled"> <h3>Order Cancelled</h3>
                         <small>Your order has been cancelled.</small>
                         </span>
                     @elseif ($order->isDelivered())
                         <h3>Delivered</h3>
                         <small>Delivered at {{ date($datetime_format, strtotime($order->pickup_time)) }}</small>
+                        <a class="btn btn-default order-button-2" href="#" role="button">Return or Replace Item</a>
                     @else
                         <h3>Order Processing</h3>
                         <small>Your order is being processed by the Stuvi team.</small>
-                    @endif
-                    {{--<a class="btn btn-default order-button-1" href="#" role="button">Track Package</a>--}}
-                    @if ($order->isDelivered())
-                        <a class="btn btn-default order-button-2" href="#" role="button">Return or Replace Item</a>
-                        {{--<a class="btn btn-default order-button-2" href="#" role="button">Leave Seller Feedback</a>--}}
-                    @else
-                        <a class="btn btn-default order-button-2" href="/order/buyer/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
+                        @if ($order->isCancellable())
+                            <a class="btn btn-default order-button-2" href="/order/buyer/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
+                        @endif
                     @endif
 
                     <!-- products in order -->
