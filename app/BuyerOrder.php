@@ -124,6 +124,30 @@ class BuyerOrder extends Model
     }
 
     /**
+     * Check if the buyer order is deliverable, that is, check if all products of this buyer order is picked up.
+     *
+     * @return bool
+     */
+    public function isDeliverable()
+    {
+        if ($this->cancelled || $this->isDelivered() || $this->courier_id)
+        {
+            return false;
+        }
+
+        foreach ($this->seller_orders as $seller_order)
+        {
+            if (!$seller_order->pickedUp())
+            {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
+    /**
      * Check whether the order has been delivered or not
      *
      * @return bool
