@@ -18,7 +18,7 @@
 @endif
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid content">
         <!-- logo -->
         <a href="{{ url('/') }}" id="logo-link"><img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive"
                                                      id="login-logo"></a>
