@@ -8,9 +8,9 @@
 
     <title>Stuvi - @yield('title')</title>
 
-    <link rel="stylesheet" href="{{ asset('/css/main.css') }}"/>
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
-    {{--<link href="{{ asset('/css/app.css') }}" rel="stylesheet">--}}
+    <link rel="stylesheet" href="{{ asset('/css/main.css') }}"/>
 
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- Footer & Nav required -->
