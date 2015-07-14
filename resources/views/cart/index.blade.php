@@ -8,7 +8,7 @@
 
     <head>
         <title> Stuvi - Your Cart</title>
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/cart/cart.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('/css_new/cart_index.css')}}">
     </head>
 
     <!-- different icon and bg color depending on alert. add to other pages??? -->
