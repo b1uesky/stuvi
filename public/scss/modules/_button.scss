@@ -1,0 +1,27 @@
+@import '../modules/colors';
+
+.btn-primary {
+  background: $primary-color;
+  color: #FFFFFF;
+  border: none;
+  padding: 7px 10px;
+
+  &:hover, &:focus {
+    outline: 0;
+    color: #FFFFFF;
+  }
+}
+
+.btn-secondary {
+  background: $secondary-color;
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0 5px #5B86AA;
+
+  &:hover, &:focus{
+    outline: 0;
+    color: #FFFFFF;
+  }
+}
+
+

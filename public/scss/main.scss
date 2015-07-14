@@ -7,5 +7,10 @@
 
 @import 'modules/colors';
 @import 'modules/button';
-@import 'modules/sections/navigation';
-@import 'modules/sections/footer';
+@import 'sections/navigation';
+@import 'sections/footer';
+
+
+body{
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+}

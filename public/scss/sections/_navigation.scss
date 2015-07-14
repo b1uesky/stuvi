@@ -1,0 +1,81 @@
+@import '../modules/colors'; // might want to remove this when done
+
+/*  CSS FOR NAVIGATION BAR  */
+
+a:focus {
+  outline: 0;
+}
+
+/******* NAVIGATION BAR *******/
+
+#nav {
+  background: $nav-background-color;
+  border-radius: 0;
+  border: none;
+}
+
+.logo-container {
+  width: 120px;
+  height: 48px;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.active-nav {
+  background-color: $background-color;
+}
+
+.nav-login {
+  height: 50px;
+}
+
+/******* NAVIGATION HAMBURGER MENU *******/
+
+.fa-bars {
+  color: #FFFFFF;
+}
+
+#nav-toggle-collapse{
+  &:hover, &:focus {
+  background: #7AB4DE;
+  }
+}
+
+/******* NAVIGATION DROPDOWN *******/
+
+#navi-drop {
+  padding-bottom: 10px;
+  &:focus {
+    background-color: $accent-color;
+  }
+}
+
+#nav-right > .open > a{
+  background-color: $accent-color;
+}
+.nav-caret {
+  color: #FFFFFF;
+  margin-top: 0px;
+}
+
+.dropdown-menu {
+  li{
+    a{
+      &:hover{
+        background-color: $secondary-color;
+        color: #FFFFFF;
+      }
+    }
+  }
+}
+
+/* Fix for when dropdown is open, the text was getting changed to dark*/
+#account-name {
+  color: #FFFFFF;
+}
+
+#cart-fix {
+  line-height: 19px;
+}

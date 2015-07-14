@@ -1,0 +1,105 @@
+/* Footer CSS Template
+   http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/
+
+*/
+
+.footer-distributed {
+  background-color: $footer-background-color;
+  box-shadow: $footer-box-shadow;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  /*font: normal 16px sans-serif;*/
+  font: normal 16px "Roboto", Helvetica, Arial, sans-serif;
+  padding: 30px 50px;
+  margin-top: 0px;
+
+
+  .footer-left {
+    p {
+      color: $footer-copyright-text-color;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .footer-links {
+      font-size: 16px;
+      color: $footer-text-color;
+      margin: 0 0 10px;
+      padding: 0;
+
+      a {
+        display: inline-block;
+        line-height: 1.8;
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+  }
+
+  .footer-right {
+    float: right;
+    margin-top: 0px;
+    max-width: 180px;
+
+    a{
+      display: inline-block;
+      width: 35px;
+      height: 35px;
+      /*background-color: #8f9296;*/
+      background-color: #33383b;
+      border-radius: 2px;
+
+      font-size: 20px;
+      color: #ffffff;
+      text-align: center;
+      line-height: 35px;
+
+      margin-left: 3px;
+    }
+  }
+}
+
+
+/* Additional styling */
+
+.social {
+  &:hover {
+    background-color: $primary-color !important;
+  }
+}
+
+.footer-link {
+  &:hover {
+    color: $primary-color !important;
+  }
+}
+
+.divider {
+  color: #FFFFFF;
+}
+
+hr {
+  opacity: 0.3;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 600px) {
+
+  .footer-distributed {
+    .footer-left {
+      text-align: center;
+      p.footer-links {
+        line-height: 1.8;
+      }
+    }
+    .footer-right {
+      text-align: center;
+      float: none;
+      margin: 0 auto 20px;
+    }
+  }
+}
+
+
