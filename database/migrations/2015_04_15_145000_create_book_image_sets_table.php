@@ -16,9 +16,9 @@ class CreateBookImageSetsTable extends Migration {
 		{
 			$table->increments('id');
             $table->integer('book_id')->unsigned();
-            $table->string('small_image');
-            $table->string('medium_image');
-            $table->string('large_image');
+            $table->string('small_image')->nullable();
+            $table->string('medium_image')->nullable();
+            $table->string('large_image')->nullable();
 			$table->timestamps();
 
             $table->foreign('book_id')->references('id')->on('books');
