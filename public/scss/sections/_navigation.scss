@@ -28,7 +28,8 @@ a:focus {
 }
 
 .active-nav {
-  background-color: $background-color;
+  background-color: $accent-color;
+  border-bottom: 5px solid #{$nav-tab-active-border-bottom-color};
 }
 
 .nav-login {
