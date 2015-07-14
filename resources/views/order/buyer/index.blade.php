@@ -61,7 +61,7 @@
                     @endif
 
                     <!-- products in order -->
-                    @foreach($order->products() as $product)
+                    @forelse($order->products() as $product)
                         <div class="row book-row">
                             <div class="col-xs-12 col-sm-2 book-img">
                                 <a href="{{ url('/textbook/buy/product/'.$product->id) }}">
@@ -78,7 +78,11 @@
                                 <h6 class="book-price">${{ $product->price }}</h6>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="row book-row-empty">
+                            <mark>There has been a problem.</mark>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         @empty

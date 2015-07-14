@@ -22,34 +22,28 @@
     margin-left: 30px;
 }
 
-.empty{
-}
-
 /* SORT SECTION */
 
-.nav-pills li a {
+#nav-sort li a {
     color: #7AB4DE;
 }
 
-.nav-pills li a:hover {
+#nav-sort li a:hover {
     background-color: #DDDDDD;
 }
 
 /* override bootstrap's default active pill styles */
-.nav-pills li.active a {
-    background-color: #7AB4DE !important;
-    color: #FFFFFF !important;
+#nav-sort li.active a {
+    background-color: #7AB4DE;
+    color: #FFFFFF;
 }
 
-.form-control {
-    border-top-left-radius: 4px !important;
-    border-bottom-left-radius: 4px !important;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
+#autocompleteBuy {
+    border-radius: 4px 0 0 4px;
     border-right: none;
 }
 
-.form-control:focus {
+#autocompleteBuy:focus {
     border: 1px solid #F16521;
     border-right: none;
     box-shadow: none;
@@ -79,8 +73,7 @@
 
 /* TEXTBOOK LIST */
 .textbook-img-container {
-    width: 100px !important;
-
+    width: 100px;
 }
 
 .textbook-img {

@@ -6,6 +6,8 @@ html body {
     background: #241729;
 }
 
+.content{}
+
 button:focus {
     outline: 0 !important;
 }

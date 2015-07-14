@@ -19,7 +19,7 @@
         @endif
         <div class="container">
             <span class="text-muted">Sort by</span>
-            <ul class="nav nav-pills">
+            <ul class="nav nav-pills" id="nav-sort">
                 <li role="presentation" class="active"><a href="#" data-toggle="pill">Title</a></li>
                 <li role="presentation"><a href="#" data-toggle="pill">Author</a></li>
                 <li role="presentation"><a href="#" data-toggle="pill">Most Bought</a></li>

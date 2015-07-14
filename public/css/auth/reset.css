@@ -1,6 +1,10 @@
 
 /* For reset.blade.php */
 
-.container-main{ height: 70vh;}
+.container-main {
+    height: 90vh;
+}
 
-.row-main{ padding-top: 5%;}
+.row-main {
+    padding-top: 5%;
+}

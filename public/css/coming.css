@@ -3,7 +3,7 @@
 .background{
     background-image: url('../img/coming.jpg');
     background-size: cover;
-    min-height: 70vh;
+    min-height: 90vh;
 }
 .jumbotron {
     margin: 10% 10%;
