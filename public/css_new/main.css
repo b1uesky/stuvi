@@ -6,12 +6,7 @@
  *//*
  * Stuvi color palette
  * Please use these variables for any colors used.
- *
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* CONTAINER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
- * Stuvi color palette
- * Please use these variables for any colors used.
- *
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* CONTAINER COLORS *//* TABLE COLORS *//* BUTTON COLORS */.btn-primary {
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS */.btn-primary {
   background: #f16521;
   color: white;
   border: none;
@@ -54,7 +49,7 @@
 }
 .active-nav {
   background-color: #435c7f;
-  border-bottom: 5px solid #90b4df;
+  border-bottom: 5px solid ;
 }
 .nav-login {
   height: 50px;
@@ -80,7 +75,7 @@
 }
 .dropdown-menu li a:hover {
   background-color: #7ab4de;
-  color: #fff;
+  color: white;
 }
 /* Fix for when dropdown is open, the text was getting changed to dark*/#account-name {
   color: white;
@@ -90,7 +85,7 @@
 }
 /* Footer CSS Template
  http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/
- */.footer-distributed {
+ *//* VARIABLES */.footer-distributed {
   background-color: #292c2f;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;

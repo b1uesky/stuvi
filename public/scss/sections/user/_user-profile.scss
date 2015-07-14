@@ -71,27 +71,27 @@ body {
 .profile-usermenu {
   margin-top: 30px;
   ul li {
-    border-bottom: 1px solid #f0f4f7;
+    border-bottom: 1px solid #{$background-color};
     &:last-child {
       border-bottom: none;
     }
     .active{
       border-bottom: none;
       a{
-        color: #5b9bd1;
-        background-color: #f6f9fb;
-        border-left: 2px solid #5b9bd1;
+        color: $secondary-color;
+        background-color: $background-color;
+        border-left: 2px solid #{$secondary-color};
         margin-left: -2px;
       }
     }
 
     a {
-      color: #93a3b5;
+      color: $muted-text-color;
       font-size: 14px;
       font-weight: 400;
       &:hover{
-        background-color: #fafcfd;
-        color: #5b9bd1;
+        background-color: $background-color;
+        color: $secondary-color;
       }
       i {
         margin-right: 8px;
@@ -107,7 +107,7 @@ body {
 }
 
 #edit-btn {
-  color: #FFFFFF;
+  color: $button-text-color;
   background-color: #7AB4DE;
   border: none;
   box-shadow: 0 5px #5B86AA;

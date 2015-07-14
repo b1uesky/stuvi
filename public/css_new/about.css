@@ -1,5 +1,4 @@
-/*********  ABOUT PAGE  *********/
-.about-background {
+/*********  ABOUT PAGE  *********/.about-background {
   /*image link -> http://commons.wikimedia.org/wiki/File:Stuvi.JPG*/
   background-image: url("../img/stuvi.jpeg");
   background-size: cover;
@@ -48,9 +47,7 @@
 .team-grid > div {
   margin-bottom: 30px;
 }
-
-/*****  GOOGLE MAP  *****/
-.google-map-container {
+/*****  GOOGLE MAP  *****/.google-map-container {
   margin: 0 0 -5px;
   padding: 0;
 }

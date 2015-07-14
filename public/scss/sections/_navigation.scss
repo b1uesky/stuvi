@@ -1,8 +1,6 @@
 /* SCSS for navigation bar. See _colors.scss and _footer.scss */
 
-
 /* VARIABLES */
-
 
 /*  CSS FOR NAVIGATION BAR  */
 
@@ -70,7 +68,7 @@ a:focus {
     a{
       &:hover{
         background-color: $secondary-color;
-        color: #FFFFFF;
+        color: $nav-text-color;
       }
     }
   }

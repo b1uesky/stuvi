@@ -1,8 +1,7 @@
 /* CSS for /cart/index.blade.php *//*
  * Stuvi color palette
  * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS */
-#message {
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS */#message {
   font-style: italic;
 }
 #message-cont {
@@ -23,9 +22,7 @@ body {
 .fa-arrow-circle-left {
   padding-right: 5px;
 }
-
-/* Cart progress bar */
-.cart-progress {
+/* Cart progress bar */.cart-progress {
   /*background-image: url('../img/CART.png');*/
 }
 .cart-line {
