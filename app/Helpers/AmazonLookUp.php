@@ -192,7 +192,7 @@ class AmazonLookUp
      * Get the image url given the image size.
      *
      * @param $image_size
-     * @return string
+     * @return string|null
      */
     public function getImageURL($image_size)
     {
@@ -204,7 +204,7 @@ class AmazonLookUp
             return $url;
         }
 
-        return "";
+        return null;
     }
 
     public function getSmallImage()
