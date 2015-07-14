@@ -20,14 +20,16 @@
         <h2>
             <!-- canceled order -->
             @if ($buyer_order->cancelled)<span id="cancelled">This order has been cancelled.</span> @endif
-            @if ($buyer_order->pickup_time)
-                Delivered @ {{ date($datetime_format, strtotime($buyer_order->pickup_time)) }}
-            @endif
         </h2>
 
         <div class="row" id="details1">
             <p class="col-xs-12 col-sm-3">Ordered on {{ $buyer_order->created_at }}</p>
             <p class="col-xs-12 col-sm-4">Order #{{ $buyer_order->id }}</p>
+        </div>
+        <div class="row" id="details1">
+            @if ($buyer_order->isDelivered())
+                <p class="col-xs-12 col-sm-3">Delivered on {{ date($datetime_format, strtotime($buyer_order->time_delivered)) }}</p>
+            @endif
         </div>
         @if ($buyer_order->isCancellable())
             <p><a class="btn btn-default btn-cancel" href="/order/buyer/cancel/{{ $buyer_order->id }}">Cancel Order</a></p>
@@ -54,7 +56,8 @@
             <div class="row row-items">
                 <h3 class="col-xs-12">Items</h3>
             </div>
-            @foreach ($buyer_order->products() as $product)
+            @foreach ($buyer_order->seller_orders as $seller_order)
+                <?php $product = $seller_order->product ?>
                 <div class="row">
                     <div class="item col-xs-8">
                         <p>Title: {{ $product->book->title }}</p>
@@ -65,7 +68,6 @@
                             <span>{{ $author->full_name }}</span>
                         @endforeach
                         <br>
-                        <?php $seller_order = $buyer_order->seller_order($product->id) ?>
                         <p>Scheduled pickup time:
                             @if ($seller_order->scheduled_pickup_time)
                                 {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}
@@ -76,13 +78,6 @@
                         <p>Pickup time:
                             @if ($seller_order->pickup_time)
                                 {{ date($datetime_format, strtotime($seller_order->pickup_time)) }}
-                            @else
-                                N/A
-                            @endif
-                        </p>
-                        <p>Delivered time:
-                            @if ($buyer_order->isDelivered())
-                                {{ date($datetime_format, strtotime($buyer_order->time_delivered)) }}
                             @else
                                 N/A
                             @endif

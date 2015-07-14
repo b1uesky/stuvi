@@ -29,13 +29,16 @@
             </li>
 
             {{-- A list of books --}}
-            @foreach($buyer_order->products() as $index => $product)
+            @foreach($buyer_order->seller_orders as $seller_order)
+                {{-- check if this product is picked up --}}
+                @if ($seller_order->pickedUp())
                     <li class="list-group-item">
-                        <h4 class="list-group-item-heading">{{ $index + 1 }}. {{ $product->book->title }}</h4>
+                        <h4 class="list-group-item-heading">{{ $seller_order->product->book->title }}</h4>
                         <div class="media">
-                            <img class="img-responsive" src="{{ $product->book->imageSet->medium_image }}" alt=""/>
+                            <img class="img-responsive" src="{{ $seller_order->product->book->imageSet->medium_image }}" alt=""/>
                         </div>
                     </li>
+                @endif
             @endforeach
 
             {{-- Address --}}

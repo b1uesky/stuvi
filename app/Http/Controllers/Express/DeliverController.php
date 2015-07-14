@@ -23,10 +23,12 @@ class DeliverController extends Controller
      */
     public function index()
     {
-        $buyer_orders = BuyerOrder::whereNull('courier_id')
-            ->where('cancelled', '=', false)
-            ->whereNull('time_delivered')
-            ->get();
+        $buyer_orders = BuyerOrder::all()
+            ->filter(function($buyer_order)
+            {
+                return $buyer_order->isDeliverable();
+            });
+
 
         return view('express.deliver.index')->withBuyerOrders($buyer_orders);
     }
@@ -96,7 +98,7 @@ class DeliverController extends Controller
             return redirect('express/deliver')->withError('This buyer order has been cancelled.');
         }
 
-        if ($buyer_order->delivered())
+        if ($buyer_order->isDelivered())
         {
             return redirect('express/deliver')->withError('This buyer order has already been delivered.');
         }
@@ -155,7 +157,7 @@ class DeliverController extends Controller
             return redirect('express/deliver')->withError('This buyer order is not assigned to any courier.');
         }
 
-        if ($buyer_order->delivered())
+        if ($buyer_order->isDelivered())
         {
             return redirect('express/deliver')->withError('This buyer order has already been delivered.');
         }
