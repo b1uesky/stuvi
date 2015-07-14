@@ -1,4 +1,11 @@
+/*
+ * This is the Stuvi default styling. It comes _AFTER_ Bootstrap's app.css
+ * This file is compiled to main.css which is then linked in head.blade.php
+ * Thus, every page will have this styling.
+ *
+ */
+
 @import 'modules/colors';
 @import 'modules/button';
 @import 'modules/nav';
-@import 'pages/home';
+
