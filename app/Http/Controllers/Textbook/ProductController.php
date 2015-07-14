@@ -11,6 +11,8 @@ use Auth;
 use Config;
 use Input;
 use Validator;
+use Session;
+use URL;
 
 class ProductController extends Controller {
 
@@ -108,5 +110,29 @@ class ProductController extends Controller {
 
 		return view('product.show')->withProduct($product);
 	}
+
+    /**
+     * Login with an intended url session.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function login()
+    {
+        Session::put('url.intended', URL::previous());
+
+        return redirect('auth/login');
+    }
+
+    /**
+     * Register with an intended url session.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function register()
+    {
+        Session::put('url.intended', URL::previous());
+
+        return redirect('auth/register');
+    }
 
 }

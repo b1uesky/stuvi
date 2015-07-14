@@ -35,10 +35,10 @@
         </div>
 
         {{-- If the user is not logged in, show login / signup buttons. --}}
-        @if(!Auth::user())
+        @if(!Auth::check())
             <div class="row col-sm-6 col-sm-offset-1">
-                <a href="{{ url('auth/login') }}" class="btn btn-default">Login</a>
-                <a href="{{ url('auth/register') }}" class="btn btn-default">Signup</a>
+                <a href="{{ url('textbook/sell/product/login') }}" class="btn btn-default">Login</a>
+                <a href="{{ url('textbook/sell/product/register') }}" class="btn btn-default">Signup</a>
             </div>
         @else
             {{-- Show book conditions --}}
