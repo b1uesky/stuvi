@@ -1,8 +1,8 @@
 /*
  * Stuvi color palette
  * Please use these variables for any colors used.
- *
  */
+
 
 /* GENERAL COLORS */
 
@@ -10,38 +10,33 @@ $background-color: #F2F2F2;         // body background
 $primary-color: #F16521;
 $secondary-color: #7AB4DE;
 $accent-color: #435C7F;
-$border-color: grey;                // tbd
-
+$border-color: grey;
 
 /* GENERAL TEXT COLORS */
-$body-text-color: black;      // tbd
-$heading-text-color: black;   // tbd
+$body-text-color: black;
+$heading-text-color: black;
 $price-color: #B12704;
 
 /* HEADER/NAV COLORS */
 $nav-background-color: #241729;
-$nav-tab-active-color: #435C7F;
-$nav-tab-active-border-bottom-color: #90B4DF;
-$nav-text-color: white;              // for links
+$nav-text-color: null;              // for links
+
 
 /* FOOTER COLORS */
 $footer-background-color: #292c2f;
 $footer-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-$footer-social-background-color: #33383b;
 $footer-text-color: white;
+$footer-social-icon-color: null;
 $footer-copyright-text-color: #8f9296;
 
-/* CONTAINER COLORS */
-$container-layer-1-color: #ffffff;
-$container-layer-2-color: null;
-$container-layer-3-color: null;
 
 /* TABLE COLORS */
-$table-background-color: white;
-$table-border-color: black;     // tbd
-$table-text-color: null;
+
+
+
 
 /* BUTTON COLORS */
 $button-text-color: white;
+$cart-remove-color: #0044CC;
 
 

@@ -1,4 +1,5 @@
-/*********  CONTACT PAGE  *********/.background {
+/*********  CONTACT PAGE  *********/
+.background {
   /*image link -> https://flic.kr/p/rZ8kmG */
   background: url("../img/art-boston.jpg") no-repeat center;
   background-size: cover;
@@ -12,7 +13,9 @@
 h3 {
   text-shadow: 2px 2px 4px #000;
 }
-/****  CONTACT FORM  ****/.contact-form-container {
+
+/****  CONTACT FORM  ****/
+.contact-form-container {
   margin-left: 5%;
   margin-bottom: 80px;
 }
@@ -69,7 +72,9 @@ h3 {
   box-shadow: 0 2px #5b86aa;
   transform: translateY(5px);
 }
-/****  SOCIAL MEDIA LINKS  ****/.right-container {
+
+/****  SOCIAL MEDIA LINKS  ****/
+.right-container {
   text-align: center;
 }
 .right-container h3 {
@@ -109,7 +114,9 @@ h3 {
 .contact-info #linkedin {
   margin-right: 12px;
 }
-/****  PHOTO LICENSE  ****/#license {
+
+/****  PHOTO LICENSE  ****/
+#license {
   color: #fff;
   text-align: right;
 }

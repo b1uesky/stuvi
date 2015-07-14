@@ -6,7 +6,7 @@
 <title>Stuvi - Book Details - {{ $product->book->title }} </title>
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/css/product/product-show.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('/css_new/product_show.css')}}" type="text/css">
 @endsection
 
 @section('content')
