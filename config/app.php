@@ -159,22 +159,6 @@ return [
 		'App\Providers\RouteServiceProvider',
 
         /*
-         * Payment Service Providers...
-         */
-        //'Laravel\Cashier\CashierServiceProvider',
-        //'Cartalyst\Stripe\Laravel\StripeServiceProvider',
-
-        /*
-         * Gloudemans Shopping Cart
-         */
-        'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
-
-        /*
-         * Addresses Service Providers
-         */
-        //'Conner\Addresses\AddressesServiceProvider',
-
-        /*
          * Twillio Service Provider
          */
         'Aloha\Twilio\Support\Laravel\ServiceProvider',
@@ -231,7 +215,6 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
-        //'Cart'      => 'Gloudemans\Shoppingcart\Facades\Cart',
         'Twilio'    => 'Aloha\Twilio\Support\Laravel\Facade',
 
 	],

@@ -9,6 +9,7 @@ use Input;
 use Validator;
 use Mail;
 use Auth;
+use Session;
 
 class AuthController extends Controller {
 
@@ -60,6 +61,13 @@ class AuthController extends Controller {
         // send an email to the user with welcome message
         $user_arr               = $user->toArray();
         $user_arr['university'] = $user->university->toArray();
+
+        // TODO
+//        if (Session::has('url.intended'))
+//        {
+//            $user_arr['intended_url'] = Session::pull('url.intended');
+//        }
+
         Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($data)
         {
             $message->to($data['email'])->subject('Welcome to Stuvi!');
@@ -75,10 +83,6 @@ class AuthController extends Controller {
      */
     public function getLogin()
     {
-        if (view()->exists('auth.authenticate')) {
-            return view('auth.authenticate');
-        }
-
         return view('auth.login')
             ->with('loginType', 'login')
             ->with('universities', University::availableUniversities());
@@ -94,6 +98,33 @@ class AuthController extends Controller {
         return view('auth.login')
             ->with('loginType', 'register')
             ->with('universities', University::availableUniversities());
+    }
+
+    /**
+     * @override
+     * Send the response after the user was authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  bool  $throttles
+     * @return \Illuminate\Http\Response
+     */
+    protected function handleUserWasAuthenticated(Request $request, $throttles)
+    {
+        if ($throttles) {
+            $this->clearLoginAttempts($request);
+        }
+
+        if (method_exists($this, 'authenticated')) {
+            return $this->authenticated($request, Auth::user());
+        }
+
+        // if the user was redirected from a specific page that needs login or register
+        if (Session::has('url.intended'))
+        {
+            return redirect(Session::pull('url.intended'));
+        }
+
+        return redirect()->intended($this->redirectPath());
     }
 
     /**

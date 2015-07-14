@@ -53,12 +53,18 @@ Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
 Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
 {
     Route::get  ('/', 'TextbookController@index');
+
+    // buy
     Route::get  ('/buy', 'TextbookController@showBuyPage');
+
+    // sell
     Route::group(['prefix'=>'sell'], function() {
         Route::get  ('/', 'TextbookController@sell');
         Route::post ('/search', 'TextbookController@sellSearch');
         Route::get  ('/create', 'TextbookController@create');
         Route::get  ('/product/{book}/create', 'ProductController@create');
+        Route::get  ('/product/login', 'ProductController@login');
+        Route::get  ('/product/register', 'ProductController@register');
     });
 });
 

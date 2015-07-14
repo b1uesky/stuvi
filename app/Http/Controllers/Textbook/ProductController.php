@@ -11,6 +11,8 @@ use Auth;
 use Config;
 use Input;
 use Validator;
+use Session;
+use URL;
 
 class ProductController extends Controller {
 
@@ -31,15 +33,20 @@ class ProductController extends Controller {
 	 */
 	public function store()
 	{
-//        dd(Input::all());
-//        dd(Input::file('extra-images'));
-
         // validation
         $v = Validator::make(Input::all(), Product::rules(Input::file('extra-images')));
 
+//        $v->after(function($v)
+//        {
+//            if (!Input::file('front-cover-image'))
+//            {
+//                $v->errors()->add('front-cover-image', 'Please upload a front cover image.');
+//            }
+//        });
+
         if ($v->fails())
         {
-            redirect()->back()
+            return redirect()->back()
                 ->withErrors($v->errors())
                 ->withInput(Input::all());
         }
@@ -108,5 +115,29 @@ class ProductController extends Controller {
 
 		return view('product.show')->withProduct($product);
 	}
+
+    /**
+     * Login with an intended url session.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function login()
+    {
+        Session::put('url.intended', URL::previous());
+
+        return redirect('auth/login');
+    }
+
+    /**
+     * Register with an intended url session.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function register()
+    {
+        Session::put('url.intended', URL::previous());
+
+        return redirect('auth/register');
+    }
 
 }
