@@ -8,11 +8,13 @@ use App\ProductCondition;
 use App\Helpers\AmazonLookUp;
 
 use Auth;
+use Aws\Laravel\AwsFacade;
 use Config;
 use Input;
 use Validator;
 use Session;
 use URL;
+use Storage;
 
 class ProductController extends Controller {
 
@@ -36,13 +38,6 @@ class ProductController extends Controller {
         // validation
         $v = Validator::make(Input::all(), Product::rules(Input::file('extra-images')));
 
-//        $v->after(function($v)
-//        {
-//            if (!Input::file('front-cover-image'))
-//            {
-//                $v->errors()->add('front-cover-image', 'Please upload a front cover image.');
-//            }
-//        });
 
         if ($v->fails())
         {
@@ -81,12 +76,17 @@ class ProductController extends Controller {
             }
         }
 
-        $title = Input::get('book_title');
-        $folder = Config::get('upload.image.product');
-
 		foreach ($images as $image) {
-			$file_uploader = new FileUploader($image, $title, $folder, $product->id);
-            $file_uploader->saveProductImage();
+            $filename = $product->generateObjectKey($image);
+            Storage::disk('local')->put($filename, $image);
+
+            $s3 = AwsFacade::createClient('s3');
+
+            $s3->putObject(array(
+                'Bucket'        => 'stuvi-images',
+                'Key'           => $filename,
+                'SourceFile'    => Storage::get($filename)
+            ));
 		}
 
         return redirect('textbook/buy/product/' . $product->id);

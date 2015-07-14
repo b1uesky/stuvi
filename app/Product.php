@@ -95,11 +95,15 @@ class Product extends Model
             'extra-images'          =>  'mimes:jpeg,png|max:3072'
         );
 
-//        foreach ($extra_images as $key => $val)
-//        {
-//            $rules['extra-images'.$key] = 'mimes:jpeg,png|max:3072';
-//        }
-
         return $rules;
+    }
+
+    public function generateObjectKey($file)
+    {
+        $title = implode('-', explode(' ', $this->book->title));
+
+        $key = 'product/' . $title . '-' . $this->id . '.' . $file->getClientOriginalExtension();
+
+        return $key;
     }
 }
