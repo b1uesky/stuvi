@@ -45,7 +45,7 @@ class TextbookController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store($authors_arr)
     {
         // validation
         $v = Validator::make(Input::all(), Book::rules());
@@ -92,18 +92,20 @@ class TextbookController extends Controller
             'num_pages' => Input::get('num_pages'),
             'binding'   => Input::get('binding'),
             'language'  => Input::get('language'),
+            'isbn10'    => $isbn10,
+            'isbn13'    => $isbn13,
         ]);
 
         // create book authors
         $authors_str = Input::get('authors');
-        $authors_array = explode(',', $authors_str);
+        $authors_arr = explode(',', $authors_str);
 
-        foreach ($authors_array as $author)
+        foreach ($authors_arr as $author)
         {
-            $book_author = new BookAuthor();
-            $book_author->book_id = $book->id;
-            $book_author->full_name = trim($author);
-            $book_author->save();
+            $book_author = BookAuthor::create([
+                'book_id'   => $book->id,
+                'full_name' => trim($author),
+            ]);
         }
 
         // create book image set
@@ -113,7 +115,8 @@ class TextbookController extends Controller
         $file_uploader = new FileUploader($image, $title, $folder, $book->id);
         $file_uploader->saveBookImageSet();
 
-        return view('product.create')->withBook($book);
+        return view('product.create')
+            ->with('book', $book);
     }
 
     /**
@@ -125,7 +128,8 @@ class TextbookController extends Controller
      */
     public function show($book)
     {
-        return view("textbook.show")->withBook($book);
+        return view("textbook.show")
+            ->with('book', $book);
     }
 
 
@@ -187,31 +191,31 @@ class TextbookController extends Controller
             if ($amazon->success())
             {
                 // save book
-                $book = new Book();
-                $book->isbn10 = $amazon->getISBN10();
-                $book->isbn13 = $amazon->getISBN13();
-                $book->title = $amazon->getTitle();
-                $book->edition = $amazon->getEdition();
-                $book->binding = $amazon->getBinding();
-                $book->language = $amazon->getLanguage();
-                $book->num_pages = $amazon->getNumPages();
-                $book->save();
+                $book = Book::create([
+                    'isbn10'    => $amazon->getISBN10(),
+                    'isbn13'    => $amazon->getISBN13(),
+                    'title'     => $amazon->getTitle(),
+                    'edition'   => $amazon->getEdition(),
+                    'binding'   => $amazon->getBinding(),
+                    'language'  => $amazon->getLanguage(),
+                    'num_pages' => $amazon->getNumPages(),
+                ]);
 
                 // save book image set
-                $book_image_set = new BookImageSet();
-                $book_image_set->book_id = $book->id;
-                $book_image_set->small_image = $amazon->getSmallImage();
-                $book_image_set->medium_image = $amazon->getMediumImage();
-                $book_image_set->large_image = $amazon->getLargeImage();
-                $book_image_set->save();
+                $book_image_set = BookImageSet::create([
+                    'book_id'      => $book->id,
+                    'small_image'  => $amazon->getSmallImage(),
+                    'medium_image' => $amazon->getMediumImage(),
+                    'large_image'  => $amazon->getLargeImage(),
+                ]);
 
                 // save book authors
                 foreach ($amazon->getAuthors() as $author_name)
                 {
-                    $book_author = new BookAuthor();
-                    $book_author->book_id = $book->id;
-                    $book_author->full_name = $author_name;
-                    $book_author->save();
+                    $book_author = BookAuthor::create([
+                        'book_id'   => $book->id,
+                        'full_name' => $author_name,
+                    ]);
                 }
 
                 return redirect('textbook/sell/product/' . $book->id . '/create');
@@ -219,7 +223,7 @@ class TextbookController extends Controller
 
             // allow the seller fill in book information and create a new book record
             return redirect('textbook/sell/create')
-                ->withMessage('Looks like your textbook is currently not in our database, please fill in the textbook information below.');
+                ->with('message', 'Looks like your textbook is currently not in our database, please fill in the textbook information below.');
         }
     }
 
