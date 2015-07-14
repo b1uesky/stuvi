@@ -1,4 +1,8 @@
-@import '../modules/colors'; // might want to remove this when done
+/* SCSS for navigation bar. See _colors.scss and _footer.scss */
+
+
+/* VARIABLES */
+
 
 /*  CSS FOR NAVIGATION BAR  */
 
@@ -24,7 +28,8 @@ a:focus {
 }
 
 .active-nav {
-  background-color: $background-color;
+  background-color: $accent-color;
+  border-bottom: 5px solid #{$nav-tab-active-border-bottom-color};
 }
 
 .nav-login {
@@ -39,7 +44,7 @@ a:focus {
 
 #nav-toggle-collapse{
   &:hover, &:focus {
-  background: #7AB4DE;
+  background: $secondary-color;
   }
 }
 
@@ -73,7 +78,7 @@ a:focus {
 
 /* Fix for when dropdown is open, the text was getting changed to dark*/
 #account-name {
-  color: #FFFFFF;
+  color: $nav-text-color;
 }
 
 #cart-fix {

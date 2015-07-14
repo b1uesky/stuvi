@@ -6,22 +6,24 @@
  *//*
  * Stuvi color palette
  * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ *
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* CONTAINER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
  * Stuvi color palette
  * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS */.btn-primary {
+ *
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* CONTAINER COLORS *//* TABLE COLORS *//* BUTTON COLORS */.btn-primary {
   background: #f16521;
-  color: #fff;
+  color: white;
   border: none;
   padding: 7px 10px;
 }
 .btn-primary:hover, .btn-primary:focus {
   outline: 0;
-  color: #fff;
+  color: white;
 }
 .btn-secondary {
   background: #7ab4de;
-  color: #fff;
+  color: white;
   border: none;
   box-shadow: 0 5px #5b86aa;
 }
@@ -30,9 +32,11 @@
   color: #fff;
 }
 /*
- * Stuvi color palette
- * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*  CSS FOR NAVIGATION BAR  */a:focus {
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* GENERAL CONTAINER *//* LAYERED CONTAINERS (like material design) *//* SCSS for navigation bar. See _colors.scss and _footer.scss *//* VARIABLES *//*  CSS FOR NAVIGATION BAR  */a:focus {
   outline: 0;
 }
 /******* NAVIGATION BAR *******/#nav {
@@ -49,7 +53,8 @@
   height: auto;
 }
 .active-nav {
-  background-color: #f2f2f2;
+  background-color: #435c7f;
+  border-bottom: 5px solid #90b4df;
 }
 .nav-login {
   height: 50px;
@@ -78,7 +83,7 @@
   color: #fff;
 }
 /* Fix for when dropdown is open, the text was getting changed to dark*/#account-name {
-  color: #fff;
+  color: white;
 }
 #cart-fix {
   line-height: 19px;
@@ -91,7 +96,6 @@
   box-sizing: border-box;
   width: 100%;
   text-align: left;
-  /*font: normal 16px sans-serif;*/
   font: normal 16px "Roboto", Helvetica, Arial, sans-serif;
   padding: 30px 50px;
   margin-top: 0px;
@@ -122,11 +126,10 @@
   display: inline-block;
   width: 35px;
   height: 35px;
-  /*background-color: #8f9296;*/
   background-color: #33383b;
   border-radius: 2px;
   font-size: 20px;
-  color: #fff;
+  color: white;
   text-align: center;
   line-height: 35px;
   margin-left: 3px;

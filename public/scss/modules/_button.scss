@@ -2,19 +2,19 @@
 
 .btn-primary {
   background: $primary-color;
-  color: #FFFFFF;
+  color: $button-text-color;
   border: none;
   padding: 7px 10px;
 
   &:hover, &:focus {
     outline: 0;
-    color: #FFFFFF;
+    color: $button-text-color;
   }
 }
 
 .btn-secondary {
   background: $secondary-color;
-  color: #FFFFFF;
+  color: $button-text-color;
   border: none;
   box-shadow: 0 5px #5B86AA;
 

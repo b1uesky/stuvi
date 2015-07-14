@@ -9,13 +9,13 @@
   box-sizing: border-box;
   width: 100%;
   text-align: left;
-  /*font: normal 16px sans-serif;*/
-  font: normal 16px "Roboto", Helvetica, Arial, sans-serif;
+  font: normal 16px #{$base-font-family};
   padding: 30px 50px;
   margin-top: 0px;
 
 
   .footer-left {
+    // copyright
     p {
       color: $footer-copyright-text-color;
       font-size: 14px;
@@ -46,15 +46,12 @@
       display: inline-block;
       width: 35px;
       height: 35px;
-      /*background-color: #8f9296;*/
       background-color: #33383b;
       border-radius: 2px;
-
       font-size: 20px;
-      color: #ffffff;
+      color: $footer-text-color;
       text-align: center;
       line-height: 35px;
-
       margin-left: 3px;
     }
   }
