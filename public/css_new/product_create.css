@@ -1,13 +1,16 @@
 /***** SELLER PRODUCT CREATE PAGE *****//*
  * Stuvi color palette
  * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS */body {
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS */
+body {
   background-color: #f2f2f2;
 }
 .create-container {
   margin-bottom: 50px;
 }
-/*** TEXTBOOK INFO ***/.textbook-row {
+
+/*** TEXTBOOK INFO ***/
+.textbook-row {
   margin-top: 50px;
 }
 #textbook-img {
@@ -33,7 +36,9 @@
   font-size: 16px;
   margin-bottom: 5px;
 }
-/*** PRODUCT CONDITION ***/.condition-btn {
+
+/*** PRODUCT CONDITION ***/
+.condition-btn {
   background-color: #ddd;
   border: 1px solid #9b9b9b;
 }
@@ -58,7 +63,9 @@
   color: #f16521;
   opacity: 1;
 }
-/** PRESSED BUTTON **/.sell-btn {
+
+/** PRESSED BUTTON **/
+.sell-btn {
   display: block;
   background: #7ab4de;
   color: #fff;
@@ -74,7 +81,9 @@
   box-shadow: 0 2px #5b86aa;
   transform: translateY(5px);
 }
-/** File upload error messages **/.upload-error-message {
+
+/** File upload error messages **/
+.upload-error-message {
   display: none;
   color: red;
   font-weight: bold;

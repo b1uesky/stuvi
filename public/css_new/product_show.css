@@ -1,7 +1,8 @@
 /*product/show.blade.php*//*
  * Stuvi color palette
  * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//** PRODUCT INFO **/#bg {
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//** PRODUCT INFO **/
+#bg {
   background-color: whitesmoke;
 }
 #det-cont {
@@ -69,7 +70,9 @@
     padding-left: 15px;
   }
 }
-/*** PRODUCT CONDITION ***/.form-group {
+
+/*** PRODUCT CONDITION ***/
+.form-group {
   margin-bottom: 0;
 }
 .fa-question-circle {
