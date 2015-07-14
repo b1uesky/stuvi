@@ -1,0 +1,77 @@
+/*********  ABOUT PAGE  *********/
+
+.about-background {
+  /*image link -> http://commons.wikimedia.org/wiki/File:Stuvi.JPG*/
+  background-image: url("../img/stuvi.jpeg");
+  background-size: cover; /* Fill entire container */
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+#about-jumbotron {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#about-title {
+  margin-top: 25%;
+  margin-bottom: 20%;
+  text-align: center;
+  color: black;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.about-stuvi {
+  margin-top: 50px;
+}
+
+.team {
+  margin-top: 75px;
+}
+
+.team-container {
+  margin: 0 10px;
+}
+
+.team-grid {
+  margin: 50px auto 20px;
+  padding-left: 4%;
+}
+
+@media (min-width: 800px) {
+  .team-grid {
+    padding-left: 20%;
+  }
+}
+
+@media (min-width: 1080px) {
+  .team-grid {
+    padding-left: 10%;
+  }
+}
+
+@media (min-width: 1300px) {
+  .team-grid {
+    padding-left: 20%;
+  }
+}
+
+.team-grid > div {
+  margin-bottom: 30px;
+}
+
+/*****  GOOGLE MAP  *****/
+
+.google-map-container {
+  margin: 0 0 -5px;
+  padding: 0;
+}
+
+.overlay {
+  background: transparent;
+  position: relative;
+  width: 100%;
+  height: 400px; /* your iframe height */
+  top: 400px; /* your iframe height */
+  margin-top: -400px; /* your iframe height */
+}
