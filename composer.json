@@ -12,7 +12,8 @@
 		"guzzlehttp/guzzle": "~5.0",
         "stripe/stripe-php": "2.*",
 		"aloha/twilio": "2.0.0-RC2",
-        "propaganistas/laravel-phone": "~2.0"
+        "propaganistas/laravel-phone": "~2.0",
+        "aws/aws-sdk-php-laravel": "~3.0"
 	},
     "repositories": [
       {

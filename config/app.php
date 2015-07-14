@@ -167,6 +167,11 @@ return [
          * Phone Validation Service Provider
          */
         'Propaganistas\LaravelPhone\LaravelPhoneServiceProvider',
+
+        /*
+         * Amazon S3 Service Provider
+         */
+        'Aws\Laravel\AwsServiceProvider',
 	],
 
 	/*
@@ -216,6 +221,7 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
         'Twilio'    => 'Aloha\Twilio\Support\Laravel\Facade',
+        'AWS'       => 'Aws\Laravel\AwsFacade',
 
 	],
 
