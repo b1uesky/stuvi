@@ -11,16 +11,15 @@
 
 }
 
-
-label{
-    text-align:left !important;
+.control-label {
+    text-align: left !important;
 }
 
 /****** EDIT INFO ******/
 
 .form-control:focus {
-    border: 3px solid #7AB4DE;
-    box-shadow: none !important;
+    border: 2px solid #7AB4DE;
+    box-shadow: none;
 }
 
 #save-info-btn {

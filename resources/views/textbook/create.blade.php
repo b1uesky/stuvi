@@ -36,7 +36,8 @@
 
             <h1 id="create-title">Enter your textbook information</h1>
             <!-- form begin -->
-            <form action="/textbook/sell/store" method="post" id="textbook-create" class="form" enctype="multipart/form-data">
+            <form action="/textbook/sell/store" method="post" class="form textbook-create"
+                  enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <!-- ISBN -->
                 <div class="form-group">
@@ -76,7 +77,7 @@
                 <!-- TODO: a complete list of languages -->
                 <div class="form-group">
                     <label><b>Language</b></label>
-                    <select class="selectpicker" name="language" id="textbook-create lang">
+                    <select class="selectpicker textbook-create" name="language" id="lang">
                         @foreach(Config::get('book.languages') as $key => $value)
                             <option value="{{ $value }}" class="lang-select">{{ $value }}</option>
                         @endforeach
