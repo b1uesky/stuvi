@@ -11,6 +11,16 @@
 @section('content')
 
     <div class="container create-container">
+
+        {{-- Errors for invalid data --}}
+        @if ($errors->has())
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    {{ $error }}<br>
+                @endforeach
+            </div>
+        @endif
+        
         <div class="row textbook-row col-sm-5">
             <div>
                 @if($book->imageSet->large_image)

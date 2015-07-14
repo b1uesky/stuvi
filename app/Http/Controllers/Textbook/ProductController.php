@@ -33,15 +33,20 @@ class ProductController extends Controller {
 	 */
 	public function store()
 	{
-//        dd(Input::all());
-//        dd(Input::file('extra-images'));
-
         // validation
         $v = Validator::make(Input::all(), Product::rules(Input::file('extra-images')));
 
+//        $v->after(function($v)
+//        {
+//            if (!Input::file('front-cover-image'))
+//            {
+//                $v->errors()->add('front-cover-image', 'Please upload a front cover image.');
+//            }
+//        });
+
         if ($v->fails())
         {
-            redirect()->back()
+            return redirect()->back()
                 ->withErrors($v->errors())
                 ->withInput(Input::all());
         }
