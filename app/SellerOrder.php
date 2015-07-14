@@ -5,6 +5,9 @@ use Carbon\Carbon;
 
 class SellerOrder extends Model
 {
+    protected $fillable = [ 'product_id', 'scheduled_pickup_time', 'pickup_time', 'pickup_code', 'courier_id',
+                            'buyer_order_id', 'address_id', 'cancelled', 'cancelled_time'];
+
     /**
      * Get the product of this seller order.
      *
