@@ -77,13 +77,15 @@ class ProductController extends Controller {
         }
 
 		foreach ($images as $image) {
-            $filename = $product->generateObjectKey($image);
+            // save file to local disk
+            $filename = $product->generateFilename($image);
             Storage::disk('local')->put($filename, $image);
 
+            // upload file to amazon s3
             $s3 = AwsFacade::createClient('s3');
 
             $s3->putObject(array(
-                'Bucket'        => 'stuvi-images',
+                'Bucket'        => Config::get('aws.buckets.image'),
                 'Key'           => $filename,
                 'SourceFile'    => Storage::get($filename)
             ));

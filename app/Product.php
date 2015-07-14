@@ -98,11 +98,10 @@ class Product extends Model
         return $rules;
     }
 
-    public function generateObjectKey($file)
+    public function generateFilename($file)
     {
         $title = implode('-', explode(' ', $this->book->title));
-
-        $key = 'product/' . $title . '-' . $this->id . '.' . $file->getClientOriginalExtension();
+        $key = Config::get('aws.path.textbook.product') . $title . '-' . $this->id . '.' . $file->getClientOriginalExtension();
 
         return $key;
     }
