@@ -2,7 +2,7 @@
 
 
 @extends('app')
-@section('title', 'Profile -'.Auth::user()->first_name.' '.Auth::user()->last_name )
+@section('title', 'Profile - '.Auth::user()->first_name.' '.Auth::user()->last_name )
 
 @section('css')
     <link href="{{ asset('/css/user/profile.css') }}" rel="stylesheet">
