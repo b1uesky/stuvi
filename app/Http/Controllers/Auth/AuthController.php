@@ -70,7 +70,7 @@ class AuthController extends Controller {
 
         Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($data)
         {
-            $message->to('kingdido999@gmail.com')->subject('Welcome to Stuvi!');
+            $message->to($data['email'])->subject('Welcome to Stuvi!');
         });
 
         return $user;
