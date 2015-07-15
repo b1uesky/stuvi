@@ -32,8 +32,6 @@ class AuthController extends Controller {
 
 	/**
 	 * Create a new authentication controller instance.
-	 *
-	 * @return void
 	 */
 	public function __construct()
 	{
@@ -61,17 +59,9 @@ class AuthController extends Controller {
         // send an email to the user with welcome message
         $user_arr               = $user->toArray();
         $user_arr['university'] = $user->university->toArray();
+        $user_arr['return_to']  = urlencode(Session::get('url.intended', '/home'));    // return_to attribute.
 
-        // TODO
-//        if (Session::has('url.intended'))
-//        {
-//            $user_arr['intended_url'] = Session::pull('url.intended');
-//        }
-
-        Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($data)
-        {
-            $message->to($data['email'])->subject('Welcome to Stuvi!');
-        });
+        $this->sendActivationEmail($user_arr);
 
         return $user;
     }
@@ -173,5 +163,18 @@ class AuthController extends Controller {
     protected function getFailedLoginMessage()
     {
         return 'Your email and/or password is not correct. Please try again.';
+    }
+
+    /**
+     * Send an activation email to a given user.
+     *
+     * @param $user_arr
+     */
+    protected function sendActivationEmail($user_arr)
+    {
+        Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($user_arr)
+        {
+            $message->to($user_arr['email'])->subject('Welcome to Stuvi!');
+        });
     }
 }

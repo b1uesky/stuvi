@@ -9,7 +9,7 @@ class UserController extends Controller
 
     public function profile()
     {
-        $user   = Auth::user();
+        $user = Auth::user();
 
         return view('user.profile')
             ->with('num_books_sold', $user->productsSold()->count())
@@ -35,7 +35,7 @@ class UserController extends Controller
         $old_password = Input::get('old_password');
         $new_password = Input::get('new_password');
 
-        $user = Auth::user();   // User::find($id)
+        $user = Auth::user();
         $user->first_name = $first_name;
         $user->save();
     }
@@ -50,19 +50,20 @@ class UserController extends Controller
         // check if the current user is activated
         if (Auth::user()->activated)
         {
-            $url        = '/home';
-            $message    = 'Your account has already been activated.';
+            $url = Input::has('return_to') ? urldecode(Input::get('return_to')) : '/home';
+            $message = 'Your account has already been activated.';
         }
         elseif (Auth::user()->activate($code))
         {
-            $url        = '/home';
+            $url = Input::has('return_to') ? urldecode(Input::get('return_to')) : '/home';
             $message = 'Your account is successfully activated.';
         }
         else
         {
-            $url        = '/user/activate';
+            $url = '/user/activate';
             $message = 'Sorry, account activation failed because of invalid activation code.';
         }
+
         return redirect($url)
             ->with('message', $message);
     }
@@ -72,7 +73,8 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
-    public function waitForActivation()
+    public
+    function waitForActivation()
     {
         if (Auth::user()->isActivated())
         {

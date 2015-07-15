@@ -9,6 +9,12 @@
 @endsection
 
 @section('content')
+    <!-- message -->
+    <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
+        @if (Session::has('message'))
+            <div class="flash-message" id="message" >{{ Session::get('message') }}</div>
+        @endif
+    </div>
 
     <div class="container create-container">
 
@@ -46,6 +52,7 @@
 
         {{-- If the user is not logged in, show login / signup buttons. --}}
         @if(!Auth::check())
+            <p>You need to login or sign up to continue using our sevice.</p>
             <div class="row col-sm-6 col-sm-offset-1">
                 <a href="{{ url('textbook/sell/product/login') }}" class="btn btn-default">Login</a>
                 <a href="{{ url('textbook/sell/product/register') }}" class="btn btn-default">Signup</a>
