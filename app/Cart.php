@@ -23,13 +23,15 @@ class Cart extends Model
      * Delete items in cart by items' id.
      *
      * @param $item_id
-     *
-     * @internal param $cart_items_id
      */
-
     public function remove($item_id)
     {
-        CartItem::destroy($item_id);
+        $item = CartItem::find($item_id);
+        if ($item)
+        {
+            $item->delete();
+            $this->decrement('quantity');
+        }
     }
 
     /**
@@ -80,23 +82,14 @@ class Cart extends Model
      */
     public function add(Product $item)
     {
-        return CartItem::create([
+        $cart_item = CartItem::create([
             'cart_id'    => $this->id,
             'product_id' => $item->id,
         ]);
-    }
 
-    /**
-     * Update the quantity of an cart item.
-     *
-     * @param $cart_item_id
-     * @param $quantity
-     */
-    public function updateItem($cart_item_id, $quantity)
-    {
-        CartItem::find($cart_item_id)->update([
-            'quantity'  => $quantity,
-        ]);
+        $this->increment('quantity');
+
+        return $cart_item;
     }
 
     /**
@@ -108,6 +101,10 @@ class Cart extends Model
         {
             $cart_item->delete();
         }
+
+        $this->update([
+            'quantity' => 0,
+        ]);
     }
 
     /**
@@ -136,7 +133,7 @@ class Cart extends Model
      */
     public function hasItem($item_id)
     {
-        return !$this->items->where('id', (int)$item_id)->isEmpty();
+        return !$this->items->where('id', intval($item_id))->isEmpty();
     }
 
     /**
