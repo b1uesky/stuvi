@@ -78,9 +78,11 @@ class Product extends Model
         return 'No';
     }
 
+
     /**
-     * Validation rules
+     * Validation rules.
      *
+     * @param $extra_images
      * @return array
      */
     public static function rules($extra_images)
@@ -91,9 +93,13 @@ class Product extends Model
             'damaged_pages'         =>  'required|integer',
             'broken_binding'        =>  'required|boolean',
             'price'                 =>  'required|numeric',
-            'front-cover-image'     =>  'required|mimes:jpeg,png|max:3072',  // maximum 3MB
-            'extra-images'          =>  'mimes:jpeg,png|max:3072'
+            'front-cover-image'     =>  'required|mimes:jpeg,png|max:3072'  // maximum 3MB
         );
+
+        // validate each image in the array 'extra-images'
+        foreach(range(0, count($extra_images) - 1) as $index) {
+            $rules['extra-images.' . $index] = 'mimes:jpeg,png|max:3072';
+        }
 
         return $rules;
     }

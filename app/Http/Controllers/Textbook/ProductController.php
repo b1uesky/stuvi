@@ -36,7 +36,6 @@ class ProductController extends Controller {
 	 */
 	public function store()
 	{
-        dd(Input::file('extra-images'));
         // validation
         $v = Validator::make(Input::all(), Product::rules(Input::file('extra-images')));
 
