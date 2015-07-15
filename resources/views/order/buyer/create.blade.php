@@ -476,7 +476,7 @@
                                             <select class="form-control card-exp col-xs-2"
                                                     data-stripe="exp-month">
                                                 <option disabled selected>Month</option>
-                                                <option selected>01</option>
+                                                <option>01</option>
                                                 <option>02</option>
                                                 <option>03</option>
                                                 <option>04</option>
@@ -495,7 +495,7 @@
                                                 <option disabled selected>Year</option>
                                                 <option>2015</option>
                                                 <option>2016</option>
-                                                <option selected>2017</option>
+                                                <option>2017</option>
                                                 <option>2018</option>
                                                 <option>2019</option>
                                                 <option>2020</option>

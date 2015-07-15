@@ -10,6 +10,8 @@ class BuyerOrder extends Model
 
     protected $table = 'buyer_orders';
 
+    protected $fillable = ['buyer_id', 'courier_id', 'time_delivered', 'shipping_address_id', 'cancelled', 'cancelled_time'];
+
     /**
      * Get the buyer of this buyer order.
      *

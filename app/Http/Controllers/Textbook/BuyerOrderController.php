@@ -41,7 +41,7 @@ class BuyerOrderController extends Controller
 
         return view('order.buyer.index')
             ->with('orders', Auth::user()->buyerOrders()->orderBy($order, 'DESC')->get())
-            ->with('datetime_format', Config::get('app.datetime_format'));
+            ->with('datetime_format', config('app.datetime_format'));
     }
 
     /**
@@ -66,15 +66,18 @@ class BuyerOrderController extends Controller
 
         $user = Auth::user();
         $default_address_id = -1;
-        $addresses = Address::where('user_id', $user -> id)->where('is_enabled','1')->get();
-        foreach($addresses as $address){
-            if($address -> is_default == true){
-                $default_address_id = $address -> id;
+        $addresses = Address::where('user_id', $user->id)->where('is_enabled', '1')->get();
+        foreach ($addresses as $address)
+        {
+            if ($address->is_default == true)
+            {
+                $default_address_id = $address->id;
             }
         }
         $addresses->toArray();
 
-        if(count($addresses) > 0){
+        if (count($addresses) > 0)
+        {
             return view('order.buyer.create')
                 ->with('items', $this->cart->items)
                 ->with('total', $this->cart->totalPrice())
@@ -82,7 +85,9 @@ class BuyerOrderController extends Controller
                 ->with('default_address_id', $default_address_id)
                 ->with('display_payment', true)
                 ->with('stripe_public_key', StripeKey::getPublicKey());
-        }else{
+        }
+        else
+        {
             return view('order.buyer.create')
                 ->with('items', $this->cart->items)
                 ->with('total', $this->cart->totalPrice())
@@ -109,14 +114,16 @@ class BuyerOrderController extends Controller
         // create Stripe charge, if it fails, go to checkout page.
         $charge = $this->createBuyerCharge();
 
-
         $shipping_address_id = Input::get('selected_address_id');
 
         // create an buyer payed order
-        $order                      = new BuyerOrder;
-        $order->buyer_id            = Auth::id();
-        $order->shipping_address_id = $shipping_address_id;
-        $order->save();
+        $order = BuyerOrder::create([
+            'buyer_id'              => Auth::id(),
+            'shipping_address_id'   => $shipping_address_id,
+        ]);
+//        $order->buyer_id = Auth::id();
+//        $order->shipping_address_id = $shipping_address_id;
+//        $order->save();
 
         // create seller order(s) according to the Cart items
         $this->createSellerOrders($order->id);
@@ -151,12 +158,13 @@ class BuyerOrderController extends Controller
         // Create the charge on Stripe's servers - this will charge the user's card
         try
         {
-            $charge = \Stripe\Charge::create(array(
-                    "amount"      => $this->cart->totalPrice()*100, // amount in cents
-                    "currency"    => "usd",
-                    "source"      => $token,
-                    "description" => "Buyer order payment for buyer order")
-            );
+            $charge = \Stripe\Charge::create([
+                "amount"        => $this->cart->totalPrice() * 100, // amount in cents
+                "currency"      => "usd",
+                "source"        => $token,
+                "name"          => Input::get('name'),
+                "description"   => "Buyer order payment for buyer order",
+            ]);
 
             return $charge;
         }
@@ -171,25 +179,15 @@ class BuyerOrderController extends Controller
     protected function createBuyerPayment($order, $charge)
     {
         $payment = BuyerPayment::create([
-            'buyer_order_id'    => $order->id,
-            'amount'            => $charge['amount'],
-            'charge_id'         => $charge['id'],
-            'card_id'           => $charge['source']['id'],
-            'object'            => $charge['source']['object'],
-            'card_last4'        => $charge['source']['last4'],
-            'card_brand'        => $charge['source']['brand'],
-            'card_fingerprint'  => $charge['source']['fingerprint'],
+            'buyer_order_id'   => $order->id,
+            'amount'           => $charge['amount'],
+            'charge_id'        => $charge['id'],
+            'card_id'          => $charge['source']['id'],
+            'object'           => $charge['source']['object'],
+            'card_last4'       => $charge['source']['last4'],
+            'card_brand'       => $charge['source']['brand'],
+            'card_fingerprint' => $charge['source']['fingerprint'],
         ]);
-
-//        $payment->buyer_order_id    = $order->id;
-//        $payment->amount            = $charge['amount'];
-//        $payment->charge_id         = $charge['id'];
-//        $payment->card_id           = $charge['source']['id'];
-//        $payment->object            = $charge['source']['object'];
-//        $payment->card_last4        = $charge['source']['last4'];
-//        $payment->card_brand        = $charge['source']['brand'];
-//        $payment->card_fingerprint  = $charge['source']['fingerprint'];
-//        $payment->save();
 
         return $payment;
     }
@@ -203,14 +201,14 @@ class BuyerOrderController extends Controller
 
             // change the status of the product to be sold.
             $product->update([
-                'sold'  => true,
+                'sold' => true,
             ]);
 
             // create seller orders
-            $order = new SellerOrder;
-            $order->product_id = $product->id;
-            $order->buyer_order_id = $buyer_order_id;
-            $order->save();
+            $order = SellerOrder::create([
+                'product_id'        =>$product->id,
+                'buyer_order_id'    => $buyer_order_id,
+            ]);
 
             // send confirmation email to seller
             $this->emailSellerOrderConfirmation($order);
@@ -228,9 +226,9 @@ class BuyerOrderController extends Controller
         // convert the buyer order and corresponding objects to an array
         $buyer_order_arr = $order->allToArray();
 
-        Mail::queue('emails.buyerOrderConfirmation', ['buyer_order' => $buyer_order_arr], function($message) use ($order)
+        Mail::queue('emails.buyerOrderConfirmation', ['buyer_order' => $buyer_order_arr], function ($message) use ($order)
         {
-            $message->to($order->buyer->email)->subject('Confirmation of your order #'.$order->id);
+            $message->to($order->buyer->email)->subject('Confirmation of your order #' . $order->id);
         });
     }
 
@@ -242,13 +240,13 @@ class BuyerOrderController extends Controller
     protected function emailSellerOrderConfirmation(SellerOrder $order)
     {
         // convert the seller order and corresponding objects to an array
-        $seller_order_arr                       = $order->allToArray();
+        $seller_order_arr = $order->allToArray();
 
-        Mail::queue('emails.sellerOrderConfirmation', ['seller_order'  => $seller_order_arr],
-            function($message) use ($order)
-        {
-            $message->to($order->product->seller->email)->subject('Your book '.$order->product->book->title.' has sold!' );
-        });
+        Mail::queue('emails.sellerOrderConfirmation', ['seller_order' => $seller_order_arr],
+            function ($message) use ($order)
+            {
+                $message->to($order->product->seller->email)->subject('Your book ' . $order->product->book->title . ' has sold!');
+            });
     }
 
     /**
@@ -291,12 +289,13 @@ class BuyerOrderController extends Controller
             if ($buyer_order->isCancellable())
             {
                 $buyer_order->cancel();
+
                 return redirect('order/buyer/' . $id)
                     ->with('message', 'Your cancel request is submitted. We will process your request in 2 days.');
             }
             else
             {
-                return redirect('order/buyer/'.$id)
+                return redirect('order/buyer/' . $id)
                     ->with('message', 'Sorry, this order is not cancellable. We have picked up one or more books from seller.');
             }
         }

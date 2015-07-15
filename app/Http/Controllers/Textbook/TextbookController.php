@@ -16,17 +16,18 @@ use Validator;
 use DB;
 use Response;
 
-class TextbookController extends Controller {
+class TextbookController extends Controller
+{
 
-	/**
-	 * Display the textbook buy page.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		return redirect('textbook/buy');
-	}
+    /**
+     * Display the textbook buy page.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        return redirect('textbook/buy');
+    }
 
     /**
      * Show the form for creating a new textbook.
@@ -38,19 +39,19 @@ class TextbookController extends Controller {
         return view('textbook.create');
     }
 
-	/**
-	 * Store a newly created book in storage.
+    /**
+     * Store a newly created book in storage.
      * Only if the input ISBN is not in our database and amazon database.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
+     *
+     * @return Response
+     */
+    public function store($authors_arr)
+    {
         // validation
         $v = Validator::make(Input::all(), Book::rules());
         $isbn = Input::get('isbn');
 
-        $v->after(function($v) use ($isbn)
+        $v->after(function ($v) use ($isbn)
         {
             $isbn_validator = new Isbn();
 
@@ -73,58 +74,63 @@ class TextbookController extends Controller {
 
         $isbn_validator = new Isbn();
 
-		// create book
-        $book = new Book();
-
         if (strlen($isbn) == 10)
         {
-            $book->isbn10 = $isbn;
-            $book->isbn13 = $isbn_validator->translate->to13($isbn);
+            $isbn10 = $isbn;
+            $isbn13 = $isbn_validator->translate->to13($isbn);
         }
         else
         {
-            $book->isbn13 = $isbn;
-            $book->isbn10 = $isbn_validator->translate->to10($isbn);
+            $isbn13 = $isbn;
+            $isbn10 = $isbn_validator->translate->to10($isbn);
         }
 
-        $book->title        = Input::get('title');
-        $book->edition      = Input::get('edition');
-        $book->num_pages    = Input::get('num_pages');
-		$book->binding		= Input::get('binding');
-		$book->language		= Input::get('language');
-        $book->save();
+        // create book
+        $book = Book::create([
+            'title'     => Input::get('title'),
+            'edition'   => Input::get('edition'),
+            'num_pages' => Input::get('num_pages'),
+            'binding'   => Input::get('binding'),
+            'language'  => Input::get('language'),
+            'isbn10'    => $isbn10,
+            'isbn13'    => $isbn13,
+        ]);
 
-		// create book authors
-		$authors_str = Input::get('authors');
-		$authors_array = explode(',', $authors_str);
+        // create book authors
+        $authors_str = Input::get('authors');
+        $authors_arr = explode(',', $authors_str);
 
-		foreach ($authors_array as $author) {
-			$book_author = new BookAuthor();
-			$book_author->book_id = $book->id;
-			$book_author->full_name = trim($author);
-            $book_author->save();
-		}
+        foreach ($authors_arr as $author)
+        {
+            $book_author = BookAuthor::create([
+                'book_id'   => $book->id,
+                'full_name' => trim($author),
+            ]);
+        }
 
-		// create book image set
+        // create book image set
         $image = Input::file('image');
         $title = Input::get('title');
         $folder = Config::get('upload.image.book');
         $file_uploader = new FileUploader($image, $title, $folder, $book->id);
         $file_uploader->saveBookImageSet();
 
-        return view('product.create')->withBook($book);
-	}
+        return view('product.create')
+            ->with('book', $book);
+    }
 
     /**
      * Display a specified textbook.
      *
      * @param $book
+     *
      * @return mixed
      */
-	public function show($book)
-	{
-		return view("textbook.show")->withBook($book);
-	}
+    public function show($book)
+    {
+        return view("textbook.show")
+            ->with('book', $book);
+    }
 
 
     /***************************************************/
@@ -145,27 +151,28 @@ class TextbookController extends Controller {
      * Search function for the sell page.
      *
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function sellSearch(Request $request)
     {
-		$isbn_validator = new Isbn();
+        $isbn_validator = new Isbn();
 
         // remove isbn hyphens
         $isbn = $isbn_validator->hyphens->removeHyphens(Input::get('isbn'));
 
-		// check if the input is a valid ISBN
-		if ($isbn_validator->validation->isbn($isbn) == false)
-		{
+        // check if the input is a valid ISBN
+        if ($isbn_validator->validation->isbn($isbn) == false)
+        {
             return redirect()->back()
                 ->withMessage('Please enter a valid 10 or 13 digit ISBN number.');
-		}
+        }
 
         // database lookup
-		if (strlen($isbn) == 10)
-		{
+        if (strlen($isbn) == 10)
+        {
             $db_book = Book::where('isbn10', '=', $isbn)->first();
-		}
+        }
         else
         {
             $db_book = Book::where('isbn13', '=', $isbn)->first();
@@ -174,48 +181,49 @@ class TextbookController extends Controller {
         // book found in database
         if ($db_book)
         {
-            return redirect('textbook/sell/product/' . $db_book->id. '/create');
+            return redirect('textbook/sell/product/' . $db_book->id . '/create');
         }
         else
         {
-			// Amazon lookup
-			$amazon = new AmazonLookUp($isbn, 'ISBN');
+            // Amazon lookup
+            $amazon = new AmazonLookUp($isbn, 'ISBN');
 
-			if ($amazon->success())
-			{
-				// save book
-				$book = new Book();
-				$book->isbn10 = $amazon->getISBN10();
-                $book->isbn13 = $amazon->getISBN13();
-				$book->title = $amazon->getTitle();
-				$book->edition = $amazon->getEdition();
-				$book->binding = $amazon->getBinding();
-				$book->language = $amazon->getLanguage();
-				$book->num_pages = $amazon->getNumPages();
-				$book->save();
+            if ($amazon->success())
+            {
+                // save book
+                $book = Book::create([
+                    'isbn10'    => $amazon->getISBN10(),
+                    'isbn13'    => $amazon->getISBN13(),
+                    'title'     => $amazon->getTitle(),
+                    'edition'   => $amazon->getEdition(),
+                    'binding'   => $amazon->getBinding(),
+                    'language'  => $amazon->getLanguage(),
+                    'num_pages' => $amazon->getNumPages(),
+                ]);
 
-				// save book image set
-				$book_image_set = new BookImageSet();
-				$book_image_set->book_id = $book->id;
-				$book_image_set->small_image = $amazon->getSmallImage();
-				$book_image_set->medium_image = $amazon->getMediumImage();
-				$book_image_set->large_image = $amazon->getLargeImage();
-				$book_image_set->save();
+                // save book image set
+                $book_image_set = BookImageSet::create([
+                    'book_id'      => $book->id,
+                    'small_image'  => $amazon->getSmallImage(),
+                    'medium_image' => $amazon->getMediumImage(),
+                    'large_image'  => $amazon->getSmallImage(),
+                ]);
 
-				// save book authors
-				foreach ($amazon->getAuthors() as $author_name) {
-					$book_author = new BookAuthor();
-					$book_author->book_id = $book->id;
-					$book_author->full_name = $author_name;
-					$book_author->save();
-				}
+                // save book authors
+                foreach ($amazon->getAuthors() as $author_name)
+                {
+                    $book_author = BookAuthor::create([
+                        'book_id'   => $book->id,
+                        'full_name' => $author_name,
+                    ]);
+                }
 
-				return redirect('textbook/sell/product/' . $book->id . '/create');
-			}
+                return redirect('textbook/sell/product/' . $book->id . '/create');
+            }
 
-			// allow the seller fill in book information and create a new book record
+            // allow the seller fill in book information and create a new book record
             return redirect('textbook/sell/create')
-                ->withMessage('Looks like your textbook is currently not in our database, please fill in the textbook information below.');
+                ->with('message', 'Looks like your textbook is currently not in our database, please fill in the textbook information below.');
         }
     }
 
@@ -233,19 +241,19 @@ class TextbookController extends Controller {
         return view('textbook.buy');
     }
 
-	/**
+    /**
      * Search function for the buy page.
      *
      * @return Response
      */
-	public function buySearch()
-	{
-		$query = Input::get('query');
+    public function buySearch()
+    {
+        $query = Input::get('query');
         $isbn_validator = new Isbn();
 
-		// if ISBN, return the specific textbook page
-		if ($isbn_validator->validation->isbn($query))
-		{
+        // if ISBN, return the specific textbook page
+        if ($isbn_validator->validation->isbn($query))
+        {
             $isbn = $isbn_validator->hyphens->removeHyphens($query);
 
             if (strlen($isbn) == 10)
@@ -257,19 +265,20 @@ class TextbookController extends Controller {
                 $book = Book::where('isbn13', '=', $isbn)->first();
             }
 
-			return view('textbook.show')->withBook($book);
-		}
-		else
-		{
+            return view('textbook.show')
+                ->withBook($book);
+        }
+        else
+        {
             // search by title
             $books = Book::where('title', 'LIKE', "%$query%")
                 ->paginate(Config::get('pagination.limit.textbook'));
 
             return view('textbook.list')
-                ->withBooks($books)
-                ->withQuery($query);
-		}
-	}
+                ->with('books', $books)
+                ->with('query', $query);
+        }
+    }
 
     /**
      * Search AutoComplete for the buy page.
@@ -280,7 +289,7 @@ class TextbookController extends Controller {
     public function buySearchAutoComplete()
     {
         $term = Input::get('term');
-        $books = Book::where('title', 'LIKE', '%'.$term.'%')->take(10)->get();
+        $books = Book::where('title', 'LIKE', '%' . $term . '%')->take(10)->get();
 
         $book_data = array();
 
@@ -294,12 +303,12 @@ class TextbookController extends Controller {
             }
 
             $book_data[] = [
-                'id'        => $book->id,
-                'title'     => $book->title,
-                'isbn10'    => $book->isbn10,
-                'isbn13'    => $book->isbn13,
-                'authors'   => $authors,
-                'image'     => $book->imageSet->small_image
+                'id'      => $book->id,
+                'title'   => $book->title,
+                'isbn10'  => $book->isbn10,
+                'isbn13'  => $book->isbn13,
+                'authors' => $authors,
+                'image'   => $book->imageSet->small_image
             ];
         }
 

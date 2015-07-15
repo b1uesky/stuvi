@@ -3,7 +3,32 @@
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
-class Book extends Model {
+class Book extends Model
+{
+
+    protected $fillable = ['title', 'edition', 'isbn10', 'isbn13', 'num_pages', 'verified', 'binding', 'language',
+                            'list_price', 'lowest_new_price', 'lowest_used_price'];
+
+    /**
+     * Validation rules
+     *
+     * @return array
+     */
+    public static function rules()
+    {
+        $rules = array(
+            'isbn'      =>  'required|unique:books',
+            'title'     =>  'required|string',
+            'authors'   =>  'required|string',
+            'edition'   =>  'required|integer',
+            'num_pages' =>  'required|integer',
+            'binding'   =>  'required|string',
+            'language'  =>  'required|string',
+            'image'     =>  'required|mimes:jpeg,png|max:3000'
+        );
+
+        return $rules;
+    }
 
     /**
      * Get textbook authors
@@ -55,24 +80,4 @@ class Book extends Model {
 //                        ->get();
     }
 
-    /**
-     * Validation rules
-     *
-     * @return array
-     */
-    public static function rules()
-    {
-        $rules = array(
-            'isbn'      =>  'required|unique:books',
-            'title'     =>  'required|string',
-            'authors'   =>  'required|string',
-            'edition'   =>  'required|integer',
-            'num_pages' =>  'required|integer',
-            'binding'   =>  'required|string',
-            'language'  =>  'required|string',
-            'image'     =>  'required|mimes:jpeg,png|max:3000'
-        );
-
-        return $rules;
-    }
 }
