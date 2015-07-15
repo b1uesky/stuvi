@@ -1,4 +1,5 @@
 /******* CHECKOUT PAGE *******/
+@import "modules/colors";
 
 #message {
   font-style: italic;
@@ -10,7 +11,7 @@
 }
 
 body {
-  background-color: #F2F2F2;
+  background-color: $background-color;
 }
 
 .back-row {
@@ -29,10 +30,7 @@ body {
 
 .cart-line {
   max-width: 50%;
-}
-
-@media(max-width: 767px) {
-  .cart-line {
+  @media(max-width: 767px) {
     max-width: 70%;
   }
 }
@@ -40,33 +38,28 @@ body {
 #checkout-title {
   text-align: center;
   padding-top: 80px;
-}
-
-@media (max-width: 768px) {
-  #checkout-title {
+  @media (max-width: 767px) {
     padding-top: 20px;
   }
 }
 
 /**** SHIPPING ADDRESS ****/
 
-.form-control:focus {
-  border: 2px solid #7AB4DE;
-  box-shadow: none;
+.form-control {
+  &:focus {
+    border: 2px solid #7AB4DE;
+    box-shadow: none;
+  }
 }
 
 .form-group {
   margin-bottom: 25px;
-}
-
-@media (max-width: 768px) {
-  .form-group {
+  @media (max-width: 767px) {
     margin-bottom: 0;
   }
-}
-
-.form-group label {
-  padding-top: 7px;
+  label {
+    padding-top: 7px;
+  }
 }
 
 .address-panel {
@@ -85,13 +78,11 @@ body {
   background: #F16521;
   color: #FFFFFF;
   border: none;
-}
-
-.address-btn:hover,
-.address-btn:focus {
-  outline: 0 !important;
-  background: #F16521;
-  color: #FFFFFF;
+  &:hover, &:focus {
+    outline: 0 !important;
+    background: #F16521;
+    color: #FFFFFF;
+  }
 }
 
 .add_new_address {
@@ -105,14 +96,13 @@ body {
   height: 175px;
   width: 324px;
   display: none;
+  .address_id {
+    display: none;
+  }
 }
 
 /* make the user's id invisible */
 .displayDefaultAddress .address_id {
-  display: none;
-}
-
-.displayAllAddresses .address_id {
   display: none;
 }
 
@@ -122,10 +112,9 @@ body {
   display: none;
   height: 175px;
   width: 324px;
-}
-
-#new-address-panel h4 {
-  margin-bottom: 0;
+  h4 {
+    margin-bottom: 0;
+  }
 }
 
 .fa-plus-square {
@@ -136,16 +125,18 @@ body {
   margin-bottom: 48px;
 }
 
-.close-modal-btn:hover,
-.close-modal-btn:focus {
-  outline: 0;
-  color: #F16521;
-  opacity: 1;
+.close-modal-btn {
+  &:hover, &:focus {
+    outline: 0;
+    color: #F16521;
+    opacity: 1;
+  }
 }
 
-.close-btn,
-.close-btn:focus {
-  outline: 0 !important;
+.close-btn {
+  &:focus {
+    outline: 0 !important;
+  }
 }
 
 .inline {
@@ -196,17 +187,14 @@ body {
   width: 200px;
   color: #FFFFFF;
   box-shadow: 0 5px #5B86AA;
-}
-
-.payment-btn:hover,
-.payment-btn:focus {
-  outline: 0 !important;
-  color: #FFFFFF;
-}
-
-.payment-btn:active {
-  box-shadow: 0 2px #5B86AA;
-  transform: translateY(5px);
+  &:hover, &:focus {
+    outline: 0 !important;
+    color: #FFFFFF;
+  }
+  &:active {
+    box-shadow: 0 2px #5B86AA;
+    transform: translateY(5px);
+  }
 }
 
 .payment-errors {
@@ -238,26 +226,19 @@ body {
 
 #security-code {
   width: 100px;
-}
-
-@media (min-width: 1200px) {
-  #security-code {
+  @media (min-width: 1200px) {
     margin-left: 60px;
   }
-}
-
-@media (max-width: 767px) {
-  #security-code {
+  @media (max-width: 767px) {
     margin-left: 10%;
   }
-}
-
-@media (max-width: 425px) {
-  #security-code {
+  @media (max-width: 425px) {
     margin-left: 5%;
   }
+}
 
-  #stripe-logo {
+#stripe-logo {
+  @media (max-width: 425px) {
     width: 80px;
     height: 17px;
   }
