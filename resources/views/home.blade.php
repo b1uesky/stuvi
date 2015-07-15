@@ -5,7 +5,7 @@
 @section('title', 'Textbooks, Housing, Clubs, & More')
 
 @section('css')
-    {{--<link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">--}}
+    <link type="text/css" href="{{ asset('css_new/home.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@
 
     <div class = "container-fluid container-top backgnd">           <!-- Top half -->
         <div class="container top-content col-md-12">
-            <h1 id="head1-temp">Welcome to Stuvi</h1>
+            <h1 id="head1">Welcome to Stuvi</h1>
             <p class="lead tagline">Because it takes a village to conquer college.</p>
             <!-- ghost buttons -->
             @if (Auth::guest())

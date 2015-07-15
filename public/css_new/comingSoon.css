@@ -1,8 +1,7 @@
 /* Coming soon page *//*
  * Stuvi color palette
  * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS */
-.background {
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS */.background {
   background-image: url('../img/coming.jpg');
   background-size: cover;
   min-height: 90vh;
