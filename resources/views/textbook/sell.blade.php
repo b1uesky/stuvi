@@ -88,7 +88,7 @@
 
                     <p>
                         You will be notified once your book has been sold. Then you can select a time
-                        for us to come pickup your book. You will then be paid via _________ in __ - __ days.
+                        for us to come pickup your book. You will then be paid via Stripe in 2-5 days.
                     </p>
                 </div>
             </div>

@@ -40,7 +40,11 @@
                 <div class="price">
                     Price: <b>${{ $product->price }}</b>
                 </div>
-                <a class="btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
+                @if ($product->sold)
+                    <a class="btn add-cart-btn" disabled>Sold</a>
+                @else
+                    <a class="btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
+                @endif
             </div>
 
             <!-- Condition -->

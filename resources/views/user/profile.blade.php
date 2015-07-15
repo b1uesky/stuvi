@@ -27,13 +27,13 @@
                                             <td>{{ date("m/d/Y", strtotime(Auth::user()->created_at)) }}</td>
                                             <td></td>
                                         </tr>
-                                        <!-- rep -->
-                                        <tr id ="details-rep">
-                                            <td><i class="fa fa-thumbs-o-up"></i>
-                                                <b> Reputation: </b></td>
-                                            <td>9001</td>
-                                            <td></td>
-                                        </tr>
+                                        {{--<!-- rep -->--}}
+                                        {{--<tr id ="details-rep">--}}
+                                            {{--<td><i class="fa fa-thumbs-o-up"></i>--}}
+                                                {{--<b> Reputation: </b></td>--}}
+                                            {{--<td>9001</td>--}}
+                                            {{--<td></td>--}}
+                                        {{--</tr>--}}
                                         <!-- books sold -->
                                         <tr id="details-books-sold">
                                             <td><i class="fa fa-share"></i>
