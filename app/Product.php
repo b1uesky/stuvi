@@ -96,7 +96,7 @@ class Product extends Model
             'front-cover-image'     =>  'required|mimes:jpeg,png|max:3072'  // maximum 3MB
         );
 
-        // validate each image in the array 'extra-images'
+        // validate each image in the input array 'extra-images'
         foreach(range(0, count($extra_images) - 1) as $index) {
             $rules['extra-images.' . $index] = 'mimes:jpeg,png|max:3072';
         }
