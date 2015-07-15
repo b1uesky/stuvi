@@ -2,14 +2,14 @@
 
 use App\Http\Controllers\Controller;
 use App\University;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\User;
+use Auth;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 use Input;
-use Validator;
 use Mail;
-use Auth;
 use Session;
+use Validator;
 
 class AuthController extends Controller {
 
@@ -56,12 +56,7 @@ class AuthController extends Controller {
         ]);
         $user->assignActivationCode();
 
-        // send an email to the user with welcome message
-        $user_arr               = $user->toArray();
-        $user_arr['university'] = $user->university->toArray();
-        $user_arr['return_to']  = urlencode(Session::get('url.intended', '/home'));    // return_to attribute.
-
-        $this->sendActivationEmail($user_arr);
+        $this->sendActivationEmail($user);
 
         return $user;
     }
@@ -168,10 +163,15 @@ class AuthController extends Controller {
     /**
      * Send an activation email to a given user.
      *
-     * @param $user_arr
+     * @param $user
      */
-    protected function sendActivationEmail($user_arr)
+    protected function sendActivationEmail($user)
     {
+        // send an email to the user with welcome message
+        $user_arr               = $user->toArray();
+        $user_arr['university'] = $user->university->toArray();
+        $user_arr['return_to']  = urlencode(Session::get('url.intended', '/home'));    // return_to attribute.
+
         Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($user_arr)
         {
             $message->to($user_arr['email'])->subject('Welcome to Stuvi!');

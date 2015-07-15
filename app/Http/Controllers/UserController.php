@@ -1,8 +1,10 @@
 <?php namespace App\Http\Controllers;
 
 
-use Auth, Input;
-use Illuminate\Support\Facades\Config;
+use Auth;
+use Input;
+use Session;
+use Mail;
 
 class UserController extends Controller
 {
@@ -73,8 +75,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
-    public
-    function waitForActivation()
+    public function waitForActivation()
     {
         if (Auth::user()->isActivated())
         {
@@ -83,6 +84,31 @@ class UserController extends Controller
 
         return view('user.waitForActivation')
             ->with('user', Auth::user());
+    }
+
+    public function resendActivationEmail()
+    {
+        $user = Auth::user();
+
+        // check if this user has been activated.
+        if ($user->isActivated())
+        {
+            return redirect('/home')
+                ->with('Your account has already been activated.');
+        }
+
+        // send an email to the user with welcome message
+        $user_arr               = $user->toArray();
+        $user_arr['university'] = $user->university->toArray();
+        $user_arr['return_to']  = urlencode(Session::get('url.intended', '/home'));    // return_to attribute.
+
+        Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($user_arr)
+        {
+            $message->to($user_arr['email'])->subject('Welcome to Stuvi!');
+        });
+
+        return redirect('user/activate')
+            ->with('message', 'Activation email is sent. Please check your email.');
     }
 
 }
