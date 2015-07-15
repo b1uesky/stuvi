@@ -1,0 +1,122 @@
+/******* TEXTBOOK SEARCH LIST PAGE *******/
+/* Used for list.blade.php*/
+@import "modules/colors";
+
+/** ERROR MESSAGE **/
+
+#message {
+  font-style: italic;
+}
+
+#message-cont {
+  padding: 1%;
+}
+
+/** TEXTBOOK SEARCH LIST **/
+
+.textbook-list-container {
+  background-color: $background-color;
+  h1 {
+    margin-left: 30px;
+  }
+}
+
+/* SORT SECTION */
+
+#nav-sort {
+  li {
+    a {
+      color: $secondary-color;
+      &:hover {
+        background-color: #DDDDDD;
+      }
+    }
+  }
+  li.active {
+    a {
+      background-color: #7AB4DE;
+      color: #FFFFFF;
+    }
+  }
+}
+
+#autocompleteBuy {
+  border-radius: 4px 0 0 4px;
+  border-right: none;
+  &:focus {
+    border: 1px solid $primary-color;
+    border-right: none;
+    box-shadow: none;
+  }
+}
+
+.search-btn {
+  background: $primary-color;
+  border: none;
+  height: 34px;
+  width: 38px;
+  margin-left: 0 !important;
+  &:hover, &:focus {
+    outline: 0 !important;
+    background: $primary-color;
+  }
+}
+
+.search-icon {
+  color: #FFFFFF;
+}
+
+/* TEXTBOOK LIST */
+.textbook-img-container {
+  width: 100px;
+}
+
+.textbook-img {
+  width: 100px;
+  height: 135px;
+}
+
+.textbook-list {
+  max-width: 800px;
+}
+
+.textbook-table {
+  width: 100%;
+  /* white space bottom fix */
+  height: 70vh;
+}
+
+.textbook-item {
+  font-size: small
+}
+
+.textbook-info-1 {
+  width: 350px;
+}
+
+.table-offset {
+  width: 200px;
+}
+
+.textbook-title {
+  font-size: medium;
+  font-weight: bold;
+}
+
+.textbook-pub-date {
+  font-size: medium;
+}
+
+@media (max-width: 970px) {
+  .home {
+    max-width: 500px;
+  }
+
+  .textbook-list {
+    max-width: 650px;
+  }
+
+  #details, #textbook {
+    text-align: center;
+  }
+}

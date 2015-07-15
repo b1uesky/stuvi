@@ -3,7 +3,7 @@
 @section('title',$book->title)
 
 @section('css')
-    <link href="{{ asset('/css/textbook/textbook-show.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css_new/textbook_show.css') }}" rel="stylesheet">
 @endsection
 
 
