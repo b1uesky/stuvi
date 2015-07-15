@@ -3,7 +3,7 @@
 @section('title', 'Login & Register')
 
 @section('css')
-    <link href="{{ asset('/css/auth/login.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css_new/auth_login.css') }}" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/css/bootstrap-select.min.css" rel="stylesheet">
 @endsection
 
