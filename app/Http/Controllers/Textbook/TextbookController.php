@@ -10,6 +10,7 @@ use App\Http\Requests;
 use Auth;
 use Config;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use Input;
 use Isbn\Isbn;
 use Validator;
@@ -271,8 +272,31 @@ class TextbookController extends Controller
         else
         {
             // search by title
-            $books = Book::where('title', 'LIKE', "%$query%")
-                ->paginate(Config::get('pagination.limit.textbook'));
+//            $books = Book::where('title', 'LIKE', "%$query%")
+//                ->paginate(Config::get('pagination.limit.textbook'));
+
+            // TODO: pagination
+            // select all books that can be delivered to buyer's university
+            $results = DB::select('
+                SELECT DISTINCT(books.id)
+                FROM books, products, users as seller
+                WHERE books.id = products.book_id
+                AND products.seller_id = seller.id
+                AND seller.university_id IN (
+                    SELECT uu.from_uid
+                    FROM users as buyer, university_university as uu
+                    WHERE buyer.id = ?
+                    AND buyer.university_id = uu.to_uid
+                )
+                AND books.title LIKE ?
+            ', [Auth::user()->id, '%'.$query.'%']);
+
+            $books = array();
+
+            foreach ($results as $result)
+            {
+                array_push($books, Book::find($result->id));
+            }
 
             return view('textbook.list')
                 ->with('books', $books)

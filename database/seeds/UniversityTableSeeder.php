@@ -46,10 +46,17 @@ class UniversityTableSeeder extends Seeder
             'is_public'     => false,
         ]);
 
+        $bu->addDeliverToUniversity($bu->id);
         $bu->addDeliverToUniversity($mit->id);
         $bu->addDeliverToUniversity($neu->id);
         $bu->addDeliverToUniversity($harvard->id);
         $bu->addDeliverToUniversity($bc->id);
+
+        $bu->addDeliverFromUniversity($bu->id);
+        $bu->addDeliverFromUniversity($mit->id);
+        $bu->addDeliverFromUniversity($neu->id);
+        $bu->addDeliverFromUniversity($harvard->id);
+        $bu->addDeliverFromUniversity($bc->id);
     }
 
 }
