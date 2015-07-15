@@ -288,6 +288,11 @@ class TextbookController extends Controller
                     WHERE buyer.id = ?
                     AND buyer.university_id = uu.to_uid
                 )
+                AND seller.university_id IN (
+                    SELECT id
+                    FROM universities
+                    WHERE is_public = TRUE
+                )
                 AND books.title LIKE ?
             ', [Auth::user()->id, '%'.$query.'%']);
 
