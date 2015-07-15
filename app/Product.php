@@ -5,7 +5,7 @@ use Config;
 
 class Product extends Model
 {
-    protected $fillable = ['price', 'book_id', 'seller_id', 'sold', 'verified'];
+    protected $fillable = ['book_id', 'price', 'book_id', 'seller_id', 'sold', 'verified'];
 
     /**
      * Get the book this product belongs to.

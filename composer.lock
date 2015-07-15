@@ -61,16 +61,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.1.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "d553ae486c018216631c8e0bbf7a3d19e24870ca"
+                "reference": "07bcef20cd97a5aea92ac565d76b49964be7abe9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d553ae486c018216631c8e0bbf7a3d19e24870ca",
-                "reference": "d553ae486c018216631c8e0bbf7a3d19e24870ca",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/07bcef20cd97a5aea92ac565d76b49964be7abe9",
+                "reference": "07bcef20cd97a5aea92ac565d76b49964be7abe9",
                 "shasum": ""
             },
             "require": {
@@ -130,7 +130,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-07-09 15:49:06"
+            "time": "2015-07-14 20:49:33"
         },
         {
             "name": "aws/aws-sdk-php-laravel",
@@ -907,16 +907,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "7.0.7",
+            "version": "7.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "c1c2ab9144479c4a67286d8f150d82770aca9400"
+                "reference": "8e44ae10c50f5afb6612a3390a9ddc0b35ba2f12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/c1c2ab9144479c4a67286d8f150d82770aca9400",
-                "reference": "c1c2ab9144479c4a67286d8f150d82770aca9400",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/8e44ae10c50f5afb6612a3390a9ddc0b35ba2f12",
+                "reference": "8e44ae10c50f5afb6612a3390a9ddc0b35ba2f12",
                 "shasum": ""
             },
             "require": {
@@ -963,7 +963,7 @@
                 "phonenumber",
                 "validation"
             ],
-            "time": "2015-06-26 07:56:20"
+            "time": "2015-07-14 21:36:08"
         },
         {
             "name": "guzzlehttp/guzzle",
