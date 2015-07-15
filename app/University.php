@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class University extends Model
 {
@@ -53,6 +54,54 @@ class University extends Model
     public function professors()
     {
         return $this->belongsToMany('App\Professor');
+    }
+
+    /**
+     * A textbook can be delivered from `other universities` to this university.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function fromUniversities()
+    {
+        return $this->belongsToMany('App\University', 'university_university', 'from_uid', 'id');
+    }
+
+    /**
+     * A textbook can be delivered from this university to `other universities`.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function toUniversities()
+    {
+        return $this->hasMany('App\University', 'university_university', 'to_uid', 'id');
+    }
+
+    /**
+     * Add an university so that a textbook can be delivered from this university to that university.
+     *
+     * @param $to_uid
+     */
+    public function addDeliverToUniversity($to_uid)
+    {
+        DB::insert('
+            INSERT INTO university_university (from_uid, to_uid)
+            VALUES (?, ?)',
+            [$this->id, $to_uid]
+        );
+    }
+
+    /**
+     * Add an university so that a textbook can be delivered from that university to this university.
+     *
+     * @param $from_uid
+     */
+    public function addDeliverFromUniversity($from_uid)
+    {
+        DB::insert('
+            INSERT INTO university_university (from_uid, to_uid)
+            VALUES (?, ?)',
+            [$from_uid, $this->id]
+        );
     }
 
     /**

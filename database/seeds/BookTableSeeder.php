@@ -57,6 +57,8 @@ public function run()
             $book->lowest_used_price    = $amazon->getLowestUsedriceDecimalPrice();
             $book->save();
 
+            echo 'Added: ' . $book->title;
+
             // save book image set
             $book_image_set                 = new BookImageSet();
             $book_image_set->book_id        = $book->id;
