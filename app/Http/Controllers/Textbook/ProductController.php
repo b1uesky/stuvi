@@ -4,6 +4,7 @@ use App\Helpers\FileUploader;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Product;
+use App\ProductImage;
 use App\ProductCondition;
 use App\Helpers\AmazonLookUp;
 
@@ -35,9 +36,9 @@ class ProductController extends Controller {
 	 */
 	public function store()
 	{
+        dd(Input::file('extra-images'));
         // validation
         $v = Validator::make(Input::all(), Product::rules(Input::file('extra-images')));
-
 
         if ($v->fails())
         {
@@ -81,13 +82,20 @@ class ProductController extends Controller {
             $filename = $product->generateFilename($image);
             Storage::disk('local')->put($filename, $image);
 
+            // save as product image
+            $product_image = new ProductImage();
+            $product_image->product_id = $product->id;
+            $product_image->path = $filename;
+            $product_image->save();
+
             // upload file to amazon s3
             $s3 = AwsFacade::createClient('s3');
 
             $s3->putObject(array(
                 'Bucket'        => Config::get('aws.buckets.image'),
                 'Key'           => $filename,
-                'SourceFile'    => Storage::get($filename)
+                'SourceFile'    => Storage::get($filename),
+                'ACL'           => 'public-read'
             ));
 		}
 
@@ -102,7 +110,6 @@ class ProductController extends Controller {
 	 */
 	public function show($product)
 	{
-
         $book = $product->book;
         $amazon = new AmazonLookUp($book->isbn10, 'ISBN');
 

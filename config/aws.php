@@ -20,6 +20,10 @@ return [
     ],
     'region' => env('AWS_REGION', 'us-east-1'),
     'version' => 'latest',
+    'url' => [
+        'domain' => 'https://s3.amazonaws.com/',
+        'image' => 'https://s3.amazonaws.com/stuvi-images/'
+    ],
 
     /*
     |--------------------------------------------------------------------------
