@@ -1,0 +1,17 @@
+/******* BUYER ORDER CONFIRMATION PAGE *******/
+@import 'modules/colors';
+
+body {
+  background-color: $background-color;
+}
+
+.cart-line {
+  max-width: 50%;
+  @media(max-width: 767px) {
+    max-width: 70%;
+  }
+}
+
+.confirmation-container {
+  margin-bottom: 200px;
+}
