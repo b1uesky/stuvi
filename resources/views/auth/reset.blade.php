@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="{{asset('/css_new/auth_reset.css')}}" type="text/css">
 </head>
 
-
 <div class="container-fluid container-main">
 	<div class="row row-main">
 		<div class="col-md-8 col-md-offset-2">

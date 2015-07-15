@@ -4,7 +4,7 @@
 @section('title','Activation Required')
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/css/user/waitForActivation.css')}}">
+    <link rel="stylesheet" href="{{asset('/css_new/user_waitForActivation.css')}}">
 @endsection
 
 @section('content')

@@ -1,0 +1,84 @@
+/*  CSS FOR profile.blade.php */
+
+
+/* User side bar */
+
+.edit{
+  text-align: center;
+  margin: 2%;
+
+}
+
+.hr{
+  margin: 1% 1% 1% 0;
+  border-color: rgba(0, 0, 0, 0.64);
+  border-width: 1px 0 0;
+  max-width: 770px;
+}
+
+h5{
+  margin:0 0 3px 0;
+}
+
+
+/* BOOKS FOR SALE */
+.for-sale-img{
+  width: 100px;
+}
+
+.books{
+  max-width: 750px;
+  max-height: 200px;
+  @media (max-width: 970px){
+    max-width: 650px;
+  }
+}
+
+.for-sale-table{
+  width: 100%;
+}
+
+.for-sale-item{
+  font-size: small
+}
+
+.for-sale-info-1{
+  width: 150px;
+}
+
+.for-sale-info-2{
+
+}
+
+.for-sale-title{
+  font-size: medium;
+  font-weight: bold;
+}
+
+.for-sale-author {}
+.for-sale-binding{}
+.for-sale-isbn {}
+.for-sale-class {}
+
+.for-sale-price{
+  color: $price-color;
+  font-weight: bold;
+}
+
+.for-sale-pub-date{
+  font-size: medium;
+}
+
+.for-sale-btn-add-cart{
+  padding: 0;
+}
+
+@media (max-width: 970px) {
+  .home {
+    max-width: 500px;
+  }
+  #details,#for-sale {
+    text-align: center;
+  }
+}
+
