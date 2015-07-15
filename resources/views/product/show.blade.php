@@ -23,15 +23,15 @@
                 @if($product->images)
                     @foreach($product->images as $index => $image)
                         @if($index == 0)
-                            <a class="lightbox-product-link" href="{{ $image->path }}"
+                            <a class="lightbox-product-link" href="{{ Config::get('aws.url.image') . $image->path }}"
                                data-lightbox="pro-img" data-title="Image {{$image->id}}">
-                                <img class="pro-img" src="{{ $image->path }}" alt="Book Image" />
+                                <img class="pro-img" src="{{ Config::get('aws.url.image') . $image->path }}" alt="Book Image" />
                             </a>
                             <br>
                         @else
-                            <a class="lightbox-product-link" href="{{ $image->path }}"
+                            <a class="lightbox-product-link" href="{{ Config::get('aws.url.image') . $image->path }}"
                                data-lightbox="pro-img" data-title="Image {{$image->id}}">
-                                <img class="pro-img-small" src="{{ $image->path }}" alt="Book Image" />
+                                <img class="pro-img-small" src="{{ Config::get('aws.url.image') . $image->path }}" alt="Book Image" />
                             </a>
                         @endif
                     @endforeach

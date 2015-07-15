@@ -78,9 +78,11 @@ class Product extends Model
         return 'No';
     }
 
+
     /**
-     * Validation rules
+     * Validation rules.
      *
+     * @param $extra_images
      * @return array
      */
     public static function rules($extra_images)
@@ -91,15 +93,22 @@ class Product extends Model
             'damaged_pages'         =>  'required|integer',
             'broken_binding'        =>  'required|boolean',
             'price'                 =>  'required|numeric',
-            'front-cover-image'     =>  'required|mimes:jpeg,png|max:3072',  // maximum 3MB
-            'extra-images'          =>  'mimes:jpeg,png|max:3072'
+            'front-cover-image'     =>  'required|mimes:jpeg,png|max:3072'  // maximum 3MB
         );
 
-//        foreach ($extra_images as $key => $val)
-//        {
-//            $rules['extra-images'.$key] = 'mimes:jpeg,png|max:3072';
-//        }
+        // validate each image in the input array 'extra-images'
+        foreach(range(0, count($extra_images) - 1) as $index) {
+            $rules['extra-images.' . $index] = 'mimes:jpeg,png|max:3072';
+        }
 
         return $rules;
+    }
+
+    public function generateFilename($file)
+    {
+        $title = implode('-', explode(' ', $this->book->title));
+        $key = Config::get('aws.path.textbook.product') . $title . '-' . $this->id . '.' . $file->getClientOriginalExtension();
+
+        return $key;
     }
 }

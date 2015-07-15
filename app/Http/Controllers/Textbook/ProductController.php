@@ -4,15 +4,18 @@ use App\Helpers\FileUploader;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Product;
+use App\ProductImage;
 use App\ProductCondition;
 use App\Helpers\AmazonLookUp;
 
 use Auth;
+use Aws\Laravel\AwsFacade;
 use Config;
 use Input;
 use Validator;
 use Session;
 use URL;
+use Storage;
 
 class ProductController extends Controller {
 
@@ -35,14 +38,6 @@ class ProductController extends Controller {
 	{
         // validation
         $v = Validator::make(Input::all(), Product::rules(Input::file('extra-images')));
-
-//        $v->after(function($v)
-//        {
-//            if (!Input::file('front-cover-image'))
-//            {
-//                $v->errors()->add('front-cover-image', 'Please upload a front cover image.');
-//            }
-//        });
 
         if ($v->fails())
         {
@@ -81,12 +76,26 @@ class ProductController extends Controller {
             }
         }
 
-        $title = Input::get('book_title');
-        $folder = Config::get('upload.image.product');
-
 		foreach ($images as $image) {
-			$file_uploader = new FileUploader($image, $title, $folder, $product->id);
-            $file_uploader->saveProductImage();
+            // save file to local disk
+            $filename = $product->generateFilename($image);
+            Storage::disk('local')->put($filename, $image);
+
+            // save as product image
+            $product_image = new ProductImage();
+            $product_image->product_id = $product->id;
+            $product_image->path = $filename;
+            $product_image->save();
+
+            // upload file to amazon s3
+            $s3 = AwsFacade::createClient('s3');
+
+            $s3->putObject(array(
+                'Bucket'        => Config::get('aws.buckets.image'),
+                'Key'           => $filename,
+                'SourceFile'    => Storage::get($filename),
+                'ACL'           => 'public-read'
+            ));
 		}
 
         return redirect('textbook/buy/product/' . $product->id);
@@ -100,7 +109,6 @@ class ProductController extends Controller {
 	 */
 	public function show($product)
 	{
-
         $book = $product->book;
         $amazon = new AmazonLookUp($book->isbn10, 'ISBN');
 
