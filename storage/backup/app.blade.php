@@ -14,9 +14,6 @@
 	{{--<title>Laravel</title>--}}
 
 	<link href="{{ asset('/css/app.css') }}"                rel="stylesheet">
-    <link href="{{ asset('/css/navigation.css') }}"         rel="stylesheet">
-    {{--<link href="{{ asset('/css/footer.css') }}"         rel="stylesheet">--}}
-    <link href="{{ asset('css/footer-distributed.css') }}"  rel="stylesheet">   <!-- Footer required -->
     <link href="{{ asset('css/font-awesome.min.css') }}"    rel="stylesheet">   <!-- Footer & Nav required -->
     <link href="{{ asset('css/font-awesome.css') }}"        rel="stylesheet">   <!-- Footer & Nav required -->
 

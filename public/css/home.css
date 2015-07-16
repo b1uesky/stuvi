@@ -1,181 +1,129 @@
 @charset "utf-8";
-/* CSS Document */
-/* (c) Stuvi LLC 2015
-* Used for the home page styling.*/
-
-/* All screen styling */
-
-body {  background: #241729 !important;  }
-
-/*********  Classes  ************/
-
-
-/*Top background*/
-.backgnd {
-
-    /*****************
-    * Temp cover image...(c)Nicholas Louie All Rights Reserved. I Nicholas Louie, hereby allow a limited license
-    * to display this image on Stuvi's website with proper name and link credit. This photo may not be distributed, used
-    * or altered (except sizing/cropping) in any other way other than on the homepage
-    * Photo by Nick Louie. Link: https://flic.kr/p/kSKWtK
-    ******************/
-
-    background-image: url("../img/scaled/cover-2-1.jpeg") ;
-    background-size: cover;                         /* Fill entire container */
-    background-repeat: no-repeat;
-    background-position: center;
-    /*padding-bottom: 27%;*/
-    height: 80vh;     /* Height is equal to 80% of the viewport height */
+/* CSS Document *//* (c) Stuvi LLC 2015
+ * Used for the home page styling.*//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */body {
+  backgroud-color: #f2f2f2;
 }
-
-#head1-temp{
-    color: whitesmoke;
-    text-align: center;
-    font-size: 5em;
-    font-weight: bold;
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
-    padding-top: 6%;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+/* Navigation */.nav-dropdown {
+  height: 50px;
 }
-
-.tagline{
-    color: whitesmoke;
-    text-align: center;
-    padding-bottom: 5%;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
-    font-weight: 400;
+/* TOP HALF IMAGE *//*Top background*/.backgnd {
+  /*****************
+ * Temp cover image...(c)Nicholas Louie All Rights Reserved. I Nicholas Louie, hereby allow a limited license
+ * to display this image on Stuvi's website with proper name and link credit. This photo may not be distributed, used
+ * or altered (except sizing/cropping) in any other way other than on the homepage
+ * Photo by Nick Louie. Link: https://flic.kr/p/kSKWtK
+ ******************/
+  background: #f2f2f2 url("../img/scaled/cover-2-1.jpeg") no-repeat center;
+  background-size: cover;
+  /* Fill entire container */
+  height: 80vh;
+  /* Height is equal to 80% of the viewport height */
 }
-
-.top-content{
-    padding-top: 5%;
+@media (max-width: 767px) {
+  .backgnd {
+    padding-bottom: 0%;
+  }
 }
-
+#head1 {
+  color: whitesmoke;
+  text-align: center;
+  font-size: 5em;
+  font-weight: bold;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  padding-top: 6%;
+  text-shadow: 2px 2px 4px #000;
+}
+@media (max-width: 767px) {
+  #head1 {
+    font-size: medium;
+  }
+}
+.tagline {
+  color: whitesmoke;
+  text-align: center;
+  padding-bottom: 5%;
+  text-shadow: 2px 2px 4px #000;
+  font-weight: 400;
+}
+.top-content {
+  padding-top: 5%;
+}
 /***** GHOST BUTTONS
-*      Login, sign in
-*
- *****/
-
-.ghost-btn-container {
-    text-align: center;
-    padding-top: 3%;
+ *      Login, sign in
+ *
+ *****/.ghost-btn-container {
+  text-align: center;
+  padding-top: 3%;
 }
-
+@media (max-width: 767px) {
+  .ghost-btn-container {
+    margin-bottom: 35px;
+  }
+}
 .ghost-btn {
-    width: 150px;
-    height: 50px;
-    border-radius: 0;
-    font-weight: bold;
-    font-size: 1.3em;
-    color: #FFFFFF;
-    border: 3px solid #FFFFFF;
-    background: none;
-    margin: 0 20px 0;
-    padding-top: 9px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  width: 150px;
+  height: 50px;
+  border-radius: 0;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #fff;
+  border: 3px solid #fff;
+  background: none;
+  margin: 0 20px 0;
+  padding-top: 9px;
+  text-shadow: 2px 2px 4px #000;
 }
-
 .ghost-btn:hover {
-    background: #F16521;
-    color: #FFFFFF;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
+  background: #f16521;
+  color: #fff;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
 }
-
 .ghost-btn:focus {
-    outline: 0;
-    color: #FFFFFF;
+  outline: 0;
+  color: #fff;
 }
-
 @media (max-width: 767px) {
-    .ghost-btn-container {  margin-bottom: 35px;  }
-
-    .ghost-btn {  margin: 0 8px 0;  }
+  .ghost-btn {
+    margin: 0 8px 0;
+  }
 }
-
 @media (max-width: 399px) {
-    .ghost-btn {  margin-bottom: 20px;  }
+  .ghost-btn {
+    margin-bottom: 20px;
+  }
 }
-
-/************** IDs   *************/
-
-#head1       {font-size: xx-large;}   /* Welcome */
-
-#p1          {font-size: medium;}     /* Jumbotron text */
-
-/* Liftoff on: */
-#liftoff {
-             text-align: right;
-             font-size: small;
-             font-family: Consolas, monospace;
+/******** BOTTOM HALF ********/#bottom-half {
+  padding: 0;
 }
-
-#head2       {color: black;}          /* Our services */
-
-#bottom-half {background-color: #e7e6e6;}
-
-#services    {text-align: center;}
-
-/* Gradient color1 - color2 - color1
- * https://css-tricks.com/examples/hrs/
- * Used for divider line under Our Services
- */
-#hr-style-one {
-    border: 0;
-    /*height: 3px;*/
-    background: #333;
-    background-image: linear-gradient(to right, #ccc, #f16521, #ccc);
-}
-
-/* Jumbotron styling for main text. Last argument of rgba() represent opacity
- * Note that rbga does not work in ie8 and lower*/
-#jumbotron1 {
-    background: rgb(242, 248, 255);             /* This is for ie8 and below */
-    background: rgba(242, 248, 255, 0.80);
-    margin-top: 5%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-}
-
-#img-info-1{  padding: 30px;  }
-
-/**************  NAV DROPDOWN FIX  *************/
-
-.nav-dropdown {  height: 50px;  }
-
-/************* @media SMALL SCREENS ********/
-
-/* Shrink stuff for small screens */
-@media (max-width: 767px) {
-
-    /****** CLASSES *****/
-
-    .backgnd        {padding-bottom: 0%;}
-    .center         {text-align: center;}
-    /******* IDS *******/
-
-    #head1          {font-size: medium;}
-    #head2          {font-size: large;}
-    #p1             {font-size: small;}
-    #jumbotron1     {margin-top: 2%;}
-    #liftoff        {font-size: x-small}
-}
-
-/******** BOTTOM HALF ********/
-
-#bottom-half { padding: 0; }
-
 .services {
-    background-color: #F16521;
-    text-align: center;
-    color: #FFFFFF;
+  background-color: #f16521;
+  text-align: center;
+  color: #fff;
 }
-
-.services h4 {  font-weight: 900;  }
-
+.services h4 {
+  font-weight: 900;
+}
 .service-row {
-    margin-top: 40px;
-    margin-bottom: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
-
-.service {  margin-bottom: 30px;  }
-
-.service a {  color: #FFFFFF;  }
+#bottom-half {
+  background-color: #f2f2f2;
+}
+#img-info-1 {
+  padding: 30px;
+}
+.service {
+  margin-bottom: 30px;
+}
+.service a {
+  color: white;
+}

@@ -3,7 +3,7 @@
 @section('title', 'Search results for '.$query)
 
 @section('css')
-    <link href="{{ asset('/css_new/textbook_list.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/textbook_list.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 @endsection
 

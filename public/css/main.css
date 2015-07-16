@@ -11,50 +11,30 @@
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
  *
- *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* PARTIALS *//*** BUTTON STYLES ***//* Import of all modules *//*
- * Stuvi color palette
- * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
- * FOR GENERAL TEXT STYLING
- * Fonts, font sizes, etc.
- * Avoid using colors here. See _colors.scss.
- *
- *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */
-.primary-btn {
-  background: #00a496;
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* PARTIALS */.primary-btn {
+  background: #f16521;
   color: white;
   border: none;
 }
-
 .primary-btn:hover, .primary-btn:focus {
-  background: #00b2a4;
+  background: #f16521;
   outline: 0;
   color: white;
 }
-
 .secondary-btn {
-  background: #f16521;
+  background: #7ab4de;
   color: white;
   border: none;
+  box-shadow: 0 5px #5b86aa;
 }
-
 .secondary-btn:hover, .secondary-btn:focus {
-  background: #ff6720;
+  background: #7ab4de;
   outline: 0;
   color: white;
 }
-
-.list-search-btn {
-  background: #f16521;
-  border: none;
-  height: 34px;
-  width: 38px;
-  margin-left: 0 !important;
-}
-
-.list-search-btn:hover, .list-search-btn:focus {
-  outline: 0 !important;
-  background: #f16521;
+.secondary-btn:active {
+  box-shadow: 0 2px #5b86aa;
+  transform: translateY(5px);
 }
 /*
  * FOR GENERAL TEXT STYLING
@@ -78,7 +58,7 @@
   height: auto;
 }
 .active-nav {
-  background-color: #69c8c8;
+  background-color: #435c7f;
   border-bottom: 5px solid #90b4df;
 }
 .nav-login {
@@ -88,23 +68,23 @@
   color: #fff;
 }
 #nav-toggle-collapse:hover, #nav-toggle-collapse:focus {
-  background: #f16521;
+  background: #7ab4de;
 }
 /******* NAVIGATION DROPDOWN *******/#navi-drop {
   padding-bottom: 10px;
 }
 #navi-drop:focus {
-  background-color: #69c8c8;
+  background-color: #435c7f;
 }
 #nav-right > .open > a {
-  background-color: #69c8c8;
+  background-color: #435c7f;
 }
 .nav-caret {
   color: #fff;
   margin-top: 0px;
 }
 .dropdown-menu li a:hover {
-  background-color: #00a496;
+  background-color: #7ab4de;
   color: white;
 }
 /* Fix for when dropdown is open, the text was getting changed to dark*/#account-name {
@@ -115,16 +95,7 @@
 }
 /* Footer CSS Template
  http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/
- *//* Import of all modules *//*
- * Stuvi color palette
- * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
- * FOR GENERAL TEXT STYLING
- * Fonts, font sizes, etc.
- * Avoid using colors here. See _colors.scss.
- *
- *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* VARIABLES */
-.footer-distributed {
+ *//* VARIABLES */.footer-distributed {
   background-color: #292c2f;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
@@ -169,10 +140,10 @@
   margin-left: 3px;
 }
 /* Additional styling */.social:hover {
-                          background-color: #00a496 !important;
+  background-color: #f16521 !important;
 }
 .footer-link:hover {
-  color: #69c8c8 !important;
+  color: #f16521 !important;
 }
 .divider {
   color: #fff;
@@ -193,5 +164,4 @@ hr {
     margin: 0 auto 20px;
   }
 }
-
 /* VENDOR ( THIRD PARTY ) */

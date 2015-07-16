@@ -1,0 +1,152 @@
+/* STYLING FOR TEXTBOOK PAGE ***//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//******* TEXTBOOK NAVIGATION BAR ******/.tab-filter-container {
+  width: 100%;
+  background: #f9aa62;
+  height: 40px;
+}
+.tab-filters {
+  list-style-type: none;
+  text-align: center;
+  padding-right: 40px;
+}
+.filter {
+  display: inline-block;
+  height: 40px;
+  padding-top: 5px;
+}
+.filter.active {
+  border-bottom: 5px solid #241729;
+}
+.filter-link {
+  font-size: 20px;
+  color: #fff;
+  margin: 0 40px;
+}
+.filter-link:hover, .filter-link:focus, .filter-link.active {
+  text-decoration: none;
+  color: #241729;
+}
+/******* ERROR MESSAGE ******/#message {
+  font-style: italic;
+}
+#message-cont {
+  padding: 1%;
+}
+/******* TEXTBOOK SEARCH AREA ******/.search {
+  /* Photo by Brittany Stevens https://flic.kr/p/nfwhCe */
+  /* Licensed under creative commons BY 2.0*/
+  /* https://creativecommons.org/licenses/by/2.0/ */
+  background-image: url('../img/books.jpg');
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 60px;
+}
+#title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 4px #000;
+}
+.form-control {
+  height: 3em;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+}
+.form-control:focus {
+  border: 2px solid #f16521;
+  border-right: none;
+  box-shadow: none;
+}
+.search-row {
+  padding: 0;
+  margin-left: 15%;
+}
+@media (max-width: 535px) {
+  .search-row {
+    margin-left: 11%;
+  }
+}
+.search-btn {
+  height: 3em;
+  margin-right: 30px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background: #f16521;
+  border: none;
+}
+.search-btn:hover {
+  background: #f16521;
+}
+.search-btn:focus {
+  outline: 0 !important;
+  background: #f16521;
+}
+@media (max-width: 535px) {
+  .search-btn {
+    margin: 0;
+  }
+}
+.search-icon {
+  font-size: 1.2em;
+  color: white;
+}
+/* Search AutoComplete Suggestions */.autocomplete-thumbnail {
+  display: inline-block;
+  width: 80px;
+  margin: 5px;
+  vertical-align: middle;
+  overflow: hidden;
+}
+.autocomplete-thumbnail img {
+  min-width: 100%;
+}
+.autocomplete-data {
+  display: inline-block;
+  vertical-align: middle;
+}
+.ui-helper-hidden-accessible {
+  display: none;
+}
+/******  TEXTBOOK BOTTOM HALF ****/#textbook-bottom {
+  background-color: #f2f2f2;
+}
+#hr1 {
+  border-color: rgba(0, 0, 0, .64);
+}
+.row {
+  padding: 3%;
+}
+.row-b {
+  padding-top: 1%;
+  padding-bottom: 2%;
+  padding-left: 0%;
+  padding-right: 0%;
+}
+@media (max-width: 767px) {
+  #shrink-xs {
+    text-align: center;
+    margin-top: 0%;
+    padding-bottom: 0%;
+    margin: 0%;
+  }
+}
+.textbook-bottom-img {
+  width: 250px;
+  height: 250px;
+}
+#truck-img {
+  width: 300px;
+  height: 168px;
+}
+.google-img {
+  font-size: 17em;
+  color: #7ab4de;
+}

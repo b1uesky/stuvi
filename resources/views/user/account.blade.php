@@ -5,7 +5,7 @@
 @section('title','Account Settings - '.Auth::user()->first_name.' '.Auth::user()->last_name)
 
 @section('css')
-    <link href="{{ asset('/css_new/user_account.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/user_account.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
