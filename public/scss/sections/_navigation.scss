@@ -67,7 +67,7 @@ a:focus {
   li{
     a{
       &:hover{
-        background-color: $secondary-color;
+        background-color: $primary-color;
         color: $nav-text-color;
       }
     }

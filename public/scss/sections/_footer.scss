@@ -2,7 +2,7 @@
    http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/
 
 */
-
+@import "../modules/all";
 
 /* VARIABLES */
 $footer-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -72,7 +72,7 @@ $footer-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 
 .footer-link {
   &:hover {
-    color: $primary-color !important;
+    color: $accent-color !important;
   }
 }
 

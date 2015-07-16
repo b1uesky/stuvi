@@ -73,11 +73,11 @@
   margin-bottom: 0;
 }
 .fa-question-circle {
-  color: #7ab4de;
+  color: #f16521;
   cursor: pointer;
 }
 .close-modal-btn:hover, .close-modal-btn:focus {
   outline: 0;
-  color: #f16521;
+  color: #00a496;
   opacity: 1;
 }

@@ -103,7 +103,7 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" id="coupon" placeholder="">
                                 <label for="coupon">
-                                    <a class="btn btn-default primary-btn" href="#" role="button">Apply Coupon</a>
+                                    <a class="btn btn-default secondary-btn" href="#" role="button">Apply Coupon</a>
                                 </label>
                             </div>
                         </form>
@@ -113,7 +113,7 @@
                     <!-- buffer -->
                     <td></td>
                     <!-- update cart -->
-                    <td><a class="btn btn-default primary-btn" href="/cart/update" role="button">Update Cart</a></td>
+                    <td><a class="btn btn-default secondary-btn" href="/cart/update" role="button">Update Cart</a></td>
                 </tr>
             </tfoot>
             @endif
@@ -127,7 +127,7 @@
                     <td>${{ $total_price }}</td>
                 </tr>
             </table>
-            <a class="btn secondary-btn btn-checkout" href="{{ url('/order/create') }}" role="button">
+            <a class="btn primary-btn btn-checkout" href="{{ url('/order/create') }}" role="button">
                 Proceed to Checkout
             </a>
         </div>

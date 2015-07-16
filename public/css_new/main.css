@@ -2,36 +2,44 @@
  * This is the Stuvi default styling. It comes _AFTER_ Bootstrap's app.css
  * This file is compiled to main.css which is then linked in head.blade.php
  * Thus, every page will have this styling.
- *
- *//*
+ * http://thesassway.com/beginner/how-to-structure-a-sass-project
+ *//* MODULES AND VARIABLES *//* Import of all modules *//*
  * Stuvi color palette
  * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS */.btn-primary {
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//* PARTIALS *//*** BUTTON STYLES ***//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS */
+.primary-btn {
+  background: #00a496;
+  color: white;
+  border: none;
+}
+
+.primary-btn:hover, .primary-btn:focus {
+  background: #00b2a4;
+  outline: 0;
+  color: white;
+}
+
+.secondary-btn {
   background: #f16521;
   color: white;
   border: none;
-  padding: 7px 10px;
 }
-.btn-primary:hover, .btn-primary:focus {
+
+.secondary-btn:hover, .secondary-btn:focus {
+  background: #ff6720;
   outline: 0;
   color: white;
-}
-.btn-secondary {
-  background: #7ab4de;
-  color: white;
-  border: none;
-  box-shadow: 0 5px #5b86aa;
-}
-.btn-secondary:hover, .btn-secondary:focus {
-  outline: 0;
-  color: #fff;
 }
 /*
  * FOR GENERAL TEXT STYLING
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
  *
- *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* GENERAL CONTAINER *//* LAYERED CONTAINERS (like material design) *//* SCSS for navigation bar. See _colors.scss and _footer.scss *//* VARIABLES *//*  CSS FOR NAVIGATION BAR  */a:focus {
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* GENERAL CONTAINER *//* LAYERED CONTAINERS (like material design) *//* SECTIONS *//* SCSS for navigation bar. See _colors.scss and _footer.scss *//* VARIABLES *//*  CSS FOR NAVIGATION BAR  */
+a:focus {
   outline: 0;
 }
 /******* NAVIGATION BAR *******/#nav {
@@ -48,7 +56,7 @@
   height: auto;
 }
 .active-nav {
-  background-color: #435c7f;
+  background-color: #69c8c8;
   border-bottom: 5px solid #90b4df;
 }
 .nav-login {
@@ -58,23 +66,23 @@
   color: #fff;
 }
 #nav-toggle-collapse:hover, #nav-toggle-collapse:focus {
-  background: #7ab4de;
+  background: #f16521;
 }
 /******* NAVIGATION DROPDOWN *******/#navi-drop {
   padding-bottom: 10px;
 }
 #navi-drop:focus {
-  background-color: #435c7f;
+  background-color: #69c8c8;
 }
 #nav-right > .open > a {
-  background-color: #435c7f;
+  background-color: #69c8c8;
 }
 .nav-caret {
   color: #fff;
   margin-top: 0px;
 }
 .dropdown-menu li a:hover {
-  background-color: #7ab4de;
+  background-color: #00a496;
   color: white;
 }
 /* Fix for when dropdown is open, the text was getting changed to dark*/#account-name {
@@ -85,7 +93,11 @@
 }
 /* Footer CSS Template
  http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/
- *//* VARIABLES */.footer-distributed {
+ *//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//* VARIABLES */
+.footer-distributed {
   background-color: #292c2f;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
@@ -130,10 +142,10 @@
   margin-left: 3px;
 }
 /* Additional styling */.social:hover {
-  background-color: #f16521 !important;
+                          background-color: #00a496 !important;
 }
 .footer-link:hover {
-  color: #f16521 !important;
+  color: #69c8c8 !important;
 }
 .divider {
   color: #fff;
@@ -154,6 +166,5 @@ hr {
     margin: 0 auto 20px;
   }
 }
-body {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
-}
+
+/* VENDOR ( THIRD PARTY )*/

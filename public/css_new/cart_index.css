@@ -57,29 +57,7 @@ body {
 .coupon-form {
   margin-bottom: 0;
 }
-.cart-button {
-  background: #f16521;
-  color: #fff;
-  border: none;
-}
-.cart-button:hover, .cart-button:focus {
-  background: #f16521;
-  color: #fff;
-}
 .btn-checkout {
-  background: #7ab4de;
-  color: #fff;
-  border: none;
   width: 100%;
-  box-shadow: 0 5px #5b86aa;
-}
-.btn-checkout:hover, .btn-checkout:focus {
-  color: #fff;
-}
-.btn-checkout:active {
-  box-shadow: 0 2px #5b86aa;
-  transform: translateY(5px);
-}
-.btn-close > a:focus {
-  color: #04c;
+  padding: 12px;
 }
