@@ -13,7 +13,8 @@
         "stripe/stripe-php": "2.*",
 		"aloha/twilio": "2.0.0-RC2",
         "propaganistas/laravel-phone": "~2.0",
-        "aws/aws-sdk-php-laravel": "~3.0"
+        "aws/aws-sdk-php-laravel": "~3.0",
+		"intervention/image": "^2.3"
 	},
     "repositories": [
       {
