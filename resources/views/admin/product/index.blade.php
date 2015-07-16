@@ -42,8 +42,8 @@
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->seller->email }}</td>
                 <td>
-                    @foreach($product->images as $image)
-                        <a href="{{ $image->path }}" target="_blank"><img src="{{ $image->path }}"
+                    @foreach($product->images as $product_image)
+                        <a href="{{ $product_image->large_image }}" target="_blank"><img src="{{ $product_image->small_image }}"
                                                                           class="admin-img-preview" alt=""/></a>
                     @endforeach
                 </td>
