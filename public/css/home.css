@@ -11,10 +11,9 @@
  *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */body {
   backgroud-color: #f2f2f2;
 }
-/* Navigation */.nav-dropdown {
-  height: 50px;
-}
-/* TOP HALF IMAGE *//*Top background*/.backgnd {
+/* Navigation *//*.nav-dropdown {
+ height: 50px;
+ }*//* TOP HALF IMAGE *//*Top background*/.backgnd {
   /*****************
  * Temp cover image...(c)Nicholas Louie All Rights Reserved. I Nicholas Louie, hereby allow a limited license
  * to display this image on Stuvi's website with proper name and link credit. This photo may not be distributed, used

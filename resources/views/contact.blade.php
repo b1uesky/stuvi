@@ -43,7 +43,7 @@
                         <textarea class="form-control" rows="5" placeholder="Message"></textarea>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn contact-btn">Submit</button>
+                        <button type="submit" class="btn primary-btn" id="contact-btn">Submit</button>
                     </div>
                 </form>
             </div>

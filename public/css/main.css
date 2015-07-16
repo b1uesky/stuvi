@@ -144,7 +144,7 @@
   /*color: $primary-color !important;*/
 }
 .dropdown-menu li a:hover {
-  background-color: #ddd;
+  background-color: #00a496;
   color: white;
 }
 /* Fix for when dropdown is open, the text was getting changed to dark*/#account-name {

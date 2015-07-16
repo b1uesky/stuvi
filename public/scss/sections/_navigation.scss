@@ -109,7 +109,7 @@ a:focus {
   li{
     a{
       &:hover{
-        background-color: #DDD;
+        background-color: $primary-color;
         color: white;
       }
     }

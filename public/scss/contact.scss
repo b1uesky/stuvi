@@ -45,10 +45,6 @@ h3 {
 .form-control {
   background-color: rgba(0, 0, 0, 0.7);
   color: #FFFFFF;
-  &:focus {
-    border: 3px solid #FFFFFF;
-    box-shadow: none;
-  }
 }
 
 .form-control::-webkit-input-placeholder {
@@ -73,19 +69,7 @@ h3 {
   color: white;
 }
 
-.contact-btn {
-  background: #7AB4DE;
-  width: 20%;
-  color: white;
-  box-shadow: 0 5px #5B86AA;
-  &:hover, &:focus {
-    outline: 0 !important;
-    color: white;
-  }
-  &:active {
-    box-shadow: 0 2px #5B86AA;
-    transform: translateY(5px);
-  }
+#contact-btn {
 }
 
 /****  SOCIAL MEDIA LINKS  ****/
@@ -105,6 +89,11 @@ h3 {
   border: 1px solid #cccccc;
   border-radius: 4px;
   padding: 20px 0;
+  a{
+    &:hover{
+      color: $primary-color;
+    }
+  }
 }
 
 .contact-info {
