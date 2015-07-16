@@ -43,8 +43,15 @@
                 <td>{{ $product->seller->email }}</td>
                 <td>
                     @foreach($product->images as $product_image)
-                        <a href="{{ $product_image->large_image }}" target="_blank"><img src="{{ $product_image->small_image }}"
-                                                                          class="admin-img-preview" alt=""/></a>
+                        @if($product_image->isTestImage())
+                            <a href="{{ $product_image->large_image }}" target="_blank">
+                                <img src="{{ $product_image->small_image }}" class="admin-img-preview" alt=""/>
+                            </a>
+                        @else
+                            <a href="{{ Config::get('aws.url.stuvi-product-img') . $product_image->large_image }}" target="_blank">
+                                <img src="{{ Config::get('aws.url.stuvi-product-img') . $product_image->small_image }}" class="admin-img-preview" alt=""/>
+                            </a>
+                        @endif
                     @endforeach
                 </td>
                 <td>{{ $product->isSold2() }}</td>

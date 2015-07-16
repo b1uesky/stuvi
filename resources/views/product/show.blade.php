@@ -23,16 +23,32 @@
                 @if($product->images)
                     @foreach($product->images as $index => $image)
                         @if($index == 0)
-                            <a class="lightbox-product-link" href="{{ Config::get('aws.url.stuvi-product-img') . $image->large_image }}"
-                               data-lightbox="pro-img" data-title="Image {{$image->id}}">
-                                <img class="pro-img" src="{{ Config::get('aws.url.stuvi-product-img') . $image->medium_image }}" alt="Book Image" />
-                            </a>
+                            @if($image->isTestImage())
+                                {{-- show absolute urls of test images--}}
+                                <a class="lightbox-product-link" href="{{ $image->large_image }}"
+                                   data-lightbox="pro-img" data-title="Image {{$image->id}}">
+                                    <img class="pro-img" src="{{ $image->medium_image }}" alt="Book Image" />
+                                </a>
+                            @else
+                                {{-- show amazon urls --}}
+                                <a class="lightbox-product-link" href="{{ Config::get('aws.url.stuvi-product-img') . $image->large_image }}"
+                                   data-lightbox="pro-img" data-title="Image {{$image->id}}">
+                                    <img class="pro-img" src="{{ Config::get('aws.url.stuvi-product-img') . $image->medium_image }}" alt="Book Image" />
+                                </a>
+                            @endif
                             <br>
                         @else
-                            <a class="lightbox-product-link" href="{{ Config::get('aws.url.stuvi-product-img') . $image->large_image }}"
-                               data-lightbox="pro-img" data-title="Image {{$image->id}}">
-                                <img class="pro-img-small" src="{{ Config::get('aws.url.stuvi-product-img') . $image->small_image }}" alt="Book Image" />
-                            </a>
+                            @if($image->isTestImage())
+                                <a class="lightbox-product-link" href="{{ $image->large_image }}"
+                                   data-lightbox="pro-img" data-title="Image {{$image->id}}">
+                                    <img class="pro-img-small" src="{{ $image->small_image }}" alt="Book Image" />
+                                </a>
+                            @else
+                                <a class="lightbox-product-link" href="{{ Config::get('aws.url.stuvi-product-img') . $image->large_image }}"
+                                   data-lightbox="pro-img" data-title="Image {{$image->id}}">
+                                    <img class="pro-img-small" src="{{ Config::get('aws.url.stuvi-product-img') . $image->small_image }}" alt="Book Image" />
+                                </a>
+                            @endif
                         @endif
                     @endforeach
                 @endif

@@ -33,6 +33,8 @@ return array(
     /*
      * Temporary path to store images.
      */
-    'temp_path' => storage_path() . '/temp/'
+    'temp_path' => storage_path() . '/temp/',
+
+    'debug' => true
 
 );

@@ -19,6 +19,16 @@ class ProductImage extends Model {
 	}
 
     /**
+     * Check if it is a test image.
+     *
+     * @return bool
+     */
+    public function isTestImage()
+    {
+        return substr($this->small_image, 0, 4) == 'http';
+    }
+
+    /**
      * Generate a filename for a product image, add size if necessary
      *
      * @param null $size

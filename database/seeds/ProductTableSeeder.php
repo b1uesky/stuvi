@@ -7,6 +7,8 @@ use App\ProductImage;
 use App\Book;
 use App\User;
 
+use Faker\Factory;
+
 use Illuminate\Config\Repository;
 
 class ProductTableSeeder extends Seeder {
@@ -16,169 +18,45 @@ class ProductTableSeeder extends Seeder {
         DB::table('product_conditions')->delete();
         DB::table('products')->delete();
 
-        $book_algorithms = Book::where('title', 'LIKE', '%Algorithms%')->get()->first();
-        $book_mechanics = Book::where('title', 'LIKE', '%Principles of solid mechanics%')->get()->first();
-        $book_pp = Book::where('title', 'LIKE', '%Programming Problems: Advanced Algorithms (Volume 2)%')->get()->first();
-        $seller = User::where('email', '=', 'seller@stuvi.com')->get()->first();
+        $faker = Factory::create();
         $folder = Config::get('upload.image.product');
+        $num_users = User::count();
+        $books = Book::all();
 
-        // Algorithms
-        $p_alg0 = Product::create([
-            'price'             =>  49.99,
-            'book_id'           =>  $book_algorithms->id,
-            'seller_id'         =>  $seller->id
-        ]);
-
-        $p_alg1 = Product::create([
-            'price'             =>  39.99,
-            'book_id'           =>  $book_algorithms->id,
-            'seller_id'         =>  $seller->id
-        ]);
-
-        $p_alg2 = Product::create([
-            'price'             =>  29.99,
-            'book_id'           =>  $book_algorithms->id,
-            'seller_id'         =>  $seller->id
-        ]);
-
-        // Programming Problems
-        $p_pp0 = Product::create([
-            'price'             =>  49.99,
-            'book_id'           =>  $book_pp->id,
-            'seller_id'         =>  $seller->id
-        ]);
-
-        $p_pp1 = Product::create([
-            'price'             =>  39.99,
-            'book_id'           =>  $book_pp->id,
-            'seller_id'         =>  $seller->id
-        ]);
-
-        $p_pp2 = Product::create([
-            'price'             =>  29.99,
-            'book_id'           =>  $book_pp->id,
-            'seller_id'         =>  $seller->id
-        ]);
-
-        // Principles of solid mechanics
-        $p_mech0 = Product::create([
-            'price'             =>  129.99,
-            'book_id'           =>  $book_mechanics->id,
-            'seller_id'         =>  $seller->id
-        ]);
-
-        $p_mech1 = Product::create([
-            'price'             =>  109.99,
-            'book_id'           =>  $book_mechanics->id,
-            'seller_id'         =>  $seller->id
-        ]);
-
-        $p_mech2 = Product::create([
-            'price'             =>  89.99,
-            'book_id'           =>  $book_mechanics->id,
-            'seller_id'         =>  $seller->id
-        ]);
-
-        ProductCondition::create([
-            'product_id'            =>  $p_alg0->id,
-            'general_condition'     =>  0,
-            'highlights_and_notes'  =>  0,
-            'damaged_pages'         =>  0,
-            'description'       =>  'Brand new!'
-            ]);
-
-        ProductCondition::create([
-            'product_id'        =>  $p_alg1->id,
-            'general_condition'     =>  1,
-            'highlights_and_notes'  =>  1,
-            'damaged_pages'         =>  1,
-            'description'       =>  'Excellent!'
-            ]);
-
-        ProductCondition::create([
-            'product_id'        =>  $p_alg2->id,
-            'general_condition'     =>  2,
-            'highlights_and_notes'  =>  2,
-            'damaged_pages'         =>  2,
-            'description'       =>  'Good.'
-            ]);
-
-        ProductCondition::create([
-            'product_id'            =>  $p_pp0->id,
-            'general_condition'     =>  0,
-            'highlights_and_notes'  =>  0,
-            'damaged_pages'         =>  0,
-            'description'       =>  'Brand new!'
-        ]);
-
-        ProductCondition::create([
-            'product_id'        =>  $p_pp1->id,
-            'general_condition'     =>  1,
-            'highlights_and_notes'  =>  1,
-            'damaged_pages'         =>  1,
-            'description'       =>  'Excellent!'
-        ]);
-
-        ProductCondition::create([
-            'product_id'        =>  $p_pp2->id,
-            'general_condition'     =>  2,
-            'highlights_and_notes'  =>  2,
-            'damaged_pages'         =>  2,
-            'description'       =>  'Good.'
-        ]);
-
-        ProductCondition::create([
-            'product_id'            =>  $p_mech0->id,
-            'general_condition'     =>  0,
-            'highlights_and_notes'  =>  0,
-            'damaged_pages'         =>  0,
-            'description'       =>  'Brand new!'
-        ]);
-
-        ProductCondition::create([
-            'product_id'        =>  $p_mech1->id,
-            'general_condition'     =>  1,
-            'highlights_and_notes'  =>  1,
-            'damaged_pages'         =>  1,
-            'description'       =>  'Excellent!'
-        ]);
-
-        ProductCondition::create([
-            'product_id'        =>  $p_mech2->id,
-            'general_condition'     =>  2,
-            'highlights_and_notes'  =>  2,
-            'damaged_pages'         =>  2,
-            'description'       =>  'Good.'
-        ]);
-
-        foreach ([$p_alg0, $p_alg1, $p_alg2] as $p)
+        foreach ($books as $book)
         {
-            ProductImage::create([
-                'small_image'       =>  $folder . 'Algorithms.png',
-                'medium_image'      =>  $folder . 'Algorithms.png',
-                'large_image'       =>  $folder . 'Algorithms.png',
-                'product_id'        =>  $p->id
-            ]);
-        }
+            // create some products
+            for ($i = 0; $i < $faker->numberBetween(3, 10); $i++)
+            {
+                $product = Product::create([
+                    'book_id'   => $book->id,
+                    'seller_id' => $faker->numberBetween(1, $num_users),
+                    'price'     => $faker->randomFloat(2, 10, 200),
+                ]);
 
-        foreach ([$p_pp0, $p_pp0, $p_pp1, $p_pp2] as $p)
-        {
-            ProductImage::create([
-                'small_image'       =>  $folder . 'Programming-Problems.jpg',
-                'medium_image'      =>  $folder . 'Programming-Problems.jpg',
-                'large_image'       =>  $folder . 'Programming-Problems.jpg',
-                'product_id'        =>  $p->id
-            ]);
-        }
+                ProductCondition::create([
+                    'product_id'            =>  $product->id,
+                    'general_condition'     =>  $faker->numberBetween(0, 3),
+                    'highlights_and_notes'  =>  $faker->numberBetween(0, 2),
+                    'damaged_pages'         =>  $faker->numberBetween(0, 1),
+                    'description'           =>  $faker->randomElement([
+                        'Brand New!',
+                        'Excellent!',
+                        'Good.'
+                    ])
+                ]);
 
-        foreach ([$p_mech0, $p_mech0, $p_mech1, $p_mech2] as $p)
-        {
-            ProductImage::create([
-                'small_image'       =>  $folder . 'Principles-of-solid-mechanics.jpg',
-                'medium_image'      =>  $folder . 'Principles-of-solid-mechanics.jpg',
-                'large_image'       =>  $folder . 'Principles-of-solid-mechanics.jpg',
-                'product_id'        =>  $p->id
-            ]);
+                // create some product images
+                for ($i = 0; $i < $faker->numberBetween(1, 5); $i++)
+                {
+                    ProductImage::create([
+                        'product_id'        =>  $product->id,
+                        'small_image'       =>  $faker->imageUrl(60, 60),
+                        'medium_image'      =>  $faker->imageUrl(220, 340),
+                        'large_image'       =>  $faker->imageUrl(768, 1000)
+                    ]);
+                }
+            }
         }
     }
 
