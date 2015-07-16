@@ -6,7 +6,7 @@
 @section('title', 'Create a textbook')
 
 @section('css')
-    <link href="{{ asset('/css/textbook/create.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css_new/textbook_create.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
