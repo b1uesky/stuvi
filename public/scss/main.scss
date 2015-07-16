@@ -6,17 +6,15 @@
  */
 
 /* MODULES AND VARIABLES */
-@import 'partials/base';
+@import 'modules/all';
 
 /* PARTIALS */
 @import 'partials/buttons';
-@import 'partials/typography';
+@import 'modules/typography';
 @import 'partials/containers';
-
 
 /* SECTIONS */
 @import 'sections/navigation';
 @import 'sections/footer';
 
-
-/* VENDOR ( THIRD PARTY )*/
+/* VENDOR ( THIRD PARTY ) */

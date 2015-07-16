@@ -1,12 +1,11 @@
 /*********  ABOUT PAGE  *********/
 
+@import "modules/all";
+
 .about-background {
   /*image link -> http://commons.wikimedia.org/wiki/File:Stuvi.JPG*/
-  background-image: url("../img/stuvi.jpeg");
+  background: url("../img/stuvi.jpeg") no-repeat center;
   background-size: cover; /* Fill entire container */
-  background-repeat: no-repeat;
-  background-position: center;
-
 }
 
 #about-jumbotron {
@@ -36,22 +35,13 @@
 .team-grid {
   margin: 50px auto 20px;
   padding-left: 4%;
-}
-
-@media (min-width: 800px) {
-  .team-grid {
+  @media (min-width: 800px){
     padding-left: 20%;
   }
-}
-
-@media (min-width: 1080px) {
-  .team-grid {
+  @media (min-width: 1080px){
     padding-left: 10%;
   }
-}
-
-@media (min-width: 1300px) {
-  .team-grid {
+  @media (min-width: 1300px){
     padding-left: 20%;
   }
 }
