@@ -1,0 +1,105 @@
+/******** LOGIN PAGE ********//* Used by login.blade.php and register.blade.php *//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */html body {
+  background: ;
+}
+button:focus {
+  outline: 0 !important;
+}
+#logo-link {
+  width: 350px;
+  height: 140px;
+  display: block;
+  margin: 80px auto 40px;
+}
+#login-logo {
+  width: 350px;
+  height: 140px;
+}
+/******** LOGIN/REGISTER FORM ********//* space between form and logo */.vertical-center {
+  margin-top: 40px;
+}
+#form-container {
+  max-width: 500px;
+}
+/* inactive tab font color */.tabs > li > a {
+  color: #7ab4de;
+}
+/* active tab color */#tabs > li.active > a, #tabs > li.active > a:hover, #tabs > li.active > a:focus {
+  background-color: #7ab4de;
+  color: #fff;
+  border: 1px solid #ddd;
+}
+.form-control {
+  margin-bottom: 10px;
+}
+.form-control:focus {
+  border: 2px solid #7ab4de;
+  box-shadow: none !important;
+}
+/* space between first form input and tabs */.form-space-offset {
+  margin-top: 25px;
+}
+/*.scrollable-dropdown {*//*height: auto;*//*max-height: 200px;*//*overflow-x: hidden;*//*}*/.form-group .login-button {
+  background: #7ab4de;
+  width: 50%;
+  color: #fff;
+  box-shadow: 0 5px #5b86aa;
+  margin-top: -7px;
+}
+.form-group .login-button:active {
+  box-shadow: 0 2px #5b86aa;
+  transform: translateY(5px);
+}
+#password-group {
+  margin-bottom: 0;
+}
+#forgot-password {
+  color: #7ab4de;
+  padding: 0;
+  margin-top: 10px;
+  text-align: center;
+  padding-left: 2px;
+}
+label {
+  color: #fff;
+}
+#remember-me {
+  margin-left: 5px;
+}
+/****** RESET PASSWORD ******/.reset-container {
+  padding-top: 15%;
+  padding-bottom: 15%;
+  background-image: url('../img/activation(2).jpg');
+  background-size: cover;
+}
+#reset-title {
+  color: #fff;
+  text-shadow: 2px 2px 4px #000;
+  margin-top: 0;
+}
+.reset-label {
+  color: #fff;
+  text-shadow: 2px 2px 4px #000;
+}
+#reset-button {
+  width: 200px;
+  border: none;
+}
+#password-jumbotron {
+  background-color: rgba(153, 159, 163, 0.45);
+}
+.panel-body {
+  background: #fefefe;
+}
+.tos {
+  color: #f2f2f2;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}

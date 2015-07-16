@@ -1,0 +1,167 @@
+/*
+ * This is the Stuvi default styling. It comes _AFTER_ Bootstrap's app.css
+ * This file is compiled to main.css which is then linked in head.blade.php
+ * Thus, every page will have this styling.
+ * http://thesassway.com/beginner/how-to-structure-a-sass-project
+ *//* MODULES AND VARIABLES *//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* PARTIALS */.primary-btn {
+  background: #f16521;
+  color: white;
+  border: none;
+}
+.primary-btn:hover, .primary-btn:focus {
+  background: #f16521;
+  outline: 0;
+  color: white;
+}
+.secondary-btn {
+  background: #7ab4de;
+  color: white;
+  border: none;
+  box-shadow: 0 5px #5b86aa;
+}
+.secondary-btn:hover, .secondary-btn:focus {
+  background: #7ab4de;
+  outline: 0;
+  color: white;
+}
+.secondary-btn:active {
+  box-shadow: 0 2px #5b86aa;
+  transform: translateY(5px);
+}
+/*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* GENERAL CONTAINER *//* LAYERED CONTAINERS (like material design) *//* SECTIONS *//* SCSS for navigation bar. See _colors.scss and _footer.scss *//* VARIABLES *//*  CSS FOR NAVIGATION BAR  */a:focus {
+  outline: 0;
+}
+/******* NAVIGATION BAR *******/#nav {
+  background: #241729;
+  border-radius: 0;
+  border: none;
+}
+.logo-container {
+  width: 120px;
+  height: 48px;
+}
+.logo-container img {
+  width: 100%;
+  height: auto;
+}
+.active-nav {
+  background-color: #435c7f;
+  border-bottom: 5px solid #90b4df;
+}
+.nav-login {
+  height: 50px;
+}
+/******* NAVIGATION HAMBURGER MENU *******/.fa-bars {
+  color: #fff;
+}
+#nav-toggle-collapse:hover, #nav-toggle-collapse:focus {
+  background: #7ab4de;
+}
+/******* NAVIGATION DROPDOWN *******/#navi-drop {
+  padding-bottom: 10px;
+}
+#navi-drop:focus {
+  background-color: #435c7f;
+}
+#nav-right > .open > a {
+  background-color: #435c7f;
+}
+.nav-caret {
+  color: #fff;
+  margin-top: 0px;
+}
+.dropdown-menu li a:hover {
+  background-color: #7ab4de;
+  color: white;
+}
+/* Fix for when dropdown is open, the text was getting changed to dark*/#account-name {
+  color: white;
+}
+#cart-fix {
+  line-height: 19px;
+}
+/* Footer CSS Template
+ http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/
+ *//* VARIABLES */.footer-distributed {
+  background-color: #292c2f;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: normal 16px "Roboto", Helvetica, Arial, sans-serif;
+  padding: 30px 50px;
+  margin-top: 0px;
+}
+.footer-distributed .footer-left p {
+  color: #8f9296;
+  font-size: 14px;
+  margin: 0;
+}
+.footer-distributed .footer-left .footer-links {
+  font-size: 16px;
+  color: white;
+  margin: 0 0 10px;
+  padding: 0;
+}
+.footer-distributed .footer-left .footer-links a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+}
+.footer-distributed .footer-right {
+  float: right;
+  margin-top: 0px;
+  max-width: 180px;
+}
+.footer-distributed .footer-right a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-color: #33383b;
+  border-radius: 2px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  line-height: 35px;
+  margin-left: 3px;
+}
+/* Additional styling */.social:hover {
+  background-color: #f16521 !important;
+}
+.footer-link:hover {
+  color: #f16521 !important;
+}
+.divider {
+  color: #fff;
+}
+hr {
+  opacity: 0.3;
+}
+/* If you don't want the footer to be responsive, remove these media queries */@media (max-width: 600px) {
+  .footer-distributed .footer-left {
+    text-align: center;
+  }
+  .footer-distributed .footer-left p.footer-links {
+    line-height: 1.8;
+  }
+  .footer-distributed .footer-right {
+    text-align: center;
+    float: none;
+    margin: 0 auto 20px;
+  }
+}
+/* VENDOR ( THIRD PARTY ) */

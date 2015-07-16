@@ -1,0 +1,57 @@
+/* CSS Page for create.blade.php
+ *//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */.pad {
+  padding: 2%;
+}
+#message {
+  font-style: italic;
+}
+#message-cont {
+  background-color: rgba(255, 0, 12, 0.30);
+  padding: 2%;
+}
+/* BACKGROUND */.create {
+  background-color: #f2f2f2;
+}
+/* Title */#create-title {
+  color: #000;
+  margin-left: 38px;
+}
+/***** CREATE FORM *****//* ISBN...Title..etc*/b {
+  color: #757575;
+}
+/* Color some text in .form-group */.ws {
+  color: #757575;
+}
+/* Box around all the forms*/.textbook-create {
+  padding: 5%;
+}
+.form-control:focus {
+  border: 2px solid #7ab4de;
+  box-shadow: none;
+}
+#lang {
+  color: black;
+}
+.lang-select {
+  color: black;
+}
+#create-btn {
+  color: #fff;
+  background-color: #7ab4de;
+  border: none;
+  box-shadow: 0 5px #5b86aa;
+  width: 100px;
+  outline: 0;
+}
+#create-btn:active {
+  box-shadow: 0 2px #5b86aa;
+  transform: translateY(5px);
+}

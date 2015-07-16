@@ -1,0 +1,182 @@
+/* CSS FOR EDITING YOUR PROFILE *//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//***
+ User Profile Sidebar by @keenthemes
+ A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+ Licensed under MIT
+ ***//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS */body {
+  background: #f2f2f2;
+}
+/* Profile container */.profile {
+  margin: 20px 0;
+}
+/* Profile sidebar */.profile-sidebar {
+  padding: 20px 0 10px 0;
+  background: white;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
+}
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+.profile-usertitle-job {
+  text-transform: uppercase;
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+}
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+.profile-userbuttons .btn:last-child {
+  margin-right: 0;
+}
+.profile-usermenu {
+  margin-top: 30px;
+}
+.profile-usermenu ul li {
+  border-bottom: 1px solid #f2f2f2;
+}
+.profile-usermenu ul li:last-child {
+  border-bottom: none;
+}
+.profile-usermenu ul li .active {
+  border-bottom: none;
+}
+.profile-usermenu ul li .active a {
+  color: #7ab4de;
+  background-color: #f2f2f2;
+  border-left: 2px solid #7ab4de;
+  margin-left: -2px;
+}
+.profile-usermenu ul li a {
+  color: grey;
+  font-size: 14px;
+  font-weight: 400;
+}
+.profile-usermenu ul li a:hover {
+  background-color: #f2f2f2;
+  color: #7ab4de;
+}
+.profile-usermenu ul li a i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+.social-media-buttons {
+  text-align: center;
+  font-size: x-large;
+}
+#edit-btn {
+  color: white;
+  background-color: #7ab4de;
+  border: none;
+  box-shadow: 0 5px #5b86aa;
+  width: 100px;
+  outline: 0;
+}
+#edit-btn:active {
+  box-shadow: 0 2px #5b86aa;
+  transform: translateY(5px);
+}
+/* Profile Content */.profile-content {
+  padding: 20px;
+  background: white;
+  min-height: 700px;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
+}
+.pro {
+  background-color: #f2f2f2;
+}
+.edit {
+  text-align: center;
+  margin: 2%;
+}
+hr {
+  margin: 1%;
+  margin-left: 0;
+  border-color: rgba(0, 0, 0, 0.64);
+  border-width: 1px 0px 0px;
+  max-width: 770px;
+}
+@media (max-width: 900px) {
+  hr {
+    max-width: 600px;
+  }
+}
+@media (max-width: 900px) {
+  .nav, h1 {
+    text-align: center;
+  }
+}
+#bio {
+  max-width: 500px;
+  max-height: 300px;
+}
+.profile-content {
+  min-height: 900px !important;
+}
+.edit-pro {
+  max-width: 700px;
+}
+.edit {
+  margin: 0 !important;
+  max-height: 0;
+}
+.profile-usermenu {
+  margin-top: 0 !important;
+}
+.align {
+  padding-top: 6px;
+}
+label {
+  text-align: left !important;
+}
+.form-control:focus {
+  border: 2px solid #7ab4de;
+  box-shadow: none !important;
+}
+#save-info-btn {
+  color: white;
+  background-color: #7ab4de;
+  border: none;
+  box-shadow: 0 5px #5b86aa;
+  width: 150px;
+  outline: 0;
+}
+#save-info-btn:active {
+  box-shadow: 0 2px #5b86aa;
+  transform: translateY(5px);
+}
