@@ -38,7 +38,7 @@
                 <div class="price">
                     Price: <b>${{ $product->price }}</b>
                 </div>
-                <a class="btn secondary-btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
+                <a class="btn primary-btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
             </div>
 
             <!-- Condition -->

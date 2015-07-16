@@ -36,15 +36,9 @@ body {
   margin-bottom: 10px;
 }
 
-.author-label {
-  background-color: $primary-color;
-  color: white;
-  border: none;
-}
-
 .author-btn {
   &:hover, &:focus {
-    background-color: $primary-color;
+    background-color: $secondary-color;
     color: white;
     outline: 0 !important;
   }
@@ -65,14 +59,13 @@ body {
 
 .textbook-table {
   background-color: white;
-  border: solid #DDD;
+  border: solid $table-border-color;
 }
-
 #price {
   color: $price-color;
 }
 
-/** PRESSED BUTTON **/
+/** BUTTON **/
 
 .add-cart-btn {
   margin-left: 13px;
