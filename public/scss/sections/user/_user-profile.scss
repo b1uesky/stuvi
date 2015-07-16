@@ -4,6 +4,8 @@ A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themefores
 Licensed under MIT
 ***/
 
+@import "../../modules/colors";
+
 body {
   background: $background-color;
 }
@@ -16,7 +18,7 @@ body {
 /* Profile sidebar */
 .profile-sidebar {
   padding: 20px 0 10px 0;
-  background: $container-layer-1-color;
+  background: white;
   box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);  // maybe use this more
 }
 
@@ -63,7 +65,7 @@ body {
     padding: 6px 15px;
     margin-right: 5px;
     &:last-child {
-      margin-right: 0px;
+      margin-right: 0;
     }
   }
 }
@@ -122,7 +124,7 @@ body {
 /* Profile Content */
 .profile-content {
   padding: 20px;
-  background: $container-layer-1-color;
+  background: white;
   min-height: 700px;
   box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
 }
@@ -139,7 +141,7 @@ body {
 
 hr{
   margin: 1%;
-  margin-left: 0%;
+  margin-left: 0;
   border-color: rgba(0, 0, 0, 0.64);
   border-width: 1px 0px 0px;
   max-width: 770px;

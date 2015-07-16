@@ -1,51 +1,16 @@
 {{-- TEMPLATE FOR USER ACCOUNT AND PROFILE
      CONTAINS USER-BAR AND PROFILE SIDE BAR
 --}}
+@section('title','template')
+
+@section('css')
+
+@endsection
+
 
 <html>
 
-    <head>
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/user-bar.css')}}"> 
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/user-profile.css')}}">
-    </head>
-
     <body>
-    <!-- Second nav bar -->
-    @section('user-bar')
-        @parent
-        <div class="container-fluid" id = "user-bar">
-            <ul class="nav nav-tabs nav-justified" role="tablist">
-                <!-- Profile -->
-                <li id="profile-nav" ><a href="{{url('/user/profile')}}">Profile</a></li>
-                <!-- Account dropdown -->
-                <li class="dropdown" id="account-nav" >
-                    <a href="#" class="dropdown-toggle tabz" data-toggle="dropdown">
-                        Account<span class="caret"></span> </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li id="acc-settings-nav"><a href="{{url('/user/account')}}" class="acc">Account Settings</a></li>
-                        <li id="your-courses-nav"><a href="#"                        class="acc">Your Courses</a></li>
-                        <li id="messages-nav">    <a href="#"                        class="acc">Messages</a></li>
-                    </ul>
-                </li> <!-- end account dropdown -->
-                <!-- Textbooks dropdown -->
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle tabz" id ="books-nav" data-toggle="dropdown">Books <span class="caret"></span> </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li role="presentation" class="dropdown-header">Buy</li>
-                        <li><a href="{{url('/order/buyer')}}" class="">Your Orders</a></li>
-                        <li><a href="#" class="">Your Wish List</a></li>
-                        <li><a href="#" class="">Returns</a></li>
-                        <li role="presentation" class="divider"></li>
-                        <li role="presentation" class="dropdown-header">Sell</li>
-                        <li><a href="{{url('/user/bookshelf')}}">Your Bookshelf</a></li>
-                        <li><a href="{{ url('/order/seller') }}">Sold</a></li>
-                    </ul>
-                </li> <!-- end textbooks dropdown -->
-                <li class = "disabled" id="clubs-nav"><a href="#">Clubs</a></li>
-                <li class = "disabled" id="groups-nav"><a href="#">Groups</a></li>
-            </ul>
-        </div> <!-- end user-bar -->
-    @show
 
     @section('profile-bar')
 

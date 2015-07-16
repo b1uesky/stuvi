@@ -6,8 +6,6 @@
 
 @section('css')
     <link href="{{ asset('/css_new/user_account.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/user-bar.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/user-profile.css')}}">
 @endsection
 
 @section('content')
