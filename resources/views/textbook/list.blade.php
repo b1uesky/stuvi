@@ -31,7 +31,7 @@
                             <input type="text" class="form-control" id="autocompleteBuy" placeholder="Search" name="query">
 
                             <div class="input-group-btn">
-                                <button class="btn btn-default search-btn" type="submit">
+                                <button class="btn btn-default list-search-btn" type="submit">
                                     <i class="fa fa-search search-icon"></i>
                                 </button>
                             </div>
@@ -83,9 +83,10 @@
                 @endforelse
             </table>
         </div>
+            {!! $books->appends(Request::only('query'))->render() !!}
     </div>
 
-    {!! $books->appends(Request::only('query'))->render() !!}
+
 @endsection
 
 @section('javascript')

@@ -1,10 +1,17 @@
-/*********  ABOUT PAGE  *********/.about-background {
+/*********  ABOUT PAGE  *********//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */
+.about-background {
   /*image link -> http://commons.wikimedia.org/wiki/File:Stuvi.JPG*/
-  background-image: url("../img/stuvi.jpeg");
+  background: url("../img/stuvi.jpeg") no-repeat center;
   background-size: cover;
   /* Fill entire container */
-  background-repeat: no-repeat;
-  background-position: center;
 }
 #about-jumbotron {
   background-color: rgba(0, 0, 0, 0);
