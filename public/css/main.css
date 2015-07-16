@@ -6,7 +6,7 @@
  *//* MODULES AND VARIABLES *//* Import of all modules *//*
  * Stuvi color palette
  * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
  * FOR GENERAL TEXT STYLING
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
@@ -14,7 +14,7 @@
  *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* PARTIALS *//*** BUTTON STYLES ***//* Import of all modules *//*
  * Stuvi color palette
  * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
  * FOR GENERAL TEXT STYLING
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
@@ -24,6 +24,7 @@
   background: #00a496;
   color: white;
   border: none;
+  margin: 5px;
 }
 .primary-btn:hover, .primary-btn:focus {
   background: #00b2a4;
@@ -34,13 +35,13 @@
   background: #f16521;
   color: white;
   border: none;
+  margin: 5px;
 }
 .secondary-btn:hover, .secondary-btn:focus {
   background: #ff6720;
   outline: 0;
   color: white;
 }
-
 .list-search-btn {
   background: #f16521;
   border: none;
@@ -48,7 +49,6 @@
   width: 38px;
   margin-left: 0 !important;
 }
-
 .list-search-btn:hover, .list-search-btn:focus {
   outline: 0 !important;
   background: #f16521;
@@ -64,14 +64,39 @@
   box-shadow: none;
 }
 
-/* SECTIONS *//* SCSS for navigation bar. See _colors.scss and _footer.scss *//* VARIABLES *//*  CSS FOR NAVIGATION BAR  */
+/* SECTIONS *//* SCSS for navigation bar. See _colors.scss and _footer.scss *//* VARIABLES *//*  CSS FOR NAVIGATION BAR  *//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */
 a:focus {
   outline: 0;
 }
 /******* NAVIGATION BAR *******/#nav {
-  background: #241729;
+                                  background: #f2f2f2;
   border-radius: 0;
   border: none;
+}
+
+#nav li a {
+  color: black !important;
+}
+
+#nav li a:hover {
+  background-color: #f2f2f2 !important;
+  border-bottom: 5px solid #00a496 !important;
+  /*font-weight: bold;*/
+  color: #00a496 !important;
+}
+
+.active-nav {
+  background-color: #f2f2f2 !important;
+  border-bottom: 5px solid #00a496 !important;
+  /*font-weight: bold;*/
 }
 .logo-container {
   width: 120px;
@@ -81,18 +106,14 @@ a:focus {
   width: 100%;
   height: auto;
 }
-.active-nav {
-  background-color: #69c8c8;
-  border-bottom: 5px solid #90b4df;
-}
 .nav-login {
   height: 50px;
 }
 /******* NAVIGATION HAMBURGER MENU *******/.fa-bars {
-  color: #fff;
+                                             color: #00a496;
 }
 #nav-toggle-collapse:hover, #nav-toggle-collapse:focus {
-  background: #f16521;
+  background: #f9aa62;
 }
 /******* NAVIGATION DROPDOWN *******/#navi-drop {
   padding-bottom: 10px;
@@ -101,18 +122,22 @@ a:focus {
   background-color: #69c8c8;
 }
 #nav-right > .open > a {
-  background-color: #69c8c8;
+  background-color: #f2f2f2;
 }
 .nav-caret {
-  color: #fff;
+  color: black;
   margin-top: 0px;
+}
+
+.nav-caret:hover {
+  /*color: $primary-color !important;*/
 }
 .dropdown-menu li a:hover {
   background-color: #00a496;
-  color: white;
+  color: black;
 }
 /* Fix for when dropdown is open, the text was getting changed to dark*/#account-name {
-  color: white;
+                                                                          color: black;
 }
 #cart-fix {
   line-height: 19px;
@@ -122,7 +147,7 @@ a:focus {
  *//* Import of all modules *//*
  * Stuvi color palette
  * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
  * FOR GENERAL TEXT STYLING
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
