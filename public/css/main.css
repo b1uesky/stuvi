@@ -92,10 +92,12 @@
   border-radius: 0;
   border: none;
 }
-#nav-left li a {
+
+#nav li a {
   color: black !important;
 }
-#nav-left li a:hover {
+
+#nav li a:hover {
   background-color: #f2f2f2 !important;
   border-bottom: 5px solid #00a496 !important;
   /*font-weight: bold;*/
@@ -129,25 +131,6 @@
 #navi-drop:focus {
   background-color: #69c8c8;
 }
-#navi-drop:hover {
-  color: #00a496;
-  background-color: #f2f2f2;
-}
-#cart-link {
-  color: black;
-}
-#cart-link:hover {
-  background-color: #f2f2f2 !important;
-  border-bottom: 5px solid #00a496 !important;
-  /*font-weight: bold;*/
-  color: #00a496 !important;
-}
-#dp:hover {
-  background-color: #f2f2f2 !important;
-  border-bottom: 5px solid #00a496 !important;
-  /*font-weight: bold;*/
-  color: #00a496 !important;
-}
 #nav-right > .open > a {
   background-color: #f2f2f2;
 }
@@ -160,7 +143,7 @@
 }
 .dropdown-menu li a:hover {
   background-color: #00a496;
-  color: white;
+  color: black;
 }
 /* Fix for when dropdown is open, the text was getting changed to dark*/#account-name {
   color: black;

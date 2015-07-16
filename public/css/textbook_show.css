@@ -29,13 +29,8 @@
 .authors-container {
   margin-bottom: 10px;
 }
-.author-label {
-  background-color: #00a496;
-  color: white;
-  border: none;
-}
 .author-btn:hover, .author-btn:focus {
-  background-color: #00a496;
+  background-color: #f16521;
   color: white;
   outline: 0 !important;
 }
@@ -53,7 +48,9 @@
 #price {
   color: #b12704;
 }
-/** PRESSED BUTTON **/.add-cart-btn {
+
+/** BUTTON **/
+.add-cart-btn {
   margin-left: 13px;
 }
 .cart-btn-col {
