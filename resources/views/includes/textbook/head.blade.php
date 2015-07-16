@@ -10,7 +10,7 @@
 
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('/css_new/main.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('/css/main.css') }}"/>
 
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- Footer & Nav required -->

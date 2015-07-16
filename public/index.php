@@ -46,7 +46,7 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 |
 */
 
-SassCompiler::run("scss/", "css_new/");
+SassCompiler::run("scss/", "css/");
 
 $kernel = $app->make('Illuminate\Contracts\Http\Kernel');
 

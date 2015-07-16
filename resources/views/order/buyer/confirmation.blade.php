@@ -3,7 +3,7 @@
 @section('title', 'Order confirmation #'.Session::get('order')->id )
 
 @section('css')
-    <link href="{{ asset('/css_new/order_buyer_confirmation.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/order_buyer_confirmation.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')

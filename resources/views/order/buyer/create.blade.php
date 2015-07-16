@@ -7,7 +7,7 @@
 @section('title', 'Checkout')
 
 @section('css')
-    <link href="{{ asset('/css_new/order_buyer_create.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/order_buyer_create.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')

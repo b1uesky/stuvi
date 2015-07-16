@@ -2,14 +2,15 @@
 
 @extends('app')
 
-@section('title', 'Cart')
+@section('title', 'Your Cart')
+
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('/css/cart_index.css')}}">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.teal-deep_orange.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+@endsection
 
 @section('content')
-
-    <head>
-        <title> Stuvi - Your Cart</title>
-        <link rel="stylesheet" type="text/css" href="{{asset('/css_new/cart_index.css')}}">
-    </head>
 
     <!-- different icon and bg color depending on alert. add to other pages??? -->
     @if (Session::has('message'))
@@ -133,12 +134,22 @@
         </div>
         @endif
     </div>
+
+    {{-- Test--}}
+    <div>
+
+        <!-- Accent-colored raised button with ripple -->
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            Button
+        </button>
+    </div>
+
 @endsection
 
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
     <script>
         function goBack() {
             window.history.back();
