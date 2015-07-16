@@ -15,40 +15,22 @@ return [
     |
     */
     'credentials' => [
-        'key'    => 'AKIAJ73QMJH63KMVTB5A',
-        'secret' => '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',
+        'key'    => 'AKIAICSPEAJYPA3CBSNQ',
+        'secret' => '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',
     ],
     'region' => env('AWS_REGION', 'us-east-1'),
     'version' => 'latest',
+
     'url' => [
         'domain' => 'https://s3.amazonaws.com/',
-        'image' => 'https://s3.amazonaws.com/stuvi-images/'
+
+        // buckets
+        'stuvi-product-img' => 'https://s3.amazonaws.com/stuvi-product-img/',
+        'stuvi-book-img'    => 'https://s3.amazonaws.com/stuvi-book-img/'
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | AWS S3 buckets name
-    |--------------------------------------------------------------------------
-    |
-    */
     'buckets' => [
-        'image' => 'stuvi-images'
+        'product_image' =>  'stuvi-product-img',
+        'book_image'    =>  'stuvi-book-img'
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | AWS S3 object path
-    |--------------------------------------------------------------------------
-    |
-    | The relative path of objects on S3.
-    */
-    'path' => [
-        'textbook'  => [
-            'book'      => 'textbook/book/',
-            'product'   => 'textbook/product/'
-        ]
-    ]
-
-
-
 ];

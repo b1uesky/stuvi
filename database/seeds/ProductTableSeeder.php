@@ -151,65 +151,35 @@ class ProductTableSeeder extends Seeder {
             'description'       =>  'Good.'
         ]);
 
-        ProductImage::create([
-            'path'             =>  $folder . 'Algorithms.png',
-            'product_id'        =>  $p_alg0->id
+        foreach ([$p_alg0, $p_alg1, $p_alg2] as $p)
+        {
+            ProductImage::create([
+                'small_image'       =>  $folder . 'Algorithms.png',
+                'medium_image'      =>  $folder . 'Algorithms.png',
+                'large_image'       =>  $folder . 'Algorithms.png',
+                'product_id'        =>  $p->id
             ]);
+        }
 
-        ProductImage::create([
-            'path'             =>  $folder . 'Algorithms.png',
-            'product_id'        =>  $p_alg1->id
+        foreach ([$p_pp0, $p_pp0, $p_pp1, $p_pp2] as $p)
+        {
+            ProductImage::create([
+                'small_image'       =>  $folder . 'Programming-Problems.jpg',
+                'medium_image'      =>  $folder . 'Programming-Problems.jpg',
+                'large_image'       =>  $folder . 'Programming-Problems.jpg',
+                'product_id'        =>  $p->id
             ]);
+        }
 
-        ProductImage::create([
-            'path'             =>  $folder . 'Algorithms.png',
-            'product_id'        =>  $p_alg2->id
+        foreach ([$p_mech0, $p_mech0, $p_mech1, $p_mech2] as $p)
+        {
+            ProductImage::create([
+                'small_image'       =>  $folder . 'Principles-of-solid-mechanics.jpg',
+                'medium_image'      =>  $folder . 'Principles-of-solid-mechanics.jpg',
+                'large_image'       =>  $folder . 'Principles-of-solid-mechanics.jpg',
+                'product_id'        =>  $p->id
             ]);
-
-        ProductImage::create([
-            'path'             =>  $folder . 'Programming-Problems.jpg',
-            'product_id'        =>  $p_pp0->id
-            ]);
-
-        ProductImage::create([
-            'path'             =>  $folder . 'Programming-Problems.jpg',
-            'product_id'        =>  $p_pp0->id
-        ]);
-
-        ProductImage::create([
-            'path'             =>  $folder . 'Programming-Problems.jpg',
-            'product_id'        =>  $p_pp0->id
-        ]);
-
-        ProductImage::create([
-            'path'             =>  $folder . 'Programming-Problems.jpg',
-            'product_id'        =>  $p_pp1->id
-            ]);
-
-        ProductImage::create([
-            'path'             =>  $folder . 'Programming-Problems.jpg',
-            'product_id'        =>  $p_pp2->id
-            ]);
-
-        ProductImage::create([
-            'path'             =>  $folder . 'Principles-of-solid-mechanics.jpg',
-            'product_id'        =>  $p_mech0->id
-            ]);
-
-        ProductImage::create([
-            'path'             =>  $folder . 'Principles-of-solid-mechanics.jpg',
-            'product_id'        =>  $p_mech0->id
-        ]);
-
-        ProductImage::create([
-            'path'             =>  $folder . 'Principles-of-solid-mechanics.jpg',
-            'product_id'        =>  $p_mech1->id
-            ]);
-
-        ProductImage::create([
-            'path'             =>  $folder . 'Principles-of-solid-mechanics.jpg',
-            'product_id'        =>  $p_mech2->id
-            ]);
+        }
     }
 
 }

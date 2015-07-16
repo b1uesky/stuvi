@@ -172,6 +172,11 @@ return [
          * Amazon S3 Service Provider
          */
         'Aws\Laravel\AwsServiceProvider',
+
+        /*
+         * Intervention Image Service Provider
+         */
+        'Intervention\Image\ImageServiceProvider',
 	],
 
 	/*
@@ -222,6 +227,7 @@ return [
 
         'Twilio'    => 'Aloha\Twilio\Support\Laravel\Facade',
         'AWS'       => 'Aws\Laravel\AwsFacade',
+        'Image'     => 'Intervention\Image\Facades\Image'
 
 	],
 

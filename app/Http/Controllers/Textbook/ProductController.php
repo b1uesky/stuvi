@@ -9,13 +9,11 @@ use App\ProductCondition;
 use App\Helpers\AmazonLookUp;
 
 use Auth;
-use Aws\Laravel\AwsFacade;
 use Config;
 use Input;
 use Validator;
 use Session;
 use URL;
-use Storage;
 
 class ProductController extends Controller {
 
@@ -77,28 +75,25 @@ class ProductController extends Controller {
         }
 
 		foreach ($images as $image) {
-            // save file to local disk
-            $filename = $product->generateFilename($image);
-            Storage::disk('local')->put($filename, $image);
-
-            // save as product image
+            // create product image instance
             $product_image = new ProductImage();
             $product_image->product_id = $product->id;
-            $product_image->path = $filename;
             $product_image->save();
 
-            // upload file to amazon s3
-            $s3 = AwsFacade::createClient('s3');
+            // save product image paths with different sizes
+            $product_image->small_image = $product_image->generateFilename('small', $image);
+            $product_image->medium_image = $product_image->generateFilename('medium', $image);
+            $product_image->large_image = $product_image->generateFilename('large', $image);
+            $product_image->save();
 
-            $s3->putObject(array(
-                'Bucket'        => Config::get('aws.buckets.image'),
-                'Key'           => $filename,
-                'SourceFile'    => Storage::get($filename),
-                'ACL'           => 'public-read'
-            ));
+            // resize image
+            $product_image->resize($image);
+
+            // upload image with different sizes to aws s3
+            $product_image->uploadToAWS();
 		}
 
-        return redirect('textbook/buy/product/' . $product->id);
+         return redirect('textbook/buy/product/' . $product->id);
 	}
 
 	/**
