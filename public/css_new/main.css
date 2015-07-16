@@ -2,11 +2,11 @@
  * This is the Stuvi default styling. It comes _AFTER_ Bootstrap's app.css
  * This file is compiled to main.css which is then linked in head.blade.php
  * Thus, every page will have this styling.
- *
- *//*
+ * http://thesassway.com/beginner/how-to-structure-a-sass-project
+ *//* MODULES AND VARIABLES *//* Import of all modules *//*
  * Stuvi color palette
  * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS */.btn-primary {
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//* PARTIALS */.btn-primary {
   background: #f16521;
   color: white;
   border: none;
@@ -31,7 +31,7 @@
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
  *
- *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* GENERAL CONTAINER *//* LAYERED CONTAINERS (like material design) *//* SCSS for navigation bar. See _colors.scss and _footer.scss *//* VARIABLES *//*  CSS FOR NAVIGATION BAR  */a:focus {
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* GENERAL CONTAINER *//* LAYERED CONTAINERS (like material design) *//* SECTIONS *//* SCSS for navigation bar. See _colors.scss and _footer.scss *//* VARIABLES *//*  CSS FOR NAVIGATION BAR  */a:focus {
   outline: 0;
 }
 /******* NAVIGATION BAR *******/#nav {
@@ -154,6 +154,4 @@ hr {
     margin: 0 auto 20px;
   }
 }
-body {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
-}
+/* VENDOR ( THIRD PARTY )*/

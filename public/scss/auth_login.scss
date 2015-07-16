@@ -2,7 +2,7 @@
 
 /* Used by login.blade.php and register.blade.php */
 
-@import 'modules/colors';
+@import "modules/all";
 
 html body {
   background: $stuvi-purple;

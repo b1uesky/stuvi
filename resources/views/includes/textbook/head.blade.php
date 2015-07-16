@@ -15,14 +15,6 @@
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- Footer & Nav required -->
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
-
-    {{--<link href="{{ asset('/css/navigation.css') }}" rel="stylesheet">--}}
-    {{--<link href="{{ asset('/css/footer.css') }}"         rel="stylesheet">--}}
-    {{--<link href="{{ asset('css/footer-distributed.css') }}" rel="stylesheet">--}}
-    <!-- Footer required -->
-
-    <!-- Footer & Nav required -->
-
     <!-- Fonts -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
