@@ -1,0 +1,33 @@
+/* Coming soon page *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS */.background {
+  background-image: url('../img/coming.jpg');
+  background-size: cover;
+  min-height: 90vh;
+}
+.jumbotron {
+  margin: 10% 10%;
+  background-color: rgba(153, 159, 163, 0.45);
+}
+h1 {
+  margin-left: -5px;
+}
+.btn-news {
+  background: #f16521;
+  color: white;
+  border: none;
+}
+.or {
+  font-size: x-large;
+  padding-left: 10px;
+}
+@media (max-width: 992px) {
+  .or {
+    padding-top: 10px;
+    padding-left: 0;
+  }
+}
+.form-group {
+  padding-left: 0;
+}

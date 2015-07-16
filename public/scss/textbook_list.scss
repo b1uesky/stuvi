@@ -27,7 +27,7 @@
 #nav-sort {
   li {
     a {
-      color: $secondary-color;
+      color: $muted-text-color;
       &:hover {
         background-color: #DDDDDD;
       }
@@ -35,7 +35,7 @@
   }
   li.active {
     a {
-      background-color: #7AB4DE;
+      background-color: $primary-color;
       color: #FFFFFF;
     }
   }
@@ -45,26 +45,14 @@
   border-radius: 4px 0 0 4px;
   border-right: none;
   &:focus {
-    border: 1px solid $primary-color;
+    border: 1px solid $secondary-color;
     border-right: none;
     box-shadow: none;
   }
 }
 
-.search-btn {
-  background: $primary-color;
-  border: none;
-  height: 34px;
-  width: 38px;
-  margin-left: 0 !important;
-  &:hover, &:focus {
-    outline: 0 !important;
-    background: $primary-color;
-  }
-}
-
 .search-icon {
-  color: #FFFFFF;
+  color: white;
 }
 
 /* TEXTBOOK LIST */
@@ -102,6 +90,9 @@
 .textbook-title {
   font-size: medium;
   font-weight: bold;
+  a {
+    color: $primary-color;
+  }
 }
 
 .textbook-pub-date {
