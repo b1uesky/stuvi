@@ -19,13 +19,13 @@
   margin-left: 30px;
 }
 /* SORT SECTION */#nav-sort li a {
-  color: #7ab4de;
+                    color: grey;
 }
 #nav-sort li a:hover {
   background-color: #ddd;
 }
 #nav-sort li.active a {
-  background-color: #7ab4de;
+  background-color: #00a496;
   color: #fff;
 }
 #autocompleteBuy {
@@ -37,19 +37,8 @@
   border-right: none;
   box-shadow: none;
 }
-.search-btn {
-  background: #f16521;
-  border: none;
-  height: 34px;
-  width: 38px;
-  margin-left: 0 !important;
-}
-.search-btn:hover, .search-btn:focus {
-  outline: 0 !important;
-  background: #f16521;
-}
 .search-icon {
-  color: #fff;
+  color: white;
 }
 /* TEXTBOOK LIST */.textbook-img-container {
   width: 100px;
@@ -78,6 +67,10 @@
 .textbook-title {
   font-size: medium;
   font-weight: bold;
+}
+
+.textbook-title a {
+  color: #00a496;
 }
 .textbook-pub-date {
   font-size: medium;

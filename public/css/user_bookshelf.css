@@ -23,13 +23,13 @@
   margin-left: 30px;
 }
 /* SORT SECTION */#nav-sort li a {
-  color: #7ab4de;
+                    color: #f16521;
 }
 #nav-sort li a:hover {
   background-color: #ddd;
 }
 #nav-sort li .active a {
-  background-color: #7ab4de;
+  background-color: #f16521;
   color: #fff;
 }
 #search-term {
@@ -37,23 +37,23 @@
   border-right: none;
 }
 #search-term:focus {
-  border: 1px solid #f16521;
+  border: 1px solid #00a496;
   border-right: none;
   box-shadow: none;
 }
 .search-btn {
-  background: #f16521;
+  background: #00a496;
   border: none;
   height: 34px;
   width: 38px;
   margin-left: 0 !important;
 }
 .search-btn:hover {
-  background: #f16521;
+  background: #00a496;
 }
 .search-btn:focus {
   outline: 0 !important;
-  background: #f16521;
+  background: #00a496;
 }
 .search-icon {
   color: white;

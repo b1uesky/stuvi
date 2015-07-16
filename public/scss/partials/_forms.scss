@@ -1,19 +1,8 @@
+/*** FORM STYLING ***/
 
-form{
-
-}
-
-
-.form-group{
-  .form-control{
-
+.form-control {
+  &:focus {
+    border: 2px solid $primary-color;
+    box-shadow: none;
   }
-  input{
-
-  }
-
-}
-
-input{
-
 }
