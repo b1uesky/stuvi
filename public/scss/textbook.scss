@@ -94,14 +94,14 @@
   margin-right: 30px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  background: #F16521;
+  background: $secondary-color;
   border: none;
   &:hover {
-    background: #F16521;
+    background: $secondary-color;
   }
   &:focus {
     outline: 0 !important;
-    background: #F16521;
+    background: $secondary-color;
   }
   @media (max-width: 535px) {
     margin: 0;
