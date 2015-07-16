@@ -1,7 +1,7 @@
 /*  CSS FOR account.blade.php *//* Import of all modules *//*
  * Stuvi color palette
  * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
  * FOR GENERAL TEXT STYLING
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
@@ -13,7 +13,7 @@
  ***//*
  * Stuvi color palette
  * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS */body {
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS */body {
   background: #f2f2f2;
 }
 /* Profile container */.profile {
@@ -99,18 +99,6 @@
   text-align: center;
   font-size: x-large;
 }
-#edit-btn {
-  color: white;
-  background-color: #7ab4de;
-  border: none;
-  box-shadow: 0 5px #5b86aa;
-  width: 100px;
-  outline: 0;
-}
-#edit-btn:active {
-  box-shadow: 0 2px #5b86aa;
-  transform: translateY(5px);
-}
 /* Profile Content */.profile-content {
   padding: 20px;
   background: white;
@@ -149,7 +137,7 @@ hr {
   text-align: left !important;
 }
 /****** EDIT INFO ******/.form-control:focus {
-                           border: 2px solid #f16521;
+  border: 2px solid #f16521;
   box-shadow: none;
 }
 #save-info-btn {

@@ -4,7 +4,7 @@
  ******//* Import of all modules *//*
  * Stuvi color palette
  * Please use these variables for any colors used.
- *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
  * FOR GENERAL TEXT STYLING
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
@@ -54,21 +54,7 @@
   color: #b12704;
 }
 /** PRESSED BUTTON **/.add-cart-btn {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-                        background: #f16521;
-  color: white;
-  border: none;
-  width: 100px;
-  box-shadow: 0 5px #5b86aa;
-}
-.add-cart-btn:hover, .add-cart-btn:focus {
-  color: white;
-}
-.add-cart-btn:active {
-  box-shadow: 0 2px #5b86aa;
-  transform: translateY(5px);
+  margin-left: 13px;
 }
 .cart-btn-col {
   width: 150px;

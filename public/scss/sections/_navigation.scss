@@ -17,7 +17,7 @@ a:focus {
   border: none;
 }
 
-#nav li a{
+#nav-left li a{
   color: $nav-text-color !important;
   &:hover{
     background-color: $background-color !important;
@@ -67,6 +67,30 @@ a:focus {
   &:focus {
     background-color: $accent-color;
   }
+  &:hover{
+    color: $primary-color;
+    background-color: $background-color;
+  }
+}
+
+#cart-link{
+  color: $nav-text-color;
+  &:hover{
+    background-color: $background-color !important;
+    border-bottom: 5px solid #{$primary-color} !important;
+    /*font-weight: bold;*/
+    color: $primary-color !important;
+
+  }
+}
+
+#dp{
+  &:hover{
+    background-color: $background-color !important;
+    border-bottom: 5px solid #{$primary-color} !important;
+    /*font-weight: bold;*/
+    color: $primary-color !important;
+  }
 }
 
 #nav-right > .open > a{
@@ -85,8 +109,8 @@ a:focus {
   li{
     a{
       &:hover{
-        background-color: $primary-color;
-        color: $nav-text-color;
+        background-color: #DDD;
+        color: white;
       }
     }
   }
