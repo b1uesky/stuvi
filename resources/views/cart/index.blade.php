@@ -6,8 +6,7 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('/css/cart_index.css')}}">
-    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.teal-deep_orange.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 @endsection
 
 @section('content')
@@ -134,22 +133,12 @@
         </div>
         @endif
     </div>
-
-    {{-- Test--}}
-    <div>
-
-        <!-- Accent-colored raised button with ripple -->
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-            Button
-        </button>
-    </div>
-
 @endsection
 
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+    {{--<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>--}}
     <script>
         function goBack() {
             window.history.back();

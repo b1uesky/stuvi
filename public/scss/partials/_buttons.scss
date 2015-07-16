@@ -5,6 +5,7 @@
   background: $primary-color;
   color: $button-text-color;
   border: none;
+  margin: 5px;
   &:hover, &:focus {
     background: $button-primary-hover-color;
     outline: 0;
@@ -16,6 +17,7 @@
   background: $secondary-color;
   color: $button-text-color;
   border: none;
+  margin: 5px;
   &:hover, &:focus{
     background: $button-secondary-hover-color;
     outline: 0;

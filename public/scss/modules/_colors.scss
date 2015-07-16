@@ -12,7 +12,6 @@ $secondary-color: #F16521;
 $stuvi-purple-color: #241729;
 $light-orange-color: #F9AA62;
 $accent-color: #69C8C8;
-$button-shadow-color: #5B86AA;
 $border-color: grey;
 
 /* GENERAL TEXT COLORS */
@@ -23,8 +22,9 @@ $price-color: #B12704;
 $link-text-color: null;
 
 /* HEADER/NAV COLORS */
-$nav-background-color: #241729;
-$nav-text-color: white;              // for links
+/*$nav-background-color: #241729;*/
+$nav-background-color: #F2F2F2;
+$nav-text-color: black;              // for links
 $nav-tab-active-border-bottom-color: #90B4DF;
 
 
@@ -44,6 +44,6 @@ $button-text-color: white;
 $cart-remove-color: #0044CC;
 $button-primary-hover-color: #00B2A4;
 $button-secondary-hover-color: #FF6720;
-
+$button-shadow-color: #5B86AA;
 
 

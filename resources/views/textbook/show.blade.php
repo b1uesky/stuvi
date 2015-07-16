@@ -77,7 +77,7 @@
                                 <a href="{{ url('textbook/buy/product/'.$product->id) }}">View Details</a>
                             </td>
                             <td class="cart-btn-col">
-                                <a class="btn add-cart-btn" href="{{ url('cart/add/'.$product->id) }}" role="button">Add To Cart</a>
+                                <a class="btn secondary-btn add-cart-btn" href="{{ url('cart/add/'.$product->id) }}" role="button">Add To Cart</a>
                             </td>
                         </tr>
                     @endforeach
