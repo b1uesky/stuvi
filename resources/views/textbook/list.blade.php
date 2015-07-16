@@ -18,17 +18,18 @@
             <h1 id="search-term">Search results</h1>
         @endif
         <div class="container">
-            <span class="text-muted">Sort by</span>
+            {{--<span class="text-muted">Sort by</span>--}}
             <ul class="nav nav-pills">
-                <li role="presentation" class="active"><a href="#" data-toggle="pill">Title</a></li>
-                <li role="presentation"><a href="#" data-toggle="pill">Author</a></li>
-                <li role="presentation"><a href="#" data-toggle="pill">Most Bought</a></li>
-                <li role="presentation"><a href="#" data-toggle="pill">Top Rated</a></li>
+                {{--<li role="presentation" class="active"><a href="#" data-toggle="pill">Title</a></li>--}}
+                {{--<li role="presentation"><a href="#" data-toggle="pill">Author</a></li>--}}
+                {{--<li role="presentation"><a href="#" data-toggle="pill">Most Bought</a></li>--}}
+                {{--<li role="presentation"><a href="#" data-toggle="pill">Top Rated</a></li>--}}
 
                 <div class="col-sm-4 col-md-4 pull-right">
                     <form action="/textbook/buy/search" method="get" class="navbar-form" role="search">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="autocompleteBuy" placeholder="Search" name="query">
+                            <input type="text" class="form-control" id="autocompleteBuy" placeholder="Search"
+                                   name="query">
 
                             <div class="input-group-btn">
                                 <button class="btn btn-default search-btn" type="submit">
@@ -48,20 +49,18 @@
                     <tr class="textbook-item">
                         <td class="textbook-img-container">
                             <a href="{{ url("textbook/buy/".$book->id) }}">
-                                <img class="textbook-img" src="{{ $book->imageSet->medium_image or config('book.default_image_path.medium')}}">
+                                <img class="textbook-img"
+                                     src="{{ $book->imageSet->medium_image or config('book.default_image_path.medium')}}">
                             </a>
                         </td>
                         <td class="textbook-info-1">
                             <span class="textbook-title"><a
                                         href="{{ url("textbook/buy/".$book->id) }}">{{ $book->title }}</a></span><br>
-                            @if(count($book->authors) > 1)
+                            @if($book->authors->count())
                                 <span>Authors:</span>
                                 @foreach($book->authors as $author)
                                     <span>{{ $author->full_name }}</span>
                                 @endforeach
-                            @else
-                                <span>Author:</span>
-                                {{ $book->authors[0]->full_name }}
                             @endif
 
                             <br>
