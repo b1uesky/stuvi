@@ -18,7 +18,7 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <!-- Nav Bar Links-->
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-left">
                     <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbooks</a></li>
                     <li><a href="{{ url('/coming') }}">Housing</a></li>
                     <li><a href="{{ url('/coming') }}">Clubs</a></li>

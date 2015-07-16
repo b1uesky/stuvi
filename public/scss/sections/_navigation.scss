@@ -3,6 +3,7 @@
 /* VARIABLES */
 
 /*  CSS FOR NAVIGATION BAR  */
+@import '../modules/all';
 
 a:focus {
   outline: 0;
@@ -16,6 +17,23 @@ a:focus {
   border: none;
 }
 
+#nav li a{
+  color: $nav-text-color !important;
+  &:hover{
+    background-color: $background-color !important;
+    border-bottom: 5px solid #{$primary-color} !important;
+    /*font-weight: bold;*/
+    color: $primary-color !important;
+  }
+}
+
+.active-nav {
+  background-color: $nav-background-color !important;
+  border-bottom: 5px solid #{$primary-color} !important;
+  /*font-weight: bold;*/
+}
+
+
 .logo-container {
   width: 120px;
   height: 48px;
@@ -25,10 +43,6 @@ a:focus {
   }
 }
 
-.active-nav {
-  background-color: $accent-color;
-  border-bottom: 5px solid #{$nav-tab-active-border-bottom-color};
-}
 
 .nav-login {
   height: 50px;
@@ -37,12 +51,12 @@ a:focus {
 /******* NAVIGATION HAMBURGER MENU *******/
 
 .fa-bars {
-  color: #FFFFFF;
+  color: $primary-color;
 }
 
 #nav-toggle-collapse{
   &:hover, &:focus {
-  background: $secondary-color;
+  background: $light-orange-color;
   }
 }
 
@@ -56,11 +70,15 @@ a:focus {
 }
 
 #nav-right > .open > a{
-  background-color: $accent-color;
+  background-color: $nav-background-color;
 }
+
 .nav-caret {
-  color: #FFFFFF;
+  color: $nav-text-color;
   margin-top: 0px;
+  &:hover{
+    /*color: $primary-color !important;*/
+  }
 }
 
 .dropdown-menu {

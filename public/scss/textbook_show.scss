@@ -75,21 +75,7 @@ body {
 /** PRESSED BUTTON **/
 
 .add-cart-btn {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  background: $secondary-color;
-  color: white;
-  border: none;
-  width: 100px;
-  box-shadow: 0 5px $button-shadow-color;
-  &:hover, &:focus {
-    color: white;
-  }
-  &:active {
-    box-shadow: 0 2px $button-shadow-color;
-    transform: translateY(5px);
-  }
+  margin-left: 13px;
 }
 
 .cart-btn-col {

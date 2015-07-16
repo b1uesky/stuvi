@@ -1,15 +1,7 @@
 {{-- TEMPLATE FOR USER ACCOUNT AND PROFILE
      CONTAINS USER-BAR AND PROFILE SIDE BAR
 --}}
-@section('title','template')
-
-@section('css')
-
-@endsection
-
-
 <html>
-
     <body>
 
     @section('profile-bar')
@@ -59,7 +51,7 @@
                                                 </div>--}}
                             <div class="edit">
                                 <div class="btn-group">
-                                    <a class="btn btn-default" id="edit-btn" href="{{url('/user/profile-edit')}}">
+                                    <a class="btn primary-btn" id="edit-btn" href="{{url('/user/profile-edit')}}">
                                         Edit Profile
                                     </a>
                                 </div>

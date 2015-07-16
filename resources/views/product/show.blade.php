@@ -11,8 +11,6 @@
 
 @section('content')
 
-@include('textbook/textbook-nav')
-
 <div class="container-fluid" id="bg">
     <!-- book details -->
     <div class="container" id="det-cont">
@@ -40,7 +38,7 @@
                 <div class="price">
                     Price: <b>${{ $product->price }}</b>
                 </div>
-                <a class="btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
+                <a class="btn secondary-btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
             </div>
 
             <!-- Condition -->
