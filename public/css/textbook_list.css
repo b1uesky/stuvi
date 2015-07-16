@@ -19,7 +19,7 @@
   margin-left: 30px;
 }
 /* SORT SECTION */#nav-sort li a {
-  color: #7ab4de;
+  color: #f16521;
 }
 #nav-sort li a:hover {
   background-color: #ddd;
@@ -33,12 +33,12 @@
   border-right: none;
 }
 #autocompleteBuy:focus {
-  border: 1px solid #f16521;
+  border: 1px solid #00a496;
   border-right: none;
   box-shadow: none;
 }
 .search-btn {
-  background: #f16521;
+  background: #00a496;
   border: none;
   height: 34px;
   width: 38px;
@@ -46,7 +46,7 @@
 }
 .search-btn:hover, .search-btn:focus {
   outline: 0 !important;
-  background: #f16521;
+  background: #00a496;
 }
 .search-icon {
   color: #fff;

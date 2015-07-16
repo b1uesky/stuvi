@@ -30,12 +30,12 @@
   margin-bottom: 10px;
 }
 .author-label {
-  background-color: #f16521;
+  background-color: #00a496;
   color: white;
   border: none;
 }
 .author-btn:hover, .author-btn:focus {
-  background-color: #f16521;
+  background-color: #00a496;
   color: white;
   outline: 0 !important;
 }
@@ -57,7 +57,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  background: #7ab4de;
+  background: #f16521;
   color: white;
   border: none;
   width: 100px;

@@ -77,9 +77,9 @@
   border-bottom: none;
 }
 .profile-usermenu ul li .active a {
-  color: #7ab4de;
+  color: #f16521;
   background-color: #f2f2f2;
-  border-left: 2px solid #7ab4de;
+  border-left: 2px solid #f16521;
   margin-left: -2px;
 }
 .profile-usermenu ul li a {
@@ -89,7 +89,7 @@
 }
 .profile-usermenu ul li a:hover {
   background-color: #f2f2f2;
-  color: #7ab4de;
+  color: #f16521;
 }
 .profile-usermenu ul li a i {
   margin-right: 8px;
@@ -165,12 +165,12 @@ label {
   text-align: left !important;
 }
 .form-control:focus {
-  border: 2px solid #7ab4de;
+  border: 2px solid #f16521;
   box-shadow: none !important;
 }
 #save-info-btn {
   color: white;
-  background-color: #7ab4de;
+  background-color: #f16521;
   border: none;
   box-shadow: 0 5px #5b86aa;
   width: 150px;
