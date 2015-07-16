@@ -1,25 +1,30 @@
 
-.btn-primary {
+.primary-btn {
   background: $primary-color;
   color: $button-text-color;
   border: none;
-  padding: 7px 10px;
 
   &:hover, &:focus {
+    background: $primary-color;
     outline: 0;
     color: $button-text-color;
   }
 }
 
-.btn-secondary {
+.secondary-btn {
   background: $secondary-color;
   color: $button-text-color;
   border: none;
   box-shadow: 0 5px #5B86AA;
 
   &:hover, &:focus{
+    background: $secondary-color;
     outline: 0;
-    color: #FFFFFF;
+    color: $button-text-color;
+  }
+  &:active {
+    box-shadow: 0 2px #5B86AA;
+    transform: translateY(5px);
   }
 }
 
