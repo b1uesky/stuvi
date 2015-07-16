@@ -64,8 +64,8 @@ body {
 }
 
 .textbook-table {
-  background-color: white;
-  border: solid #DDD;
+  background-color: $table-background-color;
+  border: solid $table-border-color;
 }
 
 #price {
