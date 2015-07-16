@@ -69,6 +69,7 @@ class BuyerOrder extends Model
      * Check whether this buyer order is belong to a given user.
      *
      * @param $id  User id
+     *
      * @return bool
      */
     public function isBelongTo($id)
@@ -166,17 +167,17 @@ class BuyerOrder extends Model
      */
     public function allToArray()
     {
-        $buyer_order_arr                        = $this->toArray();
-        $buyer_order_arr['buyer']               = $this->buyer->toArray();
-        $buyer_order_arr['shipping_address']    = $this->shipping_address->toArray();
-        $buyer_order_arr['buyer_payment']       = $this->buyer_payment->toArray();
+        $buyer_order_arr = $this->toArray();
+        $buyer_order_arr['buyer'] = $this->buyer->toArray();
+        $buyer_order_arr['shipping_address'] = $this->shipping_address->toArray();
+        $buyer_order_arr['buyer_payment'] = $this->buyer_payment->toArray();
         foreach ($this->products() as $product)
         {
-            $temp           = $product->toArray();
-            $temp['book']   = $product->book->toArray();
-            $temp['book']['authors']        = $product->book->authors->toArray();
-            $temp['book']['image_set']      = $product->book->imageSet->toArray();
-            $buyer_order_arr['products'][]   = $temp;
+            $temp = $product->toArray();
+            $temp['book'] = $product->book->toArray();
+            $temp['book']['authors'] = $product->book->authors->toArray();
+            $temp['book']['image_set'] = $product->book->imageSet->toArray();
+            $buyer_order_arr['products'][] = $temp;
         }
 
         return $buyer_order_arr;
@@ -234,17 +235,47 @@ class BuyerOrder extends Model
     {
         \Stripe\Stripe::setApiKey(StripeKey::getSecretKey());
 
-        // TODO: catch exceptions
-        $ch = \Stripe\Charge::retrieve($this->buyer_payment->charge_id);
-        $re = $ch->refunds->create(['amount'=>$amount]);
+        try
+        {
+            $ch = \Stripe\Charge::retrieve($this->buyer_payment->charge_id);
+            $re = $ch->refunds->create(['amount' => $amount]);
 
-        $refund = StripeRefund::create([
-            'buyer_order_id'    => $this->id,
-            'refund_id'         => $re['id'],
-            'amount'            => $re['amount'],
-            'operator_id'       => $operator_id,
-        ]);
+            $refund = StripeRefund::create([
+                'buyer_order_id' => $this->id,
+                'refund_id'      => $re['id'],
+                'amount'         => $re['amount'],
+                'operator_id'    => $operator_id,
+            ]);
 
-        return $refund;
+            return $refund;
+        }
+        catch (\Stripe\Error\InvalidRequest $e)
+        {
+            // Invalid parameters were supplied to Stripe's API
+            return $e->getMessage();
+        }
+        catch (\Stripe\Error\Authentication $e)
+        {
+            // Authentication with Stripe's API failed
+            // (maybe you changed API keys recently)
+            return $e->getMessage();
+        }
+        catch (\Stripe\Error\ApiConnection $e)
+        {
+            // Network communication with Stripe failed
+            return $e->getMessage();
+        }
+        catch (\Stripe\Error\Base $e)
+        {
+            // Display a very generic error to the user, and maybe send
+            // yourself an email
+            return $e->getMessage();
+        }
+        catch (Exception $e)
+        {
+            // Something else happened, completely unrelated to Stripe
+            return $e->getMessage();
+        }
+
     }
 }

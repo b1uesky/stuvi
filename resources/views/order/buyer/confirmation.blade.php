@@ -18,7 +18,7 @@
     <div class="container confirmation-container">
         <div class="confirmation-details">
             <h1>Thank you for your order</h1>
-            <h4>Your order number is: {{ Session::get('order')->id }}</h4>
+            <h4>Your order number is: {{ Session::get('order')->id }} <a href="{{ url('order/buyer/'.Session::get('order')->id) }}">View order detail</a></h4>
 
             <p>You will receive an email confirmation shortly at <code>{{ Auth::user()->email }}</code>.</p>
             <h5><a href="#">Print Receipt</a></h5>
