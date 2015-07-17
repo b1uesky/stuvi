@@ -26,35 +26,39 @@
                 </ul>
                 <!-- Navbar right -->
                 <ul id="nav-right" class="nav navbar-nav navbar-right">
+                    {{-- Not logged in --}}
                     @if (Auth::guest())
                         <li><a id="login-btn" class="nav-login" data-toggle="modal" href="#login-modal">
                                 <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
                         <li><a id="register-btn" class="nav-login" data-toggle="modal" href="#signup-modal">
                                 <i class="fa fa-user"></i> Sign Up</a></li>
 
+                        <!-- sign up modal -->
                         <div class="login-signup-modal">
                             <div class="modal fade login-modal" id="login-modal" tabindex="-1" role="dialog"
                                  aria-labelledby="Login">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <button type="button" class="close close-modal-btn" data-dismiss="modal"
-                                                    aria-label="close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            <h4 style="text-align: center;"><span class="glyphicon glyphicon-lock"></span> Login</h4>
+                                            <!-- close button -->
+                                            <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+                                            <!-- header -->
+                                            <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form role="form"  action="{{ url('/auth/login') }}" method="post">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                <!-- email -->
                                                 <div class="form-group">
                                                     <label for="login-email"><span class="glyphicon glyphicon-user"></span> Email</label>
                                                     <input type="text" class="form-control" id="login-email" name="email" placeholder="Enter email" value="">
                                                 </div>
+                                                <!-- password -->
                                                 <div class="form-group">
                                                     <label for="login-password"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
                                                     <input type="password" class="form-control" name="password" id="login-password" placeholder="Enter password">
                                                 </div>
+                                                <!-- remember me -->
                                                 <div class="checkbox" id="remember-me">
                                                     <label for="remember-me-box">
                                                         <input id="remember-me-box" type="checkbox" value="" checked>Remember me</label>
@@ -69,44 +73,48 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <!-- sign up modal -->
+                            <!-- TODO: MAKE THIS WORK !!! -->
                             <div class="modal fade signup-modal" id="signup-modal" tabindex="-1" role="dialog"
                                  aria-labelledby="SignUp">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <button type="button" class="close close-modal-btn" data-dismiss="modal"
-                                                    aria-label="close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            <h4 style="text-align: center;"><span class="glyphicon glyphicon-lock"></span> Sign Up</h4>
+                                            <!-- close -->
+                                            <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+                                            <!-- header -->
+                                            <h4><span class="glyphicon glyphicon-lock"></span> Sign Up</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form role="form" method="POST" action="{{ url('/auth/register') }}">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                <!-- first name -->
                                                 <div class="form-group">
                                                     <label class="sr-only" for="register-first">First Name</label>
                                                     <input type="text" class="form-control" id="register-first" placeholder="First name">
                                                 </div>
+                                                <!-- last name -->
                                                 <div class="form-group">
                                                     <label class="sr-only" for="register-last">Last Name</label>
                                                     <input type="text" class="form-control" id="register-last" placeholder="Last name">
                                                 </div>
+                                                <!-- email -->
                                                 <div class="form-group">
                                                     <label class="sr-only" for="register-email">Email</label>
                                                     <input type="email" class="form-control" id="register-email" placeholder="Email">
                                                 </div>
+                                                <!-- password -->
                                                 <div class="form-group">
                                                     <label class="sr-only" for="register-password">Password</label>
-                                                    <input type="text" class="form-control" id="psw" placeholder="Password">
+                                                    <input type="password" class="form-control" id="register-password" placeholder="Password">
                                                 </div>
+                                                <!-- phone number -->
                                                 <div class="form-group">
                                                     <label class="sr-only" for="register-phone">Phone Number</label>
                                                     <input type="tel" class="form-control phone_number" name="phone_number" id="register-phone"
                                                            placeholder="Phone number" value="">
                                                 </div>
+                                                <!-- university -->
                                                 <div class="form-group">
                                                     <select class="form-control" name="university_id">
                                                         <label class="sr-only" for="register-uni">School</label>
@@ -116,7 +124,7 @@
                                                         @endforeach--}}
                                                     </select>
                                                 </div>
-                                                <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Sign Up</button>
+                                                <button type="submit" class="btn primary-btn btn-block"><span class="glyphicon glyphicon-off"></span> Sign Up</button>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
@@ -126,20 +134,8 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
-
-
-
-
-
-
-
-
-
-
-
+                    {{-- Logged in --}}
                     @else
                         <!-- profile dropdown -->
                         <li class="dropdown" id="dp">
@@ -177,13 +173,5 @@
             <!-- End collapse container -->
         </div>
         <!-- End navbar container -->
-
-
-
-
-
-
-
-
     </nav>
 </header>
