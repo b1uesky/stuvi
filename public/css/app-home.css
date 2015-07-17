@@ -19,8 +19,7 @@
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
  *
- *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */
-.primary-btn {
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */.primary-btn {
   background: #00a496;
   color: white;
   border: none;
@@ -57,8 +56,7 @@
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
  *
- *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* GENERAL CONTAINER *//* LAYERED CONTAINERS (like material design) *//*** FORM STYLING ***/
-.form-control:focus {
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* GENERAL CONTAINER *//* LAYERED CONTAINERS (like material design) *//*** FORM STYLING ***/.form-control:focus {
   border: 2px solid #00a496;
   box-shadow: none;
 }
@@ -70,8 +68,7 @@
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
  *
- *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */
-.table-default {
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */.table-default {
   background-color: white;
   border: 1px solid #ddd;
 }
@@ -91,8 +88,7 @@
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
  *
- *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */
-.modal-content {
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */.modal-content {
   border-radius: 0;
 }
 .close-modal-btn:hover, .close-modal-btn:focus {
@@ -118,8 +114,7 @@
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
  *
- *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* VARIABLES */
-.footer-distributed {
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* VARIABLES */.footer-distributed {
   background-color: #292c2f;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
@@ -163,9 +158,7 @@
   line-height: 35px;
   margin-left: 3px;
 }
-
-/* Additional styling */
-.social:hover {
+/* Additional styling */.social:hover {
   background-color: #00a496 !important;
 }
 .footer-link:hover {
@@ -177,17 +170,13 @@
 hr {
   opacity: 0.3;
 }
-
-/* If you don't want the footer to be responsive, remove these media queries */
-@media (max-width: 600px) {
+/* If you don't want the footer to be responsive, remove these media queries */@media (max-width: 600px) {
   .footer-distributed .footer-left {
     text-align: center;
   }
-
   .footer-distributed .footer-left p.footer-links {
     line-height: 1.8;
   }
-
   .footer-distributed .footer-right {
     text-align: center;
     float: none;

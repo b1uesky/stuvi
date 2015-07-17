@@ -154,9 +154,7 @@
 #nav-toggle-collapse:hover, #nav-toggle-collapse:focus {
   background: #f9aa62;
 }
-
-/******* NAVIGATION DROPDOWN *******/
-#nav-drop {
+/******* NAVIGATION DROPDOWN *******/#nav-drop {
   padding-bottom: 10px;
 }
 #nav-drop:focus {
