@@ -81,6 +81,7 @@ class CartController extends Controller
             Session::flash('message', 'Sorry, cannot find the product.');
             Session::flash('alert-class', 'alert-danger');
         }
+
         return redirect('/cart');
     }
 

@@ -30,28 +30,12 @@
                 </div>
                 <p>ISBN10: {{ $book->isbn10 }}</p>
                 <p>ISBN13: {{ $book->isbn13 }}</p>
-
                 <p>Edition: {{ $book->edition }}</p>
-
                 <p>Number of Pages: {{ $book->num_pages }}</p>
-                {{-- Author(s) --}}
-                {{-- TODO: Make each author name looks like a tag --}}
-                {{--<div class="">--}}
-                {{--@if(count($book->authors) > 1)--}}
-                {{--<span>Authors:</span>--}}
-                {{--@foreach($book->authors as $author)--}}
-                {{--<span>{{ $author->full_name }}</span>--}}
-                {{--@endforeach--}}
-                {{--@else--}}
-                {{--<span>Author:</span>--}}
-                {{--{{ $book->authors[0]->full_name }}--}}
-                {{--@endif--}}
-                {{--</div>--}}
-
             </div>
         </div>
 
-        @if(count($book->availableProducts()) > 0)
+        @if(count($available_products) > 0)
 
             <div class="row table-row">
 
@@ -65,7 +49,7 @@
                         <th>Add to Cart</th>
                     </tr>
                     </thead>
-                    @foreach($book->availableProducts() as $product)
+                    @foreach($available_products as $product)
                         <tr>
                             <td>
                                 <p id="price">${{ $product->price }}</p>

@@ -121,7 +121,7 @@ class TextbookController extends Controller
     }
 
     /**
-     * Display a specified textbook.
+     * Display a specified textbook with available products.
      *
      * @param $book
      *
@@ -129,8 +129,11 @@ class TextbookController extends Controller
      */
     public function show($book)
     {
+        $available_products = $book->availableProducts(Auth::user()->id);
+
         return view("textbook.show")
-            ->with('book', $book);
+            ->with('book', $book)
+            ->with('available_products', $available_products);
     }
 
 

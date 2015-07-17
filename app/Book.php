@@ -65,11 +65,25 @@ class Book extends Model
      *
      * TODO: order by product general condition
      *
+     * @param $user_id
      * @return mixed
      */
-    public function availableProducts()
+    public function availableProducts($user_id=null)
     {
-        return $this->products()->where('sold', 0)->get();
+        $products = $this->products();
+
+        if ($user_id)
+        {
+            return $products
+                ->where('sold', 0)
+                ->where('seller_id', '!=', $user_id)
+                ->get();
+        }
+
+        return $products
+            ->where('sold', 0)
+            ->get();
+
 //        $products = DB::table('books')
 //                        ->join('products', 'books.id', '=', 'products.book_id')
 //                        ->join('product_conditions', 'products.id', '=', 'product_conditions.product_id')
