@@ -13,15 +13,28 @@ $(document).ready(function() {
             window.location.href = "/textbook/buy/" + ui.item.id;
         }
     }).autocomplete('instance')._renderItem = function(ul, item) {
+        // TODO: use default image if no image.
+        var image = '#';
+
+        if (item.image) {
+            image = item.image;
+        }
+
+        var authors = 'Unknown';
+
+        if (item.authors && item.authors.length > 0) {
+            authors = item.authors.join(', ');
+        }
+
         return $("<li>")
             .append(
                 '<div class="autocomplete-result">' +
                     '<div class="autocomplete-thumbnail">' +
-                        '<img src="' + item.image + '">' +
+                        '<img src="' + image + '">' +
                     '</div>' +
                     '<div class="autocomplete-data">' +
                         '<div class="autocomplete-title">' + item.title + '</div>' +
-                        '<div class="autocomplete-authors">' + item.authors.join(', ') + '</div>' +
+                        '<div class="autocomplete-authors">' + authors + '</div>' +
                         '<div class="autocomplete-isbn">ISBN-10:' + item.isbn10 + '</div>' +
                         '<div class="autocomplete-isbn">ISBN-13:' + item.isbn13 + '</div>' +
                     '</div>' +

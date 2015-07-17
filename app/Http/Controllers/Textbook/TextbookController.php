@@ -343,14 +343,22 @@ class TextbookController extends Controller
                 array_push($authors, $author->full_name);
             }
 
+            $book_image = null;
+
+            if ($book->imageSet && $book->imageSet->small_image)
+            {
+                $book_image = $book->imageSet->small_image;
+            }
+
             $book_data[] = [
                 'id'      => $book->id,
                 'title'   => $book->title,
                 'isbn10'  => $book->isbn10,
                 'isbn13'  => $book->isbn13,
                 'authors' => $authors,
-                'image'   => $book->imageSet->small_image
+                'image'   => $book_image
             ];
+
         }
 
         return Response::json($book_data);
