@@ -266,14 +266,17 @@
                 </div>
 
                 {{-- Upload Images --}}
-                <div class="form-group">
-                    <label>Front cover image</label>
+                <div class="form-group" name="cover_img">
+                    <label>Front cover image (smaller than 3MB)</label>
                     <input type="file" name="front-cover-image" class="upload-file"/>
                     <div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>
                 </div>
 
                 {{-- Add more images --}}
-                <a class="btn secondary-btn btn-add-input">Add Another Image</a>
+                <div class="form-group">
+                    <label name="add_other_img">Other image(s) (smaller than 3MB)</label><br>
+                    <a class="btn secondary-btn btn-add-input" name="add_img_btn">Add Another Image</a>
+                </div>
 
                 <input type="submit" name="submit" class="btn primary-btn sell-btn" value="Post Book"/>
             </form>

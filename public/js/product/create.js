@@ -27,7 +27,7 @@ $(document).ready(function () {
             ];
 
             // insert the block before submit button
-            $(html_block.join('')).insertBefore('input[name=submit]');
+            $(html_block.join('')).insertAfter('label[name=add_other_img]');
         }
 
     });
