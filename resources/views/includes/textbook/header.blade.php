@@ -19,10 +19,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <!-- Nav Bar Links-->
                 <ul class="nav navbar-nav" id="nav-left">
-                    <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbooks</a></li>
-                    <li><a href="{{ url('/coming') }}">Housing</a></li>
-                    <li><a href="{{ url('/coming') }}">Clubs</a></li>
-                    <li><a href="{{ url('/coming') }}">Groups</a></li>
+                    <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbook</a></li>
+                    {{--<li><a href="{{ url('/coming') }}">Housing</a></li>--}}
+                    {{--<li><a href="{{ url('/coming') }}">Club</a></li>--}}
+                    {{--<li><a href="{{ url('/coming') }}">Group</a></li>--}}
                 </ul>
                 <!-- Navbar right -->
                 <ul id="nav-right" class="nav navbar-nav navbar-right">
