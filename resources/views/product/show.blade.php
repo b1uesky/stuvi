@@ -58,6 +58,8 @@
                 </div>
                 @if($product->isInCart(Auth::user()->id))
                     <a class="btn add-cart-btn disabled" href="#" role="button">Added To Cart</a>
+                @elseif($product->seller == Auth::user())
+                    <a class="btn add-cart-btn disabled" href="#" role="button">Posted by you</a>
                 @else
                     <a class="btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
                 @endif

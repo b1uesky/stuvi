@@ -129,7 +129,7 @@ class TextbookController extends Controller
      */
     public function show($book)
     {
-        $available_products = $book->availableProducts(Auth::user()->id);
+        $available_products = $book->availableProducts();
 
         return view("textbook.show")
             ->with('book', $book)
