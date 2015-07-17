@@ -75,7 +75,7 @@
                                 <!-- Save changes button -->
                                 <div class="form-group">
                                     <div class=" col-sm-offset-3 col-sm-6">
-                                        <button id="save-info-btn" type="submit" class="btn btn-default">Save Changes
+                                        <button id="save-info-btn" type="submit" class="btn secondary-btn">Save Changes
                                         </button>
                                     </div>
                                 </div>

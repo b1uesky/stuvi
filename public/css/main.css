@@ -52,7 +52,12 @@
   outline: 0 !important;
   background: #f16521;
 }
-/* GENERAL CONTAINER *//* LAYERED CONTAINERS (like material design) *//*** FORM STYLING ***/.form-control:focus {
+/*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* GENERAL CONTAINER *//* LAYERED CONTAINERS (like material design) *//*** FORM STYLING ***/.form-control:focus {
   border: 2px solid #00a496;
   box-shadow: none;
 }
@@ -88,25 +93,26 @@
   outline: 0;
 }
 /******* NAVIGATION BAR *******/#nav {
-  background: #f2f2f2;
+  background: rgba(255, 255, 255, 0.97);
   border-radius: 0;
   border: none;
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
 }
-
 #nav-left li a {
-  color: black !important;
+  color: black;
 }
-
 #nav-left li a:hover {
-  background-color: #f2f2f2 !important;
-  border-bottom: 5px solid #00a496 !important;
-  /*font-weight: bold;*/
-  color: #00a496 !important;
+  background-color: rgba(255, 255, 255, 0.97);
+  border-bottom: 5px solid #00a496;
+  color: #00a496;
+}
+#nav-left li a:focus {
+  background-color: rgba(255, 255, 255, 0.97);
 }
 .active-nav {
-  background-color: #f2f2f2 !important;
-  border-bottom: 5px solid #00a496 !important;
-  /*font-weight: bold;*/
+  background-color: rgba(255, 255, 255, 0.97);
+  border-bottom: 5px solid #00a496;
+  color: #00a496 !important;
 }
 .logo-container {
   width: 120px;
@@ -131,38 +137,27 @@
 #navi-drop:focus {
   background-color: #69c8c8;
 }
-
 #navi-drop:hover {
   color: #00a496;
-  background-color: #f2f2f2;
+  background-color: rgba(255, 255, 255, 0.97);
 }
-
-#cart-link {
+#cart-link, #dp, #login-btn, #register-btn {
   color: black;
 }
-
-#cart-link:hover {
-  background-color: #f2f2f2 !important;
-  border-bottom: 5px solid #00a496 !important;
-  /*font-weight: bold;*/
-  color: #00a496 !important;
-}
-
-#dp:hover {
-  background-color: #f2f2f2 !important;
-  border-bottom: 5px solid #00a496 !important;
-  /*font-weight: bold;*/
-  color: #00a496 !important;
+#cart-link:hover, #dp:hover, #login-btn:hover, #register-btn:hover {
+  background-color: rgba(255, 255, 255, 0.97);
+  border-bottom: 5px solid #00a496;
+  color: #00a496;
 }
 #nav-right > .open > a {
-  background-color: #f2f2f2;
+  background-color: rgba(255, 255, 255, 0.97);
 }
 .nav-caret {
   color: black;
   margin-top: 0px;
 }
-.nav-caret:hover {
-  /*color: $primary-color !important;*/
+.dropdown-menu {
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 .dropdown-menu li a:hover {
   background-color: #00a496;

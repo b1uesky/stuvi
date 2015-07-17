@@ -1,5 +1,5 @@
 /****** TEXTBOOK SHOW PAGE
- This page lists all the textbook varients avaliable.
+ This page lists all the textbook variants available.
  /textbook/buy/<ID #>
  ******//* Import of all modules *//*
  * Stuvi color palette
@@ -29,8 +29,13 @@
 .authors-container {
   margin-bottom: 10px;
 }
+.author-label {
+  background-color: #00a496;
+  color: white;
+  border: none;
+}
 .author-btn:hover, .author-btn:focus {
-  background-color: #f16521;
+  background-color: #00a496;
   color: white;
   outline: 0 !important;
 }
@@ -48,9 +53,7 @@
 #price {
   color: #b12704;
 }
-
-/** BUTTON **/
-.add-cart-btn {
+/** PRESSED BUTTON **/.add-cart-btn {
   margin-left: 13px;
 }
 .cart-btn-col {
