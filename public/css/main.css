@@ -200,6 +200,13 @@
 #cart-fix {
   line-height: 19px;
 }
+/* LOGIN SIGNUP MODAL */.modal-header {
+  text-align: center;
+}
+.modal-body {
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
+}
 /* Footer CSS Template
  http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/
  *//* Import of all modules *//*
@@ -216,7 +223,7 @@
   box-sizing: border-box;
   width: 100%;
   text-align: left;
-  font: normal 16px "Roboto", Helvetica, Arial, sans-serif;
+  font: normal 14px "Roboto", Helvetica, Arial, sans-serif;
   padding: 30px 50px;
   margin-top: 0px;
 }
@@ -226,7 +233,7 @@
   margin: 0;
 }
 .footer-distributed .footer-left .footer-links {
-  font-size: 16px;
+  font-size: 14px;
   color: white;
   margin: 0 0 10px;
   padding: 0;
