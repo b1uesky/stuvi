@@ -82,7 +82,7 @@ class CartController extends Controller
             Session::flash('alert-class', 'alert-danger');
         }
 
-        return redirect('/cart');
+        return redirect()->back();
     }
 
     /**
