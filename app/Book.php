@@ -68,17 +68,9 @@ class Book extends Model
      * @param $user_id
      * @return mixed
      */
-    public function availableProducts($user_id=null)
+    public function availableProducts()
     {
         $products = $this->products();
-
-        if ($user_id)
-        {
-            return $products
-                ->where('sold', 0)
-                ->where('seller_id', '!=', $user_id)
-                ->get();
-        }
 
         return $products
             ->where('sold', 0)
