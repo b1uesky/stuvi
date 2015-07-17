@@ -29,8 +29,14 @@
 .authors-container {
   margin-bottom: 10px;
 }
+
+.author-label {
+  background-color: #00a496;
+  color: white;
+  border: none;
+}
 .author-btn:hover, .author-btn:focus {
-  background-color: #f16521;
+  background-color: #00a496;
   color: white;
   outline: 0 !important;
 }
@@ -49,7 +55,7 @@
   color: #b12704;
 }
 
-/** BUTTON **/
+/** PRESSED BUTTON **/
 .add-cart-btn {
   margin-left: 13px;
 }

@@ -1,0 +1,24 @@
+/*** MODAL STYLING ***/
+@import "../modules/all";
+
+.modal-content {
+  border-radius: 0;
+}
+
+.close-modal-btn {
+  &:hover, &:focus {
+    outline: 0;
+    color: white;
+    text-shadow: none;
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  background-color: $primary-color;
+  color: white;
+}
+
+.modal-footer {
+  background-color: $background-color;
+}

@@ -23,11 +23,10 @@
   background: #00a496;
   color: white;
   border: none;
-  margin: 5px;
 }
 .primary-btn:hover, .primary-btn:focus {
   background: #00b2a4;
-  outline: 0;
+  outline: 0 !important;
   color: white;
 }
 .secondary-btn {
@@ -52,7 +51,14 @@
   outline: 0 !important;
   background: #f16521;
 }
-/* GENERAL CONTAINER *//* LAYERED CONTAINERS (like material design) *//*** FORM STYLING ***/.form-control:focus {
+
+/*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* GENERAL CONTAINER *//* LAYERED CONTAINERS (like material design) *//*** FORM STYLING ***/
+.form-control:focus {
   border: 2px solid #00a496;
   box-shadow: none;
 }
@@ -76,6 +82,35 @@
   background-color: white;
   border: 1px solid #f16521;
 }
+
+/*** MODAL STYLING ***//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */
+.modal-content {
+  border-radius: 0;
+}
+
+.close-modal-btn:hover, .close-modal-btn:focus {
+  outline: 0;
+  color: white;
+  text-shadow: none;
+  opacity: 1;
+}
+
+.modal-header {
+  background-color: #00a496;
+  color: white;
+}
+
+.modal-footer {
+  background-color: #f2f2f2;
+}
 /* SECTIONS *//* SCSS for navigation bar. See _colors.scss and _footer.scss *//* VARIABLES *//*  CSS FOR NAVIGATION BAR  *//* Import of all modules *//*
  * Stuvi color palette
  * Please use these variables for any colors used.
@@ -92,11 +127,9 @@
   border-radius: 0;
   border: none;
 }
-
 #nav-left li a {
   color: black !important;
 }
-
 #nav-left li a:hover {
   background-color: #f2f2f2 !important;
   border-bottom: 5px solid #00a496 !important;
@@ -131,23 +164,19 @@
 #navi-drop:focus {
   background-color: #69c8c8;
 }
-
 #navi-drop:hover {
   color: #00a496;
   background-color: #f2f2f2;
 }
-
 #cart-link {
   color: black;
 }
-
 #cart-link:hover {
   background-color: #f2f2f2 !important;
   border-bottom: 5px solid #00a496 !important;
   /*font-weight: bold;*/
   color: #00a496 !important;
 }
-
 #dp:hover {
   background-color: #f2f2f2 !important;
   border-bottom: 5px solid #00a496 !important;

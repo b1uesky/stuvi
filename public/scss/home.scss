@@ -27,7 +27,7 @@ body{
   * Photo by Nick Louie. Link: https://flic.kr/p/kSKWtK
   ******************/
 
-  background: #{$background-color} url("../img/scaled/cover-2-1.jpeg") no-repeat center;
+  background: #{$background-color} url("../img/cover-2-1.png") no-repeat center;
   background-size: cover;                         /* Fill entire container */
   height: 80vh;     /* Height is equal to 80% of the viewport height */
   @media (max-width: 767px){

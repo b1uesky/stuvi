@@ -20,7 +20,7 @@
  * or altered (except sizing/cropping) in any other way other than on the homepage
  * Photo by Nick Louie. Link: https://flic.kr/p/kSKWtK
  ******************/
-  background: #f2f2f2 url("../img/scaled/cover-2-1.jpeg") no-repeat center;
+                                            background: #f2f2f2 url("../img/cover-2-1.png") no-repeat center;
   background-size: cover;
   /* Fill entire container */
   height: 80vh;

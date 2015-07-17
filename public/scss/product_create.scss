@@ -64,14 +64,6 @@ body {
   cursor: pointer;
 }
 
-.close-modal-btn {
-  &:hover, &:focus {
-    outline: 0;
-    color: $secondary-color;
-    opacity: 1;
-  }
-}
-
 .btn-add-input {
   margin-bottom: 20px;
 }
