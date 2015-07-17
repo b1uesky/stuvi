@@ -56,7 +56,7 @@ class CartController extends Controller
 
         if ($item)
         {
-            if ($this->cart->hasItem($item->id))
+            if ($this->cart->hasProduct($item->id))
             {
                 Session::flash('message', 'Item has already been added to the cart.');
                 Session::flash('alert-class', 'alert-danger');
@@ -85,17 +85,15 @@ class CartController extends Controller
     }
 
     /**
-     * @param $id
+     * @param $product_id
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function removeItem($id)
+    public function removeItem($product_id)
     {
-//        var_dump($id);
-
-        if ($this->cart->hasItem($id))
+        if ($this->cart->hasProduct($product_id))
         {
-            $this->cart->remove($id);
+            $this->cart->remove($product_id);
             $message = 'The item is removed successfully';
         }
         else
