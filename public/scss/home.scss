@@ -76,15 +76,15 @@ body{
   border-radius: 0;
   font-weight: bold;
   font-size: 1.3em;
-  color: #FFFFFF;
-  border: 3px solid #FFFFFF;
+  color: white;
+  border: 3px solid white;
   background: none;
   margin: 0 20px 0;
   padding-top: 9px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
   &:hover{
-    background: #F16521;
-    color: #FFFFFF;
+    background-color: rgba(0, 164, 150, 0.6);
+    color: white;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
   }
   &:focus{
@@ -107,9 +107,9 @@ body{
 }
 
 .services {
-  background-color: #F16521;
+  background-color: $primary-color;
   text-align: center;
-  color: #FFFFFF;
+  color: white;
   h4{
     font-weight: 900;
   }
