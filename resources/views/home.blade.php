@@ -32,7 +32,7 @@
                         <i class="fa fa-bars fa-lg"></i>
                     </button>
                     <div class="logo-container">
-                        <a href="{{url('/home')}}"> <img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive">
+                        <a href="{{url('/home')}}"> <img src="{{asset('/img/logo-new-md.png')}}" class="img-responsive">
                         </a>
                     </div>
                 </div>

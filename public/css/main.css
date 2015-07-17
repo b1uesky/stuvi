@@ -159,16 +159,13 @@
 #nav-drop {
   padding-bottom: 10px;
 }
-
 #nav-drop:focus {
   background-color: #69c8c8;
 }
-
 #nav-drop:hover {
   color: #00a496;
   background-color: rgba(255, 255, 255, 0.97);
 }
-
 #nav-drop:hover #account-name, #nav-drop:hover .nav-caret {
   color: #00a496;
 }
