@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 
 use App\User;
 use App\BuyerOrder;
+use Faker\Factory;
 
 class BuyerOrderSeeder extends Seeder
 {
@@ -16,12 +17,12 @@ class BuyerOrderSeeder extends Seeder
     {
         DB::table('buyer_orders')->delete();
 
-        $buyer = User::where('email', '=', 'buyer@stuvi.com')->first();
+        $faker = Factory::create();
 
-        for ($i = 1; $i < 11; $i++)
+        for ($i = 1; $i < 30; $i++)
         {
             BuyerOrder::create([
-                'buyer_id'  => $buyer->id,
+                'buyer_id'  => $faker->numberBetween(1, User::count()),
                 'cancelled' => false,
                 'shipping_address_id' => $i
             ]);

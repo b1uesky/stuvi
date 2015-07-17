@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\CartItem;
+
 class Cart extends Model
 {
 
@@ -22,11 +24,12 @@ class Cart extends Model
     /**
      * Delete items in cart by items' id.
      *
-     * @param $item_id
+     * @param $product_id
      */
-    public function remove($item_id)
+    public function remove($product_id)
     {
-        $item = CartItem::find($item_id);
+        $item = CartItem::where('cart_id', $this->id)->where('product_id', $product_id);
+
         if ($item)
         {
             $item->delete();
@@ -125,18 +128,6 @@ class Cart extends Model
     }
 
     /**
-     * Check if cart has the given cart item.
-     *
-     * @param $item_id
-     *
-     * @return bool
-     */
-    public function hasItem($item_id)
-    {
-        return !$this->items->where('id', intval($item_id))->isEmpty();
-    }
-
-    /**
      * Check if cart has the given product.
      *
      * @param $product_id
@@ -145,7 +136,9 @@ class Cart extends Model
      */
     public function hasProduct($product_id)
     {
-        return !$this->items->where('product_id', (int)$product_id)->isEmpty();
+        return CartItem::where('cart_id', $this->id)
+            ->where('product_id', $product_id)
+            ->exists();
     }
 
 

@@ -81,7 +81,7 @@
                     <!-- price -->
                     <td>${{ $item->product->price }}</td>
                     <!-- remove -->
-                    <td><a href="{{ url('/cart/rmv/'.$item->id) }}"><i class="fa fa-times btn-close"></i>
+                    <td><a href="{{ url('/cart/rmv/'.$item->product->id) }}"><i class="fa fa-times btn-close"></i>
                         </a></td>
                 </tr>
                 <!-- how will this style?? -->

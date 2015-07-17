@@ -120,7 +120,7 @@ class TextbookController extends Controller
     }
 
     /**
-     * Display a specified textbook.
+     * Display a specified textbook with available products.
      *
      * @param $book
      *
@@ -128,8 +128,11 @@ class TextbookController extends Controller
      */
     public function show($book)
     {
+        $available_products = $book->availableProducts();
+
         return view("textbook.show")
-            ->with('book', $book);
+            ->with('book', $book)
+            ->with('available_products', $available_products);
     }
 
 
@@ -192,13 +195,16 @@ class TextbookController extends Controller
             {
                 // save book
                 $book = Book::create([
-                    'isbn10'    => $amazon->getISBN10(),
-                    'isbn13'    => $amazon->getISBN13(),
-                    'title'     => $amazon->getTitle(),
-                    'edition'   => $amazon->getEdition(),
-                    'binding'   => $amazon->getBinding(),
-                    'language'  => $amazon->getLanguage(),
-                    'num_pages' => $amazon->getNumPages(),
+                    'isbn10'            => $amazon->getISBN10(),
+                    'isbn13'            => $amazon->getISBN13(),
+                    'title'             => $amazon->getTitle(),
+                    'edition'           => $amazon->getEdition(),
+                    'binding'           => $amazon->getBinding(),
+                    'language'          => $amazon->getLanguage(),
+                    'num_pages'         => $amazon->getNumPages(),
+                    'list_price'        => $amazon->getListPriceDecimalPrice(),
+                    'lowest_new_price'  => $amazon->getLowestNewPriceDecimalPrice(),
+                    'lowest_used_price' => $amazon->getLowestUsedriceDecimalPrice()
                 ]);
 
                 // save book image set
