@@ -43,7 +43,7 @@
                         <textarea class="form-control" rows="5" placeholder="Message"></textarea>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn contact-btn">Submit</button>
+                        <button type="submit" class="btn primary-btn" id="contact-btn">Submit</button>
                     </div>
                 </form>
             </div>
@@ -52,12 +52,15 @@
                 <h3>Contact Details</h3>
                 <div class="contact-info-container">
                     <ul class="contact-info">
-                        <li><a href="http://bit.ly/1AStBAY" target="_blank"><i class="fa fa-map-marker fa-lg"></i> Boston, MA</a></li>
+                        <li><a href="http://bit.ly/1AStBAY" target="_blank"><i class="fa fa-map-marker fa-lg"
+                                                                               id="map-marker"></i> Boston, MA</a></li>
                         <li><a href="mailto:official@stuvi.com"><i class="fa fa-envelope-o fa-lg"></i> official@stuvi
                                 .com</a></li>
-                        <li><a href="https://www.facebook.com/StuviBoston" target="_blank"><i class="fa fa-facebook fa-lg"></i> Facebook</a></li>
+                        <li><a href="https://www.facebook.com/StuviBoston" target="_blank"><i
+                                        class="fa fa-facebook fa-lg" id="facebook"></i> Facebook</a></li>
                         <li><a href="https://twitter.com/StuviBoston" target="_blank"><i class="fa fa-twitter fa-lg"></i> Twitter</a></li>
-                        <li><a href="https://www.linkedin.com/company/stuvi?trk=biz-companies-cym" target="_blank"><i class="fa fa-linkedin fa-lg"></i> LinkedIn</a></li>
+                        <li><a href="https://www.linkedin.com/company/stuvi?trk=biz-companies-cym" target="_blank"><i
+                                        class="fa fa-linkedin fa-lg" id="linkedin"></i> LinkedIn</a></li>
                         {{--<li><a href="#"><i class="fa fa-github fa-lg"></i> Github</a></li>--}}
                     </ul>
                 </div>

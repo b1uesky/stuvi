@@ -5,9 +5,7 @@
 @section('title','Account Settings - '.Auth::user()->first_name.' '.Auth::user()->last_name)
 
 @section('css')
-    <link href="{{ asset('/css/user/account.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/user-bar.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/user-profile.css')}}">
+    <link href="{{ asset('/css/user_account.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -77,7 +75,7 @@
                                 <!-- Save changes button -->
                                 <div class="form-group">
                                     <div class=" col-sm-offset-3 col-sm-6">
-                                        <button id="save-info-btn" type="submit" class="btn btn-default">Save Changes
+                                        <button id="save-info-btn" type="submit" class="btn secondary-btn">Save Changes
                                         </button>
                                     </div>
                                 </div>

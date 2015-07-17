@@ -18,7 +18,7 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <!-- Nav Bar Links-->
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" id="nav-left">
                     <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbooks</a></li>
                     <li><a href="{{ url('/coming') }}">Housing</a></li>
                     <li><a href="{{ url('/coming') }}">Clubs</a></li>
@@ -27,13 +27,13 @@
                 <!-- Navbar right -->
                 <ul id="nav-right" class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
-                        <li><a class="nav-login" href="{{ url('/auth/login') }}">
+                        <li><a id="login-btn" class="nav-login" href="{{ url('/auth/login') }}">
                                 <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
-                        <li><a class="nav-login" href="{{ url('/auth/register') }}">
+                        <li><a id="register-btn" class="nav-login" href="{{ url('/auth/register') }}">
                                 <i class="fa fa-user"></i> Sign Up</a></li>
                     @else
                         <!-- profile dropdown -->
-                        <li class="dropdown">
+                        <li class="dropdown" id="dp">
                             <a href="#" id="navi-drop" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button"
                                aria-expanded="true"><span nav-caret
                                                           id="account-name">{{ Auth::user()->first_name }} </span><span
@@ -59,7 +59,7 @@
                         </li>
                         <!-- cart -->
                         <li class="cart">
-                            <a href="{{ url('/cart') }}" class="cart-link">Cart <i class="fa fa-shopping-cart" style="line-height: 19px;"></i></a>
+                            <a href="{{ url('/cart') }}" id="cart-link">Cart <i class="fa fa-shopping-cart" style="line-height: 19px;"></i></a>
                         </li>
                     @endif
 

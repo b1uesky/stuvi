@@ -5,7 +5,7 @@
 @section('title', 'Your orders')
 
 @section('css')
-    <link href="{{ asset('/css/order/order.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/order_index.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -54,10 +54,10 @@
                     @endif
                     {{--<a class="btn btn-default order-button-1" href="#" role="button">Track Package</a>--}}
                     @if ($order->isDelivered())
-                        <a class="btn btn-default order-button-2" href="#" role="button">Return or Replace Item</a>
+                        <a class="btn secondary-btn" href="#" role="button">Return or Replace Item</a>
                         {{--<a class="btn btn-default order-button-2" href="#" role="button">Leave Seller Feedback</a>--}}
                     @else
-                        <a class="btn btn-default order-button-2" href="/order/buyer/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
+                        <a class="btn secondary-btn" href="/order/buyer/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
                     @endif
 
                     <!-- products in order -->

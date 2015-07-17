@@ -5,7 +5,7 @@
 @section('title', 'Enter book info')
 
 @section('css')
-    <link href="{{ asset('/css/product/product-create.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/product_create.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -247,9 +247,9 @@
                 </div>
 
                 {{-- Add more images --}}
-                <a class="btn btn-info btn-add-input">Add image</a>
+                <a class="btn secondary-btn btn-add-input">Add Another Image</a>
 
-                <input type="submit" name="submit" class="btn sell-btn" value="Post Book"/>
+                <input type="submit" name="submit" class="btn primary-btn sell-btn" value="Post Book"/>
             </form>
         </div>
     </div>

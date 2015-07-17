@@ -2,14 +2,14 @@
 
 @extends('app')
 
-@section('title', 'Cart')
+@section('title', 'Your Cart')
+
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('/css/cart_index.css')}}">
+
+@endsection
 
 @section('content')
-
-    <head>
-        <title> Stuvi - Your Cart</title>
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/cart/cart.css')}}">
-    </head>
 
     <!-- different icon and bg color depending on alert. add to other pages??? -->
     @if (Session::has('message'))
@@ -75,7 +75,7 @@
                     <!-- price -->
                     <td>${{ $item->product->price }}</td>
                     <!-- remove -->
-                    <td><a href="{{ url('/cart/rmv/'.$item->id) }}"><i class="fa fa-times btn-close"></i>
+                    <td><a href="{{ url('/cart/rmv/'.$item->id) }}"><i class="fa fa-times cart-remove-btn"></i>
                         </a></td>
                 </tr>
                 <!-- how will this style?? -->
@@ -97,7 +97,7 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" id="coupon" placeholder="">
                                 <label for="coupon">
-                                    <a class="btn btn-default cart-button" href="#" role="button">Apply Coupon</a>
+                                    <a class="btn btn-default secondary-btn" href="#" role="button">Apply Coupon</a>
                                 </label>
                             </div>
                         </form>
@@ -107,7 +107,7 @@
                     <!-- buffer -->
                     <td></td>
                     <!-- update cart -->
-                    <td><a class="btn btn-default cart-button" href="/cart/update" role="button">Update Cart</a></td>
+                    <td><a class="btn btn-default secondary-btn" href="/cart/update" role="button">Update Cart</a></td>
                 </tr>
             </tfoot>
             @endif
@@ -121,7 +121,7 @@
                     <td>${{ $total_price }}</td>
                 </tr>
             </table>
-            <a class="btn btn-checkout" href="{{ url('/order/create') }}" role="button">
+            <a class="btn primary-btn btn-checkout" href="{{ url('/order/create') }}" role="button">
                 Proceed to Checkout
             </a>
         </div>
@@ -132,7 +132,7 @@
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
+    {{--<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>--}}
     <script>
         function goBack() {
             window.history.back();

@@ -1,0 +1,121 @@
+/* SCSS for navigation bar. See _colors.scss and _footer.scss */
+
+/* VARIABLES */
+
+/*  CSS FOR NAVIGATION BAR  */
+@import '../modules/all';
+
+a:focus {
+  outline: 0;
+}
+
+/******* NAVIGATION BAR *******/
+
+#nav {
+  background: $nav-background-color;
+  border-radius: 0;
+  border: none;
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+#nav-left li a{
+  color: $nav-text-color;
+  &:hover{
+    background-color: $nav-background-color;
+    border-bottom: 5px solid #{$primary-color};
+    color: $primary-color;
+  }
+  &:focus{
+    background-color: $nav-background-color;
+  }
+}
+
+.active-nav {
+  background-color: $nav-background-color;
+  border-bottom: 5px solid #{$primary-color};
+  color: $primary-color !important;
+}
+
+
+.logo-container {
+  width: 120px;
+  height: 48px;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+.nav-login {
+  height: 50px;
+}
+
+/******* NAVIGATION HAMBURGER MENU *******/
+
+.fa-bars {
+  color: $primary-color;
+}
+
+#nav-toggle-collapse{
+  &:hover, &:focus {
+  background: $light-orange-color;
+  }
+}
+
+/******* NAVIGATION DROPDOWN *******/
+
+#navi-drop {
+  padding-bottom: 10px;
+  &:focus {
+    background-color: $accent-color;
+  }
+  &:hover{
+    color: $primary-color;
+    background-color: $nav-background-color;
+    #account-name, .nav-caret{
+      color: $primary-color;
+    }
+  }
+}
+
+#cart-link, #dp, #login-btn, #register-btn{
+  color: $nav-text-color;
+  &:hover{
+    background-color: $nav-background-color;
+    border-bottom: 5px solid #{$primary-color};
+    color: $primary-color;
+  }
+}
+
+#nav-right > .open > a{
+  background-color: $nav-background-color;
+}
+
+.nav-caret {
+  color: $nav-text-color;
+  margin-top: 0px;
+  &:hover{
+  }
+}
+
+.dropdown-menu {
+  li{
+    a{
+      &:hover{
+        background-color: $primary-color;
+        color: white;
+      }
+    }
+  }
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Fix for when dropdown is open, the text was getting changed to dark*/
+#account-name {
+  color: $nav-text-color;
+}
+
+#cart-fix {
+  line-height: 19px;
+}

@@ -1,0 +1,39 @@
+/** TEXTBOOK NAVIGATION BAR **/
+
+@import "modules/all";
+
+.tab-filter-container {
+  width: 100%;
+  background: $light-orange-color;
+  height: 40px;
+}
+
+.tab-filters {
+  list-style-type: none;
+  text-align: center;
+  padding-right: 40px;
+}
+
+.filter {
+  display: inline-block;
+  height: 40px;
+  padding-top: 5px;
+}
+
+.filter.active {
+  border-bottom: 5px solid $stuvi-purple-color;
+}
+
+.filter-link {
+  font-size: 20px;
+  color: white;
+  margin: 0 40px;
+}
+
+.filter-link:hover,
+.filter-link:focus,
+.filter-link.active {
+  text-decoration: none;
+  color: $stuvi-purple-color;
+}
+
