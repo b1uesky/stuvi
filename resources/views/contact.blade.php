@@ -61,12 +61,116 @@
                         <li><a href="https://twitter.com/StuviBoston" target="_blank"><i class="fa fa-twitter fa-lg"></i> Twitter</a></li>
                         <li><a href="https://www.linkedin.com/company/stuvi?trk=biz-companies-cym" target="_blank"><i
                                         class="fa fa-linkedin fa-lg" id="linkedin"></i> LinkedIn</a></li>
-                        {{--<li><a href="#"><i class="fa fa-github fa-lg"></i> Github</a></li>--}}
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="testing">
+        <button class="btn primary-btn" data-toggle="modal" data-target=".login-modal">Login</button>
+        <div class="modal fade login-modal" id="login-modal" tabindex="-1" role="dialog"
+             aria-labelledby="Login">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close close-modal-btn" data-dismiss="modal"
+                                aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 style="text-align: center;"><span class="glyphicon glyphicon-lock"></span> Login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="login-email"><span class="glyphicon glyphicon-user"></span> Email</label>
+                                <input type="text" class="form-control" id="login-email" name="email" placeholder="Enter email" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="login-password"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                                <input type="text" class="form-control" name="password" id="login-password" placeholder="Enter password">
+                            </div>
+                            <div class="checkbox" id="remember-me">
+                                <label for="remember-me-box">
+                                    <input id="remember-me-box" type="checkbox" value="" checked>Remember me</label>
+                            </div>
+                            <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <p>Not a member? <a data-toggle="modal" href="#signup-modal" data-dismiss="modal">Sign Up</a></p>
+                        <p>Forgot <a id="forgot-password" href="{{ url('/password/email') }}">Password?</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .modal-body {
+                max-height: calc(100vh - 210px);
+                overflow-y: auto;
+            }
+        </style>
+
+        <div class="modal fade signup-modal" id="signup-modal" tabindex="-1" role="dialog"
+             aria-labelledby="SignUp">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close close-modal-btn" data-dismiss="modal"
+                                aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 style="text-align: center;"><span class="glyphicon glyphicon-lock"></span> Sign Up</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label class="sr-only" for="register-first">First Name</label>
+                                <input type="text" class="form-control" id="register-first" placeholder="First name">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="register-last">Last Name</label>
+                                <input type="text" class="form-control" id="register-last" placeholder="Last name">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="register-email">Email</label>
+                                <input type="email" class="form-control" id="register-email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="register-password">Password</label>
+                                <input type="text" class="form-control" id="psw" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="register-phone">Phone Number</label>
+                                <input type="tel" class="form-control phone_number" name="phone_number" id="register-phone"
+                                       placeholder="Phone number" value="">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="university_id">
+                                    <label class="sr-only" for="register-uni">School</label>
+                                    <option id="register-uni" selected disabled>University</option>
+                                    {{--@foreach($universities as $university)
+                                        <option value="{{ $university->id }}">{{ $university->name }}</option>
+                                    @endforeach--}}
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Sign Up</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <p>Already a member? <a data-toggle="modal" href="#login-modal" data-dismiss="modal">Login</a></p>
+                        <p>Forgot <a id="forgot-password" href="{{ url('/password/email') }}">Password?</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
 
 @endsection
 
