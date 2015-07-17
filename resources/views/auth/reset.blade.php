@@ -3,9 +3,8 @@
 @section('content')
 <head>
     <title>Reset your password</title>
-    <link rel="stylesheet" href="{{asset('/css/auth/reset.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('/css/auth_reset.css')}}" type="text/css">
 </head>
-
 
 <div class="container-fluid container-main">
 	<div class="row row-main">

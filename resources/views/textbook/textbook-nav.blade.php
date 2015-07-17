@@ -1,5 +1,5 @@
 @section('nav')
-    <link href="{{ asset('/css/textbook/textbook-nav.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/textbook_nav.css') }}" rel="stylesheet">
 
     {{--textbook navigation bar--}}
     <div class="tab-filter-container">

@@ -21,7 +21,7 @@
 
     <div class = "container-fluid container-top backgnd">           <!-- Top half -->
         <div class="container top-content col-md-12">
-            <h1 id="head1-temp">Welcome to Stuvi</h1>
+            <h1 id="head1">Welcome to Stuvi</h1>
             <p class="lead tagline">Because it takes a village to conquer college.</p>
             <!-- ghost buttons -->
             @if (Auth::guest())

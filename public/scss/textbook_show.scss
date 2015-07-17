@@ -1,0 +1,92 @@
+/****** TEXTBOOK SHOW PAGE
+
+   This page lists all the textbook variants available.
+/textbook/buy/<ID #>
+
+******/
+@import "modules/all";
+
+body {
+  background-color: $background-color;
+}
+
+.empty {
+  min-height: 90vh;
+}
+
+/*** TEXTBOOK INFO ***/
+
+.textbook-row {
+  margin-top: 50px;
+}
+
+#textbook-img {
+  width: 300px;
+  height: 400px;
+  margin-left: 50px;
+}
+
+.textbook-info {
+  span {
+    font-size: 18px;
+  }
+}
+
+.authors-container {
+  margin-bottom: 10px;
+}
+
+.author-label {
+  background-color: $primary-color;
+  color: white;
+  border: none;
+}
+
+.author-btn {
+  &:hover, &:focus {
+    background-color: $primary-color;
+    color: white;
+    outline: 0 !important;
+  }
+}
+
+.textbook-info {
+  p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+}
+
+/*** TEXTBOOK TABLE ***/
+
+.table-row {
+  margin-top: 40px;
+}
+
+.textbook-table {
+  background-color: white;
+  border: solid #DDD;
+}
+
+#price {
+  color: $price-color;
+}
+
+/** PRESSED BUTTON **/
+
+.add-cart-btn {
+  margin-left: 13px;
+}
+
+.cart-btn-col {
+  width: 150px;
+  @media (max-width: 500px) {
+    width: 90px;
+  }
+}
+
+.sell-btn {
+  @media (max-width: 500px) {
+    width: 40px;
+  }
+}

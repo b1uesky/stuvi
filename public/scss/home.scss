@@ -1,0 +1,137 @@
+@charset "utf-8";
+/* CSS Document */
+/* (c) Stuvi LLC 2015
+* Used for the home page styling.*/
+
+@import "modules/all";
+
+body{
+  backgroud-color: $background-color;
+}
+
+/* Navigation */
+
+/*.nav-dropdown {
+  height: 50px;
+}*/
+
+/* TOP HALF IMAGE */
+
+/*Top background*/
+.backgnd {
+
+  /*****************
+  * Temp cover image...(c)Nicholas Louie All Rights Reserved. I Nicholas Louie, hereby allow a limited license
+  * to display this image on Stuvi's website with proper name and link credit. This photo may not be distributed, used
+  * or altered (except sizing/cropping) in any other way other than on the homepage
+  * Photo by Nick Louie. Link: https://flic.kr/p/kSKWtK
+  ******************/
+
+  background: #{$background-color} url("../img/cover-2-1.png") no-repeat center;
+  background-size: cover;                         /* Fill entire container */
+  height: 80vh;     /* Height is equal to 80% of the viewport height */
+  @media (max-width: 767px){
+    padding-bottom: 0%;
+  }
+}
+
+#head1{
+  color: whitesmoke;
+  text-align: center;
+  font-size: 5em;
+  font-weight: bold;
+  font-family: $base-font-family;
+  padding-top: 6%;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+.tagline{
+  color: whitesmoke;
+  text-align: center;
+  padding-bottom: 5%;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  font-weight: 400;
+}
+
+.top-content{
+  padding-top: 5%;
+}
+
+/***** GHOST BUTTONS
+*      Login, sign in
+*
+ *****/
+
+.ghost-btn-container {
+  text-align: center;
+  padding-top: 3%;
+  @media (max-width: 767px){
+    margin-bottom: 35px;
+  }
+}
+
+.ghost-btn {
+  width: 150px;
+  height: 50px;
+  border-radius: 0;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #FFFFFF;
+  border: 3px solid #FFFFFF;
+  background: none;
+  margin: 0 20px 0;
+  padding-top: 9px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  &:hover{
+    background: #F16521;
+    color: #FFFFFF;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
+  }
+  &:focus{
+    outline: 0;
+    color: #FFFFFF;
+  }
+  @media (max-width: 767px){
+    margin: 0 8px 0;
+  }
+  @media (max-width: 399px) {
+    margin-bottom: 20px;
+  }
+}
+
+
+/******** BOTTOM HALF ********/
+
+#bottom-half {
+  padding: 0;
+}
+
+.services {
+  background-color: #F16521;
+  text-align: center;
+  color: #FFFFFF;
+  h4{
+    font-weight: 900;
+  }
+}
+
+.service-row {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+
+#bottom-half {
+  background-color: $background-color;
+}
+
+#img-info-1{
+  padding: 30px;
+}
+
+.service {
+  margin-bottom: 30px;
+  a {
+    color: white;
+  }
+}

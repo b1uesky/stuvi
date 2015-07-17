@@ -3,7 +3,7 @@
 @section('title', 'Search results for '.$query)
 
 @section('css')
-    <link href="{{ asset('/css/textbook/textbook-list.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/textbook_list.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 @endsection
 
@@ -25,6 +25,7 @@
                 {{--<li role="presentation"><a href="#" data-toggle="pill">Most Bought</a></li>--}}
                 {{--<li role="presentation"><a href="#" data-toggle="pill">Top Rated</a></li>--}}
 
+
                 <div class="col-sm-4 col-md-4 pull-right">
                     <form action="/textbook/buy/search" method="get" class="navbar-form" role="search">
                         <div class="input-group">
@@ -32,7 +33,7 @@
                                    name="query">
 
                             <div class="input-group-btn">
-                                <button class="btn btn-default search-btn" type="submit">
+                                <button class="btn btn-default list-search-btn" type="submit">
                                     <i class="fa fa-search search-icon"></i>
                                 </button>
                             </div>
@@ -82,9 +83,8 @@
                 @endforelse
             </table>
         </div>
+            {{--{!! $books->appends(Request::only('query'))->render() !!}--}}
     </div>
-
-    {{--{!! $books->appends(Request::only('query'))->render() !!}--}}
 @endsection
 
 @section('javascript')

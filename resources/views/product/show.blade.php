@@ -6,12 +6,10 @@
 <title>Stuvi - Book Details - {{ $product->book->title }} </title>
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/css/product/product-show.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('/css/product_show.css')}}" type="text/css">
 @endsection
 
 @section('content')
-
-@include('textbook/textbook-nav')
 
 <div class="container-fluid" id="bg">
     <!-- book details -->
@@ -57,11 +55,12 @@
                     Price: <b>${{ $product->price }}</b>
                 </div>
                 @if($product->isInCart(Auth::user()->id))
-                    <a class="btn add-cart-btn disabled" href="#" role="button">Added To Cart</a>
+                    <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Added To Cart</a>
                 @elseif($product->seller == Auth::user())
-                    <a class="btn add-cart-btn disabled" href="#" role="button">Posted by you</a>
+                    <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Posted by you</a>
                 @else
-                    <a class="btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
+                    <a class="btn primary-btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
+
                 @endif
             </div>
 

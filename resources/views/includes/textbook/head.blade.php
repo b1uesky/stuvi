@@ -10,16 +10,19 @@
 
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{ asset('/css/main.css') }}"/>
+
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- Footer & Nav required -->
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('/css/navigation.css') }}" rel="stylesheet">
-    {{--<link href="{{ asset('/css/footer.css') }}"         rel="stylesheet">--}}
-    <link href="{{ asset('css/footer-distributed.css') }}" rel="stylesheet">
-    <!-- Footer required -->
 
-    <!-- Footer & Nav required -->
+    <!-- material design -->
+{{--
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.teal-deep_orange.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>--}}
 
     <!-- Fonts -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>

@@ -5,7 +5,7 @@
 @section('content')
 
 <head>
-    <link href="{{ asset('/css/auth/login.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/auth_login.css') }}" rel="stylesheet">
     <title>Reset Password</title>
 </head>
 

@@ -7,7 +7,7 @@
 @section('title', 'Checkout')
 
 @section('css')
-    <link href="{{ asset('/css/order/buyer/createBuyerOrder.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/order_buyer_create.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -88,7 +88,7 @@
                                             <li class="address inline" id="default_zip">{{ $address -> zip }}</li>
                                             <li class="address" id="default_phone">{{ $address -> phone_number }}</li>
                                         </ul>
-                                        <button class="btn btn-default address-btn show-addresses">
+                                        <button class="btn btn-default primary-btn address-btn show-addresses">
                                             <i class="fa fa-pencil"></i>
                                             Change Address
                                         </button>
@@ -110,16 +110,17 @@
                                         <li class="address zip inline">{{ $address -> zip }}</li>
                                         <li class="address phone">{{ $address -> phone_number }}</li>
                                     </ul>
-                                    <button class="btn btn-default address-btn selectThisAddress">
+                                    <button class="btn btn-default primary-btn address-btn selectThisAddress">
                                         <i class="fa fa-check-square"></i>
                                         Select
                                     </button>
-                                    <button class="btn btn-default address-btn editThisAddress" data-toggle="modal"
+                                    <button class="btn btn-default primary-btn address-btn editThisAddress"
+                                            data-toggle="modal"
                                             data-target="#update-address-modal">
                                         <i class="fa fa-pencil"></i>
                                         Edit
                                     </button>
-                                    <button class="btn btn-default address-btn deleteThisAddress">
+                                    <button class="btn btn-default primary-btn address-btn deleteThisAddress">
                                         <i class="fa fa-trash"></i>
                                         Delete
                                     </button>
@@ -191,7 +192,8 @@
                                     </div>
                                 </div>
                                 </br>
-                                <button class="col-sm-3 btn btn-default address-btn" id="storeAddress" type="submit">
+                                <button class="col-sm-3 btn btn-default primary-btn address-btn" id="storeAddress"
+                                        type="submit">
                                     Add Address
                                 </button>
                             </form>
@@ -296,7 +298,7 @@
                                             Close
                                         </button>
                                         <button id="storeUpdatedAddress" type="button"
-                                                class="btn btn-default address-btn">
+                                                class="btn btn-default primary-btn address-btn">
                                             Update Address
                                         </button>
                                     </div>
@@ -394,7 +396,7 @@
                                                 Close
                                             </button>
                                             <button id="storeAddedAddress" type="button"
-                                                    class="btn btn-default address-btn">
+                                                    class="btn btn-default primary-btn address-btn">
                                                 Add Address
                                             </button>
                                         </div>
@@ -511,7 +513,7 @@
                                     </div>
                                     <div class="panel-footer payment-footer">
                                         <p>Your total is <span id="total"> ${{ $total }} </span></p>
-                                        <button class="btn payment-btn" type="submit">Complete Order
+                                        <button class="btn primary-btn payment-btn" type="submit">Complete Order
                                         </button>
                                     <span><a href="https://stripe.com/" target="_blank"><img id="stripe-logo"
                                                                                              src="{{ asset('/img/stripe.png') }}"></a></span>

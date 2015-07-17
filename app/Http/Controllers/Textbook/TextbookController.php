@@ -30,6 +30,19 @@ class TextbookController extends Controller
         return redirect('textbook/buy');
     }
 
+    /**
+     * Display a specified textbook.
+     *
+     * @param $book
+     *
+     * @return mixed
+     */
+    public function show($book)
+    {
+        return view("textbook.show")
+            ->with('book', $book);
+    }
+
     /***************************************************/
     /******************   Sell Part   ******************/
     /***************************************************/
@@ -341,19 +354,6 @@ class TextbookController extends Controller
         }
 
         return Response::json($book_data);
-    }
-
-    /**
-     * Display a specified textbook.
-     *
-     * @param $book
-     *
-     * @return mixed
-     */
-    public function show($book)
-    {
-        return view("textbook.show")
-            ->with('book', $book);
     }
 
 }
