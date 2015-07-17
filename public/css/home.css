@@ -68,16 +68,16 @@
   border-radius: 0;
   font-weight: bold;
   font-size: 1.3em;
-  color: #fff;
-  border: 3px solid #fff;
+  color: white;
+  border: 3px solid white;
   background: none;
   margin: 0 20px 0;
   padding-top: 9px;
   text-shadow: 2px 2px 4px #000;
 }
 .ghost-btn:hover {
-  background: #f16521;
-  color: #fff;
+  background-color: rgba(0, 164, 150, 0.6);
+  color: white;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
 }
 .ghost-btn:focus {
@@ -98,9 +98,9 @@
   padding: 0;
 }
 .services {
-  background-color: #f16521;
+  background-color: #00a496;
   text-align: center;
-  color: #fff;
+  color: white;
 }
 .services h4 {
   font-weight: 900;

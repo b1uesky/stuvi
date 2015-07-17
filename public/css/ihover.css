@@ -1659,8 +1659,7 @@
 }
 
 .ih-item.circle.effect13.colored .info {
-  background: #7AB4DE;
-  background: rgba(122, 180, 222, 0.6);
+  background-color: rgba(0, 164, 150, 0.6);
 }
 .ih-item.circle.effect13 .info {
   background: #333333;
