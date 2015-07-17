@@ -100,7 +100,6 @@ class TextbookController extends Controller
         // create book authors
         $authors_str = Input::get('authors');
         $authors_arr = explode(',', $authors_str);
-
         foreach ($authors_arr as $author)
         {
             $book_author = BookAuthor::create([
