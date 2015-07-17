@@ -22,12 +22,12 @@
 
         <!-- sort and search -->
         <div class="container">
-            <span class="text-muted">Sort by</span>
-            <ul class="nav nav-pills" id="nav-sort">
-                <li role="presentation" class="active"><a href="#" data-toggle="pill">Title</a></li>
-                <li role="presentation"><a href="#" data-toggle="pill">Author</a></li>
-                <li role="presentation"><a href="#" data-toggle="pill">Price (Low to High)</a></li>
-                <li role="presentation"><a href="#" data-toggle="pill">Price (High to Low)</a></li>
+            {{--<span class="text-muted">Sort by</span>--}}
+            <ul class="nav nav-pills">
+                {{--<li role="presentation" class="active"><a href="#" data-toggle="pill">Title</a></li>--}}
+                {{--<li role="presentation"><a href="#" data-toggle="pill">Author</a></li>--}}
+                {{--<li role="presentation"><a href="#" data-toggle="pill">Price (Low to High)</a></li>--}}
+                {{--<li role="presentation"><a href="#" data-toggle="pill">Price (High to Low)</a></li>--}}
 
                 <div class="col-sm-4 col-md-4 pull-right bookshelf-sort">
                     <form class="navbar-form" role="search">

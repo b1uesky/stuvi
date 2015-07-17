@@ -30,6 +30,19 @@ class TextbookController extends Controller
         return redirect('textbook/buy');
     }
 
+    /**
+     * Display a specified textbook.
+     *
+     * @param $book
+     *
+     * @return mixed
+     */
+    public function show($book)
+    {
+        return view("textbook.show")
+            ->with('book', $book);
+    }
+
     /***************************************************/
     /******************   Sell Part   ******************/
     /***************************************************/
@@ -271,36 +284,23 @@ class TextbookController extends Controller
         else
         {
             // search by title
-//            $books = Book::where('title', 'LIKE', "%$query%")
-//                ->paginate(Config::get('pagination.limit.textbook'));
-
-            // TODO: pagination
             // select all books that can be delivered to buyer's university
-            $results = DB::select('
-                SELECT DISTINCT(books.id)
-                FROM books, products, users as seller
-                WHERE books.id = products.book_id
-                AND products.seller_id = seller.id
-                AND seller.university_id IN (
-                    SELECT uu.from_uid
-                    FROM users as buyer, university_university as uu
-                    WHERE buyer.id = ?
-                    AND buyer.university_id = uu.to_uid
-                )
-                AND seller.university_id IN (
-                    SELECT id
-                    FROM universities
-                    WHERE is_public = TRUE
-                )
-                AND books.title LIKE ?
-            ', [Auth::user()->id, '%'.$query.'%']);
-
-            $books = array();
-
-            foreach ($results as $result)
-            {
-                array_push($books, Book::find($result->id));
-            }
+            $books = Book::where('title', 'LIKE', '%'.$query.'%')
+                        ->join('products as p', 'p.book_id', '=', 'books.id')
+                        ->join('users as seller', 'seller.id', '=', 'p.seller_id')
+                        ->whereIn('seller.university_id', function($q) {
+                            $q  ->select('uu.from_uid')
+                                ->from(DB::raw('users as buyer, university_university as uu'))
+                                ->where('buyer.id', '=', Auth::user()->id);
+                        })
+                        ->whereIn('seller.university_id', function($q) {
+                            $q  ->select('id')
+                                ->from('universities')
+                                ->where('is_public', '=', true);
+                        })
+                        ->select('books.*')
+                        ->distinct()
+                        ->paginate(Config::get('pagination.limit.textbook'));
 
             return view('textbook.list')
                 ->with('books', $books)
@@ -330,30 +330,25 @@ class TextbookController extends Controller
                 array_push($authors, $author->full_name);
             }
 
+            $book_image = null;
+
+            if ($book->imageSet && $book->imageSet->small_image)
+            {
+                $book_image = $book->imageSet->small_image;
+            }
+
             $book_data[] = [
                 'id'      => $book->id,
                 'title'   => $book->title,
                 'isbn10'  => $book->isbn10,
                 'isbn13'  => $book->isbn13,
                 'authors' => $authors,
-                'image'   => $book->imageSet->small_image
+                'image'   => $book_image
             ];
+
         }
 
         return Response::json($book_data);
-    }
-
-    /**
-     * Display a specified textbook.
-     *
-     * @param $book
-     *
-     * @return mixed
-     */
-    public function show($book)
-    {
-        return view("textbook.show")
-            ->with('book', $book);
     }
 
 }
