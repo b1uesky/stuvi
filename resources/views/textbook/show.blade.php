@@ -77,7 +77,11 @@
                                 <a href="{{ url('textbook/buy/product/'.$product->id) }}">View Details</a>
                             </td>
                             <td class="cart-btn-col">
-                                <a class="btn add-cart-btn" href="{{ url('cart/add/'.$product->id) }}" role="button">Add To Cart</a>
+                                @if($product->isInCart(Auth::user()->id))
+                                    <a class="btn add-cart-btn disabled" href="#" role="button">Added To Cart</a>
+                                @else
+                                    <a class="btn add-cart-btn" href="{{ url('cart/add/'.$product->id) }}" role="button">Add To Cart</a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

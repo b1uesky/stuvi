@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Config;
+use App\Cart;
 
 class Product extends Model
 {
@@ -25,6 +26,20 @@ class Product extends Model
     {
         return $this->hasOne('App\ProductCondition');
     }
+
+    public function isInCart($user_id)
+    {
+        $cart = Cart::where('user_id', $user_id)->first();
+
+        if ($cart)
+        {
+            return $cart->hasProduct($this->id);
+        }
+
+        return false;
+    }
+
+
 
     /**
      * Return the text description of product's general condition as defined in config/product.php.
