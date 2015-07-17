@@ -60,8 +60,13 @@
                                         @if ($key < 2)
                                             <tr class="for-sale-item">
                                                 <td class="for-sale-img">
-                                                    <img class="img-responsive"
-                                                         src="{{ url($product->images()->first()->path) }}"
+                                                    <img class="img-responsive" src="
+                                                        @if($image->isTestImage())
+                                                            {{ $image->large_image }}
+                                                        @else
+                                                            {{ Config::get('aws.url.stuvi-product-img') . $image->large_image }}
+                                                        @endif
+                                                            "
                                                          width="100px"
                                                          height="150px"></td>
                                                 <td class="for-sale-info-1">
@@ -74,7 +79,7 @@
                                                                     href="#">{{ $author->full_name }}</a></span>
                                                     @endforeach
 
-                                                    <span class="for-sale-binding">Hardcover</span><br>
+                                                    <span class="for-sale-binding">{{ $product->book->binding }}</span><br>
                                                     <span class="for-sale-price">{{ $product->price }}</span> <br>
                                                 </td>
                                                 <td class="for-sale-info-2">
@@ -84,8 +89,8 @@
 
                                                 <td class="for-sale-info-3">
                                                     <!-- each class the book support -->
-                                                    <h5>Classes</h5>
-                                                    <span class="for-sale-class"><a href="#">BU:SMG SM131</a></span>
+                                                    {{--<h5>Classes</h5>--}}
+                                                    {{--<span class="for-sale-class"><a href="#">BU:SMG SM131</a></span>--}}
                                                 </td>
                                             </tr>
                                         @endif
