@@ -193,13 +193,16 @@ class TextbookController extends Controller
             {
                 // save book
                 $book = Book::create([
-                    'isbn10'    => $amazon->getISBN10(),
-                    'isbn13'    => $amazon->getISBN13(),
-                    'title'     => $amazon->getTitle(),
-                    'edition'   => $amazon->getEdition(),
-                    'binding'   => $amazon->getBinding(),
-                    'language'  => $amazon->getLanguage(),
-                    'num_pages' => $amazon->getNumPages(),
+                    'isbn10'            => $amazon->getISBN10(),
+                    'isbn13'            => $amazon->getISBN13(),
+                    'title'             => $amazon->getTitle(),
+                    'edition'           => $amazon->getEdition(),
+                    'binding'           => $amazon->getBinding(),
+                    'language'          => $amazon->getLanguage(),
+                    'num_pages'         => $amazon->getNumPages(),
+                    'list_price'        => $amazon->getListPriceDecimalPrice(),
+                    'lowest_new_price'  => $amazon->getLowestNewPriceDecimalPrice(),
+                    'lowest_used_price' => $amazon->getLowestUsedriceDecimalPrice()
                 ]);
 
                 // save book image set
