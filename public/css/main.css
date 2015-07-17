@@ -154,17 +154,22 @@
 #nav-toggle-collapse:hover, #nav-toggle-collapse:focus {
   background: #f9aa62;
 }
-/******* NAVIGATION DROPDOWN *******/#navi-drop {
+
+/******* NAVIGATION DROPDOWN *******/
+#nav-drop {
   padding-bottom: 10px;
 }
-#navi-drop:focus {
+
+#nav-drop:focus {
   background-color: #69c8c8;
 }
-#navi-drop:hover {
+
+#nav-drop:hover {
   color: #00a496;
   background-color: rgba(255, 255, 255, 0.97);
 }
-#navi-drop:hover #account-name, #navi-drop:hover .nav-caret {
+
+#nav-drop:hover #account-name, #nav-drop:hover .nav-caret {
   color: #00a496;
 }
 #cart-link, #dp, #login-btn, #register-btn {
