@@ -30,6 +30,114 @@ class TextbookController extends Controller
         return redirect('textbook/buy');
     }
 
+    /***************************************************/
+    /******************   Sell Part   ******************/
+    /***************************************************/
+
+    /**
+     * Show the sell page, which is a search box of isbn.
+     *
+     * @return Response
+     */
+    public function sell()
+    {
+        return view('textbook.sell');
+    }
+
+    /**
+     * Search function for the sell page.
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function sellSearch(Request $request)
+    {
+        $isbn_validator = new Isbn();
+
+        // remove isbn hyphens
+        $isbn = $isbn_validator->hyphens->removeHyphens(Input::get('isbn'));
+
+        // check if the input is a valid ISBN
+        if ($isbn_validator->validation->isbn($isbn) == false)
+        {
+            return redirect()->back()
+                ->withMessage('Please enter a valid 10 or 13 digit ISBN number.');
+        }
+
+        // database lookup
+        if (strlen($isbn) == 10)
+        {
+            $db_book = Book::where('isbn10', '=', $isbn)->first();
+        }
+        else
+        {
+            $db_book = Book::where('isbn13', '=', $isbn)->first();
+        }
+
+        // book found in database
+        if ($db_book)
+        {
+            return redirect('textbook/sell/product/' . $db_book->id . '/create');
+        }
+        else
+        {
+            // Amazon lookup
+            $amazon = new AmazonLookUp($isbn, 'ISBN');
+
+            if ($amazon->success())
+            {
+                $book = $this->createBookByAmazon($amazon);
+
+                return redirect('textbook/sell/product/' . $book->id . '/create');
+            }
+
+            // allow the seller fill in book information and create a new book record
+            return redirect('textbook/sell/create')
+                ->with('message', 'Looks like your textbook is currently not in our database, please fill in the textbook information below.');
+        }
+    }
+
+    /**
+     * Create a book according to the data from Amazon API.
+     *
+     * @param $amazon
+     *
+     * @return Book
+     */
+    protected function createBookByAmazon($amazon)
+    {
+        // save book
+        $book = Book::create([
+            'isbn10'    => $amazon->getISBN10(),
+            'isbn13'    => $amazon->getISBN13(),
+            'title'     => $amazon->getTitle(),
+            'edition'   => $amazon->getEdition(),
+            'binding'   => $amazon->getBinding(),
+            'language'  => $amazon->getLanguage(),
+            'num_pages' => $amazon->getNumPages(),
+        ]);
+
+        // save book image set
+        $book_image_set = BookImageSet::create([
+            'book_id'      => $book->id,
+            'small_image'  => $amazon->getSmallImage(),
+            'medium_image' => $amazon->getMediumImage(),
+            'large_image'  => $amazon->getSmallImage(),
+        ]);
+
+        // save book authors
+        foreach ($amazon->getAuthors() as $author_name)
+        {
+            $book_author = BookAuthor::create([
+                'book_id'   => $book->id,
+                'full_name' => $author_name,
+            ]);
+        }
+
+        return $book;
+    }
+
     /**
      * Show the form for creating a new textbook.
      *
@@ -117,120 +225,6 @@ class TextbookController extends Controller
 
         return view('product.create')
             ->with('book', $book);
-    }
-
-    /**
-     * Display a specified textbook with available products.
-     *
-     * @param $book
-     *
-     * @return mixed
-     */
-    public function show($book)
-    {
-        $available_products = $book->availableProducts();
-
-        return view("textbook.show")
-            ->with('book', $book)
-            ->with('available_products', $available_products);
-    }
-
-
-    /***************************************************/
-    /******************   Sell Part   ******************/
-    /***************************************************/
-
-    /**
-     * Show the sell page, which is a search box of isbn.
-     *
-     * @return Response
-     */
-    public function sell()
-    {
-        return view('textbook.sell');
-    }
-
-    /**
-     * Search function for the sell page.
-     *
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function sellSearch(Request $request)
-    {
-        $isbn_validator = new Isbn();
-
-        // remove isbn hyphens
-        $isbn = $isbn_validator->hyphens->removeHyphens(Input::get('isbn'));
-
-        // check if the input is a valid ISBN
-        if ($isbn_validator->validation->isbn($isbn) == false)
-        {
-            return redirect()->back()
-                ->withMessage('Please enter a valid 10 or 13 digit ISBN number.');
-        }
-
-        // database lookup
-        if (strlen($isbn) == 10)
-        {
-            $db_book = Book::where('isbn10', '=', $isbn)->first();
-        }
-        else
-        {
-            $db_book = Book::where('isbn13', '=', $isbn)->first();
-        }
-
-        // book found in database
-        if ($db_book)
-        {
-            return redirect('textbook/sell/product/' . $db_book->id . '/create');
-        }
-        else
-        {
-            // Amazon lookup
-            $amazon = new AmazonLookUp($isbn, 'ISBN');
-
-            if ($amazon->success())
-            {
-                // save book
-                $book = Book::create([
-                    'isbn10'            => $amazon->getISBN10(),
-                    'isbn13'            => $amazon->getISBN13(),
-                    'title'             => $amazon->getTitle(),
-                    'edition'           => $amazon->getEdition(),
-                    'binding'           => $amazon->getBinding(),
-                    'language'          => $amazon->getLanguage(),
-                    'num_pages'         => $amazon->getNumPages(),
-                    'list_price'        => $amazon->getListPriceDecimalPrice(),
-                    'lowest_new_price'  => $amazon->getLowestNewPriceDecimalPrice(),
-                    'lowest_used_price' => $amazon->getLowestUsedriceDecimalPrice()
-                ]);
-
-                // save book image set
-                $book_image_set = BookImageSet::create([
-                    'book_id'      => $book->id,
-                    'small_image'  => $amazon->getSmallImage(),
-                    'medium_image' => $amazon->getMediumImage(),
-                    'large_image'  => $amazon->getSmallImage(),
-                ]);
-
-                // save book authors
-                foreach ($amazon->getAuthors() as $author_name)
-                {
-                    $book_author = BookAuthor::create([
-                        'book_id'   => $book->id,
-                        'full_name' => $author_name,
-                    ]);
-                }
-
-                return redirect('textbook/sell/product/' . $book->id . '/create');
-            }
-
-            // allow the seller fill in book information and create a new book record
-            return redirect('textbook/sell/create')
-                ->with('message', 'Looks like your textbook is currently not in our database, please fill in the textbook information below.');
-        }
     }
 
     /***************************************************/
@@ -348,4 +342,18 @@ class TextbookController extends Controller
 
         return Response::json($book_data);
     }
+
+    /**
+     * Display a specified textbook.
+     *
+     * @param $book
+     *
+     * @return mixed
+     */
+    public function show($book)
+    {
+        return view("textbook.show")
+            ->with('book', $book);
+    }
+
 }
