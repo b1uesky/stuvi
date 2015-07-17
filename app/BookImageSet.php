@@ -2,7 +2,10 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class BookImageSet extends Model {
+class BookImageSet extends Model
+{
+
+    protected $fillable = ['book_id', 'small_image', 'medium_image', 'large_image'];
 
     /**
      * Get the book.
