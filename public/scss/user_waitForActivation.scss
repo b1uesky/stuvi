@@ -5,7 +5,8 @@
 .container-main{
 
   height: 90vh;
-  background-image: #{$background-color} url('../img/activation(2).jpg') cover;
+  background-image: url('../img/activation(2).jpg');
+  background-size: cover;
 }
 
 .container-content{

@@ -73,6 +73,9 @@ a:focus {
   &:hover{
     color: $primary-color;
     background-color: $nav-background-color;
+    #account-name, .nav-caret{
+      color: $primary-color;
+    }
   }
 }
 
