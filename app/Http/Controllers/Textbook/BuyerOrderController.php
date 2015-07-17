@@ -118,8 +118,8 @@ class BuyerOrderController extends Controller
 
         // create an buyer payed order
         $order = BuyerOrder::create([
-            'buyer_id'              => Auth::id(),
-            'shipping_address_id'   => $shipping_address_id,
+            'buyer_id'            => Auth::id(),
+            'shipping_address_id' => $shipping_address_id,
         ]);
 //        $order->buyer_id = Auth::id();
 //        $order->shipping_address_id = $shipping_address_id;
@@ -159,11 +159,11 @@ class BuyerOrderController extends Controller
         try
         {
             $charge = \Stripe\Charge::create([
-                "amount"        => $this->cart->totalPrice() * 100, // amount in cents
-                "currency"      => "usd",
-                "source"        => $token,
-                "name"          => Input::get('name'),
-                "description"   => "Buyer order payment for buyer order",
+                "amount"      => $this->cart->totalPrice() * 100, // amount in cents
+                "currency"    => "usd",
+                "source"      => $token,
+                "name"        => Input::get('name'),
+                "description" => "Buyer order payment for buyer order",
             ]);
 
             return $charge;
@@ -172,7 +172,39 @@ class BuyerOrderController extends Controller
         {
             // The card has been declined
             return redirect('/order/create')
-                ->with('message', 'The card has been declined. Please try another card.');
+                ->with('message', $e->getMessage());
+        }
+        catch (\Stripe\Error\InvalidRequest $e)
+        {
+            // Invalid parameters were supplied to Stripe's API
+            return redirect('/order/create')
+                ->with('message', $e->getMessage());
+        }
+        catch (\Stripe\Error\Authentication $e)
+        {
+            // Authentication with Stripe's API failed
+            // (maybe you changed API keys recently)
+            return redirect('/order/create')
+                ->with('message', $e->getMessage());
+        }
+        catch (\Stripe\Error\ApiConnection $e)
+        {
+            // Network communication with Stripe failed
+            return redirect('/order/create')
+                ->with('message', $e->getMessage());
+        }
+        catch (\Stripe\Error\Base $e)
+        {
+            // Display a very generic error to the user, and maybe send
+            // yourself an email
+            return redirect('/order/create')
+                ->with('message', $e->getMessage());
+        }
+        catch (Exception $e)
+        {
+            // Something else happened, completely unrelated to Stripe
+            return redirect('/order/create')
+                ->with('message', $e->getMessage());
         }
     }
 
@@ -206,8 +238,8 @@ class BuyerOrderController extends Controller
 
             // create seller orders
             $order = SellerOrder::create([
-                'product_id'        =>$product->id,
-                'buyer_order_id'    => $buyer_order_id,
+                'product_id'     => $product->id,
+                'buyer_order_id' => $buyer_order_id,
             ]);
 
             // send confirmation email to seller
