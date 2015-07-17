@@ -5,10 +5,9 @@
   background: $primary-color;
   color: $button-text-color;
   border: none;
-  margin: 5px;
   &:hover, &:focus {
     background: $button-primary-hover-color;
-    outline: 0;
+    outline: 0 !important;
     color: $button-text-color;
   }
 }

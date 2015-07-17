@@ -23,11 +23,10 @@
   background: #00a496;
   color: white;
   border: none;
-  margin: 5px;
 }
 .primary-btn:hover, .primary-btn:focus {
   background: #00b2a4;
-  outline: 0;
+  outline: 0 !important;
   color: white;
 }
 .secondary-btn {
@@ -52,12 +51,14 @@
   outline: 0 !important;
   background: #f16521;
 }
+
 /*
  * FOR GENERAL TEXT STYLING
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
  *
- *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* GENERAL CONTAINER *//* LAYERED CONTAINERS (like material design) *//*** FORM STYLING ***/.form-control:focus {
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* GENERAL CONTAINER *//* LAYERED CONTAINERS (like material design) *//*** FORM STYLING ***/
+.form-control:focus {
   border: 2px solid #00a496;
   box-shadow: none;
 }
@@ -81,6 +82,35 @@
   background-color: white;
   border: 1px solid #f16521;
 }
+
+/*** MODAL STYLING ***//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */
+.modal-content {
+  border-radius: 0;
+}
+
+.close-modal-btn:hover, .close-modal-btn:focus {
+  outline: 0;
+  color: white;
+  text-shadow: none;
+  opacity: 1;
+}
+
+.modal-header {
+  background-color: #00a496;
+  color: white;
+}
+
+.modal-footer {
+  background-color: #f2f2f2;
+}
 /* SECTIONS *//* SCSS for navigation bar. See _colors.scss and _footer.scss *//* VARIABLES *//*  CSS FOR NAVIGATION BAR  *//* Import of all modules *//*
  * Stuvi color palette
  * Please use these variables for any colors used.
@@ -93,26 +123,23 @@
   outline: 0;
 }
 /******* NAVIGATION BAR *******/#nav {
-  background: rgba(255, 255, 255, 0.97);
+  background: #f2f2f2;
   border-radius: 0;
   border: none;
-  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
 }
 #nav-left li a {
-  color: black;
+  color: black !important;
 }
 #nav-left li a:hover {
-  background-color: rgba(255, 255, 255, 0.97);
-  border-bottom: 5px solid #00a496;
-  color: #00a496;
-}
-#nav-left li a:focus {
-  background-color: rgba(255, 255, 255, 0.97);
+  background-color: #f2f2f2 !important;
+  border-bottom: 5px solid #00a496 !important;
+  /*font-weight: bold;*/
+  color: #00a496 !important;
 }
 .active-nav {
-  background-color: rgba(255, 255, 255, 0.97);
-  border-bottom: 5px solid #00a496;
-  color: #00a496 !important;
+  background-color: #f2f2f2 !important;
+  border-bottom: 5px solid #00a496 !important;
+  /*font-weight: bold;*/
 }
 .logo-container {
   width: 120px;
@@ -139,28 +166,32 @@
 }
 #navi-drop:hover {
   color: #00a496;
-  background-color: rgba(255, 255, 255, 0.97);
+  background-color: #f2f2f2;
 }
-#navi-drop:hover #account-name, #navi-drop:hover .nav-caret {
-  color: #00a496;
-}
-#cart-link, #dp, #login-btn, #register-btn {
+#cart-link {
   color: black;
 }
-#cart-link:hover, #dp:hover, #login-btn:hover, #register-btn:hover {
-  background-color: rgba(255, 255, 255, 0.97);
-  border-bottom: 5px solid #00a496;
-  color: #00a496;
+#cart-link:hover {
+  background-color: #f2f2f2 !important;
+  border-bottom: 5px solid #00a496 !important;
+  /*font-weight: bold;*/
+  color: #00a496 !important;
+}
+#dp:hover {
+  background-color: #f2f2f2 !important;
+  border-bottom: 5px solid #00a496 !important;
+  /*font-weight: bold;*/
+  color: #00a496 !important;
 }
 #nav-right > .open > a {
-  background-color: rgba(255, 255, 255, 0.97);
+  background-color: #f2f2f2;
 }
 .nav-caret {
   color: black;
   margin-top: 0px;
 }
-.dropdown-menu {
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+.nav-caret:hover {
+  /*color: $primary-color !important;*/
 }
 .dropdown-menu li a:hover {
   background-color: #00a496;
