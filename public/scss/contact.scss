@@ -1,0 +1,128 @@
+/*********  CONTACT PAGE  *********/
+
+@import "modules/all";
+
+.background {
+  /*image link -> https://flic.kr/p/rZ8kmG */
+  background: url("../img/art-boston.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.title-container {
+  margin-left: 5%;
+  margin-top: 80px;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+h3 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+/****  CONTACT FORM  ****/
+
+.contact-form-container {
+  margin-left: 5%;
+  margin-bottom: 80px;
+
+}
+
+@media (min-width: 768px) {
+  .contact-form-container {
+    border-right: 1px solid #CCCCCC;
+    padding-right: 5%;
+  }
+}
+
+.form-group {
+  margin-bottom: 30px;
+  textarea {
+    max-width: 100%;
+    max-height: 300px;
+  }
+}
+
+.form-control {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #FFFFFF;
+}
+
+.form-control::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #FFFFFF;
+}
+
+.form-control:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #FFFFFF;
+  opacity: 1;
+}
+
+.form-control::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #FFFFFF;
+  opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: white;
+}
+
+#contact-btn {
+}
+
+/****  SOCIAL MEDIA LINKS  ****/
+
+.right-container {
+  text-align: center;
+  h3 {
+    color: white;
+  }
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.contact-info-container {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 20px 0;
+  a{
+    &:hover{
+      color: $primary-color;
+    }
+  }
+}
+
+.contact-info {
+  text-align: left;
+  list-style-type: none;
+  li {
+    margin: 10px 0;
+    a {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 1.1em;
+      i {
+        margin-right: 10px;
+        text-align: center;
+      }
+    }
+  }
+  #map-marker, #facebook {
+    margin-left: 4px;
+    margin-right: 14px;
+  }
+  #linkedin {
+    margin-right: 12px;
+  }
+}
+
+/****  PHOTO LICENSE  ****/
+
+#license {
+  color: #FFFFFF;
+  text-align: right;
+}

@@ -1,0 +1,35 @@
+/** TEXTBOOK NAVIGATION BAR **//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */.tab-filter-container {
+  width: 100%;
+  background: #f9aa62;
+  height: 40px;
+}
+.tab-filters {
+  list-style-type: none;
+  text-align: center;
+  padding-right: 40px;
+}
+.filter {
+  display: inline-block;
+  height: 40px;
+  padding-top: 5px;
+}
+.filter.active {
+  border-bottom: 5px solid #241729;
+}
+.filter-link {
+  font-size: 20px;
+  color: white;
+  margin: 0 40px;
+}
+.filter-link:hover, .filter-link:focus, .filter-link.active {
+  text-decoration: none;
+  color: #241729;
+}

@@ -1,0 +1,23 @@
+/*
+ * This is the Stuvi default styling. It comes _AFTER_ Bootstrap's app.css
+ * This file is compiled to main.css which is then linked in head.blade.php
+ * Thus, every page will have this styling.
+ * http://thesassway.com/beginner/how-to-structure-a-sass-project
+ */
+
+/* MODULES AND VARIABLES */
+@import 'modules/all';
+
+/* PARTIALS */
+@import 'partials/buttons';
+@import 'modules/typography';
+@import 'partials/containers';
+@import "partials/forms";
+@import "partials/tables";
+@import "partials/modals";
+
+/* SECTIONS */
+@import 'sections/navigation';
+@import 'sections/footer';
+
+/* VENDOR ( THIRD PARTY ) */

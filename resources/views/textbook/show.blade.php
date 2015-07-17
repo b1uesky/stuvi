@@ -3,7 +3,7 @@
 @section('title',$book->title)
 
 @section('css')
-    <link href="{{ asset('/css/textbook/textbook-show.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/textbook_show.css') }}" rel="stylesheet">
 @endsection
 
 
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        @if(count($available_products) > 0)
+        @if(count($book->availableProducts()) > 0)
 
             <div class="row table-row">
 
@@ -49,7 +49,7 @@
                         <th>Add to Cart</th>
                     </tr>
                     </thead>
-                    @foreach($available_products as $product)
+                    @foreach($book->availableProducts() as $product)
                         <tr>
                             <td>
                                 <p id="price">${{ $product->price }}</p>
@@ -62,11 +62,11 @@
                             </td>
                             <td class="cart-btn-col">
                                 @if($product->isInCart(Auth::user()->id))
-                                    <a class="btn add-cart-btn disabled" href="#" role="button">Added to cart</a>
+                                    <a class="btn secondary-btn add-cart-btn disabled" href="#" role="button">Added to cart</a>
                                 @elseif($product->seller == Auth::user())
-                                    <a class="btn add-cart-btn disabled" href="#" role="button">Posted by you</a>
+                                    <a class="btn secondary-btn add-cart-btn disabled" href="#" role="button">Posted by you</a>
                                 @else
-                                    <a class="btn add-cart-btn" href="{{ url('cart/add/'.$product->id) }}" role="button">Add to cart</a>
+                                    <a class="btn secondary-btn add-cart-btn" href="{{ url('cart/add/'.$product->id) }}" role="button">Add to cart</a>
                                 @endif
                             </td>
                         </tr>

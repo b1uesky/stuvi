@@ -3,7 +3,7 @@
 @section('title', 'Coming Soon!')
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('css/coming.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/comingSoon.css')}}" type="text/css">
 @endsection
 
 @section('content')

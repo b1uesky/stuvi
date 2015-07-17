@@ -1,0 +1,50 @@
+/*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ */
+
+
+/* GENERAL COLORS */
+
+$background-color: #F2F2F2;         // body background
+$primary-color: #00A496;
+$secondary-color: #F16521;
+$stuvi-purple-color: #241729;
+$light-orange-color: #F9AA62;
+$accent-color: #69C8C8;
+$border-color: grey;
+
+/* GENERAL TEXT COLORS */
+$body-text-color: black;
+$muted-text-color: grey;
+$heading-text-color: whitesmoke;
+$price-color: #B12704;
+$link-text-color: null;
+
+/* HEADER/NAV COLORS */
+/*$nav-background-color: #241729;*/
+$nav-background-color: rgba(255,255,255,0.97);
+$nav-text-color: black;              // for links
+$nav-tab-active-border-bottom-color: #90B4DF;
+
+
+/* FOOTER COLORS */
+$footer-background-color: #292c2f;
+
+$footer-text-color: white;
+$footer-social-icon-color: null;
+$footer-copyright-text-color: #8f9296;
+
+
+/* TABLE COLORS */
+$table-background-color: white;
+$table-border-color: #DDDDDD;
+
+/* BUTTON COLORS */
+$button-text-color: white;
+$cart-remove-color: #0044CC;
+$button-primary-hover-color: #00B2A4;
+$button-secondary-hover-color: #FF6720;
+$button-shadow-color: #5B86AA;
+
+

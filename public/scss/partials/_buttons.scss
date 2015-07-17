@@ -1,0 +1,38 @@
+/*** BUTTON STYLES ***/
+@import "../modules/all";
+
+.primary-btn {
+  background: $primary-color;
+  color: $button-text-color;
+  border: none;
+  &:hover, &:focus {
+    background: $button-primary-hover-color;
+    outline: 0 !important;
+    color: $button-text-color;
+  }
+}
+
+.secondary-btn {
+  background: $secondary-color;
+  color: $button-text-color;
+  border: none;
+  margin: 5px;
+  &:hover, &:focus{
+    background: $button-secondary-hover-color;
+    outline: 0;
+    color: $button-text-color;
+  }
+}
+
+// textbook/list.blade.php
+.list-search-btn {
+  background: $secondary-color;
+  border: none;
+  height: 34px;
+  width: 38px;
+  margin-left: 0 !important;
+  &:hover, &:focus {
+    outline: 0 !important;
+    background: $secondary-color;
+  }
+}

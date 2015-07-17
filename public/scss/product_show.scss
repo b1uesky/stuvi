@@ -1,0 +1,88 @@
+/*product/show.blade.php*/
+@import "modules/all";
+
+/** PRODUCT INFO **/
+
+#bg {
+  background-color: whitesmoke;
+}
+
+#det-cont {
+  padding-bottom: 10%;
+}
+
+.back-row {
+  padding-top: 10px;
+}
+
+#go-back {
+  margin-left: 10px;
+}
+
+.pro-img {
+  max-width: 300px;
+}
+
+.pro-img-small {
+  max-width: 50px;
+}
+
+#det-cont {
+  margin: inherit;
+  padding-top: 10px;
+}
+
+.details-table {
+  background-color: white;
+  border: 3px solid #DDD;
+  width: 50%;
+  margin-top: 2%;
+  th, td {
+    border: 1px solid #DDD;
+    padding-left: 2px;
+  }
+  @media(max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.add-cart-btn {
+  margin-top: 10px;
+  margin-left: 0;
+  padding: 12px;
+  width: 200px;
+  font-size: 16px;
+}
+
+.price {
+  b {
+    color: #B61F17;
+  }
+}
+
+.seller-desc {
+  margin: 0;
+  padding: 0;
+  @media(max-width: 990px) {
+    padding-left: 15px;
+  }
+}
+
+/*** PRODUCT CONDITION ***/
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.fa-question-circle {
+  color: $secondary-color;
+  cursor: pointer;
+}
+
+.close-modal-btn {
+  &:hover, &:focus {
+    outline: 0;
+    color: $primary-color;
+    opacity: 1;
+  }
+}

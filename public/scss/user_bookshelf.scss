@@ -1,0 +1,147 @@
+/* CSS FOR sellerBookshelfIndex.php */
+
+@import "modules/all";
+
+.message {
+  font-style: italic;
+}
+
+.message-cont {
+  padding: 1%;
+  margin-top: 10px;
+}
+
+#btn-back{
+  cursor:pointer;
+}
+
+.bookshelf-page{
+  background-color: $background-color;
+  min-height: 90vh;
+}
+
+/* Title */
+#bookshelf-title {
+  margin-left: 30px;
+}
+
+/* SORT SECTION */
+
+#nav-sort {
+  li {
+    a {
+      color: $muted-text-color;
+      &:hover {
+        background-color: #DDDDDD;
+      }
+    }
+  }
+  li.active {
+    a {
+      background-color: $primary-color;
+      color: #FFFFFF;
+    }
+  }
+}
+
+#search-term {
+  border-radius: 4px 0 0 4px;
+  border-right: none;
+  &:focus{
+    border: 1px solid $primary-color;
+    border-right: none;
+    box-shadow: none;
+  }
+}
+
+.search-btn {
+  background: $primary-color;
+  border: none;
+  height: 34px;
+  width: 38px;
+  margin-left: 0 !important;
+  &:hover{
+    background: $primary-color;
+  }
+  &:focus{
+    outline: 0 !important;
+    background: $primary-color;
+  }
+}
+
+.search-icon {
+  color: $button-text-color;
+}
+
+/* BOOKS FOR SALE */
+
+h5 {
+  margin: 0 0 3px 0;
+}
+
+.for-sale-img{
+  width: 100px;
+}
+
+.books{
+  max-width: 750px;
+  max-height: 200px;
+}
+
+.for-sale-table{
+  width: 100%;
+}
+
+.for-sale-item{
+  font-size: small
+}
+
+.for-sale-info-1{
+  width: 150px;
+}
+
+.for-sale-info-2{
+  width: 200px;
+
+}
+
+.for-sale-title {
+  font-size: medium;
+  font-weight: bold;
+  a {
+    color: $primary-color;
+  }
+}
+
+.for-sale-price{
+  color: $price-color;
+  font-weight: bold;
+}
+
+.for-sale-pub-date{
+  font-size: medium;
+}
+
+.for-sale-author {
+}
+
+.for-sale-binding{}
+.for-sale-isbn {}
+.for-sale-class {}
+
+.for-sale-btn-add-cart{
+  padding: 0px;
+}
+
+
+/* back button */
+
+#btn-back {
+  text-align: left;
+  padding-left: 5px;
+}
+
+.fa-arrow-circle-left{
+  padding: 10px;
+}
+

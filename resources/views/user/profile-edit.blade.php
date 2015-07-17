@@ -4,7 +4,7 @@
 @section('title', 'Edit Profile - '.Auth::user()->first_name.' '.Auth::user()->last_name)
 
 @section('css')
-    <link href="{{ asset('/css/user/profile-edit.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/user_profileEdit.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')

@@ -1,0 +1,70 @@
+/***** SELLER PRODUCT CREATE PAGE *****//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */body {
+  background-color: #f2f2f2;
+}
+.create-container {
+  margin-bottom: 50px;
+}
+/*** TEXTBOOK INFO ***/.textbook-row {
+  margin-top: 50px;
+}
+#textbook-img {
+  width: 300px;
+  height: 400px;
+}
+#textbook-img span {
+  font-size: 18px;
+}
+.authors-container {
+  margin-bottom: 10px;
+}
+.author-btn {
+  background-color: #f16521;
+  color: white;
+  border: none;
+}
+.author-btn:hover, .author-btn:focus {
+  background-color: #f16521;
+  color: white;
+}
+.textbook-info p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+/*** PRODUCT CONDITION ***/.condition-btn {
+  background-color: #ddd;
+  border: 1px solid #9b9b9b;
+}
+.condition-btn:hover, .condition-btn:focus {
+  background-color: #bbb;
+}
+.condition-btn.active {
+  background-color: #00a496;
+  color: white;
+  box-shadow: none;
+}
+.fa-question-circle {
+  color: #f16521;
+  cursor: pointer;
+}
+.btn-add-input {
+  margin-bottom: 20px;
+}
+/** SELL BUTTON **/.sell-btn {
+  display: block;
+  width: 200px;
+  padding: 12px;
+  font-size: 16px;
+}
+/** File upload error messages **/.upload-error-message {
+  display: none;
+  color: red;
+  font-weight: bold;
+}

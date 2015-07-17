@@ -1,0 +1,87 @@
+/***** SELLER PRODUCT CREATE PAGE *****/
+@import "modules/all";
+
+body {
+  background-color: $background-color;
+}
+
+.create-container {
+  margin-bottom: 50px;
+}
+
+/*** TEXTBOOK INFO ***/
+
+.textbook-row {
+  margin-top: 50px;
+}
+
+#textbook-img {
+  width: 300px;
+  height: 400px;
+  span {
+    font-size: 18px;
+  }
+}
+
+.authors-container {
+  margin-bottom: 10px;
+}
+
+.author-btn {
+  background-color: $secondary-color;
+  color: white;
+  border: none;
+  &:hover, &:focus {
+    background-color: $secondary-color;
+    color: white;
+  }
+}
+
+.textbook-info {
+  p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+}
+
+/*** PRODUCT CONDITION ***/
+
+.condition-btn {
+  background-color: #DDDDDD;
+  border: 1px solid #9B9B9B;
+  &:hover, &:focus {
+    background-color: #BBBBBB;
+  }
+  &.active {
+    background-color: $primary-color;
+    color: white;
+    box-shadow: none;
+  }
+}
+
+.fa-question-circle {
+  color: $secondary-color;
+  cursor: pointer;
+}
+
+.btn-add-input {
+  margin-bottom: 20px;
+}
+
+/** SELL BUTTON **/
+
+.sell-btn {
+  display: block;
+  width: 200px;
+  padding: 12px;
+  font-size: 16px;
+
+}
+
+/** File upload error messages **/
+
+.upload-error-message {
+  display: none;
+  color: red;
+  font-weight: bold;
+}
