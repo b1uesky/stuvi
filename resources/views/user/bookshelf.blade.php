@@ -54,12 +54,12 @@
                         <td class="for-sale-img">
                             <img class="img-responsive" src="{{ url($product->images()->first()->path) }}" width="100px"
                                  height="150px"></td>
-                        <td class="for-sale-info-1">
+                        <td class="for-sale-info-1" colspan="2">
                             <span class="for-sale-title"><a
                                         href="{{ url('textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a></span><br>
                             <span>by </span>
                             @foreach($product->book->authors as $author)
-                                <span class="for-sale-author"><a href="#">{{ $author->full_name }}</a></span>
+                                <span class="for-sale-author">{{ $author->full_name }}</span>
                             @endforeach
 
                             <span class="for-sale-binding">Hardcover</span><br>
@@ -77,7 +77,7 @@
                         </td>
                     </tr>
                 @empty
-                    You don't have book for sale.
+                    <div class="empty"><br>You don't have books for sale.</div>
                 @endforelse
             </table>
         </div>

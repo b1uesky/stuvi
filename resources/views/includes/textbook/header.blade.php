@@ -27,9 +27,9 @@
                 <!-- Navbar right -->
                 <ul id="nav-right" class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
-                        <li><a class="nav-login" href="{{ url('/auth/login') }}">
+                        <li><a id="login-btn" class="nav-login" href="{{ url('/auth/login') }}">
                                 <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
-                        <li><a class="nav-login" href="{{ url('/auth/register') }}">
+                        <li><a id="register-btn" class="nav-login" href="{{ url('/auth/register') }}">
                                 <i class="fa fa-user"></i> Sign Up</a></li>
                     @else
                         <!-- profile dropdown -->

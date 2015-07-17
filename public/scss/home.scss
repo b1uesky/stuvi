@@ -40,12 +40,9 @@ body{
   text-align: center;
   font-size: 5em;
   font-weight: bold;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: $base-font-family;
   padding-top: 6%;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
-  @media (max-width: 767px){
-    font-size: medium;
-  }
 }
 
 .tagline{

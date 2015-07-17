@@ -17,6 +17,7 @@
 
 .bookshelf-page{
   background-color: $background-color;
+  min-height: 90vh;
 }
 
 /* Title */
@@ -26,17 +27,20 @@
 
 /* SORT SECTION */
 
-#nav-sort li {
-  a {
-    color: $secondary-color;
-    &:hover {
-      background-color: #DDDDDD;
+#nav-sort {
+  li {
+    a {
+      color: $muted-text-color;
+      &:hover {
+        background-color: #DDDDDD;
+      }
     }
   }
-  // override bootstrap's default active pill styles
-  .active a{
-    background-color: $secondary-color;
-    color: #FFFFFF;
+  li.active {
+    a {
+      background-color: $primary-color;
+      color: #FFFFFF;
+    }
   }
 }
 
@@ -101,9 +105,12 @@ h5 {
 
 }
 
-.for-sale-title{
+.for-sale-title {
   font-size: medium;
   font-weight: bold;
+  a {
+    color: $primary-color;
+  }
 }
 
 .for-sale-price{
@@ -115,8 +122,9 @@ h5 {
   font-size: medium;
 }
 
+.for-sale-author {
+}
 
-.for-sale-author {}
 .for-sale-binding{}
 .for-sale-isbn {}
 .for-sale-class {}

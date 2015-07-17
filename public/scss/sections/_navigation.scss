@@ -15,22 +15,25 @@ a:focus {
   background: $nav-background-color;
   border-radius: 0;
   border: none;
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 #nav-left li a{
-  color: $nav-text-color !important;
+  color: $nav-text-color;
   &:hover{
-    background-color: $background-color !important;
-    border-bottom: 5px solid #{$primary-color} !important;
-    /*font-weight: bold;*/
-    color: $primary-color !important;
+    background-color: $nav-background-color;
+    border-bottom: 5px solid #{$primary-color};
+    color: $primary-color;
+  }
+  &:focus{
+    background-color: $nav-background-color;
   }
 }
 
 .active-nav {
-  background-color: $nav-background-color !important;
-  border-bottom: 5px solid #{$primary-color} !important;
-  /*font-weight: bold;*/
+  background-color: $nav-background-color;
+  border-bottom: 5px solid #{$primary-color};
+  color: $primary-color !important;
 }
 
 
@@ -69,27 +72,16 @@ a:focus {
   }
   &:hover{
     color: $primary-color;
-    background-color: $background-color;
+    background-color: $nav-background-color;
   }
 }
 
-#cart-link{
+#cart-link, #dp, #login-btn, #register-btn{
   color: $nav-text-color;
   &:hover{
-    background-color: $background-color !important;
-    border-bottom: 5px solid #{$primary-color} !important;
-    /*font-weight: bold;*/
-    color: $primary-color !important;
-
-  }
-}
-
-#dp{
-  &:hover{
-    background-color: $background-color !important;
-    border-bottom: 5px solid #{$primary-color} !important;
-    /*font-weight: bold;*/
-    color: $primary-color !important;
+    background-color: $nav-background-color;
+    border-bottom: 5px solid #{$primary-color};
+    color: $primary-color;
   }
 }
 
@@ -101,7 +93,6 @@ a:focus {
   color: $nav-text-color;
   margin-top: 0px;
   &:hover{
-    /*color: $primary-color !important;*/
   }
 }
 
@@ -114,6 +105,7 @@ a:focus {
       }
     }
   }
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* Fix for when dropdown is open, the text was getting changed to dark*/

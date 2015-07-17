@@ -141,14 +141,6 @@ hr {
   box-shadow: none;
 }
 #save-info-btn {
-  color: white;
-  background-color: #f16521;
-  border: none;
-  box-shadow: 0 5px #69c8c8;
   width: 150px;
   outline: 0;
-}
-#save-info-btn:active {
-  box-shadow: 0 2px #69c8c8;
-  transform: translateY(5px);
 }

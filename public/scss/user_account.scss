@@ -21,14 +21,6 @@
 }
 
 #save-info-btn {
-  color: $button-text-color;
-  background-color: $secondary-color;
-  border: none;
-  box-shadow: 0 5px $accent-color;
   width: 150px;
   outline: 0;
-  &:active{
-    box-shadow: 0 2px $accent-color;
-    transform: translateY(5px);
-  }
 }
