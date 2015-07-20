@@ -81,6 +81,14 @@ class SellerOrderController extends Controller
             if ($seller_order->isCancellable())
             {
                 $seller_order->cancel();
+
+                // if the order is assigned to a courier, send a sms to let the courier know
+                // that the order has been cancelled
+                if ($seller_order->assignedToCourier())
+                {
+                    $this->notifyCourierCancelledOrder($seller_order);
+                }
+
                 return redirect('order/seller/'.$id)
                     ->with('message', 'Your cancel request is submitted. We will process your request in 2 days.');
             }
@@ -89,15 +97,6 @@ class SellerOrderController extends Controller
                 return redirect('order/seller/'.$id)
                     ->with('message', 'Sorry, this order is not cancellable.');
             }
-
-            // if the order is assigned to a courier, send a sms to let the courier know
-            // that the order has been cancelled
-            if ($seller_order->assignedToCourier())
-            {
-                $this->notifyCourierCancelledOrder($seller_order);
-            }
-
-            return redirect('order/seller/' . $id);
         }
 
         return redirect('order/seller')
