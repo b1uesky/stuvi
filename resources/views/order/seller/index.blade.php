@@ -26,26 +26,40 @@
 
                             <p>{{ date('M d, Y', strtotime($order->created_at)) }}</p>
                         </div>
-                        <div class="col-xs-12 col-sm-3 col-sm-offset-7 order-number">
+                        <div class=" col-xs-12 col-sm-2 col-xs-offset-0 order-total">
+                            <h5>Total</h5>
+                            <p>${{ $order->product->price }}</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-sm-offset-5 order-number">
                             <h5>Order Number # {{ $order->id}}</h5>
                             <a href="/order/seller/{{$order->id}}">View Order Details <i class="fa fa-caret-right"></i></a>
                         </div>
                     </div>
+
                     <!-- order status -->
-                    @if ($order->cancelled)
-                        <span id="cancelled"> <h3>Order Cancelled</h3>
-                        <small>Your order has been cancelled.</small>
+                    <div class="alert-container">
+                        @if ($order->isTransferred())
+                            <span id="cancelled"> <h3>Balance Transferred</h3>
+                        <small>The balance of this order is transferred to your Stripe account.</small>
                         </span>
-                    @elseif ($order->pickedUp())
-                        <h3>Picked Up</h3>
-                        <small>Picked up at {{ date($datetime_format, strtotime($order->pickup_time)) }}</small>
-                    {{--@else--}}
-                        {{--<h3>Order Processing</h3>--}}
-                        {{--<small>Your order is being processed by the Stuvi team.</small>--}}
-                        {{--@if ($order->isCancellable())--}}
-                            {{--<a class="btn btn-default order-button-2" href="/order/buyer/cancel/{{ $order->id }}" role="'button">Cancel Order</a>--}}
-                        {{--@endif--}}
-                    @endif
+                        @elseif ($order->isDelivered())
+
+                        @elseif ($order->pickedUp())
+                            <span id="cancelled"> <h3>Picked Up</h3>
+                        <small>Your order is picked up at {{ date($datetime_format, strtotime($order->pickup_time)) }}.</small>
+                        </span>
+                        @elseif ($order->cancelled)
+                            <span id="cancelled"> <h3>Order Cancelled</h3>
+                        <small>Your order is cancelled.</small>
+                        </span>
+                        @else
+                            <span id="cancelled"> <h3>Order Processing</h3>
+                        <small>Your order is being processed by the Stuvi.</small>
+                        </span>
+                            <a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $order->id }}">Cancel Order</a>
+                        @endif
+                    </div>
+
                     <div class="row book-row">
                         <div class="col-xs-12 col-sm-2 book-img">
                             <a href="{{ url('/textbook/buy/product/'.$order->product->id) }}">
@@ -56,9 +70,7 @@
                             <h5><a href="{{ url('/textbook/buy/product/'.$order->product->id) }}">{{ $order->product->book->title }}</a></h5>
                             <h5><small>{{ $order->product->book->author}}</small></h5>
                             <h6>ISBN: {{ $order->product->book->isbn10 }}</h6>
-                        </div>
-                        <div class="col-xs-12 col-sm-2 col-xs-offset-0 col-sm-offset-3 col-md-offset-3 book-price">
-                            <h4>${{ $order->product->price }}</h4>
+                            <h6 class="book-price">${{ $order->product->price }}</h6>
                         </div>
                     </div>
 
