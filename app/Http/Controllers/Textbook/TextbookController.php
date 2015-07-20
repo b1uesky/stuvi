@@ -11,6 +11,8 @@ use Auth;
 use Config;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Input;
 use Isbn\Isbn;
 use Validator;
@@ -285,6 +287,7 @@ class TextbookController extends Controller
         {
             // search by title
             // select all books that can be delivered to buyer's university
+            // return a collection
             $books = Book::where('title', 'LIKE', '%'.$query.'%')
                         ->join('products as p', 'p.book_id', '=', 'books.id')
                         ->join('users as seller', 'seller.id', '=', 'p.seller_id')
@@ -298,12 +301,25 @@ class TextbookController extends Controller
                                 ->from('universities')
                                 ->where('is_public', '=', true);
                         })
-                        ->select('books.*')
-                        ->distinct()
-                        ->paginate(Config::get('pagination.limit.textbook'));
+                        ->select('books.*')->distinct()->get();
+
+            // Get current page form url e.g. &page=1
+            $currentPage = LengthAwarePaginator::resolveCurrentPage();
+
+            // Define how many items we want to be visible in each page
+            $perPage = 10;
+
+            // Slice the collection to get the items to display in current page
+            $currentPageSearchResults = $books->slice(($currentPage - 1) * $perPage, $perPage)->all();
+
+            // Create our paginator and pass it to the view
+            $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($books), $perPage);
+
+            // Set paginator uri
+            $paginatedSearchResults->setPath('');
 
             return view('textbook.list')
-                ->with('books', $books)
+                ->with('books', $paginatedSearchResults)
                 ->with('query', $query);
         }
     }
