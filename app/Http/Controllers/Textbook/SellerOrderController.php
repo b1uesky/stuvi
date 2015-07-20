@@ -238,6 +238,25 @@ class SellerOrderController extends Controller
     {
         $seller_order = SellerOrder::find($id);
 
+        // validation: check if pickup time and address has been selected
+        $confirm_pickup_errors = array();
+
+        if (!$seller_order->scheduled_pickup_time)
+        {
+            array_push($confirm_pickup_errors, 'Please schedule a pickup time.');
+        }
+
+        if (!$seller_order->address_id)
+        {
+            array_push($confirm_pickup_errors, 'Please select a pickup address.');
+        }
+
+        if (count($confirm_pickup_errors) > 0)
+        {
+            return redirect()->back()
+                ->withConfirmPickupErrors($confirm_pickup_errors);
+        }
+
         // send an email with a verification code to the seller to verify
         // that the courier has picked up the book
         $seller = $seller_order->seller();
