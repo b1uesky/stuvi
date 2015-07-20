@@ -21,7 +21,7 @@
             <h4>Your order number is: {{ Session::get('order')->id }} <a href="{{ url('order/buyer/'.Session::get('order')->id) }}">View order detail</a></h4>
 
             <p>You will receive an email confirmation shortly at <code>{{ Auth::user()->email }}</code>.</p>
-            <h5><a href="#">Print Receipt</a></h5>
+            {{--<h5><a href="#">Print Receipt</a></h5>--}}
         </div>
         <div class="next-steps-container">
             <h1>Next Steps</h1>
