@@ -5,7 +5,7 @@
 
 .tab-filter-container {
   width: 100%;
-  background: #F9AA62;
+  background: $primary-color;
   height: 40px;
 }
 
@@ -23,12 +23,12 @@
 
 // this can't be placed above in the .filter styles
 .filter.active {
-  border-bottom: 5px solid #241729;
+  border-bottom: 5px solid white;
 }
 
 .filter-link {
   font-size: 20px;
-  color: #FFFFFF;
+  color: rgba(255, 255, 255, 0.6);
   margin: 0 40px;
 }
 
@@ -37,7 +37,7 @@
 .filter-link:focus,
 .filter-link.active {
   text-decoration: none;
-  color: #241729;
+  color: white;
 }
 
 /******* ERROR MESSAGE ******/

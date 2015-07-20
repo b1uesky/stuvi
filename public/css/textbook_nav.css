@@ -8,7 +8,7 @@
  *
  *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */.tab-filter-container {
   width: 100%;
-  background: #f9aa62;
+  background: #00a496;
   height: 40px;
 }
 .tab-filters {
@@ -22,14 +22,14 @@
   padding-top: 5px;
 }
 .filter.active {
-  border-bottom: 5px solid #241729;
+  border-bottom: 5px solid white;
 }
 .filter-link {
   font-size: 20px;
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
   margin: 0 40px;
 }
 .filter-link:hover, .filter-link:focus, .filter-link.active {
   text-decoration: none;
-  color: #241729;
+  color: white;
 }
