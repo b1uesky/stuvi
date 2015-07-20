@@ -35,4 +35,14 @@ class AmazonLookUpTest extends TestCase {
         $this->assertEquals($expected, $actual);
     }
 
+    public function testGetEdition()
+    {
+        $amazon = new AmazonLookUp('1848829345', 'ISBN');
+
+        $expected = '2011';
+        $actual = $amazon->getEdition();
+
+        $this->assertEquals($expected, $actual);
+    }
+
 }
