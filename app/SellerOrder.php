@@ -202,7 +202,7 @@ class SellerOrder extends Model
      */
     public function isTransferred()
     {
-        return !empty($this->stripeTransfer()->get());
+        return !$this->stripeTransfer()->get()->isEmpty();
     }
 
     /**
