@@ -139,7 +139,7 @@ class TextbookController extends Controller
             'book_id'      => $book->id,
             'small_image'  => $amazon->getSmallImage(),
             'medium_image' => $amazon->getMediumImage(),
-            'large_image'  => $amazon->getSmallImage(),
+            'large_image'  => $amazon->getLargeImage(),
         ]);
 
         // save book authors
