@@ -83,7 +83,7 @@
                 @endforelse
             </table>
         </div>
-            {{--{!! $books->appends(Request::only('query'))->render() !!}--}}
+            {!! $books->appends(Request::only('query'))->render() !!}
     </div>
 @endsection
 

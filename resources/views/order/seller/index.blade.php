@@ -1,6 +1,3 @@
-
-{{--http://homestead.app/order/seller--}}
-
 @extends('app')
 
 @section('title', 'Your Sold books')
@@ -20,7 +17,7 @@
     <!-- Main container -->
     <div class="container seller-order-container">
         <h1>Your sold books</h1>
-        @forelse ($orders->reverse() as $order)
+        @forelse ($orders as $order)
             <div class="row">
                 <div class="container order-container">
                     <div class="row order-row">
@@ -29,16 +26,26 @@
 
                             <p>{{ date('M d, Y', strtotime($order->created_at)) }}</p>
                         </div>
-{{--
-                        <div class=" col-xs-12 col-sm-2 col-xs-offset-0 order-total">
-                            <h5>Total</h5>
-                            <p>${{ $order->seller_payment['stripe_amount']/100 }}</p>--}}
-
                         <div class="col-xs-12 col-sm-3 col-sm-offset-7 order-number">
                             <h5>Order Number # {{ $order->id}}</h5>
                             <a href="/order/seller/{{$order->id}}">View Order Details <i class="fa fa-caret-right"></i></a>
                         </div>
                     </div>
+                    <!-- order status -->
+                    @if ($order->cancelled)
+                        <span id="cancelled"> <h3>Order Cancelled</h3>
+                        <small>Your order has been cancelled.</small>
+                        </span>
+                    @elseif ($order->pickedUp())
+                        <h3>Picked Up</h3>
+                        <small>Picked up at {{ date($datetime_format, strtotime($order->pickup_time)) }}</small>
+                    {{--@else--}}
+                        {{--<h3>Order Processing</h3>--}}
+                        {{--<small>Your order is being processed by the Stuvi team.</small>--}}
+                        {{--@if ($order->isCancellable())--}}
+                            {{--<a class="btn btn-default order-button-2" href="/order/buyer/cancel/{{ $order->id }}" role="'button">Cancel Order</a>--}}
+                        {{--@endif--}}
+                    @endif
                     <div class="row book-row">
                         <div class="col-xs-12 col-sm-2 book-img">
                             <a href="{{ url('/textbook/buy/product/'.$order->product->id) }}">

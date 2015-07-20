@@ -11,9 +11,41 @@
  *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */body {
   backgroud-color: #f2f2f2;
 }
-/* Navigation *//*.nav-dropdown {
- height: 50px;
- }*//* TOP HALF IMAGE *//*Top background*/.backgnd {
+/* NAVIGATION */#nav {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+.logo-container {
+  width: 120px;
+  height: 48px;
+}
+.logo-container img {
+  width: 100%;
+  height: auto;
+}
+#nav-left li a {
+  color: white;
+}
+#nav-left li a:hover, #nav-left li a:focus {
+  background-color: rgba(0, 0, 0, 0);
+}
+#nav-right li a {
+  color: white;
+}
+#nav-right li a:hover, #nav-right li a:focus {
+  background-color: rgba(0, 0, 0, 0);
+}
+#nav-dropdown {
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+#nav-dropdown li a {
+  color: #333;
+}
+#nav-dropdown li a:hover {
+  background-color: #00a496;
+  color: white;
+}
+/* TOP HALF IMAGE *//*Top background*/.backgnd {
   /*****************
  * Temp cover image...(c)Nicholas Louie All Rights Reserved. I Nicholas Louie, hereby allow a limited license
  * to display this image on Stuvi's website with proper name and link credit. This photo may not be distributed, used

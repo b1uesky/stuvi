@@ -63,27 +63,18 @@ class Book extends Model
     /**
      * Get all products of this book that are not sold yet.
      *
-     * TODO: order by product general condition
-     *
-     * @param $user_id
      * @return mixed
      */
     public function availableProducts()
     {
-        $products = $this->products();
-
-        return $products
+        $products = $this->products()
             ->where('sold', 0)
+            ->join('product_conditions as cond', 'products.id', '=', 'cond.product_id')
+            ->orderBy('cond.general_condition')
+            ->select('products.*')
             ->get();
 
-//        $products = DB::table('books')
-//                        ->join('products', 'books.id', '=', 'products.book_id')
-//                        ->join('product_conditions', 'products.id', '=', 'product_conditions.product_id')
-//                        ->select('products.*')
-//                        ->where('books.id', '=', $this->id)
-//                        ->where('products.sold', '=', 0)
-//                        ->orderBy('product_conditions.general_condition')
-//                        ->get();
+        return $products;
     }
 
 }
