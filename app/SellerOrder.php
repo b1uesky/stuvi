@@ -155,11 +155,31 @@ class SellerOrder extends Model
         return $this->belongsTo('App\Address');
     }
 
+    /**
+     * Get the buyer order that this seller order belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function buyerOrder()
     {
         return $this->belongsTo('App\BuyerOrder', 'buyer_order_id', 'id');
     }
 
+    /**
+     * Get the Stripe transfer record of this seller order.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function stripeTransfer()
+    {
+        return $this->hasOne('App\StripeTransfer');
+    }
+
+    /**
+     * Check whether the seller has scheduled a pickup time.
+     *
+     * @return bool
+     */
     public function isScheduled()
     {
         return (!empty($this->scheduled_pickup_time));
@@ -173,6 +193,16 @@ class SellerOrder extends Model
     public function isDelivered()
     {
         return $this->buyerOrder->isDelivered();
+    }
+
+    /**
+     * Check whether the amount of this seller order is transferred to seller's Stripe account.
+     *
+     * @return bool
+     */
+    public function isTransferred()
+    {
+        return !empty($this->stripeTransfer()->get());
     }
 
     /**

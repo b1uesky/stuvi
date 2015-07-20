@@ -37,7 +37,7 @@ class SellerOrderController extends Controller
         $order = $this->hasColumn('seller_orders', $order) ? $order : 'id';
 
         return view('order.seller.index')
-            ->with('orders',    Auth::user()->sellerOrders()->orderBy($order, 'DESC')->get());
+            ->with('orders', Auth::user()->sellerOrders()->orderBy($order, 'DESC')->get());
     }
 
     /**
@@ -55,9 +55,9 @@ class SellerOrderController extends Controller
         if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
         {
             return view('order.seller.show')
-                ->with('seller_order',      $seller_order)
-                ->with('datetime_format',   Config::get('app.datetime_format'))
-                ->with('stripe_authorize_url',  $this->buildStripeAuthRequestUrl());
+                ->with('seller_order', $seller_order)
+                ->with('datetime_format', Config::get('app.datetime_format'))
+                ->with('stripe_authorize_url', $this->buildStripeAuthRequestUrl());
         }
 
         return redirect('order/seller')
@@ -81,12 +81,13 @@ class SellerOrderController extends Controller
             if ($seller_order->isCancellable())
             {
                 $seller_order->cancel();
-                return redirect('order/seller/'.$id)
+
+                return redirect('order/seller/' . $id)
                     ->with('message', 'Your cancel request is submitted. We will process your request in 2 days.');
             }
             else
             {
-                return redirect('order/seller/'.$id)
+                return redirect('order/seller/' . $id)
                     ->with('message', 'Sorry, this order is not cancellable.');
             }
 
@@ -138,7 +139,7 @@ class SellerOrderController extends Controller
                 {
                     return Response::json([
                         'success' => false,
-                        'errors' => [
+                        'errors'  => [
                             'cancelled' => 'Fail to set pickup time because this order has been cancelled.'
                         ]
                     ], 400);
@@ -151,14 +152,14 @@ class SellerOrderController extends Controller
                 $seller_order->save();
 
                 return Response::json([
-                    'success' => true,
+                    'success'               => true,
                     'scheduled_pickup_time' => $scheduled_pickup_time
                 ]);
             }
 
             return Response::json([
                 'success' => false,
-                'errors' => [
+                'errors'  => [
                     'order_not_found' => 'Order not found'
                 ]
             ]);
@@ -173,6 +174,7 @@ class SellerOrderController extends Controller
     public function addAddress($id)
     {
         $seller_order = SellerOrder::find($id);
+
         return view('order.seller.addAddress')->withSellerOrder($seller_order);
     }
 
@@ -209,15 +211,15 @@ class SellerOrderController extends Controller
         }
 
         $address = new Address();
-        $address->user_id       = Auth::user()->id;
-        $address->is_default    = true;
-        $address->addressee     = Input::get('addressee');
+        $address->user_id = Auth::user()->id;
+        $address->is_default = true;
+        $address->addressee = Input::get('addressee');
         $address->address_line1 = Input::get('address_line1');
         $address->address_line2 = Input::get('address_line2');
-        $address->city          = Input::get('city');
-        $address->state_a2      = Input::get('state_a2');
-        $address->zip           = Input::get('zip');
-        $address->phone_number  = Input::get('phone_number');
+        $address->city = Input::get('city');
+        $address->state_a2 = Input::get('state_a2');
+        $address->zip = Input::get('zip');
+        $address->phone_number = Input::get('phone_number');
         $address->save();
 
         $seller_order_id = Input::get('seller_order_id');
@@ -229,6 +231,7 @@ class SellerOrderController extends Controller
      * The pickup has been confirmed and send an email to the seller about the pickup details.
      *
      * @param $id
+     *
      * @return mixed
      */
     public function confirmPickup($id)
@@ -240,10 +243,10 @@ class SellerOrderController extends Controller
         $seller = $seller_order->seller();
         $seller_order->generatePickupCode();
 
-        $seller_order_arr   = $seller_order->allToArray();
+        $seller_order_arr = $seller_order->allToArray();
 
         Mail::queue('emails.sellerOrderScheduledPickupTime', [
-            'seller_order'            => $seller_order_arr
+            'seller_order' => $seller_order_arr
         ], function ($message) use ($seller)
         {
             $message->to($seller->email)->subject('Your textbook pickup has been scheduled.');
@@ -258,29 +261,29 @@ class SellerOrderController extends Controller
      */
     public function transfer()
     {
-        $seller_order_id    = Input::get('seller_order_id');
-        $seller_order       = SellerOrder::find($seller_order_id);
+        $seller_order_id = Input::get('seller_order_id');
+        $seller_order = SellerOrder::find($seller_order_id);
 
-        // TODO: check if this seller order belongs to the current user, or null.
-        if (false)
+        // check if this seller order belongs to the current user, or null.
+        if (empty($seller_order) || !$seller_order->isBelongTo(Auth::id()))
         {
             return redirect('/order/seller')
                 ->with('message', 'Order not found.');
         }
 
-        // TODO: check if this seller order is transferred.
-        if (false)
+        // check if this seller order is transferred.
+        if ($seller_order->isTransferred())
         {
-            return redirect('/order/seller/'.$seller_order_id)
+            return redirect('/order/seller/' . $seller_order_id)
                 ->with('message', 'You have already transferred the balance of this order to your Stripe account.');
         }
 
         // check if this seller order is delivered
-//        if (!$seller_order->isDelivered())
-//        {
-//            return redirect('/order/seller/'.$seller_order_id)
-//                ->with('message', 'This order is not delivered yet. You can get your money back once the buyer get the book.');
-//        }
+        if (!$seller_order->isDelivered())
+        {
+            return redirect('/order/seller/' . $seller_order_id)
+                ->with('message', 'This order is not delivered yet. You can get your money back once the buyer get the book.');
+        }
 
         $credential = Auth::user()->stripeAuthorizationCredential;
         // check if this user has a stripe authorization credential
@@ -294,30 +297,30 @@ class SellerOrderController extends Controller
         try
         {
             $transfer = \Stripe\Transfer::create(array(
-                'amount'                => (int)($seller_order->product->price*100),
-                'currency'              => Config::get('stripe.currency'),
-                'destination'           => $credential->stripe_user_id,
-                'application_fee'       => Config::get('stripe.application_fee'),
-                'source_transaction'    => $seller_order->buyerOrder->buyer_payment->charge_id, // TODO: test source_transaction after finish create buyer order.
+                'amount'             => (int)($seller_order->product->price * 100),
+                'currency'           => Config::get('stripe.currency'),
+                'destination'        => $credential->stripe_user_id,
+                'application_fee'    => Config::get('stripe.application_fee'),
+                'source_transaction' => $seller_order->buyerOrder->buyer_payment->charge_id,
             ));
 
             // save this transfer
-            $stripe_transfer    = new StripeTransfer;
-            $stripe_transfer->seller_order_id   = $seller_order_id;
-            $stripe_transfer->transfer_id       = $transfer['id'];
-            $stripe_transfer->object            = $transfer['object'];
-            $stripe_transfer->amount            = $transfer['amount'];
-            $stripe_transfer->currency          = $transfer['currency'];
-            $stripe_transfer->status            = $transfer['status'];
-            $stripe_transfer->type              = $transfer['type'];
-            $stripe_transfer->balance_transaction   = $transfer['balance_transaction'];
-            $stripe_transfer->destination       = $transfer['destination'];
-            $stripe_transfer->destination_payment   = $transfer['destination_payment'];
-            $stripe_transfer->source_transaction    = $transfer['source_transaction'];
-            $stripe_transfer->application_fee   = $transfer['application_fee'];
-            $stripe_transfer->save();
+            $stripe_transfer = StripeTransfer::create([
+                'seller_order_id'     => $seller_order_id,
+                'transfer_id'         => $transfer['id'],
+                'object'              => $transfer['object'],
+                'amount'              => $transfer['amount'],
+                'currency'            => $transfer['currency'],
+                'status'              => $transfer['status'],
+                'type'                => $transfer['type'],
+                'destination'         => $transfer['destination'],
+                'application_fee'     => $transfer['application_fee'],
+                'balance_transaction' => $transfer['balance_transaction'],
+                'destination_payment' => $transfer['destination_payment'],
+                'source_transaction'  => $transfer['source_transaction'],
+            ]);
 
-            return redirect('/order/seller/'.$seller_order_id)
+            return redirect('/order/seller/' . $seller_order_id)
                 ->with('message', 'Balance has been transferred to your Stripe account. You can transfer it onto your bank account on Stripe.');
 
         }
@@ -325,6 +328,7 @@ class SellerOrderController extends Controller
         {
             // Invalid parameters were supplied to Stripe's API
             $error2 = $e->getMessage();
+
             return redirect()->back()
                 ->with('message', 'Sorry, transaction failed. Please contact Stuvi.');
         }
