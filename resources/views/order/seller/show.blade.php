@@ -61,12 +61,22 @@
                 </div>
             @endif
 
+            {{-- Successfully scheduled a pickup time --}}
             <div class="alert-success-container">
-                {{-- Successfully scheduled a pickup time --}}
                 @if(Session::has('success'))
                     <div class="alert alert-success">{{ Session::get('success') }}</div>
                 @endif
             </div>
+
+            {{-- Confirm pickup error --}}
+            @if(Session::has('confirm_pickup_errors'))
+                <div class="alert alert-danger">
+                    @foreach(Session::get('confirm_pickup_errors') as $index => $error)
+                        {{ $error }}<br>
+                    @endforeach
+                </div>
+            @endif
+
         </div>
 
         <!-- items in order -->
