@@ -267,21 +267,30 @@
                         $<input type="number" step="0.01" name="price" class="form-control" id="price-input">
                     </span>
                 </div>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="price-form">Price</label>
+                        <div class="input-group" id="price-input">
+                            <div class="input-group-addon">$</div>
+                            <input type="number" step="0.01" name="price" class="form-control" id= "price-form" placeholder="Amount">
+                        </div>
+                    </div>
+                </form>
 
                 {{-- Upload Images --}}
                 <div class="form-group" name="cover_img">
-                    <label>Front cover image (smaller than 3MB)</label>
-                    <input type="file" name="front-cover-image" class="upload-file"/>
+                    <label for="image-upload">Front cover image (smaller than 3MB)</label>
+                    <input type="file" name="front-cover-image" class="upload-file" id="image-upload">
                     <div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>
                 </div>
 
                 {{-- Add more images --}}
                 <div class="form-group">
-                    <label name="add_other_img">Other image(s) (smaller than 3MB)</label><br>
-                    <a class="btn secondary-btn btn-add-input" name="add_img_btn">Add Another Image</a>
+                    <label name="add_other_img" for="add-image" >Other image(s) (smaller than 3MB)</label><br>
+                    <a class="btn secondary-btn btn-add-input" name="add_img_btn" id="add-image">Add Another Image</a>
                 </div>
 
-                <input type="submit" name="submit" class="btn primary-btn sell-btn" value="Post Book"/>
+                <input type="submit" name="submit" class="btn primary-btn sell-btn" value="Post Book">
             </form>
         </div>
         @endif
