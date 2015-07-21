@@ -28,14 +28,13 @@ body {
 }
 
 .author-btn {
-  background-color: $secondary-color;
-  color: white;
-  border: none;
   &:hover, &:focus {
-    background-color: $secondary-color;
+    background-color: $primary-color;
     color: white;
+    outline: 0 !important;
   }
 }
+
 
 .textbook-info {
   p {
