@@ -53,6 +53,9 @@
 .btn-add-input {
   margin-bottom: 20px;
 }
+#price-input {
+  width: 50%;
+}
 /** SELL BUTTON **/.sell-btn {
   display: block;
   width: 200px;

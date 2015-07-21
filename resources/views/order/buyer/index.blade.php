@@ -76,8 +76,8 @@
                             </div>
                         </div>
                     @empty
-                        <div class="row book-row-empty">
-                            <mark>There has been a problem.</mark>
+                        <div class="row book-row-empty bg-warning">
+                            <span>There has been a problem.</span>
                         </div>
                     @endforelse
                 </div>
