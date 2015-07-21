@@ -40,7 +40,7 @@ $(document).ready(function() {
             }
         });
     });
-    
+
     // Ajax: update seller default address
     $('.form-update-default-address').submit(function(e) {
         e.preventDefault();
@@ -58,9 +58,7 @@ $(document).ready(function() {
 
                 updateDefaultAddress(data['address']);
 
-                $('.seller-address').toggle();
-                $('.seller-address-book').toggle();
-
+                toggleAddress();
             },
             error: function(xhr, status, errorThrown) {
                 console.log(status);
@@ -70,8 +68,7 @@ $(document).ready(function() {
     });
 
     $('.btn-change-address').click(function() {
-        $('.seller-address').toggle();
-        $('.seller-address-book').toggle();
+        toggleAddress();
     });
 
     /**
@@ -93,6 +90,15 @@ $(document).ready(function() {
         $('.seller-address-city').text(address['city']);
         $('.seller-address-state').text(address['state_a2']);
         $('.seller-address-zip').text(address['zip']);
+    }
+
+    /**
+     * Toggle between default address and address book.
+     */
+    function toggleAddress()
+    {
+        $('.seller-address').toggle();
+        $('.seller-address-book').toggle();
     }
 });
 
