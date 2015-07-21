@@ -17,7 +17,7 @@
 
     <div class="container-fluid">
         <div class="row back-row">
-            <a id="back-to-buyer-order" onclick="goBack()"><i class="fa fa-arrow-circle-left"></i> Go Back</a>
+            <a class="back-to-order" href="order/buyer" onclick="goBack()"><i class="fa fa-arrow-circle-left"></i> Go Back</a>
         </div>
     </div>
 

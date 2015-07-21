@@ -22,7 +22,7 @@
 .alert-sucess-container {
   padding-left: 0;
 }
-#back-to-buyer-order {
+.back-to-order {
   margin-left: 25px;
   text-align: left;
   cursor: pointer;
