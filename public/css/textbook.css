@@ -74,6 +74,10 @@
     margin-left: 11%;
   }
 }
+
+.search-input {
+  background-color: rgba(255, 255, 255, 0.5);
+}
 .search-btn {
   height: 3em;
   margin-right: 30px;
