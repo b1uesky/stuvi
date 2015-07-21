@@ -5,8 +5,8 @@ use Carbon\Carbon;
 
 class SellerOrder extends Model
 {
-    protected $fillable = [ 'product_id', 'scheduled_pickup_time', 'pickup_time', 'pickup_code', 'courier_id',
-                            'buyer_order_id', 'address_id', 'cancelled', 'cancelled_time'];
+    protected $fillable = ['product_id', 'scheduled_pickup_time', 'pickup_time', 'pickup_code', 'courier_id',
+        'buyer_order_id', 'address_id', 'cancelled', 'cancelled_time'];
 
     /**
      * Get the product of this seller order.
@@ -52,6 +52,7 @@ class SellerOrder extends Model
      * Check whether this seller order is belong to a given user.
      *
      * @param $id  A user id
+     *
      * @return bool
      */
     public function isBelongTo($id)
@@ -91,7 +92,7 @@ class SellerOrder extends Model
     public function generatePickupCode()
     {
         $digits = 4;
-        $this->pickup_code = rand(pow(10, $digits-1), pow(10, $digits)-1);
+        $this->pickup_code = rand(pow(10, $digits - 1), pow(10, $digits) - 1);
         $this->save();
     }
 
@@ -206,18 +207,59 @@ class SellerOrder extends Model
     }
 
     /**
+     * Get the seller order status and status detail.
+     *
+     * @return array
+     */
+    public function getOrderStatus()
+    {
+        if ($this->isTransferred())
+        {
+            $order_status           = 'Balance Transferred';
+            $order_status_detail    = 'The balance of this order has been transferred to your Stripe account.';
+        }
+        elseif ($this->isDelivered())
+        {
+            $order_status           = 'Order Delivered';
+            $order_status_detail    = 'Your order has been delivered to the buyer.';
+        }
+        elseif ($this->pickedUp())
+        {
+            $order_status           = 'Picked Up';
+            $order_status_detail    = 'Your order has been picked up at ' . date(config('app.datetime_format'), strtotime($this->pickup_time)) . '.';
+        }
+        elseif ($this->cancelled)
+        {
+            $order_status           = 'Order Cancelled';
+            $order_status_detail    = 'Your order has been cancelled.';
+        }
+        elseif ($this->isScheduled())
+        {
+            $order_status           = 'Waiting For Picking Up';
+            $order_status_detail    = 'Your order is waiting for a Stuvi courier to pick up.';
+        }
+        else
+        {
+            $order_status           = 'Pick-up Details Required';
+            $order_status_detail    = 'Please schedule your pick-up time and location for this order.';
+        }
+
+        return ['order_status' => $order_status, 'order_status_detail' => $order_status_detail];
+    }
+
+    /**
      * Convert all attributes and related model instances of this seller order to an array.
      *
      * @return array
      */
     public function allToArray()
     {
-        $seller_order_arr                       = $this->toArray();
-        $seller_order_arr['seller']             = $this->seller()->toArray();
-        $seller_order_arr['product']            = $this->product->toArray();
-        $seller_order_arr['product']['book']    = $this->product->book->toArray();
-        $seller_order_arr['product']['book']['authors']     = $this->product->book->authors->toArray();
-        $seller_order_arr['product']['book']['image_set']   = $this->product->book->imageSet->toArray();
+        $seller_order_arr = $this->toArray();
+        $seller_order_arr['seller'] = $this->seller()->toArray();
+        $seller_order_arr['product'] = $this->product->toArray();
+        $seller_order_arr['product']['book'] = $this->product->book->toArray();
+        $seller_order_arr['product']['book']['authors'] = $this->product->book->authors->toArray();
+        $seller_order_arr['product']['book']['image_set'] = $this->product->book->imageSet->toArray();
 
         return $seller_order_arr;
     }
