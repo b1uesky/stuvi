@@ -41,7 +41,7 @@
   color: white;
 }
 .list-search-btn {
-  background: #f16521;
+  background: #00a496;
   border: none;
   height: 34px;
   width: 38px;
@@ -49,7 +49,7 @@
 }
 .list-search-btn:hover, .list-search-btn:focus {
   outline: 0 !important;
-  background: #f16521;
+  background: #00a496;
 }
 /*
  * FOR GENERAL TEXT STYLING

@@ -75,7 +75,7 @@
   border-bottom-right-radius: 0;
   border-right: none;
   &:focus {
-    border: 2px solid #F16521;
+    border: 2px solid $primary-color;
     border-right: none;
     box-shadow: none;
   }
@@ -94,14 +94,14 @@
   margin-right: 30px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  background: $secondary-color;
+  background: $primary-color;
   border: none;
   &:hover {
-    background: $secondary-color;
+    background: $primary-color;
   }
   &:focus {
     outline: 0 !important;
-    background: $secondary-color;
+    background: $primary-color;
   }
   @media (max-width: 535px) {
     margin: 0;

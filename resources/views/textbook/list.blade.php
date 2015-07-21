@@ -33,7 +33,7 @@
                                    name="query">
 
                             <div class="input-group-btn">
-                                <button class="btn btn-default list-search-btn" type="submit">
+                                <button class="btn list-search-btn" type="submit">
                                     <i class="fa fa-search search-icon"></i>
                                 </button>
                             </div>
