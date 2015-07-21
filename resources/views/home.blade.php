@@ -86,7 +86,6 @@
                                                                                     style="line-height: 19px;"></i></a>
                             </li>
                         @endif
-
                     </ul>
                 </div>
                 <!-- End collapse container -->

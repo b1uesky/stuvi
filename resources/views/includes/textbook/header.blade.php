@@ -43,7 +43,7 @@
                                             <!-- close button -->
                                             <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
                                             <!-- header -->
-                                            <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+                                            <h4><span class="glyphicon glyphicon-lock"></span>Login</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form role="form"  action="{{ url('/auth/login') }}" method="post">

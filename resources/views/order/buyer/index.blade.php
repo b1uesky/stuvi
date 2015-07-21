@@ -36,7 +36,8 @@
                         </div>
                         <div class="col-xs-12 col-sm-3 col-sm-offset-5 order-number">
                             <h5>Order Number # {{ $order->id }}</h5>
-                            <a href="/order/buyer/{{$order->id}}">View Order Details <i class="fa fa-caret-right"></i>
+                            <a id="show-order-link" href="/order/buyer/{{$order->id}}">View Order Details <i
+                                        class="fa fa-caret-right"></i>
                             </a>
                         </div>
                     </div>
@@ -48,12 +49,13 @@
                     @elseif ($order->isDelivered())
                         <h3>Delivered</h3>
                         <small>Delivered at {{ date($datetime_format, strtotime($order->time_delivered)) }}</small>
-                        <a class="btn btn-default order-button-2" href="#" role="button">Return or Replace Item</a>
+                        <a class="btn secondary-btn" href="#" role="button">Return or Replace Item</a>
                     @else
                         <h3>Order Processing</h3>
                         <small>Your order is being processed by the Stuvi team.</small>
                         @if ($order->isCancellable())
-                            <a class="btn btn-default order-button-2" href="/order/buyer/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
+                            <a class="btn secondary-btn" href="/order/buyer/cancel/{{ $order->id }}" role="'button">Cancel
+                                Order</a>
                         @endif
                     @endif
 
