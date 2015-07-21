@@ -10,11 +10,20 @@ use App\User;
 
 class UserTest extends TestCase {
 
-    public function testDefaultAddress()
-    {
-        $expected = 4;
-        $actual = User::find(2)->defaultAddress()->id;
+//    public function testDefaultAddress4()
+//    {
+//        $expected = 4;
+//        $actual = User::find(2)->defaultAddress()->id;
+//
+//        $this->assertEquals($expected, $actual);
+//    }
+//
+//    public function testDefaultAddress8()
+//    {
+//        $expected = 8;
+//        $actual = User::find(3)->defaultAddress()->id;
+//
+//        $this->assertEquals($expected, $actual);
+//    }
 
-        $this->assertEquals($expected, $actual);
-    }
 }

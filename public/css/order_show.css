@@ -81,6 +81,9 @@ hr {
   list-style-type: none;
   padding: 0;
 }
+.seller-address-book {
+  display: none;
+}
 /* Pickup Button */.pickup-btn {
   background: #7ab4de;
   color: #fff;

@@ -40,6 +40,11 @@ $(document).ready(function() {
             }
         });
     });
+
+    $('.btn-change-address').click(function() {
+        $('.seller-address').toggle();
+        $('.seller-address-book').toggle();
+    });
 });
 
 function setFocusToTextBox(){
