@@ -68,7 +68,8 @@
   margin-top: 30px;
 }
 .profile-usermenu ul li {
-  border-bottom: 1px solid #f2f2f2;
+  margin: auto;
+  width: 45%;
 }
 .profile-usermenu ul li:last-child {
   border-bottom: none;
@@ -81,11 +82,13 @@
   background-color: #f2f2f2;
   border-left: 2px solid #f16521;
   margin-left: -2px;
+  text-align: center;
 }
 .profile-usermenu ul li a {
   color: grey;
   font-size: 14px;
   font-weight: 400;
+  text-align: left;
 }
 .profile-usermenu ul li a:hover {
   background-color: #f2f2f2;
