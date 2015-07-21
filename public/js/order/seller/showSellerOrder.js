@@ -40,11 +40,60 @@ $(document).ready(function() {
             }
         });
     });
+    
+    // Ajax: update seller default address
+    $('.form-update-default-address').submit(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: '/user/updateDefaultAddress',
+            data: {
+                _token: $('[name="csrf_token"]').attr('content'),
+                address_id: $(this).find('input[name=address_id]').val()
+            },
+            dataType: 'json',
+            success: function (data, status) {
+                //console.log(data['address']);
+
+                updateDefaultAddress(data['address']);
+
+                $('.seller-address').toggle();
+                $('.seller-address-book').toggle();
+
+            },
+            error: function(xhr, status, errorThrown) {
+                console.log(status);
+                console.log(errorThrown);
+            }
+        });
+    });
 
     $('.btn-change-address').click(function() {
         $('.seller-address').toggle();
         $('.seller-address-book').toggle();
     });
+
+    /**
+     * Update the default address using data retrieved from AJAX.
+     *
+     * @param address
+     */
+    function updateDefaultAddress(address) {
+        var address_line = address['address_line1'];
+
+        // add line 2 if necessary
+        if (address['address_line2'] != '')
+        {
+            address_line = address_line + ', ' + address['address_line2'];
+        }
+
+        $('.seller-address-addressee').text(address['addressee']);
+        $('.seller-address-address-line').text(address_line);
+        $('.seller-address-city').text(address['city']);
+        $('.seller-address-state').text(address['state_a2']);
+        $('.seller-address-zip').text(address['zip']);
+    }
 });
 
 function setFocusToTextBox(){

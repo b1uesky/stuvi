@@ -158,10 +158,16 @@
             {{-- If the seller has a default address --}}
             @if($address)
                 <div class="seller-address-box">
+                    <div>
+                        <button type="button" class="btn btn-orange btn-change-address">Change</button>
+                    </div>
+
                     <div class="seller-address">
                         <ul>
-                            <li>{{ $address->addressee }}</li>
-                            <li>
+                            {{-- WARNING: if you need to change class names below,
+                            make sure you change the selectors in updateDefaultAddress() in `showSellerOrder.js`. --}}
+                            <li class="seller-address-addressee">{{ $address->addressee }}</li>
+                            <li class="seller-address-address-line">
                                 @if($address->address_line2)
                                     {{ $address->address_line1 }}, {{ $address->address_line2 }}
                                 @else
@@ -169,21 +175,11 @@
                                 @endif
                             </li>
                             <li>
-                                <span>{{ $address->city }}, </span>
-                                <span>{{ $address->state_a2 }} </span>
-                                <span>{{ $address->zip }}</span>
+                                <span class="seller-address-city">{{ $address->city }}, </span>
+                                <span class="seller-address-state">{{ $address->state_a2 }} </span>
+                                <span class="seller-address-zip">{{ $address->zip }}</span>
                             </li>
                         </ul>
-
-                        {{-- Change address button --}}
-                        {{--<form action="/order/seller/changeAddress" method="get">--}}
-                            {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
-                            {{--<input type="hidden" name="address_id" value="{{ $address->id }}"/>--}}
-                            {{--<input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}"/>--}}
-                            {{--<input type="submit" name="submit" value="Change"--}}
-                                   {{--class="btn btn-warning"/>--}}
-                        {{--</form>--}}
-
                     </div>
 
                     {{-- Invisible by default. Show after click the change button. --}}
@@ -208,9 +204,9 @@
                                     <li>Phone: {{ $address->phone_number }}</li>
                                 </ul>
 
-                                <form action="" method="post" class="">
+                                {{-- Ajax: update seller default address --}}
+                                <form action="" method="post" class="form-update-default-address">
                                     <input type="hidden" name="address_id" value="{{ $address->id }}"/>
-                                    <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}"/>
                                     <input type="submit" name="submit" value="Select this address" class="btn btn-orange"/>
                                 </form>
 
@@ -218,8 +214,6 @@
 
                         @endforeach
                     </div>
-
-                    <button type="button" class="btn btn-orange btn-change-address">Change</button>
                 </div>
             @else
                 {{-- Add a new address --}}

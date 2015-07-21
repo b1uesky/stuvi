@@ -1,10 +1,14 @@
 <?php namespace App\Http\Controllers;
 
+use App\Address;
 
 use Auth;
 use Input;
 use Session;
 use Mail;
+use Request;
+use Response;
+
 
 class UserController extends Controller
 {
@@ -109,6 +113,38 @@ class UserController extends Controller
 
         return redirect('user/activate')
             ->with('message', 'Activation email is sent. Please check your email.');
+    }
+
+
+    /**
+     * Update user's default address.
+     *
+     * @return mixed
+     */
+    public function updateDefaultAddress()
+    {
+        if (Request::ajax())
+        {
+            $address_id = Input::get('address_id');
+            $address = Address::find($address_id);
+
+            if ($address)
+            {
+                $address->setDefault();
+
+                return Response::json([
+                    'success'   => true,
+                    'address'   => $address->toArray()
+                ]);
+            }
+            else
+            {
+                return Response::json([
+                    'success'       => false,
+                    'error'         => 'Address not found.'
+                ]);
+            }
+        }
     }
 
 }

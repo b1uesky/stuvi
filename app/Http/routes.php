@@ -106,6 +106,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::post ('/seller/schedulePickupTime', 'SellerOrderController@schedulePickupTime');
     Route::get  ('/seller/{id}/addAddress', 'SellerOrderController@addAddress');
     Route::get  ('/seller/assignAddress', 'SellerOrderController@assignAddress');
+//    Route::post ('/seller/updateDefaultAddress', 'SellerOrderController@updateDefaultAddress');
     Route::post ('/seller/storeAddress', 'SellerOrderController@storeAddress');
     Route::get  ('/seller/{id}/confirmPickup', 'SellerOrderController@confirmPickup');
     Route::post ('/seller/transfer', 'SellerOrderController@transfer');
@@ -142,6 +143,7 @@ Route::group(['middleware'=>'auth', 'prefix'=>'user'], function()
     Route::get('/activate', 'UserController@waitForActivation');
     Route::get('/activate/resend', 'UserController@resendActivationEmail');
     Route::get('/activate/{code}', 'UserController@activateAccount');
+    Route::post('updateDefaultAddress', 'UserController@updateDefaultAddress');
 });
 
 Route::controllers([
