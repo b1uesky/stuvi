@@ -215,36 +215,36 @@ class SellerOrder extends Model
     {
         if ($this->isTransferred())
         {
-            $order_status           = 'Balance Transferred';
-            $order_status_detail    = 'The balance of this order has been transferred to your Stripe account.';
+            $status = 'Balance Transferred';
+            $detail = 'The balance of this order has been transferred to your Stripe account.';
         }
         elseif ($this->isDelivered())
         {
-            $order_status           = 'Order Delivered';
-            $order_status_detail    = 'Your order has been delivered to the buyer.';
+            $status = 'Order Delivered';
+            $detail = 'Your order has been delivered to the buyer.';
         }
         elseif ($this->pickedUp())
         {
-            $order_status           = 'Picked Up';
-            $order_status_detail    = 'Your order has been picked up at ' . date(config('app.datetime_format'), strtotime($this->pickup_time)) . '.';
+            $status = 'Picked Up';
+            $detail = 'Your order has been picked up at ' . date(config('app.datetime_format'), strtotime($this->pickup_time)) . '.';
         }
         elseif ($this->cancelled)
         {
-            $order_status           = 'Order Cancelled';
-            $order_status_detail    = 'Your order has been cancelled.';
+            $status = 'Order Cancelled';
+            $detail = 'Your order has been cancelled.';
         }
         elseif ($this->isScheduled())
         {
-            $order_status           = 'Waiting For Picking Up';
-            $order_status_detail    = 'Your order is waiting for a Stuvi courier to pick up.';
+            $status = 'Waiting For Picking Up';
+            $detail = 'Your order is waiting for a Stuvi courier to pick up.';
         }
         else
         {
-            $order_status           = 'Pick-up Details Required';
-            $order_status_detail    = 'Please schedule your pick-up time and location for this order.';
+            $status = 'Pick-up Details Required';
+            $detail = 'Please schedule your pick-up time and location for this order.';
         }
 
-        return ['order_status' => $order_status, 'order_status_detail' => $order_status_detail];
+        return ['status' => $status, 'detail' => $detail];
     }
 
     /**

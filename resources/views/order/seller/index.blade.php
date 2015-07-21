@@ -39,8 +39,8 @@
                     <!-- order status -->
                     <div class="alert-container">
                         <span id="cancelled">
-                            <h3>{{ $order->getOrderStatus()['order_status'] }}</h3>
-                            <small>{{ $order->getOrderStatus()['order_status_detail'] }}</small>
+                            <h3>{{ $order->getOrderStatus()['status'] }}</h3>
+                            <small>{{ $order->getOrderStatus()['detail'] }}</small>
                         </span>
                     </div>
 
