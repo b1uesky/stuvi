@@ -43,7 +43,7 @@
                                             <!-- close button -->
                                             <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
                                             <!-- header -->
-                                            <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+                                            <h4><span class="glyphicon glyphicon-lock"></span>Login</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form role="form"  action="{{ url('/auth/login') }}" method="post">
@@ -144,22 +144,22 @@
                                                           id="account-name">{{ Auth::user()->first_name }} </span><span
                                         class="caret nav-caret"></span></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="nav-dropdown">
-                                <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                           href="{{ url('/user/profile') }}">
-                                        Profile</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                           href="{{ url('/user/account') }}">
-                                        Your Account</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                           href="{{ url('/order/buyer') }}">
-                                        Your Orders</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                           href="{{ url('/order/seller') }}">
-                                        Sold Books</a></li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="{{ url('/user/profile') }}">Profile</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="{{ url('/user/account') }}">Your Account</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="{{ url('/order/buyer') }}">Your Orders</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="{{ url('/order/seller') }}">Sold Books</a>
+                                </li>
                                 <li role="separator" class="divider"></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                           href="{{ url('/auth/logout') }}">
-                                        Logout</a></li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="{{ url('/auth/logout') }}">Logout</a>
+                                </li>
                             </ul>
                         </li>
                         <!-- cart -->

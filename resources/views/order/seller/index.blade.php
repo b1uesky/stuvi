@@ -28,7 +28,8 @@
                         </div>
                         <div class="col-xs-12 col-sm-3 col-sm-offset-7 order-number">
                             <h5>Order Number # {{ $order->id}}</h5>
-                            <a href="/order/seller/{{$order->id}}">View Order Details <i class="fa fa-caret-right"></i></a>
+                            <a id="show-order-link" href="/order/seller/{{$order->id}}">View Order Details <i
+                                        class="fa fa-caret-right"></i></a>
                         </div>
                     </div>
                     <!-- order status -->

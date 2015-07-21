@@ -45,7 +45,7 @@
   border-radius: 4px 0 0 4px;
   border-right: none;
   &:focus {
-    border: 1px solid $secondary-color;
+    border: 1px solid $primary-color;
     border-right: none;
     box-shadow: none;
   }
@@ -90,9 +90,6 @@
 .textbook-title {
   font-size: medium;
   font-weight: bold;
-  a {
-    color: $primary-color;
-  }
 }
 
 .textbook-pub-date {

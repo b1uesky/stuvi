@@ -26,13 +26,13 @@
 
 // textbook/list.blade.php
 .list-search-btn {
-  background: $secondary-color;
+  background: $primary-color;
   border: none;
   height: 34px;
   width: 38px;
   margin-left: 0 !important;
   &:hover, &:focus {
     outline: 0 !important;
-    background: $secondary-color;
+    background: $primary-color;
   }
 }

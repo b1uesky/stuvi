@@ -126,7 +126,7 @@ body{
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
   }
   &:focus{
-    outline: 0;
+    outline: 0 !important;
     color: #FFFFFF;
   }
   @media (max-width: 767px){

@@ -33,7 +33,7 @@
   border-right: none;
 }
 #autocompleteBuy:focus {
-  border: 1px solid #f16521;
+  border: 1px solid #00a496;
   border-right: none;
   box-shadow: none;
 }
@@ -67,9 +67,6 @@
 .textbook-title {
   font-size: medium;
   font-weight: bold;
-}
-.textbook-title a {
-  color: #00a496;
 }
 .textbook-pub-date {
   font-size: medium;
