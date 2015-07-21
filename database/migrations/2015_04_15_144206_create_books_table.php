@@ -16,7 +16,7 @@ class CreateBooksTable extends Migration {
 		{
             $table->increments('id');
             $table->string('title');
-            $table->tinyInteger('edition')->default(1);
+            $table->integer('edition')->default(1);
             $table->string('isbn10', 10);
             $table->string('isbn13', 13);
             $table->smallInteger('num_pages');

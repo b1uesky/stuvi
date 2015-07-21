@@ -276,6 +276,31 @@ class BuyerOrder extends Model
             // Something else happened, completely unrelated to Stripe
             return $e->getMessage();
         }
+    }
 
+    /**
+     * Get the buyer order status and status detail.
+     *
+     * @return array
+     */
+    public function getOrderStatus()
+    {
+        if ($this->cancelled)
+        {
+            $status = 'Order Cancelled';
+            $detail = 'Your order has been cancelled.';
+        }
+        elseif ($this->isDelivered())
+        {
+            $status = 'Order Delivered';
+            $detail = 'Your order has been delivered.';
+        }
+        else
+        {
+            $status = 'Order Processing';
+            $detail = 'Your order is being processed by the Stuvi.';
+        }
+
+        return ['status' => $status, 'detail' => $detail];
     }
 }

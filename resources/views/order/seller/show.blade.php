@@ -26,25 +26,28 @@
         </div>
 
         <div class="alert-container">
-            {{-- Order has been picked up --}}
-            @if($seller_order->pickedUp())
-                <div class="alert alert-success">The textbook has been picked up by our courier.</div>
-            @elseif($seller_order->isCancellable())
-                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel
-                        Order</a></p>
-            @else
+            @if ($seller_order->isTransferred())
+                <div class="alert alert-success">The balance of this order is transferred to your Stripe account.</div>
+            @elseif ($seller_order->isDelivered())
+                @if ($seller_order->seller()->stripeAuthorizationCredential()->get()->isEmpty()))
+                    <a href="#">Link Stripe account to get money back</a>
+                @else
+                    <!-- Get order money back to seller debit card -->
+                    <form action="{{ url('/order/seller/transfer') }}" method="POST">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
+                        <button type="submit" class="btn btn-primary">Get money back</button>
+                    </form>
+                @endif
+            @elseif ($seller_order->pickedUp())
+                <div class="alert alert-success">The textbook has been picked up by our courier. You can get your money
+                    back once the textbook is delivered.</div>
+            @elseif ($seller_order->cancelled)
                 <div class="alert alert-danger">This order has been cancelled.</div>
+            @else
+                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
             @endif
         </div>
-
-        @if ($seller_order->isDelivered())
-            <!-- Get order money back to seller debit card -->
-            <form action="{{ url('/order/seller/transfer') }}" method="POST">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
-                <button type="submit" class="btn btn-primary">Get money back</button>
-            </form>
-        @endif
 
         {{-- Messages --}}
         <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
@@ -61,12 +64,22 @@
                 </div>
             @endif
 
+            {{-- Successfully scheduled a pickup time --}}
             <div class="alert-success-container">
-                {{-- Successfully scheduled a pickup time --}}
                 @if(Session::has('success'))
                     <div class="alert alert-success">{{ Session::get('success') }}</div>
                 @endif
             </div>
+
+            {{-- Confirm pickup error --}}
+            @if(Session::has('confirm_pickup_errors'))
+                <div class="alert alert-danger">
+                    @foreach(Session::get('confirm_pickup_errors') as $index => $error)
+                        {{ $error }}<br>
+                    @endforeach
+                </div>
+            @endif
+
         </div>
 
         <!-- items in order -->
