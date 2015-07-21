@@ -30,22 +30,24 @@
                 <div class="alert alert-success">The balance of this order is transferred to your Stripe account.</div>
             @elseif ($seller_order->isDelivered())
                 @if ($seller_order->seller()->stripeAuthorizationCredential()->get()->isEmpty()))
-                    <a href="#">Link Stripe account to get money back</a>
+                <a href="#">Link Stripe account to get money back</a>
                 @else
-                    <!-- Get order money back to seller debit card -->
-                    <form action="{{ url('/order/seller/transfer') }}" method="POST">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
-                        <button type="submit" class="btn btn-primary">Get money back</button>
-                    </form>
+                        <!-- Get order money back to seller debit card -->
+                <form action="{{ url('/order/seller/transfer') }}" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
+                    <button type="submit" class="btn btn-primary">Get money back</button>
+                </form>
                 @endif
             @elseif ($seller_order->pickedUp())
                 <div class="alert alert-success">The textbook has been picked up by our courier. You can get your money
-                    back once the textbook is delivered.</div>
+                    back once the textbook is delivered.
+                </div>
             @elseif ($seller_order->cancelled)
                 <div class="alert alert-danger">This order has been cancelled.</div>
             @else
-                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
+                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel
+                        Order</a></p>
             @endif
         </div>
 
@@ -150,11 +152,16 @@
             <div class="row row-title">
                 <h3 class="col-xs-12">Select a pickup address</h3>
             </div>
+
+
+
             {{-- If the seller has address --}}
             @if(count($seller_order->seller()->addresses) > 0)
                 {{-- Show existing addresses --}}
                 <div class="seller-address-box">
                     @foreach($seller_order->seller()->addresses as $index => $address)
+                        @if($address->is_default)
+
                         <div class="seller-address">
                             <ul>
                                 <li>{{ $address->addressee }}</li>
@@ -199,11 +206,10 @@
                            class="btn btn-orange">Add a new address</a></br></br>
                     </div>
                 </div>
-
-                {{-- Confirm pickup --}}
-                <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm
-                    Pickup</a></br></br>
         </div>
+        {{-- Confirm pickup --}}
+        <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm
+            Pickup</a></br></br>
         @endif
     </div>
 @endsection

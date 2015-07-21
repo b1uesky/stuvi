@@ -180,6 +180,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
+     * Get the default address of the user.
+     *
+     * @return mixed
+     */
+    public function defaultAddress()
+    {
+        return $this->addresses()->where('is_default', true)->first();
+    }
+
+    /**
      * Get the Stripe authorization credential of this user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
