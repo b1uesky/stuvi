@@ -463,8 +463,7 @@
                                             <label>
                                                 <span>Card Number</span>
                                                 <input class="form-control" type="text" size="19" maxlength="19"
-                                                       data-stripe="number" id="card-input"
-                                                       value="4242-4242-4242-4242"/>
+                                                       data-stripe="number" id="card-input"/>
                                             </label>
 
                                         </div>
@@ -507,7 +506,7 @@
                                             <input id="security-code"
                                                    class="form-control col-xs-3 col-xs-offset-0 col-sm-offset-1"
                                                    type="text"
-                                                   size="4" data-stripe="cvc" value="111"/>
+                                                   size="4" data-stripe="cvc" />
                                         </div>
                                         <br>
                                     </div>

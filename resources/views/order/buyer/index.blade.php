@@ -47,7 +47,7 @@
                         </span>
                     @elseif ($order->isDelivered())
                         <h3>Delivered</h3>
-                        <small>Delivered at {{ date($datetime_format, strtotime($order->pickup_time)) }}</small>
+                        <small>Delivered at {{ date($datetime_format, strtotime($order->time_delivered)) }}</small>
                         <a class="btn btn-default order-button-2" href="#" role="button">Return or Replace Item</a>
                     @else
                         <h3>Order Processing</h3>
