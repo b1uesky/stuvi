@@ -24,8 +24,6 @@
                 {{--<li role="presentation"><a href="#" data-toggle="pill">Author</a></li>--}}
                 {{--<li role="presentation"><a href="#" data-toggle="pill">Most Bought</a></li>--}}
                 {{--<li role="presentation"><a href="#" data-toggle="pill">Top Rated</a></li>--}}
-
-
                 <div class="col-sm-4 col-md-4 pull-right">
                     <form action="/textbook/buy/search" method="get" class="navbar-form" role="search">
                         <div class="input-group">
