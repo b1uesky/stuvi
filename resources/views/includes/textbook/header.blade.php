@@ -144,22 +144,22 @@
                                                           id="account-name">{{ Auth::user()->first_name }} </span><span
                                         class="caret nav-caret"></span></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="nav-dropdown">
-                                <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                           href="{{ url('/user/profile') }}">
-                                        Profile</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                           href="{{ url('/user/account') }}">
-                                        Your Account</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                           href="{{ url('/order/buyer') }}">
-                                        Your Orders</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                           href="{{ url('/order/seller') }}">
-                                        Sold Books</a></li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="{{ url('/user/profile') }}">Profile</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="{{ url('/user/account') }}">Your Account</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="{{ url('/order/buyer') }}">Your Orders</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="{{ url('/order/seller') }}">Sold Books</a>
+                                </li>
                                 <li role="separator" class="divider"></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                           href="{{ url('/auth/logout') }}">
-                                        Logout</a></li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="{{ url('/auth/logout') }}">Logout</a>
+                                </li>
                             </ul>
                         </li>
                         <!-- cart -->

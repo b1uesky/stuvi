@@ -262,7 +262,10 @@
                 {{-- your price --}}
                 <div class="form-group">
                     <label>Price</label>
-                    <input type="number" step="0.01" name="price" class="form-control">
+                    <br>
+                    <span>
+                        $<input type="number" step="0.01" name="price" class="form-control" id="price-input">
+                    </span>
                 </div>
 
                 {{-- Upload Images --}}

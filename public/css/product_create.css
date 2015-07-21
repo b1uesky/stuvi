@@ -34,6 +34,10 @@
   font-size: 16px;
   margin-bottom: 5px;
 }
+
+#price-input {
+  width: 200px;
+}
 /*** PRODUCT CONDITION ***/.condition-btn {
   background-color: #ddd;
   border: 1px solid #9b9b9b;
