@@ -43,9 +43,7 @@
   width: 200px;
   padding: 12px;
 }
-
-/** File upload error messages **/
-.upload-error-message {
+/** File upload error messages **/.upload-error-message {
   display: none;
   color: red;
   font-weight: bold;
