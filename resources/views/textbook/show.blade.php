@@ -25,7 +25,7 @@
                 <div class="authors-container">
                     <span>by </span>
                     @foreach($book->authors as $author)
-                        <span id="authors"><button class="btn btn-default author-btn">{{ $author->full_name }}</button></span>
+                        <span id="authors"><button class="btn btn-default author-btn disabled">{{ $author->full_name }}</button></span>
                     @endforeach
                 </div>
                 <p>ISBN10: {{ $book->isbn10 }}</p>

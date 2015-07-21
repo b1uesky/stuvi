@@ -139,7 +139,7 @@
                     @else
                         <!-- profile dropdown -->
                         <li class="dropdown" id="dp">
-                            <a href="#" id="navi-drop" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button"
+                            <a href="#" id="nav-drop" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button"
                                aria-expanded="true"><span nav-caret
                                                           id="account-name">{{ Auth::user()->first_name }} </span><span
                                         class="caret nav-caret"></span></a>
