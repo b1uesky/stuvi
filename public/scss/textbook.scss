@@ -53,12 +53,8 @@
 /******* TEXTBOOK SEARCH AREA ******/
 
 .search {
-  /* Photo by Brittany Stevens https://flic.kr/p/nfwhCe */
-  /* Licensed under creative commons BY 2.0*/
-  /* https://creativecommons.org/licenses/by/2.0/ */
-  background-image: url('../img/open-book.jpg');
+  background: rgba(0, 0, 0, 0.3) url('../img/open-book.jpg') no-repeat;
   background-size: cover;
-  background-color: rgba(0, 0, 0, 0.3);
   padding: 60px;
 }
 
@@ -67,18 +63,6 @@
   margin-bottom: 20px;
   color: #FFFFFF;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
-}
-
-.form-control {
-  height: 3em;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right: none;
-  &:focus {
-    border: 2px solid $primary-color;
-    border-right: none;
-    box-shadow: none;
-  }
 }
 
 .search-row {
@@ -91,6 +75,19 @@
 
 .search-input {
   background-color: rgba(255, 255, 255, 0.5);
+  height: 3em;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+  &:focus {
+    border: 2px solid $primary-color;
+    border-right: none;
+    box-shadow: none;
+  }
+}
+
+#container-fluid-search-sell{
+  padding-bottom: 45px;
 }
 
 .search-btn {
@@ -151,22 +148,17 @@
 
 .row {
   padding: 3%;
-
 }
 
 .row-b {
-  padding-top: 1%;
-  padding-bottom: 2%;
-  padding-left: 0%;
-  padding-right: 0%;
+  padding: 1% 0 2% 0;
 }
 
 #shrink-xs {
   @media(max-width: 767px) {
     text-align: center;
-    margin-top: 0%;
-    padding-bottom: 0%;
-    margin: 0%;
+    margin: 0;
+    padding-bottom: 0;
   }
 }
 

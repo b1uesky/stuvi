@@ -202,10 +202,10 @@
   max-height: calc(100vh - 210px);
   overflow-y: auto;
 }
-#login-form, #sign-up-form {
-  width: 80%;
-}
-/* Footer CSS Template
+/*
+ #login-form, #sign-up-form {
+ width: 80%;
+ }*//* Footer CSS Template
  http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/
  *//* Import of all modules *//*
  * Stuvi color palette
