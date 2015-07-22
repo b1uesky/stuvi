@@ -130,3 +130,7 @@ a:focus {
   max-height: calc(100vh - 210px);
   overflow-y: auto;
 }
+
+#login-form, #sign-up-form {
+  width: 80%;
+}

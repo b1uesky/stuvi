@@ -46,7 +46,7 @@
                                             <h4><span class="glyphicon glyphicon-lock"></span>Login</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form role="form"  action="{{ url('/auth/login') }}" method="post">
+                                            <form role="form"  action="{{ url('/home') }}" method="post" id="login-form">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <!-- email -->
                                                 <div class="form-group">

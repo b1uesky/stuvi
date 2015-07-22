@@ -47,7 +47,7 @@ body {
 .seller-order-container {
   min-height: 500px;
 }
-/* Orange border around each order */.order-container {
+/* border around each order */.order-container {
   border: 1px solid #00a496;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   background-color: white;
@@ -64,6 +64,7 @@ body {
 .order-row {
   background-color: #00a496;
   color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.24);
 }
 .book-row {
   padding: 10px 0;
