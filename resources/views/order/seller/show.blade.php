@@ -12,6 +12,12 @@
 
 @section('content')
 
+    <div class="container-fluid">
+        <div class="row back-row">
+            <a class="back-to-order" href="/order/seller" onclick="goBack()"><i class="fa fa-arrow-circle-left"></i> Go Back</a>
+        </div>
+    </div>
+
     <div class="container show-order-container">
         <!-- order details -->
         <div class="container cont-1">
@@ -211,8 +217,17 @@
 @section('javascript')
     {{--http://xdsoft.net/jqplugins/datetimepicker/--}}
     <!-- Date time picker required scripts -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
     <script src="{{asset('/js/datetimepicker/jquery.js')}}"></script>
     <script src="{{asset('/js/datetimepicker/jquery.datetimepicker.js')}}"></script>
 
     <script src="{{asset('/js/order/seller/showSellerOrder.js')}}" type="text/javascript"></script>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 @endsection
