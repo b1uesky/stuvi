@@ -80,14 +80,14 @@ body{
   font-size: 5em;
   font-weight: bold;
   font-family: $base-font-family;
-  padding-top: 6%;
+  padding-top: 3%;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
 .tagline{
   color: whitesmoke;
   text-align: center;
-  padding-bottom: 5%;
+  padding-bottom: 3%;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
   font-weight: 400;
 }
@@ -103,9 +103,12 @@ body{
 
 .ghost-btn-container {
   text-align: center;
-  padding-top: 3%;
+  padding-top: 1%;
   @media (max-width: 767px){
     margin-bottom: 35px;
+  }
+  @media (max-width: 399px) {
+    margin-bottom: 0;
   }
 }
 
@@ -134,9 +137,65 @@ body{
     margin: 0 8px 0;
   }
   @media (max-width: 399px) {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 }
+
+#home-search-container{
+  margin-top: 4%;
+  margin-bottom: 4%;
+  //background-color: rgba(0,0,0,.7)
+}
+
+#home-search-form{
+}
+
+.search-row {
+  padding: 0;
+  margin-left: 15%;
+  @media (max-width: 535px) {
+    margin-left: 11%;
+  }
+}
+
+.search-input {
+  background-color: rgba(255, 255, 255, 0.7);
+  height: 3em;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+  &:focus {
+    border: 2px solid $primary-color;
+    border-right: none;
+    box-shadow: none;
+  }
+}
+
+.search-btn {
+  height: 3em;
+  margin-right: 30px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background: $primary-color;
+  border: none;
+  &:hover {
+    background: $primary-color;
+  }
+  &:focus {
+    outline: 0 !important;
+    background: $primary-color;
+  }
+  @media (max-width: 535px) {
+    margin: 0;
+  }
+}
+
+.search-icon {
+  font-size: 1.2em;
+  color: white;
+}
+
+
 
 
 /******** BOTTOM HALF ********/
