@@ -19,4 +19,5 @@
 }
 .confirmation-container {
   margin-bottom: 200px;
+  min-height: 90vh;
 }
