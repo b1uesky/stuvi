@@ -1,18 +1,21 @@
 <?php namespace App\Http\Controllers\Textbook;
 
+use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
 use App\Book;
 use App\BookAuthor;
 use App\BookImageSet;
 use App\Helpers\AmazonLookUp;
 use App\Helpers\FileUploader;
-use App\Http\Controllers\Controller;
-use App\Http\Requests;
+use Isbn\Isbn;
+
 use Auth;
 use Config;
-use Illuminate\Http\Request;
-use Illuminate\Pagination\Paginator;
 use Input;
-use Isbn\Isbn;
 use Validator;
 use DB;
 use Response;
@@ -136,7 +139,7 @@ class TextbookController extends Controller
             'book_id'      => $book->id,
             'small_image'  => $amazon->getSmallImage(),
             'medium_image' => $amazon->getMediumImage(),
-            'large_image'  => $amazon->getSmallImage(),
+            'large_image'  => $amazon->getLargeImage(),
         ]);
 
         // save book authors
@@ -285,6 +288,7 @@ class TextbookController extends Controller
         {
             // search by title
             // select all books that can be delivered to buyer's university
+            // return a collection
             $books = Book::where('title', 'LIKE', '%'.$query.'%')
                         ->join('products as p', 'p.book_id', '=', 'books.id')
                         ->join('users as seller', 'seller.id', '=', 'p.seller_id')
@@ -298,12 +302,25 @@ class TextbookController extends Controller
                                 ->from('universities')
                                 ->where('is_public', '=', true);
                         })
-                        ->select('books.*')
-                        ->distinct()
-                        ->paginate(Config::get('pagination.limit.textbook'));
+                        ->select('books.*')->distinct()->get();
+
+            // Get current page form url e.g. &page=1
+            $currentPage = LengthAwarePaginator::resolveCurrentPage();
+
+            // Define how many items we want to be visible in each page
+            $perPage = Config::get('pagination.limit.textbook');
+
+            // Slice the collection to get the items to display in current page
+            $currentPageSearchResults = $books->slice(($currentPage - 1) * $perPage, $perPage)->all();
+
+            // Create our paginator and pass it to the view
+            $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($books), $perPage);
+
+            // Set paginator uri
+            $paginatedSearchResults->setPath('');
 
             return view('textbook.list')
-                ->with('books', $books)
+                ->with('books', $paginatedSearchResults)
                 ->with('query', $query);
         }
     }
