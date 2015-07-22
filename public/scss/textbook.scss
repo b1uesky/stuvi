@@ -69,18 +69,6 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
-.form-control {
-  height: 3em;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right: none;
-  &:focus {
-    border: 2px solid $primary-color;
-    border-right: none;
-    box-shadow: none;
-  }
-}
-
 .search-row {
   padding: 0;
   margin-left: 15%;
@@ -91,6 +79,15 @@
 
 .search-input {
   background-color: rgba(255, 255, 255, 0.5);
+  height: 3em;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+  &:focus {
+    border: 2px solid $primary-color;
+    border-right: none;
+    box-shadow: none;
+  }
 }
 
 .search-btn {
@@ -151,7 +148,6 @@
 
 .row {
   padding: 3%;
-
 }
 
 .row-b {
