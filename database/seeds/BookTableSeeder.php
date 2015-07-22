@@ -45,6 +45,7 @@ public function run()
 
         if ($google_book->searchByISBN($isbn))
         {
+            echo 'Adding book: ' . $google_book->getTitle() . "\r\n";
 
             // save this book to our database
             $book = Book::create([
@@ -58,7 +59,9 @@ public function run()
             // save book image set
             BookImageSet::create([
                 'book_id'       => $book->id,
-                'small_image'   => $google_book->getSmallThumbnail()
+                'small_image'   => $google_book->getThumbnail(),
+                'medium_image'  => $google_book->getThumbnail(),
+                'large_image'   => $google_book->getThumbnail()
             ]);
 
             // save book authors

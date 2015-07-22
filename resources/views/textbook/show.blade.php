@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row textbook-row">
             <div class="col-sm-6">
-                @if($book->imageSet->large_image)
+                @if($book->imageSet->small_image)
                     <img id="textbook-img" src="{{ $book->imageSet->large_image or config('book.default_image_path.large') }}" alt="Book Image"/>
                 @endif
             </div>
