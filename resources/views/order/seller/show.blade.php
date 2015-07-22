@@ -204,20 +204,32 @@
                                     <li>Phone: {{ $address->phone_number }}</li>
                                 </ul>
 
-                                {{-- Ajax: update seller default address --}}
+                                {{-- Ajax: select default address --}}
                                 <form action="" method="post" class="form-update-default-address">
                                     <input type="hidden" name="address_id" value="{{ $address->id }}"/>
-                                    <input type="submit" name="submit" value="Select this address" class="btn btn-orange"/>
+                                    <input type="submit" name="submit" value="Select" class="btn btn-default"/>
+                                </form>
+
+                                {{-- TODO: Edit address --}}
+                                <form action="" method="get" class="form-edit-address">
+                                    <input type="hidden" name="address_id" value="{{ $address->id }}"/>
+                                    <input type="submit" name="submit" value="Edit" class="btn btn-default"/>
                                 </form>
 
                             </div>
 
                         @endforeach
+
+                        {{-- Add a new address --}}
+                        <div>
+                            <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
+                               class="btn btn-orange">Add a new address</a></br></br>
+                        </div>
                     </div>
                 </div>
             @else
                 {{-- Add a new address --}}
-                <div class="seller-address">
+                <div>
                     <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
                        class="btn btn-orange">Add a new address</a></br></br>
                 </div>

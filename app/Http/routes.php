@@ -32,6 +32,29 @@ Route::get  ('/coming', 'HomeController@coming');
 
 /*
 |--------------------------------------------------------------------------
+| User Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware'=>'auth', 'prefix'=>'user'], function()
+{
+    Route::get('/profile', 'UserController@profile');
+    Route::get('/profile-edit', 'UserController@profileEdit');
+    Route::get('/account', 'UserController@account');
+    Route::post('/account/edit', 'UserController@edit');
+    Route::get('/bookshelf', 'UserController@bookshelf');
+    Route::get('/activate', 'UserController@waitForActivation');
+    Route::get('/activate/resend', 'UserController@resendActivationEmail');
+    Route::get('/activate/{code}', 'UserController@activateAccount');
+    Route::post('/updateDefaultAddress', 'UserController@updateDefaultAddress');
+});
+
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
+
+/*
+|--------------------------------------------------------------------------
 | Address Routes
 |--------------------------------------------------------------------------
 */
@@ -40,6 +63,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
     Route::post ('/update','AddressController@update');
     Route::post ('/delete','AddressController@ajaxDelete');
     Route::post ('/select','AddressController@ajaxSelect');
+    Route::post ('/updateDefaultAddress', 'AddressController@updateDefaultAddress');
 });
 
 
@@ -106,7 +130,6 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::post ('/seller/schedulePickupTime', 'SellerOrderController@schedulePickupTime');
     Route::get  ('/seller/{id}/addAddress', 'SellerOrderController@addAddress');
     Route::get  ('/seller/assignAddress', 'SellerOrderController@assignAddress');
-//    Route::post ('/seller/updateDefaultAddress', 'SellerOrderController@updateDefaultAddress');
     Route::post ('/seller/storeAddress', 'SellerOrderController@storeAddress');
     Route::get  ('/seller/{id}/confirmPickup', 'SellerOrderController@confirmPickup');
     Route::post ('/seller/transfer', 'SellerOrderController@transfer');
@@ -127,29 +150,6 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], 
     Route::get('empty', 'CartController@emptyCart');
     Route::get('update', 'CartController@updateCart');
 });
-
-/*
-|--------------------------------------------------------------------------
-| User Routes
-|--------------------------------------------------------------------------
-*/
-Route::group(['middleware'=>'auth', 'prefix'=>'user'], function()
-{
-    Route::get('/profile', 'UserController@profile');
-    Route::get('/profile-edit', 'UserController@profileEdit');
-    Route::get('/account', 'UserController@account');
-    Route::post('/account/edit', 'UserController@edit');
-    Route::get('/bookshelf', 'UserController@bookshelf');
-    Route::get('/activate', 'UserController@waitForActivation');
-    Route::get('/activate/resend', 'UserController@resendActivationEmail');
-    Route::get('/activate/{code}', 'UserController@activateAccount');
-    Route::post('updateDefaultAddress', 'UserController@updateDefaultAddress');
-});
-
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
 
 /*
 |--------------------------------------------------------------------------

@@ -41,6 +41,10 @@ $(document).ready(function() {
         });
     });
 
+    $('.btn-change-address').click(function() {
+        toggleAddress();
+    });
+
     // Ajax: update seller default address
     $('.form-update-default-address').submit(function(e) {
         e.preventDefault();
@@ -67,8 +71,27 @@ $(document).ready(function() {
         });
     });
 
-    $('.btn-change-address').click(function() {
-        toggleAddress();
+    // TODO
+    // Ajax: edit seller address
+    $('.form-edit-address').submit(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'GET',
+            url: '/user/editAddress',
+            data: {
+                _token: $('[name="csrf_token"]').attr('content'),
+                address_id: $(this).find('input[name=address_id]').val()
+            },
+            dataType: 'json',
+            success: function (data, status) {
+
+            },
+            error: function(xhr, status, errorThrown) {
+                console.log(status);
+                console.log(errorThrown);
+            }
+        });
     });
 
     /**

@@ -115,7 +115,6 @@ class UserController extends Controller
             ->with('message', 'Activation email is sent. Please check your email.');
     }
 
-
     /**
      * Update user's default address.
      *
@@ -146,5 +145,4 @@ class UserController extends Controller
             }
         }
     }
-
 }
