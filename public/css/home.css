@@ -84,10 +84,11 @@
 .top-content {
   padding-top: 5%;
 }
-/***** GHOST BUTTONS
+/*****
+ * GHOST BUTTONS
  *      Login, sign in
  *
- *****/.ghost-btn-container {
+ ***/.ghost-btn-container {
   text-align: center;
   padding-top: 1%;
 }
@@ -133,14 +134,15 @@
     margin-bottom: 15px;
   }
 }
-#home-search-container {
+/* SEARCH BAR */#home-search-container {
   padding: 0;
   position: absolute;
   bottom: 20%;
   width: 100vw;
 }
-/* SEARCH BAR */#home-search-form {
+#home-search-form {
   background-color: rgba(0, 0, 0, .6);
+  padding-top: 1%;
   padding-bottom: 2%;
 }
 .search-row {

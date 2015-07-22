@@ -68,13 +68,14 @@ a:focus {
 #nav-drop {
   padding-bottom: 10px;
   &:focus {
-    background-color: $accent-color;
+    background-color: $nav-background-color;
   }
   &:hover{
     color: $primary-color;
     background-color: $nav-background-color;
     #account-name, .nav-caret{
       color: $primary-color;
+      background-color: $nav-background-color;
     }
   }
 }
@@ -90,6 +91,10 @@ a:focus {
 
 #nav-right > .open > a{
   background-color: $nav-background-color;
+}
+
+#nav-right > .open{
+  border-bottom: 0;
 }
 
 .nav-caret {
