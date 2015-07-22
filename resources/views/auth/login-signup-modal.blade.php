@@ -19,12 +19,12 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <!-- email -->
                             <div class="form-group">
-                                <label for="login-email"><span class="glyphicon glyphicon-user"></span> Email</label>
+                                <label for="login-email"><i class="fa fa-envelope"></i> Email</label>
                                 <input type="text" class="form-control" id="login-email" name="email" placeholder="Enter email" value="">
                             </div>
                             <!-- password -->
                             <div class="form-group">
-                                <label for="login-password"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                                <label for="login-password"><i class="fa fa-key"></i> Password</label>
                                 <input type="password" class="form-control" name="password" id="login-password" placeholder="Enter password">
                             </div>
                             <!-- remember me -->
@@ -32,19 +32,17 @@
                                 <label for="remember-me-box">
                                     <input id="remember-me-box" type="checkbox" value="" checked>Remember me</label>
                             </div>
-                            <button type="submit" class="btn primary-btn btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+                            <button type="submit" class="btn primary-btn btn-block">Login</button>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <p>Not a member? <a data-toggle="modal" href="#signup-modal" data-dismiss="modal">Sign Up</a></p>
-                        <a id="forgot-password" href="{{ url('/password/email') }}">Forgot
-                            Password?</a>
+                        <a id="forgot-password" href="{{ url('/password/email') }}">Forgot Password?</a>
                     </div>
                 </div>
             </div>
         </div>
         <!-- sign up modal -->
-        <!-- TODO: MAKE THIS WORK !!! -->
         <div class="modal fade signup-modal" id="signup-modal" tabindex="-1" role="dialog"
              aria-labelledby="SignUp">
             <div class="modal-dialog">
@@ -53,7 +51,7 @@
                         <!-- close -->
                         <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
                         <!-- header -->
-                        <h4><span class="glyphicon glyphicon-lock"></span> Sign Up</h4>
+                        <h4><i class="fa fa-user-plus"></i> Sign Up</h4>
                     </div>
                     <div class="modal-body">
                         <form role="form" method="POST" action="{{ url('/auth/register') }}">
@@ -94,7 +92,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <button type="submit" class="btn primary-btn btn-block"><span class="glyphicon glyphicon-off"></span> Sign Up</button>
+                            <button type="submit" class="btn primary-btn btn-block">Sign Up</button>
                         </form>
                     </div>
                     <div class="modal-footer">
