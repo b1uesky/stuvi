@@ -67,31 +67,29 @@
 .profile-usermenu {
   margin-top: 30px;
 }
-.profile-usermenu ul li {
+
+.profile-usermenu .nav .side-item {
   border-bottom: 1px solid #f2f2f2;
 }
-.profile-usermenu ul li:last-child {
+
+.profile-usermenu .nav .side-item:last-child {
   border-bottom: none;
 }
-.profile-usermenu ul li .active {
-  border-bottom: none;
-}
-.profile-usermenu ul li .active a {
-  color: #f16521;
-  background-color: #f2f2f2;
-  border-left: 2px solid #f16521;
-  margin-left: -2px;
-}
-.profile-usermenu ul li a {
+
+.profile-usermenu .nav .side-item a {
   color: grey;
   font-size: 14px;
   font-weight: 400;
+  border-left: 2px solid white;
 }
-.profile-usermenu ul li a:hover {
+
+.profile-usermenu .nav .side-item a:hover, .profile-usermenu .nav .side-item a.active {
   background-color: #f2f2f2;
-  color: #f16521;
+  border-left: 2px solid #00a496;
+  color: #00a496;
 }
-.profile-usermenu ul li a i {
+
+.profile-usermenu .nav .side-item a i {
   margin-right: 8px;
   font-size: 14px;
 }
@@ -152,19 +150,7 @@ hr {
 label {
   text-align: left !important;
 }
-.form-control:focus {
-  border: 2px solid #f16521;
-  box-shadow: none !important;
-}
 #save-info-btn {
-  color: white;
-  background-color: #f16521;
-  border: none;
-  box-shadow: 0 5px #5b86aa;
   width: 150px;
-  outline: 0;
-}
-#save-info-btn:active {
-  box-shadow: 0 2px #5b86aa;
-  transform: translateY(5px);
+  padding: 12px;
 }

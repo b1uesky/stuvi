@@ -37,20 +37,8 @@ label{
   text-align:left !important;
 }
 
-.form-control:focus {
-  border: 2px solid #{$secondary-color};
-  box-shadow: none !important;
-}
 
 #save-info-btn {
-  color: $button-text-color;
-  background-color: $secondary-color;
-  border: none;
-  box-shadow: 0 5px #5B86AA;
   width: 150px;
-  outline: 0;
-  &:active{
-    box-shadow: 0 2px #5B86AA;
-    transform: translateY(5px);
-  }
+  padding: 12px;
 }

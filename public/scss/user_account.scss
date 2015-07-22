@@ -13,14 +13,14 @@
   text-align: left !important;
 }
 
-/****** EDIT INFO ******/
-
-.form-control:focus {
-  border: 2px solid $secondary-color;
-  box-shadow: none;
+#line {
+  margin-bottom: 40px;
 }
+
+/****** EDIT INFO ******/
 
 #save-info-btn {
   width: 150px;
-  outline: 0;
+  padding: 12px;
+  margin: 0;
 }
