@@ -34,7 +34,7 @@
                                     <img class="pro-img" src="{{ Config::get('aws.url.stuvi-product-img') . $image->medium_image }}" alt="Book Image" />
                                 </a>
                             @endif
-                            <br>
+                            <br><br>
                         @else
                             @if($image->isTestImage())
                                 <a class="lightbox-product-link" href="{{ $image->large_image }}"

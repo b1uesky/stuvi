@@ -151,6 +151,20 @@ class AuthController extends Controller {
     /**
      * @override
      *
+     * Log the user out of the application.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getLogout()
+    {
+        Auth::logout();
+
+        return redirect('/home');
+    }
+
+    /**
+     * @override
+     *
      * Get the failed login message.
      *
      * @return string

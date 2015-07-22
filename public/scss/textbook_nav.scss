@@ -4,7 +4,7 @@
 
 .tab-filter-container {
   width: 100%;
-  background: $light-orange-color;
+  background: $primary-color;
   height: 40px;
 }
 
@@ -20,20 +20,22 @@
   padding-top: 5px;
 }
 
+// this can't be placed above in the .filter styles
 .filter.active {
-  border-bottom: 5px solid $stuvi-purple-color;
+  border-bottom: 5px solid white;
 }
 
 .filter-link {
   font-size: 20px;
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
   margin: 0 40px;
 }
 
+// this can't be placed above in the .filter-link styles
 .filter-link:hover,
 .filter-link:focus,
 .filter-link.active {
   text-decoration: none;
-  color: $stuvi-purple-color;
+  color: white;
 }
 

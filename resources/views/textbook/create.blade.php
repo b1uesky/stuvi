@@ -83,12 +83,23 @@
                         @endforeach
                     </select>
                 </div>
-                <!-- upload image -->
-                <div class="form-group ws">
-                    <label><b>Cover Image</b></label>
-                    <input type="file" name="image"/>
+                {{-- Upload Images --}}
+                <div class="form-group" name="cover_img">
+                    <label>Front cover image (smaller than 3MB)</label>
+                    <input type="file" name="front-cover-image" class="upload-file"/>
+
+                    <div class="upload-error-message">The file size is too large. Please make sure the file size is
+                        under 3MB.
+                    </div>
                 </div>
-                <input type="submit" name="submit" class="btn btn-primary" id="create-btn" value="Submit"/>
+
+                {{-- Add more images --}}
+                <div class="form-group">
+                    <label name="add_other_img">Other image(s) (smaller than 3MB)</label><br>
+                    <a class="btn secondary-btn btn-add-input" name="add_img_btn">Add Another Image</a>
+                </div>
+
+                <input type="submit" name="submit" class="btn primary-btn create-btn" id="create-btn" value="Submit"/>
             </form>
         </div> <!-- End row -->
     </div> <!-- end container -->
@@ -101,4 +112,5 @@
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/product/create.js') }}"></script>
 @endsection

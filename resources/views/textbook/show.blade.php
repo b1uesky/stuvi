@@ -25,7 +25,7 @@
                 <div class="authors-container">
                     <span>by </span>
                     @foreach($book->authors as $author)
-                        <span id="authors"><button class="btn btn-default author-btn">{{ $author->full_name }}</button></span>
+                        <span id="authors"><button class="btn btn-default author-btn disabled">{{ $author->full_name }}</button></span>
                     @endforeach
                 </div>
                 <p>ISBN10: {{ $book->isbn10 }}</p>
@@ -62,11 +62,14 @@
                             </td>
                             <td class="cart-btn-col">
                                 @if($product->isInCart(Auth::user()->id))
-                                    <a class="btn secondary-btn add-cart-btn disabled" href="#" role="button">Added to cart</a>
+                                    <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Added to
+                                        cart</a>
                                 @elseif($product->seller == Auth::user())
-                                    <a class="btn secondary-btn add-cart-btn disabled" href="#" role="button">Posted by you</a>
+                                    <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Posted by
+                                        you</a>
                                 @else
-                                    <a class="btn secondary-btn add-cart-btn" href="{{ url('cart/add/'.$product->id) }}" role="button">Add to cart</a>
+                                    <a class="btn primary-btn add-cart-btn" href="{{ url('cart/add/'.$product->id) }}"
+                                       role="button">Add to cart</a>
                                 @endif
                             </td>
                         </tr>

@@ -25,18 +25,17 @@
 .authors-container {
   margin-bottom: 10px;
 }
-.author-btn {
-  background-color: #f16521;
-  color: white;
-  border: none;
-}
 .author-btn:hover, .author-btn:focus {
-  background-color: #f16521;
+  background-color: #00a496;
   color: white;
+  outline: 0 !important;
 }
 .textbook-info p {
   font-size: 16px;
   margin-bottom: 5px;
+}
+#price-input {
+  width: 200px;
 }
 /*** PRODUCT CONDITION ***/.condition-btn {
   background-color: #ddd;
@@ -56,6 +55,9 @@
 }
 .btn-add-input {
   margin-bottom: 20px;
+}
+#price-input {
+  width: 50%;
 }
 /** SELL BUTTON **/.sell-btn {
   display: block;
