@@ -32,7 +32,7 @@
             <form action="/textbook/buy/search" method="get">
                 <div class="form-group">
                     <div class="col-xs-8 col-xs-offset-2 search-row">
-                        <input type="text" name="query" id="autocompleteBuy" class="form-control"
+                        <input type="text" name="query" id="autocompleteBuy" class="form-control search-input"
                                placeholder="Enter the textbook ISBN, Title, or Author"/>
                     </div>
                 </div>
