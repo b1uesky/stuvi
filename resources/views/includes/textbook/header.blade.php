@@ -46,7 +46,7 @@
                                             <h4><span class="glyphicon glyphicon-lock"></span>Login</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form role="form"  action="{{ url('/home') }}" method="post">
+                                            <form role="form"  action="{{ url('/home') }}" method="post" id="login-form">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <!-- email -->
                                                 <div class="form-group">
@@ -86,7 +86,7 @@
                                             <h4><span class="glyphicon glyphicon-lock"></span> Sign Up</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form role="form" method="POST" action="{{ url('/home') }}">
+                                            <form role="form" method="POST" action="{{ url('/home') }}" id="sign-up-form">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <!-- first name -->
                                                 <div class="form-group">
@@ -122,9 +122,9 @@
                                                     <select class="form-control" name="university_id">
                                                         <label class="sr-only" for="register-uni">School</label>
                                                         <option id="register-uni" selected disabled>University</option>
-                                                        @foreach($universities as $university)
+                                                     {{--   @foreach($universities as $university)
                                                             <option value="{{ $university->id }}">{{ $university->name }}</option>
-                                                        @endforeach
+                                                        @endforeach--}}
                                                     </select>
                                                 </div>
                                                 <button type="submit" class="btn primary-btn btn-block"><span class="glyphicon glyphicon-off"></span> Sign Up</button>
