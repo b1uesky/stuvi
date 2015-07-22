@@ -107,6 +107,25 @@
             @endif
         </div>
 
+        <!-- TODO: make this work properly..like a search for the entire stuvi site? idk -->
+        <div class="container col-md-12" id="home-search-container">
+            <div class="row" id="home-search-form">
+                <form action="/textbook/buy/search" method="get">
+                    <div class="form-group">
+                        <div class="col-xs-8 col-xs-offset-2 search-row">
+                            <input type="text" name="query" id="autocompleteBuy" class="form-control search-input"
+                                   placeholder="Enter the textbook ISBN, Title, or Author"/>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-default search-btn" type="submit" value="Search">
+                        <i class="fa fa-search search-icon"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
     </div> <!-- end contain-top backgnd -->
   <!-- new bottom half -->
     <div class="container-fluid" id="bottom-half">
