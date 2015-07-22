@@ -48,6 +48,7 @@
                     <tr class="textbook-item">
                         <td class="textbook-img-container">
                             <a href="{{ url("textbook/buy/".$book->id) }}">
+
                                 <img class="textbook-img"
                                      src="{{ $book->imageSet->medium_image or config('book.default_image_path.medium')}}">
                             </a>
