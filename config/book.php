@@ -20,8 +20,8 @@ return [
     ],
 
     'default_image_path' => [
-        'small'     => '',
-        'medium'    => '',
-        'large'     => '',
+        'small' => '../../img/placeholder.png',
+        'medium' => '../../img/placeholder.png',
+        'large' => '../../img/placeholder.png',
     ]
 ];
