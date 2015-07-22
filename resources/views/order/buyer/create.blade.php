@@ -187,12 +187,12 @@
                                     <label class="col-sm-4 control-label">Phone</label>
 
                                     <div class="col-sm-6 form-space-offset">
-                                        <input type="text" class="form-control" name="phone_number"
-                                               value="(857) 206 4789">
+                                        <input type="tel" class="form-control phone_number"
+                                               name="phone_number" value="(857) 206 4789">
                                     </div>
                                 </div>
                                 </br>
-                                <button class="col-sm-3 btn btn-default primary-btn address-btn" id="storeAddress"
+                                <button class="btn btn-default primary-btn address-btn" id="storeAddress"
                                         type="submit">
                                     Add Address
                                 </button>
@@ -285,8 +285,7 @@
 
                                                 <div class="col-sm-6 form-space-offset">
                                                     <input type="tel" class="form-control phone_number"
-                                                           name="phone_number"
-                                                           value="(857) 206 4789">
+                                                           name="phone_number" value="(857) 206 4789">
                                                 </div>
                                             </div>
                                             <input type="hidden" name="address_id" value="">
@@ -382,8 +381,7 @@
 
                                                     <div class="col-sm-6 form-space-offset">
                                                         <input type="tel" class="form-control phone_number"
-                                                               name="phone_number"
-                                                               value="(857) 206 4789">
+                                                               name="phone_number" value="(857) 206 4789">
                                                     </div>
                                                 </div>
                                                 <input type="hidden" name="address_id" value="">
