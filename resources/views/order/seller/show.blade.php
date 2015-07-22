@@ -159,7 +159,7 @@
             @if($address)
                 <div class="seller-address-box">
                     <div>
-                        <button type="button" class="btn btn-orange btn-change-address">Change</button>
+                        <button type="button" class="btn btn-default btn-change-address">Change</button>
                     </div>
 
                     <div class="seller-address">

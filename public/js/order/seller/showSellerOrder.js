@@ -98,7 +98,14 @@ $(document).ready(function() {
     function toggleAddress()
     {
         $('.seller-address').toggle();
-        $('.seller-address-book').toggle();
+        $('.seller-address-book').slideToggle();
+
+        // toggle button text
+        if ($('.btn-change-address').text() == 'Change') {
+            $('.btn-change-address').text('Cancel');
+        } else {
+            $('.btn-change-address').text('Change');
+        }
     }
 });
 
