@@ -9,9 +9,9 @@ use App\Http\Requests;
 use App\Book;
 use App\BookAuthor;
 use App\BookImageSet;
-use App\Helpers\AmazonLookUp;
 use App\Helpers\FileUploader;
 use Isbn\Isbn;
+use GoogleBooks\GoogleBooks;
 
 use Auth;
 use Config;
@@ -99,11 +99,13 @@ class TextbookController extends Controller
         else
         {
             // Amazon lookup
-            $amazon = new AmazonLookUp($isbn, 'ISBN');
+//            $amazon = new AmazonLookUp($isbn, 'ISBN');
 
-            if ($amazon->success())
+            $google_book = new GoogleBooks(Config::get('services.google.books.api_key'));
+
+            if ($google_book->searchByISBN($isbn))
             {
-                $book = $this->createBookByAmazon($amazon);
+                $book = $this->createBookByGoogleBooks($google_book);
 
                 return redirect('textbook/sell/product/' . $book->id . '/create');
             }
@@ -117,37 +119,34 @@ class TextbookController extends Controller
     /**
      * Create a book according to the data from Amazon API.
      *
-     * @param $amazon
+     * @param $google_book
      *
      * @return Book
      */
-    protected function createBookByAmazon($amazon)
+    protected function createBookByGoogleBooks($google_book)
     {
-        // save book
+        // save this book to our database
         $book = Book::create([
-            'isbn10'    => $amazon->getISBN10(),
-            'isbn13'    => $amazon->getISBN13(),
-            'title'     => $amazon->getTitle(),
-            'edition'   => $amazon->getEdition(),
-            'binding'   => $amazon->getBinding(),
-            'language'  => $amazon->getLanguage(),
-            'num_pages' => $amazon->getNumPages(),
+            'isbn10'    => $google_book->getIsbn10(),
+            'isbn13'    => $google_book->getIsbn13(),
+            'title'     => $google_book->getTitle(),
+            'language'  => $google_book->getLanguage(),
+            'num_pages' => $google_book->getPageCount(),
         ]);
 
         // save book image set
-        $book_image_set = BookImageSet::create([
-            'book_id'      => $book->id,
-            'small_image'  => $amazon->getSmallImage(),
-            'medium_image' => $amazon->getMediumImage(),
-            'large_image'  => $amazon->getLargeImage(),
+        BookImageSet::create([
+            'book_id'       => $book->id,
+            'small_image'   => $google_book->getThumbnail(),
+            'medium_image'  => $google_book->getThumbnail(),
+            'large_image'   => $google_book->getThumbnail()
         ]);
 
         // save book authors
-        foreach ($amazon->getAuthors() as $author_name)
-        {
-            $book_author = BookAuthor::create([
+        foreach ($google_book->getAuthors() as $author_name) {
+            BookAuthor::create([
                 'book_id'   => $book->id,
-                'full_name' => $author_name,
+                'full_name' => $author_name
             ]);
         }
 
@@ -168,6 +167,7 @@ class TextbookController extends Controller
      * Store a newly created book in storage.
      * Only if the input ISBN is not in our database and amazon database.
      *
+     * @param $authors_arr
      * @return Response
      */
     public function store($authors_arr)

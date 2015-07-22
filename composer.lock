@@ -301,12 +301,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kingdido999/google-books.git",
-                "reference": "b44fa7dcbd1d1f1292a950f7583b3c123bc61aa1"
+                "reference": "b709c0e7ed8d9e675630c92bcc6fc7bda88e3c32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kingdido999/google-books/zipball/b44fa7dcbd1d1f1292a950f7583b3c123bc61aa1",
-                "reference": "b44fa7dcbd1d1f1292a950f7583b3c123bc61aa1",
+                "url": "https://api.github.com/repos/kingdido999/google-books/zipball/b709c0e7ed8d9e675630c92bcc6fc7bda88e3c32",
+                "reference": "b709c0e7ed8d9e675630c92bcc6fc7bda88e3c32",
                 "shasum": ""
             },
             "require": {
@@ -338,7 +338,7 @@
                 "books",
                 "google"
             ],
-            "time": "2015-07-22 19:50:45"
+            "time": "2015-07-22 20:49:16"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
