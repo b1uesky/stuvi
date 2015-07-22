@@ -77,7 +77,6 @@
                                 </div>
                             </div>
                             <!-- sign up modal -->
-                            <!-- TODO: MAKE THIS WORK !!! -->
                             <div class="modal fade signup-modal" id="signup-modal" tabindex="-1" role="dialog"
                                  aria-labelledby="SignUp">
                                 <div class="modal-dialog">
