@@ -32,7 +32,7 @@
     @endif
 
     <!-- Search Bar Container-->
-    <div class="container-fluid search">
+    <div class="container-fluid search" id="container-fluid-search-sell">
         <div class="row">
             <h1 id="title">Sell Your Used Textbooks</h1>
             <form action="/textbook/sell/search" method="post">

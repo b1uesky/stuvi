@@ -40,12 +40,8 @@
   padding: 1%;
 }
 /******* TEXTBOOK SEARCH AREA ******/.search {
-  /* Photo by Brittany Stevens https://flic.kr/p/nfwhCe */
-  /* Licensed under creative commons BY 2.0*/
-  /* https://creativecommons.org/licenses/by/2.0/ */
-  background-image: url('../img/open-book.jpg');
+  background: rgba(0, 0, 0, 0.3) url('../img/open-book.jpg') no-repeat;
   background-size: cover;
-  background-color: rgba(0, 0, 0, 0.3);
   padding: 60px;
 }
 #title {
@@ -74,6 +70,9 @@
   border: 2px solid #00a496;
   border-right: none;
   box-shadow: none;
+}
+#container-fluid-search-sell {
+  padding-bottom: 45px;
 }
 .search-btn {
   height: 3em;
@@ -126,17 +125,13 @@
   padding: 3%;
 }
 .row-b {
-  padding-top: 1%;
-  padding-bottom: 2%;
-  padding-left: 0%;
-  padding-right: 0%;
+  padding: 1% 0 2% 0;
 }
 @media (max-width: 767px) {
   #shrink-xs {
     text-align: center;
-    margin-top: 0%;
-    padding-bottom: 0%;
-    margin: 0%;
+    margin: 0;
+    padding-bottom: 0;
   }
 }
 .textbook-bottom-img {
