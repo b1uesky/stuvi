@@ -247,4 +247,73 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
         return $this->hasOne('App\Cart', 'user_id', 'id');
     }
+
+    /**
+     * Get the user primary email.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function primaryEmail()
+    {
+        return $this->belongsTo('App\Email', 'primary_email_id');
+    }
+
+    /**
+     * Set the primary email for user.
+     *
+     * @param $email_id
+     *
+     * @return bool|Email
+     */
+    public function setPrimaryEmail($email_id)
+    {
+        $email = Email::find($email_id);
+
+        if ($email && $email->isBelongTo($this))
+        {
+            $this->update([
+                'primary_email_id'  => $email_id,
+            ]);
+            return $email;
+        }
+
+        return false;
+    }
+
+    /**
+     * Get the college email of this user.
+     *
+     * @return Email
+     */
+    public function collegeEmail()
+    {
+        return $this->emails()->where('email_address', 'like', '%'.$this->university->email_suffix)->first();
+    }
+
+    /**
+     * Send an activation email to a given user.
+     */
+    public function sendActivationEmail()
+    {
+        // send an email to the user with welcome message
+        $user_arr               = $this->toArray();
+        $user_arr['university'] = $this->university->toArray();
+        $user_arr['email']      = $this->collegeEmail()->email_address;
+        $user_arr['return_to']  = urlencode(Session::get('url.intended', '/home'));    // return_to attribute.
+
+        Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($user_arr)
+        {
+            $message->to($user_arr['email'])->subject('Welcome to Stuvi!');
+        });
+    }
+
+    /**
+     * Get the e-mail address where password reset links are sent.
+     *
+     * @return string
+     */
+    public function getEmailForPasswordReset()
+    {
+        return $this->primaryEmail->email_address;
+    }
 }
