@@ -33,7 +33,7 @@
                         <li><a id="register-btn" class="nav-login" data-toggle="modal" href="#signup-modal">
                                 <i class="fa fa-user"></i> Sign Up</a></li>
 
-                        <!-- sign up modal -->
+                        <!-- login modal -->
                         <div class="login-signup-modal">
                             <div class="modal fade login-modal" id="login-modal" tabindex="-1" role="dialog"
                                  aria-labelledby="Login">
@@ -46,7 +46,7 @@
                                             <h4><span class="glyphicon glyphicon-lock"></span>Login</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form role="form"  action="{{ url('/home') }}" method="post" id="login-form">
+                                            <form role="form"  action="{{ url('/auth/login') }}" method="post" id="login-form">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <!-- email -->
                                                 <div class="form-group">
@@ -86,7 +86,7 @@
                                             <h4><span class="glyphicon glyphicon-lock"></span> Sign Up</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form role="form" method="POST" action="{{ url('/home') }}" id="sign-up-form">
+                                            <form role="form" method="POST" action="{{ url('/auth/register') }}" id="sign-up-form">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <!-- first name -->
                                                 <div class="form-group">
@@ -123,7 +123,7 @@
                                                     <select class="form-control" name="university_id">
                                                         <label class="sr-only" for="register-uni">School</label>
                                                         <option id="register-uni" selected disabled>University</option>
-                                                     @foreach(\App\University::where('is_public', true)->get() as $university)
+                                                        @foreach(\App\University::where('is_public', true)->get() as $university)
                                                             <option value="{{ $university->id }}">{{ $university->name }}</option>
                                                         @endforeach
                                                     </select>
@@ -133,7 +133,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <p>Already a member? <a data-toggle="modal" href="#login-modal" data-dismiss="modal">Login</a></p>
-                                            <p>Forgot <a id="forgot-password" href="{{ url('/password/email') }}">Password?</a></p>
+                                            <p>Forgot your <a id="forgot-password" href="{{ url('/password/email') }}">Password?</a></p>
                                         </div>
                                     </div>
                                 </div>
