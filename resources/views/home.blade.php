@@ -16,7 +16,7 @@
     * Temp cover image...(c)Nicholas Louie All Rights Reserved. I Nicholas Louie, hereby allow a limited license
     * to display this image on Stuvi's website with proper name and link credit. This photo may not be distributed, used
     * or altered (except sizing/cropping) in any other way other than on the homepage
-    * Photo by Nick Louie. Link: https://flic.kr/p/kSKWtK
+    * Photo by Nick Louie.
     --}}
 
     <div class = "container-fluid container-top backgnd">           <!-- Top half -->

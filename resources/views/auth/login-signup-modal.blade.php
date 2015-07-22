@@ -1,3 +1,7 @@
+{{--
+    Used in header.blade.php and home.blade.php
+    This is the pop-up for login in and sign up  --}}
+
 @section('login-signup-modal')
     <div class="login-signup-modal">
         <div class="modal fade login-modal" id="login-modal" tabindex="-1" role="dialog"

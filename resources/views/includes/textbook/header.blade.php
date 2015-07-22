@@ -33,7 +33,7 @@
                         <li><a id="register-btn" class="nav-login" data-toggle="modal" href="#signup-modal">
                                 <i class="fa fa-user"></i> Sign Up</a></li>
 
-                        <!-- login-sign-up modal -->
+                        <!-- login modal -->
                         @include('auth.login-signup-modal')
                     {{-- Logged in --}}
                     @else
