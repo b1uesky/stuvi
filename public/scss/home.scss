@@ -161,14 +161,14 @@ body{
 
 .search-row {
   padding: 0;
-  margin-left: 15%;
+  margin-left: 16%;
   @media (max-width: 535px) {
     margin-left: 11%;
   }
 }
 
 .search-input {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 1);
   height: 3em;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
