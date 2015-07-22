@@ -15,7 +15,7 @@ class BuyerPaymentSeeder extends Seeder
     {
         DB::table('buyer_payments')->delete();
 
-        for ($i = 1; $i < 11; $i++)
+        for ($i = 1; $i < 10; $i++)
         {
             BuyerPayment::create([
                 'buyer_order_id'    => $i,
