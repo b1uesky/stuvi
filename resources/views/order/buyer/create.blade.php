@@ -284,7 +284,7 @@
                                                 <label class="col-sm-4 control-label">Phone</label>
 
                                                 <div class="col-sm-6 form-space-offset">
-                                                    <input type="text" class="form-control"
+                                                    <input type="tel" class="form-control phone_number"
                                                            name="phone_number"
                                                            value="(857) 206 4789">
                                                 </div>
@@ -381,7 +381,7 @@
                                                     <label class="col-sm-4 control-label">Phone</label>
 
                                                     <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control"
+                                                        <input type="tel" class="form-control phone_number"
                                                                name="phone_number"
                                                                value="(857) 206 4789">
                                                     </div>
@@ -462,8 +462,8 @@
                                             </label>
                                             <label>
                                                 <span>Card Number</span>
-                                                <input class="form-control" type="text" size="19" maxlength="19"
-                                                       data-stripe="number" id="card-input"/>
+                                                <input class="form-control" type="text" data-stripe="number"
+                                                       id="card-input"/>
                                             </label>
 
                                         </div>
@@ -533,6 +533,7 @@
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <!-- jQuery is used only for this example; it isn't required to use Stripe -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('/js/address.js') }}"></script>
     <!-- stripe -->
     <script type="text/javascript">
