@@ -91,25 +91,26 @@
                                                 <!-- first name -->
                                                 <div class="form-group">
                                                     <label class="sr-only" for="register-first">First Name</label>
-                                                    <input type="text" class="form-control" id="register-first"
+                                                    <input type="text" class="form-control" id="register-first" name="first_name"
                                                            placeholder="First name" value="{{ old('first_name') }}">
                                                 </div>
                                                 <!-- last name -->
                                                 <div class="form-group">
                                                     <label class="sr-only" for="register-last">Last Name</label>
-                                                    <input type="text" class="form-control" id="register-last"
+                                                    <input type="text" class="form-control" id="register-last" name="last_name"
                                                            placeholder="Last name" value="{{ old('last_name') }}">
                                                 </div>
                                                 <!-- email -->
                                                 <div class="form-group">
                                                     <label class="sr-only" for="register-email">Email</label>
-                                                    <input type="email" class="form-control" id="register-email"
+                                                    <input type="email" class="form-control" id="register-email" name="email"
                                                            placeholder="Email" value="{{ old('email') }}">
                                                 </div>
                                                 <!-- password -->
                                                 <div class="form-group">
                                                     <label class="sr-only" for="register-password">Password</label>
-                                                    <input type="password" class="form-control" id="register-password" placeholder="Password">
+                                                    <input type="password" class="form-control" id="register-password" name="password"
+                                                           placeholder="Password">
                                                 </div>
                                                 <!-- phone number -->
                                                 <div class="form-group">
