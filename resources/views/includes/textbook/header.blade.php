@@ -119,9 +119,9 @@
                                                     <select class="form-control" name="university_id">
                                                         <label class="sr-only" for="register-uni">School</label>
                                                         <option id="register-uni" selected disabled>University</option>
-                                                       {{-- @foreach($universities as $university)
+                                                       @foreach(\App\University::where('is_public', true)->get() as $university)
                                                             <option value="{{ $university->id }}">{{ $university->name }}</option>
-                                                        @endforeach--}}
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <button type="submit" class="btn primary-btn btn-block"><span class="glyphicon glyphicon-off"></span> Sign Up</button>
