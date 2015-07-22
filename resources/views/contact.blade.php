@@ -72,4 +72,6 @@
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>
+    <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
 @endsection

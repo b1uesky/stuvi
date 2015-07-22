@@ -64,7 +64,7 @@
                                                 <!-- close button -->
                                                 <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
                                                 <!-- header -->
-                                                <h4><span class="glyphicon glyphicon-lock"></span>Login</h4>
+                                                <h4><i class="fa fa-sign-in"></i> Login</h4>
                                             </div>
                                             <div class="modal-body">
                                                 <form role="form"  action="{{ url('/auth/login') }}" method="post" id="login-form">
@@ -107,37 +107,33 @@
                                                 <h4><span class="glyphicon glyphicon-lock"></span> Sign Up</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <form role="form" method="POST" action="{{ url('/auth/register') }}" id="sign-up-form">
+                                                <form role="form" method="POST" action="{{ url('/auth/register') }}">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                     <!-- first name -->
                                                     <div class="form-group">
                                                         <label class="sr-only" for="register-first">First Name</label>
-                                                        <input type="text" class="form-control" id="register-first" name="first_name"
-                                                               placeholder="First name" value="{{ old('first_name') }}">
+                                                        <input type="text" class="form-control" id="register-first" placeholder="First name">
                                                     </div>
                                                     <!-- last name -->
                                                     <div class="form-group">
                                                         <label class="sr-only" for="register-last">Last Name</label>
-                                                        <input type="text" class="form-control" id="register-last" name="last_name"
-                                                               placeholder="Last name" value="{{ old('last_name') }}">
+                                                        <input type="text" class="form-control" id="register-last" placeholder="Last name">
                                                     </div>
                                                     <!-- email -->
                                                     <div class="form-group">
                                                         <label class="sr-only" for="register-email">Email</label>
-                                                        <input type="email" class="form-control" id="register-email" name="email"
-                                                               placeholder="Email" value="{{ old('email') }}">
+                                                        <input type="email" class="form-control" id="register-email" placeholder="Email">
                                                     </div>
                                                     <!-- password -->
                                                     <div class="form-group">
                                                         <label class="sr-only" for="register-password">Password</label>
-                                                        <input type="password" class="form-control" id="register-password" name="password"
-                                                               placeholder="Password">
+                                                        <input type="password" class="form-control" id="register-password" placeholder="Password">
                                                     </div>
                                                     <!-- phone number -->
                                                     <div class="form-group">
                                                         <label class="sr-only" for="register-phone">Phone Number</label>
                                                         <input type="tel" class="form-control phone_number" name="phone_number" id="register-phone"
-                                                               placeholder="Phone number" value="{{ old('phone_number') }}">
+                                                               placeholder="Phone number" value="">
                                                     </div>
                                                     <!-- university -->
                                                     <div class="form-group">
@@ -154,7 +150,6 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <p>Already a member? <a data-toggle="modal" href="#login-modal" data-dismiss="modal">Login</a></p>
-                                                <p>Forgot your <a id="forgot-password" href="{{ url('/password/email') }}">Password?</a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -209,27 +204,7 @@
                     <a class="btn ghost-btn" data-toggle="modal" href="#signup-modal" role="button">SIGN UP</a>
                 </div>
             @endif
-
-            <!-- TODO: Make the search bar work -->
-            <!-- search bar -->
-            <div class="row" id="home-search-container">
-                <form action="" method="get" id="home-search-form">
-                    <div class="form-group">
-                        <div class="col-xs-8 col-xs-offset-2 search-row">
-                            <input type="text" name="query" id="" class="form-control search-input"
-                                   placeholder="Search Stuvi.com"/>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-default search-btn" type="submit" value="Search">
-                        <i class="fa fa-search search-icon"></i>
-                    </button>
-                </form>
-            </div>
-
         </div>
-
-
 
     </div> <!-- end contain-top backgnd -->
   <!-- new bottom half -->
