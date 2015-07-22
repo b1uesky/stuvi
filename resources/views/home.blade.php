@@ -67,24 +67,49 @@
                                                 <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <form role="form"  action="{{ url('/auth/login') }}" method="post">
+                                                <form role="form" method="POST" action="{{ url('/home') }}" id="sign-up-form">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                    <!-- first name -->
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="register-first">First Name</label>
+                                                        <input type="text" class="form-control" id="register-first" name="first_name"
+                                                               placeholder="First name" value="{{ old('first_name') }}">
+                                                    </div>
+                                                    <!-- last name -->
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="register-last">Last Name</label>
+                                                        <input type="text" class="form-control" id="register-last" name="last_name"
+                                                               placeholder="Last name" value="{{ old('last_name') }}">
+                                                    </div>
                                                     <!-- email -->
                                                     <div class="form-group">
-                                                        <label for="login-email"><span class="glyphicon glyphicon-user"></span> Email</label>
-                                                        <input type="text" class="form-control" id="login-email" name="email" placeholder="Enter email" value="">
+                                                        <label class="sr-only" for="register-email">Email</label>
+                                                        <input type="email" class="form-control" id="register-email" name="email"
+                                                               placeholder="Email" value="{{ old('email') }}">
                                                     </div>
                                                     <!-- password -->
                                                     <div class="form-group">
-                                                        <label for="login-password"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                                                        <input type="password" class="form-control" name="password" id="login-password" placeholder="Enter password">
+                                                        <label class="sr-only" for="register-password">Password</label>
+                                                        <input type="password" class="form-control" id="register-password" name="password"
+                                                               placeholder="Password">
                                                     </div>
-                                                    <!-- remember me -->
-                                                    <div class="checkbox" id="remember-me">
-                                                        <label for="remember-me-box">
-                                                            <input id="remember-me-box" type="checkbox" value="" checked>Remember me</label>
+                                                    <!-- phone number -->
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="register-phone">Phone Number</label>
+                                                        <input type="tel" class="form-control phone_number" name="phone_number" id="register-phone"
+                                                               placeholder="Phone number" value="{{ old('phone_number') }}">
                                                     </div>
-                                                    <button type="submit" class="btn primary-btn btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+                                                    <!-- university -->
+                                                    <div class="form-group">
+                                                        <select class="form-control" name="university_id">
+                                                            <label class="sr-only" for="register-uni">School</label>
+                                                            <option id="register-uni" selected disabled>University</option>
+                                                            @foreach(\App\University::where('is_public', true)->get() as $university)
+                                                                <option value="{{ $university->id }}">{{ $university->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <button type="submit" class="btn primary-btn btn-block"><span class="glyphicon glyphicon-off"></span> Sign Up</button>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
