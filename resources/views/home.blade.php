@@ -95,8 +95,8 @@
                 </div>
             @endif
         </div>
-        <div id="slide-container" style="z-index: 0; position: relative;">
-            <div class="" id="slides" style="position: relative">
+        <div id="slide-container">
+            <div class="" id="slides">
                 <img src="{{asset('img/nick/nlouie1.jpg')}}" alt="">
                 <img src="{{asset('img/nick/nlouie2.jpg')}}" alt="">
             </div>
@@ -183,20 +183,6 @@
         </div> <!-- end services -->
 
     </div> <!-- end bottom half -->
-
-
-{{--
-    <div class="testing">
-        <div id="slides" style="position: relative;">
-            <img src="http://placehold.it/940x528">
-            <img src="http://placehold.it/940x528">
-            <img src="http://placehold.it/940x528">
-            <img src="http://placehold.it/940x528">
-            <img src="http://placehold.it/940x528">
-        </div>
-    </div>
-
-    --}}{{-- Current pic at 4865 × 1868 --}}
 
 @endsection
 
