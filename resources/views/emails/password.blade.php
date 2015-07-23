@@ -24,7 +24,7 @@
                             <tr>
                                 <!-- header image/logo -->
                                 <td align="center" bgcolor="#241729" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
-                                    <!--TODO: puush must be replaced with a real url once website is online -->
+                                    <!--TODO: push must be replaced with a real url once website is online -->
                                     <a href="{{url('/home')}}">
                                         <img src="http://puu.sh/iDvTG/18b055e116.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
                                     </a>
@@ -52,8 +52,7 @@
                                                     <tr>
                                                         <td style="color: #F16521; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 17px;" width="100%">
                                                             <!-- CONTENT HERE! -->
-                                                            <!-- TODO: NAME -->
-                                                            Hey NAME, it looks like you or someone else tried to reset your password. Please click the button below to reset it.
+                                                            Dear Stuvier, it looks like you or someone else tried to reset your password. Please click the button below to reset it.
                                                             <br>
                                                             <br>
                                                         </td>
