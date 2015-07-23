@@ -16,13 +16,16 @@ class CreateBooksTable extends Migration {
 		{
             $table->increments('id');
             $table->string('title');
-            $table->integer('edition')->nullable()->default(1);
+            $table->integer('edition')->default(1);
             $table->string('isbn10', 10);
             $table->string('isbn13', 13);
-            $table->smallInteger('num_pages')->nullable();
+            $table->smallInteger('num_pages');
             $table->boolean('verified')->default(false);
+            $table->string('binding');
             $table->string('language');
             $table->decimal('list_price')->nullable();
+            $table->decimal('lowest_new_price')->nullable();
+            $table->decimal('lowest_used_price')->nullable();
             $table->timestamps();
 		});
 	}

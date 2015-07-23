@@ -1,0 +1,186 @@
+/*
+ * This is the Stuvi default styling. It comes _AFTER_ Bootstrap's app.css
+ * This file is compiled to main.css which is then linked in head.blade.php
+ * Thus, every page will have this styling.
+ * http://thesassway.com/beginner/how-to-structure-a-sass-project
+ *//* MODULES AND VARIABLES *//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* PARTIALS *//*** BUTTON STYLES ***//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */.primary-btn {
+  background: #00a496;
+  color: white;
+  border: none;
+}
+.primary-btn:hover, .primary-btn:focus {
+  background: #00b2a4;
+  outline: 0 !important;
+  color: white;
+}
+.secondary-btn {
+  background: #f16521;
+  color: white;
+  border: none;
+  margin: 5px;
+}
+.secondary-btn:hover, .secondary-btn:focus {
+  background: #ff6720;
+  outline: 0;
+  color: white;
+}
+.list-search-btn {
+  background: #00a496;
+  border: none;
+  height: 34px;
+  width: 38px;
+  margin-left: 0 !important;
+}
+.list-search-btn:hover, .list-search-btn:focus {
+  outline: 0 !important;
+  background: #00a496;
+}
+/*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* GENERAL CONTAINER *//* LAYERED CONTAINERS (like material design) *//*** FORM STYLING ***/.form-control:focus {
+  border: 2px solid #00a496;
+  box-shadow: none;
+}
+/* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */.table-default {
+  background-color: white;
+  border: 1px solid #ddd;
+}
+.table-primary {
+  background-color: white;
+  border: 1px solid #00a496;
+}
+.table-secondary {
+  background-color: white;
+  border: 1px solid #f16521;
+}
+/*** MODAL STYLING ***//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */.modal-content {
+  border-radius: 0;
+}
+.close-modal-btn:hover, .close-modal-btn:focus {
+  outline: 0;
+  color: white;
+  text-shadow: none;
+  opacity: 1;
+}
+.modal-header {
+  background-color: #00a496;
+  color: white;
+}
+.modal-footer {
+  background-color: #f2f2f2;
+}
+/* SECTIONS *//* Footer CSS Template
+ http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/
+ *//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* VARIABLES */.footer-distributed {
+  background-color: #292c2f;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: normal 14px "Roboto", Helvetica, Arial, sans-serif;
+  padding: 30px 50px;
+  margin-top: 0px;
+}
+.footer-distributed .footer-left p {
+  color: #8f9296;
+  font-size: 14px;
+  margin: 0;
+}
+.footer-distributed .footer-left .footer-links {
+  font-size: 14px;
+  color: white;
+  margin: 0 0 10px;
+  padding: 0;
+}
+.footer-distributed .footer-left .footer-links a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+}
+.footer-distributed .footer-right {
+  float: right;
+  margin-top: 0px;
+  max-width: 180px;
+}
+.footer-distributed .footer-right a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-color: #33383b;
+  border-radius: 2px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  line-height: 35px;
+  margin-left: 3px;
+}
+/* Additional styling */.social:hover {
+  background-color: #00a496 !important;
+}
+.footer-link:hover {
+  color: #69c8c8 !important;
+}
+.divider {
+  color: #fff;
+}
+hr {
+  opacity: 0.3;
+}
+/* If you don't want the footer to be responsive, remove these media queries */@media (max-width: 600px) {
+  .footer-distributed .footer-left {
+    text-align: center;
+  }
+  .footer-distributed .footer-left p.footer-links {
+    line-height: 1.8;
+  }
+  .footer-distributed .footer-right {
+    text-align: center;
+    float: none;
+    margin: 0 auto 20px;
+  }
+}
+/* VENDOR ( THIRD PARTY ) */

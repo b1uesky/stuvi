@@ -1,0 +1,71 @@
+/*product/show.blade.php*//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//** PRODUCT INFO **/#bg {
+  background-color: whitesmoke;
+}
+#det-cont {
+  padding-bottom: 10%;
+}
+.back-row {
+  padding-top: 10px;
+}
+#go-back {
+  margin-left: 10px;
+}
+.pro-img {
+  max-width: 300px;
+}
+.pro-img-small {
+  max-width: 50px;
+}
+#det-cont {
+  margin: inherit;
+  padding-top: 10px;
+}
+.details-table {
+  background-color: white;
+  border: 3px solid #ddd;
+  width: 50%;
+  margin-top: 2%;
+}
+.details-table th, .details-table td {
+  border: 1px solid #ddd;
+  padding-left: 2px;
+}
+@media (max-width: 768px) {
+  .details-table {
+    width: 100%;
+  }
+}
+.add-cart-btn {
+  margin-top: 10px;
+  margin-left: 0;
+  padding: 12px;
+  width: 200px;
+  font-size: 16px;
+}
+.price b {
+  color: #b61f17;
+}
+.seller-desc {
+  margin: 0;
+  padding: 0;
+}
+@media (max-width: 990px) {
+  .seller-desc {
+    padding-left: 15px;
+  }
+}
+/*** PRODUCT CONDITION ***/.form-group {
+  margin-bottom: 0;
+}
+.fa-question-circle {
+  color: #f16521;
+  cursor: pointer;
+}
