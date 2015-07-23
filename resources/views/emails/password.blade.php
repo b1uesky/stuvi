@@ -24,7 +24,6 @@
                             <tr>
                                 <!-- header image/logo -->
                                 <td align="center" bgcolor="#241729" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
-                                    <!--TODO: push must be replaced with a real url once website is online -->
                                     <a href="{{url('/home')}}">
                                         <img src="http://puu.sh/iDvTG/18b055e116.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
                                     </a>
