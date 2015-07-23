@@ -12,7 +12,7 @@ body{
 #container-home-top{
   padding: 0;
   position: relative;
-  @media(max-width: 768px){
+  @media(max-width: 767px){
     background: url('../img/cover-2-1.png') no-repeat;
     background-size: cover;
   }
@@ -77,7 +77,8 @@ body{
 #slides {
   display:none;
   position: relative;
-  @media(max-width: 768px){
+  z-index: 0;
+  @media(max-width: 767px){
     visibility: hidden;
   }
 }
@@ -96,8 +97,11 @@ body{
   position: absolute;
   z-index: 10;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 100px;
   margin-bottom: 30px;
+  @media(max-width: 991px){
+    margin-top: 30px;
+  }
 }
 
 #head1{
@@ -108,7 +112,7 @@ body{
   font-family: $base-font-family;
   padding-top: 3%;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
-  @media(max-width: 768px){
+  @media(max-width: 767px){
     font-size: 4em;
   }
 }
@@ -131,7 +135,7 @@ body{
 
   text-align: center;
   padding-top: 1%;
-  @media (max-width: 768px){
+  @media (max-width: 767px){
     visibility: hidden;
   }
 }

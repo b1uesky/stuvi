@@ -184,6 +184,20 @@
 
     </div> <!-- end bottom half -->
 
+
+{{--
+    <div class="testing">
+        <div id="slides" style="position: relative;">
+            <img src="http://placehold.it/940x528">
+            <img src="http://placehold.it/940x528">
+            <img src="http://placehold.it/940x528">
+            <img src="http://placehold.it/940x528">
+            <img src="http://placehold.it/940x528">
+        </div>
+    </div>
+
+    --}}{{-- Current pic at 4865 × 1868 --}}
+
 @endsection
 
 @section('javascript')
