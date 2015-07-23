@@ -10,6 +10,8 @@ use Input;
 use Mail;
 use Session;
 use Validator;
+use Request;
+use Response;
 
 class AuthController extends Controller {
 
@@ -160,6 +162,21 @@ class AuthController extends Controller {
         Auth::logout();
 
         return redirect('/home');
+    }
+
+    public function postEmail()
+    {
+        if (Request::ajax())
+        {
+            $v = Validator::make(Input::get('email'), [
+                 'email'    => 'required|email|max:255|unique:users'
+            ]);
+
+            if ($v->fails())
+            {
+                return Response::json();
+            }
+        }
     }
 
     /**

@@ -54,32 +54,32 @@
                         <h4><i class="fa fa-user-plus"></i> Sign Up</h4>
                     </div>
                     <div class="modal-body">
-                        <form role="form" method="POST" action="{{ url('/auth/register') }}">
+                        <form role="form" method="POST" action="{{ url('/auth/register') }}" id="form-register">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <!-- first name -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-first">First Name</label>
-                                <input type="text" class="form-control" id="register-first" placeholder="First name">
+                                <input type="text" name="first_name" class="form-control" id="register-first" placeholder="First name">
                             </div>
                             <!-- last name -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-last">Last Name</label>
-                                <input type="text" class="form-control" id="register-last" placeholder="Last name">
+                                <input type="text" name="last_name" class="form-control" id="register-last" placeholder="Last name">
                             </div>
                             <!-- email -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-email">Email</label>
-                                <input type="email" class="form-control" id="register-email" placeholder="Email">
+                                <input type="email" name="email" class="form-control" id="register-email" placeholder="Email">
                             </div>
                             <!-- password -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-password">Password</label>
-                                <input type="password" class="form-control" id="register-password" placeholder="Password">
+                                <input type="password" name="password" class="form-control" id="register-password" placeholder="Password">
                             </div>
                             <!-- phone number -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-phone">Phone Number</label>
-                                <input type="tel" class="form-control phone_number" name="phone_number" id="register-phone"
+                                <input type="tel" name="phone_number" class="form-control phone_number" name="phone_number" id="register-phone"
                                        placeholder="Phone number" value="">
                             </div>
                             <!-- university -->
