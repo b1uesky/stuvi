@@ -7,16 +7,13 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
 
     use Authenticatable, CanResetPassword;
-
-//    public function __construct()
-//    {
-//        $this->activation_code = \App\Helpers\generateRandomCode(Config::get('user.activation_code_length'));
-//    }
 
     /**
      * The database table used by the model.

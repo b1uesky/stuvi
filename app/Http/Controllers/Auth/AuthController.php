@@ -56,7 +56,7 @@ class AuthController extends Controller {
         ]);
         $user->assignActivationCode();
 
-        $this->sendActivationEmail($user);
+        $user->sendActivationEmail();
 
         return $user;
     }
@@ -158,23 +158,5 @@ class AuthController extends Controller {
     protected function getFailedLoginMessage()
     {
         return 'Your email and/or password is not correct. Please try again.';
-    }
-
-    /**
-     * Send an activation email to a given user.
-     *
-     * @param $user
-     */
-    protected function sendActivationEmail($user)
-    {
-        // send an email to the user with welcome message
-        $user_arr               = $user->toArray();
-        $user_arr['university'] = $user->university->toArray();
-        $user_arr['return_to']  = urlencode(Session::get('url.intended', '/home'));    // return_to attribute.
-
-        Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($user_arr)
-        {
-            $message->to($user_arr['email'])->subject('Welcome to Stuvi!');
-        });
     }
 }

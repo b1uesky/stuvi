@@ -100,15 +100,7 @@ class UserController extends Controller
                 ->with('Your account has already been activated.');
         }
 
-        // send an email to the user with welcome message
-        $user_arr               = $user->toArray();
-        $user_arr['university'] = $user->university->toArray();
-        $user_arr['return_to']  = urlencode(Session::get('url.intended', '/home'));    // return_to attribute.
-
-        Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($user_arr)
-        {
-            $message->to($user_arr['email'])->subject('Welcome to Stuvi!');
-        });
+        $user->sendActivationEmail();
 
         return redirect('user/activate')
             ->with('message', 'Activation email is sent. Please check your email.');
