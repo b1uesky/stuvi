@@ -1,4 +1,4 @@
-<?php namespace App\Providers;
+<?php namespace App\Extensions\Auth;
 
 /**
  * Created by PhpStorm.
@@ -7,7 +7,6 @@
  * Time: 11:37 AM
  */
 
-use App\Extensions\Auth\EmailUserProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
