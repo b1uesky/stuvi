@@ -11,7 +11,6 @@ use Input;
 use Mail;
 use Session;
 use Validator;
-use Request;
 use Response;
 
 class AuthController extends Controller {
@@ -201,14 +200,19 @@ class AuthController extends Controller {
     {
         if (Request::ajax())
         {
-            $v = Validator::make(Input::get('email'), [
-                 'email'    => 'required|email|max:255|unique:users'
-            ]);
+            $v = Validator::make(Input::get('email'), Email::registerRules());
 
             if ($v->fails())
             {
-                return Response::json();
+                return Response::json([
+                    'valid'     => false,
+                    'errors'    => $v->errors()->toArray()
+                ]);
             }
+
+            return Response::json([
+                'valid' => true
+            ]);
         }
     }
 

@@ -12,6 +12,7 @@ $(document).ready(function() {
         },
         fields: {
             first_name: {
+                trigger: 'blur',
                 validators: {
                     notEmpty: {
                         message: 'The first name is required'
@@ -27,6 +28,7 @@ $(document).ready(function() {
                 }
             },
             last_name: {
+                trigger: 'blur',
                 validators: {
                     notEmpty: {
                         message: 'The last name is required'
@@ -42,18 +44,17 @@ $(document).ready(function() {
                 }
             },
             email: {
+                trigger: 'blur',
                 validators: {
-                    threshold: 5,
-                    emailAddress: {
-                        message: 'This is not a valid email address'
-                    },
                     remote: {
                         url: 'auth/email',
-                        data: {
-                            type: 'email'
+                        data: function(validator, $field, value) {
+                            return {
+                                email: validator.getFieldElements('email').val()
+                            };
                         },
                         type: 'POST',
-                        delay: 2000
+                        message: 'The email address already exsits'
                     }
                 }
             },
