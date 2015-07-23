@@ -219,7 +219,9 @@ Route::group(['namespace'=>'Express', 'middleware'=>['auth', 'role:ac'], 'prefix
 |--------------------------------------------------------------------------
 */
 
-Route::get('/faq', 'FAQController@index');
+Route::get('/faq', 'FAQController@general');
+Route::get('/faq/general', 'FAQController@general');
+Route::get('/faq/orders', 'FAQController@orders');
 
 /*
 |--------------------------------------------------------------------------

@@ -3,8 +3,13 @@
 class FAQController extends Controller
 {
 
-    public function index()
+    public function general()
     {
-        return view('faq.faq');
+        return view('faq.general');
+    }
+
+    public function orders()
+    {
+        return view('faq.orders');
     }
 }
