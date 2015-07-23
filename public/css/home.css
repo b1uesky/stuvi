@@ -209,9 +209,7 @@
 .service a {
   color: white;
 }
-
-/* LOGIN SIGNUP MODAL */
-.modal-header {
+/* LOGIN SIGNUP MODAL */.modal-header {
   text-align: center;
 }
 .modal-body {

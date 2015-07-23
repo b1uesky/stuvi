@@ -274,9 +274,7 @@ hr {
     margin: 0 auto 20px;
   }
 }
-
-/* LOGIN SIGNUP MODAL */
-.modal-header {
+/* LOGIN SIGNUP MODAL */.modal-header {
   text-align: center;
 }
 .modal-body {

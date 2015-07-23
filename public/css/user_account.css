@@ -67,28 +67,23 @@
 .profile-usermenu {
   margin-top: 30px;
 }
-
 .profile-usermenu .nav .side-item {
   border-bottom: 1px solid #f2f2f2;
 }
-
 .profile-usermenu .nav .side-item:last-child {
   border-bottom: none;
 }
-
 .profile-usermenu .nav .side-item a {
   color: grey;
   font-size: 14px;
   font-weight: 400;
   border-left: 2px solid white;
 }
-
 .profile-usermenu .nav .side-item a:hover, .profile-usermenu .nav .side-item a.active {
   background-color: #f2f2f2;
   border-left: 2px solid #00a496;
   color: #00a496;
 }
-
 .profile-usermenu .nav .side-item a i {
   margin-right: 8px;
   font-size: 14px;
@@ -134,13 +129,10 @@ hr {
 .control-label {
   text-align: left !important;
 }
-
 #line {
   margin-bottom: 40px;
 }
-
-/****** EDIT INFO ******/
-#save-info-btn {
+/****** EDIT INFO ******/#save-info-btn {
   width: 150px;
   padding: 12px;
   margin: 0;
