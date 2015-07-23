@@ -1,0 +1,107 @@
+/* CSS FOR sellerBookshelfIndex.php *//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */.message {
+  font-style: italic;
+}
+.message-cont {
+  padding: 1%;
+  margin-top: 10px;
+}
+#btn-back {
+  cursor: pointer;
+}
+.bookshelf-page {
+  background-color: #f2f2f2;
+  min-height: 90vh;
+}
+/* Title */#bookshelf-title {
+  margin-left: 30px;
+}
+/* SORT SECTION */#nav-sort li a {
+  color: grey;
+}
+#nav-sort li a:hover {
+  background-color: #ddd;
+}
+#nav-sort li.active a {
+  background-color: #00a496;
+  color: #fff;
+}
+#search-term {
+  border-radius: 4px 0 0 4px;
+  border-right: none;
+}
+#search-term:focus {
+  border: 1px solid #00a496;
+  border-right: none;
+  box-shadow: none;
+}
+.search-btn {
+  background: #00a496;
+  border: none;
+  height: 34px;
+  width: 38px;
+  margin-left: 0 !important;
+}
+.search-btn:hover {
+  background: #00a496;
+}
+.search-btn:focus {
+  outline: 0 !important;
+  background: #00a496;
+}
+.search-icon {
+  color: white;
+}
+/* BOOKS FOR SALE */h5 {
+  margin: 0 0 3px 0;
+}
+.for-sale-img {
+  width: 100px;
+}
+.books {
+  max-width: 750px;
+  max-height: 200px;
+}
+.for-sale-table {
+  width: 100%;
+}
+.for-sale-item {
+  font-size: small;
+}
+.for-sale-info-1 {
+  width: 150px;
+}
+.for-sale-info-2 {
+  width: 200px;
+}
+.for-sale-title {
+  font-size: medium;
+  font-weight: bold;
+}
+.for-sale-title a {
+  color: #00a496;
+}
+.for-sale-price {
+  color: #b12704;
+  font-weight: bold;
+}
+.for-sale-pub-date {
+  font-size: medium;
+}
+.for-sale-btn-add-cart {
+  padding: 0px;
+}
+/* back button */#btn-back {
+  text-align: left;
+  padding-left: 5px;
+}
+.fa-arrow-circle-left {
+  padding: 10px;
+}

@@ -1,0 +1,50 @@
+/* CSS Page for create.blade.php
+ *//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */.pad {
+  padding: 2%;
+}
+#message {
+  font-style: italic;
+}
+#message-cont {
+  background-color: rgba(255, 0, 12, 0.30);
+  padding: 2%;
+}
+/* BACKGROUND */.create {
+  background-color: #f2f2f2;
+}
+/* Title */#create-title {
+  color: #000;
+  margin-left: 38px;
+}
+/***** CREATE FORM *****//* ISBN...Title..etc*/b {
+  color: #757575;
+}
+/* Color some text in .form-group */.ws {
+  color: #757575;
+}
+/* Box around all the forms*/.textbook-create {
+  padding: 5%;
+}
+#lang {
+  color: black;
+}
+.lang-select {
+  color: black;
+}
+#create-btn {
+  width: 200px;
+  padding: 12px;
+}
+/** File upload error messages **/.upload-error-message {
+  display: none;
+  color: red;
+  font-weight: bold;
+}

@@ -23,7 +23,7 @@
 
             <p>In order to keep our village safe, we need to verify every user.</p>
 
-            <p>Check your email at <code>{{ $user->email }}</code> and activate your account via the link sent with our
+            <p>Check your email at <code>{{ $user->primaryEmail->email_address }}</code> and activate your account via the link sent with our
                 welcome email. Thank you!</p>
 
             <p>Problems receiving the email? Check your spam inbox, or <a href="{{ url('user/activate/resend') }}">resend

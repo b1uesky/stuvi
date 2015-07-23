@@ -1,0 +1,153 @@
+/* STYLING FOR TEXTBOOK PAGE ***//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//******* TEXTBOOK NAVIGATION BAR ******/.tab-filter-container {
+  width: 100%;
+  background: #00a496;
+  height: 40px;
+}
+.tab-filters {
+  list-style-type: none;
+  text-align: center;
+  padding-right: 40px;
+}
+.filter {
+  display: inline-block;
+  height: 40px;
+  padding-top: 5px;
+}
+.filter.active {
+  border-bottom: 5px solid white;
+}
+.filter-link {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 40px;
+}
+.filter-link:hover, .filter-link:focus, .filter-link.active {
+  text-decoration: none;
+  color: white;
+}
+/******* ERROR MESSAGE ******/#message {
+  font-style: italic;
+}
+#message-cont {
+  padding: 1%;
+}
+/******* TEXTBOOK SEARCH AREA ******/#title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 4px #000;
+}
+.search {
+  background: rgba(0, 0, 0, 0.3) url('../img/open-book.jpg') no-repeat;
+  background-size: cover;
+  padding: 60px;
+}
+.search-row {
+  padding: 0;
+  margin-left: 15%;
+}
+@media (max-width: 535px) {
+  .search-row {
+    margin-left: 11%;
+  }
+}
+.search-input {
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 3em;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+}
+.search-input:focus {
+  border: 2px solid #00a496;
+  border-right: none;
+  box-shadow: none;
+}
+@media (max-width: 767px) {
+  .search-input {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
+#container-fluid-search-sell {
+  padding-bottom: 45px;
+}
+.search-btn {
+  height: 3em;
+  margin-right: 30px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background: #00a496;
+  border: none;
+}
+.search-btn:hover {
+  background: #00a496;
+}
+.search-btn:focus {
+  outline: 0 !important;
+  background: #00a496;
+}
+@media (max-width: 535px) {
+  .search-btn {
+    margin: 0;
+  }
+}
+.search-icon {
+  font-size: 1.2em;
+  color: white;
+}
+/* Search AutoComplete Suggestions */.autocomplete-thumbnail {
+  display: inline-block;
+  width: 80px;
+  margin: 5px;
+  vertical-align: middle;
+  overflow: hidden;
+}
+.autocomplete-thumbnail img {
+  min-width: 100%;
+}
+.autocomplete-data {
+  display: inline-block;
+  vertical-align: middle;
+}
+.ui-helper-hidden-accessible {
+  display: none;
+}
+/******  TEXTBOOK BOTTOM HALF ****/#textbook-bottom {
+  background-color: #f2f2f2;
+}
+#hr1 {
+  border-color: rgba(0, 0, 0, .64);
+}
+.row {
+  padding: 3%;
+}
+.row-b {
+  padding: 1% 0 2% 0;
+}
+@media (max-width: 767px) {
+  #shrink-xs {
+    text-align: center;
+    margin: 0;
+    padding-bottom: 0;
+  }
+}
+.textbook-bottom-img {
+  width: 250px;
+  height: 250px;
+}
+#truck-img {
+  width: 300px;
+  height: 168px;
+}
+.google-img {
+  font-size: 17em;
+  color: #00a496;
+}

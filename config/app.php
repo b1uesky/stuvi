@@ -157,6 +157,7 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+		'App\Extensions\Auth\EmailUserServiceProvider',
 
         /*
          * Twillio Service Provider

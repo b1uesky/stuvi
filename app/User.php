@@ -7,16 +7,13 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
 
     use Authenticatable, CanResetPassword;
-
-//    public function __construct()
-//    {
-//        $this->activation_code = \App\Helpers\generateRandomCode(Config::get('user.activation_code_length'));
-//    }
 
     /**
      * The database table used by the model.
@@ -30,7 +27,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['email', 'password', 'phone_number', 'first_name', 'last_name', 'activated', 'university_id', 'activation_code', 'role'];
+    protected $fillable = ['password', 'phone_number', 'first_name', 'last_name', 'activated', 'university_id',
+                            'activation_code', 'role', 'primary_email_id'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -41,30 +39,51 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 
     /**
-     * Validation rules.
+     * Validation register rules.
      *
      * @return array
      */
-    public static function rules()
+    public static function registerRules()
     {
         $rules = [
             'first_name'    => 'required|string',
             'last_name'     => 'required|string',
-            'email'         => 'required|email|max:255|unique:users',
             'password'      => 'required|min:6',
             'phone_number'  => 'required|phone:US',
             'university_id' => 'required|numeric'
         ];
 
-        return $rules;
+        return array_merge($rules, Email::registerRules());
     }
 
+    /**
+     * Validation login rules.
+     *
+     * @return array
+     */
+    public static function loginRules()
+    {
+        $rules = [
+            'password'  => 'required|min:6',
+        ];
+        return array_merge($rules, Email::loginRules());
+    }
 
+    /**
+     * Get all buyer orders of this user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function buyerOrders()
     {
         return $this->hasMany('App\BuyerOrder', 'buyer_id', 'id');
     }
 
+    /**
+     * Get all seller orders of this user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
     public function sellerOrders()
     {
         return $this->hasManyThrough('App\SellerOrder', 'App\Product', 'seller_id', 'product_id');
@@ -174,6 +193,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return 'No';
     }
 
+    /**
+     * Get all addresses of this user.
+     *
+     * @return mixed
+     */
     public function addresses()
     {
         return $this->hasMany('App\Address')->where('is_enabled',true);
@@ -206,6 +230,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return false;
     }
 
+    /**
+     * Activate an account with a code.
+     *
+     * @param $code
+     *
+     * @return bool
+     */
     public function activate($code)
     {
         if ($code === $this->activation_code)
@@ -213,7 +244,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             $this->update([
                 'activated'  => true,
             ]);
-//            $this->push();x
+
             return true;
         }
 
@@ -246,5 +277,85 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
 
         return $this->hasOne('App\Cart', 'user_id', 'id');
+    }
+
+    /**
+     * Get all emails this user has.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function emails()
+    {
+        return $this->hasMany('App\Email');
+    }
+
+    /**
+     * Get the user primary email.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function primaryEmail()
+    {
+        return $this->belongsTo('App\Email', 'primary_email_id');
+    }
+
+    /**
+     * Set the primary email for user.
+     *
+     * @param $email_id
+     *
+     * @return bool|Email
+     */
+    public function setPrimaryEmail($email_id)
+    {
+        $email = Email::find($email_id);
+
+        if ($email && $email->isBelongTo($this))
+        {
+            $this->update([
+                'primary_email_id'  => $email_id,
+            ]);
+            return $email;
+        }
+
+        return false;
+    }
+
+    /**
+     * Get the college email of this user.
+     *
+     * @return Email
+     */
+    public function collegeEmail()
+    {
+        return $this->emails()->where('email_address', 'like', '%'.$this->university->email_suffix)->first();
+    }
+
+    /**
+     * Send an activation email to a given user.
+     */
+    public function sendActivationEmail()
+    {
+        // send an email to the user with welcome message
+        $user_arr               = $this->toArray();
+        $user_arr['university'] = $this->university->toArray();
+        $user_arr['email']      = $this->collegeEmail()->email_address;
+        $user_arr['return_to']  = urlencode(Session::get('url.intended', '/home'));    // return_to attribute.
+
+        Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($user_arr)
+        {
+            $message->to($user_arr['email'])->subject('Welcome to Stuvi!');
+        });
+    }
+
+    /**
+     * @override
+     * Get the e-mail address where password reset links are sent.
+     *
+     * @return string
+     */
+    public function getEmailForPasswordReset()
+    {
+        return $this->primaryEmail->email_address;
     }
 }

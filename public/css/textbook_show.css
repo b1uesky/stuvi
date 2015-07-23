@@ -1,0 +1,71 @@
+/****** TEXTBOOK SHOW PAGE
+ This page lists all the textbook variants available.
+ /textbook/buy/<ID #>
+ ******//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */body {
+  background-color: #f2f2f2;
+}
+.empty {
+  min-height: 90vh;
+}
+/*** TEXTBOOK INFO ***/.textbook-row {
+  margin-top: 50px;
+}
+#textbook-img {
+  width: 300px;
+  height: 400px;
+  margin-left: 50px;
+}
+.textbook-info span {
+  font-size: 18px;
+}
+.authors-container {
+  margin-bottom: 10px;
+}
+.author-label {
+  background-color: #00a496;
+  color: white;
+  border: none;
+}
+.author-btn:hover, .author-btn:focus {
+  background-color: #00a496;
+  color: white;
+  outline: 0 !important;
+}
+.textbook-info p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+/*** TEXTBOOK TABLE ***/.table-row {
+  margin-top: 40px;
+}
+.textbook-table {
+  background-color: white;
+  border: solid #ddd;
+}
+#price {
+  color: #b12704;
+}
+/** PRESSED BUTTON **/.add-cart-btn {
+  margin-left: 13px;
+}
+.cart-btn-col {
+  width: 150px;
+}
+@media (max-width: 500px) {
+  .cart-btn-col {
+    width: 90px;
+  }
+}
+@media (max-width: 500px) {
+  .sell-btn {
+    width: 40px;
+  }
+}
