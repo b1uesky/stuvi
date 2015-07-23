@@ -12,10 +12,10 @@ class UpdateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('users', function ($table) {
             $table->integer('primary_email_id')->unsigned()->nullable();
 
-            $table->foreign('primary_email_id')->references('id')->on('user_emails');
+            $table->foreign('primary_email_id')->references('id')->on('emails');
         });
     }
 
