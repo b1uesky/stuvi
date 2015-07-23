@@ -9,8 +9,7 @@
 
     <link href="{{ asset('/css/app.css') }}"                rel="stylesheet">
     <link href="{{ asset('/css/main.css') }}"         rel="stylesheet">
-    <link href="{{ asset('css/font-awesome.min.css') }}"    rel="stylesheet">   <!-- Footer required -->
-    <link href="{{ asset('css/font-awesome.css') }}"        rel="stylesheet">   <!-- Footer required -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <!-- Fonts -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>

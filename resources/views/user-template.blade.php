@@ -60,26 +60,46 @@
                             <!-- SIDEBAR MENU -->
                             <div class="profile-usermenu">
                                 <ul class="nav">
-                                    <li class="side-overview" id="pro-overview-nav">
-                                        <a href="{{asset('/user/profile')}}">
-                                            <i class="glyphicon glyphicon-home"></i>
-                                            Overview </a>
+                                    <li class="side-item">
+                                        <a class="side-item-link active" id="side-profile-link"
+                                           href="{{asset('/user/profile')}}">
+                                            <i class="fa fa-user"></i>Profile
+                                        </a>
                                     </li>
-                                    <li class="side-settings" id="pro-acc-nav">
-                                        <a href="{{asset('/user/account')}}">
-                                            <i class="glyphicon glyphicon-user"></i>
-                                            Account Settings </a>
+                                    <li class="side-item">
+                                        <a class="side-item-link" id="side-account-link"
+                                           href="{{asset('/user/account')}}">
+                                            <i class="fa fa-cog"></i>Account Settings
+                                        </a>
                                     </li>
-{{--                                    <li class="side-messages">
-                                        <a href="#" target="_blank">
-                                            <i class="glyphicon glyphicon-envelope"></i>
-                                            Messages </a>
+                                    <li class="side-item">
+                                        <a class="side-item-link" id="side-bookshelf-link"
+                                           href="{{asset('/user/account')}}">
+                                            <i class="fa fa-book"></i>My Bookshelf
+                                        </a>
                                     </li>
-                                    <li class="side-help">
-                                        <a href="#">
-                                            <i class="glyphicon glyphicon-flag"></i>
-                                            Help </a>--}}
+                                    <li class="side-item">
+                                        <a class="side-item-link" id="side-privacy-link"
+                                           href="{{asset('/user/account')}}">
+                                            <i class="fa fa-user-secret"></i>Privacy
+                                        </a>
                                     </li>
+                                    <li class="side-item">
+                                        <a class="side-item-link" id="side-email-link"
+                                           href="{{asset('/user/account')}}">
+                                            <i class="fa fa-envelope"></i>Email Notifications
+                                        </a>
+                                    </li>
+                                    <li class="side-item">
+                                        <a class="side-item-link" id="side-help-link" href="#">
+                                            <i class="fa fa-flag"></i> Help
+                                        </a>
+                                    </li>
+                                    {{--<li class="side-messages">--}}
+                                    {{--<a href="#" target="_blank">--}}
+                                    {{--<i class="glyphicon glyphicon-envelope"></i>--}}
+                                    {{--Messages </a>--}}
+                                    {{--</li>--}}
                                 </ul>
                             </div>
                             <!-- END MENU -->
@@ -89,7 +109,6 @@
     @show
 
    <div class="container col-md-9">
-
         @yield('content')
     </div>
     </body>

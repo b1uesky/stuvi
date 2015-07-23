@@ -19,7 +19,7 @@
                         <!-- change account info -->
                         <div class="container col-md-11 account-edit">
                             <h3>Edit your information</h3>
-                            <hr>
+                            <hr id="line">
                             <form class="form-horizontal" role="form" method="POST" action="/user/account/edit">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -75,7 +75,7 @@
                                 <!-- Save changes button -->
                                 <div class="form-group">
                                     <div class=" col-sm-offset-3 col-sm-6">
-                                        <button id="save-info-btn" type="submit" class="btn secondary-btn">Save Changes
+                                        <button id="save-info-btn" type="submit" class="btn primary-btn">Save Changes
                                         </button>
                                     </div>
                                 </div>
@@ -96,6 +96,6 @@
     <!-- required for all pages for proper tab and drop-down functionality -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="{{asset('/js/account.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/user/account.js')}}" type="text/javascript"></script>
 
 @endsection

@@ -512,8 +512,8 @@
                                         <p>Your total is <span id="total"> ${{ $total }} </span></p>
                                         <button class="btn primary-btn payment-btn" type="submit">Complete Order
                                         </button>
-                                    <span><a href="https://stripe.com/" target="_blank"><img id="stripe-logo"
-                                                                                             src="{{ asset('/img/stripe.png') }}"></a></span>
+                                        <span><a href="https://stripe.com/" target="_blank"><img id="stripe-logo"
+                                                                                                 src="{{ asset('/img/stripe.png') }}"></a></span>
                                     </div>
                                 </div>
                             </div>
