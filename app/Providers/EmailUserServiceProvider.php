@@ -8,7 +8,6 @@
  */
 
 use App\Extensions\Auth\EmailUserProvider;
-use Illuminate\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,7 +24,6 @@ class EmailUserServiceProvider extends ServiceProvider
         Auth::extend('emailUser', function($app) {
             $provider =  new EmailUserProvider($app['hash'], $app['config']['auth.model']);
             return $provider;
-            //return new Guard($provider, $app['session']);
         });
     }
 }

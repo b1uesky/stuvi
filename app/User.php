@@ -245,6 +245,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasOne('App\Cart', 'user_id', 'id');
     }
 
+    public function emails()
+    {
+        return $this->hasMany('App\Email');
+    }
+
     /**
      * Get the user primary email.
      *
