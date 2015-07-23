@@ -21,16 +21,18 @@
             <a class="footer-link" href="{{url('/home')}}">Home</a>
             ·
             <a class="footer-link"  href="{{url('/textbook')}}">Textbooks</a>
-        ·
+            ·
             <a class="footer-link"  href="{{url('/coming')}}">Housing</a>
-                ·
-                <a class="footer-link"  href="{{url('/coming')}}">Clubs</a>
-                ·
-                <a class="footer-link"  href="{{url('/coming')}}">Groups</a>
-                ·
+            ·
+            <a class="footer-link" href="{{url('/coming')}}">Clubs</a>
+            ·
+            <a class="footer-link" href="{{url('/coming')}}">Groups</a>
+            ·
             <a class="footer-link"  href="{{ url('/about') }}">About</a>
             ·
             <a class="footer-link"  href="{{ url('/contact') }}">Contact</a>
+            ·
+            <a class="footer-link" href="{{ url('/faq') }}">FAQ</a>
         </p>
         <hr>
         <p>&copy; Stuvi, LLC. 2015</p>
