@@ -27,7 +27,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['email', 'password', 'phone_number', 'first_name', 'last_name', 'activated', 'university_id', 'activation_code', 'role'];
+    protected $fillable = ['password', 'phone_number', 'first_name', 'last_name', 'activated', 'university_id', 'activation_code', 'role'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -38,30 +38,51 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 
     /**
-     * Validation rules.
+     * Validation register rules.
      *
      * @return array
      */
-    public static function rules()
+    public static function registerRules()
     {
         $rules = [
             'first_name'    => 'required|string',
             'last_name'     => 'required|string',
-            'email'         => 'required|email|max:255|unique:users',
             'password'      => 'required|min:6',
             'phone_number'  => 'required|phone:US',
             'university_id' => 'required|numeric'
         ];
 
-        return $rules;
+        return array_merge($rules, Email::registerRules());
     }
 
+    /**
+     * Validation login rules.
+     *
+     * @return array
+     */
+    public static function loginRules()
+    {
+        $rules = [
+            'password'  => 'required|min:6',
+        ];
+        return array_merge($rules, Email::loginRules());
+    }
 
+    /**
+     * Get all buyer orders of this user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function buyerOrders()
     {
         return $this->hasMany('App\BuyerOrder', 'buyer_id', 'id');
     }
 
+    /**
+     * Get all seller orders of this user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
     public function sellerOrders()
     {
         return $this->hasManyThrough('App\SellerOrder', 'App\Product', 'seller_id', 'product_id');
@@ -171,6 +192,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return 'No';
     }
 
+    /**
+     * Get all addresses of this user.
+     *
+     * @return mixed
+     */
     public function addresses()
     {
         return $this->hasMany('App\Address')->where('is_enabled',true);
@@ -203,6 +229,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return false;
     }
 
+    /**
+     * Activate an account with a code.
+     *
+     * @param $code
+     *
+     * @return bool
+     */
     public function activate($code)
     {
         if ($code === $this->activation_code)
@@ -210,7 +243,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             $this->update([
                 'activated'  => true,
             ]);
-//            $this->push();x
+
             return true;
         }
 
@@ -245,6 +278,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasOne('App\Cart', 'user_id', 'id');
     }
 
+    /**
+     * Get all emails this user has.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function emails()
     {
         return $this->hasMany('App\Email');
@@ -310,6 +348,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
+     * @override
      * Get the e-mail address where password reset links are sent.
      *
      * @return string
