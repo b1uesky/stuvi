@@ -12,4 +12,9 @@ class FAQController extends Controller
     {
         return view('faq.orders');
     }
+
+    public function account()
+    {
+        return view('faq.account');
+    }
 }

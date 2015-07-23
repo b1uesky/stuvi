@@ -29,13 +29,13 @@
     <h4>Account</h4>
     <ul class="faq-list">
         <li>
-            <a>How do I edit my account information?</a>
+            <a href="{{ url('/faq/account') }}">How do I edit my account information?</a>
         </li>
         <li>
-            <a>Change I change the privacy of my profile?</a>
+            <a href="{{ url('/faq/account') }}">Can I change the privacy of my profile?</a>
         </li>
         <li>
-            <a>How do I change my email settings?</a>
+            <a href="{{ url('/faq/account') }}">How do I change my email settings?</a>
         </li>
     </ul>
 </div>

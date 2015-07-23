@@ -4,7 +4,7 @@
 
 @section('css')
     <link href="{{ asset('/css/about.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/ihover.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css_app/ihover.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
