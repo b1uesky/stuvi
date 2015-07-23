@@ -47,8 +47,10 @@ body {
 .seller-order-container {
   min-height: 500px;
 }
-/* Orange border around each order */.order-container {
-  border: 2px solid #f9aa62;
+/* border around each order */.order-container {
+  border: 1px solid #00a496;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background-color: white;
   margin-bottom: 30px;
 }
 @media (min-width: 1200px) {
@@ -56,8 +58,13 @@ body {
     padding-left: 4%;
   }
 }
+#show-order-link {
+  color: rgba(255, 255, 255, 0.7);
+}
 .order-row {
-  background-color: rgba(0, 0, 0, 0.09);
+  background-color: #00a496;
+  color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.24);
 }
 .book-row {
   padding: 10px 0;
@@ -80,18 +87,6 @@ body {
 }
 .book-price {
   color: #b61f17;
-}
-.order-button-1 {
-  background: #f16521;
-  color: #fff;
-  border: none;
-  margin: 5px;
-}
-.order-button-2 {
-  background: rgba(0, 0, 0, 0.28);
-  color: white;
-  border: none;
-  margin: 5px;
 }
 /* Canceled order header color */#cancelled h3 {
   color: red;

@@ -32,7 +32,7 @@
             <form action="/textbook/buy/search" method="get">
                 <div class="form-group">
                     <div class="col-xs-8 col-xs-offset-2 search-row">
-                        <input type="text" name="query" id="autocompleteBuy" class="form-control"
+                        <input type="text" name="query" id="autocompleteBuy" class="form-control search-input"
                                placeholder="Enter the textbook ISBN, Title, or Author"/>
                     </div>
                 </div>
@@ -113,17 +113,6 @@
             </div>
         </div>
         <!-- end container -->
-
-        <div class="row">
-            <!-- books.jpg licensing -->
-            <p style="text-align: right;">
-                <small>Books Photo by
-                    <a href="https://flic.kr/p/nfwhCe" target="_blank"> Brittany Stevens </a>
-                    under <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank"> CC-BY-2.0</a>
-                    Cropped and levels adjusted.
-                </small>
-            </p>
-        </div>
     </div>  <!-- end container fluid -->
 
 @endsection
@@ -133,5 +122,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="{{asset('/js/jquery-ui.min.js')}}"></script>
     <script src="{{asset('/js/autocompleteBuy.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>
+    <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
     <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
 @endsection

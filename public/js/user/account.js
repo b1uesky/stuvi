@@ -1,9 +1,10 @@
 /**
- * Created by nlouie on 6/5/15.
+ * Created by nlouie on 6/2/15.
  */
 
 $(document).ready(function(){
     $('.active').removeClass('active');
-    $('#profile-nav').addClass('active');
+    $('#side-account-link').addClass('active');
     $('#edit-btn').addClass('hidden');
 });
+

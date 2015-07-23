@@ -1,9 +1,4 @@
-/*
- * This is the Stuvi default styling. It comes _AFTER_ Bootstrap's app.css
- * This file is compiled to main.css which is then linked in head.blade.php
- * Thus, every page will have this styling.
- * http://thesassway.com/beginner/how-to-structure-a-sass-project
- *//* MODULES AND VARIABLES *//* Import of all modules *//*
+/* MODULES AND VARIABLES *//* Import of all modules *//*
  * Stuvi color palette
  * Please use these variables for any colors used.
  *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
@@ -41,7 +36,7 @@
   color: white;
 }
 .list-search-btn {
-  background: #f16521;
+  background: #00a496;
   border: none;
   height: 34px;
   width: 38px;
@@ -49,7 +44,7 @@
 }
 .list-search-btn:hover, .list-search-btn:focus {
   outline: 0 !important;
-  background: #f16521;
+  background: #00a496;
 }
 /*
  * FOR GENERAL TEXT STYLING

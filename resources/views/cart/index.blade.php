@@ -35,10 +35,10 @@
     @endif
 
     <!-- back link -->
-            <div class="container-fluid">
-                <div class="row back-row">
-                    <a id="back-to-cart" onclick="goBack()"><i class="fa fa-arrow-circle-left"></i>Go Back</a>
-                </div>
+    <div class="container-fluid">
+        <div class="row back-row">
+            <a id="back-to-cart" onclick="goBack()"><i class="fa fa-arrow-circle-left"></i> Go Back</a>
+        </div>
     </div>
 
     <!-- img of cart progress bar -->

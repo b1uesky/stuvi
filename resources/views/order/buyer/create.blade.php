@@ -187,12 +187,12 @@
                                     <label class="col-sm-4 control-label">Phone</label>
 
                                     <div class="col-sm-6 form-space-offset">
-                                        <input type="text" class="form-control" name="phone_number"
-                                               value="(857) 206 4789">
+                                        <input type="tel" class="form-control phone_number"
+                                               name="phone_number" value="(857) 206 4789">
                                     </div>
                                 </div>
                                 </br>
-                                <button class="col-sm-3 btn btn-default primary-btn address-btn" id="storeAddress"
+                                <button class="btn btn-default primary-btn address-btn" id="storeAddress"
                                         type="submit">
                                     Add Address
                                 </button>
@@ -284,9 +284,8 @@
                                                 <label class="col-sm-4 control-label">Phone</label>
 
                                                 <div class="col-sm-6 form-space-offset">
-                                                    <input type="text" class="form-control"
-                                                           name="phone_number"
-                                                           value="(857) 206 4789">
+                                                    <input type="tel" class="form-control phone_number"
+                                                           name="phone_number" value="(857) 206 4789">
                                                 </div>
                                             </div>
                                             <input type="hidden" name="address_id" value="">
@@ -381,9 +380,8 @@
                                                     <label class="col-sm-4 control-label">Phone</label>
 
                                                     <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control"
-                                                               name="phone_number"
-                                                               value="(857) 206 4789">
+                                                        <input type="tel" class="form-control phone_number"
+                                                               name="phone_number" value="(857) 206 4789">
                                                     </div>
                                                 </div>
                                                 <input type="hidden" name="address_id" value="">
@@ -462,8 +460,8 @@
                                             </label>
                                             <label>
                                                 <span>Card Number</span>
-                                                <input class="form-control" type="text" size="19" maxlength="19"
-                                                       data-stripe="number" id="card-input"/>
+                                                <input class="form-control" type="text" data-stripe="number"
+                                                       id="card-input"/>
                                             </label>
 
                                         </div>
@@ -532,7 +530,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <!-- jQuery is used only for this example; it isn't required to use Stripe -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('/js/address.js') }}"></script>
     <!-- stripe -->
     <script type="text/javascript">

@@ -41,7 +41,7 @@
   color: white;
 }
 .list-search-btn {
-  background: #f16521;
+  background: #00a496;
   border: none;
   height: 34px;
   width: 38px;
@@ -49,7 +49,7 @@
 }
 .list-search-btn:hover, .list-search-btn:focus {
   outline: 0 !important;
-  background: #f16521;
+  background: #00a496;
 }
 /*
  * FOR GENERAL TEXT STYLING
@@ -195,13 +195,6 @@
 #cart-fix {
   line-height: 19px;
 }
-/* LOGIN SIGNUP MODAL */.modal-header {
-  text-align: center;
-}
-.modal-body {
-  max-height: calc(100vh - 210px);
-  overflow-y: auto;
-}
 /* Footer CSS Template
  http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/
  *//* Import of all modules *//*
@@ -280,5 +273,12 @@ hr {
     float: none;
     margin: 0 auto 20px;
   }
+}
+/* LOGIN SIGNUP MODAL */.modal-header {
+  text-align: center;
+}
+.modal-body {
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
 }
 /* VENDOR ( THIRD PARTY ) */

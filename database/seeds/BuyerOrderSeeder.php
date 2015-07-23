@@ -4,7 +4,6 @@ use Illuminate\Database\Seeder;
 
 use App\User;
 use App\BuyerOrder;
-use App\Address;
 use Faker\Factory;
 
 class BuyerOrderSeeder extends Seeder
@@ -20,12 +19,12 @@ class BuyerOrderSeeder extends Seeder
 
         $faker = Factory::create();
 
-        for ($i = 1; $i < 10; $i++)
+        for ($i = 1; $i < 30; $i++)
         {
             BuyerOrder::create([
                 'buyer_id'  => $faker->numberBetween(1, User::count()),
                 'cancelled' => false,
-                'shipping_address_id' => $faker->numberBetween(1, Address::count())
+                'shipping_address_id' => $i
             ]);
         }
     }

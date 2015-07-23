@@ -33,10 +33,6 @@
 /* Box around all the forms*/.textbook-create {
   padding: 5%;
 }
-.form-control:focus {
-  border: 2px solid #7ab4de;
-  box-shadow: none;
-}
 #lang {
   color: black;
 }
@@ -44,14 +40,11 @@
   color: black;
 }
 #create-btn {
-  color: #fff;
-  background-color: #7ab4de;
-  border: none;
-  box-shadow: 0 5px #5b86aa;
-  width: 100px;
-  outline: 0;
+  width: 200px;
+  padding: 12px;
 }
-#create-btn:active {
-  box-shadow: 0 2px #5b86aa;
-  transform: translateY(5px);
+/** File upload error messages **/.upload-error-message {
+  display: none;
+  color: red;
+  font-weight: bold;
 }

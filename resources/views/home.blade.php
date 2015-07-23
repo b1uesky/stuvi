@@ -16,7 +16,7 @@
     * Temp cover image...(c)Nicholas Louie All Rights Reserved. I Nicholas Louie, hereby allow a limited license
     * to display this image on Stuvi's website with proper name and link credit. This photo may not be distributed, used
     * or altered (except sizing/cropping) in any other way other than on the homepage
-    * Photo by Nick Louie. Link: https://flic.kr/p/kSKWtK
+    * Photo by Nick Louie.
     --}}
 
     <div class = "container-fluid container-top backgnd">           <!-- Top half -->
@@ -49,10 +49,13 @@
                     <!-- Navbar right -->
                     <ul id="nav-right" class="nav navbar-nav navbar-right">
                         @if (Auth::guest())
-                            <li><a id="login-btn" class="nav-login" href="{{ url('/auth/login') }}">
+                            <li><a id="login-btn" class="nav-login" data-toggle="modal" href="#login-modal">
                                     <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
-                            <li><a id="register-btn" class="nav-login" href="{{ url('/auth/register') }}">
+                            <li><a id="register-btn" class="nav-login" data-toggle="modal" href="#signup-modal">
                                     <i class="fa fa-user"></i> Sign Up</a></li>
+
+                            <!-- login-sign-up modal -->
+                            @include('auth.login-signup-modal')
                             @else
                                     <!-- profile dropdown -->
                             <li class="dropdown" id="dp">
@@ -86,7 +89,6 @@
                                                                                     style="line-height: 19px;"></i></a>
                             </li>
                         @endif
-
                     </ul>
                 </div>
                 <!-- End collapse container -->
@@ -99,8 +101,8 @@
             <!-- ghost buttons -->
             @if (Auth::guest())
                 <div class="ghost-btn-container">
-                    <a class="btn ghost-btn" href="{{ url('/auth/login') }}" role="button">LOGIN</a>
-                    <a class="btn ghost-btn" href="{{ url('/auth/register') }}" role="button">SIGN UP</a>
+                    <a class="btn ghost-btn" data-toggle="modal" href="#login-modal" role="button">LOGIN</a>
+                    <a class="btn ghost-btn" data-toggle="modal" href="#signup-modal" role="button">SIGN UP</a>
                 </div>
             @endif
         </div>
@@ -169,4 +171,6 @@
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>
+    <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
 @endsection

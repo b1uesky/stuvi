@@ -32,14 +32,15 @@
     @endif
 
     <!-- Search Bar Container-->
-    <div class="container-fluid search">
+    <div class="container-fluid search" id="container-fluid-search-sell">
         <div class="row">
             <h1 id="title">Sell Your Used Textbooks</h1>
             <form action="/textbook/sell/search" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <div class="col-xs-8 col-xs-offset-2 search-row">
-                        <input type="text" name="isbn" class="form-control" placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
+                        <input type="text" name="isbn" class="form-control search-input" id="sell-search-input"
+                               placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
                     </div>
                     <button class="btn btn-default search-btn" type="submit" name="search" value="Search" >
                         <i class="fa fa-search search-icon"></i>
@@ -111,15 +112,6 @@
                 </div>
             </div>
         </div> <!-- end container -->
-
-        <div class="row">
-            <!-- books.jpg licensing -->
-            <p style="text-align: right;"><small>Books Photo by
-                    <a href="https://flic.kr/p/nfwhCe" target = "_blank"> Brittany Stevens </a>
-                    under <a href="https://creativecommons.org/licenses/by/2.0/" target = "_blank"> CC-BY-2.0</a>
-                    Cropped and levels adjusted. </small>
-            </p>
-        </div>
     </div>  <!-- end container fluid -->
 
 @endsection

@@ -1,23 +1,26 @@
 <?php namespace App\Http\Controllers\Textbook;
 
-use Aloha\Twilio\Twilio;
-use App\Address;
 use App\Helpers\StripeKey;
 use App\Http\Controllers\Controller;
+use App\User;
+use App\Address;
 use App\SellerOrder;
 use App\StripeTransfer;
+
+use Log;
 use Auth;
 use Cart;
 use Config;
-use DateTime;
 use DB;
 use Input;
-use Log;
 use Mail;
 use Request;
 use Response;
 use Session;
 use Validator;
+use DateTime;
+use Carbon\Carbon;
+use Aloha\Twilio\Twilio;
 
 class SellerOrderController extends Controller
 {
@@ -86,7 +89,7 @@ class SellerOrderController extends Controller
                     $this->notifyCourierCancelledOrder($seller_order);
                 }
 
-                return redirect('order/seller/' . $id)
+                return redirect('order/seller/'.$id)
                     ->with('message', 'Your cancel request is submitted. We will process your request in 2 days.');
             }
             else
