@@ -11,9 +11,25 @@
  *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */body {
   backgroud-color: #f2f2f2;
 }
+#container-home-top {
+  padding: 0;
+  position: relative;
+}
+@media (max-width: 768px) {
+  #container-home-top {
+    background: url('../img/cover-2-1.png') no-repeat;
+    background-size: cover;
+  }
+}
 /* NAVIGATION */#nav {
   background-color: rgba(0, 0, 0, 0);
   border: none;
+}
+#navbar-container {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 100%;
 }
 .logo-container {
   width: 120px;
@@ -47,6 +63,17 @@
   background-color: #00a496;
   color: white;
 }
+/* SLIDE.JS */#slides {
+  display: none;
+}
+@media (max-width: 768px) {
+  #slides {
+    visibility: hidden;
+  }
+}
+/* Center the slideshow *//* Media queries for a responsive layout */.slide-container {
+  margin: 0 0 0 0;
+}
 /* TOP HALF IMAGE *//*Top background*/.backgnd {
   /*****************
  * Temp cover image...(c)Nicholas Louie All Rights Reserved. I Nicholas Louie, hereby allow a limited license
@@ -65,6 +92,13 @@
     padding-bottom: 0%;
   }
 }
+#head-tag-ghost-container {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 #head1 {
   color: whitesmoke;
   text-align: center;
@@ -73,6 +107,11 @@
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   padding-top: 3%;
   text-shadow: 2px 2px 4px #000;
+}
+@media (max-width: 768px) {
+  #head1 {
+    font-size: 4em;
+  }
 }
 .tagline {
   color: whitesmoke;
@@ -92,14 +131,9 @@
   text-align: center;
   padding-top: 1%;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .ghost-btn-container {
-    margin-bottom: 35px;
-  }
-}
-@media (max-width: 399px) {
-  .ghost-btn-container {
-    margin-bottom: 0;
+    visibility: hidden;
   }
 }
 .ghost-btn {
@@ -137,7 +171,8 @@
 /* SEARCH BAR */#home-search-container {
   padding: 0;
   position: absolute;
-  bottom: 20%;
+  z-index: 10;
+  bottom: 0;
   width: 100vw;
 }
 #home-search-form {

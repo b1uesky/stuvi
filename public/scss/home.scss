@@ -9,11 +9,28 @@ body{
   backgroud-color: $background-color;
 }
 
+#container-home-top{
+  padding: 0;
+  position: relative;
+  @media(max-width: 768px){
+    background: url('../img/cover-2-1.png') no-repeat;
+    background-size: cover;
+  }
+}
+
+
 /* NAVIGATION */
 
 #nav {
   background-color: rgba(0, 0, 0, 0);
   border: none;
+}
+
+#navbar-container{
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 100%;
 }
 
 .logo-container {
@@ -54,6 +71,22 @@ body{
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
+
+/* SLIDE.JS */
+
+#slides {
+  display:none;
+  @media(max-width: 768px){
+    visibility: hidden;
+  }
+}
+
+/* Center the slideshow */
+/* Media queries for a responsive layout */
+.slide-container {
+  margin: 0 0 0 0;
+}
+
 /* TOP HALF IMAGE */
 
 /*Top background*/
@@ -74,6 +107,14 @@ body{
   }
 }
 
+#head-tag-ghost-container{
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 #head1{
   color: whitesmoke;
   text-align: center;
@@ -82,6 +123,9 @@ body{
   font-family: $base-font-family;
   padding-top: 3%;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  @media(max-width: 768px){
+    font-size: 4em;
+  }
 }
 
 .tagline{
@@ -103,13 +147,11 @@ body{
   ***/
 
 .ghost-btn-container {
+
   text-align: center;
   padding-top: 1%;
-  @media (max-width: 767px){
-    margin-bottom: 35px;
-  }
-  @media (max-width: 399px) {
-    margin-bottom: 0;
+  @media (max-width: 768px){
+    visibility: hidden;
   }
 }
 
@@ -148,7 +190,8 @@ body{
 #home-search-container{
   padding: 0;
   position: absolute;
-  bottom: 20%;
+  z-index: 10;
+  bottom: 0;
   width: 100vw;
 }
 

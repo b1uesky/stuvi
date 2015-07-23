@@ -120,6 +120,7 @@
   border-radius: 0;
   border: none;
   box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
+  z-index: 20;
 }
 #nav-left li a {
   color: black;
@@ -150,6 +151,9 @@
 }
 /******* NAVIGATION HAMBURGER MENU *******/.fa-bars {
   color: #00a496;
+}
+#nav-toggle-collapse {
+  z-index: 50;
 }
 #nav-toggle-collapse:hover, #nav-toggle-collapse:focus {
   background: #f9aa62;
