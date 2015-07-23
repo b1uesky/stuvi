@@ -17,7 +17,7 @@ class CreateUserProfilesTable extends Migration
             $table->integer('user_id')->unsigned()->index;
             $table->integer('sex')->nullable();
             $table->date('birthday')->nullbale();
-            $table->string('nickname')->nullable();
+            $table->string('title')->nullable();
             $table->string('bio')->nullable();
             $table->date('graduation_date')->nullable();
             $table->string('major')->nullable();

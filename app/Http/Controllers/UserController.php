@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 
+use App\Profile;
+use App\University;
 use Auth;
 use Input;
 use Session;
@@ -21,7 +23,32 @@ class UserController extends Controller
 
     public function profileEdit()
     {
-        return view('user.profile-edit');
+        $user_id = Auth::id();
+        $user_profile = Profile::find($user_id);
+        $user_school = Auth::user()->university()->get();
+        return view('user.profile-edit')
+            ->with('profile',$user_profile)
+            ->with('school',$user_school[0]['name']);
+    }
+
+    public function profileStore()
+    {
+        $user_id = Auth::id();
+        $user_profile = Profile::find($user_id);
+        if ($user_profile){
+            if ($user_profile->isBelongTo(Auth::id()))
+            {
+                $user_profile->update([
+                    'user_id'         => Auth::id(),
+                    'sex'             => Input::get('sex'),
+                    'birthday'        => Input::get('birth'),
+                    'title'           => Input::get('title'),
+                    'bio'             => Input::get('bio'),
+                    'graduation_date' => Input::get('grad')
+
+                ]);
+            }
+        }
     }
 
     public function account()
@@ -97,7 +124,15 @@ class UserController extends Controller
                 ->with('Your account has already been activated.');
         }
 
-        $user->sendActivationEmail();
+        // send an email to the user with welcome message
+        $user_arr               = $user->toArray();
+        $user_arr['university'] = $user->university->toArray();
+        $user_arr['return_to']  = urlencode(Session::get('url.intended', '/home'));    // return_to attribute.
+
+        Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($user_arr)
+        {
+            $message->to($user_arr['email'])->subject('Welcome to Stuvi!');
+        });
 
         return redirect('user/activate')
             ->with('message', 'Activation email is sent. Please check your email.');

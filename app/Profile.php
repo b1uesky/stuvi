@@ -17,7 +17,7 @@ class Profile extends Model
         'user_id',
         'sex',
         'birthday',
-        'nickname',
+        'title',
         'bio',
         'graduation_date',
         'major',
