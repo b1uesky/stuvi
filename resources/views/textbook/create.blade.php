@@ -65,6 +65,14 @@
                     <label><b>Number of Pages</b></label>
                     <input type="number" name="num_pages" value="{{ Input::old('num_pages') }}" class="form-control"/>
                 </div>
+                <!-- Select Binding -->
+                <div class="form-group ws" id="binding">
+                    <label><b>Binding</b></label>
+                    @foreach(Config::get('book.bindings') as $key => $value)
+                        <input type="radio" name="binding" value="{{ $value }}"/> {{ $value }}
+                    @endforeach
+                </div>
+
                 <!-- Select Language -->
                 <!-- TODO: a complete list of languages -->
                 <div class="form-group">

@@ -45,6 +45,7 @@
                 </div>
                 <p>ISBN-10: {{ $book->isbn10 }}</p>
                 <p>ISBN-13: {{ $book->isbn13 }}</p>
+                <p>Edition: {{ $book->edition }}</p>
                 <p>Number of Pages: {{ $book->num_pages }}</p>
             </div>
         </div>
