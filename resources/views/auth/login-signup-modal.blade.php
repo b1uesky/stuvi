@@ -79,7 +79,7 @@
                             <!-- phone number -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-phone">Phone Number</label>
-                                <input type="tel" name="phone_number" class="form-control phone_number" name="phone_number" id="register-phone"
+                                <input type="text" name="phone_number" class="form-control phone_number" id="register-phone"
                                        placeholder="Phone number" value="">
                             </div>
                             <!-- university -->

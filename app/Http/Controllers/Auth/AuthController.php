@@ -205,8 +205,7 @@ class AuthController extends Controller {
             if ($v->fails())
             {
                 return Response::json([
-                    'valid'     => false,
-                    'errors'    => $v->errors()->toArray()
+                    'valid'     => false
                 ]);
             }
 

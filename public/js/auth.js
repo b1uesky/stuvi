@@ -48,10 +48,8 @@ $(document).ready(function() {
                 validators: {
                     remote: {
                         url: 'auth/email',
-                        data: function(validator, $field, value) {
-                            return {
-                                email: validator.getFieldElements('email').val()
-                            };
+                        data: {
+                            type: 'email'
                         },
                         type: 'POST',
                         message: 'The email address already exsits'
@@ -62,6 +60,21 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                         message: 'The password is required'
+                    },
+                    stringLength: {
+                        min: 6,
+                        message: 'The password must be at least 6 characters'
+                    }
+                }
+            },
+            phone_number: {
+                validators: {
+                    notEmpty: {
+                        message: 'The phone number is required'
+                    },
+                    phone: {
+                        country: 'US',
+                        message: 'The phone number is not valid'
                     }
                 }
             }
