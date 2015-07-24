@@ -200,7 +200,7 @@ class AuthController extends Controller {
     {
         if (Request::ajax())
         {
-            $v = Validator::make(Input::get('email'), Email::registerRules());
+            $v = Validator::make(Input::all(), Email::registerRules());
 
             if ($v->fails())
             {

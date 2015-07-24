@@ -48,9 +48,6 @@ $(document).ready(function() {
                 validators: {
                     remote: {
                         url: 'auth/email',
-                        data: {
-                            type: 'email'
-                        },
                         type: 'POST',
                         message: 'The email address already exsits'
                     }

@@ -1,0 +1,31 @@
+/*********  FAQ PAGE  *********//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */body {
+  background-color: #f2f2f2;
+}
+.faq-container {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.faq-list {
+  list-style: none;
+  padding-left: 2px;
+}
+.faq-list li {
+  margin-bottom: 10px;
+}
+.faq-list li a {
+  color: #00a496;
+}
+.question-answer {
+  margin-bottom: 40px;
+}
+.question-answer h2 {
+  color: #00a496;
+}

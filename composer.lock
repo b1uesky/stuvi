@@ -61,16 +61,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.2.0",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "07bcef20cd97a5aea92ac565d76b49964be7abe9"
+                "reference": "e6c35f69cac7386c6c1ebf9a7d230abca49fef5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/07bcef20cd97a5aea92ac565d76b49964be7abe9",
-                "reference": "07bcef20cd97a5aea92ac565d76b49964be7abe9",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e6c35f69cac7386c6c1ebf9a7d230abca49fef5d",
+                "reference": "e6c35f69cac7386c6c1ebf9a7d230abca49fef5d",
                 "shasum": ""
             },
             "require": {
@@ -130,7 +130,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-07-14 20:49:33"
+            "time": "2015-07-24 00:42:07"
         },
         {
             "name": "aws/aws-sdk-php-laravel",
@@ -1424,7 +1424,7 @@
                     "name": "Jeremy Lindblom",
                     "email": "jeremeamia@gmail.com",
                     "homepage": "https://github.com/jeremeamia",
-                    "role": "Developer"
+                    "role": "developer"
                 }
             ],
             "description": "Serialize Closure objects, including their context and binding",
