@@ -47,7 +47,10 @@ $(document).ready(function() {
                 trigger: 'blur',
                 validators: {
                     remote: {
-                        url: 'auth/email',
+                        url: '/auth/email',
+                        data: {
+                            _token: $('[name="csrf_token"]').attr('content')
+                        },
                         type: 'POST',
                         message: 'The email address already exsits'
                     }

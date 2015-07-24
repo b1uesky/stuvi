@@ -198,21 +198,18 @@ class AuthController extends Controller {
 
     public function postEmail()
     {
-        if (Request::ajax())
+        $v = Validator::make(Input::all(), Email::registerRules());
+
+        if ($v->fails())
         {
-            $v = Validator::make(Input::all(), Email::registerRules());
-
-            if ($v->fails())
-            {
-                return Response::json([
-                    'valid'     => false
-                ]);
-            }
-
             return Response::json([
-                'valid' => true
+                'valid'     => false
             ]);
         }
+
+        return Response::json([
+            'valid' => true
+        ]);
     }
 
     /**
