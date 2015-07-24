@@ -100,7 +100,6 @@
                 <img src="{{asset('img/nick/nlouie1.jpg')}}" alt="">
                 <img src="{{asset('img/nick/nlouie2.jpg')}}" alt="">
             </div>
-
         </div>
 
         <!-- TODO: make this work properly..like a search for the entire stuvi site? idk -->
