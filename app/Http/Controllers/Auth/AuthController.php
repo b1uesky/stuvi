@@ -146,14 +146,22 @@ class AuthController extends Controller {
         if ($v->fails()) {
             $except_fields = ['password'];
 
-            return redirect('/auth/register')
-                ->withErrors($v->errors())
-                ->withInput(Input::except($except_fields));
+            return Response::json([
+                'success'   => false,
+                'fields'    => $v->errors()
+            ]);
+
+//            return redirect('/auth/register')
+//                ->withErrors($v->errors())
+//                ->withInput(Input::except($except_fields));
         }
 
         Auth::login($this->create($request->all()));
 
-        return redirect($this->redirectPath());
+        return Response::json([
+            'success'   => true
+        ]);
+//        return redirect($this->redirectPath());
     }
 
     /**
@@ -196,6 +204,11 @@ class AuthController extends Controller {
             ]);
     }
 
+    /**
+     * Validate email input field.
+     *
+     * @return JSON Response
+     */
     public function postEmail()
     {
         $v = Validator::make(Input::all(), Email::registerRules());

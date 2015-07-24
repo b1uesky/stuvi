@@ -69,7 +69,7 @@
                             <!-- email -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-email">Email</label>
-                                <input type="email" name="email" class="form-control" id="register-email" placeholder="Email">
+                                <input type="email" name="email" class="form-control" id="register-email" placeholder="College email address">
                             </div>
                             <!-- password -->
                             <div class="form-group">
@@ -79,14 +79,13 @@
                             <!-- phone number -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-phone">Phone Number</label>
-                                <input type="text" name="phone_number" class="form-control phone_number" id="register-phone"
-                                       placeholder="Phone number" value="">
+                                <input type="text" name="phone_number" class="form-control" id="register-phone"
+                                       placeholder="Phone number">
                             </div>
                             <!-- university -->
                             <div class="form-group">
-                                <select class="form-control" name="university_id">
-                                    <label class="sr-only" for="register-uni">School</label>
-                                    <option id="register-uni" selected disabled>University</option>
+                                <label class="sr-only" for="register-university">School</label>
+                                <select class="form-control" name="university_id" id="register-university">
                                     @foreach(\App\University::where('is_public', true)->get() as $university)
                                         <option value="{{ $university->id }}">{{ $university->name }}</option>
                                     @endforeach
