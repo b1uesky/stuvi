@@ -121,10 +121,10 @@ Route::group(['middleware'=>'auth', 'prefix'=>'stripe'], function()
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], function()
 {
     Route::get('/', 'CartController@index');
-    Route::get('add/{id}', 'CartController@addItem');
-    Route::get('rmv/{id}', 'CartController@removeItem');
-    Route::get('empty', 'CartController@emptyCart');
-    Route::get('update', 'CartController@updateCart');
+    Route::get('/add/{id}', 'CartController@addItem');
+    Route::get('/rmv/{id}', 'CartController@removeItem');
+    Route::get('/empty', 'CartController@emptyCart');
+    Route::get('/update', 'CartController@updateCart');
 });
 
 /*
@@ -134,14 +134,16 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], 
 */
 Route::group(['middleware'=>'auth', 'prefix'=>'user'], function()
 {
-    Route::get('/profile', 'UserController@profile');
-    Route::get('/profile-edit', 'UserController@profileEdit');
-    Route::get('/account', 'UserController@account');
+    Route::get ('/profile', 'UserController@profile');
+    Route::get ('/profile-edit', 'UserController@profileEdit');
+    Route::get ('/account', 'UserController@account');
     Route::post('/account/edit', 'UserController@edit');
-    Route::get('/bookshelf', 'UserController@bookshelf');
-    Route::get('/activate', 'UserController@waitForActivation');
-    Route::get('/activate/resend', 'UserController@resendActivationEmail');
-    Route::get('/activate/{code}', 'UserController@activateAccount');
+    Route::get ('/bookshelf', 'UserController@bookshelf');
+    Route::get ('/activate', 'UserController@waitForActivation');
+    Route::get ('/activate/resend', 'UserController@resendActivationEmail');
+    Route::get ('/activate/{code}', 'UserController@activateAccount');
+    Route::get ('/email', 'UserController@emailIndex');
+    Route::post('/email/add', 'UserController@addEmail');
 });
 
 Route::controllers([
