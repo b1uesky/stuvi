@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 
+use App\Profile;
 use Auth;
 use Input;
 use Session;
@@ -21,6 +22,8 @@ class UserController extends Controller
 
     public function profileEdit()
     {
+        $user_id = Auth::id();
+        $user_profile = Profile::find($user_id);
         return view('user.profile-edit');
     }
 
