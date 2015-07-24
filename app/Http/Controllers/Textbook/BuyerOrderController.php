@@ -120,9 +120,6 @@ class BuyerOrderController extends Controller
             'buyer_id'            => Auth::id(),
             'shipping_address_id' => $shipping_address_id,
         ]);
-//        $order->buyer_id = Auth::id();
-//        $order->shipping_address_id = $shipping_address_id;
-//        $order->save();
 
         // create seller order(s) according to the Cart items
         $this->createSellerOrders($order->id);
@@ -134,7 +131,7 @@ class BuyerOrderController extends Controller
         $this->cart->clear();
 
         // send confirmation email to buyer
-        $this->emailBuyerOrderConfirmation($order);
+        $order->emailOrderConfirmation();
 
         return redirect('/order/confirmation')
             ->with('order', $order);
@@ -242,42 +239,8 @@ class BuyerOrderController extends Controller
             ]);
 
             // send confirmation email to seller
-            $this->emailSellerOrderConfirmation($order);
-
+            $order->emailOrderConfirmation();
         }
-    }
-
-    /**
-     * Email buyer the buyer order confirmation
-     *
-     * @param BuyerOrder $order
-     */
-    protected function emailBuyerOrderConfirmation(BuyerOrder $order)
-    {
-        // convert the buyer order and corresponding objects to an array
-        $buyer_order_arr = $order->allToArray();
-
-        Mail::queue('emails.buyerOrderConfirmation', ['buyer_order' => $buyer_order_arr], function ($message) use ($order)
-        {
-            $message->to($order->buyer->email)->subject('Confirmation of your order #' . $order->id);
-        });
-    }
-
-    /**
-     * Email seller the buyer order confirmation
-     *
-     * @param SellerOrder $order
-     */
-    protected function emailSellerOrderConfirmation(SellerOrder $order)
-    {
-        // convert the seller order and corresponding objects to an array
-        $seller_order_arr = $order->allToArray();
-
-        Mail::queue('emails.sellerOrderConfirmation', ['seller_order' => $seller_order_arr],
-            function ($message) use ($order)
-            {
-                $message->to($order->product->seller->email)->subject('Your book ' . $order->product->book->title . ' has sold!');
-            });
     }
 
     /**
@@ -335,6 +298,11 @@ class BuyerOrderController extends Controller
             ->with('message', 'Order not found.');
     }
 
+    /**
+     * Display an order confirmation page.
+     *
+     * @return RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
     public function confirmation()
     {
         // check if this page is redirected from storeBuyerOrder method

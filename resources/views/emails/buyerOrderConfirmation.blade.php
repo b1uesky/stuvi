@@ -28,7 +28,6 @@
                                     <tr>
                                         <!-- header image/logo -->
                                         <td align="center" bgcolor="#241729" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
-                                            <!--TODO: must be replaced with a real url once website is online -->
                                             <a href="{{url('/home')}}">
                                                 <img src="http://puu.sh/iDvTG/18b055e116.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
                                             </a>
@@ -122,28 +121,29 @@
 
                                                             <!-- items -->
                                                             <tr>
-                                                                {{-- PLEASE TEST THIS --}}
-                                                                <td valign="top" style="color: #000000;">
-                                                                    <a href="{{ url('/order/buyer/'.$buyer_order['id']) }}">
-                                                                        <img src="{{$buyer_order['product']['book']['image_set']['small_image']}}" alt="sold book image">
-                                                                    </a>
-                                                                    <br>
-                                                                </td>
                                                                 <td style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;" width="100%">
-                                                                <b style="color: #737373;">Items</b><br>
-                                                                @foreach ($buyer_order['products'] as $product)
-                                                                    Title: {{ $product['book']['title'] }}<br>
-                                                                    ISBN: {{ $product['book']['isbn13'] }}<br>
-                                                                    Author(s):
-                                                                    @foreach($product['book']['authors'] as $author)
-                                                                        <span>{{ $author['full_name'] }}</span>
-                                                                    @endforeach
-                                                                    <br>
-                                                                    <b>${{ $product['price'] }}</b><br>
-                                                                @endforeach
-                                                                    <hr style="border-bottom: .5px solid #737373;">
-                                                                <td>
+                                                                    <b style="color: #737373;">Items</b><br>
+                                                                </td>
                                                             </tr>
+
+                                                            @foreach ($buyer_order['products'] as $product)
+                                                                <tr>
+                                                                    <td valign="top" style="color: #000000; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;">
+                                                                        <a href="{{ url('/order/buyer/'.$buyer_order['id']) }}">
+                                                                            <img src="{{ $product['book']['image_set']['small_image'] }}" alt="sold book image">
+                                                                        </a>
+                                                                        Title: {{ $product['book']['title'] }}<br>
+                                                                        ISBN: {{ $product['book']['isbn13'] }}<br>
+                                                                        Author(s):
+                                                                        @foreach($product['book']['authors'] as $author)
+                                                                            <span>{{ $author['full_name'] }}</span>
+                                                                        @endforeach
+                                                                        <br>
+                                                                        <b>${{ $product['price'] }}</b><br>
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                                <hr style="border-bottom: .5px solid #737373;">
 
                                                         </table>
 

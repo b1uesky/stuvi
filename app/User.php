@@ -358,4 +358,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->primaryEmail->email_address;
     }
+
+    /**
+     * @return array
+     */
+    public function allToArray()
+    {
+        $user_arr           = $this->toArray();
+        $user_arr['email']  = $this->primaryEmail->email_address;
+
+        return $user_arr;
+    }
 }
