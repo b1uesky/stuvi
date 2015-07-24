@@ -128,17 +128,19 @@
 
                                                             @foreach ($buyer_order['products'] as $product)
                                                                 <tr>
-                                                                    <td valign="top" style="color: #000000; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;">
+                                                                    <td valign="top">
                                                                         <a href="{{ url('/order/buyer/'.$buyer_order['id']) }}">
                                                                             <img src="{{ $product['book']['image_set']['small_image'] }}" alt="sold book image">
                                                                         </a>
-                                                                        Title: {{ $product['book']['title'] }}<br>
-                                                                        ISBN: {{ $product['book']['isbn13'] }}<br>
-                                                                        Author(s):
+                                                                    </td>
+                                                                    <td valign="top" style="color: #000000; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;">
+                                                                        <p>Title: {{ $product['book']['title'] }}</p>
+                                                                        <p>ISBN: {{ $product['book']['isbn13'] }}</p>
+                                                                        <p>Author(s):
                                                                         @foreach($product['book']['authors'] as $author)
                                                                             <span>{{ $author['full_name'] }}</span>
                                                                         @endforeach
-                                                                        <br>
+                                                                        </p>
                                                                         <b>${{ $product['price'] }}</b><br>
                                                                     </td>
                                                                 </tr>
