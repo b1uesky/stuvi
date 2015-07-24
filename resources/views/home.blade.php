@@ -42,11 +42,11 @@
                                 <li><a id="register-btn" class="nav-login" data-toggle="modal" href="#signup-modal">
                                         <i class="fa fa-user"></i> Sign Up</a></li>
 
-                                <!-- login-sign-up modal -->
-                                @include('auth.login-signup-modal')
+
+
                                 @else
                                         <!-- profile dropdown -->
-                                <li class="dropdown" id="dp">
+                                <li class="dropdown" id="dp" style="z-index: 500;">
                                     <a href="#" id="nav-drop" class="dropdown-toggle nav-dropdown" data-toggle="dropdown"
                                        role="button"
                                        aria-expanded="true"><span nav-caret
@@ -184,19 +184,8 @@
 
     </div> <!-- end bottom half -->
 
-
-{{--
-    <div class="testing">
-        <div id="slides" style="position: relative;">
-            <img src="http://placehold.it/940x528">
-            <img src="http://placehold.it/940x528">
-            <img src="http://placehold.it/940x528">
-            <img src="http://placehold.it/940x528">
-            <img src="http://placehold.it/940x528">
-        </div>
-    </div>
-
-    --}}{{-- Current pic at 4865 × 1868 --}}
+    <!-- login-sign-up modal -->
+    @include('auth.login-signup-modal')
 
 @endsection
 

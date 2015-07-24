@@ -2,7 +2,10 @@
  * Created by nlouie on 7/22/15.
  */
 
-/* SLIDES JS*/
+/* SLIDES JS
+* http://www.slidesjs.com/
+*
+* */
 
 $(function(){
     $("#slides").slidesjs({

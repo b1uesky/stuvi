@@ -3,7 +3,7 @@
     This is the pop-up for login in and sign up  --}}
 
 @section('login-signup-modal')
-    <div class="login-signup-modal">
+    <div class="login-signup-modal" style="z-index: 99999;">
         <div class="modal fade login-modal" id="login-modal" tabindex="-1" role="dialog"
              aria-labelledby="Login">
             <div class="modal-dialog">
