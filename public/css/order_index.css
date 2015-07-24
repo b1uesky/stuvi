@@ -1,0 +1,96 @@
+/******* This CSS page used for both buyer order index and seller order index
+ Find them at order/buyer/index and order/seller/index
+ *******//* Import of all modules *//*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ *//* GENERAL COLORS *//* GENERAL TEXT COLORS *//* HEADER/NAV COLORS *//*$nav-background-color: #241729;*//* FOOTER COLORS *//* TABLE COLORS *//* BUTTON COLORS *//*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */h1 {
+  margin-left: -15px;
+}
+/* Under nav bar. "Look for seller orders? */.link-to-seller {
+  margin-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 0;
+  margin-right: 0;
+  /* Need this or else it goes off screen*/
+}
+/* Go back link container. Found in sellerOrderIndex */.back-row {
+  margin-top: 7px;
+  margin-right: 0;
+  /* Need this or else it goes off screen*/
+}
+/* Go Back link Found in sellerOrderIndex */#go-back {
+  margin-left: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+/* Found at order/buyer (order/index) */#or-go-back {
+  cursor: pointer;
+}
+/* alert message */#message {
+  font-style: italic;
+}
+/* alert message container */#message-cont {
+  padding: 1%;
+  margin-top: 5px;
+}
+body {
+  background-color: #f2f2f2;
+}
+/* Prevent white space below footer */.buyer-order-container {
+  min-height: 500px;
+}
+.seller-order-container {
+  min-height: 500px;
+}
+/* border around each order */.order-container {
+  border: 1px solid #00a496;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background-color: white;
+  margin-bottom: 30px;
+}
+@media (min-width: 1200px) {
+  .order-number {
+    padding-left: 4%;
+  }
+}
+#show-order-link {
+  color: rgba(255, 255, 255, 0.7);
+}
+.order-row {
+  background-color: #00a496;
+  color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.24);
+}
+.book-row {
+  padding: 10px 0;
+}
+.book-row-empty {
+  padding: 10px 15px;
+}
+.book-img {
+  max-width: 100px;
+  margin: 10px;
+}
+.lg-img {
+  max-width: 100px;
+}
+.book-info {
+  padding-left: 25px;
+}
+.book-info h3 {
+  margin-top: 10px;
+}
+.book-price {
+  color: #b61f17;
+}
+/* Canceled order header color */#cancelled h3 {
+  color: red;
+}
+/* If no orders, then make the container fill __% of the viewport height */.empty {
+  height: 80vh;
+}
