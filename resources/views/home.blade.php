@@ -205,4 +205,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="{{asset('js/slides/jquery.slides.min.js')}}"></script>
     <script src="{{asset('js/home.js')}}"></script>
+    {{--<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>--}}
+    {{--<script src="{{asset('js/autocompleteBuy.js')}}"></script>--}}
 @endsection
