@@ -40,7 +40,7 @@ return [
         ],
 
         'broken_binding'            =>  [
-            'title' =>  'Broken book binding',
+            'title' =>  'Broken Book Binding',
             0       =>  'No',
             1       =>  'Yes',
             'description'   =>  'Please select "Yes" if the binding is severely damaged or completely broken. Please note that the buyer will be warned about this book\'s poor condition and will likely not be willing to pay full price for this book.'
