@@ -26,7 +26,7 @@
                 @endforeach
             </div>
         @endif
-        
+
         <div class="row textbook-row col-sm-5">
             <div>
                 @if($book->imageSet->large_image)
@@ -61,7 +61,7 @@
             <div class="row col-sm-6 col-sm-offset-1">
             <h2>Book Conditions</h2>
 
-            <form action="/textbook/sell/product/store" method="post" enctype="multipart/form-data">
+            <form action="{{ url('/textbook/sell/product/store') }}" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="book_id" value="{{ $book->id }}"/>
                 <input type="hidden" name="book_title" value="{{ $book->title }}">
@@ -259,7 +259,6 @@
                 <br>
 
                 {{-- your price --}}
-                <form class="form-inline">
                     <div class="form-group">
                         <label for="price-form">Price</label>
                         <div class="input-group" id="price-input">
@@ -268,7 +267,6 @@
                                    placeholder="Amount">
                         </div>
                     </div>
-                </form>
 
                 {{-- Upload Images --}}
                 <div class="form-group" name="cover_img">
