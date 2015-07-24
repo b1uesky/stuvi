@@ -95,33 +95,6 @@ class AuthController extends Controller {
 
     /**
      * @override
-     * Send the response after the user was authenticated.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  bool  $throttles
-     * @return \Illuminate\Http\Response
-     */
-    protected function handleUserWasAuthenticated(Request $request, $throttles)
-    {
-        if ($throttles) {
-            $this->clearLoginAttempts($request);
-        }
-
-        if (method_exists($this, 'authenticated')) {
-            return $this->authenticated($request, Auth::user());
-        }
-
-        // if the user was redirected from a specific page that needs login or register
-        if (Session::has('url.intended'))
-        {
-            return redirect(Session::pull('url.intended'));
-        }
-
-        return redirect()->intended($this->redirectPath());
-    }
-
-    /**
-     * @override
      * Handle a registration request for the application.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -150,10 +123,6 @@ class AuthController extends Controller {
                 'success'   => false,
                 'fields'    => $v->errors()
             ]);
-
-//            return redirect('/auth/register')
-//                ->withErrors($v->errors())
-//                ->withInput(Input::except($except_fields));
         }
 
         Auth::login($this->create($request->all()));
@@ -161,7 +130,6 @@ class AuthController extends Controller {
         return Response::json([
             'success'   => true
         ]);
-//        return redirect($this->redirectPath());
     }
 
     /**
@@ -197,11 +165,48 @@ class AuthController extends Controller {
             $this->incrementLoginAttempts($request);
         }
 
-        return redirect($this->loginPath())
-            ->withInput($request->only($this->loginUsername(), 'remember'))
-            ->withErrors([
+        return Response::json([
+            'success'   => false,
+            'fields'    => [
                 $this->loginUsername() => $this->getFailedLoginMessage(),
+            ]
+        ]);
+    }
+
+    /**
+     * @override
+     * Send the response after the user was authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  bool  $throttles
+     * @return \Illuminate\Http\Response
+     */
+    protected function handleUserWasAuthenticated(Request $request, $throttles)
+    {
+        if ($throttles) {
+            $this->clearLoginAttempts($request);
+        }
+
+//        if (method_exists($this, 'authenticated')) {
+//            return $this->authenticated($request, Auth::user());
+//        }
+
+        // if the user was redirected from a specific page that needs login or register
+        if (Session::has('url.intended'))
+        {
+//            return redirect(Session::pull('url.intended'));
+            return Response::json([
+                'success'   => true,
+                'redirect'  => Session::pull('url.intended')
             ]);
+        }
+
+        return Response::json([
+            'success'   => true,
+            'redirect'  => '/home'
+        ]);
+
+//        return redirect()->intended($this->redirectPath());
     }
 
     /**

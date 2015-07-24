@@ -7,6 +7,45 @@ $(document).ready(function () {
     // format phone number
     $("#register-phone").mask("(999)999-9999");
 
+    $('#form-login').submit(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: '/auth/login',
+            data: {
+                _token: $('[name="csrf_token"]').attr('content'),
+                email: $('#login-email').val(),
+                password: $('#login-password').val()
+            },
+            dataType: 'json',
+            success: function(response, status) {
+                console.log(response);
+
+                // login failed
+                if (response.success == false) {
+                    for (var field in response.fields) {
+                        var error = '<div class="alert alert-danger" role="alert">' +
+                            '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
+                            '<span class="sr-only">Error:</span>' + response.fields[field] +
+                            '</div>';
+
+                        $(error).insertBefore('#form-login');
+                    }
+                } else {
+                    // success
+                    window.location.replace(response.redirect);
+                }
+
+
+            },
+            error: function(xhr, status, errorThrown) {
+                console.log(status);
+                console.log(errorThrown);
+            }
+        });
+    });
+
     // Signup form validation
     $('#form-register')
         .formValidation({
@@ -77,24 +116,24 @@ $(document).ready(function () {
                         }
                     }
                 },
-                phone_number: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The phone number is required'
-                        },
-                        phone: {
-                            country: 'US',
-                            message: 'The phone number is not valid'
-                        }
-                    }
-                },
-                university_id: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The university is required'
-                        }
-                    }
-                }
+                //phone_number: {
+                //    validators: {
+                //        notEmpty: {
+                //            message: 'The phone number is required'
+                //        },
+                //        phone: {
+                //            country: 'US',
+                //            message: 'The phone number is not valid'
+                //        }
+                //    }
+                //},
+                //university_id: {
+                //    validators: {
+                //        notEmpty: {
+                //            message: 'The university is required'
+                //        }
+                //    }
+                //}
             }
         })
         // form submit
@@ -137,7 +176,7 @@ $(document).ready(function () {
                 } else {
                     // Do whatever you want here
                     // such as showing a modal ...
-                    window.location.href = "/home";
+                    window.location.replace("/home");
                 }
             });
         });

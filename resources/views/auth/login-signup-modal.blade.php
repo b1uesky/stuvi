@@ -15,17 +15,17 @@
                         <h4><i class="fa fa-sign-in"></i> Login</h4>
                     </div>
                     <div class="modal-body">
-                        <form role="form"  action="{{ url('/auth/login') }}" method="post" id="login-form">
+                        <form role="form"  action="{{ url('/auth/login') }}" method="post" id="form-login">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <!-- email -->
                             <div class="form-group">
                                 <label for="login-email"><i class="fa fa-envelope"></i> Email</label>
-                                <input type="text" class="form-control" id="login-email" name="email" placeholder="Enter email" value="">
+                                <input type="text" class="form-control" id="login-email" name="email" placeholder="Enter email" required>
                             </div>
                             <!-- password -->
                             <div class="form-group">
                                 <label for="login-password"><i class="fa fa-key"></i> Password</label>
-                                <input type="password" class="form-control" name="password" id="login-password" placeholder="Enter password">
+                                <input type="password" class="form-control" name="password" id="login-password" placeholder="Enter password" required>
                             </div>
                             <!-- remember me -->
                             <div class="checkbox" id="remember-me">
