@@ -67,9 +67,6 @@
                                 <ul class="dropdown-menu" id="nav-dropdown" role="menu" aria-labelledby="nav-dropdown">
                                     <li role="presentation"><a role="menuitem" tabindex="-1"
                                                                href="{{ url('/user/profile') }}">
-                                            Profile</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                               href="{{ url('/user/account') }}">
                                             Your Account</a></li>
                                     <li role="presentation"><a role="menuitem" tabindex="-1"
                                                                href="{{ url('/order/buyer') }}">

@@ -14,20 +14,20 @@ class CreateUserProfilesTable extends Migration
     {
         Schema::create('user_profiles', function($table){
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->index;
-            $table->integer('sex')->nullable();
+            $table->integer('user_id')->unsigned()->index();
+            $table->string('sex');
             $table->date('birthday')->nullbale();
-            $table->string('title')->nullable();
-            $table->string('bio')->nullable();
+            $table->string('title',50)->nullable();
+            $table->string('bio',225)->nullable();
             $table->date('graduation_date')->nullable();
-            $table->string('major')->nullable();
-            $table->string('facebook')->nullable();
-            $table->string('twitter')->nullable();
-            $table->string('linkedin')->nullable();
-            $table->string('website')->nullable();
+            $table->string('major',225)->nullable();
+            $table->string('facebook',225)->nullable();
+            $table->string('twitter',225)->nullable();
+            $table->string('linkedin',225)->nullable();
+            $table->string('website',225)->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->reference('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

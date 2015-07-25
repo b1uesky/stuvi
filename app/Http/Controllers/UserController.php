@@ -24,30 +24,48 @@ class UserController extends Controller
     public function profileEdit()
     {
         $user_id = Auth::id();
-        $user_profile = Profile::find($user_id);
+        $user_profile = Profile::where('user_id',$user_id)->get()->toArray();
         $user_school = Auth::user()->university()->get();
         return view('user.profile-edit')
-            ->with('profile',$user_profile)
+            ->with('profile',$user_profile[0])
             ->with('school',$user_school[0]['name']);
     }
 
     public function profileStore()
     {
         $user_id = Auth::id();
-        $user_profile = Profile::find($user_id);
-        if ($user_profile){
-            if ($user_profile->isBelongTo(Auth::id()))
-            {
+        $user_profile = Profile::where('user_id',$user_id);
+        if ($user_profile->count() > 0){
                 $user_profile->update([
-                    'user_id'         => Auth::id(),
+                    'user_id'         => $user_id,
                     'sex'             => Input::get('sex'),
                     'birthday'        => Input::get('birth'),
                     'title'           => Input::get('title'),
                     'bio'             => Input::get('bio'),
-                    'graduation_date' => Input::get('grad')
-
+                    'graduation_date' => Input::get('grad'),
+                    'major'           => Input::get('major'),
+                    'facebook'        => Input::get('facebook'),
+                    'twitter'         => Input::get('twitter'),
+                    'linkedin'        => Input::get('linkedin'),
+                    'website'         => Input::get('site')
                 ]);
-            }
+
+                return redirect('user/profile-edit');
+        }else{
+            Profile::create([
+                'user_id'         => $user_id,
+                'sex'             => Input::get('sex'),
+                'birthday'        => Input::get('birth'),
+                'title'           => Input::get('title'),
+                'bio'             => Input::get('bio'),
+                'graduation_date' => Input::get('grad'),
+                'major'           => Input::get('major'),
+                'facebook'        => Input::get('facebook'),
+                'twitter'         => Input::get('twitter'),
+                'linkedin'        => Input::get('linkedin'),
+                'website'         => Input::get('site')
+            ]);
+            return redirect('user/profile-edit');
         }
     }
 

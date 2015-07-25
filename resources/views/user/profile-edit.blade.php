@@ -18,7 +18,8 @@
                 <hr>
                 <!-- divider line -->
                 <div class="container col-md-20 edit-pro">
-                    <form action="{{url('/user/store-profile')}}}" class="form-horizontal" role="form">
+                    <form action="{{url('/user/store-profile')}}" method="POST" class="form-horizontal">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <!-- personal info -->
                         <h4 class="edit-pro-labels">Personal Information</h4>
@@ -28,7 +29,7 @@
                             <label class="control-label col-sm-3">Sex</label>
 
                             <div class="col-sm-6 align">
-                                @if($profile == null or $profile->sex == 'Male')
+                                @if($profile or $profile['sex'] == 'male')
                                     <select name="sex">
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
@@ -48,7 +49,7 @@
 
                             <div class="col-sm-6">
                                 <input type="date" class="form-control" name="birth" id="birthday"
-                                       value={{ $profile->birthday or "MM/DD/YYYY"}}>
+                                       value={{ $profile['birthday'] or "MM/DD/YYYY"}}>
                             </div>
                         </div>
 
@@ -58,7 +59,7 @@
 
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="title" id="title"
-                                       value={{$profile->title or ""}}>
+                                       value={{$profile['title'] or ""}}>
                             </div>
                         </div>
 
@@ -68,8 +69,8 @@
                             <label class="control-label col-sm-3" for="bio">Bio/About me</label>
 
                             <div class="col-sm-6">
-                                <textarea id="bio" class="form-control" rows="4" cols="50">
-                                    {{$profile -> bio or "Tell us your darkest, deepest secret"}}
+                                <textarea id="bio" name="bio" class="form-control" rows="4" cols="50">
+                                    {{$profile['bio'] or "Tell us your darkest, deepest secret"}}
                                 </textarea>
                             </div>
                         </div>
@@ -89,7 +90,7 @@
 
                             <div class="col-sm-6 col-sm-offset-0">
                                 <input type="date" class="form-control" name="grad" id="grad"
-                                       value={{$profile->graduation_date or "MM/YYYY"}}>
+                                       value={{$profile['graduation_date'] or "MM/YYYY"}}>
                             </div>
                         </div>
                         <!-- Area of Study / Major -->
@@ -98,7 +99,7 @@
 
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="major" id="major"
-                                       value="{{$profile->major or ""}}">
+                                       value="{{$profile['major'] or ""}}">
                             </div>
                         </div>
 
@@ -110,7 +111,7 @@
 
                             <div class="col-sm-6">
                                 <input type="url" class="form-control" name="facebook" id="facebook"
-                                       value={{$profile->facebook or "https://www.facebook.com/"}}>
+                                       value={{$profile['facebook'] or "https://www.facebook.com/"}}>
                             </div>
                         </div>
                         <!-- Twitter -->
@@ -119,7 +120,7 @@
 
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="twitter" id="twitter"
-                                       value={{$profile->twitter or "@"}}>
+                                       value={{$profile['twitter'] or "@"}}>
                             </div>
                         </div>
                         <div class="form-group">
@@ -127,7 +128,7 @@
 
                             <div class="col-sm-6">
                                 <input type="url" class="form-control" name="linkedin" id="linkedin"
-                                       value={{$profile->linkedin or "https://www.linkedin.com/in/"}}>
+                                       value={{$profile['linkedin'] or "https://www.linkedin.com/in/"}}>
                             </div>
                         </div>
                         <!-- website -->
@@ -136,7 +137,7 @@
 
                             <div class="col-sm-6">
                                 <input type="url" class="form-control" name="site" id="site"
-                                       value={{$profile->website or "http://"}}>
+                                       value={{$profile['website'] or "http://"}}>
                             </div>
                         </div>
 
@@ -164,5 +165,5 @@
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{{asset('js/profile-edit.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/user/profile-edit.js')}}"></script>
 @endsection
