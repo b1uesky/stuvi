@@ -13,7 +13,7 @@
 
     <title>Stuvi - @yield('title')</title>
 
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css_app/app.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('/css/app-home.css') }}"/>
 

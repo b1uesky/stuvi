@@ -52,7 +52,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
 // auth not required
 Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
 {
-    Route::get  ('/', 'TextbookController@index');
+    Route::get  ('/', 'TextbookController@showBuyPage');
 
     // buy
     Route::get  ('/buy', 'TextbookController@showBuyPage');
@@ -91,7 +91,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 // order
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'], function()
 {
-    Route::get('/test', 'BuyerOrderController@test');
+//    Route::get('/test', 'BuyerOrderController@test');
 
     Route::get  ('/buyer', 'BuyerOrderController@index');
     Route::get  ('/confirmation', 'BuyerOrderController@confirmation');
@@ -213,6 +213,17 @@ Route::group(['namespace'=>'Express', 'middleware'=>['auth', 'role:ac'], 'prefix
     Route::get('/deliver/{id}/readyToShip', 'DeliverController@readyToShip');
     Route::get('/deliver/{id}/confirmDelivery', 'DeliverController@confirmDelivery');
 });
+
+/*
+|--------------------------------------------------------------------------
+| FAQ Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/faq', 'FAQController@general');
+Route::get('/faq/general', 'FAQController@general');
+Route::get('/faq/orders', 'FAQController@orders');
+Route::get('/faq/account', 'FAQController@account');
 
 /*
 |--------------------------------------------------------------------------

@@ -6,14 +6,31 @@
 @import "modules/all";
 
 body{
-  backgroud-color: $background-color;
+  background-color: $background-color;
 }
+
+#container-home-top{
+  padding: 0;
+  position: relative;
+  @media(max-width: 767px){
+    background: url('../img/cover-2-1.png') no-repeat;
+    background-size: cover;
+  }
+}
+
 
 /* NAVIGATION */
 
 #nav {
   background-color: rgba(0, 0, 0, 0);
   border: none;
+}
+
+#navbar-container{
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 100%;
 }
 
 .logo-container {
@@ -54,23 +71,36 @@ body{
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
+
+/* SLIDE.JS */
+
+#slides {
+  display:none;
+  position: relative;
+  z-index: 0;
+  @media(max-width: 767px){
+    visibility: hidden;
+  }
+}
+
+/* Center the slideshow */
+/* Media queries for a responsive layout */
+.slide-container {
+  margin: 0 0 0 0;
+  z-index: 0;
+  position: relative;
+}
+
 /* TOP HALF IMAGE */
 
-/*Top background*/
-.backgnd {
-
-  /*****************
-  * Temp cover image...(c)Nicholas Louie All Rights Reserved. I Nicholas Louie, hereby allow a limited license
-  * to display this image on Stuvi's website with proper name and link credit. This photo may not be distributed, used
-  * or altered (except sizing/cropping) in any other way other than on the homepage
-  * Photo by Nick Louie. Link: https://flic.kr/p/kSKWtK
-  ******************/
-
-  background: #{$background-color} url("../img/cover-2-1.png") no-repeat center;
-  background-size: cover;                         /* Fill entire container */
-  height: 80vh;     /* Height is equal to 80% of the viewport height */
-  @media (max-width: 767px){
-    padding-bottom: 0%;
+#head-tag-ghost-container{
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  @media(max-width: 991px){
+    margin-top: 30px;
   }
 }
 
@@ -82,6 +112,9 @@ body{
   font-family: $base-font-family;
   padding-top: 3%;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  @media(max-width: 767px){
+    font-size: 4em;
+  }
 }
 
 .tagline{
@@ -92,23 +125,18 @@ body{
   font-weight: 400;
 }
 
-.top-content{
-  padding-top: 5%;
-}
-
-/***** GHOST BUTTONS
-*      Login, sign in
-*
- *****/
+/*****
+  * GHOST BUTTONS
+  *      Login, sign in
+  *
+  ***/
 
 .ghost-btn-container {
+
   text-align: center;
   padding-top: 1%;
   @media (max-width: 767px){
-    margin-bottom: 35px;
-  }
-  @media (max-width: 399px) {
-    margin-bottom: 0;
+    visibility: hidden;
   }
 }
 
@@ -141,25 +169,34 @@ body{
   }
 }
 
+
+/* SEARCH BAR */
+
 #home-search-container{
-  margin-top: 4%;
-  margin-bottom: 4%;
-  //background-color: rgba(0,0,0,.7)
+  padding: 0;
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+  width: 100vw;
 }
 
 #home-search-form{
+  background-color: rgba(0,0,0,.6);
+  padding-top: 1%;
+  padding-bottom: 2%;
+  width: 100%;
 }
 
 .search-row {
   padding: 0;
-  margin-left: 15%;
+  margin-left: 16%;
   @media (max-width: 535px) {
     margin-left: 11%;
   }
 }
 
 .search-input {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 1);
   height: 3em;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -196,8 +233,6 @@ body{
 }
 
 
-
-
 /******** BOTTOM HALF ********/
 
 #bottom-half {
@@ -217,7 +252,6 @@ body{
   margin-top: 40px;
   margin-bottom: 40px;
 }
-
 
 #bottom-half {
   background-color: $background-color;

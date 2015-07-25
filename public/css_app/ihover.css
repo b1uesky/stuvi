@@ -4,6 +4,7 @@
   -moz-transition: all 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
 }
+
 .ih-item, .ih-item * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -2584,6 +2585,7 @@
 .ih-item.square.effect2 a:hover .info {
   visibility: visible;
 }
+
 .ih-item.square.effect2 a:hover .info h3, .ih-item.square.effect2 a:hover .info p {
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
@@ -2686,6 +2688,7 @@
 .ih-item.square.effect4.colored .info {
   background: rgba(12, 34, 52, 0.6);
 }
+
 .ih-item.square.effect4.colored .mask1, .ih-item.square.effect4.colored .mask2 {
   background: #1a4a72;
   background: rgba(26, 74, 114, 0.6);
@@ -2695,6 +2698,7 @@
   -moz-transition: all 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
 }
+
 .ih-item.square.effect4 .mask1, .ih-item.square.effect4 .mask2 {
   position: absolute;
   background: #333;
@@ -2805,6 +2809,7 @@
   -o-transform: rotate(0deg) translate(0, 0);
   transform: rotate(0deg) translate(0, 0);
 }
+
 .ih-item.square.effect4 a:hover .info h3, .ih-item.square.effect4 a:hover .info p {
   opacity: 1;
 }
@@ -2961,6 +2966,7 @@
   -o-transform: translateY(100%);
   transform: translateY(100%);
 }
+
 .ih-item.square.effect6.from_top_and_bottom a:hover .info h3, .ih-item.square.effect6.from_top_and_bottom a:hover .info p {
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
@@ -2982,6 +2988,7 @@
   -o-transform: translateX(100%);
   transform: translateX(100%);
 }
+
 .ih-item.square.effect6.from_left_and_right a:hover .info h3, .ih-item.square.effect6.from_left_and_right a:hover .info p {
   -webkit-transform: translateX(0);
   -moz-transform: translateX(0);
@@ -3003,6 +3010,7 @@
   -o-transform: translateY(-100%);
   transform: translateY(-100%);
 }
+
 .ih-item.square.effect6.top_to_bottom a:hover .info h3, .ih-item.square.effect6.top_to_bottom a:hover .info p {
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
@@ -3024,6 +3032,7 @@
   -o-transform: translateY(100%);
   transform: translateY(100%);
 }
+
 .ih-item.square.effect6.bottom_to_top a:hover .info h3, .ih-item.square.effect6.bottom_to_top a:hover .info p {
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
@@ -3104,6 +3113,7 @@
   visibility: visible;
   opacity: 1;
 }
+
 .ih-item.square.effect7 a:hover .info h3, .ih-item.square.effect7 a:hover .info p {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
@@ -3178,6 +3188,7 @@
   -o-transform: scale(0);
   transform: scale(0);
 }
+
 .ih-item.square.effect8.scale_up .info h3, .ih-item.square.effect8.scale_up .info p {
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
@@ -3199,6 +3210,7 @@
   -o-transform: scale(1);
   transform: scale(1);
 }
+
 .ih-item.square.effect8.scale_up a:hover .info h3, .ih-item.square.effect8.scale_up a:hover .info p {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
@@ -3220,6 +3232,7 @@
   -o-transform: scale(5);
   transform: scale(5);
 }
+
 .ih-item.square.effect8.scale_down .info h3, .ih-item.square.effect8.scale_down .info p {
   -webkit-transform: scale(5);
   -moz-transform: scale(5);
@@ -3241,6 +3254,7 @@
   -o-transform: scale(1);
   transform: scale(1);
 }
+
 .ih-item.square.effect8.scale_down a:hover .info h3, .ih-item.square.effect8.scale_down a:hover .info p {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);

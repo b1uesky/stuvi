@@ -41,6 +41,12 @@ return [
 	],
 
     'isbndb' => [
-        'token' => 'YPKFSSUW'// api key for isbndb.com
-    ]
+		'token' => 'YPKFSSUW'// api key for isbndb.com
+	],
+
+	'google' => [
+		'books'	=> [
+			'api_key'	=> 'AIzaSyD6Uers3Lug2GFdRpb9FCfftgA0e26fKnc'
+		]
+	]
 ];
