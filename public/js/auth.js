@@ -5,9 +5,9 @@
 $(document).ready(function () {
 
     // format phone number
-    $("#register-phone").mask("(999)999-9999");
+    //$("#register-phone").mask("(999)999-9999");
 
-    $('#form-login').submit(function(e) {
+    $('#form-login').submit(function (e) {
         e.preventDefault();
 
         $.ajax({
@@ -19,7 +19,7 @@ $(document).ready(function () {
                 password: $('#login-password').val()
             },
             dataType: 'json',
-            success: function(response, status) {
+            success: function (response, status) {
                 console.log(response);
 
                 // login failed
@@ -39,7 +39,7 @@ $(document).ready(function () {
 
 
             },
-            error: function(xhr, status, errorThrown) {
+            error: function (xhr, status, errorThrown) {
                 console.log(status);
                 console.log(errorThrown);
             }
@@ -69,7 +69,8 @@ $(document).ready(function () {
                         regexp: {
                             regexp: /^[a-zA-Z]+$/,
                             message: 'The first name can only consist of alphabetical'
-                        }
+                        },
+                        blank: {}
                     }
                 },
                 last_name: {
@@ -85,7 +86,8 @@ $(document).ready(function () {
                         regexp: {
                             regexp: /^[a-zA-Z]+$/,
                             message: 'The last name can only consist of alphabetical'
-                        }
+                        },
+                        blank: {}
                     }
                 },
                 email: {
@@ -101,8 +103,8 @@ $(document).ready(function () {
                             },
                             type: 'POST',
                             message: 'The email address already exsits'
-                        }
-                        //blank: {} BUG: custom validator does not show up in HTML
+                        },
+                        blank: {}
                     }
                 },
                 password: {
@@ -113,27 +115,31 @@ $(document).ready(function () {
                         stringLength: {
                             min: 6,
                             message: 'The password must be at least 6 characters'
-                        }
+                        },
+                        blank: {}
                     }
                 },
-                //phone_number: {
-                //    validators: {
-                //        notEmpty: {
-                //            message: 'The phone number is required'
-                //        },
-                //        phone: {
-                //            country: 'US',
-                //            message: 'The phone number is not valid'
-                //        }
-                //    }
-                //},
-                //university_id: {
-                //    validators: {
-                //        notEmpty: {
-                //            message: 'The university is required'
-                //        }
-                //    }
-                //}
+                phone_number: {
+                    trigger: 'blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'The phone number is required'
+                        },
+                        phone: {
+                            country: 'US',
+                            message: 'The phone number is not valid'
+                        },
+                        blank: {}
+                    }
+                },
+                university_id: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The university is required'
+                        },
+                        blank: {}
+                    }
+                }
             }
         })
         // form submit
@@ -153,19 +159,8 @@ $(document).ready(function () {
                 // If there is error returned from server
                 if (response.success === false) {
                     for (var field in response.fields) {
-                        //console.log(typeof(response.fields[field]));
-                        //console.log(response.fields[field]);
-                        var validator = '';
+                        var validator = 'blank';
                         var message = response.fields[field][0];
-
-                        switch (field) {
-                            case 'email':
-                                validator = 'emailAddress';
-                                break;
-                            case 'phone_number':
-                                validator = 'phone';
-                                break;
-                        }
 
                         fv
                             // Show the custom message

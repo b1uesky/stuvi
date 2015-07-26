@@ -54,7 +54,7 @@
                         <h4><i class="fa fa-user-plus"></i> Sign Up</h4>
                     </div>
                     <div class="modal-body">
-                        <form role="form" method="POST" action="{{ url('/auth/register') }}" id="form-register">
+                        <form role="form" method="POST" id="form-register">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <!-- first name -->
                             <div class="form-group">
