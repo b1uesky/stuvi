@@ -132,7 +132,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], 
 | User Routes
 |--------------------------------------------------------------------------
 */
-Route::group(['middleware'=>'auth', 'prefix'=>'user'], function()
+Route::group(['namespace'=>'User', 'middleware'=>'auth', 'prefix'=>'user'], function()
 {
     Route::get ('/profile', 'UserController@profile');
     Route::get ('/profile-edit', 'UserController@profileEdit');
@@ -142,8 +142,13 @@ Route::group(['middleware'=>'auth', 'prefix'=>'user'], function()
     Route::get ('/activate', 'UserController@waitForActivation');
     Route::get ('/activate/resend', 'UserController@resendActivationEmail');
     Route::get ('/activate/{code}', 'UserController@activateAccount');
-    Route::get ('/email', 'UserController@emailIndex');
-    Route::post('/email/add', 'UserController@addEmail');
+
+    Route::group(['prefix'=>'email'], function()
+    {
+        Route::get ('/', 'EmailController@index');
+        Route::post('/add', 'EmailController@store');
+    });
+
 });
 
 Route::controllers([

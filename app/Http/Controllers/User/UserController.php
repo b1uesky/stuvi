@@ -1,14 +1,11 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\User;
 
-
-use App\Email;
+use App\Http\Controllers\Controller;
 use App\Profile;
 use Auth;
-use Illuminate\Support\Facades\Validator;
 use Input;
-use Session;
 use Mail;
-use Illuminate\Http\Request;
+use Session;
 
 class UserController extends Controller
 {
@@ -27,6 +24,7 @@ class UserController extends Controller
     {
         $user_id = Auth::id();
         $user_profile = Profile::find($user_id);
+
         return view('user.profile-edit');
     }
 
@@ -124,37 +122,5 @@ class UserController extends Controller
 
         return redirect('user/activate')
             ->with('message', 'Activation email is sent. Please check your email.');
-    }
-
-    /**
-     * Show email setting page.
-     */
-    public function emailIndex()
-    {
-        return view('user.email')
-            ->with('emails', Auth::user()->emails);
-    }
-
-    /**
-     * Add an user email.
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function addEmail()
-    {
-        $validator = Validator::make(Input::all(), Email::registerRules());
-        if ($validator->fails())
-        {
-            return back()
-                ->with('email_validation_error', $validator->errors());
-        }
-
-
-        $email = Email::create([
-            'user_id'       => Auth::id(),
-            'email_address' => Input::get('email'),
-        ]);
-
-        return back();
     }
 }
