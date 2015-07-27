@@ -7,7 +7,6 @@ use Auth;
 use Input;
 use Session;
 use Mail;
-use Session;
 
 class UserController extends Controller
 {
@@ -25,11 +24,11 @@ class UserController extends Controller
     public function profileEdit()
     {
         $user_id = Auth::id();
-        $user_profile = Profile::where('user_id',$user_id)->get()->toArray();
-        $user_school = Auth::user()->university()->get();
+        $user_profile = Profile::where('user_id',$user_id)->first();
+        $user_school = Auth::user()->university;
         return view('user.profile-edit')
-            ->with('profile',$user_profile[0])
-            ->with('school',$user_school[0]['name']);
+            ->with('profile',$user_profile)
+            ->with('school',$user_school);
     }
 
     public function profileStore()

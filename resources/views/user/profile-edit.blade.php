@@ -5,6 +5,7 @@
 
 @section('css')
     <link href="{{ asset('/css/user_profileEdit.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('/js/datetimepicker/jquery.datetimepicker.css')}}"/>
     @endsection
 
     @section('content')
@@ -27,19 +28,17 @@
                         <!-- Sex -->
                         <div class="form-group" id="sex">
                             <label class="control-label col-sm-3">Sex</label>
-
                             <div class="col-sm-6 align">
-                                @if($profile or $profile['sex'] == 'male')
-                                    <select name="sex">
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                    </select>
-                                @else
-                                    <select name="sex">
-                                        <option value="female">Female</option>
-                                        <option value="male">Male</option>
-                                    </select>
-                                @endif
+                                <input type="radio" name="sex" value="male"
+                                        @if ($profile->sex == 'male')
+                                          checked
+                                        @endif
+                                        >Male
+                                <input type="radio" name="sex" value="female"
+                                       @if ($profile->sex == 'female')
+                                       checked
+                                        @endif
+                                        >Female
                             </div>
                         </div>
 
@@ -48,8 +47,8 @@
                             <label class="control-label col-sm-3" for="birthday">Birthday</label>
 
                             <div class="col-sm-6">
-                                <input type="date" class="form-control" name="birth" id="birthday"
-                                       value={{ $profile['birthday'] or "MM/DD/YYYY"}}>
+                                <input class="form-control" id="datetimepicker1" class="date" type="text"
+                                       name="birth" placeholder={{$profile->birthday or ""}}>
                             </div>
                         </div>
 
@@ -59,7 +58,7 @@
 
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="title" id="title"
-                                       value={{$profile['title'] or ""}}>
+                                       value={{$profile->title or ""}}>
                             </div>
                         </div>
 
@@ -70,7 +69,7 @@
 
                             <div class="col-sm-6">
                                 <textarea id="bio" name="bio" class="form-control" rows="4" cols="50">
-                                    {{$profile['bio'] or "Tell us your darkest, deepest secret"}}
+                                    {{$profile->bio or "Tell us your darkest, deepest secret"}}
                                 </textarea>
                             </div>
                         </div>
@@ -81,7 +80,7 @@
                             <label class="control-label col-sm-3" for="school">School/University</label>
 
                             <div class="col-sm-6">
-                                <textarea class="form-control" rows="1" cols="50" readonly>{{$school}}</textarea>
+                                <textarea class="form-control" rows="1" cols="50" readonly>{{$school->name}}</textarea>
                             </div>
                         </div>
                         <!-- Grad -->
@@ -89,8 +88,8 @@
                             <label class="control-label col-sm-3" for="grad">Expected Graduation</label>
 
                             <div class="col-sm-6 col-sm-offset-0">
-                                <input type="date" class="form-control" name="grad" id="grad"
-                                       value={{$profile['graduation_date'] or "MM/YYYY"}}>
+                                <input class="form-control" id="datetimepicker" class="date" type="text"
+                                       name="grad" placeholder={{$profile->graduation_date or ""}}>
                             </div>
                         </div>
                         <!-- Area of Study / Major -->
@@ -99,7 +98,7 @@
 
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="major" id="major"
-                                       value="{{$profile['major'] or ""}}">
+                                       value="{{$profile->major or ""}}">
                             </div>
                         </div>
 
@@ -111,7 +110,7 @@
 
                             <div class="col-sm-6">
                                 <input type="url" class="form-control" name="facebook" id="facebook"
-                                       value={{$profile['facebook'] or "https://www.facebook.com/"}}>
+                                       value={{$profile->facebook or "https://www.facebook.com/"}}>
                             </div>
                         </div>
                         <!-- Twitter -->
@@ -120,7 +119,7 @@
 
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="twitter" id="twitter"
-                                       value={{$profile['twitter'] or "@"}}>
+                                       value={{$profile->twitter or "@"}}>
                             </div>
                         </div>
                         <div class="form-group">
@@ -128,7 +127,7 @@
 
                             <div class="col-sm-6">
                                 <input type="url" class="form-control" name="linkedin" id="linkedin"
-                                       value={{$profile['linkedin'] or "https://www.linkedin.com/in/"}}>
+                                       value={{$profile->linkedin or "https://www.linkedin.com/in/"}}>
                             </div>
                         </div>
                         <!-- website -->
@@ -137,7 +136,7 @@
 
                             <div class="col-sm-6">
                                 <input type="url" class="form-control" name="site" id="site"
-                                       value={{$profile['website'] or "http://"}}>
+                                       value={{$profile->website or "http://"}}>
                             </div>
                         </div>
 
@@ -166,4 +165,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{asset('js/user/profile-edit.js')}}"></script>
+    <script src="{{asset('/js/datetimepicker/jquery.js')}}"></script>
+    <script src="{{asset('/js/datetimepicker/jquery.datetimepicker.js')}}"></script>
 @endsection
