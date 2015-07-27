@@ -45,6 +45,10 @@ a:focus {
     width: 100%;
     height: auto;
   }
+  @media (max-width: 767px) {
+    margin-left: 40px;
+    display: none;
+  }
 }
 
 
@@ -54,15 +58,18 @@ a:focus {
 
 /******* NAVIGATION HAMBURGER MENU *******/
 
-.fa-bars {
-  color: $primary-color;
-}
-
 #nav-toggle-collapse{
-  &:hover, &:focus {
-  background: $light-orange-color;
-  }
+  float: left;
+  border: none;
   z-index: 50;
+  margin-left: 10px;
+  &:hover, &:focus {
+    background: none;
+  }
+  .fa-bars {
+    color: $primary-color;
+    font-size: 1.5em;
+  }
 }
 
 /******* NAVIGATION DROPDOWN *******/
