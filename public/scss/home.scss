@@ -188,15 +188,17 @@ body{
 }
 
 .search-row {
-  padding: 0;
-  margin-left: 16%;
-  @media (max-width: 535px) {
-    margin-left: 11%;
-  }
+  //padding: 0;
+  //margin-left: 16%;
+  //@media (max-width: 535px) {
+  //  margin-left: 11%;
+  //}
+  vertical-align: middle;
 }
 
 .search-input {
-  background-color: rgba(255, 255, 255, 1);
+  display: inline-block;
+  background-color: $background-color;
   height: 3em;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
