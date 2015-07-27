@@ -35,14 +35,14 @@
     <div class="container-fluid search" id="container-fluid-search-sell">
         <div class="row">
             <h1 id="title">Sell Your Used Textbooks</h1>
-            <form action="/textbook/sell/search" method="post">
+            <form action="/textbook/sell/search" method="post" id="form-isbn">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <div class="col-xs-8 col-xs-offset-2 search-row">
                         <input type="text" name="isbn" class="form-control search-input" id="sell-search-input"
                                placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
                     </div>
-                    <button class="btn btn-default search-btn" type="submit" name="search" value="Search" >
+                    <button class="btn primary-btn search-btn" type="submit" name="search" >
                         <i class="fa fa-search search-icon"></i>
                     </button>
                 </div>
@@ -124,6 +124,7 @@
     <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
     <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/auth.js')}}"></script>
+    <script src="{{asset('js/validator/isbn.js')}}"></script>
 
     <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
 @endsection
