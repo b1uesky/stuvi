@@ -10,8 +10,8 @@ class Email extends Model
     protected $fillable = [
         'user_id',
         'email_address',
-        'activation_code',
-        'activated',
+        'verification_code',
+        'verified',
     ];
 
     /**
@@ -81,15 +81,15 @@ class Email extends Model
     }
 
     /**
-     * Assign an activation code for this email if it is not assigned.
+     * Assign an verification code for this email if it is not assigned.
      *
      * @return bool
      */
-    public function assignActivationCode()
+    public function assignVerificationCode()
     {
-        if (empty($this->activation_code))
+        if (empty($this->verification_code))
         {
-            $this->activation_code = \App\Helpers\generateRandomCode(Config::get('user.activation_code_length'));
+            $this->verification_code = \App\Helpers\generateRandomCode(Config::get('user.verification_code_length'));
             $this->save();
             return true;
         }
@@ -98,18 +98,18 @@ class Email extends Model
     }
 
     /**
-     * Activate an account with a code.
+     * Verify an account with a code.
      *
      * @param $code
      *
      * @return bool
      */
-    public function activate($code)
+    public function verify($code)
     {
-        if ($code === $this->activation_code)
+        if ($code === $this->verification_code)
         {
             $this->update([
-                'activated'  => true,
+                'verified'  => true,
             ]);
 
             return true;

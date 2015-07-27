@@ -51,7 +51,9 @@ class EmailController extends Controller
             'email_address' => Input::get('email'),
         ]);
 
-        // TODO: need to verfy the new email.
+        // verfy the new email.
+        $email->assignVerificationCode();
+//        $email->send
 
         return redirect('user/email')
             ->with('email_add_success', $email->email_address.' has been added to your account.');
@@ -142,4 +144,19 @@ class EmailController extends Controller
         return redirect('user/email')
             ->with('email_set_primary_success', $email->email_address.' is now your primary email.');
     }
+
+//    public function sendActivationEmail()
+//    {
+//        // send an email to the user with activation message
+//        $user_arr               = $this->toArray();
+//        $user_arr['university'] = $this->university->toArray();
+//        $user_arr['email']      = $this->collegeEmail()->email_address;
+//        $user_arr['return_to']  = urlencode(Session::get('url.intended', '/home'));    // return_to attribute.
+//        $user_arr['activation_code']    = $this->collegeEmail()->activation_code;
+//
+//        Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($user_arr)
+//        {
+//            $message->to($user_arr['email'])->subject('Welcome to Stuvi!');
+//        });
+//    }
 }
