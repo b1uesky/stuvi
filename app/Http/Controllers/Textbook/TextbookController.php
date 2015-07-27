@@ -286,23 +286,7 @@ class TextbookController extends Controller
         }
         else
         {
-            // search by title
-            // select all books that can be delivered to buyer's university
-            // return a collection
-            $books = Book::where('title', 'LIKE', '%'.$query.'%')
-                        ->join('products as p', 'p.book_id', '=', 'books.id')
-                        ->join('users as seller', 'seller.id', '=', 'p.seller_id')
-                        ->whereIn('seller.university_id', function($q) {
-                            $q  ->select('uu.from_uid')
-                                ->from(DB::raw('users as buyer, university_university as uu'))
-                                ->where('buyer.id', '=', Auth::user()->id);
-                        })
-                        ->whereIn('seller.university_id', function($q) {
-                            $q  ->select('id')
-                                ->from('universities')
-                                ->where('is_public', '=', true);
-                        })
-                        ->select('books.*')->distinct()->get();
+            $books = Book::queryWithBuyerID($query, Auth::user()->id);
 
             // Get current page form url e.g. &page=1
             $currentPage = LengthAwarePaginator::resolveCurrentPage();
@@ -333,8 +317,19 @@ class TextbookController extends Controller
      */
     public function buySearchAutoComplete()
     {
-        $term = Input::get('term');
-        $books = Book::where('title', 'LIKE', '%' . $term . '%')->take(10)->get();
+        $query = Input::get('term');
+
+        if (Auth::check())
+        {
+            // if the user is logged in, search books by the user's university id
+            $books = Book::queryWithBuyerID($query, Auth::user()->id);
+        }
+        else
+        {
+            // guest user, search books by the university id selected by the user
+            $university_id = Input::get('university_id');
+            $books = Book::queryWithUniversityID($query, $university_id);
+        }
 
         $book_data = array();
 

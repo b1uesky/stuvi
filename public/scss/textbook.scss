@@ -1,5 +1,6 @@
 /* STYLING FOR TEXTBOOK PAGE ***/
 @import "modules/all";
+@import "partials/autocomplete";
 
 /******* TEXTBOOK NAVIGATION BAR ******/
 
@@ -115,30 +116,6 @@
 .search-icon {
   font-size: 1.2em;
   color: white;
-}
-
-/* Search AutoComplete Suggestions */
-
-.autocomplete-thumbnail {
-  display: inline-block;
-  margin: 5px;
-  vertical-align: middle;
-  overflow: hidden;
-  img {
-    display: block;
-    max-width: 80px;
-    width: auto;
-    height: auto;
-  }
-}
-
-.autocomplete-data {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.ui-helper-hidden-accessible {
-  display: none;
 }
 
 /******  TEXTBOOK BOTTOM HALF ****/

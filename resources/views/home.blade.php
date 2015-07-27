@@ -8,6 +8,7 @@
     <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}"
           rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     @endsection
 
     @section('content')
@@ -110,31 +111,31 @@
         </div>
 
         <!-- TODO: make this work properly..like a search for the entire stuvi site? idk -->
-        <div class="" id="home-search-container">
-            <div class="" id="home-search-form">
+        <div id="home-search-container">
+            <div id="home-search-form">
                 <form action="/textbook/buy/search" method="get">
                     <div class="search-row">
-                                <input type="text" name="query" id="autocompleteBuy" class="form-control search-input"
-                                       placeholder="Enter the textbook ISBN, Title, or Author"/>
+                        <div class="search-input-wrapper">
+                            <input type="text" name="query" id="autocompleteBuy" class="form-control search-input search-input-query"
+                                   placeholder="Enter the textbook ISBN, Title, or Author"/>
+                        </div>
 
-                            @if(!Auth::check())
+                        {{-- Show school selection if it's a guest --}}
+                        @if(!Auth::check())
+                            <div class="search-input-wrapper">
                                 <label class="sr-only" for="register-university">School</label>
                                 <select name="university_id" class="form-control search-input" id="select-university">
                                     @foreach(\App\University::where('is_public', true)->get() as $university)
                                         <option value="{{ $university->id }}">{{ $university->name }}</option>
                                     @endforeach
                                 </select>
-                            @endif
+                            </div>
+                        @endif
 
-
-                            <button class="btn btn-default search-btn" type="submit" value="Search">
-                                <i class="fa fa-search search-icon"></i>
-                            </button>
-
-
-
+                        <button class="btn btn-default search-btn" type="submit" value="Search">
+                            <i class="fa fa-search search-icon"></i>
+                        </button>
                     </div>
-
                 </form>
             </div>
 
@@ -213,7 +214,6 @@
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    {{--<script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>--}}
 
     {{-- FormValidation --}}
     <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
@@ -222,6 +222,7 @@
 
     <script src="{{asset('js/slides/jquery.slides.min.js')}}"></script>
     <script src="{{asset('js/home.js')}}"></script>
-    {{--<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>--}}
-    {{--<script src="{{asset('js/autocompleteBuy.js')}}"></script>--}}
+
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="{{asset('js/autocompleteBuy.js')}}"></script>
 @endsection
