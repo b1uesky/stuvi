@@ -53,8 +53,8 @@
         @if(!Auth::check())
             <div class="row col-sm-6 col-sm-offset-1">
                 <p>Please login or sign up to continue using our service.</p>
-                <a href="{{ url('textbook/sell/product/login') }}" class="btn btn-default">Login</a>
-                <a href="{{ url('textbook/sell/product/register') }}" class="btn btn-default">Sign up</a>
+                <a data-toggle="modal" href="#login-modal">Login</a>
+                <a data-toggle="modal" href="#signup-modal">Sign up</a>
             </div>
         @else
             {{-- Show book conditions --}}
@@ -291,6 +291,14 @@
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/validator/file-upload.js') }}"></script>
-    <script src="{{ asset('js/product/create.js') }}"></script>
+
+    @if(Auth::check())
+        <script src="{{ asset('js/validator/file-upload.js') }}"></script>
+        <script src="{{ asset('js/product/create.js') }}"></script>
+    @else
+        {{-- FormValidation --}}
+        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
+        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
+        <script src="{{asset('js/auth.js')}}"></script>
+    @endif
 @endsection

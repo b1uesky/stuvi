@@ -6,6 +6,7 @@
 
 @section('css')
     <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -42,11 +43,11 @@
                                 <li><a id="register-btn" class="nav-login" data-toggle="modal" href="#signup-modal">
                                         <i class="fa fa-user"></i> Sign Up</a></li>
 
-                                <!-- login-sign-up modal -->
-                                @include('auth.login-signup-modal')
+
+
                                 @else
                                         <!-- profile dropdown -->
-                                <li class="dropdown" id="dp">
+                                <li class="dropdown" id="dp" style="z-index: 500;">
                                     <a href="#" id="nav-drop" class="dropdown-toggle nav-dropdown" data-toggle="dropdown"
                                        role="button"
                                        aria-expanded="true"><span nav-caret
@@ -100,7 +101,6 @@
                 <img src="{{asset('img/nick/nlouie1.jpg')}}" alt="">
                 <img src="{{asset('img/nick/nlouie2.jpg')}}" alt="">
             </div>
-
         </div>
 
         <!-- TODO: make this work properly..like a search for the entire stuvi site? idk -->
@@ -184,25 +184,21 @@
 
     </div> <!-- end bottom half -->
 
-
-{{--
-    <div class="testing">
-        <div id="slides" style="position: relative;">
-            <img src="http://placehold.it/940x528">
-            <img src="http://placehold.it/940x528">
-            <img src="http://placehold.it/940x528">
-            <img src="http://placehold.it/940x528">
-            <img src="http://placehold.it/940x528">
-        </div>
-    </div>
-
-    --}}{{-- Current pic at 4865 × 1868 --}}
+    <!-- login-sign-up modal -->
+    @include('auth.login-signup-modal')
 
 @endsection
 
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    {{--<script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>--}}
+
+    {{-- FormValidation --}}
+    <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
+    <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/auth.js')}}"></script>
+
     <script src="{{asset('js/slides/jquery.slides.min.js')}}"></script>
     <script src="{{asset('js/home.js')}}"></script>
     {{--<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>--}}
