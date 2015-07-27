@@ -19,7 +19,10 @@ class CartController extends Controller
 
     public function __construct()
     {
-        $this->cart = Auth::user()->cart;
+        if (Auth::user())
+        {
+            $this->cart = Auth::user()->cart;
+        }
     }
 
     /**

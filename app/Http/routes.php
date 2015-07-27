@@ -91,8 +91,6 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 // order
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'], function()
 {
-//    Route::get('/test', 'BuyerOrderController@test');
-
     Route::get  ('/buyer',              'BuyerOrderController@index');
     Route::get  ('/confirmation',       'BuyerOrderController@confirmation');
     Route::get  ('/create',             'BuyerOrderController@create');
