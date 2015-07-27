@@ -66,12 +66,12 @@ class UserController extends Controller
     public function activateAccount($code)
     {
         // check if the current user is activated
-        if (Auth::user()->activated)
+        if (Auth::user()->isActivated())
         {
             $url = Input::has('return_to') ? urldecode(Input::get('return_to')) : '/home';
             $message = 'Your account has already been activated.';
         }
-        elseif (Auth::user()->activate($code))
+        elseif (Auth::user()->collegeEmail()->activate($code))
         {
             $url = Input::has('return_to') ? urldecode(Input::get('return_to')) : '/home';
             $message = 'Your account is successfully activated.';

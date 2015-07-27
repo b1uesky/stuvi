@@ -3,10 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
 
 class Email extends Model
 {
-    protected $fillable = ['user_id', 'email_address'];
+    protected $fillable = [
+        'user_id',
+        'email_address',
+        'activation_code',
+        'activated',
+    ];
 
     /**
      * Get the user that this user email belongs to.
@@ -72,5 +78,43 @@ class Email extends Model
         return [
             'email' => 'required|email|max:255',
         ];
+    }
+
+    /**
+     * Assign an activation code for this email if it is not assigned.
+     *
+     * @return bool
+     */
+    public function assignActivationCode()
+    {
+        if (empty($this->activation_code))
+        {
+            $this->activation_code = \App\Helpers\generateRandomCode(Config::get('user.activation_code_length'));
+            $this->save();
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Activate an account with a code.
+     *
+     * @param $code
+     *
+     * @return bool
+     */
+    public function activate($code)
+    {
+        if ($code === $this->activation_code)
+        {
+            $this->update([
+                'activated'  => true,
+            ]);
+
+            return true;
+        }
+
+        return false;
     }
 }

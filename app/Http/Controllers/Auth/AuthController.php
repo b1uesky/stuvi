@@ -59,10 +59,11 @@ class AuthController extends Controller {
             'user_id'       => $user->id,
             'email_address' => $data['email'],
         ]);
+        $email->assignActivationCode();
+
         $user->update([
             'primary_email_id'  => $email->id,
         ]);
-        $user->assignActivationCode();
 
         $user->sendActivationEmail();
 

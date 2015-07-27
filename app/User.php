@@ -1,12 +1,10 @@
 <?php namespace App;
 
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
@@ -27,8 +25,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['password', 'phone_number', 'first_name', 'last_name', 'activated', 'university_id',
-                            'activation_code', 'role', 'primary_email_id'];
+    protected $fillable = [
+        'password',
+        'phone_number',
+        'first_name',
+        'last_name',
+        'university_id',
+        'role',
+        'primary_email_id'
+    ];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -175,7 +180,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function isActivated()
     {
-        return $this->activated;
+        return $this->collegeEmail()->activated;
     }
 
     /**
@@ -185,7 +190,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function isActivated2()
     {
-        if ($this->activated)
+        if ($this->isActivated())
         {
             return 'Yes';
         }
@@ -211,44 +216,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function stripeAuthorizationCredential()
     {
         return $this->hasOne('App\StripeAuthorizationCredential', 'user_id', 'id');
-    }
-
-    /**
-     * Assign an activation code for this user if it is not assigned.
-     *
-     * @return bool
-     */
-    public function assignActivationCode()
-    {
-        if (empty($this->activation_code))
-        {
-            $this->activation_code = \App\Helpers\generateRandomCode(Config::get('user.activation_code_length'));
-            $this->save();
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Activate an account with a code.
-     *
-     * @param $code
-     *
-     * @return bool
-     */
-    public function activate($code)
-    {
-        if ($code === $this->activation_code)
-        {
-            $this->update([
-                'activated'  => true,
-            ]);
-
-            return true;
-        }
-
-        return false;
     }
 
     /**
@@ -341,6 +308,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         $user_arr['university'] = $this->university->toArray();
         $user_arr['email']      = $this->collegeEmail()->email_address;
         $user_arr['return_to']  = urlencode(Session::get('url.intended', '/home'));    // return_to attribute.
+        $user_arr['activation_code']    = $this->collegeEmail()->activation_code;
 
         Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($user_arr)
         {
