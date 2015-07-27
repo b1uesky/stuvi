@@ -5,7 +5,7 @@
 @import "modules/all";
 
 html body {
-  background: $stuvi-purple;
+  background: $background-color;
 }
 
 .content{}
@@ -84,10 +84,6 @@ button:focus {
   margin-top: 10px;
   text-align: center;
   padding-left: 2px;
-}
-
-label {
-  color: #FFFFFF;
 }
 
 #remember-me{

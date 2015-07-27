@@ -69,7 +69,7 @@
                             <!-- email -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-email">Email</label>
-                                <input type="email" name="email" class="form-control" id="register-email" placeholder="College email address">
+                                <input type="email" name="email" class="form-control" id="register-email" placeholder=".edu email address">
                             </div>
                             <!-- password -->
                             <div class="form-group">
