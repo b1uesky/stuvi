@@ -6,96 +6,89 @@
 
 @section('css')
     <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
-
-<!-- top jumbotron -->
-
-    {{--
-    * Temp cover image...(c)Nicholas Louie All Rights Reserved. I Nicholas Louie, hereby allow a limited license
-    * to display this image on Stuvi's website with proper name and link credit. This photo may not be distributed, used
-    * or altered (except sizing/cropping) in any other way other than on the homepage
-    * Photo by Nick Louie.
-    --}}
-
-    <div class = "container-fluid container-top backgnd">           <!-- Top half -->
-        {{--navigation--}}
-        <nav class="navbar navbar-default" id="nav" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <!-- Toggle Nav into hamburger menu for small screens -->
-                    <button id="nav-toggle-collapse" type="button" class="navbar-toggle collapsed"
-                            data-toggle="collapse"
-                            data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <i class="fa fa-bars fa-lg"></i>
-                    </button>
-                    <div class="logo-container">
-                        <a href="{{url('/home')}}"> <img src="{{asset('/img/logo-new-md.png')}}" class="img-responsive">
-                        </a>
+    <!-- new top half -->
+    <div class="container-fluid" id="container-home-top">
+        <div class="" id="navbar-container" >
+            <nav class="navbar navbar-default" id="nav" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <!-- Toggle Nav into hamburger menu for small screens -->
+                        <button id="nav-toggle-collapse" type="button" class="navbar-toggle collapsed"
+                                data-toggle="collapse"
+                                data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle Navigation</span>
+                            <i class="fa fa-bars fa-lg"></i>
+                        </button>
+                        <div class="logo-container">
+                            <a href="{{url('/home')}}"> <img src="{{asset('/img/logo-new-md.png')}}" class="img-responsive">
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <!-- End Navbar header -->
+                    <!-- End Navbar header -->
 
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <!-- Nav Bar Links-->
-                    <ul class="nav navbar-nav" id="nav-left">
-                        <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbook</a></li>
-                        {{--<li><a href="{{ url('/coming') }}">Housing</a></li>--}}
-                        {{--<li><a href="{{ url('/coming') }}">Club</a></li>--}}
-                        {{--<li><a href="{{ url('/coming') }}">Group</a></li>--}}
-                    </ul>
-                    <!-- Navbar right -->
-                    <ul id="nav-right" class="nav navbar-nav navbar-right">
-                        @if (Auth::guest())
-                            <li><a id="login-btn" class="nav-login" data-toggle="modal" href="#login-modal">
-                                    <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
-                            <li><a id="register-btn" class="nav-login" data-toggle="modal" href="#signup-modal">
-                                    <i class="fa fa-user"></i> Sign Up</a></li>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <!-- Nav Bar Links-->
+                        <ul class="nav navbar-nav" id="nav-left">
+                            <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbook</a></li>
+                        </ul>
+                        <!-- Navbar right -->
+                        <ul id="nav-right" class="nav navbar-nav navbar-right">
+                            @if (Auth::guest())
+                                <li><a id="login-btn" class="nav-login" data-toggle="modal" href="#login-modal">
+                                        <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
+                                <li><a id="register-btn" class="nav-login" data-toggle="modal" href="#signup-modal">
+                                        <i class="fa fa-user"></i> Sign Up</a></li>
 
-                            <!-- login-sign-up modal -->
-                            @include('auth.login-signup-modal')
-                            @else
-                                    <!-- profile dropdown -->
-                            <li class="dropdown" id="dp">
-                                <a href="#" id="nav-drop" class="dropdown-toggle nav-dropdown" data-toggle="dropdown"
-                                   role="button"
-                                   aria-expanded="true"><span nav-caret
-                                                              id="account-name">{{ Auth::user()->first_name }} </span><span
-                                            class="caret nav-caret"></span></a>
-                                <ul class="dropdown-menu" id="nav-dropdown" role="menu" aria-labelledby="nav-dropdown">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                               href="{{ url('/user/profile') }}">
-                                            Your Account</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                               href="{{ url('/order/buyer') }}">
-                                            Your Orders</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                               href="{{ url('/order/seller') }}">
-                                            Sold Books</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                               href="{{ url('/auth/logout') }}">
-                                            Logout</a></li>
-                                </ul>
-                            </li>
-                            <!-- cart -->
-                            <li class="cart">
-                                <a href="{{ url('/cart') }}" id="cart-link">Cart <i class="fa fa-shopping-cart"
-                                                                                    style="line-height: 19px;"></i></a>
-                            </li>
-                        @endif
-                    </ul>
+                                <!-- login-sign-up modal -->
+                                @include('auth.login-signup-modal')
+                                @else
+                                        <!-- profile dropdown -->
+                                <li class="dropdown" id="dp">
+                                    <a href="#" id="nav-drop" class="dropdown-toggle nav-dropdown" data-toggle="dropdown"
+                                       role="button"
+                                       aria-expanded="true"><span nav-caret
+                                                                  id="account-name">{{ Auth::user()->first_name }} </span><span
+                                                class="caret nav-caret"></span></a>
+                                    <ul class="dropdown-menu" id="nav-dropdown" role="menu" aria-labelledby="nav-dropdown">
+                                        <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                   href="{{ url('/user/profile') }}">
+                                                Profile</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                   href="{{ url('/user/account') }}">
+                                                Your Account</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                   href="{{ url('/order/buyer') }}">
+                                                Your Orders</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                   href="{{ url('/order/seller') }}">
+                                                Sold Books</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                   href="{{ url('/auth/logout') }}">
+                                                Logout</a></li>
+                                    </ul>
+                                </li>
+                                <!-- cart -->
+                                <li class="cart">
+                                    <a href="{{ url('/cart') }}" id="cart-link">Cart <i class="fa fa-shopping-cart"
+                                                                                        style="line-height: 19px;"></i></a>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
+                    <!-- End collapse container -->
                 </div>
-                <!-- End collapse container -->
-            </div>
-            <!-- End navbar container -->
-        </nav>
-        <div class="container top-content col-md-12">
+                <!-- End navbar container -->
+            </nav>
+        </div>
+
+        <div class="" id="head-tag-ghost-container">
             <h1 id="head1">Welcome to Stuvi</h1>
             <p class="lead tagline">Because it takes a village to conquer college.</p>
-            <!-- ghost buttons -->
             @if (Auth::guest())
                 <div class="ghost-btn-container">
                     <a class="btn ghost-btn" data-toggle="modal" href="#login-modal" role="button">LOGIN</a>
@@ -103,8 +96,37 @@
                 </div>
             @endif
         </div>
+        <div id="slide-container">
+            <div class="" id="slides">
+                <img src="{{asset('img/nick/nlouie1.jpg')}}" alt="">
+                <img src="{{asset('img/nick/nlouie2.jpg')}}" alt="">
+            </div>
 
-    </div> <!-- end contain-top backgnd -->
+        </div>
+
+        <!-- TODO: make this work properly..like a search for the entire stuvi site? idk -->
+        <div class="" id="home-search-container">
+            <div class="" id="home-search-form">
+                <form action="/textbook/buy/search" method="get">
+                    <div class="form-group">
+                        <div class="col-xs-8 col-xs-offset-2 search-row">
+                            <input type="text" name="query" id="autocompleteBuy" class="form-control search-input"
+                                   placeholder="Enter the textbook ISBN, Title, or Author"/>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-default search-btn" type="submit" value="Search">
+                        <i class="fa fa-search search-icon"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
   <!-- new bottom half -->
     <div class="container-fluid" id="bottom-half">
         <div class="container-fluid stuvi-container">
@@ -163,11 +185,27 @@
 
     </div> <!-- end bottom half -->
 
+
+{{--
+    <div class="testing">
+        <div id="slides" style="position: relative;">
+            <img src="http://placehold.it/940x528">
+            <img src="http://placehold.it/940x528">
+            <img src="http://placehold.it/940x528">
+            <img src="http://placehold.it/940x528">
+            <img src="http://placehold.it/940x528">
+        </div>
+    </div>
+
+    --}}{{-- Current pic at 4865 × 1868 --}}
+
 @endsection
 
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>
-    <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/slides/jquery.slides.min.js')}}"></script>
+    <script src="{{asset('js/home.js')}}"></script>
+    {{--<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>--}}
+    {{--<script src="{{asset('js/autocompleteBuy.js')}}"></script>--}}
 @endsection

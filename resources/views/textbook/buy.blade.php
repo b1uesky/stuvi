@@ -37,7 +37,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-default search-btn" type="submit" value="Search">
+                <button class="btn primary-btn search-btn" type="submit" name="search" >
                     <i class="fa fa-search search-icon"></i>
                 </button>
             </form>
@@ -122,7 +122,12 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="{{asset('/js/jquery-ui.min.js')}}"></script>
     <script src="{{asset('/js/autocompleteBuy.js')}}" type="text/javascript"></script>
-    <script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>
-    <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
+    {{--<script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>--}}
+
+    {{-- FormValidation --}}
+    <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
+    <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/auth.js')}}"></script>
+
     <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
 @endsection

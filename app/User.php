@@ -310,7 +310,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         $email = Email::find($email_id);
 
-        if ($email && $email->isBelongTo($this))
+        if ($email && $email->isBelongTo($this->id))
         {
             $this->update([
                 'primary_email_id'  => $email_id,
@@ -357,5 +357,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function getEmailForPasswordReset()
     {
         return $this->primaryEmail->email_address;
+    }
+
+    /**
+     * @return array
+     */
+    public function allToArray()
+    {
+        $user_arr           = $this->toArray();
+        $user_arr['email']  = $this->primaryEmail->email_address;
+
+        return $user_arr;
     }
 }

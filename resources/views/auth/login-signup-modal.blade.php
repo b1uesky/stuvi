@@ -3,7 +3,7 @@
     This is the pop-up for login in and sign up  --}}
 
 @section('login-signup-modal')
-    <div class="login-signup-modal">
+    <div class="login-signup-modal" style="z-index: 99999;">
         <div class="modal fade login-modal" id="login-modal" tabindex="-1" role="dialog"
              aria-labelledby="Login">
             <div class="modal-dialog">
@@ -15,17 +15,17 @@
                         <h4><i class="fa fa-sign-in"></i> Login</h4>
                     </div>
                     <div class="modal-body">
-                        <form role="form"  action="{{ url('/auth/login') }}" method="post" id="login-form">
+                        <form role="form"  action="{{ url('/auth/login') }}" method="post" id="form-login">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <!-- email -->
                             <div class="form-group">
                                 <label for="login-email"><i class="fa fa-envelope"></i> Email</label>
-                                <input type="text" class="form-control" id="login-email" name="email" placeholder="Enter email" value="">
+                                <input type="text" class="form-control" id="login-email" name="email" placeholder="Enter email" required>
                             </div>
                             <!-- password -->
                             <div class="form-group">
                                 <label for="login-password"><i class="fa fa-key"></i> Password</label>
-                                <input type="password" class="form-control" name="password" id="login-password" placeholder="Enter password">
+                                <input type="password" class="form-control" name="password" id="login-password" placeholder="Enter password" required>
                             </div>
                             <!-- remember me -->
                             <div class="checkbox" id="remember-me">
@@ -54,39 +54,38 @@
                         <h4><i class="fa fa-user-plus"></i> Sign Up</h4>
                     </div>
                     <div class="modal-body">
-                        <form role="form" method="POST" action="{{ url('/auth/register') }}">
+                        <form role="form" method="POST" id="form-register">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <!-- first name -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-first">First Name</label>
-                                <input type="text" class="form-control" id="register-first" placeholder="First name">
+                                <input type="text" name="first_name" class="form-control" id="register-first" placeholder="First name">
                             </div>
                             <!-- last name -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-last">Last Name</label>
-                                <input type="text" class="form-control" id="register-last" placeholder="Last name">
+                                <input type="text" name="last_name" class="form-control" id="register-last" placeholder="Last name">
                             </div>
                             <!-- email -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-email">Email</label>
-                                <input type="email" class="form-control" id="register-email" placeholder="Email">
+                                <input type="email" name="email" class="form-control" id="register-email" placeholder="College email address">
                             </div>
                             <!-- password -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-password">Password</label>
-                                <input type="password" class="form-control" id="register-password" placeholder="Password">
+                                <input type="password" name="password" class="form-control" id="register-password" placeholder="Password">
                             </div>
                             <!-- phone number -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-phone">Phone Number</label>
-                                <input type="tel" class="form-control phone_number" name="phone_number" id="register-phone"
-                                       placeholder="Phone number" value="">
+                                <input type="text" name="phone_number" class="form-control" id="register-phone"
+                                       placeholder="Phone number">
                             </div>
                             <!-- university -->
                             <div class="form-group">
-                                <select class="form-control" name="university_id">
-                                    <label class="sr-only" for="register-uni">School</label>
-                                    <option id="register-uni" selected disabled>University</option>
+                                <label class="sr-only" for="register-university">School</label>
+                                <select class="form-control" name="university_id" id="register-university">
                                     @foreach(\App\University::where('is_public', true)->get() as $university)
                                         <option value="{{ $university->id }}">{{ $university->name }}</option>
                                     @endforeach
