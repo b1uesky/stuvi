@@ -48,7 +48,7 @@
 
                             <div class="col-sm-6">
                                 <input class="form-control" id="datetimepicker1" class="date" type="text"
-                                       name="birth" placeholder={{$profile->birthday or ""}}>
+                                       name="birth" value={{$profile->birthday or ''}}>
                             </div>
                         </div>
 
@@ -57,8 +57,8 @@
                             <label class="control-label col-sm-3" for="title">Title:</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="title" id="title"
-                                       value={{$profile->title or ""}}>
+                                <input type="text" class="form-control" name="title" id="title" placeholder="Stuvier"
+                                        @if ($profile->title) {{ $profile->title }} @endif>
                             </div>
                         </div>
 
@@ -68,9 +68,7 @@
                             <label class="control-label col-sm-3" for="bio">Bio/About me</label>
 
                             <div class="col-sm-6">
-                                <textarea id="bio" name="bio" class="form-control" rows="4" cols="50">
-                                    {{$profile->bio or "Tell us your darkest, deepest secret"}}
-                                </textarea>
+                                <textarea id="bio" name="bio" class="form-control" rows="4" cols="50">{{$profile->bio or "Tell us your darkest, deepest secret"}}</textarea>
                             </div>
                         </div>
                         <!-- education -->
@@ -89,7 +87,7 @@
 
                             <div class="col-sm-6 col-sm-offset-0">
                                 <input class="form-control" id="datetimepicker" class="date" type="text"
-                                       name="grad" placeholder={{$profile->graduation_date or ""}}>
+                                       name="grad" value={{$profile->graduation_date or ""}}>
                             </div>
                         </div>
                         <!-- Area of Study / Major -->
