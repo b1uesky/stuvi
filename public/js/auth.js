@@ -1,12 +1,12 @@
 /**
  * Created by Desmond on 7/23/15.
+ *
+ * FormValidation: http://formvalidation.io/getting-started/
  */
 
 $(document).ready(function () {
 
-    // format phone number
-    //$("#register-phone").mask("(999)999-9999");
-
+    // login form validation
     $('#form-login').submit(function (e) {
         e.preventDefault();
 
@@ -34,7 +34,7 @@ $(document).ready(function () {
                     }
                 } else {
                     // success
-                    window.location.replace(response.redirect);
+                    location.reload();
                 }
 
 
@@ -131,14 +131,6 @@ $(document).ready(function () {
                         },
                         blank: {}
                     }
-                },
-                university_id: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The university is required'
-                        },
-                        blank: {}
-                    }
                 }
             }
         })
@@ -169,9 +161,8 @@ $(document).ready(function () {
                             .updateStatus(field, 'INVALID', validator);
                     }
                 } else {
-                    // Do whatever you want here
-                    // such as showing a modal ...
-                    window.location.replace("/home");
+                    // success
+                    location.reload();
                 }
             });
         });
