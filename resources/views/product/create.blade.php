@@ -53,8 +53,8 @@
         @if(!Auth::check())
             <div class="row col-sm-6 col-sm-offset-1">
                 <p>Please login or sign up to continue using our service.</p>
-                <a href="{{ url('textbook/sell/product/login') }}" class="btn btn-default">Login</a>
-                <a href="{{ url('textbook/sell/product/register') }}" class="btn btn-default">Sign up</a>
+                <a data-toggle="modal" href="#login-modal">Login</a>
+                <a data-toggle="modal" href="#signup-modal">Sign up</a>
             </div>
         @else
             {{-- Show book conditions --}}
