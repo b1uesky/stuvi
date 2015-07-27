@@ -33,20 +33,20 @@
                                     </li>
                                     <li class="side-item">
                                         <a class="side-item-link" id="side-bookshelf-link"
-                                           href="{{asset('/user/account')}}">
+                                           href="{{asset('/user/account#')}}">
                                             <i class="fa fa-book"></i>My Bookshelf
                                         </a>
                                     </li>
                                     <li class="side-item">
-                                        <a class="side-item-link" id="side-privacy-link"
-                                           href="{{asset('/user/account')}}">
-                                            <i class="fa fa-user-secret"></i>Privacy
+                                        <a class="side-item-link" id="side-email-link"
+                                           href="{{asset('/user/email')}}">
+                                            <i class="fa fa-envelope"></i>Email
                                         </a>
                                     </li>
                                     <li class="side-item">
-                                        <a class="side-item-link" id="side-email-link"
-                                           href="{{asset('/user/account')}}">
-                                            <i class="fa fa-envelope"></i>Email Notifications
+                                        <a class="side-item-link" id="side-notification-link"
+                                           href="{{asset('/user/account#')}}">
+                                            <i class="fa fa-envelope"></i>Notification
                                         </a>
                                     </li>
                                     <li class="side-item">
@@ -64,6 +64,7 @@
                             <!-- END MENU -->
                         </div>
                     </div>
+
 
     @show
 

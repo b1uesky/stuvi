@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class SellerOrder extends Model
 {
@@ -255,12 +256,28 @@ class SellerOrder extends Model
     public function allToArray()
     {
         $seller_order_arr = $this->toArray();
-        $seller_order_arr['seller'] = $this->seller()->toArray();
+        $seller_order_arr['seller'] = $this->seller()->allToArray();
         $seller_order_arr['product'] = $this->product->toArray();
         $seller_order_arr['product']['book'] = $this->product->book->toArray();
         $seller_order_arr['product']['book']['authors'] = $this->product->book->authors->toArray();
         $seller_order_arr['product']['book']['image_set'] = $this->product->book->imageSet->toArray();
 
         return $seller_order_arr;
+    }
+
+
+    /**
+     * Email seller the seller order confirmation
+     */
+    public function emailOrderConfirmation()
+    {
+        // convert the seller order and corresponding objects to an array
+        $seller_order_arr = $this->allToArray();
+
+        Mail::queue('emails.sellerOrderConfirmation', ['seller_order' => $seller_order_arr],
+            function ($message) use ($seller_order_arr)
+            {
+                $message->to($seller_order_arr['seller']['email'])->subject('Your book ' . $this->product->book->title . ' has sold!');
+            });
     }
 }

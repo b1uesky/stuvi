@@ -28,12 +28,13 @@ class Cart extends Model
      */
     public function remove($product_id)
     {
-        $item = CartItem::where('cart_id', $this->id)->where('product_id', $product_id);
+        $item = $this->items()->where('product_id', $product_id)->first();
 
         if ($item)
         {
             $item->delete();
             $this->decrement('quantity');
+            $this->save();
         }
     }
 
@@ -91,6 +92,7 @@ class Cart extends Model
         ]);
 
         $this->increment('quantity');
+        $this->save();
 
         return $cart_item;
     }

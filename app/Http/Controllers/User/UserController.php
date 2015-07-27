@@ -1,11 +1,11 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\User;
 
-
+use App\Http\Controllers\Controller;
 use App\Profile;
 use Auth;
 use Input;
-use Session;
 use Mail;
+use Session;
 
 class UserController extends Controller
 {
@@ -24,6 +24,7 @@ class UserController extends Controller
     {
         $user_id = Auth::id();
         $user_profile = Profile::find($user_id);
+
         return view('user.profile-edit');
     }
 
@@ -45,11 +46,23 @@ class UserController extends Controller
         $user->save();
     }
 
+    /**
+     * Display the user's bookshelf (products for sale).
+     *
+     * @return $this
+     */
     public function bookshelf()
     {
         return view('user.bookshelf')->with('productsForSale', Auth::user()->productsForSale());
     }
 
+    /**
+     * Activate an account with a code.
+     *
+     * @param $code
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function activateAccount($code)
     {
         // check if the current user is activated
@@ -89,6 +102,11 @@ class UserController extends Controller
             ->with('user', Auth::user());
     }
 
+    /**
+     * Resend account activation email to user's college email.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function resendActivationEmail()
     {
         $user = Auth::user();
@@ -105,5 +123,4 @@ class UserController extends Controller
         return redirect('user/activate')
             ->with('message', 'Activation email is sent. Please check your email.');
     }
-
 }

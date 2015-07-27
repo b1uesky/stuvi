@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class CartItem extends Model
@@ -27,4 +28,5 @@ class CartItem extends Model
     {
         return $this->belongsTo('App\Product', 'product_id', 'id');
     }
+
 }
