@@ -40,6 +40,9 @@ body{
     width: 100%;
     height: auto;
   }
+  @media (max-width: 767px) {
+    display: none;
+  }
 }
 
 #nav-left li a {
@@ -69,6 +72,22 @@ body{
     }
   }
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* NAVIGATION HAMBURGER MENU */
+
+#nav-toggle-collapse {
+  float: left;
+  border: none;
+  z-index: 50;
+  margin-left: 10px;
+  &:hover, &:focus {
+    background: none;
+  }
+  .fa-bars {
+    color: $primary-color;
+    font-size: 1.5em;
+  }
 }
 
 
