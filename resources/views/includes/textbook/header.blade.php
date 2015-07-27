@@ -37,10 +37,10 @@
                     @else
                         <!-- profile dropdown -->
                         <li class="dropdown" id="dp" style="z-index: 500;">
-                            <a href="#" id="nav-drop" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button"
-                               aria-expanded="true"><span nav-caret
-                                                          id="account-name">{{ Auth::user()->first_name }} </span><span
-                                        class="caret nav-caret"></span></a>
+                            <a href="#" id="nav-drop" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button" aria-expanded="true">
+                                <span nav-caret id="account-name">{{ Auth::user()->first_name }} </span><span
+                                        class="caret nav-caret"></span>
+                            </a>
                             <ul class="dropdown-menu" id="nav-dropdown" role="menu" aria-labelledby="nav-dropdown">
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1" href="{{ url('/user/profile') }}">Profile</a>
