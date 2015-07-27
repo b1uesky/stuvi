@@ -82,7 +82,10 @@
                 @endforelse
             </table>
         </div>
+            <div id="pagination">
             {!! $books->appends(Request::only('query'))->render() !!}
+            </div>
+
     </div>
 @endsection
 
