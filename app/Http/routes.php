@@ -76,7 +76,6 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
     Route::group(['prefix'=>'buy'], function() {
         Route::get('/{book}', 'TextbookController@show');
         Route::get('/search', 'TextbookController@buySearch');
-        Route::get('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
         Route::get('/product/{product}', 'ProductController@show');
     });
 
