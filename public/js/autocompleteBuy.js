@@ -1,3 +1,8 @@
+/**
+ * jQuery UI AutoComplete for textbook search
+ * http://api.jqueryui.com/autocomplete/#option-source
+ */
+
 $(document).ready(function() {
 
     $('#autocompleteBuy').autocomplete({

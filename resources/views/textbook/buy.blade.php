@@ -30,16 +30,29 @@
             <h1 id="title">Buy Used Textbooks</h1>
 
             <form action="/textbook/buy/search" method="get">
-                <div class="form-group">
-                    <div class="col-xs-8 col-xs-offset-2 search-row">
-                        <input type="text" name="query" id="autocompleteBuy" class="form-control search-input"
+                <div class="search-row">
+                    <div class="search-input-wrapper">
+                        <input type="text" name="query" id="autocompleteBuy"
+                               class="form-control search-input search-input-query"
                                placeholder="Enter the textbook ISBN, Title, or Author"/>
                     </div>
-                </div>
 
-                <button class="btn primary-btn search-btn" type="submit" name="search" >
-                    <i class="fa fa-search search-icon"></i>
-                </button>
+                    {{-- Show school selection if it's a guest --}}
+                    @if(!Auth::check())
+                        <div class="search-input-wrapper">
+                            <label class="sr-only" for="register-university">School</label>
+                            <select name="university_id" class="form-control search-input" id="select-university">
+                                @foreach(\App\University::where('is_public', true)->get() as $university)
+                                    <option value="{{ $university->id }}">{{ $university->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
+
+                    <button class="btn primary-btn search-btn" type="submit" name="search">
+                        <i class="fa fa-search search-icon"></i>
+                    </button>
+                </div>
             </form>
         </div>
     </div>

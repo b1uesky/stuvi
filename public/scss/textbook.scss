@@ -67,27 +67,33 @@
 }
 
 .search-row {
-  padding: 0;
-  margin-left: 15%;
-  @media (max-width: 535px) {
-    margin-left: 11%;
-  }
+  //padding: 0;
+  //margin-left: 16%;
+  //@media (max-width: 535px) {
+  //  margin-left: 11%;
+  //}
+  text-align: center;
+  vertical-align: middle;
+}
+
+.search-input-wrapper {
+  display: inline-block;
 }
 
 .search-input {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: $background-color;
   height: 3em;
+  &:focus {
+    border: 2px solid $primary-color;
+    box-shadow: none;
+  }
+}
+
+.search-input-query {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right: none;
-  &:focus {
-    border: 2px solid $primary-color;
-    border-right: none;
-    box-shadow: none;
-  }
-  @media (max-width: 767px) {
-    background-color: rgba(255, 255, 255, 0.8);
-  }
+  width: 600px;
 }
 
 #container-fluid-search-sell{

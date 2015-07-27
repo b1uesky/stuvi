@@ -60,7 +60,7 @@ Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
         Route::get  ('/', 'TextbookController@showBuyPage');
         Route::get  ('/{book}', 'TextbookController@show');
     });
-    
+
     // sell
     Route::group(['prefix'=>'sell'], function() {
         Route::get  ('/',                       'TextbookController@sell');
