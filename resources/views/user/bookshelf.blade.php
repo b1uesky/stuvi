@@ -22,7 +22,7 @@
             <h1 id="bookshelf-title">Your Bookshelf</h1>
 
             <!-- sort and search -->
-            <div class="container">
+            <div class="container col-sm-12">
                 {{--<span class="text-muted">Sort by</span>--}}
                 <ul class="nav nav-pills">
                     {{--<li role="presentation" class="active"><a href="#" data-toggle="pill">Title</a></li>--}}
@@ -30,7 +30,7 @@
                     {{--<li role="presentation"><a href="#" data-toggle="pill">Price (Low to High)</a></li>--}}
                     {{--<li role="presentation"><a href="#" data-toggle="pill">Price (High to Low)</a></li>--}}
 
-                    <div class="col-sm-4 col-md-4 pull-left bookshelf-sort">
+                    <div class="col-sm-4 pull-right bookshelf-sort">
                         <form class="navbar-form" role="search">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search" name="srch-term"
