@@ -46,13 +46,15 @@ class EmailController extends Controller
                 ->with('email_validation_error', $validator->errors());
         }
 
-
         $email = Email::create([
             'user_id'       => Auth::id(),
             'email_address' => Input::get('email'),
         ]);
 
-        return redirect('user/email');
+        // TODO: need to verfy the new email.
+
+        return redirect('user/email')
+            ->with('email_add_success', $email->email_address.' has been added to your account.');
     }
 
     /**
@@ -92,11 +94,52 @@ class EmailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        $email = Email::find(Input::get('id'));
+
+        if ($email && $email->isBelongTo(Auth::id()))
+        {
+            if ($email->isPrimary())    // cannot delete primary email
+            {
+                return redirect('user/email')
+                    ->with('email_remove_error', 'Sorry, we cannot delete your primary email.');
+            }
+            elseif ($email->isCollegeEmail())   // cannot delete college email
+            {
+                return redirect('user/email')
+                    ->with('email_remove_error', 'Sorry, we cannot delete your college email.');
+            }
+            else
+            {
+                $email->delete();
+                return redirect('user/email')
+                    ->with('email_remove_success', $email->email_address.' has been removed.');
+            }
+        }
+
+        return redirect('user/email')
+            ->with('email_remove_error', 'Sorry, we did not find the email.');
+    }
+
+    /**
+     * Set the primary email.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function setPrimary()
+    {
+        $email = Auth::user()->setPrimaryEmail(Input::get('id'));
+
+        if (!$email)
+        {
+            return redirect('user/email')
+                ->with('email_set_primary_error', 'Sorry, we did not find the email.');
+        }
+
+        return redirect('user/email')
+            ->with('email_set_primary_success', $email->email_address.' is now your primary email.');
     }
 }

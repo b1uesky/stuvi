@@ -15,6 +15,21 @@
                 <div class="profile-content">
                     <!-- right box -->
                     <div class="container col-xs-12 col-md-12" id = "email-details">
+                        @if (Session::has('email_remove_error'))
+                            <div class="alert alert-danger" id="message">{{ Session::get('email_remove_error') }}</div>
+                        @endif
+                        @if (Session::has('email_remove_success'))
+                            <div class="alert alert-success" id="message">{{ Session::get('email_remove_success') }}</div>
+                        @endif
+                        @if (Session::has('email_set_primary_error'))
+                            <div class="alert alert-danger" id="message">{{ Session::get('email_set_primary_error') }}</div>
+                        @endif
+                        @if (Session::has('email_set_primary_success'))
+                            <div class="alert alert-success" id="message">{{ Session::get('email_set_primary_success') }}</div>
+                        @endif
+                        @if (Session::has('email_add_success'))
+                            <div class="alert alert-success" id="message">{{ Session::get('email_add_success') }}</div>
+                        @endif
                         <h3>Email</h3>
                         {{-- Email List --}}
                         <p>Note: Stuvi will send all notification email to your primary email.</p>
@@ -22,24 +37,29 @@
                             @foreach ($emails as $email)
                                 <tr>
                                     <td><strong>{{ $email->email_address }}</strong></td>
-                                    <td>
-                                        @if (Auth::user()->primary_email_id == $email->id)
+                                    @if (Auth::user()->primary_email_id == $email->id)
+                                        <td>
                                             Primary
-                                        @else
-                                            <form action="{{ url('/user/email/set/primary') }}" method="post">
+                                        </td>
+                                        <td></td>
+                                    @else
+                                        <td>
+                                            <form action="{{ url('/user/email/primary') }}" method="post">
                                                 {!! csrf_field() !!}
-                                                <input type="hidden" value="{{ $email->id }}">
+                                                <input type="hidden" name="id" value="{{ $email->id }}">
                                                 <input type="submit" class="btn primary-btn" value="Set as primary">
                                             </form>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <form action="{{ url('/user/email/remove') }}" method="post">
-                                            {!! csrf_field() !!}
-                                            <input type="hidden" value="{{ $email->id }}">
-                                            <input type="submit" class="btn primary-btn" value="Remove">
-                                        </form>
-                                    </td>
+                                        </td>
+                                        <td>
+                                            @if (!$email->isCollegeEmail())
+                                                <form action="{{ url('/user/email/remove') }}" method="post">
+                                                    {!! csrf_field() !!}
+                                                    <input type="hidden" name="id" value="{{ $email->id }}">
+                                                    <input type="submit" class="btn primary-btn" value="Remove">
+                                                </form>
+                                            @endif
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </table>
@@ -52,11 +72,9 @@
                                 <button type="submit" class="btn btn-default">Add</button>
                             </div>
                             @if (Session::has('email_validation_error'))
-                                <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
-                                    @foreach (Session::get('email_validation_error')->get('email') as $err)
-                                        <div class="flash-message" id="message" >{{ $err }}</div>
-                                    @endforeach
-                                </div>
+                                @foreach (Session::get('email_validation_error')->get('email') as $err)
+                                    <div class="alert alert-warning" id="message">{{ $err }}</div>
+                                @endforeach
                             @endif
                         </form>
                     </div>

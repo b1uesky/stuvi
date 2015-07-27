@@ -21,13 +21,33 @@ class Email extends Model
     /**
      * Check whether this email belongs to the given user
      *
-     * @param User $user
+     * @param $user_id
      *
      * @return bool
      */
-    public function isBelongTo(User $user)
+    public function isBelongTo($user_id)
     {
-        return $this->user_id == $user->id;
+        return $this->user_id == $user_id;
+    }
+
+    /**
+     * Check whether this email is the primary email of the user.
+     *
+     * @return bool
+     */
+    public function isPrimary()
+    {
+        return $this->user->primary_email_id == $this->id;
+    }
+
+    /**
+     * Check whether this email is the user's college email.
+     *
+     * @return bool
+     */
+    public function isCollegeEmail()
+    {
+        return $this->user->university->matchEmailSuffix($this->email_address);
     }
 
     /**

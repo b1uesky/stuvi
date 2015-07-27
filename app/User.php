@@ -310,7 +310,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         $email = Email::find($email_id);
 
-        if ($email && $email->isBelongTo($this))
+        if ($email && $email->isBelongTo($this->id))
         {
             $this->update([
                 'primary_email_id'  => $email_id,
