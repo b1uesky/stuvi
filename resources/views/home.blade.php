@@ -42,8 +42,6 @@
                                 <li><a id="register-btn" class="nav-login" data-toggle="modal" href="#signup-modal">
                                         <i class="fa fa-user"></i> Sign Up</a></li>
 
-
-
                                 @else
                                         <!-- profile dropdown -->
                                 <li class="dropdown" id="dp" style="z-index: 500;">
