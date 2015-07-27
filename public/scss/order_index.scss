@@ -58,9 +58,12 @@ body {
   min-height: 500px;
 }
 
-/* Orange border around each order */
+/* border around each order */
 .order-container {
-  border: 2px solid #F9AA62;
+  border: 1px solid $primary-color;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  //box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background-color: white;
   margin-bottom: 30px;
 }
 
@@ -70,8 +73,15 @@ body {
   }
 }
 
+#show-order-link {
+  color: rgba(255, 255, 255, 0.7);
+}
+
 .order-row {
-  background-color: rgba(0, 0, 0, 0.09);
+  //background-color: rgba(0, 0, 0, 0.09);
+  background-color: $primary-color;
+  color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.24);
 }
 
 .book-row {
@@ -100,20 +110,6 @@ body {
 
 .book-price {
   color: #b61f17;
-}
-
-.order-button-1 {
-  background: #F16521;
-  color: #FFFFFF;
-  border: none;
-  margin: 5px;
-}
-
-.order-button-2 {
-  background: rgba(0, 0, 0, 0.28);
-  color: white;
-  border: none;
-  margin: 5px;
 }
 
 /* Canceled order header color */

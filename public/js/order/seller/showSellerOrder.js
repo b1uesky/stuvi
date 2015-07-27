@@ -8,8 +8,9 @@ $(document).ready(function() {
     $('#datetimepicker').datetimepicker({
         format: 'Y-m-d G:i', // config/app datetime_format
         minDate:'-1970/01/01',//yesterday is minimum date(for today use 0 or -1970/01/01)
-        maxDate:'+1970/01/08', // must schedule within 7 days
-        minTime: 0,
+        maxDate:'+1970/01/02', // must schedule within 1 day
+        minTime: '9:00',
+        maxTime: '19:00',
         //mask:true, // '9999/19/39 29:59' - digit is the maximum possible for a cell
         lang: 'en',
         step: 30

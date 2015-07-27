@@ -13,14 +13,11 @@
 
     <title>Stuvi - @yield('title')</title>
 
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css_app/app.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('/css/app-home.css') }}"/>
 
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
-    <!-- Footer & Nav required -->
-    <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <!-- material design -->
     {{--

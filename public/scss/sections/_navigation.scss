@@ -16,6 +16,7 @@ a:focus {
   border-radius: 0;
   border: none;
   box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
+  z-index: 20;
 }
 
 #nav-left li a{
@@ -61,6 +62,7 @@ a:focus {
   &:hover, &:focus {
   background: $light-orange-color;
   }
+  z-index: 50;
 }
 
 /******* NAVIGATION DROPDOWN *******/
@@ -68,13 +70,14 @@ a:focus {
 #nav-drop {
   padding-bottom: 10px;
   &:focus {
-    background-color: $accent-color;
+    background-color: $nav-background-color;
   }
   &:hover{
     color: $primary-color;
     background-color: $nav-background-color;
     #account-name, .nav-caret{
       color: $primary-color;
+      background-color: $nav-background-color;
     }
   }
 }
@@ -90,6 +93,10 @@ a:focus {
 
 #nav-right > .open > a{
   background-color: $nav-background-color;
+}
+
+#nav-right > .open{
+  border-bottom: 0;
 }
 
 .nav-caret {
@@ -120,13 +127,13 @@ a:focus {
   line-height: 19px;
 }
 
-/* LOGIN SIGNUP MODAL */
-
-.modal-header{
-  text-align: center;
-}
-
-.modal-body {
-  max-height: calc(100vh - 210px);
-  overflow-y: auto;
-}
+///* LOGIN SIGNUP MODAL */
+//
+//.modal-header{
+//  text-align: center;
+//}
+//
+//.modal-body {
+//  max-height: calc(100vh - 210px);
+//  overflow-y: auto;
+//}

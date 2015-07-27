@@ -5,7 +5,7 @@
 
 .tab-filter-container {
   width: 100%;
-  background: #F9AA62;
+  background: $primary-color;
   height: 40px;
 }
 
@@ -23,12 +23,12 @@
 
 // this can't be placed above in the .filter styles
 .filter.active {
-  border-bottom: 5px solid #241729;
+  border-bottom: 5px solid white;
 }
 
 .filter-link {
   font-size: 20px;
-  color: #FFFFFF;
+  color: rgba(255, 255, 255, 0.6);
   margin: 0 40px;
 }
 
@@ -37,7 +37,7 @@
 .filter-link:focus,
 .filter-link.active {
   text-decoration: none;
-  color: #241729;
+  color: white;
 }
 
 /******* ERROR MESSAGE ******/
@@ -52,16 +52,6 @@
 
 /******* TEXTBOOK SEARCH AREA ******/
 
-.search {
-  /* Photo by Brittany Stevens https://flic.kr/p/nfwhCe */
-  /* Licensed under creative commons BY 2.0*/
-  /* https://creativecommons.org/licenses/by/2.0/ */
-  background-image: url('../img/books.jpg');
-  background-size: cover;
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 60px;
-}
-
 #title {
   text-align: center;
   margin-bottom: 20px;
@@ -69,16 +59,10 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
-.form-control {
-  height: 3em;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right: none;
-  &:focus {
-    border: 2px solid #F16521;
-    border-right: none;
-    box-shadow: none;
-  }
+.search {
+  background: rgba(0, 0, 0, 0.3) url('../img/open-book.jpg') no-repeat;
+  background-size: cover;
+  padding: 60px;
 }
 
 .search-row {
@@ -89,19 +73,39 @@
   }
 }
 
+.search-input {
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 3em;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+  &:focus {
+    border: 2px solid $primary-color;
+    border-right: none;
+    box-shadow: none;
+  }
+  @media (max-width: 767px) {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+#container-fluid-search-sell{
+  padding-bottom: 45px;
+}
+
 .search-btn {
   height: 3em;
   margin-right: 30px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  background: $secondary-color;
+  background: $primary-color;
   border: none;
   &:hover {
-    background: $secondary-color;
+    background: $primary-color;
   }
   &:focus {
     outline: 0 !important;
-    background: $secondary-color;
+    background: $primary-color;
   }
   @media (max-width: 535px) {
     margin: 0;
@@ -117,12 +121,14 @@
 
 .autocomplete-thumbnail {
   display: inline-block;
-  width: 80px;
   margin: 5px;
   vertical-align: middle;
   overflow: hidden;
   img {
-    min-width: 100%;
+    display: block;
+    max-width: 80px;
+    width: auto;
+    height: auto;
   }
 }
 
@@ -147,22 +153,17 @@
 
 .row {
   padding: 3%;
-
 }
 
 .row-b {
-  padding-top: 1%;
-  padding-bottom: 2%;
-  padding-left: 0%;
-  padding-right: 0%;
+  padding: 1% 0 2% 0;
 }
 
 #shrink-xs {
   @media(max-width: 767px) {
     text-align: center;
-    margin-top: 0%;
-    padding-bottom: 0%;
-    margin: 0%;
+    margin: 0;
+    padding-bottom: 0;
   }
 }
 

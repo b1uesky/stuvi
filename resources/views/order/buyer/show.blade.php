@@ -14,6 +14,13 @@
             <div class="flash-message" id="message">{{ Session::get('message') }}</div>
         @endif
     </div>
+
+    <div class="container-fluid">
+        <div class="row back-row">
+            <a class="back-to-order" href="order/buyer" onclick="goBack()"><i class="fa fa-arrow-circle-left"></i> Go Back</a>
+        </div>
+    </div>
+
     <!-- order details -->
     <div class="container">
         <h1 id="">Order Details</h1>
@@ -105,4 +112,10 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <!-- print window required -->
     <script src="{{asset('/js/showOrder.js')}}" type="text/javascript"></script>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 @endsection

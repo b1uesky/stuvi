@@ -36,27 +36,20 @@
                         </div>
                         <div class="col-xs-12 col-sm-3 col-sm-offset-5 order-number">
                             <h5>Order Number # {{ $order->id }}</h5>
-                            <a href="/order/buyer/{{$order->id}}">View Order Details <i class="fa fa-caret-right"></i>
+                            <a id="show-order-link" href="/order/buyer/{{$order->id}}">View Order Details <i
+                                        class="fa fa-caret-right"></i>
                             </a>
                         </div>
                     </div>
                     <!-- order status -->
-                    @if ($order->cancelled)
-                        <span id="cancelled"> <h3>Order Cancelled</h3>
-                        <small>Your order has been cancelled.</small>
-                        </span>
-                    @elseif ($order->isDelivered())
-                        <h3>Delivered</h3>
-                        <small>Delivered at {{ date($datetime_format, strtotime($order->time_delivered)) }}</small>
-                        <a class="btn btn-default order-button-2" href="#" role="button">Return or Replace Item</a>
-                    @else
-                        <h3>Order Processing</h3>
-                        <small>Your order is being processed by the Stuvi team.</small>
-                        @if ($order->isCancellable())
-                            <a class="btn btn-default order-button-2" href="/order/buyer/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
-                        @endif
-                    @endif
 
+                    <span id="cancelled">
+                        <h3>{{ $order->getOrderStatus()['status'] }}</h3>
+                        <small>{{ $order->getOrderStatus()['detail'] }}</small>
+                    </span>
+                    @if ($order->isCancellable())
+                        <a class="btn secondary-btn" href="/order/buyer/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
+                    @endif
                     <!-- products in order -->
                     @forelse($order->products() as $product)
                         <div class="row book-row">
@@ -76,8 +69,8 @@
                             </div>
                         </div>
                     @empty
-                        <div class="row book-row-empty">
-                            <mark>There has been a problem.</mark>
+                        <div class="row book-row-empty bg-warning">
+                            <span>There has been a problem.</span>
                         </div>
                     @endforelse
                 </div>

@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Config\Repository;
+
 use App\Book;
 use App\BookAuthor;
 use App\BookImageSet;
-use App\Helpers\AmazonLookUp;
 
-use Illuminate\Config\Repository;
+use GoogleBooks\GoogleBooks;
+
 
 class BookTableSeeder extends Seeder {
 
@@ -35,43 +37,39 @@ public function run()
         '1593271441',       // Hacking: The Art of Exploitation, 2nd Edition
     ];
 
+    $key = Config::get('services.google.books.api_key');
+
     foreach($isbns as $isbn)
     {
-        $amazon = new AmazonLookUp($isbn, 'ISBN');
+        $google_book = new GoogleBooks($key);
 
-        if ($amazon->success())
+        if ($google_book->searchByISBN($isbn))
         {
-//            $amazon->saveToXML();
+            echo 'Adding book: ' . $google_book->getTitle() . "\r\n";
 
             // save this book to our database
-            $book = new Book();
-            $book->isbn10               = $amazon->getISBN10();
-            $book->isbn13               = $amazon->getISBN13();
-            $book->title                = $amazon->getTitle();
-            $book->edition              = $amazon->getEdition();
-            $book->binding              = $amazon->getBinding();
-            $book->language             = $amazon->getLanguage();
-            $book->num_pages            = $amazon->getNumPages();
-            $book->list_price           = $amazon->getListPriceDecimalPrice();
-            $book->lowest_new_price     = $amazon->getLowestNewPriceDecimalPrice();
-            $book->lowest_used_price    = $amazon->getLowestUsedriceDecimalPrice();
-            $book->save();
+            $book = Book::create([
+                'isbn10'    => $google_book->getIsbn10(),
+                'isbn13'    => $google_book->getIsbn13(),
+                'title'     => $google_book->getTitle(),
+                'language'  => $google_book->getLanguage(),
+                'num_pages' => $google_book->getPageCount(),
+            ]);
 
             // save book image set
-            $book_image_set                 = new BookImageSet();
-            $book_image_set->book_id        = $book->id;
-            $book_image_set->small_image    = $amazon->getSmallImage();
-            $book_image_set->medium_image   = $amazon->getMediumImage();
-            $book_image_set->large_image    = $amazon->getLargeImage();
-            $book_image_set->save();
+            BookImageSet::create([
+                'book_id'       => $book->id,
+                'small_image'   => $google_book->getThumbnail(),
+                'medium_image'  => $google_book->getThumbnail(),
+                'large_image'   => $google_book->getThumbnail()
+            ]);
 
-//            var_dump($amazon->saveToXML());
             // save book authors
-            foreach ($amazon->getAuthors() as $author_name) {
-                $book_author            = new BookAuthor();
-                $book_author->book_id   = $book->id;
-                $book_author->full_name = $author_name;
-                $book_author->save();
+            foreach ($google_book->getAuthors() as $author_name) {
+                BookAuthor::create([
+                    'book_id'   => $book->id,
+                    'full_name' => $author_name
+                ]);
             }
         }
     }

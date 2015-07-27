@@ -78,11 +78,3 @@
   color: $secondary-color;
   cursor: pointer;
 }
-
-.close-modal-btn {
-  &:hover, &:focus {
-    outline: 0;
-    color: $primary-color;
-    opacity: 1;
-  }
-}

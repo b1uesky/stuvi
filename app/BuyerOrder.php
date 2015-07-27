@@ -4,6 +4,7 @@ use App\Helpers\StripeKey;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Mail;
 
 class BuyerOrder extends Model
 {
@@ -168,7 +169,7 @@ class BuyerOrder extends Model
     public function allToArray()
     {
         $buyer_order_arr = $this->toArray();
-        $buyer_order_arr['buyer'] = $this->buyer->toArray();
+        $buyer_order_arr['buyer'] = $this->buyer->allToArray();
         $buyer_order_arr['shipping_address'] = $this->shipping_address->toArray();
         $buyer_order_arr['buyer_payment'] = $this->buyer_payment->toArray();
         foreach ($this->products() as $product)
@@ -276,6 +277,45 @@ class BuyerOrder extends Model
             // Something else happened, completely unrelated to Stripe
             return $e->getMessage();
         }
+    }
 
+    /**
+     * Get the buyer order status and status detail.
+     *
+     * @return array
+     */
+    public function getOrderStatus()
+    {
+        if ($this->cancelled)
+        {
+            $status = 'Order Cancelled';
+            $detail = 'Your order has been cancelled.';
+        }
+        elseif ($this->isDelivered())
+        {
+            $status = 'Order Delivered';
+            $detail = 'Your order has been delivered.';
+        }
+        else
+        {
+            $status = 'Order Processing';
+            $detail = 'Your order is being processed by the Stuvi.';
+        }
+
+        return ['status' => $status, 'detail' => $detail];
+    }
+
+    /**
+     * Email buyer the buyer order confirmation
+     */
+    public function emailOrderConfirmation()
+    {
+        // convert the buyer order and corresponding objects to an array
+        $buyer_order_arr = $this->allToArray();
+//        return $buyer_order_arr;
+        Mail::queue('emails.buyerOrderConfirmation', ['buyer_order' => $buyer_order_arr], function ($message) use ($buyer_order_arr)
+        {
+            $message->to($buyer_order_arr['buyer']['email'])->subject('Confirmation of your order #' . $this->id);
+        });
     }
 }

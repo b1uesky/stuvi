@@ -32,32 +32,17 @@
                         </div>
                         <div class="col-xs-12 col-sm-3 col-sm-offset-5 order-number">
                             <h5>Order Number # {{ $order->id}}</h5>
-                            <a href="/order/seller/{{$order->id}}">View Order Details <i class="fa fa-caret-right"></i></a>
+                            <a id="show-order-link" href="/order/seller/{{$order->id}}">View Order Details <i
+                                        class="fa fa-caret-right"></i></a>
                         </div>
                     </div>
 
                     <!-- order status -->
                     <div class="alert-container">
-                        @if ($order->isTransferred())
-                            <span id="cancelled"> <h3>Balance Transferred</h3>
-                        <small>The balance of this order is transferred to your Stripe account.</small>
+                        <span id="cancelled">
+                            <h3>{{ $order->getOrderStatus()['status'] }}</h3>
+                            <small>{{ $order->getOrderStatus()['detail'] }}</small>
                         </span>
-                        @elseif ($order->isDelivered())
-
-                        @elseif ($order->pickedUp())
-                            <span id="cancelled"> <h3>Picked Up</h3>
-                        <small>Your order is picked up at {{ date($datetime_format, strtotime($order->pickup_time)) }}.</small>
-                        </span>
-                        @elseif ($order->cancelled)
-                            <span id="cancelled"> <h3>Order Cancelled</h3>
-                        <small>Your order is cancelled.</small>
-                        </span>
-                        @else
-                            <span id="cancelled"> <h3>Order Processing</h3>
-                        <small>Your order is being processed by the Stuvi.</small>
-                        </span>
-                            <a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $order->id }}">Cancel Order</a>
-                        @endif
                     </div>
 
                     <div class="row book-row">

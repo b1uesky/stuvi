@@ -26,7 +26,7 @@
                 @endforeach
             </div>
         @endif
-        
+
         <div class="row textbook-row col-sm-5">
             <div>
                 @if($book->imageSet->large_image)
@@ -40,29 +40,28 @@
                 <div class="authors-container">
                     <span>by </span>
                     @foreach($book->authors as $author)
-                        <span id="authors"><a class="btn btn-default author-btn">{{ $author->full_name }}</a></span>
+                        <span id="authors"><button class="btn btn-default author-btn disabled">{{ $author->full_name }}</button></span>
                     @endforeach
                 </div>
                 <p>ISBN-10: {{ $book->isbn10 }}</p>
                 <p>ISBN-13: {{ $book->isbn13 }}</p>
-                <p>Edition: {{ $book->edition }}</p>
                 <p>Number of Pages: {{ $book->num_pages }}</p>
             </div>
         </div>
 
         {{-- If the user is not logged in, show login / signup buttons. --}}
         @if(!Auth::check())
-            <p>You need to login or sign up to continue using our sevice.</p>
             <div class="row col-sm-6 col-sm-offset-1">
-                <a href="{{ url('textbook/sell/product/login') }}" class="btn btn-default">Login</a>
-                <a href="{{ url('textbook/sell/product/register') }}" class="btn btn-default">Signup</a>
+                <p>Please login or sign up to continue using our service.</p>
+                <a data-toggle="modal" href="#login-modal">Login</a>
+                <a data-toggle="modal" href="#signup-modal">Sign up</a>
             </div>
         @else
             {{-- Show book conditions --}}
             <div class="row col-sm-6 col-sm-offset-1">
             <h2>Book Conditions</h2>
 
-            <form action="/textbook/sell/product/store" method="post" enctype="multipart/form-data">
+            <form action="{{ url('/textbook/sell/product/store') }}" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="book_id" value="{{ $book->id }}"/>
                 <input type="hidden" name="book_title" value="{{ $book->title }}">
@@ -82,7 +81,7 @@
                                             aria-label="close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <h3>General Conditions</h3>
+                                    <h3>{{ Config::get('product.conditions.general_condition.title') }}</h3>
                                 </div>
                                 <div class="modal-body">
                                     <h4>Brand New</h4>
@@ -136,7 +135,7 @@
                                             aria-label="close">
                                         <span id="close-span" aria-hidden="true">&times;</span>
                                     </button>
-                                    <h3>Highlights/Notes</h3>
+                                    <h3>{{ Config::get('product.conditions.highlights_and_notes.title') }}</h3>
                                 </div>
                                 <div class="modal-body">
                                     <p>{{ Config::get('product.conditions.highlights_and_notes.description') }}</p>
@@ -175,7 +174,7 @@
                                             aria-label="close">
                                         <span id="close-span" aria-hidden="true">&times;</span>
                                     </button>
-                                    <h3>Damaged Pages</h3>
+                                    <h3>{{ Config::get('product.conditions.damaged_pages.title') }}</h3>
                                 </div>
                                 <div class="modal-body">
                                     <p>{{ Config::get('product.conditions.damaged_pages.description') }}</p>
@@ -214,7 +213,7 @@
                                             aria-label="close">
                                         <span id="close-span" aria-hidden="true">&times;</span>
                                     </button>
-                                    <h3>Broken Binding</h3>
+                                    <h3>{{ Config::get('product.conditions.broken_binding.title') }}</h3>
                                 </div>
                                 <div class="modal-body">
                                     <p>{{ Config::get('product.conditions.broken_binding.description') }}</p>
@@ -260,25 +259,29 @@
                 <br>
 
                 {{-- your price --}}
-                <div class="form-group">
-                    <label>Price</label>
-                    <input type="number" step="0.01" name="price" class="form-control">
-                </div>
+                    <div class="form-group">
+                        <label for="price-form">Price</label>
+                        <div class="input-group" id="price-input">
+                            <div class="input-group-addon">$</div>
+                            <input type="number" step="0.01" name="price" class="form-control" id="price-form"
+                                   placeholder="Amount">
+                        </div>
+                    </div>
 
                 {{-- Upload Images --}}
                 <div class="form-group" name="cover_img">
-                    <label>Front cover image (smaller than 3MB)</label>
-                    <input type="file" name="front-cover-image" class="upload-file"/>
+                    <label for="image-upload">Front cover image (smaller than 3MB)</label>
+                    <input type="file" name="front-cover-image" class="upload-file" id="image-upload">
                     <div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>
                 </div>
 
                 {{-- Add more images --}}
                 <div class="form-group">
-                    <label name="add_other_img">Other image(s) (smaller than 3MB)</label><br>
-                    <a class="btn secondary-btn btn-add-input" name="add_img_btn">Add Another Image</a>
+                    <label name="add_other_img" for="add-image" >Other image(s) (smaller than 3MB)</label><br>
+                    <a class="btn secondary-btn btn-add-input" name="add_img_btn" id="add-image">Add Another Image</a>
                 </div>
 
-                <input type="submit" name="submit" class="btn primary-btn sell-btn" value="Post Book"/>
+                <input type="submit" name="submit" class="btn primary-btn sell-btn" value="Post Book">
             </form>
         </div>
         @endif
@@ -288,6 +291,14 @@
 @section('javascript')
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/validator/file-upload.js') }}"></script>
-    <script src="{{ asset('js/product/create.js') }}"></script>
+
+    @if(Auth::check())
+        <script src="{{ asset('js/validator/file-upload.js') }}"></script>
+        <script src="{{ asset('js/product/create.js') }}"></script>
+    @else
+        {{-- FormValidation --}}
+        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
+        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
+        <script src="{{asset('js/auth.js')}}"></script>
+    @endif
 @endsection

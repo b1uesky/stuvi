@@ -77,9 +77,9 @@ $(document).ready(function () {
         });
     });
 
-    $('#card-input').keyup(function () {
-        var num = $(this).val().split("-").join("");
-        num = num.match(new RegExp('.{1,4}', 'g')).join("-");
-        $(this).val(num);
-    });
+    // format card number
+    $('#card-input').mask("9999-9999-9999-9999");
+
+    // format phone number
+    $(".phone_number").mask("(999) 999-9999");
 });

@@ -34,7 +34,7 @@
                                     <img class="pro-img" src="{{ Config::get('aws.url.stuvi-product-img') . $image->medium_image }}" alt="Book Image" />
                                 </a>
                             @endif
-                            <br>
+                            <br><br>
                         @else
                             @if($image->isTestImage())
                                 <a class="lightbox-product-link" href="{{ $image->large_image }}"
@@ -57,7 +57,7 @@
                 @if($product->isInCart(Auth::user()->id))
                     <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Added To Cart</a>
                 @elseif($product->seller == Auth::user())
-                    <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Posted by youself</a>
+                    <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Posted by yourself</a>
                 @else
                     <a class="btn primary-btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
 

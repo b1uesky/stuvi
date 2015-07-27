@@ -32,12 +32,12 @@
             <form action="/textbook/buy/search" method="get">
                 <div class="form-group">
                     <div class="col-xs-8 col-xs-offset-2 search-row">
-                        <input type="text" name="query" id="autocompleteBuy" class="form-control"
+                        <input type="text" name="query" id="autocompleteBuy" class="form-control search-input"
                                placeholder="Enter the textbook ISBN, Title, or Author"/>
                     </div>
                 </div>
 
-                <button class="btn btn-default search-btn" type="submit" value="Search">
+                <button class="btn primary-btn search-btn" type="submit" name="search" >
                     <i class="fa fa-search search-icon"></i>
                 </button>
             </form>
@@ -113,17 +113,6 @@
             </div>
         </div>
         <!-- end container -->
-
-        <div class="row">
-            <!-- books.jpg licensing -->
-            <p style="text-align: right;">
-                <small>Books Photo by
-                    <a href="https://flic.kr/p/nfwhCe" target="_blank"> Brittany Stevens </a>
-                    under <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank"> CC-BY-2.0</a>
-                    Cropped and levels adjusted.
-                </small>
-            </p>
-        </div>
     </div>  <!-- end container fluid -->
 
 @endsection
@@ -133,5 +122,12 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="{{asset('/js/jquery-ui.min.js')}}"></script>
     <script src="{{asset('/js/autocompleteBuy.js')}}" type="text/javascript"></script>
+    {{--<script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>--}}
+
+    {{-- FormValidation --}}
+    <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
+    <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/auth.js')}}"></script>
+
     <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
 @endsection

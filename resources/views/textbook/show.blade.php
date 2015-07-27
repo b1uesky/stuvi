@@ -14,9 +14,9 @@
     <div class="container">
         <div class="row textbook-row">
             <div class="col-sm-6">
-                @if($book->imageSet->large_image)
-                    <img id="textbook-img" src="{{ $book->imageSet->large_image or config('book.default_image_path.large') }}" alt="Book Image"/>
-                @endif
+                <img id="textbook-img"
+                     src="{{ $book->imageSet->large_image or config('book.default_image_path.large') }}"
+                     alt="Book Image"/>
             </div>
 
             <div class="col-sm-6 textbook-info">
@@ -25,12 +25,11 @@
                 <div class="authors-container">
                     <span>by </span>
                     @foreach($book->authors as $author)
-                        <span id="authors"><button class="btn btn-default author-btn">{{ $author->full_name }}</button></span>
+                        <span id="authors"><button class="btn btn-default author-btn disabled">{{ $author->full_name }}</button></span>
                     @endforeach
                 </div>
                 <p>ISBN10: {{ $book->isbn10 }}</p>
                 <p>ISBN13: {{ $book->isbn13 }}</p>
-                <p>Edition: {{ $book->edition }}</p>
                 <p>Number of Pages: {{ $book->num_pages }}</p>
             </div>
         </div>
@@ -62,11 +61,14 @@
                             </td>
                             <td class="cart-btn-col">
                                 @if($product->isInCart(Auth::user()->id))
-                                    <a class="btn secondary-btn add-cart-btn disabled" href="#" role="button">Added to cart</a>
+                                    <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Added to
+                                        cart</a>
                                 @elseif($product->seller == Auth::user())
-                                    <a class="btn secondary-btn add-cart-btn disabled" href="#" role="button">Posted by you</a>
+                                    <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Posted by
+                                        you</a>
                                 @else
-                                    <a class="btn secondary-btn add-cart-btn" href="{{ url('cart/add/'.$product->id) }}" role="button">Add to cart</a>
+                                    <a class="btn primary-btn add-cart-btn" href="{{ url('cart/add/'.$product->id) }}"
+                                       role="button">Add to cart</a>
                                 @endif
                             </td>
                         </tr>

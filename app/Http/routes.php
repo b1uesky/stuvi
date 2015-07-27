@@ -9,9 +9,9 @@
 | Route::get('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
 |
  */
-Route::pattern('id', '[0-9]+');
-Route::pattern('book', '[0-9]+');
-Route::pattern('product', '[0-9]+');
+Route::pattern('id',        '[0-9]+');
+Route::pattern('book',      '[0-9]+');
+Route::pattern('product',   '[0-9]+');
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +24,11 @@ Route::pattern('product', '[0-9]+');
 |
 */
 
-Route::get  ('/', 'HomeController@index');
-Route::get  ('/home', 'HomeController@index');
-Route::get  ('/about', 'HomeController@about');
-Route::get  ('/contact', 'HomeController@contact');
-Route::get  ('/coming', 'HomeController@coming');
+Route::get  ('/',           'HomeController@index');
+Route::get  ('/home',       'HomeController@index');
+Route::get  ('/about',      'HomeController@about');
+Route::get  ('/contact',    'HomeController@contact');
+Route::get  ('/coming',     'HomeController@coming');
 
 /*
 |--------------------------------------------------------------------------
@@ -63,7 +63,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
     Route::post ('/update','AddressController@update');
     Route::post ('/delete','AddressController@ajaxDelete');
     Route::post ('/select','AddressController@ajaxSelect');
-    Route::post ('/updateDefaultAddress', 'AddressController@updateDefaultAddress');
 });
 
 
@@ -76,19 +75,19 @@ Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
 // auth not required
 Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
 {
-    Route::get  ('/', 'TextbookController@index');
+    Route::get  ('/',   'TextbookController@showBuyPage');
 
     // buy
     Route::get  ('/buy', 'TextbookController@showBuyPage');
 
     // sell
     Route::group(['prefix'=>'sell'], function() {
-        Route::get  ('/', 'TextbookController@sell');
-        Route::post ('/search', 'TextbookController@sellSearch');
-        Route::get  ('/create', 'TextbookController@create');
-        Route::get  ('/product/{book}/create', 'ProductController@create');
-        Route::get  ('/product/login', 'ProductController@login');
-        Route::get  ('/product/register', 'ProductController@register');
+        Route::get  ('/',                       'TextbookController@sell');
+        Route::post ('/search',                 'TextbookController@sellSearch');
+        Route::get  ('/create',                 'TextbookController@create');
+        Route::get  ('/product/{book}/create',  'ProductController@create');
+        Route::get  ('/product/login',          'ProductController@login');
+        Route::get  ('/product/register',       'ProductController@register');
     });
 });
 
@@ -100,14 +99,13 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
     Route::group(['prefix'=>'buy'], function() {
         Route::get('/{book}', 'TextbookController@show');
         Route::get('/search', 'TextbookController@buySearch');
-        Route::get('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
         Route::get('/product/{product}', 'ProductController@show');
     });
 
     // sell
     Route::group(['prefix'=>'sell'], function() {
-        Route::post ('/store', 'TextbookController@store');
-        Route::post ('/product/store', 'ProductController@store');
+        Route::post ('/store',          'TextbookController@store');
+        Route::post ('/product/store',  'ProductController@store');
     });
 
 });
@@ -115,24 +113,22 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 // order
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'], function()
 {
-    Route::get('/test', 'BuyerOrderController@test');
+    Route::get  ('/buyer',              'BuyerOrderController@index');
+    Route::get  ('/confirmation',       'BuyerOrderController@confirmation');
+    Route::get  ('/create',             'BuyerOrderController@create');
+    Route::post ('/store',              'BuyerOrderController@store');
+    Route::get  ('/buyer/{id}',         'BuyerOrderController@show');
+    Route::get  ('/buyer/cancel/{id}',  'BuyerOrderController@cancel');
 
-    Route::get  ('/buyer', 'BuyerOrderController@index');
-    Route::get  ('/confirmation', 'BuyerOrderController@confirmation');
-    Route::get  ('/create', 'BuyerOrderController@create');
-    Route::post ('/store', 'BuyerOrderController@store');
-    Route::get  ('/buyer/{id}', 'BuyerOrderController@show');
-    Route::get  ('/buyer/cancel/{id}', 'BuyerOrderController@cancel');
-
-    Route::get  ('/seller', 'SellerOrderController@index');
-    Route::get  ('/seller/{id}', 'SellerOrderController@show');
-    Route::get  ('/seller/cancel/{id}', 'SellerOrderController@cancel');
-    Route::post ('/seller/schedulePickupTime', 'SellerOrderController@schedulePickupTime');
-    Route::get  ('/seller/{id}/addAddress', 'SellerOrderController@addAddress');
-    Route::get  ('/seller/assignAddress', 'SellerOrderController@assignAddress');
-    Route::post ('/seller/storeAddress', 'SellerOrderController@storeAddress');
-    Route::get  ('/seller/{id}/confirmPickup', 'SellerOrderController@confirmPickup');
-    Route::post ('/seller/transfer', 'SellerOrderController@transfer');
+    Route::get  ('/seller',                     'SellerOrderController@index');
+    Route::get  ('/seller/{id}',                'SellerOrderController@show');
+    Route::get  ('/seller/cancel/{id}',         'SellerOrderController@cancel');
+    Route::post ('/seller/schedulePickupTime',  'SellerOrderController@schedulePickupTime');
+    Route::get  ('/seller/{id}/addAddress',     'SellerOrderController@addAddress');
+    Route::get  ('/seller/assignAddress',       'SellerOrderController@assignAddress');
+    Route::post ('/seller/storeAddress',        'SellerOrderController@storeAddress');
+    Route::get  ('/seller/{id}/confirmPickup',  'SellerOrderController@confirmPickup');
+    Route::post ('/seller/transfer',            'SellerOrderController@transfer');
 });
 
 // Stripe authorization
@@ -144,12 +140,44 @@ Route::group(['middleware'=>'auth', 'prefix'=>'stripe'], function()
 // cart
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], function()
 {
-    Route::get('/', 'CartController@index');
-    Route::get('add/{id}', 'CartController@addItem');
-    Route::get('rmv/{id}', 'CartController@removeItem');
-    Route::get('empty', 'CartController@emptyCart');
-    Route::get('update', 'CartController@updateCart');
+    Route::get('/',         'CartController@index');
+    Route::get('/add/{id}', 'CartController@addItem');
+    Route::get('/rmv/{id}', 'CartController@removeItem');
+    Route::get('/empty',    'CartController@emptyCart');
+    Route::get('/update',   'CartController@updateCart');
 });
+
+/*
+|--------------------------------------------------------------------------
+| User Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['namespace'=>'User', 'middleware'=>'auth', 'prefix'=>'user'], function()
+{
+    Route::get ('/profile',         'UserController@profile');
+    Route::get ('/profile-edit',    'UserController@profileEdit');
+    Route::get ('/account',         'UserController@account');
+    Route::post('/account/edit',    'UserController@edit');
+    Route::get ('/bookshelf',       'UserController@bookshelf');
+    Route::get ('/activate',        'UserController@waitForActivation');
+    Route::get ('/activate/resend', 'UserController@resendActivationEmail');
+    Route::get ('/activate/{code}', 'UserController@activateAccount');
+    Route::post('/updateDefaultAddress', 'UserController@updateDefaultAddress');
+
+    Route::group(['prefix'=>'email'], function()
+    {
+        Route::get ('/',        'EmailController@index');
+        Route::post('/add',     'EmailController@store');
+        Route::post('/remove',  'EmailController@destroy');
+        Route::post('/primary', 'EmailController@setPrimary');
+    });
+
+});
+
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -214,6 +242,17 @@ Route::group(['namespace'=>'Express', 'middleware'=>['auth', 'role:ac'], 'prefix
     Route::get('/deliver/{id}/readyToShip', 'DeliverController@readyToShip');
     Route::get('/deliver/{id}/confirmDelivery', 'DeliverController@confirmDelivery');
 });
+
+/*
+|--------------------------------------------------------------------------
+| FAQ Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/faq', 'FAQController@general');
+Route::get('/faq/general', 'FAQController@general');
+Route::get('/faq/orders', 'FAQController@orders');
+Route::get('/faq/account', 'FAQController@account');
 
 /*
 |--------------------------------------------------------------------------

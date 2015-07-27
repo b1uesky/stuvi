@@ -34,8 +34,7 @@ class SellerOrderController extends Controller
         $order = $this->hasColumn('seller_orders', $order) ? $order : 'id';
 
         return view('order.seller.index')
-            ->with('orders', Auth::user()->sellerOrders()->orderBy($order, 'DESC')->get())
-            ->with('datetime_format', config('app.datetime_format'));
+            ->with('orders', Auth::user()->sellerOrders()->orderBy($order, 'DESC')->get());
     }
 
     /**
