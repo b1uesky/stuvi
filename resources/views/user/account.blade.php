@@ -11,83 +11,90 @@
 @section('content')
     <!-- User template has the second nav bar and the profile side bar -->
     @include('user-template')
-                <!-- right side bar-->
-                <div class="col-md-9">
-                    <div class="profile-content">
-                        <!-- Account Settings -->
-                        <h1>Account Settings</h1>
-                        <!-- change account info -->
-                        <div class="container col-md-11 account-edit">
-                            <h3>Edit your information</h3>
-                            <hr id="line">
-                            <form class="form-horizontal" role="form" method="POST" action="/user/account/edit">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <!-- right side bar-->
+    <div class="col-md-9">
+        <div class="profile-content">
+            <!-- Account Settings -->
+            <h1>Account Settings</h1>
+            <!-- change account info -->
+            <div class="container col-md-11 account-edit">
+                <h3>Edit your information</h3>
+                <hr id="line">
+                <form class="form-horizontal" role="form" method="POST" action="/user/account/edit">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 
-                                <!-- First name -->
-                                <div class="form-group">
-                                    <label class="control-label col-sm-3" for="first-name">First name:</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="first_name" id="fname"
-                                               placeholder="First name" value = "{{ Auth::user()->first_name }}">
-                                    </div>
-                                </div>
+                    <!-- First name -->
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="first-name">First name:</label>
 
-                                <!-- Last name -->
-                                <div class="form-group">
-                                    <label class="control-label col-sm-3" for="first-name">Last name:</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="last_name" id="lname"
-                                               placeholder="Last name" value = "{{ Auth::user()->last_name }}">
-                                    </div>
-                                </div>
-
-                                <!-- Email -->
-                                <div class="form-group">
-                                    <label class="control-label col-sm-3" for="email">Email:</label>
-                                    <div class="col-sm-6">
-                                        <input type="email" class="form-control" id="email"
-                                               placeholder="Enter email" value="{{ Auth::user()->email }}">
-                                    </div>
-                                </div>
-                                <!-- Phone -->
-                                <div class="form-group">
-                                    <label class="control-label col-sm-3" for="tel">Phone Number:</label>
-                                    <div class="col-sm-6">
-                                        <input type="tel" class="form-control" name="phone" id="phone"
-                                               placeholder="Enter phone number" value="{{ Auth::user()->phone_number }}">
-                                    </div>
-                                </div>
-                                <!-- Change password...current password -->
-                                <div class="form-group">
-                                    <label class="control-label col-sm-3" for="pwd">Current Password:</label>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control" name="old_password" id="pwd" placeholder="Enter current password">
-                                    </div>
-                                </div>
-                                <!-- New password -->
-                                <div class="form-group">
-                                    <label class="control-label col-sm-3" for="new-pwd">New Password:</label>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control" name="new_password" id="new-pwd" placeholder="Enter new password">
-                                    </div>
-                                </div>
-                                <!-- Save changes button -->
-                                <div class="form-group">
-                                    <div class=" col-sm-offset-3 col-sm-6">
-                                        <button id="save-info-btn" type="submit" class="btn primary-btn">Save Changes
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="first_name" id="fname"
+                                   placeholder="First name" value="{{ Auth::user()->first_name }}">
                         </div>
                     </div>
-                </div>
+
+                    <!-- Last name -->
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="first-name">Last name:</label>
+
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="last_name" id="lname"
+                                   placeholder="Last name" value="{{ Auth::user()->last_name }}">
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="email">Email:</label>
+
+                        <div class="col-sm-6">
+                            <input type="email" class="form-control" id="email"
+                                   placeholder="Enter email" value="{{ Auth::user()->email }}">
+                        </div>
+                    </div>
+                    <!-- Phone -->
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="tel">Phone Number:</label>
+
+                        <div class="col-sm-6">
+                            <input type="tel" class="form-control" name="phone" id="phone"
+                                   placeholder="Enter phone number" value="{{ Auth::user()->phone_number }}">
+                        </div>
+                    </div>
+                    <!-- Change password...current password -->
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="pwd">Current Password:</label>
+
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" name="old_password" id="pwd"
+                                   placeholder="Enter current password">
+                        </div>
+                    </div>
+                    <!-- New password -->
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="new-pwd">New Password:</label>
+
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" name="new_password" id="new-pwd"
+                                   placeholder="Enter new password">
+                        </div>
+                    </div>
+                    <!-- Save changes button -->
+                    <div class="form-group">
+                        <div class=" col-sm-offset-3 col-sm-6">
+                            <button id="save-info-btn" type="submit" class="btn primary-btn">Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-
-
+    {{--need these closing tags--}}
+    </div>
+    </div>
+    </div>
 @endsection
 
         <!-- inserted at the end of app -->

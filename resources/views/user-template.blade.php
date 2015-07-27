@@ -32,7 +32,7 @@
                                     </li>
                                     <li class="side-item">
                                         <a class="side-item-link" id="side-bookshelf-link"
-                                           href="{{asset('/user/account')}}">
+                                           href="{{asset('/user/bookshelf')}}">
                                             <i class="fa fa-book"></i>My Bookshelf
                                         </a>
                                     </li>
@@ -46,11 +46,6 @@
                                         <a class="side-item-link" id="side-email-link"
                                            href="{{asset('/user/account')}}">
                                             <i class="fa fa-envelope"></i>Email Notifications
-                                        </a>
-                                    </li>
-                                    <li class="side-item">
-                                        <a class="side-item-link" id="side-help-link" href="#">
-                                            <i class="fa fa-flag"></i> Help
                                         </a>
                                     </li>
                                     {{--<li class="side-messages">--}}
