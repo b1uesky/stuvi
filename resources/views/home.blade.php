@@ -94,10 +94,14 @@
                 </div>
             @endif
         </div>
+        {{-- Images currently 2000px x 1333px image quality 7/12 on PS --}}
         <div id="slide-container">
             <div class="" id="slides">
-                <img src="{{asset('img/nick/nlouie1.jpg')}}" alt="">
-                <img src="{{asset('img/nick/nlouie2.jpg')}}" alt="">
+                <img src="{{asset('img/nick/nlouie1.jpg')}}" alt="Charles River by Nick Louie - flickr.com/photos/nickkeee">
+                <img src="{{asset('img/nick/nlouie2.jpg')}}" alt="EPC by Nick Louie - flickr.com/photos/nickkeee">
+                <img src="{{asset('img/nick/nlouie3.jpg')}}" alt="Mass Art by Nick Louie - flickr.com/photos/nickkeee">
+                <img src="{{asset('img/nick/nlouie4.jpg')}}" alt="Harvard by Nick Louie - flickr.com/photos/nickkeee">
+                <img src="{{asset('img/nick/nlouie5.jpg')}}" alt="MIT by Nick Louie - flickr.com/photos/nickkeee">
             </div>
         </div>
 
@@ -139,7 +143,6 @@
                     </p>
                 </div>
                 <div class="container col-xs-offset-1 col-sm-7 col-sm-offset-3 col-md-offset-0 col-md-4" id="img-info-1">
-                    {{--<img src="http://placehold.it/350x350">--}}
                     <img class="img-responsive" src="{{asset('/img/scaled/art-boston.jpg')}}" width="350px">
                 </div>
             </div>

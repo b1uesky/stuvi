@@ -24,7 +24,7 @@
                     </div>
                 </form>
                 <p class="col-md-1 or" style="">or</p>
-                <a href="" onclick="goBack()" class="btn btn-news col-sm-7 col-md-5 col-md-offset-1"><i class="fa fa-arrow-left"></i> back dat ass up</a>
+                <a href="" onclick="goBack()" class="btn btn-news col-sm-7 col-md-5 col-md-offset-1"><i class="fa fa-arrow-left"></i> Go Back</a>
             </div>
         </div>
     </div>
