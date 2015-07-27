@@ -1,6 +1,9 @@
 $(document).ready(function() {
+    var url = location.protocol + '//' + document.domain + '/textbook/searchAutoComplete';
+    console.log(url);
+
     $('#autocompleteBuy').autocomplete({
-        source: "searchAutoComplete",
+        source: url,
         minLength: 3,
         focus: function(event, ui) {
             // prevent updating input
