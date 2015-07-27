@@ -8,7 +8,7 @@
                 <button id="nav-toggle-collapse" type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle Navigation</span>
-                    <i class="fa fa-bars fa-lg"></i>
+                    <i class="fa fa-bars"></i>
                 </button>
                 <div class="logo-container">
                     <a href="{{url('/home')}}"> <img src="{{asset('/img/logo-new-md.png')}}" class="img-responsive"> </a>
