@@ -15,20 +15,20 @@
                 <div class="profile-content">
                     <!-- right box -->
                     <div class="container col-xs-12 col-md-12" id = "email-details">
-                        @if (Session::has('email_remove_error'))
-                            <div class="alert alert-danger" id="message">{{ Session::get('email_remove_error') }}</div>
-                        @endif
-                        @if (Session::has('email_remove_success'))
-                            <div class="alert alert-success" id="message">{{ Session::get('email_remove_success') }}</div>
-                        @endif
-                        @if (Session::has('email_set_primary_error'))
-                            <div class="alert alert-danger" id="message">{{ Session::get('email_set_primary_error') }}</div>
-                        @endif
                         @if (Session::has('email_set_primary_success'))
                             <div class="alert alert-success" id="message">{{ Session::get('email_set_primary_success') }}</div>
-                        @endif
-                        @if (Session::has('email_add_success'))
+                        @elseif (Session::has('email_remove_success'))
+                            <div class="alert alert-success" id="message">{{ Session::get('email_remove_success') }}</div>
+                        @elseif (Session::has('email_add_success'))
                             <div class="alert alert-success" id="message">{{ Session::get('email_add_success') }}</div>
+                        @elseif (Session::has('email_verify_success'))
+                            <div class="alert alert-success" id="message">{{ Session::get('email_verify_success') }}</div>
+                        @elseif (Session::has('email_remove_error'))
+                            <div class="alert alert-danger" id="message">{{ Session::get('email_remove_error') }}</div>
+                        @elseif (Session::has('email_set_primary_error'))
+                            <div class="alert alert-danger" id="message">{{ Session::get('email_set_primary_error') }}</div>
+                        @elseif (Session::has('email_verify_error'))
+                            <div class="alert alert-danger" id="message">{{ Session::get('email_verify_error') }}</div>
                         @endif
                         <h3>Email</h3>
                         {{-- Email List --}}

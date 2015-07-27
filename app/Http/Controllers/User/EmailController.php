@@ -51,12 +51,12 @@ class EmailController extends Controller
             'email_address' => Input::get('email'),
         ]);
 
-        // verfy the new email.
+        // verify the new email.
         $email->assignVerificationCode();
-//        $email->send
+        $email->sendVerificationEmail();
 
         return redirect('user/email')
-            ->with('email_add_success', $email->email_address.' has been added to your account.');
+            ->with('email_add_success', $email->email_address.' has been added to your account. Please check your email and confirm the new email address.');
     }
 
     /**
@@ -145,18 +145,28 @@ class EmailController extends Controller
             ->with('email_set_primary_success', $email->email_address.' is now your primary email.');
     }
 
-//    public function sendActivationEmail()
-//    {
-//        // send an email to the user with activation message
-//        $user_arr               = $this->toArray();
-//        $user_arr['university'] = $this->university->toArray();
-//        $user_arr['email']      = $this->collegeEmail()->email_address;
-//        $user_arr['return_to']  = urlencode(Session::get('url.intended', '/home'));    // return_to attribute.
-//        $user_arr['activation_code']    = $this->collegeEmail()->activation_code;
-//
-//        Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($user_arr)
-//        {
-//            $message->to($user_arr['email'])->subject('Welcome to Stuvi!');
-//        });
-//    }
+    public function verify($id, $code)
+    {
+        $email = Email::find($id);
+
+        if (!($email && $email->isBelongTo(Auth::id())))
+        {
+            $msg_title   = 'email_verify_error';
+            $msg_content = 'Sorry, the requested email is not found.';
+        }
+        elseif ($email->verify($code))
+        {
+            $msg_title   = 'email_verify_success';
+            $msg_content = $email->email_address.' has been verified successfully.';
+        }
+        else
+        {
+            $msg_title   = 'email_verify_error';
+            $msg_content = 'Sorry, we cannot verify your email '.$email->email_address;
+        }
+
+        return redirect('/user/email')
+            ->with($msg_title, $msg_content);
+    }
+
 }

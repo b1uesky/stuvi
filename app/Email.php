@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Mail;
 
 class Email extends Model
 {
@@ -116,5 +117,20 @@ class Email extends Model
         }
 
         return false;
+    }
+
+    /**
+     * Send verification email.
+     */
+    public function sendVerificationEmail()
+    {
+        // send an email to the user with activation message
+        $email_arr              = $this->toArray();
+        $email_arr['user']      = $this->user->toArray();
+
+        Mail::queue('emails.verify', ['email' => $email_arr], function($message) use ($email_arr)
+        {
+            $message->to($email_arr['email_address'])->subject('Please verify your email address.');
+        });
     }
 }
