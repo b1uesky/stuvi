@@ -131,6 +131,7 @@ Route::group(['namespace'=>'User', 'middleware'=>'auth', 'prefix'=>'user'], func
 {
     Route::get ('/profile',         'UserController@profile');
     Route::get ('/profile-edit',    'UserController@profileEdit');
+    Route::post('/store-profile',   'UserController@profileStore');
     Route::get ('/account',         'UserController@account');
     Route::post('/account/edit',    'UserController@edit');
     Route::get ('/bookshelf',       'UserController@bookshelf');

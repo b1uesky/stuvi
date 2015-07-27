@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\Controller;
 use App\Profile;
+use App\University;
 use Auth;
 use Input;
-use Mail;
 use Session;
+use Mail;
 
 class UserController extends Controller
 {
@@ -23,9 +24,49 @@ class UserController extends Controller
     public function profileEdit()
     {
         $user_id = Auth::id();
-        $user_profile = Profile::find($user_id);
+        $user_profile = Profile::where('user_id',$user_id)->first();
+        $user_school = Auth::user()->university;
+        return view('user.profile-edit')
+            ->with('profile',$user_profile)
+            ->with('school',$user_school);
+    }
 
-        return view('user.profile-edit');
+    public function profileStore()
+    {
+        $user_id = Auth::id();
+        $user_profile = Profile::where('user_id',$user_id);
+        if ($user_profile->count() > 0){
+                $user_profile->update([
+                    'user_id'         => $user_id,
+                    'sex'             => Input::get('sex'),
+                    'birthday'        => Input::get('birth'),
+                    'title'           => Input::get('title'),
+                    'bio'             => Input::get('bio'),
+                    'graduation_date' => Input::get('grad'),
+                    'major'           => Input::get('major'),
+                    'facebook'        => Input::get('facebook'),
+                    'twitter'         => Input::get('twitter'),
+                    'linkedin'        => Input::get('linkedin'),
+                    'website'         => Input::get('site')
+                ]);
+
+                return redirect('user/profile-edit');
+        }else{
+            Profile::create([
+                'user_id'         => $user_id,
+                'sex'             => Input::get('sex'),
+                'birthday'        => Input::get('birth'),
+                'title'           => Input::get('title'),
+                'bio'             => Input::get('bio'),
+                'graduation_date' => Input::get('grad'),
+                'major'           => Input::get('major'),
+                'facebook'        => Input::get('facebook'),
+                'twitter'         => Input::get('twitter'),
+                'linkedin'        => Input::get('linkedin'),
+                'website'         => Input::get('site')
+            ]);
+            return redirect('user/profile-edit');
+        }
     }
 
     public function account()
@@ -123,4 +164,5 @@ class UserController extends Controller
         return redirect('user/activate')
             ->with('message', 'Activation email is sent. Please check your email.');
     }
+
 }

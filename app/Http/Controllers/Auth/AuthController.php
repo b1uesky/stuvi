@@ -2,6 +2,7 @@
 
 use App\Email;
 use App\Http\Controllers\Controller;
+use App\Profile;
 use App\University;
 use App\User;
 use Auth;
@@ -60,9 +61,11 @@ class AuthController extends Controller {
             'email_address' => $data['email'],
         ]);
         $email->assignActivationCode();
-
         $user->update([
             'primary_email_id'  => $email->id,
+        ]);
+        $profile = Profile::create([
+            'user_id'       => $user->id
         ]);
 
         $user->sendActivationEmail();

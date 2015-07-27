@@ -7,10 +7,10 @@
 @section('css')
     <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}" rel="stylesheet">
-@endsection
+    @endsection
 
-@section('content')
-    <!-- new top half -->
+    @section('content')
+            <!-- new top half -->
     <div class="container-fluid" id="container-home-top">
         <div class="" id="navbar-container" >
             <nav class="navbar navbar-default" id="nav" role="navigation">
@@ -126,7 +126,7 @@
 
 
 
-  <!-- new bottom half -->
+    <!-- new bottom half -->
     <div class="container-fluid" id="bottom-half">
         <div class="container-fluid stuvi-container">
             <!-- row 1-->

@@ -16,12 +16,24 @@
                 <div class="row profile">
                     <div class="col-md-3">
                         <div class="profile-sidebar">
+                            {{--                    <div class="profile-userbuttons">
+                                                    <button type="button" class="btn btn-success btn-sm">Follow</button>
+                                                    <button type="button" class="btn btn-danger btn-sm">Message</button>
 
+                                                </div>--}}
+                            <!-- END SIDEBAR BUTTONS -->
+                            <!-- SIDEBAR MENU -->
                             <div class="profile-usermenu">
                                 <ul class="nav">
                                     <li class="side-item">
                                         <a class="side-item-link active" id="side-profile-link"
                                            href="{{asset('/user/profile')}}">
+                                            <i class="fa fa-server"></i>Overview
+                                        </a>
+                                    </li>
+                                    <li class="side-item">
+                                        <a class="side-item-link active" id="side-profile-link"
+                                           href="{{asset('/user/profile-edit')}}">
                                             <i class="fa fa-user"></i>Profile
                                         </a>
                                     </li>
