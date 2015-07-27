@@ -38,7 +38,7 @@
                         <li role="presentation" class="{{ $signupActive }}" id="signup-tab"><a href="#signup-body"
                                                                                                aria-controls="signup-body"
                                                                                                role="tab"
-                                                                                               data-toggle="tab">SignUp</a>
+                                                                                               data-toggle="tab">Sign Up</a>
                         </li>
                     </ul>
                     <!-- end tabs -->
