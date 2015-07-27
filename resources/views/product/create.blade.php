@@ -51,10 +51,10 @@
 
         {{-- If the user is not logged in, show login / signup buttons. --}}
         @if(!Auth::check())
-            <p>You need to login or sign up to continue using our sevice.</p>
             <div class="row col-sm-6 col-sm-offset-1">
+                <p>Please login or sign up to continue using our service.</p>
                 <a href="{{ url('textbook/sell/product/login') }}" class="btn btn-default">Login</a>
-                <a href="{{ url('textbook/sell/product/register') }}" class="btn btn-default">Signup</a>
+                <a href="{{ url('textbook/sell/product/register') }}" class="btn btn-default">Sign up</a>
             </div>
         @else
             {{-- Show book conditions --}}
@@ -81,7 +81,7 @@
                                             aria-label="close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <h3>General Conditions</h3>
+                                    <h3>{{ Config::get('product.conditions.general_condition.title') }}</h3>
                                 </div>
                                 <div class="modal-body">
                                     <h4>Brand New</h4>
@@ -135,7 +135,7 @@
                                             aria-label="close">
                                         <span id="close-span" aria-hidden="true">&times;</span>
                                     </button>
-                                    <h3>Highlights/Notes</h3>
+                                    <h3>{{ Config::get('product.conditions.highlights_and_notes.title') }}</h3>
                                 </div>
                                 <div class="modal-body">
                                     <p>{{ Config::get('product.conditions.highlights_and_notes.description') }}</p>
@@ -174,7 +174,7 @@
                                             aria-label="close">
                                         <span id="close-span" aria-hidden="true">&times;</span>
                                     </button>
-                                    <h3>Damaged Pages</h3>
+                                    <h3>{{ Config::get('product.conditions.damaged_pages.title') }}</h3>
                                 </div>
                                 <div class="modal-body">
                                     <p>{{ Config::get('product.conditions.damaged_pages.description') }}</p>
@@ -213,7 +213,7 @@
                                             aria-label="close">
                                         <span id="close-span" aria-hidden="true">&times;</span>
                                     </button>
-                                    <h3>Broken Binding</h3>
+                                    <h3>{{ Config::get('product.conditions.broken_binding.title') }}</h3>
                                 </div>
                                 <div class="modal-body">
                                     <p>{{ Config::get('product.conditions.broken_binding.description') }}</p>
