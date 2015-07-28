@@ -52,53 +52,7 @@
                                 </div>  <!-- end user stats -->
                             </div>
                             <!-- books selling -->
-                            <div class="container col-xs-12 col-md-12" id = "books-for-sale">
-                                <a href="{{url('user/bookshelf')}}"><h2 id = "for-sale"><i class="fa fa-book"></i>
-                                    Books for Sale</h2></a>
-                                <table class="table table-responsive for-sale-table">
-                                    @forelse ($productsForSale as $key => $product)
-                                        @if ($key < 2)
-                                            <tr class="for-sale-item">
-                                                {{--<td class="for-sale-img">--}}
-                                                    {{--<img class="img-responsive" src="--}}
-                                                        {{--@if($image->isTestImage())--}}
-                                                            {{--{{ $image->large_image }}--}}
-                                                        {{--@else--}}
-                                                            {{--{{ Config::get('aws.url.stuvi-product-img') . $image->large_image }}--}}
-                                                        {{--@endif--}}
-                                                            {{--"--}}
-                                                         {{--width="100px"--}}
-                                                         {{--height="150px"></td>--}}
-                                                <td class="for-sale-info-1">
-                                                <span class="for-sale-title">
-                                                    <a href="{{ url('textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a>
-                                                </span><br>
-                                                    <span>by </span>
-                                                    @foreach($product->book->authors as $author)
-                                                        <span class="for-sale-author"><a
-                                                                    href="#">{{ $author->full_name }}</a></span>
-                                                    @endforeach
 
-                                                    <span class="for-sale-binding">{{ $product->book->binding }}</span><br>
-                                                    <span class="for-sale-price">{{ $product->price }}</span> <br>
-                                                </td>
-                                                <td class="for-sale-info-2">
-                                                    <span class="for-sale-isbn">ISBN-10: {{ $product->book->isbn10 }}</span><br>
-                                                    <span class="for-sale-isbn">ISBN-13: {{ $product->book->isbn13 }}</span>
-                                                </td>
-
-                                                <td class="for-sale-info-3">
-                                                    <!-- each class the book support -->
-                                                    {{--<h5>Classes</h5>--}}
-                                                    {{--<span class="for-sale-class"><a href="#">BU:SMG SM131</a></span>--}}
-                                                </td>
-                                            </tr>
-                                        @endif
-                                    @empty
-                                        You don't have any books for sale.
-                                    @endforelse
-                                </table>
-                            </div>
                         </div>
             <!-- needed to end user bar -->
                      </div>

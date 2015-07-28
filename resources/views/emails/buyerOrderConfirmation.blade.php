@@ -122,13 +122,7 @@
 
                                                             <!-- items -->
                                                             <tr>
-                                                                {{-- PLEASE TEST THIS --}}
-                                                                <td valign="top" style="color: #000000;">
-                                                                    <a href="{{ url('/order/buyer/'.$buyer_order['id']) }}">
-                                                                        <img src="{{$buyer_order['product']['book']['image_set']['small_image']}}" alt="sold book image">
-                                                                    </a>
-                                                                    <br>
-                                                                </td>
+
                                                                 <td style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;" width="100%">
                                                                 <b style="color: #737373;">Items</b><br>
                                                                 @foreach ($buyer_order['products'] as $product)
