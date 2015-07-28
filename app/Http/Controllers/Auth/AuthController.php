@@ -121,8 +121,6 @@ class AuthController extends Controller {
         });
 
         if ($v->fails()) {
-            $except_fields = ['password'];
-
             return Response::json([
                 'success'   => false,
                 'fields'    => $v->errors()

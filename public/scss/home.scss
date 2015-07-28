@@ -13,7 +13,7 @@ body{
   padding: 0;
   position: relative;
   @media(max-width: 767px){
-    background: url('../img/cover-2-1.png') no-repeat;
+    background: url('../img/cover-2-1.jpg') no-repeat;
     background-size: cover;
   }
 }
@@ -39,6 +39,9 @@ body{
   img {
     width: 100%;
     height: auto;
+  }
+  @media (max-width: 767px) {
+    display: none;
   }
 }
 
@@ -69,6 +72,22 @@ body{
     }
   }
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* NAVIGATION HAMBURGER MENU */
+
+#nav-toggle-collapse {
+  float: left;
+  border: none;
+  z-index: 50;
+  margin-left: 10px;
+  &:hover, &:focus {
+    background: none;
+  }
+  .fa-bars {
+    color: $primary-color;
+    font-size: 1.5em;
+  }
 }
 
 
@@ -143,7 +162,7 @@ body{
 .ghost-btn {
   width: 150px;
   height: 50px;
-  border-radius: 0;
+  border-radius: 3px;
   font-weight: bold;
   font-size: 1.3em;
   color: white;
@@ -151,7 +170,7 @@ body{
   background: none;
   margin: 0 20px 0;
   padding-top: 9px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
   &:hover{
     background-color: rgba(0, 164, 150, 0.6);
     color: white;

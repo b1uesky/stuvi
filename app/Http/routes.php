@@ -150,6 +150,8 @@ Route::group(['namespace'=>'User', 'middleware'=>'auth', 'prefix'=>'user'], func
 
 });
 
+//Route::get ('user/activate',        'UserController@waitForActivation');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

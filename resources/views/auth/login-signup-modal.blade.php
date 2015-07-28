@@ -69,17 +69,18 @@
                             <!-- email -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-email">Email</label>
-                                <input type="email" name="email" class="form-control" id="register-email" placeholder="College email address">
+                                <input type="email" name="email" class="form-control" id="register-email" placeholder=".edu email address">
                             </div>
                             <!-- password -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-password">Password</label>
-                                <input type="password" name="password" class="form-control" id="register-password" placeholder="Password">
+                                <input type="password" name="password" class="form-control phone_number"
+                                       id="register-password" placeholder="Password">
                             </div>
                             <!-- phone number -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-phone">Phone Number</label>
-                                <input type="text" name="phone_number" class="form-control" id="register-phone"
+                                <input type="tel" name="phone_number" class="form-control" id="register-phone"
                                        placeholder="Phone number">
                             </div>
                             <!-- university -->

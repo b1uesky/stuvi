@@ -13,77 +13,7 @@
             <!-- new top half -->
     <div class="container-fluid" id="container-home-top">
         <div class="" id="navbar-container" >
-            <nav class="navbar navbar-default" id="nav" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <!-- Toggle Nav into hamburger menu for small screens -->
-                        <button id="nav-toggle-collapse" type="button" class="navbar-toggle collapsed"
-                                data-toggle="collapse"
-                                data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle Navigation</span>
-                            <i class="fa fa-bars fa-lg"></i>
-                        </button>
-                        <div class="logo-container">
-                            <a href="{{url('/home')}}"> <img src="{{asset('/img/logo-new-md.png')}}" class="img-responsive">
-                            </a>
-                        </div>
-                    </div>
-                    <!-- End Navbar header -->
-
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <!-- Nav Bar Links-->
-                        <ul class="nav navbar-nav" id="nav-left">
-                            <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbook</a></li>
-                        </ul>
-                        <!-- Navbar right -->
-                        <ul id="nav-right" class="nav navbar-nav navbar-right">
-                            @if (Auth::guest())
-                                <li><a id="login-btn" class="nav-login" data-toggle="modal" href="#login-modal">
-                                        <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
-                                <li><a id="register-btn" class="nav-login" data-toggle="modal" href="#signup-modal">
-                                        <i class="fa fa-user"></i> Sign Up</a></li>
-
-
-
-                                @else
-                                        <!-- profile dropdown -->
-                                <li class="dropdown" id="dp" style="z-index: 500;">
-                                    <a href="#" id="nav-drop" class="dropdown-toggle nav-dropdown" data-toggle="dropdown"
-                                       role="button"
-                                       aria-expanded="true"><span nav-caret
-                                                                  id="account-name">{{ Auth::user()->first_name }} </span><span
-                                                class="caret nav-caret"></span></a>
-                                    <ul class="dropdown-menu" id="nav-dropdown" role="menu" aria-labelledby="nav-dropdown">
-                                        <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                   href="{{ url('/user/profile') }}">
-                                                Profile</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                   href="{{ url('/user/account') }}">
-                                                Your Account</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                   href="{{ url('/order/buyer') }}">
-                                                Your Orders</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                   href="{{ url('/order/seller') }}">
-                                                Sold Books</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                   href="{{ url('/auth/logout') }}">
-                                                Logout</a></li>
-                                    </ul>
-                                </li>
-                                <!-- cart -->
-                                <li class="cart">
-                                    <a href="{{ url('/cart') }}" id="cart-link">Cart <i class="fa fa-shopping-cart"
-                                                                                        style="line-height: 19px;"></i></a>
-                                </li>
-                            @endif
-                        </ul>
-                    </div>
-                    <!-- End collapse container -->
-                </div>
-                <!-- End navbar container -->
-            </nav>
+            @include('includes.textbook.header')
         </div>
 
         <div class="" id="head-tag-ghost-container">
@@ -91,15 +21,24 @@
             <p class="lead tagline">Because it takes a village to conquer college.</p>
             @if (Auth::guest())
                 <div class="ghost-btn-container">
-                    <a class="btn ghost-btn" data-toggle="modal" href="#login-modal" role="button">LOGIN</a>
-                    <a class="btn ghost-btn" data-toggle="modal" href="#signup-modal" role="button">SIGN UP</a>
+                    <a class="btn ghost-btn" data-toggle="modal" href="#login-modal" role="button">Log In</a>
+                    <a class="btn ghost-btn" data-toggle="modal" href="#signup-modal" role="button">Sign Up</a>
                 </div>
             @endif
         </div>
+        {{-- Images currently 2000px x 1333px image quality 7/12 on PS --}}
+        <!-- Photos are owned by Nicholas Louie (owner), and are allowed for use on stuvi.com only. Attribution in the alt text
+             must be provided. This must include the owner's name and link to the owner's Flickr.
+             No one else but the owner may sell, copy, redistribute or edit his images.
+             Visit Nick at flickr.com/photos/nickkeee
+             -->
         <div id="slide-container">
             <div class="" id="slides">
-                <img src="{{asset('img/nick/nlouie1.jpg')}}" alt="">
-                <img src="{{asset('img/nick/nlouie2.jpg')}}" alt="">
+                <img src="{{asset('img/nick/nlouie1.jpg')}}" alt="Charles River by Nick Louie - flickr.com/photos/nickkeee">
+                <img src="{{asset('img/nick/nlouie2.jpg')}}" alt="EPC by Nick Louie - flickr.com/photos/nickkeee">
+                <img src="{{asset('img/nick/nlouie3.jpg')}}" alt="Mass Art by Nick Louie - flickr.com/photos/nickkeee">
+                <img src="{{asset('img/nick/nlouie4.jpg')}}" alt="Harvard by Nick Louie - flickr.com/photos/nickkeee">
+                <img src="{{asset('img/nick/nlouie5.jpg')}}" alt="MIT by Nick Louie - flickr.com/photos/nickkeee">
             </div>
         </div>
 
@@ -113,20 +52,16 @@
                                    placeholder="Enter the textbook ISBN, Title, or Author"/>
                         </div>
                     </div>
-
                     <button class="btn btn-default search-btn" type="submit" value="Search">
                         <i class="fa fa-search search-icon"></i>
                     </button>
                 </form>
             </div>
-
         </div>
-
     </div>
 
+  <!-- new bottom half -->
 
-
-    <!-- new bottom half -->
     <div class="container-fluid" id="bottom-half">
         <div class="container-fluid stuvi-container">
             <!-- row 1-->
@@ -141,8 +76,7 @@
                     </p>
                 </div>
                 <div class="container col-xs-offset-1 col-sm-7 col-sm-offset-3 col-md-offset-0 col-md-4" id="img-info-1">
-                    {{--<img src="http://placehold.it/350x350">--}}
-                    <img class="img-responsive" src="{{asset('/img/scaled/art-boston.jpg')}}" width="350px">
+                    <img class="img-responsive" src="{{asset('/img/art-boston.jpg')}}" width="350px">
                 </div>
             </div>
 

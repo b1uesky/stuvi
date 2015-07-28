@@ -1,10 +1,9 @@
-/**
- * Created by nlouie on 6/2/15.
- */
-
 $(document).ready(function(){
-    $('.active').removeClass('active');
-    $('#side-account-link').addClass('active');
-    $('#edit-btn').addClass('hidden');
-});
+    // side bar active style
+    //$('.active').removeClass('active');
+    //$('#side-account-link').addClass('active');
+    //$('#edit-btn').addClass('hidden');
 
+    // format phone number
+    $(".phone_number").mask("(999) 999-9999");
+});

@@ -8,7 +8,7 @@
                 <button id="nav-toggle-collapse" type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle Navigation</span>
-                    <i class="fa fa-bars fa-lg"></i>
+                    <i class="fa fa-bars"></i>
                 </button>
                 <div class="logo-container">
                     <a href="{{url('/home')}}"> <img src="{{asset('/img/logo-new-md.png')}}" class="img-responsive"> </a>
@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <!-- Nav Bar Links-->
                 <ul class="nav navbar-nav" id="nav-left">
-                    <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbook</a></li>
+                    <li><a href="{{ url('/textbook') }}" id="textbook-nav">Textbooks</a></li>
                     {{--<li><a href="{{ url('/coming') }}">Housing</a></li>--}}
                     {{--<li><a href="{{ url('/coming') }}">Club</a></li>--}}
                     {{--<li><a href="{{ url('/coming') }}">Group</a></li>--}}
@@ -33,17 +33,15 @@
                         <li><a id="register-btn" class="nav-login" data-toggle="modal" href="#signup-modal">
                                 <i class="fa fa-user"></i> Sign Up</a></li>
 
-                        <!-- login modal -->
-                        @include('auth.login-signup-modal')
                     {{-- Logged in --}}
                     @else
                         <!-- profile dropdown -->
-                        <li class="dropdown" id="dp">
-                            <a href="#" id="nav-drop" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button"
-                               aria-expanded="true"><span nav-caret
-                                                          id="account-name">{{ Auth::user()->first_name }} </span><span
-                                        class="caret nav-caret"></span></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="nav-dropdown">
+                        <li class="dropdown" id="dp" style="z-index: 500;">
+                            <a href="#" id="nav-drop" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button" aria-expanded="true">
+                                <span nav-caret id="account-name">{{ Auth::user()->first_name }} </span><span
+                                        class="caret nav-caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" id="nav-dropdown" role="menu" aria-labelledby="nav-dropdown">
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1" href="{{ url('/user/profile') }}">Profile</a>
                                 </li>
@@ -74,4 +72,6 @@
         </div>
         <!-- End navbar container -->
     </nav>
+    <!-- login modal -->
+    @include('auth.login-signup-modal')
 </header>
