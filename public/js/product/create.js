@@ -11,9 +11,9 @@ $(document).ready(function () {
     // generate an extra input element for image upload
     $('.btn-add-input').click(function () {
 
-        // disable add image button if the limit is reached
+        // remove add image button if the limit is reached
         if ($('.upload-file').length == total_images_limit - 1 ) {
-            $('.btn-add-input').addClass('disabled');
+            $('.btn-add-input').css('display','none');
         }
 
         // add input field
@@ -27,7 +27,7 @@ $(document).ready(function () {
             ];
 
             // insert the block before submit button
-            $(html_block.join('')).insertAfter('label[name=add_other_img]');
+            $(html_block.join('')).insertBefore('a[name=add_img_btn]');
         }
 
     });
@@ -40,7 +40,7 @@ $(document).on('click', '.btn-remove-file', function() {
     // remove a dynamically created input field
     $(this).parent().remove();
 
-    // reenable add image button
-    $('.btn-add-input').removeClass('disabled');
+    // display add image button
+    $('.btn-add-input').removeAttr('style');
 
 });

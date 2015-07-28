@@ -276,7 +276,7 @@
 
                 {{-- Add more images --}}
                 <div class="form-group">
-                    <label name="add_other_img" for="add-image" >Other image(s) (smaller than 3MB)</label><br>
+                    <label name="add_other_img" for="add-image" >Other image(s) (smaller than 3MB/image)</label><br>
                     <a class="btn secondary-btn btn-add-input" name="add_img_btn" id="add-image">Add Another Image</a>
                 </div>
 
