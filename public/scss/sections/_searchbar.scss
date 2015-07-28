@@ -1,0 +1,67 @@
+@import '../modules/colors';
+
+.searchbar {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.search-input-wrapper {
+  display: inline-block;
+  margin: -1.7px;
+}
+
+.search-input {
+  background-color: $background-color;
+  height: 3em;
+  border: 1px solid $border-color;
+  &:focus {
+    border: 1px solid $primary-color;
+    box-shadow: none;
+  }
+}
+
+// need reponsive design
+.search-input-query {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0;
+  width: 800px;
+
+  @media (max-width: 700px) {
+    width: 400px;
+  }
+}
+
+.search-input-university {
+  border-radius: 0;
+  -webkit-appearance: none;
+  border-right: 0;
+}
+
+#container-fluid-search-sell{
+  padding-bottom: 45px;
+}
+
+.search-btn {
+  height: 3em;
+  margin-right: 30px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background: $primary-color;
+  border: none;
+  &:hover {
+    background: $primary-color;
+  }
+  &:focus {
+    outline: 0 !important;
+    background: $primary-color;
+  }
+  @media (max-width: 535px) {
+    margin: 0;
+  }
+}
+
+.search-icon {
+  font-size: 1.2em;
+  color: white;
+}

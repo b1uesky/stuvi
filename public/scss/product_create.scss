@@ -74,7 +74,19 @@ body {
   width: 50%;
 }
 
-/** SELL BUTTON **/
+/** FILE UPLOAD **/
+
+.upload-file {
+  margin-bottom: 10px;
+}
+
+.upload-error-message {
+  display: none;
+  color: red;
+  font-weight: bold;
+}
+
+/** POST BOOK BUTTON **/
 
 .sell-btn {
   display: block;
@@ -82,12 +94,4 @@ body {
   padding: 12px;
   font-size: 16px;
 
-}
-
-/** File upload error messages **/
-
-.upload-error-message {
-  display: none;
-  color: red;
-  font-weight: bold;
 }

@@ -33,12 +33,12 @@
                                         @if ($profile->sex == 'male')
                                           checked
                                         @endif
-                                        >Male
+                                        > Male
                                 <input type="radio" name="sex" value="female"
                                        @if ($profile->sex == 'female')
                                        checked
                                         @endif
-                                        >Female
+                                        > Female
                             </div>
                         </div>
 
@@ -68,7 +68,7 @@
                             <label class="control-label col-sm-3" for="bio">Bio/About me</label>
 
                             <div class="col-sm-6">
-                                <textarea id="bio" name="bio" class="form-control" rows="4" cols="50">{{$profile->bio or "Tell us your darkest, deepest secret"}}</textarea>
+                                <textarea id="bio" name="bio" class="form-control" rows="4" cols="50">{{$profile->bio or "Tell us your darkest, deepest secrets."}}</textarea>
                             </div>
                         </div>
                         <!-- education -->
@@ -76,9 +76,8 @@
                         <!-- School -->
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="school">School/University</label>
-
-                            <div class="col-sm-6">
-                                <textarea class="form-control" rows="1" cols="50" readonly>{{$school->name}}</textarea>
+                            <div class="col-sm-6" id="school">
+                                <p class="form-control-static text-muted">{{$school->name}}</p>
                             </div>
                         </div>
                         <!-- Grad -->
@@ -160,8 +159,6 @@
 @endsection
 
 @section('javascript')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{asset('js/user/profile-edit.js')}}"></script>
     <script src="{{asset('/js/datetimepicker/jquery.js')}}"></script>
     <script src="{{asset('/js/datetimepicker/jquery.datetimepicker.js')}}"></script>

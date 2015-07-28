@@ -29,7 +29,7 @@
                                         <!-- header image/logo -->
                                         <td align="center" bgcolor="#241729" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
                                             <a href="{{url('/home')}}">
-                                                <img src="http://puu.sh/iDvTG/18b055e116.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
+                                                <img src="http://puu.sh/jg7HJ/cbdfb5e1f5.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
                                             </a>
                                         </td> <!-- end header img -->
                                     </tr>
@@ -121,9 +121,21 @@
 
                                                             <!-- items -->
                                                             <tr>
+
                                                                 <td style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;" width="100%">
-                                                                    <b style="color: #737373;">Items</b><br>
-                                                                </td>
+                                                                <b style="color: #737373;">Items</b><br>
+                                                                @foreach ($buyer_order['products'] as $product)
+                                                                    Title: {{ $product['book']['title'] }}<br>
+                                                                    ISBN: {{ $product['book']['isbn13'] }}<br>
+                                                                    Author(s):
+                                                                    @foreach($product['book']['authors'] as $author)
+                                                                        <span>{{ $author['full_name'] }}</span>
+                                                                    @endforeach
+                                                                    <br>
+                                                                    <b>${{ $product['price'] }}</b><br>
+                                                                @endforeach
+                                                                    <hr style="border-bottom: .5px solid #737373;">
+                                                                <td>
                                                             </tr>
 
                                                             @foreach ($buyer_order['products'] as $product)

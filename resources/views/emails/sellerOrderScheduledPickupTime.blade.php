@@ -1,8 +1,5 @@
 
 
-
-{{-- This is the HTML welcome email. I suggest using this as a template. Made by Nick --}}
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -25,10 +22,10 @@
                             <!-- row 1 header-->
                             <tr>
                                 <!-- header image/logo -->
-                                <td align="center" bgcolor="#241729" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
+                                <td align="center" bgcolor="#f2f2f2" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
                                     <!--TODO: puush must be replaced with a real url once website is online -->
                                     <a href="{{url('/home')}}">
-                                        <img src="http://puu.sh/iDvTG/18b055e116.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
+                                        <img src="http://puu.sh/jg7HJ/cbdfb5e1f5.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
                                     </a>
                                 </td> <!-- end header img -->
                             </tr>
