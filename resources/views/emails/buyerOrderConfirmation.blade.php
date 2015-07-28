@@ -27,8 +27,7 @@
                                     <!-- row 1 header-->
                                     <tr>
                                         <!-- header image/logo -->
-                                        <td align="center" bgcolor="#f2f2f2" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
-                                            <!--TODO: must be replaced with a real url once website is online -->
+                                        <td align="center" bgcolor="#241729" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
                                             <a href="{{url('/home')}}">
                                                 <img src="http://puu.sh/jg7HJ/cbdfb5e1f5.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
                                             </a>
@@ -138,6 +137,27 @@
                                                                     <hr style="border-bottom: .5px solid #737373;">
                                                                 <td>
                                                             </tr>
+
+                                                            @foreach ($buyer_order['products'] as $product)
+                                                                <tr>
+                                                                    <td valign="top">
+                                                                        <a href="{{ url('/order/buyer/'.$buyer_order['id']) }}">
+                                                                            <img src="{{ config('aws.url.stuvi-product-img').$product['image']['small_image'] }}" alt="sold book image">
+                                                                        </a>
+                                                                    </td>
+                                                                    <td valign="top" style="color: #000000; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;">
+                                                                        <p>Title: {{ $product['book']['title'] }}</p>
+                                                                        <p>ISBN: {{ $product['book']['isbn13'] }}</p>
+                                                                        <p>Author(s):
+                                                                        @foreach($product['book']['authors'] as $author)
+                                                                            <span>{{ $author['full_name'] }}</span>
+                                                                        @endforeach
+                                                                        </p>
+                                                                        <b>${{ $product['price'] }}</b><br>
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                                <hr style="border-bottom: .5px solid #737373;">
 
                                                         </table>
 
