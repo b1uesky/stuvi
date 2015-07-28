@@ -49,10 +49,11 @@ body {
 /*** PRODUCT CONDITION ***/
 
 .condition-btn {
-  background-color: #DDDDDD;
-  border: 1px solid #9B9B9B;
+  background-color: white;
+  border: 1px solid $border-color;
   &:hover, &:focus {
-    background-color: #BBBBBB;
+    background-color: $accent-color;
+    color: white;
   }
   &.active {
     background-color: $primary-color;
@@ -62,7 +63,7 @@ body {
 }
 
 .fa-question-circle {
-  color: $secondary-color;
+  color: $accent-color;
   cursor: pointer;
 }
 
