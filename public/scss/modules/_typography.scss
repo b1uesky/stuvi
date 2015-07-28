@@ -7,7 +7,10 @@
 
 /* BASE STYLES */
 $base-font-family: "Roboto", Helvetica, Arial, sans-serif;
-$base-font-size-1: 14px;
+$base-font-size: 14px;
+$small-font-size: 12px;
+$base-line-height: 1.5;
+$spacing-unit: 30px;
 
 // Fixed Font
 $fixed-font-family: monospace;
@@ -27,3 +30,7 @@ $button-font-family: null;
 /* FOOTER */
 $footer-font-family: null;
 $footer-font-size: 14px;
+
+/* Devices */
+$on-palm: 768px;
+$on-laptop: 800px;

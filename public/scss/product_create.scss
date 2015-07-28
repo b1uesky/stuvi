@@ -1,5 +1,6 @@
 /***** SELLER PRODUCT CREATE PAGE *****/
-@import "modules/all";
+@import "modules/colors";
+@import "partials/image";
 
 body {
   background-color: $background-color;
@@ -15,13 +16,13 @@ body {
   margin-top: 50px;
 }
 
-#textbook-img {
-  width: 300px;
-  height: 400px;
-  span {
-    font-size: 18px;
-  }
-}
+//#textbook-img {
+//  width: 300px;
+//  height: 400px;
+//  span {
+//    font-size: 18px;
+//  }
+//}
 
 .authors-container {
   margin-bottom: 10px;
@@ -36,10 +37,6 @@ body {
 }
 
 .textbook-info {
-  p {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
 }
 
 #price-input {
