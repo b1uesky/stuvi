@@ -42,19 +42,20 @@
                                             Primary
                                         </td>
                                         <td></td>
-                                    @elseif (!$email->verified)
-                                        <td>
-                                            Unverified
-                                        </td>
-                                        <td></td>
                                     @else
-                                        <td>
+                                        @if (!$email->verified)
+                                            <td>
+                                                Unverified
+                                            </td>
+                                        @else
+                                            <td>
                                             <form action="{{ url('/user/email/primary') }}" method="post">
                                                 {!! csrf_field() !!}
                                                 <input type="hidden" name="id" value="{{ $email->id }}">
                                                 <input type="submit" class="btn primary-btn" value="Set as primary">
                                             </form>
                                         </td>
+                                        @endif
                                         <td>
                                             @if (!$email->isCollegeEmail())
                                                 <form action="{{ url('/user/email/remove') }}" method="post">
