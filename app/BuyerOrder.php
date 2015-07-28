@@ -1,8 +1,8 @@
 <?php namespace App;
 
 use App\Helpers\StripeKey;
-use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Mail;
 
@@ -312,7 +312,6 @@ class BuyerOrder extends Model
     {
         // convert the buyer order and corresponding objects to an array
         $buyer_order_arr = $this->allToArray();
-//        return $buyer_order_arr;
         Mail::queue('emails.buyerOrderConfirmation', ['buyer_order' => $buyer_order_arr], function ($message) use ($buyer_order_arr)
         {
             $message->to($buyer_order_arr['buyer']['email'])->subject('Confirmation of your order #' . $this->id);
