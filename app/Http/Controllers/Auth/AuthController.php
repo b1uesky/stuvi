@@ -2,6 +2,7 @@
 
 use App\Email;
 use App\Http\Controllers\Controller;
+use App\Profile;
 use App\University;
 use App\User;
 use Auth;
@@ -9,9 +10,9 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 use Input;
 use Mail;
+use Response;
 use Session;
 use Validator;
-use Response;
 
 class AuthController extends Controller {
 
@@ -59,10 +60,13 @@ class AuthController extends Controller {
             'user_id'       => $user->id,
             'email_address' => $data['email'],
         ]);
+        $email->assignVerificationCode();
         $user->update([
             'primary_email_id'  => $email->id,
         ]);
-        $user->assignActivationCode();
+        $profile = Profile::create([
+            'user_id'       => $user->id
+        ]);
 
         $user->sendActivationEmail();
 
@@ -117,8 +121,6 @@ class AuthController extends Controller {
         });
 
         if ($v->fails()) {
-            $except_fields = ['password'];
-
             return Response::json([
                 'success'   => false,
                 'fields'    => $v->errors()

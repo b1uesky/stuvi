@@ -37,7 +37,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-default search-btn" type="submit" value="Search">
+                <button class="btn primary-btn search-btn" type="submit" name="search" >
                     <i class="fa fa-search search-icon"></i>
                 </button>
             </form>

@@ -54,7 +54,7 @@ return [
 	|
 	*/
 
-	'from' => ['address' => 'info@stuvi.com', 'name' => 'Stuvi Info'],
+	'from' => ['address' => 'info@stuvi.com', 'name' => 'Stuvi'],
 
 	/*
 	|--------------------------------------------------------------------------

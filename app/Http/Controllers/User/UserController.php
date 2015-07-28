@@ -1,11 +1,11 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\User;
 
-
+use App\Http\Controllers\Controller;
 use App\Profile;
 use Auth;
 use Input;
-use Session;
 use Mail;
+use Session;
 
 class UserController extends Controller
 {
@@ -23,8 +23,49 @@ class UserController extends Controller
     public function profileEdit()
     {
         $user_id = Auth::id();
-        $user_profile = Profile::find($user_id);
-        return view('user.profile-edit');
+        $user_profile = Profile::where('user_id',$user_id)->first();
+        $user_school = Auth::user()->university;
+        return view('user.profile-edit')
+            ->with('profile',$user_profile)
+            ->with('school',$user_school);
+    }
+
+    public function profileStore()
+    {
+        $user_id = Auth::id();
+        $user_profile = Profile::where('user_id',$user_id);
+        if ($user_profile->count() > 0){
+                $user_profile->update([
+                    'user_id'         => $user_id,
+                    'sex'             => Input::get('sex'),
+                    'birthday'        => Input::get('birth'),
+                    'title'           => Input::get('title'),
+                    'bio'             => Input::get('bio'),
+                    'graduation_date' => Input::get('grad'),
+                    'major'           => Input::get('major'),
+                    'facebook'        => Input::get('facebook'),
+                    'twitter'         => Input::get('twitter'),
+                    'linkedin'        => Input::get('linkedin'),
+                    'website'         => Input::get('site')
+                ]);
+
+                return redirect('user/profile-edit');
+        }else{
+            Profile::create([
+                'user_id'         => $user_id,
+                'sex'             => Input::get('sex'),
+                'birthday'        => Input::get('birth'),
+                'title'           => Input::get('title'),
+                'bio'             => Input::get('bio'),
+                'graduation_date' => Input::get('grad'),
+                'major'           => Input::get('major'),
+                'facebook'        => Input::get('facebook'),
+                'twitter'         => Input::get('twitter'),
+                'linkedin'        => Input::get('linkedin'),
+                'website'         => Input::get('site')
+            ]);
+            return redirect('user/profile-edit');
+        }
     }
 
     public function account()
@@ -45,20 +86,32 @@ class UserController extends Controller
         $user->save();
     }
 
+    /**
+     * Display the user's bookshelf (products for sale).
+     *
+     * @return $this
+     */
     public function bookshelf()
     {
         return view('user.bookshelf')->with('productsForSale', Auth::user()->productsForSale());
     }
 
+    /**
+     * Activate an account with a code.
+     *
+     * @param $code
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function activateAccount($code)
     {
         // check if the current user is activated
-        if (Auth::user()->activated)
+        if (Auth::user()->isActivated())
         {
             $url = Input::has('return_to') ? urldecode(Input::get('return_to')) : '/home';
             $message = 'Your account has already been activated.';
         }
-        elseif (Auth::user()->activate($code))
+        elseif (Auth::user()->collegeEmail()->verify($code))
         {
             $url = Input::has('return_to') ? urldecode(Input::get('return_to')) : '/home';
             $message = 'Your account is successfully activated.';
@@ -89,6 +142,11 @@ class UserController extends Controller
             ->with('user', Auth::user());
     }
 
+    /**
+     * Resend account activation email to user's college email.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function resendActivationEmail()
     {
         $user = Auth::user();

@@ -13,11 +13,11 @@ class CreateCartItemsTable extends Migration
     public function up()
     {
         Schema::create('cart_items', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('cart_id')      ->unsigned();
             $table->integer('product_id')   ->unsigned();
             $table->timestamps();
 
-            $table->primary(['cart_id', 'product_id']);
             $table->foreign('cart_id')      ->references('id')  ->on('carts');
             $table->foreign('product_id')   ->references('id')  ->on('products');
         });
