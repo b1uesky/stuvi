@@ -5,10 +5,6 @@
 
 @import "modules/all";
 
-body{
-  background-color: $background-color;
-}
-
 #container-home-top{
   padding: 0;
   position: relative;
@@ -273,7 +269,7 @@ body{
 }
 
 #bottom-half {
-  background-color: $background-color;
+  background-color: white;
 }
 
 #img-info-1{
@@ -286,6 +282,24 @@ body{
     color: white;
   }
 }
+
+/******** HOME TEXTBOOK SECTION ********/
+
+.home-textbook {
+  padding: 0;
+  .textbook-container {
+    background-color: $primary-color;
+    .textbook-link {
+      color: white;
+      text-decoration: none;
+      div {
+        margin-left: 50px;
+        margin-top: 50px;
+      }
+    }
+  }
+}
+
 
 // login/signup modal
 @import "sections/login-signup-modal";
