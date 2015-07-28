@@ -159,8 +159,6 @@
 @endsection
 
 @section('javascript')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{asset('js/user/profile-edit.js')}}"></script>
     <script src="{{asset('/js/datetimepicker/jquery.js')}}"></script>
     <script src="{{asset('/js/datetimepicker/jquery.datetimepicker.js')}}"></script>

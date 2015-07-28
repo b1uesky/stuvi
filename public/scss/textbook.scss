@@ -65,81 +65,8 @@
   padding: 60px;
 }
 
-.search-row {
-  padding: 0;
-  margin-left: 15%;
-  @media (max-width: 535px) {
-    margin-left: 11%;
-  }
-}
-
-.search-input {
-  background-color: rgba(255, 255, 255, 0.5);
-  height: 3em;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right: none;
-  &:focus {
-    border: 2px solid $primary-color;
-    border-right: none;
-    box-shadow: none;
-  }
-  @media (max-width: 767px) {
-    background-color: rgba(255, 255, 255, 0.8);
-  }
-}
-
-#container-fluid-search-sell{
-  padding-bottom: 45px;
-}
-
-.search-btn {
-  height: 3em;
-  margin-right: 30px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  background: $primary-color;
-  border: none;
-  &:hover {
-    background: $primary-color;
-  }
-  &:focus {
-    outline: 0 !important;
-    background: $primary-color;
-  }
-  @media (max-width: 535px) {
-    margin: 0;
-  }
-}
-
-.search-icon {
-  font-size: 1.2em;
-  color: white;
-}
-
-/* Search AutoComplete Suggestions */
-
-.autocomplete-thumbnail {
-  display: inline-block;
-  margin: 5px;
-  vertical-align: middle;
-  overflow: hidden;
-  img {
-    display: block;
-    max-width: 80px;
-    width: auto;
-    height: auto;
-  }
-}
-
-.autocomplete-data {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.ui-helper-hidden-accessible {
-  display: none;
-}
+@import "partials/autocomplete";
+@import "sections/searchbar";
 
 /******  TEXTBOOK BOTTOM HALF ****/
 

@@ -29,18 +29,36 @@
         <div class="row">
             <h1 id="title">Buy Used Textbooks</h1>
 
-            <form action="/textbook/buy/search" method="get">
-                <div class="form-group">
-                    <div class="col-xs-8 col-xs-offset-2 search-row">
-                        <input type="text" name="query" id="autocompleteBuy" class="form-control search-input"
-                               placeholder="Enter the textbook ISBN, Title, or Author"/>
-                    </div>
-                </div>
+            <div class="col-sm-12">
+                <div class="searchbar">
+                    <form action="/textbook/buy/search" method="get">
 
-                <button class="btn primary-btn search-btn" type="submit" name="search" >
-                    <i class="fa fa-search search-icon"></i>
-                </button>
-            </form>
+                        <div class="search-input-wrapper">
+                            <input type="text" name="query" id="autocompleteBuy"
+                                   class="form-control search-input search-input-query"
+                                   placeholder="Enter the textbook ISBN, Title, or Author"/>
+                        </div>
+
+                        {{-- Show school selection if it's a guest --}}
+                        @if(Auth::guest())
+                            <div class="search-input-wrapper">
+                                <select name="university_id" class="form-control search-input search-input-university">
+                                    @foreach(\App\University::where('is_public', true)->get() as $university)
+                                        <option value="{{ $university->id }}">{{ $university->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
+
+                        <div class="search-input-wrapper">
+                            <button class="btn btn-default search-btn" type="submit" value="Search">
+                                <i class="fa fa-search search-icon"></i>
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -118,16 +136,7 @@
 @endsection
 
 @section('javascript')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="{{asset('/js/jquery-ui.min.js')}}"></script>
     <script src="{{asset('/js/autocompleteBuy.js')}}" type="text/javascript"></script>
-    {{--<script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>--}}
-
-    {{-- FormValidation --}}
-    <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
-    <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/auth.js')}}"></script>
-
     <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
 @endsection

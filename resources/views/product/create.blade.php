@@ -288,16 +288,8 @@
 @endsection
 
 @section('javascript')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
     @if(Auth::check())
         <script src="{{ asset('js/validator/file-upload.js') }}"></script>
         <script src="{{ asset('js/product/create.js') }}"></script>
-    @else
-        {{-- FormValidation --}}
-        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
-        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
-        <script src="{{asset('js/auth.js')}}"></script>
     @endif
 @endsection

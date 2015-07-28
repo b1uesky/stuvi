@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 @endsection
 
+{{--@section('searchbar')--}}
+    {{--@include('includes.textbook.searchbar')--}}
+{{--@endsection--}}
+
 @section('content')
 
     @include('textbook/textbook-nav')
@@ -24,20 +28,7 @@
                 {{--<li role="presentation"><a href="#" data-toggle="pill">Author</a></li>--}}
                 {{--<li role="presentation"><a href="#" data-toggle="pill">Most Bought</a></li>--}}
                 {{--<li role="presentation"><a href="#" data-toggle="pill">Top Rated</a></li>--}}
-                <div class="col-sm-4 col-md-4 pull-right">
-                    <form action="/textbook/buy/search" method="get" class="navbar-form" role="search">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="autocompleteBuy" placeholder="Search"
-                                   name="query">
 
-                            <div class="input-group-btn">
-                                <button class="btn list-search-btn" type="submit">
-                                    <i class="fa fa-search search-icon"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </ul>
         </div>
 
@@ -90,8 +81,6 @@
 @endsection
 
 @section('javascript')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="{{asset('/js/jquery-ui.min.js')}}"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script src="{{asset('/js/autocompleteBuy.js')}}" type="text/javascript"></script>
 @endsection

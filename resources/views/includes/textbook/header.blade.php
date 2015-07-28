@@ -24,8 +24,11 @@
                     {{--<li><a href="{{ url('/coming') }}">Club</a></li>--}}
                     {{--<li><a href="{{ url('/coming') }}">Group</a></li>--}}
                 </ul>
+
                 <!-- Navbar right -->
                 <ul id="nav-right" class="nav navbar-nav navbar-right">
+                    @yield('searchbar')
+
                     {{-- Not logged in --}}
                     @if (Auth::guest())
                         <li><a id="login-btn" class="nav-login" data-toggle="modal" href="#login-modal">
@@ -62,7 +65,13 @@
                         </li>
                         <!-- cart -->
                         <li class="cart">
-                            <a href="{{ url('/cart') }}" id="cart-link">Cart <i class="fa fa-shopping-cart" style="line-height: 19px;"></i></a>
+                            <?php $cartQty = Auth::user()->cart->quantity ?>
+                            {{-- If cart empty, open modal --}}
+                            @if($cartQty == 0)
+                                    <a href="#empty-cart-modal" data-toggle="modal" id="cart-link">Cart <i class="fa fa-shopping-cart" style="line-height: 19px;"></i></a>
+                            @else
+                                    <a href="{{ url('/cart') }}" id="cart-link">Cart ({{$cartQty}} <i class="fa fa-shopping-cart" style="line-height: 19px;"></i></a>
+                            @endif
                         </li>
                     @endif
 
@@ -74,4 +83,8 @@
     </nav>
     <!-- login modal -->
     @include('auth.login-signup-modal')
+    <!-- Empty Cart Modal -->
+    @if($cartQty == 0)
+        @include('cart.empty-cart-modal')
+    @endif
 </header>

@@ -21,7 +21,7 @@
 
 <body style="margin: 0; padding: 0;">
 <!-- container table. Style things in here. not body -->
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style=" padding: 20px 0px 30px 0px;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style=" padding: 20px 0px 30px 0px;" >
     <tr> <!-- top level row -->
         <td> <!-- top level data -->
             <!-- content table. 600px for best format -->
@@ -33,7 +33,7 @@
                             <!-- row 1 header-->
                             <tr>
                                 <!-- header image/logo -->
-                                <td align="center" bgcolor="#f2f2f2" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
+                                <td align="center" bgcolor="#241729" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
                                     <!--TODO: puush must be replaced with a real url once website is online -->
                                     <a href="{{url('/home')}}">
                                         <img src="http://puu.sh/jg7HJ/cbdfb5e1f5.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
@@ -43,7 +43,7 @@
                             <!-- row 2. content-->
                             <tr>
                                 <!-- container for content -->
-                                <td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px;">
+                                <td bgcolor="#F2F2F2" style="padding: 40px 30px 40px 30px;">
                                     <!-- content table -->
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                         <!-- content row 1 -->
@@ -95,32 +95,6 @@
                                                             </table>
                                                     </tr>
                                                     <br>
-
-                                                    <!-- ship and pay details. row 2 row 2-->
-                                                   {{-- <tr>
-                                                        <!-- ship and pay table -->
-                                                        <table border="0" align="center" cellpadding="0" cellspacing="0" width="100%">
-                                                            <tr>
-                                                                <td valign="top" style="color: #000000; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;" width="40%" align="left">
-                                                                    <b style="color: #5b5b5b">Pick-up Address</b><br>
-                                                                    <!-- TODO: pick up addr -->
-
-                                                                </td>
-
-                                                                <!-- spacing. row 2 column 2 -->
-                                                                <td style="font-size: 0; line-height: 0;" width="10%">
-                                                                    &nbsp;
-                                                                </td>
-
-                                                                <!-- payment details row 2 column 3-->
-                                                                <td valign="top" style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;" width="40%" align="left">
-                                                                    <b style="color: #737373;">Payment Method</b><br>
-
-                                                                </td>
-                                                            </tr>
-                                                        </table> <!-- end ship and pay table -->
-                                                    </tr> <!-- end shipping address and payment method -->--}}
-
 
                                                     <!-- items -->
                                                     <tr>
