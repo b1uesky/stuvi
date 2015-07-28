@@ -1,3 +1,5 @@
+{{-- /textbook/buy/# --}}
+
 @extends('app')
 
 @section('title',$book->title)
