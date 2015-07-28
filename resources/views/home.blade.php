@@ -60,8 +60,6 @@
         </div>
     </div>
 
-
-
   <!-- new bottom half -->
     <div class="container-fluid" id="bottom-half">
         <div class="container-fluid stuvi-container">
@@ -77,7 +75,7 @@
                     </p>
                 </div>
                 <div class="container col-xs-offset-1 col-sm-7 col-sm-offset-3 col-md-offset-0 col-md-4" id="img-info-1">
-                    <img class="img-responsive" src="{{asset('/img/scaled/art-boston.jpg')}}" width="350px">
+                    <img class="img-responsive" src="{{asset('/img/art-boston.jpg')}}" width="350px">
                 </div>
             </div>
 
