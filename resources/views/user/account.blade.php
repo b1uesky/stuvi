@@ -58,7 +58,7 @@
                         <label class="control-label col-sm-3" for="tel">Phone Number:</label>
 
                         <div class="col-sm-6">
-                            <input type="tel" class="form-control" name="phone" id="phone"
+                            <input type="tel" class="form-control phone_number" name="phone" id="phone"
                                    placeholder="Enter phone number" value="{{ Auth::user()->phone_number }}">
                         </div>
                     </div>
@@ -103,6 +103,7 @@
     <!-- required for all pages for proper tab and drop-down functionality -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>
     <script src="{{asset('/js/user/account.js')}}" type="text/javascript"></script>
 
 @endsection

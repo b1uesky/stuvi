@@ -1,10 +1,10 @@
-{{-- This is the HTML welcome email. I suggest using this as a template. Made by Nick --}}
+{{-- This is the HTML verify email --}}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset=UTF-8" />
-    <title>Welcome to Stuvi</title>
+    <title>Verify new email</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 
@@ -22,10 +22,10 @@
                             <!-- row 1 header-->
                             <tr>
                                 <!-- header image/logo -->
-                                <td align="center" bgcolor="#f2f2f2" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
+                                <td align="center" bgcolor="#241729" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
                                     <!--TODO: puush must be replaced with a real url once website is online -->
                                     <a href="{{url('/home')}}">
-                                        <img src="http://puu.sh/jg7HJ/cbdfb5e1f5.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
+                                        <img src="http://puu.sh/iDvTG/18b055e116.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
                                     </a>
                                 </td> <!-- end header img -->
                             </tr>
@@ -39,7 +39,7 @@
                                         <tr>
                                             <!-- header/tag line.. -->
                                             <td style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 30px;">
-                                                <b>Welcome to Stuvi, {{ $user['first_name'] }}!</b>
+                                                <b>Hi {{ $email['user']['first_name'] }},</b>
                                             </td>
                                         </tr>
                                         <!-- content row 2 -->
@@ -51,7 +51,7 @@
                                                     <tr>
                                                         <td style="color: #F16521; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 17px;" width="100%">
                                                             <!-- CONTENT HERE! -->
-                                                            Click the button below to confirm your email address.
+                                                            You recently added this email address to your Stuvi account. Please click the button below to verify your email address.
                                                             <br>
                                                             <br>
                                                         </td>
@@ -66,8 +66,8 @@
                                                                         <table border="0" cellspacing="0" cellpadding="0">
                                                                             <tr>
                                                                                 <td align="center" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" bgcolor="#e9703e">
-                                                                                    <a href="{{ url('/user/activate/'.$user['verification_code'].'?return_to='.$user['return_to'])}}" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #e9703e; display: inline-block;">
-                                                                                        Confirm Account &rarr;</a>
+                                                                                    <a href="{{ url('/user/email/'.$email['id'].'/verify/'.$email['verification_code']) }}" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #e9703e; display: inline-block;">
+                                                                                        Verify Email &rarr;</a>
                                                                                 </td>
                                                                             </tr>
                                                                         </table>

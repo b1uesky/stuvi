@@ -7,10 +7,10 @@
 @section('css')
     <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}" rel="stylesheet">
-@endsection
+    @endsection
 
-@section('content')
-    <!-- new top half -->
+    @section('content')
+            <!-- new top half -->
     <div class="container-fluid" id="container-home-top">
         <div class="" id="navbar-container" >
             @include('includes.textbook.header')
@@ -21,8 +21,8 @@
             <p class="lead tagline">Because it takes a village to conquer college.</p>
             @if (Auth::guest())
                 <div class="ghost-btn-container">
-                    <a class="btn ghost-btn" data-toggle="modal" href="#login-modal" role="button">LOGIN</a>
-                    <a class="btn ghost-btn" data-toggle="modal" href="#signup-modal" role="button">SIGN UP</a>
+                    <a class="btn ghost-btn" data-toggle="modal" href="#login-modal" role="button">Log In</a>
+                    <a class="btn ghost-btn" data-toggle="modal" href="#signup-modal" role="button">Sign Up</a>
                 </div>
             @endif
         </div>
@@ -61,6 +61,7 @@
     </div>
 
   <!-- new bottom half -->
+
     <div class="container-fluid" id="bottom-half">
         <div class="container-fluid stuvi-container">
             <!-- row 1-->

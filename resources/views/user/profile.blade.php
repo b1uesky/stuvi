@@ -59,16 +59,16 @@
                                     @forelse ($productsForSale as $key => $product)
                                         @if ($key < 2)
                                             <tr class="for-sale-item">
-                                                <td class="for-sale-img">
-                                                    <img class="img-responsive" src="
-                                                        @if($image->isTestImage())
-                                                            {{ $image->large_image }}
-                                                        @else
-                                                            {{ Config::get('aws.url.stuvi-product-img') . $image->large_image }}
-                                                        @endif
-                                                            "
-                                                         width="100px"
-                                                         height="150px"></td>
+                                                {{--<td class="for-sale-img">--}}
+                                                    {{--<img class="img-responsive" src="--}}
+                                                        {{--@if($image->isTestImage())--}}
+                                                            {{--{{ $image->large_image }}--}}
+                                                        {{--@else--}}
+                                                            {{--{{ Config::get('aws.url.stuvi-product-img') . $image->large_image }}--}}
+                                                        {{--@endif--}}
+                                                            {{--"--}}
+                                                         {{--width="100px"--}}
+                                                         {{--height="150px"></td>--}}
                                                 <td class="for-sale-info-1">
                                                 <span class="for-sale-title">
                                                     <a href="{{ url('textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a>

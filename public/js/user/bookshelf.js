@@ -1,4 +1,4 @@
 $(document).ready(function () {
     $('.active').removeClass('active');
-    $('#side-profile-link').addClass('active');
+    $('#side-bookshelf-link').addClass('active');
 });
