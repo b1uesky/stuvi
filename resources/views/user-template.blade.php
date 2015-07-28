@@ -16,11 +16,18 @@
                 <div class="row profile">
                     <div class="col-md-3">
                         <div class="profile-sidebar">
+
                             <div class="profile-usermenu">
                                 <ul class="nav">
                                     <li class="side-item">
                                         <a class="side-item-link active" id="side-profile-link"
                                            href="{{asset('/user/profile')}}">
+                                            <i class="fa fa-server"></i>Overview
+                                        </a>
+                                    </li>
+                                    <li class="side-item">
+                                        <a class="side-item-link active" id="side-profile-link"
+                                           href="{{asset('/user/profile-edit')}}">
                                             <i class="fa fa-user"></i>Profile
                                         </a>
                                     </li>
@@ -37,15 +44,15 @@
                                         </a>
                                     </li>
                                     <li class="side-item">
-                                        <a class="side-item-link" id="side-privacy-link"
-                                           href="{{asset('/user/account')}}">
-                                            <i class="fa fa-user-secret"></i>Privacy
+                                        <a class="side-item-link" id="side-email-link"
+                                           href="{{asset('/user/email')}}">
+                                            <i class="fa fa-envelope"></i>Email
                                         </a>
                                     </li>
                                     <li class="side-item">
-                                        <a class="side-item-link" id="side-email-link"
-                                           href="{{asset('/user/account')}}">
-                                            <i class="fa fa-envelope"></i>Email Notifications
+                                        <a class="side-item-link" id="side-notification-link"
+                                           href="{{asset('/user/account#')}}">
+                                            <i class="fa fa-envelope"></i>Notification
                                         </a>
                                     </li>
                                     {{--<li class="side-messages">--}}
@@ -58,6 +65,7 @@
                             <!-- END MENU -->
                         </div>
                     </div>
+
 
     @show
 

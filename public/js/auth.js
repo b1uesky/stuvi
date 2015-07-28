@@ -24,6 +24,8 @@ $(document).ready(function () {
 
                 // login failed
                 if (response.success == false) {
+                    $('.alert.alert-danger').remove();
+
                     for (var field in response.fields) {
                         var error = '<div class="alert alert-danger" role="alert">' +
                             '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
@@ -162,7 +164,7 @@ $(document).ready(function () {
                     }
                 } else {
                     // success
-                    location.reload();
+                    window.location.replace('/user/activate');
                 }
             });
         });

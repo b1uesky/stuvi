@@ -121,12 +121,14 @@
 
 .autocomplete-thumbnail {
   display: inline-block;
-  width: 80px;
   margin: 5px;
   vertical-align: middle;
   overflow: hidden;
   img {
-    min-width: 100%;
+    display: block;
+    max-width: 80px;
+    width: auto;
+    height: auto;
   }
 }
 

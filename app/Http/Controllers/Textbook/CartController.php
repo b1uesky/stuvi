@@ -9,7 +9,6 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Product;
-//use Cart;
 use Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -19,7 +18,10 @@ class CartController extends Controller
 
     public function __construct()
     {
-        $this->cart = Auth::user()->cart;
+        if (Auth::user())
+        {
+            $this->cart = Auth::user()->cart;
+        }
     }
 
     /**

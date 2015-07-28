@@ -4,14 +4,14 @@ return [
 
 	/*
 	|--------------------------------------------------------------------------
-	| Length of Account Activation Code
+	| Length of Email Verification Code
 	|--------------------------------------------------------------------------
 	|
-	| The length of account activation code which is sent to user's email.
+	| The length of email verification code which is sent to user's email.
 	|
 	*/
 
-	'activation_code_length'    => 32,
+	'verification_code_length'    => 32,
 
 
 ];
