@@ -33,7 +33,4 @@
 @endsection
 
 @section('javascript')
-            <!-- required for active class in nav to work -->
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 @endsection

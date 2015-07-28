@@ -77,4 +77,58 @@ class Book extends Model
         return $products;
     }
 
+    /**
+     * Search for books that can be delivered to buyer's university given query title and buyer id.
+     *
+     * @param $query
+     * @param $buyer_id
+     * @return mixed
+     */
+    public static function queryWithBuyerID($query, $buyer_id)
+    {
+        $books = Book::where('title', 'LIKE', '%'.$query.'%')
+            ->join('products as p', 'p.book_id', '=', 'books.id')
+            ->join('users as seller', 'seller.id', '=', 'p.seller_id')
+            ->whereIn('seller.university_id', function($q) use ($buyer_id) {
+                $q  ->select('uu.from_uid')
+                    ->from(DB::raw('users as buyer, university_university as uu'))
+                    ->where('buyer.id', '=', $buyer_id);
+            })
+            ->whereIn('seller.university_id', function($q) {
+                $q  ->select('id')
+                    ->from('universities')
+                    ->where('is_public', '=', true);
+            })
+            ->select('books.*')->distinct()->get();
+
+        return $books;
+    }
+
+    /**
+     * Search for books that can be delivered to a specific university given query title and university id.
+     *
+     * @param $query
+     * @param $university_id
+     * @return mixed
+     */
+    public static function queryWithUniversityID($query, $university_id)
+    {
+        $books = Book::where('title', 'LIKE', '%'.$query.'%')
+            ->join('products as p', 'p.book_id', '=', 'books.id')
+            ->join('users as seller', 'seller.id', '=', 'p.seller_id')
+            ->whereIn('seller.university_id', function($q) use ($university_id) {
+                $q  ->select('from_uid')->distinct()
+                    ->from('university_university')
+                    ->where('to_uid', '=', $university_id);
+            })
+            ->whereIn('seller.university_id', function($q) {
+                $q  ->select('id')
+                    ->from('universities')
+                    ->where('is_public', '=', true);
+            })
+            ->select('books.*')->distinct()->take(10)->get();
+
+        return $books;
+    }
+
 }

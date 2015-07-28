@@ -53,9 +53,15 @@ Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
 Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
 {
     Route::get  ('/',   'TextbookController@showBuyPage');
+    Route::get  ('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
 
     // buy
-    Route::get  ('/buy', 'TextbookController@showBuyPage');
+    Route::group(['prefix'=>'buy'], function() {
+        Route::get  ('/', 'TextbookController@showBuyPage');
+        Route::get  ('/{book}', 'TextbookController@show');
+        Route::get  ('/search', 'TextbookController@buySearch');
+        Route::get  ('/product/{product}', 'ProductController@show');
+    });
 
     // sell
     Route::group(['prefix'=>'sell'], function() {
@@ -68,14 +74,6 @@ Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
 
 // auth required
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook'], function() {
-    Route::get('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
-
-    // buy
-    Route::group(['prefix'=>'buy'], function() {
-        Route::get('/{book}', 'TextbookController@show');
-        Route::get('/search', 'TextbookController@buySearch');
-        Route::get('/product/{product}', 'ProductController@show');
-    });
 
     // sell
     Route::group(['prefix'=>'sell'], function() {
@@ -231,6 +229,8 @@ Route::get('/faq', 'FAQController@general');
 Route::get('/faq/general', 'FAQController@general');
 Route::get('/faq/orders', 'FAQController@orders');
 Route::get('/faq/account', 'FAQController@account');
+Route::get('/faq/textbook', 'FAQController@textbook');
+
 
 /*
 |--------------------------------------------------------------------------

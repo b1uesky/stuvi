@@ -1,9 +1,25 @@
+/**
+ * jQuery UI AutoComplete for textbook search
+ * http://api.jqueryui.com/autocomplete/#option-source
+ */
+
 $(document).ready(function() {
-    var url = location.protocol + '//' + document.domain + '/textbook/searchAutoComplete';
-    console.log(url);
 
     $('#autocompleteBuy').autocomplete({
-        source: url,
+        source: function(request, response) {
+            $.ajax({
+                url: location.protocol + '//' + document.domain + '/textbook/searchAutoComplete',
+                dataType: 'json',
+                data: {
+                    term: request.term,
+                    university_id: $('.search-input-university').val()
+                },
+                success: function(data) {
+                    console.log(data);
+                    response(data);
+                }
+            })
+        },
         minLength: 3,
         focus: function(event, ui) {
             // prevent updating input

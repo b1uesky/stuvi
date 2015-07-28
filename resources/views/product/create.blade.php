@@ -29,9 +29,8 @@
 
         <div class="row textbook-row col-sm-5">
             <div>
-                @if($book->imageSet->large_image)
-                    <img id="textbook-img" src="{{ $book->imageSet->large_image }}" alt=""/>
-                @endif
+                <img id="textbook-img"
+                     src="{{ $book->imageSet->large_image or config('book.default_image_path.large') }}"/>
             </div>
 
             <div class="textbook-info">
@@ -277,7 +276,7 @@
 
                 {{-- Add more images --}}
                 <div class="form-group">
-                    <label name="add_other_img" for="add-image" >Other image(s) (smaller than 3MB)</label><br>
+                    <label name="add_other_img" for="add-image" >Other image(s) (smaller than 3MB/image)</label><br>
                     <a class="btn secondary-btn btn-add-input" name="add_img_btn" id="add-image">Add Another Image</a>
                 </div>
 
@@ -289,16 +288,8 @@
 @endsection
 
 @section('javascript')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
     @if(Auth::check())
         <script src="{{ asset('js/validator/file-upload.js') }}"></script>
         <script src="{{ asset('js/product/create.js') }}"></script>
-    @else
-        {{-- FormValidation --}}
-        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
-        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
-        <script src="{{asset('js/auth.js')}}"></script>
     @endif
 @endsection

@@ -54,13 +54,16 @@
                 <div class="price">
                     Price: <b>${{ $product->price }}</b>
                 </div>
-                @if($product->isInCart(Auth::user()->id))
-                    <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Added To Cart</a>
-                @elseif($product->seller == Auth::user())
-                    <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Posted by yourself</a>
+                @if(Auth::check())
+                    @if($product->isInCart(Auth::user()->id))
+                        <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Added To Cart</a>
+                    @elseif($product->seller == Auth::user())
+                        <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Posted by yourself</a>
+                    @else
+                        <a class="btn primary-btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
+                    @endif
                 @else
-                    <a class="btn primary-btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
-
+                    <p>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.</p>
                 @endif
             </div>
 
@@ -202,9 +205,6 @@
 @endsection
 
 @section('javascript')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
     <!-- lightbox required -->
     {{--http://lokeshdhakar.com/projects/lightbox2/--}}
     <script src="{{asset('lightbox2-master/dist/js/lightbox.min.js')}}"></script>

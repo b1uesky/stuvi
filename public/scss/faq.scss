@@ -22,9 +22,12 @@ body {
   }
 }
 
-.question-answer {
-  margin-bottom: 40px;
+.qa-container {
   h2 {
     color: $primary-color;
   }
+}
+
+.question-answer {
+  margin-bottom: 40px;
 }

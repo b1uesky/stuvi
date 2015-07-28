@@ -1,0 +1,23 @@
+/* Search AutoComplete Suggestions */
+
+.autocomplete-thumbnail {
+  display: inline-block;
+  margin: 5px;
+  vertical-align: middle;
+  overflow: hidden;
+  img {
+    display: block;
+    max-width: 80px;
+    width: auto;
+    height: auto;
+  }
+}
+
+.autocomplete-data {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ui-helper-hidden-accessible {
+  display: none;
+}
