@@ -286,7 +286,17 @@ class TextbookController extends Controller
         }
         else
         {
-            $books = Book::queryWithBuyerID($query, Auth::user()->id);
+            if (Auth::check())
+            {
+                // if the user is logged in, search books by the user's university id
+                $books = Book::queryWithBuyerID($query, Auth::user()->id);
+            }
+            else
+            {
+                // guest user, search books by the university id selected by the user
+                $university_id = Input::get('university_id');
+                $books = Book::queryWithUniversityID($query, $university_id);
+            }
 
             // Get current page form url e.g. &page=1
             $currentPage = LengthAwarePaginator::resolveCurrentPage();

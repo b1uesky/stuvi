@@ -59,6 +59,7 @@ Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
     Route::group(['prefix'=>'buy'], function() {
         Route::get  ('/', 'TextbookController@showBuyPage');
         Route::get  ('/{book}', 'TextbookController@show');
+        Route::get  ('/search', 'TextbookController@buySearch');
     });
 
     // sell
@@ -77,7 +78,6 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 
     // buy
     Route::group(['prefix'=>'buy'], function() {
-        Route::get('/search', 'TextbookController@buySearch');
         Route::get('/product/{product}', 'ProductController@show');
     });
 
