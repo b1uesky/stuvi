@@ -176,6 +176,7 @@ class BuyerOrder extends Model
         {
             $temp = $product->toArray();
             $temp['book'] = $product->book->toArray();
+            $temp['image'] = $product->images->first()->toArray();
             $temp['book']['authors'] = $product->book->authors->toArray();
             $temp['book']['image_set'] = $product->book->imageSet->toArray();
             $buyer_order_arr['products'][] = $temp;
