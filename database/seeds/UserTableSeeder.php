@@ -1,9 +1,9 @@
 <?php
 
 use App\Email;
-use Illuminate\Database\Seeder;
-use App\User;
 use App\University;
+use App\User;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Config;
 
 // use Faker\Factory;
@@ -23,12 +23,12 @@ class UserTableSeeder extends Seeder {
             'last_name'       => 'Luo',
             'university_id'   => $bu->id,
             'role'            => 'uac',
-            'activated'       => true,
-            'activation_code' => \App\Helpers\generateRandomCode(Config::get('user.activation_code_length')),
         ]);
         $email = Email::create([
             'user_id'       => $user->id,
             'email_address' => 'luoty@bu.edu',
+            'verified'       => true,
+            'verification_code' => \App\Helpers\generateRandomCode(Config::get('user.verification_code_length')),
         ]);
         $user->setPrimaryEmail($email->id);
 
@@ -38,12 +38,12 @@ class UserTableSeeder extends Seeder {
             'last_name'       => 'Ding',
             'university_id'   => $bu->id,
             'role'            => 'uac',
-            'activated'       => true,
-            'activation_code' => \App\Helpers\generateRandomCode(Config::get('user.activation_code_length')),
         ]);
         $email = Email::create([
             'user_id'       => $user->id,
             'email_address' => 'test@bu.edu',
+            'verified'       => true,
+            'verification_code' => \App\Helpers\generateRandomCode(Config::get('user.verification_code_length')),
         ]);
         $user->setPrimaryEmail($email->id);
 
@@ -53,12 +53,12 @@ class UserTableSeeder extends Seeder {
             'last_name'       => 'Stuvi',
             'university_id'   => $bu->id,
             'role'            => 'ua',
-            'activated'       => true,
-            'activation_code' => \App\Helpers\generateRandomCode(Config::get('user.activation_code_length')),
         ]);
         $email = Email::create([
             'user_id'       => $user->id,
             'email_address' => 'seller@bu.edu',
+            'verified'       => true,
+            'verification_code' => \App\Helpers\generateRandomCode(Config::get('user.verification_code_length')),
         ]);
         $user->setPrimaryEmail($email->id);
 
@@ -68,12 +68,12 @@ class UserTableSeeder extends Seeder {
             'last_name'       => 'Stuvi',
             'university_id'   => $bu->id,
             'role'            => 'ua',
-            'activated'       => true,
-            'activation_code' => \App\Helpers\generateRandomCode(Config::get('user.activation_code_length')),
         ]);
         $email = Email::create([
             'user_id'       => $user->id,
             'email_address' => 'buyer@bu.edu',
+            'verified'       => true,
+            'verification_code' => \App\Helpers\generateRandomCode(Config::get('user.verification_code_length')),
         ]);
         $user->setPrimaryEmail($email->id);
 
@@ -83,12 +83,12 @@ class UserTableSeeder extends Seeder {
             'last_name'       => 'Stuvi',
             'university_id'   => $bu->id,
             'role'            => 'ac',
-            'activated'       => true,
-            'activation_code' => \App\Helpers\generateRandomCode(Config::get('user.activation_code_length')),
         ]);
         $email = Email::create([
             'user_id'       => $user->id,
             'email_address' => 'courier@bu.edu',
+            'verified'       => true,
+            'verification_code' => \App\Helpers\generateRandomCode(Config::get('user.verification_code_length')),
         ]);
         $user->setPrimaryEmail($email->id);
 
