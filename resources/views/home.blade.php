@@ -27,6 +27,11 @@
             @endif
         </div>
         {{-- Images currently 2000px x 1333px image quality 7/12 on PS --}}
+        <!-- Photos are owned by Nicholas Louie (owner), and are allowed for use on stuvi.com only. Attribution in the alt text
+             must be provided. This must include the owner's name and link to the owner's Flickr.
+             No one else but the owner may sell, copy, redistribute or edit his images.
+             Visit Nick at flickr.com/photos/nickkeee
+             -->
         <div id="slide-container">
             <div class="" id="slides">
                 <img src="{{asset('img/nick/nlouie1.jpg')}}" alt="Charles River by Nick Louie - flickr.com/photos/nickkeee">
@@ -47,18 +52,13 @@
                                    placeholder="Enter the textbook ISBN, Title, or Author"/>
                         </div>
                     </div>
-
                     <button class="btn btn-default search-btn" type="submit" value="Search">
                         <i class="fa fa-search search-icon"></i>
                     </button>
                 </form>
             </div>
-
         </div>
-
     </div>
-
-
 
   <!-- new bottom half -->
     <div class="container-fluid" id="bottom-half">
@@ -75,7 +75,7 @@
                     </p>
                 </div>
                 <div class="container col-xs-offset-1 col-sm-7 col-sm-offset-3 col-md-offset-0 col-md-4" id="img-info-1">
-                    <img class="img-responsive" src="{{asset('/img/scaled/art-boston.jpg')}}" width="350px">
+                    <img class="img-responsive" src="{{asset('/img/art-boston.jpg')}}" width="350px">
                 </div>
             </div>
 
