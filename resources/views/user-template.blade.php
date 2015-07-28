@@ -28,7 +28,7 @@
                                     <li class="side-item">
                                         <a class="side-item-link active" id="side-profile-link"
                                            href="{{asset('/user/profile-edit')}}">
-                                            <i class="fa fa-user"></i>Profile
+                                            <i class="fa fa-user"></i>Profile Settings
                                         </a>
                                     </li>
                                     <li class="side-item">
