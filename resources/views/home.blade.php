@@ -116,7 +116,8 @@
                 <form action="/textbook/buy/search" method="get">
                     <div class="search-row">
                         <div class="search-input-wrapper">
-                            <input type="text" name="query" id="autocompleteBuy" class="form-control search-input search-input-query"
+                            <input type="text" name="query" id="autocompleteBuy"
+                                   class="form-control search-input search-input-query"
                                    placeholder="Enter the textbook ISBN, Title, or Author"/>
                         </div>
 
@@ -212,14 +213,6 @@
 @endsection
 
 @section('javascript')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
-    {{-- FormValidation --}}
-    <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
-    <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/auth.js')}}"></script>
-
     <script src="{{asset('js/slides/jquery.slides.min.js')}}"></script>
     <script src="{{asset('js/home.js')}}"></script>
 

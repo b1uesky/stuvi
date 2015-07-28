@@ -90,10 +90,6 @@
 <!-- inserted at the end of app -->
 @section('javascript')
 
-    <!-- required for all pages for proper tab and drop-down functionality -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
     <!-- Slick required -->
     {{--
         <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
