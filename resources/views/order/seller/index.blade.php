@@ -48,7 +48,7 @@
                     <div class="row book-row">
                         <div class="col-xs-12 col-sm-2 book-img">
                             <a href="{{ url('/textbook/buy/product/'.$order->product->id) }}">
-                                <img class="lg-img" src="{{ $order->product->images->first()->path }}">
+                                <img class="lg-img" src="{{$order->product->book->imageSet->large_image}}">
                             </a>
                         </div>
                         <div class="col-xs-12 col-sm-5 book-info">
