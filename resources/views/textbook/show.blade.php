@@ -43,8 +43,10 @@
                 <h4>Select one of our available books</h4>
 
                 {{-- if the user is not logged in --}}
-                @if(!Auth::check())
-                    <p>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy a textbook.</p>
+                @if(Auth::guest())
+                    <p>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy or sell a textbook.</p>
+                @else
+                    <p><a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Sell</a> this book.</p>
                 @endif
 
                 <table class="table table-responsive textbook-table" style="width:100%" border="1">

@@ -28,13 +28,12 @@
         @endif
 
         <div class="row textbook-row col-sm-5">
-            <div>
-                <img id="textbook-img"
-                     src="{{ $book->imageSet->large_image or config('book.default_image_path.large') }}"/>
-            </div>
-
             <div class="textbook-info">
-                <h1>{{ $book->title }}</h1>
+                <h2>{{ $book->title }}</h2>
+
+                <div class="img-container">
+                    <img class="img-large" src="{{ $book->imageSet->large_image or config('book.default_image_path.large') }}"/>
+                </div>
 
                 <div class="authors-container">
                     <span>by </span>
