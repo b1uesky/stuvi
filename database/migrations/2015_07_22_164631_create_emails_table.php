@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateEmailsTable extends Migration
 {
@@ -16,8 +16,8 @@ class CreateEmailsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('email_address')->unique();
-            $table->boolean('activated')->default(false);
-            $table->string('activation_code')->nullable();
+            $table->boolean('verified')->default(false);
+            $table->string('verification_code')->nullable();
 
             $table->timestamps();
 

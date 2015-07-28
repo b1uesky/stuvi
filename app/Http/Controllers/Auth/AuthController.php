@@ -10,9 +10,9 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 use Input;
 use Mail;
+use Response;
 use Session;
 use Validator;
-use Response;
 
 class AuthController extends Controller {
 
@@ -60,7 +60,7 @@ class AuthController extends Controller {
             'user_id'       => $user->id,
             'email_address' => $data['email'],
         ]);
-        $email->assignActivationCode();
+        $email->assignVerificationCode();
         $user->update([
             'primary_email_id'  => $email->id,
         ]);

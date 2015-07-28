@@ -51,10 +51,12 @@ class EmailController extends Controller
             'email_address' => Input::get('email'),
         ]);
 
-        // TODO: need to verfy the new email.
+        // verify the new email.
+        $email->assignVerificationCode();
+        $email->sendVerificationEmail();
 
         return redirect('user/email')
-            ->with('email_add_success', $email->email_address.' has been added to your account.');
+            ->with('email_add_success', $email->email_address.' has been added to your account. Please check your email and confirm the new email address.');
     }
 
     /**
@@ -142,4 +144,29 @@ class EmailController extends Controller
         return redirect('user/email')
             ->with('email_set_primary_success', $email->email_address.' is now your primary email.');
     }
+
+    public function verify($id, $code)
+    {
+        $email = Email::find($id);
+
+        if (!($email && $email->isBelongTo(Auth::id())))
+        {
+            $msg_title   = 'email_verify_error';
+            $msg_content = 'Sorry, the requested email is not found.';
+        }
+        elseif ($email->verify($code))
+        {
+            $msg_title   = 'email_verify_success';
+            $msg_content = $email->email_address.' has been verified successfully.';
+        }
+        else
+        {
+            $msg_title   = 'email_verify_error';
+            $msg_content = 'Sorry, we cannot verify your email '.$email->email_address;
+        }
+
+        return redirect('/user/email')
+            ->with($msg_title, $msg_content);
+    }
+
 }

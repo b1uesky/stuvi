@@ -145,6 +145,7 @@ Route::group(['namespace'=>'User', 'middleware'=>'auth', 'prefix'=>'user'], func
         Route::post('/add',     'EmailController@store');
         Route::post('/remove',  'EmailController@destroy');
         Route::post('/primary', 'EmailController@setPrimary');
+        Route::get ('/{id}/verify/{code}',  'EmailController@verify');
     });
 
 });

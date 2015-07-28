@@ -1,11 +1,10 @@
 <?php namespace App\Http\Controllers\User;
 
 use App\Profile;
-use App\University;
 use Auth;
 use Input;
-use Session;
 use Mail;
+use Session;
 
 class UserController extends Controller
 {
@@ -111,7 +110,7 @@ class UserController extends Controller
             $url = Input::has('return_to') ? urldecode(Input::get('return_to')) : '/home';
             $message = 'Your account has already been activated.';
         }
-        elseif (Auth::user()->collegeEmail()->activate($code))
+        elseif (Auth::user()->collegeEmail()->verify($code))
         {
             $url = Input::has('return_to') ? urldecode(Input::get('return_to')) : '/home';
             $message = 'Your account is successfully activated.';
