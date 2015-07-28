@@ -11,8 +11,8 @@
         @include('faq/side-nav')
 
         <div class="col-sm-7 col-sm-offset-1 qa-container">
+            <h2>FAQ - Account</h2>
             <div class="question-answer">
-                <h2>FAQ - Account</h2>
                 <h3>How do I edit my account information?</h3>
                 <p>
                     Please go to the <a href="{{ url('/user/account') }}">account page</a> to edit your account

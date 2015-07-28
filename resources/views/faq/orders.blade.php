@@ -11,9 +11,8 @@
         @include('faq/side-nav')
 
         <div class="col-sm-7 col-sm-offset-1 qa-container">
+            <h2>FAQ - Orders</h2>
             <div class="question-answer">
-                <h2>FAQ - Orders</h2>
-
                 <h3>What happens after I buy a book?</h3>
 
                 <p>

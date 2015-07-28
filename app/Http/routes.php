@@ -231,6 +231,8 @@ Route::get('/faq', 'FAQController@general');
 Route::get('/faq/general', 'FAQController@general');
 Route::get('/faq/orders', 'FAQController@orders');
 Route::get('/faq/account', 'FAQController@account');
+Route::get('/faq/textbook', 'FAQController@textbook');
+
 
 /*
 |--------------------------------------------------------------------------

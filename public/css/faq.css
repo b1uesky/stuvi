@@ -24,9 +24,10 @@
 .faq-list li a {
   color: #00a496;
 }
+
+.qa-container h2 {
+  color: #00a496;
+}
 .question-answer {
   margin-bottom: 40px;
-}
-.question-answer h2 {
-  color: #00a496;
 }
