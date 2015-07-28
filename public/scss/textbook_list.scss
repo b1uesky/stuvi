@@ -109,3 +109,18 @@
     text-align: center;
   }
 }
+
+#pagination {
+  text-align: center;
+  .active {
+    span {
+      background-color: $primary-color;
+      border-color: $primary-color;
+    }
+  }
+  li {
+    a {
+      color: $primary-color;
+    }
+  }
+}
