@@ -24,8 +24,11 @@
                     {{--<li><a href="{{ url('/coming') }}">Club</a></li>--}}
                     {{--<li><a href="{{ url('/coming') }}">Group</a></li>--}}
                 </ul>
+
                 <!-- Navbar right -->
                 <ul id="nav-right" class="nav navbar-nav navbar-right">
+                    @yield('searchbar')
+
                     {{-- Not logged in --}}
                     @if (Auth::guest())
                         <li><a id="login-btn" class="nav-login" data-toggle="modal" href="#login-modal">
