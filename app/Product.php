@@ -1,8 +1,7 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Config;
-use App\Cart;
+use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
@@ -39,8 +38,6 @@ class Product extends Model
         return false;
     }
 
-
-
     /**
      * Return the text description of product's general condition as defined in config/product.php.
      *
@@ -58,6 +55,7 @@ class Product extends Model
     {
         return $this->hasMany('App\ProductImage');
     }
+
     /**
      * @return string
      */
@@ -70,7 +68,6 @@ class Product extends Model
 
         return 'No';
     }
-
 
     /**
      * @return mixed
@@ -92,7 +89,6 @@ class Product extends Model
 
         return 'No';
     }
-
 
     /**
      * Validation rules.
