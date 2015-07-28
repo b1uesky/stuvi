@@ -113,8 +113,7 @@
                         </div>
                         <!-- sign up -->
                         <div class="tab-pane {{ $signupActive }}" id="signup-body">
-                            <form class="form-horizontal" role="form" method="POST"
-                                  action="{{ url('/auth/register') }}">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <!-- first name -->
                                 <div class="form-group">
@@ -288,8 +287,5 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>
-    <script src="{{asset('/js/navigation.js')}}" type="text/javascript"></script>
-    <script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>
-    <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
 @endsection
 

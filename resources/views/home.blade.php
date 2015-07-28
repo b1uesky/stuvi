@@ -6,18 +6,21 @@
 
 @section('css')
     <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
-    <link type="text/css" href="{{ asset('formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}"
+          rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     @endsection
 
     @section('content')
             <!-- new top half -->
     <div class="container-fluid" id="container-home-top">
-        <div class="" id="navbar-container" >
+        <div class="" id="navbar-container">
             @include('includes.textbook.header')
         </div>
 
         <div class="" id="head-tag-ghost-container">
             <h1 id="head1">Welcome to Stuvi</h1>
+
             <p class="lead tagline">Because it takes a village to conquer college.</p>
             @if (Auth::guest())
                 <div class="ghost-btn-container">
@@ -34,7 +37,8 @@
              -->
         <div id="slide-container">
             <div class="" id="slides">
-                <img src="{{asset('img/nick/nlouie1.jpg')}}" alt="Charles River by Nick Louie - flickr.com/photos/nickkeee">
+                <img src="{{asset('img/nick/nlouie1.jpg')}}"
+                     alt="Charles River by Nick Louie - flickr.com/photos/nickkeee">
                 <img src="{{asset('img/nick/nlouie2.jpg')}}" alt="EPC by Nick Louie - flickr.com/photos/nickkeee">
                 <img src="{{asset('img/nick/nlouie3.jpg')}}" alt="Mass Art by Nick Louie - flickr.com/photos/nickkeee">
                 <img src="{{asset('img/nick/nlouie4.jpg')}}" alt="Harvard by Nick Louie - flickr.com/photos/nickkeee">
@@ -43,25 +47,41 @@
         </div>
 
         <!-- TODO: make this work properly..like a search for the entire stuvi site? idk -->
-        <div class="" id="home-search-container">
-            <div class="" id="home-search-form">
-                <form action="/textbook/buy/search" method="get">
-                    <div class="form-group">
-                        <div class="col-xs-8 col-xs-offset-2 search-row">
-                            <input type="text" name="query" id="autocompleteBuy" class="form-control search-input"
+        <div id="home-search-container">
+            <div class="col-sm-12">
+                <div class="searchbar">
+                    <form action="/textbook/buy/search" method="get">
+
+                        <div class="search-input-wrapper">
+                            <input type="text" name="query" id="autocompleteBuy"
+                                   class="form-control search-input search-input-query"
                                    placeholder="Enter the textbook ISBN, Title, or Author"/>
                         </div>
-                    </div>
-                    <button class="btn btn-default search-btn" type="submit" value="Search">
-                        <i class="fa fa-search search-icon"></i>
-                    </button>
-                </form>
+
+                        {{-- Show school selection if it's a guest --}}
+                        @if(Auth::guest())
+                            <div class="search-input-wrapper">
+                                <select name="university_id" class="form-control search-input search-input-university">
+                                    @foreach(\App\University::where('is_public', true)->get() as $university)
+                                        <option value="{{ $university->id }}">{{ $university->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
+
+                        <div class="search-input-wrapper">
+                            <button class="btn btn-default search-btn" type="submit" value="Search">
+                                <i class="fa fa-search search-icon"></i>
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 
-  <!-- new bottom half -->
-
+    <!-- new bottom half -->
     <div class="container-fluid" id="bottom-half">
         <div class="container-fluid stuvi-container">
             <!-- row 1-->
@@ -71,11 +91,14 @@
 
                     <p>
                         Stuvi is a marketplace built for college students, by college students. We're here to provide
-                        relevant services to help you succeed at school, and we're launching here in Boston, Massachusetts!
+                        relevant services to help you succeed at school, and we're launching here in Boston,
+                        Massachusetts!
                         <a href="{{url('/about/')}}">Learn More.</a>
                     </p>
                 </div>
-                <div class="container col-xs-offset-1 col-sm-7 col-sm-offset-3 col-md-offset-0 col-md-4" id="img-info-1">
+
+                <div class="container col-xs-offset-1 col-sm-7 col-sm-offset-3 col-md-offset-0 col-md-4"
+                     id="img-info-1">
                     <img class="img-responsive" src="{{asset('/img/art-boston.jpg')}}" width="350px">
                 </div>
             </div>
@@ -122,17 +145,9 @@
 @endsection
 
 @section('javascript')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    {{--<script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>--}}
-
-    {{-- FormValidation --}}
-    <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
-    <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/auth.js')}}"></script>
-
     <script src="{{asset('js/slides/jquery.slides.min.js')}}"></script>
     <script src="{{asset('js/home.js')}}"></script>
-    {{--<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>--}}
-    {{--<script src="{{asset('js/autocompleteBuy.js')}}"></script>--}}
+
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="{{asset('js/autocompleteBuy.js')}}"></script>
 @endsection
