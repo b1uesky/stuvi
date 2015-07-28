@@ -95,6 +95,19 @@ class AuthController extends Controller {
 
     /**
      * @override
+     * Log the user out of the application.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getLogout()
+    {
+        Auth::logout();
+
+        return redirect()->back();
+    }
+
+    /**
+     * @override
      * Handle a registration request for the application.
      *
      * @param  \Illuminate\Http\Request  $request
