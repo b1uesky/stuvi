@@ -2,7 +2,9 @@
 
 @section('empty-cart-modal')
     <div class="empty-cart-modal-container" style="z-index: 99999;">
-        <div class="modal fade empty-cart-modal" id="empty-cart-modal" tabindex="-1" role="dialog" aria-labelledby="EmptyCart">
+        <div class="modal fade empty-cart-modal" id="empty-cart-modal" tabindex="-1" role="dialog" aria-labelledby="EmptyCart"
+                style= "">
+            {{-- position: fixed; top: 0; bottom: 0; right: 0; left: 50%; outline: none;" data-backdrop="false--}}
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
