@@ -36,7 +36,7 @@
                                     <!-- row 2. content-->
                                     <tr>
                                         <!-- container for content -->
-                                        <td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px;">
+                                        <td bgcolor="#F2F2F2" style="padding: 40px 30px 40px 30px;">
                                             <!-- content table -->
                                             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                                 <!-- content row 1 -->
@@ -139,13 +139,20 @@
                                                             </tr>
 
                                                             @foreach ($buyer_order['products'] as $product)
-                                                                <tr>
-                                                                    <td valign="top">
-                                                                        <a href="{{ url('/order/buyer/'.$buyer_order['id']) }}">
-                                                                            <img src="{{ config('aws.url.stuvi-product-img').$product['image']['small_image'] }}" alt="sold book image">
+                                                                <!-- each product -->
+                                                                <tr width="100%">
+                                                                    <!-- image -->
+                                                                    <td valign="top" width="40%" style=" font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;">
+                                                                        <a href="{{ url('/order/buyer/'.$buyer_order['id']) }}" width="100%">
+                                                                            <img src="{{ config('aws.url.stuvi-product-img').$product['image']['small_image'] }}" alt="sold book image" width="100%">
                                                                         </a>
                                                                     </td>
-                                                                    <td valign="top" style="color: #000000; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;">
+                                                                    <!-- spacing -->
+                                                                    <td style="font-size: 0; line-height: 0;" width="10%">
+                                                                        &nbsp;
+                                                                    </td>
+                                                                    <!-- product info -->
+                                                                    <td valign="top" style="color: #000000; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;" width="50%">
                                                                         <p>Title: {{ $product['book']['title'] }}</p>
                                                                         <p>ISBN: {{ $product['book']['isbn13'] }}</p>
                                                                         <p>Author(s):

@@ -23,7 +23,7 @@
                             <!-- row 1 header-->
                             <tr>
                                 <!-- header image/logo -->
-                                <td align="center" bgcolor="#f2f2f2" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
+                                <td align="center" bgcolor="#241729" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
                                     <a href="{{url('/home')}}">
                                         <img src="http://puu.sh/jg7HJ/cbdfb5e1f5.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
                                     </a>
@@ -32,7 +32,7 @@
                             <!-- row 2. content-->
                             <tr>
                                 <!-- container for content -->
-                                <td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px;">
+                                <td bgcolor="#F2F2F2" style="padding: 40px 30px 40px 30px;">
                                     <!-- content table -->
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                         <!-- content row 1 -->
