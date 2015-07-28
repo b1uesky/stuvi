@@ -51,7 +51,7 @@
                                                     <tr>
                                                         <td style="color: #F16521; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 17px;" width="100%">
                                                             <!-- CONTENT HERE! -->
-                                                            You recently added an email address to your Stuvi account. Please click the button below to verify your email address.
+                                                            You recently added this email address to your Stuvi account. Please click the button below to verify your email address.
                                                             <br>
                                                             <br>
                                                         </td>

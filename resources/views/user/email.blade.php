@@ -37,9 +37,14 @@
                             @foreach ($emails as $email)
                                 <tr>
                                     <td><strong>{{ $email->email_address }}</strong></td>
-                                    @if (Auth::user()->primary_email_id == $email->id)
+                                    @if ($email->isPrimary())
                                         <td>
                                             Primary
+                                        </td>
+                                        <td></td>
+                                    @elseif (!$email->verified)
+                                        <td>
+                                            Unverified
                                         </td>
                                         <td></td>
                                     @else
