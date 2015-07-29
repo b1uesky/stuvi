@@ -1,5 +1,6 @@
 /***** SELLER PRODUCT CREATE PAGE *****/
-@import "modules/all";
+@import "modules/colors";
+@import "partials/image";
 
 body {
   background-color: $background-color;
@@ -15,13 +16,13 @@ body {
   margin-top: 50px;
 }
 
-#textbook-img {
-  width: 300px;
-  height: 400px;
-  span {
-    font-size: 18px;
-  }
-}
+//#textbook-img {
+//  width: 300px;
+//  height: 400px;
+//  span {
+//    font-size: 18px;
+//  }
+//}
 
 .authors-container {
   margin-bottom: 10px;
@@ -36,10 +37,6 @@ body {
 }
 
 .textbook-info {
-  p {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
 }
 
 #price-input {
@@ -49,10 +46,11 @@ body {
 /*** PRODUCT CONDITION ***/
 
 .condition-btn {
-  background-color: #DDDDDD;
-  border: 1px solid #9B9B9B;
+  background-color: white;
+  border: 1px solid $border-color;
   &:hover, &:focus {
-    background-color: #BBBBBB;
+    background-color: $accent-color;
+    color: white;
   }
   &.active {
     background-color: $primary-color;
@@ -62,7 +60,7 @@ body {
 }
 
 .fa-question-circle {
-  color: $secondary-color;
+  color: $accent-color;
   cursor: pointer;
 }
 

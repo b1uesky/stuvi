@@ -28,13 +28,12 @@
         @endif
 
         <div class="row textbook-row col-sm-5">
-            <div>
-                <img id="textbook-img"
-                     src="{{ $book->imageSet->large_image or config('book.default_image_path.large') }}"/>
-            </div>
-
             <div class="textbook-info">
-                <h1>{{ $book->title }}</h1>
+                <h2>{{ $book->title }}</h2>
+
+                <div class="img-container">
+                    <img class="img-large" src="{{ $book->imageSet->large_image or config('book.default_image_path.large') }}"/>
+                </div>
 
                 <div class="authors-container">
                     <span>by </span>
@@ -60,7 +59,7 @@
             <div class="row col-sm-6 col-sm-offset-1">
             <h2>Book Conditions</h2>
 
-            <form action="{{ url('/textbook/sell/product/store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('/textbook/sell/product/store') }}" method="post" enctype="multipart/form-data" id="form-product">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="book_id" value="{{ $book->id }}"/>
                 <input type="hidden" name="book_title" value="{{ $book->title }}">
@@ -246,26 +245,16 @@
                     <div>List price: ${{ $book->list_price }}</div>
                 @endif
 
-                {{-- lowest new price --}}
-                @if($book->lowest_new_price)
-                    <div>Lowest new price: ${{ $book->lowest_new_price }}</div>
-                @endif
-
-                {{-- lowest used price --}}
-                @if($book->lowest_used_price)
-                    <div>Lowest used price: ${{ $book->lowest_used_price }}</div>
-                @endif
-                <br>
-
                 {{-- your price --}}
-                    <div class="form-group">
-                        <label for="price-form">Price</label>
-                        <div class="input-group" id="price-input">
-                            <div class="input-group-addon">$</div>
-                            <input type="number" step="0.01" name="price" class="form-control" id="price-form"
-                                   placeholder="Amount">
-                        </div>
+                <div class="form-group">
+                    <label for="price-form">Price</label>
+
+                    <div class="input-group" id="price-input">
+                        <div class="input-group-addon">$</div>
+                        <input type="number" step="0.01" name="price" class="form-control" id="price-form"
+                               placeholder="Amount">
                     </div>
+                </div>
 
                 {{-- Upload Images --}}
                 <div class="form-group" name="cover_img">
@@ -289,7 +278,11 @@
 
 @section('javascript')
     @if(Auth::check())
-        <script src="{{ asset('js/validator/file-upload.js') }}"></script>
+        {{-- FormValidation --}}
+        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
+        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
+
+        <script src="{{ asset('js/validator/product-create.js') }}"></script>
         <script src="{{ asset('js/product/create.js') }}"></script>
     @endif
 @endsection
