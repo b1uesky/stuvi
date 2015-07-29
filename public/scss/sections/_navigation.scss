@@ -103,6 +103,9 @@ a:focus {
     }
     color: $primary-color;
   }
+  &:focus {
+    background-color: $nav-background-color;
+  }
 }
 
 #nav-right > .open > a{

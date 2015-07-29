@@ -1,6 +1,4 @@
 
-{{-- This is the Buyer order delivered email. I suggest using this as a template. Made by Nick --}}
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -59,26 +57,6 @@
                                                             <br>
                                                         </td>
                                                     </tr>
-                                                    <!-- button -->
-                                            {{--        <tr>
-                                                        <td>
-                                                            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding: 10px 0px 0px 0px">
-                                                                <tr>
-
-                                                                    <td align="center">
-                                                                        <table border="0" cellspacing="0" cellpadding="0">
-                                                                            <tr>
-                                                                                <td align="center" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" bgcolor="#e9703e">
-                                                                                    <a href="{{ url('/user/activate/'.$user['activation_code'])}}" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #e9703e; display: inline-block;">
-                                                                                        Confirm Account &rarr;</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </td>
-
-                                                                </tr>
-                                                            </table>
-                                                    </tr>--}}
                                                     <br>
                                                 </table>
 
