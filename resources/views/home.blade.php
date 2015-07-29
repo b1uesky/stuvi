@@ -101,6 +101,32 @@
             </div>
             <!-- TODO: Add more content -->
         </div>
+        <div class="container-fluid home-textbook-container">
+            <h1 id="home-textbook-title">Recommended Books</h1>
+
+            <div class="row textbook-row">
+                <div class="home-textbook col-sm-6 col-md-3">
+                    <a href="#">
+                        <img class="textbook-img" src="{{ asset('/img/placeholder.png') }}">
+                    </a>
+                </div>
+                <div class="home-textbook col-sm-6 col-md-3">
+                    <a href="#">
+                        <img class="textbook-img" src="{{ asset('/img/placeholder.png') }}">
+                    </a>
+                </div>
+                <div class="home-textbook col-sm-6 col-md-3">
+                    <a href="#">
+                        <img class="textbook-img" src="{{ asset('/img/placeholder.png') }}">
+                    </a>
+                </div>
+                <div class="home-textbook col-sm-6 col-md-3">
+                    <a href="#">
+                        <img class="textbook-img" src="{{ asset('/img/placeholder.png') }}">
+                    </a>
+                </div>
+            </div>
+        </div>
         <!-- services-->
         {{--<div class="container-fluid services">--}}
         {{--<div class="row">--}}

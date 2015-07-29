@@ -237,21 +237,21 @@
 
 /******** HOME TEXTBOOK SECTION ********/
 
-.home-textbook {
-  padding: 0;
-  .textbook-container {
-    background-color: $primary-color;
-    .textbook-link {
-      color: white;
-      text-decoration: none;
-      div {
-        margin-left: 50px;
-        margin-top: 50px;
-      }
+#home-textbook-title {
+  margin-left: 50px;
+  margin-bottom: 30px;
+}
+
+.textbook-row {
+  text-align: center;
+  .home-textbook {
+    margin-bottom: 40px;
+    .textbook-img {
+      width: 175px;
+      height: 233px;
     }
   }
 }
-
 
 // login/signup modal
 @import "sections/login-signup-modal";

@@ -10,7 +10,6 @@
 @endsection
 
 @section('content')
-
     <!-- different icon and bg color depending on alert. add to other pages??? -->
     @if (Session::has('message'))
         @if (Session::get('alert-class') == 'alert-danger' or Session::get('alert-class') == 'alert-warning')
