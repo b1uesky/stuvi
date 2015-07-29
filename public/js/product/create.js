@@ -2,45 +2,81 @@
  * Created by Desmond on 7/11/15.
  *
  * Page: /textbook/sell/product/{id}/create
+ * Dropzone: http://www.dropzonejs.com
  */
 
-var total_images_limit = 3;
+Dropzone.options.formProduct = { // The camelized version of the ID of the form element
 
-$(document).ready(function () {
+    url: '/textbook/sell/product/store',
+    method: 'post',
 
-    // generate an extra input element for image upload
-    $('.btn-add-input').click(function () {
+    autoProcessQueue: false,
+    previewsContainer: '#dropzone-img-preview',
+    clickable: '#dropzone-img-preview',
+    addRemoveLinks: true,
+    dictRemoveFile: 'Remove',
 
-        // remove add image button if the limit is reached
-        if ($('.upload-file').length == total_images_limit - 1 ) {
-            $('.btn-add-input').css('display','none');
-        }
+    uploadMultiple: true,
+    parallelUploads: 3,
+    maxFiles: 3,
+    maxFilesize: 3,
 
-        // add input field
-        if ($('.upload-file').length < total_images_limit) {
-            var html_block = [
-                '<div class="form-group">',
-                '<input type="file" name="extra-images[]" class="upload-file" />',
-                '<div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>',
-                '<a class="btn btn-danger btn-remove-file">Delete</a>',
-                '</div>'
-            ];
 
-            // insert the block before submit button
-            $(html_block.join('')).insertBefore('a[name=add_img_btn]');
-        }
+    // The setting up of the dropzone
+    init: function() {
+        var myDropzone = this;
 
-    });
+        // First change the button to actually tell Dropzone to process the queue.
+        this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
+            // Make sure that the form isn't actually being sent.
+            e.preventDefault();
+            e.stopPropagation();
+            myDropzone.processQueue();
+        });
 
-});
+        // When a file is added to the list
+        this.on("addedfile", function() {
+            $('.dz-message').hide();
+        });
 
-// click event for delete button
-$(document).on('click', '.btn-remove-file', function() {
+        // When a file is removed from the list
+        this.on("removedfile", function() {
+            // enable file upload
+            this.setupEventListeners();
 
-    // remove a dynamically created input field
-    $(this).parent().remove();
+            $('#dropzone-img-preview').removeClass('dz-unclickable');
+            $('#dropzone-img-preview').addClass('dz-clickable');
+        });
 
-    // display add image button
-    $('.btn-add-input').removeAttr('style');
+        // When all files in the list are removed and the dropzone is reset to initial state.
+        this.on("reset", function() {
+            $('.dz-message').show();
+        });
 
-});
+        // When the number of files accepted reaches the maxFiles limit.
+        this.on("maxfilesreached", function() {
+            // disable file upload
+            this.removeEventListeners();
+
+            $('#dropzone-img-preview').removeClass('dz-clickable');
+            $('#dropzone-img-preview').addClass('dz-unclickable');
+        });
+
+        // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
+        // of the sending event because uploadMultiple is set to true.
+        this.on("sendingmultiple", function() {
+            // Gets triggered when the form is actually being sent.
+            // Hide the success button or the complete form.
+
+        });
+        this.on("successmultiple", function(files, response) {
+            // Gets triggered when the files have successfully been sent.
+            // Redirect user or notify of success.
+            console.log(response);
+        });
+        this.on("errormultiple", function(files, response) {
+            // Gets triggered when there was an error sending the files.
+            // Maybe show form again, and notify user of error
+        });
+    }
+}
