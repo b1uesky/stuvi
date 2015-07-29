@@ -106,16 +106,24 @@
 
             <div class="row textbook-row">
                 <div class="home-textbook col-sm-6 col-md-3">
-                    <img class="textbook-img" src="{{ asset('/img/placeholder.png') }}">
+                    <a href="#">
+                        <img class="textbook-img" src="{{ asset('/img/placeholder.png') }}">
+                    </a>
                 </div>
                 <div class="home-textbook col-sm-6 col-md-3">
-                    <img class="textbook-img" src="{{ asset('/img/placeholder.png') }}">
+                    <a href="#">
+                        <img class="textbook-img" src="{{ asset('/img/placeholder.png') }}">
+                    </a>
                 </div>
                 <div class="home-textbook col-sm-6 col-md-3">
-                    <img class="textbook-img" src="{{ asset('/img/placeholder.png') }}">
+                    <a href="#">
+                        <img class="textbook-img" src="{{ asset('/img/placeholder.png') }}">
+                    </a>
                 </div>
                 <div class="home-textbook col-sm-6 col-md-3">
-                    <img class="textbook-img" src="{{ asset('/img/placeholder.png') }}">
+                    <a href="#">
+                        <img class="textbook-img" src="{{ asset('/img/placeholder.png') }}">
+                    </a>
                 </div>
             </div>
         </div>
