@@ -16,11 +16,12 @@
                         <h4>Your Cart is Empty</h4>
                     </div>
                     <div class="modal-body">
-                        <p>You have no products in your shopping cart!</p>
-                        <p><a href="{{url('/textbook')}}">Start filling it up!</a></p>
+                        <p>You have no books in your shopping cart. <i class="fa fa-frown-o fa-lg"></i></p>
+
+                        <p><a class="btn primary-btn" href="{{url('/textbook')}}">Shop now!</a></p>
                     </div>
                    <div class="modal-footer">
-                       <button class="btn btn-default" data-dismiss="modal">Close</button>
+                       <button class="btn btn-default modal-close" data-dismiss="modal">Close</button>
                    </div>
                 </div>
             </div>
