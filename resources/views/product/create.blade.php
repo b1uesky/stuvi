@@ -89,39 +89,25 @@
                                     <h3>{{ Config::get('product.conditions.general_condition.title') }}</h3>
                                 </div>
                                 <div class="modal-body">
-                                    <h4>Brand New</h4>
-                                    <p>{{ Config::get('product.conditions.general_condition.description')[0] }}</p>
-
-                                    <h4>Excellent</h4>
-                                    <p>{{ Config::get('product.conditions.general_condition.description')[1] }}</p>
-
-                                    <h4>Good</h4>
-                                    <p>{{ Config::get('product.conditions.general_condition.description')[2] }}</p>
-
-                                    <h4>Acceptable</h4>
-                                    <p>{{ Config::get('product.conditions.general_condition.description')[3] }}</p>
+                                    @for ($i = 0; $i < 4; $i++)
+                                        <dl>
+                                            <dt>{{ Config::get('product.conditions.general_condition')[$i] }}</dt>
+                                            <dd>{{ Config::get('product.conditions.general_condition.description')[$i] }}</dd>
+                                        </dl>
+                                    @endfor
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition"
-                                   value="0"> {{ Config::get('product.conditions.general_condition')[0] }}
-                        </label>
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition"
-                                   value="1"> {{ Config::get('product.conditions.general_condition')[1] }}
-                        </label>
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition"
-                                   value="2"> {{ Config::get('product.conditions.general_condition')[2] }}
-                        </label>
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition"
-                                   value="3"> {{ Config::get('product.conditions.general_condition')[3] }}
-                        </label>
+
+                        @for ($i = 0; $i < 4; $i++)
+                            <label class="btn btn-default condition-btn">
+                                <input type="radio" name="general_condition"
+                                       value="{{$i}}"> {{ Config::get('product.conditions.general_condition')[$i] }}
+                            </label>
+                        @endfor
                     </div>
                 </div>
 
@@ -150,18 +136,13 @@
                     </div>
 
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="highlights_and_notes"
-                                   value="0"> {{ Config::get('product.conditions.highlights_and_notes')[0] }}
-                        </label>
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="highlights_and_notes"
-                                   value="1"> {{ Config::get('product.conditions.highlights_and_notes')[1] }}
-                        </label>
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="highlights_and_notes"
-                                   value="2"> {{ Config::get('product.conditions.highlights_and_notes')[2] }}
-                        </label>
+
+                        @for ($i = 0; $i < 3; $i++)
+                            <label class="btn btn-default condition-btn">
+                                <input type="radio" name="highlights_and_notes"
+                                       value="{{$i}}"> {{ Config::get('product.conditions.highlights_and_notes')[$i] }}
+                            </label>
+                        @endfor
                     </div>
                 </div>
 
@@ -189,18 +170,12 @@
                     </div>
 
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="damaged_pages"
-                                   value="0"> {{ Config::get('product.conditions.damaged_pages')[0] }}
-                        </label>
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="damaged_pages"
-                                   value="1"> {{ Config::get('product.conditions.damaged_pages')[1] }}
-                        </label>
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="damaged_pages"
-                                   value="2"> {{ Config::get('product.conditions.damaged_pages')[2] }}
-                        </label>
+                        @for($i = 0; $i < 3; $i++)
+                            <label class="btn btn-default condition-btn">
+                                <input type="radio" name="damaged_pages"
+                                       value="{{$i}}"> {{ Config::get('product.conditions.damaged_pages')[$i] }}
+                            </label>
+                        @endfor
                     </div>
                 </div>
 
@@ -228,14 +203,12 @@
                     </div>
 
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="broken_binding"
-                                   value="0"> {{ Config::get('product.conditions.broken_binding')[0] }}
-                        </label>
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="broken_binding"
-                                   value="1"> {{ Config::get('product.conditions.broken_binding')[1] }}
-                        </label>
+                        @for($i = 0; $i < 2; $i++)
+                            <label class="btn btn-default condition-btn">
+                                <input type="radio" name="broken_binding"
+                                       value="{{$i}}"> {{ Config::get('product.conditions.broken_binding')[$i] }}
+                            </label>
+                        @endfor
                     </div>
                 </div>
 
