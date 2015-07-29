@@ -40,13 +40,13 @@
                         <form action="/textbook/sell/search" method="post" id="form-isbn">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                            <div class="searchbar-input-container searchbar-input-container-query">
+                            <div class="searchbar-input-container searchbar-input-container-query form-group">
                                 <input type="text" name="isbn" class="form-control searchbar-input searchbar-input-query"
                                        id="sell-search-input"
                                        placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
                             </div>
 
-                            <div class="searchbar-input-container searchbar-input-container-submit">
+                            <div class="searchbar-input-container searchbar-input-container-submit form-group">
                                 <button class="btn primary-btn search-btn" type="submit" name="search">
                                     <i class="fa fa-search search-icon"></i>
                                 </button>
@@ -130,6 +130,12 @@
 @endsection
 
 @section('javascript')
+    @if(Auth::check())
+        {{-- FormValidation --}}
+        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
+        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
+    @endif
+
     <script src="{{asset('js/validator/isbn.js')}}"></script>
     <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
 @endsection
