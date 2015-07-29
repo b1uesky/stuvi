@@ -69,9 +69,9 @@
                                                                             <td align="center">
                                                                                 <table border="0" cellspacing="0" cellpadding="0">
                                                                                     <tr>
-                                                                                        <!-- TODO: Working link to order/buyer/< product # > -->
+                                                                                        <!-- TODO: test the href -->
                                                                                         <td align="center" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" bgcolor="#e9703e">
-                                                                                            <a href="" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #e9703e; display: inline-block;">
+                                                                                            <a href="{{url('order/buyer/'.$buyer_order['id'])}}" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #e9703e; display: inline-block;">
                                                                                                 Order Details &rarr;</a>
                                                                                         </td>
                                                                                     </tr>
