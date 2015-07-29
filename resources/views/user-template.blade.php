@@ -22,13 +22,13 @@
                                     <li class="side-item">
                                         <a class="side-item-link active" id="side-profile-link"
                                            href="{{asset('/user/profile')}}">
-                                            <i class="fa fa-server"></i>Overview
+                                            <i class="fa fa-user"></i>Overview
                                         </a>
                                     </li>
                                     <li class="side-item">
-                                        <a class="side-item-link active" id="side-profile-link"
+                                        <a class="side-item-link active" id="side-profile-edit-link"
                                            href="{{asset('/user/profile-edit')}}">
-                                            <i class="fa fa-user"></i>Profile Settings
+                                            <i class="fa fa-pencil"></i>Profile Settings
                                         </a>
                                     </li>
                                     <li class="side-item">

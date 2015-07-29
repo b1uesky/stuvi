@@ -74,7 +74,6 @@
                                 @endif
                         </li>
                     @endif
-
                 </ul>
             </div>
             <!-- End collapse container -->

@@ -4,7 +4,7 @@
 
 $(document).ready(function(){
     $('.active').removeClass('active');
-    $('#side-profile-link').addClass('active');
+    $('#side-profile-edit-link').addClass('active');
     $('#edit-btn').addClass('hidden');
 
     $('#datetimepicker1').datetimepicker({
