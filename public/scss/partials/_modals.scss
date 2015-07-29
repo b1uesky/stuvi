@@ -22,3 +22,9 @@
 .modal-footer {
   background-color: $background-color;
 }
+
+.modal-close {
+  &:focus {
+    outline: 0 !important;
+  }
+}

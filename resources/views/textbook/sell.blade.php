@@ -48,7 +48,7 @@
 
                             <div class="searchbar-input-container searchbar-input-container-submit form-group">
                                 <button class="btn primary-btn search-btn" type="submit" name="search">
-                                    <i class="fa fa-search search-icon"></i>
+                                    <i class="fa fa-search fa-lg search-icon"></i>
                                 </button>
                             </div>
                         </form>

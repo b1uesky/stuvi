@@ -50,8 +50,8 @@
                     @endif
 
                     <div class="searchbar-input-container searchbar-input-container-submit">
-                        <button class="btn btn-default search-btn" type="submit" value="Search">
-                            <i class="fa fa-search search-icon"></i>
+                        <button class="btn primary-btn search-btn" type="submit" value="Search">
+                            <i class="fa fa-search fa-lg search-icon"></i>
                         </button>
                     </div>
                 </form>
