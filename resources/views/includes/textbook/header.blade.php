@@ -84,7 +84,5 @@
     <!-- login modal -->
     @include('auth.login-signup-modal')
     <!-- Empty Cart Modal -->
-    @if($cartQty == 0)
-        @include('cart.empty-cart-modal')
-    @endif
+    @include('cart.empty-cart-modal')
 </header>
