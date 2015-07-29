@@ -35,9 +35,6 @@
             <a href="{{ url('/faq/account') }}">How do I edit my account information?</a>
         </li>
         <li>
-            <a href="{{ url('/faq/account') }}">Can I change the privacy of my profile?</a>
-        </li>
-        <li>
             <a href="{{ url('/faq/account') }}">How do I change my email settings?</a>
         </li>
     </ul>

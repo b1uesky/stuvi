@@ -30,3 +30,7 @@
 .question-answer {
   margin-bottom: 40px;
 }
+
+.faq-line {
+  border-color: grey;
+}
