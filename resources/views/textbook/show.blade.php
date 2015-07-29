@@ -26,8 +26,14 @@
 
                 <div class="authors-container">
                     <span>by </span>
+                    <?php $bookCounter = 0; ?>
                     @foreach($book->authors as $author)
-                        <span id="authors"><button class="btn btn-default author-btn disabled">{{ $author->full_name }}</button></span>
+                        @if($bookCounter == 0)
+                            <span id="authors">{{ $author->full_name }}</span>
+                        @else
+                                <span id="authors">, {{ $author->full_name }}</span>
+                        @endif
+                        <?php $bookCounter++ ?>
                     @endforeach
                 </div>
                 <p>ISBN10: {{ $book->isbn10 }}</p>
@@ -40,14 +46,16 @@
 
             <div class="row table-row">
 
-                <h4>Select one of our available books</h4>
+                <h4 id="h4-1">Select one of our available books</h4>
 
-                {{-- if the user is not logged in --}}
-                @if(Auth::guest())
-                    <p>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy or sell a textbook.</p>
-                @else
-                    <p><a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Sell</a> this book.</p>
-                @endif
+                <div id="book-options-links">
+                    {{-- if the user is not logged in --}}
+                    @if(Auth::guest())
+                        <p>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy or sell a textbook.</p>
+                    @else
+                        <p>Have one to sell? <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Sell yours now.</a></p>
+                    @endif
+                </div>
 
                 <table class="table table-responsive textbook-table" style="width:100%" border="1">
                     <thead>

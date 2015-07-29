@@ -33,7 +33,6 @@
             @endif
 
 
-
             <h1 id="create-title">Enter your textbook information</h1>
             <!-- form begin -->
             <form action="/textbook/sell/store" method="post" class="form textbook-create"
@@ -96,8 +95,6 @@
         </div> <!-- End row -->
     </div> <!-- end container -->
 </div> <!-- End fluid container (background) -->
-
-    {{--<div id = "photo-license">Photo by</div>--}}
 
 @endsection
 
