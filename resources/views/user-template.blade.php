@@ -21,13 +21,13 @@
                                 <ul class="nav">
                                     <li class="side-item">
                                         <a class="side-item-link active" id="side-profile-link"
-                                           href="{{asset('/user/profile')}}">
+                                           href="{{asset('/user/overview')}}">
                                             <i class="fa fa-user"></i>Overview
                                         </a>
                                     </li>
                                     <li class="side-item">
-                                        <a class="side-item-link active" id="side-profile-edit-link"
-                                           href="{{asset('/user/profile-edit')}}">
+                                        <a class="side-item-link active" id="side-profile-link"
+                                           href="{{asset('/user/profile')}}">
                                             <i class="fa fa-pencil"></i>Profile Settings
                                         </a>
                                     </li>
