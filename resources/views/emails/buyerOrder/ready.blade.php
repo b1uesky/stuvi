@@ -55,7 +55,7 @@
                                                         <td style="color: #F16521; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 17px;" width="100%">
                                                             <!-- CONTENT HERE! -->
                                                             <p>Hey, {{$buyer_order['buyer']['first_name']}}</p>
-                                                            <p>Your order is on the way! Click the button below for your order details.</p>
+                                                            <p>Your order is out for delivery by an official Stuvi Courier! Click the button below for your order details.</p>
                                                             <br>
                                                             <br>
                                                         </td>

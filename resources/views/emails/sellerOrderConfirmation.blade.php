@@ -11,11 +11,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset=UTF-8" />
-    <!-- TODO: variable to order id # -->
     <title>Stuvi Seller Order Confirmation #{{$seller_order['id']}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-
 </head>
 
 
@@ -105,13 +102,17 @@
                                                                     <br><br>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td valign="top" style="color: #000000;">
+                                                                    <td valign="top" style="color: #000000;" width="10%">
                                                                         <a href="{{ url('/order/seller/'.$seller_order['id']) }}">
-                                                                            <img src="{{ config('aws.url.stuvi-product-img').$seller_order['product']['image']['small_image'] }}" alt="sold book image">
+                                                                            <img src="{{ config('aws.url.stuvi-product-img').$seller_order['product']['image']['small_image'] }}" alt="{{$seller_order['product']['book']['title']}}" width="75px" height="100px">
                                                                         </a>
                                                                         <br>
                                                                     </td>
-                                                                    <td valign="top" style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;">
+                                                                    <!-- spacing -->
+                                                                    <td style="font-size: 0; line-height: 0;" width="5%">
+                                                                        &nbsp;
+                                                                    </td>
+                                                                    <td valign="top" style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;" width="85%">
                                                                         Title: <a href="{{ url('/order/seller/'.$seller_order['id']) }}">
                                                                             {{$seller_order['product']['book']['title']}}</a> <br>
                                                                         ISBN: {{$seller_order['product']['book']['isbn13']}} <br>

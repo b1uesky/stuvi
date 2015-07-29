@@ -57,7 +57,7 @@
                                                             <tr>
                                                                 <td style="color: #F16521; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 17px;" width="100%">
                                                                     Thank you, {{$buyer_order['buyer']['first_name']}} for your order. We will send you a confirmation
-                                                                    when your order is on its way!</span>
+                                                                    when your order is on its way! </span>
                                                                     <br>
                                                                     <br>
                                                                     <hr style="border-bottom: .5px solid #737373;">
@@ -97,7 +97,7 @@
                                                                     <tr>
                                                                         <td valign="top" style="color: #000000; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;" width="40%" align="left">
                                                                             <?php $shipping_address = $buyer_order['shipping_address'] ?>
-                                                                            <b style="color: #5b5b5b">Shipping Address</b><br>
+                                                                            <b style="color: #5b5b5b">Delivery Address</b><br>
                                                                             {{ $shipping_address['addressee']}}<br>
                                                                             {{ $shipping_address['address_line1']}}&nbsp;{{ $shipping_address['address_line2']}}<br>
                                                                             {{ $shipping_address['city'] }}, {{ $shipping_address['state_a2'] }}&nbsp;{{ $shipping_address['zip'] }}<br>
@@ -121,51 +121,40 @@
 
                                                             <!-- items -->
                                                             <tr>
-
                                                                 <td style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;" width="100%">
                                                                 <b style="color: #737373;">Items</b><br>
-                                                                @foreach ($buyer_order['products'] as $product)
-                                                                    Title: {{ $product['book']['title'] }}<br>
-                                                                    ISBN: {{ $product['book']['isbn13'] }}<br>
-                                                                    Author(s):
-                                                                    @foreach($product['book']['authors'] as $author)
-                                                                        <span>{{ $author['full_name'] }}</span>
+                                                                <table border="0" align="center" cellpadding="0" cellspacing="0" width="100%">
+                                                                    @foreach ($buyer_order['products'] as $product)
+                                                                    <!-- product -->
+                                                                    <tr>
+                                                                        <!-- image -->
+                                                                        <td valign="top" style=" font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;" width="10%">
+                                                                            <a href="{{ url('/order/buyer/'.$buyer_order['id']) }}">
+                                                                                <img src="{{ config('aws.url.stuvi-product-img').$product['image']['small_image'] }}" alt="{{ $product['book']['title'] }}" width="150px" width="75px" height="100px">
+                                                                                {{--<img src="http://placehold.it/75x100">--}}
+                                                                            </a>
+                                                                        </td>
+                                                                        <!-- spacing -->
+                                                                        <td style="font-size: 0; line-height: 0;" width="5%">
+                                                                            &nbsp;
+                                                                        </td>
+                                                                        <!-- book info -->
+                                                                        <td valign="top" style=" font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;" width="85%">
+                                                                            Title: {{ $product['book']['title'] }}<br>
+                                                                            ISBN: {{ $product['book']['isbn13'] }}<br>
+                                                                            Author(s):
+                                                                            @foreach($product['book']['authors'] as $author)
+                                                                                <span>{{ $author['full_name'] }}</span>
+                                                                            @endforeach
+                                                                            <br>
+                                                                            <b>${{ $product['price'] }}</b><br>
+                                                                        </td>
+                                                                    </tr>
                                                                     @endforeach
-                                                                    <br>
-                                                                    <b>${{ $product['price'] }}</b><br>
-                                                                @endforeach
+                                                                </table>
                                                                     <hr style="border-bottom: .5px solid #737373;">
-                                                                <td>
+                                                                </td>
                                                             </tr>
-
-                                                            @foreach ($buyer_order['products'] as $product)
-                                                                <!-- each product -->
-                                                                <tr width="100%">
-                                                                    <!-- image -->
-                                                                    <td valign="top" width="40%" style=" font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;">
-                                                                        <a href="{{ url('/order/buyer/'.$buyer_order['id']) }}" width="100%">
-                                                                            <img src="{{ config('aws.url.stuvi-product-img').$product['image']['small_image'] }}" alt="sold book image" width="100%">
-                                                                        </a>
-                                                                    </td>
-                                                                    <!-- spacing -->
-                                                                    <td style="font-size: 0; line-height: 0;" width="10%">
-                                                                        &nbsp;
-                                                                    </td>
-                                                                    <!-- product info -->
-                                                                    <td valign="top" style="color: #000000; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;" width="50%">
-                                                                        <p>Title: {{ $product['book']['title'] }}</p>
-                                                                        <p>ISBN: {{ $product['book']['isbn13'] }}</p>
-                                                                        <p>Author(s):
-                                                                        @foreach($product['book']['authors'] as $author)
-                                                                            <span>{{ $author['full_name'] }}</span>
-                                                                        @endforeach
-                                                                        </p>
-                                                                        <b>${{ $product['price'] }}</b><br>
-                                                                    </td>
-                                                                </tr>
-                                                            @endforeach
-                                                                <hr style="border-bottom: .5px solid #737373;">
-
                                                         </table>
 
                                                     </td> <!-- end main content -->
