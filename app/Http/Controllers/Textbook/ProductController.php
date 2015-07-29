@@ -84,7 +84,7 @@ class ProductController extends Controller {
 
         return Response::json([
             'success'   => true,
-            'redirect'  => 'textbook/buy/product/' . $product->id
+            'redirect'  => '/textbook/buy/product/' . $product->id
         ]);
 	}
 

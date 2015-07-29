@@ -60,6 +60,7 @@ Dropzone.options.formProduct = { // The camelized version of the ID of the form 
 
             $('#dropzone-img-preview').removeClass('dz-clickable');
             $('#dropzone-img-preview').addClass('dz-unclickable');
+
         });
 
         // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
@@ -67,16 +68,18 @@ Dropzone.options.formProduct = { // The camelized version of the ID of the form 
         this.on("sendingmultiple", function() {
             // Gets triggered when the form is actually being sent.
             // Hide the success button or the complete form.
-
         });
         this.on("successmultiple", function(files, response) {
             // Gets triggered when the files have successfully been sent.
             // Redirect user or notify of success.
             console.log(response);
+
+            window.location.replace(response.redirect);
         });
         this.on("errormultiple", function(files, response) {
             // Gets triggered when there was an error sending the files.
             // Maybe show form again, and notify user of error
+            console.log(response);
         });
     }
 }
