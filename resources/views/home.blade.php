@@ -37,9 +37,9 @@
              -->
         <div id="slide-container">
             <div class="" id="slides">
-                <img src="{{asset('img/nick/nlouie1.jpg')}}"
-                     alt="Charles River by Nick Louie - flickr.com/photos/nickkeee">
+                <img src="{{asset('img/nick/nlouie1.jpg')}}" alt="Charles River by Nick Louie - flickr.com/photos/nickkeee">
                 <img src="{{asset('img/nick/nlouie2.jpg')}}" alt="EPC by Nick Louie - flickr.com/photos/nickkeee">
+                <img src="{{asset('img/nick/nlouie8.jpg')}}" alt="NEU by Nick Louie - flickr.com/photos/nickkeee">
                 <img src="{{asset('img/nick/nlouie3.jpg')}}" alt="Mass Art by Nick Louie - flickr.com/photos/nickkeee">
                 <img src="{{asset('img/nick/nlouie4.jpg')}}" alt="Harvard by Nick Louie - flickr.com/photos/nickkeee">
                 <img src="{{asset('img/nick/nlouie5.jpg')}}" alt="MIT by Nick Louie - flickr.com/photos/nickkeee">
