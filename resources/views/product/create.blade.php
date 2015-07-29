@@ -6,6 +6,7 @@
 
 @section('css')
     <link href="{{ asset('/css/product_create.css') }}" rel="stylesheet">
+    <link href="{{ asset('dropzone-4.0.1/dist/dropzone.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -66,7 +67,7 @@
             <div class="row col-sm-6 col-sm-offset-1">
             <h2>Book Conditions</h2>
 
-            <form action="{{ url('/textbook/sell/product/store') }}" method="post" enctype="multipart/form-data" id="form-product">
+            <form id="form-product" class="dropzone">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="book_id" value="{{ $book->id }}"/>
                 <input type="hidden" name="book_title" value="{{ $book->title }}">
@@ -221,9 +222,9 @@
                 {{-- Price --}}
 
                 {{-- list price --}}
-                @if($book->list_price)
-                    <div>List price: ${{ $book->list_price }}</div>
-                @endif
+                {{--@if($book->list_price)--}}
+                    {{--<div>List price: ${{ $book->list_price }}</div>--}}
+                {{--@endif--}}
 
                 {{-- your price --}}
                 <div class="form-group">
@@ -236,20 +237,19 @@
                     </div>
                 </div>
 
-                {{-- Upload Images --}}
-                <div class="form-group" name="cover_img">
-                    <label for="image-upload">Front cover image (smaller than 3MB)</label>
-                    <input type="file" name="front-cover-image" class="upload-file" id="image-upload">
-                    <div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>
-                </div>
-
-                {{-- Add more images --}}
+                {{-- Upload Images using Dropzone --}}
                 <div class="form-group">
-                    <label name="add_other_img" for="add-image" >Other image(s) (smaller than 3MB/image)</label><br>
-                    <a class="btn secondary-btn btn-add-input" name="add_img_btn" id="add-image">Add Another Image</a>
+                    <label>Upload Textbook Image</label>
+                    <div id="dropzone-img-preview" class="dropzone-previews dz-clickable">
+                        <div class="dz-message">
+                            Drop images here or click to upload.
+                            <br>
+                            <small>(A front cover image is required. You can upload three images in maximum.)</small>
+                        </div>
+                    </div>
                 </div>
 
-                <input type="submit" name="submit" class="btn primary-btn sell-btn" value="Post Book">
+                <button type="submit" name="submit" class="btn primary-btn sell-btn">Post Book</button>
             </form>
         </div>
         @endif
@@ -257,12 +257,14 @@
 @endsection
 
 @section('javascript')
+    <script src="{{ asset('dropzone-4.0.1/dist/dropzone.js') }}"></script>
+
     @if(Auth::check())
         {{-- FormValidation --}}
-        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
-        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
+        {{--<script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>--}}
+        {{--<script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>--}}
+        {{--<script src="{{ asset('js/validator/product-create.js') }}"></script>--}}
 
-        <script src="{{ asset('js/validator/product-create.js') }}"></script>
         <script src="{{ asset('js/product/create.js') }}"></script>
     @endif
 @endsection
