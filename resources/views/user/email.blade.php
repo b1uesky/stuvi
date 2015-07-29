@@ -103,5 +103,5 @@
         <script type="text/javascript" src="{{asset('/slick/slick.min.js')}}"></script>
 
     --}}
-    <script type="text/javascript" src="{{asset('js/user/profile.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/user/email.js')}}"></script>
 @endsection
