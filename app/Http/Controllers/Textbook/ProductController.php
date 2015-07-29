@@ -104,18 +104,6 @@ class ProductController extends Controller {
 	 */
 	public function show($product)
 	{
-        $book = $product->book;
-        $amazon = new AmazonLookUp($book->isbn10, 'ISBN');
-
-        if ($amazon->success())
-        {
-            $list_price = $amazon->getListPriceFormattedPrice();
-
-            return view('product.show')
-                ->withProduct($product)
-                ->withListPrice($list_price);
-        }
-
 		return view('product.show')->withProduct($product);
 	}
 }

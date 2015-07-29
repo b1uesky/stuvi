@@ -46,13 +46,7 @@
                                     <li class="side-item">
                                         <a class="side-item-link" id="side-email-link"
                                            href="{{asset('/user/email')}}">
-                                            <i class="fa fa-envelope"></i>Email
-                                        </a>
-                                    </li>
-                                    <li class="side-item">
-                                        <a class="side-item-link" id="side-notification-link"
-                                           href="{{asset('/user/account#')}}">
-                                            <i class="fa fa-envelope"></i>Notification
+                                            <i class="fa fa-envelope"></i>Email Notifications
                                         </a>
                                     </li>
                                     {{--<li class="side-messages">--}}

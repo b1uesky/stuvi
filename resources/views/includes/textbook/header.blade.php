@@ -65,13 +65,13 @@
                         </li>
                         <!-- cart -->
                         <li class="cart">
-                            <?php $cartQty = Auth::user()->cart->quantity ?>
-                            {{-- If cart empty, open modal --}}
-                            @if($cartQty == 0)
+                                <?php $cartQty = Auth::user()->cart->quantity ?>
+                                {{-- If cart empty, open modal --}}
+                                @if($cartQty == 0)
                                     <a href="#empty-cart-modal" data-toggle="modal" id="cart-link">Cart <i class="fa fa-shopping-cart" style="line-height: 19px;"></i></a>
-                            @else
+                                @else
                                     <a href="{{ url('/cart') }}" id="cart-link">Cart ({{$cartQty}} <i class="fa fa-shopping-cart" style="line-height: 19px;"></i></a>
-                            @endif
+                                @endif
                         </li>
                     @endif
 
@@ -83,6 +83,11 @@
     </nav>
     <!-- login modal -->
     @include('auth.login-signup-modal')
-    <!-- Empty Cart Modal -->
-    @include('cart.empty-cart-modal')
+
+    @if(Auth::check())
+        <!-- Empty Cart Modal -->
+        @if($cartQty == 0)
+            @include('cart.empty-cart-modal')
+        @endif
+    @endif
 </header>

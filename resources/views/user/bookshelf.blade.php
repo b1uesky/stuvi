@@ -53,7 +53,7 @@
                     @forelse ($productsForSale as $product)
                         <tr class="for-sale-item">
                             <td class="for-sale-img">
-                                <img class="img-responsive" src="{{ url($product->images()->first()->path) }}"
+                                <img class="img-responsive" src="{{ config('aws.url.stuvi-product-img').$product->images->first()->small_image }}"
                                      width="100px"
                                      height="150px"></td>
                             <td class="for-sale-info-1" colspan="2">
