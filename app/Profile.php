@@ -27,4 +27,14 @@ class Profile extends Model
         'website'
     ];
 
+    /**
+     * Get the user who owns this profile.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
 }

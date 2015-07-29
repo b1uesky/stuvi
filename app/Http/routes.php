@@ -127,11 +127,11 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], 
 */
 Route::group(['namespace'=>'User', 'middleware'=>'auth', 'prefix'=>'user'], function()
 {
-    Route::get ('/profile',         'UserController@profile');
-    Route::get ('/profile-edit',    'UserController@profileEdit');
-    Route::post('/store-profile',   'UserController@profileStore');
-    Route::get ('/account',         'UserController@account');
-    Route::post('/account/edit',    'UserController@edit');
+    Route::get ('/overview',        'UserController@overview');
+    Route::get ('/profile',         'ProfileController@index');
+    Route::post('/profile/update',  'ProfileController@update');
+    Route::get ('/account',         'AccountController@index');
+    Route::post('/account/password/reset',    'AccountController@passwordReset');
     Route::get ('/bookshelf',       'UserController@bookshelf');
     Route::get ('/activate',        'UserController@waitForActivation');
     Route::get ('/activate/resend', 'UserController@resendActivationEmail');
