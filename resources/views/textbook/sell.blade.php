@@ -32,30 +32,27 @@
         </div>
         @endif
 
-                <!-- Search Bar Container-->
-        <div class="container-fluid search" id="container-fluid-search-sell">
+        <!-- Search Bar Container-->
+        <div class="container-fluid search">
             <div class="row">
                 <h1 id="title">Sell Your Used Textbooks</h1>
-
-                <div class="col-sm-12">
                     <div class="searchbar">
                         <form action="/textbook/sell/search" method="post" id="form-isbn">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                            <div class="search-input-wrapper">
-                                <input type="text" name="isbn" class="form-control search-input search-input-query"
+                            <div class="searchbar-input-container searchbar-input-container-query">
+                                <input type="text" name="isbn" class="form-control searchbar-input searchbar-input-query"
                                        id="sell-search-input"
                                        placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
                             </div>
 
-                            <div class="search-input-wrapper">
+                            <div class="searchbar-input-container searchbar-input-container-submit">
                                 <button class="btn primary-btn search-btn" type="submit" name="search">
                                     <i class="fa fa-search search-icon"></i>
                                 </button>
                             </div>
                         </form>
                     </div>
-                </div>
             </div>
         </div>
 

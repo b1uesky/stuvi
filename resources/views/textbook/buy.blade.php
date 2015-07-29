@@ -28,36 +28,33 @@
     <div class="container-fluid search">
         <div class="row">
             <h1 id="title">Buy Used Textbooks</h1>
+            <div class="searchbar">
+                <form action="/textbook/buy/search" method="get">
 
-            <div class="col-sm-12">
-                <div class="searchbar">
-                    <form action="/textbook/buy/search" method="get">
+                    <div class="searchbar-input-container searchbar-input-container-query">
+                        <input type="text" name="query" id="autocompleteBuy"
+                               class="form-control searchbar-input searchbar-input-query"
+                               placeholder="Enter the textbook ISBN, Title, or Author"/>
+                    </div>
 
-                        <div class="search-input-wrapper">
-                            <input type="text" name="query" id="autocompleteBuy"
-                                   class="form-control search-input search-input-query"
-                                   placeholder="Enter the textbook ISBN, Title, or Author"/>
+                    {{-- Show school selection if it's a guest --}}
+                    @if(Auth::guest())
+                        <div class="searchbar-input-container searchbar-input-container-university">
+                            <select name="university_id"
+                                    class="form-control searchbar-input searchbar-input-university">
+                                @foreach(\App\University::where('is_public', true)->get() as $university)
+                                    <option value="{{ $university->id }}">{{ $university->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
+                    @endif
 
-                        {{-- Show school selection if it's a guest --}}
-                        @if(Auth::guest())
-                            <div class="search-input-wrapper">
-                                <select name="university_id" class="form-control search-input search-input-university">
-                                    @foreach(\App\University::where('is_public', true)->get() as $university)
-                                        <option value="{{ $university->id }}">{{ $university->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        @endif
-
-                        <div class="search-input-wrapper">
-                            <button class="btn btn-default search-btn" type="submit" value="Search">
-                                <i class="fa fa-search search-icon"></i>
-                            </button>
-                        </div>
-
-                    </form>
-                </div>
+                    <div class="searchbar-input-container searchbar-input-container-submit">
+                        <button class="btn btn-default search-btn" type="submit" value="Search">
+                            <i class="fa fa-search search-icon"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
