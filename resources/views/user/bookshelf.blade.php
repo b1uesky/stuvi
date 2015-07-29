@@ -18,34 +18,35 @@
                     <div class="flash-message message">{{ Session::get('message') }}</div>
                 @endif
             </div>
-
-            <h1 id="bookshelf-title">Your Bookshelf</h1>
-
+            <div class="bookshelf-title-container">
+                <h1 id="bookshelf-title">Your Bookshelf</h1>
+                <hr>
+            </div>
             <!-- sort and search -->
-            <div class="container col-sm-12">
+            {{--<div class="container col-sm-12">--}}
                 {{--<span class="text-muted">Sort by</span>--}}
-                <ul class="nav nav-pills">
+            {{--<ul class="nav nav-pills">--}}
                     {{--<li role="presentation" class="active"><a href="#" data-toggle="pill">Title</a></li>--}}
                     {{--<li role="presentation"><a href="#" data-toggle="pill">Author</a></li>--}}
                     {{--<li role="presentation"><a href="#" data-toggle="pill">Price (Low to High)</a></li>--}}
                     {{--<li role="presentation"><a href="#" data-toggle="pill">Price (High to Low)</a></li>--}}
 
-                    <div class="col-sm-4 pull-right bookshelf-sort">
-                        <form class="navbar-form" role="search">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search" name="srch-term"
-                                       id="search-term">
+            {{--<div class="col-sm-4 pull-right bookshelf-sort">--}}
+            {{--<form class="navbar-form" role="search">--}}
+            {{--<div class="input-group">--}}
+            {{--<input type="text" class="form-control" placeholder="Search" name="srch-term"--}}
+            {{--id="search-term">--}}
 
-                                <div class="input-group-btn">
-                                    <button class="btn btn-default search-btn" type="submit">
-                                        <i class="fa fa-search search-icon"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </ul>
-            </div>
+            {{--<div class="input-group-btn">--}}
+            {{--<button class="btn btn-default search-btn" type="submit">--}}
+            {{--<i class="fa fa-search search-icon"></i>--}}
+            {{--</button>--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--</form>--}}
+            {{--</div>--}}
+            {{--</ul>--}}
+            {{--</div>--}}
 
             <!-- books -->
             <div class="container col-md-12">

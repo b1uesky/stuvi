@@ -23,10 +23,10 @@
 
             <!-- Account Settings -->
             <h1>Account Settings</h1>
+                <hr>
             <!-- change account info -->
             <div class="container col-md-11 account-edit">
-                <h3>Change Password</h3>
-                <hr id="line">
+                <h4>Change Password</h4>
                 <form class="form-horizontal" role="form" method="POST" action="/user/account/password/reset">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
