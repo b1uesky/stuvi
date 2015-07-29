@@ -3,7 +3,13 @@
 
 @import "modules/all";
 
-/** ERROR MESSAGE **/
+/* Header */
+#search-term{
+  font-size: 2em;
+  @media(min-width: 970px){
+    padding-left: 4%;
+  }
+}
 
 #message {
   font-style: italic;
