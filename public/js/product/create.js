@@ -74,7 +74,25 @@ Dropzone.options.formProduct = { // The camelized version of the ID of the form 
             // Redirect user or notify of success.
             console.log(response);
 
-            window.location.replace(response.redirect);
+            if (response.success == true) {
+                window.location.replace(response.redirect);
+            } else {
+                // TODO: error message display
+                $('.alert.alert-danger').remove();
+
+                var error = '<div class="alert alert-danger" role="alert">';
+
+                for (var field in response.fields) {
+                    error = error + '<span class="sr-only">Error:</span>' + response.fields[field] + '<br>'
+                }
+
+                error = error + '</div>';
+
+                $(error).insertBefore('#form-product');
+            }
+
+
+
         });
         this.on("errormultiple", function(files, response) {
             // Gets triggered when there was an error sending the files.
