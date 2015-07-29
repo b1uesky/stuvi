@@ -50,7 +50,7 @@
                         @endif
                     @endforeach
                 @endif
-                <h2>{{ $product->book->title }}</h2>
+                <h2><a href="{{ url('textbook/buy/'.$product->book->id) }}">{{ $product->book->title }}</a></h2>
                 <div class="price">
                     Price: <b>${{ $product->price }}</b>
                 </div>
