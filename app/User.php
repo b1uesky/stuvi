@@ -74,6 +74,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return array_merge($rules, Email::loginRules());
     }
 
+    public static function passwordResetRules()
+    {
+        $rules = [
+            'current_password'  => 'required|min:6',
+            'new_password'  => 'required|min:6|confirmed',
+        ];
+
+        return $rules;
+    }
+
     /**
      * Get all buyer orders of this user.
      *
@@ -244,6 +254,23 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
 
         return $this->hasOne('App\Cart', 'user_id', 'id');
+    }
+
+    /**
+     * Get the user's profile.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function profile()
+    {
+        if ($this->hasOne('App\Profile')->count() <= 0)
+        {
+            Profile::create([
+                'user_id'   => $this->id,
+            ]);
+        }
+
+        return $this->hasOne('App\Profile');
     }
 
     /**
