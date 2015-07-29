@@ -62,6 +62,9 @@
   border-bottom-left-radius: 0;
   border: none;
 
+  &:hover {
+    background: $primary-color;
+  }
   &:focus {
     outline: 0 !important;
     background: $primary-color;
