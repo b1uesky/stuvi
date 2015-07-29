@@ -107,22 +107,22 @@
             <div class="row textbook-row">
                 <div class="home-textbook col-sm-6 col-md-3">
                     <a href="#">
-                        <img class="textbook-img" src="{{ asset('/img/placeholder.png') }}">
+                        <img class="textbook-img" src="http://puu.sh/jhP6y/60bae9306c.png">
                     </a>
                 </div>
                 <div class="home-textbook col-sm-6 col-md-3">
                     <a href="#">
-                        <img class="textbook-img" src="{{ asset('/img/placeholder.png') }}">
+                        <img class="textbook-img" src="http://puu.sh/jhPi3/d63b4a67e5.png">
                     </a>
                 </div>
                 <div class="home-textbook col-sm-6 col-md-3">
                     <a href="#">
-                        <img class="textbook-img" src="{{ asset('/img/placeholder.png') }}">
+                        <img class="textbook-img" src="http://puu.sh/jhPpo/f6899af921.png">
                     </a>
                 </div>
                 <div class="home-textbook col-sm-6 col-md-3">
                     <a href="#">
-                        <img class="textbook-img" src="{{ asset('/img/placeholder.png') }}">
+                        <img class="textbook-img" src="http://puu.sh/jhPyr/dce3b699d1.png">
                     </a>
                 </div>
             </div>
