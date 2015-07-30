@@ -1,6 +1,5 @@
 {{-- Your orders page --}}
 
-
 @extends('app')
 
 @section('title', 'Order details - Order #'.$seller_order->id)
