@@ -1,6 +1,7 @@
 /******* CHECKOUT PAGE *******/
 
 @import "modules/all";
+@import "partials/forms";
 
 #message {
   font-style: italic;
@@ -186,6 +187,10 @@ body {
 .card-exp {
   width: 80px;
   margin-right: 4.16%;
+}
+
+.striper-accepted-badges {
+  float: right;
 }
 
 #stripe-logo {

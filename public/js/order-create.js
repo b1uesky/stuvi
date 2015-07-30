@@ -2,27 +2,31 @@
  * Created by zhenjieruan on 7/1/15.
  */
 $(document).ready(function () {
-    $('.show-addresses').click(function() {
+
+    /**
+     * Shipping Address
+     */
+    $('.show-addresses').click(function () {
         $('.displayDefaultAddress').hide();
         $('#new-address-panel').show(1000);
         $('.displayAllAddresses').show(1000);
     });
 
-    $('.selectThisAddress').click(function() {
+    $('.selectThisAddress').click(function () {
         var address_ID = $(this).prev().find(".address_id").text();
         var address_info = $(this).prev().html();
         $('.displayAllAddresses').hide();
         $('.displayDefaultAddress').find('.address-list').html(address_info);
         $('.displayDefaultAddress').show(1000);
         $.ajax({
-            url : "/address/select",
-            data:{
+            url: "/address/select",
+            data: {
                 _token: $('[name="csrf_token"]').attr('content'),
-                selected_address_id:address_ID
+                selected_address_id: address_ID
             },
-            type:'POST',
-            success:function(response){
-                if(response['set_as_default']){
+            type: 'POST',
+            success: function (response) {
+                if (response['set_as_default']) {
                     $('input[name=selected_address_id]').val(address_ID);
                 }
             }
@@ -30,15 +34,15 @@ $(document).ready(function () {
         $('#new-address-panel').hide();
     });
 
-    $('#storeAddedAddress').click(function(){
+    $('#storeAddedAddress').click(function () {
         $('.add-address-form').submit();
     });
 
-    $('#storeUpdatedAddress').click(function(){
+    $('#storeUpdatedAddress').click(function () {
         $('.update-address-form').submit();
     });
 
-    $('.editThisAddress').click(function() {
+    $('.editThisAddress').click(function () {
         var address_ID = $(this).parent().find(".address_id").text();
         var address_array = [];
         $(this).parent().find('.address').each(function (i, elem) {
@@ -53,22 +57,22 @@ $(document).ready(function () {
         $('input[name=address_id]').val(address_ID);
     });
 
-    $('.deleteThisAddress').click(function(){
+    $('.deleteThisAddress').click(function () {
         var address_ID = $(this).parent().find(".address_id").text();
         $.ajax({
             url: '/address/delete',
 
-            data:{
+            data: {
                 _token: $('[name="csrf_token"]').attr('content'),
-                address_id : address_ID
+                address_id: address_ID
             },
 
-            type:"POST",
+            type: "POST",
 
-            success:function(response){
-                if(response['is_deleted'] === true){
-                    $('.'+address_ID).hide(1000);
-                    if(response['num_of_user_addresses'] < 1){
+            success: function (response) {
+                if (response['is_deleted'] === true) {
+                    $('.' + address_ID).hide(1000);
+                    if (response['num_of_user_addresses'] < 1) {
                         $('#payment-form').hide(1000);
                         $('.add_new_address').click();
                     }
@@ -78,8 +82,24 @@ $(document).ready(function () {
     });
 
     // format card number
-    $('#card-input').mask("9999-9999-9999-9999");
+    //$('#card-input').mask("9999-9999-9999-9999");
 
     // format phone number
-    $(".phone_number").mask("(999) 999-9999");
+    //$(".phone_number").mask("(999) 999-9999");
+
+    /**
+     * Form Validation
+     */
+    $('#form-payment').
+        formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+
+            }
+        });
 });

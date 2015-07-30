@@ -8,6 +8,7 @@
 
 @section('css')
     <link href="{{ asset('/css/order_buyer_create.css') }}" rel="stylesheet">
+{{--    <link rel="stylesheet" href="{{ asset('libs/bootstrap/dist/css/bootstrap.min.css') }}">--}}
 @endsection
 
 @section('content')
@@ -305,216 +306,211 @@
                             </div>
                         </div>
 
-                            <div class="modal fade" id="add-address-modal" tabindex="-1" role="dialog"
-                                 aria-labelledby="myModalLabel">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close close-modal-btn" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                <span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="myModalLabel">Please Enter Address</h4>
-                                        </div>
-                                        <div class="modal-body address-form-body">
-                                            <form action="{{ url('/address/store') }}" method="POST"
-                                                  class="add-address-form">
-                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <div class="modal fade" id="add-address-modal" tabindex="-1" role="dialog"
+                             aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close close-modal-btn" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Please Enter Address</h4>
+                                    </div>
+                                    <div class="modal-body address-form-body">
+                                        <form action="{{ url('/address/store') }}" method="POST"
+                                              class="add-address-form">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label">Full name</label>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Full name</label>
 
-                                                    <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control" name="addressee"
-                                                               value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
-                                                    </div>
+                                                <div class="col-sm-6 form-space-offset">
+                                                    <input type="text" class="form-control" name="addressee"
+                                                           value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
                                                 </div>
-                                                </br>
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label">Address line 1</label>
+                                            </div>
+                                            </br>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Address line 1</label>
 
-                                                    <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control"
-                                                               name="address_line1"
-                                                               value="185 Freeman St.">
-                                                    </div>
+                                                <div class="col-sm-6 form-space-offset">
+                                                    <input type="text" class="form-control"
+                                                           name="address_line1"
+                                                           value="185 Freeman St.">
                                                 </div>
-                                                </br>
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label">Address line 2</label>
+                                            </div>
+                                            </br>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Address line 2</label>
 
-                                                    <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control"
-                                                               name="address_line2"
-                                                               value="Apt. 739">
-                                                    </div>
+                                                <div class="col-sm-6 form-space-offset">
+                                                    <input type="text" class="form-control"
+                                                           name="address_line2"
+                                                           value="Apt. 739">
                                                 </div>
-                                                </br>
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label">City</label>
+                                            </div>
+                                            </br>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">City</label>
 
-                                                    <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control" name="city"
-                                                               value="Brookline">
-                                                    </div>
+                                                <div class="col-sm-6 form-space-offset">
+                                                    <input type="text" class="form-control" name="city"
+                                                           value="Brookline">
                                                 </div>
-                                                </br>
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label">State</label>
+                                            </div>
+                                            </br>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">State</label>
 
-                                                    <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control" name="state_a2"
-                                                               value="MA">
-                                                    </div>
+                                                <div class="col-sm-6 form-space-offset">
+                                                    <input type="text" class="form-control" name="state_a2"
+                                                           value="MA">
                                                 </div>
-                                                </br>
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label">Zip</label>
+                                            </div>
+                                            </br>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Zip</label>
 
-                                                    <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control" name="zip"
-                                                               value="02446">
-                                                    </div>
+                                                <div class="col-sm-6 form-space-offset">
+                                                    <input type="text" class="form-control" name="zip"
+                                                           value="02446">
                                                 </div>
-                                                </br>
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label">Phone</label>
+                                            </div>
+                                            </br>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Phone</label>
 
-                                                    <div class="col-sm-6 form-space-offset">
-                                                        <input type="tel" class="form-control phone_number"
-                                                               name="phone_number" value="(857) 206 4789">
-                                                    </div>
+                                                <div class="col-sm-6 form-space-offset">
+                                                    <input type="tel" class="form-control phone_number"
+                                                           name="phone_number" value="(857) 206 4789">
                                                 </div>
-                                                <input type="hidden" name="address_id" value="">
-                                                </br>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default close-btn"
-                                                    data-dismiss="modal">
-                                                Close
-                                            </button>
-                                            <button id="storeAddedAddress" type="button"
-                                                    class="btn btn-default primary-btn address-btn">
-                                                Add Address
-                                            </button>
-                                        </div>
+                                            </div>
+                                            <input type="hidden" name="address_id" value="">
+                                            </br>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default close-btn"
+                                                data-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <button id="storeAddedAddress" type="button"
+                                                class="btn btn-default primary-btn address-btn">
+                                            Add Address
+                                        </button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
 
 
                     <!-- payment form here -->
                     <!-- begin stripe form -->
                     @if ($display_payment)
-                        <form action="{{ url('/order/store') }}" method="POST" id="payment-form">
+                        <form action="{{ url('/order/store') }}" method="POST" id="form-payment" class="form-horizontal">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="selected_address_id" value="{{$default_address_id}}">
-                            {{--<input type="hidden" name="stripeAmount" value="{{ $total*100 }}">--}}
-                            <h2>3. Payment</h2></br>
-                            {{--<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                    data-key="{{ \App::environment('production') ? Config::get('stripe.live_public_key') : Config::get('stripe.test_public_key') }}"
-                                    data-amount={{ $total*100 }}
-                                    data-name="Demo Site"
-                            data-description="2 widgets (${{ $total }})"
-                            data-image="/128x128.png">
-                            </script>--}}
+
+                            <h2>3. Payment</h2>
+
                             <div class="row payment-errors-row">
                                 <span class="payment-errors"></span>
                             </div>
 
 
-                            <div class="col-sm-8">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" id="payment-panel-heading">
-                                        <i class="fa fa-lock fa-lg"></i>
-                                        <span class="panel-title">Secure Payment via Stripe</span>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" id="payment-panel-heading">
+                                    <i class="fa fa-lock fa-lg"></i>
+                                    <span class="panel-title">Secure Payment via Stripe</span>
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="container-fluid">
+                                        <div class="row row-margin-bottom">
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <label class="col-md-4 control-label">Full Name</label>
+                                                    <div class="col-md-8">
+                                                        <input class="form-control" name="full_name" type="text" data-stripe="name"/>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <label class="col-md-4 control-label">Card Number</label>
+                                                    <div class="col-md-8">
+                                                        <input class="form-control" name="card_number" type="text" data-stripe="number" id="card-input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row row-margin-bottom">
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <label class="col-md-4 control-label">Expiration Date</label>
+                                                    <div class="col-md-4">
+                                                        <select class="form-control" data-stripe="exp-month">
+                                                            <option disabled selected>Month</option>
+                                                            <option>01</option>
+                                                            <option>02</option>
+                                                            <option>03</option>
+                                                            <option>04</option>
+                                                            <option>05</option>
+                                                            <option>06</option>
+                                                            <option>07</option>
+                                                            <option>08</option>
+                                                            <option>10</option>
+                                                            <option>11</option>
+                                                            <option>12</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <select class="form-control" data-stripe="exp-year">
+                                                            <option disabled selected>Year</option>
+                                                            <option>2015</option>
+                                                            <option>2016</option>
+                                                            <option>2017</option>
+                                                            <option>2018</option>
+                                                            <option>2019</option>
+                                                            <option>2020</option>
+                                                            <option>2021</option>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <label class="col-md-4 control-label">Security Code</label>
+                                                    <div class="col-md-8">
+                                                        <input class="form-control" type="text" size="4" data-stripe="cvc"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="panel-body">
-                                        {{--<div class="form-row">--}}
-                                        {{--<label>--}}
-                                        {{--<span>Full Name (only required if name on card is different than your account name)</span>--}}
-                                        {{--<input class="form-control col-sm-2" type="text" size="20"/>--}}
-                                        {{--</label>--}}
-                                        {{--</div>--}}
+
+                                    <div>
                                         <!-- payment card accepted badges -->
-                                        <div class="form-row card-row">
-                                                        <span><img class="card-img"
-                                                                   src="{{ asset('/img/cards/visa.jpg') }}"></span>
-                                        <span><img class="card-img"
-                                                   src="{{ asset('/img/cards/master-card.png') }}"></span>
-                                                        <span><img class="card-img"
-                                                                   src="{{ asset('/img/cards/amex.png') }}"></span>
-                                            <span><img class="card-img"
-                                                       src="{{ asset('/img/cards/discover.jpg') }}"></span>
-                                        <span><img class="card-img"
-                                                   src="{{ asset('/img/cards/diners-club.jpg') }}"></span>
-                                        </div>
-
-                                        <!-- card number -->
-                                        <div class="form-row" id="card-number-form">
-                                            <label id="name-label">
-                                                <span>Name</span>
-                                                <input class="form-control" type="text" data-stripe="name"
-                                                       value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}"/>
-                                            </label>
-                                            <label>
-                                                <span>Card Number</span>
-                                                <input class="form-control" type="text" data-stripe="number"
-                                                       id="card-input"/>
-                                            </label>
-
-                                        </div>
-                                        <!-- expiration -->
-                                        {{-- Doesn't really style well for super small screens --}}
-                                        <div class="form-row" id="expiration-form">
-                                            <label>Expiration (MM/YYYY)</label>
-                                            <label class="col-xs-offset-2 security-code-label">Security
-                                                Code</label>
-                                            <br>
-                                            <select class="form-control card-exp col-xs-2"
-                                                    data-stripe="exp-month">
-                                                <option disabled selected>Month</option>
-                                                <option>01</option>
-                                                <option>02</option>
-                                                <option>03</option>
-                                                <option>04</option>
-                                                <option>05</option>
-                                                <option>06</option>
-                                                <option>07</option>
-                                                <option>08</option>
-                                                <option>10</option>
-                                                <option>11</option>
-                                                <option>12</option>
-                                            </select>
-                                            {{--<input class="form-control" type="text" size="2" data-stripe="exp-month"/>--}}
-                                            {{--<span class="col-xs-1"></span>--}}
-                                            <select class="form-control card-exp col-xs-2"
-                                                    data-stripe="exp-year">
-                                                <option disabled selected>Year</option>
-                                                <option>2015</option>
-                                                <option>2016</option>
-                                                <option>2017</option>
-                                                <option>2018</option>
-                                                <option>2019</option>
-                                                <option>2020</option>
-                                                <option>2021</option>
-                                            </select>
-                                            {{--<input class="form-control" type="text" size="2" data-stripe="exp-year"/>--}}
-                                            <input id="security-code"
-                                                   class="form-control col-xs-3 col-xs-offset-0 col-sm-offset-1"
-                                                   type="text"
-                                                   size="4" data-stripe="cvc" />
-                                        </div>
-                                        <br>
+                                        {{--<div class="stripe-accepted-badges">--}}
+                                            {{--<span><img class="card-img" src="{{ asset('/img/cards/visa.jpg') }}"></span>--}}
+                                            {{--<span><img class="card-img" src="{{ asset('/img/cards/master-card.png') }}"></span>--}}
+                                            {{--<span><img class="card-img" src="{{ asset('/img/cards/amex.png') }}"></span>--}}
+                                            {{--<span><img class="card-img" src="{{ asset('/img/cards/discover.jpg') }}"></span>--}}
+                                            {{--<span><img class="card-img" src="{{ asset('/img/cards/diners-club.jpg') }}"></span>--}}
+                                        {{--</div>--}}
                                     </div>
-                                    <div class="panel-footer payment-footer">
-                                        <p>Your total is <span id="total"> ${{ $total }} </span></p>
-                                        <button class="btn primary-btn payment-btn" type="submit">Complete Order
-                                        </button>
-                                        <span><a href="https://stripe.com/" target="_blank"><img id="stripe-logo"
-                                                                                                 src="{{ asset('/img/stripe.png') }}"></a></span>
-                                    </div>
+                                    <br>
+                                </div>
+                                <div class="panel-footer payment-footer">
+                                    <p>Your total is <span id="total"> ${{ $total }} </span></p>
+                                    <button class="btn primary-btn payment-btn" type="submit">Complete Order</button>
                                 </div>
                             </div>
                         </form>
@@ -526,18 +522,19 @@
 @endsection
 
 @section('javascript')
+    <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
+    <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
+
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-    <!-- jQuery is used only for this example; it isn't required to use Stripe -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('/js/address.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/order-create.js') }}"></script>
+
     <!-- stripe -->
     <script type="text/javascript">
         // This identifies your website in the createToken call below
         Stripe.setPublishableKey("{{ $stripe_public_key }}");
 
         var stripeResponseHandler = function (status, response) {
-            var $form = $('#payment-form');
+            var $form = $('#form-payment');
 
             if (response.error) {
                 // Show the errors on the form
@@ -554,7 +551,7 @@
         };
 
         jQuery(function ($) {
-            $('#payment-form').submit(function (event) {
+            $('#form-payment').submit(function (event) {
 
                 var $form = $(this);
 
