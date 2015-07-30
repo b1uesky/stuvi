@@ -2,14 +2,10 @@
 
 use App\Http\Controllers\Controller;
 use App\Profile;
-use App\Address;
 use Auth;
 use Input;
 use Mail;
 use Session;
-use Request;
-use Response;
-
 
 class UserController extends Controller
 {
@@ -70,24 +66,23 @@ class UserController extends Controller
     public function activateAccount($code)
     {
         // check if the current user is activated
-        if (Auth::user()->activated)
+        if (Auth::user()->isActivated())
         {
-            $url = Input::has('return_to') ? urldecode(Input::get('return_to')) : '/home';
+            $url     = Input::has('return_to') ? urldecode(Input::get('return_to')) : '/home';
             $message = 'Your account has already been activated.';
         }
-        elseif (Auth::user()->activate($code))
+        elseif (Auth::user()->collegeEmail()->verify($code))
         {
-            $url = Input::has('return_to') ? urldecode(Input::get('return_to')) : '/home';
+            $url     = Input::has('return_to') ? urldecode(Input::get('return_to')) : '/home';
             $message = 'Your account is successfully activated.';
         }
         else
         {
-            $url = '/user/activate';
+            $url     = '/user/activate';
             $message = 'Sorry, account activation failed because of invalid activation code.';
         }
 
-        return redirect($url)
-            ->with('message', $message);
+        return redirect($url)->with('message', $message);
     }
 
     /**
@@ -102,8 +97,7 @@ class UserController extends Controller
             return redirect('/home');
         }
 
-        return view('user.waitForActivation')
-            ->with('user', Auth::user());
+        return view('user.waitForActivation')->with('user', Auth::user());
     }
 
     /**
@@ -118,44 +112,11 @@ class UserController extends Controller
         // check if this user has been activated.
         if ($user->isActivated())
         {
-            return redirect('/home')
-                ->with('Your account has already been activated.');
+            return redirect('/home')->with('Your account has already been activated.');
         }
 
         $user->sendActivationEmail();
 
-        return redirect('user/activate')
-            ->with('message', 'Activation email is sent. Please check your email.');
-    }
-
-    /**
-     * Update user's default address.
-     *
-     * @return mixed
-     */
-    public function updateDefaultAddress()
-    {
-        if (Request::ajax())
-        {
-            $address_id = Input::get('address_id');
-            $address = Address::find($address_id);
-
-            if ($address)
-            {
-                $address->setDefault();
-
-                return Response::json([
-                    'success'   => true,
-                    'address'   => $address->toArray()
-                ]);
-            }
-            else
-            {
-                return Response::json([
-                    'success'       => false,
-                    'error'         => 'Address not found.'
-                ]);
-            }
-        }
+        return redirect('user/activate')->with('message', 'Activation email is sent. Please check your email.');
     }
 }

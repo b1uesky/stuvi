@@ -61,11 +61,20 @@ body {
 
 .table-row {
   margin-top: 40px;
+  #h4-1, #book-options-links{
+    @media(max-width: 767px){
+      padding-left: 10px;
+    }
+  }
 }
 
 .textbook-table {
   background-color: white;
   border: solid #DDD;
+  @media(max-width: 767px){
+    max-width: 90vw;
+    margin-left: 3%;
+  }
 }
 
 #price {

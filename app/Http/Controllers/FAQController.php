@@ -17,4 +17,9 @@ class FAQController extends Controller
     {
         return view('faq.account');
     }
+
+    public function textbook()
+    {
+        return view('faq.textbook');
+    }
 }

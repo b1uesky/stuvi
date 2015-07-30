@@ -76,9 +76,15 @@ Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
 Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
 {
     Route::get  ('/',   'TextbookController@showBuyPage');
+    Route::get  ('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
 
     // buy
-    Route::get  ('/buy', 'TextbookController@showBuyPage');
+    Route::group(['prefix'=>'buy'], function() {
+        Route::get  ('/', 'TextbookController@showBuyPage');
+        Route::get  ('/{book}', 'TextbookController@show');
+        Route::get  ('/search', 'TextbookController@buySearch');
+        Route::get  ('/product/{product}', 'ProductController@show');
+    });
 
     // sell
     Route::group(['prefix'=>'sell'], function() {
@@ -86,21 +92,11 @@ Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
         Route::post ('/search',                 'TextbookController@sellSearch');
         Route::get  ('/create',                 'TextbookController@create');
         Route::get  ('/product/{book}/create',  'ProductController@create');
-        Route::get  ('/product/login',          'ProductController@login');
-        Route::get  ('/product/register',       'ProductController@register');
     });
 });
 
 // auth required
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook'], function() {
-    Route::get('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
-
-    // buy
-    Route::group(['prefix'=>'buy'], function() {
-        Route::get('/{book}', 'TextbookController@show');
-        Route::get('/search', 'TextbookController@buySearch');
-        Route::get('/product/{product}', 'ProductController@show');
-    });
 
     // sell
     Route::group(['prefix'=>'sell'], function() {
@@ -154,10 +150,11 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], 
 */
 Route::group(['namespace'=>'User', 'middleware'=>'auth', 'prefix'=>'user'], function()
 {
-    Route::get ('/profile',         'UserController@profile');
-    Route::get ('/profile-edit',    'UserController@profileEdit');
-    Route::get ('/account',         'UserController@account');
-    Route::post('/account/edit',    'UserController@edit');
+    Route::get ('/overview',        'UserController@overview');
+    Route::get ('/profile',         'ProfileController@index');
+    Route::post('/profile/update',  'ProfileController@update');
+    Route::get ('/account',         'AccountController@index');
+    Route::post('/account/password/reset',    'AccountController@passwordReset');
     Route::get ('/bookshelf',       'UserController@bookshelf');
     Route::get ('/activate',        'UserController@waitForActivation');
     Route::get ('/activate/resend', 'UserController@resendActivationEmail');
@@ -170,9 +167,12 @@ Route::group(['namespace'=>'User', 'middleware'=>'auth', 'prefix'=>'user'], func
         Route::post('/add',     'EmailController@store');
         Route::post('/remove',  'EmailController@destroy');
         Route::post('/primary', 'EmailController@setPrimary');
+        Route::get ('/{id}/verify/{code}',  'EmailController@verify');
     });
 
 });
+
+//Route::get ('user/activate',        'UserController@waitForActivation');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
@@ -253,6 +253,8 @@ Route::get('/faq', 'FAQController@general');
 Route::get('/faq/general', 'FAQController@general');
 Route::get('/faq/orders', 'FAQController@orders');
 Route::get('/faq/account', 'FAQController@account');
+Route::get('/faq/textbook', 'FAQController@textbook');
+
 
 /*
 |--------------------------------------------------------------------------

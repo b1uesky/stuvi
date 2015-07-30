@@ -2,6 +2,7 @@
 
 use App\Email;
 use App\Http\Controllers\Controller;
+use App\Profile;
 use App\University;
 use App\User;
 use Auth;
@@ -9,9 +10,9 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 use Input;
 use Mail;
+use Response;
 use Session;
 use Validator;
-use Response;
 
 class AuthController extends Controller {
 
@@ -59,10 +60,13 @@ class AuthController extends Controller {
             'user_id'       => $user->id,
             'email_address' => $data['email'],
         ]);
+        $email->assignVerificationCode();
         $user->update([
             'primary_email_id'  => $email->id,
         ]);
-        $user->assignActivationCode();
+        $profile = Profile::create([
+            'user_id'       => $user->id
+        ]);
 
         $user->sendActivationEmail();
 
@@ -95,6 +99,19 @@ class AuthController extends Controller {
 
     /**
      * @override
+     * Log the user out of the application.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getLogout()
+    {
+        Auth::logout();
+
+        return redirect()->back();
+    }
+
+    /**
+     * @override
      * Handle a registration request for the application.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -117,19 +134,35 @@ class AuthController extends Controller {
         });
 
         if ($v->fails()) {
-            $except_fields = ['password'];
 
-            return Response::json([
-                'success'   => false,
-                'fields'    => $v->errors()
-            ]);
+            if ($request->ajax())
+            {
+                return Response::json([
+                    'success'   => false,
+                    'fields'    => $v->errors()
+                ]);
+            }
+            else
+            {
+                $this->throwValidationException(
+                    $request, $v
+                );
+            }
+
         }
 
         Auth::login($this->create($request->all()));
 
-        return Response::json([
-            'success'   => true
-        ]);
+        if ($request->ajax())
+        {
+            return Response::json([
+                'success'   => true
+            ]);
+        }
+        else
+        {
+            return redirect($this->redirectPath());
+        }
     }
 
     /**
@@ -165,12 +198,25 @@ class AuthController extends Controller {
             $this->incrementLoginAttempts($request);
         }
 
-        return Response::json([
-            'success'   => false,
-            'fields'    => [
-                $this->loginUsername() => $this->getFailedLoginMessage(),
-            ]
-        ]);
+        if ($request->ajax())
+        {
+            return Response::json([
+                'success'   => false,
+                'fields'    => [
+                    $this->loginUsername() => $this->getFailedLoginMessage(),
+                ]
+            ]);
+        }
+        else
+        {
+            return redirect($this->loginPath())
+                ->withInput($request->only($this->loginUsername(), 'remember'))
+                ->withErrors([
+                    $this->loginUsername() => $this->getFailedLoginMessage(),
+                ]);
+        }
+
+
     }
 
     /**
@@ -187,26 +233,20 @@ class AuthController extends Controller {
             $this->clearLoginAttempts($request);
         }
 
-//        if (method_exists($this, 'authenticated')) {
-//            return $this->authenticated($request, Auth::user());
-//        }
-
-        // if the user was redirected from a specific page that needs login or register
-        if (Session::has('url.intended'))
+        if ($request->ajax())
         {
-//            return redirect(Session::pull('url.intended'));
             return Response::json([
-                'success'   => true,
-                'redirect'  => Session::pull('url.intended')
+                'success'   => true
             ]);
         }
+        else
+        {
+            if (method_exists($this, 'authenticated')) {
+                return $this->authenticated($request, Auth::user());
+            }
 
-        return Response::json([
-            'success'   => true,
-            'redirect'  => '/home'
-        ]);
-
-//        return redirect()->intended($this->redirectPath());
+            return redirect()->intended($this->redirectPath());
+        }
     }
 
     /**

@@ -1,12 +1,10 @@
 <?php namespace App;
 
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
@@ -27,15 +25,25 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['password', 'phone_number', 'first_name', 'last_name', 'activated', 'university_id',
-                            'activation_code', 'role', 'primary_email_id'];
+    protected $fillable = [
+        'password',
+        'phone_number',
+        'first_name',
+        'last_name',
+        'university_id',
+        'role',
+        'primary_email_id',
+    ];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
 
     /**
@@ -50,7 +58,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             'last_name'     => 'required|string',
             'password'      => 'required|min:6',
             'phone_number'  => 'required|phone:US',
-            'university_id' => 'required|numeric'
+            'university_id' => 'required|numeric',
         ];
 
         return array_merge($rules, Email::registerRules());
@@ -64,9 +72,20 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public static function loginRules()
     {
         $rules = [
-            'password'  => 'required|min:6',
+            'password' => 'required|min:6',
         ];
+
         return array_merge($rules, Email::loginRules());
+    }
+
+    public static function passwordResetRules()
+    {
+        $rules = [
+            'current_password' => 'required|min:6',
+            'new_password'     => 'required|min:6|confirmed',
+        ];
+
+        return $rules;
     }
 
     /**
@@ -106,7 +125,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function productsBought()
     {
-        $products = array();
+        $products = [];
 
         foreach ($this->buyerOrders()->get() as $buyer_order)
         {
@@ -148,11 +167,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     /**
      * Check if the user has a given role.
      *
-     * @param null $role    can be a multi-role string, e.g. ac
+     * @param null $role can be a multi-role string, e.g. ac
      *
      * @return bool
      */
-    public function hasRole($role=null)
+    public function hasRole($role = null)
     {
         if (!is_null($role))
         {
@@ -175,7 +194,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function isActivated()
     {
-        return $this->activated;
+        return $this->collegeEmail()->verified;
     }
 
     /**
@@ -185,7 +204,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function isActivated2()
     {
-        if ($this->activated)
+        if ($this->isActivated())
         {
             return 'Yes';
         }
@@ -200,7 +219,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function addresses()
     {
-        return $this->hasMany('App\Address')->where('is_enabled',true);
+        return $this->hasMany('App\Address')->where('is_enabled', true);
     }
 
     /**
@@ -224,44 +243,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
-     * Assign an activation code for this user if it is not assigned.
-     *
-     * @return bool
-     */
-    public function assignActivationCode()
-    {
-        if (empty($this->activation_code))
-        {
-            $this->activation_code = \App\Helpers\generateRandomCode(Config::get('user.activation_code_length'));
-            $this->save();
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Activate an account with a code.
-     *
-     * @param $code
-     *
-     * @return bool
-     */
-    public function activate($code)
-    {
-        if ($code === $this->activation_code)
-        {
-            $this->update([
-                'activated'  => true,
-            ]);
-
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
      * Get the university this user belongs to.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -281,12 +262,29 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         if ($this->hasOne('App\Cart')->count() <= 0)
         {
             Cart::create([
-                'user_id'   => $this->id,
-                'quantity'  => 0,
+                'user_id'  => $this->id,
+                'quantity' => 0,
             ]);
         }
 
         return $this->hasOne('App\Cart', 'user_id', 'id');
+    }
+
+    /**
+     * Get the user's profile.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function profile()
+    {
+        if ($this->hasOne('App\Profile')->count() <= 0)
+        {
+            Profile::create([
+                'user_id' => $this->id,
+            ]);
+        }
+
+        return $this->hasOne('App\Profile');
     }
 
     /**
@@ -320,11 +318,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         $email = Email::find($email_id);
 
-        if ($email && $email->isBelongTo($this->id))
+        if ($email && $email->isBelongTo($this->id) && $email->verified)
         {
             $this->update([
-                'primary_email_id'  => $email_id,
+                'primary_email_id' => $email_id,
             ]);
+
             return $email;
         }
 
@@ -338,7 +337,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function collegeEmail()
     {
-        return $this->emails()->where('email_address', 'like', '%'.$this->university->email_suffix)->first();
+        return $this->emails()->where('email_address', 'like', '%' . $this->university->email_suffix)->first();
     }
 
     /**
@@ -347,12 +346,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function sendActivationEmail()
     {
         // send an email to the user with welcome message
-        $user_arr               = $this->toArray();
-        $user_arr['university'] = $this->university->toArray();
-        $user_arr['email']      = $this->collegeEmail()->email_address;
-        $user_arr['return_to']  = urlencode(Session::get('url.intended', '/home'));    // return_to attribute.
+        $user_arr                      = $this->toArray();
+        $user_arr['university']        = $this->university->toArray();
+        $user_arr['email']             = $this->collegeEmail()->email_address;
+        $user_arr['return_to']         = urlencode(Session::get('url.intended', '/home'));    // return_to attribute.
+        $user_arr['verification_code'] = $this->collegeEmail()->verification_code;
 
-        Mail::queue('emails.welcome', ['user' => $user_arr], function($message) use ($user_arr)
+        Mail::queue('emails.welcome', ['user' => $user_arr], function ($message) use ($user_arr)
         {
             $message->to($user_arr['email'])->subject('Welcome to Stuvi!');
         });
@@ -374,8 +374,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function allToArray()
     {
-        $user_arr           = $this->toArray();
-        $user_arr['email']  = $this->primaryEmail->email_address;
+        $user_arr          = $this->toArray();
+        $user_arr['email'] = $this->primaryEmail->email_address;
 
         return $user_arr;
     }

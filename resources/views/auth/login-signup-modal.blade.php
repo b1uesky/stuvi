@@ -4,13 +4,14 @@
 
 @section('login-signup-modal')
     <div class="login-signup-modal" style="z-index: 99999;">
-        <div class="modal fade login-modal" id="login-modal" tabindex="-1" role="dialog"
-             aria-labelledby="Login">
-            <div class="modal-dialog">
+        <div class="modal fade login-modal" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <!-- close button -->
-                        <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+                        <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                         <!-- header -->
                         <h4><i class="fa fa-sign-in"></i> Login</h4>
                     </div>
@@ -43,13 +44,14 @@
             </div>
         </div>
         <!-- sign up modal -->
-        <div class="modal fade signup-modal" id="signup-modal" tabindex="-1" role="dialog"
-             aria-labelledby="SignUp">
-            <div class="modal-dialog">
+        <div class="modal fade signup-modal" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="SignUp">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <!-- close -->
-                        <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+                        <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                         <!-- header -->
                         <h4><i class="fa fa-user-plus"></i> Sign Up</h4>
                     </div>
@@ -69,23 +71,25 @@
                             <!-- email -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-email">Email</label>
-                                <input type="email" name="email" class="form-control" id="register-email" placeholder="College email address">
+                                <input type="email" name="email" class="form-control" id="register-email" placeholder="University email address (.edu required)">
                             </div>
                             <!-- password -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-password">Password</label>
-                                <input type="password" name="password" class="form-control" id="register-password" placeholder="Password">
+                                <input type="password" name="password" class="form-control phone_number"
+                                       id="register-password" placeholder="Password">
                             </div>
                             <!-- phone number -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-phone">Phone Number</label>
-                                <input type="text" name="phone_number" class="form-control" id="register-phone"
+                                <input type="tel" name="phone_number" class="form-control" id="register-phone"
                                        placeholder="Phone number">
                             </div>
                             <!-- university -->
                             <div class="form-group">
                                 <label class="sr-only" for="register-university">School</label>
                                 <select class="form-control" name="university_id" id="register-university">
+                                    <option selected disabled>University</option>
                                     @foreach(\App\University::where('is_public', true)->get() as $university)
                                         <option value="{{ $university->id }}">{{ $university->name }}</option>
                                     @endforeach

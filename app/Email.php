@@ -3,10 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Mail;
 
 class Email extends Model
 {
-    protected $fillable = ['user_id', 'email_address'];
+    protected $fillable = [
+        'user_id',
+        'email_address',
+        'verification_code',
+        'verified',
+    ];
 
     /**
      * Get the user that this user email belongs to.
@@ -72,5 +79,58 @@ class Email extends Model
         return [
             'email' => 'required|email|max:255',
         ];
+    }
+
+    /**
+     * Assign an verification code for this email if it is not assigned.
+     *
+     * @return bool
+     */
+    public function assignVerificationCode()
+    {
+        if (empty($this->verification_code))
+        {
+            $this->verification_code = \App\Helpers\generateRandomCode(Config::get('user.verification_code_length'));
+            $this->save();
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Verify an account with a code.
+     *
+     * @param $code
+     *
+     * @return bool
+     */
+    public function verify($code)
+    {
+        if ($code === $this->verification_code)
+        {
+            $this->update([
+                'verified'  => true,
+            ]);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Send verification email.
+     */
+    public function sendVerificationEmail()
+    {
+        // send an email to the user with activation message
+        $email_arr              = $this->toArray();
+        $email_arr['user']      = $this->user->toArray();
+
+        Mail::queue('emails.verify', ['email' => $email_arr], function($message) use ($email_arr)
+        {
+            $message->to($email_arr['email_address'])->subject('Please verify your email address.');
+        });
     }
 }

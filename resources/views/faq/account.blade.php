@@ -9,31 +9,21 @@
 @section('content')
     <div class="container faq-container">
         @include('faq/side-nav')
-
         <div class="col-sm-7 col-sm-offset-1 qa-container">
+            <h2>FAQ - Account</h2>
+            <hr class="faq-line">
             <div class="question-answer">
-                <h2>FAQ - Account</h2>
-
                 <h3>How do I edit my account information?</h3>
-
                 <p>
-                    Please go to the <a href="">account page</a> to edit your account information.
-                </p>
-            </div>
-            <div class="question-answer">
-                <h3>Can I change the privacy of my profile?</h3>
-
-                <p>
-                    We will notify you when your bold has been sold. You will then select a time for us to
-                    pickup the book.
+                    Please go to the <a href="{{ url('/user/account') }}">account page</a> to edit your account
+                    information.
                 </p>
             </div>
             <div class="question-answer">
                 <h3>How do I change my email settings?</h3>
-
                 <p>
-                    Yes! We use <a href="https://stripe.com/" target="_blank">Stripe</a> to secure all credit card
-                    transactions.
+                    You can change all email preferences on the <a href="{{ url('/user/email') }}">email settings
+                        page.</a>
                 </p>
             </div>
         </div>
@@ -41,6 +31,4 @@
 @endsection
 
 @section('javascript')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 @endsection

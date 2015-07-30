@@ -1,0 +1,76 @@
+/* Reponsive Searchbar
+ * Inspired by: http://jsfiddle.net/eUhTM/3/
+ */
+
+@import "../modules/colors";
+@import "../modules/typography";
+
+.searchbar {
+  display: table;
+  margin: 0 auto;
+  max-width: 800px;
+  width: 90%;
+}
+
+.searchbar-input-container {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.searchbar-input-container-query {
+  width: 66%;
+}
+
+.searchbar-input-container-university {
+  width: 0.01%;
+}
+
+.searchbar-input-container-submit {
+  width: 0.01%;
+}
+
+.searchbar-input {
+  width: 100%;
+  height: 3em;
+  background-color: $background-color;
+  border: 1px solid $border-color;
+
+  &:focus {
+    border: 1px solid $primary-color;
+    box-shadow: none;
+  }
+}
+
+.searchbar-input-query {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0;
+}
+
+.searchbar-input-university {
+  border-radius: 0;
+  border-right: 0;
+  width: auto;
+  -webkit-appearance: none;
+}
+
+.search-btn {
+  width: auto;
+  height: 3em;
+  background: $primary-color;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border: none;
+
+  &:hover {
+    background: $primary-color;
+  }
+  &:focus {
+    outline: 0 !important;
+    background: $primary-color;
+  }
+}
+
+.search-icon {
+  color: white;
+}

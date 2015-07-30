@@ -9,7 +9,6 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Product;
-//use Cart;
 use Auth;
 use Illuminate\Support\Facades\Session;
 

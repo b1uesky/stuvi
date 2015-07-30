@@ -15,20 +15,20 @@
                 <div class="profile-content">
                     <!-- right box -->
                     <div class="container col-xs-12 col-md-12" id = "email-details">
-                        @if (Session::has('email_remove_error'))
-                            <div class="alert alert-danger" id="message">{{ Session::get('email_remove_error') }}</div>
-                        @endif
-                        @if (Session::has('email_remove_success'))
-                            <div class="alert alert-success" id="message">{{ Session::get('email_remove_success') }}</div>
-                        @endif
-                        @if (Session::has('email_set_primary_error'))
-                            <div class="alert alert-danger" id="message">{{ Session::get('email_set_primary_error') }}</div>
-                        @endif
                         @if (Session::has('email_set_primary_success'))
                             <div class="alert alert-success" id="message">{{ Session::get('email_set_primary_success') }}</div>
-                        @endif
-                        @if (Session::has('email_add_success'))
+                        @elseif (Session::has('email_remove_success'))
+                            <div class="alert alert-success" id="message">{{ Session::get('email_remove_success') }}</div>
+                        @elseif (Session::has('email_add_success'))
                             <div class="alert alert-success" id="message">{{ Session::get('email_add_success') }}</div>
+                        @elseif (Session::has('email_verify_success'))
+                            <div class="alert alert-success" id="message">{{ Session::get('email_verify_success') }}</div>
+                        @elseif (Session::has('email_remove_error'))
+                            <div class="alert alert-danger" id="message">{{ Session::get('email_remove_error') }}</div>
+                        @elseif (Session::has('email_set_primary_error'))
+                            <div class="alert alert-danger" id="message">{{ Session::get('email_set_primary_error') }}</div>
+                        @elseif (Session::has('email_verify_error'))
+                            <div class="alert alert-danger" id="message">{{ Session::get('email_verify_error') }}</div>
                         @endif
                         <h3>Email</h3>
                         {{-- Email List --}}
@@ -37,19 +37,25 @@
                             @foreach ($emails as $email)
                                 <tr>
                                     <td><strong>{{ $email->email_address }}</strong></td>
-                                    @if (Auth::user()->primary_email_id == $email->id)
+                                    @if ($email->isPrimary())
                                         <td>
                                             Primary
                                         </td>
                                         <td></td>
                                     @else
-                                        <td>
+                                        @if (!$email->verified)
+                                            <td>
+                                                Unverified
+                                            </td>
+                                        @else
+                                            <td>
                                             <form action="{{ url('/user/email/primary') }}" method="post">
                                                 {!! csrf_field() !!}
                                                 <input type="hidden" name="id" value="{{ $email->id }}">
                                                 <input type="submit" class="btn primary-btn" value="Set as primary">
                                             </form>
                                         </td>
+                                        @endif
                                         <td>
                                             @if (!$email->isCollegeEmail())
                                                 <form action="{{ url('/user/email/remove') }}" method="post">
@@ -90,10 +96,6 @@
 <!-- inserted at the end of app -->
 @section('javascript')
 
-    <!-- required for all pages for proper tab and drop-down functionality -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
     <!-- Slick required -->
     {{--
         <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -101,5 +103,5 @@
         <script type="text/javascript" src="{{asset('/slick/slick.min.js')}}"></script>
 
     --}}
-    <script type="text/javascript" src="{{asset('js/user/profile.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/user/email.js')}}"></script>
 @endsection

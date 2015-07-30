@@ -1,5 +1,7 @@
 /***** SELLER PRODUCT CREATE PAGE *****/
-@import "modules/all";
+@import "modules/colors";
+@import "modules/typography";
+@import "partials/image";
 
 body {
   background-color: $background-color;
@@ -15,13 +17,13 @@ body {
   margin-top: 50px;
 }
 
-#textbook-img {
-  width: 300px;
-  height: 400px;
-  span {
-    font-size: 18px;
-  }
-}
+//#textbook-img {
+//  width: 300px;
+//  height: 400px;
+//  span {
+//    font-size: 18px;
+//  }
+//}
 
 .authors-container {
   margin-bottom: 10px;
@@ -36,10 +38,6 @@ body {
 }
 
 .textbook-info {
-  p {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
 }
 
 #price-input {
@@ -49,12 +47,9 @@ body {
 /*** PRODUCT CONDITION ***/
 
 .condition-btn {
-  background-color: #DDDDDD;
-  border: 1px solid #9B9B9B;
-  &:hover, &:focus {
-    background-color: #BBBBBB;
-  }
-  &.active {
+  background-color: white;
+  border: 1px solid $border-color;
+  &:hover, &.active {
     background-color: $primary-color;
     color: white;
     box-shadow: none;
@@ -62,7 +57,7 @@ body {
 }
 
 .fa-question-circle {
-  color: $secondary-color;
+  color: $accent-color;
   cursor: pointer;
 }
 
@@ -74,7 +69,39 @@ body {
   width: 50%;
 }
 
-/** SELL BUTTON **/
+/** FILE UPLOAD **/
+
+#form-product {
+  border: none;
+  background: none;
+}
+
+.upload-file {
+  margin-bottom: 10px;
+}
+
+.upload-error-message {
+  display: none;
+  color: red;
+  font-weight: bold;
+}
+
+#dropzone-img-preview {
+  border: 2px dashed $primary-color;
+  background: white;
+  border-radius: 5px;
+  padding: $spacing-unit / 2;
+}
+
+.dz-clickable {
+  cursor: pointer;
+}
+
+.dz-unclickable {
+  cursor: default;
+}
+
+/** POST BOOK BUTTON **/
 
 .sell-btn {
   display: block;
@@ -82,12 +109,4 @@ body {
   padding: 12px;
   font-size: 16px;
 
-}
-
-/** File upload error messages **/
-
-.upload-error-message {
-  display: none;
-  color: red;
-  font-weight: bold;
 }

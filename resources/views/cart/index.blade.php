@@ -10,7 +10,6 @@
 @endsection
 
 @section('content')
-
     <!-- different icon and bg color depending on alert. add to other pages??? -->
     @if (Session::has('message'))
         @if (Session::get('alert-class') == 'alert-danger' or Session::get('alert-class') == 'alert-warning')
@@ -131,9 +130,6 @@
 @endsection
 
 @section('javascript')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    {{--<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>--}}
     <script>
         function goBack() {
             window.history.back();

@@ -3,8 +3,7 @@
 @import "modules/all";
 
 .about-background {
-  /*image link -> http://commons.wikimedia.org/wiki/File:Stuvi.JPG*/
-  background: url("../img/stuvi.jpeg") no-repeat center;
+  background: url("../img/bu-west.jpg") no-repeat center;
   background-size: cover; /* Fill entire container */
 }
 
@@ -16,8 +15,8 @@
   margin-top: 25%;
   margin-bottom: 20%;
   text-align: center;
-  color: black;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  color: $heading-text-color;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
 .about-stuvi {

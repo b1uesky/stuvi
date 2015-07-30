@@ -20,7 +20,7 @@
 @section('content')
     <div class="container-fluid content">
         <!-- logo -->
-        <a href="{{ url('/') }}" id="logo-link"><img src="{{asset('/img/stuvi-logo.png')}}" class="img-responsive"
+        <a href="{{ url('/') }}" id="logo-link"><img src="{{asset('/img/logo-new-center.png')}}" class="img-responsive"
                                                      id="login-logo"></a>
 
         <div class="row vertical-center">
@@ -38,7 +38,7 @@
                         <li role="presentation" class="{{ $signupActive }}" id="signup-tab"><a href="#signup-body"
                                                                                                aria-controls="signup-body"
                                                                                                role="tab"
-                                                                                               data-toggle="tab">SignUp</a>
+                                                                                               data-toggle="tab">Sign Up</a>
                         </li>
                     </ul>
                     <!-- end tabs -->
@@ -113,8 +113,7 @@
                         </div>
                         <!-- sign up -->
                         <div class="tab-pane {{ $signupActive }}" id="signup-body">
-                            <form class="form-horizontal" role="form" method="POST"
-                                  action="{{ url('/auth/register') }}">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <!-- first name -->
                                 <div class="form-group">
@@ -204,7 +203,7 @@
                             The term ‘Stuvi’ or ‘us’ or ‘we’ refers to the owner of the website whose registered office is [address]. Our company registration number is [company registration number and place of registration]. The term ‘you’ refers to the user or viewer of our website.
                             The use of this website is subject to the following terms of use: </br>
                             The content of the pages of this website is for your general information and use only. It is subject to change without notice.
-                            This website uses cookies to monitor browsing preferences. If you do allow cookies to be used, the following personal information may be stored by us for use by third parties: [insert list of information].
+                            This website uses cookies to monitor browsing preferences. If you do allow cookies to be used, the following personal information may be stored by us for use by third parties.
                         </p>
                             <ul>
                                 <li>Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.</li>
@@ -268,7 +267,7 @@
 
                             <p>Our Privacy Policy may change from time to time and all updates will be posted on this page.</p>
 
-                            <p><strong>If you feel that we are not abiding by this privacy policy, you should contact us immediately via telephone at XXX YYY-ZZZZ or via email.</strong></p>
+                            <p><strong>If you feel that we are not abiding by this privacy policy, you should contact us immediately at <a href="mailto:official@stuvi.com">official@stuvi.com</a>.</strong></p>
 
                             <h3>Orders</h3>
                             <p>We request information from you on our order form. To buy from us, you must provide contact information (like name and shipping address) and financial information (like credit card number, expiration date). This information is used for billing purposes and to fill your orders. If we have trouble processing an order, we'll use this information to contact you.</p>
@@ -288,8 +287,5 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>
-    <script src="{{asset('/js/navigation.js')}}" type="text/javascript"></script>
-    <script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>
-    <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
 @endsection
 
