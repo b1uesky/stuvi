@@ -192,6 +192,7 @@
 @endsection
 
 @section('javascript')
+    <script src="{{ asset('libs/jquery.maskedinput/dist/jquery.maskedinput.min.js') }}"></script>
     <script type="text/javascript" src="{{asset('js/user/profile-edit.js')}}"></script>
     <script src="{{ asset('libs/datetimepicker/jquery.datetimepicker.js') }}"></script>
 @endsection
