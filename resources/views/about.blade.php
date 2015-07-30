@@ -89,6 +89,4 @@
 @endsection
 
 @section('javascript')
-    <script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>
-    <script src="{{asset('/js/login.js')}}" type="text/javascript"></script>
 @endsection
