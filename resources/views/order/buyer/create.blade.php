@@ -89,7 +89,6 @@
                                             <li class="address" id="default_phone">{{ $address -> phone_number }}</li>
                                         </ul>
                                         <button class="btn btn-default primary-btn address-btn show-addresses">
-                                            <i class="fa fa-pencil"></i>
                                             Change Address
                                         </button>
                                     </div>
@@ -333,9 +332,7 @@
                                                     <label class="col-sm-4 control-label">Address line 1</label>
 
                                                     <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control"
-                                                               name="address_line1"
-                                                               value="185 Freeman St.">
+                                                        <input type="text" class="form-control" name="address_line1">
                                                     </div>
                                                 </div>
                                                 </br>
@@ -343,9 +340,7 @@
                                                     <label class="col-sm-4 control-label">Address line 2</label>
 
                                                     <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control"
-                                                               name="address_line2"
-                                                               value="Apt. 739">
+                                                        <input type="text" class="form-control" name="address_line2">
                                                     </div>
                                                 </div>
                                                 </br>
@@ -353,8 +348,7 @@
                                                     <label class="col-sm-4 control-label">City</label>
 
                                                     <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control" name="city"
-                                                               value="Brookline">
+                                                        <input type="text" class="form-control" name="city">
                                                     </div>
                                                 </div>
                                                 </br>
@@ -362,8 +356,7 @@
                                                     <label class="col-sm-4 control-label">State</label>
 
                                                     <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control" name="state_a2"
-                                                               value="MA">
+                                                        <input type="text" class="form-control" name="state_a2">
                                                     </div>
                                                 </div>
                                                 </br>
@@ -371,8 +364,7 @@
                                                     <label class="col-sm-4 control-label">Zip</label>
 
                                                     <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control" name="zip"
-                                                               value="02446">
+                                                        <input type="text" class="form-control" name="zip">
                                                     </div>
                                                 </div>
                                                 </br>
@@ -381,7 +373,7 @@
 
                                                     <div class="col-sm-6 form-space-offset">
                                                         <input type="tel" class="form-control phone_number"
-                                                               name="phone_number" value="(857) 206 4789">
+                                                               name="phone_number">
                                                     </div>
                                                 </div>
                                                 <input type="hidden" name="address_id" value="">
@@ -529,7 +521,7 @@
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <!-- jQuery is used only for this example; it isn't required to use Stripe -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>
+    <script src="{{ asset('libs/jquery.maskedinput/dist/jquery.maskedinput.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/address.js') }}"></script>
     <!-- stripe -->
     <script type="text/javascript">

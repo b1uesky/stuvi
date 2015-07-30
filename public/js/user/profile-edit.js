@@ -7,6 +7,9 @@ $(document).ready(function(){
     $('#side-profile-edit-link').addClass('active');
     $('#edit-btn').addClass('hidden');
 
+    // format phone number
+    $(".phone_number").mask("(999) 999-9999");
+
     $('#datetimepicker1').datetimepicker({
         lang:'en',
         timepicker:false,
