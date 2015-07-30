@@ -49,19 +49,27 @@ $(document).ready(function() {
     // Ajax: update seller default address
     $('.form-update-default-address').submit(function(e) {
         e.preventDefault();
+        var $this = $(this);
 
         $.ajax({
             type: 'POST',
-            url: '/user/updateDefaultAddress',
+            url: '/address/select',
             data: {
                 _token: $('[name="csrf_token"]').attr('content'),
-                address_id: $(this).find('input[name=address_id]').val()
+                selected_address_id: $(this).find('input[name=address_id]').val()
             },
             dataType: 'json',
             success: function (data, status) {
                 //console.log(data['address']);
+                $this = $this.parent().find('ul');
+                var address = {};
+                address['addressee'] = $.trim($this.find('.seller-address-addressee').text());
+                address['address-line'] = $.trim($this.find('.seller-address-address-line').text());
+                address['city'] = $.trim($this.find('.seller-address-city').text());
+                address['state'] = $.trim($this.find('.seller-address-state').text());
+                address['zip'] = $.trim($this.find('.seller-address-zip').text());
 
-                updateDefaultAddress(data['address']);
+                updateAddress($(".seller-address"),address);
 
                 toggleAddress();
             },
@@ -72,14 +80,13 @@ $(document).ready(function() {
         });
     });
 
-    // TODO
     // Ajax: edit seller address
     $('.form-edit-address').submit(function(e) {
         e.preventDefault();
 
         $.ajax({
-            type: 'GET',
-            url: '/user/editAddress',
+            type: 'POST',
+            url: '/address/update',
             data: {
                 _token: $('[name="csrf_token"]').attr('content'),
                 address_id: $(this).find('input[name=address_id]').val()
@@ -96,24 +103,16 @@ $(document).ready(function() {
     });
 
     /**
-     * Update the default address using data retrieved from AJAX.
+     * Update the address of a specific ul.
      *
      * @param address
      */
-    function updateDefaultAddress(address) {
-        var address_line = address['address_line1'];
-
-        // add line 2 if necessary
-        if (address['address_line2'] != '')
-        {
-            address_line = address_line + ', ' + address['address_line2'];
-        }
-
-        $('.seller-address-addressee').text(address['addressee']);
-        $('.seller-address-address-line').text(address_line);
-        $('.seller-address-city').text(address['city']);
-        $('.seller-address-state').text(address['state_a2']);
-        $('.seller-address-zip').text(address['zip']);
+    function updateAddress($this/*the address list need to be update*/,address){
+        $this.find(".seller-address-addressee").text($.trim(address["addressee"]));
+        $this.find(".seller-address-address-line").text($.trim(address["address-line"]));
+        $this.find(".seller-address-city").text($.trim(address["city"]));
+        $this.find(".seller-address-state").text($.trim(address["state"]));
+        $this.find(".seller-address-zip").text($.trim(address["zip"]));
     }
 
     /**

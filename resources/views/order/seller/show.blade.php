@@ -193,8 +193,8 @@
                         @foreach($seller_order->seller()->addresses as $address)
                             <div>
                                 <ul>
-                                    <li>{{ $address->addressee }}</li>
-                                    <li>
+                                    <li class="seller-address-addressee">{{ $address->addressee }}</li>
+                                    <li class="seller-address-address-line">
                                         @if($address->address_line2)
                                             {{ $address->address_line1 }}, {{ $address->address_line2 }}
                                         @else
@@ -202,9 +202,9 @@
                                         @endif
                                     </li>
                                     <li>
-                                        <span>{{ $address->city }}, </span>
-                                        <span>{{ $address->state_a2 }} </span>
-                                        <span>{{ $address->zip }}</span>
+                                        <span class="seller-address-city">{{ $address->city }}, </span>
+                                        <span class="seller-address-state">{{ $address->state_a2 }} </span>
+                                        <span class="seller-address-zip">{{ $address->zip }}</span>
                                     </li>
                                     <li>{{ $address->country_name }}</li>
                                     <li>Phone: {{ $address->phone_number }}</li>
@@ -217,7 +217,7 @@
                                 </form>
 
                                 {{-- TODO: Edit address --}}
-                                <form action="" method="get" class="form-edit-address">
+                                <form action="" method="post" class="form-edit-address">
                                     <input type="hidden" name="address_id" value="{{ $address->id }}"/>
                                     <input type="submit" name="submit" value="Edit" class="btn btn-default"/>
                                 </form>
