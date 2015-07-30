@@ -5,11 +5,12 @@
 
 @section('css')
     <link href="{{ asset('/css/user_profileEdit.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset('/js/datetimepicker/jquery.datetimepicker.css')}}"/>
-    @endsection
+    <link rel="stylesheet" href="{{ asset('libs/datetimepicker/jquery.datetimepicker.css') }}">
+@endsection
 
-    @section('content')
-            <!-- User template has the second nav bar and the profile side bar -->
+@section('content')
+        <!-- User template has the second nav bar and the profile side bar -->
+
     @include('user-template')
     <div class="col-md-9">
         <div class="profile-content">
@@ -58,10 +59,11 @@
                         <!-- Sex -->
                         <div class="form-group" id="sex">
                             <label class="control-label col-sm-3">Sex</label>
+
                             <div class="col-sm-6 align">
                                 <input type="radio" name="sex" value="male"
-                                        @if ($profile->sex == 'male')
-                                          checked
+                                       @if ($profile->sex == 'male')
+                                       checked
                                         @endif
                                         > Male
                                 <input type="radio" name="sex" value="female"
@@ -88,7 +90,7 @@
 
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="title" id="title" placeholder="Stuvier"
-                                        value="{{ $profile->title }}">
+                                       value="{{ $profile->title }}">
                             </div>
                         </div>
 
@@ -98,7 +100,8 @@
                             <label class="control-label col-sm-3" for="bio">Bio/About me</label>
 
                             <div class="col-sm-6">
-                                <textarea id="bio" name="bio" class="form-control" rows="4" cols="50">{{$profile->bio or "Tell us your darkest, deepest secrets."}}</textarea>
+                                <textarea id="bio" name="bio" class="form-control" rows="4"
+                                          cols="50">{{$profile->bio or "Tell us your darkest, deepest secrets."}}</textarea>
                             </div>
                         </div>
                         <!-- education -->
@@ -106,6 +109,7 @@
                         <!-- School -->
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="school">School/University</label>
+
                             <div class="col-sm-6" id="school">
                                 <p class="form-control-static text-muted">{{$school->name}}</p>
                             </div>
@@ -189,6 +193,5 @@
 
 @section('javascript')
     <script type="text/javascript" src="{{asset('js/user/profile-edit.js')}}"></script>
-    <script src="{{asset('/js/datetimepicker/jquery.js')}}"></script>
-    <script src="{{asset('/js/datetimepicker/jquery.datetimepicker.js')}}"></script>
+    <script src="{{ asset('libs/datetimepicker/jquery.datetimepicker.js') }}"></script>
 @endsection

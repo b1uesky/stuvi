@@ -7,6 +7,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('/css/product_show.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('libs/lightbox2/dist/css/lightbox.css') }}">
 @endsection
 
 @section('content')
@@ -207,6 +208,8 @@
 @section('javascript')
     <!-- lightbox required -->
     {{--http://lokeshdhakar.com/projects/lightbox2/--}}
-    <script src="{{asset('lightbox2-master/dist/js/lightbox.min.js')}}"></script>
-    <link href="{{asset('lightbox2-master/dist/css/lightbox.css')}}" rel="stylesheet">
+    <script src="{{ asset('libs/lightbox2/dist/js/lightbox.min.js') }}"></script>
+    {{--<script src="{{asset('lightbox2-master/dist/js/lightbox.min.js')}}"></script>--}}
+    {{--<link href="{{asset('lightbox2-master/dist/css/lightbox.css')}}" rel="stylesheet">--}}
+
 @endsection

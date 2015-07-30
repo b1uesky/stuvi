@@ -9,17 +9,8 @@
     <title>Stuvi - @yield('title')</title>
 
     <link href="{{ asset('/css_app/app.css') }}" rel="stylesheet">
-
     <link rel="stylesheet" href="{{ asset('/css/main.css') }}"/>
-
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-    <!-- material design -->
-{{--
-    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.teal-deep_orange.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>--}}
+    <link rel="stylesheet" href="{{ asset('libs/font-awesome/css/font-awesome.min.css') }}">
 
     <!-- Fonts -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>

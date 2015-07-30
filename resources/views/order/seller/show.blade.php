@@ -7,7 +7,7 @@
 
 @section('css')
     <link href="{{ asset('/css/order_show.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset('/js/datetimepicker/jquery.datetimepicker.css')}}"/>
+    <link rel="stylesheet" href="{{ asset('libs/datetimepicker/jquery.datetimepicker.css') }}">
 @endsection
 
 @section('content')
@@ -217,9 +217,7 @@
 @section('javascript')
     {{--http://xdsoft.net/jqplugins/datetimepicker/--}}
     <!-- Date time picker required scripts -->
-    <script src="{{asset('/js/datetimepicker/jquery.js')}}"></script>
-    <script src="{{asset('/js/datetimepicker/jquery.datetimepicker.js')}}"></script>
-
+    <script src="{{ asset('libs/datetimepicker/jquery.datetimepicker.js') }}"></script>
     <script src="{{asset('/js/order/seller/showSellerOrder.js')}}" type="text/javascript"></script>
 
     <script>
