@@ -6,7 +6,7 @@
 
 @section('css')
     <link href="{{ asset('/css/product_create.css') }}" rel="stylesheet">
-    <link href="{{ asset('dropzone-4.0.1/dist/dropzone.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('libs/dropzone/dist/min/dropzone.min.css') }}">
 @endsection
 
 @section('content')
@@ -277,7 +277,7 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('dropzone-4.0.1/dist/dropzone.js') }}"></script>
+    <script src="{{ asset('libs/dropzone/dist/min/dropzone.min.js') }}"></script>
 
     @if(Auth::check())
         {{-- FormValidation --}}
