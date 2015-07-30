@@ -33,8 +33,8 @@
                 <h3>Is my credit card info secure?</h3>
 
                 <p>
-                    Yes! We use <a href="https://stripe.com/" target="_blank">Stripe</a> to secure all credit card
-                    transactions.
+                    Yes! We use <a href="https://stripe.com/" target="_blank">Stripe</a> to
+                    secure all credit/debit card transactions.
                 </p>
             </div>
         </div>
