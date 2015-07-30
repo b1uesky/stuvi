@@ -40,14 +40,15 @@
                         <form action="/textbook/sell/search" method="post" id="form-isbn">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                            <div class="searchbar-input-container searchbar-input-container-query form-group">
+                            <div class="searchbar-input-container searchbar-input-container-query form-group"
+                                 id="textbook-search">
                                 <input type="text" name="isbn" class="form-control searchbar-input searchbar-input-query"
                                        id="sell-search-input"
                                        placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
                             </div>
-
                             <div class="searchbar-input-container searchbar-input-container-submit form-group">
-                                <button class="btn primary-btn search-btn" type="submit" name="search">
+                                <button class="btn primary-btn search-btn" id="sell-search-btn" type="submit"
+                                        name="search">
                                     <i class="fa fa-search fa-lg search-icon"></i>
                                 </button>
                             </div>
