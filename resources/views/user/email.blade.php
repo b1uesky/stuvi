@@ -5,7 +5,7 @@
 @section('title', 'Email - '.Auth::user()->first_name.' '.Auth::user()->last_name )
 
 @section('css')
-    <link href="{{ asset('/css/user_profile.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/user_email.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -16,19 +16,40 @@
                     <!-- right box -->
                     <div class="container col-xs-12 col-md-12" id = "email-details">
                         @if (Session::has('email_set_primary_success'))
-                            <div class="alert alert-success" id="message">{{ Session::get('email_set_primary_success') }}</div>
+                            <div class="alert alert-success" id="message">
+                                <i class="fa fa-check-square-o"></i>
+                                {{ Session::get('email_set_primary_success') }}
+                            </div>
                         @elseif (Session::has('email_remove_success'))
-                            <div class="alert alert-success" id="message">{{ Session::get('email_remove_success') }}</div>
+                            <div class="alert alert-success" id="message">
+                                <i class="fa fa-check-square-o"></i>
+                                {{ Session::get('email_remove_success') }}
+                            </div>
                         @elseif (Session::has('email_add_success'))
-                            <div class="alert alert-success" id="message">{{ Session::get('email_add_success') }}</div>
+                            <div class="alert alert-success" id="message">
+                                <i class="fa fa-check-square-o"></i>
+                                {{ Session::get('email_add_success') }}
+                            </div>
                         @elseif (Session::has('email_verify_success'))
-                            <div class="alert alert-success" id="message">{{ Session::get('email_verify_success') }}</div>
+                            <div class="alert alert-success" id="message">
+                                <i class="fa fa-check-square-o"></i>
+                                {{ Session::get('email_verify_success') }}
+                            </div>
                         @elseif (Session::has('email_remove_error'))
-                            <div class="alert alert-danger" id="message">{{ Session::get('email_remove_error') }}</div>
+                            <div class="alert alert-danger" id="message">
+                                <i class="fa fa-exclamation-triangle"></i>
+                                {{ Session::get('email_remove_error') }}
+                            </div>
                         @elseif (Session::has('email_set_primary_error'))
-                            <div class="alert alert-danger" id="message">{{ Session::get('email_set_primary_error') }}</div>
+                            <div class="alert alert-danger" id="message">
+                                <i class="fa fa-exclamation-triangle"></i>
+                                {{ Session::get('email_set_primary_error') }}
+                            </div>
                         @elseif (Session::has('email_verify_error'))
-                            <div class="alert alert-danger" id="message">{{ Session::get('email_verify_error') }}</div>
+                            <div class="alert alert-danger" id="message">
+                                <i class="fa fa-exclamation-triangle"></i>
+                                {{ Session::get('email_verify_error') }}
+                            </div>
                         @endif
                         <h3>Email</h3>
                         {{-- Email List --}}
@@ -74,12 +95,16 @@
                             {!! csrf_field() !!}
                             <label>Add an email</label>
                             <div class="form-group form-inline">
-                                <input type="email" name="email" value="{{ old('email') }}">
-                                <button type="submit" class="btn btn-default">Add</button>
+                                <input type="email" name="email" class="form-control email-input"
+                                       value="{{ old('email') }}">
+                                <br>
+                                <button type="submit" class="btn primary-btn email-btn">Add</button>
                             </div>
                             @if (Session::has('email_validation_error'))
                                 @foreach (Session::get('email_validation_error')->get('email') as $err)
-                                    <div class="alert alert-warning" id="message">{{ $err }}</div>
+                                    <div class="alert alert-warning" id="message">
+                                        <i class="fa fa-exclamation-triangle"></i> {{ $err }}
+                                    </div>
                                 @endforeach
                             @endif
                         </form>

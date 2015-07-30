@@ -16,7 +16,6 @@
                 <div class="row profile">
                     <div class="col-md-3">
                         <div class="profile-sidebar">
-
                             <div class="profile-usermenu">
                                 <ul class="nav">
                                     <li class="side-item">
@@ -46,7 +45,7 @@
                                     <li class="side-item">
                                         <a class="side-item-link" id="side-email-link"
                                            href="{{asset('/user/email')}}">
-                                            <i class="fa fa-envelope"></i>Email Notifications
+                                            <i class="fa fa-envelope"></i>Email
                                         </a>
                                     </li>
                                     {{--<li class="side-messages">--}}
