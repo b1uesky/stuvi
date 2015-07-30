@@ -15,11 +15,11 @@
     <div class="col-md-9">
         <div class="profile-content">
             <!-- right box -->
-            <div class="container col-xs-12 col-md-9" id="profile-details">
-                <h1>Profile Setting</h1>
+            {{--<div class="container col-xs-12 col-md-9" id="profile-details">--}}
+            <h1>Profile Settings</h1>
                 <hr>
                 <!-- divider line -->
-                <div class="container col-md-20 edit-pro">
+            <div class="container col-md-11 edit-pro">
                     <form action="{{url('/user/profile/update')}}" method="POST" class="form-horizontal">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -180,7 +180,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            {{--</div>--}}
         </div>
         <!-- needed to end user bar -->
     </div>
