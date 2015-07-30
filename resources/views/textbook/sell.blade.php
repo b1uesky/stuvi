@@ -132,8 +132,8 @@
 @section('javascript')
     @if(Auth::check())
         {{-- FormValidation --}}
-        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
-        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
+        <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
+        <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
     @endif
 
     <script src="{{asset('js/validator/isbn.js')}}"></script>
