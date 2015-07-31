@@ -5,18 +5,17 @@ use App\BuyerOrder;
 use App\BuyerPayment;
 use App\Helpers\StripeKey;
 use App\Http\Controllers\Controller;
-use App\Product;
 use App\SellerOrder;
-use App\User;
 use Auth;
-//use Cart;
 use Config;
 use DB;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Input;
-use Session;
 use Mail;
+use Session;
+
+//use Cart;
 
 class BuyerOrderController extends Controller
 {
@@ -115,6 +114,10 @@ class BuyerOrderController extends Controller
 
         // create Stripe charge, if it fails, go to checkout page.
         $charge = $this->createBuyerCharge();
+        if ($charge instanceof RedirectResponse)
+        {
+            return $charge;
+        }
 
         $shipping_address_id = Input::get('selected_address_id');
 
