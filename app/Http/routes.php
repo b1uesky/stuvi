@@ -190,6 +190,9 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
 
     // buyer payment
     Route::resource('buyer/payment', 'BuyerPaymentController');
+
+    // contact
+    Route::resource('contact', 'ContactController');
 });
 
 /*
