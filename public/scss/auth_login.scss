@@ -38,7 +38,7 @@ button:focus {
 }
 
 /* inactive tab font color */
-.tabs > li > a {
+#tabs > li > a {
   color: $primary-color;
 }
 
@@ -62,16 +62,9 @@ button:focus {
 /*overflow-x: hidden;*/
 /*}*/
 
-.form-group .login-button {
-  background: #7AB4DE;
-  width: 50%;
-  color: #FFFFFF;
-  box-shadow: 0 5px #5B86AA;
-  margin-top: -7px;
-  &:active{
-    box-shadow: 0 2px #5B86AA;
-    transform: translateY(5px);
-  }
+.login-btn {
+  width: 150px;
+  padding: 12px;
 }
 
 #password-group {
@@ -79,7 +72,7 @@ button:focus {
 }
 
 #forgot-password {
-  color: #7AB4DE;
+  color: $primary-color;
   padding: 0;
   margin-top: 10px;
   text-align: center;
@@ -88,6 +81,10 @@ button:focus {
 
 #remember-me{
   margin-left: 5px;
+}
+
+.tos {
+  padding: 0 10px 10px 5px;
 }
 
 /****** RESET PASSWORD ******/
@@ -100,31 +97,23 @@ button:focus {
 }
 
 #reset-title{
-  color: #FFFFFF;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  color: white;
+  text-shadow: $text-shadow;
   margin-top: 0;
 }
 
 .reset-label {
-  color: #FFFFFF;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  color: white;
+  text-shadow: $text-shadow;
 }
 
 #reset-button {
   width: 200px;
-  border: none;
 }
 
 #password-jumbotron{
   background-color: rgba(153, 159, 163, 0.45);
 }
 
-.panel-body {
-  background: #FEFEFE;
-}
 
-.tos{
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-}
 

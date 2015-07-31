@@ -36,7 +36,6 @@
                                class="form-control searchbar-input searchbar-input-query"
                                placeholder="Enter the textbook ISBN, Title, or Author"/>
                     </div>
-
                     {{-- Show school selection if it's a guest --}}
                     @if(Auth::guest())
                         <div class="searchbar-input-container searchbar-input-container-university">
