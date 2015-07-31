@@ -18,7 +18,7 @@
 /* NAVIGATION */
 
 #nav {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: $transparent;
   border: none;
 }
 
@@ -44,7 +44,7 @@
 #nav-left li a {
   color: white;
   &:hover, &:focus {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: $transparent;
     outline: 0;
   }
 }
@@ -52,7 +52,7 @@
 #nav-right li a {
   color: white;
   &:hover, &:focus {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: $transparent;
     outline: 0;
   }
 }
@@ -60,7 +60,6 @@
 #nav-dropdown {
   li {
     a {
-      color: #333333;
       &:hover {
         background-color: $primary-color;
         color: white;
@@ -173,7 +172,7 @@
   }
   &:focus{
     outline: 0 !important;
-    color: #FFFFFF;
+    color: white;
   }
   @media (max-width: 767px){
     margin: 0 8px 0;
