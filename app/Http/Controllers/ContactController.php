@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Contact;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
+use Input;
+use Validator;
 
 class ContactController extends Controller
 {
@@ -32,12 +36,23 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $v = Validator::make(Input::all(), Contact::rules());
+
+        if ($v->fails())
+        {
+            return redirect()->back()
+                ->withErrors($v->errors())
+                ->withInput(Input::all());
+        }
+
+        Contact::create(Input::all());
+
+        return redirect()->back()
+                ->withSuccess('We have received your message and we will reach out to you soon.');
     }
 
     /**

@@ -235,7 +235,8 @@ Route::get('/faq/textbook', 'FAQController@textbook');
 | Contacts Routes
 |--------------------------------------------------------------------------
 */
-Route::get  ('/contact',    'ContactController@index');
+Route::get  ('/contact',        'ContactController@index');
+Route::post ('/contact/store',  'ContactController@store');
 
 
 /*

@@ -8,60 +8,68 @@
 
 @section('content')
 
+    <div class="contact-alerts">
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if(Session::has('success'))
+            <div class="alert alert-success" role="alert">
+                {{ Session::get('success') }}
+            </div>
+        @endif
+    </div>
+
     <div class="contact-container">
         <div class="row">
-            <div class="col-sm-offset-2">
-                <h2 class="contact-title">Contact Us</h2>
+            <h2 class="contact-title">Contact Us</h2>
 
-                <div class="contact-subtitle">
-                    <p>Please feel free to ask a question or give us feedback.</p>
-                </div>
+            <div class="contact-subtitle">
+                <p>Please feel free to ask a question or give us feedback.</p>
             </div>
 
-            <form action="" class="form-horizontal">
-                <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Name</label>
+            <form action="/contact/store" method="post" class="form-horizontal">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <div class="col-sm-10">
-                        @if(Auth::check())
-                            <input type="text" class="form-control" name="name" value="{{ Auth::user()->fullName() }}">
-                        @else
-                            <input type="text" class="form-control" name="name">
-                        @endif
-                    </div>
+                <div class="form-group">
+                    @if(Auth::check())
+                        <input type="text" class="form-control" name="name" value="{{ Auth::user()->fullName() }}"
+                               placeholder="Name">
+                    @else
+                        <input type="text" class="form-control" name="name" placeholder="Name">
+                    @endif
                 </div>
 
                 <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Email</label>
-
-                    <div class="col-sm-10">
-                        @if(Auth::check())
-                            <input type="email" class="form-control" name="email" value="{{ Auth::user()->primaryEmail->email_address }}">
-                        @else
-                            <input type="email" class="form-control" name="email">
-                        @endif
-                    </div>
+                    @if(Auth::check())
+                        <input type="email" class="form-control" name="email"
+                               value="{{ Auth::user()->primaryEmail->email_address }}" placeholder="Email">
+                    @else
+                        <input type="email" class="form-control" name="email" placeholder="Email">
+                    @endif
                 </div>
 
                 <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Message</label>
-
-                    <div class="col-sm-10">
-                        <textarea class="form-control" rows="8" name="message"></textarea>
-                    </div>
+                    <textarea class="form-control" rows="8" name="message" placeholder="Message"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-lg btn-block primary-btn">Submit</button>
-                    </div>
+                    <button type="submit" class="btn btn-lg btn-block primary-btn">Submit</button>
                 </div>
             </form>
 
             <hr>
 
-            <div class="col-sm-offset-2 contact-email">
-                <p>You're welcome to email us at <a href="mailto:official@stuvi.com">official@stuvi.com</a></p>
+            <div class="contact-email">
+                <p>
+                    You're welcome to email us at <a href="mailto:official@stuvi.com">official@stuvi.com</a>
+                </p>
             </div>
         </div>
     </div>

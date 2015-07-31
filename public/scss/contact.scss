@@ -2,7 +2,9 @@
 
 @import "modules/all";
 
-.contact-title, .contact-subtitle, .contact-email, .contact-details {
+
+
+.contact-title, .contact-subtitle, .contact-email, .contact-details, .contact-alerts {
   text-align: center;
 }
 
@@ -16,7 +18,7 @@
 }
 
 .contact-container {
-  max-width: 400px;
+  max-width: 350px;
   margin: 0 auto;
   padding-top: $spacing-unit;
   height: 100vh;
