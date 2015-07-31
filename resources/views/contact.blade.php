@@ -8,61 +8,52 @@
 
 @section('content')
 
-    <div class="container-fluid background">
-        <div class="container-fluid">
-            <div class="title-container">
-                <h2>Contact Us</h2>
-                <p>Please feel free to ask a question or give us feedback</p>
-            </div>
+    <div class="contact-container">
+        <div class="row">
+            <div class="col-sm-offset-2">
+                <h2 class="contact-title">Contact Us</h2>
 
-            <div class="col-sm-6 contact-form-container">
-                <form class="form-horizontal login-form" role="form" method="POST" action="{{ url('/auth/login') }}">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <div class="form-group">
-                        @if(Auth::guest())
-                            <input type="text" class="form-control" placeholder="First Name">
-                        @else
-                            <input type="text" class="form-control" placeholder="First Name" value="{{ Auth::user()->first_name }}">
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        @if(Auth::guest())
-                            <input type="text" class="form-control" placeholder="Last Name">
-                        @else
-                            <input type="text" class="form-control" placeholder="Last Name" value="{{ Auth::user()->last_name }}">
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        @if(Auth::guest())
-                            <input type="text" class="form-control" placeholder="Email">
-                        @else
-                            <input type="text" class="form-control" placeholder="Email" value="{{ Auth::user()->email }}">
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" rows="5" placeholder="Message"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn primary-btn" id="contact-btn">Submit</button>
-                    </div>
-                </form>
-            </div>
-
-            <div class="col-sm-5 right-container">
-                <h3>Contact Details</h3>
-                <div class="contact-info-container">
-                    <ul class="contact-info">
-                        <li><a href="http://bit.ly/1AStBAY" target="_blank"><i class="fa fa-map-marker fa-lg"
-                                                                               id="map-marker"></i> Boston, MA</a></li>
-                        <li><a href="mailto:official@stuvi.com"><i class="fa fa-envelope-o fa-lg"></i> official@stuvi
-                                .com</a></li>
-                        <li><a href="https://www.facebook.com/StuviBoston" target="_blank"><i
-                                        class="fa fa-facebook fa-lg" id="facebook"></i> Facebook</a></li>
-                        <li><a href="https://twitter.com/StuviBoston" target="_blank"><i class="fa fa-twitter fa-lg"></i> Twitter</a></li>
-                        <li><a href="https://www.linkedin.com/company/stuvi?trk=biz-companies-cym" target="_blank"><i
-                                        class="fa fa-linkedin fa-lg" id="linkedin"></i> LinkedIn</a></li>
-                    </ul>
+                <div class="contact-subtitle">
+                    <p>Please feel free to ask a question or give us feedback.</p>
                 </div>
+            </div>
+
+            <form action="" class="form-horizontal">
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">Email</label>
+
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control input-lg" name="email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">Name</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control input-lg" name="name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">Message</label>
+
+                    <div class="col-sm-10">
+                        <textarea class="form-control input-lg" rows="8" name="message"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-lg btn-block primary-btn">Submit</button>
+                    </div>
+                </div>
+            </form>
+
+            <hr>
+
+            <div class="col-sm-offset-2 contact-email">
+                <p>You're welcome to email us at <a href="mailto:official@stuvi.com">official@stuvi.com</a></p>
             </div>
         </div>
     </div>
