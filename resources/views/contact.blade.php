@@ -23,7 +23,7 @@
                     <label for="" class="col-sm-2 control-label">Email</label>
 
                     <div class="col-sm-10">
-                        <input type="email" class="form-control input-lg" name="email">
+                        <input type="email" class="form-control" name="email">
                     </div>
                 </div>
 
@@ -31,7 +31,7 @@
                     <label for="" class="col-sm-2 control-label">Name</label>
 
                     <div class="col-sm-10">
-                        <input type="text" class="form-control input-lg" name="name">
+                        <input type="text" class="form-control" name="name">
                     </div>
                 </div>
 
@@ -39,7 +39,7 @@
                     <label for="" class="col-sm-2 control-label">Message</label>
 
                     <div class="col-sm-10">
-                        <textarea class="form-control input-lg" rows="8" name="message"></textarea>
+                        <textarea class="form-control" rows="8" name="message"></textarea>
                     </div>
                 </div>
 
