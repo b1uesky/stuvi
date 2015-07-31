@@ -15,7 +15,6 @@ use Input;
 use Mail;
 use Session;
 
-//use Cart;
 
 class BuyerOrderController extends Controller
 {
@@ -42,7 +41,10 @@ class BuyerOrderController extends Controller
         $order = $this->hasColumn('buyer_orders', $order) ? $order : 'id';
 
         return view('order.buyer.index')
-            ->with('orders', Auth::user()->buyerOrders()->orderBy($order, 'DESC')->get());
+            ->with('orders', Auth::user()
+                                 ->buyerOrders()
+                                 ->orderBy($order, 'DESC')
+                                 ->get());
     }
 
     /**
@@ -65,9 +67,11 @@ class BuyerOrderController extends Controller
                 ->with('message', 'Cannot proceed to checkout because one or more items in your cart are sold. Please press "Update" button.');
         }
 
-        $user = Auth::user();
+        $user      = Auth::user();
         $default_address_id = -1;
-        $addresses = Address::where('user_id', $user->id)->where('is_enabled', '1')->get();
+        $addresses = Address::where('user_id', $user->id)
+                            ->where('is_enabled', '1')
+                            ->get();
         foreach ($addresses as $address)
         {
             if ($address->is_default == true)
@@ -108,8 +112,7 @@ class BuyerOrderController extends Controller
     {
         if (!$this->cart->isValid())
         {
-            return redirect('/cart')
-                ->with('message', 'Cannot proceed to checkout because one or more items in your cart are sold. Please press "Update" button.');
+            return redirect('/cart')->with('message', 'Cannot proceed to checkout because one or more items in your cart are sold. Please press "Update" button.');
         }
 
         // create Stripe charge, if it fails, go to checkout page.
@@ -123,9 +126,9 @@ class BuyerOrderController extends Controller
 
         // create an buyer payed order
         $order = BuyerOrder::create([
-            'buyer_id'            => Auth::id(),
-            'shipping_address_id' => $shipping_address_id,
-        ]);
+                                        'buyer_id'            => Auth::id(),
+                                        'shipping_address_id' => $shipping_address_id,
+                                    ]);
 
         // create seller order(s) according to the Cart items
         $this->createSellerOrders($order->id);
@@ -161,12 +164,13 @@ class BuyerOrderController extends Controller
         try
         {
             $charge = \Stripe\Charge::create([
-                "amount"      => $this->cart->totalPrice() * 100, // amount in cents
-                "currency"    => "usd",
-                "source"      => $token,
-                "name"        => Input::get('name'),
-                "description" => "Buyer order payment for buyer order",
-            ]);
+                                                 "amount"      => $this->cart->totalPrice() * 100,
+                                                 // amount in cents
+                                                 "currency"    => "usd",
+                                                 "source"      => $token,
+                                                 "name"        => Input::get('name'),
+                                                 "description" => "Buyer order payment for buyer order",
+                                             ]);
 
             return $charge;
         }
@@ -210,22 +214,35 @@ class BuyerOrderController extends Controller
         }
     }
 
+    /**
+     * Create a buyer payment instance.
+     *
+     * @param $order
+     * @param $charge
+     *
+     * @return static
+     */
     protected function createBuyerPayment($order, $charge)
     {
         $payment = BuyerPayment::create([
-            'buyer_order_id'   => $order->id,
-            'amount'           => $charge['amount'],
-            'charge_id'        => $charge['id'],
-            'card_id'          => $charge['source']['id'],
-            'object'           => $charge['source']['object'],
-            'card_last4'       => $charge['source']['last4'],
-            'card_brand'       => $charge['source']['brand'],
-            'card_fingerprint' => $charge['source']['fingerprint'],
-        ]);
+                                            'buyer_order_id'   => $order->id,
+                                            'amount'           => $charge['amount'],
+                                            'charge_id'        => $charge['id'],
+                                            'card_id'          => $charge['source']['id'],
+                                            'object'           => $charge['source']['object'],
+                                            'card_last4'       => $charge['source']['last4'],
+                                            'card_brand'       => $charge['source']['brand'],
+                                            'card_fingerprint' => $charge['source']['fingerprint'],
+                                        ]);
 
         return $payment;
     }
 
+    /**
+     * Create seller orders according to a given buyer order.
+     *
+     * @param $buyer_order_id
+     */
     protected function createSellerOrders($buyer_order_id)
     {
         // create seller order(s) according to the Cart items
@@ -235,14 +252,14 @@ class BuyerOrderController extends Controller
 
             // change the status of the product to be sold.
             $product->update([
-                'sold' => true,
-            ]);
+                                 'sold' => true,
+                             ]);
 
             // create seller orders
             $order = SellerOrder::create([
-                'product_id'     => $product->id,
-                'buyer_order_id' => $buyer_order_id,
-            ]);
+                                             'product_id'     => $product->id,
+                                             'buyer_order_id' => $buyer_order_id,
+                                         ]);
 
             // send confirmation email to seller
             $order->emailOrderConfirmation();
