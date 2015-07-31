@@ -15,14 +15,14 @@
         </tr>
 
         @foreach($contacts as $contact)
-            <tr>
+            <tr class="{{ $contact->is_replied ? '' : 'warning' }}">
                 <td>{{ $contact->id }}</td>
                 <td>{{ $contact->name }}</td>
                 <td>{{ $contact->email }}</td>
                 <td>{{ $contact->message }}</td>
                 <td>{{ $contact->created_at }}</td>
                 <td>{{ $contact->isReplied() }}</td>
-                <td><a class="btn btn-info" role="button" href="{{ URL::to('admin/contact/' . $contact->id) }}">Details</a></td>
+                <td><a class="btn btn-default" role="button" href="{{ URL::to('admin/contact/' . $contact->id) }}">Details</a></td>
             </tr>
         @endforeach
     </table>
