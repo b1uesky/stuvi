@@ -59,9 +59,10 @@
             <div class="row col-sm-6 col-sm-offset-1">
             <h2>Book Conditions</h2>
 
-            <form id="form-product" class="dropzone">
+                {{-- Temporary action url and method, remove them after implementing AJAX --}}
+                <form id="form-product" class="dropzone"
+                      action="{{ url('textbook/sell/product/'.$product->id.'/update') }}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
                 {{-- General Condition --}}
                 <div class="form-group">
                     <label>{{ Config::get('product.conditions.general_condition.title') }}</label>
@@ -130,7 +131,7 @@
 
                         @for ($i = 0; $i < 3; $i++)
                             <label class="btn btn-default condition-btn
-                                @if ($product->condition->hightlights_and_notes == $i) active @endif">
+                                @if ($product->condition->highlights_and_notes == $i) active @endif">
                                 <input type="radio" name="highlights_and_notes"
                                        value="{{$i}}"> {{ Config::get('product.conditions.highlights_and_notes')[$i] }}
                             </label>
@@ -209,10 +210,8 @@
                 {{-- Description --}}
                 <div class="form-group">
                     <label>{{ Config::get('product.conditions.description.title') }}</label>
-                    {{ $product->condition->description }}
                     <textarea name="description" class="form-control" rows="5"
-                              value="{{ $product->condition->description }}"
-                              placeholder="{{ Config::get('product.conditions.description.place_holder') }}"></textarea>
+                              placeholder="{{ Config::get('product.conditions.description.place_holder') }}">{{ $product->condition->description }}</textarea>
                 </div>
                 {{-- Price --}}
 
@@ -244,7 +243,7 @@
                     </div>
                 </div>
 
-                <button type="submit" name="submit" class="btn primary-btn sell-btn">Post Book</button>
+                    <button type="submit" class="btn primary-btn sell-btn">Update</button>
             </form>
         </div>
     </div>
@@ -259,6 +258,6 @@
         {{--<script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>--}}
         {{--<script src="{{ asset('js/validator/product-create.js') }}"></script>--}}
 
-        <script src="{{ asset('js/product/create.js') }}"></script>
+        {{--<script src="{{ asset('js/product/create.js') }}"></script>--}}
     @endif
 @endsection

@@ -5,7 +5,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['book_id', 'price', 'book_id', 'seller_id', 'sold', 'verified'];
+    protected $fillable = [
+        'book_id',
+        'price',
+        'book_id',
+        'seller_id',
+        'sold',
+        'verified',
+    ];
 
     /**
      * Get the book this product belongs to.
@@ -28,7 +35,8 @@ class Product extends Model
 
     public function isInCart($user_id)
     {
-        $cart = Cart::where('user_id', $user_id)->first();
+        $cart = Cart::where('user_id', $user_id)
+                    ->first();
 
         if ($cart)
         {
@@ -85,7 +93,8 @@ class Product extends Model
      * @return mixed
      *
      */
-    public function isSold(){
+    public function isSold()
+    {
         return $this->sold;
     }
 
@@ -106,20 +115,22 @@ class Product extends Model
      * Validation rules.
      *
      * @param $images
+     *
      * @return array
      */
     public static function rules($images)
     {
-        $rules = array(
-            'general_condition'     =>  'required|integer',
-            'highlights_and_notes'  =>  'required|integer',
-            'damaged_pages'         =>  'required|integer',
-            'broken_binding'        =>  'required|boolean',
-            'price'                 =>  'required|numeric',
-        );
+        $rules = [
+            'general_condition'    => 'required|integer',
+            'highlights_and_notes' => 'required|integer',
+            'damaged_pages'        => 'required|integer',
+            'broken_binding'       => 'required|boolean',
+            'price'                => 'required|numeric',
+        ];
 
         // validate input images
-        foreach(range(0, count($images) - 1) as $index) {
+        foreach (range(0, count($images) - 1) as $index)
+        {
             $rules['file' . $index] = 'mimes:jpeg,png|max:3072';
         }
 
