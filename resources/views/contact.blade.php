@@ -20,18 +20,26 @@
 
             <form action="" class="form-horizontal">
                 <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Email</label>
+                    <label for="" class="col-sm-2 control-label">Name</label>
 
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" name="email">
+                        @if(Auth::check())
+                            <input type="text" class="form-control" name="name" value="{{ Auth::user()->fullName() }}">
+                        @else
+                            <input type="text" class="form-control" name="name">
+                        @endif
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">Name</label>
+                    <label for="" class="col-sm-2 control-label">Email</label>
 
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="name">
+                        @if(Auth::check())
+                            <input type="email" class="form-control" name="email" value="{{ Auth::user()->primaryEmail->email_address }}">
+                        @else
+                            <input type="email" class="form-control" name="email">
+                        @endif
                     </div>
                 </div>
 

@@ -27,7 +27,6 @@ Route::pattern('product',   '[0-9]+');
 Route::get  ('/',           'HomeController@index');
 Route::get  ('/home',       'HomeController@index');
 Route::get  ('/about',      'HomeController@about');
-Route::get  ('/contact',    'HomeController@contact');
 Route::get  ('/coming',     'HomeController@coming');
 
 /*
@@ -230,6 +229,13 @@ Route::get('/faq/general', 'FAQController@general');
 Route::get('/faq/orders', 'FAQController@orders');
 Route::get('/faq/account', 'FAQController@account');
 Route::get('/faq/textbook', 'FAQController@textbook');
+
+/*
+|--------------------------------------------------------------------------
+| Contacts Routes
+|--------------------------------------------------------------------------
+*/
+Route::get  ('/contact',    'ContactController@index');
 
 
 /*
