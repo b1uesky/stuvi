@@ -10,6 +10,7 @@
             <th>Email</th>
             <th>Message</th>
             <th>Created At</th>
+            <th>Replied</th>
             <th>Actions</th>
         </tr>
 
@@ -20,6 +21,7 @@
                 <td>{{ $contact->email }}</td>
                 <td>{{ $contact->message }}</td>
                 <td>{{ $contact->created_at }}</td>
+                <td>{{ $contact->isReplied() }}</td>
                 <td><a class="btn btn-info" role="button" href="{{ URL::to('admin/contact/' . $contact->id) }}">Details</a></td>
             </tr>
         @endforeach

@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Contact;
 
 use Config;
+use Input;
+use Mail;
 
 class ContactController extends Controller
 {
@@ -33,6 +35,28 @@ class ContactController extends Controller
     {
         $contact = Contact::find($id);
         return view('admin.contact.show')->withContact($contact);
+    }
+
+    /**
+     * Reply to the contact message by email.
+     */
+    public function reply()
+    {
+        $contact = Contact::find(Input::get('contact_id'));
+        $contact_arr = $contact->toArray();
+        $response = Input::get('response');
+
+        Mail::queue('emails.contact.reply', ['contact' => $contact_arr, 'response' => $response], function ($message) use ($contact_arr)
+        {
+            $message->to($contact_arr['email'])->subject('A message from Stuvi');
+        });
+
+        $contact->update([
+            'is_replied'    => true
+        ]);
+
+        return redirect()->back()
+                    ->withSuccess('Successfully replied!');
     }
 
     /**

@@ -10,6 +10,14 @@
             <td>{{ $contact->id }}</td>
         </tr>
         <tr>
+            <th>Created At</th>
+            <td>{{ $contact->created_at }}</td>
+        </tr>
+        <tr>
+            <th>Replied</th>
+            <td>{{ $contact->isReplied() }}</td>
+        </tr>
+        <tr>
             <th>Name</th>
             <td>{{ $contact->name }}</td>
         </tr>
@@ -21,14 +29,27 @@
             <th>Message</th>
             <td>{{ $contact->message }}</td>
         </tr>
-        <tr>
-            <th>Created At</th>
-            <td>{{ $contact->created_at }}</td>
-        </tr>
-        <tr>
-            <th>Updated At</th>
-            <td>{{ $contact->updated_at }}</td>
-        </tr>
     </table>
+
+    @if(Session::has('success'))
+        <div class="alert alert-success" role="alert">
+            {{ Session::get('success') }}
+        </div>
+    @endif
+
+    @if($contact->is_replied == false)
+        <div class="contact-response">
+            <form action="/admin/contact/reply" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="contact_id" value="{{ $contact->id }}">
+
+                <div class="form-group">
+                    <textarea class="form-control" rows="8" name="response" placeholder="Reply..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    @endif
 
 @endsection

@@ -192,6 +192,7 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
     Route::resource('buyer/payment', 'BuyerPaymentController');
 
     // contact
+    Route::post('contact/reply', 'ContactController@reply');
     Route::resource('contact', 'ContactController');
 });
 

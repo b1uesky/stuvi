@@ -59,9 +59,7 @@
                     <textarea class="form-control" rows="8" name="message" placeholder="Message"></textarea>
                 </div>
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-lg btn-block primary-btn">Submit</button>
-                </div>
+                <button type="submit" class="btn btn-lg btn-block primary-btn">Submit</button>
             </form>
 
             <hr>

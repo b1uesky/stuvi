@@ -19,7 +19,7 @@ class Contact extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'message'];
+    protected $fillable = ['name', 'email', 'message', 'is_replied'];
 
     /**
      * Validation rules.
@@ -33,5 +33,23 @@ class Contact extends Model
             'email'     => 'required|email',
             'message'   => 'required|string'
         ];
+    }
+
+    /**
+     * Return Y: the contact message is replied.
+     * Return N: otherwise.
+     *
+     * @return string
+     */
+    public function isReplied()
+    {
+        if ($this->is_replied)
+        {
+            return 'Yes';
+        }
+        else
+        {
+            return 'No';
+        }
     }
 }

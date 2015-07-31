@@ -1,4 +1,5 @@
 @import 'modules/colors';
+@import 'modules/typography';
 
 .menu {
   position: fixed;
@@ -14,6 +15,12 @@
 
 .content {
   margin-left: 120px;
+}
+
+/* Contact */
+.contact-response {
+  margin: 0 auto;
+  max-width: 680px;
 }
 
 .admin-img-preview {
