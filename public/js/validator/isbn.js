@@ -22,7 +22,7 @@ $(document).ready(function () {
                         isbn: {
                             message: 'This is not a valid ISBN',
                             transformer: function($field, validatorName, validator) {
-                                return $field.val().replace(/\s/g, '');
+                                return $field.val().replace(/\D/g,'');
                             }
                         }
                     }

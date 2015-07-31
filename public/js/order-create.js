@@ -141,7 +141,7 @@ $(document).ready(function () {
                     validators: {
                         callback: {
                             message: 'The year is not valid',
-                            callback: function(value, validator, $field) {
+                            callback: function (value, validator, $field) {
                                 if (value == '') {
                                     return {
                                         valid: false,
@@ -199,7 +199,7 @@ $(document).ready(function () {
                 },
             }
         })
-        .on('err.field.fv', function(e, data) {
+        .on('err.field.fv', function (e, data) {
             // $(e.target)  --> The field element
             // data.fv      --> The FormValidation instance
             // data.field   --> The field name
@@ -210,7 +210,10 @@ $(document).ready(function () {
                 .data('fv.messages')
                 .find('.help-block[data-fv-for="' + data.field + '"]').hide();
         })
-        .on('success.form.fv', function(e) {
+    /**
+     * Stripe Payment
+     */
+        .on('success.form.fv', function (e) {
             // Prevent default form submission
             e.preventDefault();
 
@@ -224,7 +227,7 @@ $(document).ready(function () {
 
             Stripe.setPublishableKey(stripePublicKey);
 
-            Stripe.card.createToken($form, function(status, response) {
+            Stripe.card.createToken($form, function (status, response) {
                 if (response.error) {
                     // Show the error message
                     //bootbox.alert(response.error.message);
@@ -234,7 +237,7 @@ $(document).ready(function () {
                     $form.find('[name="stripe_token"]').val(response.id);
 
                     // You can submit the form to back-end as usual
-                     $form.get(0).submit();
+                    $form.get(0).submit();
 
                     // Or using Ajax
                     //$.ajax({
