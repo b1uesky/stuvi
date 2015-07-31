@@ -67,6 +67,7 @@
                         @endforelse
                     </table>
                     <h2>2. Shipping address</h2><br>
+
                     <div class="address row">
                         @forelse ($addresses as $address)
                             @if ($address -> is_default)
@@ -138,24 +139,31 @@
                                     </div>
                                 </div>
                                 <br>
+
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="address_line1-input">Address line 1</label>
+                                    <label class="col-sm-4 control-label" for="address_line1-input">Address line
+                                        1</label>
 
                                     <div class="col-sm-6 form-space-offset">
-                                        <input type="text" class="form-control" name="address_line1" id="address_line1-input"
+                                        <input type="text" class="form-control" name="address_line1"
+                                               id="address_line1-input"
                                                value="185 Freeman St.">
                                     </div>
                                 </div>
                                 <br>
+
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="address_line2-input">Address line 2</label>
+                                    <label class="col-sm-4 control-label" for="address_line2-input">Address line
+                                        2</label>
 
                                     <div class="col-sm-6 form-space-offset">
-                                        <input type="text" class="form-control" name="address_line2" id="address_line2-input"
+                                        <input type="text" class="form-control" name="address_line2"
+                                               id="address_line2-input"
                                                value="Apt. 739">
                                     </div>
                                 </div>
                                 <br>
+
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label" for="city-input">City</label>
 
@@ -165,14 +173,17 @@
                                     </div>
                                 </div>
                                 <br>
+
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label" for="state_a2-input">State</label>
 
-                                    <div class="col-sm-6 form-space-offset" >
-                                        <input type="text" class="form-control" name="state_a2" id="state_a2-input" value="MA">
+                                    <div class="col-sm-6 form-space-offset">
+                                        <input type="text" class="form-control" name="state_a2" id="state_a2-input"
+                                               value="MA">
                                     </div>
                                 </div>
                                 <br>
+
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label" for="zip-input">Zip</label>
 
@@ -181,10 +192,11 @@
                                     </div>
                                 </div>
                                 <br>
+
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label" for="phone_number-input">Phone</label>
 
-                                    <div class="col-sm-6 form-space-offset" >
+                                    <div class="col-sm-6 form-space-offset">
                                         <input type="tel" class="form-control phone_number" id="phone_number-input"
                                                name="phone_number" value="(857) 206 4789">
                                     </div>
@@ -223,66 +235,84 @@
                                             <input type="hidden" name="address_id" value="">
 
                                             <div class="form-group">
-                                                <label class="col-sm-4 control-label" for="addressee-input-modal-update">Full name</label>
+                                                <label class="col-sm-4 control-label"
+                                                       for="addressee-input-modal-update">Full name</label>
 
                                                 <div class="col-sm-6 form-space-offset">
-                                                    <input type="text" class="form-control" name="addressee" id="addressee-input-modal-update"
+                                                    <input type="text" class="form-control" name="addressee"
+                                                           id="addressee-input-modal-update"
                                                            value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
                                                 </div>
                                             </div>
                                             <br>
+
                                             <div class="form-group">
-                                                <label class="col-sm-4 control-label" for="address_line1-input-modal-update">Address line 1</label>
+                                                <label class="col-sm-4 control-label"
+                                                       for="address_line1-input-modal-update">Address line 1</label>
 
                                                 <div class="col-sm-6 form-space-offset">
-                                                    <input type="text" class="form-control" id="address_line1-input-modal-update"
+                                                    <input type="text" class="form-control"
+                                                           id="address_line1-input-modal-update"
                                                            name="address_line1"
                                                            value="185 Freeman St.">
                                                 </div>
                                             </div>
                                             <br>
+
                                             <div class="form-group">
-                                                <label class="col-sm-4 control-label" for="address_line2-input-modal-update">Address line 2</label>
+                                                <label class="col-sm-4 control-label"
+                                                       for="address_line2-input-modal-update">Address line 2</label>
 
                                                 <div class="col-sm-6 form-space-offset">
-                                                    <input type="text" class="form-control" id="address_line2-input-modal-update"
+                                                    <input type="text" class="form-control"
+                                                           id="address_line2-input-modal-update"
                                                            name="address_line2"
                                                            value="Apt. 739">
                                                 </div>
                                             </div>
                                             <br>
+
                                             <div class="form-group">
-                                                <label class="col-sm-4 control-label" for="city-input-modal-update">City</label>
+                                                <label class="col-sm-4 control-label"
+                                                       for="city-input-modal-update">City</label>
 
                                                 <div class="col-sm-6 form-space-offset">
-                                                    <input type="text" class="form-control" name="city" id="city-input-modal-update"
+                                                    <input type="text" class="form-control" name="city"
+                                                           id="city-input-modal-update"
                                                            value="Brookline">
                                                 </div>
                                             </div>
                                             <br>
+
                                             <div class="form-group">
                                                 <label class="col-sm-4 control-label" for="state_a2-input-modal-update">State</label>
 
                                                 <div class="col-sm-6 form-space-offset">
-                                                    <input type="text" class="form-control" name="state_a2" id="state_a2-input-modal-update"
+                                                    <input type="text" class="form-control" name="state_a2"
+                                                           id="state_a2-input-modal-update"
                                                            value="MA">
                                                 </div>
                                             </div>
                                             <br>
+
                                             <div class="form-group">
-                                                <label class="col-sm-4 control-label" for="zip-input-modal-update">Zip</label>
+                                                <label class="col-sm-4 control-label"
+                                                       for="zip-input-modal-update">Zip</label>
 
                                                 <div class="col-sm-6 form-space-offset">
-                                                    <input type="text" class="form-control" name="zip" id="zip-input-modal-update"
+                                                    <input type="text" class="form-control" name="zip"
+                                                           id="zip-input-modal-update"
                                                            value="02446">
                                                 </div>
                                             </div>
                                             <br>
+
                                             <div class="form-group">
                                                 <label class="col-sm-4 control-label" for="phone_number-input-update">Phone</label>
 
                                                 <div class="col-sm-6 form-space-offset">
-                                                    <input type="tel" class="form-control phone_number" id="phone_number-input-update"
+                                                    <input type="tel" class="form-control phone_number"
+                                                           id="phone_number-input-update"
                                                            name="phone_number" value="(857) 206 4789">
                                                 </div>
                                             </div>
@@ -303,254 +333,184 @@
                             </div>
                         </div>
 
-                            <div class="modal fade" id="add-address-modal" tabindex="-1" role="dialog"
-                                 aria-labelledby="myModalLabel">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close close-modal-btn" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                <span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="myModalLabel">Please Enter Address</h4>
-                                        </div>
-                                        <div class="modal-body address-form-body">
-                                            <form action="{{ url('/address/store') }}" method="POST"
-                                                  class="add-address-form">
-                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <div class="modal fade" id="add-address-modal" tabindex="-1" role="dialog"
+                             aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close close-modal-btn" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Please Enter Address</h4>
+                                    </div>
+                                    <div class="modal-body address-form-body">
+                                        <form action="{{ url('/address/store') }}" method="POST"
+                                              class="add-address-form">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label" for="addresse-input-modal">Full name</label>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label" for="addresse-input-modal">Full
+                                                    name</label>
 
-                                                    <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control" name="addressee" id="addresse-input-modal"
-                                                               value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
-                                                    </div>
+                                                <div class="col-sm-6 form-space-offset">
+                                                    <input type="text" class="form-control" name="addressee"
+                                                           id="addresse-input-modal"
+                                                           value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
                                                 </div>
-                                                <br>
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label" for="address_line1-input-modal">Address line 1</label>
+                                            </div>
+                                            <br>
 
-                                                    <div class="col-sm-6 form-space-offset" >
-                                                        <input type="text" class="form-control" id="address_line1-input-modal"
-                                                               name="address_line1"
-                                                               value="185 Freeman St.">
-                                                    </div>
-                                                </div>
-                                                <br>
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label">Address line 2</label>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label" for="address_line1-input-modal">Address
+                                                    line 1</label>
 
-                                                    <div class="col-sm-6 form-space-offset" for="address_line2-input-modal">
-                                                        <input type="text" class="form-control" id="address_line2-input-modal"
-                                                               name="address_line2"
-                                                               value="Apt. 739">
-                                                    </div>
+                                                <div class="col-sm-6 form-space-offset">
+                                                    <input type="text" class="form-control"
+                                                           id="address_line1-input-modal"
+                                                           name="address_line1"
+                                                           value="185 Freeman St.">
                                                 </div>
-                                                <br>
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label" for="city-input-modal">City</label>
+                                            </div>
+                                            <br>
 
-                                                    <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control" name="city" id="city-input-modal"
-                                                               value="Brookline">
-                                                    </div>
-                                                </div>
-                                                <br>
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label" for="state_a2-input-modal">State</label>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Address line 2</label>
 
-                                                    <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control" name="state_a2" id="state_a2-input-modal"
-                                                               value="MA">
-                                                    </div>
+                                                <div class="col-sm-6 form-space-offset" for="address_line2-input-modal">
+                                                    <input type="text" class="form-control"
+                                                           id="address_line2-input-modal"
+                                                           name="address_line2"
+                                                           value="Apt. 739">
                                                 </div>
-                                                <br>
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label" for="zip-input-modal" >Zip</label>
+                                            </div>
+                                            <br>
 
-                                                    <div class="col-sm-6 form-space-offset">
-                                                        <input type="text" class="form-control" name="zip" id="zip-input-modal"
-                                                               value="02446">
-                                                    </div>
-                                                </div>
-                                                <br>
-                                                <div class="form-group">
-                                                    <label class="col-sm-4 control-label" for="phone_number-input-modal">Phone</label>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"
+                                                       for="city-input-modal">City</label>
 
-                                                    <div class="col-sm-6 form-space-offset">
-                                                        <input type="tel" class="form-control phone_number" id="phone_number-input-modal"
-                                                               name="phone_number" value="(857) 206 4789">
-                                                    </div>
+                                                <div class="col-sm-6 form-space-offset">
+                                                    <input type="text" class="form-control" name="city"
+                                                           id="city-input-modal"
+                                                           value="Brookline">
                                                 </div>
-                                                <input type="hidden" name="address_id" value="">
-                                                <br>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default close-btn"
-                                                    data-dismiss="modal">
-                                                Close
-                                            </button>
-                                            <button id="storeAddedAddress" type="button"
-                                                    class="btn btn-default primary-btn address-btn">
-                                                Add Address
-                                            </button>
-                                        </div>
+                                            </div>
+                                            <br>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label"
+                                                       for="state_a2-input-modal">State</label>
+
+                                                <div class="col-sm-6 form-space-offset">
+                                                    <input type="text" class="form-control" name="state_a2"
+                                                           id="state_a2-input-modal"
+                                                           value="MA">
+                                                </div>
+                                            </div>
+                                            <br>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label" for="zip-input-modal">Zip</label>
+
+                                                <div class="col-sm-6 form-space-offset">
+                                                    <input type="text" class="form-control" name="zip"
+                                                           id="zip-input-modal"
+                                                           value="02446">
+                                                </div>
+                                            </div>
+                                            <br>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label" for="phone_number-input-modal">Phone</label>
+
+                                                <div class="col-sm-6 form-space-offset">
+                                                    <input type="tel" class="form-control phone_number"
+                                                           id="phone_number-input-modal"
+                                                           name="phone_number" value="(857) 206 4789">
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="address_id" value="">
+                                            <br>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default close-btn"
+                                                data-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <button id="storeAddedAddress" type="button"
+                                                class="btn btn-default primary-btn address-btn">
+                                            Add Address
+                                        </button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- payment form here -->
+                <!-- begin stripe form -->
+                @if ($display_payment)
+                    <h2>3. Payment</h2>
+                    <div class="row payment-errors-row">
+                        <span class="payment-errors"></span>
                     </div>
 
+                    <div class="stripe-container">
+                        <div class="card-wrapper"></div>
 
-                    <!-- payment form here -->
-                    <!-- begin stripe form -->
-                    @if ($display_payment)
-                        <form action="{{ url('/order/store') }}" method="POST" id="payment-form">
+                        <form action="{{ url('/order/store') }}" method="POST" id="form-payment">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="selected_address_id" value="{{$default_address_id}}">
-                            <h2>3. Payment</h2><br>
-                            <div class="row payment-errors-row">
-                                <span class="payment-errors"></span>
-                            </div>
+                            <input type="hidden" name="stripe_public_key" value="{{ $stripe_public_key }}">
+                            <input type="hidden" name="stripe_token" value=""/>
 
-
-                            <div class="col-sm-8">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" id="payment-panel-heading">
-                                        <i class="fa fa-lock fa-lg"></i>
-                                        <span class="panel-title">Secure Payment via Stripe</span>
-                                    </div>
-                                    <div class="panel-body">
-                                        <!-- payment card accepted badges -->
-                                        <div class="form-row card-row">
-                                                        <span><img class="card-img"
-                                                                   src="{{ asset('/img/cards/visa.jpg') }}"></span>
-                                        <span><img class="card-img"
-                                                   src="{{ asset('/img/cards/master-card.png') }}"></span>
-                                                        <span><img class="card-img"
-                                                                   src="{{ asset('/img/cards/amex.png') }}"></span>
-                                            <span><img class="card-img"
-                                                       src="{{ asset('/img/cards/discover.jpg') }}"></span>
-                                        <span><img class="card-img"
-                                                   src="{{ asset('/img/cards/diners-club.jpg') }}"></span>
-                                        </div>
-
-                                        <!-- card number -->
-                                        <div class="form-row" id="card-number-form">
-                                            <label id="name-label">
-                                                <span>Name</span>
-                                                <input class="form-control" type="text" data-stripe="name"
-                                                       value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}"/>
-                                            </label>
-                                            <label>
-                                                <span>Card Number</span>
-                                                <input class="form-control" type="text" data-stripe="number"
-                                                       id="card-input"/>
-                                            </label>
-
-                                        </div>
-                                        <!-- expiration -->
-                                        {{-- Doesn't really style well for super small screens --}}
-                                        <div class="form-row" id="expiration-form">
-                                            <label>Expiration (MM/YYYY)</label>
-                                            <label class="col-xs-offset-2 security-code-label">Security
-                                                Code</label>
-                                            <br>
-                                            <select class="form-control card-exp col-xs-2"
-                                                    data-stripe="exp-month">
-                                                <option disabled selected>Month</option>
-                                                <option>01</option>
-                                                <option>02</option>
-                                                <option>03</option>
-                                                <option>04</option>
-                                                <option>05</option>
-                                                <option>06</option>
-                                                <option>07</option>
-                                                <option>08</option>
-                                                <option>10</option>
-                                                <option>11</option>
-                                                <option>12</option>
-                                            </select>
-                                            {{--<input class="form-control" type="text" size="2" data-stripe="exp-month"/>--}}
-                                            {{--<span class="col-xs-1"></span>--}}
-                                            <select class="form-control card-exp col-xs-2"
-                                                    data-stripe="exp-year">
-                                                <option disabled selected>Year</option>
-                                                <option>2015</option>
-                                                <option>2016</option>
-                                                <option>2017</option>
-                                                <option>2018</option>
-                                                <option>2019</option>
-                                                <option>2020</option>
-                                                <option>2021</option>
-                                            </select>
-                                            {{--<input class="form-control" type="text" size="2" data-stripe="exp-year"/>--}}
-                                            <input id="security-code"
-                                                   class="form-control col-xs-3 col-xs-offset-0 col-sm-offset-1"
-                                                   type="text"
-                                                   size="4" data-stripe="cvc" />
-                                        </div>
-                                        <br>
-                                    </div>
-                                    <div class="panel-footer payment-footer">
-                                        <p>Your total is <span id="total"> ${{ $total }} </span></p>
-                                        <button class="btn primary-btn payment-btn" type="submit">Complete Order
-                                        </button>
-                                        <span><a href="https://stripe.com/" target="_blank"><img id="stripe-logo"
-                                                                                                 src="{{ asset('/img/stripe.png') }}"></a></span>
-                                    </div>
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <input id="stripe-number" class="form-control input-lg" placeholder="Card number"
+                                           type="text" data-stripe="number">
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="form-group col-xs-4">
+                                    <input id="stripe-month" class="form-control input-lg" placeholder="MM" type="text"
+                                           data-stripe="exp-month">
+                                </div>
+
+                                <div class="form-group col-xs-4">
+                                    <input id="stripe-year" class="form-control input-lg" placeholder="YY" type="text"
+                                           data-stripe="exp-year">
+                                </div>
+
+                                <div class="form-group col-xs-4">
+                                    <input id="stripe-cvc" class="form-control input-lg" placeholder="CVC" type="text"
+                                           data-stripe="cvc">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input class="btn btn-lg primary-btn btn-block" type="submit" value="Confirm">
+                                </div>
+                            </div>
+
                         </form>
-                    @endif
-                </div>
+                    </div>
+                @endif
             </div>
         </div>
+    </div>
     </div>
 @endsection
 
 @section('javascript')
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-    <!-- jQuery is used only for this example; it isn't required to use Stripe -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('/js/address.js') }}"></script>
-    <!-- stripe -->
-    <script type="text/javascript">
-        // This identifies your website in the createToken call below
-        Stripe.setPublishableKey("{{ $stripe_public_key }}");
+    <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
+    <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
 
-        var stripeResponseHandler = function (status, response) {
-            var $form = $('#payment-form');
-
-            if (response.error) {
-                // Show the errors on the form
-                $form.find('.payment-errors').text(response.error.message);
-                $form.find('button').prop('disabled', false);
-            } else {
-                // token contains id, last4, and card type
-                var token = response.id;
-                // Insert the token into the form so it gets submitted to the server
-                $form.append($('<input type="hidden" name="stripeToken" />').val(token));
-                // and re-submit
-                $form.get(0).submit();
-            }
-        };
-
-        jQuery(function ($) {
-            $('#payment-form').submit(function (event) {
-
-                var $form = $(this);
-
-                // Disable the submit button to prevent repeated clicks
-                $form.find('button').prop('disabled', true);
-
-                Stripe.card.createToken($form, stripeResponseHandler);
-
-                // Prevent the form from submitting with the default action
-                return false;
-            });
-        });
-
-    </script>
+    <script src="{{ asset('libs/card/lib/js/jquery.card.js') }}"></script>
+    <script src="https://js.stripe.com/v2/"></script>
+    <script src="{{ asset('/js/order-create.js') }}"></script>
 @endsection
