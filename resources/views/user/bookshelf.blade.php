@@ -54,9 +54,16 @@
                     @forelse ($productsForSale as $product)
                         <tr class="for-sale-item">
                             <td class="for-sale-img">
-                                <img class="img-responsive" src="{{ config('aws.url.stuvi-product-img').$product->images->first()->small_image }}"
-                                     width="100px"
-                                     height="150px"></td>
+                                @if($product->images->first()->isTestImage())
+                                    <img class="img-responsive" src="{{ $product->images->first()->small_image }}"
+                                         width="100px"
+                                         height="150px">
+                                @else
+                                    <img class="img-responsive" src="{{ config('aws.url.stuvi-product-img').$product->images->first()->small_image }}"
+                                         width="100px"
+                                         height="150px">
+                                @endif
+                            </td>
                             <td class="for-sale-info-1" colspan="2">
                             <span class="for-sale-title"><a
                                         href="{{ url('textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a></span><br>
