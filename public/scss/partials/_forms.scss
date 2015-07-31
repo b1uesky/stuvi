@@ -9,6 +9,14 @@
   }
 }
 
-.row-margin-bottom {
+.row-margin-sm {
+  margin-bottom: $spacing-unit / 4;
+}
+
+.row-margin-md {
   margin-bottom: $spacing-unit / 2;
+}
+
+.row-margin-lg {
+  margin-bottom: $spacing-unit;
 }

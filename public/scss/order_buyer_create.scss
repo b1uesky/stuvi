@@ -47,16 +47,6 @@ body {
 
 /**** SHIPPING ADDRESS ****/
 
-.form-group {
-  margin-bottom: 25px;
-  @media (max-width: 767px) {
-    margin-bottom: 0;
-  }
-  label {
-    padding-top: 7px;
-  }
-}
-
 #storeAddress {
   padding: 12px;
   width: 200px;
@@ -140,37 +130,19 @@ body {
 
 /**** PAYMENT ****/
 
-#payment-panel-heading {
-  background-color: $primary-color;
-  color: white;
+.stripe-container {
+  width: 100%;
+  max-width: 350px;
+  margin: 50px auto;
 }
 
-.panel-title {
-  font-size: 1.5em;
-  margin-left: 10px;
+.card-wrapper {
+  width: 100%;
+  margin: 30px auto;
 }
 
-.fa-lock {
-  font-size: 1.5em;
-  line-height: 0.3em;
-}
-
-#name-label {
-  margin-right: 20px;
-}
-
-.card-row {
-  margin-bottom: 10px;
-}
-
-.card-img {
-  width: 50px;
-  height: 31px;
-}
-
-.payment-btn {
-  width: 200px;
-  padding: 12px;
+#form-payment input {
+  text-align: center;
 }
 
 .payment-errors {
@@ -182,50 +154,5 @@ body {
 .payment-errors-row {
   margin-left: 15px;
   margin-bottom: 10px;
-}
-
-.card-exp {
-  width: 80px;
-  margin-right: 4.16%;
-}
-
-.striper-accepted-badges {
-  float: right;
-}
-
-#stripe-logo {
-  width: 120px;
-  height: 26px;
-  float: right;
-  margin-top: 15px;
-}
-
-.security-code-label {
-  padding-left: 5%;
-}
-
-#security-code {
-  width: 100px;
-  @media (min-width: 1200px) {
-    margin-left: 60px;
-  }
-  @media (max-width: 767px) {
-    margin-left: 10%;
-  }
-  @media (max-width: 425px) {
-    margin-left: 5%;
-  }
-}
-
-#stripe-logo {
-  @media (max-width: 425px) {
-    width: 80px;
-    height: 17px;
-  }
-}
-
-#total {
-  font-size: 20px;
-  color: #B12704;
 }
 

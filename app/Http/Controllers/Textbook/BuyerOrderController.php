@@ -152,7 +152,7 @@ class BuyerOrderController extends Controller
         \Stripe\Stripe::setApiKey(StripeKey::getSecretKey());
 
         // Get the credit card details submitted by the form
-        $token = Input::get('stripeToken');
+        $token = Input::get('stripe_token');
 
         // Create the charge on Stripe's servers - this will charge the user's card
         try
