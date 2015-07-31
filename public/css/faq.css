@@ -6,12 +6,13 @@
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
  *
- *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */body {
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* Devices */body {
   background-color: #f2f2f2;
 }
 .faq-container {
   margin-top: 40px;
   margin-bottom: 40px;
+  min-height: 90vh;
 }
 .faq-list {
   list-style: none;
@@ -23,9 +24,12 @@
 .faq-list li a {
   color: #00a496;
 }
+.qa-container h2 {
+  color: #00a496;
+}
 .question-answer {
   margin-bottom: 40px;
 }
-.question-answer h2 {
-  color: #00a496;
+.faq-line {
+  border-color: grey;
 }

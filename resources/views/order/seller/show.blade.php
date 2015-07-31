@@ -1,13 +1,12 @@
 {{-- Your orders page --}}
 
-
 @extends('app')
 
 @section('title', 'Order details - Order #'.$seller_order->id)
 
 @section('css')
     <link href="{{ asset('/css/order_show.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset('/js/datetimepicker/jquery.datetimepicker.css')}}"/>
+    <link rel="stylesheet" href="{{ asset('libs/datetimepicker/jquery.datetimepicker.css') }}">
 @endsection
 
 @section('content')
@@ -217,12 +216,7 @@
 @section('javascript')
     {{--http://xdsoft.net/jqplugins/datetimepicker/--}}
     <!-- Date time picker required scripts -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
-    <script src="{{asset('/js/datetimepicker/jquery.js')}}"></script>
-    <script src="{{asset('/js/datetimepicker/jquery.datetimepicker.js')}}"></script>
-
+    <script src="{{ asset('libs/datetimepicker/jquery.datetimepicker.js') }}"></script>
     <script src="{{asset('/js/order/seller/showSellerOrder.js')}}" type="text/javascript"></script>
 
     <script>

@@ -16,25 +16,18 @@
                 <div class="row profile">
                     <div class="col-md-3">
                         <div class="profile-sidebar">
-                            {{--                    <div class="profile-userbuttons">
-                                                    <button type="button" class="btn btn-success btn-sm">Follow</button>
-                                                    <button type="button" class="btn btn-danger btn-sm">Message</button>
-
-                                                </div>--}}
-                            <!-- END SIDEBAR BUTTONS -->
-                            <!-- SIDEBAR MENU -->
                             <div class="profile-usermenu">
                                 <ul class="nav">
                                     <li class="side-item">
                                         <a class="side-item-link active" id="side-profile-link"
-                                           href="{{asset('/user/profile')}}">
-                                            <i class="fa fa-server"></i>Overview
+                                           href="{{asset('/user/overview')}}">
+                                            <i class="fa fa-user"></i>Overview
                                         </a>
                                     </li>
                                     <li class="side-item">
-                                        <a class="side-item-link active" id="side-profile-link"
-                                           href="{{asset('/user/profile-edit')}}">
-                                            <i class="fa fa-user"></i>Profile
+                                        <a class="side-item-link active" id="side-profile-edit-link"
+                                           href="{{asset('/user/profile')}}">
+                                            <i class="fa fa-pencil"></i>Profile Settings
                                         </a>
                                     </li>
                                     <li class="side-item">
@@ -45,7 +38,7 @@
                                     </li>
                                     <li class="side-item">
                                         <a class="side-item-link" id="side-bookshelf-link"
-                                           href="{{asset('/user/account#')}}">
+                                           href="{{asset('/user/bookshelf')}}">
                                             <i class="fa fa-book"></i>My Bookshelf
                                         </a>
                                     </li>
@@ -53,17 +46,6 @@
                                         <a class="side-item-link" id="side-email-link"
                                            href="{{asset('/user/email')}}">
                                             <i class="fa fa-envelope"></i>Email
-                                        </a>
-                                    </li>
-                                    <li class="side-item">
-                                        <a class="side-item-link" id="side-notification-link"
-                                           href="{{asset('/user/account#')}}">
-                                            <i class="fa fa-envelope"></i>Notification
-                                        </a>
-                                    </li>
-                                    <li class="side-item">
-                                        <a class="side-item-link" id="side-help-link" href="#">
-                                            <i class="fa fa-flag"></i> Help
                                         </a>
                                     </li>
                                     {{--<li class="side-messages">--}}

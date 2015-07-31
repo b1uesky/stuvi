@@ -28,14 +28,14 @@
                                 <td align="center" bgcolor="#241729" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
                                     <!--TODO: puush must be replaced with a real url once website is online -->
                                     <a href="{{url('/home')}}">
-                                        <img src="http://puu.sh/iDvTG/18b055e116.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
+                                        <img src="http://puu.sh/jg7HJ/cbdfb5e1f5.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
                                     </a>
                                 </td> <!-- end header img -->
                             </tr>
                             <!-- row 2. content-->
                             <tr>
                                 <!-- container for content -->
-                                <td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px;">
+                                <td bgcolor="#F2F2F2" style="padding: 40px 30px 40px 30px;">
                                     <!-- content table -->
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                         <!-- content row 1 -->
@@ -55,7 +55,7 @@
                                                         <td style="color: #F16521; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 17px;" width="100%">
                                                             <!-- CONTENT HERE! -->
                                                             <p>Hey, {{$buyer_order['buyer']['first_name']}}</p>
-                                                            <p>Your order is on the way! Click the button below for your order details.</p>
+                                                            <p>Your order is out for delivery by an official Stuvi Courier! Click the button below for your order details.</p>
                                                             <br>
                                                             <br>
                                                         </td>
@@ -69,9 +69,9 @@
                                                                             <td align="center">
                                                                                 <table border="0" cellspacing="0" cellpadding="0">
                                                                                     <tr>
-                                                                                        <!-- TODO: Working link to order/buyer/< product # > -->
+                                                                                        <!-- TODO: test the href -->
                                                                                         <td align="center" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" bgcolor="#e9703e">
-                                                                                            <a href="" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #e9703e; display: inline-block;">
+                                                                                            <a href="{{url('order/buyer/'.$buyer_order['id'])}}" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #e9703e; display: inline-block;">
                                                                                                 Order Details &rarr;</a>
                                                                                         </td>
                                                                                     </tr>

@@ -1,6 +1,7 @@
 /* CSS FOR sellerBookshelfIndex.php */
 
 @import "modules/all";
+@import "sections/user/user-profile";
 
 .message {
   font-style: italic;
@@ -11,37 +12,32 @@
   margin-top: 10px;
 }
 
-#btn-back{
-  cursor:pointer;
-}
-
-.bookshelf-page{
-  background-color: $background-color;
-  min-height: 90vh;
-}
-
-/* Title */
-#bookshelf-title {
-  margin-left: 30px;
+.bookshelf-content {
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* SORT SECTION */
 
-#nav-sort {
-  li {
-    a {
-      color: $muted-text-color;
-      &:hover {
-        background-color: #DDDDDD;
-      }
-    }
-  }
-  li.active {
-    a {
-      background-color: $primary-color;
-      color: #FFFFFF;
-    }
-  }
+//#nav-sort {
+//  li {
+//    a {
+//      color: $muted-text-color;
+//      &:hover {
+//        background-color: #DDDDDD;
+//      }
+//    }
+//  }
+//  li.active {
+//    a {
+//      background-color: $primary-color;
+//      color: #FFFFFF;
+//    }
+//  }
+//}
+
+.bookshelf-sort {
+  padding: 0;
 }
 
 #search-term {

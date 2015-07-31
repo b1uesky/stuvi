@@ -27,6 +27,17 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+<script src="{{ asset('libs/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+@if(Auth::guest())
+  {{-- FormValidation --}}
+  <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
+  <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
+  <script src="{{asset('js/validator/auth.js')}}"></script>
+@endif
+
 @yield('javascript')
 </body>
 

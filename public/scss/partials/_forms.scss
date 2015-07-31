@@ -1,8 +1,22 @@
 /*** FORM STYLING ***/
+@import '../modules/colors';
+@import '../modules/typography';
 
 .form-control {
   &:focus {
     border: 2px solid $primary-color;
     box-shadow: none;
   }
+}
+
+.row-margin-sm {
+  margin-bottom: $spacing-unit / 4;
+}
+
+.row-margin-md {
+  margin-bottom: $spacing-unit / 2;
+}
+
+.row-margin-lg {
+  margin-bottom: $spacing-unit;
 }

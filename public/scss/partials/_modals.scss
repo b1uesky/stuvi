@@ -1,5 +1,5 @@
 /*** MODAL STYLING ***/
-@import "../modules/all";
+@import "../modules/colors";
 
 .modal-content {
   border-radius: 0;
@@ -21,4 +21,10 @@
 
 .modal-footer {
   background-color: $background-color;
+}
+
+.modal-close {
+  &:focus {
+    outline: 0 !important;
+  }
 }

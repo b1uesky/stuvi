@@ -61,16 +61,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.2.1",
+            "version": "3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "e6c35f69cac7386c6c1ebf9a7d230abca49fef5d"
+                "reference": "677b931b10163726f9fb5662d9748db67a825d29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e6c35f69cac7386c6c1ebf9a7d230abca49fef5d",
-                "reference": "e6c35f69cac7386c6c1ebf9a7d230abca49fef5d",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/677b931b10163726f9fb5662d9748db67a825d29",
+                "reference": "677b931b10163726f9fb5662d9748db67a825d29",
                 "shasum": ""
             },
             "require": {
@@ -130,7 +130,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-07-24 00:42:07"
+            "time": "2015-07-28 22:59:37"
         },
         {
             "name": "aws/aws-sdk-php-laravel",
@@ -1554,16 +1554,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.10",
+            "version": "1.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "3475ce0b1b5cab41f012905c4c58ad645088f7c9"
+                "reference": "c16222fdc02467eaa12cb6d6d0e65527741f6040"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3475ce0b1b5cab41f012905c4c58ad645088f7c9",
-                "reference": "3475ce0b1b5cab41f012905c4c58ad645088f7c9",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/c16222fdc02467eaa12cb6d6d0e65527741f6040",
+                "reference": "c16222fdc02467eaa12cb6d6d0e65527741f6040",
                 "shasum": ""
             },
             "require": {
@@ -1631,7 +1631,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-07-21 19:35:53"
+            "time": "2015-07-28 20:41:58"
         },
         {
             "name": "monolog/monolog",
@@ -3119,16 +3119,16 @@
         },
         {
             "name": "fzaninotto/faker",
-            "version": "v1.5.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d"
+                "reference": "bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d0190b156bcca848d401fb80f31f504f37141c8d",
-                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27",
+                "reference": "bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27",
                 "shasum": ""
             },
             "require": {
@@ -3167,7 +3167,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-05-29 06:29:14"
+            "time": "2015-05-20 13:03:42"
         },
         {
             "name": "leafo/scssphp",

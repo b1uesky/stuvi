@@ -19,21 +19,27 @@ a:focus {
   z-index: 20;
 }
 
-#nav-left li a{
-  color: $nav-text-color;
-  &:hover{
-    background-color: $nav-background-color;
-    border-bottom: 5px solid #{$primary-color};
-    color: $primary-color;
-  }
-  &:focus{
-    background-color: $nav-background-color;
+#nav-left {
+  li a {
+    color: $nav-text-color;
+    &:hover {
+      background-color: $nav-background-color;
+      color: $primary-color;
+      @media (min-width: 768px) {
+        border-bottom: 5px solid #{$primary-color};
+      }
+    }
+    &:focus {
+      background-color: $nav-background-color;
+    }
   }
 }
 
 .active-nav {
   background-color: $nav-background-color;
-  border-bottom: 5px solid #{$primary-color};
+  @media (min-width: 768px) {
+    border-bottom: 5px solid #{$primary-color};
+  }
   color: $primary-color !important;
 }
 
@@ -45,6 +51,9 @@ a:focus {
     width: 100%;
     height: auto;
   }
+  @media (max-width: 767px) {
+    display: none;
+  }
 }
 
 
@@ -54,15 +63,18 @@ a:focus {
 
 /******* NAVIGATION HAMBURGER MENU *******/
 
-.fa-bars {
-  color: $primary-color;
-}
-
 #nav-toggle-collapse{
-  &:hover, &:focus {
-  background: $light-orange-color;
-  }
+  float: left;
+  border: none;
   z-index: 50;
+  margin-left: 10px;
+  &:hover, &:focus {
+    background: none;
+  }
+  .fa-bars {
+    color: $primary-color;
+    font-size: 1.5em;
+  }
 }
 
 /******* NAVIGATION DROPDOWN *******/
@@ -86,8 +98,13 @@ a:focus {
   color: $nav-text-color;
   &:hover{
     background-color: $nav-background-color;
-    border-bottom: 5px solid #{$primary-color};
+    @media (min-width: 768px) {
+      border-bottom: 5px solid #{$primary-color};
+    }
     color: $primary-color;
+  }
+  &:focus {
+    background-color: $nav-background-color;
   }
 }
 
@@ -126,14 +143,3 @@ a:focus {
 #cart-fix {
   line-height: 19px;
 }
-
-///* LOGIN SIGNUP MODAL */
-//
-//.modal-header{
-//  text-align: center;
-//}
-//
-//.modal-body {
-//  max-height: calc(100vh - 210px);
-//  overflow-y: auto;
-//}

@@ -3,8 +3,8 @@
 @import "modules/all";
 
 .background {
-  /*image link -> https://flic.kr/p/rZ8kmG */
-  background: url("../img/art-boston.jpg") no-repeat center;
+  /* Image by Nick Louie. flickr.com/photos/nickkeee */
+  background: url("../img/nick/nlouie7.jpg") no-repeat center;
   background-size: cover;
 }
 
@@ -70,6 +70,8 @@ h3 {
 }
 
 #contact-btn {
+  padding: 12px;
+  width: 150px;
 }
 
 /****  SOCIAL MEDIA LINKS  ****/

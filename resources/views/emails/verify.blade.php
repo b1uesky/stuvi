@@ -25,14 +25,14 @@
                                 <td align="center" bgcolor="#241729" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
                                     <!--TODO: puush must be replaced with a real url once website is online -->
                                     <a href="{{url('/home')}}">
-                                        <img src="http://puu.sh/iDvTG/18b055e116.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
+                                        <img src="http://puu.sh/jg7HJ/cbdfb5e1f5.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
                                     </a>
                                 </td> <!-- end header img -->
                             </tr>
                             <!-- row 2. content-->
                             <tr>
                                 <!-- container for content -->
-                                <td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px;">
+                                <td bgcolor="#F2F2F2" style="padding: 40px 30px 40px 30px;">
                                     <!-- content table -->
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                         <!-- content row 1 -->
@@ -65,8 +65,8 @@
                                                                     <td align="center">
                                                                         <table border="0" cellspacing="0" cellpadding="0">
                                                                             <tr>
-                                                                                <td align="center" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" bgcolor="#e9703e">
-                                                                                    <a href="{{ url('/user/email/'.$email['id'].'/verify/'.$email['verification_code']) }}" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #e9703e; display: inline-block;">
+                                                                                <td align="center" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" bgcolor="#00A496">
+                                                                                    <a href="{{ url('/user/email/'.$email['id'].'/verify/'.$email['verification_code']) }}" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 12px 18px; border: 1px solid #00A496; display: inline-block;">
                                                                                         Verify Email &rarr;</a>
                                                                                 </td>
                                                                             </tr>

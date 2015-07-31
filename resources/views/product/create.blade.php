@@ -6,6 +6,7 @@
 
 @section('css')
     <link href="{{ asset('/css/product_create.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('libs/dropzone/dist/min/dropzone.min.css') }}">
 @endsection
 
 @section('content')
@@ -28,21 +29,26 @@
         @endif
 
         <div class="row textbook-row col-sm-5">
-            <div>
-                @if($book->imageSet->large_image)
-                    <img id="textbook-img" src="{{ $book->imageSet->large_image }}" alt=""/>
-                @endif
-            </div>
-
             <div class="textbook-info">
-                <h1>{{ $book->title }}</h1>
+                <h2>{{ $book->title }}</h2>
+
+                <div class="img-container">
+                    <img class="img-large" src="{{ $book->imageSet->large_image or config('book.default_image_path.large') }}"/>
+                </div>
 
                 <div class="authors-container">
                     <span>by </span>
+                    <?php $bookCounter = 0; ?>
                     @foreach($book->authors as $author)
-                        <span id="authors"><button class="btn btn-default author-btn disabled">{{ $author->full_name }}</button></span>
+                        @if($bookCounter == 0)
+                            <span id="authors">{{ $author->full_name }}</span>
+                        @else
+                            <span id="authors">, {{ $author->full_name }}</span>
+                        @endif
+                        <?php $bookCounter++ ?>
                     @endforeach
                 </div>
+
                 <p>ISBN-10: {{ $book->isbn10 }}</p>
                 <p>ISBN-13: {{ $book->isbn13 }}</p>
                 <p>Number of Pages: {{ $book->num_pages }}</p>
@@ -61,7 +67,7 @@
             <div class="row col-sm-6 col-sm-offset-1">
             <h2>Book Conditions</h2>
 
-            <form action="{{ url('/textbook/sell/product/store') }}" method="post" enctype="multipart/form-data">
+            <form id="form-product" class="dropzone">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="book_id" value="{{ $book->id }}"/>
                 <input type="hidden" name="book_title" value="{{ $book->title }}">
@@ -84,39 +90,25 @@
                                     <h3>{{ Config::get('product.conditions.general_condition.title') }}</h3>
                                 </div>
                                 <div class="modal-body">
-                                    <h4>Brand New</h4>
-                                    <p>{{ Config::get('product.conditions.general_condition.description')[0] }}</p>
-
-                                    <h4>Excellent</h4>
-                                    <p>{{ Config::get('product.conditions.general_condition.description')[1] }}</p>
-
-                                    <h4>Good</h4>
-                                    <p>{{ Config::get('product.conditions.general_condition.description')[2] }}</p>
-
-                                    <h4>Acceptable</h4>
-                                    <p>{{ Config::get('product.conditions.general_condition.description')[3] }}</p>
+                                    @for ($i = 0; $i < 4; $i++)
+                                        <dl>
+                                            <dt>{{ Config::get('product.conditions.general_condition')[$i] }}</dt>
+                                            <dd>{{ Config::get('product.conditions.general_condition.description')[$i] }}</dd>
+                                        </dl>
+                                    @endfor
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition"
-                                   value="0"> {{ Config::get('product.conditions.general_condition')[0] }}
-                        </label>
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition"
-                                   value="1"> {{ Config::get('product.conditions.general_condition')[1] }}
-                        </label>
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition"
-                                   value="2"> {{ Config::get('product.conditions.general_condition')[2] }}
-                        </label>
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="general_condition"
-                                   value="3"> {{ Config::get('product.conditions.general_condition')[3] }}
-                        </label>
+
+                        @for ($i = 0; $i < 4; $i++)
+                            <label class="btn btn-default condition-btn">
+                                <input type="radio" name="general_condition"
+                                       value="{{$i}}"> {{ Config::get('product.conditions.general_condition')[$i] }}
+                            </label>
+                        @endfor
                     </div>
                 </div>
 
@@ -145,18 +137,13 @@
                     </div>
 
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="highlights_and_notes"
-                                   value="0"> {{ Config::get('product.conditions.highlights_and_notes')[0] }}
-                        </label>
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="highlights_and_notes"
-                                   value="1"> {{ Config::get('product.conditions.highlights_and_notes')[1] }}
-                        </label>
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="highlights_and_notes"
-                                   value="2"> {{ Config::get('product.conditions.highlights_and_notes')[2] }}
-                        </label>
+
+                        @for ($i = 0; $i < 3; $i++)
+                            <label class="btn btn-default condition-btn">
+                                <input type="radio" name="highlights_and_notes"
+                                       value="{{$i}}"> {{ Config::get('product.conditions.highlights_and_notes')[$i] }}
+                            </label>
+                        @endfor
                     </div>
                 </div>
 
@@ -184,18 +171,12 @@
                     </div>
 
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="damaged_pages"
-                                   value="0"> {{ Config::get('product.conditions.damaged_pages')[0] }}
-                        </label>
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="damaged_pages"
-                                   value="1"> {{ Config::get('product.conditions.damaged_pages')[1] }}
-                        </label>
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="damaged_pages"
-                                   value="2"> {{ Config::get('product.conditions.damaged_pages')[2] }}
-                        </label>
+                        @for($i = 0; $i < 3; $i++)
+                            <label class="btn btn-default condition-btn">
+                                <input type="radio" name="damaged_pages"
+                                       value="{{$i}}"> {{ Config::get('product.conditions.damaged_pages')[$i] }}
+                            </label>
+                        @endfor
                     </div>
                 </div>
 
@@ -223,14 +204,12 @@
                     </div>
 
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="broken_binding"
-                                   value="0"> {{ Config::get('product.conditions.broken_binding')[0] }}
-                        </label>
-                        <label class="btn btn-default condition-btn">
-                            <input type="radio" name="broken_binding"
-                                   value="1"> {{ Config::get('product.conditions.broken_binding')[1] }}
-                        </label>
+                        @for($i = 0; $i < 2; $i++)
+                            <label class="btn btn-default condition-btn">
+                                <input type="radio" name="broken_binding"
+                                       value="{{$i}}"> {{ Config::get('product.conditions.broken_binding')[$i] }}
+                            </label>
+                        @endfor
                     </div>
                 </div>
 
@@ -243,45 +222,34 @@
                 {{-- Price --}}
 
                 {{-- list price --}}
-                @if($book->list_price)
-                    <div>List price: ${{ $book->list_price }}</div>
-                @endif
-
-                {{-- lowest new price --}}
-                @if($book->lowest_new_price)
-                    <div>Lowest new price: ${{ $book->lowest_new_price }}</div>
-                @endif
-
-                {{-- lowest used price --}}
-                @if($book->lowest_used_price)
-                    <div>Lowest used price: ${{ $book->lowest_used_price }}</div>
-                @endif
-                <br>
+                {{--@if($book->list_price)--}}
+                    {{--<div>List price: ${{ $book->list_price }}</div>--}}
+                {{--@endif--}}
 
                 {{-- your price --}}
-                    <div class="form-group">
-                        <label for="price-form">Price</label>
-                        <div class="input-group" id="price-input">
-                            <div class="input-group-addon">$</div>
-                            <input type="number" step="0.01" name="price" class="form-control" id="price-form"
-                                   placeholder="Amount">
+                <div class="form-group">
+                    <label for="price-form">Price</label>
+
+                    <div class="input-group" id="price-input">
+                        <div class="input-group-addon">$</div>
+                        <input type="number" step="0.01" name="price" class="form-control" id="price-form"
+                               placeholder="Amount">
+                    </div>
+                </div>
+
+                {{-- Upload Images using Dropzone --}}
+                <div class="form-group">
+                    <label>Upload Textbook Image</label>
+                    <div id="dropzone-img-preview" class="dropzone-previews dz-clickable">
+                        <div class="dz-message">
+                            Drop images here or click to upload.
+                            <br>
+                            <small>(A front cover image is required. You can upload three images in maximum.)</small>
                         </div>
                     </div>
-
-                {{-- Upload Images --}}
-                <div class="form-group" name="cover_img">
-                    <label for="image-upload">Front cover image (smaller than 3MB)</label>
-                    <input type="file" name="front-cover-image" class="upload-file" id="image-upload">
-                    <div class="upload-error-message">The file size is too large. Please make sure the file size is under 3MB.</div>
                 </div>
 
-                {{-- Add more images --}}
-                <div class="form-group">
-                    <label name="add_other_img" for="add-image" >Other image(s) (smaller than 3MB)</label><br>
-                    <a class="btn secondary-btn btn-add-input" name="add_img_btn" id="add-image">Add Another Image</a>
-                </div>
-
-                <input type="submit" name="submit" class="btn primary-btn sell-btn" value="Post Book">
+                <button type="submit" name="submit" class="btn primary-btn sell-btn">Post Book</button>
             </form>
         </div>
         @endif
@@ -289,16 +257,14 @@
 @endsection
 
 @section('javascript')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="{{ asset('libs/dropzone/dist/min/dropzone.min.js') }}"></script>
 
     @if(Auth::check())
-        <script src="{{ asset('js/validator/file-upload.js') }}"></script>
-        <script src="{{ asset('js/product/create.js') }}"></script>
-    @else
         {{-- FormValidation --}}
-        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
-        <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
-        <script src="{{asset('js/auth.js')}}"></script>
+        {{--<script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>--}}
+        {{--<script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>--}}
+        {{--<script src="{{ asset('js/validator/product-create.js') }}"></script>--}}
+
+        <script src="{{ asset('js/product/create.js') }}"></script>
     @endif
 @endsection

@@ -6,125 +6,77 @@
 
 @section('css')
     <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
-    <link type="text/css" href="{{ asset('formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}"
+          rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     @endsection
 
     @section('content')
             <!-- new top half -->
     <div class="container-fluid" id="container-home-top">
-        <div class="" id="navbar-container" >
-            <nav class="navbar navbar-default" id="nav" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <!-- Toggle Nav into hamburger menu for small screens -->
-                        <button id="nav-toggle-collapse" type="button" class="navbar-toggle collapsed"
-                                data-toggle="collapse"
-                                data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle Navigation</span>
-                            <i class="fa fa-bars fa-lg"></i>
-                        </button>
-                        <div class="logo-container">
-                            <a href="{{url('/home')}}"> <img src="{{asset('/img/logo-new-md.png')}}" class="img-responsive">
-                            </a>
-                        </div>
-                    </div>
-                    <!-- End Navbar header -->
-
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <!-- Nav Bar Links-->
-                        <ul class="nav navbar-nav" id="nav-left">
-                            <li><a href="{{ url('/textbook') }}" class="" id="textbook-nav">Textbook</a></li>
-                        </ul>
-                        <!-- Navbar right -->
-                        <ul id="nav-right" class="nav navbar-nav navbar-right">
-                            @if (Auth::guest())
-                                <li><a id="login-btn" class="nav-login" data-toggle="modal" href="#login-modal">
-                                        <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
-                                <li><a id="register-btn" class="nav-login" data-toggle="modal" href="#signup-modal">
-                                        <i class="fa fa-user"></i> Sign Up</a></li>
-
-
-
-                                @else
-                                        <!-- profile dropdown -->
-                                <li class="dropdown" id="dp" style="z-index: 500;">
-                                    <a href="#" id="nav-drop" class="dropdown-toggle nav-dropdown" data-toggle="dropdown"
-                                       role="button"
-                                       aria-expanded="true"><span nav-caret
-                                                                  id="account-name">{{ Auth::user()->first_name }} </span><span
-                                                class="caret nav-caret"></span></a>
-                                    <ul class="dropdown-menu" id="nav-dropdown" role="menu" aria-labelledby="nav-dropdown">
-                                        <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                   href="{{ url('/user/profile') }}">
-                                                Profile</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                   href="{{ url('/user/account') }}">
-                                                Your Account</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                   href="{{ url('/order/buyer') }}">
-                                                Your Orders</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                   href="{{ url('/order/seller') }}">
-                                                Sold Books</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                   href="{{ url('/auth/logout') }}">
-                                                Logout</a></li>
-                                    </ul>
-                                </li>
-                                <!-- cart -->
-                                <li class="cart">
-                                    <a href="{{ url('/cart') }}" id="cart-link">Cart <i class="fa fa-shopping-cart"
-                                                                                        style="line-height: 19px;"></i></a>
-                                </li>
-                            @endif
-                        </ul>
-                    </div>
-                    <!-- End collapse container -->
-                </div>
-                <!-- End navbar container -->
-            </nav>
+        <div class="" id="navbar-container">
+            @include('includes.textbook.header')
         </div>
 
         <div class="" id="head-tag-ghost-container">
             <h1 id="head1">Welcome to Stuvi</h1>
+
             <p class="lead tagline">Because it takes a village to conquer college.</p>
             @if (Auth::guest())
                 <div class="ghost-btn-container">
-                    <a class="btn ghost-btn" data-toggle="modal" href="#login-modal" role="button">LOGIN</a>
-                    <a class="btn ghost-btn" data-toggle="modal" href="#signup-modal" role="button">SIGN UP</a>
+                    <a class="btn ghost-btn" data-toggle="modal" href="#login-modal" role="button">Log In</a>
+                    <a class="btn ghost-btn" data-toggle="modal" href="#signup-modal" role="button">Sign Up</a>
                 </div>
             @endif
         </div>
+        {{-- Images currently 2000px x 1333px image quality 7/12 on PS --}}
+        <!-- Photos are owned by Nicholas Louie (owner), and are allowed for use on stuvi.com only. Attribution in the alt text
+             must be provided. This must include the owner's name and link to the owner's Flickr.
+             No one else but the owner may sell, copy, redistribute or edit his images.
+             Visit Nick at flickr.com/photos/nickkeee
+             -->
         <div id="slide-container">
             <div class="" id="slides">
-                <img src="{{asset('img/nick/nlouie1.jpg')}}" alt="">
-                <img src="{{asset('img/nick/nlouie2.jpg')}}" alt="">
+                <img src="{{asset('img/nick/nlouie1.jpg')}}" alt="Charles River by Nick Louie - flickr.com/photos/nickkeee">
+                <img src="{{asset('img/nick/nlouie2.jpg')}}" alt="EPC by Nick Louie - flickr.com/photos/nickkeee">
+                <img src="{{asset('img/nick/nlouie8.jpg')}}" alt="NEU by Nick Louie - flickr.com/photos/nickkeee">
+                <img src="{{asset('img/nick/nlouie3.jpg')}}" alt="Mass Art by Nick Louie - flickr.com/photos/nickkeee">
+                <img src="{{asset('img/nick/nlouie4.jpg')}}" alt="Harvard by Nick Louie - flickr.com/photos/nickkeee">
+                <img src="{{asset('img/nick/nlouie5.jpg')}}" alt="MIT by Nick Louie - flickr.com/photos/nickkeee">
             </div>
         </div>
 
         <!-- TODO: make this work properly..like a search for the entire stuvi site? idk -->
-        <div class="" id="home-search-container">
-            <div class="" id="home-search-form">
+        <div id="home-search-container">
+            <div class="searchbar">
                 <form action="/textbook/buy/search" method="get">
-                    <div class="form-group">
-                        <div class="col-xs-8 col-xs-offset-2 search-row">
-                            <input type="text" name="query" id="autocompleteBuy" class="form-control search-input"
-                                   placeholder="Enter the textbook ISBN, Title, or Author"/>
-                        </div>
+
+                    <div class="searchbar-input-container searchbar-input-container-query">
+                        <input type="text" name="query" id="autocompleteBuy"
+                               class="form-control searchbar-input searchbar-input-query"
+                               placeholder="Enter the textbook ISBN, Title, or Author"/>
                     </div>
 
-                    <button class="btn btn-default search-btn" type="submit" value="Search">
-                        <i class="fa fa-search search-icon"></i>
-                    </button>
+                    {{-- Show school selection if it's a guest --}}
+                    @if(Auth::guest())
+                        <div class="searchbar-input-container searchbar-input-container-university">
+                            <select name="university_id" class="form-control searchbar-input searchbar-input-university">
+                                @foreach(\App\University::where('is_public', true)->get() as $university)
+                                    <option value="{{ $university->id }}">{{ $university->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
+
+                    <div class="searchbar-input-container searchbar-input-container-submit">
+                        <button class="btn btn-default search-btn" type="submit" value="Search">
+                            <i class="fa fa-search search-icon"></i>
+                        </button>
+                    </div>
                 </form>
             </div>
-
         </div>
-
     </div>
-
-
 
     <!-- new bottom half -->
     <div class="container-fluid" id="bottom-half">
@@ -136,51 +88,77 @@
 
                     <p>
                         Stuvi is a marketplace built for college students, by college students. We're here to provide
-                        relevant services to help you succeed at school, and we're launching here in Boston, Massachusetts!
+                        relevant services to help you succeed at school, and we're launching here in Boston,
+                        Massachusetts!
                         <a href="{{url('/about/')}}">Learn More.</a>
                     </p>
                 </div>
-                <div class="container col-xs-offset-1 col-sm-7 col-sm-offset-3 col-md-offset-0 col-md-4" id="img-info-1">
-                    {{--<img src="http://placehold.it/350x350">--}}
-                    <img class="img-responsive" src="{{asset('/img/scaled/art-boston.jpg')}}" width="350px">
+
+                <div class="container col-xs-offset-1 col-sm-7 col-sm-offset-3 col-md-offset-0 col-md-4"
+                     id="img-info-1">
+                    <img class="img-responsive" src="{{asset('/img/art-boston.jpg')}}" width="350px">
                 </div>
             </div>
-
             <!-- TODO: Add more content -->
+        </div>
+        <div class="container-fluid home-textbook-container">
+            <h1 id="home-textbook-title">Recommended Books</h1>
 
+            <div class="row textbook-row">
+                <div class="home-textbook col-sm-6 col-md-3">
+                    <a href="#">
+                        <img class="textbook-img" src="http://puu.sh/jhP6y/60bae9306c.png">
+                    </a>
+                </div>
+                <div class="home-textbook col-sm-6 col-md-3">
+                    <a href="#">
+                        <img class="textbook-img" src="http://puu.sh/jhPi3/d63b4a67e5.png">
+                    </a>
+                </div>
+                <div class="home-textbook col-sm-6 col-md-3">
+                    <a href="#">
+                        <img class="textbook-img" src="http://puu.sh/jhPpo/f6899af921.png">
+                    </a>
+                </div>
+                <div class="home-textbook col-sm-6 col-md-3">
+                    <a href="#">
+                        <img class="textbook-img" src="http://puu.sh/jhPyr/dce3b699d1.png">
+                    </a>
+                </div>
+            </div>
         </div>
         <!-- services-->
-        <div class="container-fluid services">
-            <div class="row">
-                <h1>Our Services</h1>
-            </div>
-            <div class="row service-row">
-                <div class="col-xs-12 col-sm-6 col-lg-3 service">
-                    <a href="{{ url('/textbook') }}"><i class="fa fa-book fa-5x"></i></a>
-                    <h4>Textbooks</h4>
+        {{--<div class="container-fluid services">--}}
+        {{--<div class="row">--}}
+        {{--<h1>Our Services</h1>--}}
+        {{--</div>--}}
+        {{--<div class="row service-row">--}}
+        {{--<div class="col-xs-12 col-sm-6 col-lg-3 service">--}}
+        {{--<a href="{{ url('/textbook') }}"><i class="fa fa-book fa-5x"></i></a>--}}
+        {{--<h4>Textbooks</h4>--}}
 
-                    <p>Buy and sell textbooks at your campus</p>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-3 service">
-                    <a href="{{ url('/coming') }}"><i class="fa fa-home fa-5x"></i></a>
-                    <h4>Housing</h4>
+        {{--<p>Buy and sell textbooks at your campus</p>--}}
+        {{--</div>--}}
+        {{--<div class="col-xs-12 col-sm-6 col-lg-3 service">--}}
+        {{--<a href="{{ url('/coming') }}"><i class="fa fa-home fa-5x"></i></a>--}}
+        {{--<h4>Housing</h4>--}}
 
-                    <p>Find off campus housing near your campus</p>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-3 service">
-                    <a href="{{ url('/coming') }}"><i class="fa fa-university fa-5x"></i></a>
-                    <h4>Clubs</h4>
+        {{--<p>Find off campus housing near your campus</p>--}}
+        {{--</div>--}}
+        {{--<div class="col-xs-12 col-sm-6 col-lg-3 service">--}}
+        {{--<a href="{{ url('/coming') }}"><i class="fa fa-university fa-5x"></i></a>--}}
+        {{--<h4>Clubs</h4>--}}
 
-                    <p>Get involved with clubs and organizations</p>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-3 service">
-                    <a href="{{ url('/coming') }}"><i class="fa fa-users fa-5x"></i></a>
-                    <h4>Groups</h4>
+        {{--<p>Get involved with clubs and organizations</p>--}}
+        {{--</div>--}}
+        {{--<div class="col-xs-12 col-sm-6 col-lg-3 service">--}}
+        {{--<a href="{{ url('/coming') }}"><i class="fa fa-users fa-5x"></i></a>--}}
+        {{--<h4>Groups</h4>--}}
 
-                    <p>Connect with students in your classes</p>
-                </div>
-            </div>
-        </div> <!-- end services -->
+        {{--<p>Connect with students in your classes</p>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div> <!-- end services -->--}}
 
     </div> <!-- end bottom half -->
 
@@ -190,17 +168,9 @@
 @endsection
 
 @section('javascript')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    {{--<script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>--}}
-
-    {{-- FormValidation --}}
-    <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
-    <script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/auth.js')}}"></script>
-
-    <script src="{{asset('js/slides/jquery.slides.min.js')}}"></script>
+    <script src="{{ asset('libs/slidejs3/source/jquery.slides.min.js' )}}"></script>
     <script src="{{asset('js/home.js')}}"></script>
-    {{--<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>--}}
-    {{--<script src="{{asset('js/autocompleteBuy.js')}}"></script>--}}
+
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="{{asset('js/autocompleteBuy.js')}}"></script>
 @endsection

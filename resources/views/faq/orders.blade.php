@@ -11,9 +11,9 @@
         @include('faq/side-nav')
 
         <div class="col-sm-7 col-sm-offset-1 qa-container">
+            <h2>FAQ - Orders</h2>
+            <hr class="faq-line">
             <div class="question-answer">
-                <h2>FAQ - Orders</h2>
-
                 <h3>What happens after I buy a book?</h3>
 
                 <p>
@@ -33,8 +33,8 @@
                 <h3>Is my credit card info secure?</h3>
 
                 <p>
-                    Yes! We use <a href="https://stripe.com/" target="_blank">Stripe</a> to secure all credit card
-                    transactions.
+                    Yes! We use <a href="https://stripe.com/" target="_blank">Stripe</a> to
+                    secure all credit/debit card transactions.
                 </p>
             </div>
         </div>
@@ -42,6 +42,4 @@
 @endsection
 
 @section('javascript')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 @endsection
