@@ -12,11 +12,11 @@
   margin-left: 5%;
   margin-top: 80px;
   color: #FFFFFF;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  text-shadow: $text-shadow;
 }
 
 h3 {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  text-shadow: $text-shadow;
 }
 
 /****  CONTACT FORM  ****/
@@ -29,7 +29,7 @@ h3 {
 
 @media (min-width: 768px) {
   .contact-form-container {
-    border-right: 1px solid #CCCCCC;
+    border-right: 1px solid $input-border-color;
     padding-right: 5%;
   }
 }
@@ -44,34 +44,29 @@ h3 {
 
 .form-control {
   background-color: rgba(0, 0, 0, 0.7);
-  color: #FFFFFF;
+  color: white;
 }
 
 .form-control::-webkit-input-placeholder {
   /* WebKit browsers */
-  color: #FFFFFF;
+  color: white;
 }
 
 .form-control:-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
-  color: #FFFFFF;
+  color: white;
   opacity: 1;
 }
 
 .form-control::-moz-placeholder {
   /* Mozilla Firefox 19+ */
-  color: #FFFFFF;
+  color: white;
   opacity: 1;
 }
 
 .form-control:-ms-input-placeholder {
   /* Internet Explorer 10+ */
   color: white;
-}
-
-#contact-btn {
-  padding: 12px;
-  width: 150px;
 }
 
 /****  SOCIAL MEDIA LINKS  ****/
@@ -88,7 +83,7 @@ h3 {
 
 .contact-info-container {
   background-color: rgba(0, 0, 0, 0.7);
-  border: 1px solid #cccccc;
+  border: 1px solid $input-border-color;
   border-radius: 4px;
   padding: 20px 0;
   a{
@@ -104,7 +99,7 @@ h3 {
   li {
     margin: 10px 0;
     a {
-      color: #FFFFFF;
+      color: white;
       text-decoration: none;
       font-size: 1.1em;
       i {
@@ -125,6 +120,6 @@ h3 {
 /****  PHOTO LICENSE  ****/
 
 #license {
-  color: #FFFFFF;
+  color: white;
   text-align: right;
 }

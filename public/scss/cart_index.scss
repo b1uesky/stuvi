@@ -28,11 +28,6 @@ body {
   padding-right: 5px;
 }
 
-/* Cart progress bar */
-.cart-progress {
-  /*background-image: url('../img/CART.png');*/
-
-}
 
 .cart-line {
   max-width: 50%;
@@ -54,8 +49,7 @@ body {
 
 .cart-table {
   background-color: white;
-  border: solid;
-  border-color: #DDD;
+  border: 3px solid $table-border-color;
 }
 
 .subtotal {

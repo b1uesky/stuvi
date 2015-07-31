@@ -12,7 +12,6 @@
         <div class="container-fluid">
             <div class="title-container">
                 <h2>Contact Us</h2>
-                <p>Please feel free to ask a question or give us feedback</p>
             </div>
 
             <div class="col-sm-6 contact-form-container">
@@ -43,7 +42,7 @@
                         <textarea class="form-control" rows="5" placeholder="Message"></textarea>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn primary-btn" id="contact-btn">Submit</button>
+                        <button type="submit" class="btn primary-btn submit-btn">Submit</button>
                     </div>
                 </form>
             </div>
