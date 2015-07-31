@@ -147,7 +147,7 @@
                                                                                 <span>{{ $author['full_name'] }}</span>
                                                                             @endforeach
                                                                             <br>
-                                                                            <b>${{ $product['price'] }}</b><br>
+                                                                            <b>${{ $product['price']/100 }}</b><br>
                                                                         </td>
                                                                     </tr>
                                                                     @endforeach
