@@ -70,6 +70,18 @@ class Product extends Model
     }
 
     /**
+     * Check whether this product is belong to a given user.
+     *
+     * @param $user_id
+     *
+     * @return bool
+     */
+    public function isBelongTo($user_id)
+    {
+        return $this->seller_id == $user_id;
+    }
+
+    /**
      * @return mixed
      *
      */

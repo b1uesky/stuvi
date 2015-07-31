@@ -1,20 +1,17 @@
 <?php namespace App\Http\Controllers\Textbook;
 
-use App\Helpers\FileUploader;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Product;
-use App\ProductImage;
 use App\ProductCondition;
-use App\Helpers\AmazonLookUp;
-
+use App\ProductImage;
 use Auth;
 use Config;
 use Input;
-use Validator;
+use Response;
 use Session;
 use URL;
-use Response;
+use Validator;
 
 class ProductController extends Controller {
 
@@ -98,4 +95,28 @@ class ProductController extends Controller {
 	{
 		return view('product.show')->withProduct($product);
 	}
+
+    /**
+     * Show product edit page.
+     *
+     * @param $id
+     */
+    public function edit($id)
+    {
+        $product = Product::find($id);
+
+        if (!($product && $product->isBelongTo(Auth::id())))
+        {
+            return back()
+                ->with('message', 'The product is not found.');
+        }
+
+        return view('product.edit')
+            ->with('product', $product);
+    }
+
+    public function update($id)
+    {
+
+    }
 }

@@ -70,7 +70,8 @@
                             </td>
                             <td class="for-sale-info-2">
                                 <span class="for-sale-isbn">ISBN-10: {{ $product->book->isbn10 }}</span><br>
-                                <span class="for-sale-isbn">ISBN-13: {{ $product->book->isbn13 }}</span>
+                                <span class="for-sale-isbn">ISBN-13: {{ $product->book->isbn13 }}</span><br>
+                                <span class="for-sale-isbn"><a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}">Edit</a></span>
                             </td>
 
                             {{--<td class="for-sale-info-3">--}}
