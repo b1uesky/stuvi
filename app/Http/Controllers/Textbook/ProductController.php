@@ -51,7 +51,7 @@ class ProductController extends Controller
                                        'seller_id' => Auth::user()->id,
                                    ]);
 
-        $condition = ProductCondition::creat([
+        $condition = ProductCondition::create([
                                                  'product_id'           => $product->id,
                                                  'general_condition'    => Input::get('general_condition'),
                                                  'highlights_and_notes' => Input::get('highlights_and_notes'),
