@@ -53,7 +53,7 @@
                 @endif
                 <h2><a href="{{ url('textbook/buy/'.$product->book->id) }}">{{ $product->book->title }}</a></h2>
                 <div class="price">
-                    Price: <b>${{ $product->price }}</b>
+                    Price: <b>${{ $product->price/100 }}</b>
                 </div>
                 @if(Auth::check())
                     @if($product->isInCart(Auth::user()->id))
