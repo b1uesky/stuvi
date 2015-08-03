@@ -363,7 +363,6 @@ class SellerOrderController extends Controller
             'response_type' => 'code',
             'scope'         => Config::get('stripe.scope'),
             'client_id'     => StripeKey::getClientId(),
-            'state'         => csrf_token(),   // for CSRF Protection
         ];
 
         $url = Config::get('stripe.authorize_url') . '?' . http_build_query($authorize_request_body);
