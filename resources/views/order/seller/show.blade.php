@@ -14,7 +14,8 @@
 
     <div class="container-fluid">
         <div class="row back-row">
-            <a class="back-to-order" href="/order/seller" onclick="goBack()"><i class="fa fa-arrow-circle-left"></i> Go Back</a>
+            <a class="back-to-order" href="/order/seller" onclick="goBack()"><i class="fa fa-arrow-circle-left"></i> Go
+                Back</a>
         </div>
     </div>
 
@@ -240,17 +241,107 @@
                        class="btn btn-orange">Add a new address</a></br></br>
                 </div>
             @endif
+            {{--Add or edit address modal--}}
+            <div class="modal fade" id="address-form-modal" tabindex="-1" role="dialog" aria-labelledby="addressModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ url('/address/update') }}" method="POST"
+                                  id="seller-address-form">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="address_id" value="">
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Full name</label>
+
+                                    <div class="col-sm-6 form-space-offset">
+                                        <input type="text" class="form-control" name="addressee"
+                                               value="">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Address line 1</label>
+
+                                    <div class="col-sm-6 form-space-offset">
+                                        <input type="text" class="form-control"
+                                               name="address_line1"
+                                               value="185 Freeman St.">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Address line 2</label>
+
+                                    <div class="col-sm-6 form-space-offset">
+                                        <input type="text" class="form-control"
+                                               name="address_line2"
+                                               value="Apt. 739">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">City</label>
+
+                                    <div class="col-sm-6 form-space-offset">
+                                        <input type="text" class="form-control" name="city"
+                                               value="Brookline">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">State</label>
+
+                                    <div class="col-sm-6 form-space-offset">
+                                        <input type="text" class="form-control" name="state_a2"
+                                               value="MA">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Zip</label>
+
+                                    <div class="col-sm-6 form-space-offset">
+                                        <input type="text" class="form-control" name="zip"
+                                               value="02446">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Phone</label>
+
+                                    <div class="col-sm-6 form-space-offset">
+                                        <input type="tel" class="form-control phone_number"
+                                               name="phone_number" value="(857) 206 4789">
+                                    </div>
+                                </div>
+                                <input type="hidden" name="address_id" value="">
+                                </br>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" id="submit-address-form" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         {{-- Confirm pickup --}}
         <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm
             Pickup</a></br></br>
         @endif
     </div>
-@endsection
+    @endsection
 
-@section('javascript')
+    @section('javascript')
     {{--http://xdsoft.net/jqplugins/datetimepicker/--}}
-    <!-- Date time picker required scripts -->
+            <!-- Date time picker required scripts -->
     <script src="{{ asset('libs/datetimepicker/jquery.datetimepicker.js') }}"></script>
     <script src="{{asset('/js/order/seller/showSellerOrder.js')}}" type="text/javascript"></script>
 

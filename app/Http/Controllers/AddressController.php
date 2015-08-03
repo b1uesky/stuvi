@@ -69,13 +69,25 @@ class AddressController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  Request $request
      *
      * @return Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $address_id = Input::get('address_id');
+        $address = Address::find($address_id);
+        if ($address->isBelongTo(Auth::id())){
+            return Response::json([
+                'success' => true,
+                'address' => $address->toArray()
+            ]);
+        }else{
+            return Response::json([
+                'success' => false,
+                'address'   => 'Address Not Found'
+            ]);
+        }
     }
 
     /**
@@ -120,14 +132,12 @@ class AddressController extends Controller
 
             $address->setDefault();
 
-            if (Request::ajax())
-            {
+            if ($request -> ajax()) {
                 return Response::json([
                     'success' => true,
                     'address' => $address->toArray()
                 ]);
-            }else
-            {
+            } else {
                 return redirect('order/create');
             }
         }
