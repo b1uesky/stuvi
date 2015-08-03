@@ -57,7 +57,7 @@
 
         {{-- If the user is not logged in, show login / signup buttons. --}}
         @if(!Auth::check())
-            <div class="row col-sm-6 col-sm-offset-1">
+            <div class="row col-sm-6 col-sm-offset-1" id="login-signup-container">
                 <p>Please login or sign up to continue using our service.</p>
                 <a data-toggle="modal" href="#login-modal">Login</a>
                 <a data-toggle="modal" href="#signup-modal">Sign up</a>
