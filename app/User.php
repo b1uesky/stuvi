@@ -223,6 +223,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
+     * Get the default address of the user.
+     *
+     * @return mixed
+     */
+    public function defaultAddress()
+    {
+        return $this->addresses()->where('is_default', true)->first();
+    }
+
+    /**
      * Get the Stripe authorization credential of this user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -368,5 +378,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         $user_arr['email'] = $this->primaryEmail->email_address;
 
         return $user_arr;
+    }
+
+    /**
+     * Get user's full name.
+     *
+     * @return string
+     */
+    public function fullName()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 }

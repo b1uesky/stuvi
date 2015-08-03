@@ -98,7 +98,7 @@ return [
     */
     'token_url'         => 'https://connect.stripe.com/oauth/token',
 
-    'application_fee'   => 200,
+    'application_fee'   => 0,
 
     'currency'          => 'usd',
 ];

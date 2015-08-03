@@ -54,9 +54,16 @@
                     @forelse ($productsForSale as $product)
                         <tr class="for-sale-item">
                             <td class="for-sale-img">
-                                <img class="img-responsive" src="{{ config('aws.url.stuvi-product-img').$product->images->first()->small_image }}"
-                                     width="100px"
-                                     height="150px"></td>
+                                @if($product->images->first()->isTestImage())
+                                    <img class="img-responsive" src="{{ $product->images->first()->small_image }}"
+                                         width="100px"
+                                         height="150px">
+                                @else
+                                    <img class="img-responsive" src="{{ config('aws.url.stuvi-product-img').$product->images->first()->small_image }}"
+                                         width="100px"
+                                         height="150px">
+                                @endif
+                            </td>
                             <td class="for-sale-info-1" colspan="2">
                             <span class="for-sale-title"><a
                                         href="{{ url('textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a></span><br>
@@ -66,11 +73,12 @@
                                 @endforeach
 
                                 <span class="for-sale-binding">Hardcover</span><br>
-                                <span class="for-sale-price">${{ $product->price }}</span> <br>
+                                <span class="for-sale-price">${{ $product->price/100 }}</span> <br>
                             </td>
                             <td class="for-sale-info-2">
                                 <span class="for-sale-isbn">ISBN-10: {{ $product->book->isbn10 }}</span><br>
-                                <span class="for-sale-isbn">ISBN-13: {{ $product->book->isbn13 }}</span>
+                                <span class="for-sale-isbn">ISBN-13: {{ $product->book->isbn13 }}</span><br>
+                                <span class="for-sale-isbn"><a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}">Edit</a></span>
                             </td>
 
                             {{--<td class="for-sale-info-3">--}}

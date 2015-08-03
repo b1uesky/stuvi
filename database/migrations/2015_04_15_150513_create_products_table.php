@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateProductsTable extends Migration {
 
@@ -15,7 +15,7 @@ class CreateProductsTable extends Migration {
 		Schema::create('products', function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->decimal('price');
+            $table->integer('price');
             $table->integer('book_id')->unsigned();
             $table->integer('seller_id')->unsigned();
             $table->boolean('sold')->default(false);

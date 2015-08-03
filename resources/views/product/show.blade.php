@@ -81,13 +81,13 @@
 
                 <p>Number of Pages: {{ $product->book->num_pages }}</p>
                 <div class="price">
-                    Price: <b>${{ $product->price }}</b>
+                    Price: <b>${{ $product->price/100 }}</b>
                 </div>
                 @if(Auth::check())
                     @if($product->isInCart(Auth::user()->id))
                         <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Added To Cart</a>
                     @elseif($product->seller == Auth::user())
-                        <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Posted by yourself</a>
+                        <a class="btn primary-btn add-cart-btn" href="{{ url('textbook/sell/product/' . $product->id . '/edit') }}" role="button">Edit</a>
                     @else
                         <a class="btn primary-btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
                     @endif

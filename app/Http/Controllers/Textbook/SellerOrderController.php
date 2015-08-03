@@ -261,9 +261,9 @@ class SellerOrderController extends Controller
 
         Mail::queue('emails.sellerOrderScheduledPickupTime', [
             'seller_order' => $seller_order_arr
-        ], function ($message) use ($seller)
+        ], function ($message) use ($seller_order_arr)
         {
-            $message->to($seller->email)->subject('Your textbook pickup has been scheduled.');
+            $message->to($seller_order_arr['seller']['email'])->subject('Your textbook pickup has been scheduled.');
         });
 
         return redirect()->back()
@@ -310,13 +310,13 @@ class SellerOrderController extends Controller
 
         try
         {
-            $transfer = \Stripe\Transfer::create(array(
-                'amount'             => (int)($seller_order->product->price * 100),
+            $transfer = \Stripe\Transfer::create([
+                'amount'             => ($seller_order->product->price),
                 'currency'           => Config::get('stripe.currency'),
                 'destination'        => $credential->stripe_user_id,
                 'application_fee'    => Config::get('stripe.application_fee'),
                 'source_transaction' => $seller_order->buyerOrder->buyer_payment->charge_id,
-            ));
+            ]);
 
             // save this transfer
             $stripe_transfer = StripeTransfer::create([
@@ -328,7 +328,7 @@ class SellerOrderController extends Controller
                 'status'              => $transfer['status'],
                 'type'                => $transfer['type'],
                 'destination'         => $transfer['destination'],
-                'application_fee'     => $transfer['application_fee'],
+                'application_fee'     => $transfer['application_fee'] ? : 0,
                 'balance_transaction' => $transfer['balance_transaction'],
                 'destination_payment' => $transfer['destination_payment'],
                 'source_transaction'  => $transfer['source_transaction'],
@@ -359,12 +359,11 @@ class SellerOrderController extends Controller
      */
     protected function buildStripeAuthRequestUrl()
     {
-        $authorize_request_body = array(
+        $authorize_request_body = [
             'response_type' => 'code',
             'scope'         => Config::get('stripe.scope'),
             'client_id'     => StripeKey::getClientId(),
-            'state'         => ''   // TODO: for CSRF Protection
-        );
+        ];
 
         $url = Config::get('stripe.authorize_url') . '?' . http_build_query($authorize_request_body);
 

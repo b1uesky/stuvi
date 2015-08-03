@@ -20,8 +20,8 @@ return [
     ],
 
     'default_image_path' => [
-        'small' => '../../img/placeholder.png',
-        'medium' => '../../img/placeholder.png',
-        'large' => '../../img/placeholder.png',
+        'small'     => 'https://s3.amazonaws.com/stuvi-book-img/placeholder.png',
+        'medium'    => 'https://s3.amazonaws.com/stuvi-book-img/placeholder.png',
+        'large'     => 'https://s3.amazonaws.com/stuvi-book-img/placeholder.png',
     ]
 ];

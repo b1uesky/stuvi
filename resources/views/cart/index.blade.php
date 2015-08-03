@@ -72,7 +72,7 @@
                     <!-- isbn -->
                     <td>{{ $item->product->book->isbn10 }}</td>
                     <!-- price -->
-                    <td>${{ $item->product->price }}</td>
+                    <td>${{ $item->product->price/100 }}</td>
                     <!-- remove -->
                     <td><a href="{{ url('/cart/rmv/'.$item->product->id) }}"><i class="fa fa-times btn-close"></i>
 
@@ -118,7 +118,7 @@
             <table class="table table-responsive subtotal">
                 <tr>
                     <td><b>Cart Subtotal</b></td>
-                    <td>${{ $total_price }}</td>
+                    <td>${{ $total_price/100 }}</td>
                 </tr>
             </table>
             <a class="btn primary-btn btn-checkout" href="{{ url('/order/create') }}" role="button">

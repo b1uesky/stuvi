@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Express;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\BuyerOrder;
-
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
 use Auth;
+use Config;
 use Illuminate\Http\RedirectResponse;
 use Mail;
-use Config;
 
 
 class DeliverController extends Controller
@@ -114,7 +112,7 @@ class DeliverController extends Controller
 
         // convert the buyer order and corresponding objects to an array
         $buyer_order_arr                        = $buyer_order->toArray();
-        $buyer_order_arr['buyer']               = $buyer_order->buyer->toArray();
+        $buyer_order_arr['buyer']               = $buyer_order->buyer->allToArray();
         $buyer_order_arr['shipping_address']    = $buyer_order->shipping_address->toArray();
         $buyer_order_arr['buyer_payment']       = $buyer_order->buyer_payment->toArray();
         foreach ($buyer_order->products() as $product)
@@ -129,9 +127,9 @@ class DeliverController extends Controller
         // send an email notification to the buyer
         Mail::queue('emails.buyerOrder.ready', [
             'buyer_order' => $buyer_order_arr
-        ], function($message) use ($buyer_order)
+        ], function($message) use ($buyer_order_arr)
         {
-            $message->to($buyer_order->buyer->email)->subject('Your order #'.$buyer_order->id.' is on the way!');
+            $message->to($buyer_order_arr['buyer']['email'])->subject('Your order #'.$buyer_order_arr['id'].' is on the way!');
         });
 
         return redirect()->back();
@@ -172,7 +170,7 @@ class DeliverController extends Controller
 
         // convert the buyer order and corresponding objects to an array
         $buyer_order_arr                        = $buyer_order->toArray();
-        $buyer_order_arr['buyer']               = $buyer_order->buyer->toArray();
+        $buyer_order_arr['buyer']               = $buyer_order->buyer->allToArray();
         $buyer_order_arr['shipping_address']    = $buyer_order->shipping_address->toArray();
         $buyer_order_arr['buyer_payment']       = $buyer_order->buyer_payment->toArray();
         foreach ($buyer_order->products() as $product)
@@ -188,9 +186,9 @@ class DeliverController extends Controller
         // send an email notification to the buyer
         Mail::queue('emails.buyerOrder.confirmDelivery', [
             'buyer_order'   => $buyer_order_arr
-        ], function($message) use ($buyer_order)
+        ], function($message) use ($buyer_order_arr)
         {
-            $message->to($buyer_order->buyer->email)->subject('Your order #'.$buyer_order->id.' has been delivered!');
+            $message->to($buyer_order_arr['buyer']['email'])->subject('Your order #'.$buyer_order_arr['id'].' has been delivered!');
         });
 
         return redirect()->back();

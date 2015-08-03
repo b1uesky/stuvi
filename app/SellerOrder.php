@@ -237,7 +237,7 @@ class SellerOrder extends Model
         }
         elseif ($this->isScheduled())
         {
-            $status = 'Waiting For Picking Up';
+            $status = 'Waiting For Pick Up';
             $detail = 'Your order is waiting for a Stuvi courier to pick up.';
         }
         else
