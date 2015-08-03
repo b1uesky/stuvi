@@ -207,9 +207,6 @@ class ProductController extends Controller
            'description'          => Input::get('description'),
        ]);
 
-        // delete all product images
-        $product->deleteImages();
-
         // if AJAX request, save images
         if ($request->ajax())
         {
@@ -240,6 +237,9 @@ class ProductController extends Controller
         }
         else
         {
+            // delete all product images
+//            $product->deleteImages();
+
             // if the request is not AJAX (Dropzone does not contain any image)
             // we do not need to save any image, just redirect to the product page
             return redirect('/textbook/buy/product/' . $product->id);

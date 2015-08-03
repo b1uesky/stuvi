@@ -60,12 +60,11 @@ $(document).ready(function () {
 
                             // Make sure that there is no progress bar, etc...
                             myDropzone.emit("complete", mockFile);
-
-                            // If you use the maxFiles option, make sure you adjust it to the
-                            // correct amount:
-                            var existingFileCount = i + 1; // The number of files already uploaded
-                            myDropzone.options.maxFiles = myDropzone.options.maxFiles - existingFileCount;
                         }
+
+                        // correct maxFiles
+                        myDropzone.options.maxFiles = myDropzone.options.maxFiles - images.length;
+
                     } else {
                         console.log(response);
                     }
@@ -105,35 +104,39 @@ $(document).ready(function () {
                 $('#dropzone-img-preview').removeClass('dz-unclickable');
                 $('#dropzone-img-preview').addClass('dz-clickable');
 
+                // if we remove a mock file, we need to increment maxFiles by 1
+                if (file.name == 'Filename')
+                {
+                    myDropzone.options.maxFiles = myDropzone.options.maxFiles + 1;
 
-
-                // delete the file from the server
-                $.ajax({
-                    type: 'POST',
-                    url: '/textbook/sell/product/deleteImage',
-                    data: {
-                        _token: $('[name="csrf_token"]').attr('content'),
-                        productImageID: file.productImageID
-                    },
-                    dataType: 'json',
-                    success: function (response, status) {
-                        if (response.success) {
-                            console.log('Deleted successfully.');
-                        } else {
-                            console.log(response);
+                    // delete the file from the server
+                    $.ajax({
+                        type: 'POST',
+                        url: '/textbook/sell/product/deleteImage',
+                        data: {
+                            _token: $('[name="csrf_token"]').attr('content'),
+                            productImageID: file.productImageID
+                        },
+                        dataType: 'json',
+                        success: function (response, status) {
+                            if (response.success) {
+                                console.log('Deleted successfully.');
+                            } else {
+                                console.log(response);
+                            }
+                        },
+                        error: function (xhr, status, errorThrown) {
+                            console.log(status);
+                            console.log(errorThrown);
                         }
-                    },
-                    error: function (xhr, status, errorThrown) {
-                        console.log(status);
-                        console.log(errorThrown);
-                    }
-                });
+                    });
+                }
             });
 
             // When all files in the list are removed and the dropzone is reset to initial state.
             this.on("reset", function () {
                 if (countFiles == 0) {
-                    $('.dz-message').hide();
+                    $('.dz-message').show();
                 }
             });
 
