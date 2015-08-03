@@ -28,15 +28,15 @@
                     your textbooks. Simply search for your book, describe its condition, and start making money.
         </div>
         </div>
-        <div class="row">
-            <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 team">
-                <h2>Our Team</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit
-                    tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.
-                </p>
-            </div>
-        </div>
+        {{--<div class="row">--}}
+        {{--<div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 team">--}}
+        {{--<h2>Our Team</h2>--}}
+        {{--<p>--}}
+        {{--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit--}}
+        {{--tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.--}}
+        {{--</p>--}}
+        {{--</div>--}}
+        {{--</div>--}}
         <div class="container team-container">
             <div class="row team-grid">
                 <div class="col-sm-6 col-md-4">
