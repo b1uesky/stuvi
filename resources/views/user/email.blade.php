@@ -53,7 +53,7 @@
                         @endif
                         <h3>Email</h3>
                         {{-- Email List --}}
-                        <p>Note: Stuvi will send all notification email to your primary email.</p>
+                        <p>Note: Stuvi will send all notification emails to your primary email.</p>
                         <table class="table table-hover">
                             @foreach ($emails as $email)
                                 <tr>
@@ -93,12 +93,17 @@
                         {{-- Add an email --}}
                         <form action="{{ url('/user/email/add') }}" method="post">
                             {!! csrf_field() !!}
-                            <label>Add an email</label>
-                            <div class="form-group form-inline">
-                                <input type="email" name="email" class="form-control email-input"
-                                       value="{{ old('email') }}">
-                                <br>
-                                <button type="submit" class="btn primary-btn email-btn">Add</button>
+
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label for="add-email">Add an email</label><br>
+                                    <div class="input-group">
+                                        <input type="email" name="email" class="form-control email-input" id="add-email"
+                                               value="{{ old('email') }}">
+                                    </div>
+                                    <button type="submit" class="btn primary-btn email-btn">Add</button>
+                                </div>
+
                             </div>
                             @if (Session::has('email_validation_error'))
                                 @foreach (Session::get('email_validation_error')->get('email') as $err)
@@ -120,13 +125,5 @@
 
 <!-- inserted at the end of app -->
 @section('javascript')
-
-    <!-- Slick required -->
-    {{--
-        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script type="text/javascript" src="{{asset('/slick/slick.min.js')}}"></script>
-
-    --}}
     <script type="text/javascript" src="{{asset('js/user/email.js')}}"></script>
 @endsection

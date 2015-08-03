@@ -58,15 +58,15 @@
 
                         <!-- Sex -->
                         <div class="form-group" id="sex">
-                            <label class="control-label col-sm-3">Sex</label>
+                            <label class="control-label col-sm-3" for="choose-sex">Sex</label>
 
                             <div class="col-sm-6 align">
-                                <input type="radio" name="sex" value="male"
+                                <input type="radio" name="sex" value="male" id="choose-sex"
                                        @if ($profile->sex == 'male')
                                        checked
                                         @endif
                                         > Male
-                                <input type="radio" name="sex" value="female"
+                                <input type="radio" name="sex" value="female" id="choose-sex"
                                        @if ($profile->sex == 'female')
                                        checked
                                         @endif
@@ -76,7 +76,7 @@
 
                         <!-- birthday -->
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="birthday">Birthday</label>
+                            <label class="control-label col-sm-3" for="datetimepicker1">Birthday</label>
 
                             <div class="col-sm-6">
                                 <input class="form-control" id="datetimepicker1" class="date" type="text"
@@ -101,7 +101,8 @@
 
                             <div class="col-sm-6">
                                 <textarea id="bio" name="bio" class="form-control" rows="4"
-                                          cols="50">{{$profile->bio or "Tell us your darkest, deepest secrets."}}</textarea>
+                                          cols="50">{{$profile->bio or "Tell us your deepest, darkest secrets."}}
+                                </textarea>
                             </div>
                         </div>
                         <!-- education -->
@@ -119,7 +120,7 @@
                             <label class="control-label col-sm-3" for="grad">Expected Graduation</label>
 
                             <div class="col-sm-6 col-sm-offset-0">
-                                <input class="form-control" id="datetimepicker" class="date" type="text"
+                                <input class="form-control" id="datetimepicker" class="date" type="text" id="grad"
                                        name="grad" value={{$profile->graduation_date}}>
                             </div>
                         </div>
@@ -146,7 +147,7 @@
                         </div>
                         <!-- Twitter -->
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="Twitter">Twitter Handle:</label>
+                            <label class="control-label col-sm-3" for="twitter">Twitter Handle:</label>
 
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="twitter" id="twitter"
@@ -163,7 +164,7 @@
                         </div>
                         <!-- website -->
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="website">Website URL</label>
+                            <label class="control-label col-sm-3" for="site">Website URL</label>
 
                             <div class="col-sm-6">
                                 <input type="url" class="form-control" name="site" id="site"
