@@ -13,6 +13,13 @@
 
     @include('textbook/textbook-nav')
 
+     <!-- message -->
+    <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
+        @if (Session::has('message'))
+            <div class="bg-success flash-message" id="message" >{{ Session::get('message') }}</div>
+        @endif
+    </div>
+
     <div class="container">
         <div class="row textbook-row">
             <div class="col-sm-6">

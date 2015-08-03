@@ -76,6 +76,9 @@ class CartController extends Controller
             else
             {
                 $this->cart->add($item);
+                Session::flash('message', 'Product Added Successfully.');
+                Session::flash('alert-class', 'alert-danger');
+
             }
         }
         else
