@@ -44,12 +44,12 @@ class UserController extends Controller
         elseif (Auth::user()->collegeEmail()->verify($code))
         {
             $url     = Input::has('return_to') ? urldecode(Input::get('return_to')) : '/home';
-            $message = 'Your account is successfully activated.';
+            $message = 'Your account has been successfully activated.';
         }
         else
         {
             $url     = '/user/activate';
-            $message = 'Sorry, account activation failed because of invalid activation code.';
+            $message = 'Sorry, account activation failed because of an invalid activation code.';
         }
 
         return redirect($url)->with('message', $message);
@@ -87,7 +87,7 @@ class UserController extends Controller
 
         $user->sendActivationEmail();
 
-        return redirect('user/activate')->with('message', 'Activation email is sent. Please check your email.');
+        return redirect('user/activate')->with('message', 'An activation email has been sent. Please check your email.');
     }
 
 }

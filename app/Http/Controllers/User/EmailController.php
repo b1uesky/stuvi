@@ -56,7 +56,7 @@ class EmailController extends Controller
         $email->sendVerificationEmail();
 
         return redirect('user/email')
-            ->with('email_add_success', $email->email_address.' has been added to your account. Please check your email and confirm the new email address.');
+            ->with('email_add_success', $email->email_address.' has been added to your account. Please check your email and confirm your new email address.');
     }
 
     /**
@@ -152,7 +152,7 @@ class EmailController extends Controller
         if (!($email && $email->isBelongTo(Auth::id())))
         {
             $msg_title   = 'email_verify_error';
-            $msg_content = 'Sorry, the requested email is not found.';
+            $msg_content = 'Sorry, the requested email cannot be found.';
         }
         elseif ($email->verify($code))
         {

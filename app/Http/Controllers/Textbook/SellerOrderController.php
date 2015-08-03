@@ -87,12 +87,12 @@ class SellerOrderController extends Controller
                 }
 
                 return redirect('order/seller/' . $id)
-                    ->with('message', 'Your cancel request is submitted. We will process your request in 2 days.');
+                    ->with('message', 'Your cancel request has been submitted. We will process your request in 2 days.');
             }
             else
             {
                 return redirect('order/seller/' . $id)
-                    ->with('message', 'Sorry, this order is not cancellable.');
+                    ->with('message', 'Sorry, this order cannot be cancelled.');
             }
         }
 
