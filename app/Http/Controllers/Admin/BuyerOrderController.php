@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\BuyerOrder;
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
@@ -46,7 +43,7 @@ class BuyerOrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $id`
      * @return Response
      */
     public function show($id)
@@ -55,10 +52,15 @@ class BuyerOrderController extends Controller
             ->with('buyer_order', BuyerOrder::find($id));
     }
 
+    /**
+     * Buyer order refund.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function refund()
     {
         $buyer_order_id = Input::get('buyer_order_id');
-        $refund_amount  = Input::get('refund_amount') * 100; // convert it to cents
+        $refund_amount  = intval(Input::get('refund_amount') * 100);    // convert to cent.
 
         $buyer_order = BuyerOrder::find($buyer_order_id);
         if ($buyer_order && $buyer_order->isRefundable() && $refund_amount <= $buyer_order->refundableAmount())
