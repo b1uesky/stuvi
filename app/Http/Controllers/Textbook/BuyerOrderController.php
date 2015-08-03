@@ -164,8 +164,7 @@ class BuyerOrderController extends Controller
         try
         {
             $charge = \Stripe\Charge::create([
-                                                 "amount"      => $this->cart->totalPrice() * 100,
-                                                 // amount in cents
+                                                 "amount"      => $this->cart->totalPrice(),
                                                  "currency"    => "usd",
                                                  "source"      => $token,
                                                  "name"        => Input::get('name'),

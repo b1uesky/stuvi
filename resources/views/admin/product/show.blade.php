@@ -27,7 +27,7 @@
         </tr>
         <tr>
             <th>Price</th>
-            <td>{{ $product->price }}</td>
+            <td>{{ $product->price/100 }}</td>
         </tr>
         <tr>
             <th>Book ID</th>

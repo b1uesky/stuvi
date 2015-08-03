@@ -65,7 +65,7 @@
                                 <h5><small>{{ $product->book->author}}</small></h5>
 
                                 <p>ISBN: {{ $product->book->isbn10 }}</p>
-                                <h6 class="book-price">${{ $product->price }}</h6>
+                                <h6 class="book-price">${{ $product->price/100 }}</h6>
                             </div>
                         </div>
                     @empty
