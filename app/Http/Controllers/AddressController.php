@@ -8,6 +8,7 @@ use Auth;
 use Config;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Input;
 use Mail;
 use Session;
@@ -48,15 +49,15 @@ class AddressController extends Controller
 
         // store the buyer shipping address
         $address = Address::create([
-            'user_id'       => Auth::id(),
-            'is_default'    => true,
-            'addressee'     => Input::get('addressee'),
+            'user_id' => Auth::id(),
+            'is_default' => true,
+            'addressee' => Input::get('addressee'),
             'address_line1' => Input::get('address_line1'),
             'address_line2' => Input::get('address_line2'),
-            'city'          => Input::get('city'),
-            'state_a2'      => Input::get('state_a2'),
-            'zip'           => Input::get('zip'),
-            'phone_number'  => Input::get('phone_number')
+            'city' => Input::get('city'),
+            'state_a2' => Input::get('state_a2'),
+            'zip' => Input::get('zip'),
+            'phone_number' => Input::get('phone_number')
         ]);
 
 
@@ -68,13 +69,25 @@ class AddressController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  Request $request
      *
      * @return Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $address_id = Input::get('address_id');
+        $address = Address::find($address_id);
+        if ($address->isBelongTo(Auth::id())){
+            return Response::json([
+                'success' => true,
+                'address' => $address->toArray()
+            ]);
+        }else{
+            return Response::json([
+                'success' => false,
+                'address'   => 'Address Not Found'
+            ]);
+        }
     }
 
     /**
@@ -102,25 +115,31 @@ class AddressController extends Controller
 
         $address_id = Input::get('address_id');
         $address = Address::find($address_id);
-        if ($address->isBelongTo(Auth::id()))
-        {
+        if ($address->isBelongTo(Auth::id())) {
             $address->disable();
             $address = Address::create([
-                'user_id'       => Auth::id(),
-                'is_default'    => true,
-                'addressee'     => Input::get('addressee'),
+                'user_id' => Auth::id(),
+                'is_default' => true,
+                'addressee' => Input::get('addressee'),
                 'address_line1' => Input::get('address_line1'),
                 'address_line2' => Input::get('address_line2'),
-                'city'          => Input::get('city'),
-                'state_a2'      => Input::get('state_a2'),
-                'zip'           => Input::get('zip'),
-                'phone_number'  => Input::get('phone_number')
+                'city' => Input::get('city'),
+                'state_a2' => Input::get('state_a2'),
+                'zip' => Input::get('zip'),
+                'phone_number' => Input::get('phone_number')
             ]);
 
 
             $address->setDefault();
 
-            return redirect('order/create');
+            if ($request -> ajax()) {
+                return Response::json([
+                    'success' => true,
+                    'address' => $address->toArray()
+                ]);
+            } else {
+                return redirect('order/create');
+            }
         }
     }
 
@@ -133,14 +152,13 @@ class AddressController extends Controller
     {
         $address_id = Input::get('address_id');
         $address_to_be_deleted = Address::find($address_id);
-        if ($address_to_be_deleted->isBelongTo(Auth::id()))
-        {
+        if ($address_to_be_deleted->isBelongTo(Auth::id())) {
             $address_to_be_deleted->update([
                 'is_default' => false
             ]);
 
             return response()->json([
-                'is_deleted'            => $address_to_be_deleted->disable(),
+                'is_deleted' => $address_to_be_deleted->disable(),
                 'num_of_user_addresses' => Auth::user()->addresses->count()
             ]);
         }
@@ -151,7 +169,7 @@ class AddressController extends Controller
     public function ajaxSelect()
     {
         $selected_address_id = Input::get('selected_address_id');
-        $if_set_as_default = Address::find($selected_address_id) -> setDefault();
-        return response() -> json(['set_as_default' => $if_set_as_default]);
+        $if_set_as_default = Address::find($selected_address_id)->setDefault();
+        return response()->json(['set_as_default' => $if_set_as_default]);
     }
 }

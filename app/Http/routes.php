@@ -31,14 +31,38 @@ Route::get  ('/coming',     'HomeController@coming');
 
 /*
 |--------------------------------------------------------------------------
+| User Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware'=>'auth', 'prefix'=>'user'], function()
+{
+    Route::get('/profile', 'UserController@profile');
+    Route::get('/profile-edit', 'UserController@profileEdit');
+    Route::get('/account', 'UserController@account');
+    Route::post('/account/edit', 'UserController@edit');
+    Route::get('/bookshelf', 'UserController@bookshelf');
+    Route::get('/activate', 'UserController@waitForActivation');
+    Route::get('/activate/resend', 'UserController@resendActivationEmail');
+    Route::get('/activate/{code}', 'UserController@activateAccount');
+    Route::post('/updateDefaultAddress', 'UserController@updateDefaultAddress');
+});
+
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
+
+/*
+|--------------------------------------------------------------------------
 | Address Routes
 |--------------------------------------------------------------------------
 */
 Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
-    Route::post ('/store',  'AddressController@store');
-    Route::post ('/update', 'AddressController@update');
-    Route::post ('/delete', 'AddressController@ajaxDelete');
-    Route::post ('/select', 'AddressController@ajaxSelect');
+    Route::post ('/store','AddressController@store');
+    Route::post ('/update','AddressController@update');
+    Route::post ('/delete','AddressController@ajaxDelete');
+    Route::post ('/select','AddressController@ajaxSelect');
+    Route::get  ('/show',  'AddressController@show');
 });
 
 
@@ -135,6 +159,7 @@ Route::group(['namespace'=>'User', 'middleware'=>'auth', 'prefix'=>'user'], func
     Route::get ('/activate',        'UserController@waitForActivation');
     Route::get ('/activate/resend', 'UserController@resendActivationEmail');
     Route::get ('/activate/{code}', 'UserController@activateAccount');
+    Route::post('/updateDefaultAddress', 'UserController@updateDefaultAddress');
 
     Route::group(['prefix'=>'email'], function()
     {
