@@ -244,7 +244,7 @@
                         <div class="dz-message">
                             Drop images here or click to upload.
                             <br>
-                            <small>(A front cover image is required. You can upload three images in maximum.)</small>
+                            <small>(A front cover image is required. You can upload a maximum of three images.)</small>
                         </div>
                     </div>
                 </div>
