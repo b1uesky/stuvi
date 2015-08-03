@@ -83,7 +83,7 @@ class CartController extends Controller
         }
         else
         {
-            Session::flash('message', 'Sorry, cannot find the product.');
+            Session::flash('message', 'Sorry, we cannot find the product.');
             Session::flash('alert-class', 'alert-danger');
         }
 
