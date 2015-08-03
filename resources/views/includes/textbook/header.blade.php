@@ -82,7 +82,9 @@
         <!-- End navbar container -->
     </nav>
     <!-- login modal -->
-    @include('auth.login-signup-modal')
+    @if (Auth::guest())
+        @include('auth.login-signup-modal')
+    @endif
 
     @if(Auth::check())
         <!-- Empty Cart Modal -->
