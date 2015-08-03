@@ -69,8 +69,6 @@ Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
         Route::post ('/search',                 'TextbookController@sellSearch');
         Route::get  ('/create',                 'TextbookController@create');
         Route::get  ('/product/{book}/create',  'ProductController@create');
-        Route::get  ('/product/{id}/edit',     'ProductController@edit');
-        Route::post ('/product/{id}/update',   'ProductController@update');
     });
 });
 
@@ -81,6 +79,9 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
     Route::group(['prefix'=>'sell'], function() {
         Route::post ('/store',          'TextbookController@store');
         Route::post ('/product/store',  'ProductController@store');
+        Route::get  ('/product/{id}/edit',      'ProductController@edit');
+        Route::get  ('/product/getImages',      'ProductController@getImages');
+        Route::post ('/product/update',         'ProductController@update');
     });
 
 });

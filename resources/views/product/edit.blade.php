@@ -5,15 +5,15 @@
 @section('title', 'Edit Product Info')
 
 @section('css')
-    <link href="{{ asset('/css/product_create.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('libs/dropzone/dist/min/dropzone.min.css') }}">
+    <link href="{{ asset('/css/product_create.css') }}" rel="stylesheet">
 @endsection
 
-@section('content')
-    <!-- message -->
+    @section('content')
+            <!-- message -->
     <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
-            <div class="flash-message" id="message" >{{ Session::get('message') }}</div>
+            <div class="flash-message" id="message">{{ Session::get('message') }}</div>
         @endif
     </div>
 
@@ -33,7 +33,8 @@
                 <h2>{{ $product->book->title }}</h2>
 
                 <div class="img-container">
-                    <img class="img-large" src="{{ $product->book->imageSet->large_image or config('book.default_image_path.large') }}"/>
+                    <img class="img-large"
+                         src="{{ $product->book->imageSet->large_image or config('book.default_image_path.large') }}"/>
                 </div>
 
                 <div class="authors-container">
@@ -50,19 +51,22 @@
                 </div>
 
                 <p>ISBN-10: {{ $product->book->isbn10 }}</p>
+
                 <p>ISBN-13: {{ $product->book->isbn13 }}</p>
+
                 <p>Number of Pages: {{ $product->book->num_pages }}</p>
             </div>
         </div>
 
-            {{-- Show book conditions --}}
-            <div class="row col-sm-6 col-sm-offset-1">
+        {{-- Show book conditions --}}
+        <div class="row col-sm-6 col-sm-offset-1">
             <h2>Book Conditions</h2>
 
-                {{-- Temporary action url and method, remove them after implementing AJAX --}}
-                <form id="form-product" class="dropzone"
-                      action="{{ url('textbook/sell/product/'.$product->id.'/update') }}" method="post">
+            {{-- Temporary action url and method, remove them after implementing AJAX --}}
+            <form id="form-product" class="dropzone" action="{{ url('textbook/sell/product/update') }}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="product_id" value="{{ $product->id }}"/>
+
                 {{-- General Condition --}}
                 <div class="form-group">
                     <label>{{ Config::get('product.conditions.general_condition.title') }}</label>
@@ -217,7 +221,7 @@
 
                 {{-- list price --}}
                 {{--@if($book->list_price)--}}
-                    {{--<div>List price: ${{ $book->list_price }}</div>--}}
+                {{--<div>List price: ${{ $book->list_price }}</div>--}}
                 {{--@endif--}}
 
                 {{-- your price --}}
@@ -234,6 +238,7 @@
                 {{-- Upload Images using Dropzone --}}
                 <div class="form-group">
                     <label>Upload Textbook Image</label>
+
                     <div id="dropzone-img-preview" class="dropzone-previews dz-clickable">
                         <div class="dz-message">
                             Drop images here or click to upload.
@@ -243,7 +248,7 @@
                     </div>
                 </div>
 
-                    <button type="submit" class="btn primary-btn sell-btn">Update</button>
+                <button type="submit" class="btn primary-btn sell-btn">Update</button>
             </form>
         </div>
     </div>
@@ -251,13 +256,5 @@
 
 @section('javascript')
     <script src="{{ asset('libs/dropzone/dist/min/dropzone.min.js') }}"></script>
-
-    @if(Auth::check())
-        {{-- FormValidation --}}
-        {{--<script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>--}}
-        {{--<script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>--}}
-        {{--<script src="{{ asset('js/validator/product-create.js') }}"></script>--}}
-
-        {{--<script src="{{ asset('js/product/create.js') }}"></script>--}}
-    @endif
+    <script src="{{ asset('js/product/edit.js') }}"></script>
 @endsection

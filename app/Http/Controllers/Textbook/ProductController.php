@@ -125,20 +125,30 @@ class ProductController extends Controller
             ->with('product', $product);
     }
 
+    public function getImages()
+    {
+        $product = Product::find(Input::get('product_id'));
+        $product_images = $product->images;
+
+        return Response::json([
+            'success'   => true,
+            'images'    => $product_images,
+
+        ]);
+    }
+
     /**
      * Update product info.
      *
-     * @param $id
-     *
      * @return \Illuminate\Http\RedirectResponse|Response
      */
-    public function update($id)
+    public function update()
     {
-        $product = Product::find($id);
+        $product = Product::find(Input::get('product_id'));
 
         if (!($product || $product->isBelongTo(Auth::id())))
         {
-            Response::json([
+            return Response::json([
                                'success'  => false,
                                'redirect' => back()->getTargetUrl(),
                                'message'  => 'Product is not found.',
@@ -146,7 +156,7 @@ class ProductController extends Controller
         }
         elseif ($product->sold)
         {
-            Response::json([
+            return Response::json([
                                'success'  => false,
                                'redirect' => back()->getTargetUrl(),
                                'message'  => 'This product is sold',
