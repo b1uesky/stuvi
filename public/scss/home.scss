@@ -50,10 +50,11 @@
 }
 
 #nav-right li a {
-  color: white;
+  //color: white;
   &:hover, &:focus {
     background-color: $transparent;
     outline: 0;
+    color: white;
   }
 }
 
