@@ -36,7 +36,7 @@ class CartController extends Controller
         // check the Cart
         if (!$this->cart->isValid())
         {
-            Session::flash('message', 'one or more items in your cart are sold. Please update your cart before proceeding to checkout.');
+            Session::flash('message', 'One or more items in your cart has sold. Please update your cart before proceeding to checkout.');
             Session::flash('alert-class', 'alert-danger');
         }
 
@@ -100,11 +100,11 @@ class CartController extends Controller
         if ($this->cart->hasProduct($product_id))
         {
             $this->cart->remove($product_id);
-            $message = 'The item is removed successfully';
+            $message = 'The item has been removed successfully';
         }
         else
         {
-            $message = 'The item is not in cart';
+            $message = 'The item is not in the cart';
         }
 
         return redirect('/cart')
