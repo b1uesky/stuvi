@@ -62,8 +62,7 @@
         <div class="row col-sm-6 col-sm-offset-1">
             <h2>Book Conditions</h2>
 
-            {{-- Temporary action url and method, remove them after implementing AJAX --}}
-            <form id="form-product" class="dropzone" action="{{ url('textbook/sell/product/update') }}" method="post">
+            <form id="form-product" class="dropzone" action="/textbook/sell/product/update" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="product_id" value="{{ $product->id }}"/>
 

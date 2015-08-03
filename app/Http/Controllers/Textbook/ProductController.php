@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Textbook;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Product;
 use App\ProductCondition;
@@ -40,9 +41,9 @@ class ProductController extends Controller
         if ($v->fails())
         {
             return Response::json([
-                                      'success' => false,
-                                      'fields'  => $v->errors(),
-                                  ]);
+                'success' => false,
+                'fields' => $v->errors(),
+            ]);
         }
 
         $product = new Product();
@@ -82,9 +83,9 @@ class ProductController extends Controller
         }
 
         return Response::json([
-                                  'success'  => true,
-                                  'redirect' => '/textbook/buy/product/' . $product->id,
-                              ]);
+            'success' => true,
+            'redirect' => '/textbook/buy/product/' . $product->id,
+        ]);
     }
 
     /**
@@ -125,6 +126,11 @@ class ProductController extends Controller
             ->with('product', $product);
     }
 
+    /**
+     * AJAX: get product images.
+     *
+     * @return mixed
+     */
     public function getImages()
     {
         $product = Product::find(Input::get('product_id'));
@@ -132,64 +138,111 @@ class ProductController extends Controller
 
         return Response::json([
             'success'   => true,
-            'images'    => $product_images,
+            'images'    => $product_images
+        ]);
+    }
 
+    /**
+     * AJAX: delete a product image according to the product image ID.
+     *
+     * @return mixed
+     */
+    public function deleteImage()
+    {
+        $product_image = ProductImage::find(Input::get('productImageID'));
+        $product_image->deleteFromAWS();
+        $product_image->delete();
+
+        return Response::json([
+            'success'   => true
         ]);
     }
 
     /**
      * Update product info.
      *
-     * @return \Illuminate\Http\RedirectResponse|Response
+     * If AJAX, we'll update images.
+     *
+     * @param Request $request
+     * @return mixed
      */
-    public function update()
+    public function update(Request $request)
     {
         $product = Product::find(Input::get('product_id'));
+        $images = Input::file('file');
 
-        if (!($product || $product->isBelongTo(Auth::id())))
+        // validation
+        $v = Validator::make(Input::all(), Product::rulesUpdate($images));
+
+        $v->after(function($v) use ($product)
+        {
+            if (!($product || $product->isBelongTo(Auth::id())))
+            {
+                $v->errors()->add('product', 'The product is not found.');
+            }
+            elseif ($product->sold)
+            {
+                $v->errors()->add('product', 'The product was sold');
+            }
+        });
+
+        if ($v->fails())
         {
             return Response::json([
-                               'success'  => false,
-                               'redirect' => back()->getTargetUrl(),
-                               'message'  => 'Product is not found.',
-                           ]);
-        }
-        elseif ($product->sold)
-        {
-            return Response::json([
-                               'success'  => false,
-                               'redirect' => back()->getTargetUrl(),
-                               'message'  => 'This product is sold',
-                           ]);
+                'success' => false,
+                'fields' => $v->errors(),
+            ]);
         }
 
-        // TODO: image validation
-
-        // update product info
-        $condition            = $product->condition;
-        $general_condition    = Input::has('general_condition') ? intval(Input::get('general_condition')) : $condition->general_condition;
-        $highlights_and_notes = Input::has('highlights_and_notes') ? intval(Input::get('highlights_and_notes')) : $condition->highlights_and_notes;
-        $damaged_pages        = Input::has('damaged_pages') ? intval(Input::get('damaged_pages')) : $condition->damaged_pages;
-        $broken_binding       = Input::has('broken_binding') ? intval(Input::get('broken_binding')) : $condition->broken_binding;
-        $description          = Input::get('description');
-
+        // update
         $product->update([
-                             'price' => Input::get('price'),
-                         ]);
+             'price' => Input::get('price'),
+         ]);
 
-        $condition->update([
-                               'general_condition'    => $general_condition,
-                               'highlights_and_notes' => $highlights_and_notes,
-                               'damaged_pages'        => $damaged_pages,
-                               'broken_binding'       => $broken_binding,
-                               'description'          => $description,
-                           ]);
+        $product->condition->update([
+           'general_condition'    => Input::get('general_condition'),
+           'highlights_and_notes' => Input::get('highlights_and_notes'),
+           'damaged_pages'        => Input::get('damaged_pages'),
+           'broken_binding'       => Input::get('broken_binding'),
+           'description'          => Input::get('description'),
+       ]);
 
-        // TODO: update product images.
+        // delete all product images
+        $product->deleteImages();
 
-        Response::json([
-                           'success'  => true,
-                           'redirect' => '/textbook/buy/product/' . $product->id,
-                       ]);
+        // if AJAX request, save images
+        if ($request->ajax())
+        {
+            foreach ($images as $image)
+            {
+                // create product image instance
+                $product_image = new ProductImage();
+                $product_image->product_id = $product->id;
+                $product_image->save();
+
+                // save product image paths with different sizes
+                $product_image->small_image = $product_image->generateFilename('small', $image);
+                $product_image->medium_image = $product_image->generateFilename('medium', $image);
+                $product_image->large_image = $product_image->generateFilename('large', $image);
+                $product_image->save();
+
+                // resize image
+                $product_image->resize($image);
+
+                // upload image with different sizes to aws s3
+                $product_image->uploadToAWS();
+            }
+
+            return Response::json([
+                'success' => true,
+                'redirect' => '/textbook/buy/product/' . $product->id,
+            ]);
+        }
+        else
+        {
+            // if the request is not AJAX (Dropzone does not contain any image)
+            // we do not need to save any image, just redirect to the product page
+            return redirect('/textbook/buy/product/' . $product->id);
+        }
     }
 }

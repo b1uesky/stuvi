@@ -112,6 +112,19 @@ class Product extends Model
     }
 
     /**
+     * Delete product images from local database and AWS.
+     */
+    public function deleteImages()
+    {
+        foreach ($this->images() as $image)
+        {
+            $image->deleteFromAWS();
+        }
+
+        $this->images()->delete();
+    }
+
+    /**
      * Validation rules.
      *
      * @param $images
@@ -126,6 +139,31 @@ class Product extends Model
             'damaged_pages'        => 'required|integer',
             'broken_binding'       => 'required|boolean',
             'price'                => 'required|numeric',
+        ];
+
+        // validate input images
+        foreach (range(0, count($images) - 1) as $index)
+        {
+            $rules['file' . $index] = 'mimes:jpeg,png|max:3072';
+        }
+
+        return $rules;
+    }
+
+    /**
+     * Validation rules for product edit.
+     *
+     * @param $images
+     * @return array
+     */
+    public static function rulesUpdate($images)
+    {
+        $rules = [
+            'general_condition'    => 'integer',
+            'highlights_and_notes' => 'integer',
+            'damaged_pages'        => 'integer',
+            'broken_binding'       => 'boolean',
+            'price'                => 'numeric',
         ];
 
         // validate input images

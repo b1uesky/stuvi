@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     Dropzone.options.formProduct = { // The camelized version of the ID of the form element
 
-        url: '/textbook/sell/product/store',
+        url: '/textbook/sell/product/update',
         method: 'post',
 
         autoProcessQueue: false,
@@ -24,8 +24,10 @@ $(document).ready(function () {
         // The setting up of the dropzone
         init: function () {
             var myDropzone = this;
+            var countFiles = 0;
 
-            // get product images that already exists
+            // retrieve product images that already exists on the server
+            // and display them in the preview image container
             $.ajax({
                 type: 'GET',
                 url: '/textbook/sell/product/getImages',
@@ -36,16 +38,18 @@ $(document).ready(function () {
                 success: function (response, status) {
 
                     if (response.success) {
-                        //console.log(response.images);
                         var images = response.images;
 
                         for (var i = 0; i < images.length; i++) {
 
                             var bucket = 'https://s3.amazonaws.com/stuvi-product-img/';
 
+                            // https://github.com/enyo/dropzone/wiki/FAQ#how-to-show-files-already-stored-on-server
+                            // Create the mock file
                             var mockFile = {
                                 name: 'Filename',
-                                size: 12345
+                                size: 12345,
+                                productImageID: images[i].id
                             }
 
                             // Call the default addedfile event handler
@@ -63,7 +67,7 @@ $(document).ready(function () {
                             myDropzone.options.maxFiles = myDropzone.options.maxFiles - existingFileCount;
                         }
                     } else {
-
+                        console.log(response);
                     }
                 },
                 error: function (xhr, status, errorThrown) {
@@ -74,24 +78,54 @@ $(document).ready(function () {
 
             // First change the button to actually tell Dropzone to process the queue.
             this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
-                // Make sure that the form isn't actually being sent.
-                e.preventDefault();
-                e.stopPropagation();
-                myDropzone.processQueue();
+                if (countFiles > 0) {
+                    // Make sure that the form isn't actually being sent.
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    myDropzone.processQueue();
+                } else {
+                    $('#form-product').submit();
+                }
             });
 
             // When a file is added to the list
             this.on("addedfile", function () {
                 $('.dz-message').hide();
+                countFiles = countFiles + 1;
             });
 
             // When a file is removed from the list
-            this.on("removedfile", function () {
+            this.on("removedfile", function (file) {
                 // enable file upload
                 this.setupEventListeners();
 
                 $('#dropzone-img-preview').removeClass('dz-unclickable');
                 $('#dropzone-img-preview').addClass('dz-clickable');
+
+                countFiles = countFiles - 1;
+
+                // delete the file from the server
+                $.ajax({
+                    type: 'POST',
+                    url: '/textbook/sell/product/deleteImage',
+                    data: {
+                        _token: $('[name="csrf_token"]').attr('content'),
+                        productImageID: file.productImageID
+                    },
+                    dataType: 'json',
+                    success: function (response, status) {
+                        if (response.success) {
+                            console.log('Deleted successfully.');
+                        } else {
+                            console.log(response);
+                        }
+                    },
+                    error: function (xhr, status, errorThrown) {
+                        console.log(status);
+                        console.log(errorThrown);
+                    }
+                });
             });
 
             // When all files in the list are removed and the dropzone is reset to initial state.
@@ -123,6 +157,7 @@ $(document).ready(function () {
                 if (response.success == true) {
                     window.location.replace(response.redirect);
                 } else {
+                    console.log(response);
                     // TODO: error message display
                     $('.alert.alert-danger').remove();
 
@@ -136,8 +171,6 @@ $(document).ready(function () {
 
                     $(error).insertBefore('#form-product');
                 }
-
-
             });
             this.on("errormultiple", function (files, response) {
                 // Gets triggered when there was an error sending the files.
