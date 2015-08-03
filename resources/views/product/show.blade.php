@@ -51,7 +51,26 @@
                         @endif
                     @endforeach
                 @endif
-                <h2><a href="{{ url('textbook/buy/'.$product->book->id) }}">{{ $product->book->title }}</a></h2>
+                <h2 class="product-title"><a
+                            href="{{ url('textbook/buy/'.$product->book->id) }}">{{ $product->book->title }}</a></h2>
+
+                <div class="authors-container">
+                    <span>by </span>
+                    <?php $bookCounter = 0; ?>
+                    @foreach($product->book->authors as $author)
+                        @if($bookCounter == 0)
+                            <span id="authors">{{ $author->full_name }}</span>
+                        @else
+                            <span id="authors">, {{ $author->full_name }}</span>
+                        @endif
+                        <?php $bookCounter++ ?>
+                    @endforeach
+                </div>
+                <p>ISBN10: {{ $product->book->isbn10 }}</p>
+
+                <p>ISBN13: {{ $product->book->isbn13 }}</p>
+
+                <p>Number of Pages: {{ $product->book->num_pages }}</p>
                 <div class="price">
                     Price: <b>${{ $product->price }}</b>
                 </div>

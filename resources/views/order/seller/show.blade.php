@@ -50,7 +50,8 @@
             @elseif ($seller_order->cancelled)
                 <div class="alert alert-danger">This order has been cancelled.</div>
             @else
-                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
+                <p><a class="btn btn-default secondary-btn" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel
+                        Order</a></p>
             @endif
         </div>
 
@@ -93,6 +94,9 @@
                 <h3 class="col-xs-12">Item</h3>
             </div>
             <!-- item info -->
+            <div class="col-sm-2">
+                {{--                <img class="sm-img" src="{{$product->book->imageSet->large_image}}">--}}
+            </div>
             <div class="item col-xs-12 col-sm-6">
                 <?php $product = $seller_order->product; $book = $product->book; ?>
                 <p>Title: <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $book->title }}</a></p>
@@ -136,7 +140,7 @@
                                        name="scheduled_pickup_time">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-orange">
+                        <button type="submit" class="btn secondary-btn">
                             <!-- scheduled already and not cancelled. allows for reschedule -->
                             @if($seller_order->scheduledPickupTime() && !$seller_order->cancelled)
                                 Reschedule
@@ -201,7 +205,7 @@
                     {{-- Add a new address --}}
                     <div class="seller-address">
                         <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
-                           class="btn btn-orange">Add a new address</a></br></br>
+                           class="btn secondary-btn">Add a new address</a></br></br>
                     </div>
                 </div>
 

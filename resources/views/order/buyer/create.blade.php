@@ -88,7 +88,6 @@
                                             <li class="address" id="default_phone">{{ $address -> phone_number }}</li>
                                         </ul>
                                         <button class="btn btn-default primary-btn address-btn show-addresses">
-                                            <i class="fa fa-pencil"></i>
                                             Change Address
                                         </button>
                                     </div>

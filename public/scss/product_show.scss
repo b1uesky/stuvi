@@ -32,6 +32,17 @@
   padding-top: 10px;
 }
 
+.product-title {
+  a {
+    color: $primary-color;
+    text-decoration: none;
+  }
+}
+
+.authors-container {
+  margin-bottom: 10px;
+}
+
 .details-table {
   background-color: white;
   border: 3px solid #DDD;
