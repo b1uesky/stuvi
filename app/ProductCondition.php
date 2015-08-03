@@ -6,12 +6,12 @@ class ProductCondition extends Model
 {
 
     protected $fillable = [
-        'product_id',
         'general_condition',
         'highlights_and_notes',
         'damaged_pages',
         'broken_binding',
         'description',
+        'product_id'
     ];
 
     /**

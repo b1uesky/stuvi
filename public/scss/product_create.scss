@@ -93,6 +93,10 @@ body {
   padding: $spacing-unit / 2;
 }
 
+.dz-image img {
+  width: 100%;
+}
+
 .dz-clickable {
   cursor: pointer;
 }
