@@ -97,13 +97,15 @@ $(document).ready(function () {
 
             // When a file is removed from the list
             this.on("removedfile", function (file) {
+                countFiles = countFiles - 1;
+
                 // enable file upload
                 this.setupEventListeners();
 
                 $('#dropzone-img-preview').removeClass('dz-unclickable');
                 $('#dropzone-img-preview').addClass('dz-clickable');
 
-                countFiles = countFiles - 1;
+
 
                 // delete the file from the server
                 $.ajax({
@@ -130,7 +132,9 @@ $(document).ready(function () {
 
             // When all files in the list are removed and the dropzone is reset to initial state.
             this.on("reset", function () {
-                $('.dz-message').show();
+                if (countFiles == 0) {
+                    $('.dz-message').hide();
+                }
             });
 
             // When the number of files accepted reaches the maxFiles limit.
