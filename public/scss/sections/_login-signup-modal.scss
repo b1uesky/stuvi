@@ -1,4 +1,5 @@
 /* LOGIN SIGNUP MODAL */
+@import "../modules/all";
 
 .login-signup-modal{
 }
@@ -16,4 +17,5 @@
   position: absolute;
   margin-left: 15px;
   margin-top: 7px;
+  color: $secondary-color;
 }
