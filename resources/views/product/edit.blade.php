@@ -225,12 +225,12 @@
 
                 {{-- your price --}}
                 <div class="form-group">
-                    <label for="price-form">Price</label>
+                    <label>Price</label>
 
                     <div class="input-group" id="price-input">
                         <div class="input-group-addon">$</div>
-                        <input type="number" step="0.01" name="price" class="form-control" id="price-form"
-                               value={{ $product->price }} placeholder="Amount">
+                        <input type="number" name="price" class="form-control" value={{ $product->price }} placeholder="Amount">
+                        {{--<input type="number" name="price-cents" class="form-control">--}}
                     </div>
                 </div>
 
@@ -255,5 +255,7 @@
 
 @section('javascript')
     <script src="{{ asset('libs/dropzone/dist/min/dropzone.min.js') }}"></script>
+    <script src="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js') }}"></script>
+    <script src="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/product/edit.js') }}"></script>
 @endsection

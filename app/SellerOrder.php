@@ -218,7 +218,7 @@ class SellerOrder extends Model
         if ($this->isTransferred())
         {
             $status = 'Balance Transferred';
-            $detail = 'The balance of this order has been transferred to your Stripe account.';
+            $detail = 'The money has been transferred to your Stripe account.';
         }
         elseif ($this->isDelivered())
         {

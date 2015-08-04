@@ -1,5 +1,7 @@
 /**
  * Created by Desmond on 8/3/15.
+ *
+ * http://stuvi.app/textbook/sell/product/{id}/edit
  */
 
 $(document).ready(function () {
@@ -48,7 +50,7 @@ $(document).ready(function () {
                             // https://github.com/enyo/dropzone/wiki/FAQ#how-to-show-files-already-stored-on-server
                             // Create the mock file
                             var mockFile = {
-                                name: 'Filename',
+                                name: 'MockFile',
                                 size: 12345,
                                 productImageID: images[i].id
                             }
@@ -105,7 +107,7 @@ $(document).ready(function () {
                 $('.dz-message').hide();
                 countFiles = countFiles + 1;
 
-                if (file.name == 'Filename') {
+                if (file.name == 'MockFile') {
                     countMockFiles = countMockFiles + 1;
                 }
             });
@@ -114,7 +116,7 @@ $(document).ready(function () {
             this.on("removedfile", function (file) {
                 countFiles = countFiles - 1;
 
-                if (file.name == 'Filename') {
+                if (file.name == 'MockFile') {
                     countMockFiles = countMockFiles - 1;
                 }
 
@@ -125,8 +127,7 @@ $(document).ready(function () {
                 $('#dropzone-img-preview').addClass('dz-clickable');
 
                 // if we remove a mock file, we need to increment maxFiles by 1
-                if (file.name == 'Filename')
-                {
+                if (file.name == 'MockFile') {
                     myDropzone.options.maxFiles = myDropzone.options.maxFiles + 1;
 
                     // delete the file from the server
@@ -204,6 +205,63 @@ $(document).ready(function () {
                 // Maybe show form again, and notify user of error
                 console.log(response);
             });
+
+            // form validation
+            $('#form-product').
+                formValidation({
+                    framework: 'bootstrap',
+                    icon: {
+                        valid: null,
+                        invalid: null,
+                        validating: null
+                    },
+                    fields: {
+                        general_condition: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Please select a condition'
+                                }
+                            }
+                        },
+                        highlights_and_notes: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Please select a condition'
+                                }
+                            }
+                        },
+                        damaged_pages: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Please select a condition'
+                                }
+                            }
+                        },
+                        broken_binding: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Please select a condition'
+                                }
+                            }
+                        },
+                        price: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'The price is required'
+                                },
+                                numeric: {
+                                    message: 'The price must be a numeric number'
+                                },
+                                greaterThan: {
+                                    message: 'The is not a valid price',
+                                    inclusive: false,
+                                    value: 0
+                                }
+                            }
+                        }
+                    }
+                });
+
         }
     }
 

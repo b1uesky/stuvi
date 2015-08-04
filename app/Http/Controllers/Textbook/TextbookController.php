@@ -98,9 +98,6 @@ class TextbookController extends Controller
         }
         else
         {
-            // Amazon lookup
-//            $amazon = new AmazonLookUp($isbn, 'ISBN');
-
             $google_book = new GoogleBooks(Config::get('services.google.books.api_key'));
 
             if ($google_book->searchByISBN($isbn))
@@ -299,13 +296,20 @@ class TextbookController extends Controller
             }
 
             // Get current page form url e.g. &page=1
-            $currentPage = LengthAwarePaginator::resolveCurrentPage();
+            if (Input::has('page'))
+            {
+                $currentPage = LengthAwarePaginator::resolveCurrentPage() - 1;
+            }
+            else
+            {
+                $currentPage = 0;
+            }
 
             // Define how many items we want to be visible in each page
             $perPage = Config::get('pagination.limit.textbook');
 
             // Slice the collection to get the items to display in current page
-            $currentPageSearchResults = $books->slice(($currentPage - 1) * $perPage, $perPage)->all();
+            $currentPageSearchResults = $books->slice(($currentPage) * $perPage, $perPage)->all();
 
             // Create our paginator and pass it to the view
             $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($books), $perPage);

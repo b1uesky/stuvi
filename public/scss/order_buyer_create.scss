@@ -105,7 +105,7 @@ body {
   color: $primary-color;
   width: 48px;
   height: 48px;
-  margin-bottom: 48px;
+  margin-top: 25px;
 }
 
 .close-btn {
@@ -130,18 +130,22 @@ body {
 /**** PAYMENT ****/
 
 .stripe-container {
-  width: 100%;
-  max-width: 350px;
-  margin: 50px auto;
+  //width: 100%;
+  //max-width: 350px;
+  //margin: 50px auto;
 }
 
 .card-wrapper {
-  width: 100%;
-  margin: 30px auto;
+  //width: 100%;
+  //margin: 30px auto;
 }
 
-#form-payment input {
-  text-align: center;
+#form-payment {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  input {
+    text-align: center;
+  }
 }
 
 .payment-errors {

@@ -296,7 +296,7 @@ class BuyerOrder extends Model
         else
         {
             $status = 'Order Processing';
-            $detail = 'Your order is being processed by the Stuvi.';
+            $detail = 'Your order is being processed by Stuvi.';
         }
 
         return ['status' => $status, 'detail' => $detail];
