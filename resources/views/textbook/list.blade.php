@@ -48,7 +48,7 @@
                             <span class="textbook-title"><a
                                         href="{{ url("textbook/buy/".$book->id) }}">{{ $book->title }}</a></span><br>
                             @if($book->authors->count())
-                                <span>Authors:</span>
+                                <span>Author(s):</span>
                                 <?php $i = 0; ?>
                                 @foreach($book->authors as $author)
                                     @if($i == 0)
