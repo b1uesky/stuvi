@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Product;
 use App\SellerOrder;
+use App\BuyerOrder;
+use App\Contact;
 
 use Illuminate\Http\Request;
 
@@ -17,10 +19,6 @@ class AdminController extends Controller {
 	 */
 	public function index()
 	{
-		return view('admin.index', [
-            'user_count'            => User::count(),
-            'product_count'         => Product::count(),
-            'seller_order_count'    => SellerOrder::count()
-        ]);
+		return view('admin.index');
 	}
 }

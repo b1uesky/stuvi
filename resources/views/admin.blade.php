@@ -7,9 +7,13 @@
 
 <body>
 
-@include('includes.admin.header')
+<section class="menu">
+    @include('includes.admin.header')
+</section>
 
-@yield('content')
+<section class="content">
+    @yield('content')
+</section>
 
 @include('includes.admin.footer')
 

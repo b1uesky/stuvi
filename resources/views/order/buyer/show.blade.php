@@ -106,8 +106,13 @@
                             <p><b>${{ $product->price }}</b></p>
                         </div>
                     </div>
-                @endforeach
-            </div>
+
+                    <div class="price col-xs-3 col-xs-offset-1">
+                        <p><b>${{ $product->price/100 }}</b></p>
+                    </div>
+                </div>
+                <hr>
+            @endforeach
         </div>
     </div>
 
