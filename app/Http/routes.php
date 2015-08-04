@@ -195,6 +195,9 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
     // user
     Route::resource('user', 'UserController');
 
+    // book
+    Route::resource('book', 'BookController');
+
     // product
     Route::get('/product/verified', 'ProductController@showVerified');
     Route::get('/product/unverified', 'ProductController@showUnverified');

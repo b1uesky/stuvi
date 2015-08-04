@@ -9,6 +9,11 @@
             </a>
         </li>
         <li>
+            <a href="{{ URL::to('admin/book') }}">
+                Book <span class="badge">{{ \App\Book::count() }}</span>
+            </a>
+        </li>
+        <li>
             <a href="{{ URL::to('admin/product') }}">
                 Product <span class="badge">{{ \App\Product::count() }}</span>
             </a>
