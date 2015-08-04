@@ -33,7 +33,8 @@
                                 <label for="remember-me-box">
                                     <input id="remember-me-box" type="checkbox" value="" checked>Remember me</label>
                             </div>
-                            <button type="submit" class="btn primary-btn btn-block">Login</button>
+                            <button type="submit" class="btn primary-btn submit-btn">Login</button>
+                            <i class="fa fa-spinner fa-pulse fa-2x loading"></i>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -95,7 +96,8 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <button type="submit" class="btn primary-btn btn-block">Sign Up</button>
+                            <button type="submit" class="btn primary-btn submit-btn">Sign Up</button>
+                            <i class="fa fa-spinner fa-pulse fa-2x loading"></i>
                         </form>
                     </div>
                     <div class="modal-footer">
