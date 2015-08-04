@@ -29,6 +29,9 @@ $(document).ready(function () {
 
             // First change the button to actually tell Dropzone to process the queue.
             this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
+                // disable submit button
+                $('button[type=submit]').attr('disabled', true);
+
                 // Make sure that the form isn't actually being sent.
                 e.preventDefault();
                 e.stopPropagation();

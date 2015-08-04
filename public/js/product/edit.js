@@ -50,9 +50,10 @@ $(document).ready(function () {
                             // https://github.com/enyo/dropzone/wiki/FAQ#how-to-show-files-already-stored-on-server
                             // Create the mock file
                             var mockFile = {
-                                name: 'MockFile',
-                                size: 12345,
-                                productImageID: images[i].id
+                                //name: 'MockFile',
+                                //size: 12345,
+                                productImageID: images[i].id,
+                                isMockFile: true
                             }
 
                             // Call the default addedfile event handler
@@ -80,12 +81,15 @@ $(document).ready(function () {
 
             // First change the button to actually tell Dropzone to process the queue.
             this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
-                // Make sure that the form isn't actually being sent.
-                e.preventDefault();
-                e.stopPropagation();
+                // disable submit button
+                $('button[type=submit]').attr('disabled', true);
 
                 // if there is a new image added
                 if (countFiles - countMockFiles > 0) {
+                    // Make sure that the form isn't actually being sent.
+                    e.preventDefault();
+                    e.stopPropagation();
+
                     myDropzone.processQueue();
                 } else if (countFiles > 0) {
                     $('#form-product').submit();
@@ -107,7 +111,7 @@ $(document).ready(function () {
                 $('.dz-message').hide();
                 countFiles = countFiles + 1;
 
-                if (file.name == 'MockFile') {
+                if (file.isMockFile) {
                     countMockFiles = countMockFiles + 1;
                 }
             });
@@ -116,7 +120,7 @@ $(document).ready(function () {
             this.on("removedfile", function (file) {
                 countFiles = countFiles - 1;
 
-                if (file.name == 'MockFile') {
+                if (file.isMockFile) {
                     countMockFiles = countMockFiles - 1;
                 }
 
@@ -127,7 +131,7 @@ $(document).ready(function () {
                 $('#dropzone-img-preview').addClass('dz-clickable');
 
                 // if we remove a mock file, we need to increment maxFiles by 1
-                if (file.name == 'MockFile') {
+                if (file.isMockFile) {
                     myDropzone.options.maxFiles = myDropzone.options.maxFiles + 1;
 
                     // delete the file from the server
@@ -216,34 +220,6 @@ $(document).ready(function () {
                         validating: null
                     },
                     fields: {
-                        general_condition: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Please select a condition'
-                                }
-                            }
-                        },
-                        highlights_and_notes: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Please select a condition'
-                                }
-                            }
-                        },
-                        damaged_pages: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Please select a condition'
-                                }
-                            }
-                        },
-                        broken_binding: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Please select a condition'
-                                }
-                            }
-                        },
                         price: {
                             validators: {
                                 notEmpty: {

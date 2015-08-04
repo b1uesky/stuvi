@@ -188,10 +188,19 @@ class ProductController extends Controller
 
         if ($v->fails())
         {
-            return Response::json([
-                'success' => false,
-                'fields' => $v->errors(),
-            ]);
+            if ($request->ajax())
+            {
+                return Response::json([
+                    'success' => false,
+                    'fields' => $v->errors(),
+                ]);
+            }
+            else
+            {
+                return redirect()->back()
+                        ->withErrors($v->errors());
+            }
+
         }
 
         // update
