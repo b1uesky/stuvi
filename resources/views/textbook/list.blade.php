@@ -45,8 +45,8 @@
                             </a>
                         </td>
                         <td class="textbook-info-1">
-                            <span class="textbook-title"><a
-                                        href="{{ url("textbook/buy/".$book->id) }}">{{ $book->title }}</a></span><br>
+                            <span class="textbook-title"><a href="{{ url("textbook/buy/".$book->id) }}">{{ $book->title }}</a></span><br>
+
                             @if($book->authors->count())
                                 <span>Authors:</span>
                                 @foreach($book->authors as $author)
@@ -59,6 +59,8 @@
                             <br>
                             <span class="textbook-isbn">ISBN13: {{ $book->isbn13 }}</span>
                             <br>
+                            <br>
+                            <span>From ${{ $book->decimalLowestPrice() }} to ${{ $book->decimalHighestPrice() }}</span>
                         </td>
                         <td class="table-offset"></td>
                         <td class="textbook-info-2">

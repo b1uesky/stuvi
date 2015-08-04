@@ -45,13 +45,18 @@ $(document).ready(function () {
 
                         for (var i = 0; i < images.length; i++) {
 
-                            var bucket = 'https://s3.amazonaws.com/stuvi-product-img/';
+                            // check if it's test image
+                            if (images[i].medium_image.slice(0, 4) == 'http') {
+                                var imageUrl = images[i].medium_image;
+                            } else {
+                                var imageUrl = 'https://s3.amazonaws.com/stuvi-product-img/' + images[i].medium_image;
+                            }
 
                             // https://github.com/enyo/dropzone/wiki/FAQ#how-to-show-files-already-stored-on-server
                             // Create the mock file
                             var mockFile = {
-                                //name: 'MockFile',
-                                //size: 12345,
+                                name: 'Uploaded',
+                                size: 12345,
                                 productImageID: images[i].id,
                                 isMockFile: true
                             }
@@ -60,7 +65,7 @@ $(document).ready(function () {
                             myDropzone.emit("addedfile", mockFile);
 
                             // And optionally show the thumbnail of the file:
-                            myDropzone.emit("thumbnail", mockFile, bucket + images[i].medium_image);
+                            myDropzone.emit("thumbnail", mockFile, imageUrl);
 
                             // Make sure that there is no progress bar, etc...
                             myDropzone.emit("complete", mockFile);
@@ -92,6 +97,7 @@ $(document).ready(function () {
 
                     myDropzone.processQueue();
                 } else if (countFiles > 0) {
+                    // BUG: if only change price field, it won't submit!
                     $('#form-product').submit();
                 } else {
                     myDropzone.disable();

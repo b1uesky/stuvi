@@ -5,6 +5,8 @@ use App\Http\Requests;
 use App\Product;
 use App\ProductCondition;
 use App\ProductImage;
+use App\Helpers\Price;
+
 use Auth;
 use Config;
 use Illuminate\Http\Request;
@@ -46,7 +48,7 @@ class ProductController extends Controller
             ]);
         }
 
-        $int_price = intval(floatval(Input::get('price')) * 100);
+        $int_price = Price::ConvertDecimalToInteger(Input::get('price'));
 
         $product = Product::create([
             'price' => $int_price,
@@ -172,6 +174,7 @@ class ProductController extends Controller
      */
     public function update(Request $request)
     {
+        dd(Input::all());
         $product = Product::find(Input::get('product_id'));
         $images = Input::file('file');
 
@@ -207,12 +210,10 @@ class ProductController extends Controller
 
         }
 
-        $int_price = intval(floatval(Input::get('price')) * 100);
+        $int_price = Price::ConvertDecimalToInteger(Input::get('price'));
 
         // update
-        $product->update([
-             'price' => $int_price,
-         ]);
+        $product->update(['price' => $int_price]);
 
         $product->book->updateLowestAndHighestPrice($int_price);
 

@@ -3,6 +3,8 @@
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
+use App\Helpers\Price;
+
 class Book extends Model
 {
 
@@ -75,6 +77,26 @@ class Book extends Model
             ->get();
 
         return $products;
+    }
+
+    /**
+     * Get lowest price in two decimal places.
+     *
+     * @return string
+     */
+    public function decimalLowestPrice()
+    {
+        return Price::ConvertIntegerToDecimal($this->lowest_price);
+    }
+
+    /**
+     * Get highest price in two decimal places.
+     *
+     * @return string
+     */
+    public function decimalHighestPrice()
+    {
+        return Price::ConvertIntegerToDecimal($this->highest_price);
     }
 
     /**
