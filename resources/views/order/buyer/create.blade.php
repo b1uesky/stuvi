@@ -476,12 +476,12 @@
                             <div class="row">
                                 <div class="form-group col-xs-4">
                                     <input id="stripe-month" class="form-control input-lg" placeholder="MM" type="text"
-                                           data-stripe="exp-month">
+                                           data-stripe="exp-month" maxlength="2">
                                 </div>
 
                                 <div class="form-group col-xs-4">
                                     <input id="stripe-year" class="form-control input-lg" placeholder="YY" type="text"
-                                           data-stripe="exp-year">
+                                           data-stripe="exp-year" maxlength="4">
                                 </div>
 
                                 <div class="form-group col-xs-4">

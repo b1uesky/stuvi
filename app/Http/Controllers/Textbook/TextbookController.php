@@ -304,7 +304,7 @@ class TextbookController extends Controller
             {
                 $currentPage = 0;
             }
-            
+
             // Define how many items we want to be visible in each page
             $perPage = Config::get('pagination.limit.textbook');
 
