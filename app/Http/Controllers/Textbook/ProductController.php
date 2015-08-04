@@ -46,11 +46,15 @@ class ProductController extends Controller
             ]);
         }
 
+        $int_price = intval(floatval(Input::get('price')) * 100);
+
         $product = Product::create([
-            'price' => intval(floatval(Input::get('price')) * 100),
+            'price' => $int_price,
             'book_id' => Input::get('book_id'),
             'seller_id' => Auth::user()->id,
         ]);
+
+        $product->book->updateLowestAndHighestPrice($int_price);
 
         $condition = ProductCondition::create([
             'product_id' => $product->id,
@@ -203,10 +207,14 @@ class ProductController extends Controller
 
         }
 
+        $int_price = intval(floatval(Input::get('price')) * 100);
+
         // update
         $product->update([
-             'price' => intval(floatval(Input::get('price')) * 100),
+             'price' => $int_price,
          ]);
+
+        $product->book->updateLowestAndHighestPrice($int_price);
 
         $product->condition->update([
            'general_condition'    => Input::get('general_condition'),

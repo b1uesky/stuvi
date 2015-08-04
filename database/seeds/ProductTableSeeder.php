@@ -25,11 +25,15 @@ class ProductTableSeeder extends Seeder {
             // create some products
             for ($i = 0; $i < $faker->numberBetween(3, 10); $i++)
             {
+                $int_price = $faker->numberBetween(1000, 5000);
+
                 $product = Product::create([
                     'book_id'   => $book->id,
                     'seller_id' => $faker->numberBetween(1, $num_users),
-                    'price'     => $faker->numberBetween(1000, 5000),
+                    'price'     => $int_price,
                 ]);
+
+                $product->book->updateLowestAndHighestPrice($int_price);
 
                 ProductCondition::create([
                     'product_id'            =>  $product->id,

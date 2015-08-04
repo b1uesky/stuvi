@@ -6,8 +6,8 @@ use DB;
 class Book extends Model
 {
 
-    protected $fillable = ['title', 'edition', 'isbn10', 'isbn13', 'num_pages', 'verified', 'binding', 'language',
-                            'list_price', 'lowest_new_price', 'lowest_used_price'];
+    protected $fillable = ['title', 'edition', 'isbn10', 'isbn13', 'num_pages', 'verified', 'language',
+                            'list_price', 'lowest_price', 'highest_price'];
 
     /**
      * Validation rules
@@ -75,6 +75,44 @@ class Book extends Model
             ->get();
 
         return $products;
+    }
+
+    /**
+     * Update the lowest and the highest price of the book.
+     *
+     * @param integer $price
+     * @return bool
+     */
+    public function updateLowestAndHighestPrice($price)
+    {
+        // if both are not set, set them to the same price
+        if ($this->lowest_price == null && $this->highest_price == null)
+        {
+            $this->update([
+                'lowest_price'  => $price,
+                'highest_price' => $price
+            ]);
+
+            return true;
+        }
+
+        // update lowest price
+        if ($this->lowest_price && $price < $this->lowest_price)
+        {
+            $this->update(['lowest_price' => $price]);
+
+            return true;
+        }
+
+        // update highest price
+        if ($this->highest_price && $price > $this->highest_price)
+        {
+            $this->update(['highest_price' => $price]);
+
+            return true;
+        }
+
+        return false;
     }
 
     /**
