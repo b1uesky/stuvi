@@ -106,6 +106,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
         Route::get  ('/product/getImages',      'ProductController@getImages');
         Route::post ('/product/deleteImage',    'ProductController@deleteImage');
         Route::post ('/product/update',         'ProductController@update');
+        Route::post ('/product/delete',         'ProductController@destroy');
     });
 
 });
