@@ -230,7 +230,7 @@
                     <div class="input-group" id="price-input">
                         <div class="input-group-addon">$</div>
                         <input type="number" step="0.01" name="price" class="form-control" id="price-form"
-                               value={{ $product->price }} placeholder="Amount">
+                               value={{ $product->price/100 }} placeholder="Amount">
                     </div>
                 </div>
 
