@@ -132,7 +132,7 @@
 @endsection
 
 @section('javascript')
-    <script src="{{asset('/js/jquery-ui.min.js')}}"></script>
+    <script src="libs/jquery-ui/jquery-ui.min.js"></script>
     <script src="{{asset('/js/autocompleteBuy.js')}}" type="text/javascript"></script>
     <script src="{{asset('/js/textbook.js')}}" type="text/javascript"></script>
 @endsection
