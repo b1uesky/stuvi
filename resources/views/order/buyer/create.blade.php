@@ -497,7 +497,6 @@
                                 </div>
                             </div>
                         </form>
-                        {{--<div class="card-wrapper col-sm-6"></div>--}}
                     </div>
                 @endif
             </div>
