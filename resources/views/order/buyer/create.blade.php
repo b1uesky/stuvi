@@ -458,9 +458,10 @@
                     </div>
 
                     <div class="stripe-container">
-                        <div class="card-wrapper"></div>
+                        <div class="card-wrapper col-sm-6 col-sm-push-6"></div>
 
-                        <form action="{{ url('/order/store') }}" method="POST" id="form-payment">
+                        <form action="{{ url('/order/store') }}" method="POST" class="col-sm-6 col-sm-pull-6"
+                              id="form-payment">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="selected_address_id" value="{{$default_address_id}}">
                             <input type="hidden" name="stripe_public_key" value="{{ $stripe_public_key }}">
@@ -495,8 +496,8 @@
                                     <input class="btn btn-lg primary-btn btn-block" type="submit" value="Confirm">
                                 </div>
                             </div>
-
                         </form>
+                        {{--<div class="card-wrapper col-sm-6"></div>--}}
                     </div>
                 @endif
             </div>
