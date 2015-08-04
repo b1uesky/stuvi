@@ -6,20 +6,19 @@
 
 @section('css')
     <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
-    <link type="text/css" href="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}"
-          rel="stylesheet">
+    <link type="text/css" href="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     @endsection
 
     @section('content')
-            <!-- new top half -->
+    <!-- top half -->
     <div class="container-fluid" id="container-home-top">
         <div class="" id="navbar-container">
             @include('includes.textbook.header')
         </div>
 
         <div class="" id="head-tag-ghost-container">
-            <h1 id="head1">Welcome to Stuvi</h1>
+            <h1 class="" id="head1">Welcome to Stuvi</h1>
 
             <p class="lead tagline">Because it takes a village to conquer college.</p>
             @if (Auth::guest())
@@ -29,7 +28,7 @@
                 </div>
             @endif
         </div>
-        {{-- Images currently 2000px x 1333px image quality 7/12 on PS --}}
+        {{-- Images currently 2000px x 1333px image quality 7/12 on Photoshop --}}
         <!-- Photos are owned by Nicholas Louie (owner), and are allowed for use on stuvi.com only. Attribution in the alt text
              must be provided. This must include the owner's name and link to the owner's Flickr.
              No one else but the owner may sell, copy, redistribute or edit his images.
@@ -46,7 +45,6 @@
             </div>
         </div>
 
-        <!-- TODO: make this work properly..like a search for the entire stuvi site? idk -->
         <div id="home-search-container">
             <div class="searchbar">
                 <form action="/textbook/buy/search" method="get">
@@ -99,7 +97,6 @@
                     <img class="img-responsive" src="{{asset('/img/art-boston.jpg')}}" width="350px">
                 </div>
             </div>
-            <!-- TODO: Add more content -->
         </div>
         <div class="container-fluid home-textbook-container">
             <h1 id="home-textbook-title">Recommended Books</h1>
@@ -127,39 +124,6 @@
                 </div>
             </div>
         </div>
-        <!-- services-->
-        {{--<div class="container-fluid services">--}}
-        {{--<div class="row">--}}
-        {{--<h1>Our Services</h1>--}}
-        {{--</div>--}}
-        {{--<div class="row service-row">--}}
-        {{--<div class="col-xs-12 col-sm-6 col-lg-3 service">--}}
-        {{--<a href="{{ url('/textbook') }}"><i class="fa fa-book fa-5x"></i></a>--}}
-        {{--<h4>Textbooks</h4>--}}
-
-        {{--<p>Buy and sell textbooks at your campus</p>--}}
-        {{--</div>--}}
-        {{--<div class="col-xs-12 col-sm-6 col-lg-3 service">--}}
-        {{--<a href="{{ url('/coming') }}"><i class="fa fa-home fa-5x"></i></a>--}}
-        {{--<h4>Housing</h4>--}}
-
-        {{--<p>Find off campus housing near your campus</p>--}}
-        {{--</div>--}}
-        {{--<div class="col-xs-12 col-sm-6 col-lg-3 service">--}}
-        {{--<a href="{{ url('/coming') }}"><i class="fa fa-university fa-5x"></i></a>--}}
-        {{--<h4>Clubs</h4>--}}
-
-        {{--<p>Get involved with clubs and organizations</p>--}}
-        {{--</div>--}}
-        {{--<div class="col-xs-12 col-sm-6 col-lg-3 service">--}}
-        {{--<a href="{{ url('/coming') }}"><i class="fa fa-users fa-5x"></i></a>--}}
-        {{--<h4>Groups</h4>--}}
-
-        {{--<p>Connect with students in your classes</p>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div> <!-- end services -->--}}
-
     </div> <!-- end bottom half -->
 
     <!-- login-sign-up modal -->
