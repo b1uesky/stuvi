@@ -10,6 +10,16 @@ use Session;
 class UserController extends Controller
 {
 
+    public function overview()
+    {
+        $user = Auth::user();
+
+        return view('user.overview')
+            ->with('num_books_sold', $user->productsSold()->count())
+            ->with('num_books_bought', count($user->productsBought()))
+            ->with('productsForSale', $user->productsForSale());
+    }
+
     public function profile()
     {
         $user = Auth::user();

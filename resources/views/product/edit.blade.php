@@ -255,5 +255,7 @@
 
 @section('javascript')
     <script src="{{ asset('libs/dropzone/dist/min/dropzone.min.js') }}"></script>
+    <script src="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js') }}"></script>
+    <script src="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/product/edit.js') }}"></script>
 @endsection
