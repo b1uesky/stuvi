@@ -54,12 +54,7 @@
             @elseif ($seller_order->cancelled)
                 <div class="alert alert-danger">This order has been cancelled.</div>
             @else
-<<<<<<< HEAD
-                <p><a class="btn btn-default secondary-btn" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel
-=======
-                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel
->>>>>>> back-end
-                        Order</a></p>
+                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">CancelOrder</a></p>
             @endif
         </div>
 
@@ -230,13 +225,6 @@
                                     <input type="hidden" name="address_id" value="{{ $address->id }}"/>
                                     <input type="submit" name="submit" value="Edit" class="btn btn-default"/>
                                 </form>
-
-<<<<<<< HEAD
-                    {{-- Add a new address --}}
-                    <div class="seller-address">
-                        <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
-                           class="btn secondary-btn">Add a new address</a></br></br>
-=======
                             </div>
 
                         @endforeach
@@ -246,7 +234,6 @@
                             <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
                                class="btn btn-orange">Add a new address</a></br></br>
                         </div>
->>>>>>> back-end
                     </div>
                 </div>
             @else
