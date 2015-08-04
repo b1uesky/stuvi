@@ -1,13 +1,13 @@
 <?php namespace App\Http\Controllers\Textbook;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Product;
 use App\ProductCondition;
 use App\ProductImage;
 use Auth;
 use Config;
+use Illuminate\Http\Request;
 use Input;
 use Response;
 use Session;
@@ -205,7 +205,7 @@ class ProductController extends Controller
 
         // update
         $product->update([
-             'price' => Input::get('price'),
+             'price' => intval(floatval(Input::get('price')) * 100),
          ]);
 
         $product->condition->update([
@@ -250,5 +250,41 @@ class ProductController extends Controller
             // we do not need to save any image, just redirect to the product page
             return redirect('/textbook/buy/product/' . $product->id);
         }
+    }
+
+    /**
+     * Delete a product record.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroy()
+    {
+        if (!Input::has('id'))
+        {
+            return redirect('/user/bookshelf')
+                ->with('message', 'Please enter a valid product id.');
+        }
+
+        $product = Product::find(Input::get('id'));
+
+        // check if it belongs to the current user.
+        if (!($product && $product->isBelongTo(Auth::id())))
+        {
+            return redirect('/user/bookshelf')
+                ->with('message', 'Please enter a valid product id.');
+        }
+
+        // check if it is sold.
+        if ($product->sold)
+        {
+            return redirect('/user/bookshelf')
+                ->with('message', $product->book->title.' cannot be deleted because it is sold.');
+        }
+
+        // delete safely.
+        $product->delete();
+
+        return redirect('/user/bookshelf')
+            ->with('message', $product->book->title.' has been deleted.');
     }
 }
