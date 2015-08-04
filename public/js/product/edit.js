@@ -45,21 +45,27 @@ $(document).ready(function () {
 
                         for (var i = 0; i < images.length; i++) {
 
-                            var bucket = 'https://s3.amazonaws.com/stuvi-product-img/';
+                            // check if it's test image
+                            if (images[i].medium_image.slice(0, 4) == 'http') {
+                                var imageUrl = images[i].medium_image;
+                            } else {
+                                var imageUrl = 'https://s3.amazonaws.com/stuvi-product-img/' + images[i].medium_image;
+                            }
 
                             // https://github.com/enyo/dropzone/wiki/FAQ#how-to-show-files-already-stored-on-server
                             // Create the mock file
                             var mockFile = {
-                                name: 'MockFile',
+                                name: 'Uploaded',
                                 size: 12345,
-                                productImageID: images[i].id
+                                productImageID: images[i].id,
+                                isMockFile: true
                             }
 
                             // Call the default addedfile event handler
                             myDropzone.emit("addedfile", mockFile);
 
                             // And optionally show the thumbnail of the file:
-                            myDropzone.emit("thumbnail", mockFile, bucket + images[i].medium_image);
+                            myDropzone.emit("thumbnail", mockFile, imageUrl);
 
                             // Make sure that there is no progress bar, etc...
                             myDropzone.emit("complete", mockFile);
@@ -78,16 +84,48 @@ $(document).ready(function () {
                 }
             });
 
+            // form validation
+            $('#form-product').
+                formValidation({
+                    framework: 'bootstrap',
+                    icon: {
+                        valid: null,
+                        invalid: null,
+                        validating: null
+                    },
+                    fields: {
+                        price: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'The price is required'
+                                },
+                                numeric: {
+                                    message: 'The price must be a numeric number'
+                                },
+                                greaterThan: {
+                                    message: 'The is not a valid price',
+                                    inclusive: false,
+                                    value: 0
+                                }
+                            }
+                        }
+                    }
+                });
+
             // First change the button to actually tell Dropzone to process the queue.
             this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
-                // Make sure that the form isn't actually being sent.
-                e.preventDefault();
-                e.stopPropagation();
+                // disable submit button
+                $('button[type=submit]').attr('disabled', true);
 
                 // if there is a new image added
                 if (countFiles - countMockFiles > 0) {
+                    // Make sure that the form isn't actually being sent.
+                    e.preventDefault();
+                    e.stopPropagation();
+
                     myDropzone.processQueue();
                 } else if (countFiles > 0) {
+                    // BUG: if only change price field, it won't submit!
                     $('#form-product').submit();
                 } else {
                     myDropzone.disable();
@@ -107,7 +145,7 @@ $(document).ready(function () {
                 $('.dz-message').hide();
                 countFiles = countFiles + 1;
 
-                if (file.name == 'MockFile') {
+                if (file.isMockFile) {
                     countMockFiles = countMockFiles + 1;
                 }
             });
@@ -116,7 +154,7 @@ $(document).ready(function () {
             this.on("removedfile", function (file) {
                 countFiles = countFiles - 1;
 
-                if (file.name == 'MockFile') {
+                if (file.isMockFile) {
                     countMockFiles = countMockFiles - 1;
                 }
 
@@ -127,7 +165,7 @@ $(document).ready(function () {
                 $('#dropzone-img-preview').addClass('dz-clickable');
 
                 // if we remove a mock file, we need to increment maxFiles by 1
-                if (file.name == 'MockFile') {
+                if (file.isMockFile) {
                     myDropzone.options.maxFiles = myDropzone.options.maxFiles + 1;
 
                     // delete the file from the server
@@ -205,62 +243,6 @@ $(document).ready(function () {
                 // Maybe show form again, and notify user of error
                 console.log(response);
             });
-
-            // form validation
-            $('#form-product').
-                formValidation({
-                    framework: 'bootstrap',
-                    icon: {
-                        valid: null,
-                        invalid: null,
-                        validating: null
-                    },
-                    fields: {
-                        general_condition: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Please select a condition'
-                                }
-                            }
-                        },
-                        highlights_and_notes: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Please select a condition'
-                                }
-                            }
-                        },
-                        damaged_pages: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Please select a condition'
-                                }
-                            }
-                        },
-                        broken_binding: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Please select a condition'
-                                }
-                            }
-                        },
-                        price: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'The price is required'
-                                },
-                                numeric: {
-                                    message: 'The price must be a numeric number'
-                                },
-                                greaterThan: {
-                                    message: 'The is not a valid price',
-                                    inclusive: false,
-                                    value: 0
-                                }
-                            }
-                        }
-                    }
-                });
 
         }
     }

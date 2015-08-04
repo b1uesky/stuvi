@@ -228,12 +228,11 @@
 
                 {{-- your price --}}
                 <div class="form-group">
-                    <label for="price-form">Price</label>
+                    <label>Price</label>
 
                     <div class="input-group" id="price-input">
                         <div class="input-group-addon">$</div>
-                        <input type="number" step="0.01" name="price" class="form-control" id="price-form"
-                               placeholder="Amount">
+                        <input type="number" step="0.01" name="price" class="form-control" placeholder="Amount">
                     </div>
                 </div>
 

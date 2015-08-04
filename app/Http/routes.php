@@ -106,6 +106,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
         Route::get  ('/product/getImages',      'ProductController@getImages');
         Route::post ('/product/deleteImage',    'ProductController@deleteImage');
         Route::post ('/product/update',         'ProductController@update');
+        Route::post ('/product/delete',         'ProductController@destroy');
     });
 
 });
@@ -194,6 +195,9 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
 
     // user
     Route::resource('user', 'UserController');
+
+    // book
+    Route::resource('book', 'BookController');
 
     // product
     Route::get('/product/verified', 'ProductController@showVerified');
