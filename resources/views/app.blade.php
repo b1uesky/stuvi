@@ -38,7 +38,10 @@
   <script src="{{asset('js/validator/auth.js')}}"></script>
 @endif
 
-@yield('javascript')
+        <!-- login/signup modal spinner -->
+  <script src="{{asset('js/login-signup.js')}}"></script>
+
+  @yield('javascript')
 </body>
 
 </html>
