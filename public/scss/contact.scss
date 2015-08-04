@@ -2,6 +2,12 @@
 
 @import "modules/all";
 
+#contact-main-container{
+/*  background: url('../img/art-boston.jpg') no-repeat;
+  background-size: cover;*/
+  background-color: $background-color;
+}
+
 .contact-title, .contact-subtitle, .contact-email, .contact-details, .contact-alerts {
   text-align: center;
 }
