@@ -84,6 +84,34 @@ $(document).ready(function () {
                 }
             });
 
+            // form validation
+            $('#form-product').
+                formValidation({
+                    framework: 'bootstrap',
+                    icon: {
+                        valid: null,
+                        invalid: null,
+                        validating: null
+                    },
+                    fields: {
+                        price: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'The price is required'
+                                },
+                                numeric: {
+                                    message: 'The price must be a numeric number'
+                                },
+                                greaterThan: {
+                                    message: 'The is not a valid price',
+                                    inclusive: false,
+                                    value: 0
+                                }
+                            }
+                        }
+                    }
+                });
+
             // First change the button to actually tell Dropzone to process the queue.
             this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
                 // disable submit button
@@ -215,34 +243,6 @@ $(document).ready(function () {
                 // Maybe show form again, and notify user of error
                 console.log(response);
             });
-
-            // form validation
-            $('#form-product').
-                formValidation({
-                    framework: 'bootstrap',
-                    icon: {
-                        valid: null,
-                        invalid: null,
-                        validating: null
-                    },
-                    fields: {
-                        price: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'The price is required'
-                                },
-                                numeric: {
-                                    message: 'The price must be a numeric number'
-                                },
-                                greaterThan: {
-                                    message: 'The is not a valid price',
-                                    inclusive: false,
-                                    value: 0
-                                }
-                            }
-                        }
-                    }
-                });
 
         }
     }

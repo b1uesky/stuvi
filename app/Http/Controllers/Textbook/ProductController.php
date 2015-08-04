@@ -174,7 +174,6 @@ class ProductController extends Controller
      */
     public function update(Request $request)
     {
-        dd(Input::all());
         $product = Product::find(Input::get('product_id'));
         $images = Input::file('file');
 
