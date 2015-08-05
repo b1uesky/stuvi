@@ -180,14 +180,16 @@ class SellerOrderController extends Controller
      */
     public function assignAddress()
     {
-        $address_id = Input::get('address_id');
-        $seller_order_id = Input::get('seller_order_id');
+        if(Request::ajax()){
+            $address_id = Input::get('selected_address_id');
+            $seller_order_id = Input::get('seller_order_id');
 
-        $seller_order = SellerOrder::find($seller_order_id);
-        $seller_order->address_id = $address_id;
-        $seller_order->save();
+            $seller_order = SellerOrder::find($seller_order_id);
+            $seller_order->address_id = $address_id;
+            $seller_order->save();
 
-        return redirect()->back();
+            return response()->json(['success' => true]);
+        }
     }
 
     /**
