@@ -42,7 +42,10 @@ class CartController extends Controller
 
         return view('cart.index')
             ->with('items', $items)
-            ->with('total_price', $this->cart->totalPrice());
+            ->with('tax', $this->cart->tax())
+            ->with('fee', $this->cart->fee())
+            ->with('discount', $this->cart->discount())
+            ->with('subtotal', $this->cart->subtotal());
     }
 
     /**

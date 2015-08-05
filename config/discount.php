@@ -6,6 +6,4 @@
  * Time: 2:23 PM
  */
 
-return [
-    'discount'  => 299,
-];
+return 299;
