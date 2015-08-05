@@ -212,7 +212,7 @@ class BuyerOrder extends Model
      */
     public function isRefundable()
     {
-        return $this->refundableAmount() > 0.00;
+        return $this->refundableAmount() > 0;
     }
 
     /**
@@ -227,18 +227,32 @@ class BuyerOrder extends Model
         $amount = 0;
         foreach ($cancelled_orders as $order)
         {
-            $amount += $order->product->price;
+            $amount += intval($order->product->price * (1 + config('tax.MA')));
         }
 
         // calculate the amount refunded
+        $refunded = 0;
         foreach ($this->stripeRefunds as $stripe_refund)
         {
-            $amount -= $stripe_refund->amount;
+            $refunded += $stripe_refund->amount;
         }
+
+        // get the amount needed to refund.
+        // if the subtotal of all cancelled seller order is larger than the buyer payment,
+        // we can refund at most the payment - the refunded amount.
+        $amount = $this->buyer_payment->amount >= $amount ? $amount-$refunded : $this->buyer_payment->amount-$refunded;
 
         return $amount;
     }
 
+    /**
+     * Refund a given amount to buyer.
+     *
+     * @param $amount
+     * @param $operator_id
+     *
+     * @return string|static
+     */
     public function refund($amount, $operator_id)
     {
         \Stripe\Stripe::setApiKey(StripeKey::getSecretKey());
