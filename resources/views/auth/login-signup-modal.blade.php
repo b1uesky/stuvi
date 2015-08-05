@@ -4,7 +4,8 @@
 
 @section('login-signup-modal')
     <div class="login-signup-modal" style="z-index: 99999;">
-        <div class="modal fade login-modal" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login">
+        <div class="modal fade login-modal spinner-modal" id="login-modal" tabindex="-1" role="dialog"
+             aria-labelledby="Login">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -45,7 +46,8 @@
             </div>
         </div>
         <!-- sign up modal -->
-        <div class="modal fade signup-modal" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="SignUp">
+        <div class="modal fade signup-modal spinner-modal" id="signup-modal" tabindex="-1" role="dialog"
+             aria-labelledby="SignUp">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">

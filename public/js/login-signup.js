@@ -4,5 +4,9 @@ $(document).ready(function () {
     $('.submit-btn').click(function () {
         $('.loading').css('visibility', 'visible');
     });
+
+    $('.spinner-modal').on('hidden.bs.modal', function () {
+        $('.loading').css('visibility', 'hidden');
+    });
 });
 

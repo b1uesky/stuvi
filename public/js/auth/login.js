@@ -6,10 +6,12 @@
 
 $(document).ready(function () {
 
+    $('.loading').css('visibility', 'hidden');
+
     // login form validation
     $('#form-login').submit(function (e) {
         e.preventDefault();
-
+        $('.loading').css('visibility', 'visible');
         $.ajax({
             type: 'POST',
             url: '/auth/login',
@@ -25,10 +27,11 @@ $(document).ready(function () {
                 // login failed
                 if (response.success == false) {
                     $('.alert.alert-danger').remove();
+                    $('.loading').css('visibility', 'hidden');
 
                     for (var field in response.fields) {
                         var error = '<div class="alert alert-danger" role="alert">' +
-                            '<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>' +
+                            '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' +
                             '<span class="sr-only">Error:</span>' + response.fields[field] +
                             '</div>';
 
@@ -139,6 +142,7 @@ $(document).ready(function () {
         // form submit
         .on('success.form.fv', function (e) {
             e.preventDefault();
+            $('.loading').css('visibility', 'visible');
 
             var $form = $(e.target),
                 fv = $form.data('formValidation');
@@ -168,4 +172,10 @@ $(document).ready(function () {
                 }
             });
         });
+
+    // remove spinner and alert when modal is closed
+    $('.spinner-modal').on('hidden.bs.modal', function () {
+        $('.loading').css('visibility', 'hidden');
+        $('.alert.alert-danger').remove();
+    });
 });
