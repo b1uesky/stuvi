@@ -61,7 +61,7 @@
         {{-- Messages --}}
         <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
             @if (Session::has('message'))
-                <div class="flash-message" id="message">{{ Session::get('message') }}</div>
+                <div class="flash-message warning bg-warning" id="message">{{ Session::get('message') }}</div>
             @endif
 
             {{-- Errors for invalid data --}}
@@ -342,7 +342,7 @@
             </div>
         </div>
         {{-- Confirm pickup --}}
-        <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm
+        <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn primary-btn">Confirm
             Pickup</a><br><br>
         @endif
     </div>

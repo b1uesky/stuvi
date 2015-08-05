@@ -8,12 +8,7 @@
 
 @section('content')
 
-    <!-- message -->
-    <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
-        @if (Session::has('message'))
-            <div class="flash-message" id="message">{{ Session::get('message') }}</div>
-        @endif
-    </div>
+    @include('includes.textbook.flash-message')
 
     <div class="container-fluid container-main">
 

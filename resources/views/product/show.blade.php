@@ -15,12 +15,7 @@
 
 <div class="container-fluid" id="bg">
 
-    <!-- message -->
-    <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
-        @if (Session::has('message'))
-            <div class="bg-success flash-message" id="message" >{{ Session::get('message') }}</div>
-        @endif
-    </div>
+    @include('includes.textbook.flash-message')
 
     <!-- book details -->
     <div class="container" id="det-cont">

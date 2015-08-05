@@ -9,13 +9,8 @@
 @endsection
 
 @section('content')
-{{--
-    <!-- message -->
-    <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
-        @if (Session::has('message'))
-            <div class="flash-message" id="message" >{{ Session::get('message') }}</div>
-        @endif
-    </div>--}}
+
+    @include('includes.textbook.flash-message')
     <!-- main container -->
     <div class="container buyer-order-container">
         <h1>Your orders</h1>

@@ -12,6 +12,7 @@
 
 <!-- all page content here. in-between nav and footer -->
 @section('content')
+    @include('includes.textbook.flash-message')
 
     <div class="container-fluid background">
         <div class="container-fluid">

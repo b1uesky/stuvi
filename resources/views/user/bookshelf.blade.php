@@ -13,11 +13,9 @@
 
     <div class="col-md-9 bookshelf-page">
         <div class="profile-content bookshelf-content">
-            <div class="container message-cont" xmlns="http://www.w3.org/1999/html">
-                @if (Session::has('message'))
-                    <div class="flash-message message">{{ Session::get('message') }}</div>
-                @endif
-            </div>
+
+            @include('includes.textbook.flash-message')
+
             <div class="bookshelf-title-container">
                 <h1 id="bookshelf-title">Your Bookshelf</h1>
                {{-- <hr>--}}

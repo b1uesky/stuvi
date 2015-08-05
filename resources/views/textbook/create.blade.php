@@ -16,12 +16,7 @@
     <!-- center the forms -->
     <div class="container col-md-8 col-md-offset-2 pad">
         <div class="row">
-            <!-- Not found message -->
-            @if (Session::has('message'))
-                <div id = "message-cont">
-                    <div class="flash-message" id="message"> <i class="fa fa-exclamation-triangle"></i> {{ Session::get('message') }}</div>
-                </div>
-            @endif
+            @include('includes.textbook.flash-message')
 
             {{-- Errors for datetime input --}}
             @if ($errors->has())
