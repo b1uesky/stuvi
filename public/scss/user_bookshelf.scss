@@ -118,24 +118,12 @@ h5 {
   font-size: medium;
 }
 
-.for-sale-author {
-}
-
-.for-sale-binding{}
-.for-sale-isbn {}
-.for-sale-class {}
-
 .for-sale-btn-add-cart{
   padding: 0;
 }
 
-.edit-btn {
-  @media (max-width: 461px) {
-    margin-bottom: 5px;
-  }
-}
-
 .delete-form {
+  margin-top: 10px;
   display: inline-block;
 }
 
