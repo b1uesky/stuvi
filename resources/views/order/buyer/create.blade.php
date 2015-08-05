@@ -463,7 +463,7 @@
                         <form action="{{ url('/order/store') }}" method="POST" class="col-sm-6 col-sm-pull-6"
                               id="form-payment">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="selected_address_id" value="{{$default_address_id}}">
+                            <input type="hidden" name="selecte_address_id" value="{{$default_address_id}}">
                             <input type="hidden" name="stripe_public_key" value="{{ $stripe_public_key }}">
                             <input type="hidden" name="stripe_token" value=""/>
 

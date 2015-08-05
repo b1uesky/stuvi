@@ -126,9 +126,18 @@ h5 {
 .for-sale-class {}
 
 .for-sale-btn-add-cart{
-  padding: 0px;
+  padding: 0;
 }
 
+.edit-btn {
+  @media (max-width: 461px) {
+    margin-bottom: 5px;
+  }
+}
+
+.delete-form {
+  display: inline-block;
+}
 
 /* back button */
 

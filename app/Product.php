@@ -155,7 +155,7 @@ class Product extends Model
         // validate input images
         foreach (range(0, count($images) - 1) as $index)
         {
-            $rules['file' . $index] = 'mimes:jpeg,png|max:3072';
+            $rules['file' . $index] = 'mimes:jpeg,png|max:5000';
         }
 
         return $rules;
