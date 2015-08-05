@@ -78,7 +78,7 @@
                     @foreach($book->availableProducts() as $product)
                         <tr>
                             <td>
-                                <p id="price">${{ $product->price/100 }}</p>
+                                <p id="price">${{ $product->decimalPrice() }}</p>
                             </td>
                             <td>
                                 {{ $product->general_condition() }}
