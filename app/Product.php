@@ -2,6 +2,7 @@
 
 use Config;
 use Illuminate\Database\Eloquent\Model;
+use App\Helpers\Price;
 
 class Product extends Model
 {
@@ -122,6 +123,16 @@ class Product extends Model
         }
 
         $this->images()->delete();
+    }
+
+    /**
+     * Return decimal product price.
+     *
+     * @return string
+     */
+    public function decimalPrice()
+    {
+        return Price::convertIntegerToDecimal($this->price);
     }
 
     /**

@@ -27,7 +27,7 @@
         </tr>
         <tr>
             <th>Price</th>
-            <td>{{ $product->price/100 }}</td>
+            <td>{{ $product->decimalPrice() }}</td>
         </tr>
         <tr>
             <th>Book ID</th>

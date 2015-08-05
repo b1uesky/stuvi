@@ -50,13 +50,31 @@ $(document).ready(function () {
     $('.form-update-default-address').submit(function (e) {
         e.preventDefault();
         var $this = $(this);
+        var seller_order_id = $('input[name=seller_order_id]').val();
+        var selected_address_id = $this.find('input[name=address_id]').val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/order/seller/assignAddress',
+            data:{
+                selected_address_id: selected_address_id,
+                seller_order_id : seller_order_id
+            },
+            dataType: 'json',
+            success: function(data,status){
+            },
+            error: function (xhr, status, errorThrown) {
+                console.log(status);
+                console.log(errorThrown);
+            }
+        });
 
         $.ajax({
             type: 'POST',
             url: '/address/select',
             data: {
                 _token: $('[name="csrf_token"]').attr('content'),
-                selected_address_id: $(this).find('input[name=address_id]').val()
+                selected_address_id: selected_address_id
             },
             dataType: 'json',
             success: function (data, status) {
@@ -96,6 +114,7 @@ $(document).ready(function () {
             success: function (data, status) {
                 var address = data["address"];
                 updateAddress($("#seller-address-form"),address);
+                $("delete-address").show();
                 $("#address-form-modal").modal("show");
             },
             error: function (xhr, status, errorThrown) {
@@ -105,16 +124,48 @@ $(document).ready(function () {
         });
     });
 
+    $("#delete-address").click(function(e){
+        e.preventDefault();
+        var $this = $(this);
+        var address_id = $this.parent().prev().find('input[name=address_id]').val();
+        var address_panel = $(".form-update-default-address").find("input[value="+address_id+"]").parent();
+
+        $.ajax({
+            type: "POST",
+            url: "/address/delete",
+            data:{
+                _token: $('[name="csrf_token"]').attr('content'),
+                address_id : address_id
+            },
+            dataType: 'json',
+            success: function (data, status){
+                if(data['is_deleted']){
+                    address_panel.parent().remove();
+                    $("#address-form-modal").modal("hide");
+                }
+            }
+
+        });
+    });
+
+    $("#add-address-btn").click(function(e){
+        e.preventDefault();
+        $("#delete-address").hide();
+        $("#address-form-modal").modal("show");
+    });
+
     $('#submit-address-form').click(function(e){
         e.preventDefault();
         var $form = $('#seller-address-form');
+        var seller_order_id = $('input[name=seller_order_id]').val();
+        var address_id = $form.find('input[name=address_id]').val();
 
         $.ajax({
             type: 'POST',
-            url: '/address/update',
+            url: address_id ? '/address/update' : '/address/store',
             data: {
                 _token : $('[name="csrf_token"]').attr('content'),
-                address_id : $form.find("input[name=address_id]").val(),
+                address_id : address_id,
                 addressee : $form.find("input[name=addressee]").val(),
                 address_line1 : $form.find("input[name=address_line1]").val(),
                 address_line2 : $form.find("input[name=address_line2]").val(),
@@ -125,11 +176,27 @@ $(document).ready(function () {
             },
             success: function (data,status){
                 var address= data["address"];
+                address_id = address["id"];
                 if(address["address_line2"]) {
                     address["address-line"] = address["address_line1"] + " " + address["address_line2"];
                 }else{
                     address["address-line"] = address["address_line1"];
                 }
+                $.ajax({
+                    type: 'GET',
+                    url: '/order/seller/assignAddress',
+                    data:{
+                        selected_address_id: address_id,
+                        seller_order_id : seller_order_id
+                    },
+                    dataType: 'json',
+                    success: function(data,status){
+                    },
+                    error: function (xhr, status, errorThrown) {
+                        console.log(status);
+                        console.log(errorThrown);
+                    }
+                });
                 updateAddress($(".seller-address"),address);
                 toggleAddress();
                 $("#address-form-modal").modal("hide");
