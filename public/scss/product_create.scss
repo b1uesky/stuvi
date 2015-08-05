@@ -11,6 +11,10 @@ body {
   margin-bottom: 50px;
 }
 
+#login-signup-container{
+  padding-top: 150px;
+}
+
 /*** TEXTBOOK INFO ***/
 
 .textbook-row {
@@ -65,9 +69,14 @@ body {
   margin-bottom: 20px;
 }
 
-#price-input{
-  width: 50%;
+.input-group-addon {
+  background-color: $primary-color;
+  color: white;
 }
+
+#price-input{
+   width: 50%;
+ }
 
 /** FILE UPLOAD **/
 
@@ -93,12 +102,20 @@ body {
   padding: $spacing-unit / 2;
 }
 
+.dz-image img {
+  width: 100%;
+}
+
 .dz-clickable {
   cursor: pointer;
 }
 
 .dz-unclickable {
   cursor: default;
+}
+
+.dz-error-message{
+  top: 150px !important;
 }
 
 /** POST BOOK BUTTON **/

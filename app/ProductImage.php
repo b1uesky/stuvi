@@ -112,4 +112,21 @@ class ProductImage extends Model {
             File::delete($temp_path . $key);
         }
     }
+
+    /**
+     * Delete product image from AWS.
+     */
+    public function deleteFromAWS()
+    {
+        foreach([$this->small_image, $this->medium_image, $this->large_image] as $key)
+        {
+            $s3 = AwsFacade::createClient('s3');
+
+            $s3->deleteObject(array(
+                'Bucket'        => Config::get('aws.buckets.product_image'),
+                'Key'           => $key,
+            ));
+
+        }
+    }
 }

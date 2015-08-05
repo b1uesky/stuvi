@@ -14,7 +14,7 @@
 
     @if (Session::has('message'))
         <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
-            <div class="flash-message" id="message"><i
+            <div class="flash-message bg-warning" id="message"><i
                         class="fa fa-exclamation-triangle"></i> {{ Session::get('message') }}</div>
         </div>
     @endif
@@ -57,7 +57,7 @@
                             <tr>
                                 <td>{{ $item->product->book->title }}</td>
                                 <td>{{ $item->product->book->isbn10 }}</td>
-                                <td>${{ $item->product->price }}</td>
+                                <td>${{ $item->product->price/100 }}</td>
                                 @if ($item->product->sold)
                                     <p>Warning: This product has been sold.</p>
                                 @endif
@@ -88,7 +88,6 @@
                                             <li class="address" id="default_phone">{{ $address -> phone_number }}</li>
                                         </ul>
                                         <button class="btn btn-default primary-btn address-btn show-addresses">
-                                            <i class="fa fa-pencil"></i>
                                             Change Address
                                         </button>
                                     </div>
@@ -459,9 +458,10 @@
                     </div>
 
                     <div class="stripe-container">
-                        <div class="card-wrapper"></div>
+                        <div class="card-wrapper col-sm-6 col-sm-push-6"></div>
 
-                        <form action="{{ url('/order/store') }}" method="POST" id="form-payment">
+                        <form action="{{ url('/order/store') }}" method="POST" class="col-sm-6 col-sm-pull-6"
+                              id="form-payment">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="selected_address_id" value="{{$default_address_id}}">
                             <input type="hidden" name="stripe_public_key" value="{{ $stripe_public_key }}">
@@ -477,12 +477,12 @@
                             <div class="row">
                                 <div class="form-group col-xs-4">
                                     <input id="stripe-month" class="form-control input-lg" placeholder="MM" type="text"
-                                           data-stripe="exp-month">
+                                           data-stripe="exp-month" maxlength="2">
                                 </div>
 
                                 <div class="form-group col-xs-4">
                                     <input id="stripe-year" class="form-control input-lg" placeholder="YY" type="text"
-                                           data-stripe="exp-year">
+                                           data-stripe="exp-year" maxlength="4">
                                 </div>
 
                                 <div class="form-group col-xs-4">
@@ -496,7 +496,6 @@
                                     <input class="btn btn-lg primary-btn btn-block" type="submit" value="Confirm">
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 @endif
@@ -512,5 +511,5 @@
 
     <script src="{{ asset('libs/card/lib/js/jquery.card.js') }}"></script>
     <script src="https://js.stripe.com/v2/"></script>
-    <script src="{{ asset('/js/order-create.js') }}"></script>
+    <script src="{{ asset('/js/order/buyer/create.js') }}"></script>
 @endsection

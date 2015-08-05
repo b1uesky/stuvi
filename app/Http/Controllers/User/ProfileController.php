@@ -33,10 +33,12 @@ class ProfileController extends Controller
     public function update()
     {
         $user = Auth::user();
+        $phone_number = Input::get('phone');
+        $phone_number = preg_replace('/[^0-9]+/', '', $phone_number);
         $user->update([
             'first_name'   => Input::get('first_name'),
             'last_name'    => Input::get('last_name'),
-            'phone_number' => Input::get('phone'),
+            'phone_number' => $phone_number
         ]);
 
         $user_profile = $user->profile;

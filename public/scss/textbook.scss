@@ -60,9 +60,10 @@
 }
 
 .search {
-  background: rgba(0, 0, 0, 0.3) url('../img/open-book.jpg') no-repeat;
+  background: rgba(0, 0, 0, 0.3) url('../img/open-book.jpg') no-repeat center top;
   background-size: cover;
   padding: 60px;
+  height: 350px;
 }
 
 @import "partials/autocomplete";

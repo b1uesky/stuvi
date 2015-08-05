@@ -6,6 +6,7 @@
     <meta name="author" content="Stuvi">
     <meta name="csrf_token" content="{{ csrf_token() }}">
 
+    <link rel="icon" type="image/ico" href="{{ asset('img/favicon.ico') }}"/>
     <title>Stuvi - @yield('title')</title>
 
     <link href="{{ asset('/css_app/app.css') }}" rel="stylesheet">

@@ -68,7 +68,7 @@
                 <!-- TODO: a complete list of languages -->
                 <div class="form-group">
                     <label><b>Language</b></label>
-                    <select class="selectpicker textbook-create" name="language" id="lang">
+                    <select class="selectpicker textbook-create form-control" name="language" id="lang">
                         @foreach(Config::get('book.languages') as $key => $value)
                             <option value="{{ $value }}" class="lang-select">{{ $value }}</option>
                         @endforeach
@@ -84,12 +84,6 @@
                     </div>
                 </div>
 
-                {{-- Add more images --}}
-                <div class="form-group">
-                    <label name="add_other_img">Other image(s) (smaller than 3MB)</label><br>
-                    <a class="btn secondary-btn btn-add-input" name="add_img_btn">Add Another Image</a>
-                </div>
-
                 <input type="submit" name="submit" class="btn primary-btn create-btn" id="create-btn" value="Submit"/>
             </form>
         </div> <!-- End row -->
@@ -99,5 +93,5 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('js/product/create.js') }}"></script>
+    <script src="{{ asset('js/textbook/create.js') }}"></script>
 @endsection

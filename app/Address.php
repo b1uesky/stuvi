@@ -102,6 +102,7 @@ class Address extends Model
     public function setDefault()
     {
         $stored_addresses = Address::where('user_id',$this -> user_id)->get();
+
         foreach ($stored_addresses as $user_address) {
             if ($user_address->is_default == true && $user_address->id != $this -> id) {
                 $user_address->update([
@@ -109,9 +110,9 @@ class Address extends Model
                 ]);
             }
         }
-        $this->update([
-            "is_default" => true
-        ]);
+
+        $this->update(["is_default" => true]);
+
         if($this->is_default)
         {
             return true;

@@ -8,64 +8,75 @@
 
 @section('content')
 
-    <div class="container-fluid background">
-        <div class="container-fluid">
-            <div class="title-container">
-                <h2>Contact Us</h2>
-                <p>Please feel free to ask a question or give us feedback</p>
-            </div>
-
-            <div class="col-sm-6 contact-form-container">
-                <form class="form-horizontal login-form" role="form" method="POST" action="{{ url('/auth/login') }}">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <div class="form-group">
-                        @if(Auth::guest())
-                            <input type="text" class="form-control" placeholder="First Name">
-                        @else
-                            <input type="text" class="form-control" placeholder="First Name" value="{{ Auth::user()->first_name }}">
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        @if(Auth::guest())
-                            <input type="text" class="form-control" placeholder="Last Name">
-                        @else
-                            <input type="text" class="form-control" placeholder="Last Name" value="{{ Auth::user()->last_name }}">
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        @if(Auth::guest())
-                            <input type="text" class="form-control" placeholder="Email">
-                        @else
-                            <input type="text" class="form-control" placeholder="Email" value="{{ Auth::user()->email }}">
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" rows="5" placeholder="Message"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn primary-btn" id="contact-btn">Submit</button>
-                    </div>
-                </form>
-            </div>
-
-            <div class="col-sm-5 right-container">
-                <h3>Contact Details</h3>
-                <div class="contact-info-container">
-                    <ul class="contact-info">
-                        <li><a href="http://bit.ly/1AStBAY" target="_blank"><i class="fa fa-map-marker fa-lg"
-                                                                               id="map-marker"></i> Boston, MA</a></li>
-                        <li><a href="mailto:official@stuvi.com"><i class="fa fa-envelope-o fa-lg"></i> official@stuvi
-                                .com</a></li>
-                        <li><a href="https://www.facebook.com/StuviBoston" target="_blank"><i
-                                        class="fa fa-facebook fa-lg" id="facebook"></i> Facebook</a></li>
-                        <li><a href="https://twitter.com/StuviBoston" target="_blank"><i class="fa fa-twitter fa-lg"></i> Twitter</a></li>
-                        <li><a href="https://www.linkedin.com/company/stuvi?trk=biz-companies-cym" target="_blank"><i
-                                        class="fa fa-linkedin fa-lg" id="linkedin"></i> LinkedIn</a></li>
+    <div id="contact-main-container">
+        <div class="contact-alerts">
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
                     </ul>
+                </div>
+            @endif
+
+            @if(Session::has('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ Session::get('success') }}
+                </div>
+            @endif
+        </div>
+
+        <div class="contact-container">
+            <div class="row">
+                <h2 class="contact-title">Contact Us</h2>
+
+                <div class="contact-subtitle">
+                    <p>Please feel free to ask a question or give us feedback.</p>
+                </div>
+
+                <form action="/contact/store" method="post" class="form-horizontal">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                    <div class="form-group">
+                        @if(Auth::check())
+                            <input type="text" class="form-control" name="name" value="{{ Auth::user()->fullName() }}"
+                                   placeholder="Name">
+                        @else
+                            <input type="text" class="form-control" name="name" placeholder="Name">
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        @if(Auth::check())
+                            <input type="email" class="form-control" name="email"
+                                   value="{{ Auth::user()->primaryEmail->email_address }}" placeholder="Email">
+                        @else
+                            <input type="email" class="form-control" name="email" placeholder="Email">
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <textarea class="form-control" rows="8" name="message" placeholder="Message"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-lg btn-block primary-btn">Submit</button>
+                </form>
+
+                <hr>
+
+                <div class="contact-email">
+                    <p>
+                        You're welcome to email us at <a href="mailto:official@stuvi.com">official@stuvi.com</a>
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
+
+
+
+     </div>
+
 
 @endsection
 

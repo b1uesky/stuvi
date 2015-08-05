@@ -27,8 +27,30 @@ Route::pattern('product',   '[0-9]+');
 Route::get  ('/',           'HomeController@index');
 Route::get  ('/home',       'HomeController@index');
 Route::get  ('/about',      'HomeController@about');
-Route::get  ('/contact',    'HomeController@contact');
 Route::get  ('/coming',     'HomeController@coming');
+
+/*
+|--------------------------------------------------------------------------
+| User Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware'=>'auth', 'prefix'=>'user'], function()
+{
+    Route::get('/profile', 'UserController@profile');
+    Route::get('/profile-edit', 'UserController@profileEdit');
+    Route::get('/account', 'UserController@account');
+    Route::post('/account/edit', 'UserController@edit');
+    Route::get('/bookshelf', 'UserController@bookshelf');
+    Route::get('/activate', 'UserController@waitForActivation');
+    Route::get('/activate/resend', 'UserController@resendActivationEmail');
+    Route::get('/activate/{code}', 'UserController@activateAccount');
+    Route::post('/updateDefaultAddress', 'UserController@updateDefaultAddress');
+});
+
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -36,10 +58,11 @@ Route::get  ('/coming',     'HomeController@coming');
 |--------------------------------------------------------------------------
 */
 Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
-    Route::post ('/store',  'AddressController@store');
-    Route::post ('/update', 'AddressController@update');
-    Route::post ('/delete', 'AddressController@ajaxDelete');
-    Route::post ('/select', 'AddressController@ajaxSelect');
+    Route::post ('/store','AddressController@store');
+    Route::post ('/update','AddressController@update');
+    Route::post ('/delete','AddressController@ajaxDelete');
+    Route::post ('/select','AddressController@ajaxSelect');
+    Route::get  ('/show',  'AddressController@show');
 });
 
 
@@ -54,6 +77,7 @@ Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
 {
     Route::get  ('/',   'TextbookController@showBuyPage');
     Route::get  ('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
+    Route::post ('/validateISBN', 'TextbookController@validateISBN');
 
     // buy
     Route::group(['prefix'=>'buy'], function() {
@@ -77,8 +101,13 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 
     // sell
     Route::group(['prefix'=>'sell'], function() {
-        Route::post ('/store',          'TextbookController@store');
-        Route::post ('/product/store',  'ProductController@store');
+        Route::post ('/store',                  'TextbookController@store');
+        Route::post ('/product/store',          'ProductController@store');
+        Route::get  ('/product/{id}/edit',      'ProductController@edit');
+        Route::get  ('/product/getImages',      'ProductController@getImages');
+        Route::post ('/product/deleteImage',    'ProductController@deleteImage');
+        Route::post ('/product/update',         'ProductController@update');
+        Route::post ('/product/delete',         'ProductController@destroy');
     });
 
 });
@@ -136,6 +165,7 @@ Route::group(['namespace'=>'User', 'middleware'=>'auth', 'prefix'=>'user'], func
     Route::get ('/activate',        'UserController@waitForActivation');
     Route::get ('/activate/resend', 'UserController@resendActivationEmail');
     Route::get ('/activate/{code}', 'UserController@activateAccount');
+    Route::post('/updateDefaultAddress', 'UserController@updateDefaultAddress');
 
     Route::group(['prefix'=>'email'], function()
     {
@@ -167,6 +197,9 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
     // user
     Route::resource('user', 'UserController');
 
+    // book
+    Route::resource('book', 'BookController');
+
     // product
     Route::get('/product/verified', 'ProductController@showVerified');
     Route::get('/product/unverified', 'ProductController@showUnverified');
@@ -191,6 +224,10 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
 
     // buyer payment
     Route::resource('buyer/payment', 'BuyerPaymentController');
+
+    // contact
+    Route::post('contact/reply', 'ContactController@reply');
+    Route::resource('contact', 'ContactController');
 });
 
 /*
@@ -230,6 +267,14 @@ Route::get('/faq/general', 'FAQController@general');
 Route::get('/faq/orders', 'FAQController@orders');
 Route::get('/faq/account', 'FAQController@account');
 Route::get('/faq/textbook', 'FAQController@textbook');
+
+/*
+|--------------------------------------------------------------------------
+| Contacts Routes
+|--------------------------------------------------------------------------
+*/
+Route::get  ('/contact',        'ContactController@index');
+Route::post ('/contact/store',  'ContactController@store');
 
 
 /*

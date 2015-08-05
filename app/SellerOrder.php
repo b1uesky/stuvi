@@ -218,7 +218,7 @@ class SellerOrder extends Model
         if ($this->isTransferred())
         {
             $status = 'Balance Transferred';
-            $detail = 'The balance of this order has been transferred to your Stripe account.';
+            $detail = 'The money has been transferred to your Stripe account.';
         }
         elseif ($this->isDelivered())
         {
@@ -237,7 +237,7 @@ class SellerOrder extends Model
         }
         elseif ($this->isScheduled())
         {
-            $status = 'Waiting For Picking Up';
+            $status = 'Waiting For Pick Up';
             $detail = 'Your order is waiting for a Stuvi courier to pick up.';
         }
         else

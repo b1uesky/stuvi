@@ -1,6 +1,16 @@
 /*product/show.blade.php*/
 @import "modules/all";
 
+#message-cont {
+  padding: 10px 0 10px 0;
+}
+
+#message{
+  padding: 10px;
+}
+
+
+
 /** PRODUCT INFO **/
 
 #bg {
@@ -30,6 +40,17 @@
 #det-cont {
   margin: inherit;
   padding-top: 10px;
+}
+
+.product-title {
+  a {
+    color: $primary-color;
+    text-decoration: none;
+  }
+}
+
+.authors-container {
+  margin-bottom: 10px;
 }
 
 .details-table {

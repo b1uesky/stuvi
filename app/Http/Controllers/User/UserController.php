@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Profile;
 use Auth;
 use Input;
 use Mail;
@@ -13,7 +14,46 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        return view('user.overview')->with('num_books_sold', $user->productsSold()->count())->with('num_books_bought', count($user->productsBought()))->with('productsForSale', $user->productsForSale());
+        return view('user.overview')
+            ->with('num_books_sold', $user->productsSold()->count())
+            ->with('num_books_bought', count($user->productsBought()))
+            ->with('productsForSale', $user->productsForSale());
+    }
+
+    public function profile()
+    {
+        $user = Auth::user();
+
+        return view('user.profile')
+            ->with('num_books_sold', $user->productsSold()->count())
+            ->with('num_books_bought', count($user->productsBought()))
+            ->with('productsForSale', $user->productsForSale());
+    }
+
+    public function profileEdit()
+    {
+        $user_id = Auth::id();
+        $user_profile = Profile::find($user_id);
+
+        return view('user.profile-edit');
+    }
+
+    public function account()
+    {
+        return view('user.account');
+    }
+
+    public function edit()
+    {
+        $first_name = Input::get('first_name');
+        $last_name = Input::get('last_name');
+        $phone = Input::get('phone');
+        $old_password = Input::get('old_password');
+        $new_password = Input::get('new_password');
+
+        $user = Auth::user();
+        $user->first_name = $first_name;
+        $user->save();
     }
 
     /**
@@ -44,12 +84,12 @@ class UserController extends Controller
         elseif (Auth::user()->collegeEmail()->verify($code))
         {
             $url     = Input::has('return_to') ? urldecode(Input::get('return_to')) : '/home';
-            $message = 'Your account is successfully activated.';
+            $message = 'Your account has been successfully activated.';
         }
         else
         {
             $url     = '/user/activate';
-            $message = 'Sorry, account activation failed because of invalid activation code.';
+            $message = 'Sorry, account activation failed because of an invalid activation code.';
         }
 
         return redirect($url)->with('message', $message);
@@ -87,7 +127,6 @@ class UserController extends Controller
 
         $user->sendActivationEmail();
 
-        return redirect('user/activate')->with('message', 'Activation email is sent. Please check your email.');
+        return redirect('user/activate')->with('message', 'An activation email has been sent. Please check your email.');
     }
-
 }

@@ -9,13 +9,13 @@
 @endsection
 
 @section('content')
-
+{{--
     <!-- message -->
     <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
             <div class="flash-message" id="message" >{{ Session::get('message') }}</div>
         @endif
-    </div>
+    </div>--}}
     <!-- main container -->
     <div class="container buyer-order-container">
         <h1>Your orders</h1>
@@ -24,17 +24,17 @@
                 <div class="container order-container">
                     <div class="row order-row">
                         <!-- order details -->
-                        <div class="col-xs-12 col-sm-2 order-date">
+                        <div class="col-xs-2 order-date">
                             <h5>Order Placed</h5>
 
                             <p>{{ date('M d, Y', strtotime($order->created_at)) }}</p>
                         </div>
 
-                        <div class=" col-xs-12 col-sm-2 col-xs-offset-0 order-total">
+                        <div class="col-xs-2 order-total">
                             <h5>Total</h5>
                             <p>${{ $order->buyer_payment['amount']/100 }}</p>
                         </div>
-                        <div class="col-xs-12 col-sm-3 col-sm-offset-5 order-number">
+                        <div class="col-xs-3 col-xs-offset-5 order-number">
                             <h5>Order Number # {{ $order->id }}</h5>
                             <a id="show-order-link" href="/order/buyer/{{$order->id}}">View Order Details <i
                                         class="fa fa-caret-right"></i>
@@ -55,7 +55,8 @@
                         <div class="row book-row">
                             <div class="col-xs-12 col-sm-2 book-img">
                                 <a href="{{ url('/textbook/buy/product/'.$product->id) }}">
-                                    <img class="lg-img" src="{{$product->book->imageSet->large_image}}">
+                                    <img class="lg-img" src="{{$product->book->imageSet->large_image
+                                     or config('book.default_image_path.large')}}">
                                 </a>
                             </div>
                             <div class="col-xs-12 col-sm-5 book-info">
@@ -65,7 +66,7 @@
                                 <h5><small>{{ $product->book->author}}</small></h5>
 
                                 <p>ISBN: {{ $product->book->isbn10 }}</p>
-                                <h6 class="book-price">${{ $product->price }}</h6>
+                                <h6 class="book-price">${{ $product->price/100 }}</h6>
                             </div>
                         </div>
                     @empty

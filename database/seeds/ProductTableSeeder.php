@@ -1,15 +1,12 @@
 <?php
 
-use Illuminate\Database\Seeder;
+use App\Book;
 use App\Product;
 use App\ProductCondition;
 use App\ProductImage;
-use App\Book;
 use App\User;
-
 use Faker\Factory;
-
-use Illuminate\Config\Repository;
+use Illuminate\Database\Seeder;
 
 class ProductTableSeeder extends Seeder {
 
@@ -28,11 +25,15 @@ class ProductTableSeeder extends Seeder {
             // create some products
             for ($i = 0; $i < $faker->numberBetween(3, 10); $i++)
             {
+                $int_price = $faker->numberBetween(1000, 5000);
+
                 $product = Product::create([
                     'book_id'   => $book->id,
                     'seller_id' => $faker->numberBetween(1, $num_users),
-                    'price'     => $faker->randomFloat(2, 10, 200),
+                    'price'     => $int_price,
                 ]);
+
+                $product->book->updateLowestAndHighestPrice($int_price);
 
                 ProductCondition::create([
                     'product_id'            =>  $product->id,

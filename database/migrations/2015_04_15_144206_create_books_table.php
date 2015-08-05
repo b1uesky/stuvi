@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateBooksTable extends Migration {
 
@@ -21,8 +21,10 @@ class CreateBooksTable extends Migration {
             $table->string('isbn13', 13);
             $table->smallInteger('num_pages')->nullable();
             $table->boolean('verified')->default(false);
-            $table->string('language');
-            $table->decimal('list_price')->nullable();
+            $table->string('language')->nullable();
+            $table->integer('list_price')->nullable();
+			$table->integer('lowest_price')->nullable();
+			$table->integer('highest_price')->nullable();
             $table->timestamps();
 		});
 	}

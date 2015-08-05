@@ -13,6 +13,7 @@ return [
         'textbook'  => 10,
 
         'admin'     => [
+            'default'       => 10,
             'user'          => 10,
             'product'       => 10,
             'seller_order'  => 10

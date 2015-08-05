@@ -12,7 +12,16 @@
 
 @section('content')
 
+
 <div class="container-fluid" id="bg">
+
+    <!-- message -->
+    <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
+        @if (Session::has('message'))
+            <div class="bg-success flash-message" id="message" >{{ Session::get('message') }}</div>
+        @endif
+    </div>
+
     <!-- book details -->
     <div class="container" id="det-cont">
         <div class="row">
@@ -51,15 +60,34 @@
                         @endif
                     @endforeach
                 @endif
-                <h2><a href="{{ url('textbook/buy/'.$product->book->id) }}">{{ $product->book->title }}</a></h2>
+                <h2 class="product-title"><a
+                            href="{{ url('textbook/buy/'.$product->book->id) }}">{{ $product->book->title }}</a></h2>
+
+                <div class="authors-container">
+                    <span>by </span>
+                    <?php $bookCounter = 0; ?>
+                    @foreach($product->book->authors as $author)
+                        @if($bookCounter == 0)
+                            <span id="authors">{{ $author->full_name }}</span>
+                        @else
+                            <span id="authors">, {{ $author->full_name }}</span>
+                        @endif
+                        <?php $bookCounter++ ?>
+                    @endforeach
+                </div>
+                <p>ISBN10: {{ $product->book->isbn10 }}</p>
+
+                <p>ISBN13: {{ $product->book->isbn13 }}</p>
+
+                <p>Number of Pages: {{ $product->book->num_pages }}</p>
                 <div class="price">
-                    Price: <b>${{ $product->price }}</b>
+                    Price: <b>${{ $product->price/100 }}</b>
                 </div>
                 @if(Auth::check())
                     @if($product->isInCart(Auth::user()->id))
                         <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Added To Cart</a>
                     @elseif($product->seller == Auth::user())
-                        <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Posted by yourself</a>
+                        <a class="btn primary-btn add-cart-btn" href="{{ url('textbook/sell/product/' . $product->id . '/edit') }}" role="button">Edit</a>
                     @else
                         <a class="btn primary-btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
                     @endif

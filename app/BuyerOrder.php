@@ -220,10 +220,6 @@ class BuyerOrder extends Model
             $amount += $order->product->price;
         }
 
-        // convert to cents..
-        $amount *= 100;
-        $amount = intval($amount);
-
         // calculate the amount refunded
         foreach ($this->stripeRefunds as $stripe_refund)
         {
@@ -300,7 +296,7 @@ class BuyerOrder extends Model
         else
         {
             $status = 'Order Processing';
-            $detail = 'Your order is being processed by the Stuvi.';
+            $detail = 'Your order is being processed by Stuvi.';
         }
 
         return ['status' => $status, 'detail' => $detail];

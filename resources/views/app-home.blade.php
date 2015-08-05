@@ -11,6 +11,7 @@
     <meta name="author" content="Stuvi">
     <meta name="csrf_token" content="{{ csrf_token() }}">
 
+    <link rel="icon" type="image/ico" href="{{ asset('img/favicon.ico') }}"/>
     <title>Stuvi - @yield('title')</title>
 
     <link href="{{ asset('/css_app/app.css') }}" rel="stylesheet">
@@ -44,10 +45,13 @@
     {{-- FormValidation --}}
     <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
     <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/validator/auth.js')}}"></script>
+    <script src="{{asset('js/auth/login.js')}}"></script>
 @endif
 
-@yield('javascript')
+        <!-- login/signup modal spinner -->
+    <script src="{{asset('js/login-signup.js')}}"></script>
+
+    @yield('javascript')
 </body>
 
 </html>

@@ -13,7 +13,8 @@
 
     <div class="container-fluid">
         <div class="row back-row">
-            <a class="back-to-order" href="/order/seller" onclick="goBack()"><i class="fa fa-arrow-circle-left"></i> Go Back</a>
+            <a class="back-to-order" href="/order/seller" onclick="goBack()"><i class="fa fa-arrow-circle-left"></i> Go
+                Back</a>
         </div>
     </div>
 
@@ -34,23 +35,26 @@
             @if ($seller_order->isTransferred())
                 <div class="alert alert-success">The balance of this order is transferred to your Stripe account.</div>
             @elseif ($seller_order->isDelivered())
-                @if ($seller_order->seller()->stripeAuthorizationCredential()->get()->isEmpty()))
-                    <a href="#">Link Stripe account to get money back</a>
-                @else
-                    <!-- Get order money back to seller debit card -->
-                    <form action="{{ url('/order/seller/transfer') }}" method="POST">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
-                        <button type="submit" class="btn btn-primary">Get money back</button>
-                    </form>
-                @endif
+                <!-- Get order money back to seller debit card -->
+                <form action="{{ url('/order/seller/transfer') }}" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
+                    <button type="submit" class="btn btn-primary">
+                        @if ($seller_order->seller()->stripeAuthorizationCredential()->get()->isEmpty())
+                            Link Stripe account to get money back
+                        @else
+                            Get money back
+                        @endif
+                    </button>
+                </form>
             @elseif ($seller_order->pickedUp())
                 <div class="alert alert-success">The textbook has been picked up by our courier. You can get your money
-                    back once the textbook is delivered.</div>
+                    back once the textbook is delivered.
+                </div>
             @elseif ($seller_order->cancelled)
                 <div class="alert alert-danger">This order has been cancelled.</div>
             @else
-                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
+                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">CancelOrder</a></p>
             @endif
         </div>
 
@@ -93,13 +97,16 @@
                 <h3 class="col-xs-12">Item</h3>
             </div>
             <!-- item info -->
+            <div class="col-sm-2">
+                {{--                <img class="sm-img" src="{{$product->book->imageSet->large_image}}">--}}
+            </div>
             <div class="item col-xs-12 col-sm-6">
                 <?php $product = $seller_order->product; $book = $product->book; ?>
                 <p>Title: <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $book->title }}</a></p>
 
                 <p>ISBN: {{ $book->isbn10 }}</p>
 
-                <p>Price: ${{ $product->price }}</p>
+                <p>Price: ${{ $product->price/100 }}</p>
             </div>
         </div>
 
@@ -136,7 +143,7 @@
                                        name="scheduled_pickup_time">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-orange">
+                        <button type="submit" class="btn secondary-btn">
                             <!-- scheduled already and not cancelled. allows for reschedule -->
                             @if($seller_order->scheduledPickupTime() && !$seller_order->cancelled)
                                 Reschedule
@@ -155,69 +162,188 @@
             <div class="row row-title">
                 <h3 class="col-xs-12">Select a pickup address</h3>
             </div>
-            {{-- If the seller has address --}}
-            @if(count($seller_order->seller()->addresses) > 0)
-                {{-- Show existing addresses --}}
+
+            <?php $address = $seller_order->seller()->defaultAddress(); ?>
+
+            {{-- If the seller has a default address --}}
+            @if($address)
                 <div class="seller-address-box">
-                    @foreach($seller_order->seller()->addresses as $index => $address)
-                        <div class="seller-address">
-                            <ul>
-                                <li>{{ $address->addressee }}</li>
-                                <li>
-                                    @if($address->address_line2)
-                                        {{ $address->address_line1 }}, {{ $address->address_line2 }}
-                                    @else
-                                        {{ $address->address_line1 }}
-                                    @endif
-                                </li>
-                                <li>
-                                    <span>{{ $address->city }}, </span>
-                                    <span>{{ $address->state_a2 }} </span>
-                                    <span>{{ $address->zip }}</span>
-                                </li>
-                                <li>{{ $address->country_name }}</li>
-                                <li>{{ $address->phone_number }}</li>
-                            </ul>
+                    <div>
+                        <button type="button" class="btn btn-default btn-change-address">Change</button>
+                    </div>
 
-                            {{-- Select address button --}}
-                            @if($seller_order->address_id == $address->id)
-                                <button type="button" class="btn btn-success btn-assigned-address" disabled>
-                                    Selected address
-                                </button>
-                            @else
-                                <form action="/order/seller/assignAddress" method="get">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <input type="hidden" name="address_id" value="{{ $address->id }}"/>
-                                    <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}"/>
-                                    <input type="submit" name="submit" value="Use this address"
-                                           class="btn btn-warning"/>
-                                </form>
-                            @endif
-                        </div>
-                    @endforeach
-
-                    @endif
-
-                    {{-- Add a new address --}}
                     <div class="seller-address">
-                        <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
-                           class="btn btn-orange">Add a new address</a></br></br>
+                        <ul>
+                            {{-- WARNING: if you need to change class names below,
+                            make sure you change the selectors in updateDefaultAddress() in `show.js`. --}}
+                            <li class="seller-address-addressee">{{ $address->addressee }}</li>
+                            <li class="seller-address-address-line">
+                                @if($address->address_line2)
+                                    {{ $address->address_line1 }}, {{ $address->address_line2 }}
+                                @else
+                                    {{ $address->address_line1 }}
+                                @endif
+                            </li>
+                            <li>
+                                <span class="seller-address-city">{{ $address->city }}, </span>
+                                <span class="seller-address-state">{{ $address->state_a2 }} </span>
+                                <span class="seller-address-zip">{{ $address->zip }}</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {{-- Invisible by default. Show after click the change button. --}}
+                    <div class="seller-address-book">
+                        @foreach($seller_order->seller()->addresses as $address)
+                            <div>
+                                <ul>
+                                    <li class="seller-address-addressee">{{ $address->addressee }}</li>
+                                    <li class="seller-address-address-line">
+                                        @if($address->address_line2)
+                                            {{ $address->address_line1 }}, {{ $address->address_line2 }}
+                                        @else
+                                            {{ $address->address_line1 }}
+                                        @endif
+                                    </li>
+                                    <li>
+                                        <span class="seller-address-city">{{ $address->city }}, </span>
+                                        <span class="seller-address-state">{{ $address->state_a2 }} </span>
+                                        <span class="seller-address-zip">{{ $address->zip }}</span>
+                                    </li>
+                                    <li>{{ $address->country_name }}</li>
+                                    <li>Phone: {{ $address->phone_number }}</li>
+                                </ul>
+
+                                {{-- Ajax: select default address --}}
+                                <form action="" method="post" class="form-update-default-address">
+                                    <input type="hidden" name="address_id" value="{{ $address->id }}"/>
+                                    <input type="submit" name="submit" value="Select" class="btn btn-default"/>
+                                </form>
+
+                                {{-- TODO: Edit address --}}
+                                <form action="" method="post" class="form-edit-address">
+                                    <input type="hidden" name="address_id" value="{{ $address->id }}"/>
+                                    <input type="submit" name="submit" value="Edit" class="btn btn-default"/>
+                                </form>
+                            </div>
+
+                        @endforeach
+
+                        {{-- Add a new address --}}
+                        <div>
+                            <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
+                               class="btn btn-orange">Add a new address</a></br></br>
+                        </div>
                     </div>
                 </div>
+            @else
+                {{-- Add a new address --}}
+                <div>
+                    <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
+                       class="btn btn-orange">Add a new address</a></br></br>
+                </div>
+            @endif
+            {{--Add or edit address modal--}}
+            <div class="modal fade" id="address-form-modal" tabindex="-1" role="dialog" aria-labelledby="addressModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ url('/address/update') }}" method="POST"
+                                  id="seller-address-form">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="address_id" value="">
 
-                {{-- Confirm pickup --}}
-                <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm
-                    Pickup</a></br></br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Full name</label>
+
+                                    <div class="col-sm-6 form-space-offset">
+                                        <input type="text" class="form-control" name="addressee"
+                                               value="">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Address line 1</label>
+
+                                    <div class="col-sm-6 form-space-offset">
+                                        <input type="text" class="form-control"
+                                               name="address_line1"
+                                               value="185 Freeman St.">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Address line 2</label>
+
+                                    <div class="col-sm-6 form-space-offset">
+                                        <input type="text" class="form-control"
+                                               name="address_line2"
+                                               value="Apt. 739">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">City</label>
+
+                                    <div class="col-sm-6 form-space-offset">
+                                        <input type="text" class="form-control" name="city"
+                                               value="Brookline">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">State</label>
+
+                                    <div class="col-sm-6 form-space-offset">
+                                        <input type="text" class="form-control" name="state_a2"
+                                               value="MA">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Zip</label>
+
+                                    <div class="col-sm-6 form-space-offset">
+                                        <input type="text" class="form-control" name="zip"
+                                               value="02446">
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Phone</label>
+
+                                    <div class="col-sm-6 form-space-offset">
+                                        <input type="tel" class="form-control phone_number"
+                                               name="phone_number" value="(857) 206 4789">
+                                    </div>
+                                </div>
+                                <input type="hidden" name="address_id" value="">
+                                </br>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" id="submit-address-form" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        {{-- Confirm pickup --}}
+        <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm
+            Pickup</a></br></br>
         @endif
     </div>
-@endsection
+    @endsection
 
-@section('javascript')
-    {{--http://xdsoft.net/jqplugins/datetimepicker/--}}
-    <!-- Date time picker required scripts -->
+    @section('javascript')
     <script src="{{ asset('libs/datetimepicker/jquery.datetimepicker.js') }}"></script>
-    <script src="{{asset('/js/order/seller/showSellerOrder.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/order/seller/show.js') }}"></script>
 
     <script>
         function goBack() {

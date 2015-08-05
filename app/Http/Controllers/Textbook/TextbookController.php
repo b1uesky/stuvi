@@ -1,24 +1,21 @@
 <?php namespace App\Http\Controllers\Textbook;
 
-use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
-
-use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use App\Book;
 use App\BookAuthor;
 use App\BookImageSet;
 use App\Helpers\FileUploader;
-use Isbn\Isbn;
-use GoogleBooks\GoogleBooks;
-
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
 use Auth;
 use Config;
-use Input;
-use Validator;
 use DB;
+use GoogleBooks\GoogleBooks;
+use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Input;
+use Isbn\Isbn;
 use Response;
+use Validator;
 
 class TextbookController extends Controller
 {
@@ -98,8 +95,6 @@ class TextbookController extends Controller
         }
         else
         {
-            // Amazon lookup
-//            $amazon = new AmazonLookUp($isbn, 'ISBN');
 
             $google_book = new GoogleBooks(Config::get('services.google.books.api_key'));
 
@@ -299,13 +294,20 @@ class TextbookController extends Controller
             }
 
             // Get current page form url e.g. &page=1
-            $currentPage = LengthAwarePaginator::resolveCurrentPage();
+            if (Input::has('page'))
+            {
+                $currentPage = LengthAwarePaginator::resolveCurrentPage() - 1;
+            }
+            else
+            {
+                $currentPage = 0;
+            }
 
             // Define how many items we want to be visible in each page
             $perPage = Config::get('pagination.limit.textbook');
 
             // Slice the collection to get the items to display in current page
-            $currentPageSearchResults = $books->slice(($currentPage - 1) * $perPage, $perPage)->all();
+            $currentPageSearchResults = $books->slice(($currentPage) * $perPage, $perPage)->all();
 
             // Create our paginator and pass it to the view
             $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($books), $perPage);
@@ -371,6 +373,30 @@ class TextbookController extends Controller
         }
 
         return Response::json($book_data);
+    }
+
+    /**
+     * AJAX: validate ISBN.
+     *
+     * @return mixed
+     */
+    public function validateISBN()
+    {
+        $query = Input::get('isbn');
+        $isbn_validator = new Isbn();
+
+        if ($isbn_validator->validation->isbn($query))
+        {
+            return Response::json([
+                'valid' => true
+            ]);
+        }
+        else
+        {
+            return Response::json([
+                'valid'     => false
+            ]);
+        }
     }
 
 }

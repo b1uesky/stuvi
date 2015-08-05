@@ -2,129 +2,32 @@
 
 @import "modules/all";
 
-.background {
-  /* Image by Nick Louie. flickr.com/photos/nickkeee */
-  background: url("../img/nick/nlouie7.jpg") no-repeat center;
-  background-size: cover;
+#contact-main-container{
+/*  background: url('../img/art-boston.jpg') no-repeat;
+  background-size: cover;*/
+  background-color: $background-color;
 }
 
-.title-container {
-  margin-left: 5%;
-  margin-top: 80px;
-  color: #FFFFFF;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
-}
-
-h3 {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
-}
-
-/****  CONTACT FORM  ****/
-
-.contact-form-container {
-  margin-left: 5%;
-  margin-bottom: 80px;
-
-}
-
-@media (min-width: 768px) {
-  .contact-form-container {
-    border-right: 1px solid #CCCCCC;
-    padding-right: 5%;
-  }
-}
-
-.form-group {
-  margin-bottom: 30px;
-  textarea {
-    max-width: 100%;
-    max-height: 300px;
-  }
-}
-
-.form-control {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: #FFFFFF;
-}
-
-.form-control::-webkit-input-placeholder {
-  /* WebKit browsers */
-  color: #FFFFFF;
-}
-
-.form-control:-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
-  color: #FFFFFF;
-  opacity: 1;
-}
-
-.form-control::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
-  color: #FFFFFF;
-  opacity: 1;
-}
-
-.form-control:-ms-input-placeholder {
-  /* Internet Explorer 10+ */
-  color: white;
-}
-
-#contact-btn {
-  padding: 12px;
-  width: 150px;
-}
-
-/****  SOCIAL MEDIA LINKS  ****/
-
-.right-container {
+.contact-title, .contact-subtitle, .contact-email, .contact-details, .contact-alerts {
   text-align: center;
-  h3 {
-    color: white;
-  }
-  @media (max-width: 768px) {
-    display: none;
-  }
 }
 
-.contact-info-container {
-  background-color: rgba(0, 0, 0, 0.7);
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  padding: 20px 0;
-  a{
-    &:hover{
-      color: $primary-color;
-    }
-  }
+.contact-subtitle {
+  color: $muted-text-color;
+  margin-bottom: $spacing-unit / 2;
 }
 
-.contact-info {
-  text-align: left;
-  list-style-type: none;
-  li {
-    margin: 10px 0;
-    a {
-      color: #FFFFFF;
-      text-decoration: none;
-      font-size: 1.1em;
-      i {
-        margin-right: 10px;
-        text-align: center;
-      }
-    }
-  }
-  #map-marker, #facebook {
-    margin-left: 4px;
-    margin-right: 14px;
-  }
-  #linkedin {
-    margin-right: 12px;
-  }
+.contact-email {
+  color: $muted-text-color;
 }
 
-/****  PHOTO LICENSE  ****/
+.contact-container {
+  max-width: 350px;
+  margin: 0 auto;
+  padding-top: $spacing-unit;
+  height: 100vh;
+}
 
-#license {
-  color: #FFFFFF;
-  text-align: right;
+.control-label {
+  font-weight: bold;
 }

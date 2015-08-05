@@ -46,10 +46,14 @@
                             </a>
                             <ul class="dropdown-menu" id="nav-dropdown" role="menu" aria-labelledby="nav-dropdown">
                                 <li role="presentation">
-                                    <a role="menuitem" tabindex="-1" href="{{ url('/user/profile') }}">Profile</a>
+                                    <a role="menuitem" tabindex="-1" href="{{ url('/user/overview') }}">Profile</a>
                                 </li>
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1" href="{{ url('/user/account') }}">Your Account</a>
+                                </li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="{{ url('/user/bookshelf') }}">Your
+                                        Bookshelf</a>
                                 </li>
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1" href="{{ url('/order/buyer') }}">Your Orders</a>
@@ -82,7 +86,9 @@
         <!-- End navbar container -->
     </nav>
     <!-- login modal -->
-    @include('auth.login-signup-modal')
+    @if (Auth::guest())
+        @include('auth.login-signup-modal')
+    @endif
 
     @if(Auth::check())
         <!-- Empty Cart Modal -->

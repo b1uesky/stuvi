@@ -53,7 +53,7 @@
                         @endif
                         <h3>Email</h3>
                         {{-- Email List --}}
-                        <p>Note: Stuvi will send all notification email to your primary email.</p>
+                        <p>Note: Stuvi will send all notification emails to your primary email.</p>
                         <table class="table table-hover">
                             @foreach ($emails as $email)
                                 <tr>
@@ -120,13 +120,5 @@
 
 <!-- inserted at the end of app -->
 @section('javascript')
-
-    <!-- Slick required -->
-    {{--
-        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script type="text/javascript" src="{{asset('/slick/slick.min.js')}}"></script>
-
-    --}}
     <script type="text/javascript" src="{{asset('js/user/email.js')}}"></script>
 @endsection

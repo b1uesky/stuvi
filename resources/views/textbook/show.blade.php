@@ -13,6 +13,13 @@
 
     @include('textbook/textbook-nav')
 
+     <!-- message -->
+    <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
+        @if (Session::has('message'))
+            <div class="bg-success flash-message" id="message" >{{ Session::get('message') }}</div>
+        @endif
+    </div>
+
     <div class="container">
         <div class="row textbook-row">
             <div class="col-sm-6">
@@ -71,7 +78,7 @@
                     @foreach($book->availableProducts() as $product)
                         <tr>
                             <td>
-                                <p id="price">${{ $product->price }}</p>
+                                <p id="price">${{ $product->price/100 }}</p>
                             </td>
                             <td>
                                 {{ $product->general_condition() }}
@@ -82,14 +89,14 @@
                             @if(Auth::check())
                                 <td class="cart-btn-col">
                                     @if($product->isInCart(Auth::user()->id))
-                                        <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Added to
-                                            cart</a>
+                                        <a class="btn primary-btn add-cart-btn disabled" href="#" role="button" id="added-to-cart-btn">
+                                            Added to cart</a>
                                     @elseif($product->seller == Auth::user())
                                         <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Posted by
                                             you</a>
                                     @else
                                         <a class="btn primary-btn add-cart-btn" href="{{ url('cart/add/'.$product->id) }}"
-                                           role="button">Add to cart</a>
+                                           role="button" id="add-cart-btn" onClick="added()">Add to cart</a>
                                     @endif
                                 </td>
                             @endif

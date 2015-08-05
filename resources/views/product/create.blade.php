@@ -2,7 +2,7 @@
 
 @extends('app')
 
-@section('title', 'Enter book info')
+@section('title', 'Enter Product Info')
 
 @section('css')
     <link href="{{ asset('/css/product_create.css') }}" rel="stylesheet">
@@ -57,7 +57,7 @@
 
         {{-- If the user is not logged in, show login / signup buttons. --}}
         @if(!Auth::check())
-            <div class="row col-sm-6 col-sm-offset-1">
+            <div class="row col-sm-6 col-sm-offset-1" id="login-signup-container">
                 <p>Please login or sign up to continue using our service.</p>
                 <a data-toggle="modal" href="#login-modal">Login</a>
                 <a data-toggle="modal" href="#signup-modal">Sign up</a>
@@ -228,12 +228,11 @@
 
                 {{-- your price --}}
                 <div class="form-group">
-                    <label for="price-form">Price</label>
+                    <label>Price</label>
 
                     <div class="input-group" id="price-input">
                         <div class="input-group-addon">$</div>
-                        <input type="number" step="0.01" name="price" class="form-control" id="price-form"
-                               placeholder="Amount">
+                        <input type="number" step="0.01" name="price" class="form-control" placeholder="Amount">
                     </div>
                 </div>
 
@@ -244,7 +243,7 @@
                         <div class="dz-message">
                             Drop images here or click to upload.
                             <br>
-                            <small>(A front cover image is required. You can upload three images in maximum.)</small>
+                            <small>(A front cover image is required. You can upload a maximum of three images.)</small>
                         </div>
                     </div>
                 </div>
@@ -261,10 +260,8 @@
 
     @if(Auth::check())
         {{-- FormValidation --}}
-        {{--<script src="{{asset('formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>--}}
-        {{--<script src="{{asset('formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>--}}
-        {{--<script src="{{ asset('js/validator/product-create.js') }}"></script>--}}
-
+        <script src="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js') }}"></script>
+        <script src="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/product/create.js') }}"></script>
     @endif
 @endsection
