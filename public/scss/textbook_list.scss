@@ -3,6 +3,8 @@
 
 @import "modules/all";
 
+/* TOP SECTION */
+
 /* Header */
 #search-term{
   font-size: 2em;
@@ -100,6 +102,11 @@
 
 .textbook-pub-date {
   font-size: medium;
+}
+
+#textbook-low-price, #textbook-high-price {
+  color: $price-color;
+  font-weight: 500;
 }
 
 @media (max-width: 970px) {

@@ -12,7 +12,9 @@ body {
 }
 
 #login-signup-container{
-  padding-top: 80px;
+  @media(min-width: 796px ){
+    padding-top: 80px;
+  }
 }
 
 /*** TEXTBOOK INFO ***/

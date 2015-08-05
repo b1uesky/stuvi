@@ -20,7 +20,7 @@
             </div>
             <div class="bookshelf-title-container">
                 <h1 id="bookshelf-title">Your Bookshelf</h1>
-                <hr>
+               {{-- <hr>--}}
             </div>
             <!-- sort and search -->
             {{--<div class="container col-sm-12">--}}
@@ -49,7 +49,7 @@
             {{--</div>--}}
 
             <!-- books -->
-            <div class="container col-md-12">
+            <div class="container col-sm-11 col-md-12">
                 <table class="table table-responsive for-sale-table">
                     @forelse ($productsForSale as $product)
                         <tr class="for-sale-item">
