@@ -377,4 +377,28 @@ class TextbookController extends Controller
         return Response::json($book_data);
     }
 
+    /**
+     * AJAX: validate ISBN.
+     *
+     * @return mixed
+     */
+    public function validateISBN()
+    {
+        $query = Input::get('isbn');
+        $isbn_validator = new Isbn();
+
+        if ($isbn_validator->validation->isbn($query))
+        {
+            return Response::json([
+                'valid' => true
+            ]);
+        }
+        else
+        {
+            return Response::json([
+                'valid'     => false
+            ]);
+        }
+    }
+
 }
