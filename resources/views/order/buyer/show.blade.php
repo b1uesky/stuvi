@@ -70,11 +70,12 @@
                             <p>Title: {{ $product->book->title }}</p>
 
                             <p>ISBN: {{ $product->book->isbn13 }}</p>
-                            <span>Author(s): </span>
+
+                            <p><span>Author(s): </span>
                             @foreach($product->book->authors as $author)
                                 <span>{{ $author->full_name }}</span>
                             @endforeach
-                            <br>
+                            </p>
 
                             <p>Scheduled pickup time:
                                 @if ($seller_order->scheduled_pickup_time)
