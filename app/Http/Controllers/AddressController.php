@@ -133,6 +133,7 @@ class AddressController extends Controller
             $address->setDefault();
 
             if ($request -> ajax()) {
+
                 return Response::json([
                     'success' => true,
                     'address' => $address->toArray()

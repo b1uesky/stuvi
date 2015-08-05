@@ -50,13 +50,31 @@ $(document).ready(function () {
     $('.form-update-default-address').submit(function (e) {
         e.preventDefault();
         var $this = $(this);
+        var seller_order_id = $('input[name=seller_order_id]').val();
+        var selected_address_id = $this.find('input[name=address_id]').val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/order/seller/assignAddress',
+            data:{
+                selected_address_id: selected_address_id,
+                seller_order_id : seller_order_id
+            },
+            dataType: 'json',
+            success: function(data,status){
+            },
+            error: function (xhr, status, errorThrown) {
+                console.log(status);
+                console.log(errorThrown);
+            }
+        });
 
         $.ajax({
             type: 'POST',
             url: '/address/select',
             data: {
                 _token: $('[name="csrf_token"]').attr('content'),
-                selected_address_id: $(this).find('input[name=address_id]').val()
+                selected_address_id: selected_address_id
             },
             dataType: 'json',
             success: function (data, status) {
@@ -108,13 +126,15 @@ $(document).ready(function () {
     $('#submit-address-form').click(function(e){
         e.preventDefault();
         var $form = $('#seller-address-form');
+        var seller_order_id = $('input[name=seller_order_id]').val();
+        var address_id = $form.find('input[name=address_id]').val();
 
         $.ajax({
             type: 'POST',
             url: '/address/update',
             data: {
                 _token : $('[name="csrf_token"]').attr('content'),
-                address_id : $form.find("input[name=address_id]").val(),
+                address_id : address_id,
                 addressee : $form.find("input[name=addressee]").val(),
                 address_line1 : $form.find("input[name=address_line1]").val(),
                 address_line2 : $form.find("input[name=address_line2]").val(),
@@ -130,6 +150,21 @@ $(document).ready(function () {
                 }else{
                     address["address-line"] = address["address_line1"];
                 }
+                $.ajax({
+                    type: 'GET',
+                    url: '/order/seller/assignAddress',
+                    data:{
+                        selected_address_id: address_id,
+                        seller_order_id : seller_order_id
+                    },
+                    dataType: 'json',
+                    success: function(data,status){
+                    },
+                    error: function (xhr, status, errorThrown) {
+                        console.log(status);
+                        console.log(errorThrown);
+                    }
+                });
                 updateAddress($(".seller-address"),address);
                 toggleAddress();
                 $("#address-form-modal").modal("hide");
