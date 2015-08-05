@@ -1,21 +1,24 @@
 {{--User Profile page--}}
 
 
+{{-- Variables --}}
+<?php
+$first_name =   Auth::user()->first_name;
+$last_name  =   Auth::user()->last_name;
+$major      =   Auth::user()->profile->major;
+$fb         =   Auth::user()->profile->facebook;
+$linkedin   =   Auth::user()->profile->linkedin;
+$twitter    =   Auth::user()->profile->twitter;
+$website    =   Auth::user()->profile->website;
+?>
+
+
 @extends('app')
-@section('title', 'Profile - '.Auth::user()->first_name.' '.Auth::user()->last_name )
+@section('title', 'Profile - '.$first_name.' '.$last_name )
 
 @section('css')
     <link href="{{ asset('/css/user_profile.css') }}" rel="stylesheet">
 @endsection
-
-{{-- Variables --}}
-<?php
-    $major = Auth::user()->profile->major;
-    $fb = Auth::user()->profile->facebook;
-    $linkedin = Auth::user()->profile->linkedin;
-    $twitter = Auth::user()->profile->twitter;
-    $website = Auth::user()->profile->website;
-?>
 
 @section('content')
     <!-- User template has the second nav bar and the profile side bar -->
@@ -24,7 +27,7 @@
                 <div class="profile-content">
                     <!-- right box -->
                     <div class="container col-xs-12 col-md-12" id = "profile-details">
-                        <h2 id="profile-name">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                        <h2 id="profile-name">{{ $first_name }} {{ $last_name }}
                             <small id="profile-title">{{Auth:: user()->profile->title}}</small>
                         </h2>
                         <p>{{Auth::user()->profile->bio}}</p>
@@ -78,13 +81,6 @@
                                             <td>{{ date("m/d/Y", strtotime(Auth::user()->created_at)) }}</td>
                                             <td></td>
                                         </tr>
-                                        {{--<!-- rep -->--}}
-                                        {{--<tr id ="details-rep">--}}
-                                            {{--<td><i class="fa fa-thumbs-o-up"></i>--}}
-                                                {{--<b> Reputation: </b></td>--}}
-                                            {{--<td>9001</td>--}}
-                                            {{--<td></td>--}}
-                                        {{--</tr>--}}
                                         <!-- books sold -->
                                         <tr id="details-books-sold">
                                             <td><i class="fa fa-share"></i>
@@ -116,12 +112,5 @@
 
 <!-- inserted at the end of app -->
 @section('javascript')
-    <!-- Slick required -->
-    {{--
-        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script type="text/javascript" src="{{asset('/slick/slick.min.js')}}"></script>
-
-    --}}
     <script type="text/javascript" src="{{asset('js/user/profile.js')}}"></script>
 @endsection
