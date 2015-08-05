@@ -74,8 +74,8 @@ body {
 hr {
   border-color: black;
 }
-
-/* Cancel order button */
+/*
+/!* Cancel order button *!/
 .btn-orange {
   background: #F16521;
   color: #FFFFFF;
@@ -87,7 +87,7 @@ hr {
 .btn-orange:focus {
   outline: 0 !important;
   color: #FFFFFF;
-}
+}*/
 
 /* Header when order is canceled */
 #cancelled {
@@ -101,25 +101,6 @@ hr {
   margin-left: -17px;
 }
 
-/* Address */
-
-.seller-address {
-  /*border: 1px solid #eee;*/
-  display: inline-block;
-  /*margin: 20px;*/
-  padding: 0;
-  a {
-    min-width: 30%;
-  }
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-}
-
-.seller-address-book {
-  display: none;
-}
 
 /* Pickup Button */
 
@@ -160,4 +141,30 @@ hr {
 
 .price {
   color: $price-color;
+}
+
+
+/* Seller Address */
+
+.seller-address {
+  /*border: 1px solid #eee;*/
+  display: inline-block;
+  /*margin: 20px;*/
+  padding: 0;
+  a {
+    min-width: 30%;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+}
+
+.seller-address-book {
+  display: none;
+}
+
+
+#seller-address-book-box{
+  padding: 10px;
 }

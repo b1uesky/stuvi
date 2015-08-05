@@ -66,7 +66,10 @@
                             <span class="textbook-isbn">ISBN13: {{ $book->isbn13 }}</span>
                             <br>
                             <br>
-                            <span>From ${{ $book->decimalLowestPrice() }} to ${{ $book->decimalHighestPrice() }}</span>
+                            <span>
+                                From <span id="textbook-low-price">${{ $book->decimalLowestPrice() }}</span>
+                                to <span id="textbook-high-price">${{ $book->decimalHighestPrice() }}</span>
+                            </span>
                         </td>
                         <td class="table-offset"></td>
                         <td class="textbook-info-2">
