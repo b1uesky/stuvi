@@ -106,7 +106,7 @@
 
                 <p>ISBN: {{ $book->isbn10 }}</p>
 
-                <p>Price: ${{ $product->price/100 }}</p>
+                <p>Price: ${{ $product->decimalPrice() }}</p>
             </div>
         </div>
 
