@@ -220,7 +220,7 @@
                                     <input type="submit" name="submit" value="Select" class="btn btn-default"/>
                                 </form>
 
-                                {{-- TODO: Edit address --}}
+                                {{-- Ajax: Edit address --}}
                                 <form action="" method="post" class="form-edit-address">
                                     <input type="hidden" name="address_id" value="{{ $address->id }}"/>
                                     <input type="submit" name="submit" value="Edit" class="btn btn-default"/>
@@ -231,8 +231,7 @@
 
                         {{-- Add a new address --}}
                         <div>
-                            <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
-                               class="btn btn-orange">Add a new address</a></br></br>
+                            <button class="btn btn-orange" id="add-address-btn">Add a new address</button></br></br>
                         </div>
                     </div>
                 </div>
@@ -328,6 +327,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" id="delete-address" class="btn btn-primary">Delete</button>
                             <button type="button" id="submit-address-form" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>

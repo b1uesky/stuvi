@@ -114,6 +114,7 @@ $(document).ready(function () {
             success: function (data, status) {
                 var address = data["address"];
                 updateAddress($("#seller-address-form"),address);
+                $("delete-address").show();
                 $("#address-form-modal").modal("show");
             },
             error: function (xhr, status, errorThrown) {
@@ -121,6 +122,36 @@ $(document).ready(function () {
                 console.log(errorThrown);
             }
         });
+    });
+
+    $("#delete-address").click(function(e){
+        e.preventDefault();
+        var $this = $(this);
+        var address_id = $this.parent().prev().find('input[name=address_id]').val();
+        var address_panel = $(".form-update-default-address").find("input[value="+address_id+"]").parent();
+
+        $.ajax({
+            type: "POST",
+            url: "/address/delete",
+            data:{
+                _token: $('[name="csrf_token"]').attr('content'),
+                address_id : address_id
+            },
+            dataType: 'json',
+            success: function (data, status){
+                if(data['is_deleted']){
+                    address_panel.parent().remove();
+                    $("#address-form-modal").modal("hide");
+                }
+            }
+
+        });
+    });
+
+    $("#add-address-btn").click(function(e){
+        e.preventDefault();
+        $("#delete-address").hide();
+        $("#address-form-modal").modal("show");
     });
 
     $('#submit-address-form').click(function(e){
@@ -131,7 +162,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: '/address/update',
+            url: address_id ? '/address/update' : '/address/store',
             data: {
                 _token : $('[name="csrf_token"]').attr('content'),
                 address_id : address_id,
@@ -145,6 +176,7 @@ $(document).ready(function () {
             },
             success: function (data,status){
                 var address= data["address"];
+                address_id = address["id"];
                 if(address["address_line2"]) {
                     address["address-line"] = address["address_line1"] + " " + address["address_line2"];
                 }else{
