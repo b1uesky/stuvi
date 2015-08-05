@@ -73,7 +73,7 @@
                                 @endforeach
 
                                 <span class="for-sale-binding">Hardcover</span><br>
-                                <span class="for-sale-price">${{ $product->price/100 }}</span> <br>
+                                <span class="for-sale-price">${{ $product->decimalPrice() }}</span> <br>
                             </td>
                             <td class="for-sale-info-2">
                                 <span class="for-sale-isbn">ISBN-10: {{ $product->book->isbn10 }}</span><br>

@@ -39,7 +39,7 @@
             <tr>
                 <td>{{ $product->id }}</td>
                 <td>{{ $product->book->title }}</td>
-                <td>{{ $product->price/100 }}</td>
+                <td>{{ $product->decimalPrice() }}</td>
                 <td>{{ $product->seller->email }}</td>
                 <td>
                     @foreach($product->images as $product_image)

@@ -81,7 +81,7 @@
 
                 <p>Number of Pages: {{ $product->book->num_pages }}</p>
                 <div class="price">
-                    Price: <b>${{ $product->price/100 }}</b>
+                    Price: <b>${{ $product->decimalPrice() }}</b>
                 </div>
                 @if(Auth::check())
                     @if($product->isInCart(Auth::user()->id))

@@ -7,7 +7,7 @@ class Price {
      * @param integer $price
      * @return string
      */
-    public static function ConvertIntegerToDecimal($price)
+    public static function convertIntegerToDecimal($price)
     {
         return number_format((float)$price / 100, 2, '.', '');
     }
@@ -18,7 +18,7 @@ class Price {
      * @param decimal $price
      * @return int
      */
-    public static function ConvertDecimalToInteger($price)
+    public static function convertDecimalToInteger($price)
     {
         return intval(floatval($price) * 100);
     }
