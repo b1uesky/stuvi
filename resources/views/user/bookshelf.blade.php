@@ -76,17 +76,21 @@
                             <td class="for-sale-info-2">
                                 <span class="for-sale-isbn">ISBN-10: {{ $product->book->isbn10 }}</span><br>
                                 <span class="for-sale-isbn">ISBN-13: {{ $product->book->isbn13 }}</span><br>
-                                <div class="row" id="for-sale-info-2-edit-delete-row">
-                                    <span class="for-sale-isbn">
-                                    <a class="btn primary-btn" href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}">Edit</a>
-                                    </span>
-                                    <form action="{{ url('/textbook/sell/product/delete') }}" method="post">
-                                        {!! csrf_field() !!}
-                                        <input type="hidden" name="id" value="{{ $product->id }}">
-                                        <button type="submit" class="btn primary-btn sell-btn">Delete</button>
-                                    </form>
-                                </div>
+                                <span class="for-sale-isbn">
+                                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}"
+                                       class="btn primary-btn edit-btn">
+                                        <i class="fa fa-pencil"></i> Edit
+                                    </a>
+                                </span>
 
+                                <form action="{{ url('/textbook/sell/product/delete') }}" method="post"
+                                      class="delete-form">
+                                    {!! csrf_field() !!}
+                                    <input type="hidden" name="id" value="{{ $product->id }}">
+                                    <button type="submit" class="btn primary-btn sell-btn">
+                                        <i class="fa fa-trash"></i> Delete
+                                    </button>
+                                </form>
                             </td>
 
                             {{--<td class="for-sale-info-3">--}}
