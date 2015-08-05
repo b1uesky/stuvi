@@ -33,7 +33,7 @@ $(document).ready(function() {
         }
     }).autocomplete('instance')._renderItem = function(ul, item) {
         // TODO: use default image if no image.
-        var image = '#';
+        var image = 'https://s3.amazonaws.com/stuvi-book-img/placeholder.png';
 
         if (item.image) {
             image = item.image;
