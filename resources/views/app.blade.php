@@ -39,7 +39,7 @@
 @endif
 
         <!-- login/signup modal spinner -->
-  <script src="{{asset('js/login-signup.js')}}"></script>
+  {{--  <script src="{{asset('js/login-signup.js')}}"></script>--}}
 
   @yield('javascript')
 </body>
