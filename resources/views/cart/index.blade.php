@@ -80,7 +80,7 @@
                 </tr>
                 <!-- how will this style?? -->
                 @if ($item->product->sold)
-                    <tr class="warning" colspan="4">
+                    <tr class="warning">
                         <td>Warning: This product has been sold.</td>
                     </tr>
                 @endif
