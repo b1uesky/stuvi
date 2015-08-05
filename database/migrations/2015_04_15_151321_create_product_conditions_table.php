@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateProductConditionsTable extends Migration {
 
@@ -23,7 +23,7 @@ class CreateProductConditionsTable extends Migration {
             $table->tinyInteger('damaged_pages');
             $table->integer('product_id')->unsigned();
 
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
 		});
 	}
 

@@ -45,7 +45,7 @@
     {{-- FormValidation --}}
     <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
     <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/validator/auth.js')}}"></script>
+    <script src="{{asset('js/auth/login.js')}}"></script>
 @endif
 
         <!-- login/signup modal spinner -->

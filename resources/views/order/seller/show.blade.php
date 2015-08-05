@@ -175,7 +175,7 @@
                     <div class="seller-address">
                         <ul>
                             {{-- WARNING: if you need to change class names below,
-                            make sure you change the selectors in updateDefaultAddress() in `showSellerOrder.js`. --}}
+                            make sure you change the selectors in updateDefaultAddress() in `show.js`. --}}
                             <li class="seller-address-addressee">{{ $address->addressee }}</li>
                             <li class="seller-address-address-line">
                                 @if($address->address_line2)
@@ -342,10 +342,8 @@
     @endsection
 
     @section('javascript')
-    {{--http://xdsoft.net/jqplugins/datetimepicker/--}}
-            <!-- Date time picker required scripts -->
     <script src="{{ asset('libs/datetimepicker/jquery.datetimepicker.js') }}"></script>
-    <script src="{{asset('/js/order/seller/showSellerOrder.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/order/seller/show.js') }}"></script>
 
     <script>
         function goBack() {

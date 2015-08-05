@@ -45,8 +45,8 @@
                             </a>
                         </td>
                         <td class="textbook-info-1">
-                            <span class="textbook-title"><a
-                                        href="{{ url("textbook/buy/".$book->id) }}">{{ $book->title }}</a></span><br>
+                            <span class="textbook-title"><a href="{{ url("textbook/buy/".$book->id) }}">{{ $book->title }}</a></span><br>
+
                             @if($book->authors->count())
                                 <span>Author(s):</span>
                                 <?php $i = 0; ?>
@@ -65,6 +65,8 @@
                             <br>
                             <span class="textbook-isbn">ISBN13: {{ $book->isbn13 }}</span>
                             <br>
+                            <br>
+                            <span>From ${{ $book->decimalLowestPrice() }} to ${{ $book->decimalHighestPrice() }}</span>
                         </td>
                         <td class="table-offset"></td>
                         <td class="textbook-info-2">
@@ -87,6 +89,6 @@
 @endsection
 
 @section('javascript')
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <script src="{{asset('/js/autocompleteBuy.js')}}" type="text/javascript"></script>
+    {{--<script src="{{ asset('libs/jquery-ui/jquery-ui.min.js') }}"></script>--}}
+    {{--<script src="{{ asset('/js/autocomplete.js')}} "></script>--}}
 @endsection

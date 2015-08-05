@@ -511,5 +511,5 @@
 
     <script src="{{ asset('libs/card/lib/js/jquery.card.js') }}"></script>
     <script src="https://js.stripe.com/v2/"></script>
-    <script src="{{ asset('/js/order-create.js') }}"></script>
+    <script src="{{ asset('/js/order/buyer/create.js') }}"></script>
 @endsection
