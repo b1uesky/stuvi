@@ -60,8 +60,10 @@
                 </div>
                 <div class="details-pricing col-xs-12 col-sm-3 col-sm-offset-3">
                     <h4>Order Summary</h4>
-
-                    <p>Total: ${{ $buyer_order->buyer_payment->amount/100 }}</p>
+                    <p>Tax: ${{ $buyer_order->tax/100 }}<br>
+                        Fee: ${{ $buyer_order->fee/100 }}<br>
+                        Discount: - ${{ $buyer_order->discount/100 }}<br>
+                        Total: ${{ $buyer_order->buyer_payment->amount/100 }}</p>
                 </div>
             </div>
             <div class="buyer-items">

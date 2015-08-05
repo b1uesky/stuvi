@@ -4,8 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use App\CartItem;
-
 class Cart extends Model
 {
 
@@ -127,6 +125,46 @@ class Cart extends Model
         }
 
         return $price;
+    }
+
+    /**
+     * Get the total tax.
+     *
+     * @return int
+     */
+    public function tax()
+    {
+        return intval($this->totalPrice() * config('tax.MA'));
+    }
+
+    /**
+     * Get the total fee.
+     *
+     * @return int
+     */
+    public function fee()
+    {
+        return config('fee.service_fee');
+    }
+
+    /**
+     * Get the total discount.
+     *
+     * @return int
+     */
+    public function discount()
+    {
+        return config('discount');
+    }
+
+    /**
+     * Get the subtotal of this cart (how much the buyer needs to pay)
+     *
+     * @return int
+     */
+    public function subtotal()
+    {
+        return $this->totalPrice() + $this->tax() + $this->fee() - $this->discount();
     }
 
     /**

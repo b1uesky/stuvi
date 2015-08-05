@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateCartsTable extends Migration
 {
@@ -16,6 +16,7 @@ class CreateCartsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')  ->unsigned();
             $table->integer('quantity') ->unsigned();
+            $table->integer('discount') ->unsigned();
             $table->timestamps();
 
             $table->foreign('user_id')  ->references('id')  ->on('users');
