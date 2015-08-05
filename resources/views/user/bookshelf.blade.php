@@ -65,11 +65,17 @@
                             <td class="for-sale-info-1" colspan="2">
                             <span class="for-sale-title"><a
                                         href="{{ url('textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a></span><br>
-                                <span>by </span>
+                                <?php $i = 0 ?>
                                 @foreach($product->book->authors as $author)
-                                    <span class="for-sale-author">{{ $author->full_name }}</span>
+                                    @if($i == 0)
+                                        <span>by </span>
+                                        <span class="for-sale-author">{{ $author->full_name }}</span>
+                                        <?php $i++ ?>
+                                    @else
+                                        <span class="for-sale-author">, {{ $author->full_name }}</span>
+                                    @endif
                                 @endforeach
-
+                                <br>
                                 <span class="for-sale-binding">Hardcover</span><br>
                                 <span class="for-sale-price">${{ $product->decimalPrice() }}</span> <br>
                             </td>
