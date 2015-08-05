@@ -86,7 +86,7 @@ class Book extends Model
      */
     public function decimalLowestPrice()
     {
-        return Price::ConvertIntegerToDecimal($this->lowest_price);
+        return Price::convertIntegerToDecimal($this->lowest_price);
     }
 
     /**
@@ -96,7 +96,7 @@ class Book extends Model
      */
     public function decimalHighestPrice()
     {
-        return Price::ConvertIntegerToDecimal($this->highest_price);
+        return Price::convertIntegerToDecimal($this->highest_price);
     }
 
     /**

@@ -81,7 +81,7 @@
 
                 <p>Number of Pages: {{ $product->book->num_pages }}</p>
                 <div class="price">
-                    Price: <b>${{ $product->price/100 }}</b>
+                    Price: <b>${{ $product->decimalPrice() }}</b>
                 </div>
                 @if(Auth::check())
                     @if($product->isInCart(Auth::user()->id))
@@ -92,7 +92,8 @@
                         <a class="btn primary-btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
                     @endif
                 @else
-                    <p>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.</p>
+                    <br>
+                    <p class="warning bg-warning">Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.</p>
                 @endif
             </div>
 

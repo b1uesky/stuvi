@@ -37,10 +37,10 @@
                 </div>
 
                 <div class="authors-container">
-                    <span>by </span>
                     <?php $bookCounter = 0; ?>
                     @foreach($book->authors as $author)
                         @if($bookCounter == 0)
+                            <span>by </span>
                             <span id="authors">{{ $author->full_name }}</span>
                         @else
                             <span id="authors">, {{ $author->full_name }}</span>
@@ -58,9 +58,9 @@
         {{-- If the user is not logged in, show login / signup buttons. --}}
         @if(!Auth::check())
             <div class="row col-sm-6 col-sm-offset-1" id="login-signup-container">
-                <p>Please login or sign up to continue using our service.</p>
-                <a data-toggle="modal" href="#login-modal">Login</a>
-                <a data-toggle="modal" href="#signup-modal">Sign up</a>
+                <p>Please login or sign up to sell your book.</p>
+                <a class="btn primary-btn" data-toggle="modal" href="#login-modal">Login</a>&nbsp;
+                <a class="btn primary-btn" data-toggle="modal" href="#signup-modal">Sign up</a>
             </div>
         @else
             {{-- Show book conditions --}}
