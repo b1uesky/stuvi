@@ -146,7 +146,18 @@ class Book extends Model
      */
     public static function queryWithBuyerID($query, $buyer_id)
     {
-        $books = Book::where('title', 'LIKE', '%'.$query.'%')
+        $terms = explode(' ', $query);
+        $clauses = array();
+
+        foreach ($terms as $term)
+        {
+            $clauses[] = 'title LIKE "%' . $term . '%" OR a.full_name LIKE "%' . $term . '%"';
+        }
+
+        $filter = implode(' OR ', $clauses);
+
+        $books = Book::whereRaw($filter)
+            ->join('book_authors as a', 'a.book_id', '=', 'books.id')
             ->join('products as p', 'p.book_id', '=', 'books.id')
             ->join('users as seller', 'seller.id', '=', 'p.seller_id')
             ->whereIn('seller.university_id', function($q) use ($buyer_id) {
@@ -173,7 +184,17 @@ class Book extends Model
      */
     public static function queryWithUniversityID($query, $university_id)
     {
-        $books = Book::where('title', 'LIKE', '%'.$query.'%')
+        $terms = explode(' ', $query);
+        $clauses = array();
+
+        foreach ($terms as $term)
+        {
+            $clauses[] = 'title LIKE "%' . $term . '%" OR a.full_name LIKE "%' . $term . '%"';
+        }
+
+        $filter = implode(' OR ', $clauses);
+
+        $books = Book::whereRaw($filter)
             ->join('products as p', 'p.book_id', '=', 'books.id')
             ->join('users as seller', 'seller.id', '=', 'p.seller_id')
             ->whereIn('seller.university_id', function($q) use ($university_id) {
@@ -186,7 +207,7 @@ class Book extends Model
                     ->from('universities')
                     ->where('is_public', '=', true);
             })
-            ->select('books.*')->distinct()->take(10)->get();
+            ->select('books.*')->distinct()->get();
 
         return $books;
     }
