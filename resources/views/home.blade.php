@@ -136,5 +136,5 @@
     <script src="{{asset('js/home.js')}}"></script>
 
     <script src="libs/jquery-ui/jquery-ui.min.js"></script>
-    <script src="{{asset('js/autocompleteBuy.js')}}"></script>
+    <script src="{{asset('js/autocomplete.js')}}"></script>
 @endsection

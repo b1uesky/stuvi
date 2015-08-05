@@ -1,6 +1,4 @@
 $(document).ready(function(){
-    $('.active-nav').removeClass('active-nav');
-    $('#textbook-nav').addClass('active-nav');
 
     // SELL SEARCH BUTTON FIX
     // original problem - the search button was pushed down whenever there was an isbn input error

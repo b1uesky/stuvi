@@ -89,6 +89,6 @@
 @endsection
 
 @section('javascript')
-    <script src="libs/jquery-ui/jquery-ui.min.js"></script>
-    <script src="{{asset('/js/autocompleteBuy.js')}}" type="text/javascript"></script>
+    {{--<script src="{{ asset('libs/jquery-ui/jquery-ui.min.js') }}"></script>--}}
+    {{--<script src="{{ asset('/js/autocomplete.js')}} "></script>--}}
 @endsection
