@@ -151,12 +151,13 @@ class Book extends Model
 
         foreach ($terms as $term)
         {
-            $clauses[] = 'title LIKE "%' . $term . '%"';
+            $clauses[] = 'title LIKE "%' . $term . '%" OR a.full_name LIKE "%' . $term . '%"';
         }
 
         $filter = implode(' OR ', $clauses);
 
         $books = Book::whereRaw($filter)
+            ->join('book_authors as a', 'a.book_id', '=', 'books.id')
             ->join('products as p', 'p.book_id', '=', 'books.id')
             ->join('users as seller', 'seller.id', '=', 'p.seller_id')
             ->whereIn('seller.university_id', function($q) use ($buyer_id) {
@@ -188,7 +189,7 @@ class Book extends Model
 
         foreach ($terms as $term)
         {
-            $clauses[] = 'title LIKE "%' . $term . '%"';
+            $clauses[] = 'title LIKE "%' . $term . '%" OR a.full_name LIKE "%' . $term . '%"';
         }
 
         $filter = implode(' OR ', $clauses);
