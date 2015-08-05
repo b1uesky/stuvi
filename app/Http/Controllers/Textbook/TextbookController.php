@@ -1,24 +1,21 @@
 <?php namespace App\Http\Controllers\Textbook;
 
-use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
-
-use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use App\Book;
 use App\BookAuthor;
 use App\BookImageSet;
 use App\Helpers\FileUploader;
-use Isbn\Isbn;
-use GoogleBooks\GoogleBooks;
-
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
 use Auth;
 use Config;
-use Input;
-use Validator;
 use DB;
+use GoogleBooks\GoogleBooks;
+use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Input;
+use Isbn\Isbn;
 use Response;
+use Validator;
 
 class TextbookController extends Controller
 {
@@ -98,6 +95,7 @@ class TextbookController extends Controller
         }
         else
         {
+
             $google_book = new GoogleBooks(Config::get('services.google.books.api_key'));
 
             if ($google_book->searchByISBN($isbn))
