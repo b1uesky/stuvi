@@ -42,7 +42,7 @@
 
                 <p>
                     Please go to <a href="">your orders</a> page. There you can see a list
-                    of your previous orders and choose to cancel and order.
+                    of your previous orders and choose to cancel an order.
                 </p>
             </div>
         </div>

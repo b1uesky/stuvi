@@ -3,6 +3,9 @@
  */
 $(document).ready(function () {
 
+    $('#update-loading').css('visibility', 'hidden');
+    $('#add-loading').css('visibility', 'hidden');
+
     /**
      * Shipping Address
      */
@@ -36,10 +39,14 @@ $(document).ready(function () {
 
     $('#storeAddedAddress').click(function () {
         $('.add-address-form').submit();
+        $('.form-btn').css('visibility', 'hidden');
+        $('#add-loading').css('visibility', 'visible');
     });
 
     $('#storeUpdatedAddress').click(function () {
         $('.update-address-form').submit();
+        $('.form-btn').css('visibility', 'hidden');
+        $('#update-loading').css('visibility', 'visible');
     });
 
     $('.editThisAddress').click(function () {
