@@ -114,10 +114,13 @@
   width: 100%;
   margin-top: 100px;
   margin-bottom: 30px;
+  text-shadow: $text-shadow;
   @media(max-width: 991px){
     margin-top: 30px;
   }
-  text-shadow: $text-shadow;
+  @media(max-width: 767px){
+    z-index: 0;
+  }
 }
 
 #head1{

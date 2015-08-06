@@ -1,5 +1,9 @@
 <!-- nav bar here -->
 
+
+{{-- Variables--}}
+<?php $url = Request::url() ?>
+
 <header>
     <nav class="navbar navbar-default" id="nav" role="navigation">
         <div class="container-fluid">
@@ -11,7 +15,8 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <div class="logo-container">
-                    @if($url = Request::url() == url('/home'))
+                    {{-- If on homepage, show the home logo which has white text--}}
+                    @if($url == url('/home') or $url == url('/'))
                         <a href="{{url('/home')}}"> <img src="{{asset('/img/logo-home-md.png')}}" class="img-responsive"> </a>
                     @else
                         <a href="{{url('/home')}}"> <img src="{{asset('/img/logo-new-md.png')}}" class="img-responsive"> </a>
