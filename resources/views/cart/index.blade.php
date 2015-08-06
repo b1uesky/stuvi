@@ -101,7 +101,7 @@
                     <td>${{ $tax/100 }}</td>
                 </tr>
                 <tr>
-                    <td><b>Stuvi Fee</b></td>
+                    <td><b>Service Fee</b></td>
                     <td>${{ $fee/100 }}</td>
                 </tr>
                 <tr>
