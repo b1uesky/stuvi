@@ -2,7 +2,7 @@
 
 @extends('app')
 
-@section('title', 'Buy Used Textbooks')
+@section('title', 'Buy Textbooks')
 
 @section('css')
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -27,7 +27,7 @@
     <!-- Search Bar Container-->
     <div class="container-fluid search">
         <div class="row">
-            <h1 id="title">Buy Used Textbooks</h1>
+            <h1 id="title">Buy Textbooks</h1>
             <div class="searchbar">
                 <form action="/textbook/buy/search" method="get">
 
