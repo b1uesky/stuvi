@@ -44,6 +44,10 @@ body {
   border: 3px solid $table-border-color;
 }
 
+.no-border-top {
+  border-top: none !important;
+}
+
 .subtotal {
   border-top: hidden;
   background-color: white;

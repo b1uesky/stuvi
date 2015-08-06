@@ -28,6 +28,9 @@
         <li>
             <a href="{{ url('/faq/orders') }}">Is my credit card info secure?</a>
         </li>
+        <li>
+            <a href="{{ url('/faq/orders') }}">How do I cancel an order?</a>
+        </li>
     </ul>
     <h4>Account</h4>
     <ul class="faq-list">

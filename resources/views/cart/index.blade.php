@@ -6,7 +6,6 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('/css/cart_index.css')}}">
-
 @endsection
 
 @section('content')
@@ -97,16 +96,16 @@
         <div class="container col-sm-4 col-sm-offset-8 total-checkout">
             <table class="table table-responsive subtotal">
                 <tr>
-                    <td><b>Tax</b></td>
-                    <td>${{ $tax/100 }}</td>
+                    <td class="no-border-top"><b>Tax</b></td>
+                    <td class="no-border-top">${{ $tax/100 }}</td>
                 </tr>
                 <tr>
-                    <td><b>Service Fee</b></td>
-                    <td>${{ $fee/100 }}</td>
+                    <td class="no-border-top"><b>Service Fee</b></td>
+                    <td class="no-border-top">${{ $fee/100 }}</td>
                 </tr>
                 <tr>
-                    <td><b>Discount</b></td>
-                    <td>- ${{ $discount/100 }}</td>
+                    <td class="no-border-top"><b>Discount</b></td>
+                    <td class="no-border-top">- ${{ $discount/100 }}</td>
                 </tr>
                 <tr>
                     <td><b>Grand Total</b></td>

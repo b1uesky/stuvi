@@ -37,6 +37,14 @@
                     secure all credit/debit card transactions.
                 </p>
             </div>
+            <div class="question-answer">
+                <h3>How do I cancel an order?</h3>
+
+                <p>
+                    Please go to <a href="">your orders</a> page. There you can see a list
+                    of your previous orders and choose to cancel and order.
+                </p>
+            </div>
         </div>
     </div>
 @endsection

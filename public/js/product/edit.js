@@ -20,7 +20,7 @@ $(document).ready(function () {
         uploadMultiple: true,
         parallelUploads: 3,
         maxFiles: 3,
-        maxFilesize: 3,
+        maxFilesize: 5,
 
 
         // The setting up of the dropzone
@@ -28,6 +28,8 @@ $(document).ready(function () {
             var myDropzone = this;
             var countFiles = 0;
             var countMockFiles = 0;
+
+            $('button[type=submit]').attr('disabled', true);
 
             // retrieve product images that already exists on the server
             // and display them in the preview image container
@@ -55,8 +57,6 @@ $(document).ready(function () {
                             // https://github.com/enyo/dropzone/wiki/FAQ#how-to-show-files-already-stored-on-server
                             // Create the mock file
                             var mockFile = {
-                                name: 'Uploaded',
-                                size: 12345,
                                 productImageID: images[i].id,
                                 isMockFile: true
                             }
@@ -69,6 +69,10 @@ $(document).ready(function () {
 
                             // Make sure that there is no progress bar, etc...
                             myDropzone.emit("complete", mockFile);
+
+                            // remove mock file size and filename
+                            $('.dz-size').remove();
+                            $('.dz-filename').remove();
                         }
 
                         // correct maxFiles
@@ -84,38 +88,8 @@ $(document).ready(function () {
                 }
             });
 
-            // form validation
-            $('#form-product').
-                formValidation({
-                    framework: 'bootstrap',
-                    icon: {
-                        valid: null,
-                        invalid: null,
-                        validating: null
-                    },
-                    fields: {
-                        price: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'The price is required'
-                                },
-                                numeric: {
-                                    message: 'The price must be a numeric number'
-                                },
-                                greaterThan: {
-                                    message: 'The is not a valid price',
-                                    inclusive: false,
-                                    value: 0
-                                }
-                            }
-                        }
-                    }
-                });
-
             // First change the button to actually tell Dropzone to process the queue.
             this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
-                // disable submit button
-                $('button[type=submit]').attr('disabled', true);
 
                 // if there is a new image added
                 if (countFiles - countMockFiles > 0) {
@@ -148,6 +122,8 @@ $(document).ready(function () {
                 if (file.isMockFile) {
                     countMockFiles = countMockFiles + 1;
                 }
+
+                $('button[type=submit]').attr('disabled', false);
             });
 
             // When a file is removed from the list
@@ -196,6 +172,7 @@ $(document).ready(function () {
             this.on("reset", function () {
                 if (countFiles == 0) {
                     $('.dz-message').show();
+                    $('button[type=submit]').attr('disabled', true);
                 }
             });
 
