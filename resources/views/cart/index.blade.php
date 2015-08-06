@@ -52,7 +52,7 @@
                     <!-- isbn -->
                     <td>{{ $item->product->book->isbn10 }}</td>
                     <!-- price -->
-                    <td>${{ $item->product->price/100 }}</td>
+                    <td>${{ $item->product->decimalPrice()}}</td>
                     <!-- remove -->
                     <td><a href="{{ url('/cart/rmv/'.$item->product->id) }}"><i class="fa fa-times btn-close"></i>
 
@@ -96,20 +96,20 @@
         @if ($items->count() > 0)
         <div class="container col-sm-4 col-sm-offset-8 total-checkout">
             <table class="table table-responsive subtotal">
-                <tr class="no-border">
+                <tr>
                     <td><b>Tax</b></td>
                     <td>${{ $tax/100 }}</td>
                 </tr>
-                <tr class="no-border">
-                    <td><b>Fee</b></td>
+                <tr>
+                    <td><b>Service Fee</b></td>
                     <td>${{ $fee/100 }}</td>
                 </tr>
-                <tr class="no-border">
+                <tr>
                     <td><b>Discount</b></td>
                     <td>- ${{ $discount/100 }}</td>
                 </tr>
                 <tr>
-                    <td><b>Subtotal</b></td>
+                    <td><b>Grand Total</b></td>
                     <td>${{ $subtotal/100 }}</td>
                 </tr>
             </table>
