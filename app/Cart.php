@@ -134,7 +134,7 @@ class Cart extends Model
      */
     public function tax()
     {
-        return intval($this->totalPrice() * config('tax.MA'));
+        return intval(($this->totalPrice()+$this->fee()-$this->discount()) * config('tax.MA'));
     }
 
     /**
@@ -164,7 +164,7 @@ class Cart extends Model
      */
     public function subtotal()
     {
-        return $this->totalPrice() + $this->tax() + $this->fee() - $this->discount();
+        return $this->totalPrice() + $this->fee() - $this->discount() + $this->tax();
     }
 
     /**
