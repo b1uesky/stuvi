@@ -67,8 +67,8 @@
                             <br>
                             <br>
                             <span>
-                                From <span id="textbook-low-price">${{ $book->decimalLowestPrice() }}</span>
-                                to <span id="textbook-high-price">${{ $book->decimalHighestPrice() }}</span>
+                                From <span class="textbook-low-price">${{ $book->decimalLowestPrice() }}</span>
+                                to <span class="textbook-high-price">${{ $book->decimalHighestPrice() }}</span>
                             </span>
                         </td>
                         <td class="table-offset"></td>
