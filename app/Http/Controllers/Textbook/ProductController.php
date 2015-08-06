@@ -294,7 +294,7 @@ class ProductController extends Controller
 
         // delete safely.
         $product->delete();
-        
+
         // update book's lowest or highest price if necessary
         $book->updatePriceAfterProductDelete($price);
 

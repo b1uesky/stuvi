@@ -66,7 +66,14 @@
                             <span class="textbook-isbn">ISBN13: {{ $book->isbn13 }}</span>
                             <br>
                             <br>
-                            <span>From ${{ $book->decimalLowestPrice() }} to ${{ $book->decimalHighestPrice() }}</span>
+
+                            <span>
+                                @if(count($book->products) > 1)
+                                    From ${{ $book->decimalLowestPrice() }} to ${{ $book->decimalHighestPrice() }}
+                                @else
+                                    ${{ $book->decimalLowestPrice() }}
+                                @endif
+                            </span>
                         </td>
                         <td class="table-offset"></td>
                         <td class="textbook-info-2">
