@@ -194,6 +194,7 @@ class Book extends Model
                     ->from('universities')
                     ->where('is_public', '=', true);
             })
+            ->where('is_verified', true)
             ->select('books.*')->distinct()->get();
 
         return $books;
@@ -230,6 +231,7 @@ class Book extends Model
                     ->from('universities')
                     ->where('is_public', '=', true);
             })
+            ->where('is_verified', true)
             ->select('books.*')->distinct()->get();
 
         return $books;

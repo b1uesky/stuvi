@@ -20,7 +20,7 @@ class CreateBooksTable extends Migration {
             $table->string('isbn10', 10);
             $table->string('isbn13', 13);
             $table->smallInteger('num_pages')->nullable();
-            $table->boolean('verified')->default(true);
+            $table->boolean('verified')->default(false);
             $table->string('language')->nullable();
             $table->integer('list_price')->nullable();
 			$table->integer('lowest_price')->nullable();

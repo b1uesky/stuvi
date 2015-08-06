@@ -25,7 +25,7 @@
                 <td>{{ $book->isbn10 }}</td>
                 <td>{{ $book->isbn13 }}</td>
                 <td>{{ $book->num_pages }}</td>
-                <td>{{ $book->verified }}</td>
+                <td>{{ $book->is_verified }}</td>
                 <td>{{ $book->language }}</td>
                 <td>{{ $book->created_at }}</td>
                 <td><a class="btn btn-default" role="button" href="{{ URL::to('admin/book/' . $book->id) }}">Details</a></td>

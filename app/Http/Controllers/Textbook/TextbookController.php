@@ -296,11 +296,15 @@ class TextbookController extends Controller
 
             if (strlen($isbn) == 10)
             {
-                $book = Book::where('isbn10', '=', $isbn)->first();
+                $book = Book::where('isbn10', '=', $isbn)
+                    ->where('is_verified', true)
+                    ->first();
             }
             else
             {
-                $book = Book::where('isbn13', '=', $isbn)->first();
+                $book = Book::where('isbn13', '=', $isbn)
+                    ->where('is_verified', true)
+                    ->first();
             }
 
             return view('textbook.show')
