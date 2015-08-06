@@ -149,13 +149,13 @@ class Product extends Model
             'highlights_and_notes' => 'required|integer',
             'damaged_pages'        => 'required|integer',
             'broken_binding'       => 'required|boolean',
-            'price'                => 'required|numeric',
+            'price'                => 'required|numeric|min:0',
         ];
 
         // validate input images
         foreach (range(0, count($images) - 1) as $index)
         {
-            $rules['file' . $index] = 'mimes:jpeg,png|max:5000';
+            $rules['file' . $index] = 'mimes:jpeg,png|max:5120';
         }
 
         return $rules;
@@ -174,12 +174,12 @@ class Product extends Model
             'highlights_and_notes' => 'integer',
             'damaged_pages'        => 'integer',
             'broken_binding'       => 'boolean',
-            'price'                => 'numeric',
+            'price'                => 'numeric|min:0',
         ];
 
         // validate input images
         foreach (range(0, count($images) - 1) as $index) {
-            $rules['file' . $index] = 'mimes:jpeg,png|max:3072';
+            $rules['file' . $index] = 'mimes:jpeg,png|max:5120';
         }
 
         return $rules;
