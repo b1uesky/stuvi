@@ -12,7 +12,7 @@
 
     <div class="container-fluid">
         <div class="row back-row">
-            <a class="back-to-order" href="order/buyer" onclick="goBack()"><i class="fa fa-arrow-circle-left"></i> Go Back</a>
+            {!! Breadcrumbs::render() !!}
         </div>
     </div>
 
