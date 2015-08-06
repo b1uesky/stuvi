@@ -219,6 +219,7 @@ class Book extends Model
         $filter = implode(' OR ', $clauses);
 
         $books = Book::whereRaw($filter)
+            ->join('book_authors as a', 'a.book_id', '=', 'books.id')
             ->join('products as p', 'p.book_id', '=', 'books.id')
             ->join('users as seller', 'seller.id', '=', 'p.seller_id')
             ->whereIn('seller.university_id', function ($q) use ($university_id) {
