@@ -11,7 +11,12 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <div class="logo-container">
-                    <a href="{{url('/home')}}"> <img src="{{asset('/img/logo-new-md.png')}}" class="img-responsive"> </a>
+                    @if($url = Request::url() == url('/home'))
+                        <a href="{{url('/home')}}"> <img src="{{asset('/img/logo-home-md.png')}}" class="img-responsive"> </a>
+                    @else
+                        <a href="{{url('/home')}}"> <img src="{{asset('/img/logo-new-md.png')}}" class="img-responsive"> </a>
+                    @endif
+
                 </div>
             </div>
             <!-- End Navbar header -->
