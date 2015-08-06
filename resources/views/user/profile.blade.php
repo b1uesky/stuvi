@@ -130,7 +130,7 @@
 
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="major" id="major"
-                                       value="{{$profile->major}}" placeholder="Stuvi Crasher">
+                                       value="{{$profile->major}}" placeholder="Stuvi Fan">
                             </div>
                         </div>
 
