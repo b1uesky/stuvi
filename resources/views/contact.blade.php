@@ -27,7 +27,7 @@
             @endif
         </div>
 
-        <div class="contact-container">
+        <div class="container-fluid contact-container">
             <div class="row">
                 <h2 class="contact-title">Contact Us</h2>
 
