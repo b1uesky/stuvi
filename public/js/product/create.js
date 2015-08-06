@@ -20,7 +20,7 @@ $(document).ready(function () {
         uploadMultiple: true,
         parallelUploads: 3,
         maxFiles: 3,
-        maxFilesize: 3,
+        maxFilesize: 5,
 
 
         // The setting up of the dropzone

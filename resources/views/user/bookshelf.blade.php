@@ -13,14 +13,12 @@
 
     <div class="col-md-9 bookshelf-page">
         <div class="profile-content bookshelf-content">
-            <div class="container message-cont" xmlns="http://www.w3.org/1999/html">
-                @if (Session::has('message'))
-                    <div class="flash-message message">{{ Session::get('message') }}</div>
-                @endif
-            </div>
+
+            @include('includes.textbook.flash-message')
+
             <div class="bookshelf-title-container">
                 <h1 id="bookshelf-title">Your Bookshelf</h1>
-                <hr>
+               {{-- <hr>--}}
             </div>
             <!-- sort and search -->
             {{--<div class="container col-sm-12">--}}
@@ -49,7 +47,7 @@
             {{--</div>--}}
 
             <!-- books -->
-            <div class="container col-md-12">
+            <div class="container col-sm-11 col-md-12">
                 <table class="table table-responsive for-sale-table">
                     @forelse ($productsForSale as $product)
                         <tr class="for-sale-item">
@@ -67,22 +65,37 @@
                             <td class="for-sale-info-1" colspan="2">
                             <span class="for-sale-title"><a
                                         href="{{ url('textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a></span><br>
-                                <span>by </span>
+                                <?php $i = 0 ?>
                                 @foreach($product->book->authors as $author)
-                                    <span class="for-sale-author">{{ $author->full_name }}</span>
+                                    @if($i == 0)
+                                        <span>by </span>
+                                        <span class="for-sale-author">{{ $author->full_name }}</span>
+                                        <?php $i++ ?>
+                                    @else
+                                        <span class="for-sale-author">, {{ $author->full_name }}</span>
+                                    @endif
                                 @endforeach
-
+                                <br>
                                 <span class="for-sale-binding">Hardcover</span><br>
                                 <span class="for-sale-price">${{ $product->decimalPrice() }}</span> <br>
                             </td>
                             <td class="for-sale-info-2">
                                 <span class="for-sale-isbn">ISBN-10: {{ $product->book->isbn10 }}</span><br>
                                 <span class="for-sale-isbn">ISBN-13: {{ $product->book->isbn13 }}</span><br>
-                                <span class="for-sale-isbn"><a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}">Edit</a></span>
-                                <form action="{{ url('/textbook/sell/product/delete') }}" method="post">
+                                <span class="for-sale-isbn">
+                                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}"
+                                       class="btn primary-btn edit-btn">
+                                        <i class="fa fa-pencil"></i> Edit
+                                    </a>
+                                </span>
+
+                                <form action="{{ url('/textbook/sell/product/delete') }}" method="post"
+                                      class="delete-form">
                                     {!! csrf_field() !!}
                                     <input type="hidden" name="id" value="{{ $product->id }}">
-                                    <button type="submit" class="btn primary-btn sell-btn">Delete</button>
+                                    <button type="submit" class="btn primary-btn sell-btn">
+                                        <i class="fa fa-trash"></i> Delete
+                                    </button>
                                 </form>
                             </td>
 

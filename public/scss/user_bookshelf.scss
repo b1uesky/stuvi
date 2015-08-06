@@ -3,15 +3,6 @@
 @import "modules/all";
 @import "sections/user/user-profile";
 
-.message {
-  font-style: italic;
-}
-
-.message-cont {
-  padding: 1%;
-  margin-top: 10px;
-}
-
 .bookshelf-content {
   overflow-y: auto;
   overflow-x: hidden;
@@ -118,17 +109,14 @@ h5 {
   font-size: medium;
 }
 
-.for-sale-author {
-}
-
-.for-sale-binding{}
-.for-sale-isbn {}
-.for-sale-class {}
-
 .for-sale-btn-add-cart{
-  padding: 0px;
+  padding: 0;
 }
 
+.delete-form {
+  margin-top: 10px;
+  display: inline-block;
+}
 
 /* back button */
 

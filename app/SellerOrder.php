@@ -223,7 +223,7 @@ class SellerOrder extends Model
         elseif ($this->isDelivered())
         {
             $status = 'Order Delivered';
-            $detail = 'Your order has been delivered to the buyer.';
+            $detail = 'Your order has been delivered.';
         }
         elseif ($this->pickedUp())
         {
@@ -238,7 +238,7 @@ class SellerOrder extends Model
         elseif ($this->isScheduled())
         {
             $status = 'Waiting For Pick Up';
-            $detail = 'Your order is waiting for a Stuvi courier to pick up.';
+            $detail = 'Your order is waiting to be picked up by a Stuvi courier.';
         }
         else
         {

@@ -54,14 +54,14 @@
             @elseif ($seller_order->cancelled)
                 <div class="alert alert-danger">This order has been cancelled.</div>
             @else
-                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">CancelOrder</a></p>
+                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
             @endif
         </div>
 
         {{-- Messages --}}
         <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
             @if (Session::has('message'))
-                <div class="flash-message" id="message">{{ Session::get('message') }}</div>
+                <div class="flash-message warning bg-warning" id="message">{{ Session::get('message') }}</div>
             @endif
 
             {{-- Errors for invalid data --}}
@@ -121,8 +121,8 @@
 
                 <div class="text-scheduled-pickup-time">
                     @if($seller_order->scheduledPickupTime())
-                        Scheduled pickup
-                        time: {{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}
+                        Scheduled pickup time:
+                        <mark>{{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}</mark>
                     @else
                         {{-- Nothing --}}
                     @endif
@@ -139,7 +139,7 @@
                             <div class="input-group">
                                 <div class="input-group-addon" id="cal-icon" onclick="setFocusToTextBox()"><i
                                             class="fa fa-calendar"></i></div>
-                                <input class="form-control" id="datetimepicker" class="input-append date" type="text"
+                                <input class="form-control input-append date" id="datetimepicker" type="text"
                                        name="scheduled_pickup_time">
                             </div>
                         </div>
@@ -168,10 +168,6 @@
             {{-- If the seller has a default address --}}
             @if($address)
                 <div class="seller-address-box">
-                    <div>
-                        <button type="button" class="btn btn-default btn-change-address">Change</button>
-                    </div>
-
                     <div class="seller-address">
                         <ul>
                             {{-- WARNING: if you need to change class names below,
@@ -191,55 +187,68 @@
                             </li>
                         </ul>
                     </div>
+                    <br>
+                    <div>
+                        <button type="button" class="btn secondary-btn btn-change-address">Change</button>
+                    </div>
+                    <br>
 
                     {{-- Invisible by default. Show after click the change button. --}}
                     <div class="seller-address-book">
                         @foreach($seller_order->seller()->addresses as $address)
-                            <div>
-                                <ul>
-                                    <li class="seller-address-addressee">{{ $address->addressee }}</li>
-                                    <li class="seller-address-address-line">
-                                        @if($address->address_line2)
-                                            {{ $address->address_line1 }}, {{ $address->address_line2 }}
-                                        @else
-                                            {{ $address->address_line1 }}
-                                        @endif
-                                    </li>
-                                    <li>
-                                        <span class="seller-address-city">{{ $address->city }}, </span>
-                                        <span class="seller-address-state">{{ $address->state_a2 }} </span>
-                                        <span class="seller-address-zip">{{ $address->zip }}</span>
-                                    </li>
-                                    <li>{{ $address->country_name }}</li>
-                                    <li>Phone: {{ $address->phone_number }}</li>
-                                </ul>
+                            <div class="col-md-3 col-sm-5" id="seller-address-book-box">
+                                <span class="seller-address-addressee">{{ $address->addressee }}</span>
+                                <br>
+                                <span class="seller-address-address-line">
+                                    @if($address->address_line2)
+                                        {{ $address->address_line1 }}, {{ $address->address_line2 }}
+                                    @else
+                                        {{ $address->address_line1 }}
+                                    @endif
+                                </span>
+                                <br>
+                                <span>
+                                    <span class="seller-address-city">{{ $address->city }}, </span>
+                                    <span class="seller-address-state">{{ $address->state_a2 }} </span>
+                                    <span class="seller-address-zip">{{ $address->zip }}</span>
+                                </span>
+                                <br>
+                                <span>{{ $address->country_name }}</span>
+                                <br>
+                                <span>Phone: {{ $address->phone_number }}</span>
+                                <br>
 
-                                {{-- Ajax: select default address --}}
-                                <form action="" method="post" class="form-update-default-address">
-                                    <input type="hidden" name="address_id" value="{{ $address->id }}"/>
-                                    <input type="submit" name="submit" value="Select" class="btn btn-default"/>
-                                </form>
+                                <div class="row">
+                                    {{-- Ajax: select default address --}}
+                                    <form action="" method="post" class="form-update-default-address col-xs-1" id="select-address-form">
+                                        <input type="hidden" name="address_id" value="{{ $address->id }}"/>
+                                        <input type="submit" name="submit" value="Select" class="btn btn-default"/>
+                                    </form>
 
-                                {{-- Ajax: Edit address --}}
-                                <form action="" method="post" class="form-edit-address">
-                                    <input type="hidden" name="address_id" value="{{ $address->id }}"/>
-                                    <input type="submit" name="submit" value="Edit" class="btn btn-default"/>
-                                </form>
+                                    {{-- TODO: Edit address --}}
+                                    <form action="" method="post" class="form-edit-address col-xs-1 col-xs-offset-1 col-sm-offset-2 " id="edit-address-form">
+                                        <input type="hidden" name="address_id" value="{{ $address->id }}"/>
+                                        <input type="submit" name="submit" value="Edit" class="btn btn-default"/>
+                                    </form>
+                                </div>
+
                             </div>
 
                         @endforeach
 
                         {{-- Add a new address --}}
-                        <div>
-                            <button class="btn btn-orange" id="add-address-btn">Add a new address</button></br></br>
+                        <div id="add-new-address-btn-1">
+                            <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
+                               class="btn secondary-btn">Add a new address</a><br><br>
+
                         </div>
                     </div>
                 </div>
             @else
                 {{-- Add a new address --}}
-                <div>
+                <div id="add-new-address-btn-2">
                     <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
-                       class="btn btn-orange">Add a new address</a></br></br>
+                       class="btn secondary-btn">Add a new address</a><br><br>
                 </div>
             @endif
             {{--Add or edit address modal--}}
@@ -258,71 +267,71 @@
                                 <input type="hidden" name="address_id" value="">
 
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Full name</label>
+                                    <label class="col-sm-4 control-label" for="address-form-modal-addressee">Full name</label>
 
                                     <div class="col-sm-6 form-space-offset">
-                                        <input type="text" class="form-control" name="addressee"
+                                        <input type="text" class="form-control" name="addressee" id="address-form-modal-addressee"
                                                value="">
                                     </div>
                                 </div>
-                                </br>
+                                <br>
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Address line 1</label>
+                                    <label class="col-sm-4 control-label" for="address-form-modal-address_line1">Address line 1</label>
 
                                     <div class="col-sm-6 form-space-offset">
-                                        <input type="text" class="form-control"
+                                        <input type="text" class="form-control" id="address-form-modal-address_line1"
                                                name="address_line1"
                                                value="185 Freeman St.">
                                     </div>
                                 </div>
-                                </br>
+                                <br>
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Address line 2</label>
+                                    <label class="col-sm-4 control-label" for="address-form-modal-address_line2">Address line 2</label>
 
                                     <div class="col-sm-6 form-space-offset">
-                                        <input type="text" class="form-control"
+                                        <input type="text" class="form-control" id="address-form-modal-address_line2"
                                                name="address_line2"
                                                value="Apt. 739">
                                     </div>
                                 </div>
-                                </br>
+                                <br>
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">City</label>
+                                    <label class="col-sm-4 control-label" for="address-form-modal-city">City</label>
 
                                     <div class="col-sm-6 form-space-offset">
-                                        <input type="text" class="form-control" name="city"
+                                        <input type="text" class="form-control" name="city" id="address-form-modal-city"
                                                value="Brookline">
                                     </div>
                                 </div>
-                                </br>
+                                <br>
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">State</label>
+                                    <label class="col-sm-4 control-label" for="address-form-modal-state_a2">State</label>
 
                                     <div class="col-sm-6 form-space-offset">
-                                        <input type="text" class="form-control" name="state_a2"
+                                        <input type="text" class="form-control" name="state_a2" id="address-form-modal-state_a2"
                                                value="MA">
                                     </div>
                                 </div>
-                                </br>
+                                <br>
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Zip</label>
+                                    <label class="col-sm-4 control-label" for="address-form-modal-zip">Zip</label>
 
                                     <div class="col-sm-6 form-space-offset">
-                                        <input type="text" class="form-control" name="zip"
+                                        <input type="text" class="form-control" name="zip" id="address-form-modal-zip"
                                                value="02446">
                                     </div>
                                 </div>
-                                </br>
+                                <br>
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Phone</label>
+                                    <label class="col-sm-4 control-label" for="address-form-modal-phone_number">Phone</label>
 
                                     <div class="col-sm-6 form-space-offset">
-                                        <input type="tel" class="form-control phone_number"
+                                        <input type="tel" class="form-control phone_number" id="address-form-modal-phone_number"
                                                name="phone_number" value="(857) 206 4789">
                                     </div>
                                 </div>
                                 <input type="hidden" name="address_id" value="">
-                                </br>
+                                <br>
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -335,8 +344,8 @@
             </div>
         </div>
         {{-- Confirm pickup --}}
-        <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary">Confirm
-            Pickup</a></br></br>
+        <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn primary-btn">Confirm
+            Pickup</a><br><br>
         @endif
     </div>
     @endsection

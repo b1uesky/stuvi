@@ -24,13 +24,7 @@
     </div>
 
 
-    {{-- Error message --}}
-    @if (Session::has('message'))
-        <div class="alert-danger" id="message-cont">
-            <div class="flash-message" id="message"><i
-                        class="fa fa-exclamation-triangle"></i> {{ Session::get('message') }}</div>
-        </div>
-        @endif
+    @include('includes.textbook.flash-message')
 
         <!-- Search Bar Container-->
         <div class="container-fluid search">

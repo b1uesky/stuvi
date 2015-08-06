@@ -12,12 +12,7 @@
 
 @section('content')
 
-    @if (Session::has('message'))
-        <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
-            <div class="flash-message bg-warning" id="message"><i
-                        class="fa fa-exclamation-triangle"></i> {{ Session::get('message') }}</div>
-        </div>
-    @endif
+    @include('includes.textbook.flash-message')
 
     <div class="row back-row">
         <a id="back-to-cart" href="{{ url('/cart') }}"><i class="fa fa-arrow-circle-left"></i>Back to Cart</a>
@@ -463,7 +458,7 @@
                         <form action="{{ url('/order/store') }}" method="POST" class="col-sm-6 col-sm-pull-6"
                               id="form-payment">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="selected_address_id" value="{{$default_address_id}}">
+                            <input type="hidden" name="selecte_address_id" value="{{$default_address_id}}">
                             <input type="hidden" name="stripe_public_key" value="{{ $stripe_public_key }}">
                             <input type="hidden" name="stripe_token" value=""/>
 

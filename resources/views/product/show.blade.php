@@ -15,12 +15,7 @@
 
 <div class="container-fluid" id="bg">
 
-    <!-- message -->
-    <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
-        @if (Session::has('message'))
-            <div class="bg-success flash-message" id="message" >{{ Session::get('message') }}</div>
-        @endif
-    </div>
+    @include('includes.textbook.flash-message')
 
     <!-- book details -->
     <div class="container" id="det-cont">
@@ -92,7 +87,8 @@
                         <a class="btn primary-btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
                     @endif
                 @else
-                    <p>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.</p>
+                    <br>
+                    <p class="warning bg-warning">Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.</p>
                 @endif
             </div>
 

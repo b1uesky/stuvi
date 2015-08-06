@@ -9,13 +9,8 @@
     <link href="{{ asset('/css/product_create.css') }}" rel="stylesheet">
 @endsection
 
-    @section('content')
-            <!-- message -->
-    <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
-        @if (Session::has('message'))
-            <div class="flash-message" id="message">{{ Session::get('message') }}</div>
-        @endif
-    </div>
+@section('content')
+    @include('includes.textbook.flash-message')
 
     <div class="container create-container">
 

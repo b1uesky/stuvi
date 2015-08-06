@@ -8,12 +8,7 @@
 
 @section('content')
 
-    <!-- flash message -->
-    <div class="container" id="message-cont" xmlns="http://www.w3.org/1999/html">
-        @if (Session::has('message'))
-            <div class="flash-message" id="message">{{ Session::get('message') }}</div>
-        @endif
-    </div>
+    @include('includes.textbook.flash-message')
 
     <div class="container-fluid">
         <div class="row back-row">
@@ -77,11 +72,12 @@
                             <p>Title: {{ $product->book->title }}</p>
 
                             <p>ISBN: {{ $product->book->isbn13 }}</p>
-                            <span>Author(s): </span>
+
+                            <p><span>Author(s): </span>
                             @foreach($product->book->authors as $author)
                                 <span>{{ $author->full_name }}</span>
                             @endforeach
-                            <br>
+                            </p>
 
                             <p>Scheduled pickup time:
                                 @if ($seller_order->scheduled_pickup_time)
@@ -107,10 +103,6 @@
                         <div class="price col-sm-3">
                             <p><b>${{ $product->decimalPrice() }}</b></p>
                         </div>
-                    </div>
-
-                    <div class="price col-xs-3 col-xs-offset-1">
-                        <p><b>${{ $product->decimalPrice() }}</b></p>
                     </div>
                 </div>
                 <hr>

@@ -10,15 +10,15 @@
 
 /* PARTIALS */
 @import 'partials/buttons';
-@import 'modules/typography';
 @import 'partials/containers';
-@import "partials/forms";
-@import "partials/tables";
-@import "partials/modals";
+@import 'partials/forms';
+@import 'partials/tables';
+@import 'partials/modals';
 
 /* SECTIONS */
 @import 'sections/navigation';
 @import 'sections/footer';
-@import "sections/login-signup-modal";
+@import 'sections/login-signup-modal';
+@import 'sections/flash-mesage';
 
 /* VENDOR ( THIRD PARTY ) */
