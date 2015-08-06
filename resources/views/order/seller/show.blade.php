@@ -240,6 +240,7 @@
                         <div id="add-new-address-btn-1">
                             <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
                                class="btn secondary-btn">Add a new address</a><br><br>
+
                         </div>
                     </div>
                 </div>
@@ -335,6 +336,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" id="delete-address" class="btn btn-primary">Delete</button>
                             <button type="button" id="submit-address-form" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>

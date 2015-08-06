@@ -85,7 +85,7 @@ class BuyerOrderController extends Controller
         {
             return view('order.buyer.create')
                 ->with('items', $this->cart->items)
-                ->with('total', $this->cart->totalPrice())
+                ->with('total', $this->cart->subtotal())
                 ->with('addresses', $addresses)
                 ->with('default_address_id', $default_address_id)
                 ->with('display_payment', true)
@@ -95,7 +95,7 @@ class BuyerOrderController extends Controller
         {
             return view('order.buyer.create')
                 ->with('items', $this->cart->items)
-                ->with('total', $this->cart->totalPrice())
+                ->with('total', $this->cart->subtotal())
                 ->with('addresses', $addresses)
                 ->with('default_address_id', $default_address_id)
                 ->with('display_payment', false)
@@ -128,6 +128,9 @@ class BuyerOrderController extends Controller
         $order = BuyerOrder::create([
                                         'buyer_id'            => Auth::id(),
                                         'shipping_address_id' => $shipping_address_id,
+                                        'tax'                 => $this->cart->tax(),
+                                        'fee'                 => $this->cart->fee(),
+                                        'discount'            => $this->cart->discount(),
                                     ]);
 
         // create seller order(s) according to the Cart items
@@ -164,7 +167,7 @@ class BuyerOrderController extends Controller
         try
         {
             $charge = \Stripe\Charge::create([
-                                                 "amount"      => $this->cart->totalPrice(),
+                                                 "amount"      => $this->cart->subtotal(),
                                                  "currency"    => "usd",
                                                  "source"      => $token,
                                                  "name"        => Input::get('name'),

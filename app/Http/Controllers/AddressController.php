@@ -63,7 +63,14 @@ class AddressController extends Controller
 
         $address->setDefault();
 
-        return redirect('order/create');
+        if($request->ajax()){
+            return Response::json([
+                'success' => true,
+                'address' => $address->toArray()
+            ]);
+        }else{
+            return redirect('order/create');
+        }
     }
 
     /**
