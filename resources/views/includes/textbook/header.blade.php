@@ -1,5 +1,10 @@
 <!-- nav bar here -->
 
+{{-- Styling can be found in scss/sections/_navigation.scss--}}
+
+{{-- Variables--}}
+<?php $url = Request::url() ?>
+
 <header>
     <nav class="navbar navbar-default" id="nav" role="navigation">
         <div class="container-fluid">
@@ -10,8 +15,20 @@
                     <span class="sr-only">Toggle Navigation</span>
                     <i class="fa fa-bars"></i>
                 </button>
+
+                {{-- Logo only when nav bar collapses into hamburger menu --}}
+                <a id="xs-screen-logo-link" class="" href="{{url('/home')}}" >
+                    <img id="xs-screen-logo-img" class="" src="{{asset('/img/logo-new-center.png')}}">
+                </a>
+
                 <div class="logo-container">
-                    <a href="{{url('/home')}}"> <img src="{{asset('/img/logo-new-md.png')}}" class="img-responsive"> </a>
+                    {{-- If on homepage, show the home logo which has white text--}}
+                    @if($url == url('/home') or $url == url('/'))
+                        <a href="{{url('/home')}}"> <img src="{{asset('/img/logo-home-md.png')}}" class="img-responsive"> </a>
+                    @else
+                        <a href="{{url('/home')}}"> <img src="{{asset('/img/logo-new-md.png')}}" class="img-responsive"> </a>
+                    @endif
+
                 </div>
             </div>
             <!-- End Navbar header -->

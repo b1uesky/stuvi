@@ -6,7 +6,6 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('/css/cart_index.css')}}">
-
 @endsection
 
 @section('content')
@@ -52,7 +51,7 @@
                     <!-- isbn -->
                     <td>{{ $item->product->book->isbn10 }}</td>
                     <!-- price -->
-                    <td>${{ $item->product->price/100 }}</td>
+                    <td>${{ $item->product->decimalPrice()}}</td>
                     <!-- remove -->
                     <td><a href="{{ url('/cart/rmv/'.$item->product->id) }}"><i class="fa fa-times btn-close"></i>
 
@@ -97,19 +96,19 @@
         <div class="container col-sm-4 col-sm-offset-8 total-checkout">
             <table class="table table-responsive subtotal">
                 <tr>
-                    <td><b>Fee</b></td>
-                    <td>${{ $fee/100 }}</td>
+                    <td class="no-border-top"><b>Tax</b></td>
+                    <td class="no-border-top">${{ $tax/100 }}</td>
                 </tr>
                 <tr>
-                    <td><b>Discount</b></td>
-                    <td>- ${{ $discount/100 }}</td>
+                    <td class="no-border-top"><b>Service Fee</b></td>
+                    <td class="no-border-top">${{ $fee/100 }}</td>
                 </tr>
                 <tr>
-                    <td><b>Tax</b></td>
-                    <td>${{ $tax/100 }}</td>
+                    <td class="no-border-top"><b>Discount</b></td>
+                    <td class="no-border-top">- ${{ $discount/100 }}</td>
                 </tr>
                 <tr>
-                    <td><b>Subtotal</b></td>
+                    <td><b>Grand Total</b></td>
                     <td>${{ $subtotal/100 }}</td>
                 </tr>
             </table>

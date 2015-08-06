@@ -2,7 +2,7 @@
 
 @extends('app-home')    <!-- app.blade.php -->
 
-@section('title', 'Textbooks, Housing, Clubs, & More')
+@section('title', 'Boston Textbook Marketplace & More Coming Soon!')
 
 @section('css')
     <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
@@ -58,7 +58,8 @@
                     {{-- Show school selection if it's a guest --}}
                     @if(Auth::guest())
                         <div class="searchbar-input-container searchbar-input-container-university">
-                            <select name="university_id" class="form-control searchbar-input searchbar-input-university">
+                            <label class="sr-only" for="uni_id">University</label>
+                            <select name="university_id" class="form-control searchbar-input searchbar-input-university" id="uni_id">
                                 @foreach(\App\University::where('is_public', true)->get() as $university)
                                     <option value="{{ $university->id }}">{{ $university->name }}</option>
                                 @endforeach

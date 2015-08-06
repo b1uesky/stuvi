@@ -7,6 +7,12 @@
   background-size: cover; /* Fill entire container */
 }
 
+// change this to specfic class
+//mobile overflow fix
+.container-fluid {
+  overflow-x: hidden;
+}
+
 #about-jumbotron {
   background-color: $transparent;
 }
