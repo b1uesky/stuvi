@@ -96,15 +96,15 @@
         @if ($items->count() > 0)
         <div class="container col-sm-4 col-sm-offset-8 total-checkout">
             <table class="table table-responsive subtotal">
-                <tr>
+                <tr class="no-border">
                     <td><b>Tax</b></td>
                     <td>${{ $tax/100 }}</td>
                 </tr>
-                <tr>
+                <tr class="no-border">
                     <td><b>Fee</b></td>
                     <td>${{ $fee/100 }}</td>
                 </tr>
-                <tr>
+                <tr class="no-border">
                     <td><b>Discount</b></td>
                     <td>- ${{ $discount/100 }}</td>
                 </tr>
