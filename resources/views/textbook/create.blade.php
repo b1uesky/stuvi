@@ -30,8 +30,7 @@
 
             <h1 id="create-title">Enter your textbook information</h1>
             <!-- form begin -->
-            <form action="/textbook/sell/store" method="post" class="form textbook-create"
-                  enctype="multipart/form-data">
+            <form action="/textbook/sell/store" method="post" class="form textbook-create" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <!-- ISBN -->
                 <div class="form-group">
@@ -52,12 +51,12 @@
                 <!-- Edition -->
                 <div class="form-group">
                     <label><b>Edition</b></label>
-                    <input type="number" name="edition" value="{{ Input::old('edition') }}" class="form-control"/>
+                    <input type="number" name="edition" value="{{ Input::old('edition') or 1 }}" class="form-control" min="1" step="1"/>
                 </div>
                 <!-- Num pg -->
                 <div class="form-group">
                     <label><b>Number of Pages</b></label>
-                    <input type="number" name="num_pages" value="{{ Input::old('num_pages') }}" class="form-control"/>
+                    <input type="number" name="num_pages" value="{{ Input::old('num_pages') }}" class="form-control" min="1" step="1"/>
                 </div>
                 <!-- Select Language -->
                 <!-- TODO: a complete list of languages -->
@@ -72,11 +71,7 @@
                 {{-- Upload Images --}}
                 <div class="form-group" name="cover_img">
                     <label>Front cover image (smaller than 3MB)</label>
-                    <input type="file" name="front-cover-image" class="upload-file"/>
-
-                    <div class="upload-error-message">The file size is too large. Please make sure the file size is
-                        under 3MB.
-                    </div>
+                    <input type="file" name="image" class="upload-file"/>
                 </div>
 
                 <input type="submit" name="submit" class="btn primary-btn create-btn" id="create-btn" value="Submit"/>
@@ -88,5 +83,4 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('js/textbook/create.js') }}"></script>
 @endsection

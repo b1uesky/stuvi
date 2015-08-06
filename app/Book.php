@@ -19,15 +19,15 @@ class Book extends Model
     public static function rules()
     {
         $rules = array(
-            'isbn' => 'required|unique:books',
-            'title' => 'required|string',
-            'authors' => 'required|string',
-            'edition' => 'required|integer',
-            'num_pages' => 'required|integer',
-            'binding' => 'required|string',
-            'language' => 'required|string',
-            'image' => 'required|mimes:jpeg,png|max:3000'
+            'isbn'      => 'required',
+            'title'     => 'required|string',
+            'authors'   => 'required|string',
+            'edition'   => 'required|integer|min:1',
+            'num_pages' => 'required|integer|min:1',
+            'language'  => 'required|string'
         );
+
+        $rules['image'] = 'required|mimes:jpeg,png|max:5120';
 
         return $rules;
     }
@@ -194,6 +194,7 @@ class Book extends Model
                     ->from('universities')
                     ->where('is_public', '=', true);
             })
+            ->where('is_verified', true)
             ->select('books.*')->distinct()->get();
 
         return $books;
@@ -230,6 +231,7 @@ class Book extends Model
                     ->from('universities')
                     ->where('is_public', '=', true);
             })
+            ->where('is_verified', true)
             ->select('books.*')->distinct()->get();
 
         return $books;

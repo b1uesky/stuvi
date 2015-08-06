@@ -22,16 +22,15 @@ $(document).ready(function () {
         maxFiles: 3,
         maxFilesize: 5,
 
-
         // The setting up of the dropzone
         init: function () {
+            // disable submit button
+            $('button[type=submit]').attr('disabled', true);
+
             var myDropzone = this;
 
             // First change the button to actually tell Dropzone to process the queue.
             this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
-                // disable submit button
-                $('button[type=submit]').attr('disabled', true);
-
                 // Make sure that the form isn't actually being sent.
                 e.preventDefault();
                 e.stopPropagation();
@@ -41,6 +40,7 @@ $(document).ready(function () {
             // When a file is added to the list
             this.on("addedfile", function () {
                 $('.dz-message').hide();
+                $('button[type=submit]').attr('disabled', false);
             });
 
             // When a file is removed from the list
@@ -55,6 +55,7 @@ $(document).ready(function () {
             // When all files in the list are removed and the dropzone is reset to initial state.
             this.on("reset", function () {
                 $('.dz-message').show();
+                $('button[type=submit]').attr('disabled', true);
             });
 
             // When the number of files accepted reaches the maxFiles limit.
@@ -93,6 +94,12 @@ $(document).ready(function () {
                     error = error + '</div>';
 
                     $(error).insertBefore('#form-product');
+
+                    // reenable file upload
+                    for (var i = 0; i < files.length; i++) {
+                        files[i].status = Dropzone.QUEUED;
+                    }
+
                 }
             });
             this.on("errormultiple", function (files, response) {
@@ -100,62 +107,6 @@ $(document).ready(function () {
                 // Maybe show form again, and notify user of error
                 console.log(response);
             });
-
-            // form validaiton
-            $('#form-product').
-                formValidation({
-                    framework: 'bootstrap',
-                    icon: {
-                        valid: null,
-                        invalid: null,
-                        validating: null
-                    },
-                    fields: {
-                        general_condition: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Please select a condition'
-                                }
-                            }
-                        },
-                        highlights_and_notes: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Please select a condition'
-                                }
-                            }
-                        },
-                        damaged_pages: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Please select a condition'
-                                }
-                            }
-                        },
-                        broken_binding: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Please select a condition'
-                                }
-                            }
-                        },
-                        price: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'The price is required'
-                                },
-                                numeric: {
-                                    message: 'The price must be a numeric number'
-                                },
-                                greaterThan: {
-                                    message: 'The is not a valid price',
-                                    inclusive: false,
-                                    value: 0
-                                }
-                            }
-                        }
-                    }
-                });
         }
     }
 

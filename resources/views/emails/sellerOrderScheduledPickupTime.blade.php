@@ -61,7 +61,7 @@
                                                                 pickup time at: DATE HERE
                                                             </p>
                                                             <p>Once our courier has picked up your textbook, please show the following code to the courier: <stong>{{$seller_order['pickup_code']}}</stong></p>
-                                                            <p>If you need to reschedule your textbook pickup time, click the button below.></p>
+                                                            <p>If you need to reschedule your textbook pickup time, click the button below.</p>
                                                             <br>
                                                             <br>
                                                         </td>

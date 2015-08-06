@@ -28,7 +28,11 @@
                 <h2>{{ $book->title }}</h2>
 
                 <div class="img-container">
-                    <img class="img-large" src="{{ $book->imageSet->large_image or config('book.default_image_path.large') }}"/>
+                    @if($book->imageSet->isManuallyCreated())
+                        <img class="img-large" src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->large_image }}">
+                    @else
+                        <img class="img-large" src="{{ $book->imageSet->large_image or config('book.default_image_path.large') }}"/>
+                    @endif
                 </div>
 
                 <div class="authors-container">
@@ -254,8 +258,8 @@
 
     @if(Auth::check())
         {{-- FormValidation --}}
-        <script src="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js') }}"></script>
-        <script src="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js') }}"></script>
+        {{--<script src="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js') }}"></script>--}}
+        {{--<script src="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js') }}"></script>--}}
         <script src="{{ asset('js/product/create.js') }}"></script>
     @endif
 @endsection
