@@ -63,8 +63,22 @@ a:focus {
 
 /******* NAVIGATION HAMBURGER MENU *******/
 
+#xs-screen-logo-link{
+  position: absolute;
+  left:0;
+  @media(min-width: 767px){
+    visibility: hidden;
+  }
+}
+
+#xs-screen-logo-img{
+  height: 50px;
+  width: auto;
+}
+
+
 #nav-toggle-collapse{
-  float: left;
+  float: right;
   border: none;
   z-index: 50;
   margin-left: 10px;
