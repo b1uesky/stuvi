@@ -289,8 +289,14 @@ class ProductController extends Controller
                 ->with('message', $product->book->title.' cannot be deleted because it is sold.');
         }
 
+        $book = $product->book;
+        $price = $product->price;
+
         // delete safely.
         $product->delete();
+
+        // update book's lowest or highest price if necessary
+        $book->updatePriceAfterProductDelete($price);
 
         return redirect('/user/bookshelf')
             ->with('message', $product->book->title.' has been deleted.');

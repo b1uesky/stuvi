@@ -9,7 +9,7 @@ class Book extends Model
 {
 
     protected $fillable = ['title', 'edition', 'isbn10', 'isbn13', 'num_pages', 'verified', 'language',
-                            'list_price', 'lowest_price', 'highest_price'];
+        'list_price', 'lowest_price', 'highest_price'];
 
     /**
      * Validation rules
@@ -19,14 +19,14 @@ class Book extends Model
     public static function rules()
     {
         $rules = array(
-            'isbn'      =>  'required|unique:books',
-            'title'     =>  'required|string',
-            'authors'   =>  'required|string',
-            'edition'   =>  'required|integer',
-            'num_pages' =>  'required|integer',
-            'binding'   =>  'required|string',
-            'language'  =>  'required|string',
-            'image'     =>  'required|mimes:jpeg,png|max:3000'
+            'isbn' => 'required|unique:books',
+            'title' => 'required|string',
+            'authors' => 'required|string',
+            'edition' => 'required|integer',
+            'num_pages' => 'required|integer',
+            'binding' => 'required|string',
+            'language' => 'required|string',
+            'image' => 'required|mimes:jpeg,png|max:3000'
         );
 
         return $rules;
@@ -108,10 +108,9 @@ class Book extends Model
     public function updateLowestAndHighestPrice($price)
     {
         // if both are not set, set them to the same price
-        if ($this->lowest_price == null && $this->highest_price == null)
-        {
+        if ($this->lowest_price == null && $this->highest_price == null) {
             $this->update([
-                'lowest_price'  => $price,
+                'lowest_price' => $price,
                 'highest_price' => $price
             ]);
 
@@ -119,21 +118,47 @@ class Book extends Model
         }
 
         // update lowest price
-        if ($this->lowest_price && $price < $this->lowest_price)
-        {
+        if ($this->lowest_price && $price < $this->lowest_price) {
             $this->update(['lowest_price' => $price]);
 
             return true;
         }
 
         // update highest price
-        if ($this->highest_price && $price > $this->highest_price)
-        {
+        if ($this->highest_price && $price > $this->highest_price) {
             $this->update(['highest_price' => $price]);
 
             return true;
         }
 
+        return false;
+    }
+
+    /**
+     * Update book lowest or highest price after a deletion of product.
+     *
+     * @param $price
+     * @return bool
+     */
+    public function updatePriceAfterProductDelete($price)
+    {
+        // update the lowest price
+        if ($price == $this->lowest_price)
+        {
+            $this->update(['lowest_price' => $this->products->min('price')]);
+
+            return true;
+        }
+
+        // update the highest price
+        if ($price == $this->highest_price)
+        {
+            $this->update(['highest_price' => $this->products->max('price')]);
+
+            return true;
+        }
+
+        // do nothing
         return false;
     }
 
@@ -146,16 +171,26 @@ class Book extends Model
      */
     public static function queryWithBuyerID($query, $buyer_id)
     {
-        $books = Book::where('title', 'LIKE', '%'.$query.'%')
+        $terms = explode(' ', $query);
+        $clauses = array();
+
+        foreach ($terms as $term) {
+            $clauses[] = 'title LIKE "%' . $term . '%" OR a.full_name LIKE "%' . $term . '%"';
+        }
+
+        $filter = implode(' OR ', $clauses);
+
+        $books = Book::whereRaw($filter)
+            ->join('book_authors as a', 'a.book_id', '=', 'books.id')
             ->join('products as p', 'p.book_id', '=', 'books.id')
             ->join('users as seller', 'seller.id', '=', 'p.seller_id')
-            ->whereIn('seller.university_id', function($q) use ($buyer_id) {
-                $q  ->select('uu.from_uid')
+            ->whereIn('seller.university_id', function ($q) use ($buyer_id) {
+                $q->select('uu.from_uid')
                     ->from(DB::raw('users as buyer, university_university as uu'))
                     ->where('buyer.id', '=', $buyer_id);
             })
-            ->whereIn('seller.university_id', function($q) {
-                $q  ->select('id')
+            ->whereIn('seller.university_id', function ($q) {
+                $q->select('id')
                     ->from('universities')
                     ->where('is_public', '=', true);
             })
@@ -173,20 +208,29 @@ class Book extends Model
      */
     public static function queryWithUniversityID($query, $university_id)
     {
-        $books = Book::where('title', 'LIKE', '%'.$query.'%')
+        $terms = explode(' ', $query);
+        $clauses = array();
+
+        foreach ($terms as $term) {
+            $clauses[] = 'title LIKE "%' . $term . '%" OR a.full_name LIKE "%' . $term . '%"';
+        }
+
+        $filter = implode(' OR ', $clauses);
+
+        $books = Book::whereRaw($filter)
             ->join('products as p', 'p.book_id', '=', 'books.id')
             ->join('users as seller', 'seller.id', '=', 'p.seller_id')
-            ->whereIn('seller.university_id', function($q) use ($university_id) {
-                $q  ->select('from_uid')->distinct()
+            ->whereIn('seller.university_id', function ($q) use ($university_id) {
+                $q->select('from_uid')->distinct()
                     ->from('university_university')
                     ->where('to_uid', '=', $university_id);
             })
-            ->whereIn('seller.university_id', function($q) {
-                $q  ->select('id')
+            ->whereIn('seller.university_id', function ($q) {
+                $q->select('id')
                     ->from('universities')
                     ->where('is_public', '=', true);
             })
-            ->select('books.*')->distinct()->take(10)->get();
+            ->select('books.*')->distinct()->get();
 
         return $books;
     }
