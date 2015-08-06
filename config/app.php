@@ -178,6 +178,11 @@ return [
          * Intervention Image Service Provider
          */
         'Intervention\Image\ImageServiceProvider',
+
+		/*
+		 * Breadcrumbs Service Provider
+		 */
+		'DaveJamesMiller\Breadcrumbs\ServiceProvider',
 	],
 
 	/*
@@ -228,7 +233,8 @@ return [
 
         'Twilio'    => 'Aloha\Twilio\Support\Laravel\Facade',
         'AWS'       => 'Aws\Laravel\AwsFacade',
-        'Image'     => 'Intervention\Image\Facades\Image'
+        'Image'     => 'Intervention\Image\Facades\Image',
+		'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade'
 
 	],
 
