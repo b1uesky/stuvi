@@ -13,6 +13,7 @@
         <div class="col-sm-7 col-sm-offset-1 qa-container">
             <h2>FAQ - Orders</h2>
             <hr class="faq-line">
+            <a name="after-buy"></a>
             <div class="question-answer">
                 <h3>What happens after I buy a book?</h3>
 
@@ -21,6 +22,7 @@
                     after we verify its condition. This process may take a few days.
                 </p>
             </div>
+            <a name="bought"></a>
             <div class="question-answer">
                 <h3>What happens when someone buys my book?</h3>
 
@@ -29,6 +31,7 @@
                     pickup the book.
                 </p>
             </div>
+            <a name="secure"></a>
             <div class="question-answer">
                 <h3>Is my credit card info secure?</h3>
 
@@ -37,6 +40,7 @@
                     secure all credit/debit card transactions.
                 </p>
             </div>
+            <a name="cancel-order"></a>
             <div class="question-answer">
                 <h3>How do I cancel an order?</h3>
 
