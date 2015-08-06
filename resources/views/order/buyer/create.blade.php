@@ -318,8 +318,9 @@
                                         <button type="button" class="btn btn-default close-btn" data-dismiss="modal">
                                             Close
                                         </button>
+                                        <i class="fa fa-spinner fa-pulse fa-2x" id="update-loading"></i>
                                         <button id="storeUpdatedAddress" type="button"
-                                                class="btn btn-default primary-btn address-btn">
+                                                class="btn btn-default primary-btn address-btn form-btn">
                                             Update Address
                                         </button>
                                     </div>
@@ -432,8 +433,9 @@
                                                 data-dismiss="modal">
                                             Close
                                         </button>
+                                        <i class="fa fa-spinner fa-pulse fa-2x" id="add-loading"></i>
                                         <button id="storeAddedAddress" type="button"
-                                                class="btn btn-default primary-btn address-btn">
+                                                class="btn btn-default primary-btn address-btn form-btn">
                                             Add Address
                                         </button>
                                     </div>
