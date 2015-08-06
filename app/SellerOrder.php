@@ -6,8 +6,16 @@ use Illuminate\Support\Facades\Mail;
 
 class SellerOrder extends Model
 {
-    protected $fillable = ['product_id', 'scheduled_pickup_time', 'pickup_time', 'pickup_code', 'courier_id',
-                           'buyer_order_id', 'address_id', 'cancelled', 'cancelled_time',
+    protected $fillable = [
+        'product_id',
+        'scheduled_pickup_time',
+        'pickup_time',
+        'pickup_code',
+        'courier_id',
+        'buyer_order_id',
+        'address_id',
+        'cancelled',
+        'cancelled_time',
     ];
 
     /**
@@ -258,6 +266,10 @@ class SellerOrder extends Model
     {
         $seller_order_arr                                 = $this->toArray();
         $seller_order_arr['seller']                       = $this->seller()->allToArray();
+        $seller_order_arr['scheduled_pickup_time']        =
+            $this->scheduled_pickup_time ?
+            Carbon::createFromFormat('Y-m-d H:i:s', $this->scheduled_pickup_time)
+                ->format(config('app.datetime_format')) : '';
         $seller_order_arr['product']                      = $this->product->toArray();
         $seller_order_arr['product']['image']             = $this->product->images->first()->toArray();
         $seller_order_arr['product']['book']              = $this->product->book->toArray();
