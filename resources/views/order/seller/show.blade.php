@@ -163,8 +163,7 @@
                 <h3 class="col-xs-12">Select a pickup address</h3>
             </div>
 
-            <?php $address = $seller_order->seller()->defaultAddress(); ?>
-
+            <?php $seller_order->address ? $address = $seller_order->address : $address = $seller_order->seller()->defaultAddress(); ?>
             {{-- If the seller has a default address --}}
             @if($address)
                 <div class="seller-address-box">
@@ -238,17 +237,17 @@
 
                         {{-- Add a new address --}}
                         <div id="add-new-address-btn-1">
-                            <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
-                               class="btn secondary-btn">Add a new address</a><br><br>
+                            <button class="btn secondary-btn add-address-btn">Add a new address</button><br><br>
 
                         </div>
                     </div>
                 </div>
+            @elseif($order_has_address)
+
             @else
                 {{-- Add a new address --}}
                 <div id="add-new-address-btn-2">
-                    <a href="{{ url('order/seller/' . $seller_order->id . '/addAddress') }}"
-                       class="btn secondary-btn">Add a new address</a><br><br>
+                    <button class="btn secondary-btn add-address-btn">Add a new address</button><br><br>
                 </div>
             @endif
             {{--Add or edit address modal--}}
