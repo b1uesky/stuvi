@@ -2,7 +2,7 @@
 
 @extends('app-home')    <!-- app.blade.php -->
 
-@section('title', 'Boston Textbook Delivery Service & More Coming Soon!')
+@section('title', 'Boston Textbook Marketplace & More Coming Soon!')
 
 @section('css')
     <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">

@@ -151,6 +151,7 @@
   }
   @media(max-width: 767px){
     z-index: 0;
+    margin-top: 10px;
   }
 }
 
@@ -164,6 +165,9 @@
   @media(max-width: 767px){
     font-size: 3em;
   }
+  @media(max-width: 359px){
+    font-size: 2em;
+  }
 }
 
 .tagline{
@@ -171,6 +175,9 @@
   text-align: center;
   padding-bottom: 3%;
   font-weight: 400;
+  @media(max-width: 359px){
+  font-size: 1em;
+  }
 }
 
 /*****
