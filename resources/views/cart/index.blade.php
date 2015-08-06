@@ -52,7 +52,7 @@
                     <!-- isbn -->
                     <td>{{ $item->product->book->isbn10 }}</td>
                     <!-- price -->
-                    <td>${{ $item->product->price/100 }}</td>
+                    <td>${{ $item->product->decimalPrice()}}</td>
                     <!-- remove -->
                     <td><a href="{{ url('/cart/rmv/'.$item->product->id) }}"><i class="fa fa-times btn-close"></i>
 
@@ -101,7 +101,7 @@
                     <td>${{ $tax/100 }}</td>
                 </tr>
                 <tr>
-                    <td><b>Fee</b></td>
+                    <td><b>Stuvi Fee</b></td>
                     <td>${{ $fee/100 }}</td>
                 </tr>
                 <tr>
@@ -109,7 +109,7 @@
                     <td>- ${{ $discount/100 }}</td>
                 </tr>
                 <tr>
-                    <td><b>Subtotal</b></td>
+                    <td><b>Grand Total</b></td>
                     <td>${{ $subtotal/100 }}</td>
                 </tr>
             </table>
