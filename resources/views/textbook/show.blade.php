@@ -91,7 +91,7 @@
                                         <a class="btn primary-btn add-cart-btn disabled" href="#" role="button" id="added-to-cart-btn">
                                             Added to cart</a>
                                     @elseif($product->seller == Auth::user())
-                                        <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Posted by
+                                        <a class="btn grey-btn add-cart-btn disabled" href="#" role="button">Posted by
                                             you</a>
                                     @else
                                         <a class="btn primary-btn add-cart-btn" href="{{ url('cart/add/'.$product->id) }}"
