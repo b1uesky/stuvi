@@ -2,7 +2,7 @@
 
 @extends('app')
 
-@section('title', 'Sell Used Textbooks')
+@section('title', 'Sell Textbooks')
 
 @section('css')
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -29,7 +29,7 @@
         <!-- Search Bar Container-->
         <div class="container-fluid search">
             <div class="row">
-                <h1 id="title">Sell Your Used Textbooks</h1>
+                <h1 id="title">Sell Your Textbooks</h1>
                     <div class="searchbar">
                         <form action="/textbook/sell/search" method="post" id="form-isbn">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">

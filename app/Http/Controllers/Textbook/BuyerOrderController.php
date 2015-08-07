@@ -81,7 +81,7 @@ class BuyerOrderController extends Controller
         }
         $addresses->toArray();
 
-        if (count($addresses) > 0)
+        if (count($addresses) > 0 && $default_address_id != -1)
         {
             return view('order.buyer.create')
                 ->with('items', $this->cart->items)

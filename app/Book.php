@@ -19,15 +19,15 @@ class Book extends Model
     public static function rules()
     {
         $rules = array(
-            'isbn' => 'required|unique:books',
-            'title' => 'required|string',
-            'authors' => 'required|string',
-            'edition' => 'required|integer',
-            'num_pages' => 'required|integer',
-            'binding' => 'required|string',
-            'language' => 'required|string',
-            'image' => 'required|mimes:jpeg,png|max:3000'
+            'isbn'      => 'required',
+            'title'     => 'required|string',
+            'authors'   => 'required|string',
+            'edition'   => 'required|integer|min:1',
+            'num_pages' => 'required|integer|min:1',
+            'language'  => 'required|string'
         );
+
+        $rules['image'] = 'required|mimes:jpeg,png|max:5120';
 
         return $rules;
     }
@@ -194,6 +194,7 @@ class Book extends Model
                     ->from('universities')
                     ->where('is_public', '=', true);
             })
+            ->where('is_verified', true)
             ->select('books.*')->distinct()->get();
 
         return $books;
@@ -218,6 +219,7 @@ class Book extends Model
         $filter = implode(' OR ', $clauses);
 
         $books = Book::whereRaw($filter)
+            ->join('book_authors as a', 'a.book_id', '=', 'books.id')
             ->join('products as p', 'p.book_id', '=', 'books.id')
             ->join('users as seller', 'seller.id', '=', 'p.seller_id')
             ->whereIn('seller.university_id', function ($q) use ($university_id) {
@@ -230,6 +232,7 @@ class Book extends Model
                     ->from('universities')
                     ->where('is_public', '=', true);
             })
+            ->where('is_verified', true)
             ->select('books.*')->distinct()->get();
 
         return $books;

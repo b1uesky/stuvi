@@ -15,4 +15,6 @@ class BookAuthor extends Model
     {
         return $this->belongsTo('App\Book');
     }
+
+
 }

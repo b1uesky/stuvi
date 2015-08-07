@@ -14,7 +14,8 @@
         "propaganistas/laravel-phone": "~2.0",
         "aws/aws-sdk-php-laravel": "~3.0",
 		"intervention/image": "^2.3",
-	  	"desmond/google-books": "dev-master"
+	  	"desmond/google-books": "dev-master",
+		"davejamesmiller/laravel-breadcrumbs": "^3.0"
 	},
     "repositories": [
       {

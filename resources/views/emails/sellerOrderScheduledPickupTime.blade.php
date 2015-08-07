@@ -22,7 +22,6 @@
                             <tr>
                                 <!-- header image/logo -->
                                 <td align="center" bgcolor="#241729" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Trebuchet MS, Helvetica, sans-serif;">
-                                    <!--TODO: puush must be replaced with a real url once website is online -->
                                     <a href="{{url('/home')}}">
                                         <img src="http://puu.sh/jg7HJ/cbdfb5e1f5.png" alt="Stuvi" width="276" height="110" style="display: block; color: #ffffff" />
                                     </a>
@@ -51,17 +50,15 @@
                                                         <td style="color: #F16521; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 17px;" width="100%">
                                                             <!-- CONTENT HERE! -->
                                                             <p>Hey {{$seller_order['seller']['first_name']}},</p>
-                                                            <!-- TODO: textbook name -->
                                                             <p>You have scheduled your textbook
                                                                 <a href="{{ url('/order/seller/'.$seller_order['id']) }}">
                                                                     {{$seller_order['product']['book']['title']}}
                                                                 </a>
                                                                 <!-- TODO: fix php for scheduled pick up time b/c it is not a string, it's a carbon object?? -->
-                                                                {{--pickup time at {{$seller_order['scheduled_pickup_time'] }}--}}
-                                                                pickup time at: DATE HERE
+                                                                pickup time at: {{ $seller_order['scheduled_pickup_time'] }}
                                                             </p>
                                                             <p>Once our courier has picked up your textbook, please show the following code to the courier: <stong>{{$seller_order['pickup_code']}}</stong></p>
-                                                            <p>If you need to reschedule your textbook pickup time, click the button below.></p>
+                                                            <p>If you need to reschedule your textbook pickup time, click the button below.</p>
                                                             <br>
                                                             <br>
                                                         </td>

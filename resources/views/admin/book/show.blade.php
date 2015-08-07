@@ -33,7 +33,7 @@
         </tr>
         <tr>
             <th>Verified</th>
-            <td>{{ $book->verified }}</td>
+            <td>{{ $book->is_verified }}</td>
         </tr>
         <tr>
             <th>Language</th>

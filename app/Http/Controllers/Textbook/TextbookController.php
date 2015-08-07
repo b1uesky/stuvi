@@ -107,7 +107,8 @@ class TextbookController extends Controller
 
             // allow the seller fill in book information and create a new book record
             return redirect('textbook/sell/create')
-                ->with('message', 'Looks like your textbook is currently not in our database, please fill in the textbook information below.');
+                ->with('message', 'Looks like your textbook is currently not in our database, please fill in the textbook information below.')
+                ->withInput(Input::all());
         }
     }
 
@@ -162,13 +163,14 @@ class TextbookController extends Controller
      * Store a newly created book in storage.
      * Only if the input ISBN is not in our database and amazon database.
      *
-     * @param $authors_arr
      * @return Response
      */
-    public function store($authors_arr)
+    public function store()
     {
+        $image = Input::file('image');
+
         // validation
-        $v = Validator::make(Input::all(), Book::rules());
+        $v = Validator::make(Input::all(), Book::rules($image));
         $isbn = Input::get('isbn');
 
         $v->after(function ($v) use ($isbn)
@@ -182,6 +184,23 @@ class TextbookController extends Controller
                 {
                     $v->errors()->add('isbn', 'Please enter a valid 10 or 13 digit ISBN number.');
                 }
+
+                // check if the ISBN already exists
+                if (strlen($isbn) == 10)
+                {
+                    if (Book::where('isbn10', $isbn)->count() > 0)
+                    {
+                        $v->errors()->add('isbn', 'The ISBN already exists.');
+                    }
+                }
+                else
+                {
+                    if (Book::where('isbn13', $isbn)->count() > 0)
+                    {
+                        $v->errors()->add('isbn', 'The ISBN already exists.');
+                    }
+                }
+
             }
         });
 
@@ -228,13 +247,21 @@ class TextbookController extends Controller
         }
 
         // create book image set
-        $image = Input::file('image');
-        $title = Input::get('title');
-        $folder = Config::get('upload.image.book');
-        $file_uploader = new FileUploader($image, $title, $folder, $book->id);
-        $file_uploader->saveBookImageSet();
+        $book_image = new BookImageSet();
+        $book_image->book_id = $book->id;
+        $book_image->save();
 
-        return view('product.create')
+        // save product image paths with different sizes
+        $book_image->update([
+            'small_image'   => $book_image->generateFilename('small', $image),
+            'medium_image'  => $book_image->generateFilename('medium', $image),
+            'large_image'   => $book_image->generateFilename('large', $image)
+        ]);
+
+        $book_image->resize($image);
+        $book_image->uploadToAWS();
+
+        return redirect('/textbook/sell/product/' . $book->id . '/create')
             ->with('book', $book);
     }
 
@@ -269,11 +296,15 @@ class TextbookController extends Controller
 
             if (strlen($isbn) == 10)
             {
-                $book = Book::where('isbn10', '=', $isbn)->first();
+                $book = Book::where('isbn10', '=', $isbn)
+                    ->where('is_verified', true)
+                    ->first();
             }
             else
             {
-                $book = Book::where('isbn13', '=', $isbn)->first();
+                $book = Book::where('isbn13', '=', $isbn)
+                    ->where('is_verified', true)
+                    ->first();
             }
 
             return view('textbook.show')

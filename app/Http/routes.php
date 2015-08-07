@@ -25,7 +25,7 @@ Route::pattern('product',   '[0-9]+');
 */
 
 Route::get  ('/',           'HomeController@index');
-Route::get  ('/home',       'HomeController@index');
+Route::get  ('/home',       ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get  ('/about',      'HomeController@about');
 Route::get  ('/coming',     'HomeController@coming');
 
@@ -115,11 +115,11 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 // order
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'], function()
 {
-    Route::get  ('/buyer',              'BuyerOrderController@index');
+    Route::get  ('/buyer',              ['as' => 'buyerOrders', 'uses' => 'BuyerOrderController@index']);
     Route::get  ('/confirmation',       'BuyerOrderController@confirmation');
     Route::get  ('/create',             'BuyerOrderController@create');
     Route::post ('/store',              'BuyerOrderController@store');
-    Route::get  ('/buyer/{id}',         'BuyerOrderController@show');
+    Route::get  ('/buyer/{id}',         ['as' => 'buyerOrderDetail', 'uses' => 'BuyerOrderController@show']);
     Route::get  ('/buyer/cancel/{id}',  'BuyerOrderController@cancel');
 
     Route::get  ('/seller',                     'SellerOrderController@index');
