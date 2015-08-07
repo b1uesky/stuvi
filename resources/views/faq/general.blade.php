@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'FAQ')
+@section('title', 'FAQ - General')
 
 @section('css')
     <link href="{{ asset('/css/faq.css') }}" rel="stylesheet">
