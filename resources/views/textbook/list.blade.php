@@ -4,7 +4,7 @@
 
 @section('css')
     <link href="{{ asset('/css/textbook_list.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="{{ asset('libs/jquery-ui/themes/smoothness/jquery-ui.min.css') }}">
 @endsection
 
 @section('searchbar')
@@ -16,13 +16,9 @@
     @include('textbook/textbook-nav')
 
     <div class="container-fluid textbook-list-container">
-        {{--@if(trim($query) != "")--}}
-            {{--<h1 id="search-term">Search results for "{{ $query }}"</h1>--}}
-        {{--@else--}}
-            {{--<h1 id="search-term">Search results</h1>--}}
-        {{--@endif--}}
 
         <div class="container textbook-list">
+            {{-- HEADER --}}
             <div class="textbook-list-header">
                 <h2 class="textbook-list-title">Books</h2>
 
