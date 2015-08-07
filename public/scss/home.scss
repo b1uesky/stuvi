@@ -292,6 +292,11 @@
 
 #img-info-1{
   padding: 30px;
+  @media(max-width: 767px){
+    visibility: hidden;
+    height: 0;
+    width: 0;
+  }
 }
 
 .service {
@@ -306,7 +311,7 @@
 #home-textbook-title {
   margin-left: 50px;
   margin-bottom: 30px;
-  @media(max-width: 320px){
+  @media(max-width: 767px){
     margin-left: 0;
     text-align: center;
   }
