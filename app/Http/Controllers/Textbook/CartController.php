@@ -80,7 +80,7 @@ class CartController extends Controller
             {
                 $this->cart->add($item);
                 Session::flash('message', 'Product Added Successfully.');
-                Session::flash('alert-class', 'alert-danger');
+                Session::flash('alert-class', 'alert-success');
 
             }
         }

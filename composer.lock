@@ -61,16 +61,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.2.4",
+            "version": "3.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "799a8b40a6e669e115964659cea0e25cfa06cfb8"
+                "reference": "b250573c001b6680e671aa59b63a1ecf2f95a928"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/799a8b40a6e669e115964659cea0e25cfa06cfb8",
-                "reference": "799a8b40a6e669e115964659cea0e25cfa06cfb8",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/b250573c001b6680e671aa59b63a1ecf2f95a928",
+                "reference": "b250573c001b6680e671aa59b63a1ecf2f95a928",
                 "shasum": ""
             },
             "require": {
@@ -130,20 +130,20 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-08-04 21:30:15"
+            "time": "2015-08-06 16:51:46"
         },
         {
             "name": "aws/aws-sdk-php-laravel",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php-laravel.git",
-                "reference": "983310373a9863a58f73abb9aa838da0c836227f"
+                "reference": "a6e0e843c74ea7c1b72a25cecf951166425d7ad9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php-laravel/zipball/983310373a9863a58f73abb9aa838da0c836227f",
-                "reference": "983310373a9863a58f73abb9aa838da0c836227f",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php-laravel/zipball/a6e0e843c74ea7c1b72a25cecf951166425d7ad9",
+                "reference": "a6e0e843c74ea7c1b72a25cecf951166425d7ad9",
                 "shasum": ""
             },
             "require": {
@@ -183,7 +183,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-06-10 20:56:22"
+            "time": "2015-08-05 22:45:11"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -3771,16 +3771,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.7.7",
+            "version": "4.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "9b97f9d807b862c2de2a36e86690000801c85724"
+                "reference": "748c6963c0a8c983fa69ee8884c885d0e98209bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9b97f9d807b862c2de2a36e86690000801c85724",
-                "reference": "9b97f9d807b862c2de2a36e86690000801c85724",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/748c6963c0a8c983fa69ee8884c885d0e98209bf",
+                "reference": "748c6963c0a8c983fa69ee8884c885d0e98209bf",
                 "shasum": ""
             },
             "require": {
@@ -3790,7 +3790,7 @@
                 "ext-reflection": "*",
                 "ext-spl": "*",
                 "php": ">=5.3.3",
-                "phpspec/prophecy": "~1.3,>=1.3.1",
+                "phpspec/prophecy": "^1.3.1",
                 "phpunit/php-code-coverage": "~2.1",
                 "phpunit/php-file-iterator": "~1.4",
                 "phpunit/php-text-template": "~1.2",
@@ -3798,7 +3798,7 @@
                 "phpunit/phpunit-mock-objects": "~2.3",
                 "sebastian/comparator": "~1.1",
                 "sebastian/diff": "~1.2",
-                "sebastian/environment": "~1.2",
+                "sebastian/environment": "~1.3",
                 "sebastian/exporter": "~1.2",
                 "sebastian/global-state": "~1.0",
                 "sebastian/version": "~1.0",
@@ -3813,7 +3813,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.7.x-dev"
+                    "dev-master": "4.8.x-dev"
                 }
             },
             "autoload": {
@@ -3839,7 +3839,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-07-13 11:28:34"
+            "time": "2015-08-07 12:56:50"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

@@ -4,35 +4,35 @@
 
 @section('css')
     <link href="{{ asset('/css/textbook_list.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="{{ asset('libs/jquery-ui/themes/smoothness/jquery-ui.min.css') }}">
 @endsection
 
-{{--@section('searchbar')--}}
-    {{--@include('includes.textbook.searchbar')--}}
-{{--@endsection--}}
+@section('searchbar')
+    @include('includes.textbook.searchbar')
+@endsection
 
 @section('content')
 
     @include('textbook/textbook-nav')
 
     <div class="container-fluid textbook-list-container">
-        @if(trim($query) != "")
-            <h1 id="search-term">Search results for "{{ $query }}"</h1>
-        @else
-            <h1 id="search-term">Search results</h1>
-        @endif
-        <div class="container">
-            {{--<span class="text-muted">Sort by</span>--}}
-            <ul class="nav nav-pills">
-                {{--<li role="presentation" class="active"><a href="#" data-toggle="pill">Title</a></li>--}}
-                {{--<li role="presentation"><a href="#" data-toggle="pill">Author</a></li>--}}
-                {{--<li role="presentation"><a href="#" data-toggle="pill">Most Bought</a></li>--}}
-                {{--<li role="presentation"><a href="#" data-toggle="pill">Top Rated</a></li>--}}
-
-            </ul>
-        </div>
 
         <div class="container textbook-list">
+            {{-- HEADER --}}
+            <div class="textbook-list-header">
+                <h2 class="textbook-list-title">Books</h2>
+
+                @if(trim($query) != "")
+                    <div class="textbook-list-results">
+                        {{ count($books) }} results for {{ $query }}
+                    </div>
+                @else
+                    <div class="textbook-list-results">
+                        {{ count($books) }} results
+                    </div>
+                @endif
+            </div>
+
             <table class="table table-responsive textbook-table">
                 <!-- new row for each book -->
                 @forelse($books as $book)
@@ -97,6 +97,7 @@
 @endsection
 
 @section('javascript')
-    {{--<script src="{{ asset('libs/jquery-ui/jquery-ui.min.js') }}"></script>--}}
-    {{--<script src="{{ asset('/js/autocomplete.js')}} "></script>--}}
+    <script src="{{ asset('js/navbar.js') }}"></script>
+    <script src="{{ asset('libs/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/autocomplete.js')}} "></script>
 @endsection

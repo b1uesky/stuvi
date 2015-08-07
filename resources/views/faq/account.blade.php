@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'FAQ')
+@section('title', 'FAQ - Account')
 
 @section('css')
     <link href="{{ asset('/css/faq.css') }}" rel="stylesheet">
@@ -12,6 +12,7 @@
         <div class="col-sm-7 col-sm-offset-1 qa-container">
             <h2>FAQ - Account</h2>
             <hr class="faq-line">
+            <a name="edit-account-info"></a>
             <div class="question-answer">
                 <h3>How do I edit my account information?</h3>
                 <p>
@@ -19,6 +20,7 @@
                     information.
                 </p>
             </div>
+            <a name="change-email-settings"></a>
             <div class="question-answer">
                 <h3>How do I change my email settings?</h3>
                 <p>

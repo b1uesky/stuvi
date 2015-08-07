@@ -1,13 +1,13 @@
-<!-- Prototype Homepage Copyright Stuvi 2015 -->
+<!-- Copyright Stuvi LLC 2015 -->
 
-@extends('app-home')    <!-- app.blade.php -->
+@extends('app-home')    {{--app.blade.php--}}
 
-@section('title', 'Textbooks, Housing, Clubs, & More')
+@section('title', 'Boston Textbook Marketplace & More Coming Soon!')
 
 @section('css')
     <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="{{ asset('libs/jquery-ui/themes/smoothness/jquery-ui.min.css') }}">
     @endsection
 
     @section('content')
@@ -50,7 +50,7 @@
                 <form action="/textbook/buy/search" method="get">
 
                     <div class="searchbar-input-container searchbar-input-container-query">
-                        <input type="text" name="query" id="autocompleteBuy"
+                        <input type="text" name="query" id="autocomplete"
                                class="form-control searchbar-input searchbar-input-query"
                                placeholder="Enter the textbook ISBN, Title, or Author"/>
                     </div>
@@ -58,7 +58,8 @@
                     {{-- Show school selection if it's a guest --}}
                     @if(Auth::guest())
                         <div class="searchbar-input-container searchbar-input-container-university">
-                            <select name="university_id" class="form-control searchbar-input searchbar-input-university">
+                            <label class="sr-only" for="uni_id">University</label>
+                            <select name="university_id" class="form-control searchbar-input searchbar-input-university" id="uni_id">
                                 @foreach(\App\University::where('is_public', true)->get() as $university)
                                     <option value="{{ $university->id }}">{{ $university->name }}</option>
                                 @endforeach

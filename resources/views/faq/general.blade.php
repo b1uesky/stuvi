@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'FAQ')
+@section('title', 'FAQ - General')
 
 @section('css')
     <link href="{{ asset('/css/faq.css') }}" rel="stylesheet">
@@ -13,6 +13,7 @@
         <div class="col-sm-7 col-sm-offset-1 qa-container">
             <h2>FAQ - General Questions</h2>
             <hr class="faq-line">
+            <a name="school-email"></a>
             <div class="question-answer">
                 <h3>Why do I need to log in with a school email address?</h3>
                 <p>
@@ -20,6 +21,7 @@
                     Therefore, we only allow verified college students to join our community.
                 </p>
             </div>
+            <a name="my-school"></a>
             <div class="question-answer">
                 <h3>I can't find my college/university. Can I still use Stuvi?</h3>
 
@@ -29,6 +31,7 @@
                     so we can expand our service to your school.
                 </p>
             </div>
+            <a name="bug"></a>
             <div class="question-answer">
                 <h3>I found a bug. Where can I report that?</h3>
                 <p>

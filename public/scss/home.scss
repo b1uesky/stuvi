@@ -20,6 +20,9 @@
 #nav {
   background-color: $transparent;
   border: none;
+  @media(max-width: 767px){
+    background-color: $background-color;
+  }
 }
 
 #navbar-container{
@@ -27,6 +30,9 @@
   top: 0;
   z-index: 10;
   width: 100%;
+  @media(max-width: 767px){
+    position: relative;
+  }
 }
 
 .logo-container {
@@ -47,6 +53,12 @@
     background-color: $transparent;
     outline: 0;
   }
+  @media(max-width: 767px){
+    color: black;
+    &:hover, &:focus{
+      color: $primary-color;
+    }
+  }
 }
 
 #nav-right li a {
@@ -55,6 +67,12 @@
     background-color: $transparent;
     outline: 0;
     color: white;
+  }
+  @media(max-width: 767px){
+    color: black;
+    &:hover, &:focus{
+      color: $primary-color;
+    }
   }
 }
 
@@ -72,8 +90,21 @@
 
 /* NAVIGATION HAMBURGER MENU */
 
+#xs-screen-logo-link{
+  position: absolute;
+  left:0;
+  @media(min-width: 767px){
+    visibility: hidden;
+  }
+}
+
+#xs-screen-logo-img{
+  height: 50px;
+  width: auto;
+}
+
+
 #nav-toggle-collapse {
-  float: left;
   border: none;
   z-index: 50;
   margin-left: 10px;
@@ -114,10 +145,14 @@
   width: 100%;
   margin-top: 100px;
   margin-bottom: 30px;
+  text-shadow: $text-shadow;
   @media(max-width: 991px){
     margin-top: 30px;
   }
-  text-shadow: $text-shadow;
+  @media(max-width: 767px){
+    z-index: 0;
+    margin-top: 10px;
+  }
 }
 
 #head1{
@@ -130,6 +165,9 @@
   @media(max-width: 767px){
     font-size: 3em;
   }
+  @media(max-width: 359px){
+    font-size: 2em;
+  }
 }
 
 .tagline{
@@ -137,6 +175,9 @@
   text-align: center;
   padding-bottom: 3%;
   font-weight: 400;
+  @media(max-width: 359px){
+  font-size: 1em;
+  }
 }
 
 /*****

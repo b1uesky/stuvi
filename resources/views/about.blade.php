@@ -18,7 +18,7 @@
         </div>    <!-- end container -->
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid no-overflow">
         <div class="row">
             <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 about-stuvi">
                 <h2>About Stuvi</h2>

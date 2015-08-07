@@ -117,6 +117,20 @@ body {
   padding-bottom: 30px;
 }
 
+#update-loading {
+  position: absolute;
+  right: 60px;
+  bottom: 18px;
+  color: $secondary-color;
+}
+
+#add-loading {
+  position: absolute;
+  right: 50px;
+  bottom: 18px;
+  color: $secondary-color;
+}
+
 /**** PAYMENT ****/
 
 .stripe-container {

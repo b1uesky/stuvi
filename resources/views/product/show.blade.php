@@ -153,7 +153,7 @@
                                             <h3>Highlights/Notes</h3>
                                         </div>
                                         <div class="modal-body">
-                                            <p>{{ Config::get('product.conditions.highlights_and_notes.description') }}</p>
+                                            <p>{{ Config::get('product.conditions.highlights_and_notes.description_show') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -179,7 +179,7 @@
                                             <h3>Damaged Pages</h3>
                                         </div>
                                         <div class="modal-body">
-                                            <p>{{ Config::get('product.conditions.damaged_pages.description') }}</p>
+                                            <p>{{ Config::get('product.conditions.damaged_pages.description_show') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -205,7 +205,7 @@
                                             <h3>Broken Binding</h3>
                                         </div>
                                         <div class="modal-body">
-                                            <p>{{ Config::get('product.conditions.broken_binding.description') }}</p>
+                                            <p>{{ Config::get('product.conditions.broken_binding.description_show') }}</p>
                                         </div>
                                     </div>
                                 </div>

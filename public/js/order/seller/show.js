@@ -148,7 +148,7 @@ $(document).ready(function () {
         });
     });
 
-    $("#add-address-btn").click(function(e){
+    $(".add-address-btn").click(function(e){
         e.preventDefault();
         $("#delete-address").hide();
         $("#address-form-modal").modal("show");
