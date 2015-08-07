@@ -91,6 +91,12 @@ a:focus {
   }
 }
 
+@media(max-width: 767px){
+  .navbar-nav{
+    margin: 0;
+  }
+}
+
 /******* NAVIGATION DROPDOWN *******/
 
 #nav-drop {
