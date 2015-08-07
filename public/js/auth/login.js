@@ -136,6 +136,15 @@ $(document).ready(function () {
                         },
                         blank: {}
                     }
+                },
+                university_id: {
+                    trigger: 'blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'The university is required'
+                        },
+                        blank: {}
+                    }
                 }
             }
         })
