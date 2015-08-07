@@ -7,9 +7,8 @@
   background-size: cover; /* Fill entire container */
 }
 
-// change this to specfic class
 //mobile overflow fix
-.container-fluid {
+.no-overflow {
   overflow-x: hidden;
 }
 
