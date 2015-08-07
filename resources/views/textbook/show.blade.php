@@ -6,8 +6,12 @@
 
 @section('css')
     <link href="{{ asset('/css/textbook_show.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('libs/jquery-ui/themes/smoothness/jquery-ui.min.css') }}">
 @endsection
 
+@section('searchbar')
+    @include('includes.textbook.searchbar')
+@endsection
 
 @section('content')
 
@@ -108,5 +112,7 @@
 @endsection
 
 @section('javascript')
-
+    <script src="{{ asset('js/navbar.js') }}"></script>
+    <script src="{{ asset('libs/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/autocomplete.js')}} "></script>
 @endsection
