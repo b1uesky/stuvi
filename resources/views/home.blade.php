@@ -1,6 +1,6 @@
-<!-- Prototype Homepage Copyright Stuvi 2015 -->
+<!-- Copyright Stuvi LLC 2015 -->
 
-@extends('app-home')    <!-- app.blade.php -->
+@extends('app-home')    {{--app.blade.php--}}
 
 @section('title', 'Boston Textbook Marketplace & More Coming Soon!')
 
