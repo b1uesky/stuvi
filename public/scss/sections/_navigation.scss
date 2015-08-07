@@ -17,6 +17,7 @@ a:focus {
   border: none;
   box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
   z-index: 20;
+
 }
 
 #nav-left {
@@ -32,6 +33,9 @@ a:focus {
     &:focus {
       background-color: $nav-background-color;
     }
+  }
+  @media(max-width: 767px){
+    text-align: center !important;
   }
 }
 
@@ -125,6 +129,12 @@ a:focus {
   }
   &:focus {
     background-color: $nav-background-color;
+  }
+}
+
+#nav-right li a{
+  @media(max-width: 767px){
+    text-align: center !important;
   }
 }
 
