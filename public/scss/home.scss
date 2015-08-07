@@ -235,10 +235,21 @@
   z-index: 2;
   bottom: 0;
   width: 100vw;
+  @media(max-width: 767px){
+    padding-top: 0;
+    position: relative;
+  }
+
+
   @media(max-width: 360px){
+    position: relative;
     visibility: hidden;
     background-color: $transparent;
   }
+}
+
+.xs-guest-search-bar{
+  padding: 0 15px 0 15px;
 }
 
 @import "partials/autocomplete";

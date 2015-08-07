@@ -84,6 +84,9 @@
 
 .row {
   padding: 3%;
+  @media(max-width: 767px){
+    padding: 0;
+  }
 }
 
 .row-b {

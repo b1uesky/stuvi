@@ -28,7 +28,7 @@
     <div class="container-fluid search">
         <div class="row">
             <h1 id="title">Buy Textbooks</h1>
-            <div class="searchbar">
+            <div class="searchbar default-searchbar">
                 <form action="/textbook/buy/search" method="get">
 
                     <div class="searchbar-input-container searchbar-input-container-query">
@@ -55,6 +55,33 @@
                     </div>
                 </form>
             </div>
+
+            @if(Auth::guest())
+            <div class="xs-guest-search-bar">
+                <form action="/textbook/buy/search" method="get">
+                    <div class="xs-guest-search-bar-input">
+                        <input type="text" name="query" id="autocompleteBuy"
+                               class="form-control searchbar-input searchbar-input-query"
+                               placeholder="Enter the textbook ISBN, Title, or Author"/>
+                    </div>
+                    {{-- Show school selection if it's a guest --}}
+                    <div class="xs-guest-search-bar-input-uni">
+                        <select name="university_id"
+                                class="form-control">
+                            @foreach(\App\University::where('is_public', true)->get() as $university)
+                                <option value="{{ $university->id }}">{{ $university->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="xs-guest-search-bar-input-submit">
+                        <button class="btn primary-btn" type="submit" value="Search" style="width:100%;">
+                            Search
+                        </button>
+                    </div>
+                </form>
+            </div>
+            @endif
+
         </div>
     </div>
 

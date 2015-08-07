@@ -29,25 +29,60 @@
         <!-- Search Bar Container-->
         <div class="container-fluid search">
             <div class="row">
-                <h1 id="title">Sell Your Textbooks</h1>
-                    <div class="searchbar">
-                        <form action="/textbook/sell/search" method="post" id="form-isbn">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <h1 id="title">Sell Textbooks</h1>
+                <div class="searchbar default-searchbar">
+                    <form action="/textbook/buy/search" method="get">
 
-                            <div class="searchbar-input-container searchbar-input-container-query form-group"
-                                 id="textbook-search">
-                                <input type="text" name="isbn" class="form-control searchbar-input searchbar-input-query"
-                                       id="sell-search-input"
-                                       placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
+                        <div class="searchbar-input-container searchbar-input-container-query">
+                            <input type="text" name="query" id="autocompleteBuy"
+                                   class="form-control searchbar-input searchbar-input-query"
+                                   placeholder="Enter the textbook ISBN, Title, or Author"/>
+                        </div>
+                        {{-- Show school selection if it's a guest --}}
+                        @if(Auth::guest())
+                            <div class="searchbar-input-container searchbar-input-container-university">
+                                <select name="university_id"
+                                        class="form-control searchbar-input searchbar-input-university">
+                                    @foreach(\App\University::where('is_public', true)->get() as $university)
+                                        <option value="{{ $university->id }}">{{ $university->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div class="searchbar-input-container searchbar-input-container-submit form-group">
-                                <button class="btn primary-btn search-btn" id="sell-search-btn" type="submit"
-                                        name="search">
-                                    <i class="fa fa-search fa-lg search-icon"></i>
+                        @endif
+
+                        <div class="searchbar-input-container searchbar-input-container-submit">
+                            <button class="btn primary-btn search-btn" type="submit" value="Search">
+                                <i class="fa fa-search fa-lg search-icon"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                @if(Auth::guest())
+                    <div class="xs-guest-search-bar">
+                        <form action="/textbook/buy/search" method="get">
+                            <div class="xs-guest-search-bar-input">
+                                <input type="text" name="query" id="autocompleteBuy"
+                                       class="form-control searchbar-input searchbar-input-query"
+                                       placeholder="Enter the textbook ISBN, Title, or Author"/>
+                            </div>
+                            {{-- Show school selection if it's a guest --}}
+                            <div class="xs-guest-search-bar-input-uni">
+                                <select name="university_id"
+                                        class="form-control">
+                                    @foreach(\App\University::where('is_public', true)->get() as $university)
+                                        <option value="{{ $university->id }}">{{ $university->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="xs-guest-search-bar-input-submit">
+                                <button class="btn primary-btn" type="submit" value="Search" style="width:100%;">
+                                    Search
                                 </button>
                             </div>
                         </form>
                     </div>
+                @endif
             </div>
         </div>
 

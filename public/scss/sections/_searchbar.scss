@@ -71,6 +71,41 @@
   }
 }
 
+/* XS SCREEN COMPATIBILITY */
+
+.xs-guest-search-bar{
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  @media(max-width: 767px){
+    visibility: visible;
+    height: auto;
+    width: auto;
+    .searchbar-input-query{
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-right: 1px solid #C4C4C4;
+    }
+  }
+}
+
+@media(max-width: 767px){
+  .default-searchbar{
+    visibility: hidden;
+    height: 0;
+    width: 0;
+  }
+  .xs-guest-search-bar-input, .xs-guest-search-bar-input-uni, .xs-guest-search-bar-input-submit{
+    margin-bottom: 10px;
+  }
+}
+
+@media(max-width: 360px){
+  .xs-guest-search-bar-input-submit{
+    margin-bottom: 20px;
+  }
+}
+
 
 // this class used in textbook.js when there is an isbn input error
 .search-btn-fix {
