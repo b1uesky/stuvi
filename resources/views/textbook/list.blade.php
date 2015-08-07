@@ -69,10 +69,10 @@
 
                             <span>
                                 @if(count($book->products) > 1)
-                                    From <span class="textbook-low-price">${{ $book->decimalLowestPrice() }}</span>
-                                    to <span class="textbook-high-price">${{ $book->decimalHighestPrice() }}</span>
+                                    From <span class="textbook-price">${{ $book->decimalLowestPrice() }}</span>
+                                    to <span class="textbook-price">${{ $book->decimalHighestPrice() }}</span>
                                 @else
-                                    ${{ $book->decimalLowestPrice() }}
+                                    <span class="textbook-price">${{ $book->decimalLowestPrice() }}</span>
                                 @endif
                             </span>
                         </td>
