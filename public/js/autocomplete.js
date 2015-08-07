@@ -5,7 +5,7 @@
 
 $(document).ready(function() {
 
-    $('#autocompleteBuy').autocomplete({
+    $('#autocomplete').autocomplete({
         source: function(request, response) {
             $.ajax({
                 url: location.protocol + '//' + document.domain + '/textbook/searchAutoComplete',

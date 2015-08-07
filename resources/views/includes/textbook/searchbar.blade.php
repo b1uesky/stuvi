@@ -1,7 +1,7 @@
 <li>
     <form action="/textbook/buy/search" method="get" class="navbar-form" role="search">
         <div class="input-group">
-            <input type="text" class="form-control" id="autocompleteBuy" placeholder="Search"
+            <input type="text" class="form-control" id="autocomplete" placeholder="Search"
                    name="query">
 
             <div class="input-group-btn">

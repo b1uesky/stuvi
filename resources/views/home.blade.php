@@ -50,7 +50,7 @@
                 <form action="/textbook/buy/search" method="get">
 
                     <div class="searchbar-input-container searchbar-input-container-query">
-                        <input type="text" name="query" id="autocompleteBuy"
+                        <input type="text" name="query" id="autocomplete"
                                class="form-control searchbar-input searchbar-input-query"
                                placeholder="Enter the textbook ISBN, Title, or Author"/>
                     </div>
