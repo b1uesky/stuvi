@@ -56,7 +56,6 @@
                 </form>
             </div>
 
-            @if(Auth::guest())
             <div class="xs-guest-search-bar">
                 <form action="/textbook/buy/search" method="get">
                     <div class="xs-guest-search-bar-input">
@@ -64,15 +63,17 @@
                                class="form-control searchbar-input searchbar-input-query"
                                placeholder="Enter the textbook ISBN, Title, or Author"/>
                     </div>
-                    {{-- Show school selection if it's a guest --}}
-                    <div class="xs-guest-search-bar-input-uni">
-                        <select name="university_id"
-                                class="form-control">
-                            @foreach(\App\University::where('is_public', true)->get() as $university)
-                                <option value="{{ $university->id }}">{{ $university->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    @if(Auth::guest())
+                        {{-- Show school selection if it's a guest --}}
+                        <div class="xs-guest-search-bar-input-uni">
+                            <select name="university_id"
+                                    class="form-control">
+                                @foreach(\App\University::where('is_public', true)->get() as $university)
+                                    <option value="{{ $university->id }}">{{ $university->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
                     <div class="xs-guest-search-bar-input-submit">
                         <button class="btn primary-btn" type="submit" value="Search" style="width:100%;">
                             Search
@@ -80,7 +81,7 @@
                     </div>
                 </form>
             </div>
-            @endif
+
 
         </div>
     </div>
@@ -98,7 +99,7 @@
                 <!-- Row 1 Col 1 -->
                 <!-- xs: stack-->
                 <div class="container col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id="shrink-xs">
-                    <img class="textbook-bottom-img" src="{{ asset('/img/textbook/search.png') }}" alt="placeholder">
+                    <img class="textbook-bottom-img img-responsive" src="{{ asset('/img/textbook/search.png') }}" alt="placeholder">
                 </div>
                 <!-- Row 1 Col 2 -->
                 <div class="container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
@@ -139,7 +140,6 @@
                 <!-- Row 3 Col 1 -->
                 <!-- xs: stack-->
                 <div class="container col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id="shrink-xs">
-                    {{--<img src="http://placehold.it/250x250" alt = "placeholder">--}}
                     <i class="material-icons google-img">library_books</i>
                 </div>
                 <!-- Row 3 Col 2 -->
