@@ -25,6 +25,24 @@
   }
 }
 
+/** TEXTBOOK LIST HEADER **/
+
+.textbook-list-header {
+  width: 100%;
+  height: 30px;
+}
+
+.textbook-list-title {
+  display: inline;
+  float: left;
+}
+
+.textbook-list-results {
+  display: inline;
+  float: right;
+  margin-top: $spacing-unit;
+}
+
 /* TEXTBOOK LIST */
 .textbook-img-container {
   width: 100px;
