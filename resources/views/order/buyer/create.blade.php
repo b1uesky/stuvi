@@ -21,7 +21,7 @@
         <img class="img-responsive cart-line col-sm-offset-3" src="{{asset('/img/CHECKOUT.png')}}"
              alt="Your cart progress">
     </div>
-    <div class="container">
+    <div class="container checkout-container">
         <h1 id="checkout-title">Checkout Books</h1>
 
         <div class="row">

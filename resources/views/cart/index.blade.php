@@ -26,10 +26,8 @@
 
     <!-- all of shopping cart info -->
     <div class="container shopping-cart">
-        <h1>
-        </h1>
         <br>
-
+        <br>
         @if ($items->count() > 0)
         <!-- cart items -->
         <table class="table table-responsive cart-table">

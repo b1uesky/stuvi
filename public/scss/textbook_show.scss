@@ -26,6 +26,9 @@ body {
   width: 300px;
   height: 400px;
   margin-left: 50px;
+  @media(max-width: 370px ){
+    margin-left: 0;
+  }
 }
 
 .textbook-info {
@@ -63,6 +66,7 @@ body {
 
 .table-row {
   margin-top: 40px;
+  overflow-x: scroll;
   #h4-1, #book-options-links{
     @media(max-width: 767px){
       padding-left: 10px;
