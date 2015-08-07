@@ -57,7 +57,9 @@
 
                     {{-- Show school selection if it's a guest --}}
                     @if(Auth::guest())
-                        <div class="searchbar-input-container searchbar-input-container-university">
+
+                       {{-- Regular Screen --}}
+                        <div class="searchbar-input-container searchbar-input-container-university default-guest-search">
                             <label class="sr-only" for="uni_id">University</label>
                             <select name="university_id" class="form-control searchbar-input searchbar-input-university" id="uni_id">
                                 @foreach(\App\University::where('is_public', true)->get() as $university)
@@ -67,7 +69,7 @@
                         </div>
                     @endif
 
-                    <div class="searchbar-input-container searchbar-input-container-submit">
+                    <div class="searchbar-input-container searchbar-input-container-submit default-guest-search-submit">
                         <button class="btn btn-default search-btn" type="submit" value="Search">
                             <i class="fa fa-search search-icon"></i>
                         </button>
@@ -127,7 +129,7 @@
         </div>
     </div> <!-- end bottom half -->
 
-    <!-- login-sign-up modal -->
+    {{--login-sign-up modal--}}
     @include('auth.login-signup-modal')
 
 @endsection
