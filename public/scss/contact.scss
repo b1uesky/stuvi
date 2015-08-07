@@ -6,6 +6,7 @@
 /*  background: url('../img/art-boston.jpg') no-repeat;
   background-size: cover;*/
   background-color: $background-color;
+  min-height: 90vh;
 }
 
 .contact-title, .contact-subtitle, .contact-email, .contact-details, .contact-alerts {
@@ -25,7 +26,7 @@
   max-width: 350px;
   margin: 0 auto;
   padding-top: $spacing-unit;
-  height: 100vh;
+  height: 100%;
 }
 
 .control-label {
