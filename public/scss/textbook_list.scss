@@ -2,6 +2,8 @@
 /* Used for list.blade.php*/
 
 @import "modules/all";
+@import "partials/autocomplete";
+@import "sections/searchbar";
 
 /* TOP SECTION */
 
@@ -21,39 +23,6 @@
   h1 {
     margin-left: 30px;
   }
-}
-
-/* SORT SECTION */
-
-#nav-sort {
-  li {
-    a {
-      color: $muted-text-color;
-      &:hover {
-        background-color: #DDDDDD;
-      }
-    }
-  }
-  li.active {
-    a {
-      background-color: $primary-color;
-      color: #FFFFFF;
-    }
-  }
-}
-
-#autocomplete {
-  border-radius: 4px 0 0 4px;
-  border-right: none;
-  &:focus {
-    border: 1px solid $primary-color;
-    border-right: none;
-    box-shadow: none;
-  }
-}
-
-.search-icon {
-  color: white;
 }
 
 /* TEXTBOOK LIST */
@@ -97,7 +66,7 @@
   font-size: medium;
 }
 
-#textbook-low-price, #textbook-high-price {
+.textbook-low-price, .textbook-high-price {
   color: $price-color;
   font-weight: 500;
 }

@@ -1,8 +1,7 @@
 <li>
     <form action="/textbook/buy/search" method="get" class="navbar-form" role="search">
         <div class="input-group">
-            <input type="text" class="form-control" id="autocomplete" placeholder="Search"
-                   name="query">
+            <input type="text" class="form-control" id="autocomplete" name="query" placeholder="Search" value="{{ Input::get('query') }}">
 
             <div class="input-group-btn">
                 <button class="btn list-search-btn" type="submit">
