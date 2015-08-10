@@ -15,6 +15,17 @@ Breadcrumbs::register('buyerOrders', function($breadcrumbs) {
 Breadcrumbs::register('buyerOrderDetail', function ($breadcrumbs, $id) {
     $orderDetailPage = BuyerOrder::findOrFail($id);
     $breadcrumbs->parent('buyerOrders');
+    $breadcrumbs->push('Order Details',url('/order/buyer/',[$orderDetailPage->id]));
+});
+
+Breadcrumbs::register('buyTextbook',function($breadcrumb){
+    $breadcrumb->parent('home');
+    $breadcrumb->push('Buy Textbook', url('textbook/buy'));
+});
+
+Breadcrumbs::register('shoppingCart',function ($breadcrumbs){
+    $breadcrumbs->parent('buyTextbook');
+    $breadcrumbs->push('Shopping Cart', url('/cart'));
     $breadcrumbs->push('Order Details', url('/order/buyer/', [$orderDetailPage->id]));
 });
 

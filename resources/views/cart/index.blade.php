@@ -14,9 +14,7 @@
 
     <!-- back link -->
     <div class="container-fluid">
-        <div class="row back-row">
-            <a id="back-to-cart" onclick="goBack()"><i class="fa fa-arrow-circle-left"></i> Go Back</a>
-        </div>
+        {!! Breadcrumbs::render('shoppingCart') !!}
     </div>
 
     <!-- img of cart progress bar -->
