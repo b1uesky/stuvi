@@ -39,13 +39,15 @@ class ProductImage extends Model {
     {
         $title = implode('-', explode(' ', $this->product->book->title));
 
+        $extension = $file->getClientOriginalExtension();
+
         if ($size)
         {
-            $filename = $title . '-' . $this->id . '-' . $size . '.' . $file->getClientOriginalExtension();
+            $filename = $title . '-' . $this->id . '-' . $size . '.' . $extension;
         }
         else
         {
-            $filename = $title . '-' . $this->id . '.' . $file->getClientOriginalExtension();
+            $filename = $title . '-' . $this->id . '.' . $extension;
         }
 
         return $filename;
