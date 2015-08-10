@@ -13,17 +13,16 @@
     @include('includes.textbook.flash-message')
 
     <!-- back link -->
-    <div class="container-fluid">
-        {!! Breadcrumbs::render('shoppingCart') !!}
-    </div>
 
     <!-- img of cart progress bar -->
             <div class="container col-xs-10 col-xs-offset-2 col-sm-8 col-sm-offset-2 cart-progress">
+                {!! Breadcrumbs::render('shoppingCart') !!}
         <img class="img-responsive cart-line col-sm-offset-3" src="{{asset('/img/CART.png')}}" alt="Your cart progress">
     </div>
 
     <!-- all of shopping cart info -->
     <div class="container shopping-cart">
+
         <br>
         <br>
         @if ($items->count() > 0)
