@@ -81,7 +81,7 @@ Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
 
     // buy
     Route::group(['prefix'=>'buy'], function() {
-        Route::get  ('/', 'TextbookController@showBuyPage');
+        Route::get  ('/', ['as' => 'buyTextbook', 'uses' => 'TextbookController@showBuyPage']);
         Route::get  ('/{book}', 'TextbookController@show');
         Route::get  ('/search', 'TextbookController@buySearch');
         Route::get  ('/product/{product}', 'ProductController@show');
@@ -142,7 +142,7 @@ Route::group(['middleware'=>'auth', 'prefix'=>'stripe'], function()
 // cart
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], function()
 {
-    Route::get('/',         'CartController@index');
+    Route::get('/',         ['as' => 'shoppingCart', 'uses' => 'CartController@index']);
     Route::get('/add/{id}', 'CartController@addItem');
     Route::get('/rmv/{id}', 'CartController@removeItem');
     Route::get('/empty',    'CartController@emptyCart');
