@@ -67,7 +67,7 @@
 
                 <div class="contact-email">
                     <p>
-                        You're welcome to email us at <a href="mailto:official@stuvi.com">official@stuvi.com</a>
+                        You're also welcome to email us at <a href="mailto:official@stuvi.com">official@stuvi.com</a>
                     </p>
                 </div>
             </div>

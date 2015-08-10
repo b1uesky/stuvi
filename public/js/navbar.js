@@ -6,17 +6,21 @@
 
 
 $('#autocomplete').focus(function() {
-    $(this).animate({
-        width: '+=300px'
-    });
+    if(screen.width > 767){
+        $(this).animate({
+            width: '+=300px'
+        });
+    }
 
     $(this).attr('placeholder', 'Enter the textbook ISBN, Title, or Author');
 });
 
 $('#autocomplete').blur(function() {
-    $(this).animate({
-        width: '-=300px'
-    });
+    if(screen.width > 767){
+        $(this).animate({
+            width: '-=300px'
+        });
+    }
 
     $(this).attr('placeholder', 'Search');
 });

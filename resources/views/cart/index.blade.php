@@ -26,10 +26,8 @@
 
     <!-- all of shopping cart info -->
     <div class="container shopping-cart">
-        <h1>
-        </h1>
         <br>
-
+        <br>
         @if ($items->count() > 0)
         <!-- cart items -->
         <table class="table table-responsive cart-table">
@@ -96,19 +94,19 @@
             <table class="table table-responsive subtotal">
                 <tr>
                     <td class="no-border-top"><b>Tax</b></td>
-                    <td class="no-border-top tax">${{ $tax/100 }}</td>
+                    <td class="no-border-top tax">${{ \App\Helpers\Price::convertIntegerToDecimal($tax) }}</td>
                 </tr>
                 <tr>
                     <td class="no-border-top"><b>Service Fee</b></td>
-                    <td class="no-border-top fee">${{ $fee/100 }}</td>
+                    <td class="no-border-top fee">${{ \App\Helpers\Price::convertIntegerToDecimal($fee) }}</td>
                 </tr>
                 <tr>
                     <td class="no-border-top"><b>Discount</b></td>
-                    <td class="no-border-top discount">- ${{ $discount/100 }}</td>
+                    <td class="no-border-top discount">- ${{ \App\Helpers\Price::convertIntegerToDecimal($discount) }}</td>
                 </tr>
                 <tr>
                     <td><b>Grand Total</b></td>
-                    <td class="total">${{ $subtotal/100 }}</td>
+                    <td class="total">${{ \App\Helpers\Price::convertIntegerToDecimal($subtotal) }}</td>
                 </tr>
             </table>
             <a class="btn primary-btn btn-checkout" href="{{ url('/order/create') }}" role="button">

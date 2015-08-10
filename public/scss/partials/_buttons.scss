@@ -29,6 +29,13 @@
   }
 }
 
+.grey-btn{
+  background-color: grey;
+  color: $button-text-color;
+  border: none;
+  margin: 5px;
+}
+
 // textbook/list.blade.php
 .list-search-btn {
   background: $primary-color;

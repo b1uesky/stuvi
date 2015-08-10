@@ -6,6 +6,9 @@
   width: 100%;
   background: $primary-color;
   height: 40px;
+  @media(max-width: 320px){
+    height: 80px;
+  }
 }
 
 .tab-filters {
@@ -23,6 +26,9 @@
 // this can't be placed above in the .filter styles
 .filter.active {
   border-bottom: 5px solid white;
+  @media(max-width: 320px){
+    border-bottom: 3px solid white;
+  }
 }
 
 .filter-link {

@@ -33,7 +33,7 @@ class BookImageSet extends Model
     }
 
     /**
-     * Generate a filename for a product image, add size if necessary
+     * Generate a filename for a book image, add size if necessary
      *
      * @param null $size
      * @param $file
@@ -43,13 +43,23 @@ class BookImageSet extends Model
     {
         $title = implode('-', explode(' ', $this->book->title));
 
-        if ($size)
+        if ($file->extension)
         {
-            $filename = $title . '-' . $this->id . '-' . $size . '.' . $file->getClientOriginalExtension();
+            // image created by Intervension
+            $extension = $file->extension;
         }
         else
         {
-            $filename = $title . '-' . $this->id . '.' . $file->getClientOriginalExtension();
+            $extension = $file->getClientOriginalExtension();
+        }
+
+        if ($size)
+        {
+            $filename = $title . '-' . $this->id . '-' . $size . '.' . $extension;
+        }
+        else
+        {
+            $filename = $title . '-' . $this->id . '.' . $extension;
         }
 
         return $filename;
@@ -100,12 +110,11 @@ class BookImageSet extends Model
     public function uploadToAWS()
     {
         $temp_path = Config::get('image.temp_path');
+        $s3 = AwsFacade::createClient('s3');
 
         // upload images to amazon s3
         foreach([$this->small_image, $this->medium_image, $this->large_image] as $key)
         {
-            $s3 = AwsFacade::createClient('s3');
-
             $s3->putObject(array(
                 'Bucket'        => Config::get('aws.buckets.book_image'),
                 'Key'           => $key,
@@ -122,10 +131,10 @@ class BookImageSet extends Model
      */
     public function deleteFromAWS()
     {
+        $s3 = AwsFacade::createClient('s3');
+
         foreach([$this->small_image, $this->medium_image, $this->large_image] as $key)
         {
-            $s3 = AwsFacade::createClient('s3');
-
             $s3->deleteObject(array(
                 'Bucket'        => Config::get('aws.buckets.book_image'),
                 'Key'           => $key,

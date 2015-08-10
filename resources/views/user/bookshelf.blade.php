@@ -47,7 +47,7 @@
             {{--</div>--}}
 
             <!-- books -->
-            <div class="container col-sm-11 col-md-12">
+            <div class="container col-sm-11 col-md-12 for-sale-table-container">
                 <table class="table table-responsive for-sale-table">
                     @forelse ($productsForSale as $product)
                         <tr class="for-sale-item">

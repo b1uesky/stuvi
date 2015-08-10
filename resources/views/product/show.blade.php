@@ -20,7 +20,7 @@
     <!-- book details -->
     <div class="container" id="det-cont">
         <div class="row">
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-4 product-info">
                 <!-- images use lightbox -->
                 {{-- Only shows first image as large, the rest will be below it as smaller images--}}
                 @if($product->images)

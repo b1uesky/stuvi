@@ -2,6 +2,10 @@
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use File;
+use Config;
+use Aws\Laravel\AwsFacade;
+use Intervention\Image\Facades\Image;
 
 use App\Helpers\Price;
 
@@ -236,6 +240,63 @@ class Book extends Model
             ->select('books.*')->distinct()->get();
 
         return $books;
+    }
+
+    /**
+     * Create a book according to the data from Google Book API.
+     *
+     * @param $google_book
+     *
+     * @return Book
+     */
+    public static function createFromGoogleBook($google_book)
+    {
+        // save this book to our database
+        $book = Book::create([
+            'isbn10'    => $google_book->getIsbn10(),
+            'isbn13'    => $google_book->getIsbn13(),
+            'title'     => $google_book->getTitle(),
+            'language'  => $google_book->getLanguage(),
+            'num_pages' => $google_book->getPageCount(),
+        ]);
+
+        $book_image_set = new BookImageSet();
+        $book_image_set->book_id = $book->id;
+        $book_image_set->save();
+
+        $temp_path = Config::get('image.temp_path');
+        $image_url = $google_book->getThumbnail();
+        $image_path = $temp_path . 'temp.jpeg';
+        $image = Image::make($image_url)->save($image_path);
+        $image_filename = $book_image_set->generateFilename($size=null, $image);
+
+        $book_image_set->update([
+            'small_image'   => $image_filename,
+            'medium_image'  => $image_filename,
+            'large_image'   => $image_filename
+        ]);
+
+        $s3 = AwsFacade::createClient('s3');
+
+        // upload images to amazon s3
+        $s3->putObject(array(
+            'Bucket'        => Config::get('aws.buckets.book_image'),
+            'Key'           => $image_filename,
+            'SourceFile'    => $image_path,
+            'ACL'           => 'public-read'
+        ));
+
+        File::delete($image_path);
+
+        // save book authors
+        foreach ($google_book->getAuthors() as $author_name) {
+            BookAuthor::create([
+                'book_id'   => $book->id,
+                'full_name' => $author_name
+            ]);
+        }
+
+        return $book;
     }
 
 }

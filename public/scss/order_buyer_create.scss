@@ -20,6 +20,10 @@ body {
   padding-right: 5px;
 }
 
+.checkout-container{
+  overflow-x: scroll;
+}
+
 .cart-line {
   max-width: 50%;
   @media(max-width: 767px) {

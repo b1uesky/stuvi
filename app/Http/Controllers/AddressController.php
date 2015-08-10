@@ -63,6 +63,8 @@ class AddressController extends Controller
 
         $address->setDefault();
 
+        $address = Address::find($address->id);
+
         if($request->ajax()){
             return Response::json([
                 'success' => true,

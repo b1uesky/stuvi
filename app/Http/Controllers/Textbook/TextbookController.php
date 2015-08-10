@@ -95,12 +95,11 @@ class TextbookController extends Controller
         }
         else
         {
-
             $google_book = new GoogleBooks(Config::get('services.google.books.api_key'));
 
             if ($google_book->searchByISBN($isbn))
             {
-                $book = $this->createBookByGoogleBooks($google_book);
+                $book = Book::createFromGoogleBook($google_book);
 
                 return redirect('textbook/sell/product/' . $book->id . '/create');
             }
@@ -110,43 +109,6 @@ class TextbookController extends Controller
                 ->with('message', 'Looks like your textbook is currently not in our database, please fill in the textbook information below.')
                 ->withInput(Input::all());
         }
-    }
-
-    /**
-     * Create a book according to the data from Amazon API.
-     *
-     * @param $google_book
-     *
-     * @return Book
-     */
-    protected function createBookByGoogleBooks($google_book)
-    {
-        // save this book to our database
-        $book = Book::create([
-            'isbn10'    => $google_book->getIsbn10(),
-            'isbn13'    => $google_book->getIsbn13(),
-            'title'     => $google_book->getTitle(),
-            'language'  => $google_book->getLanguage(),
-            'num_pages' => $google_book->getPageCount(),
-        ]);
-
-        // save book image set
-        BookImageSet::create([
-            'book_id'       => $book->id,
-            'small_image'   => $google_book->getThumbnail(),
-            'medium_image'  => $google_book->getThumbnail(),
-            'large_image'   => $google_book->getThumbnail()
-        ]);
-
-        // save book authors
-        foreach ($google_book->getAuthors() as $author_name) {
-            BookAuthor::create([
-                'book_id'   => $book->id,
-                'full_name' => $author_name
-            ]);
-        }
-
-        return $book;
     }
 
     /**
