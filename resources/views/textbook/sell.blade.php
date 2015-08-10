@@ -146,8 +146,8 @@
                         <h3 id="h3-1">Save Money!</h3>
 
                         <p>There's no need to pay for packaging supplies and shipping. We take care of the entire
-                            process. With a low
-                            <strong>9999%</strong> fee, you can spend the extra dough on important things such as:
+                            process. With
+                            <strong>NO</strong> fee, you can spend the extra dough on important things such as:
                             underage alcohol consumption,
                             laser hair removal, bail fees, life insurance scams, and more!
 
