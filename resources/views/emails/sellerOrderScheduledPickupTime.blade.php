@@ -58,7 +58,7 @@
                                                                 pickup time at: {{ $seller_order['scheduled_pickup_time'] }}
                                                             </p>
                                                             <p>Once our courier has picked up your textbook, please show the following code to the courier: <stong>{{$seller_order['pickup_code']}}</stong></p>
-                                                            <p>If you need to reschedule your textbook pickup time, click the button below.</p>
+                                                            <p>If you need to reschedule your textbook pickup time before it is assigned to a Stuvi courier, click the button below.</p>
                                                             <br>
                                                             <br>
                                                         </td>
