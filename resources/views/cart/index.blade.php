@@ -45,7 +45,7 @@
         @endif
             <!-- add a row for each item -->
             @forelse ($items as $item)
-                <tr>
+                <tr class="cart-item" value="{{ $item->product_id }}">
                     <!-- title -->
                     <td><a href="{{ url('textbook/buy/product/'.$item->product->id) }}">{{ $item->product->book->title }}</a></td>
                     <!-- isbn -->
@@ -53,9 +53,8 @@
                     <!-- price -->
                     <td>${{ $item->product->decimalPrice()}}</td>
                     <!-- remove -->
-                    <td><a href="{{ url('/cart/rmv/'.$item->product->id) }}"><i class="fa fa-times btn-close"></i>
-
-                        </a></td>
+                    <td><a class="fa fa-times btn-close remove-cart-item"></a></td>
+                    {{--<td><button><i class="fa fa-times btn-close">{{ $item->product_id }}</i></button></td>--}}
                 </tr>
                 <!-- how will this style?? -->
                 @if ($item->product->sold)
@@ -97,23 +96,23 @@
             <table class="table table-responsive subtotal">
                 <tr>
                     <td class="no-border-top"><b>Tax</b></td>
-                    <td class="no-border-top">${{ $tax/100 }}</td>
+                    <td class="no-border-top tax">${{ $tax/100 }}</td>
                 </tr>
                 <tr>
                     <td class="no-border-top"><b>Service Fee</b></td>
-                    <td class="no-border-top">${{ $fee/100 }}</td>
+                    <td class="no-border-top fee">${{ $fee/100 }}</td>
                 </tr>
                 <tr>
                     <td class="no-border-top"><b>Discount</b></td>
-                    <td class="no-border-top">- ${{ $discount/100 }}</td>
+                    <td class="no-border-top discount">- ${{ $discount/100 }}</td>
                 </tr>
                 <tr>
                     <td><b>Grand Total</b></td>
-                    <td>${{ $subtotal/100 }}</td>
+                    <td class="total">${{ $subtotal/100 }}</td>
                 </tr>
             </table>
             <a class="btn primary-btn btn-checkout" href="{{ url('/order/create') }}" role="button">
-                Proceed to Checkout
+                Proceed to checkout
             </a>
         </div>
         @endif
@@ -125,5 +124,30 @@
         function goBack() {
             window.history.back();
         }
+    </script>
+    <script>
+        $(document).ready(function(){
+            $(".remove-cart-item").click(function(){
+                var tr = $(this).parent('td').parent('tr');
+                $(this).parent('td').html('<a class="fa fa-spinner fa-pulse fa-1x loading"></a>');
+                $.ajax({
+                    url: location.protocol + '//' + document.domain + '/cart/rmv',
+                    dataType: 'json',
+                    data: {
+                        product_id: tr.attr("value")
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        if (data['removed']) {
+                            tr.html("<td>".concat(data['message'],"</td>"));
+                            $(".fee").text('$'.concat(data['fee'] / 100));
+                            $(".discount").text('- $'.concat(data['discount'] / 100));
+                            $(".tax").text('$'.concat(data['tax'] / 100));
+                            $(".total").text('$'.concat(data['total'] / 100))
+                        }
+                    }
+                });
+            });
+        });
     </script>
 @endsection
