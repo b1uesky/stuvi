@@ -79,7 +79,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data, status) {
                 //console.log(data['address']);
-                $this = $this.parent().find('ul');
+                $this = $this.parents().find('.address-list');
                 var address = {};
                 address['addressee'] = $.trim($this.find('.seller-address-addressee').text());
                 address['address-line'] = $.trim($this.find('.seller-address-address-line').text());
@@ -127,7 +127,7 @@ $(document).ready(function () {
     $("#delete-address").click(function(e){
         e.preventDefault();
         var $this = $(this);
-        var address_id = $this.parent().prev().find('input[name=address_id]').val();
+        var address_id = $this.parents().find('input[name=address_id]').val();
         var address_panel = $(".form-update-default-address").find("input[value="+address_id+"]").parent();
 
         $.ajax({

@@ -168,7 +168,7 @@
             @if($address)
                 <div class="seller-address-box">
                     <div class="seller-address">
-                        <ul>
+                        <ul class="address-list">
                             {{-- WARNING: if you need to change class names below,
                             make sure you change the selectors in updateDefaultAddress() in `show.js`. --}}
                             <li class="seller-address-addressee">{{ $address->addressee }}</li>
