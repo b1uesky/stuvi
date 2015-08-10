@@ -1,8 +1,15 @@
 /******* BUYER ORDER CONFIRMATION PAGE *******/
+
+// order/buyer/confirmation.blade.php
+
 @import "modules/all";
 
 body {
   background-color: $background-color;
+}
+
+.cart-progress-img-row{
+  margin: 0;
 }
 
 .cart-line {

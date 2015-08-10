@@ -26,6 +26,7 @@
 
     @include('includes.textbook.flash-message')
 
+    <div class="container-main">
         <!-- Search Bar Container-->
         <div class="container-fluid search">
             <div class="row">
@@ -67,14 +68,14 @@
                         </div>
                         {{-- Show school selection if it's a guest --}}
                         @if(Auth::guest())
-                        <div class="xs-guest-search-bar-input-uni">
-                            <select name="university_id"
-                                    class="form-control">
-                                @foreach(\App\University::where('is_public', true)->get() as $university)
-                                    <option value="{{ $university->id }}">{{ $university->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                            <div class="xs-guest-search-bar-input-uni">
+                                <select name="university_id"
+                                        class="form-control">
+                                    @foreach(\App\University::where('is_public', true)->get() as $university)
+                                        <option value="{{ $university->id }}">{{ $university->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         @endif
                         <div class="xs-guest-search-bar-input-submit">
                             <button class="btn primary-btn" type="submit" value="Search" style="width:100%;">
@@ -157,6 +158,10 @@
             </div>
             <!-- end container -->
         </div>  <!-- end container fluid -->
+
+
+
+    </div>
 
 @endsection
 

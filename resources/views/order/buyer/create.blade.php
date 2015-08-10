@@ -21,7 +21,7 @@
         <img class="img-responsive cart-line col-sm-offset-3" src="{{asset('/img/CHECKOUT.png')}}"
              alt="Your cart progress">
     </div>
-    <div class="container checkout-container">
+    <div class="container">
         <h1 id="checkout-title">Checkout Books</h1>
 
         <div class="row">
@@ -449,7 +449,7 @@
                 <!-- payment form here -->
                 <!-- begin stripe form -->
                 @if ($display_payment)
-                    <h2>3. Payment</h2>
+                    <h2>3. Payment <small> Powered by Stripe</small></h2>
                     <div class="row payment-errors-row">
                         <span class="payment-errors"></span>
                     </div>
