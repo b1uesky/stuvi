@@ -137,7 +137,7 @@
                     success: function (data) {
                         console.log(data);
                         if (data['removed']) {
-                            tr.html("<td>".concat(data['message'],"</td>"));
+                            tr.html("<td>".concat(data['message'],"</td><td></td><td></td><td></td>"));
                             $(".fee").text('$'.concat(data['fee'] / 100));
                             $(".discount").text('- $'.concat(data['discount'] / 100));
                             $(".tax").text('$'.concat(data['tax'] / 100));

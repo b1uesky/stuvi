@@ -118,7 +118,11 @@ class CartController extends Controller
             ->with('alert-class', 'alert-info');
     }
 
-
+    /**
+     * Remove cart item by ajax.
+     *
+     * @return Response
+     */
     public function removeItemAjax()
     {
         $product_id = Input::get('product_id');
