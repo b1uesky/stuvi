@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ea828ebd04e035ddf0e187777273d2d2",
+    "hash": "327b585632cfc42d4e270076a52d56c3",
     "packages": [
         {
             "name": "aloha/twilio",
@@ -1457,7 +1457,7 @@
                     "name": "Jeremy Lindblom",
                     "email": "jeremeamia@gmail.com",
                     "homepage": "https://github.com/jeremeamia",
-                    "role": "Developer"
+                    "role": "developer"
                 }
             ],
             "description": "Serialize Closure objects, including their context and binding",
@@ -2202,6 +2202,54 @@
             ],
             "description": "A lightweight implementation of CommonJS Promises/A for PHP",
             "time": "2015-07-03 13:48:55"
+        },
+        {
+            "name": "roumen/sitemap",
+            "version": "v2.5.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RoumenDamianoff/laravel-sitemap.git",
+                "reference": "f29c465f2dbee562c354e79ba17ef7c0ae9f29fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RoumenDamianoff/laravel-sitemap/zipball/f29c465f2dbee562c354e79ba17ef7c0ae9f29fe",
+                "reference": "f29c465f2dbee562c354e79ba17ef7c0ae9f29fe",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Roumen\\Sitemap": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roumen Damianoff",
+                    "email": "roumen@dawebs.com",
+                    "homepage": "https://roumen.it",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple sitemap generator for Laravel.",
+            "homepage": "https://roumen.it/projects/laravel-sitemap",
+            "keywords": [
+                "Sitemap",
+                "generator",
+                "laravel"
+            ],
+            "time": "2015-06-12 16:49:42"
         },
         {
             "name": "stripe/stripe-php",

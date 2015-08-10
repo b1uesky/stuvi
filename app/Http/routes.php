@@ -277,6 +277,13 @@ Route::get('/faq/textbook', 'FAQController@textbook');
 Route::get  ('/contact',        'ContactController@index');
 Route::post ('/contact/store',  'ContactController@store');
 
+/*
+|--------------------------------------------------------------------------
+| Sitemap Routes
+|--------------------------------------------------------------------------
+*/
+//Route::get  ('/sitemap', 'SitemapController@index');
+
 
 /*
 |--------------------------------------------------------------------------
