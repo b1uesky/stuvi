@@ -113,11 +113,11 @@
 
         <div class="container box">
             {{-- If the order is not cancelled and not picked up --}}
-            @if(!$seller_order->cancelled && !$seller_order->pickedUp())
+            @if(!$seller_order->cancelled/* && !$seller_order->pickedUp()*/)
 
                 {{-- Schedule pickup time --}}
                 <div class="row row-title">
-                    <h3 class="col-xs-12">Schedule a pickup time</h3>
+                    <h3 class="col-xs-12">Pickup Time</h3>
                 </div>
 
                 <div class="text-scheduled-pickup-time">
@@ -129,6 +129,7 @@
                     @endif
                 </div><br>
 
+                @if ($seller_order->isPickupConfirmable())
                 <form action="{{ url('/order/seller/setscheduledtime') }}" method="POST" id="schedule-pickup-time">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" id="schedule-token">
                     <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
@@ -157,11 +158,12 @@
                     <br><br>
 
                 </form>
+                @endif
         </div>
         <div class="container box">
             {{-- Select pickup address --}}
             <div class="row row-title">
-                <h3 class="col-xs-12">Select a pickup address</h3>
+                <h3 class="col-xs-12">Pickup Address</h3>
             </div>
 
             <?php $seller_order->address ? $address = $seller_order->address : $address = $seller_order->seller()->defaultAddress(); ?>
@@ -193,10 +195,12 @@
                     </div>
                     <br>
 
+                    @if ($seller_order->isPickupConfirmable())
                     <div>
                         <button type="button" class="btn secondary-btn btn-change-address">Change</button>
                     </div>
                     <br>
+                    @endif
 
                     {{-- Invisible by default. Show after click the change button. --}}
                     <div class="seller-address-book">
@@ -369,8 +373,10 @@
             </div>
         </div>
         {{-- Confirm pickup --}}
-        <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn primary-btn">Confirm
-            Pickup</a><br><br>
+        @if ($seller_order->isPickupConfirmable())
+            <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn primary-btn">Confirm
+                Pickup</a><br><br>
+        @endif
         @endif
     </div>
 @endsection

@@ -279,7 +279,6 @@ class SellerOrder extends Model
         return $seller_order_arr;
     }
 
-
     /**
      * Email seller the seller order confirmation
      */
@@ -292,5 +291,10 @@ class SellerOrder extends Model
         {
             $message->to($seller_order_arr['seller']['email'])->subject('Your book ' . $this->product->book->title . ' has sold!');
         });
+    }
+
+    public function isPickUpConfirmable()
+    {
+        return is_null($this->courier_id);
     }
 }
