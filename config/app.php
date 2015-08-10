@@ -183,6 +183,11 @@ return [
 		 * Breadcrumbs Service Provider
 		 */
 		'DaveJamesMiller\Breadcrumbs\ServiceProvider',
+
+		/*
+		 * Sitemap Service Provider
+		 */
+		'Roumen\Sitemap\SitemapServiceProvider',
 	],
 
 	/*
