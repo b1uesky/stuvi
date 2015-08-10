@@ -96,12 +96,13 @@
             <div class="row row-title">
                 <h3 class="col-xs-12">Item</h3>
             </div>
+            <?php $product = $seller_order->product; $book = $product->book; ?>
+                    
             <!-- item info -->
             <div class="col-sm-2">
-                {{--                <img class="sm-img" src="{{$product->book->imageSet->large_image}}">--}}
+                <img class="sm-img" src="{{ config('aws.url.stuvi-book-img') . $product->book->imageSet->small_image}}">
             </div>
             <div class="item col-xs-12 col-sm-6">
-                <?php $product = $seller_order->product; $book = $product->book; ?>
                 <p>Title: <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $book->title }}</a></p>
 
                 <p>ISBN: {{ $book->isbn10 }}</p>
