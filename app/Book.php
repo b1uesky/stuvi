@@ -238,4 +238,41 @@ class Book extends Model
         return $books;
     }
 
+    /**
+     * Create a book according to the data from Google Book API.
+     *
+     * @param $google_book
+     *
+     * @return Book
+     */
+    public static function createFromGoogleBook($google_book)
+    {
+        // save this book to our database
+        $book = Book::create([
+            'isbn10'    => $google_book->getIsbn10(),
+            'isbn13'    => $google_book->getIsbn13(),
+            'title'     => $google_book->getTitle(),
+            'language'  => $google_book->getLanguage(),
+            'num_pages' => $google_book->getPageCount(),
+        ]);
+
+        // save book image set
+        BookImageSet::create([
+            'book_id'       => $book->id,
+            'small_image'   => $google_book->getThumbnail(),
+            'medium_image'  => $google_book->getThumbnail(),
+            'large_image'   => $google_book->getThumbnail()
+        ]);
+
+        // save book authors
+        foreach ($google_book->getAuthors() as $author_name) {
+            BookAuthor::create([
+                'book_id'   => $book->id,
+                'full_name' => $author_name
+            ]);
+        }
+
+        return $book;
+    }
+
 }
