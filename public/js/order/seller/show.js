@@ -114,7 +114,7 @@ $(document).ready(function () {
             success: function (data, status) {
                 var address = data["address"];
                 updateAddress($("#seller-address-form"),address);
-                $("delete-address").show();
+                $("#delete-address").show();
                 $("#address-form-modal").modal("show");
             },
             error: function (xhr, status, errorThrown) {
@@ -127,8 +127,8 @@ $(document).ready(function () {
     $("#delete-address").click(function(e){
         e.preventDefault();
         var $this = $(this);
-        var address_id = $this.parents().find('input[name=address_id]').val();
-        var address_panel = $(".form-update-default-address").find("input[value="+address_id+"]").parent();
+        var address_id = $this.parentsUntil(".modal-dialog").find('input[name=address_id]').val();
+        var address_panel = $(".form-update-default-address").find("input[value="+address_id+"]").closest('div').parent();
 
         $.ajax({
             type: "POST",
@@ -140,7 +140,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data, status){
                 if(data['is_deleted']){
-                    address_panel.parent().remove();
+                    address_panel.hide();
                     $("#address-form-modal").modal("hide");
                 }
             }
@@ -150,6 +150,7 @@ $(document).ready(function () {
 
     $(".add-address-btn").click(function(e){
         e.preventDefault();
+        $("#seller-address-form").find("input[type=text], input[name=address_id], input[name=phone_number]").val("");
         $("#delete-address").hide();
         $("#address-form-modal").modal("show");
     });
@@ -198,6 +199,10 @@ $(document).ready(function () {
                     }
                 });
                 updateAddress($(".seller-address"),address);
+                var address_panel = $(".seller-address-book").children(".seller-address-book-box").filter(":visible")[0];
+                $("#add-new-address-btn-1").prepend(address_panel);
+                $("#add-new-address-btn-1").prev().show();
+                updateAddress($("#add-new-address-btn-1").prev(),address);
                 toggleAddress();
                 $("#address-form-modal").modal("hide");
             }
@@ -225,6 +230,8 @@ $(document).ready(function () {
             $this.find(".seller-address-city").text($.trim(address["city"]));
             $this.find(".seller-address-state").text($.trim(address["state"]));
             $this.find(".seller-address-zip").text($.trim(address["zip"]));
+            $this.find(".seller-address-country").text($.trim(address["country_name"]));
+            $this.find(".seller-address-phone").text($.trim(address["phone_number"]));
         }
     }
 

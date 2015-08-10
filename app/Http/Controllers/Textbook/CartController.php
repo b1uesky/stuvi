@@ -1,4 +1,5 @@
 <?php namespace App\Http\Controllers\Textbook;
+
 /**
  * Created by PhpStorm.
  * User: Tianyou Luo
@@ -10,7 +11,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Product;
 use Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
+use Response;
 
 class CartController extends Controller
 {
@@ -100,10 +103,10 @@ class CartController extends Controller
      */
     public function removeItem($product_id)
     {
-        if ($this->cart->hasProduct($product_id))
+        $item = $this->cart->remove($product_id);
+        if ($item)
         {
-            $this->cart->remove($product_id);
-            $message = 'The item has been removed successfully';
+            $message = $item->product->book->tilte . ' has been removed successfully';
         }
         else
         {
@@ -115,6 +118,42 @@ class CartController extends Controller
             ->with('alert-class', 'alert-info');
     }
 
+    /**
+     * Remove cart item by ajax.
+     *
+     * @return Response
+     */
+    public function removeItemAjax()
+    {
+        $product_id = Input::get('product_id');
+
+        $item = $this->cart->remove($product_id);
+
+        if (!$item)  // remove failed
+        {
+            return Response::json([
+                                      'removed' => false,
+                                      'message' => 'The item is not in the cart',
+                                  ]);
+        }
+        else
+        {
+            return Response::json([
+                                      'removed'  => true,
+                                      'message'  => $item->product->book->title . ' has been removed successfully',
+                                      'fee'      => $this->cart->fee(),
+                                      'discount' => $this->cart->discount(),
+                                      'tax'      => $this->cart->tax(),
+                                      'total'    => $this->cart->subtotal(),
+                                  ]);
+        }
+    }
+
+    /**
+     * Empty the cart.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function emptyCart()
     {
         $this->cart->clear();
@@ -122,9 +161,15 @@ class CartController extends Controller
         return redirect('/cart');
     }
 
+    /**
+     * Remove the sold cart items.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function updateCart()
     {
         $this->cart->validate();
+
         return redirect('cart');
     }
 

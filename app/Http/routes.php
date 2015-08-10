@@ -145,6 +145,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], 
     Route::get('/',         'CartController@index');
     Route::get('/add/{id}', 'CartController@addItem');
     Route::get('/rmv/{id}', 'CartController@removeItem');
+    Route::get('/rmv',      'CartController@removeItemAjax');
     Route::get('/empty',    'CartController@emptyCart');
     Route::get('/update',   'CartController@updateCart');
 });
