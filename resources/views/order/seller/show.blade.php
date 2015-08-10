@@ -34,8 +34,8 @@
         <div class="alert-container">
             @if ($seller_order->isTransferred())
                 <div class="alert alert-success">The balance of this order is transferred to your Stripe account.</div>
-            @elseif ($seller_order->isDelivered())
-                <!-- Get order money back to seller debit card -->
+                @elseif ($seller_order->isDelivered())
+                        <!-- Get order money back to seller debit card -->
                 <form action="{{ url('/order/seller/transfer') }}" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
@@ -54,7 +54,8 @@
             @elseif ($seller_order->cancelled)
                 <div class="alert alert-danger">This order has been cancelled.</div>
             @else
-                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel Order</a></p>
+                <p><a class="btn btn-default btn-cancel" href="/order/seller/cancel/{{ $seller_order->id }}">Cancel
+                        Order</a></p>
             @endif
         </div>
 
@@ -184,9 +185,14 @@
                                 <span class="seller-address-state">{{ $address->state_a2 }} </span>
                                 <span class="seller-address-zip">{{ $address->zip }}</span>
                             </li>
+                            <span class="seller-address-country">{{ $address->country_name }}</span>
+                            <br>
+                            <span class="seller-address-phone">Phone: {{ $address->phone_number }}</span>
+                            <br>
                         </ul>
                     </div>
                     <br>
+
                     <div>
                         <button type="button" class="btn secondary-btn btn-change-address">Change</button>
                     </div>
@@ -195,7 +201,7 @@
                     {{-- Invisible by default. Show after click the change button. --}}
                     <div class="seller-address-book">
                         @foreach($seller_order->seller()->addresses as $address)
-                            <div class="col-md-3 col-sm-5" id="seller-address-book-box">
+                            <div class="col-md-3 col-sm-5 seller-address-book-box">
                                 <span class="seller-address-addressee">{{ $address->addressee }}</span>
                                 <br>
                                 <span class="seller-address-address-line">
@@ -212,20 +218,23 @@
                                     <span class="seller-address-zip">{{ $address->zip }}</span>
                                 </span>
                                 <br>
-                                <span>{{ $address->country_name }}</span>
+                                <span class="seller-address-country">{{ $address->country_name }}</span>
                                 <br>
-                                <span>Phone: {{ $address->phone_number }}</span>
+                                <span class="seller-address-phone">Phone: {{ $address->phone_number }}</span>
                                 <br>
 
                                 <div class="row">
                                     {{-- Ajax: select default address --}}
-                                    <form action="" method="post" class="form-update-default-address col-xs-1" id="select-address-form">
+                                    <form action="" method="post" class="form-update-default-address col-xs-1"
+                                          id="select-address-form">
                                         <input type="hidden" name="address_id" value="{{ $address->id }}"/>
                                         <input type="submit" name="submit" value="Select" class="btn btn-default"/>
                                     </form>
 
                                     {{-- TODO: Edit address --}}
-                                    <form action="" method="post" class="form-edit-address col-xs-1 col-xs-offset-1 col-sm-offset-2 " id="edit-address-form">
+                                    <form action="" method="post"
+                                          class="form-edit-address col-xs-1 col-xs-offset-1 col-sm-offset-2 "
+                                          id="edit-address-form">
                                         <input type="hidden" name="address_id" value="{{ $address->id }}"/>
                                         <input type="submit" name="submit" value="Edit" class="btn btn-default"/>
                                     </form>
@@ -237,7 +246,8 @@
 
                         {{-- Add a new address --}}
                         <div id="add-new-address-btn-1">
-                            <button class="btn secondary-btn add-address-btn">Add a new address</button><br><br>
+                            <button class="btn secondary-btn add-address-btn">Add a new address</button>
+                            <br><br>
 
                         </div>
                     </div>
@@ -247,11 +257,13 @@
             @else
                 {{-- Add a new address --}}
                 <div id="add-new-address-btn-2">
-                    <button class="btn secondary-btn add-address-btn">Add a new address</button><br><br>
+                    <button class="btn secondary-btn add-address-btn">Add a new address</button>
+                    <br><br>
                 </div>
             @endif
             {{--Add or edit address modal--}}
-            <div class="modal fade" id="address-form-modal" tabindex="-1" role="dialog" aria-labelledby="addressModalLabel">
+            <div class="modal fade" id="address-form-modal" tabindex="-1" role="dialog"
+                 aria-labelledby="addressModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -266,16 +278,20 @@
                                 <input type="hidden" name="address_id" value="">
 
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="address-form-modal-addressee">Full name</label>
+                                    <label class="col-sm-4 control-label" for="address-form-modal-addressee">Full
+                                        name</label>
 
                                     <div class="col-sm-6 form-space-offset">
-                                        <input type="text" class="form-control" name="addressee" id="address-form-modal-addressee"
+                                        <input type="text" class="form-control" name="addressee"
+                                               id="address-form-modal-addressee"
                                                value="">
                                     </div>
                                 </div>
                                 <br>
+
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="address-form-modal-address_line1">Address line 1</label>
+                                    <label class="col-sm-4 control-label" for="address-form-modal-address_line1">Address
+                                        line 1</label>
 
                                     <div class="col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" id="address-form-modal-address_line1"
@@ -284,8 +300,10 @@
                                     </div>
                                 </div>
                                 <br>
+
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="address-form-modal-address_line2">Address line 2</label>
+                                    <label class="col-sm-4 control-label" for="address-form-modal-address_line2">Address
+                                        line 2</label>
 
                                     <div class="col-sm-6 form-space-offset">
                                         <input type="text" class="form-control" id="address-form-modal-address_line2"
@@ -294,6 +312,7 @@
                                     </div>
                                 </div>
                                 <br>
+
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label" for="address-form-modal-city">City</label>
 
@@ -303,15 +322,19 @@
                                     </div>
                                 </div>
                                 <br>
+
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="address-form-modal-state_a2">State</label>
+                                    <label class="col-sm-4 control-label"
+                                           for="address-form-modal-state_a2">State</label>
 
                                     <div class="col-sm-6 form-space-offset">
-                                        <input type="text" class="form-control" name="state_a2" id="address-form-modal-state_a2"
+                                        <input type="text" class="form-control" name="state_a2"
+                                               id="address-form-modal-state_a2"
                                                value="MA">
                                     </div>
                                 </div>
                                 <br>
+
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label" for="address-form-modal-zip">Zip</label>
 
@@ -321,11 +344,14 @@
                                     </div>
                                 </div>
                                 <br>
+
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="address-form-modal-phone_number">Phone</label>
+                                    <label class="col-sm-4 control-label"
+                                           for="address-form-modal-phone_number">Phone</label>
 
                                     <div class="col-sm-6 form-space-offset">
-                                        <input type="tel" class="form-control phone_number" id="address-form-modal-phone_number"
+                                        <input type="tel" class="form-control phone_number"
+                                               id="address-form-modal-phone_number"
                                                name="phone_number" value="(857) 206 4789">
                                     </div>
                                 </div>
@@ -347,9 +373,9 @@
             Pickup</a><br><br>
         @endif
     </div>
-    @endsection
+@endsection
 
-    @section('javascript')
+@section('javascript')
     <script src="{{ asset('libs/datetimepicker/jquery.datetimepicker.js') }}"></script>
     <script src="{{ asset('js/order/seller/show.js') }}"></script>
 
