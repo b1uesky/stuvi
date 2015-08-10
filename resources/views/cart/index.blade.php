@@ -95,19 +95,19 @@
             <table class="table table-responsive subtotal">
                 <tr>
                     <td class="no-border-top"><b>Tax</b></td>
-                    <td class="no-border-top">${{ $tax/100 }}</td>
+                    <td class="no-border-top">${{ \App\Helpers\Price::convertIntegerToDecimal($tax) }}</td>
                 </tr>
                 <tr>
                     <td class="no-border-top"><b>Service Fee</b></td>
-                    <td class="no-border-top">${{ $fee/100 }}</td>
+                    <td class="no-border-top">${{ \App\Helpers\Price::convertIntegerToDecimal($fee) }}</td>
                 </tr>
                 <tr>
                     <td class="no-border-top"><b>Discount</b></td>
-                    <td class="no-border-top">- ${{ $discount/100 }}</td>
+                    <td class="no-border-top">- ${{ \App\Helpers\Price::convertIntegerToDecimal($discount) }}</td>
                 </tr>
                 <tr>
                     <td><b>Grand Total</b></td>
-                    <td>${{ $subtotal/100 }}</td>
+                    <td>${{ \App\Helpers\Price::convertIntegerToDecimal($subtotal) }}</td>
                 </tr>
             </table>
             <a class="btn primary-btn btn-checkout" href="{{ url('/order/create') }}" role="button">

@@ -38,8 +38,9 @@
   <script src="{{asset('js/auth/login.js')}}"></script>
 @endif
 
-        <!-- login/signup modal spinner -->
-  {{--  <script src="{{asset('js/login-signup.js')}}"></script>--}}
+@if(\App::environment('production'))
+  <script src="{{ asset('js/googleanalytics.js') }}"></script>
+@endif
 
   @yield('javascript')
 </body>

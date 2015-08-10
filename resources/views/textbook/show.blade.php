@@ -22,9 +22,11 @@
     <div class="container">
         <div class="row textbook-row">
             <div class="col-sm-6">
-                <img id="textbook-img"
-                     src="{{ $book->imageSet->large_image or config('book.default_image_path.large') }}"
-                     alt="Book Image"/>
+                @if($book->imageSet->isManuallyCreated())
+                    <img class="textbook-img" src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->small_image }}">
+                @else
+                    <img class="textbook-img" src="{{ $book->imageSet->small_image or config('book.default_image_path.large')}}">
+                @endif
             </div>
 
             <div class="col-sm-6 textbook-info">
