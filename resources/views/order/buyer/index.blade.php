@@ -50,8 +50,11 @@
                         <div class="row book-row">
                             <div class="col-xs-12 col-sm-2 book-img">
                                 <a href="{{ url('/textbook/buy/product/'.$product->id) }}">
-                                    <img class="lg-img" src="{{$product->book->imageSet->large_image
-                                     or config('book.default_image_path.large')}}">
+                                    @if($product->book->imageSet->large_image)
+                                        <img class="lg-img" src="{{ config('aws.url.stuvi-book-img') . $product->book->imageSet->large_image}}">
+                                    @else
+                                        <img class="lg-img" src="{{ config('book.default_image_path.large') }}">
+                                    @endif
                                 </a>
                             </div>
                             <div class="col-xs-12 col-sm-5 book-info">
