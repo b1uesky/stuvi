@@ -29,7 +29,7 @@
                         </div>
                         <div class=" col-xs-12 col-sm-2 col-xs-offset-0 order-total">
                             <h5>Total</h5>
-                            <p>${{ $order->product->price/100 }}</p>
+                            <p>${{ $order->product->decimalPrice() }}</p>
                         </div>
                         <div class="col-xs-12 col-sm-3 col-sm-offset-5 order-number">
                             <h5>Order Number # {{ $order->id}}</h5>
@@ -56,7 +56,7 @@
                             <h5><a href="{{ url('/textbook/buy/product/'.$order->product->id) }}">{{ $order->product->book->title }}</a></h5>
                             <h5><small>{{ $order->product->book->author}}</small></h5>
                             <h6>ISBN: {{ $order->product->book->isbn10 }}</h6>
-                            <h6 class="book-price">${{ $order->product->price/100 }}</h6>
+                            <h6 class="book-price">${{ $order->product->decimalPrice() }}</h6>
                         </div>
                     </div>
 

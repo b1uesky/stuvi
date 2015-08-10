@@ -52,7 +52,7 @@
                             <tr>
                                 <td>{{ $item->product->book->title }}</td>
                                 <td>{{ $item->product->book->isbn10 }}</td>
-                                <td>${{ $item->product->price/100 }}</td>
+                                <td>${{ $item->product->decimalPrice() }}</td>
                                 @if ($item->product->sold)
                                     <p>Warning: This product has been sold.</p>
                                 @endif
