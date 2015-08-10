@@ -10,15 +10,9 @@
 @endsection
 
 @section('content')
-
-    <div class="container-fluid">
-        <div class="row back-row">
-            <a class="back-to-order" href="/order/seller" onclick="goBack()"><i class="fa fa-arrow-circle-left"></i> Go
-                Back</a>
-        </div>
-    </div>
-
     <div class="container show-order-container">
+        {!! Breadcrumbs::render() !!}
+
         <!-- order details -->
         <div class="container cont-1">
             <h1 id="h1-showBuy">Order Details</h1>
@@ -379,10 +373,4 @@
 @section('javascript')
     <script src="{{ asset('libs/datetimepicker/jquery.datetimepicker.js') }}"></script>
     <script src="{{ asset('js/order/seller/show.js') }}"></script>
-
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
 @endsection

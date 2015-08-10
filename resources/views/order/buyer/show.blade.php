@@ -10,14 +10,10 @@
 
     @include('includes.textbook.flash-message')
 
-    <div class="container-fluid">
-        <div class="row back-row">
-            {!! Breadcrumbs::render() !!}
-        </div>
-    </div>
-
     <!-- order details -->
     <div class="container">
+        {!! Breadcrumbs::render() !!}
+
         <h1 id="">Order Details</h1>
         <h2>
             <!-- canceled order -->

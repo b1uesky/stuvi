@@ -122,8 +122,8 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::get  ('/buyer/{id}',         ['as' => 'buyerOrderDetail', 'uses' => 'BuyerOrderController@show']);
     Route::get  ('/buyer/cancel/{id}',  'BuyerOrderController@cancel');
 
-    Route::get  ('/seller',                     'SellerOrderController@index');
-    Route::get  ('/seller/{id}',                'SellerOrderController@show');
+    Route::get  ('/seller',                     ['as' => 'sellerOrders', 'uses' => 'SellerOrderController@index']);
+    Route::get  ('/seller/{id}',                ['as' => 'sellerOrderDetail', 'uses' => 'SellerOrderController@show']);
     Route::get  ('/seller/cancel/{id}',         'SellerOrderController@cancel');
     Route::post ('/seller/schedulePickupTime',  'SellerOrderController@schedulePickupTime');
     Route::get  ('/seller/{id}/addAddress',     'SellerOrderController@addAddress');
