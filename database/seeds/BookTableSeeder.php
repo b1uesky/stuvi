@@ -49,6 +49,10 @@ public function run()
 
             Book::createFromGoogleBook($google_book);
         }
+        else
+        {
+            echo 'Failed to add book by ISBN: ' . $isbn . "\r\n";
+        }
     }
 }
 
