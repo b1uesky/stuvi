@@ -9,7 +9,7 @@
   padding: 0;
   position: relative;
   @media(max-width: 767px){
-    background: url('../img/cover-2-1.jpg') no-repeat;
+    background: url('../img/nick/nlouie1.jpg') no-repeat;
     background-size: cover;
   }
 }
@@ -47,34 +47,46 @@
   }
 }
 
-#nav-left li a {
-  color: white;
-  &:hover, &:focus {
-    background-color: $transparent;
-    outline: 0;
-  }
+#nav-left {
   @media(max-width: 767px){
-    color: black;
-    &:hover, &:focus{
-      color: $primary-color;
+    text-align: center !important;
+  }
+  li a {
+    color: white;
+    &:hover, &:focus {
+      background-color: $transparent;
+      outline: 0;
+    }
+    @media(max-width: 767px){
+      color: black;
+      &:hover, &:focus{
+        color: $primary-color;
+      }
     }
   }
 }
 
-#nav-right li a {
-  //color: white;
-  &:hover, &:focus {
-    background-color: $transparent;
-    outline: 0;
-    color: white;
-  }
-  @media(max-width: 767px){
-    color: black;
-    &:hover, &:focus{
-      color: $primary-color;
+
+#nav-right {
+  li a {
+    //color: white;
+    &:hover, &:focus {
+      background-color: $transparent;
+      outline: 0;
+      color: white;
+    }
+    @media(max-width: 767px){
+      color: black;
+      &:hover, &:focus{
+        color: $primary-color;
+      }
+    }
+    @media(max-width: 767px){
+      text-align: center !important;
     }
   }
 }
+
 
 #nav-dropdown {
   li {
@@ -235,6 +247,20 @@
   z-index: 2;
   bottom: 0;
   width: 100vw;
+  @media(max-width: 767px){
+    padding-top: 0;
+    position: relative;
+  }
+
+  @media(max-width: 360px){
+    position: relative;
+    visibility: hidden;
+    background-color: $transparent;
+  }
+}
+
+.xs-guest-search-bar{
+  padding: 0 15px 0 15px;
 }
 
 @import "partials/autocomplete";
@@ -266,6 +292,11 @@
 
 #img-info-1{
   padding: 30px;
+  @media(max-width: 767px){
+    visibility: hidden;
+    height: 0;
+    width: 0;
+  }
 }
 
 .service {
@@ -280,6 +311,10 @@
 #home-textbook-title {
   margin-left: 50px;
   margin-bottom: 30px;
+  @media(max-width: 767px){
+    margin-left: 0;
+    text-align: center;
+  }
 }
 
 .textbook-row {

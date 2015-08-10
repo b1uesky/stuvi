@@ -9,7 +9,7 @@
 }
 
 #det-cont {
-  padding-bottom: 10%;
+  padding-bottom: 5%;
 }
 
 .back-row {
@@ -33,6 +33,10 @@
   padding-top: 10px;
 }
 
+.product-info {
+  margin-top: 30px;
+}
+
 .product-title {
   a {
     color: $primary-color;
@@ -48,13 +52,14 @@
   background-color: white;
   border: 3px solid #DDD;
   width: 50%;
-  margin-top: 2%;
+  margin-top: 100px;
   th, td {
     border: 1px solid #DDD;
     padding-left: 2px;
   }
   @media(max-width: 768px) {
     width: 100%;
+    margin-top: 20px;
   }
 }
 

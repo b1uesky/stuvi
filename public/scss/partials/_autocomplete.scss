@@ -1,5 +1,9 @@
 /* Search AutoComplete Suggestions */
 
+#autocomplete {
+  border-right: 0; // prevent the right border of the search bar from shaking when expanding
+}
+
 .autocomplete-thumbnail {
   display: inline-block;
   margin: 5px;

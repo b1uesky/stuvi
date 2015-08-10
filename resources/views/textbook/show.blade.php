@@ -22,9 +22,11 @@
     <div class="container">
         <div class="row textbook-row">
             <div class="col-sm-6">
-                <img id="textbook-img"
-                     src="{{ $book->imageSet->large_image or config('book.default_image_path.large') }}"
-                     alt="Book Image"/>
+                @if($book->imageSet->isManuallyCreated())
+                    <img class="textbook-img" src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->small_image }}">
+                @else
+                    <img class="textbook-img" src="{{ $book->imageSet->small_image or config('book.default_image_path.large')}}">
+                @endif
             </div>
 
             <div class="col-sm-6 textbook-info">
@@ -91,7 +93,7 @@
                                         <a class="btn primary-btn add-cart-btn disabled" href="#" role="button" id="added-to-cart-btn">
                                             Added to cart</a>
                                     @elseif($product->seller == Auth::user())
-                                        <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Posted by
+                                        <a class="btn grey-btn add-cart-btn disabled" href="#" role="button">Posted by
                                             you</a>
                                     @else
                                         <a class="btn primary-btn add-cart-btn" href="{{ url('cart/add/'.$product->id) }}"
