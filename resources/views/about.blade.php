@@ -26,17 +26,10 @@
                    We're a team of Computer Science students at Boston University. We've created Stuvi (Student Village) as a student solution service,
                     ranging from textbook deliveries, to managing academic life. To kick-off our launch, we're offering a new method to buy and sell
                     your textbooks. Simply search for your book, describe its condition, and start making money.
+                </p>
+                <p>Want to know more? <a href="{{url('/faq/general')}}">Check out our FAQ.</a></p>
+            </div>
         </div>
-        </div>
-        {{--<div class="row">--}}
-        {{--<div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 team">--}}
-        {{--<h2>Our Team</h2>--}}
-        {{--<p>--}}
-        {{--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices sodales urna, quis faucibus elit--}}
-        {{--tempor vitae. Suspendisse suscipit arcu at mattis volutpat. Proin eu ipsum ut sapien fermentum tristique.--}}
-        {{--</p>--}}
-        {{--</div>--}}
-        {{--</div>--}}
         <div class="container team-container">
             <div class="row team-grid">
                 <div class="col-sm-6 col-md-4">

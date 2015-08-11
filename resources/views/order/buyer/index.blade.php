@@ -11,6 +11,7 @@
 @section('content')
 
     @include('includes.textbook.flash-message')
+        
     <!-- main container -->
     <div class="container buyer-order-container">
         <h1>Your orders</h1>

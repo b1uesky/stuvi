@@ -18,7 +18,7 @@
     <div class="container confirmation-container">
         <div class="confirmation-details">
             <h1>Thanks for using Stuvi!</h1>
-            <h4>Your order number is: {{ Session::get('order')->id }}<a href="{{ url('order/buyer/'.Session::get('order')->id) }}">.View order details</a>.</h4>
+            <h4>Your order number is: {{ Session::get('order')->id }}. <a href="{{ url('order/buyer/'.Session::get('order')->id) }}">View order details</a>.</h4>
 
             <p>You will receive an email confirmation shortly at <code>{{ Auth::user()->primaryEmail->email_address }}</code>.</p>
             {{--<h5><a href="#">Print Receipt</a></h5>--}}
