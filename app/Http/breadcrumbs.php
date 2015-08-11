@@ -1,19 +1,38 @@
 <?php namespace App\Http;
 
 use App\BuyerOrder;
+use App\SellerOrder;
 use Breadcrumbs;
 
-Breadcrumbs::register('home', function($breadcrumbs) {
-    $breadcrumbs->push('Home', url('/home'));
+//Breadcrumbs::register('home', function($breadcrumbs) {
+//    $breadcrumbs->push('Home', url('/home'));
+//});
+
+Breadcrumbs::register('buyerOrders', function($breadcrumbs) {
+    $breadcrumbs->push('Your Orders', url('/order/buyer'));
 });
 
-Breadcrumbs::register('buyerOrders',function($breadcrumbs){
-    $breadcrumbs->parent('home');
-    $breadcrumbs->push('Order',url('/order/buyer'));
-});
-
-Breadcrumbs::register('buyerOrderDetail', function ($breadcrumbs,$id) {
+Breadcrumbs::register('buyerOrderDetail', function ($breadcrumbs, $id) {
     $orderDetailPage = BuyerOrder::findOrFail($id);
     $breadcrumbs->parent('buyerOrders');
     $breadcrumbs->push('Order Details',url('/order/buyer/',[$orderDetailPage->id]));
+});
+
+Breadcrumbs::register('buyTextbook',function($breadcrumb){
+    $breadcrumb->push('Buy Textbook', url('textbook/buy'));
+});
+
+Breadcrumbs::register('shoppingCart',function ($breadcrumbs){
+    $breadcrumbs->parent('buyTextbook');
+    $breadcrumbs->push('Shopping Cart', url('/cart'));
+});
+
+Breadcrumbs::register('sellerOrders', function($breadcrumbs) {
+    $breadcrumbs->push('Your Sold Books', url('/order/seller'));
+});
+
+Breadcrumbs::register('sellerOrderDetail', function ($breadcrumbs, $id) {
+    $orderDetailPage = SellerOrder::findOrFail($id);
+    $breadcrumbs->parent('sellerOrders');
+    $breadcrumbs->push('Order Details', url('/order/seller/', [$orderDetailPage->id]));
 });

@@ -13,19 +13,16 @@
     @include('includes.textbook.flash-message')
 
     <!-- back link -->
-    <div class="container-fluid">
-        <div class="row back-row">
-            <a id="back-to-cart" onclick="goBack()"><i class="fa fa-arrow-circle-left"></i> Go Back</a>
-        </div>
-    </div>
 
     <!-- img of cart progress bar -->
             <div class="container col-xs-10 col-xs-offset-2 col-sm-8 col-sm-offset-2 cart-progress">
+                {!! Breadcrumbs::render('shoppingCart') !!}
         <img class="img-responsive cart-line col-sm-offset-3" src="{{asset('/img/CART.png')}}" alt="Your cart progress">
     </div>
 
     <!-- all of shopping cart info -->
     <div class="container shopping-cart">
+
         <br>
 
         @if ($items->count() > 0)
@@ -43,7 +40,7 @@
         @endif
             <!-- add a row for each item -->
             @forelse ($items as $item)
-                <tr>
+                <tr class="cart-item" value="{{ $item->product_id }}">
                     <!-- title -->
                     <td><a href="{{ url('textbook/buy/product/'.$item->product->id) }}">{{ $item->product->book->title }}</a></td>
                     <!-- isbn -->
@@ -51,7 +48,8 @@
                     <!-- price -->
                     <td>${{ $item->product->decimalPrice()}}</td>
                     <!-- remove -->
-                    <td><a href="{{ url('/cart/rmv/'.$item->product->id) }}"><i class="fa fa-times btn-close"></i></a></td>
+                    <td><a class="fa fa-times btn-close remove-cart-item"></a></td>
+                    {{--<td><button><i class="fa fa-times btn-close">{{ $item->product_id }}</i></button></td>--}}
                 </tr>
                 <!-- how will this style?? -->
                 @if ($item->product->sold)
@@ -93,22 +91,24 @@
             <table class="table table-responsive subtotal">
                 <tr>
                     <td class="no-border-top"><b>Tax</b></td>
-                    <td class="no-border-top">${{ \App\Helpers\Price::convertIntegerToDecimal($tax) }}</td>
+                    <td class="no-border-top tax">${{ \App\Helpers\Price::convertIntegerToDecimal($tax) }}</td>
                 </tr>
                 <tr>
                     <td class="no-border-top"><b>Service Fee</b></td>
-                    <td class="no-border-top">${{ \App\Helpers\Price::convertIntegerToDecimal($fee) }}</td>
+                    <td class="no-border-top fee">${{ \App\Helpers\Price::convertIntegerToDecimal($fee) }}</td>
                 </tr>
                 <tr>
                     <td class="no-border-top"><b>Discount</b></td>
-                    <td class="no-border-top">- ${{ \App\Helpers\Price::convertIntegerToDecimal($discount) }}</td>
+                    <td class="no-border-top discount">- ${{ \App\Helpers\Price::convertIntegerToDecimal($discount) }}</td>
                 </tr>
                 <tr>
                     <td><b>Grand Total</b></td>
-                    <td>${{ \App\Helpers\Price::convertIntegerToDecimal($subtotal) }}</td>
+                    <td class="total">${{ \App\Helpers\Price::convertIntegerToDecimal($subtotal) }}</td>
                 </tr>
             </table>
-            <a class="btn primary-btn btn-checkout" href="{{ url('/order/create') }}" role="button">Proceed to Checkout</a>
+            <a class="btn primary-btn btn-checkout" href="{{ url('/order/create') }}" role="button">
+                Proceed to checkout
+            </a>
         </div>
         @endif
     </div>
@@ -119,5 +119,30 @@
         function goBack() {
             window.history.back();
         }
+    </script>
+    <script>
+        $(document).ready(function(){
+            $(".remove-cart-item").click(function(){
+                var tr = $(this).parent('td').parent('tr');
+                $(this).parent('td').html('<a class="fa fa-spinner fa-pulse fa-1x loading"></a>');
+                $.ajax({
+                    url: location.protocol + '//' + document.domain + '/cart/rmv',
+                    dataType: 'json',
+                    data: {
+                        product_id: tr.attr("value")
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        if (data['removed']) {
+                            tr.html("<td>".concat(data['message'],"</td><td></td><td></td><td></td>"));
+                            $(".fee").text('$'.concat(data['fee'] / 100));
+                            $(".discount").text('- $'.concat(data['discount'] / 100));
+                            $(".tax").text('$'.concat(data['tax'] / 100));
+                            $(".total").text('$'.concat(data['total'] / 100))
+                        }
+                    }
+                });
+            });
+        });
     </script>
 @endsection

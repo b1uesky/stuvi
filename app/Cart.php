@@ -23,6 +23,8 @@ class Cart extends Model
      * Delete items in cart by items' id.
      *
      * @param $product_id
+     *
+     * @return CartItem|bool
      */
     public function remove($product_id)
     {
@@ -33,7 +35,11 @@ class Cart extends Model
             $item->delete();
             $this->decrement('quantity');
             $this->save();
+
+            return $item;
         }
+
+        return false;
     }
 
     /**

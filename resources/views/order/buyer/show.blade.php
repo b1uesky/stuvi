@@ -10,25 +10,21 @@
 
     @include('includes.textbook.flash-message')
 
-    <div class="container-fluid">
-        <div class="row back-row">
-            {!! Breadcrumbs::render() !!}
-        </div>
-    </div>
-
     <!-- order details -->
     <div class="container">
-        <h1 id="order-details-h1">Order Details</h1>
+        {!! Breadcrumbs::render() !!}
+
+        <h1 id="">Order Details</h1>
         <h2>
             <!-- canceled order -->
             @if ($buyer_order->cancelled)<span id="cancelled">This order has been cancelled.</span> @endif
         </h2>
 
-        <div class="row details1">
+        <div class="row" id="details1">
             <p class="col-xs-12 col-sm-3">Ordered on {{ $buyer_order->created_at }}</p>
             <p class="col-xs-12 col-sm-4">Order #{{ $buyer_order->id }}</p>
         </div>
-        <div class="row details1">
+        <div class="row" id="details1">
             @if ($buyer_order->isDelivered())
                 <p class="col-xs-12 col-sm-3">Delivered on {{ date($datetime_format, strtotime($buyer_order->time_delivered)) }}</p>
             @endif
@@ -66,7 +62,11 @@
                     <?php $product = $seller_order->product ?>
                     <div class="row">
                         <div class="col-sm-2">
-                            <img class="sm-img" src="{{$product->book->imageSet->large_image}}">
+                            @if($product->book->imageSet->large_image)
+                                <img class="lg-img" src="{{ config('aws.url.stuvi-book-img') . $product->book->imageSet->large_image}}">
+                            @else
+                                <img class="lg-img" src="{{ config('book.default_image_path.large') }}">
+                            @endif
                         </div>
                         <div class="item col-sm-7">
                             <p>Title: {{ $product->book->title }}</p>
@@ -104,9 +104,9 @@
                             <p><b>${{ $product->decimalPrice() }}</b></p>
                         </div>
                     </div>
-                    <hr>
-                @endforeach
-            </div>
+                </div>
+                <hr>
+            @endforeach
         </div>
     </div>
 

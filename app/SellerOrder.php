@@ -243,10 +243,15 @@ class SellerOrder extends Model
             $status = 'Order Cancelled';
             $detail = 'Your order has been cancelled.';
         }
+        elseif ($this->assignedToCourier())
+        {
+            $status = 'Courier Assigned';
+            $detail = 'Your order has been assigned to a Stuvi courier and the courier is on the way.';
+        }
         elseif ($this->isScheduled())
         {
-            $status = 'Waiting For Pick Up';
-            $detail = 'Your order is waiting to be picked up by a Stuvi courier.';
+            $status = 'Order Processing';
+            $detail = 'Your order is waiting to be assigned to a Stuvi courier.';
         }
         else
         {
@@ -279,7 +284,6 @@ class SellerOrder extends Model
         return $seller_order_arr;
     }
 
-
     /**
      * Email seller the seller order confirmation
      */
@@ -292,5 +296,15 @@ class SellerOrder extends Model
         {
             $message->to($seller_order_arr['seller']['email'])->subject('Your book ' . $this->product->book->title . ' has sold!');
         });
+    }
+
+    /**
+     * Check whether this order is allowed to reconfirm pickup details.
+     *
+     * @return bool
+     */
+    public function isPickUpConfirmable()
+    {
+        return !$this->assignedToCourier();
     }
 }
