@@ -266,27 +266,31 @@ class Book extends Model
 
         $temp_path = Config::get('image.temp_path');
         $image_url = $google_book->getThumbnail();
-        $image_path = $temp_path . 'temp.jpeg';
-        $image = Image::make($image_url)->save($image_path);
-        $image_filename = $book_image_set->generateFilename($size=null, $image);
 
-        $book_image_set->update([
-            'small_image'   => $image_filename,
-            'medium_image'  => $image_filename,
-            'large_image'   => $image_filename
-        ]);
+        if ($image_url)
+        {
+            $image_path = $temp_path . 'temp.jpeg';
+            $image = Image::make($image_url)->save($image_path);
+            $image_filename = $book_image_set->generateFilename($size=null, $image);
 
-        $s3 = AwsFacade::createClient('s3');
+            $book_image_set->update([
+                'small_image'   => $image_filename,
+                'medium_image'  => $image_filename,
+                'large_image'   => $image_filename
+            ]);
 
-        // upload images to amazon s3
-        $s3->putObject(array(
-            'Bucket'        => Config::get('aws.buckets.book_image'),
-            'Key'           => $image_filename,
-            'SourceFile'    => $image_path,
-            'ACL'           => 'public-read'
-        ));
+            $s3 = AwsFacade::createClient('s3');
 
-        File::delete($image_path);
+            // upload images to amazon s3
+            $s3->putObject(array(
+                'Bucket'        => Config::get('aws.buckets.book_image'),
+                'Key'           => $image_filename,
+                'SourceFile'    => $image_path,
+                'ACL'           => 'public-read'
+            ));
+
+            File::delete($image_path);
+        }
 
         // save book authors
         foreach ($google_book->getAuthors() as $author_name) {

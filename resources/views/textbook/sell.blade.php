@@ -2,11 +2,12 @@
 
 @extends('app')
 
-@section('title', 'Sell Textbooks')
+@section('title', 'Sell Your Textbooks')
+@section('description', 'Sell your textbooks to other students without leaving home.')
 
 @section('css')
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="{{ asset('/css/textbook.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="{{ asset('/css/textbook.css') }}">
 @endsection
 
 @section('content')
@@ -23,67 +24,49 @@
         </ul>
     </div>
 
-
     @include('includes.textbook.flash-message')
 
         <!-- Search Bar Container-->
         <div class="container-fluid search">
+
             <div class="row">
-                <h1 id="title">Sell Textbooks</h1>
-                <div class="searchbar default-searchbar">
-                    <form action="/textbook/buy/search" method="get">
+                <h1 id="title">Sell Your Used Textbooks</h1>
+                    <div class="searchbar default-searchbar">
+                        <form action="/textbook/sell/search" method="post" id="form-isbn">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                        <div class="searchbar-input-container searchbar-input-container-query">
-                            <input type="text" name="query" id="autocompleteBuy"
-                                   class="form-control searchbar-input searchbar-input-query"
-                                   placeholder="Enter the textbook ISBN, Title, or Author"/>
-                        </div>
-                        {{-- Show school selection if it's a guest --}}
-                        @if(Auth::guest())
-                            <div class="searchbar-input-container searchbar-input-container-university">
-                                <select name="university_id"
-                                        class="form-control searchbar-input searchbar-input-university">
-                                    @foreach(\App\University::where('is_public', true)->get() as $university)
-                                        <option value="{{ $university->id }}">{{ $university->name }}</option>
-                                    @endforeach
-                                </select>
+                            <div class="searchbar-input-container searchbar-input-container-query form-group"
+                                 id="textbook-search">
+                                <input type="text" name="isbn" class="form-control searchbar-input searchbar-input-query"
+                                       id="sell-search-input"
+                                       placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
                             </div>
-                        @endif
+                            <div class="searchbar-input-container searchbar-input-container-submit form-group">
+                                <button class="btn primary-btn search-btn" id="sell-search-btn" type="submit"
+                                        name="search">
+                                    <i class="fa fa-search fa-lg search-icon"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
 
-                        <div class="searchbar-input-container searchbar-input-container-submit">
-                            <button class="btn primary-btn search-btn" type="submit" value="Search">
-                                <i class="fa fa-search fa-lg search-icon"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
+                {{-- Search bar when xs screen --}}
                 <div class="xs-guest-search-bar">
-                    <form action="/textbook/buy/search" method="get">
-                        <div class="xs-guest-search-bar-input">
-                            <input type="text" name="query" id="autocompleteBuy"
-                                   class="form-control searchbar-input searchbar-input-query"
-                                   placeholder="Enter the textbook ISBN, Title, or Author"/>
+                    <form action="/textbook/sell/search" method="post" id="form-isbn">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                        <div class="xs-guest-search-bar-input" id="xs-textbook-search">
+                            <input type="text" name="isbn" class="form-control searchbar-input searchbar-input-query"
+                                   id="sell-search-input"
+                                   placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
                         </div>
-                        {{-- Show school selection if it's a guest --}}
-                        @if(Auth::guest())
-                        <div class="xs-guest-search-bar-input-uni">
-                            <select name="university_id"
-                                    class="form-control">
-                                @foreach(\App\University::where('is_public', true)->get() as $university)
-                                    <option value="{{ $university->id }}">{{ $university->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        @endif
                         <div class="xs-guest-search-bar-input-submit">
-                            <button class="btn primary-btn" type="submit" value="Search" style="width:100%;">
-                                Search
+                            <button class="btn primary-btn" id="xs-sell-search-btn" type="submit"
+                                    name="search" value="Search"> Search
                             </button>
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
 

@@ -40,10 +40,10 @@
                         <td class="textbook-img-container">
                             <a href="{{ url("textbook/buy/".$book->id) }}">
 
-                                @if($book->imageSet->isManuallyCreated())
+                                @if($book->imageSet->small_image)
                                     <img class="textbook-img" src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->small_image }}">
                                 @else
-                                    <img class="textbook-img" src="{{ $book->imageSet->small_image or config('book.default_image_path.large')}}">
+                                    <img class="textbook-img" src="{{ config('book.default_image_path.small')}}">
                                 @endif
                             </a>
                         </td>

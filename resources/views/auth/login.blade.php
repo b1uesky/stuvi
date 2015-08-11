@@ -20,8 +20,7 @@
 @section('content')
     <div class="container-fluid content">
         <!-- logo -->
-        <a href="{{ url('/') }}" id="logo-link"><img src="{{asset('/img/logo-new-center.png')}}" class="img-responsive"
-                                                     id="login-logo"></a>
+        <a href="{{ url('/') }}" id="logo-link"><img src="{{asset('/img/logo-new-center.png')}}" class="img-responsive" id="login-logo"></a>
 
         <div class="row vertical-center">
             <div class="col-sm-6 col-sm-offset-3">
@@ -29,16 +28,12 @@
                     <!-- tabs -->
                     <ul class="nav nav-tabs nav-justified" role="tablist" id="tabs">
                         <!-- login tab-->
-                        <li role="presentation" class="{{ $loginActive }}" id="login-tab"><a href="#login-body"
-                                                                                             aria-controls="login-body"
-                                                                                             role="tab"
-                                                                                             data-toggle="tab">Login</a>
+                        <li role="presentation" class="{{ $loginActive }}" id="login-tab">
+                            <a href="#login-body" aria-controls="login-body" role="tab" data-toggle="tab">Login</a>
                         </li>
                         <!-- signup tab-->
-                        <li role="presentation" class="{{ $signupActive }}" id="signup-tab"><a href="#signup-body"
-                                                                                               aria-controls="signup-body"
-                                                                                               role="tab"
-                                                                                               data-toggle="tab">Sign Up</a>
+                        <li role="presentation" class="{{ $signupActive }}" id="signup-tab">
+                            <a href="#signup-body" aria-controls="signup-body" role="tab" data-toggle="tab">Sign Up</a>
                         </li>
                     </ul>
                     <!-- end tabs -->
@@ -85,8 +80,7 @@
                                 <div id="password-group" class="form-group">
                                     <label class="sr-only" for="login-password">Password</label>
                                     <div class="col-sm-offset-2 col-sm-8">
-                                        <input type="password" class="form-control" name="password" id="login-password"
-                                               placeholder="Password">
+                                        <input type="password" class="form-control" name="password" id="login-password" placeholder="Password">
                                     </div>
                                 </div>
                                 <!-- remember -->
@@ -105,9 +99,7 @@
                                         <button type="submit" class="btn primary-btn submit-btn">Login</button>
                                         <br>
                                         <a class="btn btn-link" id="forgot-password"
-                                           href="{{ url('/password/email') }}">
-                                            Forgot Your Password?
-                                        </a>
+                                           href="{{ url('/password/email') }}">Forgot Your Password?</a>
                                     </div>
                                 </div>
                             </form>
@@ -170,10 +162,9 @@
                                 </div>
                                 <!-- tos statement-->
                                 <div class="tos col-sm-offset-2 col-sm-8">
-                                    By creating an account, you agree to Stuvi's <a href="#" data-toggle="modal"
-                                                                                    data-target=".terms-modal">Terms of
-                                        Use</a> and
-                                    <a href="#" data-toggle="modal" data-target=".privacy-modal">Privacy Notice</a>.
+                                    By creating an account, you agree to Stuvi's
+                                    <a href="#" data-toggle="modal" data-target=".terms-modal">Terms of Use</a> and
+                                    <a href="#" data-toggle="modal" data-target=".privacy-modal"> Privacy Notice</a>.
                                 </div>
                                 <!-- sign up button-->
                                 <div class="form-group">

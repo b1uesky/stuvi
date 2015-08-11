@@ -134,16 +134,16 @@
         },
         {
             "name": "aws/aws-sdk-php-laravel",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php-laravel.git",
-                "reference": "a6e0e843c74ea7c1b72a25cecf951166425d7ad9"
+                "reference": "e937b1e783b6c112a9e6294c706cad70a7524a19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php-laravel/zipball/a6e0e843c74ea7c1b72a25cecf951166425d7ad9",
-                "reference": "a6e0e843c74ea7c1b72a25cecf951166425d7ad9",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php-laravel/zipball/e937b1e783b6c112a9e6294c706cad70a7524a19",
+                "reference": "e937b1e783b6c112a9e6294c706cad70a7524a19",
                 "shasum": ""
             },
             "require": {
@@ -183,7 +183,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-08-05 22:45:11"
+            "time": "2015-08-10 21:11:39"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -3216,16 +3216,16 @@
         },
         {
             "name": "fzaninotto/faker",
-            "version": "v1.5.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d"
+                "reference": "bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d0190b156bcca848d401fb80f31f504f37141c8d",
-                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27",
+                "reference": "bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27",
                 "shasum": ""
             },
             "require": {
@@ -3264,7 +3264,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-05-29 06:29:14"
+            "time": "2015-05-20 13:03:42"
         },
         {
             "name": "leafo/scssphp",

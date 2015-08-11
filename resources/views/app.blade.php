@@ -7,8 +7,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-{{-- Page title --}}
-@section('title', 'Home')
 
 @include('includes.textbook.head')
 

@@ -26,7 +26,6 @@
         <div class="row textbook-row col-sm-5">
             <div class="textbook-info">
                 <h2>{{ $book->title }}</h2>
-
                 <div class="img-container">
                     @if($book->imageSet->isManuallyCreated())
                         <img class="img-large" src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->large_image }}">
@@ -39,7 +38,8 @@
                     <?php $bookCounter = 0; ?>
                     @foreach($book->authors as $author)
                         @if($bookCounter == 0)
-                            <span>by </span><span id="authors">{{ $author->full_name }}</span>
+                            <span class="authors-by">by </span>
+                            <span id="authors">{{ $author->full_name }}</span>
                         @else
                             <span id="authors">, {{ $author->full_name }}</span>
                         @endif
@@ -63,7 +63,7 @@
         @else
             {{-- Show book conditions --}}
             <div class="row col-sm-6 col-sm-offset-1">
-            <h2>Book Conditions</h2>
+            <h2 class="book-conditions-head">Book Conditions</h2>
 
             <form id="form-product" class="dropzone">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -73,16 +73,15 @@
                 {{-- General Condition --}}
                 <div class="form-group">
                     <label>{{ Config::get('product.conditions.general_condition.title') }}</label>
+                    {{-- Open modal button --}}
                     <i class="fa fa-question-circle" data-toggle="modal" data-target=".condition-modal"></i>
                     <br>
-
-                    <div class="modal fade condition-modal" tabindex="-1" role="dialog"
-                         aria-labelledby="General Conditions">
+                    {{-- General Condition Modal --}}
+                    <div class="modal fade condition-modal" tabindex="-1" role="dialog" aria-labelledby="General Conditions">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close close-modal-btn" data-dismiss="modal"
-                                            aria-label="close">
+                                    <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                     <h3>{{ Config::get('product.conditions.general_condition.title') }}</h3>
@@ -98,9 +97,8 @@
                             </div>
                         </div>
                     </div>
-
+                    {{-- General Conditon Buttons --}}
                     <div class="btn-group" data-toggle="buttons">
-
                         @for ($i = 0; $i < 4; $i++)
                             <label class="btn btn-default condition-btn">
                                 <input type="radio" name="general_condition"
@@ -113,16 +111,15 @@
                 {{-- Highlights/Notes --}}
                 <div class="form-group">
                     <label>{{ Config::get('product.conditions.highlights_and_notes.title') }}</label>
+                    {{-- Open modal button --}}
                     <i class="fa fa-question-circle" data-toggle="modal" data-target=".highlight-modal"></i>
                     <br>
-
-                    <div class="modal fade highlight-modal" tabindex="-1" role="dialog"
-                         aria-labelledby="Highlights/Notes">
+                    {{-- Highlights / Notes modal --}}
+                    <div class="modal fade highlight-modal" tabindex="-1" role="dialog" aria-labelledby="Highlights/Notes">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close close-modal-btn" data-dismiss="modal"
-                                            aria-label="close">
+                                    <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="close">
                                         <span id="close-span" aria-hidden="true">&times;</span>
                                     </button>
                                     <h3>{{ Config::get('product.conditions.highlights_and_notes.title') }}</h3>
@@ -133,9 +130,8 @@
                             </div>
                         </div>
                     </div>
-
+                    {{-- Highlights / Notes buttons --}}
                     <div class="btn-group" data-toggle="buttons">
-
                         @for ($i = 0; $i < 3; $i++)
                             <label class="btn btn-default condition-btn">
                                 <input type="radio" name="highlights_and_notes"
@@ -150,13 +146,12 @@
                     <label>{{ Config::get('product.conditions.damaged_pages.title') }}</label>
                     <i class="fa fa-question-circle" data-toggle="modal" data-target=".damage-modal"></i>
                     <br>
-
+                    {{-- Damaged pages modal --}}
                     <div class="modal fade damage-modal" tabindex="-1" role="dialog" aria-labelledby="Damaged Pages">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close close-modal-btn" data-dismiss="modal"
-                                            aria-label="close">
+                                    <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="close">
                                         <span id="close-span" aria-hidden="true">&times;</span>
                                     </button>
                                     <h3>{{ Config::get('product.conditions.damaged_pages.title') }}</h3>
@@ -167,7 +162,7 @@
                             </div>
                         </div>
                     </div>
-
+                    {{-- Damaged pages buttons --}}
                     <div class="btn-group" data-toggle="buttons">
                         @for($i = 0; $i < 3; $i++)
                             <label class="btn btn-default condition-btn">
@@ -183,7 +178,7 @@
                     <label>{{ Config::get('product.conditions.broken_binding.title') }}</label>
                     <i class="fa fa-question-circle" data-toggle="modal" data-target=".binding-modal"></i>
                     <br>
-
+                    {{-- Broken binding modal --}}
                     <div class="modal fade binding-modal" tabindex="-1" role="dialog" aria-labelledby="Broken Binding">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
@@ -200,7 +195,7 @@
                             </div>
                         </div>
                     </div>
-
+                    {{-- Broken binding buttons --}}
                     <div class="btn-group" data-toggle="buttons">
                         @for($i = 0; $i < 2; $i++)
                             <label class="btn btn-default condition-btn">
@@ -217,17 +212,10 @@
                     <textarea name="description" class="form-control" rows="5"
                               placeholder="{{ Config::get('product.conditions.description.place_holder') }}"></textarea>
                 </div>
-                {{-- Price --}}
-
-                {{-- list price --}}
-                {{--@if($book->list_price)--}}
-                    {{--<div>List price: ${{ $book->list_price }}</div>--}}
-                {{--@endif--}}
 
                 {{-- your price --}}
                 <div class="form-group">
                     <label>Price</label>
-
                     <div class="input-group" id="price-input">
                         <div class="input-group-addon">$</div>
                         <input type="number" step="0.01" name="price" class="form-control" placeholder="Amount">
