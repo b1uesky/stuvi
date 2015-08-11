@@ -16,7 +16,8 @@
 		"intervention/image": "^2.3",
 	  	"desmond/google-books": "dev-master",
 		"davejamesmiller/laravel-breadcrumbs": "^3.0",
-		"roumen/sitemap": "^2.5"
+		"roumen/sitemap": "^2.5",
+	  	"anouar/paypalpayment": "~1.0"
 	},
     "repositories": [
       {
