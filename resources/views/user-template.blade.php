@@ -1,6 +1,7 @@
 {{-- TEMPLATE FOR USER ACCOUNT AND PROFILE
      CONTAINS USER-BAR AND PROFILE SIDE BAR
 --}}
+
 <html>
     <body>
 
@@ -39,20 +40,15 @@
                                     <li class="side-item">
                                         <a class="side-item-link" id="side-bookshelf-link"
                                            href="{{asset('/user/bookshelf')}}">
-                                            <i class="fa fa-book"></i>My Bookshelf
+                                            <i class="fa fa-book"></i>Your Bookshelf
                                         </a>
                                     </li>
                                     <li class="side-item">
                                         <a class="side-item-link" id="side-email-link"
                                            href="{{asset('/user/email')}}">
-                                            <i class="fa fa-envelope"></i>Email
+                                            <i class="fa fa-envelope"></i>Email Settings
                                         </a>
                                     </li>
-                                    {{--<li class="side-messages">--}}
-                                    {{--<a href="#" target="_blank">--}}
-                                    {{--<i class="glyphicon glyphicon-envelope"></i>--}}
-                                    {{--Messages </a>--}}
-                                    {{--</li>--}}
                                 </ul>
                             </div>
                             <!-- END MENU -->

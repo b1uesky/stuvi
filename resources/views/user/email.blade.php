@@ -57,7 +57,7 @@
                         <table class="table table-hover">
                             @foreach ($emails as $email)
                                 <tr>
-                                    <td><strong>{{ $email->email_address }}</strong></td>
+                                    <td class="email-address-cell"><strong>{{ $email->email_address }}</strong></td>
                                     @if ($email->isPrimary())
                                         <td>
                                             Primary

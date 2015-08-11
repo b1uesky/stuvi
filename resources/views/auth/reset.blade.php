@@ -1,10 +1,12 @@
 @extends('app')
 
+@section('title','Reset your password')
+
+@section('css')
+	<link rel="stylesheet" href="{{asset('/css/auth_reset.css')}}" type="text/css">
+@endsection
+
 @section('content')
-<head>
-    <title>Reset your password</title>
-    <link rel="stylesheet" href="{{asset('/css/auth_reset.css')}}" type="text/css">
-</head>
 
 <div class="container-fluid container-main">
 	<div class="row row-main">
@@ -28,23 +30,23 @@
 						<input type="hidden" name="token" value="{{ $token }}">
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
+							<label class="col-md-4 control-label" for="email-input">E-Mail Address</label>
 							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+								<input type="email" class="form-control" name="email" value="{{ old('email') }}" id="email-input">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
+							<label class="col-md-4 control-label" for="password-input">Password</label>
 							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
+								<input type="password" class="form-control" name="password" id="password-input">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
+							<label class="col-md-4 control-label" for="password-confirm-input">Confirm Password</label>
 							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
+								<input type="password" class="form-control" name="password_confirmation" id="password-confirm-input">
 							</div>
 						</div>
 

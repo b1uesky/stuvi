@@ -19,7 +19,7 @@
     </div>
     <div class="container col-xs-12 col-xs-offset-2 col-sm-8 col-sm-offset-2 cart-progress">
         <img class="img-responsive cart-line col-sm-offset-3" src="{{asset('/img/CHECKOUT.png')}}"
-             alt="Your cart progress">
+             alt="Your cart progress - Checkout">
     </div>
     <div class="container">
         <h1 id="checkout-title">Checkout Books</h1>
@@ -37,7 +37,6 @@
                             </ul>
                         </div>
                     @endif
-
 
                     <h2>1. Confirm order items</h2><br>
 
@@ -82,9 +81,7 @@
                                             <li class="address inline" id="default_zip">{{ $address -> zip }}</li>
                                             <li class="address" id="default_phone">{{ $address -> phone_number }}</li>
                                         </ul>
-                                        <button class="btn btn-default primary-btn address-btn show-addresses">
-                                            Change Address
-                                        </button>
+                                        <button class="btn btn-default primary-btn address-btn show-addresses">Change Address</button>
                                     </div>
                                 </div>
                             @endif
@@ -104,9 +101,7 @@
                                         <li class="address phone">{{ $address -> phone_number }}</li>
                                     </ul>
                                     <button class="btn btn-default primary-btn address-btn selectThisAddress">
-                                        <i class="fa fa-check-square"></i>
-                                        Select
-                                    </button>
+                                        <i class="fa fa-check-square"></i>Select</button>
                                     <button class="btn btn-default primary-btn address-btn editThisAddress"
                                             data-toggle="modal"
                                             data-target="#update-address-modal">
@@ -217,8 +212,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <button type="button" class="close close-modal-btn" data-dismiss="modal"
-                                                aria-label="Close">
+                                        <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span></button>
                                         <h4 class="modal-title" id="myModalLabel">Please Enter Address</h4>
                                     </div>
@@ -356,8 +350,8 @@
                                             <br>
 
                                             <div class="form-group">
-                                                <label class="col-sm-4 control-label" for="address_line1-input-modal">Address
-                                                    line 1</label>
+                                                <label class="col-sm-4 control-label" for="address_line1-input-modal">
+                                                    Address Line 1</label>
 
                                                 <div class="col-sm-6 form-space-offset">
                                                     <input type="text" class="form-control"
@@ -369,9 +363,10 @@
                                             <br>
 
                                             <div class="form-group">
-                                                <label class="col-sm-4 control-label">Address line 2</label>
+                                                <label class="col-sm-4 control-label" for="address_line2-input-modal">
+                                                    Address line 2</label>
 
-                                                <div class="col-sm-6 form-space-offset" for="address_line2-input-modal">
+                                                <div class="col-sm-6 form-space-offset">
                                                     <input type="text" class="form-control"
                                                            id="address_line2-input-modal"
                                                            name="address_line2"
@@ -381,8 +376,8 @@
                                             <br>
 
                                             <div class="form-group">
-                                                <label class="col-sm-4 control-label"
-                                                       for="city-input-modal">City</label>
+                                                <label class="col-sm-4 control-label" for="city-input-modal">
+                                                    City</label>
 
                                                 <div class="col-sm-6 form-space-offset">
                                                     <input type="text" class="form-control" name="city"
@@ -393,8 +388,8 @@
                                             <br>
 
                                             <div class="form-group">
-                                                <label class="col-sm-4 control-label"
-                                                       for="state_a2-input-modal">State</label>
+                                                <label class="col-sm-4 control-label" for="state_a2-input-modal">
+                                                    State</label>
 
                                                 <div class="col-sm-6 form-space-offset">
                                                     <input type="text" class="form-control" name="state_a2"
@@ -405,7 +400,8 @@
                                             <br>
 
                                             <div class="form-group">
-                                                <label class="col-sm-4 control-label" for="zip-input-modal">Zip</label>
+                                                <label class="col-sm-4 control-label" for="zip-input-modal">
+                                                    Zip</label>
 
                                                 <div class="col-sm-6 form-space-offset">
                                                     <input type="text" class="form-control" name="zip"
@@ -444,7 +440,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 <!-- payment form here -->
                 <!-- begin stripe form -->
