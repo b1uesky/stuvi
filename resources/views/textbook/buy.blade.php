@@ -3,6 +3,7 @@
 @extends('app')
 
 @section('title', 'Buy Textbooks')
+@section('description', 'Buy textbooks from other students without leaving home.')
 
 @section('css')
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

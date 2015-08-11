@@ -2,6 +2,7 @@
 
 @extends('app-home')    {{--app.blade.php--}}
 
+@section('description', 'Student Village, college service provider')
 @section('title', 'Boston Textbook Marketplace & More Coming Soon!')
 
 @section('css')
