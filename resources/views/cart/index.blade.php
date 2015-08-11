@@ -51,9 +51,7 @@
                     <!-- price -->
                     <td>${{ $item->product->decimalPrice()}}</td>
                     <!-- remove -->
-                    <td><a href="{{ url('/cart/rmv/'.$item->product->id) }}"><i class="fa fa-times btn-close"></i>
-
-                        </a></td>
+                    <td><a href="{{ url('/cart/rmv/'.$item->product->id) }}"><i class="fa fa-times btn-close"></i></a></td>
                 </tr>
                 <!-- how will this style?? -->
                 @if ($item->product->sold)
@@ -110,9 +108,7 @@
                     <td>${{ \App\Helpers\Price::convertIntegerToDecimal($subtotal) }}</td>
                 </tr>
             </table>
-            <a class="btn primary-btn btn-checkout" href="{{ url('/order/create') }}" role="button">
-                Proceed to Checkout
-            </a>
+            <a class="btn primary-btn btn-checkout" href="{{ url('/order/create') }}" role="button">Proceed to Checkout</a>
         </div>
         @endif
     </div>

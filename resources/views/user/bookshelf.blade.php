@@ -26,13 +26,12 @@
                         <tr class="for-sale-item">
                             <td class="for-sale-img">
                                 @if($product->images->first()->isTestImage())
-                                   <a href="{{ url('textbook/buy/product/'.$product->id) }}">
-                                        <img class="img-responsive" src="{{ $product->images->first()->small_image }}"
+                                   <a href="{{ url('textbook/buy/product/'.$product->id) }}" class="for-sale-img-link">
+                                        <img class="img-responsive for-sale-image" src="{{ $product->images->first()->small_image }}"
                                              width="100px"
                                              height="150px">
                                    </a>
                                 @else
-                                    
                                      <a href="{{ url('textbook/buy/product/'.$product->id) }}">
                                         <img class="img-responsive" src="{{ config('aws.url.stuvi-product-img').$product->images->first()->small_image }}"
                                             width="100px"
@@ -46,7 +45,7 @@
                                 <?php $i = 0 ?>
                                 @foreach($product->book->authors as $author)
                                     @if($i == 0)
-                                        <span>by </span>
+                                        <span class="for-sale-by">by </span>
                                         <span class="for-sale-author">{{ $author->full_name }}</span>
                                         <?php $i++ ?>
                                     @else

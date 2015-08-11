@@ -2,12 +2,11 @@
 
 @section('title','Reset Password')
 
-@section('content')
-
-<head>
+@section('css')
     <link href="{{ asset('/css/auth_login.css') }}" rel="stylesheet">
-    <title>Reset Password</title>
-</head>
+@endsection
+
+@section('content')
 
 <div class="container-fluid reset-container">
 	<div class="row">
@@ -34,9 +33,9 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <div class="form-group form-space-offset">
-                        <label class="col-md-4 control-label reset-label">Email Address</label>
+                        <label class="col-md-4 control-label reset-label" for="email-input">Email Address</label>
                         <div class="col-md-6">
-                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                            <input type="email" class="form-control" name="email" value="{{ old('email') }}" id="email-input">
                         </div>
                     </div>
 
