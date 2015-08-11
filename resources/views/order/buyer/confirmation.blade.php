@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row cart-progress-img-row">
         <div class="container col-xs-12 col-xs-offset-2 col-sm-8 col-sm-offset-2 cart-progress">
             <p><img class="img-responsive cart-line col-sm-offset-3" src="{{asset('/img/CONFIRM.png')}}"
                     alt="Your cart progress"></p>
@@ -17,8 +17,8 @@
 
     <div class="container confirmation-container">
         <div class="confirmation-details">
-            <h1>Thank you for your order</h1>
-            <h4>Your order number is: {{ Session::get('order')->id }} <a href="{{ url('order/buyer/'.Session::get('order')->id) }}">View order details</a>.</h4>
+            <h1>Thanks for using Stuvi!</h1>
+            <h4>Your order number is: {{ Session::get('order')->id }}. <a href="{{ url('order/buyer/'.Session::get('order')->id) }}">View order details</a>.</h4>
 
             <p>You will receive an email confirmation shortly at <code>{{ Auth::user()->primaryEmail->email_address }}</code>.</p>
             {{--<h5><a href="#">Print Receipt</a></h5>--}}

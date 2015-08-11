@@ -24,7 +24,7 @@
     <div class="container shopping-cart">
 
         <br>
-        <br>
+
         @if ($items->count() > 0)
         <!-- cart items -->
         <table class="table table-responsive cart-table">
