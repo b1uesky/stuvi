@@ -3,11 +3,11 @@
 @extends('app')
 
 @section('title', 'Buy Textbooks')
+@section('description', 'Buy textbooks from other students without leaving home.')
 
 @section('css')
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="{{ asset('/css/textbook.css') }}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{{ asset('libs/jquery-ui/themes/smoothness/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="{{ asset('/css/textbook.css') }}">
 @endsection
 
 @section('content')

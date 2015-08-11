@@ -2,11 +2,12 @@
 
 @extends('app')
 
-@section('title', 'Sell Used Textbooks')
+@section('title', 'Sell Your Textbooks')
+@section('description', 'Sell your textbooks to other students without leaving home.')
 
 @section('css')
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="{{ asset('/css/textbook.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="{{ asset('/css/textbook.css') }}">
 @endsection
 
 @section('content')
