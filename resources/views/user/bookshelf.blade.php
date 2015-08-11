@@ -17,35 +17,8 @@
             @include('includes.textbook.flash-message')
 
             <div class="bookshelf-title-container">
-                <h1 id="bookshelf-title">Your Bookshelf</h1>
-               {{-- <hr>--}}
+                <h1 id="bookshelf-title">Your Bookshelf <small>Your books for sale</small></h1>
             </div>
-            <!-- sort and search -->
-            {{--<div class="container col-sm-12">--}}
-                {{--<span class="text-muted">Sort by</span>--}}
-            {{--<ul class="nav nav-pills">--}}
-                    {{--<li role="presentation" class="active"><a href="#" data-toggle="pill">Title</a></li>--}}
-                    {{--<li role="presentation"><a href="#" data-toggle="pill">Author</a></li>--}}
-                    {{--<li role="presentation"><a href="#" data-toggle="pill">Price (Low to High)</a></li>--}}
-                    {{--<li role="presentation"><a href="#" data-toggle="pill">Price (High to Low)</a></li>--}}
-
-            {{--<div class="col-sm-4 pull-right bookshelf-sort">--}}
-            {{--<form class="navbar-form" role="search">--}}
-            {{--<div class="input-group">--}}
-            {{--<input type="text" class="form-control" placeholder="Search" name="srch-term"--}}
-            {{--id="search-term">--}}
-
-            {{--<div class="input-group-btn">--}}
-            {{--<button class="btn btn-default search-btn" type="submit">--}}
-            {{--<i class="fa fa-search search-icon"></i>--}}
-            {{--</button>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--</form>--}}
-            {{--</div>--}}
-            {{--</ul>--}}
-            {{--</div>--}}
-
             <!-- books -->
             <div class="container col-sm-11 col-md-12 for-sale-table-container">
                 <table class="table table-responsive for-sale-table">
@@ -53,13 +26,18 @@
                         <tr class="for-sale-item">
                             <td class="for-sale-img">
                                 @if($product->images->first()->isTestImage())
-                                    <img class="img-responsive" src="{{ $product->images->first()->small_image }}"
-                                         width="100px"
-                                         height="150px">
+                                   <a href="{{ url('textbook/buy/product/'.$product->id) }}">
+                                        <img class="img-responsive" src="{{ $product->images->first()->small_image }}"
+                                             width="100px"
+                                             height="150px">
+                                   </a>
                                 @else
-                                    <img class="img-responsive" src="{{ config('aws.url.stuvi-product-img').$product->images->first()->small_image }}"
-                                         width="100px"
-                                         height="150px">
+                                    
+                                     <a href="{{ url('textbook/buy/product/'.$product->id) }}">
+                                        <img class="img-responsive" src="{{ config('aws.url.stuvi-product-img').$product->images->first()->small_image }}"
+                                            width="100px"
+                                            height="150px">
+                                     </a>
                                 @endif
                             </td>
                             <td class="for-sale-info-1" colspan="2">

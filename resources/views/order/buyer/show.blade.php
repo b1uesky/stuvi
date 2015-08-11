@@ -18,17 +18,17 @@
 
     <!-- order details -->
     <div class="container">
-        <h1 id="">Order Details</h1>
+        <h1 id="order-details-h1">Order Details</h1>
         <h2>
             <!-- canceled order -->
             @if ($buyer_order->cancelled)<span id="cancelled">This order has been cancelled.</span> @endif
         </h2>
 
-        <div class="row" id="details1">
+        <div class="row details1">
             <p class="col-xs-12 col-sm-3">Ordered on {{ $buyer_order->created_at }}</p>
             <p class="col-xs-12 col-sm-4">Order #{{ $buyer_order->id }}</p>
         </div>
-        <div class="row" id="details1">
+        <div class="row details1">
             @if ($buyer_order->isDelivered())
                 <p class="col-xs-12 col-sm-3">Delivered on {{ date($datetime_format, strtotime($buyer_order->time_delivered)) }}</p>
             @endif
@@ -104,9 +104,9 @@
                             <p><b>${{ $product->decimalPrice() }}</b></p>
                         </div>
                     </div>
-                </div>
-                <hr>
-            @endforeach
+                    <hr>
+                @endforeach
+            </div>
         </div>
     </div>
 

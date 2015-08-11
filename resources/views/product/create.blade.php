@@ -75,7 +75,7 @@
                     <label>{{ Config::get('product.conditions.general_condition.title') }}</label>
                     <i class="fa fa-question-circle" data-toggle="modal" data-target=".condition-modal"></i>
                     <br>
-
+                    {{-- General Condition Modal --}}
                     <div class="modal fade condition-modal" tabindex="-1" role="dialog"
                          aria-labelledby="General Conditions">
                         <div class="modal-dialog modal-lg">
@@ -98,9 +98,8 @@
                             </div>
                         </div>
                     </div>
-
+                    {{-- General Conditon Buttons --}}
                     <div class="btn-group" data-toggle="buttons">
-
                         @for ($i = 0; $i < 4; $i++)
                             <label class="btn btn-default condition-btn">
                                 <input type="radio" name="general_condition"
