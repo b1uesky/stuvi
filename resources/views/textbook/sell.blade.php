@@ -6,8 +6,8 @@
 @section('description', 'Sell your textbooks to other students without leaving home.')
 
 @section('css')
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="{{ asset('/css/textbook.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="{{ asset('/css/textbook.css') }}">
 @endsection
 
 @section('content')
@@ -30,7 +30,7 @@
         <!-- Search Bar Container-->
         <div class="container-fluid search">
             <div class="row">
-                <h1 id="title">Sell Your Used Textbooks</h1>
+                <h1 id="title">Sell Your Textbooks</h1>
                     <div class="searchbar">
                         <form action="/textbook/sell/search" method="post" id="form-isbn">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
