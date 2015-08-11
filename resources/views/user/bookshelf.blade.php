@@ -52,7 +52,12 @@
                     @forelse ($productsForSale as $product)
                         <tr class="for-sale-item">
                             <td class="for-sale-img">
-                                @if($product->images->first()->isTestImage())
+                                <?php $image = $product->images->first(); ?>
+                                @if (is_null($image))
+                                    <img class="img-responsive" src="{{ config('book.default_image_path.small') }}"
+                                         width="100px"
+                                         height="150px">
+                                @elseif ($image->isTestImage())
                                     <img class="img-responsive" src="{{ $product->images->first()->small_image }}"
                                          width="100px"
                                          height="150px">
