@@ -454,43 +454,42 @@
                         <span class="payment-errors"></span>
                     </div>
 
-                    <div class="stripe-container">
-                        <div class="card-wrapper col-sm-6 col-sm-push-6"></div>
+                    <div class="payment-container col-sm-6">
+                        <div class="card-wrapper"></div>
 
-                        <form action="{{ url('/order/store') }}" method="POST" class="col-sm-6 col-sm-pull-6"
-                              id="form-payment">
+                        <form action="{{ url('/order/store') }}" method="POST" class="" id="form-payment">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="selected_address_id" value="{{$default_address_id}}">
 
                             <div class="row">
                                 <div class="form-group col-xs-12">
-                                    <input id="payment-number" class="form-control input-lg" name="number" placeholder="Card number" type="text">
+                                    <input id="payment-number" class="form-control" name="number" placeholder="Card number" type="text">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="form-group col-xs-12">
-                                    <input id="payment-name" class="form-control input-lg" name="name" placeholder="Full name" type="text">
+                                    <input id="payment-name" class="form-control" name="name" placeholder="Full name" type="text">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="form-group col-xs-4">
-                                    <input id="payment-month" class="form-control input-lg" name="expire_month" placeholder="MM" type="text" maxlength="2">
+                                    <input id="payment-month" class="form-control" name="expire_month" placeholder="MM" type="text" maxlength="2">
                                 </div>
 
                                 <div class="form-group col-xs-4">
-                                    <input id="payment-year" class="form-control input-lg" name="expire_year" placeholder="YY" type="text" maxlength="4">
+                                    <input id="payment-year" class="form-control" name="expire_year" placeholder="YY" type="text" maxlength="4">
                                 </div>
 
                                 <div class="form-group col-xs-4">
-                                    <input id="payment-cvc" class="form-control input-lg" name="cvc" placeholder="CVC" type="text">
+                                    <input id="payment-cvc" class="form-control" name="cvc" placeholder="CVC" type="text">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <input class="btn btn-lg primary-btn btn-block" type="submit" value="Confirm">
+                                    <input class="btn primary-btn btn-block" type="submit" value="Confirm">
                                 </div>
                             </div>
                         </form>
