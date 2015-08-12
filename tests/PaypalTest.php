@@ -107,33 +107,80 @@ class PaypalTest extends TestCase
             ->setRedirectUrls($redirectUrls)
             ->setTransactions(array($transaction));
 
-//        // For Sample Purposes Only.
-//        $request = clone $payment;
-//        // ### Create Payment
-//        // Create a payment by calling the 'create' method
-//        // passing it a valid apiContext.
-//        // (See bootstrap.php for more on `ApiContext`)
-//        // The return object contains the state and the
-//        // url to which the buyer must be redirected to
-//        // for payment approval
-//        try {
-//            $payment->create($apiContext);
-//        } catch (Exception $ex) {
-//            // NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
-//            ResultPrinter::printError("Created Payment Using PayPal. Please visit the URL to Approve.", "Payment", null, $request, $ex);
-//            exit(1);
-//        }
-//
-//        // ### Get redirect url
-//        // The API response provides the url that you must redirect
-//        // the buyer to. Retrieve the url from the $payment->getApprovalLink()
-//        // method
-//        $approvalUrl = $payment->getApprovalLink();
-//
-//        // NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
-//        ResultPrinter::printResult("Created Payment Using PayPal. Please visit the URL to Approve.", "Payment", "<a href='$approvalUrl' >$approvalUrl</a>", $request, $payment);
-
         return $payment;
+    }
+
+    public function testSinglePayout()
+    {
+        $flatConfig = array_dot(Config::get('paypal_payment')); // Flatten the array with dots
+
+        $apiContext = Paypalpayment::ApiContext(
+            Config::get('paypal_payment.Account.ClientId'),
+            Config::get('paypal_payment.Account.ClientSecret')
+        );
+
+        $apiContext->setConfig($flatConfig);
+
+        // Create a new instance of Payout object
+        $payouts = new \PayPal\Api\Payout();
+
+        // This is how our body should look like:
+        /*
+         * {
+                    "sender_batch_header":{
+                        "sender_batch_id":"2014021801",
+                        "email_subject":"You have a Payout!"
+                    },
+                    "items":[
+                        {
+                            "recipient_type":"EMAIL",
+                            "amount":{
+                                "value":"1.0",
+                                "currency":"USD"
+                            },
+                            "note":"Thanks for your patronage!",
+                            "sender_item_id":"2014031400023",
+                            "receiver":"shirt-supplier-one@mail.com"
+                        }
+                    ]
+                }
+         */
+        $senderBatchHeader = new \PayPal\Api\PayoutSenderBatchHeader();
+
+        // ### NOTE:
+        // You can prevent duplicate batches from being processed. If you specify a `sender_batch_id` that was used in the last 30 days, the batch will not be processed. For items, you can specify a `sender_item_id`. If the value for the `sender_item_id` is a duplicate of a payout item that was processed in the last 30 days, the item will not be processed.
+        // #### Batch Header Instance
+        $senderBatchHeader->setSenderBatchId(uniqid())
+            ->setEmailSubject("You have a Payout!");
+
+        // #### Sender Item
+        // Please note that if you are using single payout with sync mode, you can only pass one Item in the request
+        $senderItem = new \PayPal\Api\PayoutItem();
+        $senderItem->setRecipientType('Email')
+            ->setNote('Thanks for your patronage!')
+            ->setReceiver('seller@stuvi.com')
+            ->setSenderItemId("2014031400023")
+            ->setAmount(new \PayPal\Api\Currency('{
+                        "value":"1.0",
+                        "currency":"USD"
+                    }'));
+        $payouts->setSenderBatchHeader($senderBatchHeader)
+            ->addItem($senderItem);
+
+        // For Sample Purposes Only.
+        $request = clone $payouts;
+
+        // ### Create Payout
+        try {
+            $output = $payouts->createSynchronous($apiContext);
+        } catch (Exception $ex) {
+            // NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
+//            ResultPrinter::printError("Created Single Synchronous Payout", "Payout", null, $request, $ex);
+            exit(1);
+        }
+        // NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
+//        ResultPrinter::printResult("Created Single Synchronous Payout", "Payout", $output->getBatchHeader()->getPayoutBatchId(), $request, $output);
+        return $output;
     }
 
 }
