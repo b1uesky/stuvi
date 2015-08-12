@@ -165,7 +165,7 @@ class PickupController extends Controller
         }
 
         // add pickup time to the seller order
-        $seller_order->pickup_time = date(Config::get('app.datetime_format'));
+        $seller_order->pickup_time = date(Config::get('database.datetime_format'));
         $seller_order->save();
 
         return redirect()->back();
