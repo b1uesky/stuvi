@@ -461,30 +461,30 @@
                               id="form-payment">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="selected_address_id" value="{{$default_address_id}}">
-                            <input type="hidden" name="stripe_public_key" value="{{ $stripe_public_key }}">
-                            <input type="hidden" name="stripe_token" value=""/>
 
                             <div class="row">
                                 <div class="form-group col-xs-12">
-                                    <input id="stripe-number" class="form-control input-lg" placeholder="Card number"
-                                           type="text" data-stripe="number">
+                                    <input id="payment-number" class="form-control input-lg" name="number" placeholder="Card number" type="text">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <input id="payment-name" class="form-control input-lg" name="name" placeholder="Full name" type="text">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="form-group col-xs-4">
-                                    <input id="stripe-month" class="form-control input-lg" placeholder="MM" type="text"
-                                           data-stripe="exp-month" maxlength="2">
+                                    <input id="payment-month" class="form-control input-lg" name="expire_month" placeholder="MM" type="text" maxlength="2">
                                 </div>
 
                                 <div class="form-group col-xs-4">
-                                    <input id="stripe-year" class="form-control input-lg" placeholder="YY" type="text"
-                                           data-stripe="exp-year" maxlength="4">
+                                    <input id="payment-year" class="form-control input-lg" name="expire_year" placeholder="YY" type="text" maxlength="4">
                                 </div>
 
                                 <div class="form-group col-xs-4">
-                                    <input id="stripe-cvc" class="form-control input-lg" placeholder="CVC" type="text"
-                                           data-stripe="cvc">
+                                    <input id="payment-cvc" class="form-control input-lg" name="cvc" placeholder="CVC" type="text">
                                 </div>
                             </div>
 
@@ -507,6 +507,5 @@
     <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
 
     <script src="{{ asset('libs/card/lib/js/jquery.card.js') }}"></script>
-    <script src="https://js.stripe.com/v2/"></script>
     <script src="{{ asset('/js/order/buyer/create.js') }}"></script>
 @endsection

@@ -12,15 +12,12 @@ class PaypalTest extends TestCase {
 
     public function testCredentials()
     {
-        $config = Config::get('paypal_payment'); // Get all config items as multi dimensional array
-        $flatConfig = array_dot($config); // Flatten the array with dots
+        $flatConfig = array_dot(Config::get('paypal_payment')); // Flatten the array with dots
 
         Paypalpayment::ApiContext(
             Config::get('paypal_payment.Account.ClientId'),
             Config::get('paypal_payment.Account.ClientSecret')
         )->setConfig($flatConfig);
-
-        $this->assertTrue(true);
     }
 
 }
