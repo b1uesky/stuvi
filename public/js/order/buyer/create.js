@@ -214,5 +214,5 @@ $(document).ready(function () {
             data.element
                 .data('fv.messages')
                 .find('.help-block[data-fv-for="' + data.field + '"]').hide();
-        })
+        });
 });

@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Input;
 use Mail;
 use Session;
+use Validator;
 
 
 class BuyerOrderController extends Controller
@@ -114,17 +115,35 @@ class BuyerOrderController extends Controller
             return redirect('/cart')->with('message', 'Cannot proceed to checkout because one or more items in your cart are sold. Please press "Update" button.');
         }
 
+        // Palpal payment by credit card
         // prepare address and credit card info
-        // TODO: validation
         $shipping_address_id    = Input::get('selected_address_id');
         $number                 = preg_replace('/[^\d]/', '', Input::get('number')); // digits only
         $type                   = Paypal::getCreditCardType($number);
         $expire_month           = Input::get('expire_month');
         $expire_year            = Paypal::getFullExpireYear(Input::get('expire_year'));
         $cvv                    = Input::get('cvc');
-        $name                   = Input::get('name');
+        $name                   = strtoupper(Input::get('name'));
         $first_name             = explode(' ', $name)[0];
         $last_name              = explode(' ', $name)[1];
+
+        // validation
+        $v = Validator::make(array(
+            'address_id'    => $shipping_address_id,
+            'number'        => $number,
+            'type'          => $type,
+            'expire_month'  => $expire_month,
+            'expire_year'   => $expire_year,
+            'cvv'           => $cvv,
+            'first_name'    => $first_name,
+            'last_name'     => $last_name
+        ), Paypal::rules());
+
+        if ($v->fails())
+        {
+            return redirect()->back()
+                ->withErrors($v->errors());
+        }
 
         // Paypal address
         $address = Address::find($shipping_address_id)->toArray();
@@ -168,9 +187,9 @@ class BuyerOrderController extends Controller
         ));
 
         // total price of all items
-        $subtotal = Price::convertIntegerToDecimal($this->cart->totalPrice()) - $discount;
-        $shipping = Price::convertIntegerToDecimal($this->cart->fee());
-        $tax = Price::convertIntegerToDecimal($this->cart->tax());
+        $subtotal   = Price::convertIntegerToDecimal($this->cart->totalPrice()) - $discount;
+        $shipping   = Price::convertIntegerToDecimal($this->cart->fee());
+        $tax        = Price::convertIntegerToDecimal($this->cart->tax());
 
         // final amount that user will pay
         $total = $subtotal + $shipping + $tax;
@@ -178,14 +197,14 @@ class BuyerOrderController extends Controller
         // create Paypal payment
         $paypal = new Paypal();
         $payment = $paypal->createPaymentByCreditCard($address, $credit_card, $items, $subtotal, $shipping, $tax, $total);
-        
+
         // create buyer order
         $order = BuyerOrder::create([
-            'buyer_id' => Auth::id(),
-            'shipping_address_id' => $shipping_address_id,
-            'tax' => $this->cart->tax(),
-            'fee' => $this->cart->fee(),
-            'discount' => $this->cart->discount(),
+            'buyer_id'              => Auth::id(),
+            'shipping_address_id'   => $shipping_address_id,
+            'tax'                   => $this->cart->tax(),
+            'fee'                   => $this->cart->fee(),
+            'discount'              => $this->cart->discount(),
         ]);
 
         // create buyer payment

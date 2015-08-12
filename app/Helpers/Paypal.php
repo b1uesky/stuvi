@@ -154,4 +154,25 @@ class Paypal extends Payment
 
         return $payment;
     }
+
+    /**
+     * Validation rules.
+     *
+     * @return array
+     */
+    public static function rules()
+    {
+        $max_year = date('Y') + 20;
+
+        return array(
+            'address_id'            => 'required|integer|exists:addresses,id',
+            'number'                => 'required|string',
+            'type'                  => 'required|string|in:amex,discover,mastercard,visa',
+            'expire_month'          => 'required|in:01,02,03,04,05,06,07,08,09,10,11,12',
+            'expire_year'           => 'required|digits:4|max:' . $max_year,
+            'cvv'                   => 'required|digits_between:3,4',
+            'first_name'            => 'required|string',
+            'last_name'             => 'required|string'
+        );
+    }
 }
