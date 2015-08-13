@@ -56,7 +56,6 @@
                     <td>${{ $item->product->decimalPrice()}}</td>
                     <!-- remove -->
                     <td><a class="fa fa-times btn-close remove-cart-item"></a></td>
-                    {{--<td><button><i class="fa fa-times btn-close">{{ $item->product_id }}</i></button></td>--}}
                 </tr>
                 <!-- how will this style?? -->
                 @if ($item->product->sold)
@@ -125,34 +124,5 @@
 @endsection
 
 @section('javascript')
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
-    <script>
-        $(document).ready(function () {
-            $(".remove-cart-item").click(function () {
-                var tr = $(this).parent('td').parent('tr');
-                $(this).parent('td').html('<a class="fa fa-spinner fa-pulse fa-1x loading"></a>');
-                $.ajax({
-                    url: location.protocol + '//' + document.domain + '/cart/rmv',
-                    dataType: 'json',
-                    data: {
-                        product_id: tr.attr("value")
-                    },
-                    success: function (data) {
-                        console.log(data);
-                        if (data['removed']) {
-                            tr.html("<td>".concat(data['message'], "</td><td></td><td></td><td></td>"));
-                            $(".fee").text('$'.concat(data['fee'] / 100));
-                            $(".discount").text('- $'.concat(data['discount'] / 100));
-                            $(".tax").text('$'.concat(data['tax'] / 100));
-                            $(".total").text('$'.concat(data['total'] / 100))
-                        }
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="{{asset('/js/cart/index.js')}}"></script>
 @endsection
