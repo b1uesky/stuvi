@@ -6,6 +6,7 @@ use App\Helpers\Paypal;
 use App\Helpers\Price;
 use App\Http\Controllers\Controller;
 use App\SellerOrder;
+
 use Auth;
 use Config;
 use DB;
@@ -150,7 +151,7 @@ class BuyerOrderController extends Controller
         // final amount that user will pay
         $total = $subtotal + $shipping + $tax;
 
-        $shipping_address_id    = Input::get('selected_address_id');
+        $shipping_address_id = Input::get('selected_address_id');
         $payment_method = Input::get('payment_method');
 
         if ($payment_method == 'credit_card')
@@ -226,9 +227,10 @@ class BuyerOrderController extends Controller
         elseif ($payment_method == 'paypal')
         {
             $paypal = new Paypal();
-            $payment = $paypal->createPaymentByPaypal($items, $subtotal, $shipping, $tax, $total);
-
+            $payment = $paypal->createPaymentByPaypal($items, $subtotal, $shipping, $tax, $total, $shipping_address_id);
             $approvalUrl = $payment->getApprovalLink();
+
+            // redirect user to Paypal checkout page
             return Redirect::to($approvalUrl);
         }
     }
@@ -241,34 +243,40 @@ class BuyerOrderController extends Controller
     public function executePayment()
     {
         $payment_id = Input::get('paymentId');
-        $payer_id = Input::get('payerId');
+        $payer_id = Input::get('PayerID');
+        $shipping_address_id = Input::get('shipping_address_id');
+
+        $subtotal = $this->cart->totalPrice();
+        $tax = $this->cart->tax();
+        $fee = $this->cart->fee();
+        $discount = $this->cart->discount();
+        $total = $subtotal + $tax + $fee - $discount;
 
         $paypal = new Paypal();
         $payment = $paypal->executePayment($payment_id, $payer_id);
 
-//        // create buyer order
-//        $order = BuyerOrder::create([
-//            'buyer_id'              => Auth::id(),
-//            'shipping_address_id'   => $shipping_address_id,
-//            'tax'                   => $this->cart->tax(),
-//            'fee'                   => $this->cart->fee(),
-//            'discount'              => $this->cart->discount(),
-//        'amount'                => Price::convertDecimalToInteger($total),
-//                'payment_id'            => $payment->getId()
-//        ]);
-//
-//
-//        // create seller order(s) according to the Cart items
-//        $this->createSellerOrders($order->id);
-//
-//        // remove payed items from Cart
-//        $this->cart->clear();
-//
-//        // send confirmation email to buyer
-//        $order->emailOrderConfirmation();
-//
-//        return redirect('/order/confirmation')
-//            ->with('order', $order);
+        // create buyer order
+        $order = BuyerOrder::create([
+            'buyer_id'              => Auth::id(),
+            'shipping_address_id'   => $shipping_address_id,
+            'tax'                   => $tax,
+            'fee'                   => $fee,
+            'discount'              => $discount,
+            'amount'                => $total,
+            'payment_id'            => $payment->getId()
+        ]);
+
+        // create seller order(s) according to the Cart items
+        $this->createSellerOrders($order->id);
+
+        // remove payed items from Cart
+        $this->cart->clear();
+
+        // send confirmation email to buyer
+        $order->emailOrderConfirmation();
+
+        return redirect('/order/confirmation')
+            ->with('order', $order);
     }
 
     /**

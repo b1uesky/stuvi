@@ -6,6 +6,7 @@
  * Time: 10:54 AM
  *
  * https://developer.paypal.com/webapps/developer/docs/api/
+ * https://github.com/paypal/PayPal-PHP-SDK
  */
 
 namespace App\Helpers;
@@ -15,7 +16,7 @@ use Anouar\Paypalpayment\Facades\PaypalPayment as Paypalpayment;
 //use Illuminate\Support\Facades\Redirect;
 use PayPal\Api\Payment;
 
-class Paypal extends Payment
+class Paypal extends \App\Helpers\Payment
 {
     /**
      * object to authenticate the call.
@@ -166,9 +167,10 @@ class Paypal extends Payment
      * @param decimal $shipping
      * @param decimal $tax
      * @param decimal $total
+     * @param $shipping_address_id
      * @return string
      */
-    public function createPaymentByPaypal($items, $subtotal, $shipping, $tax, $total)
+    public function createPaymentByPaypal($items, $subtotal, $shipping, $tax, $total, $shipping_address_id)
     {
         // ### Payer
         // A resource representing a Payer that funds a payment
@@ -224,7 +226,7 @@ class Paypal extends Payment
         // payment approval/ cancellation.
         $redirectUrls = Paypalpayment::redirectUrls();
         $redirectUrls
-            ->setReturnUrl(url('order/executePayment'))
+            ->setReturnUrl(url('order/executePayment?shipping_address_id=' . $shipping_address_id))
             ->setCancelUrl(url('order/create'));
 
         // ### Payment

@@ -506,6 +506,7 @@
                         <div class="payment-paypal-container col-sm-6">
                             <form action="{{ url('order/store') }}" method="POST">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="selected_address_id" value="{{ $default_address_id }}">
                                 <input type="hidden" name="payment_method" value="paypal">
 
                                 <input type="submit" class="btn primary-btn" value="Check out with Paypal">
