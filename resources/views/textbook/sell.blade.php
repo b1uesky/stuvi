@@ -34,9 +34,8 @@
                     <div class="searchbar default-searchbar">
                         <form action="/textbook/sell/search" method="post" id="form-isbn">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                            <div class="searchbar-input-container searchbar-input-container-query form-group"
-                                 id="textbook-search">
+                            <label class="sr-only" for=""></label>
+                            <div class="searchbar-input-container searchbar-input-container-query form-group" id="textbook-search">
                                 <input type="text" name="isbn" class="form-control searchbar-input searchbar-input-query"
                                        id="sell-search-input"
                                        placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
@@ -103,7 +102,7 @@
                     <!-- need to fix xs -->
                     <div class="container col-xs-12 col-sm-3 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-sm-push-7"
                          id="shrink-xs">
-                        <img class="textbook-bottom-img" src="{{ asset('/img/textbook/clock.png') }}" alt="placeholder">
+                        <img class="textbook-bottom-img" src="{{ asset('/img/textbook/clock.png') }}" alt="Clock">
                     </div>
                     <!-- Row 2 Col 2 -->
                     <div class="container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
@@ -121,7 +120,7 @@
                     <!-- xs: stack-->
                     <div class="container col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id="shrink-xs">
                         <img class="textbook-bottom-img" src="{{ asset('/img/textbook/dollar.png') }}"
-                             alt="placeholder">
+                             alt="Truck">
                     </div>
                     <!-- Row 1 Col 2 -->
                     <div class="container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"

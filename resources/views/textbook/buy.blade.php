@@ -31,8 +31,8 @@
                 <h1 id="title">Buy Textbooks</h1>
                 <div class="searchbar default-searchbar">
                     <form action="/textbook/buy/search" method="get">
-
                         <div class="searchbar-input-container searchbar-input-container-query">
+                            <label class="sr-only" for="autocomplete">Search for Textbooks by ISBN, Title or Author</label>
                             <input type="text" name="query" id="autocomplete"
                                    class="form-control searchbar-input searchbar-input-query"
                                    placeholder="Enter the textbook ISBN, Title, or Author"/>
@@ -40,8 +40,9 @@
                         {{-- Show school selection if it's a guest --}}
                         @if(Auth::guest())
                             <div class="searchbar-input-container searchbar-input-container-university">
+                                <label class="sr-only" for="uni-id">University ID</label>
                                 <select name="university_id"
-                                        class="form-control searchbar-input searchbar-input-university">
+                                        class="form-control searchbar-input searchbar-input-university" id="uni-id">
                                     @foreach(\App\University::where('is_public', true)->get() as $university)
                                         <option value="{{ $university->id }}">{{ $university->name }}</option>
                                     @endforeach
@@ -60,6 +61,7 @@
                 <div class="xs-guest-search-bar">
                     <form action="/textbook/buy/search" method="get">
                         <div class="xs-guest-search-bar-input">
+                            <label class="sr-only" for="autocompleteBuy">Search for Textbooks by ISBN, Title or Author</label>
                             <input type="text" name="query" id="autocompleteBuy"
                                    class="form-control searchbar-input searchbar-input-query"
                                    placeholder="Enter the textbook ISBN, Title, or Author"/>
@@ -67,8 +69,8 @@
                         @if(Auth::guest())
                             {{-- Show school selection if it's a guest --}}
                             <div class="xs-guest-search-bar-input-uni">
-                                <select name="university_id"
-                                        class="form-control">
+                                <label class="sr-only" for="uni-id-2">University ID</label>
+                                <select name="university_id" class="form-control" id="uni-id-2">
                                     @foreach(\App\University::where('is_public', true)->get() as $university)
                                         <option value="{{ $university->id }}">{{ $university->name }}</option>
                                     @endforeach

@@ -48,8 +48,8 @@
 
         <div id="home-search-container">
             <div class="searchbar default-searchbar">
+                <label class="sr-only" for="autocomplete">Textbook Search</label>
                 <form action="/textbook/buy/search" method="get">
-
                     <div class="searchbar-input-container searchbar-input-container-query">
                         <input type="text" name="query" id="autocomplete"
                                class="form-control searchbar-input searchbar-input-query"
@@ -78,6 +78,7 @@
 
             <div class="xs-guest-search-bar">
                 <form action="/textbook/buy/search" method="get">
+                    <label class="sr-only" for="autocompleteBuy">Textbook Search</label>
                     <div class="xs-guest-search-bar-input">
                         <input type="text" name="query" id="autocompleteBuy"
                                class="form-control searchbar-input searchbar-input-query"
@@ -86,8 +87,8 @@
                     {{-- Show school selection if it's a guest --}}
                     @if(Auth::guest())
                     <div class="xs-guest-search-bar-input-uni">
-                        <select name="university_id"
-                                class="form-control">
+                        <label class="sr-only" for="xs-uni_id">University ID</label>
+                        <select name="university_id" class="form-control" id="xs-uni-id">
                             @foreach(\App\University::where('is_public', true)->get() as $university)
                                 <option value="{{ $university->id }}">{{ $university->name }}</option>
                             @endforeach
@@ -101,12 +102,6 @@
                     </div>
                 </form>
             </div>
-
-
-
-
-
-
 
         </div>
     </div>
