@@ -37,19 +37,22 @@
                                    class="form-control searchbar-input searchbar-input-query"
                                    placeholder="Enter the textbook ISBN, Title, or Author"/>
                         </div>
+
                         {{-- Show school selection if it's a guest --}}
                         @if(Auth::guest())
                             <div class="searchbar-input-container searchbar-input-container-university">
                                 <select name="university_id"
-                                        class="form-control searchbar-input searchbar-input-university">
-                                    @foreach(\App\University::where('is_public', true)->get() as $university)
+                                        class="form-control searchbar-input searchbar-input-university"
+                                        id="uni_id">
+                                    <option value="" selected disabled>University</option>
+                                    @foreach($universities as $university)
                                         <option value="{{ $university->id }}">{{ $university->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         @endif
 
-                        <div class="searchbar-input-container searchbar-input-container-submit">
+                        <div class="searchbar-input-container searchbar-input-container-submit default-guest-search-submit">
                             <button class="btn primary-btn search-btn" type="submit" value="Search">
                                 <i class="fa fa-search fa-lg search-icon"></i>
                             </button>
