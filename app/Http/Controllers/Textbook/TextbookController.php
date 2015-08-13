@@ -280,9 +280,15 @@ class TextbookController extends Controller
                 // if the user is logged in, search books by the user's university id
                 $books = Book::queryWithBuyerID($query, Auth::user()->id);
             }
-            else
+            else    // guest user
             {
-                // guest user, search books by the university id selected by the user
+                if (!Input::has('university_id'))
+                {
+                    return back()
+                        ->with('search_error', 'Please select your university.');
+                }
+
+                // search books by the university id selected by the user
                 $university_id = Input::get('university_id');
                 $books = Book::queryWithUniversityID($query, $university_id);
             }
