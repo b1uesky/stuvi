@@ -117,6 +117,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
 {
     Route::get  ('/buyer',              ['as' => 'buyerOrders', 'uses' => 'BuyerOrderController@index']);
     Route::get  ('/confirmation',       'BuyerOrderController@confirmation');
+    Route::get  ('/executePayment',     'BuyerOrderController@executePayment');
     Route::get  ('/create',             'BuyerOrderController@create');
     Route::post ('/store',              'BuyerOrderController@store');
     Route::get  ('/buyer/{id}',         ['as' => 'buyerOrderDetail', 'uses' => 'BuyerOrderController@show']);

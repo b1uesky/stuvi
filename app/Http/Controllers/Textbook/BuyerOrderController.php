@@ -2,10 +2,11 @@
 
 use App\Address;
 use App\BuyerOrder;
-use App\BuyerPayment;
-use App\Helpers\StripeKey;
+use App\Helpers\Paypal;
+use App\Helpers\Price;
 use App\Http\Controllers\Controller;
 use App\SellerOrder;
+
 use Auth;
 use Config;
 use DB;
@@ -14,6 +15,8 @@ use Illuminate\Http\Request;
 use Input;
 use Mail;
 use Session;
+use Validator;
+use Redirect;
 
 
 class BuyerOrderController extends Controller
@@ -48,7 +51,7 @@ class BuyerOrderController extends Controller
     }
 
     /**
-     * Show the form for creating a new buyer order along with Stripe payment.
+     * Show the form for creating a new buyer order along with payment.
      *
      * @return Response
      */
@@ -88,8 +91,7 @@ class BuyerOrderController extends Controller
                 ->with('total', $this->cart->subtotal())
                 ->with('addresses', $addresses)
                 ->with('default_address_id', $default_address_id)
-                ->with('display_payment', true)
-                ->with('stripe_public_key', StripeKey::getPublicKey());
+                ->with('display_payment', true);
         }
         else
         {
@@ -98,8 +100,7 @@ class BuyerOrderController extends Controller
                 ->with('total', $this->cart->subtotal())
                 ->with('addresses', $addresses)
                 ->with('default_address_id', $default_address_id)
-                ->with('display_payment', false)
-                ->with('stripe_public_key', StripeKey::getPublicKey());
+                ->with('display_payment', false);
         }
     }
 
@@ -115,29 +116,158 @@ class BuyerOrderController extends Controller
             return redirect('/cart')->with('message', 'Cannot proceed to checkout because one or more items in your cart are sold. Please press "Update" button.');
         }
 
-        // create Stripe charge, if it fails, go to checkout page.
-        $charge = $this->createBuyerCharge();
-        if ($charge instanceof RedirectResponse)
+        // Paypal items
+        $items = array();
+
+        foreach ($this->cart->items as $item)
         {
-            return $charge;
+            $item_paypal = array(
+                'name'          => $item->product->book->title,
+                'description'   => $item->product->book->title,
+                'currency'      => 'USD',
+                'quantity'      => 1,
+                'price'         => $item->product->decimalPrice()
+            );
+
+            array_push($items, $item_paypal);
         }
 
-        $shipping_address_id = Input::get('selected_address_id');
+        // add discount as an item
+        $discount = Price::convertIntegerToDecimal($this->cart->discount());
 
-        // create an buyer payed order
+        array_push($items, array(
+            'name'          => 'Discount',
+            'description'   => 'Discount',
+            'currency'      => 'USD',
+            'quantity'      => 1,
+            'price'         => - $discount
+        ));
+
+        // total price of all items
+        $subtotal   = Price::convertIntegerToDecimal($this->cart->totalPrice()) - $discount;
+        $shipping   = Price::convertIntegerToDecimal($this->cart->fee());
+        $tax        = Price::convertIntegerToDecimal($this->cart->tax());
+
+        // final amount that user will pay
+        $total = $subtotal + $shipping + $tax;
+
+        $shipping_address_id = Input::get('selected_address_id');
+        $payment_method = Input::get('payment_method');
+
+        if ($payment_method == 'credit_card')
+        {
+            // prepare credit card info
+            $number                 = preg_replace('/[^\d]/', '', Input::get('number')); // digits only
+            $type                   = Paypal::getCreditCardType($number);
+            $expire_month           = Input::get('expire_month');
+            $expire_year            = Paypal::getFullExpireYear(Input::get('expire_year'));
+            $cvv                    = Input::get('cvc');
+            $name                   = strtoupper(Input::get('name'));
+            $first_name             = explode(' ', $name)[0];
+            $last_name              = explode(' ', $name)[1];
+
+            // validation
+            $v = Validator::make(array(
+                'address_id'    => $shipping_address_id,
+                'number'        => $number,
+                'type'          => $type,
+                'expire_month'  => $expire_month,
+                'expire_year'   => $expire_year,
+                'cvv'           => $cvv,
+                'first_name'    => $first_name,
+                'last_name'     => $last_name
+            ), Paypal::rules());
+
+            if ($v->fails())
+            {
+                return redirect()->back()
+                    ->withErrors($v->errors());
+            }
+
+            // Paypal address
+            $address = Address::find($shipping_address_id)->toArray();
+
+            // Paypal credit card
+            $credit_card = array(
+                'type'          => $type,
+                'number'        => $number,
+                'expire_month'  => $expire_month,
+                'expire_year'   => $expire_year,
+                'cvv'           => $cvv,
+                'first_name'    => $first_name,
+                'last_name'     => $last_name
+            );
+
+            $paypal = new Paypal();
+            $payment = $paypal->createPaymentByCreditCard($address, $credit_card, $items, $subtotal, $shipping, $tax, $total);
+
+            // create buyer order
+            $order = BuyerOrder::create([
+                'buyer_id'              => Auth::id(),
+                'shipping_address_id'   => $shipping_address_id,
+                'tax'                   => $this->cart->tax(),
+                'fee'                   => $this->cart->fee(),
+                'discount'              => $this->cart->discount(),
+                'amount'                => Price::convertDecimalToInteger($total),
+                'payment_id'            => $payment->getId()
+            ]);
+
+            // create seller order(s) according to the Cart items
+            $this->createSellerOrders($order->id);
+
+            // remove payed items from Cart
+            $this->cart->clear();
+
+            // send confirmation email to buyer
+            $order->emailOrderConfirmation();
+
+            return redirect('/order/confirmation')
+                ->with('order', $order);
+        }
+        elseif ($payment_method == 'paypal')
+        {
+            $paypal = new Paypal();
+            $payment = $paypal->createPaymentByPaypal($items, $subtotal, $shipping, $tax, $total, $shipping_address_id);
+            $approvalUrl = $payment->getApprovalLink();
+
+            // redirect user to Paypal checkout page
+            return Redirect::to($approvalUrl);
+        }
+    }
+
+    /**
+     * This is the second step required to complete
+     * PayPal checkout. Once user completes the payment, paypal
+     * redirects the browser to "redirectUrl" provided in the request.
+     */
+    public function executePayment()
+    {
+        $payment_id = Input::get('paymentId');
+        $payer_id = Input::get('PayerID');
+        $shipping_address_id = Input::get('shipping_address_id');
+
+        $subtotal = $this->cart->totalPrice();
+        $tax = $this->cart->tax();
+        $fee = $this->cart->fee();
+        $discount = $this->cart->discount();
+        $total = $subtotal + $tax + $fee - $discount;
+
+        $paypal = new Paypal();
+        $payment = $paypal->executePayment($payment_id, $payer_id);
+
+        // create buyer order
         $order = BuyerOrder::create([
-                                        'buyer_id'            => Auth::id(),
-                                        'shipping_address_id' => $shipping_address_id,
-                                        'tax'                 => $this->cart->tax(),
-                                        'fee'                 => $this->cart->fee(),
-                                        'discount'            => $this->cart->discount(),
-                                    ]);
+            'buyer_id'              => Auth::id(),
+            'shipping_address_id'   => $shipping_address_id,
+            'tax'                   => $tax,
+            'fee'                   => $fee,
+            'discount'              => $discount,
+            'amount'                => $total,
+            'payment_id'            => $payment->getId()
+        ]);
 
         // create seller order(s) according to the Cart items
         $this->createSellerOrders($order->id);
-
-        // create a payment
-        $this->createBuyerPayment($order, $charge);
 
         // remove payed items from Cart
         $this->cart->clear();
@@ -147,97 +277,6 @@ class BuyerOrderController extends Controller
 
         return redirect('/order/confirmation')
             ->with('order', $order);
-    }
-
-    /**
-     * Create buyer charge with Stripe for a given order.
-     *
-     * @return BuyerPayment|RedirectResponse
-     */
-    protected function createBuyerCharge()
-    {
-        // Set your secret key: remember to change this to your live secret key in production
-        // See your keys here https://dashboard.stripe.com/account/apikeys
-        \Stripe\Stripe::setApiKey(StripeKey::getSecretKey());
-
-        // Get the credit card details submitted by the form
-        $token = Input::get('stripe_token');
-
-        // Create the charge on Stripe's servers - this will charge the user's card
-        try
-        {
-            $charge = \Stripe\Charge::create([
-                                                 "amount"      => $this->cart->subtotal(),
-                                                 "currency"    => "usd",
-                                                 "source"      => $token,
-                                                 "name"        => Input::get('name'),
-                                                 "description" => "Buyer order payment for buyer order",
-                                             ]);
-
-            return $charge;
-        }
-        catch (\Stripe\Error\Card $e)
-        {
-            // The card has been declined
-            return redirect('/order/create')
-                ->with('message', $e->getMessage());
-        }
-        catch (\Stripe\Error\InvalidRequest $e)
-        {
-            // Invalid parameters were supplied to Stripe's API
-            return redirect('/order/create')
-                ->with('message', $e->getMessage());
-        }
-        catch (\Stripe\Error\Authentication $e)
-        {
-            // Authentication with Stripe's API failed
-            // (maybe you changed API keys recently)
-            return redirect('/order/create')
-                ->with('message', $e->getMessage());
-        }
-        catch (\Stripe\Error\ApiConnection $e)
-        {
-            // Network communication with Stripe failed
-            return redirect('/order/create')
-                ->with('message', $e->getMessage());
-        }
-        catch (\Stripe\Error\Base $e)
-        {
-            // Display a very generic error to the user, and maybe send
-            // yourself an email
-            return redirect('/order/create')
-                ->with('message', $e->getMessage());
-        }
-        catch (Exception $e)
-        {
-            // Something else happened, completely unrelated to Stripe
-            return redirect('/order/create')
-                ->with('message', $e->getMessage());
-        }
-    }
-
-    /**
-     * Create a buyer payment instance.
-     *
-     * @param $order
-     * @param $charge
-     *
-     * @return static
-     */
-    protected function createBuyerPayment($order, $charge)
-    {
-        $payment = BuyerPayment::create([
-                                            'buyer_order_id'   => $order->id,
-                                            'amount'           => $charge['amount'],
-                                            'charge_id'        => $charge['id'],
-                                            'card_id'          => $charge['source']['id'],
-                                            'object'           => $charge['source']['object'],
-                                            'card_last4'       => $charge['source']['last4'],
-                                            'card_brand'       => $charge['source']['brand'],
-                                            'card_fingerprint' => $charge['source']['fingerprint'],
-                                        ]);
-
-        return $payment;
     }
 
     /**
@@ -254,14 +293,14 @@ class BuyerOrderController extends Controller
 
             // change the status of the product to be sold.
             $product->update([
-                                 'sold' => true,
-                             ]);
+                'sold' => true,
+            ]);
 
             // create seller orders
             $order = SellerOrder::create([
-                                             'product_id'     => $product->id,
-                                             'buyer_order_id' => $buyer_order_id,
-                                         ]);
+                'product_id' => $product->id,
+                'buyer_order_id' => $buyer_order_id,
+            ]);
 
             // send confirmation email to seller
             $order->emailOrderConfirmation();

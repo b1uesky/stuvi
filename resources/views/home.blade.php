@@ -63,7 +63,7 @@
                             <select name="university_id"
                                     class="form-control searchbar-input searchbar-input-university"
                                     id="uni_id">
-                                <option value="" selected disabled>University</option>
+                                <option selected disabled>University</option>
                                 @foreach($universities as $university)
                                     <option value="{{ $university->id }}">{{ $university->abbreviation }}</option>
                                 @endforeach
@@ -91,8 +91,9 @@
                     <div class="xs-guest-search-bar-input-uni">
                         <select name="university_id"
                                 class="form-control">
-                            @foreach(\App\University::where('is_public', true)->get() as $university)
-                                <option value="{{ $university->id }}">{{ $university->name }}</option>
+                            <option selected disabled>University</option>
+                            @foreach($universities as $university)
+                                <option value="{{ $university->id }}">{{ $university->abbreviation }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -104,13 +105,6 @@
                     </div>
                 </form>
             </div>
-
-
-
-
-
-
-
         </div>
     </div>
 

@@ -35,7 +35,11 @@
                     <li class="list-group-item">
                         <h4 class="list-group-item-heading">{{ $seller_order->product->book->title }}</h4>
                         <div class="media">
-                            <img class="img-responsive" src="{{ $seller_order->product->book->imageSet->medium_image }}" alt=""/>
+                            @if($seller_order->book()->imageSet->large_image)
+                                <img class="img-responsive" src="{{ config('aws.url.stuvi-book-img') . $seller_order->book()->imageSet->large_image }}" alt=""/>
+                            @else
+                                <img class="img-responsive" src="{{ config('book.default_image_path.large') }}" alt=""/>
+                            @endif
                         </div>
                     </li>
                 @endif

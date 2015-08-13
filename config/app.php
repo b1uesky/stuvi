@@ -188,6 +188,11 @@ return [
 		 * Sitemap Service Provider
 		 */
 		'Roumen\Sitemap\SitemapServiceProvider',
+
+		/*
+		 * Paypal Service Provider
+		 */
+//		'Anouar\Paypalpayment\PaypalpaymentServiceProvider',
 	],
 
 	/*
@@ -236,10 +241,11 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
-        'Twilio'    => 'Aloha\Twilio\Support\Laravel\Facade',
-        'AWS'       => 'Aws\Laravel\AwsFacade',
-        'Image'     => 'Intervention\Image\Facades\Image',
-		'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade'
+        'Twilio'    	=> 'Aloha\Twilio\Support\Laravel\Facade',
+        'AWS'       	=> 'Aws\Laravel\AwsFacade',
+        'Image'     	=> 'Intervention\Image\Facades\Image',
+		'Breadcrumbs' 	=> 'DaveJamesMiller\Breadcrumbs\Facade',
+//		'Paypalpayment' => 'Anouar\Paypalpayment\Facades\PaypalPayment',
 
 	],
 
