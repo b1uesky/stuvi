@@ -31,7 +31,6 @@ use PayPal\Api\Transaction;
 
 use Config;
 
-
 class Paypal extends \App\Helpers\Payment
 {
     /**
@@ -148,7 +147,7 @@ class Paypal extends \App\Helpers\Payment
 
         return $payment;
     }
-    
+
     /**
      * Create Paypal payment by Paypal account.
      * https://github.com/paypal/PayPal-PHP-SDK/blob/master/sample/payments/CreatePaymentUsingPayPal.php
