@@ -21,6 +21,8 @@ class BuyerOrder extends Model
         'tax',
         'fee',
         'discount',
+        'amount',
+        'payment_id'
     ];
 
     /**
@@ -64,16 +66,6 @@ class BuyerOrder extends Model
     public function seller_orders()
     {
         return $this->hasMany('App\SellerOrder', 'buyer_order_id', 'id');
-    }
-
-    /**
-     * Get buyer payment of this buyer order.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function buyer_payment()
-    {
-        return $this->hasOne('App\BuyerPayment');
     }
 
     /**
@@ -181,7 +173,6 @@ class BuyerOrder extends Model
         $buyer_order_arr = $this->toArray();
         $buyer_order_arr['buyer'] = $this->buyer->allToArray();
         $buyer_order_arr['shipping_address'] = $this->shipping_address->toArray();
-        $buyer_order_arr['buyer_payment'] = $this->buyer_payment->toArray();
         foreach ($this->products() as $product)
         {
             $temp = $product->toArray();
@@ -200,50 +191,50 @@ class BuyerOrder extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function stripeRefunds()
-    {
-        return $this->hasMany('App\StripeRefund');
-    }
+//    public function stripeRefunds()
+//    {
+//        return $this->hasMany('App\StripeRefund');
+//    }
 
     /**
      * Check if this buyer order has amount that needs to refund.
      *
      * @return bool
      */
-    public function isRefundable()
-    {
-        return $this->refundableAmount() > 0;
-    }
+//    public function isRefundable()
+//    {
+//        return $this->refundableAmount() > 0;
+//    }
 
     /**
      * Calculate the total amount in cent that needs to refund.
      *
      * @return int
      */
-    public function refundableAmount()
-    {
-        // get all cancelled seller orders
-        $cancelled_orders = $this->seller_orders()->where('cancelled', true)->get();
-        $amount = 0;
-        foreach ($cancelled_orders as $order)
-        {
-            $amount += intval($order->product->price * (1 + config('tax.MA')));
-        }
-
-        // calculate the amount refunded
-        $refunded = 0;
-        foreach ($this->stripeRefunds as $stripe_refund)
-        {
-            $refunded += $stripe_refund->amount;
-        }
-
-        // get the amount needed to refund.
-        // if the subtotal of all cancelled seller order is larger than the buyer payment,
-        // we can refund at most the payment - the refunded amount.
-        $amount = $this->buyer_payment->amount >= $amount ? $amount-$refunded : $this->buyer_payment->amount-$refunded;
-
-        return $amount;
-    }
+//    public function refundableAmount()
+//    {
+//        // get all cancelled seller orders
+//        $cancelled_orders = $this->seller_orders()->where('cancelled', true)->get();
+//        $amount = 0;
+//        foreach ($cancelled_orders as $order)
+//        {
+//            $amount += intval($order->product->price * (1 + config('tax.MA')));
+//        }
+//
+//        // calculate the amount refunded
+//        $refunded = 0;
+//        foreach ($this->stripeRefunds as $stripe_refund)
+//        {
+//            $refunded += $stripe_refund->amount;
+//        }
+//
+//        // get the amount needed to refund.
+//        // if the subtotal of all cancelled seller order is larger than the buyer payment,
+//        // we can refund at most the payment - the refunded amount.
+//        $amount = $this->buyer_payment->amount >= $amount ? $amount-$refunded : $this->buyer_payment->amount-$refunded;
+//
+//        return $amount;
+//    }
 
     /**
      * Refund a given amount to buyer.
@@ -253,52 +244,52 @@ class BuyerOrder extends Model
      *
      * @return string|static
      */
-    public function refund($amount, $operator_id)
-    {
-        \Stripe\Stripe::setApiKey(StripeKey::getSecretKey());
-
-        try
-        {
-            $ch = \Stripe\Charge::retrieve($this->buyer_payment->charge_id);
-            $re = $ch->refunds->create(['amount' => $amount]);
-
-            $refund = StripeRefund::create([
-                'buyer_order_id' => $this->id,
-                'refund_id'      => $re['id'],
-                'amount'         => $re['amount'],
-                'operator_id'    => $operator_id,
-            ]);
-
-            return $refund;
-        }
-        catch (\Stripe\Error\InvalidRequest $e)
-        {
-            // Invalid parameters were supplied to Stripe's API
-            return $e->getMessage();
-        }
-        catch (\Stripe\Error\Authentication $e)
-        {
-            // Authentication with Stripe's API failed
-            // (maybe you changed API keys recently)
-            return $e->getMessage();
-        }
-        catch (\Stripe\Error\ApiConnection $e)
-        {
-            // Network communication with Stripe failed
-            return $e->getMessage();
-        }
-        catch (\Stripe\Error\Base $e)
-        {
-            // Display a very generic error to the user, and maybe send
-            // yourself an email
-            return $e->getMessage();
-        }
-        catch (Exception $e)
-        {
-            // Something else happened, completely unrelated to Stripe
-            return $e->getMessage();
-        }
-    }
+//    public function refund($amount, $operator_id)
+//    {
+//        \Stripe\Stripe::setApiKey(StripeKey::getSecretKey());
+//
+//        try
+//        {
+//            $ch = \Stripe\Charge::retrieve($this->buyer_payment->charge_id);
+//            $re = $ch->refunds->create(['amount' => $amount]);
+//
+//            $refund = StripeRefund::create([
+//                'buyer_order_id' => $this->id,
+//                'refund_id'      => $re['id'],
+//                'amount'         => $re['amount'],
+//                'operator_id'    => $operator_id,
+//            ]);
+//
+//            return $refund;
+//        }
+//        catch (\Stripe\Error\InvalidRequest $e)
+//        {
+//            // Invalid parameters were supplied to Stripe's API
+//            return $e->getMessage();
+//        }
+//        catch (\Stripe\Error\Authentication $e)
+//        {
+//            // Authentication with Stripe's API failed
+//            // (maybe you changed API keys recently)
+//            return $e->getMessage();
+//        }
+//        catch (\Stripe\Error\ApiConnection $e)
+//        {
+//            // Network communication with Stripe failed
+//            return $e->getMessage();
+//        }
+//        catch (\Stripe\Error\Base $e)
+//        {
+//            // Display a very generic error to the user, and maybe send
+//            // yourself an email
+//            return $e->getMessage();
+//        }
+//        catch (Exception $e)
+//        {
+//            // Something else happened, completely unrelated to Stripe
+//            return $e->getMessage();
+//        }
+//    }
 
     /**
      * Get the buyer order status and status detail.

@@ -3,9 +3,9 @@
 use App\Book;
 use App\BookAuthor;
 use App\BookImageSet;
-use App\Helpers\FileUploader;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\University;
 use Auth;
 use Config;
 use DB;
@@ -238,7 +238,8 @@ class TextbookController extends Controller
      */
     public function showBuyPage()
     {
-        return view('textbook.buy');
+        return view('textbook.buy')
+            ->with('universities', University::where('is_public', true)->get());
     }
 
     /**
@@ -279,9 +280,15 @@ class TextbookController extends Controller
                 // if the user is logged in, search books by the user's university id
                 $books = Book::queryWithBuyerID($query, Auth::user()->id);
             }
-            else
+            else    // guest user
             {
-                // guest user, search books by the university id selected by the user
+                if (!Input::has('university_id'))
+                {
+                    return back()
+                        ->with('search_error', 'Please select your university.');
+                }
+
+                // search books by the university id selected by the user
                 $university_id = Input::get('university_id');
                 $books = Book::queryWithUniversityID($query, $university_id);
             }

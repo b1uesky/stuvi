@@ -112,7 +112,8 @@
                                                                         <!-- payment details row 2 column 3-->
                                                                         <td valign="top" style="color: #153643; font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;" width="40%" align="left">
                                                                             <b style="color: #737373;">Payment Method</b><br>
-                                                                            {{ $buyer_order['buyer_payment']['card_brand'] }}&nbsp;****{{ $buyer_order['buyer_payment']['card_last4'] }}<br>
+                                                                            {{-- NO PAYMENT METHOD FOR NOW --}}
+{{--                                                                            {{ $buyer_order['buyer_payment']['card_brand'] }}&nbsp;****{{ $buyer_order['buyer_payment']['card_last4'] }}<br>--}}
                                                                         </td>
                                                                     </tr>
                                                                 </table> <!-- end ship and pay table -->

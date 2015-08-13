@@ -37,20 +37,23 @@
                                    class="form-control searchbar-input searchbar-input-query"
                                    placeholder="Enter the textbook ISBN, Title, or Author"/>
                         </div>
+
                         {{-- Show school selection if it's a guest --}}
                         @if(Auth::guest())
                             <div class="searchbar-input-container searchbar-input-container-university">
                                 <label class="sr-only" for="uni-id">University ID</label>
                                 <select name="university_id"
-                                        class="form-control searchbar-input searchbar-input-university" id="uni-id">
-                                    @foreach(\App\University::where('is_public', true)->get() as $university)
-                                        <option value="{{ $university->id }}">{{ $university->name }}</option>
+                                        class="form-control searchbar-input searchbar-input-university"
+                                        id="uni_id">
+                                    <option value="" selected disabled>University</option>
+                                    @foreach($universities as $university)
+                                        <option value="{{ $university->id }}">{{ $university->abbreviation }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         @endif
 
-                        <div class="searchbar-input-container searchbar-input-container-submit">
+                        <div class="searchbar-input-container searchbar-input-container-submit default-guest-search-submit">
                             <button class="btn primary-btn search-btn" type="submit" value="Search">
                                 <i class="fa fa-search fa-lg search-icon"></i>
                             </button>
@@ -71,8 +74,9 @@
                             <div class="xs-guest-search-bar-input-uni">
                                 <label class="sr-only" for="uni-id-2">University ID</label>
                                 <select name="university_id" class="form-control" id="uni-id-2">
-                                    @foreach(\App\University::where('is_public', true)->get() as $university)
-                                        <option value="{{ $university->id }}">{{ $university->name }}</option>
+                                    <option value="" selected disabled>University</option>
+                                    @foreach($universities as $university)
+                                        <option value="{{ $university->id }}">{{ $university->abbreviation }}</option>
                                     @endforeach
                                 </select>
                             </div>

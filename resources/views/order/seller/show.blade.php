@@ -33,13 +33,13 @@
                 <form action="{{ url('/order/seller/transfer') }}" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
-                    <button type="submit" class="btn btn-primary">
-                        @if ($seller_order->seller()->stripeAuthorizationCredential()->get()->isEmpty())
-                            Link Stripe account to get money back
-                        @else
-                            Get money back
-                        @endif
-                    </button>
+                    {{--<button type="submit" class="btn btn-primary">--}}
+                        {{--@if ($seller_order->seller()->stripeAuthorizationCredential()->get()->isEmpty())--}}
+                            {{--Link Stripe account to get money back--}}
+                        {{--@else--}}
+                            {{--Get money back--}}
+                        {{--@endif--}}
+                    {{--</button>--}}
                 </form>
             @elseif ($seller_order->pickedUp())
                 <div class="alert alert-success">The textbook has been picked up by our courier. You can get your money

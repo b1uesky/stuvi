@@ -24,7 +24,7 @@
                 <!-- images use lightbox -->
                 {{-- Only shows first image as large, the rest will be below it as smaller images--}}
                 @if($product->images)
-                    @foreach($product->images as $index => $image)
+                    @forelse($product->images as $index => $image)
                         @if($index == 0)
                             @if($image->isTestImage())
                                 {{-- show absolute urls of test images--}}
@@ -53,7 +53,12 @@
                                 </a>
                             @endif
                         @endif
-                    @endforeach
+                    @empty
+                        <a class="lightbox-product-link" href="{{ config('book.default_image_path.large') }}"
+                           data-lightbox="pro-img" data-title="Default Image">
+                            <img class="pro-img" src="{{ config('book.default_image_path.large') }}" alt="Book Image" />
+                        </a>
+                    @endforelse
                 @endif
                 <h2 class="product-title"><a
                             href="{{ url('textbook/buy/'.$product->book->id) }}">{{ $product->book->title }}</a></h2>
@@ -81,7 +86,7 @@
                 @if(Auth::check())
                     @if($product->isInCart(Auth::user()->id))
                         <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Added To Cart</a>
-                    @elseif($product->seller == Auth::user())
+                    @elseif(!$product->isSold() && $product->seller == Auth::user())
                         <a class="btn primary-btn add-cart-btn" href="{{ url('textbook/sell/product/' . $product->id . '/edit') }}" role="button">Edit</a>
                     @else
                         <a class="btn primary-btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
