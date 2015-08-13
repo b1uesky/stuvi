@@ -192,7 +192,7 @@ return [
 		/*
 		 * Paypal Service Provider
 		 */
-		'Anouar\Paypalpayment\PaypalpaymentServiceProvider',
+//		'Anouar\Paypalpayment\PaypalpaymentServiceProvider',
 	],
 
 	/*
@@ -245,7 +245,7 @@ return [
         'AWS'       	=> 'Aws\Laravel\AwsFacade',
         'Image'     	=> 'Intervention\Image\Facades\Image',
 		'Breadcrumbs' 	=> 'DaveJamesMiller\Breadcrumbs\Facade',
-		'Paypalpayment' => 'Anouar\Paypalpayment\Facades\PaypalPayment',
+//		'Paypalpayment' => 'Anouar\Paypalpayment\Facades\PaypalPayment',
 
 	],
 

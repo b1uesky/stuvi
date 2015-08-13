@@ -1,23 +1,36 @@
-<?php
+<?php namespace App\Helpers;
 /**
  * Created by PhpStorm.
  * User: Desmond
  * Date: 8/11/15
  * Time: 10:54 AM
  *
- * API: https://github.com/paypal/PayPal-PHP-SDK/tree/master/lib/PayPal/Api
  * DOCS: https://developer.paypal.com/webapps/developer/docs/api/
+ * API: https://github.com/paypal/PayPal-PHP-SDK/tree/master/lib/PayPal/Api
  */
 
-namespace App\Helpers;
-
-use Config;
-use Anouar\Paypalpayment\Facades\PaypalPayment as Paypalpayment;
+use PayPal\Auth\OAuthTokenCredential;
+use PayPal\Rest\ApiContext;
+use PayPal\Api\Address;
+use PayPal\Api\Amount;
+use PayPal\Api\CreditCard;
+use PayPal\Api\Currency;
+use PayPal\Api\Details;
+use PayPal\Api\ExecutePayment;
+use PayPal\Api\FundingInstrument;
+use PayPal\Api\Item;
+use PayPal\Api\ItemList;
+use PayPal\Api\Payer;
 use PayPal\Api\Payment;
+use PayPal\Api\PaymentExecution;
 use PayPal\Api\Payout;
 use PayPal\Api\PayoutSenderBatchHeader;
 use PayPal\Api\PayoutItem;
-use PayPal\Api\Currency;
+use PayPal\Api\RedirectUrls;
+use PayPal\Api\Transaction;
+
+use Config;
+
 
 class Paypal extends \App\Helpers\Payment
 {
@@ -40,7 +53,9 @@ class Paypal extends \App\Helpers\Payment
     {
         $this->client_id = Config::get('paypal_payment.Account.ClientId');
         $this->client_secret = Config::get('paypal_payment.Account.ClientSecret');
-        $this->api_context = Paypalpayment::ApiContext($this->client_id, $this->client_secret);
+        $this->api_context = new ApiContext(
+            new OAuthTokenCredential($this->client_id, $this->client_secret)
+        );
 
         $flatConfig = array_dot(Config::get('paypal_payment')); // Flatten the array with dots
         $this->api_context->setConfig($flatConfig);
@@ -61,10 +76,7 @@ class Paypal extends \App\Helpers\Payment
      */
     public function createPaymentByCreditCard($address, $credit_card, $items, $subtotal, $shipping, $tax, $total)
     {
-        // ### Address
-        // Base Address object used as shipping or billing
-        // address in a payment. [Optional]
-        $addr = Paypalpayment::address();
+        $addr = new Address();
         $addr->setLine1($address['address_line1']);
         $addr->setLine2($address['address_line2']);
         $addr->setCity($address['city']);
@@ -73,9 +85,8 @@ class Paypal extends \App\Helpers\Payment
         $addr->setCountryCode($address['country_a2']);
         $addr->setPhone($address['phone_number']);
 
-        // ### CreditCard
-        $card = Paypalpayment::creditCard();
-        $card->setType($credit_card['type'])
+        $cc = new CreditCard();
+        $cc->setType($credit_card['type'])
             ->setNumber($credit_card['number'])
             ->setExpireMonth($credit_card['expire_month'])
             ->setExpireYear($credit_card['expire_year'])
@@ -83,20 +94,10 @@ class Paypal extends \App\Helpers\Payment
             ->setFirstName($credit_card['first_name'])
             ->setLastName($credit_card['last_name']);
 
-        // ### FundingInstrument
-        // A resource representing a Payer's funding instrument.
-        // Use a Payer ID (A unique identifier of the payer generated
-        // and provided by the facilitator. This is required when
-        // creating or using a tokenized funding instrument)
-        // and the `CreditCardDetails`
-        $fi = Paypalpayment::fundingInstrument();
-        $fi->setCreditCard($card);
+        $fi = new FundingInstrument();
+        $fi->setCreditCard($cc);
 
-        // ### Payer
-        // A resource representing a Payer that funds a payment
-        // Use the List of `FundingInstrument` and the Payment Method
-        // as 'credit_card'
-        $payer = Paypalpayment::payer();
+        $payer = new Payer();
         $payer->setPaymentMethod("credit_card")
             ->setFundingInstruments(array($fi));
 
@@ -104,7 +105,7 @@ class Paypal extends \App\Helpers\Payment
 
         foreach ($items as $item)
         {
-            $item_paypal = Paypalpayment::item();
+            $item_paypal = new Item();
             $item_paypal->setName($item['name'])
                 ->setDescription($item['description'])
                 ->setCurrency($item['currency'])
@@ -114,45 +115,31 @@ class Paypal extends \App\Helpers\Payment
             array_push($items_paypal, $item_paypal);
         }
 
-        $itemList = Paypalpayment::itemList();
+        $itemList = new ItemList();
         $itemList->setItems($items_paypal);
 
-        $details = Paypalpayment::details();
+        $details = new Details();
         $details->setShipping($shipping)
             ->setTax($tax)
             ->setSubtotal($subtotal);
 
-        //Payment Amount
-        $amount = Paypalpayment::amount();
+        $amount = new Amount();
         $amount->setCurrency("USD")
             ->setTotal($total)
             ->setDetails($details);
 
-        // ### Transaction
-        // A transaction defines the contract of a
-        // payment - what is the payment for and who
-        // is fulfilling it. Transaction is created with
-        // a `Payee` and `Amount` types
-        $transaction = Paypalpayment::transaction();
+        $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($itemList)
             ->setDescription("Payment description")
             ->setInvoiceNumber(uniqid());
 
-        // ### Payment
-        // A Payment Resource; create one using
-        // the above types and intent as 'sale'
-        $payment = Paypalpayment::payment();
-
+        $payment = new Payment();
         $payment->setIntent("sale")
             ->setPayer($payer)
             ->setTransactions(array($transaction));
 
         try {
-            // ### Create Payment
-            // Create a payment by posting to the APIService
-            // using a valid ApiContext
-            // The return object contains the status;
             $payment->create($this->api_context);
         } catch (\PPConnectionException $ex) {
             return "Exception: " . $ex->getMessage() . PHP_EOL;
@@ -161,8 +148,7 @@ class Paypal extends \App\Helpers\Payment
 
         return $payment;
     }
-
-
+    
     /**
      * Create Paypal payment by Paypal account.
      * https://github.com/paypal/PayPal-PHP-SDK/blob/master/sample/payments/CreatePaymentUsingPayPal.php
@@ -177,18 +163,14 @@ class Paypal extends \App\Helpers\Payment
      */
     public function createPaymentByPaypal($items, $subtotal, $shipping, $tax, $total, $shipping_address_id)
     {
-        // ### Payer
-        // A resource representing a Payer that funds a payment
-        // For paypal account payments, set payment method
-        // to 'paypal'.
-        $payer = Paypalpayment::payer();
+        $payer = new Payer();
         $payer->setPaymentMethod("paypal");
 
         $items_paypal = array();
 
         foreach ($items as $item)
         {
-            $item_paypal = Paypalpayment::item();
+            $item_paypal = new Item();
             $item_paypal->setName($item['name'])
                 ->setDescription($item['description'])
                 ->setCurrency($item['currency'])
@@ -198,29 +180,20 @@ class Paypal extends \App\Helpers\Payment
             array_push($items_paypal, $item_paypal);
         }
 
-        $itemList = Paypalpayment::itemList();
+        $itemList = new ItemList();
         $itemList->setItems($items_paypal);
 
-        // ### Additional payment details
-        // Use this optional field to set additional
-        // payment information such as tax, shipping
-        // charges etc.
-        $details = Paypalpayment::details();
+        $details = new Details();
         $details->setShipping($shipping)
             ->setTax($tax)
             ->setSubtotal($subtotal);
 
-        //Payment Amount
-        $amount = Paypalpayment::amount();
+        $amount = new Amount();
         $amount->setCurrency("USD")
             ->setTotal($total)
             ->setDetails($details);
 
-        // ### Transaction
-        // A transaction defines the contract of a
-        // payment - what is the payment for and who
-        // is fulfilling it.
-        $transaction = Paypalpayment::transaction();
+        $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($itemList)
             ->setDescription("Payment description")
@@ -228,16 +201,13 @@ class Paypal extends \App\Helpers\Payment
 
         // ### Redirect urls
         // Set the urls that the buyer must be redirected to after
-        // payment approval/ cancellation.
-        $redirectUrls = Paypalpayment::redirectUrls();
+        // payment approval/cancellation.
+        $redirectUrls = new RedirectUrls();
         $redirectUrls
             ->setReturnUrl(url('order/executePayment?shipping_address_id=' . $shipping_address_id))
             ->setCancelUrl(url('order/create'));
 
-        // ### Payment
-        // A Payment Resource; create one using
-        // the above types and intent set to 'sale'
-        $payment = Paypalpayment::payment();
+        $payment = new Payment();
         $payment->setIntent("sale")
             ->setPayer($payer)
             ->setRedirectUrls($redirectUrls)
@@ -249,10 +219,6 @@ class Paypal extends \App\Helpers\Payment
             return "Exception: " . $ex->getMessage() . PHP_EOL;
             exit(1);
         }
-        // ### Get redirect url
-        // The API response provides the url that you must redirect
-        // the buyer to. Retrieve the url from the $payment->getApprovalLink()
-        // method
 
         return $payment;
     }
@@ -268,8 +234,6 @@ class Paypal extends \App\Helpers\Payment
     public function executePayment($payment_id, $payer_id)
     {
         // Get the payment Object by passing paymentId
-        // payment id was previously stored in session in
-        // CreatePaymentUsingPayPal.php
         $payment =  Payment::get($payment_id, $this->api_context);
 
         // ### Payment Execute
@@ -277,11 +241,10 @@ class Paypal extends \App\Helpers\Payment
         // to execute a PayPal account payment.
         // The payer_id is added to the request query parameters
         // when the user is redirected from paypal back to your site
-        $execution = Paypalpayment::paymentExecution();
+        $execution = new PaymentExecution();
         $execution->setPayerId($payer_id);
 
         try {
-            // Execute the payment
             $result = $payment->execute($execution, $this->api_context);
 
             try {
@@ -298,7 +261,6 @@ class Paypal extends \App\Helpers\Payment
         return $payment;
     }
 
-
     /**
      * Create a single payout.
      * https://github.com/paypal/PayPal-PHP-SDK/blob/master/sample/payouts/CreateSinglePayout.php
@@ -308,14 +270,9 @@ class Paypal extends \App\Helpers\Payment
      */
     public function createSinglePayout($item)
     {
-        // Create a new instance of Payout object
         $payouts = new Payout();
 
         $senderBatchHeader = new PayoutSenderBatchHeader();
-
-        // ### NOTE:
-        // You can prevent duplicate batches from being processed. If you specify a `sender_batch_id` that was used in the last 30 days, the batch will not be processed. For items, you can specify a `sender_item_id`. If the value for the `sender_item_id` is a duplicate of a payout item that was processed in the last 30 days, the item will not be processed.
-        // #### Batch Header Instance
         $senderBatchHeader->setSenderBatchId(uniqid())
             ->setEmailSubject("You have a Payout!");
 
@@ -323,14 +280,13 @@ class Paypal extends \App\Helpers\Payment
         $amount->setCurrency($item['currency'])
             ->setValue($item['value']);
 
-        // #### Sender Item
-        // Please note that if you are using single payout with sync mode, you can only pass one Item in the request
         $senderItem = new PayoutItem();
         $senderItem->setRecipientType($item['recipient_type'])
             ->setNote($item['note'])
             ->setReceiver($item['receiver'])
             ->setSenderItemId($item['item_id'])
             ->setAmount($amount);
+
 //        $senderItem->setRecipientType('Email')
 //            ->setNote('Thanks for your patronage!')
 //            ->setReceiver('seller@stuvi.com')
@@ -343,7 +299,6 @@ class Paypal extends \App\Helpers\Payment
         $payouts->setSenderBatchHeader($senderBatchHeader)
             ->addItem($senderItem);
 
-        // ### Create Payout
         try {
             $output = $payouts->createSynchronous($this->api_context);
         } catch (Exception $ex) {
