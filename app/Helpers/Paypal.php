@@ -5,8 +5,8 @@
  * Date: 8/11/15
  * Time: 10:54 AM
  *
- * https://developer.paypal.com/webapps/developer/docs/api/
- * https://github.com/paypal/PayPal-PHP-SDK
+ * API: https://github.com/paypal/PayPal-PHP-SDK/tree/master/lib/PayPal/Api
+ * DOCS: https://developer.paypal.com/webapps/developer/docs/api/
  */
 
 namespace App\Helpers;
@@ -48,6 +48,7 @@ class Paypal extends \App\Helpers\Payment
 
     /**
      * Create Paypal payment by credit card.
+     * https://github.com/paypal/PayPal-PHP-SDK/blob/master/sample/payments/CreatePayment.php
      *
      * @param array $address
      * @param array $credit_card
@@ -164,6 +165,7 @@ class Paypal extends \App\Helpers\Payment
 
     /**
      * Create Paypal payment by Paypal account.
+     * https://github.com/paypal/PayPal-PHP-SDK/blob/master/sample/payments/CreatePaymentUsingPayPal.php
      *
      * @param array $items
      * @param decimal $subtotal
@@ -257,6 +259,7 @@ class Paypal extends \App\Helpers\Payment
 
     /**
      * Execute payment.
+     * https://github.com/paypal/PayPal-PHP-SDK/blob/master/sample/payments/ExecutePayment.php
      *
      * @param $payment_id
      * @param $payer_id
