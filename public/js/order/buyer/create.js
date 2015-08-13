@@ -89,6 +89,25 @@ $(document).ready(function () {
     });
 
     /**
+     * Add shade after modal pop out and remove it after modal close
+     */
+    //$("#update-address-modal").on('show.bs.modal',function(){
+    //    $('<div class="modal-backdrop"></div>').appendTo(document.body);
+    //});
+    //
+    //$("#add-address-modal").on('show.bs.modal',function(){
+    //    $('<div class="modal-backdrop"></div>').appendTo(document.body);
+    //});
+    //
+    //$("#update-address-modal").on('hide.bs.modal',function(){
+    //    $(".modal-backdrop").remove();
+    //});
+    //
+    //$("#add-address-modal").on('hide.bs.modal',function(){
+    //    $(".modal-backdrop").remove();
+    //});
+
+    /**
      * A BEAUTIFUL CARD!
      * https://github.com/jessepollak/card
      */
