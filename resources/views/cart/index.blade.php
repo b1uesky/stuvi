@@ -14,11 +14,16 @@
 
     <!-- back link -->
 
-    <!-- img of cart progress bar -->
-            <div class="container col-xs-10 col-xs-offset-2 col-sm-8 col-sm-offset-2 cart-progress">
+    <!-- TODO: modifiy breadcrumbs to add greyed options for -> checkout -> confirm -->
+    <div class="container">
                 {!! Breadcrumbs::render('shoppingCart') !!}
-        <img class="img-responsive cart-line col-sm-offset-3" src="{{asset('/img/CART.png')}}" alt="Your cart progress">
     </div>
+{{--
+
+    <div class="container cart-prog">
+        <div class="cart-prog-arrow"></div>
+    </div>
+--}}
 
     <!-- all of shopping cart info -->
     <div class="container shopping-cart">

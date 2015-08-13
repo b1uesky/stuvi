@@ -8,6 +8,7 @@
 #container-home-top{
   padding: 0;
   position: relative;
+  // static background when xs screen
   @media(max-width: 767px){
     background: url('../img/nick/nlouie1.jpg') no-repeat;
     background-size: cover;
@@ -340,5 +341,3 @@
   }
 }
 
-// login/signup modal
-@import "sections/login-signup-modal";

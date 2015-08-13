@@ -64,3 +64,24 @@ body {
   font-size: 16px;
   margin-bottom: 30px;
 }
+
+/*
+
+/!* CART PROGRESS BAR *!/
+.cart-prog-arrow {
+  height:20px;
+  width:200px;
+  background-color: #ebebeb;
+  position:relative;
+}
+
+.cart-prog-arrow:after {
+  width:0;
+  height:0;
+  content:"";
+  border-top:10px solid transparent;
+  border-bottom:10px solid transparent;
+  border-left:10px solid #ebebeb;
+  position:absolute;
+  left:100%;
+}*/

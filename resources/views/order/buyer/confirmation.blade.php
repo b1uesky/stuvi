@@ -8,12 +8,16 @@
 
 @section('content')
 
+        <!-- TODO: breadcrumb cart progress bar -->
+
+{{--
     <div class="row cart-progress-img-row">
         <div class="container col-xs-12 col-xs-offset-2 col-sm-8 col-sm-offset-2 cart-progress">
             <p><img class="img-responsive cart-line col-sm-offset-3" src="{{asset('/img/CONFIRM.png')}}"
                     alt="Your cart progress - confirm"></p>
         </div>
     </div>
+--}}
 
     <div class="container confirmation-container">
         <div class="confirmation-details">
