@@ -13,8 +13,11 @@ namespace App\Helpers;
 
 use Config;
 use Anouar\Paypalpayment\Facades\PaypalPayment as Paypalpayment;
-//use Illuminate\Support\Facades\Redirect;
 use PayPal\Api\Payment;
+use PayPal\Api\Payout;
+use PayPal\Api\PayoutSenderBatchHeader;
+use PayPal\Api\PayoutItem;
+use PayPal\Api\Currency;
 
 class Paypal extends \App\Helpers\Payment
 {
@@ -290,6 +293,62 @@ class Paypal extends \App\Helpers\Payment
         }
 
         return $payment;
+    }
+
+
+    /**
+     * Create a single payout.
+     * https://github.com/paypal/PayPal-PHP-SDK/blob/master/sample/payouts/CreateSinglePayout.php
+     *
+     * @param array $item
+     * @return \PayPal\Api\PayoutBatch
+     */
+    public function createSinglePayout($item)
+    {
+        // Create a new instance of Payout object
+        $payouts = new Payout();
+
+        $senderBatchHeader = new PayoutSenderBatchHeader();
+
+        // ### NOTE:
+        // You can prevent duplicate batches from being processed. If you specify a `sender_batch_id` that was used in the last 30 days, the batch will not be processed. For items, you can specify a `sender_item_id`. If the value for the `sender_item_id` is a duplicate of a payout item that was processed in the last 30 days, the item will not be processed.
+        // #### Batch Header Instance
+        $senderBatchHeader->setSenderBatchId(uniqid())
+            ->setEmailSubject("You have a Payout!");
+
+        $amount = new Currency();
+        $amount->setCurrency($item['currency'])
+            ->setValue($item['value']);
+
+        // #### Sender Item
+        // Please note that if you are using single payout with sync mode, you can only pass one Item in the request
+        $senderItem = new PayoutItem();
+        $senderItem->setRecipientType($item['recipient_type'])
+            ->setNote($item['note'])
+            ->setReceiver($item['receiver'])
+            ->setSenderItemId($item['item_id'])
+            ->setAmount($amount);
+//        $senderItem->setRecipientType('Email')
+//            ->setNote('Thanks for your patronage!')
+//            ->setReceiver('seller@stuvi.com')
+//            ->setSenderItemId("2014031400023")
+//            ->setAmount(new Currency('{
+//                        "value":"1.0",
+//                        "currency":"USD"
+//                    }'));
+
+        $payouts->setSenderBatchHeader($senderBatchHeader)
+            ->addItem($senderItem);
+
+        // ### Create Payout
+        try {
+            $output = $payouts->createSynchronous($this->api_context);
+        } catch (Exception $ex) {
+            return "Exception: " . $ex->getMessage() . PHP_EOL;
+            exit(1);
+        }
+
+        return $output;
     }
 
     /**
