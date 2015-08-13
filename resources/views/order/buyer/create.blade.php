@@ -88,7 +88,8 @@
                                     </div>
                                 </div>
                             @endif
-                            <div class="panel address-panel col-md-4 displayAllAddresses {{ $address -> id }}" style={{$default_address_id != -1 ? "display:none" : ""}}>
+                            <div class="panel address-panel col-md-4 displayAllAddresses {{ $address -> id }}"
+                                 style={{$default_address_id != -1 ? "display:none" : ""}}>
                                 <div class="panel-body">
                                     <ul class="address-list">
                                         <li class="address address_id">{{ $address -> id }}</li>
@@ -454,45 +455,65 @@
                         <span class="payment-errors"></span>
                     </div>
 
-                    <div class="payment-container col-sm-6">
-                        <div class="card-wrapper"></div>
+                    <div class="payment-container">
+                        <div class="payment-card-container col-sm-6">
+                            <div class="card-wrapper"></div>
 
-                        <form action="{{ url('/order/store') }}" method="POST" class="" id="form-payment">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="selected_address_id" value="{{$default_address_id}}">
+                            <form action="{{ url('/order/store') }}" method="POST" class="" id="form-payment">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="selected_address_id" value="{{ $default_address_id }}">
+                                <input type="hidden" name="payment_method" value="credit_card">
 
-                            <div class="row">
-                                <div class="form-group col-xs-12">
-                                    <input id="payment-number" class="form-control" name="number" placeholder="Card number" type="text">
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group col-xs-12">
-                                    <input id="payment-name" class="form-control" name="name" placeholder="Full name" type="text">
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group col-xs-4">
-                                    <input id="payment-month" class="form-control" name="expire_month" placeholder="MM" type="text" maxlength="2">
+                                <div class="row">
+                                    <div class="form-group col-xs-12">
+                                        <input id="payment-number" class="form-control" name="number"
+                                               placeholder="Card number" type="text">
+                                    </div>
                                 </div>
 
-                                <div class="form-group col-xs-4">
-                                    <input id="payment-year" class="form-control" name="expire_year" placeholder="YY" type="text" maxlength="4">
+                                <div class="row">
+                                    <div class="form-group col-xs-12">
+                                        <input id="payment-name" class="form-control" name="name"
+                                               placeholder="Full name" type="text">
+                                    </div>
                                 </div>
 
-                                <div class="form-group col-xs-4">
-                                    <input id="payment-cvc" class="form-control" name="cvc" placeholder="CVC" type="text">
-                                </div>
-                            </div>
+                                <div class="row">
+                                    <div class="form-group col-xs-4">
+                                        <input id="payment-month" class="form-control" name="expire_month"
+                                               placeholder="MM" type="text" maxlength="2">
+                                    </div>
 
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <input class="btn primary-btn btn-block" type="submit" value="Confirm">
+                                    <div class="form-group col-xs-4">
+                                        <input id="payment-year" class="form-control" name="expire_year"
+                                               placeholder="YY" type="text" maxlength="4">
+                                    </div>
+
+                                    <div class="form-group col-xs-4">
+                                        <input id="payment-cvc" class="form-control" name="cvc" placeholder="CVC"
+                                               type="text">
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <input class="btn primary-btn btn-block" type="submit" value="Confirm">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="payment-paypal-container col-sm-6">
+                            <form action="{{ url('order/store') }}" method="POST">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="payment_method" value="paypal">
+
+                                <input type="submit" class="btn primary-btn" value="Check out with Paypal">
+                            </form>
+
+                            {{--<a href=""><img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal" /></a>--}}
+                            
+                        </div>
                     </div>
                 @endif
             </div>

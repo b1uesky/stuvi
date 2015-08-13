@@ -23,9 +23,14 @@ class BuyerOrderSeeder extends Seeder
         for ($i = 1; $i < 10; $i++)
         {
             BuyerOrder::create([
-                'buyer_id'  => $faker->numberBetween(1, User::count()),
-                'cancelled' => false,
-                'shipping_address_id' => $faker->numberBetween(1, Address::count())
+                'buyer_id'              => $faker->numberBetween(1, User::count()),
+                'cancelled'             => false,
+                'shipping_address_id'   => $faker->numberBetween(1, Address::count()),
+                'tax'                   => 299,
+                'fee'                   => 299,
+                'discount'              => 299,
+                'amount'                => 2999,
+                'payment_id'            => $faker->uuid
             ]);
         }
     }

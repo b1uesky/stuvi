@@ -12,6 +12,8 @@ namespace App\Helpers;
 
 use Config;
 use Anouar\Paypalpayment\Facades\PaypalPayment as Paypalpayment;
+//use Illuminate\Support\Facades\Redirect;
+use PayPal\Api\Payment;
 
 class Paypal extends Payment
 {
@@ -156,7 +158,17 @@ class Paypal extends Payment
     }
 
 
-    public function createPaymentByPaypal()
+    /**
+     * Create Paypal payment by Paypal account.
+     *
+     * @param array $items
+     * @param decimal $subtotal
+     * @param decimal $shipping
+     * @param decimal $tax
+     * @param decimal $total
+     * @return string
+     */
+    public function createPaymentByPaypal($items, $subtotal, $shipping, $tax, $total)
     {
         // ### Payer
         // A resource representing a Payer that funds a payment
@@ -165,42 +177,36 @@ class Paypal extends Payment
         $payer = Paypalpayment::payer();
         $payer->setPaymentMethod("paypal");
 
-        // ### Itemized information
-        // (Optional) Lets you specify item wise
-        // information
-        $item1 = Paypalpayment::item();
-        $item1->setName('Ground Coffee 40 oz')
-            ->setCurrency('USD')
-            ->setQuantity(1)
-            ->setSku("123123")// Similar to `item_number` in Classic API
-            ->setPrice(7.5);
+        $items_paypal = array();
 
-        $item2 = Paypalpayment::item();
-        $item2->setName('Granola bars')
-            ->setCurrency('USD')
-            ->setQuantity(5)
-            ->setSku("321321")// Similar to `item_number` in Classic API
-            ->setPrice(2);
+        foreach ($items as $item)
+        {
+            $item_paypal = Paypalpayment::item();
+            $item_paypal->setName($item['name'])
+                ->setDescription($item['description'])
+                ->setCurrency($item['currency'])
+                ->setQuantity($item['quantity'])
+                ->setPrice($item['price']);
+
+            array_push($items_paypal, $item_paypal);
+        }
 
         $itemList = Paypalpayment::itemList();
-        $itemList->setItems(array($item1, $item2));
+        $itemList->setItems($items_paypal);
 
         // ### Additional payment details
         // Use this optional field to set additional
         // payment information such as tax, shipping
         // charges etc.
         $details = Paypalpayment::details();
-        $details->setShipping(1.2)
-            ->setTax(1.3)
-            ->setSubtotal(17.50);
+        $details->setShipping($shipping)
+            ->setTax($tax)
+            ->setSubtotal($subtotal);
 
-        // ### Amount
-        // Lets you specify a payment amount.
-        // You can also specify additional details
-        // such as shipping, tax.
+        //Payment Amount
         $amount = Paypalpayment::amount();
         $amount->setCurrency("USD")
-            ->setTotal(20)
+            ->setTotal($total)
             ->setDetails($details);
 
         // ### Transaction
@@ -216,11 +222,10 @@ class Paypal extends Payment
         // ### Redirect urls
         // Set the urls that the buyer must be redirected to after
         // payment approval/ cancellation.
-        $baseUrl = getBaseUrl();
         $redirectUrls = Paypalpayment::redirectUrls();
         $redirectUrls
-            ->setReturnUrl("$baseUrl/ExecutePayment.php?success=true")
-            ->setCancelUrl("$baseUrl/ExecutePayment.php?success=false");
+            ->setReturnUrl(url('order/executePayment'))
+            ->setCancelUrl(url('order/create'));
 
         // ### Payment
         // A Payment Resource; create one using
@@ -230,6 +235,59 @@ class Paypal extends Payment
             ->setPayer($payer)
             ->setRedirectUrls($redirectUrls)
             ->setTransactions(array($transaction));
+
+        try {
+            $payment->create($this->api_context);
+        } catch (Exception $ex) {
+            return "Exception: " . $ex->getMessage() . PHP_EOL;
+            exit(1);
+        }
+        // ### Get redirect url
+        // The API response provides the url that you must redirect
+        // the buyer to. Retrieve the url from the $payment->getApprovalLink()
+        // method
+
+        return $payment;
+    }
+
+    /**
+     * Execute payment.
+     *
+     * @param $payment_id
+     * @param $payer_id
+     * @return Payment|string
+     */
+    public function executePayment($payment_id, $payer_id)
+    {
+        // Get the payment Object by passing paymentId
+        // payment id was previously stored in session in
+        // CreatePaymentUsingPayPal.php
+        $payment =  Payment::get($payment_id, $this->api_context);
+
+        // ### Payment Execute
+        // PaymentExecution object includes information necessary
+        // to execute a PayPal account payment.
+        // The payer_id is added to the request query parameters
+        // when the user is redirected from paypal back to your site
+        $execution = Paypalpayment::paymentExecution();
+        $execution->setPayerId($payer_id);
+
+        try {
+            // Execute the payment
+            $result = $payment->execute($execution, $this->api_context);
+
+            try {
+                $payment = Payment::get($payment_id, $this->api_context);
+            } catch (Exception $ex) {
+                return "Exception: " . $ex->getMessage() . PHP_EOL;
+                exit(1);
+            }
+        } catch (Exception $ex) {
+            return "Exception: " . $ex->getMessage() . PHP_EOL;
+            exit(1);
+        }
+
+        return $payment;
     }
 
     /**

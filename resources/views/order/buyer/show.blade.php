@@ -46,15 +46,15 @@
                 <div class="details-payment col-xs-12 col-sm-3">
                     <h4>Payment Method</h4>
 
-                    <p>{{ ucfirst($buyer_order->buyer_payment->card_brand) }}
-                        **** {{ $buyer_order->buyer_payment->card_last4 }}</p>
+                    {{--<p>{{ ucfirst($buyer_order->buyer_payment->card_brand) }}--}}
+                        {{--**** {{ $buyer_order->buyer_payment->card_last4 }}</p>--}}
                 </div>
                 <div class="details-pricing col-xs-12 col-sm-3 col-sm-offset-3">
                     <h4>Order Summary</h4>
                     <p>Fee: ${{ $buyer_order->fee/100 }}<br>
                         Discount: - ${{ $buyer_order->discount/100 }}<br>
                         Tax: ${{ $buyer_order->tax/100 }}<br>
-                        Total: ${{ $buyer_order->buyer_payment->amount/100 }}</p>
+                        Total: ${{ $buyer_order->amount/100 }}</p>
                 </div>
             </div>
             <div class="buyer-items">
