@@ -16,7 +16,8 @@
 		"intervention/image": "^2.3",
 	  	"desmond/google-books": "dev-master",
 		"davejamesmiller/laravel-breadcrumbs": "^3.0",
-		"roumen/sitemap": "^2.5"
+		"roumen/sitemap": "^2.5",
+	  	"paypal/rest-api-sdk-php": "1.5.0"
 	},
     "repositories": [
       {
