@@ -114,7 +114,6 @@ class DeliverController extends Controller
         $buyer_order_arr                        = $buyer_order->toArray();
         $buyer_order_arr['buyer']               = $buyer_order->buyer->allToArray();
         $buyer_order_arr['shipping_address']    = $buyer_order->shipping_address->toArray();
-        $buyer_order_arr['buyer_payment']       = $buyer_order->buyer_payment->toArray();
         foreach ($buyer_order->products() as $product)
         {
             $temp           = $product->toArray();
@@ -172,7 +171,6 @@ class DeliverController extends Controller
         $buyer_order_arr                        = $buyer_order->toArray();
         $buyer_order_arr['buyer']               = $buyer_order->buyer->allToArray();
         $buyer_order_arr['shipping_address']    = $buyer_order->shipping_address->toArray();
-        $buyer_order_arr['buyer_payment']       = $buyer_order->buyer_payment->toArray();
         foreach ($buyer_order->products() as $product)
         {
             $temp           = $product->toArray();

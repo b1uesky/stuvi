@@ -41,7 +41,7 @@
         </tr>
         <tr>
             <th>Payment</th>
-            <td><a href="{{ url('admin/buyer/payment/'.$buyer_order->buyer_payment->id) }}">${{ $buyer_order->buyer_payment->amount/100 }}</a></td>
+            <td><a href="#">${{ $buyer_order->amount/100 }}</a></td>
         </tr>
         <tr>
             <th>Refund</th>

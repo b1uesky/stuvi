@@ -89,6 +89,25 @@ $(document).ready(function () {
     });
 
     /**
+     * Add shade after modal pop out and remove it after modal close
+     */
+    //$("#update-address-modal").on('show.bs.modal',function(){
+    //    $('<div class="modal-backdrop"></div>').appendTo(document.body);
+    //});
+    //
+    //$("#add-address-modal").on('show.bs.modal',function(){
+    //    $('<div class="modal-backdrop"></div>').appendTo(document.body);
+    //});
+    //
+    //$("#update-address-modal").on('hide.bs.modal',function(){
+    //    $(".modal-backdrop").remove();
+    //});
+    //
+    //$("#add-address-modal").on('hide.bs.modal',function(){
+    //    $(".modal-backdrop").remove();
+    //});
+
+    /**
      * A BEAUTIFUL CARD!
      * https://github.com/jessepollak/card
      */
@@ -99,9 +118,7 @@ $(document).ready(function () {
         width: 350,
 
         formSelectors: {
-            numberInput: '#stripe-number',
-            expiryInput: '#stripe-month, #stripe-year',
-            cvcInput: '#stripe-cvc'
+            expiryInput: '#payment-month, #payment-year',
         }
     });
 
@@ -117,9 +134,9 @@ $(document).ready(function () {
                 validating: null
             },
             fields: {
-                stripeNumber: {
+                paymentNumber: {
                     trigger: 'blur',
-                    selector: '#stripe-number',
+                    selector: '#payment-number',
                     validators: {
                         notEmpty: {
                             message: 'Required'
@@ -129,9 +146,9 @@ $(document).ready(function () {
                         }
                     }
                 },
-                stripeMonth: {
+                paymentMonth: {
                     trigger: 'blur',
-                    selector: '#stripe-month',
+                    selector: '#payment-month',
                     validators: {
                         notEmpty: {
                             message: 'Required'
@@ -142,9 +159,9 @@ $(document).ready(function () {
                         }
                     }
                 },
-                stripeYear: {
+                paymentYear: {
                     trigger: 'blur',
-                    selector: '#stripe-year',
+                    selector: '#payment-year',
                     validators: {
                         callback: {
                             message: 'The year is not valid',
@@ -194,9 +211,9 @@ $(document).ready(function () {
                         }
                     }
                 },
-                stripeCvc: {
+                paymentCvc: {
                     trigger: 'blur',
-                    selector: '#stripe-cvc',
+                    selector: '#payment-cvc',
                     validators: {
                         notEmpty: {
                             message: 'Required'
@@ -216,49 +233,5 @@ $(document).ready(function () {
             data.element
                 .data('fv.messages')
                 .find('.help-block[data-fv-for="' + data.field + '"]').hide();
-        })
-    /**
-     * Stripe Payment
-     */
-        .on('success.form.fv', function (e) {
-            // Prevent default form submission
-            e.preventDefault();
-
-            // Get the form element
-            var $form = $(e.target);
-
-            // Reset the token first
-            $form.find('[name="stripe_token"]').val('');
-
-            var stripePublicKey = $form.find('[name="stripe_public_key"]').val();
-
-            Stripe.setPublishableKey(stripePublicKey);
-
-            Stripe.card.createToken($form, function (status, response) {
-                if (response.error) {
-                    // Show the error message
-                    //bootbox.alert(response.error.message);
-                    console.log(response.error.message);
-                } else {
-                    // Set the token value
-                    $form.find('[name="stripe_token"]').val(response.id);
-
-                    // You can submit the form to back-end as usual
-                    $form.get(0).submit();
-
-                    // Or using Ajax
-                    //$.ajax({
-                    //    url: '/path/to/your/back-end/',
-                    //    data: $form.serialize(),
-                    //    dataType: 'json'
-                    //}).success(function(data) {
-                    //    // Handle the response
-                    //    bootbox.alert(data.message);
-                    //
-                    //    // Reset the form
-                    //    $form.formValidation('resetForm', true);
-                    //});
-                }
-            });
         });
 });
