@@ -22,12 +22,12 @@
             <h1 class="" id="head1">Welcome to Stuvi</h1>
 
             <p class="lead tagline">Because it takes a village to conquer college.</p>
-            @if (Auth::guest())
-                <div class="ghost-btn-container">
-                    <a class="btn ghost-btn" data-toggle="modal" href="#login-modal" role="button">Log In</a>
-                    <a class="btn ghost-btn" data-toggle="modal" href="#signup-modal" role="button">Sign Up</a>
-                </div>
-            @endif
+            {{--@if (Auth::guest())--}}
+                {{--<div class="ghost-btn-container">--}}
+                    {{--<a class="btn ghost-btn" data-toggle="modal" href="#login-modal" role="button">Log In</a>--}}
+                    {{--<a class="btn ghost-btn" data-toggle="modal" href="#signup-modal" role="button">Sign Up</a>--}}
+                {{--</div>--}}
+            {{--@endif--}}
         </div>
         {{-- Images currently 2000px x 1333px image quality 7/12 on Photoshop --}}
         <!-- Photos are owned by Nicholas Louie (owner), and are allowed for use on stuvi.com only. Attribution in the alt text

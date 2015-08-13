@@ -10,7 +10,7 @@
 $(function(){
     $("#slides").slidesjs({
         width: 940,
-        height: 350,
+        height: 400,
         //navigation: {
         //    effect: 'fade'
         //},
