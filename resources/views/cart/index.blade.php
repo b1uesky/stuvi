@@ -11,11 +11,11 @@
     @section('content')
 
     @include('includes.textbook.flash-message')
-
+{{--
     <!-- TODO: modifiy breadcrumbs to add greyed options for -> checkout -> confirm -->
     <div class="container">
                 {!! Breadcrumbs::render('shoppingCart') !!}
-    </div>
+    </div>--}}
 {{--
 
     <div class="container cart-prog">
