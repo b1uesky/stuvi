@@ -4,6 +4,7 @@
 
 @section('content')
 
+    <p><strong>Overview</strong></p>
     <table class="table table-hover">
         <tr>
             <th>ID</th>
@@ -111,7 +112,29 @@
                 </td>
             </tr>
         @endforeach
+    </table>
 
+    <p><strong>Buyer Orders</strong></p>
+    <table class="table table-hover">
+        <tr>
+            <th>ID</th>
+            <th>Cancelled</th>
+            <th>Delivered Time</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+
+        @forelse($user->buyerOrders as $buyer_order)
+            <tr>
+                <td>{{ $buyer_order->id }}</td>
+                <td>{{ $buyer_order->cancelled }}</td>
+                <td>{{ $buyer_order->time_delivered }}</td>
+                <td>{{ $buyer_order->created_at }}</td>
+                <td><a class="btn btn-info" role="button" href="{{ URL::to('admin/order/buyer/' . $buyer_order->id) }}">Details</a></td>
+            </tr>
+        @empty
+            <p>This user has no buyer order.</p>
+        @endforelse
     </table>
 
 @endsection
