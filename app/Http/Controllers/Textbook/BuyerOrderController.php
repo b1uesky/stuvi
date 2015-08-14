@@ -6,17 +6,15 @@ use App\Helpers\Paypal;
 use App\Helpers\Price;
 use App\Http\Controllers\Controller;
 use App\SellerOrder;
-
 use Auth;
 use Config;
 use DB;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Input;
 use Mail;
+use Redirect;
 use Session;
 use Validator;
-use Redirect;
 
 
 class BuyerOrderController extends Controller
@@ -109,7 +107,7 @@ class BuyerOrderController extends Controller
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store()
     {
         if (!$this->cart->isValid())
         {
