@@ -296,6 +296,9 @@ class BuyerOrderController extends Controller
                 'sold' => true,
             ]);
 
+            // update the book price range.
+            $product->book->removePrice($product->price);
+
             // create seller orders
             $order = SellerOrder::create([
                 'product_id' => $product->id,

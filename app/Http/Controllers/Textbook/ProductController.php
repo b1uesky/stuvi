@@ -1,12 +1,11 @@
 <?php namespace App\Http\Controllers\Textbook;
 
+use App\Helpers\Price;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Product;
 use App\ProductCondition;
 use App\ProductImage;
-use App\Helpers\Price;
-
 use Auth;
 use Config;
 use Illuminate\Http\Request;
@@ -56,7 +55,7 @@ class ProductController extends Controller
             'seller_id' => Auth::user()->id,
         ]);
 
-        $product->book->updateLowestAndHighestPrice($int_price);
+        $product->book->addPrice($int_price);
 
         $condition = ProductCondition::create([
             'product_id' => $product->id,
@@ -211,11 +210,9 @@ class ProductController extends Controller
 
         $int_price = Price::ConvertDecimalToInteger(Input::get('price'));
 
-        // update
+        // update product
+        $old_price = $product->price;
         $product->update(['price' => $int_price]);
-
-        $product->book->updateLowestAndHighestPrice($int_price);
-
         $product->condition->update([
            'general_condition'    => Input::get('general_condition'),
            'highlights_and_notes' => Input::get('highlights_and_notes'),
@@ -223,6 +220,10 @@ class ProductController extends Controller
            'broken_binding'       => Input::get('broken_binding'),
            'description'          => Input::get('description'),
        ]);
+
+        // update book price range
+        $product->book->removePrice($old_price);
+        $product->book->addPrice($product->price);
 
         // if AJAX request, save images
         if ($request->ajax())
@@ -296,7 +297,7 @@ class ProductController extends Controller
         $product->delete();
 
         // update book's lowest or highest price if necessary
-        $book->updatePriceAfterProductDelete($price);
+        $book->removePrice($price);
 
         return redirect('/user/bookshelf')
             ->with('message', $product->book->title.' has been deleted.');
