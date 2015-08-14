@@ -50,7 +50,7 @@ $(document).ready(function () {
         var image = 'https://s3.amazonaws.com/stuvi-book-img/placeholder.png';
 
         if (item.image) {
-            image = item.image;
+            image = 'https://s3.amazonaws.com/stuvi-book-img/' + item.image;
         }
 
         var authors = 'Unknown';

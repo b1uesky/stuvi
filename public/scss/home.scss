@@ -159,6 +159,7 @@
   margin-top: 100px;
   margin-bottom: 30px;
   text-shadow: $text-shadow;
+  letter-spacing: $extra-letter-spacing * 2;
   @media(max-width: 991px){
     margin-top: 30px;
   }
@@ -169,11 +170,10 @@
 }
 
 #head1{
-  color: whitesmoke;
+  color: $heading-text-color;
   text-align: center;
   font-size: 5em;
   font-weight: bold;
-  font-family: $base-font-family;
   padding-top: 3%;
   @media(min-width: 2500px){
     font-size: 10em;
@@ -285,10 +285,10 @@
 /******** BOTTOM HALF ********/
 
 
-#bottom-half {
-  background-color: white;
-  padding: 0;
-}
+//#bottom-half {
+//  background-color: white;
+//  padding: 0;
+//}
 
 
 .stuvi-container{
