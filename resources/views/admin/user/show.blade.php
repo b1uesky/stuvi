@@ -11,7 +11,20 @@
         </tr>
         <tr>
             <th>Email</th>
-            <td>{{ $user->email }}</td>
+            <td><table>
+                    <tr>
+                        <th>Address</th>
+                        <th>Verified</th>
+                        <th>Primary</th>
+                    </tr>
+            @foreach($user->emails as $email)
+                <tr>
+                    <td>{{ $email->email_address }}</td>
+                    <td>{{ $email->verified }}</td>
+                    <td>{{ $email->isPrimary() }}</td>
+                </tr>
+            @endforeach
+            </table></td>
         </tr>
         <tr>
             <th>First Name</th>
