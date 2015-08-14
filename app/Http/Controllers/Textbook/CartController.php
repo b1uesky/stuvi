@@ -10,6 +10,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Product;
+use App\Helpers\Price;
 use Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -45,10 +46,10 @@ class CartController extends Controller
 
         return view('cart.index')
             ->with('items', $items)
-            ->with('tax', $this->cart->tax())
-            ->with('fee', $this->cart->fee())
-            ->with('discount', $this->cart->discount())
-            ->with('subtotal', $this->cart->subtotal());
+//            ->with('tax', $this->cart->tax())
+//            ->with('fee', $this->cart->fee())
+//            ->with('discount', $this->cart->discount())
+            ->with('subtotal', Price::convertIntegerToDecimal($this->cart->totalPrice()));
     }
 
     /**

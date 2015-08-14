@@ -1,6 +1,8 @@
 /* CSS for /cart/index.blade.php */
 @import "modules/all";
-
+@import "partials/price";
+@import "partials/tables";
+@import "partials/image";
 
 body {
   background-color: $background-color;
@@ -29,15 +31,15 @@ body {
 }
 
 .shopping-cart {
-  min-height: 90vh;
+  min-height: 100vh;
   overflow-x: scroll;
-  h1 {
-    text-align: center;
-    padding-top: 70px;
-    @media (max-width: 768px) {
-      padding-top: 20px;
-    }
-  }
+  //h1 {
+  //  text-align: center;
+  //  padding-top: 70px;
+  //  @media (max-width: 768px) {
+  //    padding-top: 20px;
+  //  }
+  //}
 }
 
 .cart-table {
