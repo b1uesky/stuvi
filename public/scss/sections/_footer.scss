@@ -9,7 +9,6 @@ $footer-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 
 .footer-distributed {
   background-color: $footer-background-color;
-  box-shadow: $footer-box-shadow;
   box-sizing: border-box;
   width: 100%;
   text-align: left;
@@ -55,12 +54,14 @@ $footer-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
       width: 35px;
       height: 35px;
       background-color: #33383b;
-      border-radius: 2px;
+      border-radius: 999px;
       font-size: 20px;
       color: $footer-text-color;
       text-align: center;
       line-height: 35px;
       margin-left: 3px;
+      position: relative;
+      bottom: 5px;
     }
   }
 }
