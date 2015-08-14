@@ -360,6 +360,6 @@ class BuyerOrder extends Model
         $paypal = new Paypal();
         $payout_batch = $paypal->createBatchPayout($items);
 
-        dd($payout_batch);
+        dd($paypal->getPayoutBatchStatus($payout_batch));
     }
 }
