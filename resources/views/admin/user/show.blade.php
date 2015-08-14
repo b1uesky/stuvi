@@ -10,23 +10,6 @@
             <td>{{ $user->id }}</td>
         </tr>
         <tr>
-            <th>Email</th>
-            <td><table>
-                    <tr>
-                        <th>Address</th>
-                        <th>Verified</th>
-                        <th>Primary</th>
-                    </tr>
-            @foreach($user->emails as $email)
-                <tr>
-                    <td>{{ $email->email_address }}</td>
-                    <td>{{ $email->verified }}</td>
-                    <td>{{ $email->isPrimary() }}</td>
-                </tr>
-            @endforeach
-            </table></td>
-        </tr>
-        <tr>
             <th>First Name</th>
             <td>{{ $user->first_name }}</td>
         </tr>
@@ -54,6 +37,81 @@
             <th>Updated At</th>
             <td>{{ $user->updated_at }}</td>
         </tr>
+    </table>
+
+    <p><strong>Emails</strong></p>
+    <table class="table table-hover">
+        <tr>
+            <th>Address</th>
+            <th>Verified</th>
+            <th>Primary</th>
+        </tr>
+        @foreach($user->emails as $email)
+            <tr>
+                <td>{{ $email->email_address }}</td>
+                <td>{{ $email->verified }}</td>
+                <td>{{ $email->isPrimary() }}</td>
+            </tr>
+        @endforeach
+    </table>
+
+    <p><strong>Bookshelf</strong></p>
+    <table class="table table-hover">
+        <tr>
+            <th>ID</th>
+            <th>Book Title</th>
+            <th>Price</th>
+            <th>Images</th>
+            <th>Sold</th>
+            <th>Verified</th>
+            <th>Updated At</th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach($user->productsForSale() as $product)
+            <tr>
+                <td>{{ $product->id }}</td>
+                <td><a href="{{ url('admin/book/'.$product->book->id) }}">{{ $product->book->title }}</a></td>
+                <td>{{ $product->decimalPrice() }}</td>
+                <td>
+                    @foreach($product->images as $product_image)
+                        @if($product_image->isTestImage())
+                            <a href="{{ $product_image->large_image }}" target="_blank">
+                                <img src="{{ $product_image->small_image }}" class="admin-img-preview" alt=""/>
+                            </a>
+                        @else
+                            <a href="{{ Config::get('aws.url.stuvi-product-img') . $product_image->large_image }}" target="_blank">
+                                <img src="{{ Config::get('aws.url.stuvi-product-img') . $product_image->small_image }}" class="admin-img-preview" alt=""/>
+                            </a>
+                        @endif
+                    @endforeach
+                </td>
+                <td>{{ $product->isSold() }}</td>
+                <td>{{ $product->isVerified() }}</td>
+                <td>{{ $product->updated_at }}</td>
+
+                <!-- we will also add show, edit, and delete buttons -->
+                <td>
+
+                    <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
+                    <!-- we will add this later since its a little more complicated than the other two buttons -->
+
+                    <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
+                    <div class="btn-group-vertical" role="group">
+                        <a class="btn btn-info" role="button" href="{{ URL::to('admin/product/' . $product->id) }}">Details</a>
+                        @if(!$product->verified)
+                            <a class="btn btn-success" role="button"
+                               href="{{ URL::to('admin/product/' . $product->id . '/approve') }}">Approve</a>
+                        @else
+                            <a class="btn btn-danger" role="button"
+                               href="{{ URL::to('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
+                        @endif
+                    </div>
+
+                </td>
+            </tr>
+        @endforeach
+
     </table>
 
 @endsection

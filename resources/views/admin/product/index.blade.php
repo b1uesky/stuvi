@@ -38,7 +38,7 @@
         @foreach($products as $product)
             <tr>
                 <td>{{ $product->id }}</td>
-                <td>{{ $product->book->title }}</td>
+                <td><a href="{{ url('admin/book/'.$product->book->id) }}">{{ $product->book->title }}</a></td>
                 <td>{{ $product->decimalPrice() }}</td>
                 <td>{{ $product->seller->email }}</td>
                 <td>
