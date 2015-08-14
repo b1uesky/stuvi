@@ -296,11 +296,28 @@
   }
 }
 
-#info1{
-  @media(min-width: 2500px){
-    font-size: 2em;
+.container-description {
+  text-align: center;
+  padding: $spacing-unit;
+  max-width: 900px;
+
+  h2 {
+    font-size: $base-font-size * 2.5;
+    font-weight: bold;
+    letter-spacing: $extra-letter-spacing * 2;
+  }
+
+  p {
+    font-size: $large-font-size;
+    letter-spacing: $extra-letter-spacing;
   }
 }
+
+//#info1{
+//  @media(min-width: 2500px){
+//    font-size: 2em;
+//  }
+//}
 
 
 #img-info-1{

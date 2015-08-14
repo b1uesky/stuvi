@@ -49,9 +49,9 @@
                     {{-- Not logged in --}}
                     @if (Auth::guest())
                         <li><a id="login-btn" class="nav-login" data-toggle="modal" href="#login-modal">
-                                <i class="fa fa-sign-in"></i> Login</a></li>     <!-- added font awesome icons -->
+                                <!--<i class="fa fa-sign-in"></i>--> Login</a></li>     <!-- added font awesome icons -->
                         <li><a id="register-btn" class="nav-login" data-toggle="modal" href="#signup-modal">
-                                <i class="fa fa-user"></i> Sign Up</a></li>
+                                <!--<i class="fa fa-user"></i>--> Sign Up</a></li>
 
                     {{-- Logged in --}}
                     @else

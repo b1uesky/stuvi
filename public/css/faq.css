@@ -6,7 +6,11 @@
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
  *
- *//* BASE STYLES *//* TEXT COLORS *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* Devices */body {
+ *//* BASE STYLES *//* TEXT COLORS *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */body {
+  background: #f2f2f2;
+  color: #555;
+}
+body {
   background-color: #f2f2f2;
 }
 .faq-container {

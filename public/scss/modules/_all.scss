@@ -2,3 +2,8 @@
 
 @import 'colors';
 @import 'typography';
+
+body {
+  background: $background-color;
+  color: $body-text-color;
+}
