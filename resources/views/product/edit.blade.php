@@ -29,7 +29,7 @@
 
                 <div class="img-container">
                     <img class="img-large"
-                         src="{{ $product->book->imageSet->large_image or config('book.default_image_path.large') }}"/>
+                         src="{{ config('aws.url.stuvi-book-img').$product->book->imageSet->large_image or config('book.default_image_path.large') }}"/>
                 </div>
 
                 <div class="authors-container">
