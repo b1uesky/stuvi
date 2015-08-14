@@ -109,7 +109,7 @@
     </div>
 
     <!-- new bottom half -->
-    <div class="container-fluid" id="bottom-half">
+    <div class="container-fluid">
         <div class="container-fluid stuvi-container">
             <!-- row 1-->
             <div class="row">
@@ -117,7 +117,7 @@
                     <h2>What is Stuvi?</h2>
 
                     <p>Stuvi is a marketplace built for college students, by college students. We're here to provide relevant services to help you succeed at school, and we're launching here in Boston, Massachusetts!</p>
-                     <p><a class="btn btn-default" href="{{url('/about/')}}">Learn More</a></p>
+                     <p><a class="btn primary-btn" href="{{url('/about/')}}">Learn More</a></p>
                 </div>
 
                 {{--<div class="container col-xs-offset-1 col-sm-7 col-sm-offset-3 col-md-offset-0 col-md-4"--}}
