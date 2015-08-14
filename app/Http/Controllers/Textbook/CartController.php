@@ -46,9 +46,6 @@ class CartController extends Controller
 
         return view('cart.index')
             ->with('items', $items)
-//            ->with('tax', $this->cart->tax())
-//            ->with('fee', $this->cart->fee())
-//            ->with('discount', $this->cart->discount())
             ->with('subtotal', Price::convertIntegerToDecimal($this->cart->totalPrice()));
     }
 
@@ -133,20 +130,17 @@ class CartController extends Controller
         if (!$item)  // remove failed
         {
             return Response::json([
-                                      'removed' => false,
-                                      'message' => 'The item is not in the cart',
-                                  ]);
+                'removed' => false,
+                'message' => 'The item is not in the cart',
+            ]);
         }
         else
         {
             return Response::json([
-                                      'removed'  => true,
-                                      'message'  => $item->product->book->title . ' has been removed successfully',
-                                      'fee'      => $this->cart->fee(),
-                                      'discount' => $this->cart->discount(),
-                                      'tax'      => $this->cart->tax(),
-                                      'total'    => $this->cart->subtotal(),
-                                  ]);
+                'removed'   => true,
+                'subtotal'  => Price::convertIntegerToDecimal($this->cart->totalPrice()),
+                'num_items' => count($this->cart->items)
+            ]);
         }
     }
 
