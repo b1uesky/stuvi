@@ -360,6 +360,18 @@ class BuyerOrder extends Model
         $paypal = new Paypal();
         $payout_batch = $paypal->createBatchPayout($items);
 
-        dd($paypal->getPayoutBatchStatus($payout_batch));
+        // save each payout_item_id to its corresponding seller order
+        // because we need payout_item_id to retrieve details about a specific
+        // payout item
+        foreach ($payout_batch->getItems() as $payout_item_details)
+        {
+            $payout_item = $payout_item_details->getPayoutItem();
+            $seller_order = SellerOrder::find($payout_item->getSenderItemId());
+            $seller_order->update([
+                'payout_item_id' => $payout_item_details->getPayoutItemId()
+            ]);
+        }
+
+//        dd($paypal->getPayoutBatchStatus($payout_batch));
     }
 }
