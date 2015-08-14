@@ -286,20 +286,54 @@ class Paypal extends \App\Helpers\Payment
             ->setSenderItemId($item['item_id'])
             ->setAmount($amount);
 
-//        $senderItem->setRecipientType('Email')
-//            ->setNote('Thanks for your patronage!')
-//            ->setReceiver('seller@stuvi.com')
-//            ->setSenderItemId("2014031400023")
-//            ->setAmount(new Currency('{
-//                        "value":"1.0",
-//                        "currency":"USD"
-//                    }'));
-
         $payouts->setSenderBatchHeader($senderBatchHeader)
             ->addItem($senderItem);
 
         try {
             $output = $payouts->createSynchronous($this->api_context);
+        } catch (Exception $ex) {
+            return "Exception: " . $ex->getMessage() . PHP_EOL;
+            exit(1);
+        }
+
+        return $output;
+    }
+
+    /**
+     * Create batch payout.
+     * https://github.com/paypal/PayPal-PHP-SDK/blob/master/sample/payouts/CreateBatchPayout.php
+     *
+     * @param $items
+     * @return \PayPal\Api\PayoutBatch|string
+     */
+    public function createBatchPayout($items)
+    {
+        $payouts = new Payout();
+
+        $senderBatchHeader = new PayoutSenderBatchHeader();
+        $senderBatchHeader->setSenderBatchId(uniqid())
+            ->setEmailSubject("You have a Payout!");
+
+        $payouts->setSenderBatchHeader($senderBatchHeader);
+
+        foreach ($items as $item)
+        {
+            $amount = new Currency();
+            $amount->setCurrency($item['currency'])
+                ->setValue($item['value']);
+
+            $senderItem = new PayoutItem();
+            $senderItem->setRecipientType($item['recipient_type'])
+                ->setNote($item['note'])
+                ->setReceiver($item['receiver'])
+                ->setSenderItemId($item['item_id'])
+                ->setAmount($amount);
+
+            $payouts->addItem($senderItem);
+        }
+
+        try {
+            $output = $payouts->create($this->api_context);
         } catch (Exception $ex) {
             return "Exception: " . $ex->getMessage() . PHP_EOL;
             exit(1);

@@ -159,18 +159,21 @@ class DeliverController extends Controller
             return redirect('express/deliver')->withError('This buyer order has already been delivered.');
         }
 
-        // add deliver time to the seller order
-        $buyer_order->time_delivered = date(Config::get('app.datetime_format'));
-        $buyer_order->save();
+        // create payouts to sellers
+        $buyer_order->createPayout();
 
-        // assign the order to the current courier
-        $buyer_order->courier_id = Auth::user()->id;
-        $buyer_order->save();
+        $buyer_order->update([
+            // add deliver time to the seller order
+            'time_delivered'    => date(Config::get('app.datetime_format')),
+            // assign the order to the current courier
+            'courier_id'        => Auth::user()->id
+        ]);
 
         // convert the buyer order and corresponding objects to an array
         $buyer_order_arr                        = $buyer_order->toArray();
         $buyer_order_arr['buyer']               = $buyer_order->buyer->allToArray();
         $buyer_order_arr['shipping_address']    = $buyer_order->shipping_address->toArray();
+
         foreach ($buyer_order->products() as $product)
         {
             $temp           = $product->toArray();
@@ -179,7 +182,6 @@ class DeliverController extends Controller
             $temp['book']['image_set']      = $product->book->imageSet->toArray();
             $buyer_order_arr['products'][]   = $temp;
         }
-
 
         // send an email notification to the buyer
         Mail::queue('emails.buyerOrder.confirmDelivery', [
