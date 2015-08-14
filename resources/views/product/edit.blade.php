@@ -28,8 +28,11 @@
                 <h2>{{ $product->book->title }}</h2>
 
                 <div class="img-container">
-                    <img class="img-large"
-                         src="{{ config('aws.url.stuvi-book-img').$product->book->imageSet->large_image or config('book.default_image_path.large') }}"/>
+                    @if($product->book->imageSet->isManuallyCreated())
+                        <img class="img-large" src="{{ config('aws.url.stuvi-book-img') . $product->book->imageSet->large_image }}">
+                    @else
+                        <img class="img-large" src="{{ $product->book->imageSet->large_image or config('book.default_image_path.large') }}"/>
+                    @endif
                 </div>
 
                 <div class="authors-container">
