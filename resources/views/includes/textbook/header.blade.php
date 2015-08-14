@@ -107,7 +107,7 @@
         <!-- End navbar container -->
     </nav>
     <!-- login modal -->
-    @if (Auth::guest())
+    @if (Auth::guest() && !(Request::url() === url('/') || Request::url() === url('/home')))
         @include('auth.login-signup-modal')
     @endif
 
