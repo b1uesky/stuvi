@@ -318,22 +318,54 @@ class Paypal extends \App\Helpers\Payment
 
         foreach ($items as $item)
         {
-            $amount = new Currency();
-            $amount->setCurrency($item['currency'])
-                ->setValue($item['value']);
-
-            $senderItem = new PayoutItem();
-            $senderItem->setRecipientType($item['recipient_type'])
-                ->setNote($item['note'])
-                ->setReceiver($item['receiver'])
-                ->setSenderItemId($item['item_id'])
-                ->setAmount($amount);
-
+            $senderItem = new PayoutItem($item);
             $payouts->addItem($senderItem);
         }
 
         try {
-            $output = $payouts->create($this->api_context);
+            $output = $payouts->create(null, $this->api_context);
+        } catch (Exception $ex) {
+            return "Exception: " . $ex->getMessage() . PHP_EOL;
+            exit(1);
+        }
+
+        return $output;
+    }
+
+    /**
+     * Get Payout batch status.
+     * https://github.com/paypal/PayPal-PHP-SDK/blob/master/sample/payouts/GetPayoutBatchStatus.php
+     *
+     * @param $payoutBatch
+     * @return \PayPal\Api\PayoutBatch
+     */
+    public function getPayoutBatchStatus($payoutBatch)
+    {
+        $payoutBatchId = $payoutBatch->getBatchHeader()->getPayoutBatchId();
+
+        try {
+            $output = Payout::get($payoutBatchId, $this->api_context);
+        } catch (Exception $ex) {
+            return "Exception: " . $ex->getMessage() . PHP_EOL;
+            exit(1);
+        }
+
+        return $output;
+    }
+
+    /**
+     * Get Payout item status.
+     * https://github.com/paypal/PayPal-PHP-SDK/blob/master/sample/payouts/GetPayoutItemStatus.php
+     *
+     * @param $payoutItem
+     * @return \PayPal\Api\PayoutItemDetails|string
+     */
+    public function getPayoutItemStatus($payoutItem)
+    {
+        $payoutItemId = $payoutItem->getPayoutItemId();
+
+        try {
+            $output = PayoutItem::get($payoutItemId, $this->api_context);
         } catch (Exception $ex) {
             return "Exception: " . $ex->getMessage() . PHP_EOL;
             exit(1);

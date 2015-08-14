@@ -380,12 +380,4 @@ class BuyerOrderController extends Controller
             $order->emailOrderConfirmation();
         }
     }
-
-    public function createPayout()
-    {
-        foreach ($this->seller_orders as $seller_order)
-        {
-            
-        }
-    }
 }

@@ -1,6 +1,8 @@
 <?php namespace App;
 
 use App\Helpers\StripeKey;
+use App\Helpers\Paypal;
+use App\Helpers\Price;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
@@ -328,5 +330,36 @@ class BuyerOrder extends Model
         {
             $message->to($buyer_order_arr['buyer']['email'])->subject('Confirmation of your order #' . $this->id);
         });
+    }
+
+    public function createPayout()
+    {
+        $items = array();
+
+        foreach ($this->seller_orders as $seller_order)
+        {
+            $receiver = $seller_order->seller()->profile->paypal;
+
+            // TODO: subtract transfer fee?
+            $value = Price::convertIntegerToDecimal($seller_order->product->price);
+
+            $item = array(
+                'recipient_type'    => 'EMAIL',
+                'amount'            => array(
+                    'value'             => $value,
+                    'currency'          => 'USD',
+                ),
+                'receiver'          => $receiver,
+                'note'              => 'Thank you!',
+                'sender_item_id'    => $seller_order->id
+            );
+
+            array_push($items, $item);
+        }
+
+        $paypal = new Paypal();
+        $payout_batch = $paypal->createBatchPayout($items);
+
+        dd($payout_batch);
     }
 }

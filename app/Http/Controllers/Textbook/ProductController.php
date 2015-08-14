@@ -47,6 +47,11 @@ class ProductController extends Controller
             ]);
         }
 
+        // update user's Paypal email address
+        Auth::user()->profile->update([
+            'paypal'    => Input::get('paypal')
+        ]);
+
         $int_price = Price::ConvertDecimalToInteger(Input::get('price'));
 
         $product = Product::create([
