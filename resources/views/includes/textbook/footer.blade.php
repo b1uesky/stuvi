@@ -37,6 +37,8 @@
             <a class="footer-link"  href="{{ url('/contact') }}" name="contact">Contact</a>
             ·
             <a class="footer-link" href="{{ url('/faq/general') }}" name="FAQ">FAQ</a>
+            ·
+            <a class="footer-link" href="{{ url('/sitemap') }}" name="sitemap">Sitemap</a>
         </p>
         <hr>
         <p>&copy; Stuvi, LLC. 2015</p>

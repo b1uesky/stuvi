@@ -283,7 +283,7 @@ Route::post ('/contact/store',  'ContactController@store');
 | Sitemap Routes
 |--------------------------------------------------------------------------
 */
-//Route::get  ('/sitemap', 'SitemapController@index');
+Route::get  ('/sitemap', 'SitemapController@index');
 
 
 /*

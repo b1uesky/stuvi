@@ -21,12 +21,12 @@
             <h1 class="" id="head1">Welcome to Stuvi</h1>
 
             <p class="lead tagline">Because it takes a village to conquer college.</p>
-            @if (Auth::guest())
-                <div class="ghost-btn-container">
-                    <a class="btn ghost-btn" data-toggle="modal" href="#login-modal" role="button">Log In</a>
-                    <a class="btn ghost-btn" data-toggle="modal" href="#signup-modal" role="button">Sign Up</a>
-                </div>
-            @endif
+            {{--@if (Auth::guest())--}}
+                {{--<div class="ghost-btn-container">--}}
+                    {{--<a class="btn ghost-btn" data-toggle="modal" href="#login-modal" role="button">Log In</a>--}}
+                    {{--<a class="btn ghost-btn" data-toggle="modal" href="#signup-modal" role="button">Sign Up</a>--}}
+                {{--</div>--}}
+            {{--@endif--}}
         </div>
         {{-- Images currently 2000px x 1333px image quality 7/12 on Photoshop --}}
         <!-- Photos are owned by Nicholas Louie (owner), and are allowed for use on stuvi.com only. Attribution in the alt text
@@ -110,49 +110,45 @@
         <div class="container-fluid stuvi-container">
             <!-- row 1-->
             <div class="row">
-                <div class="container col-md-4 col-md-offset-2" id="info1">
-                    <h1>What is Stuvi?</h1>
+                <div class="container container-description">
+                    <h2>What is Stuvi?</h2>
 
-                    <p>
-                        Stuvi is a marketplace built for college students, by college students. We're here to provide
-                        relevant services to help you succeed at school, and we're launching here in Boston,
-                        Massachusetts!
-                        <a href="{{url('/about/')}}">Learn More.</a>
-                    </p>
+                    <p>Stuvi is a marketplace built for college students, by college students. We're here to provide relevant services to help you succeed at school, and we're launching here in Boston, Massachusetts!</p>
+                     <p><a class="btn btn-default" href="{{url('/about/')}}">Learn More</a></p>
                 </div>
 
-                <div class="container col-xs-offset-1 col-sm-7 col-sm-offset-3 col-md-offset-0 col-md-4"
-                     id="img-info-1">
-                    <img class="img-responsive" src="{{asset('/img/art-boston.jpg')}}" width="350px">
-                </div>
+                {{--<div class="container col-xs-offset-1 col-sm-7 col-sm-offset-3 col-md-offset-0 col-md-4"--}}
+                     {{--id="img-info-1">--}}
+                    {{--<img class="img-responsive" src="{{asset('/img/art-boston.jpg')}}" width="350px">--}}
+                {{--</div>--}}
             </div>
         </div>
-        <div class="container-fluid home-textbook-container">
-            <h1 id="home-textbook-title">Recommended Books</h1>
+        {{--<div class="container-fluid home-textbook-container">--}}
+            {{--<h1 id="home-textbook-title">Recommended Books</h1>--}}
 
-            <div class="row textbook-row">
-                <div class="home-textbook col-sm-6 col-md-3">
-                    <a href="#">
-                        <img class="textbook-img" src="http://puu.sh/jhP6y/60bae9306c.png">
-                    </a>
-                </div>
-                <div class="home-textbook col-sm-6 col-md-3">
-                    <a href="#">
-                        <img class="textbook-img" src="http://puu.sh/jhPi3/d63b4a67e5.png">
-                    </a>
-                </div>
-                <div class="home-textbook col-sm-6 col-md-3">
-                    <a href="#">
-                        <img class="textbook-img" src="http://puu.sh/jhPpo/f6899af921.png">
-                    </a>
-                </div>
-                <div class="home-textbook col-sm-6 col-md-3">
-                    <a href="#">
-                        <img class="textbook-img" src="http://puu.sh/jhPyr/dce3b699d1.png">
-                    </a>
-                </div>
-            </div>
-        </div>
+            {{--<div class="row textbook-row">--}}
+                {{--<div class="home-textbook col-sm-6 col-md-3">--}}
+                    {{--<a href="#">--}}
+                        {{--<img class="textbook-img" src="http://puu.sh/jhP6y/60bae9306c.png">--}}
+                    {{--</a>--}}
+                {{--</div>--}}
+                {{--<div class="home-textbook col-sm-6 col-md-3">--}}
+                    {{--<a href="#">--}}
+                        {{--<img class="textbook-img" src="http://puu.sh/jhPi3/d63b4a67e5.png">--}}
+                    {{--</a>--}}
+                {{--</div>--}}
+                {{--<div class="home-textbook col-sm-6 col-md-3">--}}
+                    {{--<a href="#">--}}
+                        {{--<img class="textbook-img" src="http://puu.sh/jhPpo/f6899af921.png">--}}
+                    {{--</a>--}}
+                {{--</div>--}}
+                {{--<div class="home-textbook col-sm-6 col-md-3">--}}
+                    {{--<a href="#">--}}
+                        {{--<img class="textbook-img" src="http://puu.sh/jhPyr/dce3b699d1.png">--}}
+                    {{--</a>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </div> <!-- end bottom half -->
 
     {{--login-sign-up modal--}}

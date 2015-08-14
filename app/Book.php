@@ -1,13 +1,12 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Helpers\Price;
+use Aws\Laravel\AwsFacade;
+use Config;
 use DB;
 use File;
-use Config;
-use Aws\Laravel\AwsFacade;
+use Illuminate\Database\Eloquent\Model;
 use Intervention\Image\Facades\Image;
-
-use App\Helpers\Price;
 
 class Book extends Model
 {
@@ -104,12 +103,13 @@ class Book extends Model
     }
 
     /**
-     * Update the lowest and the highest price of the book.
+     * Update book price range for adding a product price.
+     * Used for adding new product or cancelling a seller order.
      *
      * @param integer $price
      * @return bool
      */
-    public function updateLowestAndHighestPrice($price)
+    public function addPrice($price)
     {
         // if both are not set, set them to the same price
         if ($this->lowest_price == null && $this->highest_price == null) {
@@ -124,46 +124,41 @@ class Book extends Model
         // update lowest price
         if ($this->lowest_price && $price < $this->lowest_price) {
             $this->update(['lowest_price' => $price]);
-
-            return true;
         }
-
         // update highest price
         if ($this->highest_price && $price > $this->highest_price) {
             $this->update(['highest_price' => $price]);
-
-            return true;
         }
 
         return false;
     }
 
     /**
-     * Update book lowest or highest price after a deletion of product.
+     * Update book price range for removing a product price.
+     * Used for deleting a product or selling a product.
      *
      * @param $price
      * @return bool
      */
-    public function updatePriceAfterProductDelete($price)
+    public function removePrice($price)
+
     {
         // update the lowest price
         if ($price == $this->lowest_price)
         {
-            $this->update(['lowest_price' => $this->products->min('price')]);
+            $this->update(['lowest_price' => $this->products()->where('sold', false)->get()->min('price')]);
 
-            return true;
         }
 
         // update the highest price
         if ($price == $this->highest_price)
         {
-            $this->update(['highest_price' => $this->products->max('price')]);
+            $this->update(['highest_price' => $this->products()->where('sold', false)->get()->max('price')]);
 
-            return true;
         }
 
         // do nothing
-        return false;
+        return true;
     }
 
     /**

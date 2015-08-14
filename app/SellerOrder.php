@@ -46,6 +46,9 @@ class SellerOrder extends Model
         $this->cancelled_time = Carbon::now();
         $this->product->sold  = false;
         $this->push();
+
+        // update book price range
+        $this->product->book->addPrice($this->product->price);
     }
 
     /**
