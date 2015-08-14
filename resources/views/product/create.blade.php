@@ -218,7 +218,7 @@
                     <label>Price</label>
                     <div class="input-group" id="price-input">
                         <div class="input-group-addon">$</div>
-                        <input type="number" step="0.01" name="price" class="form-control" placeholder="Amount">
+                        <input type="number" step="0.01" min="0.00" name="price" class="form-control" placeholder="Amount">
                     </div>
                 </div>
 
@@ -229,7 +229,7 @@
                         <div class="dz-message">
                             Drop images here or click to upload.
                             <br>
-                            <small>(A front cover image is required. You can upload a maximum of three images.)</small>
+                            <small>(A front cover image is required. You can upload a maximum of three images, at most 3MB per image.)</small>
                         </div>
                     </div>
                 </div>
