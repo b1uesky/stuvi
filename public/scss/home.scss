@@ -202,19 +202,7 @@
 
 /******** BOTTOM HALF ********/
 
-#img-info-1{
-  padding: 30px;
-  @media(max-width: 767px){
-    visibility: hidden;
-    height: 0;
-    width: 0;
-  }
-}
+.intro {
 
-.service {
-  margin-bottom: 30px;
-  a {
-    color: white;
-  }
 }
 
