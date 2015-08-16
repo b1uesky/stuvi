@@ -4,6 +4,8 @@
 * Used for the home page styling.*/
 
 @import "modules/all";
+@import "partials/autocomplete";
+@import "sections/searchbar";
 
 #container-home-top{
   padding: 0;
@@ -198,34 +200,7 @@
   padding: 0 15px 0 15px;
 }
 
-@import "partials/autocomplete";
-@import "sections/searchbar";
-
 /******** BOTTOM HALF ********/
-
-.stuvi-container{
-  @media(min-width: 2500px){
-    padding-left: 400px;
-  }
-}
-
-.container-description {
-  text-align: center;
-  padding: $spacing-unit;
-  max-width: 900px;
-
-  h2 {
-    font-size: $base-font-size * 2.5;
-    font-weight: bold;
-    letter-spacing: $extra-letter-spacing * 2;
-  }
-
-  p {
-    font-size: $large-font-size;
-    letter-spacing: $extra-letter-spacing;
-  }
-}
-
 
 #img-info-1{
   padding: 30px;
@@ -240,28 +215,6 @@
   margin-bottom: 30px;
   a {
     color: white;
-  }
-}
-
-/******** HOME TEXTBOOK SECTION ********/
-
-#home-textbook-title {
-  margin-left: 50px;
-  margin-bottom: 30px;
-  @media(max-width: 767px){
-    margin-left: 0;
-    text-align: center;
-  }
-}
-
-.textbook-row {
-  text-align: center;
-  .home-textbook {
-    margin-bottom: 40px;
-    .textbook-img {
-      width: 175px;
-      height: 233px;
-    }
   }
 }
 
