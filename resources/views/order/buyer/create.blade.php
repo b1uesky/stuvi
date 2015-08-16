@@ -14,10 +14,6 @@
 
     @include('includes.textbook.flash-message')
 
-    <div class="row back-row">
-        <a id="back-to-cart" href="{{ url('/cart') }}"><i class="fa fa-arrow-circle-left"></i>Back to Cart</a>
-    </div>
-
     <!-- TODO: breadcrumb cart progress bar -->
 
  {{--   <div class="container col-xs-12 col-xs-offset-2 col-sm-8 col-sm-offset-2 cart-progress">

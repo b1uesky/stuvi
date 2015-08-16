@@ -27,6 +27,11 @@ Breadcrumbs::register('shoppingCart',function($breadcrumbs){
     $breadcrumbs->push('Shopping Cart', url('/cart'));
 });
 
+Breadcrumbs::register('checkout',function($breadcrumbs){
+    $breadcrumbs->parent('shoppingCart');
+    $breadcrumbs->push('Checkout',url('/order/create'));
+});
+
 Breadcrumbs::register('sellerOrders', function($breadcrumbs) {
     $breadcrumbs->push('Your Sold Books', url('/order/seller'));
 });
