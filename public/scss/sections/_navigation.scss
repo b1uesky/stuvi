@@ -17,25 +17,19 @@ a:focus {
   border: none;
   box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
   z-index: 20;
-
+  margin-bottom: 0;
 }
 
-#nav-left {
-  li a {
-    color: $nav-text-color;
-    &:hover {
-      background-color: $nav-background-color;
-      color: $primary-color;
-      @media (min-width: 768px) {
-        border-bottom: 5px solid #{$primary-color};
-      }
-    }
-    &:focus {
-      background-color: $nav-background-color;
-    }
+#bootstrap-override .nav-link {
+  color: $body-text-color;
+
+  &:hover{
+    color: $body-text-color;
+    background-color: $background-hover-color;
   }
+
   @media(max-width: 767px){
-    text-align: center !important;
+    text-align: center;
   }
 }
 
@@ -116,34 +110,6 @@ a:focus {
       background-color: $nav-background-color;
     }
   }
-}
-
-#cart-link, #dp, #login-btn, #register-btn{
-  color: $nav-text-color;
-  &:hover{
-    background-color: $nav-background-color;
-    @media (min-width: 768px) {
-      border-bottom: 5px solid #{$primary-color};
-    }
-    color: $primary-color;
-  }
-  &:focus {
-    background-color: $nav-background-color;
-  }
-}
-
-#nav-right li a{
-  @media(max-width: 767px){
-    text-align: center !important;
-  }
-}
-
-#nav-right > .open > a{
-  background-color: $nav-background-color;
-}
-
-#nav-right > .open{
-  border-bottom: 0;
 }
 
 .nav-caret {

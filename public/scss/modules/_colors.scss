@@ -6,7 +6,12 @@
 
 /* GENERAL COLORS */
 
-$background-color: #F2F2F2;         // body background
+$background-color: #F2F2F2;
+$background-hover-color: #f5f5f5;
+
+$body-text-color: #565a5c;
+$muted-text-color: grey;
+
 $primary-color: #00A496;
 $secondary-color: #F16521;
 $stuvi-purple-color: #241729;
@@ -16,9 +21,13 @@ $border-color: #C4C4C4;
 $input-border-color: #CCCCCC;
 $transparent: rgba(0, 0, 0, 0);
 
+$heading-text-color: whitesmoke;
+$price-color: #B12704;
+$link-text-color: null;
+
 /* HEADER/NAV COLORS */
 /*$nav-background-color: #241729;*/
-$nav-background-color: rgba(255,255,255,0.97);
+$nav-background-color: #fff;
 $nav-text-color: black;              // for links
 $nav-tab-active-border-bottom-color: #90B4DF;
 
