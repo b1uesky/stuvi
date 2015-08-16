@@ -20,7 +20,7 @@ a:focus {
   margin-bottom: 0;
 }
 
-#bootstrap-override .nav-link {
+#bootstrap-override .navbar-default .navbar-nav>li>a {
   color: $body-text-color;
 
   &:hover{
@@ -93,49 +93,4 @@ a:focus {
   .navbar-nav{
     margin: 0;
   }
-}
-
-/******* NAVIGATION DROPDOWN *******/
-
-#nav-drop {
-  padding-bottom: 10px;
-  &:focus {
-    background-color: $nav-background-color;
-  }
-  &:hover{
-    color: $primary-color;
-    background-color: $nav-background-color;
-    #account-name, .nav-caret{
-      color: $primary-color;
-      background-color: $nav-background-color;
-    }
-  }
-}
-
-.nav-caret {
-  color: $nav-text-color;
-  margin-top: 0px;
-  &:hover{
-  }
-}
-
-.dropdown-menu {
-  li{
-    a{
-      &:hover{
-        background-color: $primary-color;
-        color: white;
-      }
-    }
-  }
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
-}
-
-/* Fix for when dropdown is open, the text was getting changed to dark*/
-#account-name {
-  color: $nav-text-color;
-}
-
-#cart-fix {
-  line-height: 19px;
 }

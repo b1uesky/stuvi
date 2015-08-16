@@ -55,11 +55,11 @@
                     @else
                         <!-- profile dropdown -->
                         <li class="dropdown" class="nav-link" style="z-index: 500;">
-                            <a href="#" id="nav-drop" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button" aria-expanded="true">
-                                <span nav-caret id="account-name">{{ Auth::user()->first_name }} </span><span
-                                        class="caret nav-caret"></span>
+                            <a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button" aria-expanded="true">
+                                <span nav-caret>{{ Auth::user()->first_name }} </span>
+                                <span class="caret nav-caret"></span>
                             </a>
-                            <ul class="dropdown-menu" id="nav-dropdown" role="menu" aria-labelledby="nav-dropdown">
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="nav-dropdown">
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1" href="{{ url('/user/profile') }}">Profile</a>
                                 </li>
@@ -89,8 +89,7 @@
                                 @if($cartQty == 0)
                                     <a href="#empty-cart-modal" data-toggle="modal" class="nav-link">Cart <i class="fa fa-shopping-cart" style="line-height: 19px;"></i></a>
                                 @else
-                                        <a href="{{ url('/cart') }}" id="cart-link">Cart ({{$cartQty}}) <i
-                                                    class="fa fa-shopping-cart" style="line-height: 19px;"></i></a>
+                                        <a href="{{ url('/cart') }}"><i class="fa fa-shopping-cart" ></i> {{$cartQty}}</a>
                                 @endif
                         </li>
                     @endif
