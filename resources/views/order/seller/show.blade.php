@@ -169,6 +169,7 @@
                         <ul class="address-list">
                             {{-- WARNING: if you need to change class names below,
                             make sure you change the selectors in updateDefaultAddress() in `show.js`. --}}
+                            <input type="hidden" name="seller-address-address-id" value={{$address->id}}>
                             <li class="seller-address-addressee">{{ $address->addressee }}</li>
                             <li class="seller-address-address-line">
                                 @if($address->address_line2)

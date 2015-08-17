@@ -26,7 +26,8 @@
 
     <div class="container-main">
         <!-- Search Bar Container-->
-        <div class="container-fluid search">
+        <div class="container-fluid container-image">
+            <div class="container">
             <div class="row">
                 <h1 id="title">Buy Textbooks</h1>
                 <div class="searchbar default-searchbar">
@@ -88,28 +89,23 @@
                         </div>
                     </form>
                 </div>
-
+            </div>
 
             </div>
         </div>
 
         <!-- Textbook page bottom half -->
-        <div class="container-fluid" id="textbook-bottom">
+        <section class="textbook-intro">
             <div class="container">
-                <h2>Buy Used Books</h2>
-                <!-- Divider -->
-                <div class="container">
-                    <hr id="hr1">
-                </div>
                 <!-- Row 1 -->
-                <div class="row row-b" id="row1">
+                <div class="row">
                     <!-- Row 1 Col 1 -->
                     <!-- xs: stack-->
-                    <div class="container col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id="shrink-xs">
+                    <div class="col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id="shrink-xs">
                         <img class="textbook-bottom-img" src="{{ asset('/img/textbook/search.png') }}" alt="placeholder">
                     </div>
                     <!-- Row 1 Col 2 -->
-                    <div class="container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
+                    <div class="col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
                          id="shrink-xs">
                         <h3 id="h3-1">Find your books</h3>
 
@@ -121,17 +117,17 @@
                     </div>
                 </div>
 
-                <div class="row row-b" id="row2">
+                <div class="row">
                     <!-- Row 2 Col 1 -->
                     <!-- xs: stack-->
                     <!-- col-xs-push/pull changes the ordering when it is not xs -->
                     <!-- need to fix xs -->
-                    <div class="container col-xs-12 col-sm-3 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-sm-push-7"
+                    <div class="col-xs-12 col-sm-3 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-sm-push-7"
                          id="shrink-xs">
                         <img id="truck-img" src="{{ asset('/img/textbook/truck.png') }}" alt="placeholder">
                     </div>
                     <!-- Row 2 Col 2 -->
-                    <div class="container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
+                    <div class="col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
                          id="shrink-xs">
                         <h3 id="h3-2">Book delivery</h3>
 
@@ -143,14 +139,14 @@
                         </p>
                     </div>
                 </div>
-                <div class="row row-b" id="row3">
+                <div class="row">
                     <!-- Row 3 Col 1 -->
                     <!-- xs: stack-->
-                    <div class="container col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id="shrink-xs">
+                    <div class="col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id="shrink-xs">
                         <i class="material-icons google-img">library_books</i>
                     </div>
                     <!-- Row 3 Col 2 -->
-                    <div class="container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
+                    <div class="col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
                          id="shrink-xs">
                         <h3 id="h3-3">Save money and study</h3>
 
@@ -160,8 +156,8 @@
                     </div>
                 </div>
             </div>
-            <!-- end container -->
-        </div>  <!-- end container fluid -->
+        </section>
+
     </div>
 
 @endsection

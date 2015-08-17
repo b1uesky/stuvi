@@ -131,7 +131,7 @@
                                                                         <!-- image -->
                                                                         <td valign="top" style=" font-family: Trebuchet MS, Helvetica, sans-serif; font-size: 14px;" width="10%">
                                                                             <a href="{{ url('/order/buyer/'.$buyer_order['id']) }}">
-                                                                                <img src="{{ config('aws.url.stuvi-product-img').$product['image']['small_image'] }}" alt="{{ $product['book']['title'] }}" width="150px" width="75px" height="100px">
+                                                                                <img src="{{ config('aws.url.stuvi-book-img').$product['book']['image_set']['small_image'] }}" alt="{{ $product['book']['title'].'cover image' }}" width="150px" width="75px" height="100px">
                                                                                 {{--<img src="http://placehold.it/75x100">--}}
                                                                             </a>
                                                                         </td>

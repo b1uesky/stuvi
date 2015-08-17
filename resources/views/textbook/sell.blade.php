@@ -27,8 +27,9 @@
     @include('includes.textbook.flash-message')
 
         <!-- Search Bar Container-->
-        <div class="container-fluid search">
+        <div class="container-fluid container-image">
 
+            <div class="container">
             <div class="row">
                 <h1 id="title">Sell Your Used Textbooks</h1>
                     <div class="searchbar default-searchbar">
@@ -67,26 +68,21 @@
                     </form>
                 </div>
             </div>
+            </div>
         </div>
 
 
-        <!-- Textbook page bottom half -->
-        <div class="container-fluid" id="textbook-bottom">
+        <section class="textbook-intro">
             <div class="container">
-                <h2>Sell Books</h2>
-                <!-- Divider -->
-                <div class="container">
-                    <hr id="hr1">
-                </div>
                 <!-- Row 1 -->
-                <div class="row row-b" id="row1">
+                <div class="row">
                     <!-- Row 1 Col 1 -->
                     <!-- xs: stack-->
-                    <div class="container col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id="shrink-xs">
+                    <div class="col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id="shrink-xs">
                         <i class="material-icons google-img">school</i>
                     </div>
                     <!-- Row 1 Col 2 -->
-                    <div class="container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
+                    <div class="col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
                          id="shrink-xs">
                         <h3 id="h3-1">Sell to your classmates</h3>
 
@@ -95,17 +91,17 @@
                             can spend less time selling and more time doing the things you enjoy.</p>
                     </div>
                 </div>
-                <div class="row row-b" id="row2">
+                <div class="row">
                     <!-- Row 2 Col 1 -->
                     <!-- xs: stack-->
                     <!-- col-xs-push/pull changes the ordering when it is not xs -->
                     <!-- need to fix xs -->
-                    <div class="container col-xs-12 col-sm-3 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-sm-push-7"
+                    <div class="col-xs-12 col-sm-3 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-sm-push-7"
                          id="shrink-xs">
                         <img class="textbook-bottom-img" src="{{ asset('/img/textbook/clock.png') }}" alt="Clock">
                     </div>
                     <!-- Row 2 Col 2 -->
-                    <div class="container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
+                    <div class="col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
                          id="shrink-xs">
                         <h3 id="h3-2">Select your pickup time</h3>
 
@@ -115,15 +111,15 @@
                         </p>
                     </div>
                 </div>
-                <div class="row row-b" id="row3">
+                <div class="row">
                     <!-- Row 1 Col 1 -->
                     <!-- xs: stack-->
-                    <div class="container col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id="shrink-xs">
+                    <div class="col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id="shrink-xs">
                         <img class="textbook-bottom-img" src="{{ asset('/img/textbook/dollar.png') }}"
                              alt="Truck">
                     </div>
                     <!-- Row 1 Col 2 -->
-                    <div class="container col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
+                    <div class="col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
                          id="shrink-xs">
                         <h3 id="h3-1">Save Money!</h3>
 
@@ -138,7 +134,7 @@
                 </div>
             </div>
             <!-- end container -->
-        </div>  <!-- end container fluid -->
+        </section>
 
 @endsection
 

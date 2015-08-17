@@ -4,6 +4,21 @@
 @import 'typography';
 
 body {
+  font-family: $base-font-family;
   background: $background-color;
   color: $body-text-color;
+}
+
+a {
+  &:focus {
+    outline: none;
+  }
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-grey {
+  background-color: $background-grey;
 }

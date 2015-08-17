@@ -3,6 +3,23 @@
  */
 
 $(document).ready(function () {
+    if($("input[name=seller-address-address-id]").val()){
+        $.ajax({
+            type: 'GET',
+            url: '/order/seller/assignAddress',
+            data:{
+                selected_address_id: $("input[name=seller-address-address-id]").val(),
+                seller_order_id : $('input[name=seller_order_id]').val()
+            },
+            dataType: 'json',
+            success: function(data,status){
+            },
+            error: function (xhr, status, errorThrown) {
+                console.log(status);
+                console.log(errorThrown);
+            }
+        });
+    }
     // Date time picker
     // http://xdsoft.net/jqplugins/datetimepicker/
     $('#datetimepicker').datetimepicker({
