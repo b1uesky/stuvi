@@ -23,6 +23,7 @@
 
 .searchbar-input-container-university {
   width: 0.01%;
+  height: 3.5em;
 }
 
 .searchbar-input-container-submit {
@@ -31,7 +32,7 @@
 
 .searchbar-input {
   width: 100%;
-  height: 3em;
+  height: 3.5em;
   background-color: $background-color;
   border: 1px solid $border-color;
 
@@ -56,7 +57,7 @@
 
 .search-btn {
   width: auto;
-  height: 3em;
+  height: 3.5em;
   background: $primary-color;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
