@@ -14,7 +14,7 @@
     <table class="table table-hover">
         <tr>
             <th>ID</th>
-            <th>Buyer ID</th>
+            <th>Buyer</th>
             <th>Cancelled</th>
             <th>Delivered Time</th>
             <th>Created At</th>
@@ -24,7 +24,7 @@
         @foreach($buyer_orders as $buyer_order)
             <tr>
                 <td>{{ $buyer_order->id }}</td>
-                <td>{{ $buyer_order->buyer_id }}</td>
+                <td><a href="{{ url('admin/user/'.$buyer_order->buyer_id) }}">{{ $buyer_order->buyer->first_name }} {{ $buyer_order->buyer->last_name }}</a></td>
                 <td>{{ $buyer_order->cancelled }}</td>
                 <td>{{ $buyer_order->time_delivered }}</td>
                 <td>{{ $buyer_order->created_at }}</td>
@@ -32,4 +32,6 @@
             </tr>
         @endforeach
     </table>
+
+    {!! $buyer_orders->render() !!}
 @endsection

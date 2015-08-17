@@ -17,27 +17,10 @@ class BuyerOrderController extends Controller
      */
     public function index()
     {
-        $buyer_orders = BuyerOrder::all();
-        if (Input::has('filter'))
-        {
-            $filter = Input::get('filter');
-            if ($filter == 'refund')
-            {
-                $buyer_orders = $buyer_orders->filter(function ($item)
-                {
-                    return $item->isRefundable();
-                });
-            }
-            elseif ($filter == 'nonrefund')
-            {
-                $buyer_orders = $buyer_orders->filter(function ($item)
-                {
-                    return !$item->isRefundable();
-                });
-            }
-        }
+        $buyer_orders = BuyerOrder::paginate(config('pagination.limit.admin.buyer_order'));
 
-        return view('admin.buyerOrder.index')->withBuyerOrders($buyer_orders);
+        return view('admin.buyerOrder.index')
+            ->with('buyer_orders', $buyer_orders);
     }
 
     /**
