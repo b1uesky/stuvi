@@ -5,7 +5,7 @@
 {{-- Variables--}}
 <?php $url = Request::url() ?>
 
-<header id="bootstrap-override">
+<header>
     <nav class="navbar navbar-default" id="nav" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
