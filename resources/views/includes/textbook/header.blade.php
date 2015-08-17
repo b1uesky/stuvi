@@ -89,7 +89,7 @@
                                 @if($cartQty == 0)
                                     <a href="#empty-cart-modal" data-toggle="modal" class="nav-link">Cart <i class="fa fa-shopping-cart" style="line-height: 19px;"></i></a>
                                 @else
-                                        <a href="{{ url('/cart') }}"><i class="fa fa-shopping-cart" ></i> {{$cartQty}}</a>
+                                        <a href="{{ url('/cart') }}"><i class="fa fa-shopping-cart" ></i> <span class="cart-quantity">{{$cartQty}}</span></a>
                                 @endif
                         </li>
                     @endif

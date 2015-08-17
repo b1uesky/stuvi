@@ -1,11 +1,6 @@
 /**
  * Created by nlouie on 8/13/15.
  */
-/*
-function goBack() {
-    window.history.back();
-}
-*/
 
 $(document).ready(function () {
     $(".remove-cart-item").click(function () {

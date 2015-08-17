@@ -95,6 +95,57 @@ class CartController extends Controller
     }
 
     /**
+     * Add item by AJAX.
+     *
+     * @return mixed
+     */
+    public function addItemAjax()
+    {
+        $item = Product::find(Input::get('product_id'));
+
+        if ($item)
+        {
+            if ($this->cart->hasProduct($item->id))
+            {
+                return Response::json([
+                    'success'   => false,
+                    'message'   => 'Item has already been added to the cart.'
+                ]);
+            }
+            elseif ($item->sold)
+            {
+                return Response::json([
+                    'success'   => false,
+                    'message'   => 'Product has been sold.'
+                ]);
+            }
+            elseif ($item->seller_id == Auth::id())
+            {
+                return Response::json([
+                    'success'   => false,
+                    'message'   => 'Can not add your own product to the cart.'
+                ]);
+            }
+            else
+            {
+                $this->cart->add($item);
+
+                return Response::json([
+                    'success'   => true,
+                    'message'   => 'Product Added Successfully.'
+                ]);
+            }
+        }
+        else
+        {
+            return Response::json([
+                'success'   => false,
+                'message'   => 'Sorry, we cannot find the product.'
+            ]);
+        }
+    }
+
+    /**
      * @param $product_id
      *
      * @return \Illuminate\Http\RedirectResponse

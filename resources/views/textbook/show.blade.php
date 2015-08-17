@@ -96,8 +96,10 @@
                                         <a class="btn grey-btn add-cart-btn disabled" href="#" role="button">Posted by
                                             you</a>
                                     @else
-                                        <a class="btn primary-btn add-cart-btn" href="{{ url('cart/add/'.$product->id) }}"
-                                           role="button" id="add-cart-btn" onClick="added()">Add to cart</a>
+                                        <form method="post" class="add-to-cart">
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <input class="btn primary-btn add-cart-btn" type="submit" value="Add to cart">
+                                        </form>
                                     @endif
                                 </td>
                             @endif
@@ -117,4 +119,5 @@
     <script src="{{ asset('js/navbar.js') }}"></script>
     <script src="{{ asset('libs/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/autocomplete.js')}} "></script>
+    <script src="{{ asset('js/cart.js') }}"></script>
 @endsection
