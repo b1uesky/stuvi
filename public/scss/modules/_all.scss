@@ -9,6 +9,12 @@ body {
   color: $body-text-color;
 }
 
+a {
+  &:focus {
+    outline: none;
+  }
+}
+
 .bg-white {
   background-color: white;
 }

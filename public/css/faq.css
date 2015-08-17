@@ -11,6 +11,9 @@
   background: #fff;
   color: #565a5c;
 }
+a:focus {
+  outline: none;
+}
 .bg-white {
   background-color: white;
 }

@@ -53,9 +53,13 @@
 .navbar-default .navbar-nav>li>a {
   color: white;
 
-  &:hover{
+  &:hover {
     color: white;
     background-color: $transparent;
+  }
+
+  &:focus {
+    color: white;
   }
 
   @media(max-width: 767px){
