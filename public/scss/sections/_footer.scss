@@ -4,108 +4,47 @@
 */
 @import "../modules/all";
 
-/* VARIABLES */
-$footer-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-
 .footer-distributed {
-  background-color: $footer-background-color;
-  box-sizing: border-box;
-  width: 100%;
-  text-align: left;
-  font: normal #{$footer-font-size} #{$base-font-family};
-  padding: 30px 50px;
-  margin-top: 0;
+  background-color: $background-dark;
+  color: white;
+  padding: $spacing-unit / 2;
 
+  a {
+    margin: $spacing-unit / 4;
+    color: white;
+    text-decoration: none;
 
-  .footer-left {
-    // copyright
-    p {
-      color: $footer-copyright-text-color;
-      font-size: $footer-font-size;
-      margin: 0;
-    }
-
-    .footer-links {
-      font-size: $footer-font-size;
-      color: $footer-text-color;
-      margin: 0 0 10px;
-      padding: 0;
-
-      a {
-        display: inline-block;
-        line-height: 1.8;
-        text-decoration: none;
-        color: inherit;
-      }
-      @media(min-width: 2500px){
-        font-size: 30px;
-      }
-
+    &:hover {
+      color: white;
     }
   }
 
-  .footer-right {
-    float: right;
-    margin-top: 0px;
-    max-width: 180px;
+  ul {
+    margin: $spacing-unit 0;
+    list-style-type: none;
 
-    a{
-      display: inline-block;
-      width: 35px;
-      height: 35px;
-      background-color: #33383b;
-      border-radius: 999px;
-      font-size: 20px;
-      color: $footer-text-color;
-      text-align: center;
-      line-height: 35px;
-      margin-left: 3px;
-      position: relative;
-      bottom: 5px;
+    li {
+      display: inline;
     }
   }
 }
 
-
-/* Additional styling */
-
-.social {
-  &:hover {
-    background-color: $primary-color !important;
-  }
-}
-
-.footer-link {
-  &:hover {
-    color: $accent-color !important;
-  }
-}
-
-.divider {
-  color: #FFFFFF;
-}
-
-hr {
-  opacity: 0.3;
-}
-
-/* If you don't want the footer to be responsive, remove these media queries */
-
-@media (max-width: 600px) {
-
-  .footer-distributed {
-    .footer-left {
-      text-align: center;
-      p.footer-links {
-        line-height: 1.8;
-      }
+.footer-links, .company-info {
+  ul {
+    li:after {
+      content: " \00b7";
     }
-    .footer-right {
-      text-align: center;
-      float: none;
-      margin: 0 auto 20px;
+
+    li.nobullet:after {
+      content: none;
     }
   }
 }
 
+.social-links {
+  font-size: 18px;
+}
 
+.copyright {
+  margin-right: $spacing-unit / 4;
+}

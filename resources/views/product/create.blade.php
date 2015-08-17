@@ -27,10 +27,10 @@
             <div class="textbook-info">
                 <h2>{{ $book->title }}</h2>
                 <div class="img-container">
-                    @if($book->imageSet->isManuallyCreated())
+                    @if($book->imageSet->large_image)
                         <img class="img-large" src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->large_image }}">
                     @else
-                        <img class="img-large" src="{{ $book->imageSet->large_image or config('book.default_image_path.large') }}"/>
+                        <img class="img-large" src="{{ config('book.default_image_path.large') }}"/>
                     @endif
                 </div>
 

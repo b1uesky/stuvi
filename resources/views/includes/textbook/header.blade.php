@@ -38,34 +38,28 @@
             <!-- End Navbar header -->
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <!-- Nav Bar Links-->
-                <ul class="nav navbar-nav" id="nav-left">
-                    <li><a href="{{ url('/textbook') }}" id="textbook-nav">Textbooks</a></li>
-                    {{--<li><a href="{{ url('/coming') }}">Housing</a></li>--}}
-                    {{--<li><a href="{{ url('/coming') }}">Club</a></li>--}}
-                    {{--<li><a href="{{ url('/coming') }}">Group</a></li>--}}
+                <!-- Navbar left -->
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a class="nav-link" href="{{ url('/textbook') }}">Textbooks</a></li>
                 </ul>
 
                 <!-- Navbar right -->
-                <ul id="nav-right" class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">
                     @yield('searchbar')
 
                     {{-- Not logged in --}}
                     @if (Auth::guest())
-                        <li><a id="login-btn" class="nav-login" data-toggle="modal" href="#login-modal">
-                                <!--<i class="fa fa-sign-in"></i>--> Login</a></li>     <!-- added font awesome icons -->
-                        <li><a id="register-btn" class="nav-login" data-toggle="modal" href="#signup-modal">
-                                <!--<i class="fa fa-user"></i>--> Sign Up</a></li>
-
+                        <li><a class="nav-link" data-toggle="modal" href="#login-modal">Login</a></li>
+                        <li><a class="nav-link" data-toggle="modal" href="#signup-modal">Sign Up</a></li>
                     {{-- Logged in --}}
                     @else
                         <!-- profile dropdown -->
-                        <li class="dropdown" id="dp" style="z-index: 500;">
-                            <a href="#" id="nav-drop" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button" aria-expanded="true">
-                                <span nav-caret id="account-name">{{ Auth::user()->first_name }} </span><span
-                                        class="caret nav-caret"></span>
+                        <li class="dropdown" class="nav-link" style="z-index: 500;">
+                            <a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button" aria-expanded="true">
+                                <span nav-caret>{{ Auth::user()->first_name }} </span>
+                                <span class="caret nav-caret"></span>
                             </a>
-                            <ul class="dropdown-menu" id="nav-dropdown" role="menu" aria-labelledby="nav-dropdown">
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="nav-dropdown">
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1" href="{{ url('/user/profile') }}">Profile</a>
                                 </li>
@@ -93,10 +87,9 @@
                                 <?php $cartQty = Auth::user()->cart->quantity ?>
                                 {{-- If cart empty, open modal --}}
                                 @if($cartQty == 0)
-                                    <a href="#empty-cart-modal" data-toggle="modal" id="cart-link">Cart <i class="fa fa-shopping-cart" style="line-height: 19px;"></i></a>
+                                    <a href="#empty-cart-modal" data-toggle="modal" class="nav-link">Cart <i class="fa fa-shopping-cart" style="line-height: 19px;"></i></a>
                                 @else
-                                        <a href="{{ url('/cart') }}" id="cart-link">Cart ({{$cartQty}}) <i
-                                                    class="fa fa-shopping-cart" style="line-height: 19px;"></i></a>
+                                        <a href="{{ url('/cart') }}"><i class="fa fa-shopping-cart" ></i> {{$cartQty}}</a>
                                 @endif
                         </li>
                     @endif
