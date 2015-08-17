@@ -4,6 +4,8 @@
 * Used for the home page styling.*/
 
 @import "modules/all";
+@import "partials/autocomplete";
+@import "sections/searchbar";
 
 #container-home-top{
   padding: 0;
@@ -48,57 +50,29 @@
   }
 }
 
-#nav-left {
-  @media(max-width: 767px){
-    text-align: center !important;
-  }
-  li a {
+.navbar-default .navbar-nav>li>a {
+  color: white;
+
+  &:hover {
     color: white;
-    &:hover, &:focus {
-      background-color: $transparent;
-      outline: 0;
-    }
-    @media(max-width: 767px){
-      color: black;
-      &:hover, &:focus{
-        color: $primary-color;
-      }
+    background-color: $transparent;
+  }
+
+  &:focus {
+    color: white;
+  }
+
+  @media(max-width: 767px){
+    text-align: center;
+    color: $body-text-color;
+    &:hover, &:focus{
+      color: $primary-color;
     }
   }
 }
 
-
-#nav-right {
-  li a {
-    //color: white;
-    &:hover, &:focus {
-      background-color: $transparent;
-      outline: 0;
-      color: white;
-    }
-    @media(max-width: 767px){
-      color: black;
-      &:hover, &:focus{
-        color: $primary-color;
-      }
-    }
-    @media(max-width: 767px){
-      text-align: center !important;
-    }
-  }
-}
-
-
-#nav-dropdown {
-  li {
-    a {
-      &:hover {
-        background-color: $primary-color;
-        color: white;
-      }
-    }
-  }
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+.navbar-default .navbar-nav>.open>a {
+    background-color: $transparent;
 }
 
 /* NAVIGATION HAMBURGER MENU */
@@ -201,55 +175,6 @@
   }
 }
 
-/*****
-  * GHOST BUTTONS
-  *      Login, sign in
-  *
-  ***/
-
-.ghost-btn-container {
-
-  text-align: center;
-  padding-top: 1%;
-  @media (max-width: 767px){
-    visibility: hidden;
-  }
-}
-
-.ghost-btn {
-  width: 150px;
-  height: 50px;
-  border-radius: 3px;
-  font-weight: bold;
-  font-size: 1.3em;
-  color: white;
-  border: 3px solid white;
-  background: none;
-  margin: 0 20px 0;
-  padding-top: 9px;
-  text-shadow: $text-shadow;
-  &:hover{
-    background-color: rgba(0, 164, 150, 0.6);
-    color: white;
-    text-shadow: $text-shadow;
-  }
-  &:focus{
-    outline: 0 !important;
-    color: white;
-  }
-  @media(min-width: 2500px) {
-    width: 300px;
-    height: 100px;
-    font-size: 3em;
-    padding-top: 15px;
-  }
-  @media (max-width: 767px){
-    margin: 0 8px 0;
-  }
-  @media (max-width: 399px) {
-    margin-bottom: 15px;
-  }
-}
 
 
 /* SEARCH BAR */
@@ -279,83 +204,10 @@
   padding: 0 15px 0 15px;
 }
 
-@import "partials/autocomplete";
-@import "sections/searchbar";
-
 /******** BOTTOM HALF ********/
 
-
-//#bottom-half {
-//  background-color: white;
-//  padding: 0;
-//}
-
-
-.stuvi-container{
-  @media(min-width: 2500px){
-    padding-left: 400px;
-  }
-}
-
-.container-description {
-  text-align: center;
-  padding: $spacing-unit;
-  max-width: 900px;
-
-  h2 {
-    font-size: $base-font-size * 2.5;
-    font-weight: bold;
-    letter-spacing: $extra-letter-spacing * 2;
-  }
-
-  p {
-    font-size: $large-font-size;
-    letter-spacing: $extra-letter-spacing;
-  }
-}
-
-//#info1{
-//  @media(min-width: 2500px){
-//    font-size: 2em;
-//  }
-//}
-
-
-#img-info-1{
-  padding: 30px;
-  @media(max-width: 767px){
-    visibility: hidden;
-    height: 0;
-    width: 0;
-  }
-}
-
-.service {
-  margin-bottom: 30px;
-  a {
-    color: white;
-  }
-}
-
-/******** HOME TEXTBOOK SECTION ********/
-
-#home-textbook-title {
-  margin-left: 50px;
-  margin-bottom: 30px;
-  @media(max-width: 767px){
-    margin-left: 0;
-    text-align: center;
-  }
-}
-
-.textbook-row {
-  text-align: center;
-  .home-textbook {
-    margin-bottom: 40px;
-    .textbook-img {
-      width: 175px;
-      height: 233px;
-    }
-  }
+.jumbotron {
+  margin-bottom: 0;
+  background-color: white;
 }
 

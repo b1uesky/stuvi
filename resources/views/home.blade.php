@@ -46,6 +46,7 @@
         </div>
 
         <div id="home-search-container">
+            <div class="container">
             <div class="searchbar default-searchbar">
                 <label class="sr-only" for="autocomplete">Textbook Search</label>
                 <form action="/textbook/buy/search" method="get">
@@ -101,55 +102,21 @@
                     </div>
                 </form>
             </div>
-
+            </div>
         </div>
     </div>
 
-    <!-- new bottom half -->
-    <div class="container-fluid">
-        <div class="container-fluid stuvi-container">
-            <!-- row 1-->
-            <div class="row">
-                <div class="container container-description">
-                    <h2>What is Stuvi?</h2>
-
-                    <p>Stuvi is a marketplace built for college students, by college students. We're here to provide relevant services to help you succeed at school, and we're launching here in Boston, Massachusetts!</p>
-                     <p><a class="btn primary-btn" href="{{url('/about/')}}">Learn More</a></p>
-                </div>
-
-                {{--<div class="container col-xs-offset-1 col-sm-7 col-sm-offset-3 col-md-offset-0 col-md-4"--}}
-                     {{--id="img-info-1">--}}
-                    {{--<img class="img-responsive" src="{{asset('/img/art-boston.jpg')}}" width="350px">--}}
-                {{--</div>--}}
+    <section class="intro bg-white">
+        <!-- Intro -->
+        <div class="jumbotron">
+            <div class="container text-center">
+                <h1>What is Stuvi?</h1>
+                <p>Stuvi is a marketplace built for college students, by college students. We're here to provide relevant services to help you succeed at school, and we're launching here in Boston, Massachusetts!</p>
+                <p><a class="btn primary-btn btn-lg" href="{{ url('/about/') }}" role="button">Learn more</a></p>
             </div>
         </div>
-        {{--<div class="container-fluid home-textbook-container">--}}
-            {{--<h1 id="home-textbook-title">Recommended Books</h1>--}}
+    </section>
 
-            {{--<div class="row textbook-row">--}}
-                {{--<div class="home-textbook col-sm-6 col-md-3">--}}
-                    {{--<a href="#">--}}
-                        {{--<img class="textbook-img" src="http://puu.sh/jhP6y/60bae9306c.png">--}}
-                    {{--</a>--}}
-                {{--</div>--}}
-                {{--<div class="home-textbook col-sm-6 col-md-3">--}}
-                    {{--<a href="#">--}}
-                        {{--<img class="textbook-img" src="http://puu.sh/jhPi3/d63b4a67e5.png">--}}
-                    {{--</a>--}}
-                {{--</div>--}}
-                {{--<div class="home-textbook col-sm-6 col-md-3">--}}
-                    {{--<a href="#">--}}
-                        {{--<img class="textbook-img" src="http://puu.sh/jhPpo/f6899af921.png">--}}
-                    {{--</a>--}}
-                {{--</div>--}}
-                {{--<div class="home-textbook col-sm-6 col-md-3">--}}
-                    {{--<a href="#">--}}
-                        {{--<img class="textbook-img" src="http://puu.sh/jhPyr/dce3b699d1.png">--}}
-                    {{--</a>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    </div> <!-- end bottom half -->
 
     {{--login-sign-up modal--}}
     @include('auth.login-signup-modal')
