@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Book;
-
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
 use Config;
+use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
@@ -47,12 +45,15 @@ class BookController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Book $book
+     *
      * @return Response
      */
-    public function show($id)
+    public function show($book)
     {
-        return view('admin.book.show')->withBook($id);
+        return view('admin.book.show')
+            ->with('book', $book)
+            ->with('products', $book->products);
     }
 
     /**
