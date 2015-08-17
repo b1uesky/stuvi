@@ -75,11 +75,15 @@
   text-shadow: $text-shadow;
 }
 
-.search {
+.container-image {
   background: rgba(0, 0, 0, 0.3) url('../img/open-book.jpg') no-repeat center top;
   background-size: cover;
-  padding: 60px;
   height: 350px;
+
+  .container {
+    margin-top: $spacing-unit * 3;
+    max-width: 900px;
+  }
 }
 
 @import "partials/autocomplete";
@@ -87,30 +91,17 @@
 
 /******  TEXTBOOK BOTTOM HALF ****/
 
-#textbook-bottom {
-  background-color: $background-color;
-}
+.textbook-intro {
+  background-color: $background-grey;
 
-#hr1 {
-  border-color: rgba(0, 0, 0, .64);
-}
-
-.row {
-  padding: 3%;
-  @media(max-width: 767px){
-    padding: 0;
+  .row {
+    margin: $spacing-unit * 2;
   }
-}
-
-.row-b {
-  padding: 1% 0 2% 0;
 }
 
 #shrink-xs {
   @media(max-width: 767px) {
     text-align: center;
-    margin: 0;
-    padding-bottom: 0;
   }
 }
 
