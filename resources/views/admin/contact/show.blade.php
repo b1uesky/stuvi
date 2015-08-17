@@ -4,6 +4,8 @@
 
 @section('content')
 
+    <h1>Contact Detail</h1>
+    
     <table class="table table-hover">
         <tr>
             <th>ID</th>

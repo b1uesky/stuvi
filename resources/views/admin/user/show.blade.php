@@ -4,6 +4,8 @@
 
 @section('content')
 
+    <h1>User Detail</h1>
+
     <p><strong>Overview</strong></p>
     <table class="table table-hover">
         <tr>
