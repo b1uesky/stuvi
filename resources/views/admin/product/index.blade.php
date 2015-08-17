@@ -16,18 +16,20 @@
         </div>
     @endif
 
-    <div class="btn-group" role="group">
-        <a href="{{ URL::to('admin/product') }}" class="btn btn-default">All</a>
-        <a href="{{ URL::to('admin/product/unverified') }}" class="btn btn-default">Unverified Only</a>
-        <a href="{{ URL::to('admin/product/verified') }}" class="btn btn-default">Verified Only</a>
-    </div>
+    {{--<div class="btn-group" role="group">--}}
+        {{--<a href="{{ URL::to('admin/product') }}" class="btn btn-default">All</a>--}}
+        {{--<a href="{{ URL::to('admin/product/unverified') }}" class="btn btn-default">Unverified Only</a>--}}
+        {{--<a href="{{ URL::to('admin/product/verified') }}" class="btn btn-default">Verified Only</a>--}}
+    {{--</div>--}}
+
+    <h1>Products</h1>
 
     <table class="table table-hover">
         <tr>
             <th>ID</th>
             <th>Book Title</th>
             <th>Price</th>
-            <th>Seller Email</th>
+            <th>Seller</th>
             <th>Images</th>
             <th>Sold</th>
             <th>Verified</th>
@@ -39,8 +41,8 @@
             <tr>
                 <td>{{ $product->id }}</td>
                 <td><a href="{{ url('admin/book/'.$product->book->id) }}">{{ $product->book->title }}</a></td>
-                <td>{{ $product->decimalPrice() }}</td>
-                <td>{{ $product->seller->email }}</td>
+                <td>$ {{ $product->decimalPrice() }}</td>
+                <td><a href="{{ url('/admin/user/'.$product->seller->id) }}">{{ $product->seller->first_name }} {{ $product->seller->last_name }}</a></td>
                 <td>
                     @foreach($product->images as $product_image)
                         @if($product_image->isTestImage())

@@ -3,6 +3,9 @@
 @section('title', 'Book')
 
 @section('content')
+
+    <h1>Books</h1>
+
     <table class="table table-hover">
         <tr>
             <th>ID</th>
@@ -25,7 +28,7 @@
                     <img class="admin-img-preview" alt="" src="{{ config('book.default_image_path.small')}}">
                 @endif
                 </td>
-                <td>{{ $book->title }}</td>
+                <td><a href="{{ URL::to('admin/book/' . $book->id) }}">{{ $book->title }}</a></td>
                 <td>{{ $book->edition }}</td>
                 <td>{{ $book->isbn10 }}</td>
                 <td>{{ $book->isbn13 }}</td>

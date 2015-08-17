@@ -3,6 +3,9 @@
 @section('title', 'Contact')
 
 @section('content')
+
+    <h1>Contacts</h1>
+
     <table class="table table-hover">
         <tr>
             <th>ID</th>

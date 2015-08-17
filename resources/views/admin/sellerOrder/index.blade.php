@@ -3,6 +3,9 @@
 @section('title', 'Seller Order')
 
 @section('content')
+
+    <h1>Seller Orders</h1>
+
     <table class="table table-hover">
         <tr>
             <th>ID</th>
