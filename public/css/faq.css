@@ -8,11 +8,14 @@
  *
  *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */body {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
-  background: #fff;
+  background: #f2f2f2;
   color: #565a5c;
 }
+.bg-white {
+  background-color: white;
+}
 body {
-  background-color: #fff;
+  background-color: #f2f2f2;
 }
 .faq-container {
   margin-top: 40px;

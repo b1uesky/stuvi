@@ -95,7 +95,7 @@
         </div>
 
         <!-- Textbook page bottom half -->
-        <section class="textbook-intro">
+        <section class="textbook-intro bg-grey">
             <div class="container">
                 <!-- Row 1 -->
                 <div class="row">
