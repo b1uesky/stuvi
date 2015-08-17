@@ -18,7 +18,8 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::paginate(Config::get('pagination.limit.admin.default'));
-        return view('admin.book.index')->withBooks($books);
+        return view('admin.book.index')
+            ->with('books', $books);
     }
 
     /**

@@ -17,7 +17,7 @@ class BuyerOrderController extends Controller
      */
     public function index()
     {
-        $buyer_orders = BuyerOrder::paginate(config('pagination.limit.admin.buyer_order'));
+        $buyer_orders = BuyerOrder::orderBy('id', 'DESC')->paginate(config('pagination.limit.admin.buyer_order'));
 
         return view('admin.buyerOrder.index')
             ->with('buyer_orders', $buyer_orders);

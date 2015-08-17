@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Contact;
-
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
 use Config;
 use Input;
 use Mail;
@@ -21,8 +18,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::paginate(Config::get('pagination.limit.admin.default'));
-        return view('admin.contact.index')->withContacts($contacts);
+        $contacts = Contact::orderBy('created_at', 'DESC')->paginate(Config::get('pagination.limit.admin.default'));
+        return view('admin.contact.index')
+            ->with('contacts', $contacts);
     }
 
     /**

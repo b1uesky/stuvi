@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(Config::get('pagination.limit.admin.product'));
+        $products = Product::orderBy('id', 'DESC')->paginate(Config::get('pagination.limit.admin.product'));
 
         return view('admin.product.index')
             ->with('products', $products);

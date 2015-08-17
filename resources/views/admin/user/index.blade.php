@@ -31,4 +31,6 @@
             </tr>
         @endforeach
     </table>
+
+    {!! $users->render() !!}
 @endsection

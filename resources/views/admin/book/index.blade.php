@@ -37,4 +37,6 @@
             </tr>
         @endforeach
     </table>
+
+    {!! $books->render() !!}
 @endsection

@@ -29,4 +29,6 @@
             </tr>
         @endforeach
     </table>
+
+    {!! $contacts->render() !!}
 @endsection

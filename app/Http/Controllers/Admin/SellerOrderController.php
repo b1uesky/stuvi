@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
 use App\SellerOrder;
-
 use Config;
 
 class SellerOrderController extends Controller
@@ -19,7 +16,7 @@ class SellerOrderController extends Controller
      */
     public function index()
     {
-        $seller_orders = SellerOrder::paginate(Config::get('pagination.limit.admin.seller_order'));
+        $seller_orders = SellerOrder::orderBy('id', 'DESC')->paginate(Config::get('pagination.limit.admin.seller_order'));
 
         return view('admin.sellerOrder.index')->withSellerOrders($seller_orders);
     }
