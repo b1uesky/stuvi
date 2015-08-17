@@ -127,15 +127,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         $products = [];
 
-        foreach ($this->buyerOrders()->get() as $buyer_order)
+        foreach ($this->buyerOrders as $buyer_order)
         {
             if (!$buyer_order->cancelled)
             {
-                foreach ($buyer_order->seller_orders()->get() as $seller_order)
+                foreach ($buyer_order->seller_orders as $seller_order)
                 {
                     if (!$seller_order->cancelled)
                     {
-                        $products[] = $seller_order->product();
+                        $products[] = $seller_order->product;
                     }
                 }
             }
@@ -161,7 +161,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function productsForSale()
     {
-        return $this->products()->where('sold', 0)->get();
+        return $this->products()->where('sold', 0)->orderBy('created_at', 'DESC')->get();
     }
 
     /**

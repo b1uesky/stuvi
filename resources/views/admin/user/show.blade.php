@@ -47,7 +47,7 @@
             <th>Verified</th>
             <th>Primary</th>
         </tr>
-        @foreach($user->emails as $email)
+        @foreach($emails as $email)
             <tr>
                 <td>{{ $email->email_address }}</td>
                 <td>{{ $email->verified }}</td>
@@ -69,7 +69,7 @@
             <th>Actions</th>
         </tr>
 
-        @foreach($user->productsForSale() as $product)
+        @foreach($products as $product)
             <tr>
                 <td>{{ $product->id }}</td>
                 <td><a href="{{ url('admin/book/'.$product->book->id) }}">{{ $product->book->title }}</a></td>
@@ -124,7 +124,7 @@
             <th>Actions</th>
         </tr>
 
-        @forelse($user->buyerOrders as $buyer_order)
+        @forelse($buyer_orders as $buyer_order)
             <tr>
                 <td>{{ $buyer_order->id }}</td>
                 <td>{{ $buyer_order->cancelled }}</td>
@@ -135,6 +135,33 @@
         @empty
             <p>This user has no buyer order.</p>
         @endforelse
+    </table>
+
+    <p><strong>Seller Orders</strong></p>
+    <table class="table table-hover">
+        <tr>
+            <th>ID</th>
+            <th>Product ID</th>
+            <th>BuyerOrder ID</th>
+            <th>Cancelled</th>
+            <th>Scheduled Pickup Time</th>
+            <th>Pickup Time</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach($seller_orders as $seller_order)
+            <tr>
+                <td>{{ $seller_order->id }}</td>
+                <td>{{ $seller_order->product_id }}</td>
+                <td>{{ $seller_order->buyer_order_id }}</td>
+                <td>{{ $seller_order->cancelled }}</td>
+                <td>{{ $seller_order->scheduled_pickup_time }}</td>
+                <td>{{ $seller_order->pickup_time }}</td>
+                <td>{{ $seller_order->created_at }}</td>
+                <td><a class="btn btn-info" role="button" href="{{ URL::to('admin/order/seller/' . $seller_order->id) }}">Details</a></td>
+            </tr>
+        @endforeach
     </table>
 
 @endsection

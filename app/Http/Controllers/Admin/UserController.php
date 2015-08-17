@@ -18,7 +18,8 @@ class UserController extends Controller
     {
         $users = User::paginate(Config::get('pagination.limit.admin.user'));
 
-        return view('admin.user.index')->withUsers($users);
+        return view('admin.user.index')
+            ->with('users', $users);
     }
 
     /**
@@ -50,8 +51,16 @@ class UserController extends Controller
      */
     public function show($user)
     {
+        $products       = $user->productsForSale();
+        $buyer_orders   = $user->buyerOrders()->orderBy('created_at', 'DESC')->get();
+        $seller_orders  = $user->sellerOrders()->orderBy('created_at', 'DESC')->get();
+
         return view('admin.user.show')
-            ->with('user', $user);
+            ->with('user', $user)
+            ->with('emails', $user->emails)
+            ->with('products', $products)
+            ->with('buyer_orders', $buyer_orders)
+            ->with('seller_orders', $seller_orders);
     }
 
     /**
