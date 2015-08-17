@@ -16,6 +16,8 @@
         </div>
     @endif
 
+    <h1>Product Detail</h1>
+
     <table class="table table-hover">
         <tr>
             <th>ID</th>
@@ -23,19 +25,15 @@
         </tr>
         <tr>
             <th>Book Title</th>
-            <td>{{ $product->book->title }}</td>
+            <td><a href="{{ url('admin/book/'.$product->book_id) }}">{{ $product->book->title }}</a></td>
         </tr>
         <tr>
             <th>Price</th>
             <td>{{ $product->decimalPrice() }}</td>
         </tr>
         <tr>
-            <th>Book ID</th>
-            <td>{{ $product->book_id }}</td>
-        </tr>
-        <tr>
-            <th>Seller ID</th>
-            <td>{{ $product->seller_id }}</td>
+            <th>Seller</th>
+            <td><a href="{{ url('admin/user/'.$product->seller_id) }}">{{ $product->seller->first_name }} {{ $product->seller->last_name }}</a></td>
         </tr>
         <tr>
             <th>Sold</th>
@@ -73,14 +71,24 @@
             <th>{{ $conditions['description']['title'] }}</th>
             <td>{{ $product->condition->description }}</td>
         </tr>
-
-        {{-- Product Images --}}
-        @foreach($product->images as $index => $image)
-            <tr>
-                <th>Image #{{ $index + 1 }}</th>
-                <td><a href="{{ $image->path }}" target="_blank"><img src="{{ $image->path }}" alt="" /></a></td>
-            </tr>
-        @endforeach
+        <tr>
+            <th>Images</th>
+            <td>
+                @forelse($product->images as $product_image)
+                    @if($product_image->isTestImage())
+                        <a href="{{ $product_image->large_image }}" target="_blank">
+                            <img src="{{ $product_image->small_image }}" class="admin-img-preview" alt=""/>
+                        </a>
+                    @else
+                        <a href="{{ Config::get('aws.url.stuvi-product-img') . $product_image->large_image }}" target="_blank">
+                            <img src="{{ Config::get('aws.url.stuvi-product-img') . $product_image->small_image }}" class="admin-img-preview" alt=""/>
+                        </a>
+                    @endif
+                @empty
+                    No images.
+                @endforelse
+            </td>
+        </tr>
     </table>
 
     {{-- Approve/Disapprove --}}

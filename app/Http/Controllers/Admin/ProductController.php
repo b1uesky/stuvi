@@ -1,26 +1,25 @@
 <?php namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
-
+use App\Http\Requests;
 use App\Product;
 use Config;
 
-class ProductController extends Controller {
+class ProductController extends Controller
+{
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		$products = Product::paginate(Config::get('pagination.limit.admin.product'));
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $products = Product::paginate(Config::get('pagination.limit.admin.product'));
 
-        return view('admin.product.index')->withProducts($products);
-	}
+        return view('admin.product.index')
+            ->with('products', $products);
+    }
 
     /**
      * Display unverified products.
@@ -29,7 +28,8 @@ class ProductController extends Controller {
      */
     public function showUnverified()
     {
-        $unverified = Product::where('verified', '=', false)->get();
+        $unverified = Product::where('verified', '=', false)
+                             ->get();
 
         return view('admin.product.index')->withProducts($unverified);
     }
@@ -41,71 +41,75 @@ class ProductController extends Controller {
      */
     public function showVerified()
     {
-        $verified = Product::where('verified', '=', true)->get();
+        $verified = Product::where('verified', '=', true)
+                           ->get();
 
         return view('admin.product.index')->withProducts($verified);
     }
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
         return view('admin.product.show')
             ->withProduct($id)
             ->withConditions(Config::get('product.conditions'));
-	}
+    }
 
     /**
      * Approve a product ($product->verified = true)
      *
      * @param $id
+     *
      * @return mixed
      */
-	public function approve($id)
-	{
-		$product = Product::find($id);
+    public function approve($id)
+    {
+        $product = Product::find($id);
 
-		if ($product->verified == false)
-		{
-			$product->verified = true;
-			$product->save();
+        if ($product->verified == false)
+        {
+            $product->verified = true;
+            $product->save();
 
             return redirect()
                 ->back()
                 ->withSuccess('Product ' . $product->id . ' has been approved.');
-		}
+        }
 
-		return redirect()
+        return redirect()
             ->back()
             ->withError('Product ' . $product->id . ' has already been approved.');
-	}
+    }
 
     /**
      * Disapprove a product ($product->verified = false)
      *
      * @param $id
+     *
      * @return mixed
      */
-	public function disapprove($id)
-	{
-		$product = Product::find($id);
+    public function disapprove($id)
+    {
+        $product = Product::find($id);
 
-		if ($product->verified == true)
-		{
-			$product->verified = false;
-			$product->save();
+        if ($product->verified == true)
+        {
+            $product->verified = false;
+            $product->save();
 
             return redirect()
                 ->back()
                 ->withSuccess('Product ' . $product->id . ' has been disapproved.');
-		}
+        }
 
-		return redirect()
+        return redirect()
             ->back()
             ->withError('Product ' . $product->id . ' has already been disapproved');
-	}
+    }
 }
