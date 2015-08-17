@@ -50,15 +50,16 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  Product $product
      *
      * @return Response
      */
-    public function show($id)
+    public function show($product)
     {
         return view('admin.product.show')
-            ->withProduct($id)
-            ->withConditions(Config::get('product.conditions'));
+            ->with('product', $product)
+            ->with('conditions', Config::get('product.conditions'))
+            ->with('seller_orders', $product->sellerOrders);
     }
 
     /**

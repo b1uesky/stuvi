@@ -1,8 +1,8 @@
 <?php namespace App;
 
+use App\Helpers\Price;
 use Config;
 use Illuminate\Database\Eloquent\Model;
-use App\Helpers\Price;
 
 class Product extends Model
 {
@@ -45,6 +45,16 @@ class Product extends Model
         }
 
         return false;
+    }
+
+    /**
+     * Get all seller orders of this product.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sellerOrders()
+    {
+        return $this->hasMany('App\SellerOrder');
     }
 
     /**

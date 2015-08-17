@@ -16,7 +16,14 @@
         </div>
     @endif
 
-    <h1>Product Detail</h1>
+    <h1>Product Detail
+    {{-- Approve/Disapprove --}}
+    @if(!$product->verified)
+        <a class="btn btn-success" href="{{ URL::to('admin/product/' . $product->id . '/approve') }}">Approve</a>
+    @else
+        <a class="btn btn-danger" href="{{ URL::to('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
+    @endif
+    </h1>
 
     <table class="table table-hover">
         <tr>
@@ -91,11 +98,29 @@
         </tr>
     </table>
 
-    {{-- Approve/Disapprove --}}
-    @if(!$product->verified)
-        <a class="btn btn-success" href="{{ URL::to('admin/product/' . $product->id . '/approve') }}">Approve</a>
-    @else
-        <a class="btn btn-danger" href="{{ URL::to('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
-    @endif
+    <p><strong>Seller Orders</strong></p>
+    <table class="table table-hover">
+        <tr>
+            <th>ID</th>
+            <th>BuyerOrder ID</th>
+            <th>Cancelled</th>
+            <th>Scheduled Pickup Time</th>
+            <th>Pickup Time</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach($seller_orders as $seller_order)
+            <tr>
+                <td>{{ $seller_order->id }}</td>
+                <td><a href="{{ url('admin/order/buyer/'.$seller_order->buyer_order_id) }}">{{ $seller_order->buyer_order_id }}</a></td>
+                <td>{{ $seller_order->cancelled }}</td>
+                <td>{{ $seller_order->scheduled_pickup_time }}</td>
+                <td>{{ $seller_order->pickup_time }}</td>
+                <td>{{ $seller_order->created_at }}</td>
+                <td><a class="btn btn-info" role="button" href="{{ URL::to('admin/order/seller/' . $seller_order->id) }}">Details</a></td>
+            </tr>
+        @endforeach
+    </table>
 
 @endsection
