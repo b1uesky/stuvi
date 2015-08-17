@@ -332,6 +332,9 @@ class BuyerOrder extends Model
         });
     }
 
+    /**
+     * Create Paypal payout to sellers.
+     */
     public function createPayout()
     {
         $items = array();

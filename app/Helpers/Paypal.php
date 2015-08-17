@@ -27,6 +27,8 @@ use PayPal\Api\Payout;
 use PayPal\Api\PayoutSenderBatchHeader;
 use PayPal\Api\PayoutItem;
 use PayPal\Api\RedirectUrls;
+use PayPal\Api\Refund;
+use PayPal\Api\Sale;
 use PayPal\Api\Transaction;
 
 use Config;
@@ -372,6 +374,74 @@ class Paypal extends \App\Helpers\Payment
         }
 
         return $output;
+    }
+
+    /**
+     * Get a Sale given the payment.
+     *
+     * @param $payment
+     * @return Sale|string
+     */
+    public function getSale($payment)
+    {
+        // ### Get Sale From Created Payment
+        // You can retrieve the sale Id from Related Resources for each transactions.
+        $transactions = $payment->getTransactions();
+        $relatedResources = $transactions[0]->getRelatedResources();
+        $sale = $relatedResources[0]->getSale();
+        $saleId = $sale->getId();
+        try {
+            // ### Retrieve the sale object
+            // Pass the ID of the sale
+            // transaction from your payment resource.
+            $sale = Sale::get($saleId, $this->api_context);
+        } catch (Exception $ex) {
+            return "Exception: " . $ex->getMessage() . PHP_EOL;
+            exit(1);
+        }
+
+        return $sale;
+    }
+
+    /**
+     * Refund a sale.
+     *
+     * @param $total
+     * @param $saleId
+     * @return Refund|string
+     */
+    public function refundSale($total, $saleId)
+    {
+        // ### Refund amount
+        // Includes both the refunded amount (to Payer)
+        // and refunded fee (to Payee). Use the $amt->details
+        // field to mention fees refund details.
+        $amt = new Amount();
+        $amt->setCurrency('USD')
+            ->setTotal($total);
+
+        // ### Refund object
+        $refund = new Refund();
+        $refund->setAmount($amt);
+
+        // ###Sale
+        // A sale transaction.
+        // Create a Sale object with the
+        // given sale transaction id.
+        $sale = new Sale();
+        $sale->setId($saleId);
+
+        try {
+            // Create a new apiContext object so we send a new
+            // PayPal-Request-Id (idempotency) header for this resource
+            $new_api_context = getApiContext($this->client_id, $this->client_secret);
+            $refundedSale = $sale->refund($refund, $new_api_context);
+        } catch (Exception $ex) {
+            return "Exception: " . $ex->getMessage() . PHP_EOL;
+            exit(1);
+        }
+
+        return $refundedSale;
     }
 
     /**

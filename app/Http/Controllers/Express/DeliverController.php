@@ -165,8 +165,6 @@ class DeliverController extends Controller
         $buyer_order->update([
             // add deliver time to the seller order
             'time_delivered'    => date(Config::get('app.datetime_format')),
-            // assign the order to the current courier
-            'courier_id'        => Auth::user()->id
         ]);
 
         // convert the buyer order and corresponding objects to an array
