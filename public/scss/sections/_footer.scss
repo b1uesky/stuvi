@@ -5,15 +5,17 @@
 @import "../modules/all";
 
 .footer-distributed {
+  background-color: $background-dark;
+  color: white;
   padding: $spacing-unit * 1.5;
 
   a {
     margin: $spacing-unit / 4;
-    color: $body-text-color;
+    color: white;
     text-decoration: none;
 
     &:hover {
-      color: $primary-color;
+      color: white;
     }
   }
 

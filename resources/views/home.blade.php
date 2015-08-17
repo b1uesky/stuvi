@@ -106,7 +106,7 @@
         </div>
     </div>
 
-    <section class="intro">
+    <section class="intro bg-white">
         <!-- Intro -->
         <div class="jumbotron">
             <div class="container text-center">

@@ -15,7 +15,7 @@
 
     @include('textbook/textbook-nav')
 
-    <div class="container-fluid textbook-list-container bg-grey">
+    <div class="container-fluid textbook-list-container">
 
         <div class="container textbook-list">
             {{-- HEADER --}}

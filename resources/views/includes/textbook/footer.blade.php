@@ -1,4 +1,4 @@
-<footer class="footer-distributed bg-white">
+<footer class="footer-distributed">
 
     <div class="container">
         <div class="row">
