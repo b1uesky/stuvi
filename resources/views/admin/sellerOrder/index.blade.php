@@ -9,8 +9,7 @@
     <table class="table table-hover">
         <tr>
             <th>ID</th>
-            <th>Product ID</th>
-            <th>BuyerOrder ID</th>
+            <th>Product</th>
             <th>Cancelled</th>
             <th>Scheduled Pickup Time</th>
             <th>Pickup Time</th>
@@ -21,8 +20,7 @@
         @foreach($seller_orders as $seller_order)
             <tr>
                 <td>{{ $seller_order->id }}</td>
-                <td>{{ $seller_order->product_id }}</td>
-                <td>{{ $seller_order->buyer_order_id }}</td>
+                <td><a href="{{ url('admin/product/'.$seller_order->product_id) }}">{{ $seller_order->product->book->title }}</a></td>
                 <td>{{ $seller_order->cancelled }}</td>
                 <td>{{ $seller_order->scheduled_pickup_time }}</td>
                 <td>{{ $seller_order->pickup_time }}</td>
