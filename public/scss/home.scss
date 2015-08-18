@@ -129,7 +129,7 @@
 
 #head-tag-ghost-container{
   position: absolute;
-  z-index: 9;
+  z-index: 7;
   width: 100%;
   margin-top: 100px;
   margin-bottom: 30px;
@@ -145,10 +145,11 @@
 }
 
 #head1{
+  font-family: $title-font-family;
   color: $heading-text-color;
   text-align: center;
-  font-size: 5em;
-  font-weight: bold;
+  font-size: 5.5em;
+  //font-weight: bold;
   padding-top: 3%;
   @media(min-width: 2500px){
     font-size: 10em;
@@ -163,6 +164,7 @@
 }
 
 .tagline{
+  font-family: $title-font-family;
   color: whitesmoke;
   text-align: center;
   padding-bottom: 3%;

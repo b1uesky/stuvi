@@ -23,7 +23,7 @@
             <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 about-stuvi">
                 <h2>About Stuvi</h2>
                 <p>
-                   We're a team of Computer Science students at Boston University. We've created Stuvi (Student Village) as a student solution service,
+                   We're a team of Computer Science students at Boston University. We created Stuvi (Student Village) as a student solution service,
                     ranging from textbook deliveries, to managing academic life. To kick-off our launch, we're offering a new method to buy and sell
                     your textbooks. Simply search for your book, describe its condition, and start making money.
                 </p>

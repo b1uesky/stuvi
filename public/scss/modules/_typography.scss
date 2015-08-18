@@ -14,7 +14,6 @@ $icon-size: 1.4em;
 $base-line-height: 1.5;
 $spacing-unit: 30px;
 $extra-letter-spacing: 0.2px;
-
 $text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 
 // Fixed Font
@@ -24,6 +23,7 @@ $fixed-line-height: $base-line-height;
 
 /* HEADERS */
 $header-font-family: null;
+$title-font-family: 'Signika', 'Roboto', Helvetica, Arial, sans-serif;
 $header-text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 
 /* NAVIGATION */
