@@ -104,7 +104,7 @@
                                                                 <tr>
                                                                     <td valign="top" style="color: #000000;" width="10%">
                                                                         <a href="{{ url('/order/seller/'.$seller_order['id']) }}">
-                                                                            <img src="{{ config('aws.url.stuvi-product-img').$seller_order['product']['image']['small_image'] }}" alt="{{$seller_order['product']['book']['title']}}" width="75px" height="100px">
+                                                                            <img src="{{ config('aws.url.stuvi-book-img').$seller_order['product']['book']['image_set']['small_image'] }}" alt="{{ $seller_order['product']['book']['title'].'cover image' }}" width="75px" height="100px">
                                                                         </a>
                                                                         <br>
                                                                     </td>

@@ -10,6 +10,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Product;
+use App\Helpers\Price;
 use Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -45,10 +46,7 @@ class CartController extends Controller
 
         return view('cart.index')
             ->with('items', $items)
-            ->with('tax', $this->cart->tax())
-            ->with('fee', $this->cart->fee())
-            ->with('discount', $this->cart->discount())
-            ->with('subtotal', $this->cart->subtotal());
+            ->with('subtotal', Price::convertIntegerToDecimal($this->cart->totalPrice()));
     }
 
     /**
@@ -97,6 +95,57 @@ class CartController extends Controller
     }
 
     /**
+     * Add item by AJAX.
+     *
+     * @return mixed
+     */
+    public function addItemAjax()
+    {
+        $item = Product::find(Input::get('product_id'));
+
+        if ($item)
+        {
+            if ($this->cart->hasProduct($item->id))
+            {
+                return Response::json([
+                    'success'   => false,
+                    'message'   => 'Item has already been added to the cart.'
+                ]);
+            }
+            elseif ($item->sold)
+            {
+                return Response::json([
+                    'success'   => false,
+                    'message'   => 'Product has been sold.'
+                ]);
+            }
+            elseif ($item->seller_id == Auth::id())
+            {
+                return Response::json([
+                    'success'   => false,
+                    'message'   => 'Can not add your own product to the cart.'
+                ]);
+            }
+            else
+            {
+                $this->cart->add($item);
+
+                return Response::json([
+                    'success'   => true,
+                    'message'   => 'Product Added Successfully.'
+                ]);
+            }
+        }
+        else
+        {
+            return Response::json([
+                'success'   => false,
+                'message'   => 'Sorry, we cannot find the product.'
+            ]);
+        }
+    }
+
+    /**
      * @param $product_id
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -132,20 +181,17 @@ class CartController extends Controller
         if (!$item)  // remove failed
         {
             return Response::json([
-                                      'removed' => false,
-                                      'message' => 'The item is not in the cart',
-                                  ]);
+                'removed' => false,
+                'message' => 'The item is not in the cart',
+            ]);
         }
         else
         {
             return Response::json([
-                                      'removed'  => true,
-                                      'message'  => $item->product->book->title . ' has been removed successfully',
-                                      'fee'      => $this->cart->fee(),
-                                      'discount' => $this->cart->discount(),
-                                      'tax'      => $this->cart->tax(),
-                                      'total'    => $this->cart->subtotal(),
-                                  ]);
+                'removed'   => true,
+                'subtotal'  => Price::convertIntegerToDecimal($this->cart->totalPrice()),
+                'num_items' => count($this->cart->items)
+            ]);
         }
     }
 

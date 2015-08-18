@@ -118,7 +118,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::get  ('/buyer',              ['as' => 'buyerOrders', 'uses' => 'BuyerOrderController@index']);
     Route::get  ('/confirmation',       'BuyerOrderController@confirmation');
     Route::get  ('/executePayment',     'BuyerOrderController@executePayment');
-    Route::get  ('/create',             'BuyerOrderController@create');
+    Route::get  ('/create',             ['as' => 'checkout','uses'=>'BuyerOrderController@create']);
     Route::post ('/store',              'BuyerOrderController@store');
     Route::get  ('/buyer/{id}',         ['as' => 'buyerOrderDetail', 'uses' => 'BuyerOrderController@show']);
     Route::get  ('/buyer/cancel/{id}',  'BuyerOrderController@cancel');
@@ -145,6 +145,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], 
 {
     Route::get('/',         ['as' => 'shoppingCart', 'uses' => 'CartController@index']);
     Route::get('/add/{id}', 'CartController@addItem');
+    Route::post('/add',     'CartController@addItemAjax');
     Route::get('/rmv/{id}', 'CartController@removeItem');
     Route::get('/rmv',      'CartController@removeItemAjax');
     Route::get('/empty',    'CartController@emptyCart');

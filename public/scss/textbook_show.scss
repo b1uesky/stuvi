@@ -7,101 +7,11 @@
 @import "modules/all";
 @import "partials/autocomplete";
 @import "sections/searchbar";
-
-body {
-  background-color: $background-color;
-}
-
-.empty {
-  min-height: 90vh;
-}
-
-/*** TEXTBOOK INFO ***/
-
-.textbook-row {
-  margin-top: 50px;
-}
-
-#textbook-img {
-  width: 300px;
-  height: 400px;
-  margin-left: 50px;
-  @media(max-width: 370px ){
-    margin-left: 0;
-  }
-}
-
-.textbook-info {
-  span {
-    font-size: 18px;
-  }
-}
-
-.authors-container {
-  margin-bottom: 10px;
-}
-
-.author-label {
-  background-color: $primary-color;
-  color: white;
-  border: none;
-}
-
-.author-btn {
-  &:hover, &:focus {
-    background-color: $primary-color;
-    color: white;
-    outline: 0 !important;
-  }
-}
-
-.textbook-info {
-  p {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-}
-
-/*** TEXTBOOK TABLE ***/
-
-.table-row {
-  margin-top: 40px;
-  overflow-x: scroll;
-  #h4-1, #book-options-links{
-    @media(max-width: 767px){
-      padding-left: 10px;
-    }
-  }
-}
-
-.textbook-table {
-  background-color: white;
-  border: solid #DDD;
-  @media(max-width: 767px){
-    max-width: 90vw;
-    margin-left: 3%;
-  }
-}
-
-#price {
-  color: $price-color;
-}
-
-/** PRESSED BUTTON **/
-
-.add-cart-btn {
-  margin-left: 13px;
-}
+@import "partials/image";
 
 .cart-btn-col {
   width: 150px;
   @media (max-width: 500px) {
     width: 90px;
-  }
-}
-
-.sell-btn {
-  @media (max-width: 500px) {
-    width: 40px;
   }
 }

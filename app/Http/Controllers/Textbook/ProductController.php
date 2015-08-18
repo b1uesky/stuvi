@@ -214,17 +214,20 @@ class ProductController extends Controller
         }
 
         $int_price = Price::ConvertDecimalToInteger(Input::get('price'));
+        $condition = array_filter(Input::only(
+            'general_condition',
+            'highlights_and_notes',
+            'damaged_pages',
+            'broken_binding',
+            'description'), function($element)
+        {
+            return !is_null($element);      // filter out null values.
+        });
 
         // update product
         $old_price = $product->price;
         $product->update(['price' => $int_price]);
-        $product->condition->update([
-           'general_condition'    => Input::get('general_condition'),
-           'highlights_and_notes' => Input::get('highlights_and_notes'),
-           'damaged_pages'        => Input::get('damaged_pages'),
-           'broken_binding'       => Input::get('broken_binding'),
-           'description'          => Input::get('description'),
-       ]);
+        $product->condition->update($condition);
 
         // update book price range
         $product->book->removePrice($old_price);

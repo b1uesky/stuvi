@@ -29,14 +29,12 @@
   }
 }
 
-.grey-btn{
-  background-color: grey;
-  color: $button-text-color;
+.muted-btn{
+  background-color: $background-color;
+  color: $muted-text-color;
   border: none;
-  margin: 5px;
 }
 
-// textbook/list.blade.php
 .list-search-btn {
   background: $primary-color;
   border: none;

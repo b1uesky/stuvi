@@ -13,7 +13,7 @@
     <link rel="icon" type="image/ico" href="{{ asset('img/favicon.ico') }}"/>
     <title>Stuvi - @yield('title')</title>
 
-    <link href="{{ asset('/css_app/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('libs/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/app-home.css') }}"/>
     <link rel="stylesheet" href="{{ asset('libs/font-awesome/css/font-awesome.min.css') }}">
 

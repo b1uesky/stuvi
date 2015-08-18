@@ -33,7 +33,7 @@ class ProductTableSeeder extends Seeder {
                     'price'     => $int_price,
                 ]);
 
-                $product->book->updateLowestAndHighestPrice($int_price);
+                $product->book->addPrice($int_price);
 
                 ProductCondition::create([
                     'product_id'            =>  $product->id,

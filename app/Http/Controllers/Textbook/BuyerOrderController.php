@@ -6,17 +6,15 @@ use App\Helpers\Paypal;
 use App\Helpers\Price;
 use App\Http\Controllers\Controller;
 use App\SellerOrder;
-
 use Auth;
 use Config;
 use DB;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Input;
 use Mail;
+use Redirect;
 use Session;
 use Validator;
-use Redirect;
 
 
 class BuyerOrderController extends Controller
@@ -87,8 +85,11 @@ class BuyerOrderController extends Controller
         if (count($addresses) > 0 && $default_address_id != -1)
         {
             return view('order.buyer.create')
+                ->with('subtotal', Price::convertIntegerToDecimal($this->cart->totalPrice()))
+                ->with('shipping', Price::convertIntegerToDecimal($this->cart->fee()))
+                ->with('tax', Price::convertIntegerToDecimal($this->cart->tax()))
+                ->with('total', Price::convertIntegerToDecimal($this->cart->subtotal()))
                 ->with('items', $this->cart->items)
-                ->with('total', $this->cart->subtotal())
                 ->with('addresses', $addresses)
                 ->with('default_address_id', $default_address_id)
                 ->with('display_payment', true);
@@ -96,8 +97,11 @@ class BuyerOrderController extends Controller
         else
         {
             return view('order.buyer.create')
+                ->with('subtotal', Price::convertIntegerToDecimal($this->cart->totalPrice()))
+                ->with('shipping', Price::convertIntegerToDecimal($this->cart->fee()))
+                ->with('tax', Price::convertIntegerToDecimal($this->cart->tax()))
+                ->with('total', Price::convertIntegerToDecimal($this->cart->subtotal()))
                 ->with('items', $this->cart->items)
-                ->with('total', $this->cart->subtotal())
                 ->with('addresses', $addresses)
                 ->with('default_address_id', $default_address_id)
                 ->with('display_payment', false);
@@ -180,7 +184,7 @@ class BuyerOrderController extends Controller
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store()
     {
         if (!$this->cart->isValid())
         {

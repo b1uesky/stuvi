@@ -25,15 +25,15 @@
                     @forelse ($productsForSale as $product)
                         <tr class="for-sale-item">
                             <td class="for-sale-img">
-                                @if($product->images->first()->isTestImage())
+                                @if($product->book->imageSet->isManuallyCreated())
                                    <a href="{{ url('textbook/buy/product/'.$product->id) }}" class="for-sale-img-link">
-                                        <img class="img-responsive for-sale-image" src="{{ $product->images->first()->small_image }}"
+                                        <img class="img-responsive for-sale-image" src="{{ config('aws.url.stuvi-book-img') . $product->book->imageSet->medium_image }}"
                                              width="100px"
                                              height="150px">
                                    </a>
                                 @else
                                      <a href="{{ url('textbook/buy/product/'.$product->id) }}">
-                                        <img class="img-responsive" src="{{ config('aws.url.stuvi-product-img').$product->images->first()->small_image }}"
+                                        <img class="img-responsive" src="{{ $product->book->imageSet->medium_image or config('book.default_image_path.medium') }}"
                                             width="100px"
                                             height="150px">
                                      </a>

@@ -9,11 +9,10 @@
     <link rel="icon" type="image/ico" href="{{ asset('img/favicon.ico') }}"/>
     <title>Stuvi - @yield('title')</title>
 
-    <!-- Fonts -->
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ asset('libs/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css_app/app.css') }}">
     <link rel="stylesheet" href="{{ asset('libs/font-awesome/css/font-awesome.min.css') }}">
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
     @yield('css')
 

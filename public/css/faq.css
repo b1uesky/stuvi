@@ -6,12 +6,31 @@
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
  *
- *//* BASE STYLES *//* TEXT COLORS *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */body {
-  background: #f2f2f2;
-  color: #555;
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */body {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  background: #fff;
+  color: #565a5c;
 }
-body {
-  background-color: #f2f2f2;
+.bg-white {
+  background-color: white;
+}
+.bg-grey {
+  background-color: #aaa;
+}
+.price {
+  color: #b12704;
+}
+a {
+  color: #00a496;
+}
+a:hover {
+  color: #00a496;
+}
+a:focus {
+  outline: none;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+  background-color: #00a496;
 }
 .faq-container {
   margin-top: 40px;

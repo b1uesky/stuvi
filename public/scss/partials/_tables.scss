@@ -1,8 +1,35 @@
-@import "../modules/colors";
+@import "../modules/all";
 
-.table-default{
-  background-color: $table-background-color;
-  border: 1px solid #{$table-border-color};
+.table-default {
+  thead {
+    tr th {
+      padding: $spacing-unit / 2;
+    }
+  }
+
+  tbody, tfoot {
+    tr td, tr th {
+      padding: $spacing-unit / 2;
+    }
+  }
+}
+
+.table-no-border {
+  tbody {
+    tr td, tr th {
+      border: none;
+    }
+  }
+}
+
+
+.table-panel {
+  tbody {
+    tr td {
+      border: none;
+    }
+  }
+
 }
 
 .table-primary{
