@@ -13,6 +13,7 @@ use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Rest\ApiContext;
 use PayPal\Api\Address;
 use PayPal\Api\Amount;
+use PayPal\Api\Capture;
 use PayPal\Api\CreditCard;
 use PayPal\Api\Currency;
 use PayPal\Api\Details;
@@ -86,8 +87,8 @@ class Paypal extends \App\Helpers\Payment
         $addr->setCountryCode($address['country_a2']);
         $addr->setPhone($address['phone_number']);
 
-        $cc = new CreditCard();
-        $cc->setType($credit_card['type'])
+        $card = new CreditCard();
+        $card->setType($credit_card['type'])
             ->setNumber($credit_card['number'])
             ->setExpireMonth($credit_card['expire_month'])
             ->setExpireYear($credit_card['expire_year'])
@@ -96,7 +97,7 @@ class Paypal extends \App\Helpers\Payment
             ->setLastName($credit_card['last_name']);
 
         $fi = new FundingInstrument();
-        $fi->setCreditCard($cc);
+        $fi->setCreditCard($card);
 
         $payer = new Payer();
         $payer->setPaymentMethod("credit_card")
@@ -260,6 +261,207 @@ class Paypal extends \App\Helpers\Payment
         }
 
         return $payment;
+    }
+
+    /**
+     * Authorize a credit card payment.
+     * https://github.com/paypal/PayPal-PHP-SDK/blob/master/sample/payments/AuthorizePayment.php
+     *
+     * @param $address
+     * @param $credit_card
+     * @param $items
+     * @param $subtotal
+     * @param $shipping
+     * @param $tax
+     * @param $total
+     * @return \PayPal\Api\Authorization|string
+     */
+    public function authorizePaymentByCreditCard($address, $credit_card, $items, $subtotal, $shipping, $tax, $total)
+    {
+        // The biggest difference between creating a payment, and authorizing a payment is to set the intent of payment
+        // to correct setting. In this case, it would be 'authorize'
+        $addr = new Address();
+        $addr->setLine1($address['address_line1']);
+        $addr->setLine2($address['address_line2']);
+        $addr->setCity($address['city']);
+        $addr->setState($address['state_a2']);
+        $addr->setPostalCode($address['zip']);
+        $addr->setCountryCode($address['country_a2']);
+        $addr->setPhone($address['phone_number']);
+
+        $card = new CreditCard();
+        $card->setType($credit_card['type'])
+            ->setNumber($credit_card['number'])
+            ->setExpireMonth($credit_card['expire_month'])
+            ->setExpireYear($credit_card['expire_year'])
+            ->setCvv2($credit_card['cvv'])
+            ->setFirstName($credit_card['first_name'])
+            ->setLastName($credit_card['last_name']);
+
+        $fi = new FundingInstrument();
+        $fi->setCreditCard($card);
+
+        $payer = new Payer();
+        $payer->setPaymentMethod("credit_card")
+            ->setFundingInstruments(array($fi));
+
+        $items_paypal = array();
+
+        foreach ($items as $item)
+        {
+            $item_paypal = new Item();
+            $item_paypal->setName($item['name'])
+                ->setDescription($item['description'])
+                ->setCurrency($item['currency'])
+                ->setQuantity($item['quantity'])
+                ->setPrice($item['price']);
+
+            array_push($items_paypal, $item_paypal);
+        }
+
+        $itemList = new ItemList();
+        $itemList->setItems($items_paypal);
+
+        $details = new Details();
+        $details->setShipping($shipping)
+            ->setTax($tax)
+            ->setSubtotal($subtotal);
+
+        $amount = new Amount();
+        $amount->setCurrency("USD")
+            ->setTotal($total)
+            ->setDetails($details);
+
+        $transaction = new Transaction();
+        $transaction->setAmount($amount)
+            ->setDescription("Payment description.");
+
+        $payment = new Payment();
+        // Setting intent to authorize creates a payment
+        // authorization. Setting it to sale creates actual payment
+        $payment->setIntent("authorize")
+            ->setPayer($payer)
+            ->setTransactions(array($transaction));
+
+        // ### Create Payment
+        // Create a payment by calling the payment->create() method
+        // with a valid ApiContext (See bootstrap.php for more on `ApiContext`)
+        // The return object contains the state.
+        try {
+            $payment->create($this->api_context);
+        } catch (Exception $ex) {
+            return "Exception: " . $ex->getMessage() . PHP_EOL;
+            exit(1);
+        }
+
+        $transactions = $payment->getTransactions();
+        $relatedResources = $transactions[0]->getRelatedResources();
+        $authorization = $relatedResources[0]->getAuthorization();
+        return $authorization;
+    }
+
+    /**
+     * Authorize a Paypal payment.
+     *
+     * @param $items
+     * @param $subtotal
+     * @param $shipping
+     * @param $tax
+     * @param $total
+     * @param $shipping_address_id
+     * @return Payment|string
+     */
+    public function authorizePaymentByPalpal($items, $subtotal, $shipping, $tax, $total, $shipping_address_id)
+    {
+        $payer = new Payer();
+        $payer->setPaymentMethod("paypal");
+
+        $items_paypal = array();
+
+        foreach ($items as $item)
+        {
+            $item_paypal = new Item();
+            $item_paypal->setName($item['name'])
+                ->setDescription($item['description'])
+                ->setCurrency($item['currency'])
+                ->setQuantity($item['quantity'])
+                ->setPrice($item['price']);
+
+            array_push($items_paypal, $item_paypal);
+        }
+
+        $itemList = new ItemList();
+        $itemList->setItems($items_paypal);
+
+        $details = new Details();
+        $details->setShipping($shipping)
+            ->setTax($tax)
+            ->setSubtotal($subtotal);
+
+        $amount = new Amount();
+        $amount->setCurrency("USD")
+            ->setTotal($total)
+            ->setDetails($details);
+
+        $transaction = new Transaction();
+        $transaction->setAmount($amount)
+            ->setItemList($itemList)
+            ->setDescription("Payment description")
+            ->setInvoiceNumber(uniqid());
+
+        // ### Redirect urls
+        // Set the urls that the buyer must be redirected to after
+        // payment approval/cancellation.
+        $redirectUrls = new RedirectUrls();
+        $redirectUrls
+            ->setReturnUrl(url('order/executePayment?shipping_address_id=' . $shipping_address_id))
+            ->setCancelUrl(url('order/create'));
+
+        // ### Payment
+        // A Payment Resource; create one using
+        // the above types and intent set to 'sale'
+        $payment = new Payment();
+        $payment->setIntent("authorize")
+            ->setPayer($payer)
+            ->setRedirectUrls($redirectUrls)
+            ->setTransactions(array($transaction));
+
+        // ### Create Payment
+        // Create a payment by calling the 'create' method
+        // passing it a valid apiContext.
+        // The return object contains the state and the
+        // url to which the buyer must be redirected to
+        // for payment approval
+        try {
+            $payment->create($this->api_context);
+        } catch (Exception $ex) {
+            return "Exception: " . $ex->getMessage() . PHP_EOL;
+            exit(1);
+        }
+
+        return $payment;
+    }
+
+    public function captureAuthorizedPayment($authorization)
+    {
+        // ### Capture Payment
+        // You can capture and process a previously created authorization
+        // by invoking the $authorization->capture method
+        // with a valid ApiContext (See bootstrap.php for more on `ApiContext`)
+        try {
+            $authId = $authorization->getId();
+            $amt = new Amount();
+            $amt->setCurrency("USD")
+                ->setTotal(1);
+            ### Capture
+            $capture = new Capture();
+            $capture->setAmount($amt);
+            // Perform a capture
+            $getCapture = $authorization->capture($capture, $this->api_context);
+        } catch (Exception $ex) {
+            exit(1);
+        }
+        return $getCapture;
     }
 
     /**

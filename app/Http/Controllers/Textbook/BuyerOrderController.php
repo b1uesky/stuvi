@@ -274,7 +274,7 @@ class BuyerOrderController extends Controller
             );
 
             $paypal = new Paypal();
-            $payment = $paypal->createPaymentByCreditCard($address, $credit_card, $items, $subtotal, $shipping, $tax, $total);
+            $authorization = $paypal->authorizePaymentByCreditCard($address, $credit_card, $items, $subtotal, $shipping, $tax, $total);
 
             // create buyer order
             $order = BuyerOrder::create([
@@ -284,7 +284,7 @@ class BuyerOrderController extends Controller
                 'fee'                   => $this->cart->fee(),
                 'discount'              => $this->cart->discount(),
                 'amount'                => Price::convertDecimalToInteger($total),
-                'payment_id'            => $payment->getId()
+                'authorization_id'      => $authorization->getId()
             ]);
 
             // create seller order(s) according to the Cart items
