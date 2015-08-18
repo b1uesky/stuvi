@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Config;
 use Illuminate\Http\Request;
+use Input;
 
 class BookController extends Controller
 {
@@ -17,7 +18,43 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::paginate(Config::get('pagination.limit.admin.default'));
+        $filter   = Input::get('filter', 'id');
+        $keyword  = strtolower(Input::get('keyword'));
+        $order_by = Input::get('order_by', 'id');
+        $order    = Input::get('order', 'DESC');
+
+        if (empty($keyword))
+        {
+            $query = Book::query();
+        }
+        elseif ($filter == 'id')
+        {
+            $query = Book::where($filter, intval($keyword));
+        }
+        elseif ($filter == 'title')
+        {
+            $query = Book::where('title', 'LIKE', '%'.$keyword.'%');
+        }
+        elseif ($filter == 'isbn')
+        {
+            if (strlen($keyword) == 10)
+            {
+                $query = Book::where('isbn10', 'LIKE', $keyword);
+            }
+            else
+            {
+                $query = Book::Where('isbn13', 'LIKE', $keyword);
+            }
+        }
+        else
+        {
+            $query = Book::query();
+        }
+
+        $books = $query->orderBy($order_by, $order)->paginate(Config::get('pagination.limit.admin.default'));
+
+
+//        $books = Book::paginate(Config::get('pagination.limit.admin.default'));
         return view('admin.book.index')
             ->with('books', $books);
     }
