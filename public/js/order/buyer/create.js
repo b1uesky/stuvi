@@ -10,6 +10,7 @@ $(document).ready(function () {
      * Shipping Address
      */
     $('.show-addresses').click(function () {
+        $('#loader-wrapper').hide();
         $('.displayDefaultAddress').hide();
         $('#new-address-panel').show(1000);
         $('.displayAllAddresses').show(1000);
@@ -35,18 +36,15 @@ $(document).ready(function () {
             }
         });
         $('#new-address-panel').hide();
+        $('#loader-wrapper').hide();
     });
 
     $('#storeAddedAddress').click(function () {
         $('.add-address-form').submit();
-        $('.form-btn').css('visibility', 'hidden');
-        $('#add-loading').css('visibility', 'visible');
     });
 
     $('#storeUpdatedAddress').click(function () {
         $('.update-address-form').submit();
-        $('.form-btn').css('visibility', 'hidden');
-        $('#update-loading').css('visibility', 'visible');
     });
 
     $('.editThisAddress').click(function () {
@@ -62,6 +60,7 @@ $(document).ready(function () {
         $('input[name=state_a2]').val(address_array[5]);
         $('input[name=zip]').val(address_array[6]);
         $('input[name=address_id]').val(address_ID);
+        $('#loader-wrapper').hide();
     });
 
     $('.deleteThisAddress').click(function () {
@@ -84,6 +83,7 @@ $(document).ready(function () {
                         $('.add_new_address').click();
                     }
                 }
+                $('#loader-wrapper').hide();
             }
         });
     });

@@ -6,7 +6,7 @@
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
  *
- *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */body {
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* Common classes */body {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   background: #fff;
   color: #565a5c;
@@ -20,7 +20,7 @@
 .price {
   color: #b12704;
 }
-a {
+/* Bootstrap Override */a {
   color: #00a496;
 }
 a:hover {

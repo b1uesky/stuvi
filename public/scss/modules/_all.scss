@@ -3,6 +3,7 @@
 @import 'colors';
 @import 'typography';
 
+/* Common classes */
 body {
   font-family: $base-font-family;
   background: $background-color;
@@ -17,13 +18,11 @@ body {
   background-color: $background-grey;
 }
 
-
-
 .price {
   color: $price-color;
 }
 
-// Bootstrap Override
+/* Bootstrap Override */
 a {
   color: $primary-color;
 

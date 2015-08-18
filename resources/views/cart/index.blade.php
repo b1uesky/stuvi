@@ -61,7 +61,7 @@
                                 {{-- ISBN --}}
                                 <td>{{ $item->product->book->isbn10 }}</td>
                                 {{-- Price --}}
-                                <td class="price">${{ $item->product->decimalPrice()}}</td>
+                                <td>${{ $item->product->decimalPrice()}}</td>
                                 {{-- Remove --}}
                                 <td>
                                     <button type="button" class="close remove-cart-item" aria-label="Close"><span
