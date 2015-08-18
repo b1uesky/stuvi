@@ -126,7 +126,7 @@
 @section('javascript')
     <script src="{{ asset('libs/slidejs3/source/jquery.slides.min.js' )}}"></script>
     <script src="{{asset('js/home.js')}}"></script>
-
+    <script src="{{asset('js/loader.js')}}"></script>
     <script src="libs/jquery-ui/jquery-ui.min.js"></script>
     <script src="{{asset('js/autocomplete.js')}}"></script>
 @endsection

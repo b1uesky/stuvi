@@ -7,11 +7,9 @@
 $(document).ready(function () {
 
     $('.loading').css('visibility', 'hidden');
-
     // login form validation
     $('#form-login').submit(function (e) {
         e.preventDefault();
-        $('.loading').css('visibility', 'visible');
         $.ajax({
             type: 'POST',
             url: '/auth/login',

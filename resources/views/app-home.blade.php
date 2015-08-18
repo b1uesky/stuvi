@@ -28,6 +28,8 @@
 {{-- Page content --}}
 @yield('content')
 
+{{--loader shade--}}
+@include('loader')
 @include('includes.textbook.footer')
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -39,6 +41,7 @@
 
 <script src="{{ asset('libs/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/loader.js') }}"></script>
 
 @if(Auth::guest())
     {{-- FormValidation --}}
