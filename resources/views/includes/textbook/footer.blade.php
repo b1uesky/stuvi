@@ -31,8 +31,8 @@
             </ul>
 
             <ul class="company-info col-md-4 text-center">
-                <li><span class="copyright">&copy; 2015 Stuvi</span></li>
-                <li><a href="#" name="terms">Terms</a></li>
+                <li><span class="copyright">&copy; 2015 Stuvi LLC.</span></li>
+                <li><a href="#" name="terms">Terms of Service</a></li>
                 <li class="nobullet"><a href="#" name="privacy">Privacy</a></li>
             </ul>
         </div>
