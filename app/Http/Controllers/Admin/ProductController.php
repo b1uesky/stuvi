@@ -58,7 +58,14 @@ class ProductController extends Controller
         $products = $query->orderBy($order_by, $order)->paginate(Config::get('pagination.limit.admin.product'));
 
         return view('admin.product.index')
-            ->with('products', $products);
+            ->with('products', $products)
+            ->with('pagination_params', Input::only([
+                                                        'filter',
+                                                        'keyword',
+                                                        'order_by',
+                                                        'order',
+                                                        'page',
+                                                    ]));
     }
 
     /**

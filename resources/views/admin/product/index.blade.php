@@ -27,32 +27,32 @@
     <form class="form-inline" role="form" action="{{ url('admin/product') }}" method="get">
         <div class="form-group">
             <select name="filter" class="form-control">
-                <option value="id">ID</option>
-                <option value="title" selected>Title</option>
-                <option value="seller">Seller</option>
+                <option value="id" @if ($pagination_params['filter'] == 'id') selected @endif>ID</option>
+                <option value="title" @if ($pagination_params['filter'] == 'title') selected @endif>Title</option>
+                <option value="seller" @if ($pagination_params['filter'] == 'seller') selected @endif>Seller</option>
             </select>
         </div> <!-- form group [rows] -->
         <div class="form-group">
-            <input type="text" class="form-control input-large" name="keyword">
+            <input type="text" class="form-control input-large" name="keyword" value="{{ $pagination_params['keyword'] }}">
         </div><!-- form group [search] -->
         <div class="form-group">
             <label class="filter-col" style="margin-right:0;">Order by:</label>
             <select name="order_by" class="form-control">
-                <option value="id" selected>ID</option>
-                <option value="title">Title</option>
-                <option value="first_name">Seller First Name</option>
-                <option value="last_name">Seller Last Name</option>
-                <option value="price">Price</option>
-                <option value="sold">Sold</option>
-                <option value="activated">Activated</option>
-                <option value="created_at">Created At</option>
-                <option value="updated_at">Updated At</option>
+                <option value="id" @if ($pagination_params['order_by'] == 'id') selected @endif>ID</option>
+                <option value="title" @if ($pagination_params['order_by'] == 'title') selected @endif>Title</option>
+                <option value="first_name" @if ($pagination_params['order_by'] == 'first_name') selected @endif>Seller First Name</option>
+                <option value="last_name" @if ($pagination_params['order_by'] == 'last_name') selected @endif>Seller Last Name</option>
+                <option value="price" @if ($pagination_params['order_by'] == 'price') selected @endif>Price</option>
+                <option value="sold" @if ($pagination_params['order_by'] == 'sold') selected @endif>Sold</option>
+                <option value="activated" @if ($pagination_params['order_by'] == 'activated') selected @endif>Activated</option>
+                <option value="created_at" @if ($pagination_params['order_by'] == 'created_at') selected @endif>Created At</option>
+                <option value="updated_at" @if ($pagination_params['order_by'] == 'updated_at') selected @endif>Updated At</option>
             </select>
         </div> <!-- form group [rows] -->
         <div class="form-group">
             <select name="order" class="form-control">
-                <option value="DESC" selected>DESC</option>
-                <option value="ASC">ASC</option>
+                <option value="DESC" @if ($pagination_params['order'] == 'DESC') selected @endif>DESC</option>
+                <option value="ASC" @if ($pagination_params['order'] == 'ASC') selected @endif>ASC</option>
             </select>
         </div> <!-- form group [rows] -->
         <div class="form-group">
@@ -123,5 +123,5 @@
 
     </table>
 
-    {!! $products->render() !!}
+    {!! $products->appends($pagination_params)->render() !!}
 @endsection
