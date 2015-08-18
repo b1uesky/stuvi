@@ -120,8 +120,6 @@
 
     {{--login-sign-up modal--}}
     @include('auth.login-signup-modal')
-    {{--loader shade--}}
-    @include('loader')
 
 @endsection
 

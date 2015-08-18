@@ -3,7 +3,7 @@ $(document).ready(function(){
 		$('#loader-wrapper').show();
 	});
 	$('a').on("click",function(){
-		if (isURL($(this).attr('href'))) {
+		if (isURL($(this).attr('href')) && $(this).attr('target') != "_blank") {
 			$('#loader-wrapper').show();
 		};
 	});
