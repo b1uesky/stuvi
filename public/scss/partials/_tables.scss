@@ -8,11 +8,20 @@
   }
 
   tbody, tfoot {
-    tr td {
+    tr td, tr th {
       padding: $spacing-unit / 2;
     }
   }
 }
+
+.table-no-border {
+  tbody {
+    tr td, tr th {
+      border: none;
+    }
+  }
+}
+
 
 .table-panel {
   tbody {

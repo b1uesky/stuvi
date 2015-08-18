@@ -20,66 +20,83 @@
     @include('includes.textbook.flash-message')
 
     <div class="container">
-        <div class="row textbook-row">
-            <div class="col-sm-6">
-                @if($book->imageSet->isManuallyCreated())
-                    <img class="textbook-img" src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->small_image }}">
+
+        <div class="page-header">
+            <h1>{{ $book->title }}</h1>
+        </div>
+
+        {{-- Book info --}}
+        <div class="row">
+
+            {{-- Image --}}
+            <div class="col-md-6">
+                @if($book->imageSet->medium_image)
+                    <img class="img-medium img-responsive" src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->medium_image }}">
                 @else
-                    <img class="textbook-img" src="{{ $book->imageSet->small_image or config('book.default_image_path.large') }}">
+                    <img class="img-medium img-responsive" src="{{ config('book.default_image_path.medium') }}">
                 @endif
             </div>
 
-            <div class="col-sm-6 textbook-info">
-                <h1>{{ $book->title }}</h1>
+            <br/>
 
-                <div class="authors-container">
-                    <span>by </span>
-                    <?php $bookCounter = 0; ?>
-                    @foreach($book->authors as $author)
-                        @if($bookCounter == 0)
-                            <span id="authors">{{ $author->full_name }}</span>
-                        @else
-                                <span id="authors">, {{ $author->full_name }}</span>
-                        @endif
-                        <?php $bookCounter++ ?>
-                    @endforeach
-                </div>
-                <p>ISBN10: {{ $book->isbn10 }}</p>
-                <p>ISBN13: {{ $book->isbn13 }}</p>
-                <p>Number of Pages: {{ $book->num_pages }}</p>
+            {{-- Details --}}
+            <div class="col-md-6">
+                <table class="table table-responsive table-no-border">
+                    <tr>
+                        <th>
+                            @if(count($book->authors) > 1)
+                                Authors
+                            @else
+                                Author
+                            @endif
+                        </th>
+                        <td>
+                            @foreach($book->authors as $index => $author)
+                                @if($index == 0)
+                                    <span class="author">{{ $author->full_name }}</span>
+                                @else
+                                    <span class="author">, {{ $author->full_name }}</span>
+                                @endif
+                            @endforeach
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>ISBN-10</th>
+                        <td>{{ $book->isbn10 }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>ISBN-13</th>
+                        <td>{{ $book->isbn13 }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Number of pages</th>
+                        <td>{{ $book->num_pages }}</td>
+                    </tr>
+                </table>
             </div>
         </div>
 
-        @if(count($book->availableProducts()) > 0)
+        <br/>
 
-            <div class="row table-row">
-
-                <h4 id="h4-1">Select one of our available books</h4>
-
-                <div id="book-options-links">
-                    {{-- if the user is not logged in --}}
-                    @if(Auth::guest())
-                        <p>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy or sell a textbook.</p>
-                    @else
-                        <p>Have one to sell? <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Sell yours now.</a></p>
-                    @endif
-                </div>
-
-                <table class="table table-responsive textbook-table" style="width:100%" border="1">
+        {{-- Product list --}}
+        <div class="row">
+            @if(count($book->availableProducts()) > 0)
+                <table class="table table-responsive table-default">
                     <thead>
                     <tr class="active">
                         <th>Price</th>
                         <th>Condition</th>
                         <th>Details</th>
-                        @if(Auth::check())
-                            <th>Add to Cart</th>
-                        @endif
+                        <th></th>
                     </tr>
                     </thead>
                     @foreach($book->availableProducts() as $product)
                         <tr>
-                            <td>
-                                <p id="price">${{ $product->decimalPrice() }}</p>
+                            <td class="price">
+                                ${{ $product->decimalPrice() }}
                             </td>
                             <td>
                                 {{ $product->general_condition() }}
@@ -107,10 +124,21 @@
                     @endforeach
 
                 </table>
+            @else
+                <h3>Sorry, this book is not available for now.</h3>
+            @endif
+
+            <div class="text-center">
+                {{-- if the user is not logged in --}}
+                @if(Auth::guest())
+                    <p>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy or sell a textbook.</p>
+                @else
+                    <p>Have one to sell? <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Sell yours now.</a></p>
+                @endif
             </div>
-        @else
-            <h3>Sorry, this book is not available for now.</h3>
-        @endif
+        </div>
+
+
     </div>
 
 @endsection

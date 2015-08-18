@@ -7,39 +7,13 @@
 @import "modules/all";
 @import "partials/autocomplete";
 @import "sections/searchbar";
-
-body {
-  background-color: $background-color;
-}
+@import "partials/image";
 
 .empty {
   min-height: 90vh;
 }
 
 /*** TEXTBOOK INFO ***/
-
-.textbook-row {
-  margin-top: 50px;
-}
-
-#textbook-img {
-  width: 300px;
-  height: 400px;
-  margin-left: 50px;
-  @media(max-width: 370px ){
-    margin-left: 0;
-  }
-}
-
-.textbook-info {
-  span {
-    font-size: 18px;
-  }
-}
-
-.authors-container {
-  margin-bottom: 10px;
-}
 
 .author-label {
   background-color: $primary-color;
@@ -62,30 +36,7 @@ body {
   }
 }
 
-/*** TEXTBOOK TABLE ***/
 
-.table-row {
-  margin-top: 40px;
-  overflow-x: scroll;
-  #h4-1, #book-options-links{
-    @media(max-width: 767px){
-      padding-left: 10px;
-    }
-  }
-}
-
-.textbook-table {
-  background-color: white;
-  border: solid #DDD;
-  @media(max-width: 767px){
-    max-width: 90vw;
-    margin-left: 3%;
-  }
-}
-
-#price {
-  color: $price-color;
-}
 
 /** PRESSED BUTTON **/
 

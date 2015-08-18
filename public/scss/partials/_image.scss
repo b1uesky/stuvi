@@ -3,13 +3,13 @@
 }
 
 .img-medium {
-
-}
-
-.img-large {
   width: 200px;
 }
 
+.img-large {
+  width: 300px;
+}
+
 .img-container {
-  margin: 10px 0;
+  margin: $spacing-unit / 2 0;
 }
