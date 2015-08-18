@@ -22,4 +22,39 @@
 @import 'sections/flash-mesage';
 @import 'sections/loader';
 
-/* VENDOR ( THIRD PARTY ) */
+
+/* Common classes */
+body {
+  font-family: $base-font-family;
+  background: $background-color;
+  color: $body-text-color;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-grey {
+  background-color: $background-grey;
+}
+
+.price {
+  color: $price-color;
+}
+
+/* Bootstrap Override */
+a {
+  color: $primary-color;
+
+  &:hover {
+    color: $primary-color;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+  background-color: $primary-color;
+}
