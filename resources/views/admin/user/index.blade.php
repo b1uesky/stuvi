@@ -9,29 +9,29 @@
     <form class="form-inline" role="form" action="{{ url('admin/user') }}" method="get">
         <div class="form-group">
             <select name="filter" class="form-control">
-                <option value="id">ID</option>
-                <option value="name" selected>Name</option>
-                <option value="phone">Phone</option>
-                <option value="role">Role</option>
+                <option value="id" @if ($pagination_params['filter'] == 'id') selected @endif>ID</option>
+                <option value="name" @if ($pagination_params['filter'] == 'name') selected @endif>Name</option>
+                <option value="phone" @if ($pagination_params['filter'] == 'phone') selected @endif>Phone</option>
+                <option value="role" @if ($pagination_params['filter'] == 'role') selected @endif>Role</option>
             </select>
         </div> <!-- form group [rows] -->
         <div class="form-group">
-            <input type="text" class="form-control input-large" name="keyword">
+            <input type="text" class="form-control input-large" name="keyword" value="{{ $pagination_params['keyword'] }}">
         </div><!-- form group [search] -->
         <div class="form-group">
             <label class="filter-col" style="margin-right:0;">Order by:</label>
             <select name="order_by" class="form-control">
-                <option value="id" selected>ID</option>
-                <option value="first_name">First Name</option>
-                <option value="last_name">Last Name</option>
-                <option value="phone_number">Phone</option>
-                <option value="role">Role</option>
+                <option value="id" @if ($pagination_params['order_by'] == 'id') selected @endif>ID</option>
+                <option value="first_name" @if ($pagination_params['order_by'] == 'first_name') selected @endif>First Name</option>
+                <option value="last_name" @if ($pagination_params['order_by'] == 'last_name') selected @endif>Last Name</option>
+                <option value="phone_number" @if ($pagination_params['order_by'] == 'phone_number') selected @endif>Phone</option>
+                <option value="role" @if ($pagination_params['order_by'] == 'role') selected @endif>Role</option>
             </select>
         </div> <!-- form group [rows] -->
         <div class="form-group">
             <select name="order" class="form-control">
-                <option value="DESC" selected>DESC</option>
-                <option value="ASC">ASC</option>
+                <option value="DESC" @if ($pagination_params['order'] == 'DESC') selected @endif>DESC</option>
+                <option value="ASC" @if ($pagination_params['order'] == 'ASC') selected @endif>ASC</option>
             </select>
         </div> <!-- form group [rows] -->
         <div class="form-group">
@@ -67,5 +67,5 @@
         @endforeach
     </table>
 
-    {!! $users->render() !!}
+    {!! $users->appends($pagination_params)->render() !!}
 @endsection

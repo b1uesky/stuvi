@@ -51,7 +51,14 @@ class UserController extends Controller
         $users = $query->orderBy($order_by, $order)->paginate(Config::get('pagination.limit.admin.user'));
 
         return view('admin.user.index')
-            ->with('users', $users);
+            ->with('users', $users)
+            ->with('pagination_params', Input::only([
+                                                        'filter',
+                                                        'keyword',
+                                                        'order_by',
+                                                        'order',
+                                                        'page',
+                                                    ]));
     }
 
     /**
