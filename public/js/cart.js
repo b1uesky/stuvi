@@ -30,6 +30,7 @@ $(document).ready(function() {
 
                     // TODO: error message display
                 }
+                // $('#loader-wrapper').hide();
             },
             error: function(xhr, status, error) {
                 console.log(status);

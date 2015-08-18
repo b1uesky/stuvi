@@ -9,6 +9,10 @@ $(document).ready(function(){
 	});
 });
 
+$(document).ajaxComplete(function(event, XMLHttpRequest, ajaxOptions){
+    $('#loader-wrapper').hide();
+});
+
 function isURL(str) {
   var strRegex = "^((https|http|ftp|rtsp|mms)?://)"
         + "?(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?" //ftp的user@
