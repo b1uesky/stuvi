@@ -232,13 +232,6 @@ $(document).ready(function () {
             data.element
                 .data('fv.messages')
                 .find('.help-block[data-fv-for="' + data.field + '"]').hide();
-
-            // if payment method is credit card
-            //if ($('input[name=payment_method]').val() == 'credit_card') {
-            //
-            //    // disable place your order button
-            //    $('input[type="submit"]').prop('disabled', true);
-            //}
         });
 
 
@@ -255,8 +248,6 @@ $(document).ready(function () {
         }
     });
 
-    // disable place your order button by default
-    //$('input[type="submit"]').prop('disabled', true);
 
     $('#form-place-order').submit(function(e) {
         e.preventDefault();
@@ -271,6 +262,7 @@ $(document).ready(function () {
             $('<input>').attr({type: 'hidden', name: 'expire_year', value: $('#payment-year').val()}).appendTo(this);
             $('<input>').attr({type: 'hidden', name: 'cvc', value: $('#payment-cvc').val()}).appendTo(this);
 
+            // validate form
             $('#form-payment').formValidation('validate');
             var isValidForm = $('#form-payment').data('formValidation').isValid();
 
@@ -282,7 +274,6 @@ $(document).ready(function () {
         if (payment_method == 'paypal') {
             this.submit();
         }
-
 
     });
 });
