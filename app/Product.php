@@ -194,4 +194,52 @@ class Product extends Model
 
         return $rules;
     }
+
+    /**
+     * Build a query for searching products with books title keywords.
+     *
+     * @param $keywords
+     *
+     * @return mixed
+     */
+    public static function buildQueryWithBookTitle($keywords)
+    {
+        $keywords = explode(' ', $keywords);
+
+        $query = Product::join('books as b', function ($join) use ($keywords)
+        {
+            $join->on('products.book_id', '=', 'b.id');
+            foreach ($keywords as $keyword)
+            {
+                $join->where('b.title', 'LIKE', '%'.$keyword.'%');
+            }
+        })->distinct()->select('products.*');
+
+        return $query;
+    }
+
+    /**
+     * Build a query for searching products sold by keywords.
+     *
+     * @param $keywords
+     *
+     * @return mixed
+     */
+    public static function buildQueryWithSellerName($keywords)
+    {
+        $keywords = explode(' ', $keywords);
+
+        $query = Product::join('users as u', 'products.seller_id', '=', 'u.id');
+
+        foreach ($keywords as $keyword)
+        {
+            $query = $query->where(function ($query) use ($keyword)
+            {
+                $query->where('u.first_name', 'LIKE', $keyword);
+                $query->orWhere('u.last_name', 'LIKE', $keyword);
+            });
+        }
+
+        return $query->distinct()->select('products.*');
+    }
 }

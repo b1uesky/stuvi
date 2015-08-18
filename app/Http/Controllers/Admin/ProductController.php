@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Product;
 use Config;
+use Input;
 
 class ProductController extends Controller
 {
@@ -15,7 +16,46 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('id', 'DESC')->paginate(Config::get('pagination.limit.admin.product'));
+        $filter   = Input::get('filter');
+        $keyword  = strtolower(Input::get('keyword'));
+        $order_by = Input::get('order_by', 'id');
+        $order    = Input::get('order', 'DESC');
+
+        // filter
+        if (empty($keyword))
+        {
+            $query = Product::query();
+        }
+        elseif ($filter == 'id')
+        {
+            $query = Product::where($filter, intval($keyword));
+        }
+        elseif ($filter == 'title')
+        {
+            $query = Product::buildQueryWithBookTitle($keyword);
+        }
+        elseif ($filter == 'seller')
+        {
+            $query = Product::buildQueryWithSellerName($keyword);
+        }
+        else
+        {
+            $query = Product::query();
+        }
+
+        // order
+        if ($order_by == 'title')
+        {
+            $query = $query->join('books', 'products.book_id', '=', 'books.id')
+                            ->select('products.*', 'books.title');
+        }
+        elseif ($order_by == 'first_name' || $order_by == 'last_name')
+        {
+            $query = $query->join('users', 'products.seller_id', '=', 'users.id')
+                            ->select('products.*', 'users.'.$order_by);
+        }
+
+        $products = $query->orderBy($order_by, $order)->paginate(Config::get('pagination.limit.admin.product'));
 
         return view('admin.product.index')
             ->with('products', $products);
