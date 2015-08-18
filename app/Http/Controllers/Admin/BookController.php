@@ -33,7 +33,7 @@ class BookController extends Controller
         }
         elseif ($filter == 'title')
         {
-            $query = Book::where('title', 'LIKE', '%'.$keyword.'%');
+            $query = Book::where('title', 'LIKE', '%' . $keyword . '%');
         }
         elseif ($filter == 'isbn')
         {
@@ -51,12 +51,20 @@ class BookController extends Controller
             $query = Book::query();
         }
 
-        $books = $query->orderBy($order_by, $order)->paginate(Config::get('pagination.limit.admin.default'));
+        $books = $query->orderBy($order_by, $order)
+                       ->paginate(Config::get('pagination.limit.admin.default'));
 
 
-//        $books = Book::paginate(Config::get('pagination.limit.admin.default'));
+        //        $books = Book::paginate(Config::get('pagination.limit.admin.default'));
         return view('admin.book.index')
-            ->with('books', $books);
+            ->with('books', $books)
+            ->with('pagination_params', Input::only([
+                                                        'filter',
+                                                        'keyword',
+                                                        'order_by',
+                                                        'order',
+                                                        'page',
+                                                    ]));
     }
 
     /**
@@ -72,7 +80,8 @@ class BookController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  Request $request
+     *
      * @return Response
      */
     public function store(Request $request)
@@ -97,7 +106,8 @@ class BookController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
+     *
      * @return Response
      */
     public function edit($id)
@@ -108,8 +118,9 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
-     * @param  int  $id
+     * @param  Request $request
+     * @param  int     $id
+     *
      * @return Response
      */
     public function update(Request $request, $id)
@@ -120,7 +131,8 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
+     *
      * @return Response
      */
     public function destroy($id)

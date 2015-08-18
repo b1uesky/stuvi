@@ -9,23 +9,23 @@
     <form class="form-inline" role="form" action="{{ url('admin/book') }}" method="get">
         <div class="form-group">
             <select name="filter" class="form-control">
-                <option value="id">ID</option>
-                <option value="title">Title</option>
-                <option value="isbn" selected>ISBN</option>
+                <option value="id" @if ($pagination_params['filter'] == 'id') selected @endif>ID</option>
+                <option value="title" @if ($pagination_params['filter'] == 'title') selected @endif>Title</option>
+                <option value="isbn" @if ($pagination_params['filter'] == 'isbn') selected @endif>ISBN</option>
             </select>
         </div> <!-- form group [rows] -->
         <div class="form-group">
-            <input type="text" class="form-control input-large" name="keyword">
+            <input type="text" class="form-control input-large" name="keyword" value="{{ $pagination_params['keyword'] }}">
         </div><!-- form group [search] -->
         <div class="form-group">
             <label class="filter-col" style="margin-right:0;">Order by:</label>
             <select name="order_by" class="form-control">
-                <option value="id" selected>ID</option>
-                <option value="title">Title</option>
-                <option value="isbn10">ISBN-10</option>
-                <option value="isbn13">ISBN-13</option>
-                <option value="created_at">Created At</option>
-                <option value="updated_at">Updated At</option>
+                <option value="id" @if ($pagination_params['order_by'] == 'id') selected @endif>ID</option>
+                <option value="title" @if ($pagination_params['order_by'] == 'title') selected @endif>Title</option>
+                <option value="isbn10" @if ($pagination_params['order_by'] == 'isbn10') selected @endif>ISBN-10</option>
+                <option value="isbn13" @if ($pagination_params['order_by'] == 'isbn13') selected @endif>ISBN-13</option>
+                <option value="created_at" @if ($pagination_params['order_by'] == 'created_at') selected @endif>Created At</option>
+                <option value="updated_at" @if ($pagination_params['order_by'] == 'updated_at') selected @endif>Updated At</option>
             </select>
         </div> <!-- form group [rows] -->
         <div class="form-group">
@@ -73,5 +73,5 @@
         @endforeach
     </table>
 
-    {!! $books->render() !!}
+    {!! $books->appends($pagination_params)->render() !!}
 @endsection
