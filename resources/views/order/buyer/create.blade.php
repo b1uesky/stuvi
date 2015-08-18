@@ -567,7 +567,7 @@
                         </table>
                         <hr>
                         <div>
-                            <form action="url('order/store')" method="POST" id="form-place-order">
+                            <form action="{{ url('order/store') }}" method="POST" id="form-place-order">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input type="hidden" name="selected_address_id" value="{{ $default_address_id }}">
                                 <input type="hidden" name="payment_method" value="credit_card">

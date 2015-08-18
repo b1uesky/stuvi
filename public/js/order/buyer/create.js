@@ -109,6 +109,8 @@ $(document).ready(function () {
     /**
      * Form Validation for credit card
      */
+    //var formValidation = $('#form-payment').data('formValidation');
+
     $('#form-payment').
         formValidation({
             framework: 'bootstrap',
@@ -127,6 +129,19 @@ $(document).ready(function () {
                         },
                         creditCard: {
                             message: 'The credit card number is not valid'
+                        }
+                    }
+                },
+                paymentName: {
+                    trigger: 'blur',
+                    selector: '#payment-name',
+                    validators: {
+                        notEmpty: {
+                            message: 'Required'
+                        },
+                        regexp: {
+                            regexp: /^[a-z\s]+$/i,
+                            message: 'The full name can consist of alphabetical characters and spaces only'
                         }
                     }
                 },
@@ -204,7 +219,7 @@ $(document).ready(function () {
                         },
                         cvv: {}
                     }
-                },
+                }
             }
         })
         .on('err.field.fv', function (e, data) {
@@ -219,29 +234,15 @@ $(document).ready(function () {
                 .find('.help-block[data-fv-for="' + data.field + '"]').hide();
 
             // if payment method is credit card
-            if ($('input[name=payment_method]').val() == 'credit_card') {
-
-                // disable place your order button
-                $('input[type="submit"]').prop('disabled', true);
-            }
-
-            // if payment method is paypal
-            if ($('input[name=payment_method]').val() == 'paypal') {
-
-                // disable place your order button
-                $('input[type="submit"]').prop('disabled', false);
-            }
-        })
-        .on('success.field.fv', function (e, data) {
-            // if payment method is credit card
-            if ($('input[name=payment_method]').val() == 'credit_card') {
-
-                // enable place your order button
-                $('input[type="submit"]').prop('disabled', false);
-            }
+            //if ($('input[name=payment_method]').val() == 'credit_card') {
+            //
+            //    // disable place your order button
+            //    $('input[type="submit"]').prop('disabled', true);
+            //}
         });
 
 
+    // on payment methods tab switch
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         var payment_method = $(e.target).text(); // activated tab
 
@@ -255,7 +256,7 @@ $(document).ready(function () {
     });
 
     // disable place your order button by default
-    $('input[type="submit"]').prop('disabled', true);
+    //$('input[type="submit"]').prop('disabled', true);
 
     $('#form-place-order').submit(function(e) {
         e.preventDefault();
@@ -269,8 +270,19 @@ $(document).ready(function () {
             $('<input>').attr({type: 'hidden', name: 'expire_month', value: $('#payment-month').val()}).appendTo(this);
             $('<input>').attr({type: 'hidden', name: 'expire_year', value: $('#payment-year').val()}).appendTo(this);
             $('<input>').attr({type: 'hidden', name: 'cvc', value: $('#payment-cvc').val()}).appendTo(this);
+
+            $('#form-payment').formValidation('validate');
+            var isValidForm = $('#form-payment').data('formValidation').isValid();
+
+            if (isValidForm) {
+                this.submit();
+            }
         }
 
-        this.submit();
+        if (payment_method == 'paypal') {
+            this.submit();
+        }
+
+
     });
 });
