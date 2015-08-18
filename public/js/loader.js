@@ -9,6 +9,10 @@ $(document).ready(function(){
 	});
 });
 
+$(document).ajaxStart(function(){
+    $('#loader-wrapper').show();
+});
+
 $(document).ajaxComplete(function(event, XMLHttpRequest, ajaxOptions){
     $('#loader-wrapper').hide();
 });

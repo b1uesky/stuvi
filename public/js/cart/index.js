@@ -5,7 +5,6 @@
 $(document).ready(function () {
     $(".remove-cart-item").click(function () {
         var tr = $(this).parent('td').parent('tr');
-        $(this).parent('td').html('<a class="fa fa-spinner fa-pulse fa-1x loading"></a>');
 
         $.ajax({
             url: location.protocol + '//' + document.domain + '/cart/rmv',
