@@ -133,6 +133,11 @@
 }
 
 /**** PAYMENT ****/
+.payment-method-tabs{
+  border: 1px solid #ddd;
+  border-top-color: $background-color;
+  border-radius: 0 0 10px 10px;
+}
 
 .payment-card-container {
   margin: $spacing-unit auto;
