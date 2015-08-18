@@ -32,8 +32,8 @@
 
             <ul class="company-info col-md-4 text-center">
                 <li><span class="copyright">&copy; 2015 Stuvi LLC.</span></li>
-                <li><a href="#" name="terms">Terms of Service</a></li>
-                <li class="nobullet"><a href="#" name="privacy">Privacy</a></li>
+                <li><a href="#" name="terms" data-toggle="modal" data-target=".terms-modal">Terms of Service</a></li>
+                <li class="nobullet"><a href="#" data-toggle="modal" data-target=".privacy-modal" name="privacy">Privacy</a></li>
             </ul>
         </div>
 
@@ -41,3 +41,5 @@
 
 </footer>
 <!-- END FOOTER -->
+
+@include('includes.textbook.tos-privacy-modal')
