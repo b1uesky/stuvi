@@ -89,25 +89,6 @@ $(document).ready(function () {
     });
 
     /**
-     * Add shade after modal pop out and remove it after modal close
-     */
-    //$("#update-address-modal").on('show.bs.modal',function(){
-    //    $('<div class="modal-backdrop"></div>').appendTo(document.body);
-    //});
-    //
-    //$("#add-address-modal").on('show.bs.modal',function(){
-    //    $('<div class="modal-backdrop"></div>').appendTo(document.body);
-    //});
-    //
-    //$("#update-address-modal").on('hide.bs.modal',function(){
-    //    $(".modal-backdrop").remove();
-    //});
-    //
-    //$("#add-address-modal").on('hide.bs.modal',function(){
-    //    $(".modal-backdrop").remove();
-    //});
-
-    /**
      * A BEAUTIFUL CARD!
      * https://github.com/jessepollak/card
      */
@@ -118,12 +99,15 @@ $(document).ready(function () {
         width: 350,
 
         formSelectors: {
+            numberInput: '#payment-number',
+            nameInput: '#payment-name',
             expiryInput: '#payment-month, #payment-year',
+            cvcInput: '#payment-cvc'
         }
     });
 
     /**
-     * Form Validation
+     * Form Validation for credit card
      */
     $('#form-payment').
         formValidation({
@@ -233,5 +217,60 @@ $(document).ready(function () {
             data.element
                 .data('fv.messages')
                 .find('.help-block[data-fv-for="' + data.field + '"]').hide();
+
+            // if payment method is credit card
+            if ($('input[name=payment_method]').val() == 'credit_card') {
+
+                // disable place your order button
+                $('input[type="submit"]').prop('disabled', true);
+            }
+
+            // if payment method is paypal
+            if ($('input[name=payment_method]').val() == 'paypal') {
+
+                // disable place your order button
+                $('input[type="submit"]').prop('disabled', false);
+            }
+        })
+        .on('success.field.fv', function (e, data) {
+            // if payment method is credit card
+            if ($('input[name=payment_method]').val() == 'credit_card') {
+
+                // enable place your order button
+                $('input[type="submit"]').prop('disabled', false);
+            }
         });
+
+
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var payment_method = $(e.target).text(); // activated tab
+
+        if (payment_method == 'Credit Card') {
+            $('input[name=payment_method]').val('credit_card');
+        }
+
+        if (payment_method == 'PayPal') {
+            $('input[name=payment_method]').val('paypal');
+        }
+    });
+
+    // disable place your order button by default
+    $('input[type="submit"]').prop('disabled', true);
+
+    $('#form-place-order').submit(function(e) {
+        e.preventDefault();
+
+        var payment_method = $('input[name=payment_method]').val();
+
+        // add additional input fields if pay by credit card
+        if (payment_method == 'credit_card') {
+            $('<input>').attr({type: 'hidden', name: 'number', value: $('#payment-number').val()}).appendTo(this);
+            $('<input>').attr({type: 'hidden', name: 'name', value: $('#payment-name').val()}).appendTo(this);
+            $('<input>').attr({type: 'hidden', name: 'expire_month', value: $('#payment-month').val()}).appendTo(this);
+            $('<input>').attr({type: 'hidden', name: 'expire_year', value: $('#payment-year').val()}).appendTo(this);
+            $('<input>').attr({type: 'hidden', name: 'cvc', value: $('#payment-cvc').val()}).appendTo(this);
+        }
+
+        this.submit();
+    });
 });

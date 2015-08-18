@@ -1,9 +1,6 @@
 @import "../modules/all";
 
 .table-default {
-  background-color: $table-background-color;
-  //border: 1px solid #{$table-border-color};
-
   thead {
     tr th {
       padding: $spacing-unit / 2;
@@ -15,6 +12,15 @@
       padding: $spacing-unit / 2;
     }
   }
+}
+
+.table-panel {
+  tbody {
+    tr td {
+      border: none;
+    }
+  }
+
 }
 
 .table-primary{
