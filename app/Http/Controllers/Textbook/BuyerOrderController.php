@@ -302,7 +302,7 @@ class BuyerOrderController extends Controller
         elseif ($payment_method == 'paypal')
         {
             $paypal = new Paypal();
-            $payment = $paypal->createPaymentByPaypal($items, $subtotal, $shipping, $tax, $total, $shipping_address_id);
+            $payment = $paypal->authorizePaymentByPalpal($items, $subtotal, $shipping, $tax, $total, $shipping_address_id);
             $approvalUrl = $payment->getApprovalLink();
 
             // redirect user to Paypal checkout page
@@ -329,6 +329,9 @@ class BuyerOrderController extends Controller
 
         $paypal = new Paypal();
         $payment = $paypal->executePayment($payment_id, $payer_id);
+        $transactions = $payment->getTransactions();
+        $relatedResources = $transactions[0]->getRelatedResources();
+        $authorization = $relatedResources[0]->getAuthorization();
 
         // create buyer order
         $order = BuyerOrder::create([
@@ -338,7 +341,7 @@ class BuyerOrderController extends Controller
             'fee'                   => $fee,
             'discount'              => $discount,
             'amount'                => $total,
-            'payment_id'            => $payment->getId()
+            'authorization_id'      => $authorization->getId()
         ]);
 
         // create seller order(s) according to the Cart items
