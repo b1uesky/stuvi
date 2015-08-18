@@ -9,7 +9,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <!-- close button -->
-                        <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="close" id="close-empty-cart-btn">
+                        <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         <!-- header -->
@@ -21,9 +21,7 @@
                         <p><a class="btn primary-btn" href="{{url('/textbook')}}">Shop now!</a></p>
                     </div>
                    <div class="modal-footer">
-                       <button type="button" class="btn btn-default modal-close"
-                               onclick="document.getElementById('close-empty-cart-btn').click()"
-                                aria-label="close">Close</button>
+                       <button type="button" class="btn btn-default modal-close" data-dismiss="modal" aria-label="close">Close</button>
                    </div>
                 </div>
             </div>
