@@ -6,10 +6,6 @@
  */
 @import "modules/all";
 
-body {
-  background-color: $background-color;
-}
-
 .alert-sucess-container {
   padding-left: 0;
 }
@@ -60,9 +56,6 @@ body {
   }
 }
 
-hr {
-  border-color: black;
-}
 /*
 /!* Cancel order button *!/
 .btn-orange {
