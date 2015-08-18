@@ -9,50 +9,9 @@
 @import "sections/searchbar";
 @import "partials/image";
 
-.empty {
-  min-height: 90vh;
-}
-
-/*** TEXTBOOK INFO ***/
-
-.author-label {
-  background-color: $primary-color;
-  color: white;
-  border: none;
-}
-
-.author-btn {
-  &:hover, &:focus {
-    background-color: $primary-color;
-    color: white;
-    outline: 0 !important;
-  }
-}
-
-.textbook-info {
-  p {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-}
-
-
-
-/** PRESSED BUTTON **/
-
-.add-cart-btn {
-  margin-left: 13px;
-}
-
 .cart-btn-col {
   width: 150px;
   @media (max-width: 500px) {
     width: 90px;
-  }
-}
-
-.sell-btn {
-  @media (max-width: 500px) {
-    width: 40px;
   }
 }
