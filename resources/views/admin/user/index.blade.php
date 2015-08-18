@@ -6,6 +6,41 @@
 
     <h1>Users</h1>
 
+    <form class="form-inline" role="form" action="{{ url('admin/user') }}" method="get">
+        <div class="form-group">
+            <select name="filter" class="form-control">
+                <option value="id">ID</option>
+                <option value="name" selected>Name</option>
+                <option value="phone">Phone</option>
+                <option value="role">Role</option>
+            </select>
+        </div> <!-- form group [rows] -->
+        <div class="form-group">
+            <input type="text" class="form-control input-large" name="keyword">
+        </div><!-- form group [search] -->
+        <div class="form-group">
+            <label class="filter-col" style="margin-right:0;">Order by:</label>
+            <select name="order_by" class="form-control">
+                <option value="id" selected>ID</option>
+                <option value="first_name">First Name</option>
+                <option value="last_name">Last Name</option>
+                <option value="phone_number">Phone</option>
+                <option value="role">Role</option>
+            </select>
+        </div> <!-- form group [rows] -->
+        <div class="form-group">
+            <select name="order" class="form-control">
+                <option value="DESC" selected>DESC</option>
+                <option value="ASC">ASC</option>
+            </select>
+        </div> <!-- form group [rows] -->
+        <div class="form-group">
+            <button type="submit" class="btn btn-default filter-col">
+                Search
+            </button>
+        </div>
+    </form>
+
     <table class="table table-hover">
         <tr>
             <th>ID</th>

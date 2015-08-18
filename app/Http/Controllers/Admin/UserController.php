@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\User;
 use Config;
+use Input;
 
 
 class UserController extends Controller
@@ -16,7 +17,38 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'DESC')->paginate(Config::get('pagination.limit.admin.user'));
+        $filter   = Input::get('filter', 'id');
+        $keyword  = strtolower(Input::get('keyword'));
+        $order_by = Input::get('order_by', 'id');
+        $order    = Input::get('order', 'DESC');
+
+        if (empty($keyword))
+        {
+            $query = User::query();
+        }
+        elseif ($filter == 'id')
+        {
+            $query = User::where($filter, intval($keyword));
+        }
+        elseif ($filter == 'name')
+        {
+            $query = User::where('last_name', 'LIKE', '%'.$keyword.'%')
+                            ->orWhere('first_name', 'LIKE', '%'.$keyword.'%');
+        }
+        elseif ($filter == 'phone')
+        {
+            $query = User::where('phone_number', '=', $keyword);
+        }
+        elseif ($filter == 'role')
+        {
+            $query = User::where($filter, 'LIKE', '%'.$keyword.'%');
+        }
+        else
+        {
+            $query = User::query();
+        }
+
+        $users = $query->orderBy($order_by, $order)->paginate(Config::get('pagination.limit.admin.user'));
 
         return view('admin.user.index')
             ->with('users', $users);
