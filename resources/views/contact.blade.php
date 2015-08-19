@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <div id="contact-main-container">
+    <div id="contact-main-container" class="container-main-content">
         <div class="contact-alerts">
             @if (count($errors) > 0)
                 <div class="alert alert-danger">

@@ -5,7 +5,7 @@
 @section('login-signup-modal')
     <div class="modal fade login-modal spinner-modal" id="login-modal" tabindex="-1" role="dialog"
          aria-labelledby="Login">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <!-- close button -->
@@ -13,35 +13,40 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <!-- header -->
-                    <h4><i class="fa fa-sign-in"></i> Login</h4>
+                    <h4 class="modal-title">Login</h4>
                 </div>
                 <div class="modal-body">
                     <form role="form" action="{{ url('/auth/login') }}" method="post" id="form-login">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <!-- email -->
                         <div class="form-group">
-                            <label for="login-email"><i class="fa fa-envelope"></i> Email</label>
+                            <label class="sr-only" for="login-email">Email</label>
                             <input type="text" class="form-control" id="login-email" name="email"
-                                   placeholder="Enter email" required>
+                                   placeholder="Email Address" required>
                         </div>
                         <!-- password -->
                         <div class="form-group">
-                            <label for="login-password"><i class="fa fa-key"></i> Password</label>
+                            <label class="sr-only" for="login-password">Password</label>
                             <input type="password" class="form-control" name="password" id="login-password"
-                                   placeholder="Enter password" required>
+                                   placeholder="Password" required>
                         </div>
-                        <!-- remember me -->
-                        <div class="checkbox" id="remember-me">
-                            <label for="remember-me-box">
-                                <input id="remember-me-box" type="checkbox" value="" checked>Remember me</label>
+                        <div class="form-group">
+                            <!-- remember me -->
+                            <div class="remember-me checkbox">
+                                <label for="remember-me-box">
+                                    <input id="remember-me-box" type="checkbox" value="" checked>Remember me</label>
+                            </div>
+                            {{-- forgot password --}}
+                            <div class="forgot-password pull-right">
+                                <a href="{{ url('/password/email') }}">Forgot Password?</a>
+                            </div>
                         </div>
-                        <button type="submit" class="btn primary-btn submit-btn">Login</button>
-                        <i class="fa fa-spinner fa-pulse fa-2x loading"></i>
+
+                        <button type="submit" class="btn primary-btn btn-block">Login</button>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <p>Not a member? <a data-toggle="modal" href="#signup-modal" data-dismiss="modal">Sign Up</a></p>
-                    <a id="forgot-password" href="{{ url('/password/email') }}">Forgot Password?</a>
+                    <div class="text-left">Not a member? <a data-toggle="modal" href="#signup-modal" data-dismiss="modal">Sign Up</a></div>
                 </div>
             </div>
         </div>
@@ -49,7 +54,7 @@
     <!-- sign up modal -->
     <div class="modal fade signup-modal spinner-modal" id="signup-modal" tabindex="-1" role="dialog"
          aria-labelledby="SignUp">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <!-- close -->
@@ -57,7 +62,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <!-- header -->
-                    <h4><i class="fa fa-user-plus"></i> Sign Up</h4>
+                    <h4 class="modal-title">Sign Up</h4>
                 </div>
                 <div class="modal-body">
                     <form role="form" method="POST" id="form-register">
@@ -78,7 +83,7 @@
                         <div class="form-group">
                             <label class="sr-only" for="register-email">Email</label>
                             <input type="email" name="email" class="form-control" id="register-email"
-                                   placeholder="University email address (.edu required)">
+                                   placeholder="Email address (.edu)">
                         </div>
                         <!-- password -->
                         <div class="form-group">
@@ -102,12 +107,14 @@
                                 @endforeach
                             </select>
                         </div>
-                        <button type="submit" class="btn primary-btn submit-btn">Sign Up</button>
-                        <i class="fa fa-spinner fa-pulse fa-2x loading"></i>
+                        <div class="form-group">
+                            <small>By signing up, I agree to Stuvi's <a href="#">Terms of Service</a> and <a href="">Privacy Policy</a>.</small>
+                        </div>
+                        <button type="submit" class="btn primary-btn btn-block">Sign Up</button>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <p>Already a member? <a data-toggle="modal" href="#login-modal" data-dismiss="modal">Login</a></p>
+                    <div class="text-left">Already a member? <a data-toggle="modal" href="#login-modal" data-dismiss="modal">Login</a></div>
                 </div>
             </div>
         </div>

@@ -10,18 +10,17 @@ $(document).ready(function () {
      * Shipping Address
      */
     $('.show-addresses').click(function () {
-        $('#loader-wrapper').hide();
         $('.displayDefaultAddress').hide();
-        $('#new-address-panel').show(1000);
-        $('.displayAllAddresses').show(1000);
+        $('#new-address-panel').slideDown(500);
+        $('.displayAllAddresses').slideDown();
     });
 
-    $('.selectThisAddress').click(function () {
-        var address_ID = $(this).prev().find(".address_id").text();
-        var address_info = $(this).prev().html();
+    $('.all-addresses-list').click(function () {
+        var address_ID = $(this).find(".address_id").text();
+        var address_info = $(this).find('.address-list').html();
         $('.displayAllAddresses').hide();
         $('.displayDefaultAddress').find('.address-list').html(address_info);
-        $('.displayDefaultAddress').show(1000);
+        $('.displayDefaultAddress').fadeIn(500);
         $.ajax({
             url: "/address/select",
             data: {
@@ -63,6 +62,10 @@ $(document).ready(function () {
         $('#loader-wrapper').hide();
     });
 
+    $("#new-address-panel").on('click',function(){
+        $('#add-address-modal').modal('show');
+    });
+
     $('.deleteThisAddress').click(function () {
         var address_ID = $(this).parent().find(".address_id").text();
         $.ajax({
@@ -77,10 +80,10 @@ $(document).ready(function () {
 
             success: function (response) {
                 if (response['is_deleted'] === true) {
-                    $('.' + address_ID).hide(1000);
+                    $('.' + address_ID).fadeOut(100);
                     if (response['num_of_user_addresses'] < 1) {
-                        $('#payment-form').hide(1000);
-                        $('.add_new_address').click();
+                        $('#paymentDiv').fadeOut(100);
+                        $('#new-address-panel').click();
                     }
                 }
                 $('#loader-wrapper').hide();
