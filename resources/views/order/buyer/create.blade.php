@@ -6,20 +6,13 @@
 
 @section('css')
     <link href="{{ asset('/css/order_buyer_create.css') }}" rel="stylesheet">
-    @endsection
+@endsection
 
-    @section('content')
+@section('content')
 
     @include('includes.textbook.flash-message')
 
-            <!-- TODO: breadcrumb cart progress bar -->
-
-    {{--   <div class="container col-xs-12 col-xs-offset-2 col-sm-8 col-sm-offset-2 cart-progress">
-           <img class="img-responsive cart-line col-sm-offset-3" src="{{asset('/img/CHECKOUT.png')}}"
-                alt="Your cart progress - Checkout">
-       </div>--}}
-
-    <div class="container">
+    <div class="container container-main-content">
         {!! Breadcrumbs::render('shoppingCart') !!}
 
         <div class="row">
@@ -35,8 +28,6 @@
                             </ul>
                         </div>
                     @endif
-
-
                 </div>
 
                 {{-- Shipping address --}}

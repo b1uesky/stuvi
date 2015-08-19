@@ -12,7 +12,7 @@
 @section('content')
 
 <!-- top container..determines background -->
-<div class = "container-fluid create">
+<div class = "container-fluid create container-main-content">
     <!-- center the forms -->
     <div class="container col-md-8 col-md-offset-2 pad">
         <div class="row">

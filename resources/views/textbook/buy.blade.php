@@ -24,7 +24,7 @@
         </ul>
     </div>
 
-    <div class="container-main">
+    <div class="container-main-content">
         <!-- Search Bar Container-->
         <div class="container-fluid container-image">
             <div class="container">
@@ -105,7 +105,7 @@
                         <img class="textbook-bottom-img" src="{{ asset('/img/textbook/search.png') }}" alt="placeholder">
                     </div>
                     <!-- Row 1 Col 2 -->
-                    <div class="col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
+                    <div class="col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-2 col-md-offset-1 col-lg-offset-0"
                          id="shrink-xs">
                         <h3 id="h3-1">Find your books</h3>
 

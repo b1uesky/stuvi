@@ -8,15 +8,9 @@
 
 @section('content')
 
-    <!-- Message -->
-    <div class="container" xmlns="http://www.w3.org/1999/html">
-        @if (Session::has('message'))
-            <br>
-            <div class="flash-message warning bg-warning">{{ Session::get('message') }}</div>
-        @endif
-    </div>
     <!-- Main container -->
-    <div class="container seller-order-container">
+    <div class="container seller-order-container container-main-content">
+        @include('includes.textbook.flash-message')
         <h1>Your sold books</h1>
         @forelse ($orders as $order)
             <div class="row">

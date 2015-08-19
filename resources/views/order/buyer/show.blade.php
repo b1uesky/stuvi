@@ -11,7 +11,7 @@
     @include('includes.textbook.flash-message')
 
             <!-- order details -->
-    <div class="container">
+    <div class="container container-main-content">
         {!! Breadcrumbs::render() !!}
 
         <h1 id="">Order Details</h1>
@@ -67,10 +67,11 @@
                     <div class="row">
                         <div class="col-sm-2">
                             @if($product->book->imageSet->large_image)
-                                <img class="lg-img"
+                                <img class="lg-img" width="100px" alt="book image"
                                      src="{{ config('aws.url.stuvi-book-img') . $product->book->imageSet->large_image}}">
                             @else
-                                <img class="lg-img" src="{{ config('book.default_image_path.large') }}">
+                                <img class="lg-img" width="100px" alt="placeholder image"
+                                     src="{{ config('book.default_image_path.large') }}">
                             @endif
                         </div>
                         <div class="item col-sm-7">

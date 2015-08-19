@@ -13,7 +13,7 @@
 @section('content')
 
 
-<div class="container-fluid" id="bg">
+<div class="container-fluid container-main-content" id="bg">
 
     @include('includes.textbook.flash-message')
 

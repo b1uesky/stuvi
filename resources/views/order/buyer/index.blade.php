@@ -13,7 +13,7 @@
     @include('includes.textbook.flash-message')
         
     <!-- main container -->
-    <div class="container buyer-order-container">
+    <div class="container buyer-order-container container-main-content">
         <h1>Your orders</h1>
         @forelse ($orders as $order)
             <div class="row">

@@ -84,12 +84,14 @@
                         </li>
                         <!-- cart -->
                         <li class="cart">
-                                <?php $cartQty = Auth::user()->cart->quantity ?>
+                                <?php $cartQty = Auth::user()->cart->quantity; ?>
                                 {{-- If cart empty, open modal --}}
                                 <label class="sr-only" for="nav-right-cart-link">Cart</label>
-                                @if($cartQty == 0)
+                                @if($cartQty == 0 || is_nan($cartQty))
                                     <a href="#empty-cart-modal" data-toggle="modal" class="nav-link" id="nav-right-cart-link" title="empty-cart">
-                                        <i class="fa fa-shopping-cart"></i> <span class="cart-quantity"></span>
+                                        <i class="fa fa-shopping-cart"></i> <span class="cart-quantity">
+
+                                        </span>
                                     </a>
                                 @else
                                     <a href="{{ url('/cart') }}" id="nav-right-cart-link" title="cart">
