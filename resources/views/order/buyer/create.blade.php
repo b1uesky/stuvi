@@ -45,9 +45,9 @@
 
                     @forelse ($addresses as $address)
                         @if ($address -> is_default)
-                            <div class="col-sm-4 panel address-panel displayDefaultAddress">
+                            <div class="thumbnail col-md-4 displayDefaultAddress">
                                 <div class="panel-body">
-                                    <ul class="address-list">
+                                    <ul class="address-list" id="default-address-list">
                                         <li class="address" id="default_addressee">{{ $address -> addressee }}</li>
                                         <li class="address"
                                             id="default_address_line1">{{ $address -> address_line1}}</li>
@@ -67,10 +67,11 @@
                                 </div>
                             </div>
                         @endif
-                        <div class="panel address-panel col-md-4 displayAllAddresses {{ $address -> id }}"
+                        <div class="thumbnail col-md-8 displayAllAddresses {{ $address -> id }}"
                              style={{$default_address_id != -1 ? "display:none" : ""}}>
                             <div class="panel-body">
-                                <ul class="address-list">
+                            <button type="button" class="close deleteThisAddress" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <ul class="address-list all-addresses-list">
                                     <li class="address address_id">{{ $address -> id }}</li>
                                     <li class="address addressee">{{ $address -> addressee }}</li>
                                     <li class="address address_line1">{{ $address -> address_line1}}</li>
@@ -83,18 +84,10 @@
                                     <li class="address zip inline">{{ $address -> zip }}</li>
                                     <li class="address phone">{{ $address -> phone_number }}</li>
                                 </ul>
-                                <button class="btn btn-default primary-btn address-btn selectThisAddress">
-                                    <i class="fa fa-check-square"></i>Select
-                                </button>
                                 <button class="btn btn-default primary-btn address-btn editThisAddress"
                                         data-toggle="modal"
                                         data-target="#update-address-modal">
-                                    <i class="fa fa-pencil"></i>
                                     Edit
-                                </button>
-                                <button class="btn btn-default primary-btn address-btn deleteThisAddress">
-                                    <i class="fa fa-trash"></i>
-                                    Delete
                                 </button>
                             </div>
                         </div>
@@ -181,7 +174,7 @@
                             </button>
                         </form>
                     @endforelse
-                    <div id="new-address-panel" class="col-sm-5 panel address-panel">
+                    <div id="new-address-panel" class="thumbnail col-sm-5">
                         <div class="panel-body">
                             <h4>Add New Address</h4>
                             <i class="fa fa-plus-square fa-4x"
@@ -428,7 +421,7 @@
                 </div>
 
                 {{-- Payment method --}}
-                <div class="row">
+                <div class="row" id="paymentDiv">
                     @if ($display_payment)
                         <h2>2 Payment method</h2>
                         <div class="row payment-errors-row">
@@ -580,7 +573,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection
 

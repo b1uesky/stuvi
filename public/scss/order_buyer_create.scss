@@ -36,19 +36,18 @@
 }
 
 /**** SHIPPING ADDRESS ****/
-
 #storeAddress {
   padding: 12px;
   width: 200px;
   margin: 20px 0 50px 15px;
 }
 
-.address-panel {
-  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.25);
-  border-top: 2px solid $primary-color;
-  border-radius: 0;
-  margin-left: 33px;
-}
+// .address-panel {
+//   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.25);
+//   border-top: 2px solid $primary-color;
+//   border-radius: 0;
+//   margin-left: 33px;
+// }
 
 .address-list {
   list-style-type: none;
@@ -63,31 +62,41 @@
   display: none;
 }
 
-.displayAllAddresses {
-  margin-left: 5px;
-  margin-right: 5px;
-  padding-right: 0;
+.displayDefaultAddress{
   height: 175px;
-  width: 324px;
+  width: 49%;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 5px;
+  border: 1px solid #DDDDDD;
   .address_id {
     display: none;
   }
 }
 
-/* make the user's id invisible */
-.displayDefaultAddress .address_id {
-  display: none;
+.displayAllAddresses{
+  @extend .displayDefaultAddress;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  .address_id {
+    display: none;
+  }
+  &:hover{
+    -moz-box-shadow: 5px 0 5px $primary-color;
+    -webkit-box-shadow: 5px 0 5px $primary-color;
+    box-shadow: 0 0 5px $primary-color;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 5px;
+    border: 1px solid $primary-color;
+  }
 }
 
 #new-address-panel {
+  @extend .displayAllAddresses;
   text-align: center;
-  margin-left: 5px;
   display: none;
-  height: 175px;
-  width: 324px;
-  h4 {
-    margin-bottom: 0;
-  }
 }
 
 .fa-plus-square {
