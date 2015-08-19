@@ -24,7 +24,9 @@ class BuyerOrder extends Model
         'fee',
         'discount',
         'amount',
-        'payment_id'
+        'payment_id',
+        'authorization_id',
+        'capture_id'
     ];
 
     /**
@@ -333,6 +335,20 @@ class BuyerOrder extends Model
     }
 
     /**
+     * Capture authorized payment.
+     */
+    public function capturePayment()
+    {
+        $paypal = new Paypal();
+        $authorization = $paypal->getAuthorization($this->authorization_id);
+        $capture = $paypal->captureAuthorizedPayment($authorization);
+
+        $this->update([
+            'capture_id'    => $capture->getId()
+        ]);
+    }
+
+    /**
      * Create Paypal payout to sellers.
      */
     public function createPayout()
@@ -343,18 +359,17 @@ class BuyerOrder extends Model
         {
             $receiver = $seller_order->seller()->profile->paypal;
 
-            // TODO: subtract transfer fee?
-            $value = Price::convertIntegerToDecimal($seller_order->product->price);
+            $value = Price::convertIntegerToDecimal($seller_order->product->price - config('fee.payout_service_fee'));
 
             $item = array(
                 'recipient_type'    => 'EMAIL',
+                'receiver'          => $receiver,
+                'note'              => 'Thank you!',
+                'sender_item_id'    => $seller_order->id,
                 'amount'            => array(
                     'value'             => $value,
                     'currency'          => 'USD',
-                ),
-                'receiver'          => $receiver,
-                'note'              => 'Thank you!',
-                'sender_item_id'    => $seller_order->id
+                )
             );
 
             array_push($items, $item);
@@ -362,11 +377,12 @@ class BuyerOrder extends Model
 
         $paypal = new Paypal();
         $payout_batch = $paypal->createBatchPayout($items);
+        $payout_batch_with_items = $paypal->getPayoutBatchStatus($payout_batch);
 
         // save each payout_item_id to its corresponding seller order
         // because we need payout_item_id to retrieve details about a specific
         // payout item
-        foreach ($payout_batch->getItems() as $payout_item_details)
+        foreach ($payout_batch_with_items->getItems() as $payout_item_details)
         {
             $payout_item = $payout_item_details->getPayoutItem();
             $seller_order = SellerOrder::find($payout_item->getSenderItemId());
@@ -374,7 +390,5 @@ class BuyerOrder extends Model
                 'payout_item_id' => $payout_item_details->getPayoutItemId()
             ]);
         }
-
-//        dd($paypal->getPayoutBatchStatus($payout_batch));
     }
 }

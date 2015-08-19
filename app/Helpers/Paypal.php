@@ -13,6 +13,7 @@ use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Rest\ApiContext;
 use PayPal\Api\Address;
 use PayPal\Api\Amount;
+use PayPal\Api\Authorization;
 use PayPal\Api\Capture;
 use PayPal\Api\CreditCard;
 use PayPal\Api\Currency;
@@ -442,25 +443,41 @@ class Paypal extends \App\Helpers\Payment
         return $payment;
     }
 
-    public function captureAuthorizedPayment($authorization)
+    /**
+     * Capture authorized payment.
+     *
+     * @param $authorization
+     * @return mixed
+     */
+    public function captureAuthorizedPayment(Authorization $authorization)
     {
         // ### Capture Payment
         // You can capture and process a previously created authorization
         // by invoking the $authorization->capture method
         // with a valid ApiContext (See bootstrap.php for more on `ApiContext`)
         try {
-            $authId = $authorization->getId();
+            $total = $authorization->getAmount()->getTotal();
+
             $amt = new Amount();
             $amt->setCurrency("USD")
-                ->setTotal(1);
+                ->setTotal($total);
+            // DO NOT $amt->setDetails(), it will cause a bug.
+
             ### Capture
             $capture = new Capture();
             $capture->setAmount($amt);
+
             // Perform a capture
             $getCapture = $authorization->capture($capture, $this->api_context);
+        } catch (PayPal\Exception\PayPalConnectionException $ex) {
+            echo $ex->getCode(); // Prints the Error Code
+            echo $ex->getData(); // Prints the detailed error message
+            die($ex);
         } catch (Exception $ex) {
+            return "Exception: " . $ex->getMessage() . PHP_EOL;
             exit(1);
         }
+
         return $getCapture;
     }
 
@@ -508,7 +525,7 @@ class Paypal extends \App\Helpers\Payment
      * https://github.com/paypal/PayPal-PHP-SDK/blob/master/sample/payouts/CreateBatchPayout.php
      *
      * @param $items
-     * @return \PayPal\Api\PayoutBatch|string
+     * @return \PayPal\Api\Payout|string
      */
     public function createBatchPayout($items)
     {
@@ -527,13 +544,13 @@ class Paypal extends \App\Helpers\Payment
         }
 
         try {
-            $output = $payouts->create(null, $this->api_context);
+            $payout_batch = $payouts->create(null, $this->api_context);
         } catch (Exception $ex) {
             return "Exception: " . $ex->getMessage() . PHP_EOL;
             exit(1);
         }
 
-        return $output;
+        return $payout_batch;
     }
 
     /**
@@ -644,6 +661,29 @@ class Paypal extends \App\Helpers\Payment
         }
 
         return $refundedSale;
+    }
+
+    /**
+     * Get Authorization given the authorization id.
+     *
+     * @param $authorizationId
+     * @return Authorization|string
+     */
+    public function getAuthorization($authorizationId)
+    {
+        // ### GetAuthorization
+        // You can retrieve info about an Authorization
+        // by invoking the Authorization::get method
+        // with a valid ApiContext (See bootstrap.php for more on `ApiContext`)
+        // The return object contains the authorization state.
+        try {
+            // Retrieve the authorization
+            $authorization = Authorization::get($authorizationId, $this->api_context);
+        } catch (Exception $ex) {
+            return "Exception: " . $ex->getMessage() . PHP_EOL;
+            exit(1);
+        }
+        return $authorization;
     }
 
     /**

@@ -33,13 +33,6 @@
                 <form action="{{ url('/order/seller/transfer') }}" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
-                    {{--<button type="submit" class="btn btn-primary">--}}
-                        {{--@if ($seller_order->seller()->stripeAuthorizationCredential()->get()->isEmpty())--}}
-                            {{--Link Stripe account to get money back--}}
-                        {{--@else--}}
-                            {{--Get money back--}}
-                        {{--@endif--}}
-                    {{--</button>--}}
                 </form>
             @elseif ($seller_order->pickedUp())
                 <div class="alert alert-success">The textbook has been picked up by our courier. You can get your money
@@ -118,7 +111,7 @@
                 <div class="text-scheduled-pickup-time">
                     @if($seller_order->scheduledPickupTime())
                         Scheduled pickup time:
-                        <mark>{{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}</mark>
+                        <mark>{{ date(config('app.datetime_format'), strtotime($seller_order->scheduled_pickup_time)) }}</mark>
                     @else
                         {{-- Nothing --}}
                     @endif
@@ -252,8 +245,7 @@
                         </div>
                     </div>
                 </div>
-            @elseif($order_has_address)
-
+            {{--@elseif($order_has_address)--}}
             @else
                 {{-- Add a new address --}}
                 <div id="add-new-address-btn-2">

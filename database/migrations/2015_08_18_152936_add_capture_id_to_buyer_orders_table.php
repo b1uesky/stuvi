@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAuthorizationIdToBuyerOrdersTable extends Migration
+class AddCaptureIdToBuyerOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddAuthorizationIdToBuyerOrdersTable extends Migration
     public function up()
     {
         Schema::table('buyer_orders', function (Blueprint $table) {
-            $table->string('authorization_id');
+            $table->string('capture_id')->nullable();
         });
     }
 
@@ -25,7 +25,7 @@ class AddAuthorizationIdToBuyerOrdersTable extends Migration
     public function down()
     {
         Schema::table('buyer_orders', function (Blueprint $table) {
-            $table->dropColumn('authorization_id');
+            $table->dropColumn('capture_id');
         });
     }
 }
