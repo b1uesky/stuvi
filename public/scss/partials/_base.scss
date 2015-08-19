@@ -1,2 +1,37 @@
-@import '../modules/colors';
-@import '../modules/typography';
+@import '../modules/all';
+
+/* Common classes */
+body {
+  font-family: $base-font-family;
+  background: $background-color;
+  color: $body-text-color;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-grey {
+  background-color: $background-grey;
+}
+
+.price {
+  color: $price-color;
+}
+
+/* Bootstrap Override */
+a {
+  color: $primary-color;
+
+  &:hover {
+    color: $primary-color;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+  background-color: $primary-color;
+}

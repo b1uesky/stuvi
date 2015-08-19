@@ -1,11 +1,5 @@
 /***** SELLER PRODUCT CREATE PAGE *****/
-@import "modules/colors";
-@import "modules/typography";
-@import "partials/image";
-
-body {
-  background-color: $background-color;
-}
+@import "modules/all";
 
 .create-container {
   margin-bottom: 50px;

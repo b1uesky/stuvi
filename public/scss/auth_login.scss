@@ -4,12 +4,6 @@
 
 @import "modules/all";
 
-html body {
-  background: $background-color;
-}
-
-.content{}
-
 button:focus {
   outline: 0 !important;
 }

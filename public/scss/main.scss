@@ -5,15 +5,15 @@
  * http://thesassway.com/beginner/how-to-structure-a-sass-project
  */
 
-/* MODULES AND VARIABLES */
-@import 'modules/all';
 
 /* PARTIALS */
+@import 'partials/base';
 @import 'partials/buttons';
 @import 'partials/containers';
 @import 'partials/forms';
 @import 'partials/tables';
 @import 'partials/modals';
+@import "partials/image";
 
 /* SECTIONS */
 @import 'sections/navigation';

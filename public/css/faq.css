@@ -6,33 +6,7 @@
  * Fonts, font sizes, etc.
  * Avoid using colors here. See _colors.scss.
  *
- *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER *//* Common classes */body {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
-  background: #fff;
-  color: #565a5c;
-}
-.bg-white {
-  background-color: white;
-}
-.bg-grey {
-  background-color: #aaa;
-}
-.price {
-  color: #b12704;
-}
-/* Bootstrap Override */a {
-  color: #00a496;
-}
-a:hover {
-  color: #00a496;
-}
-a:focus {
-  outline: none;
-}
-.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
-  background-color: #00a496;
-}
-.faq-container {
+ *//* BASE STYLES *//* HEADERS *//* NAVIGATION *//* BUTTONS *//* FOOTER */.faq-container {
   margin-top: 40px;
   margin-bottom: 40px;
   min-height: 90vh;
