@@ -10,6 +10,18 @@
             <td>{{ $seller_order->id }}</td>
         </tr>
         <tr>
+            <th>Seller ID</th>
+            <td>{{ $seller_order->seller()->id }}</td>
+        </tr>
+        <tr>
+            <th>Seller Email</th>
+            <td>{{ $seller_order->seller()->primaryEmail->email_address }}</td>
+        </tr>
+        <tr>
+            <th>Seller Name</th>
+            <td>{{ $seller_order->seller()->first_name . ' ' . $seller_order->seller()->last_name }}</td>
+        </tr>
+        <tr>
             <th>Product ID</th>
             <td>{{ $seller_order->product_id }}</td>
         </tr>

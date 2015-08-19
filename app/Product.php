@@ -150,6 +150,7 @@ class Product extends Model
             'damaged_pages'        => 'required|integer',
             'broken_binding'       => 'required|boolean',
             'price'                => 'required|numeric|min:0',
+            'paypal'               => 'required|email'
         ];
 
         // validate input images
