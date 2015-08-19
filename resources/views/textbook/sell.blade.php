@@ -31,7 +31,7 @@
 
             <div class="container">
             <div class="row">
-                <h1 id="title">Sell Your Used Textbooks</h1>
+                <h1 id="title">Sell Your Textbooks</h1>
                     <div class="searchbar default-searchbar">
                         <form action="/textbook/sell/search" method="post" id="form-isbn">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
