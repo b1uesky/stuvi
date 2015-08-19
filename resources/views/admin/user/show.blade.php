@@ -126,7 +126,7 @@
             <th>Actions</th>
         </tr>
 
-        @forelse($buyer_orders as $buyer_order)
+        @foreach($buyer_orders as $buyer_order)
             <tr>
                 <td>{{ $buyer_order->id }}</td>
                 <td>{{ $buyer_order->cancelled }}</td>
@@ -134,9 +134,7 @@
                 <td>{{ $buyer_order->created_at }}</td>
                 <td><a class="btn btn-info" role="button" href="{{ URL::to('admin/order/buyer/' . $buyer_order->id) }}">Details</a></td>
             </tr>
-        @empty
-            <p>This user has no buyer order.</p>
-        @endforelse
+        @endforeach
     </table>
 
     <p><strong>Seller Orders</strong></p>
