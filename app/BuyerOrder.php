@@ -1,6 +1,8 @@
 <?php namespace App;
 
 use App\Helpers\StripeKey;
+use App\Helpers\Paypal;
+use App\Helpers\Price;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
@@ -22,7 +24,9 @@ class BuyerOrder extends Model
         'fee',
         'discount',
         'amount',
-        'payment_id'
+        'payment_id',
+        'authorization_id',
+        'capture_id'
     ];
 
     /**
@@ -328,5 +332,63 @@ class BuyerOrder extends Model
         {
             $message->to($buyer_order_arr['buyer']['email'])->subject('Confirmation of your order #' . $this->id);
         });
+    }
+
+    /**
+     * Capture authorized payment.
+     */
+    public function capturePayment()
+    {
+        $paypal = new Paypal();
+        $authorization = $paypal->getAuthorization($this->authorization_id);
+        $capture = $paypal->captureAuthorizedPayment($authorization);
+
+        $this->update([
+            'capture_id'    => $capture->getId()
+        ]);
+    }
+
+    /**
+     * Create Paypal payout to sellers.
+     */
+    public function createPayout()
+    {
+        $items = array();
+
+        foreach ($this->seller_orders as $seller_order)
+        {
+            $receiver = $seller_order->seller()->profile->paypal;
+
+            $value = Price::convertIntegerToDecimal($seller_order->product->price - config('fee.payout_service_fee'));
+
+            $item = array(
+                'recipient_type'    => 'EMAIL',
+                'receiver'          => $receiver,
+                'note'              => 'Thank you!',
+                'sender_item_id'    => $seller_order->id,
+                'amount'            => array(
+                    'value'             => $value,
+                    'currency'          => 'USD',
+                )
+            );
+
+            array_push($items, $item);
+        }
+
+        $paypal = new Paypal();
+        $payout_batch = $paypal->createBatchPayout($items);
+        $payout_batch_with_items = $paypal->getPayoutBatchStatus($payout_batch);
+
+        // save each payout_item_id to its corresponding seller order
+        // because we need payout_item_id to retrieve details about a specific
+        // payout item
+        foreach ($payout_batch_with_items->getItems() as $payout_item_details)
+        {
+            $payout_item = $payout_item_details->getPayoutItem();
+            $seller_order = SellerOrder::find($payout_item->getSenderItemId());
+            $seller_order->update([
+                'payout_item_id' => $payout_item_details->getPayoutItemId()
+            ]);
+        }
     }
 }

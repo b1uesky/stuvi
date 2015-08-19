@@ -1,12 +1,26 @@
 $(document).ready(function(){
-	$('.btn').on("click",function(){
-		$('#loader-wrapper').show();
-	});
+	// $('.btn').on("click",function(){
+ //    $this = $(this)
+	// 	$('#loader-wrapper').show();
+ //    if($this.attr('type') === 'submit'){
+ //      $this.closest('form').on('err.form.fv',function(){
+ //        $('#loader-wrapper').hide();
+ //      })
+ //    }
+	// });
 	$('a').on("click",function(){
 		if (isURL($(this).attr('href')) && $(this).attr('target') != "_blank") {
 			$('#loader-wrapper').show();
 		};
 	});
+});
+
+$(document).ajaxStart(function(){
+    $('#loader-wrapper').show();
+});
+
+$(document).ajaxComplete(function(event, XMLHttpRequest, ajaxOptions){
+    $('#loader-wrapper').hide();
 });
 
 function isURL(str) {

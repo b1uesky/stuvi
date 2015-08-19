@@ -1,16 +1,17 @@
 // base scss for home page
 // navigation is excluded because the home page has a different header
 
-/* MODULES AND VARIABLES */
-@import 'modules/all';
+
 /* PARTIALS */
+@import 'partials/base';
 @import 'partials/buttons';
-@import 'modules/typography';
 @import 'partials/containers';
 @import "partials/forms";
 @import "partials/tables";
 @import "partials/modals";
+@import "partials/autocomplete";
+
 /* SECTIONS */
 @import 'sections/footer';
-
-/* VENDOR ( THIRD PARTY ) */
+@import "sections/searchbar";
+@import "sections/loader";

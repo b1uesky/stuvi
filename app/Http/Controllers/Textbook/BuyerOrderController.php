@@ -109,6 +109,77 @@ class BuyerOrderController extends Controller
     }
 
     /**
+     * Display a specific buyer order.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+        $buyer_order = BuyerOrder::find($id);
+
+        // check if this order belongs to the current user.
+        if (!empty($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
+        {
+            return view('order.buyer.show')
+                ->with('buyer_order', $buyer_order)
+                ->with('datetime_format', Config::get('app.datetime_format'));
+        }
+
+        return redirect('order/buyer')
+            ->with('message', 'Order not found.');
+    }
+
+    /**
+     * Cancel a specific buyer order and corresponding seller orders.
+     *
+     * @param $id  The buyer order id.
+     *
+     * @return RedirectResponse
+     */
+    public function cancel($id)
+    {
+        $buyer_order = BuyerOrder::find($id);
+
+        // check if this order belongs to the current user.
+        if ($buyer_order && $buyer_order->isBelongTo(Auth::id()))
+        {
+            if ($buyer_order->isCancellable())
+            {
+                $buyer_order->cancel();
+
+                return redirect('order/buyer/' . $id)
+                    ->with('message', 'Your cancel request has been submitted. We will process your request in 2 days.');
+            }
+            else
+            {
+                return redirect('order/buyer/' . $id)
+                    ->with('message', 'Sorry, this order cannot be cancelled. We have picked up one or more books from seller.');
+            }
+        }
+
+        return redirect('order/buyer')
+            ->with('message', 'Order not found.');
+    }
+
+    /**
+     * Display an order confirmation page.
+     *
+     * @return RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
+    public function confirmation()
+    {
+        // check if this page is redirected from storeBuyerOrder method
+        if (!Session::has('order'))
+        {
+            return redirect('/order/buyer');
+        }
+
+        return view('order.buyer.confirmation');
+    }
+
+    /**
      * Store a newly created buyer order and corresponding seller order(s) in storage.
      *
      * @return Response
@@ -203,7 +274,7 @@ class BuyerOrderController extends Controller
             );
 
             $paypal = new Paypal();
-            $payment = $paypal->createPaymentByCreditCard($address, $credit_card, $items, $subtotal, $shipping, $tax, $total);
+            $authorization = $paypal->authorizePaymentByCreditCard($address, $credit_card, $items, $subtotal, $shipping, $tax, $total);
 
             // create buyer order
             $order = BuyerOrder::create([
@@ -213,7 +284,7 @@ class BuyerOrderController extends Controller
                 'fee'                   => $this->cart->fee(),
                 'discount'              => $this->cart->discount(),
                 'amount'                => Price::convertDecimalToInteger($total),
-                'payment_id'            => $payment->getId()
+                'authorization_id'      => $authorization->getId()
             ]);
 
             // create seller order(s) according to the Cart items
@@ -231,7 +302,7 @@ class BuyerOrderController extends Controller
         elseif ($payment_method == 'paypal')
         {
             $paypal = new Paypal();
-            $payment = $paypal->createPaymentByPaypal($items, $subtotal, $shipping, $tax, $total, $shipping_address_id);
+            $payment = $paypal->authorizePaymentByPalpal($items, $subtotal, $shipping, $tax, $total, $shipping_address_id);
             $approvalUrl = $payment->getApprovalLink();
 
             // redirect user to Paypal checkout page
@@ -258,6 +329,9 @@ class BuyerOrderController extends Controller
 
         $paypal = new Paypal();
         $payment = $paypal->executePayment($payment_id, $payer_id);
+        $transactions = $payment->getTransactions();
+        $relatedResources = $transactions[0]->getRelatedResources();
+        $authorization = $relatedResources[0]->getAuthorization();
 
         // create buyer order
         $order = BuyerOrder::create([
@@ -267,7 +341,7 @@ class BuyerOrderController extends Controller
             'fee'                   => $fee,
             'discount'              => $discount,
             'amount'                => $total,
-            'payment_id'            => $payment->getId()
+            'authorization_id'      => $authorization->getId()
         ]);
 
         // create seller order(s) according to the Cart items
@@ -312,76 +386,5 @@ class BuyerOrderController extends Controller
             // send confirmation email to seller
             $order->emailOrderConfirmation();
         }
-    }
-
-    /**
-     * Display a specific buyer order.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
-    public function show($id)
-    {
-        $buyer_order = BuyerOrder::find($id);
-
-        // check if this order belongs to the current user.
-        if (!empty($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
-        {
-            return view('order.buyer.show')
-                ->with('buyer_order', $buyer_order)
-                ->with('datetime_format', Config::get('app.datetime_format'));
-        }
-
-        return redirect('order/buyer')
-            ->with('message', 'Order not found.');
-    }
-
-    /**
-     * Cancel a specific buyer order and corresponding seller orders.
-     *
-     * @param $id  The buyer order id.
-     *
-     * @return RedirectResponse
-     */
-    public function cancel($id)
-    {
-        $buyer_order = BuyerOrder::find($id);
-
-        // check if this order belongs to the current user.
-        if ($buyer_order && $buyer_order->isBelongTo(Auth::id()))
-        {
-            if ($buyer_order->isCancellable())
-            {
-                $buyer_order->cancel();
-
-                return redirect('order/buyer/' . $id)
-                    ->with('message', 'Your cancel request has been submitted. We will process your request in 2 days.');
-            }
-            else
-            {
-                return redirect('order/buyer/' . $id)
-                    ->with('message', 'Sorry, this order cannot be cancelled. We have picked up one or more books from seller.');
-            }
-        }
-
-        return redirect('order/buyer')
-            ->with('message', 'Order not found.');
-    }
-
-    /**
-     * Display an order confirmation page.
-     *
-     * @return RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
-     */
-    public function confirmation()
-    {
-        // check if this page is redirected from storeBuyerOrder method
-        if (!Session::has('order'))
-        {
-            return redirect('/order/buyer');
-        }
-
-        return view('order.buyer.confirmation');
     }
 }

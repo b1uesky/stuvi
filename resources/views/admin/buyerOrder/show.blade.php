@@ -44,40 +44,12 @@
             <td><a href="#">${{ $buyer_order->amount/100 }}</a></td>
         </tr>
         <tr>
-            <th>Refund</th>
-            <td>
-            <table>
-                @if ($buyer_order->isRefundable())
-                <form action="{{ url('admin/order/buyer/refund') }}" method="POST">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="hidden" name="buyer_order_id" value="{{ $buyer_order->id }}">
-                    {{-- refund amount --}}
-                    <div class="form-group">
-                        <label>$</label>
-                        <input type="number" step="0.01" name="refund_amount" value="{{ $buyer_order->refundableAmount()/100 }}">
-                        <input type="submit" name="submit" class="btn" value="Refund"/>
-                    </div>
-
-                </form>
-                @endif
-
-                <tr>
-                    <td>
-                        @foreach($buyer_order->stripeRefunds as $refund)
-                            <p>${{ $refund->amount/100 }} @ {{ $refund->created_at }}</p>
-                        @endforeach
-                    </td>
-                </tr>
-            </table>
-            </td>
-        </tr>
-        <tr>
             <th>Items</th>
             <td>
             <table>
                 @foreach($buyer_order->seller_orders as $seller_order)
                     <tr>
-                        <a href="{{ url('admin/sellerOrder/'.$seller_order->id) }}">{{ $seller_order->product->book->title }}</a><br>
+                        <a href="{{ url('admin/order/seller/'.$seller_order->id) }}">{{ $seller_order->product->book->title }}</a><br>
                     </tr>
                 @endforeach
             </table>
