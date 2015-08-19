@@ -3,7 +3,7 @@
 @section('title', 'Add a new address')
 
 @section('content')
-    <div class="container">
+    <div class="container container-main-content">
         <h2>Add a new address</h2>
 
         {{-- Errors --}}

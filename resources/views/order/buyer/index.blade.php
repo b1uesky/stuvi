@@ -12,7 +12,7 @@
 
     @include('includes.textbook.flash-message')
 
-    <div class="container">
+    <div class="container container-main-content">
         <div class="page-header">
             <h1>Your orders</h1>
         </div>

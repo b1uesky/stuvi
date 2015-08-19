@@ -12,7 +12,7 @@
                 A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
                 Licensed under MIT
                 -->
-        <div class ="container-fluid pro">
+        <div class ="container-fluid pro container-main-content">
             <div class="container">
                 <div class="row profile">
                     <div class="col-md-3">

@@ -84,7 +84,7 @@
                         </li>
                         <!-- cart -->
                         <li class="cart">
-                                <?php $cartQty = Auth::user()->cart->quantity ?>
+                                <?php $cartQty = Auth::user()->cart->quantity; ?>
                                 {{-- If cart empty, open modal --}}
                                 <label class="sr-only" for="nav-right-cart-link">Cart</label>
                                 <a href="{{ url('/cart') }}">
@@ -95,7 +95,6 @@
                                         <span class="cart-quantity">{{$cartQty}}</span>
                                     @endif
                                 </a>
-
                         </li>
                     @endif
                 </ul>

@@ -6,6 +6,7 @@
 @section('description', 'Sell your textbooks to other students without leaving home.')
 
 @section('css')
+    {{-- Used for icons in sell page--}}
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="{{ asset('/css/textbook.css') }}">
 @endsection
@@ -25,7 +26,7 @@
     </div>
 
     @include('includes.textbook.flash-message')
-
+    <div class="container-main-content">
         <!-- Search Bar Container-->
         <div class="container-fluid container-image">
 
@@ -135,7 +136,7 @@
             </div>
             <!-- end container -->
         </section>
-
+    </div>
 @endsection
 
 @section('javascript')
