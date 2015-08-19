@@ -12,13 +12,13 @@
 
     @include('includes.textbook.flash-message')
 
-    <div class="container buyer-order-container">
+    <div class="container">
         <div class="page-header">
             <h1>Your orders</h1>
         </div>
 
         {{-- order list --}}
-        @foreach ($orders as $order)
+        @foreach ($orders as $buyer_order)
             <div class="panel panel-default">
                 <div class="panel-heading">
 
@@ -30,7 +30,7 @@
                             </div>
 
                             <div class="row">
-                                <span>{{ date('M d, Y', strtotime($order->created_at)) }}</span>
+                                <span>{{ date('M d, Y', strtotime($buyer_order->created_at)) }}</span>
                             </div>
                         </div>
 
@@ -40,13 +40,13 @@
                             </div>
 
                             <div class="row">
-                                <span>${{ $order->amount/100 }}</span>
+                                <span>${{ $buyer_order->amount/100 }}</span>
                             </div>
                         </div>
 
                         <div class="col-xs-2 col-xs-offset-6 text-right">
                             <div class="row">
-                                <span>ORDER #{{ $order->id }}</span>
+                                <span>ORDER #{{ $buyer_order->id }}</span>
                             </div>
                         </div>
                     </div>
@@ -56,8 +56,8 @@
                     <div class="container-fluid">
                         {{-- order status --}}
                         <div class="row">
-                            <h3>{{ $order->getOrderStatus()['status'] }}</h3>
-                            <small>{{ $order->getOrderStatus()['detail'] }}</small>
+                            <h3>{{ $buyer_order->getOrderStatus()['status'] }}</h3>
+                            <small>{{ $buyer_order->getOrderStatus()['detail'] }}</small>
                         </div>
 
                         <br>
@@ -65,7 +65,7 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <!-- product list -->
-                                @foreach($order->products() as $product)
+                                @foreach($buyer_order->products() as $product)
                                     <div class="row">
 
                                         {{-- book image --}}
@@ -109,12 +109,12 @@
                             {{-- action buttons --}}
                             <div class="col-md-3">
                                 {{-- order details --}}
-                                <a class="btn primary-btn btn-block" href="/order/buyer/{{$order->id}}">Order
+                                <a class="btn primary-btn btn-block" href="/order/buyer/{{$buyer_order->id}}">Order
                                     Details</a>
 
                                 {{-- cancel order --}}
-                                @if ($order->isCancellable())
-                                    <a class="btn btn-default btn-block" href="/order/buyer/cancel/{{ $order->id }}"
+                                @if ($buyer_order->isCancellable())
+                                    <a class="btn btn-default btn-block" href="/order/buyer/cancel/{{ $buyer_order->id }}"
                                        role="'button">Cancel Order</a>
                                 @endif
                             </div>
@@ -124,7 +124,4 @@
             </div>
         @endforeach
     </div>
-@endsection
-
-@section('javascript')
 @endsection

@@ -20,6 +20,7 @@ class BuyerOrder extends Model
         'shipping_address_id',
         'cancelled',
         'cancelled_time',
+        'subtotal',
         'tax',
         'fee',
         'discount',
@@ -28,6 +29,31 @@ class BuyerOrder extends Model
         'authorization_id',
         'capture_id'
     ];
+
+    public function decimalSubtotal()
+    {
+        return Price::convertIntegerToDecimal($this->subtotal);
+    }
+
+    public function decimalFee()
+    {
+        return Price::convertIntegerToDecimal($this->fee);
+    }
+
+    public function decimalTax()
+    {
+        return Price::convertIntegerToDecimal($this->tax);
+    }
+
+    public function decimalDiscount()
+    {
+        return Price::convertIntegerToDecimal($this->discount);
+    }
+
+    public function decimalAmount()
+    {
+        return Price::convertIntegerToDecimal($this->amount);
+    }
 
     /**
      * Get the buyer of this buyer order.
