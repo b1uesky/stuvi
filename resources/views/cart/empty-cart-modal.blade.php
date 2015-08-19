@@ -21,7 +21,7 @@
                         <p><a class="btn primary-btn" href="{{url('/textbook')}}">Shop now!</a></p>
                     </div>
                    <div class="modal-footer">
-                       <button class="btn btn-default modal-close" data-dismiss="modal">Close</button>
+                       <button type="button" class="btn btn-default modal-close" data-dismiss="modal" aria-label="close">Close</button>
                    </div>
                 </div>
             </div>

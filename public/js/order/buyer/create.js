@@ -10,6 +10,7 @@ $(document).ready(function () {
      * Shipping Address
      */
     $('.show-addresses').click(function () {
+        $('#loader-wrapper').hide();
         $('.displayDefaultAddress').hide();
         $('#new-address-panel').show(1000);
         $('.displayAllAddresses').show(1000);
@@ -35,18 +36,15 @@ $(document).ready(function () {
             }
         });
         $('#new-address-panel').hide();
+        $('#loader-wrapper').hide();
     });
 
     $('#storeAddedAddress').click(function () {
         $('.add-address-form').submit();
-        $('.form-btn').css('visibility', 'hidden');
-        $('#add-loading').css('visibility', 'visible');
     });
 
     $('#storeUpdatedAddress').click(function () {
         $('.update-address-form').submit();
-        $('.form-btn').css('visibility', 'hidden');
-        $('#update-loading').css('visibility', 'visible');
     });
 
     $('.editThisAddress').click(function () {
@@ -62,6 +60,7 @@ $(document).ready(function () {
         $('input[name=state_a2]').val(address_array[5]);
         $('input[name=zip]').val(address_array[6]);
         $('input[name=address_id]').val(address_ID);
+        $('#loader-wrapper').hide();
     });
 
     $('.deleteThisAddress').click(function () {
@@ -84,28 +83,10 @@ $(document).ready(function () {
                         $('.add_new_address').click();
                     }
                 }
+                $('#loader-wrapper').hide();
             }
         });
     });
-
-    /**
-     * Add shade after modal pop out and remove it after modal close
-     */
-    //$("#update-address-modal").on('show.bs.modal',function(){
-    //    $('<div class="modal-backdrop"></div>').appendTo(document.body);
-    //});
-    //
-    //$("#add-address-modal").on('show.bs.modal',function(){
-    //    $('<div class="modal-backdrop"></div>').appendTo(document.body);
-    //});
-    //
-    //$("#update-address-modal").on('hide.bs.modal',function(){
-    //    $(".modal-backdrop").remove();
-    //});
-    //
-    //$("#add-address-modal").on('hide.bs.modal',function(){
-    //    $(".modal-backdrop").remove();
-    //});
 
     /**
      * A BEAUTIFUL CARD!
@@ -118,13 +99,18 @@ $(document).ready(function () {
         width: 350,
 
         formSelectors: {
+            numberInput: '#payment-number',
+            nameInput: '#payment-name',
             expiryInput: '#payment-month, #payment-year',
+            cvcInput: '#payment-cvc'
         }
     });
 
     /**
-     * Form Validation
+     * Form Validation for credit card
      */
+    //var formValidation = $('#form-payment').data('formValidation');
+
     $('#form-payment').
         formValidation({
             framework: 'bootstrap',
@@ -143,6 +129,19 @@ $(document).ready(function () {
                         },
                         creditCard: {
                             message: 'The credit card number is not valid'
+                        }
+                    }
+                },
+                paymentName: {
+                    trigger: 'blur',
+                    selector: '#payment-name',
+                    validators: {
+                        notEmpty: {
+                            message: 'Required'
+                        },
+                        regexp: {
+                            regexp: /^[a-z\s]+$/i,
+                            message: 'The full name can consist of alphabetical characters and spaces only'
                         }
                     }
                 },
@@ -220,7 +219,7 @@ $(document).ready(function () {
                         },
                         cvv: {}
                     }
-                },
+                }
             }
         })
         .on('err.field.fv', function (e, data) {
@@ -234,4 +233,47 @@ $(document).ready(function () {
                 .data('fv.messages')
                 .find('.help-block[data-fv-for="' + data.field + '"]').hide();
         });
+
+
+    // on payment methods tab switch
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var payment_method = $(e.target).text(); // activated tab
+
+        if (payment_method == 'Credit Card') {
+            $('input[name=payment_method]').val('credit_card');
+        }
+
+        if (payment_method == 'PayPal') {
+            $('input[name=payment_method]').val('paypal');
+        }
+    });
+
+
+    $('#form-place-order').submit(function(e) {
+        e.preventDefault();
+
+        var payment_method = $('input[name=payment_method]').val();
+
+        // add additional input fields if pay by credit card
+        if (payment_method == 'credit_card') {
+            $('<input>').attr({type: 'hidden', name: 'number', value: $('#payment-number').val()}).appendTo(this);
+            $('<input>').attr({type: 'hidden', name: 'name', value: $('#payment-name').val()}).appendTo(this);
+            $('<input>').attr({type: 'hidden', name: 'expire_month', value: $('#payment-month').val()}).appendTo(this);
+            $('<input>').attr({type: 'hidden', name: 'expire_year', value: $('#payment-year').val()}).appendTo(this);
+            $('<input>').attr({type: 'hidden', name: 'cvc', value: $('#payment-cvc').val()}).appendTo(this);
+
+            // validate form
+            $('#form-payment').formValidation('validate');
+            var isValidForm = $('#form-payment').data('formValidation').isValid();
+
+            if (isValidForm) {
+                this.submit();
+            }
+        }
+
+        if (payment_method == 'paypal') {
+            this.submit();
+        }
+
+    });
 });

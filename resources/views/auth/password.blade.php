@@ -1,6 +1,8 @@
+{{-- Forgot Password Page --}}
+
 @extends('app')
 
-@section('title','Reset Password')
+@section('title','Forgot Password')
 
 @section('css')
     <link href="{{ asset('/css/auth_login.css') }}" rel="stylesheet">

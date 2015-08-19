@@ -2,10 +2,6 @@
 
 @import "modules/all";
 
-body {
-  background-color: $background-color;
-}
-
 .back-row {
   margin-left: 20px;
   margin-top: 10px;
@@ -136,23 +132,24 @@ body {
 }
 
 /**** PAYMENT ****/
-
-.payment-container {
-  width: 100%;
+.payment-method-tabs{
+  border: 1px solid #ddd;
+  border-top-color: $background-color;
+  border-radius: 0 0 10px 10px;
 }
 
 .payment-card-container {
-  max-width: 380px;
+  margin: $spacing-unit auto;
+  max-width: 320px;
 }
 
 .card-wrapper {
   width: 100%;
-  //margin: 30px auto;
 }
 
 #form-payment {
-  margin-top: 20px;
-  margin-bottom: 50px;
+  margin-top: $spacing-unit;
+
   input {
     text-align: center;
   }
@@ -169,3 +166,6 @@ body {
   margin-bottom: 10px;
 }
 
+.paypal-content {
+  margin: $spacing-unit;
+}

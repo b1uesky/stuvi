@@ -1,14 +1,8 @@
 /******** LOGIN PAGE ********/
 
-/* Used by login.blade.php and register.blade.php */
+/* Used by login.blade.php and register.blade.php and password.blade.php */
 
 @import "modules/all";
-
-html body {
-  background: $background-color;
-}
-
-.content{}
 
 button:focus {
   outline: 0 !important;
@@ -113,6 +107,9 @@ button:focus {
 
 #password-jumbotron{
   background-color: rgba(153, 159, 163, 0.45);
+  @media(max-width: 767px){
+    padding: 3%;
+  }
 }
 
 

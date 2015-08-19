@@ -1,8 +1,8 @@
-<!-- nav bar here -->
+{{-- Navigation Bar --}}
 
 {{-- Styling can be found in scss/sections/_navigation.scss--}}
 
-{{-- Variables--}}
+{{-- Header.blade.php Variables--}}
 <?php $url = Request::url() ?>
 
 <header>
@@ -56,7 +56,7 @@
                         <!-- profile dropdown -->
                         <li class="dropdown" class="nav-link" style="z-index: 500;">
                             <a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button" aria-expanded="true">
-                                <span nav-caret>{{ Auth::user()->first_name }} </span>
+                                <span>{{ Auth::user()->first_name }} </span>
                                 <span class="caret nav-caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="nav-dropdown">
@@ -86,10 +86,15 @@
                         <li class="cart">
                                 <?php $cartQty = Auth::user()->cart->quantity ?>
                                 {{-- If cart empty, open modal --}}
+                                <label class="sr-only" for="nav-right-cart-link">Cart</label>
                                 @if($cartQty == 0)
-                                    <a href="#empty-cart-modal" data-toggle="modal" class="nav-link">Cart <i class="fa fa-shopping-cart" style="line-height: 19px;"></i></a>
+                                    <a href="#empty-cart-modal" data-toggle="modal" class="nav-link" id="nav-right-cart-link" title="empty-cart">
+                                        <i class="fa fa-shopping-cart"></i> <span class="cart-quantity"></span>
+                                    </a>
                                 @else
-                                        <a href="{{ url('/cart') }}"><i class="fa fa-shopping-cart" ></i> {{$cartQty}}</a>
+                                    <a href="{{ url('/cart') }}" id="nav-right-cart-link" title="cart">
+                                        <i class="fa fa-shopping-cart"></i> <span class="cart-quantity">{{$cartQty}}</span>
+                                    </a>
                                 @endif
                         </li>
                     @endif
@@ -99,15 +104,5 @@
         </div>
         <!-- End navbar container -->
     </nav>
-    <!-- login modal -->
-    @if (Auth::guest() && !(Request::url() === url('/') || Request::url() === url('/home')))
-        @include('auth.login-signup-modal')
-    @endif
-
-    @if(Auth::check())
-        <!-- Empty Cart Modal -->
-        @if($cartQty == 0)
-            @include('cart.empty-cart-modal')
-        @endif
-    @endif
 </header>
+

@@ -4,17 +4,18 @@
 
 @section('css')
     <link href="{{ asset('/css/order_show.css') }}" rel="stylesheet">
-@endsection
+    @endsection
 
-@section('content')
+    @section('content')
 
     @include('includes.textbook.flash-message')
 
-    <!-- order details -->
+            <!-- order details -->
     <div class="container">
         {!! Breadcrumbs::render() !!}
 
         <h1 id="">Order Details</h1>
+
         <h2>
             <!-- canceled order -->
             @if ($buyer_order->cancelled)<span id="cancelled">This order has been cancelled.</span> @endif
@@ -22,11 +23,13 @@
 
         <div class="row" id="details1">
             <p class="col-xs-12 col-sm-3">Ordered on {{ $buyer_order->created_at }}</p>
+
             <p class="col-xs-12 col-sm-4">Order #{{ $buyer_order->id }}</p>
         </div>
         <div class="row" id="details1">
             @if ($buyer_order->isDelivered())
-                <p class="col-xs-12 col-sm-3">Delivered on {{ date($datetime_format, strtotime($buyer_order->time_delivered)) }}</p>
+                <p class="col-xs-12 col-sm-3">Delivered
+                    on {{ date($datetime_format, strtotime($buyer_order->time_delivered)) }}</p>
             @endif
         </div>
         @if ($buyer_order->isCancellable())
@@ -47,10 +50,11 @@
                     <h4>Payment Method</h4>
 
                     {{--<p>{{ ucfirst($buyer_order->buyer_payment->card_brand) }}--}}
-                        {{--**** {{ $buyer_order->buyer_payment->card_last4 }}</p>--}}
+                    {{--**** {{ $buyer_order->buyer_payment->card_last4 }}</p>--}}
                 </div>
                 <div class="details-pricing col-xs-12 col-sm-3 col-sm-offset-3">
                     <h4>Order Summary</h4>
+
                     <p>Fee: ${{ $buyer_order->fee/100 }}<br>
                         Discount: - ${{ $buyer_order->discount/100 }}<br>
                         Tax: ${{ $buyer_order->tax/100 }}<br>
@@ -63,7 +67,8 @@
                     <div class="row">
                         <div class="col-sm-2">
                             @if($product->book->imageSet->large_image)
-                                <img class="lg-img" src="{{ config('aws.url.stuvi-book-img') . $product->book->imageSet->large_image}}">
+                                <img class="lg-img"
+                                     src="{{ config('aws.url.stuvi-book-img') . $product->book->imageSet->large_image}}">
                             @else
                                 <img class="lg-img" src="{{ config('book.default_image_path.large') }}">
                             @endif
@@ -74,9 +79,9 @@
                             <p>ISBN: {{ $product->book->isbn13 }}</p>
 
                             <p><span>Author(s): </span>
-                            @foreach($product->book->authors as $author)
-                                <span>{{ $author->full_name }}</span>
-                            @endforeach
+                                @foreach($product->book->authors as $author)
+                                    <span>{{ $author->full_name }}</span>
+                                @endforeach
                             </p>
 
                             <p>Scheduled pickup time:
@@ -104,18 +109,14 @@
                             <p><b>${{ $product->decimalPrice() }}</b></p>
                         </div>
                     </div>
-                </div>
-                <hr>
-            @endforeach
+                        <hr>
+                @endforeach
+            </div>
+
         </div>
     </div>
 
 @endsection
 
 @section('javascript')
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
 @endsection

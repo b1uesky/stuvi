@@ -89,7 +89,10 @@
                     @elseif(!$product->isSold() && $product->seller == Auth::user())
                         <a class="btn primary-btn add-cart-btn" href="{{ url('textbook/sell/product/' . $product->id . '/edit') }}" role="button">Edit</a>
                     @else
-                        <a class="btn primary-btn add-cart-btn" href="{{ url('/cart/add/'.$product->id) }}">Add to Cart</a>
+                        <form method="post" class="add-to-cart">
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <input class="btn primary-btn add-cart-btn" type="submit" value="Add to cart">
+                        </form>
                     @endif
                 @else
                     <br>
@@ -235,8 +238,6 @@
 @endsection
 
 @section('javascript')
-    <!-- lightbox required -->
-    {{--http://lokeshdhakar.com/projects/lightbox2/--}}
     <script src="{{ asset('libs/lightbox2/dist/js/lightbox.min.js') }}"></script>
-
+    <script src="{{ asset('js/cart.js') }}"></script>
 @endsection
