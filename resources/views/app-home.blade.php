@@ -35,7 +35,7 @@
 
 {{-- Required modals --}}
 <?php $url = Request::url() ?>
-@if(Auth::check()))
+@if(Auth::check())
     <?php $cartQty = Auth::user()->cart->quantity ?>
 @endif
 
