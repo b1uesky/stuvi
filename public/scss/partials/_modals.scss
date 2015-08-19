@@ -1,9 +1,5 @@
 /*** MODAL STYLING ***/
-@import "../modules/colors";
-
-.modal-content {
-  border-radius: 0;
-}
+@import "../modules/all";
 
 .close-modal-btn {
   &:hover, &:focus {
@@ -23,12 +19,6 @@
   background-color: $background-color;
 }
 
-.modal-close {
-  &:focus {
-    outline: 0 !important;
-  }
-}
-
-.modal-backdrop{
- // z-index: 5;
+.remember-me, .forgot-password {
+  display: inline;
 }
