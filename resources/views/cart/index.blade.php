@@ -79,17 +79,20 @@
                             <h3 class="panel-title">Subtotal</h3>
                         </div>
                         <div class="panel-body">
-                            <div>
-                                <span>
-                                    @if(count($items) == 1)
-                                        1 item:
-                                    @else
-                                        {{ count($items) }} items:
-                                    @endif
-                                </span>
-                                <span class="price subtotal">${{ $subtotal }}</span>
-                            </div>
+                            <table class="table table-panel">
+                                <tr>
+                                    <td class="text-left">
+                                        <span class="cart-quantity">{{ count($items) }}</span>
+                                        <span>item(s):</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span class="price subtotal">${{ $subtotal }}</span>
+                                    </td>
+                                </tr>
+                            </table>
+
                             <hr>
+
                             <div>
                                 <a class="btn primary-btn" href="{{ url('/order/create') }}" role="button">Proceed to
                                     checkout</a>

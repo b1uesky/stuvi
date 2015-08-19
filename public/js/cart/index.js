@@ -15,7 +15,14 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data);
                 if (data['removed']) {
-                    if (data['num_items'] == 0) {
+                    // decrement cart quantity by 1
+                    var num_items = data['num_items'];
+
+                    $('.cart-quantity').text(num_items);
+
+                    if (num_items == 0) {
+                        $('.cart-quantity').addClass('hide');
+
                         var emptyMessage = '<div class="cart-empty text-center text-muted">' +
                             '<h2>Your shopping cart is empty.</h2>' +
                             '</div>';

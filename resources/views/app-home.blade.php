@@ -66,9 +66,9 @@
 <script src="{{ asset('libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 {{--<script src="{{ asset('js/loader.js') }}"></script>--}}
 
-@if(Auth::check())
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
-@endif
+{{--@if(Auth::check())--}}
+    {{--<script src="{{ asset('js/bootstrap.js') }}"></script>--}}
+{{--@endif--}}
 
 @if(Auth::guest())
     {{-- FormValidation --}}

@@ -5,7 +5,7 @@
 $(document).ready(function() {
     // initialize popover
     // http://getbootstrap.com/javascript/#popovers
-    $('[data-toggle="popover"]').popover({
-        container: 'body'
-    });
+    //$('[data-toggle="popover"]').popover({
+    //    container: 'body'
+    //});
 });
