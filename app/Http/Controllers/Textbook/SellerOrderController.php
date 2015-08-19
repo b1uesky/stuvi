@@ -52,9 +52,7 @@ class SellerOrderController extends Controller
         if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
         {
             return view('order.seller.show')
-                ->with('seller_order', $seller_order)
-                ->with('datetime_format', Config::get('app.datetime_format'))
-                ->with('stripe_authorize_url', $this->buildStripeAuthRequestUrl());
+                ->with('seller_order', $seller_order);
         }
 
         return redirect('order/seller')

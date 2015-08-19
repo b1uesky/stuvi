@@ -8,4 +8,5 @@
 
 return [
     'service_fee'   => 299,
+    'payout_service_fee'    => 0
 ];

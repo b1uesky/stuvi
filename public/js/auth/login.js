@@ -8,7 +8,34 @@ $(document).ready(function () {
 
     $('.loading').css('visibility', 'hidden');
     // login form validation
-    $('#form-login').submit(function (e) {
+    $('#form-login').formValidation({
+        framework: 'bootstrap',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+                email: {
+                    trigger: 'blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'The Email is required'
+                        },
+                        blank: {}
+                    }
+                },
+                password: {
+                    trigger: 'blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'The password is required'
+                        },
+                        blank: {}
+                    }
+                }
+            }
+    }).on('success.form.fv',function (e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',

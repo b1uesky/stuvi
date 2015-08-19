@@ -444,7 +444,7 @@
                         </ul>
 
                         <!-- Tab panes -->
-                        <div class="tab-content">
+                        <div class="tab-content payment-method-tabs">
                             <div role="tabpanel" class="tab-pane fade in active" id="credit-card">
                                 <div class="payment-card-container">
                                     <div class="row">
