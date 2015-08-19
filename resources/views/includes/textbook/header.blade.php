@@ -87,15 +87,15 @@
                                 <?php $cartQty = Auth::user()->cart->quantity ?>
                                 {{-- If cart empty, open modal --}}
                                 <label class="sr-only" for="nav-right-cart-link">Cart</label>
-                                @if($cartQty == 0)
-                                    <a href="#empty-cart-modal" data-toggle="modal" class="nav-link" id="nav-right-cart-link" title="empty-cart">
-                                        <i class="fa fa-shopping-cart"></i> <span class="cart-quantity"></span>
-                                    </a>
-                                @else
-                                    <a href="{{ url('/cart') }}" id="nav-right-cart-link" title="cart">
-                                        <i class="fa fa-shopping-cart"></i> <span class="cart-quantity">{{$cartQty}}</span>
-                                    </a>
-                                @endif
+                                <a href="{{ url('/cart') }}">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    @if($cartQty == 0)
+                                        <span class="cart-quantity hide">{{$cartQty}}</span>
+                                    @else
+                                        <span class="cart-quantity">{{$cartQty}}</span>
+                                    @endif
+                                </a>
+
                         </li>
                     @endif
                 </ul>
