@@ -160,7 +160,7 @@ class DeliverController extends Controller
         }
 
         // capture authorized payment from buyer
-//        $buyer_order->capturePayment();
+        $buyer_order->capturePayment();
 
         // create payouts to sellers
         $buyer_order->createPayout();
