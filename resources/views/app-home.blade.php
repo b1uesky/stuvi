@@ -30,30 +30,30 @@
 {{-- Page content --}}
 @yield('content')
 
+{{--loader shade--}}
+@include('loader')
+@include('includes.textbook.footer')
+
 {{-- Page modals --}}
 @yield('modals')
 
 {{-- Required modals --}}
 <?php $url = Request::url() ?>
 @if(Auth::check()))
-    <?php $cartQty = Auth::user()->cart->quantity ?>
+<?php $cartQty = Auth::user()->cart->quantity ?>
 @endif
 
- <!-- login modal -->
+        <!-- login modal -->
 @if (Auth::guest() && !($url === url('/') || $url === url('/home')))
-    @include('auth.login-signup-modal')
+@include('auth.login-signup-modal')
 @endif
 
 @if(Auth::check())
         <!-- Empty Cart Modal -->
-    @if($cartQty == 0)
-        @include('cart.empty-cart-modal')
-    @endif
+@if($cartQty == 0)
+@include('cart.empty-cart-modal')
 @endif
-
-{{--loader shade--}}
-@include('loader')
-@include('includes.textbook.footer')
+@endif
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
