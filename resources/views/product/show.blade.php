@@ -84,10 +84,27 @@
                     Price: <b>${{ $product->decimalPrice() }}</b>
                 </div>
                 @if(Auth::check())
-                    @if($product->isInCart(Auth::user()->id))
+                    @if($product->isDeleted())
+                        <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Archived</a>
+                    @elseif($product->isInCart(Auth::user()->id))
                         <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Added To Cart</a>
                     @elseif(!$product->isSold() && $product->seller == Auth::user())
-                        <a class="btn primary-btn add-cart-btn" href="{{ url('textbook/sell/product/' . $product->id . '/edit') }}" role="button">Edit</a>
+                        {{--<a class="btn primary-btn add-cart-btn" href="{{ url('textbook/sell/product/' . $product->id . '/edit') }}" role="button">Edit</a>--}}
+                        <span class="for-sale-isbn">
+                                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}"
+                                       class="btn primary-btn edit-btn">
+                                        <i class="fa fa-pencil"></i> Edit
+                                    </a>
+                                </span>
+
+                        <form action="{{ url('/textbook/sell/product/delete') }}" method="post"
+                              class="delete-form">
+                            {!! csrf_field() !!}
+                            <input type="hidden" name="id" value="{{ $product->id }}">
+                            <button type="submit" class="btn primary-btn sell-btn">
+                                <i class="fa fa-trash"></i> Delete
+                            </button>
+                        </form>
                     @else
                         <form method="post" class="add-to-cart">
                             <input type="hidden" name="product_id" value="{{ $product->id }}">

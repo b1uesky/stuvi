@@ -161,7 +161,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function productsForSale()
     {
-        return $this->products()->where('sold', 0)->orderBy('created_at', 'DESC')->get();
+        return $this->products()->where('sold', 0)->whereNull('deleted_at')->orderBy('created_at', 'DESC')->get();
     }
 
     /**
