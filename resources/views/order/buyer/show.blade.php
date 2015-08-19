@@ -22,16 +22,33 @@
             <div class="panel-body">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <span>Ordered on {{ $buyer_order->created_at }}</span>
                         </div>
-                        <div class="col-md-6 text-right">
+                        <div class="col-md-2">
                             <span>Order #{{ $buyer_order->id }}</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        {{-- TODO: show status of scheduled pickup or not--}}
+        {{--<p>Scheduled pickup time:--}}
+            {{--@if ($seller_order->scheduled_pickup_time)--}}
+                {{--{{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}--}}
+            {{--@else--}}
+                {{--N/A--}}
+            {{--@endif--}}
+        {{--</p>--}}
+
+        {{--<p>Pickup time:--}}
+            {{--@if ($seller_order->pickup_time)--}}
+                {{--{{ date($datetime_format, strtotime($seller_order->pickup_time)) }}--}}
+            {{--@else--}}
+                {{--N/A--}}
+            {{--@endif--}}
+        {{--</p>--}}
 
         {{-- order details --}}
         <div class="panel panel-default">
