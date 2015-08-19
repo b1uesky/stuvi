@@ -27,7 +27,7 @@
 {{-- Required modals --}}
 <?php $url = Request::url() ?>
 @if(Auth::check()))
-<?php $cartQty = Auth::user()->cart->quantity ?>
+  <?php $cartQty = Auth::user()->cart->quantity ?>
 @endif
 
         <!-- login modal -->
@@ -37,9 +37,9 @@
 
 @if(Auth::check())
         <!-- Empty Cart Modal -->
-@if($cartQty == 0)
-@include('cart.empty-cart-modal')
-@endif
+  @if($cartQty == 0)
+    @include('cart.empty-cart-modal')
+  @endif
 @endif
 
 
