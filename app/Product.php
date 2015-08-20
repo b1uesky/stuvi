@@ -13,6 +13,7 @@ class Product extends Model
         'seller_id',
         'sold',
         'verified',
+        'deleted_at',
     ];
 
     /**
@@ -120,6 +121,11 @@ class Product extends Model
         }
 
         return 'No';
+    }
+
+    public function isDeleted()
+    {
+        return !is_null($this->deleted_at);
     }
 
     /**
