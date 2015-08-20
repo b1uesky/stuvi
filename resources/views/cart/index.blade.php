@@ -15,6 +15,22 @@
     <div class="container container-main-content">
         {!! Breadcrumbs::render('shoppingCart') !!}
 
+        <div class="row progress-cart-row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3 progress-cart">
+                <nav>
+                    <ol class="cd-breadcrumb triangle">
+                        <li class="current"><em><i class="fa fa-shopping-cart"></i>
+                                Cart</em></li>
+                        <li><em><i class="fa fa-credit-card"></i>
+                                Checkout</em></li>
+                        <li><em><i class="fa fa-check"></i>
+                                Confirmation</em></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+
         <div class="row shopping-cart">
             @if(count($items) > 0)
                 {{-- Cart items --}}
