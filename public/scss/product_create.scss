@@ -2,56 +2,27 @@
 @import "modules/all";
 @import "partials/panels";
 
+/** SECTIONS **/
 .confirm, .details, .ready {
   margin: 10% 0;
 }
 
-.dropzone {
-  padding: 0;
-}
-
-
 /*** PRODUCT CONDITION ***/
-
-.condition-btn {
-  background-color: white;
-  border: 1px solid $border-color;
-
-  &:hover, &.active {
-    background-color: $primary-color;
-    color: white;
-    box-shadow: none;
-  }
-}
 
 .fa-question-circle {
   color: $accent-color;
   cursor: pointer;
 }
 
-.btn-add-input {
-  margin-bottom: 20px;
-}
-
-#price-input{
-   width: 50%;
- }
-
 /** FILE UPLOAD **/
+
+.dropzone {
+  padding: 0;
+}
 
 #form-product {
   border: none;
   background: none;
-}
-
-.upload-file {
-  margin-bottom: 10px;
-}
-
-.upload-error-message {
-  display: none;
-  color: red;
-  font-weight: bold;
 }
 
 #dropzone-img-preview {
@@ -79,14 +50,4 @@
 
 .dz-error-message{
   top: 150px !important;
-}
-
-/** POST BOOK BUTTON **/
-
-.sell-btn {
-  display: block;
-  width: 200px;
-  padding: 12px;
-  font-size: 16px;
-
 }
