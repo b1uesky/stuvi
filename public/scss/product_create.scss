@@ -1,46 +1,22 @@
 /***** SELLER PRODUCT CREATE PAGE *****/
 @import "modules/all";
+@import "partials/panels";
 
-.create-container {
-  margin-bottom: 50px;
+.confirm, .details, .ready {
+  margin: 10% 0;
 }
 
-#login-signup-container{
-  @media(min-width: 796px ){
-    padding-top: 80px;
-  }
+.dropzone {
+  padding: 0;
 }
 
-/*** TEXTBOOK INFO ***/
-
-.textbook-row {
-  margin-top: 50px;
-}
-
-.authors-container {
-  margin-bottom: 10px;
-}
-
-.author-btn {
-  &:hover, &:focus {
-    background-color: $primary-color;
-    color: white;
-    outline: 0 !important;
-  }
-}
-
-.textbook-info {
-}
-
-#price-input {
-  width: 200px;
-}
 
 /*** PRODUCT CONDITION ***/
 
 .condition-btn {
   background-color: white;
   border: 1px solid $border-color;
+
   &:hover, &.active {
     background-color: $primary-color;
     color: white;
@@ -55,11 +31,6 @@
 
 .btn-add-input {
   margin-bottom: 20px;
-}
-
-.input-group-addon {
-  background-color: $primary-color;
-  color: white;
 }
 
 #price-input{
@@ -84,10 +55,14 @@
 }
 
 #dropzone-img-preview {
-  border: 2px dashed $primary-color;
-  background: white;
+  border: 2px dashed $border-color;
+  background: $background-color;
   border-radius: 5px;
   padding: $spacing-unit / 2;
+
+  &:hover {
+    border: 2px dashed $primary-color;
+  }
 }
 
 .dz-image img {
