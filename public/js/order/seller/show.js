@@ -48,6 +48,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data, status) {
                 $('.text-scheduled-pickup-time').text('Scheduled pickup time: ' + data['scheduled_pickup_time']);
+                $('.schedule-pickup-time').text(data['message']);
             },
             error: function (xhr, status, errorThrown) {
                 console.log(status);

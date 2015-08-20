@@ -5,7 +5,6 @@ use App\Address;
 use App\Helpers\StripeKey;
 use App\Http\Controllers\Controller;
 use App\SellerOrder;
-use App\StripeTransfer;
 use Auth;
 use Cart;
 use Config;
@@ -125,7 +124,7 @@ class SellerOrderController extends Controller
             $seller_order = SellerOrder::find($seller_order_id);
 
             // check if this seller order belongs to the current user.
-            if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
+            if ($seller_order && $seller_order->isBelongTo(Auth::id()))
             {
                 // if this seller order is cancelled, user cannot set up pickup time
                 if ($seller_order->cancelled)
@@ -137,6 +136,15 @@ class SellerOrderController extends Controller
                         ]
                     ], 400);
                 }
+//                elseif (!$seller_order->isPickUpConfirmable())
+//                {
+//                    return Response::json([
+//                        'success' => false,
+//                        'errors'  => [
+//                            'pickup'
+//                        ],
+//                                          ])
+//                }
 
                 $seller_order->scheduled_pickup_time = DateTime::createFromFormat(
                     Config::get('app.datetime_format'), $scheduled_pickup_time)
@@ -146,7 +154,8 @@ class SellerOrderController extends Controller
 
                 return Response::json([
                     'success'               => true,
-                    'scheduled_pickup_time' => $scheduled_pickup_time
+                    'scheduled_pickup_time' => $scheduled_pickup_time,
+                    'message'               => 'Successfully schedule pickup time.',
                 ]);
             }
 
