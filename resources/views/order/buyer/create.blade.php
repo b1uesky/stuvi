@@ -168,9 +168,7 @@
                     <div id="new-address-panel" class="thumbnail col-sm-5">
                         <div class="panel-body">
                             <h4>Add New Address</h4>
-                            <i class="fa fa-plus-square fa-4x"
-                               data-toggle="modal" data-target="#add-address-modal">
-                            </i>
+                            <i class="fa fa-plus-square fa-4x"></i>
                         </div>
                     </div>
 
