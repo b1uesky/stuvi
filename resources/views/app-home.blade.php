@@ -30,6 +30,10 @@
 {{-- Page content --}}
 @yield('content')
 
+{{--loader shade--}}
+@include('loader')
+@include('includes.textbook.footer')
+
 {{-- Page modals --}}
 @yield('modals')
 
@@ -39,21 +43,17 @@
     <?php $cartQty = Auth::user()->cart->quantity ?>
 @endif
 
- <!-- login modal -->
+<!-- login modal -->
 @if (Auth::guest() && !($url === url('/') || $url === url('/home')))
     @include('auth.login-signup-modal')
 @endif
 
 @if(Auth::check())
-        <!-- Empty Cart Modal -->
+    <!-- Empty Cart Modal -->
     @if($cartQty == 0)
         @include('cart.empty-cart-modal')
     @endif
 @endif
-
-{{--loader shade--}}
-@include('loader')
-@include('includes.textbook.footer')
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -65,6 +65,10 @@
 <script src="{{ asset('libs/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/loader.js') }}"></script>
+
+{{--@if(Auth::check())--}}
+    {{--<script src="{{ asset('js/bootstrap.js') }}"></script>--}}
+{{--@endif--}}
 
 @if(Auth::guest())
     {{-- FormValidation --}}

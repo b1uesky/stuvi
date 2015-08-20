@@ -11,78 +11,117 @@
 @section('content')
 
     @include('includes.textbook.flash-message')
-        
-    <!-- main container -->
-    <div class="container buyer-order-container">
-        <h1>Your orders</h1>
-        @forelse ($orders as $order)
-            <div class="row">
-                <div class="container order-container">
-                    <div class="row order-row">
-                        <!-- order details -->
-                        <div class="col-xs-2 order-date">
-                            <h5>Order Placed</h5>
 
-                            <p>{{ date('M d, Y', strtotime($order->created_at)) }}</p>
+    <div class="container container-main-content">
+        <div class="page-header">
+            <h1>Your orders</h1>
+        </div>
+
+        {{-- order list --}}
+        @foreach ($orders as $buyer_order)
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                    {{-- order details --}}
+                    <div class="container-fluid text-muted">
+                        <div class="col-xs-2">
+                            <div class="row">
+                                <span>ORDER PLACED</span>
+                            </div>
+
+                            <div class="row">
+                                <span>{{ date('M d, Y', strtotime($buyer_order->created_at)) }}</span>
+                            </div>
                         </div>
 
-                        <div class="col-xs-2 order-total">
-                            <h5>Total</h5>
-                            <p>${{ $order->amount/100 }}</p>
+                        <div class="col-xs-2">
+                            <div class="row">
+                                <span>TOTAL</span>
+                            </div>
+
+                            <div class="row">
+                                <span>${{ $buyer_order->decimalAmount() }}</span>
+                            </div>
                         </div>
-                        <div class="col-xs-3 col-xs-offset-5 order-number">
-                            <h5>Order Number # {{ $order->id }}</h5>
-                            <a id="show-order-link" href="/order/buyer/{{$order->id}}">View Order Details <i
-                                        class="fa fa-caret-right"></i>
-                            </a>
+
+                        <div class="col-xs-2 col-xs-offset-6 text-right">
+                            <div class="row">
+                                <span>ORDER #{{ $buyer_order->id }}</span>
+                            </div>
                         </div>
                     </div>
-                    <!-- order status -->
+                </div>
 
-                    <span id="cancelled">
-                        <h3>{{ $order->getOrderStatus()['status'] }}</h3>
-                        <small>{{ $order->getOrderStatus()['detail'] }}</small>
-                    </span>
-                    @if ($order->isCancellable())
-                        <a class="btn secondary-btn" href="/order/buyer/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
-                    @endif
-                    <!-- products in order -->
-                    @forelse($order->products() as $product)
-                        <div class="row book-row">
-                            <div class="col-xs-12 col-sm-2 book-img">
-                                <a href="{{ url('/textbook/buy/product/'.$product->id) }}">
-                                    @if($product->book->imageSet->large_image)
-                                        <img class="lg-img" src="{{ config('aws.url.stuvi-book-img') . $product->book->imageSet->large_image}}">
-                                    @else
-                                        <img class="lg-img" src="{{ config('book.default_image_path.large') }}">
-                                    @endif
-                                </a>
+                <div class="panel-body">
+                    <div class="container-fluid">
+                        {{-- order status --}}
+                        <div class="row">
+                            <h3>{{ $buyer_order->getOrderStatus()['status'] }}</h3>
+                            <small>{{ $buyer_order->getOrderStatus()['detail'] }}</small>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-9">
+                                <!-- product list -->
+                                @foreach($buyer_order->products() as $product)
+                                    <div class="row">
+
+                                        {{-- book image --}}
+                                        <div class="col-md-2">
+                                            <a href="{{ url('/textbook/buy/product/'.$product->id) }}">
+                                                @if($product->book->imageSet->small_image)
+                                                    <img class="img-responsive img-small"
+                                                         src="{{ config('aws.url.stuvi-book-img') . $product->book->imageSet->small_image}}">
+                                                @else
+                                                    <img class="img-responsive img-small"
+                                                         src="{{ config('book.default_image_path.large') }}">
+                                                @endif
+                                            </a>
+                                        </div>
+
+                                        {{-- book details --}}
+                                        <div class="col-md-10">
+                                            <div class="row">
+                                                <span>
+                                                    <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a>
+                                                </span>
+                                            </div>
+
+                                            <div class="row">
+                                                <span>ISBN-10: {{ $product->book->isbn10 }}</span>
+                                            </div>
+
+                                            <div class="row">
+                                                <span>ISBN-13: {{ $product->book->isbn13 }}</span>
+                                            </div>
+
+                                            <div class="row">
+                                                <span class="price">${{ $product->decimalPrice() }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                @endforeach
                             </div>
-                            <div class="col-xs-12 col-sm-5 book-info">
-                                <a href="{{ url('/textbook/buy/product/'.$product->id) }}">
-                                    <h5>{{ $product->book->title }}</h5>
-                                </a>
-                                <h5><small>{{ $product->book->author}}</small></h5>
 
-                                <p>ISBN: {{ $product->book->isbn10 }}</p>
-                                <h6 class="book-price">${{ $product->decimalPrice() }}</h6>
+                            {{-- action buttons --}}
+                            <div class="col-md-3">
+                                {{-- order details --}}
+                                <a class="btn primary-btn btn-block" href="/order/buyer/{{$buyer_order->id}}">Order
+                                    Details</a>
+
+                                {{-- cancel order --}}
+                                @if ($buyer_order->isCancellable())
+                                    <a class="btn btn-default btn-block" href="/order/buyer/cancel/{{ $buyer_order->id }}"
+                                       role="'button">Cancel Order</a>
+                                @endif
                             </div>
                         </div>
-                    @empty
-                        <div class="row book-row-empty bg-warning">
-                            <span>There has been a problem.</span>
-                        </div>
-                    @endforelse
+                    </div>
                 </div>
             </div>
-        @empty
-            <div class="container-fluid empty">
-                <p>You don't have any orders.
-                Why not <a href="/textbook">make one</a>?</p>
-            </div>
-        @endforelse
+        @endforeach
     </div>
-@endsection
-
-@section('javascript')
 @endsection

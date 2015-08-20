@@ -27,7 +27,6 @@
                         <i class="fa fa-linkedin"></i>
                     </a>
                 </li>
-
             </ul>
 
             <ul class="company-info col-md-4 text-center">
@@ -36,10 +35,10 @@
                 <li class="nobullet"><a href="#" data-toggle="modal" data-target=".privacy-modal" name="privacy">Privacy</a></li>
             </ul>
         </div>
-
     </div>
 
 </footer>
 <!-- END FOOTER -->
 
+{{-- Section modals --}}
 @include('includes.textbook.tos-privacy-modal')

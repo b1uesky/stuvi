@@ -23,6 +23,11 @@ $(document).ready(function() {
 
                     // increment cart quantity by 1
                     var current_qty = parseInt($('.cart-quantity').text());
+
+                    if (current_qty == 0) {
+                        $('.cart-quantity').removeClass('hide');
+                    }
+
                     $('.cart-quantity').text(current_qty + 1);
                 } else {
                     // error

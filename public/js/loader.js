@@ -1,9 +1,8 @@
 $(document).ready(function(){
 	$('.btn').on("click",function(){
-    $this = $(this)
-    if($this.attr('type') === 'submit'){
+    if($(this).attr('type') === 'submit'){
       $('#loader-wrapper').show();
-      $this.closest('form').on('err.form.fv',function(){
+      $(this).closest('form').on('err.form.fv',function(){
         $('#loader-wrapper').hide();
       })
     }

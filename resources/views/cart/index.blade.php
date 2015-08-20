@@ -11,19 +11,8 @@
     @section('content')
 
     @include('includes.textbook.flash-message')
-    {{--
-        <!-- TODO: modifiy breadcrumbs to add greyed options for -> checkout -> confirm -->
-        <div class="container">
-                    {!! Breadcrumbs::render('shoppingCart') !!}
-        </div>--}}
-    {{--
 
-        <div class="container cart-prog">
-            <div class="cart-prog-arrow"></div>
-        </div>
-    --}}
-
-    <div class="container">
+    <div class="container container-main-content">
         {!! Breadcrumbs::render('shoppingCart') !!}
 
         <div class="row shopping-cart">
@@ -79,17 +68,20 @@
                             <h3 class="panel-title">Subtotal</h3>
                         </div>
                         <div class="panel-body">
-                            <div>
-                                <span>
-                                    @if(count($items) == 1)
-                                        1 item:
-                                    @else
-                                        {{ count($items) }} items:
-                                    @endif
-                                </span>
-                                <span class="price subtotal">${{ $subtotal }}</span>
-                            </div>
+                            <table class="table table-panel">
+                                <tr>
+                                    <td class="text-left">
+                                        <span class="cart-quantity">{{ count($items) }}</span>
+                                        <span>item(s):</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span class="price subtotal">${{ $subtotal }}</span>
+                                    </td>
+                                </tr>
+                            </table>
+
                             <hr>
+
                             <div>
                                 <a class="btn primary-btn" href="{{ url('/order/create') }}" role="button">Proceed to
                                     checkout</a>
