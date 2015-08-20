@@ -237,7 +237,7 @@
                 {{-- Paypal account --}}
                 <div class="form-group">
                     <label>Paypal Account</label>
-                    <input type="email" name="paypal" class="form-control" value="{{ Auth::user()->profile->paypal or '' }}" placeholder="Paypal email address">
+                    <input type="email" name="paypal" class="form-control" value="{{ $paypal or '' }}" placeholder="Paypal email address">
                 </div>
 
                 <button type="submit" name="submit" class="btn primary-btn sell-btn">Post Book</button>
