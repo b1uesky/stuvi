@@ -275,7 +275,8 @@ class ProductController extends Controller
         {
             // if the request is not AJAX (Dropzone does not contain any image)
             // we do not need to save any image, just redirect to the product page
-            return redirect('/textbook/buy/product/' . $product->id);
+            return redirect('/textbook/buy/product/' . $product->id)
+                ->with('message', 'The product is updated successfully.');
         }
     }
 
