@@ -163,7 +163,7 @@
                                 <!-- tos statement-->
                                 <div class="tos col-sm-offset-2 col-sm-8">
                                     By creating an account, you agree to Stuvi's
-                                    <a href="#" data-toggle="modal" data-target=".terms-modal">Terms of Use</a> and
+                                    <a href="#" data-toggle="modal" data-target=".terms-modal">Terms of Service</a> and
                                     <a href="#" data-toggle="modal" data-target=".privacy-modal"> Privacy Notice</a>.
                                 </div>
                                 <!-- sign up button-->

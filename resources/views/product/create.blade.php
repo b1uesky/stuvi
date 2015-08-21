@@ -368,8 +368,13 @@
                                                 <input type="submit" name="submit" class="btn primary-btn btn-block" value="Post book">
                                             </div>
                                         </div>
+                                        <div class="tos-privacy-container">
+                                            <br>
+                                            <small>By posting your book, you agree to Stuvi's
+                                                <a href="#" data-toggle="modal" data-target="#terms-modal">Terms of Service</a>
+                                                and <a href="#" data-toggle="modal" data-target="#privacy-modal"> Privacy Notice</a>.</small>
+                                        </div>
                                     </div>
-
 
                                 </div>
                             </div>
@@ -382,6 +387,10 @@
         </div>
     </div>
 
+@endsection
+
+@section('modals')
+    @include('includes.textbook.tos-privacy-modal')
 @endsection
 
 @section('javascript')

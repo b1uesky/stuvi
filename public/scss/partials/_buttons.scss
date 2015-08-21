@@ -30,8 +30,8 @@
 }
 
 .muted-btn{
-  background-color: $background-color;
-  color: $muted-text-color;
+  background-color: $background-light-grey;
+  color: $button-text-color;
   border: none;
 
   &:hover {
@@ -49,4 +49,8 @@
     outline: 0 !important;
     background: $primary-color;
   }
+}
+
+.cancel-order-btn {
+  margin: 0;
 }

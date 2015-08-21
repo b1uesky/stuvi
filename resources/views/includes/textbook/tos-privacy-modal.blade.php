@@ -1,5 +1,5 @@
 <!-- terms of use -->
-<div class="modal fade terms-modal" tabindex="-1" role="dialog" aria-labelledby="Terms of Use">
+<div class="modal fade terms-modal" tabindex="-1" role="dialog" aria-labelledby="Terms of Use" id="terms-modal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -18,7 +18,7 @@
 
 
 <!-- privacy notice -->
-<div class="modal fade privacy-modal" tabindex="-1" role="dialog" aria-labelledby="Privacy Notice">
+<div class="modal fade privacy-modal" tabindex="-1" role="dialog" aria-labelledby="Privacy Notice" id="privacy-modal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
