@@ -1,6 +1,10 @@
 /*** BUTTON STYLES ***/
 @import "../modules/colors";
 
+.btn-default {
+  color: $body-text-color;
+}
+
 .primary-btn {
   background: $primary-color;
   color: $button-text-color;
