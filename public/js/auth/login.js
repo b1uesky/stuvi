@@ -52,21 +52,18 @@ $(document).ready(function () {
 
                 // login failed
                 if (response.success == false) {
-                    $('.alert.alert-danger').remove();
+
+                    var alert = new Alert($('#form-login'));
+                    alert.clear();
 
                     for (var field in response.fields) {
-                        var error = '<div class="alert alert-danger" role="alert">' +
-                            '<span class="sr-only">Error:</span>' + response.fields[field] +
-                            '</div>';
-
-                        $(error).insertBefore('#form-login');
+                        var message = response.fields[field];
+                        alert.flash('warning', message);
                     }
                 } else {
                     // success
                     location.reload();
                 }
-
-
             },
             error: function (xhr, status, errorThrown) {
                 console.log(status);

@@ -101,11 +101,12 @@ $(document).ready(function () {
                         window.location.replace(response.redirect);
                     } else {
 
+                        var alert = new Alert();
                         alert.clear();
 
                         for (var field in response.fields) {
                             var message = response.fields[field];
-                            alert.warning(message);
+                            alert.flash('warning', message);
                         }
 
                         // reenable file upload
