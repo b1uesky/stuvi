@@ -14,8 +14,6 @@
     <div class="col-md-9 bookshelf-page">
         <div class="profile-content bookshelf-content">
 
-            @include('includes.textbook.flash-message')
-
             <div class="bookshelf-title-container">
                 <h1 id="bookshelf-title">Your Bookshelf <small>Your books for sale</small></h1>
             </div>

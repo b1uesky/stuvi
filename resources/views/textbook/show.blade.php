@@ -17,8 +17,6 @@
 
     @include('textbook/textbook-nav')
 
-    @include('includes.textbook.flash-message')
-
     <div class="container container-main-content">
 
         <div class="page-header">

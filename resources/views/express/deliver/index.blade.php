@@ -4,12 +4,6 @@
 
 @section('content')
     <div class="container">
-        {{-- Error --}}
-        @if (Session::has('error'))
-            <div class="alert alert-danger">
-                {{ Session::get('error') }}
-            </div>
-        @endif
 
         {{-- New/Todo/Delivered switch buttons --}}
         <div class="btn-group btn-group-justified" role="group">

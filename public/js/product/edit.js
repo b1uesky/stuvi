@@ -104,13 +104,9 @@ $(document).ready(function () {
                 } else {
                     myDropzone.disable();
 
-                    $('.alert.alert-danger').remove();
-
-                    var error = '<div class="alert alert-danger" role="alert">' +
-                        '<span class="sr-only">Error:</span>Need at least one front cover image.' +
-                        '</div>';
-
-                    $(error).insertBefore('#form-product');
+                    var alert = new Alert();
+                    alert.clear();
+                    alert.flash('danger', 'Need at least one front cover image.');
                 }
             });
 
@@ -201,18 +197,14 @@ $(document).ready(function () {
                     window.location.replace(response.redirect);
                 } else {
                     console.log(response);
-                    // TODO: error message display
-                    $('.alert.alert-danger').remove();
 
-                    var error = '<div class="alert alert-danger" role="alert">';
+                    var alert = new Alert();
+                    alert.clear();
 
                     for (var field in response.fields) {
-                        error = error + '<span class="sr-only">Error:</span>' + response.fields[field] + '<br>'
+                        var message = response.fields[field];
+                        alert.flash('danger', message);
                     }
-
-                    error = error + '</div>';
-
-                    $(error).insertBefore('#form-product');
                 }
             });
             this.on("errormultiple", function (files, response) {

@@ -33,12 +33,6 @@
         </tr>
     </table>
 
-    @if(Session::has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ Session::get('success') }}
-        </div>
-    @endif
-
     @if($contact->is_replied == false)
         <div class="contact-response">
             <form action="/admin/contact/reply" method="post">

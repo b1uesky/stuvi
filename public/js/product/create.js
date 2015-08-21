@@ -43,7 +43,7 @@ $(document).ready(function () {
             // The setting up of the dropzone
             init: function () {
                 // disable submit button
-                $('button[type=submit]').attr('disabled', true);
+                $('input[type=submit]').attr('disabled', true);
 
                 var myDropzone = this;
 
@@ -58,7 +58,7 @@ $(document).ready(function () {
                 // When a file is added to the list
                 this.on("addedfile", function () {
                     $('.dz-message').hide();
-                    $('button[type=submit]').attr('disabled', false);
+                    $('input[type=submit]').attr('disabled', false);
                 });
 
                 // When a file is removed from the list
@@ -73,7 +73,7 @@ $(document).ready(function () {
                 // When all files in the list are removed and the dropzone is reset to initial state.
                 this.on("reset", function () {
                     $('.dz-message').show();
-                    $('button[type=submit]').attr('disabled', true);
+                    $('input[type=submit]').attr('disabled', true);
                 });
 
                 // When the number of files accepted reaches the maxFiles limit.
@@ -100,18 +100,14 @@ $(document).ready(function () {
                     if (response.success == true) {
                         window.location.replace(response.redirect);
                     } else {
-                        // TODO: error message display
-                        $('.alert.alert-danger').remove();
 
-                        var error = '<div class="alert alert-danger" role="alert">';
+                        var alert = new Alert();
+                        alert.clear();
 
                         for (var field in response.fields) {
-                            error = error + '<span class="sr-only">Error:</span>' + response.fields[field] + '<br>'
+                            var message = response.fields[field];
+                            alert.flash('danger', message);
                         }
-
-                        error = error + '</div>';
-
-                        $(error).insertBefore('#form-product');
 
                         // reenable file upload
                         for (var i = 0; i < files.length; i++) {

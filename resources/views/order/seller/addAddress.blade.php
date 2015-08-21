@@ -6,15 +6,6 @@
     <div class="container container-main-content">
         <h2>Add a new address</h2>
 
-        {{-- Errors --}}
-        @if ($errors->has())
-            <div class="alert alert-danger">
-                @foreach ($errors->all() as $error)
-                    {{ $error }}<br>
-                @endforeach
-            </div>
-        @endif
-
         <div class="row">
             <form action="/order/seller/storeAddress" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">

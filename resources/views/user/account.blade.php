@@ -15,12 +15,6 @@
     <div class="col-md-9">
         <div class="profile-content">
 
-            @if (Session::has('password_reset_success'))
-                <div class="alert alert-success" id="message">{{ Session::get('password_reset_success') }}</div>
-            @elseif (Session::has('password_reset_error'))
-                <div class="alert alert-danger" id="message">{{ Session::get('password_reset_error') }}</div>
-            @endif
-
             <!-- Account Settings -->
             <h1>Account Settings</h1>
                 <hr>
@@ -38,13 +32,7 @@
                             <input type="password" class="form-control" name="current_password" id="pwd">
                         </div>
                     </div>
-                    @if (Session::has('password_validation_error'))
-                        @foreach (Session::get('password_validation_error')->get('current_password') as $err)
-                            <div class="alert bg-warning" id="message"><i class="fa fa-exclamation-triangle"></i>
-                                 {{ $err }}
-                            </div>
-                            @endforeach
-                            @endif
+
                     <!-- New password -->
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="new-pwd">New Password:</label>
@@ -53,13 +41,7 @@
                             <input type="password" class="form-control" name="new_password" id="new-pwd">
                         </div>
                     </div>
-                    @if (Session::has('password_validation_error'))
-                        @foreach (Session::get('password_validation_error')->get('new_password') as $err)
-                        <div class="alert bg-warning" id="message"><i class="fa fa-exclamation-triangle"></i>
-                            {{ $err }}
-                        </div>
-                        @endforeach
-                    @endif
+
                     <!-- Confirmed New password -->
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="new-pwd">Confirm New Password:</label>
