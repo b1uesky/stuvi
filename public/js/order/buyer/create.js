@@ -15,9 +15,11 @@ $(document).ready(function () {
         $('.displayAllAddresses').slideDown();
     });
 
+    //select address
     $('.all-addresses-list').click(function () {
-        var address_ID = $(this).find(".address_id").text();
-        var address_info = $(this).find('.address-list').html();
+        var $this = $(this)
+        var address_ID = $this.find(".address_id").text();
+        var address_info = $this.html();
         $('.displayAllAddresses').hide();
         $('.displayDefaultAddress').find('.address-list').html(address_info);
         $('.displayDefaultAddress').fadeIn(500);
@@ -38,28 +40,99 @@ $(document).ready(function () {
         $('#loader-wrapper').hide();
     });
 
-    $('#storeAddedAddress').click(function () {
-        $('.add-address-form').submit();
+    // $('#storeAddedAddress').click(function () {
+    //     $('#add-address-form').submit();
+    // });
+
+    $('#storeAddedAddress').click(function(e){
+        e.preventDefault();
+        var $form = $(this).parents().find('#add-address-form');
+        $.ajax({
+            type : 'POST',
+            url: '/address/store',
+            data: {
+                _token : $('[name="csrf_token"]').attr('content'),
+                addressee : $form.find("input[name=addressee]").val(),
+                address_line1 : $form.find("input[name=address_line1]").val(),
+                address_line2 : $form.find("input[name=address_line2]").val(),
+                city : $form.find("input[name=city]").val(),
+                state_a2 : $form.find("input[name=state_a2]").val(),
+                zip : $form.find("input[name=zip]").val(),
+                phone_number : $form.find("input[name=phone_number]").val()
+            },
+            success: function(data,status){
+                if(data['success']){
+                    var address = data['address']
+                    var address_panel = $('<div class="thumbnail col-md-8 displayAllAddresses '+address['id']+'">'+
+                        '<div class="panel-body">'+
+                        '<button type="button" class="close deleteThisAddress" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                            '<button class="btn btn-default primary-btn address-btn editThisAddress">'+
+                                'Edit'+
+                            '</button>'+
+                        '</div>'+
+                    '</div>');
+                    var address_list = $('#default-address-list').clone();
+                    address_list.removeAttr('id');
+                    address_list.attr('class','address-list all-addresses-list');
+                    address_list.prepend('<li class="address address_id">'+address['id']+'</li>')
+                    address_list.find('.addresse').text(address['addressee']);
+                    address_list.find('.address_line1').text(address['address_line1']);
+                    address_list.find('.address_line2').text(address['address_line2']);
+                    address_list.find('.city').text(address['city']);
+                    address_list.find('.state_a2').text(address['state_a2']);
+                    address_list.find('.zip').text(address['zip']);
+                    address_list.find('.phone').text(address['phone_number']);
+                    address_list.insertBefore(address_panel.find('.editThisAddress'));
+                    address_panel.insertBefore($('#new-address-panel'));
+                    var address_info = address_list.html();
+                    $('.displayDefaultAddress').find('.address-list').html(address_info);
+                    $('.displayAllAddresses').hide();
+                    $('#new-address-panel').hide();
+                    $('.displayDefaultAddress').fadeIn(500);
+                    $('#paymentDiv').fadeIn(100);
+                    $('#add-address-modal').modal('hide');
+                    location.reload();
+                }
+            },
+            error: function (xhr, status, errorThrown) {
+                console.log(status);
+                console.log(errorThrown);
+            }
+        });
     });
 
     $('#storeUpdatedAddress').click(function () {
-        $('.update-address-form').submit();
+        $('#update-address-form').submit();
     });
 
-    $('.editThisAddress').click(function () {
+    $('.editThisAddress').click(function(){
+        var $this = $(this);
         var address_ID = $(this).parent().find(".address_id").text();
-        var address_array = [];
-        $(this).parent().find('.address').each(function (i, elem) {
-            address_array.push($(elem).text());
+        $.ajax({
+            type: 'GET',
+            url: '/address/show',
+            data: {
+                _token: $('[name="csrf_token"]').attr('content'),
+                address_id: address_ID
+            },
+            dataType: 'json',
+            success: function (data, status) {
+                var address = data["address"];
+                $('#update-address-modal').find('input[name=addressee]').val(address['addressee']);
+                $('#update-address-modal').find('input[name=address_line1]').val(address['address_line1']);
+                $('#update-address-modal').find('input[name=address_line2]').val(address['address_line2']);
+                $('#update-address-modal').find('input[name=city]').val(address['city']);
+                $('#update-address-modal').find('input[name=state_a2]').val(address['state_a2']);
+                $('#update-address-modal').find('input[name=zip]').val(address['zip']);
+                $('#update-address-modal').find('input[name=phone_number]').val(address['phone_number']);
+                $('#update-address-modal').find('input[name=address_id]').val(address_ID);
+                $('#update-address-modal').modal('show');
+            },
+            error: function (xhr, status, errorThrown) {
+                console.log(status);
+                console.log(errorThrown);
+            }
         });
-        $('input[name=addressee]').val(address_array[1]);
-        $('input[name=address_line1]').val(address_array[2]);
-        $('input[name=address_line2]').val(address_array[3]);
-        $('input[name=city]').val(address_array[4].slice(0, -1));
-        $('input[name=state_a2]').val(address_array[5]);
-        $('input[name=zip]').val(address_array[6]);
-        $('input[name=address_id]').val(address_ID);
-        $('#loader-wrapper').hide();
     });
 
     $("#new-address-panel").on('click',function(){
@@ -80,7 +153,7 @@ $(document).ready(function () {
 
             success: function (response) {
                 if (response['is_deleted'] === true) {
-                    $('.' + address_ID).fadeOut(100);
+                    $('.' + address_ID).fadeOut(100).remove();
                     if (response['num_of_user_addresses'] < 1) {
                         $('#paymentDiv').fadeOut(100);
                         $('#new-address-panel').click();
