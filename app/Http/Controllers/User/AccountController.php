@@ -35,7 +35,7 @@ class AccountController extends Controller
         if ($validator->fails())
         {
             return back()
-                ->with('password_validation_error', $validator->errors());
+                ->withErrors($validator->errors());
         }
 
         $current_password = Input::get('current_password');
@@ -44,7 +44,7 @@ class AccountController extends Controller
         if (!Hash::check($current_password, Auth::user()->password))
         {
             return back()
-                ->with('password_reset_error', 'Incorrect Password.');
+                ->withError('Incorrect Password.');
         }
 
         Auth::user()->update([
@@ -52,6 +52,6 @@ class AccountController extends Controller
         ]);
 
         return back()
-            ->with('password_reset_success', 'Your password has been reset.');
+            ->withSuccess('Your password has been reset.');
     }
 }

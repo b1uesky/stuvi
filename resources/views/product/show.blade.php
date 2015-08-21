@@ -12,7 +12,6 @@
 @endsection
 
 @section('content')
-    @include('includes.textbook.flash-message')
 
     <?php $book = $product->book; ?>
 
@@ -79,6 +78,11 @@
             <table class="table table-default">
 
                 <tbody>
+                <tr>
+                    <td>Price</td>
+                    <td class="price">${{ $product->decimalPrice() }}</td>
+                </tr>
+
                 <!-- General Condition -->
                 <tr>
                     <td class="col-xs-4">

@@ -14,6 +14,9 @@
 {{-- Nav bar --}}
 @include('includes.textbook.header')
 
+{{-- Session flash messages --}}
+@include('includes.alerts')
+
 {{-- Page content --}}
 @yield('content')
 
@@ -54,6 +57,8 @@
   <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
   <script src="{{asset('js/auth/login.js')}}"></script>
 @endif
+
+<script src="{{ asset('js/alert.js') }}"></script>
 
 @if(\App::environment('production'))
   <script src="{{ asset('js/googleanalytics.js') }}"></script>

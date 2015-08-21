@@ -25,7 +25,6 @@
         </ul>
     </div>
 
-    @include('includes.textbook.flash-message')
     <div class="container-main-content">
         <!-- Search Bar Container-->
         <div class="container-fluid container-image">

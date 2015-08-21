@@ -4,14 +4,6 @@
 
 @section('content')
     <div class="container">
-        {{-- Errors --}}
-        @if($errors->has())
-            <div class="alert alert-danger">
-                @foreach ($errors->all() as $error)
-                    {{ $error }}<br>
-                @endforeach
-            </div>
-        @endif
 
         {{-- New/Todo/Delivered switch buttons --}}
         <div class="btn-group btn-group-justified" role="group">

@@ -10,8 +10,6 @@
 
 @section('content')
 
-    @include('includes.textbook.flash-message')
-
     <div class="container container-main-content">
         {!! Breadcrumbs::render('shoppingCart') !!}
 
@@ -33,18 +31,6 @@
 
         <div class="row">
             <div class="col-md-8">
-                <div class="checkout-body">
-                    @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                </div>
 
                 {{-- Shipping address --}}
                 <div class="row">
@@ -491,8 +477,8 @@
                     <table class="table table-responsive table-default">
                         <thead>
                             <tr>
+                                <th>Book</th>
                                 <th> </th>
-                                <th>Name</th>
                                 <th>ISBN</th>
                                 <th>Price</th>
                             </tr>
