@@ -10,7 +10,7 @@
 
             <!-- order details -->
     <div class="container container-main-content">
-        {!! Breadcrumbs::render() !!}
+        {{--{!! Breadcrumbs::render() !!}--}}
 
         <div class="page-header">
             <h1>Order Details</h1>

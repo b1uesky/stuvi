@@ -11,7 +11,7 @@
 
 @section('content')
     <div class="container show-order-container container-main-content">
-        {!! Breadcrumbs::render() !!}
+        {{--{!! Breadcrumbs::render() !!}--}}
 
         <div class="page-header">
             <h1>Order Details</h1>

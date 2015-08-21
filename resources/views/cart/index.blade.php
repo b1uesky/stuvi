@@ -11,7 +11,7 @@
     @section('content')
 
     <div class="container container-main-content">
-        {!! Breadcrumbs::render('shoppingCart') !!}
+        {{--{!! Breadcrumbs::render('shoppingCart') !!}--}}
 
         @if(count($items) > 0)
         <div class="row progress-cart-row">

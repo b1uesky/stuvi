@@ -11,7 +11,7 @@
 @section('content')
 
     <div class="container container-main-content">
-        {!! Breadcrumbs::render('shoppingCart') !!}
+        {{--{!! Breadcrumbs::render('shoppingCart') !!}--}}
 
 
         <div class="row progress-cart-row">
