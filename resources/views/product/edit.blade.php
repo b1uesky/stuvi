@@ -246,6 +246,7 @@
                 </div>
 
                 <button type="submit" class="btn primary-btn sell-btn">Update</button>
+                <button class="btn secondary-btn sell-btn" onclick="goBack()">Cancel</button>
             </form>
         </div>
     </div>

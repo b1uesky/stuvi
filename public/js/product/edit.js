@@ -4,6 +4,12 @@
  * http://stuvi.app/textbook/sell/product/{id}/edit
  */
 
+
+function goBack() {
+    window.history.back();
+}
+
+
 $(document).ready(function () {
 
     Dropzone.options.formProduct = { // The camelized version of the ID of the form element

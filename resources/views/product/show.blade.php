@@ -29,12 +29,12 @@
                     <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Added
                         To Cart</a>
                 @elseif(!$product->isSold() && $product->seller == Auth::user())
-                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-default">Edit</a>
+                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn primary-btn">Edit</a>
 
                     <form action="{{ url('/textbook/sell/product/delete') }}" method="post">
                         {!! csrf_field() !!}
                         <input type="hidden" name="id" value="{{ $product->id }}">
-                        <input type="submit" class="btn btn-default" value="Delete">
+                        <input type="submit" class="btn secondary-btn" value="Delete">
                     </form>
                 @else
                     <form method="post" class="add-to-cart">
