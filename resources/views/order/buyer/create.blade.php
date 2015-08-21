@@ -473,6 +473,14 @@
                     <h2>3 Review items</h2>
 
                     <table class="table table-responsive table-default">
+                        <thead>
+                            <tr>
+                                <th> </th>
+                                <th>Name</th>
+                                <th>ISBN</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
                         @forelse ($items as $item)
                             <tr>
                                 <td>
