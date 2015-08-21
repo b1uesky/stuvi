@@ -10,26 +10,27 @@ $(document).ready(function () {
     $('#form-login').formValidation({
         framework: 'bootstrap',
         icon: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
+            valid: null,
+            invalid: null,
+            validating: null
         },
         live: 'disabled',
         fields: {
                 email: {
-                    trigger: 'blur',
                     validators: {
                         notEmpty: {
-                            message: 'The Email is required'
+                            message: 'The email is required'
                         },
                         blank: {}
                     }
                 },
                 password: {
-                    trigger: 'blur',
                     validators: {
                         notEmpty: {
                             message: 'The password is required'
+                        },
+                        stringLength: {
+                            min: 6
                         },
                         blank: {}
                     }
@@ -55,7 +56,6 @@ $(document).ready(function () {
 
                     for (var field in response.fields) {
                         var error = '<div class="alert alert-danger" role="alert">' +
-                            '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' +
                             '<span class="sr-only">Error:</span>' + response.fields[field] +
                             '</div>';
 
@@ -80,9 +80,9 @@ $(document).ready(function () {
         .formValidation({
             framework: 'bootstrap',
             icon: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
+                valid: null,
+                invalid: null,
+                validating: null
             },
             fields: {
                 first_name: {
@@ -175,7 +175,6 @@ $(document).ready(function () {
         // form submit
         .on('success.form.fv', function (e) {
             e.preventDefault();
-            $('.loading').css('visibility', 'visible');
 
             var $form = $(e.target),
                 fv = $form.data('formValidation');
@@ -205,10 +204,4 @@ $(document).ready(function () {
                 }
             });
         });
-
-    // remove spinner and alert when modal is closed
-    $('.spinner-modal').on('hidden.bs.modal', function () {
-        $('.loading').css('visibility', 'hidden');
-        $('.alert.alert-danger').remove();
-    });
 });

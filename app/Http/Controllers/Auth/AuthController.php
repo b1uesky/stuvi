@@ -174,7 +174,24 @@ class AuthController extends Controller {
      */
     public function postLogin(Request $request)
     {
-        $this->validate($request, User::loginRules());
+//        $this->validate($request, User::loginRules());
+        $v = Validator::make($request->all(), User::loginRules());
+
+        if ($v->fails())
+        {
+            if ($request->ajax())
+            {
+                return Response::json([
+                    'success'   => false,
+                    'fields'    => $v->errors()
+                ]);
+            }
+            else
+            {
+                return redirect($this->loginPath)
+                    ->withErrors($v->errors());
+            }
+        }
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
