@@ -31,7 +31,7 @@
 @yield('content')
 
 {{--loader shade--}}
-@include('loader')
+{{--@include('loader')--}}
 @include('includes.textbook.footer')
 
 {{-- Page modals --}}
