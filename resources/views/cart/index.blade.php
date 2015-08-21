@@ -15,6 +15,7 @@
     <div class="container container-main-content">
         {!! Breadcrumbs::render('shoppingCart') !!}
 
+        @if(count($items) > 0)
         <div class="row progress-cart-row">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3 progress-cart">
                 <nav>
@@ -29,7 +30,7 @@
                 </nav>
             </div>
         </div>
-
+        @endif
 
         <div class="row shopping-cart">
             @if(count($items) > 0)
