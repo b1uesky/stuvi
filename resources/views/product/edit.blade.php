@@ -13,15 +13,6 @@
 
     <div class="container create-container container-main-content">
 
-        {{-- Errors for invalid data --}}
-        @if ($errors->has())
-            <div class="alert alert-danger">
-                @foreach ($errors->all() as $error)
-                    {{ $error }}<br>
-                @endforeach
-            </div>
-        @endif
-
         <div class="row textbook-row col-sm-5">
             <div class="textbook-info">
                 <h2>{{ $product->book->title }}</h2>

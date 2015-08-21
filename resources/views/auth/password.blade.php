@@ -14,11 +14,6 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2 ">
 			<div class="jumbotron" id="password-jumbotron">
-                @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
 
                 <h2 id="reset-title">Reset your password</h2>
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">

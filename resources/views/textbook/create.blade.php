@@ -17,16 +17,6 @@
     <div class="container col-md-8 col-md-offset-2 pad">
         <div class="row">
 
-            {{-- Errors for datetime input --}}
-            @if ($errors->has())
-                <div class="alert alert-danger">
-                    @foreach ($errors->all() as $error)
-                        {{ $error }}<br>
-                    @endforeach
-                </div>
-            @endif
-
-
             <h1 id="create-title">Enter your textbook information</h1>
             <!-- form begin -->
             <form action="/textbook/sell/store" method="post" class="form textbook-create" enctype="multipart/form-data">
