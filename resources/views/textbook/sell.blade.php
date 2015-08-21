@@ -32,7 +32,7 @@
 
             <div class="container">
             <div class="row">
-                <h1 id="title">Sell Your Used Textbooks</h1>
+                <h1 id="title">Sell Your Textbooks</h1>
                     <div class="searchbar default-searchbar">
                         <form action="/textbook/sell/search" method="post" id="form-isbn">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -108,7 +108,7 @@
 
                         <p>
                             You will be notified once your book has been sold. Then you can select a time
-                            for us to come pickup your book. You will then be paid via Stripe in 2-5 days.
+                            for us to come pickup your book. You will then be paid via Paypal once the book is delivered.
                         </p>
                     </div>
                 </div>

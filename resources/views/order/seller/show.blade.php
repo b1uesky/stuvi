@@ -40,7 +40,7 @@
                         {{-- Select pickup address --}}
                         <h3>Pickup Address</h3>
 
-                        <?php $seller_order->address ? $address = $seller_order->address : $address = $seller_order->seller()->defaultAddress(); ?>
+                        <?php $address = $seller_order->address ? : $seller_order->seller()->defaultAddress(); ?>
                         {{-- If the seller has a default address --}}
                         @if($address)
                             <div class="seller-address-box">
@@ -273,12 +273,12 @@
             <div class="panel-body">
                 <div class="container-fluid">
                     <div class="row">
-                        {{-- If the order is not cancelled and not picked up --}}
-                        @if(!$seller_order->cancelled/* && !$seller_order->pickedUp()*/)
+                        {{-- If the order is not cancelled --}}
+                        @if(!$seller_order->cancelled)
 
                             {{-- Schedule pickup time --}}
                             <h3>Pickup Time</h3>
-
+                            <div class='bg-success schedule-pickup-time'></div>
                             <div class="text-scheduled-pickup-time">
                                 @if($seller_order->scheduledPickupTime())
                                     Scheduled pickup time:
@@ -322,6 +322,9 @@
                                     <br><br>
 
                                 </form>
+                            @elseif ($seller_order->pickup_time)
+                                Pickup time:
+                                <mark>{{ date(config('app.datetime_format'), strtotime($seller_order->pickup_time)) }}</mark>
                             @endif
                         @endif
                     </div>

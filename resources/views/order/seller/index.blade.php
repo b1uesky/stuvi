@@ -8,7 +8,6 @@
 
 @section('content')
 
-<<<<<<< HEAD
     <!-- Message -->
     <div class="container" xmlns="http://www.w3.org/1999/html">
         @if (Session::has('message'))
@@ -22,12 +21,12 @@
             <h1>Sold books</h1>
         </div>
 
-        {{-- order list --}}
+         order list
         @foreach ($orders as $order)
             <div class="panel panel-default">
                 <div class="panel-heading">
 
-                    {{-- order details --}}
+                     order details
                     <div class="container-fluid text-muted">
                         <div class="col-xs-2">
                             <div class="row">
@@ -37,20 +36,6 @@
                             <div class="row">
                                 <span>{{ date('M d, Y', strtotime($order->created_at)) }}</span>
                             </div>
-=======
-    <!-- Main container -->
-    <div class="container seller-order-container container-main-content">
-        @include('includes.textbook.flash-message')
-        <h1>Your sold books</h1>
-        @forelse ($orders as $order)
-            <div class="row">
-                <div class="container order-container">
-                    <div class="row order-row">
-                        <div class="col-xs-12 col-sm-2 order-date">
-                            <h5>Order Sold</h5>
-
-                            <p>{{ date('M d, Y', strtotime($order->created_at)) }}</p>
->>>>>>> front-end
                         </div>
 
                         <div class="col-xs-2">

@@ -74,6 +74,7 @@ class Book extends Model
     {
         $products = $this->products()
             ->where('sold', 0)
+            ->whereNull('deleted_at')
             ->join('product_conditions as cond', 'products.id', '=', 'cond.product_id')
             ->orderBy('cond.general_condition')
             ->select('products.*')
