@@ -1,93 +1,39 @@
 /***** SELLER PRODUCT CREATE PAGE *****/
 @import "modules/all";
+@import "partials/panels";
 
-.create-container {
-  margin-bottom: 50px;
-}
-
-#login-signup-container{
-  @media(min-width: 796px ){
-    padding-top: 80px;
-  }
-}
-
-/*** TEXTBOOK INFO ***/
-
-.textbook-row {
-  margin-top: 50px;
-}
-
-.authors-container {
-  margin-bottom: 10px;
-}
-
-.author-btn {
-  &:hover, &:focus {
-    background-color: $primary-color;
-    color: white;
-    outline: 0 !important;
-  }
-}
-
-.textbook-info {
-}
-
-#price-input {
-  width: 200px;
+/** SECTIONS **/
+.confirm, .details, .ready {
+  margin: 10% 0;
 }
 
 /*** PRODUCT CONDITION ***/
-
-.condition-btn {
-  background-color: white;
-  border: 1px solid $border-color;
-  &:hover, &.active {
-    background-color: $primary-color;
-    color: white;
-    box-shadow: none;
-  }
-}
 
 .fa-question-circle {
   color: $accent-color;
   cursor: pointer;
 }
 
-.btn-add-input {
-  margin-bottom: 20px;
-}
-
-.input-group-addon {
-  background-color: $primary-color;
-  color: white;
-}
-
-#price-input{
-   width: 50%;
- }
-
 /** FILE UPLOAD **/
+
+.dropzone {
+  padding: 0;
+}
 
 #form-product {
   border: none;
   background: none;
 }
 
-.upload-file {
-  margin-bottom: 10px;
-}
-
-.upload-error-message {
-  display: none;
-  color: red;
-  font-weight: bold;
-}
-
 #dropzone-img-preview {
-  border: 2px dashed $primary-color;
-  background: white;
+  border: 2px dashed $border-color;
+  background: $background-color;
   border-radius: 5px;
   padding: $spacing-unit / 2;
+
+  &:hover {
+    border: 2px dashed $primary-color;
+  }
 }
 
 .dz-image img {
@@ -104,14 +50,4 @@
 
 .dz-error-message{
   top: 150px !important;
-}
-
-/** POST BOOK BUTTON **/
-
-.sell-btn {
-  display: block;
-  width: 200px;
-  padding: 12px;
-  font-size: 16px;
-
 }
