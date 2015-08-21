@@ -11,15 +11,6 @@
 
 @section('content')
 
-    {{-- Errors for invalid data --}}
-    {{--@if ($errors->has())--}}
-    {{--<div class="alert alert-danger">--}}
-    {{--@foreach ($errors->all() as $error)--}}
-    {{--{{ $error }}<br>--}}
-    {{--@endforeach--}}
-    {{--</div>--}}
-    {{--@endif--}}
-
     <div class="container">
 
         <section class="confirm">
@@ -309,13 +300,13 @@
                                     </div>
                                 </div>
 
-                                <div class="panel-footer">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-sm-offset-3">
-                                            <a href="#" class="btn primary-btn btn-block btn-to-ready">Continue</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{--<div class="panel-footer">--}}
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col-sm-6 col-sm-offset-3">--}}
+                                            {{--<a href="#" class="btn primary-btn btn-block btn-to-ready">Continue</a>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                             </div>
                         </section>
 
