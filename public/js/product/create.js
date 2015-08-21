@@ -100,18 +100,13 @@ $(document).ready(function () {
                     if (response.success == true) {
                         window.location.replace(response.redirect);
                     } else {
-                        // TODO: error message display
-                        $('.alert.alert-danger').remove();
 
-                        var error = '<div class="alert alert-danger" role="alert">';
+                        alert.clear();
 
                         for (var field in response.fields) {
-                            error = error + '<span class="sr-only">Error:</span>' + response.fields[field] + '<br>'
+                            var message = response.fields[field];
+                            alert.warning(message);
                         }
-
-                        error = error + '</div>';
-
-                        $(error).insertBefore('#form-product');
 
                         // reenable file upload
                         for (var i = 0; i < files.length; i++) {

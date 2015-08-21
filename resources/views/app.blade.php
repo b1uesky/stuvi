@@ -58,6 +58,8 @@
   <script src="{{asset('js/auth/login.js')}}"></script>
 @endif
 
+<script src="{{ asset('js/alert.js') }}"></script>
+
 @if(\App::environment('production'))
   <script src="{{ asset('js/googleanalytics.js') }}"></script>
 @endif

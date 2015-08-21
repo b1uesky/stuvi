@@ -1,6 +1,12 @@
 /*** BUTTON STYLES ***/
 @import "../modules/colors";
 
+.button {
+  &:focus {
+    outline: none;
+  }
+}
+
 .btn-default {
   color: $body-text-color;
 }

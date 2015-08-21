@@ -19,6 +19,26 @@ body {
   color: $price-color;
 }
 
+/** GLOBAL ALERT **/
+
+.alert {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.session-alert, .js-alert {
+  z-index: 999;
+  position: fixed;
+  right: $spacing-unit;
+  top: $spacing-unit * 2;
+
+  .alert-dismissible .close {
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+}
+
 /* Bootstrap Override */
 a {
   color: $primary-color;
