@@ -9,14 +9,14 @@ $(document).ready(function () {
     /**
      * Shipping Address
      */
-    $('.show-addresses').click(function () {
+    $('.show-addresses').on('click', function () {
         $('.displayDefaultAddress').hide();
         $('#new-address-panel').slideDown(500);
         $('.displayAllAddresses').slideDown();
     });
 
     //select address
-    $('.all-addresses-list').click(function () {
+    $(document).on('click', '.all-addresses-list', function () {
         var $this = $(this)
         var address_ID = $this.find(".address_id").text();
         var address_info = $this.html();
@@ -44,7 +44,7 @@ $(document).ready(function () {
     //     $('#add-address-form').submit();
     // });
 
-    $('#storeAddedAddress').click(function(e){
+    $('#storeAddedAddress').on('click', function(e){
         e.preventDefault();
         var $form = $(this).parents().find('#add-address-form');
         $.ajax({
@@ -91,7 +91,6 @@ $(document).ready(function () {
                     $('.displayDefaultAddress').fadeIn(500);
                     $('#paymentDiv').fadeIn(100);
                     $('#add-address-modal').modal('hide');
-                    location.reload();
                 }
             },
             error: function (xhr, status, errorThrown) {
@@ -101,11 +100,11 @@ $(document).ready(function () {
         });
     });
 
-    $('#storeUpdatedAddress').click(function () {
+    $('#storeUpdatedAddress').on('click', function () {
         $('#update-address-form').submit();
     });
 
-    $('.editThisAddress').click(function(){
+    $(document).on('click', '.editThisAddress', function(){
         var $this = $(this);
         var address_ID = $(this).parent().find(".address_id").text();
         $.ajax({
@@ -139,7 +138,7 @@ $(document).ready(function () {
         $('#add-address-modal').modal('show');
     });
 
-    $('.deleteThisAddress').click(function () {
+    $(document).on('click', '.deleteThisAddress', function () {
         var address_ID = $(this).parent().find(".address_id").text();
         $.ajax({
             url: '/address/delete',
