@@ -31,14 +31,11 @@
 
             <ul class="company-info col-md-4 text-center">
                 <li><span class="copyright">&copy; 2015 Stuvi LLC.</span></li>
-                <li><a href="#" name="terms" data-toggle="modal" data-target=".terms-modal">Terms of Service</a></li>
-                <li class="nobullet"><a href="#" data-toggle="modal" data-target=".privacy-modal" name="privacy">Privacy</a></li>
+                <li><a href="{{url('tos')}}" name="terms" >Terms of Service</a></li>
+                <li class="nobullet"><a href="{{url('/privacy')}}" name="privacy">Privacy</a></li>
             </ul>
         </div>
     </div>
 
 </footer>
 <!-- END FOOTER -->
-
-{{-- Section modals --}}
-@include('includes.textbook.tos-privacy-modal')
