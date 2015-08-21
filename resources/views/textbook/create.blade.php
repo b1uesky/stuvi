@@ -16,7 +16,6 @@
     <!-- center the forms -->
     <div class="container col-md-8 col-md-offset-2 pad">
         <div class="row">
-            @include('includes.textbook.flash-message')
 
             {{-- Errors for datetime input --}}
             @if ($errors->has())

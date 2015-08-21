@@ -27,6 +27,9 @@
 
 <body>
 
+{{-- Session flash messages --}}
+@include('includes.alerts')
+
 {{-- Page content --}}
 @yield('content')
 

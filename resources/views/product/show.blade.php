@@ -12,7 +12,6 @@
 @endsection
 
 @section('content')
-    @include('includes.textbook.flash-message')
 
     <?php $book = $product->book; ?>
 

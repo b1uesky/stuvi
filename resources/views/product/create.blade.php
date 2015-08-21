@@ -10,7 +10,6 @@
 @endsection
 
 @section('content')
-    @include('includes.textbook.flash-message')
 
     {{-- Errors for invalid data --}}
     {{--@if ($errors->has())--}}
@@ -22,13 +21,6 @@
     {{--@endif--}}
 
     <div class="container">
-        {{--<div class="row">--}}
-            {{--<div class="col-md-8 col-md-offset-2">--}}
-                {{--<div class="page-header">--}}
-                    {{--<h1>Post Your Book</h1>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
 
         <section class="confirm">
             <div class="row">
@@ -114,7 +106,11 @@
                                     </a>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a href="#" class="btn primary-btn btn-block btn-to-details">Continue</a>
+                                    @if(Auth::guest())
+                                        <a href="#" class="btn primary-btn btn-block btn-to-details disabled">Continue</a>
+                                    @else
+                                        <a href="#" class="btn primary-btn btn-block btn-to-details">Continue</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -126,14 +122,7 @@
         <div class="row">
             {{-- form --}}
             <div class="col-md-8 col-md-offset-2">
-                {{--If the user is not logged in, show login / signup buttons.--}}
-                @if(!Auth::check())
-                    <div class="row">
-                        <p>Please login or sign up to sell your book.</p>
-                        <a class="btn primary-btn" data-toggle="modal" href="#login-modal">Login</a>&nbsp;
-                        <a class="btn primary-btn" data-toggle="modal" href="#signup-modal">Sign up</a>
-                    </div>
-                @else
+                @if(Auth::check())
                     <form id="form-product" class="dropzone">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="book_id" value="{{ $book->id }}"/>

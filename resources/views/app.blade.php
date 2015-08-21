@@ -14,6 +14,9 @@
 {{-- Nav bar --}}
 @include('includes.textbook.header')
 
+{{-- Session flash messages --}}
+@include('includes.alerts')
+
 {{-- Page content --}}
 @yield('content')
 

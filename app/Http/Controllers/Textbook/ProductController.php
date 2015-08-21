@@ -36,6 +36,8 @@ class ProductController extends Controller
         }
         else
         {
+            Session::flash('warning', 'Please login or signup to sell your book.');
+
             return view('product.create')
                 ->withBook($book);
         }
