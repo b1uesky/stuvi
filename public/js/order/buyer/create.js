@@ -74,10 +74,22 @@ $(document).ready(function () {
                     var address_list = $('#default-address-list').clone();
                     address_list.removeAttr('id');
                     address_list.attr('class','address-list all-addresses-list');
-                    address_list.prepend('<li class="address address_id">'+address['id']+'</li>')
+                    if(address_list.find('.address_id').length != 0){
+                        address_list.find('.address_id').text(address['id']);
+                    }else{
+                        address_list.prepend('<li class="address address_id">'+address['id']+'</li>');
+                    }
                     address_list.find('.addresse').text(address['addressee']);
                     address_list.find('.address_line1').text(address['address_line1']);
-                    address_list.find('.address_line2').text(address['address_line2']);
+                    if(address['address_line2'].length > 0){
+                        if(address_list.find('.address_line2').length != 0){
+                            address_list.find('.address_line2').text(address['address_line2']);
+                        }else{
+                            $('<li class="address address_line2">'+address['address_line2']+'</li>').insertBefore(address_list.find('.city'));
+                        }
+                    }else{
+                        address_list.find('.address_line2').remove();
+                    }
                     address_list.find('.city').text(address['city']);
                     address_list.find('.state_a2').text(address['state_a2']);
                     address_list.find('.zip').text(address['zip']);
@@ -85,6 +97,7 @@ $(document).ready(function () {
                     address_list.insertBefore(address_panel.find('.editThisAddress'));
                     address_panel.insertBefore($('#new-address-panel'));
                     var address_info = address_list.html();
+                    $form.siblings('input').val('');
                     $('.displayDefaultAddress').find('.address-list').html(address_info);
                     $('.displayAllAddresses').hide();
                     $('#new-address-panel').hide();
