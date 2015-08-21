@@ -53,9 +53,7 @@
                         @endif
 
                         <div class="searchbar-input-container searchbar-input-container-submit default-guest-search-submit">
-                            <button class="btn primary-btn search-btn" type="submit" value="Search">
-                                <i class="fa fa-search fa-lg search-icon"></i>
-                            </button>
+                            <input class="btn primary-btn search-btn" type="submit" value="Search">
                         </div>
                     </form>
                 </div>

@@ -42,10 +42,7 @@
                                        placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
                             </div>
                             <div class="searchbar-input-container searchbar-input-container-submit form-group">
-                                <button class="btn primary-btn search-btn" id="sell-search-btn" type="submit"
-                                        name="search">
-                                    <i class="fa fa-search fa-lg search-icon"></i>
-                                </button>
+                                <input class="btn primary-btn search-btn" type="submit" value="Search">
                             </div>
                         </form>
                     </div>
