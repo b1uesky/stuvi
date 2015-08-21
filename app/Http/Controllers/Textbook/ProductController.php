@@ -26,11 +26,20 @@ class ProductController extends Controller
      */
     public function create($book)
     {
-        $paypal = Auth::user()->profile->paypal;
+        if (Auth::check())
+        {
+            $paypal = Auth::user()->profile->paypal;
 
-        return view('product.create')
-            ->withBook($book)
-            ->withPaypal($paypal);
+            return view('product.create')
+                ->withBook($book)
+                ->withPaypal($paypal);
+        }
+        else
+        {
+            return view('product.create')
+                ->withBook($book);
+        }
+
     }
 
     /**
