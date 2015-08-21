@@ -108,7 +108,8 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <small>By signing up, I agree to Stuvi's <a href="#">Terms of Service</a> and <a href="">Privacy Policy</a>.</small>
+                            <small>By signing up, you agree to Stuvi's <a href="{{url('/tos')}}" target="_blank" > Terms of Service</a>
+                                and <a href="{{url('/privacy')}}" target="_blank"> Privacy Notice</a>.</small>
                         </div>
                         <button type="submit" class="btn primary-btn btn-block">Sign Up</button>
                     </form>
@@ -119,4 +120,5 @@
             </div>
         </div>
     </div>
+
 @show
