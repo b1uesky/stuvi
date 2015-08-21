@@ -39,14 +39,14 @@
         @endif
 
         @if (Session::has('error'))
-            <div class="alert alert-dismissible alert-warning fade in" role="alert">
+            <div class="alert alert-dismissible alert-danger fade in" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 {{ Session::get('error') }}
             </div>
         @endif
 
         @if (Session::has('message'))
-            <div class="alert alert-dismissible alert-warning fade in" role="alert">
+            <div class="alert alert-dismissible alert-danger fade in" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 {{ Session::get('message') }}
             </div>
@@ -54,7 +54,7 @@
 
         {{-- invalid form data --}}
         @foreach ($errors->all() as $error)
-            <div class="alert alert-warning" role="alert">
+            <div class="alert alert-danger" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 {{ $error }}
             </div>

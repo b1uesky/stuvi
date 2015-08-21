@@ -106,7 +106,7 @@ $(document).ready(function () {
 
                         for (var field in response.fields) {
                             var message = response.fields[field];
-                            alert.flash('warning', message);
+                            alert.flash('danger', message);
                         }
 
                         // reenable file upload

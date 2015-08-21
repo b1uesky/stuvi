@@ -106,7 +106,7 @@ $(document).ready(function () {
 
                     var alert = new Alert();
                     alert.clear();
-                    alert.flash('warning', 'Need at least one front cover image.');
+                    alert.flash('danger', 'Need at least one front cover image.');
                 }
             });
 
@@ -203,7 +203,7 @@ $(document).ready(function () {
 
                     for (var field in response.fields) {
                         var message = response.fields[field];
-                        alert.flash('warning', message);
+                        alert.flash('danger', message);
                     }
                 }
             });
