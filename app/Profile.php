@@ -24,7 +24,8 @@ class Profile extends Model
         'facebook',
         'twitter',
         'linkedin',
-        'website'
+        'website',
+        'paypal'
     ];
 
     /**

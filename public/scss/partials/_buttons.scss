@@ -33,6 +33,10 @@
   background-color: $background-color;
   color: $muted-text-color;
   border: none;
+
+  &:hover {
+    color: $muted-text-color;
+  }
 }
 
 .list-search-btn {

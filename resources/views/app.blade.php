@@ -18,7 +18,7 @@
 @yield('content')
 
 {{--loader shade--}}
-@include('loader')
+{{--@include('loader')--}}
 @include('includes.textbook.footer')
 
 {{-- Page modals --}}
@@ -26,20 +26,10 @@
 
 {{-- Required modals --}}
 <?php $url = Request::url() ?>
-@if(Auth::check())
-  <?php $cartQty = Auth::user()->cart->quantity ?>
-@endif
 
-        <!-- login modal -->
+<!-- login modal -->
 @if (Auth::guest() && !($url === url('/') || $url === url('/home')))
 @include('auth.login-signup-modal')
-@endif
-
-@if(Auth::check())
-        <!-- Empty Cart Modal -->
-  @if($cartQty == 0)
-    @include('cart.empty-cart-modal')
-  @endif
 @endif
 
 
@@ -52,7 +42,7 @@
 
 <script src="{{ asset('libs/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/loader.js') }}"></script>
+{{-- <script src="{{ asset('js/loader.js') }}"></script> --}}
 
 {{--@if(Auth::check())--}}
   {{--<script src="{{ asset('js/bootstrap.js') }}"></script>--}}

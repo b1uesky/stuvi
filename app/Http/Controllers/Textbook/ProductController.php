@@ -7,6 +7,7 @@ use App\Product;
 use App\ProductCondition;
 use App\ProductImage;
 use Auth;
+use Carbon\Carbon;
 use Config;
 use Illuminate\Http\Request;
 use Input;
@@ -25,7 +26,11 @@ class ProductController extends Controller
      */
     public function create($book)
     {
-        return view('product.create')->withBook($book);
+        $paypal = Auth::user()->profile->paypal;
+
+        return view('product.create')
+            ->withBook($book)
+            ->withPaypal($paypal);
     }
 
     /**
@@ -124,12 +129,17 @@ class ProductController extends Controller
         if (!($product && $product->isBelongTo(Auth::id())))
         {
             return back()
-                ->with('message', 'The product is not found.');
+                ->with('message', 'Sorry, the product is not found.');
         }
         elseif ($product->sold)
         {
             return back()
                 ->with('message', 'Product is sold.');
+        }
+        elseif ($product->isDeleted())
+        {
+            return back()
+                ->with('message', 'Product is archived.');
         }
 
         return view('product.edit')
@@ -193,6 +203,10 @@ class ProductController extends Controller
             elseif ($product->sold)
             {
                 $v->errors()->add('product', 'The product was sold');
+            }
+            elseif ($product->isDeleted())
+            {
+                $v->errors()->add('product', 'The product is archived.');
             }
         });
 
@@ -265,7 +279,8 @@ class ProductController extends Controller
         {
             // if the request is not AJAX (Dropzone does not contain any image)
             // we do not need to save any image, just redirect to the product page
-            return redirect('/textbook/buy/product/' . $product->id);
+            return redirect('/textbook/buy/product/' . $product->id)
+                ->with('message', 'The product is updated successfully.');
         }
     }
 
@@ -301,8 +316,10 @@ class ProductController extends Controller
         $book = $product->book;
         $price = $product->price;
 
-        // delete safely.
-        $product->delete();
+        // soft delete.
+        $product->update([
+            'deleted_at' => Carbon::now(),
+                         ]);
 
         // update book's lowest or highest price if necessary
         $book->removePrice($price);

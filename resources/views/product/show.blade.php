@@ -6,238 +6,193 @@
 <title>Stuvi - Book Details - {{ $product->book->title }} </title>
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('/css/product_show.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('libs/lightbox2/dist/css/lightbox.css') }}">
+    <link rel="stylesheet" href="{{ asset('libs/slick-carousel/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('libs/slick-carousel/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/product_show.css') }}" type="text/css">
 @endsection
 
 @section('content')
-
-
-<div class="container-fluid container-main-content" id="bg">
-
     @include('includes.textbook.flash-message')
 
-    <!-- book details -->
-    <div class="container" id="det-cont">
-        <div class="row">
-            <div class="col-sm-6 col-md-4 product-info">
-                <!-- images use lightbox -->
-                {{-- Only shows first image as large, the rest will be below it as smaller images--}}
-                @if($product->images)
-                    @forelse($product->images as $index => $image)
-                        @if($index == 0)
-                            @if($image->isTestImage())
-                                {{-- show absolute urls of test images--}}
-                                <a class="lightbox-product-link" href="{{ $image->large_image }}"
-                                   data-lightbox="pro-img" data-title="Image {{$image->id}}">
-                                    <img class="pro-img" src="{{ $image->medium_image }}" alt="Book Image" />
-                                </a>
-                            @else
-                                {{-- show amazon urls --}}
-                                <a class="lightbox-product-link" href="{{ Config::get('aws.url.stuvi-product-img') . $image->large_image }}"
-                                   data-lightbox="pro-img" data-title="Image {{$image->id}}">
-                                    <img class="pro-img" src="{{ Config::get('aws.url.stuvi-product-img') . $image->medium_image }}" alt="Book Image" />
-                                </a>
-                            @endif
-                            <br><br>
-                        @else
-                            @if($image->isTestImage())
-                                <a class="lightbox-product-link" href="{{ $image->large_image }}"
-                                   data-lightbox="pro-img" data-title="Image {{$image->id}}">
-                                    <img class="pro-img-small" src="{{ $image->small_image }}" alt="Book Image" />
-                                </a>
-                            @else
-                                <a class="lightbox-product-link" href="{{ Config::get('aws.url.stuvi-product-img') . $image->large_image }}"
-                                   data-lightbox="pro-img" data-title="Image {{$image->id}}">
-                                    <img class="pro-img-small" src="{{ Config::get('aws.url.stuvi-product-img') . $image->small_image }}" alt="Book Image" />
-                                </a>
-                            @endif
-                        @endif
-                    @empty
-                        <a class="lightbox-product-link" href="{{ config('book.default_image_path.large') }}"
-                           data-lightbox="pro-img" data-title="Default Image">
-                            <img class="pro-img" src="{{ config('book.default_image_path.large') }}" alt="Book Image" />
-                        </a>
-                    @endforelse
-                @endif
-                <h2 class="product-title"><a
-                            href="{{ url('textbook/buy/'.$product->book->id) }}">{{ $product->book->title }}</a></h2>
+    <?php $book = $product->book; ?>
 
-                <div class="authors-container">
-                    <span>by </span>
-                    <?php $bookCounter = 0; ?>
-                    @foreach($product->book->authors as $author)
-                        @if($bookCounter == 0)
-                            <span id="authors">{{ $author->full_name }}</span>
-                        @else
-                            <span id="authors">, {{ $author->full_name }}</span>
-                        @endif
-                        <?php $bookCounter++ ?>
-                    @endforeach
-                </div>
-                <p>ISBN10: {{ $product->book->isbn10 }}</p>
+    <div class="container">
+        <div class="page-header">
+            <h1>{{ $book->title }}</h1>
+        </div>
 
-                <p>ISBN13: {{ $product->book->isbn13 }}</p>
+        <div class="actions text-right">
+            @if(Auth::check())
+                @if($product->isDeleted())
+                    <a class="btn btn-default disabled" href="#" role="button">Archived</a>
+                @elseif($product->isInCart(Auth::user()->id))
+                    <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Added
+                        To Cart</a>
+                @elseif(!$product->isSold() && $product->seller == Auth::user())
+                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-default">Edit</a>
 
-                <p>Number of Pages: {{ $product->book->num_pages }}</p>
-                <div class="price">
-                    Price: <b>${{ $product->decimalPrice() }}</b>
-                </div>
-                @if(Auth::check())
-                    @if($product->isInCart(Auth::user()->id))
-                        <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Added To Cart</a>
-                    @elseif(!$product->isSold() && $product->seller == Auth::user())
-                        <a class="btn primary-btn add-cart-btn" href="{{ url('textbook/sell/product/' . $product->id . '/edit') }}" role="button">Edit</a>
-                    @else
-                        <form method="post" class="add-to-cart">
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <input class="btn primary-btn add-cart-btn" type="submit" value="Add to cart">
-                        </form>
-                    @endif
+                    <form action="{{ url('/textbook/sell/product/delete') }}" method="post">
+                        {!! csrf_field() !!}
+                        <input type="hidden" name="id" value="{{ $product->id }}">
+                        <input type="submit" class="btn btn-default" value="Delete">
+                    </form>
                 @else
-                    <br>
-                    <p class="warning bg-warning">Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.</p>
+                    <form method="post" class="add-to-cart">
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <input class="btn primary-btn add-cart-btn" type="submit" value="Add to cart">
+                    </form>
                 @endif
-            </div>
+            @else
+                <span>
+                    Please <a data-toggle="modal" href="#login-modal">Login</a> or <a
+            data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.
+                </span>
+            @endif
+        </div>
 
-            <!-- Condition -->
-            <table class="table table-responsive details-table col-xs-12 col-sm-6 col-md-6">
-                <tr>
-                    <th>Condition</th>
-                    <th>Description</th>
-                </tr>
+        <br>
+
+        <div class="row">
+            {{-- image slider --}}
+            <div class="image-slider">
+                @forelse($product->images as $index => $image)
+                    <div>
+                        @if($image->isTestImage())
+                            <img class="img-responsive" src="{{ $image->large_image }}" alt="Product Image">
+                        @else
+                            <img class="img-responsive"
+                                 src="{{ config('aws.url.stuvi-product-img') . $image->large_image }}"
+                                 alt="Product Image">
+                        @endif
+                    </div>
+                @empty
+                    <div><h3>No images were provided.</h3></div>
+                @endforelse
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <!-- product conditions -->
+            <table class="table table-default">
+
+                <tbody>
                 <!-- General Condition -->
                 <tr>
-                    <td>
-                        <div class="form-group">
-                            <label>{{ Config::get('product.conditions.general_condition.title') }}</label>
-                            <i class="fa fa-question-circle" data-toggle="modal" data-target=".condition-modal"></i>
-                            <div class="modal fade condition-modal" tabindex="-1" role="dialog"
-                                 aria-labelledby="General Conditions">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close close-modal-btn" data-dismiss="modal"
-                                                    aria-label="close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            <h3>General Conditions</h3>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h4>Brand New</h4>
-                                            <p>{{ Config::get('product.conditions.general_condition.description')[0] }}</p>
-
-                                            <h4>Excellent</h4>
-                                            <p>{{ Config::get('product.conditions.general_condition.description')[1] }}</p>
-
-                                            <h4>Good</h4>
-                                            <p>{{ Config::get('product.conditions.general_condition.description')[2] }}</p>
-
-                                            <h4>Acceptable</h4>
-                                            <p>{{ Config::get('product.conditions.general_condition.description')[3] }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <td class="col-xs-4">
+                        {{ Config::get('product.conditions.general_condition.title') }}
+                        <i class="fa fa-question-circle" data-toggle="modal" data-target=".condition-modal"></i>
                     </td>
-                    <td>{{ Config::get('product.conditions.general_condition')[$product->condition->general_condition] }}</td>
+
+                    <td class="col-xs-8">{{ Config::get('product.conditions.general_condition')[$product->condition->general_condition] }}</td>
                 </tr>
                 <!-- Highlights / Notes -->
                 <tr>
                     <td>
-                        <div class="form-group">
-                            <label>{{ Config::get('product.conditions.highlights_and_notes.title') }}</label>
-                            <i class="fa fa-question-circle" data-toggle="modal" data-target=".highlight-modal"></i>
-                            <div class="modal fade highlight-modal" tabindex="-1" role="dialog"
-                                 aria-labelledby="Highlights/Notes">
-                                <div class="modal-dialog modal-md">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close close-modal-btn" data-dismiss="modal"
-                                                    aria-label="close">
-                                                <span id="close-span" aria-hidden="true">&times;</span>
-                                            </button>
-                                            <h3>Highlights/Notes</h3>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>{{ Config::get('product.conditions.highlights_and_notes.description_show') }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {{ Config::get('product.conditions.highlights_and_notes.title') }}
+                        <i class="fa fa-question-circle" data-toggle="modal" data-target=".highlight-modal"></i>
                     </td>
                     <td>{{ Config::get('product.conditions.highlights_and_notes')[$product->condition->highlights_and_notes] }}</td>
                 </tr>
                 <!-- Damaged Pages -->
                 <tr>
                     <td>
-                        <div class="form-group">
-                            <label>{{ Config::get('product.conditions.damaged_pages.title') }}</label>
-                            <i class="fa fa-question-circle" data-toggle="modal" data-target=".damage-modal"></i>
-                            <div class="modal fade damage-modal" tabindex="-1" role="dialog" aria-labelledby="Damaged Pages">
-                                <div class="modal-dialog modal-md">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close close-modal-btn" data-dismiss="modal"
-                                                    aria-label="close">
-                                                <span id="close-span" aria-hidden="true">&times;</span>
-                                            </button>
-                                            <h3>Damaged Pages</h3>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>{{ Config::get('product.conditions.damaged_pages.description_show') }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {{ Config::get('product.conditions.damaged_pages.title') }}
+                        <i class="fa fa-question-circle" data-toggle="modal" data-target=".damage-modal"></i>
                     </td>
                     <td>{{ Config::get('product.conditions.damaged_pages')[$product->condition->damaged_pages] }}</td>
                 </tr>
                 <!-- Broken Binding -->
                 <tr>
                     <td>
-                        <div class="form-group">
-                            <label>{{ Config::get('product.conditions.broken_binding.title') }}</label>
-                            <i class="fa fa-question-circle" data-toggle="modal" data-target=".binding-modal"></i>
-                            <div class="modal fade binding-modal" tabindex="-1" role="dialog" aria-labelledby="Broken Binding">
-                                <div class="modal-dialog modal-md">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close close-modal-btn" data-dismiss="modal"
-                                                    aria-label="close">
-                                                <span id="close-span" aria-hidden="true">&times;</span>
-                                            </button>
-                                            <h3>Broken Binding</h3>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>{{ Config::get('product.conditions.broken_binding.description_show') }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {{ Config::get('product.conditions.broken_binding.title') }}
+                        <i class="fa fa-question-circle" data-toggle="modal" data-target=".binding-modal"></i>
+
                     </td>
                     <td>{{ Config::get('product.conditions.broken_binding')[$product->condition->broken_binding] }}</td>
                 </tr>
+                <!-- Seller Description -->
+                <tr>
+                    <td>Seller's Description</td>
+                    <td>
+                        {{ $product->condition->description }}
+                    </td>
+                </tr>
+                </tbody>
             </table>
 
-            <!-- Seller Description -->
-            <div class=" col-xs-12 col-sm-12 col-md-4 seller-desc">
-                @if($product->condition->description != '')
-                    <h4>Seller's description on the book conditions:</h4>
-                    <div>{{ $product->condition->description }}</div>
-                @endif
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    {{-- Book info --}}
+                    <div class="row">
+
+                        {{-- Image --}}
+                        <div class="col-md-3">
+                            @if($book->imageSet->small_image)
+                                <img class="img-responsive"
+                                     src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->small_image }}">
+                            @else
+                                <img class="img-responsive" src="{{ config('book.default_image_path.small') }}">
+                            @endif
+                        </div>
+
+                        {{-- Details --}}
+                        <div class="col-md-9">
+                            <table class="table-book-details">
+                                <tr>
+                                    <th>
+                                        @if(count($book->authors) > 1)
+                                            Authors
+                                        @else
+                                            Author
+                                        @endif
+                                    </th>
+                                    <td>
+                                        @foreach($book->authors as $index => $author)
+                                            @if($index == 0)
+                                                <span class="author">{{ $author->full_name }}</span>
+                                            @else
+                                                <span class="author">, {{ $author->full_name }}</span>
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>ISBN-10</th>
+                                    <td>{{ $book->isbn10 }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>ISBN-13</th>
+                                    <td>{{ $book->isbn13 }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Number of pages</th>
+                                    <td>{{ $book->num_pages }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
-</div>
+
+    @include('includes.textbook.condition-modals')
 
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('libs/lightbox2/dist/js/lightbox.min.js') }}"></script>
+    <script src="{{ asset('libs/slick-carousel/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('js/product/show.js') }}"></script>
     <script src="{{ asset('js/cart.js') }}"></script>
 @endsection

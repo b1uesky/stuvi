@@ -11,6 +11,7 @@
     "dropzone": "~4.0.1",
     "card": "~1.1.0",
     "ihover": "~1.0.0",
-    "jquery-ui": "~1.11.4"
+    "jquery-ui": "~1.11.4",
+    "slick-carousel": "~1.5.8"
   }
 }

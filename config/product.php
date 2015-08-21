@@ -52,7 +52,7 @@ return [
 
         'description'               =>  [
             'title' =>  'Description',
-            'placeholder'   =>  'More description on your book conditions.'
+            'placeholder'   =>  '(Optional) More description on your book conditions.'
         ],
     ],
 ];

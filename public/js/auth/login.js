@@ -6,7 +6,6 @@
 
 $(document).ready(function () {
 
-    $('.loading').css('visibility', 'hidden');
     // login form validation
     $('#form-login').formValidation({
         framework: 'bootstrap',
@@ -15,6 +14,7 @@ $(document).ready(function () {
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
+        live: 'disabled',
         fields: {
                 email: {
                     trigger: 'blur',
@@ -52,7 +52,6 @@ $(document).ready(function () {
                 // login failed
                 if (response.success == false) {
                     $('.alert.alert-danger').remove();
-                    $('.loading').css('visibility', 'hidden');
 
                     for (var field in response.fields) {
                         var error = '<div class="alert alert-danger" role="alert">' +
