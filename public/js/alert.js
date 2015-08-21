@@ -28,7 +28,7 @@ var alert = {
 
     // flash a message according to its type
     flash: function (type, message) {
-        var html = $('<div class="alert alert-dismissible">' +
+        var html = $('<div class="alert alert-dismissible fade in">' +
             '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
             message +
             '</div>');
