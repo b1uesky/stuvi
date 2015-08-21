@@ -475,8 +475,8 @@
                     <table class="table table-responsive table-default">
                         <thead>
                             <tr>
+                                <th>Book</th>
                                 <th> </th>
-                                <th>Name</th>
                                 <th>ISBN</th>
                                 <th>Price</th>
                             </tr>
