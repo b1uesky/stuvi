@@ -29,7 +29,7 @@
         <div class="row">
 
             {{-- Image --}}
-            <div class="col-md-6">
+            <div class="col-md-3">
                 @if($book->imageSet->medium_image)
                     <img class="img-medium img-responsive" src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->medium_image }}">
                 @else
@@ -40,8 +40,8 @@
             <br/>
 
             {{-- Details --}}
-            <div class="col-md-6">
-                <table class="table table-responsive table-no-border">
+            <div class="col-md-9">
+                <table class="table table-book-details">
                     <tr>
                         <th>
                             @if(count($book->authors) > 1)
