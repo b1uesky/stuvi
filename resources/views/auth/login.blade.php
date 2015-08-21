@@ -38,30 +38,6 @@
                     </ul>
                     <!-- end tabs -->
 
-                    {{-- Messages --}}
-                    @if (Session::has('message'))
-                        <div class="alert alert-danger">
-                            <ul>
-                                <li>{{ Session::get('message') }}</li>
-                            </ul>
-                        </div>
-                    @endif
-
-                    {{-- Errors for invalid data --}}
-                    @if ($errors->has())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
-                    {{-- Successfully scheduled a pickup time --}}
-                    @if(Session::has('success'))
-                        <div class="alert alert-success">{{ Session::get('success') }}</div>
-                    @endif
                     <div class="tab-content">
                         <!-- login -->
                         <div class="tab-pane {{ $loginActive }}" id="login-body">

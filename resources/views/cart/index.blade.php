@@ -10,8 +10,6 @@
 
     @section('content')
 
-    @include('includes.textbook.flash-message')
-
     <div class="container container-main-content">
         {!! Breadcrumbs::render('shoppingCart') !!}
 

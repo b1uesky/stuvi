@@ -7,7 +7,6 @@ $(document).ready(function(){
     $('.image-slider').slick({
         autoplay: true,
         autoplaySpeed: 5000,
-        centerMode: true,
         dots: true
     });
 });

@@ -196,7 +196,7 @@ class Product extends Model
             'highlights_and_notes' => 'integer',
             'damaged_pages'        => 'integer',
             'broken_binding'       => 'boolean',
-            'price'                => 'numeric|min:0',
+            'price'                => 'required|numeric|min:0',
         ];
 
         // validate input images

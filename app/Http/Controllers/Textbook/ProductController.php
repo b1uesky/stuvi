@@ -26,11 +26,22 @@ class ProductController extends Controller
      */
     public function create($book)
     {
-        $paypal = Auth::user()->profile->paypal;
+        if (Auth::check())
+        {
+            $paypal = Auth::user()->profile->paypal;
 
-        return view('product.create')
-            ->withBook($book)
-            ->withPaypal($paypal);
+            return view('product.create')
+                ->withBook($book)
+                ->withPaypal($paypal);
+        }
+        else
+        {
+            Session::flash('warning', 'Please login or signup to sell your book.');
+
+            return view('product.create')
+                ->withBook($book);
+        }
+
     }
 
     /**

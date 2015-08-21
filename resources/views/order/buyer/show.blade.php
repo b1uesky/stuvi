@@ -8,7 +8,6 @@
 
 @section('content')
 
-    @include('includes.textbook.flash-message')
             <!-- order details -->
     <div class="container container-main-content">
         {!! Breadcrumbs::render() !!}

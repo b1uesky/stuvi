@@ -8,8 +8,6 @@
 
 @section('content')
 
-    @include('includes.textbook.flash-message')
-
     <div class="container-fluid container-main">
 
         <div class="container container-content">
