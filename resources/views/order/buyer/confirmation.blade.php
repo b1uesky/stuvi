@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Order confirmation #'.Session::get('order')->id )
 

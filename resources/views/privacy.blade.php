@@ -1,7 +1,7 @@
 {{-- Privacy Policy Page --}}
 
         <!-- extends the nav bar and the footer -->
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Privacy Policy')
 

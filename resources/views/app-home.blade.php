@@ -29,11 +29,11 @@
 
 <div class="container-wrapper">
 
-{{-- Session flash messages --}}
-@include('includes.alerts')
+    {{-- Session flash messages --}}
+    @include('includes.alerts')
 
-{{-- Page content --}}
-@yield('content')
+    {{-- Page content --}}
+    @yield('content')
 
 </div>
 
@@ -43,16 +43,6 @@
 
 {{-- Page modals --}}
 @yield('modals')
-
-{{-- Required modals --}}
-<?php $url = Request::url() ?>
-
-<!-- login modal -->
-@if (Auth::guest() && !($url === url('/') || $url === url('/home')))
-    @include('auth.login-signup-modal')
-@endif
-
-
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -65,9 +55,6 @@
 <script src="{{ asset('libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 {{--<script src="{{ asset('js/loader.js') }}"></script>--}}
 
-{{--@if(Auth::check())--}}
-    {{--<script src="{{ asset('js/bootstrap.js') }}"></script>--}}
-{{--@endif--}}
 
 @if(Auth::guest())
     {{-- FormValidation --}}
@@ -82,7 +69,7 @@
     <script src="{{ asset('js/googleanalytics.js') }}"></script>
 @endif
 
-    @yield('javascript')
+@yield('javascript')
 </body>
 
 </html>

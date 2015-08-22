@@ -1,6 +1,6 @@
 {{-- /textbook/buy/# --}}
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title',$book->title)
 

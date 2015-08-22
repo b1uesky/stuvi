@@ -1,6 +1,6 @@
 {{--User Account Settings page--}}
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title','Account Settings - '.Auth::user()->first_name.' '.Auth::user()->last_name)
 

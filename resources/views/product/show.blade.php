@@ -1,7 +1,7 @@
 {{--textbook/buy/product/#--}}
 
 
-@extends('app')
+@extends('layouts.textbook')
 
 <title>Stuvi - Book Details - {{ $product->book->title }} </title>
 

@@ -1,6 +1,6 @@
 {{-- The bookshelf page shows all the seller's books for sale, but not yet purchased --}}
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title','Bookshelf')
 

@@ -1,7 +1,7 @@
 
 
         <!-- extends the nav bar and the footer -->
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Terms of Service')
 

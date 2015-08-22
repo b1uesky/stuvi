@@ -1,6 +1,6 @@
 {{-- Your orders page --}}
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Order details - Order #'.$seller_order->id)
 

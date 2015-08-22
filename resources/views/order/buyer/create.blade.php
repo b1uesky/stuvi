@@ -1,6 +1,6 @@
 {{-- Checkout page --}}
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Checkout')
 

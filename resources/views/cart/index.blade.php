@@ -1,6 +1,6 @@
 <!-- Cart page -->
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Your Cart')
 

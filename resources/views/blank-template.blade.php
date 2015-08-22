@@ -1,7 +1,7 @@
 {{-- Use this as a template for a completely new page.--}}
 
 <!-- extends the nav bar and the footer -->
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Title here')
 

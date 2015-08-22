@@ -1,6 +1,6 @@
 {{--/textbook/sell/product/edit/#--}}
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Edit Product Info')
 

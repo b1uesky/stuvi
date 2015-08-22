@@ -1,6 +1,6 @@
 {{--Textbook sell page--}}
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Sell Your Textbooks')
 @section('description', 'Sell your textbooks to other students without leaving home.')

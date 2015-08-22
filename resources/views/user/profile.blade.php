@@ -1,6 +1,6 @@
 {{--Edit Profile page--}}
 
-@extends('app')
+@extends('layouts.textbook')
 @section('title', 'Edit Profile - '.Auth::user()->first_name.' '.Auth::user()->last_name)
 
 @section('css')

@@ -1,7 +1,7 @@
 {{--User Email page--}}
 
 
-@extends('app')
+@extends('layouts.textbook')
 @section('title', 'Email - '.Auth::user()->first_name.' '.Auth::user()->last_name )
 
 @section('css')

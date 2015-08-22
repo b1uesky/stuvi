@@ -1,6 +1,6 @@
 <!-- http://homestead.app/order/buyer -->
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Your orders')
 
