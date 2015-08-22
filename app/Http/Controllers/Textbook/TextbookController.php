@@ -270,8 +270,24 @@ class TextbookController extends Controller
                     ->first();
             }
 
-            return view('textbook.show')
-                ->withBook($book);
+            // if book is in the database
+            if ($book)
+            {
+                return view('textbook.show')
+                    ->withBook($book);
+            }
+            else
+            {
+                $google_book = new GoogleBooks(Config::get('services.google.books.api_key'));
+
+                if ($google_book->searchByISBN($isbn))
+                {
+                    $book = Book::createFromGoogleBook($google_book);
+
+                    return view('textbook.show')
+                        ->withBook($book);
+                }
+            }
         }
         else
         {
