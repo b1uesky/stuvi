@@ -38,8 +38,10 @@
 </div>
 
 {{--loader shade--}}
-{{--@include('loader')--}}
+{{--@include('includes.loader')--}}
 @include('includes.textbook.footer')
+
+@include('auth.login-signup-modal')
 
 {{-- Page modals --}}
 @yield('modals')

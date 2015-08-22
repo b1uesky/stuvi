@@ -1,6 +1,6 @@
 <!-- Copyright Stuvi LLC 2015 -->
 
-@extends('app-home')
+@extends('layouts.home')
 @section('description', "Student Village, college service provider")
 @section('title', 'Boston Textbook Marketplace & More Coming Soon!')
 
@@ -8,12 +8,9 @@
     <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('libs/jquery-ui/themes/smoothness/jquery-ui.min.css') }}">
-
 @endsection
 
 @section('content')
-
-
 
     <!-- top half -->
     <div class="container-fluid" id="container-home-top">
@@ -114,12 +111,6 @@
             </div>
         </div>
     </section>
-
-
-@section('modals')
-    {{--login-sign-up modal--}}
-    @include('auth.login-signup-modal')
-@endsection
 
 @endsection
 
