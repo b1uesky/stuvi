@@ -10,7 +10,7 @@
 
 @section('content')
 
-    <div class="container container-main-content">
+    <div class="container">
         {{--{!! Breadcrumbs::render('shoppingCart') !!}--}}
 
 

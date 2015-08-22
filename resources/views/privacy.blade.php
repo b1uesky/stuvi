@@ -14,7 +14,7 @@
 @section('content')
     @include('includes.textbook.flash-message')
 
-    <div class="container-fluid background container-main-content">
+    <div class="container-fluid background">
 
         <div class="privacy-body col-sm-8 col-sm-offset-2">
             <br>

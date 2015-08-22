@@ -12,7 +12,9 @@
 @endsection
 
 @section('content')
-<div class="container-main-content">
+
+
+
     <!-- top half -->
     <div class="container-fluid" id="container-home-top">
         <div class="" id="navbar-container">
@@ -112,7 +114,7 @@
             </div>
         </div>
     </section>
-</div>
+
 
 @section('modals')
     {{--login-sign-up modal--}}

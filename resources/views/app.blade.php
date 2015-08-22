@@ -11,6 +11,8 @@
 @include('includes.textbook.head')
 
 <body>
+
+<div class="container-wrapper">
 {{-- Nav bar --}}
 @include('includes.textbook.header')
 
@@ -19,6 +21,8 @@
 
 {{-- Page content --}}
 @yield('content')
+
+</div>
 
 {{--loader shade--}}
 {{--@include('loader')--}}
@@ -34,6 +38,8 @@
 @if (Auth::guest() && !($url === url('/') || $url === url('/home')))
 @include('auth.login-signup-modal')
 @endif
+
+
 
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

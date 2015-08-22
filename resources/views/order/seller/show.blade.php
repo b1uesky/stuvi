@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    <div class="container show-order-container container-main-content">
+    <div class="container show-order-container">
         {{--{!! Breadcrumbs::render() !!}--}}
 
         <div class="page-header">

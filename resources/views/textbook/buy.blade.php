@@ -24,7 +24,7 @@
         </ul>
     </div>
 
-    <div class="container-main-content">
+
         <!-- Search Bar Container-->
         <div class="container-fluid container-image">
             <div class="container">
@@ -153,8 +153,6 @@
                 </div>
             </div>
         </section>
-
-    </div>
 
 @endsection
 

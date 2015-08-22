@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="container faq-container container-main-content ">
+    <div class="container faq-container">
         @include('faq.side-nav')
 
         <div class="col-sm-7 col-sm-offset-1 qa-container">

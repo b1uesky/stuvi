@@ -9,7 +9,7 @@
 @section('content')
 
             <!-- order details -->
-    <div class="container container-main-content">
+    <div class="container">
         {{--{!! Breadcrumbs::render() !!}--}}
 
         <div class="page-header">

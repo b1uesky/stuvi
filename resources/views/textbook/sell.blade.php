@@ -25,7 +25,7 @@
         </ul>
     </div>
 
-    <div class="container-main-content">
+
         <!-- Search Bar Container-->
         <div class="container-fluid container-image">
 
@@ -132,7 +132,7 @@
             </div>
             <!-- end container -->
         </section>
-    </div>
+
 @endsection
 
 @section('javascript')

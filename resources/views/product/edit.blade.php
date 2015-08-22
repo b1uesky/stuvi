@@ -12,7 +12,7 @@
 @section('content')
     @include('includes.textbook.flash-message')
 
-    <div class="container create-container container-main-content">
+    <div class="container create-container">
 
         {{-- Errors for invalid data --}}
         @if ($errors->has())

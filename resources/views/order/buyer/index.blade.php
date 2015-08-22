@@ -10,7 +10,7 @@
 
 @section('content')
 
-    <div class="container container-main-content">
+    <div class="container">
         <div class="page-header">
             <h1>Your orders</h1>
         </div>
