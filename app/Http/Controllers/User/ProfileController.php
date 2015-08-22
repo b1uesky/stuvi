@@ -35,6 +35,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $phone_number = Input::get('phone');
         $phone_number = preg_replace('/[^0-9]+/', '', $phone_number);
+
         $user->update([
             'first_name'   => Input::get('first_name'),
             'last_name'    => Input::get('last_name'),
@@ -53,6 +54,7 @@ class ProfileController extends Controller
             'twitter'         => Input::get('twitter'),
             'linkedin'        => Input::get('linkedin'),
             'website'         => Input::get('site'),
+            'paypal'          => Input::get('paypal')
         ]);
 
         return redirect('user/profile');

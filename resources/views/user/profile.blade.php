@@ -52,7 +52,17 @@
 
                             <div class="col-sm-6">
                                 <input type="tel" class="form-control phone_number" name="phone" id="phone"
-                                       placeholder="Enter phone number" value="{{ Auth::user()->phone_number }}">
+                                       value="{{ Auth::user()->phone_number }}">
+                            </div>
+                        </div>
+
+                        {{-- Paypal Account --}}
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">PayPal Account:</label>
+
+                            <div class="col-sm-6">
+                                <input type="email" class="form-control" name="paypal"
+                                       placeholder="PayPal email address" value="{{ $profile->paypal }}">
                             </div>
                         </div>
 
@@ -89,8 +99,8 @@
                             <label class="control-label col-sm-3" for="title">Title:</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="title" id="title" placeholder="Stuvier"
-                                       value="{{ $profile->title }}">
+                                <input type="text" class="form-control" name="title" id="title"
+                                       value="{{ $profile->title or '' }}">
                             </div>
                         </div>
 
@@ -101,7 +111,7 @@
 
                             <div class="col-sm-6">
                                 <textarea id="bio" name="bio" class="form-control" rows="4"
-                                          cols="50">{{$profile->bio or "Tell us your deepest, darkest secrets."}}
+                                          cols="50">{{$profile->bio or ''}}
                                 </textarea>
                             </div>
                         </div>
@@ -130,7 +140,7 @@
 
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="major" id="major"
-                                       value="{{$profile->major}}" placeholder="Stuvi Fan">
+                                       value="{{$profile->major}}">
                             </div>
                         </div>
 
@@ -142,7 +152,7 @@
 
                             <div class="col-sm-6">
                                 <input type="url" class="form-control" name="facebook" id="facebook"
-                                       value={{$profile->facebook or "https://www.facebook.com/"}}>
+                                       value={{$profile->facebook or ""}}>
                             </div>
                         </div>
                         <!-- Twitter -->
@@ -159,7 +169,7 @@
 
                             <div class="col-sm-6">
                                 <input type="url" class="form-control" name="linkedin" id="linkedin"
-                                       value={{$profile->linkedin or "https://www.linkedin.com/in/"}}>
+                                       value={{$profile->linkedin or ""}}>
                             </div>
                         </div>
                         <!-- website -->
@@ -168,7 +178,7 @@
 
                             <div class="col-sm-6">
                                 <input type="url" class="form-control" name="site" id="site"
-                                       value={{$profile->website or "http://"}}>
+                                       value={{$profile->website or ''}}>
                             </div>
                         </div>
 

@@ -10,8 +10,18 @@
 @endsection
 
 @section('content')
+    @include('includes.textbook.flash-message')
 
     <div class="container create-container container-main-content">
+
+        {{-- Errors for invalid data --}}
+        @if ($errors->has())
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    {{ $error }}<br>
+                @endforeach
+            </div>
+        @endif
 
         <div class="row textbook-row col-sm-5">
             <div class="textbook-info">
@@ -50,7 +60,7 @@
         <div class="row col-sm-6 col-sm-offset-1">
             <h2>Book Conditions</h2>
 
-            <form id="form-product" class="dropzone" action="/textbook/sell/product/update" method="post">
+            <form id="form-product" class="dropzone" action="{{ url('/textbook/sell/product/update') }}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="product_id" value="{{ $product->id }}"/>
 
@@ -230,13 +240,12 @@
                         <div class="dz-message">
                             Drop images here or click to upload.
                             <br>
-                            <small>(A front cover image is required. You can upload three images in maximum.)</small>
+                            <small>(A front cover image is required. You can upload three images in maximum, at most 3MB per image.)</small>
                         </div>
                     </div>
                 </div>
 
                 <button type="submit" class="btn primary-btn sell-btn">Update</button>
-                <button class="btn secondary-btn sell-btn" onclick="goBack()">Cancel</button>
             </form>
         </div>
     </div>
