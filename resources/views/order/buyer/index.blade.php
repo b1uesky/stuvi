@@ -10,8 +10,6 @@
 
 @section('content')
 
-    @include('includes.textbook.flash-message')
-
     <div class="container container-main-content">
         <div class="page-header">
             <h1>Your orders</h1>
@@ -114,8 +112,8 @@
 
                                 {{-- cancel order --}}
                                 @if ($buyer_order->isCancellable())
-                                    <a class="btn btn-default btn-block" href="/order/buyer/cancel/{{ $buyer_order->id }}"
-                                       role="'button">Cancel Order</a>
+                                    <a class="btn secondary-btn btn-block cancel-order-btn" href="/order/buyer/cancel/{{ $buyer_order->id }}"
+                                       role="button">Cancel Order</a>
                                 @endif
                             </div>
                         </div>

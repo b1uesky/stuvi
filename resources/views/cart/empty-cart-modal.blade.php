@@ -1,5 +1,7 @@
 {{-- Modal to pop up if the user's cart is empty. --}}
 
+{{-- UNUSED --}}
+
 @section('empty-cart-modal')
     <div class="empty-cart-modal-container" style="z-index: 99999;">
         <div class="modal fade empty-cart-modal" id="empty-cart-modal" tabindex="-1" role="dialog" aria-labelledby="EmptyCart"

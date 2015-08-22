@@ -21,12 +21,12 @@
             <h1>Sold books</h1>
         </div>
 
-         order list
+        <strong id="order-list-text">Order List</strong>
         @foreach ($orders as $order)
             <div class="panel panel-default">
                 <div class="panel-heading">
 
-                     order details
+                    <em>Order Details</em>
                     <div class="container-fluid text-muted">
                         <div class="col-xs-2">
                             <div class="row">
@@ -116,7 +116,7 @@
 
                                 {{-- cancel order --}}
                                 @if ($order->isCancellable())
-                                    <a class="btn btn-default btn-block" href="/order/seller/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
+                                    <a class="btn secondary-btn btn-block cancel-order-btn" href="/order/seller/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
                                 @endif
                             </div>
                         </div>

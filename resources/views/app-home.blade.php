@@ -27,11 +27,14 @@
 
 <body>
 
+{{-- Session flash messages --}}
+@include('includes.alerts')
+
 {{-- Page content --}}
 @yield('content')
 
 {{--loader shade--}}
-@include('loader')
+{{--@include('loader')--}}
 @include('includes.textbook.footer')
 
 {{-- Page modals --}}
@@ -39,20 +42,10 @@
 
 {{-- Required modals --}}
 <?php $url = Request::url() ?>
-@if(Auth::check())
-    <?php $cartQty = Auth::user()->cart->quantity ?>
-@endif
 
 <!-- login modal -->
 @if (Auth::guest() && !($url === url('/') || $url === url('/home')))
     @include('auth.login-signup-modal')
-@endif
-
-@if(Auth::check())
-    <!-- Empty Cart Modal -->
-    @if($cartQty == 0)
-        @include('cart.empty-cart-modal')
-    @endif
 @endif
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -76,6 +69,8 @@
     <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/auth/login.js')}}"></script>
 @endif
+
+<script src="{{ asset('js/alert.js') }}"></script>
 
 @if(\App::environment('production'))
     <script src="{{ asset('js/googleanalytics.js') }}"></script>

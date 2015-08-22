@@ -4,18 +4,6 @@
 
 @section('content')
 
-    @if(Session::has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ Session::get('success') }}
-        </div>
-    @endif
-
-    @if (Session::has('error'))
-        <div class="alert alert-danger" role="alert">
-            {{ Session::get('error') }}
-        </div>
-    @endif
-
     {{--<div class="btn-group" role="group">--}}
         {{--<a href="{{ URL::to('admin/product') }}" class="btn btn-default">All</a>--}}
         {{--<a href="{{ URL::to('admin/product/unverified') }}" class="btn btn-default">Unverified Only</a>--}}

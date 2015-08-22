@@ -43,10 +43,8 @@
                         @if(Auth::guest())
                             <div class="searchbar-input-container searchbar-input-container-university">
                                 <label class="sr-only" for="uni-id">University ID</label>
-                                <select name="university_id"
-                                        class="form-control searchbar-input searchbar-input-university"
-                                        id="uni_id">
-                                    <option value="" selected disabled>University</option>
+                                <select name="university_id" class="form-control searchbar-input searchbar-input-university" id="uni_id">
+                                    <option value="" selected disabled>Select a university</option>
                                     @foreach($universities as $university)
                                         <option value="{{ $university->id }}">{{ $university->abbreviation }}</option>
                                     @endforeach

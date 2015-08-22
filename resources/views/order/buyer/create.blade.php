@@ -10,25 +10,27 @@
 
 @section('content')
 
-    @include('includes.textbook.flash-message')
-
     <div class="container container-main-content">
         {!! Breadcrumbs::render('shoppingCart') !!}
 
+
+        <div class="row progress-cart-row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3 progress-cart">
+                <nav>
+                    <ol class="cd-breadcrumb triangle">
+                        <li class=""><a href="{{url('/cart')}}"><i class="fa fa-shopping-cart"></i>
+                                Cart</a></li>
+                        <li class="current"><em><i class="fa fa-credit-card"></i>
+                                Checkout</em></li>
+                        <li><em><i class="fa fa-check"></i>
+                                Confirmation</em></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-8">
-                <div class="checkout-body">
-                    @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                </div>
 
                 {{-- Shipping address --}}
                 <div class="row">
@@ -39,18 +41,15 @@
                             <div class="thumbnail col-md-4 displayDefaultAddress">
                                 <div class="panel-body">
                                     <ul class="address-list" id="default-address-list">
-                                        <li class="address" id="default_addressee">{{ $address -> addressee }}</li>
-                                        <li class="address"
-                                            id="default_address_line1">{{ $address -> address_line1}}</li>
+                                        <li class="address addressee">{{ $address -> addressee }}</li>
+                                        <li class="address address_line1">{{ $address -> address_line1}}</li>
                                         @if($address -> address_line2 != null)
-                                            <li class="address"
-                                                id="default_address_line2">{{ $address -> address_line2}}</li>
+                                            <li class="address address_line2">{{ $address -> address_line2}}</li>
                                         @endif
-                                        <li class="address inline" id="default_city">{{ $address -> city }},</li>
-                                        <li class="address inline"
-                                            id="default_state_a2">{{ $address -> state_a2 }}</li>
-                                        <li class="address inline" id="default_zip">{{ $address -> zip }}</li>
-                                        <li class="address" id="default_phone">{{ $address -> phone_number }}</li>
+                                        <li class="address inline city">{{ $address -> city }},</li>
+                                        <li class="address inline state_a2">{{ $address -> state_a2 }}</li>
+                                        <li class="address inline zip">{{ $address -> zip }}</li>
+                                        <li class="address phone">{{ $address -> phone_number }}</li>
                                     </ul>
                                     <button class="btn btn-default primary-btn address-btn show-addresses">Change
                                         Address
@@ -75,9 +74,7 @@
                                     <li class="address zip inline">{{ $address -> zip }}</li>
                                     <li class="address phone">{{ $address -> phone_number }}</li>
                                 </ul>
-                                <button class="btn btn-default primary-btn address-btn editThisAddress"
-                                        data-toggle="modal"
-                                        data-target="#update-address-modal">
+                                <button class="btn btn-default primary-btn address-btn editThisAddress">
                                     Edit
                                 </button>
                             </div>
@@ -185,7 +182,7 @@
                                 </div>
                                 <div class="modal-body address-form-body">
                                     <form action="{{ url('/address/update') }}" method="POST"
-                                          class="update-address-form">
+                                          id="update-address-form">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="hidden" name="address_id" value="">
 
@@ -208,8 +205,7 @@
                                             <div class="col-sm-6 form-space-offset">
                                                 <input type="text" class="form-control"
                                                        id="address_line1-input-modal-update"
-                                                       name="address_line1"
-                                                       value="185 Freeman St.">
+                                                       name="address_line1">
                                             </div>
                                         </div>
                                         <br>
@@ -221,8 +217,7 @@
                                             <div class="col-sm-6 form-space-offset">
                                                 <input type="text" class="form-control"
                                                        id="address_line2-input-modal-update"
-                                                       name="address_line2"
-                                                       value="Apt. 739">
+                                                       name="address_line2">
                                             </div>
                                         </div>
                                         <br>
@@ -233,8 +228,7 @@
 
                                             <div class="col-sm-6 form-space-offset">
                                                 <input type="text" class="form-control" name="city"
-                                                       id="city-input-modal-update"
-                                                       value="Brookline">
+                                                       id="city-input-modal-update">
                                             </div>
                                         </div>
                                         <br>
@@ -244,8 +238,7 @@
 
                                             <div class="col-sm-6 form-space-offset">
                                                 <input type="text" class="form-control" name="state_a2"
-                                                       id="state_a2-input-modal-update"
-                                                       value="MA">
+                                                       id="state_a2-input-modal-update">
                                             </div>
                                         </div>
                                         <br>
@@ -256,8 +249,7 @@
 
                                             <div class="col-sm-6 form-space-offset">
                                                 <input type="text" class="form-control" name="zip"
-                                                       id="zip-input-modal-update"
-                                                       value="02446">
+                                                       id="zip-input-modal-update">
                                             </div>
                                         </div>
                                         <br>
@@ -269,7 +261,7 @@
                                             <div class="col-sm-6 form-space-offset">
                                                 <input type="tel" class="form-control phone_number"
                                                        id="phone_number-input-update"
-                                                       name="phone_number" value="(857) 206 4789">
+                                                       name="phone_number">
                                             </div>
                                         </div>
                                         <input type="hidden" name="address_id" value="">
@@ -302,7 +294,7 @@
                                 </div>
                                 <div class="modal-body address-form-body">
                                     <form action="{{ url('/address/store') }}" method="POST"
-                                          class="add-address-form">
+                                          id="add-address-form">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                         <div class="form-group">
@@ -324,8 +316,7 @@
                                             <div class="col-sm-6 form-space-offset">
                                                 <input type="text" class="form-control"
                                                        id="address_line1-input-modal"
-                                                       name="address_line1"
-                                                       value="185 Freeman St.">
+                                                       name="address_line1">
                                             </div>
                                         </div>
                                         <br>
@@ -337,8 +328,7 @@
                                             <div class="col-sm-6 form-space-offset">
                                                 <input type="text" class="form-control"
                                                        id="address_line2-input-modal"
-                                                       name="address_line2"
-                                                       value="Apt. 739">
+                                                       name="address_line2">
                                             </div>
                                         </div>
                                         <br>
@@ -349,8 +339,7 @@
 
                                             <div class="col-sm-6 form-space-offset">
                                                 <input type="text" class="form-control" name="city"
-                                                       id="city-input-modal"
-                                                       value="Brookline">
+                                                       id="city-input-modal">
                                             </div>
                                         </div>
                                         <br>
@@ -361,8 +350,7 @@
 
                                             <div class="col-sm-6 form-space-offset">
                                                 <input type="text" class="form-control" name="state_a2"
-                                                       id="state_a2-input-modal"
-                                                       value="MA">
+                                                       id="state_a2-input-modal">
                                             </div>
                                         </div>
                                         <br>
@@ -373,8 +361,7 @@
 
                                             <div class="col-sm-6 form-space-offset">
                                                 <input type="text" class="form-control" name="zip"
-                                                       id="zip-input-modal"
-                                                       value="02446">
+                                                       id="zip-input-modal">
                                             </div>
                                         </div>
                                         <br>
@@ -386,7 +373,7 @@
                                             <div class="col-sm-6 form-space-offset">
                                                 <input type="tel" class="form-control phone_number"
                                                        id="phone_number-input-modal"
-                                                       name="phone_number" value="(857) 206 4789">
+                                                       name="phone_number">
                                             </div>
                                         </div>
                                         <input type="hidden" name="address_id" value="">
@@ -488,6 +475,14 @@
                     <h2>3 Review items</h2>
 
                     <table class="table table-responsive table-default">
+                        <thead>
+                            <tr>
+                                <th>Book</th>
+                                <th> </th>
+                                <th>ISBN</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
                         @forelse ($items as $item)
                             <tr>
                                 <td>

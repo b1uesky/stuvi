@@ -364,7 +364,7 @@
                                 </div>
 
                                 {{-- book details --}}
-                                <div class="col-md-10">
+                                <div class="col-md-10 book-details-row">
                                     <div class="row">
                                                 <span>
                                                     <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a>
@@ -395,8 +395,8 @@
 
                             {{-- cancel order --}}
                             @if ($seller_order->isCancellable())
-                                <a class="btn btn-default btn-block" href="/order/seller/cancel/{{ $seller_order->id }}"
-                                   role="'button">Cancel Order</a>
+                                <a class="btn secondary-btn btn-block cancel-order-btn" href="/order/seller/cancel/{{ $seller_order->id }}"
+                                   role="button">Cancel Order</a>
                             @endif
                         </div>
                     </div>

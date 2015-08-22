@@ -3,10 +3,7 @@
 // order/buyer/confirmation.blade.php
 
 @import "modules/all";
-
-.cart-progress-img-row{
-  margin: 0;
-}
+@import "sections/cart-progress";
 
 .cart-line {
   max-width: 50%;
@@ -18,4 +15,8 @@
 .confirmation-container {
   margin-bottom: 200px;
   min-height: 90vh;
+}
+
+.progress-cart{
+  padding-top: 20px;
 }

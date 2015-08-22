@@ -246,7 +246,6 @@
                 </div>
 
                 <button type="submit" class="btn primary-btn sell-btn">Update</button>
-                <a class="btn primary-btn sell-btn" href="{{ url('/textbook/buy/product/'.$product->id) }}">Cancel</a>
             </form>
         </div>
     </div>

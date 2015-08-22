@@ -29,15 +29,15 @@
       border: none;
     }
   }
-
 }
 
-.table-primary{
-  background-color: $table-background-color;
-  border: 1px solid #{$primary-color};
-}
+.table-book-details {
+  margin-bottom: 0;
 
-.table-secondary{
-  background-color: $table-background-color;
-  border: 1px solid #{$secondary-color};
+  tbody {
+    tr td, tr th {
+      //border: none;
+      padding: 4px;
+    }
+  }
 }

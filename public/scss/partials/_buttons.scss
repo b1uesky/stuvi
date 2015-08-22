@@ -1,6 +1,16 @@
 /*** BUTTON STYLES ***/
 @import "../modules/colors";
 
+.button {
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn-default {
+  color: $body-text-color;
+}
+
 .primary-btn {
   background: $primary-color;
   color: $button-text-color;
@@ -30,9 +40,13 @@
 }
 
 .muted-btn{
-  background-color: $background-color;
-  color: $muted-text-color;
+  background-color: $background-light-grey;
+  color: $button-text-color;
   border: none;
+
+  &:hover {
+    color: $muted-text-color;
+  }
 }
 
 .list-search-btn {
@@ -45,4 +59,8 @@
     outline: 0 !important;
     background: $primary-color;
   }
+}
+
+.cancel-order-btn {
+  margin: 0;
 }

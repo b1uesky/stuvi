@@ -6,108 +6,122 @@
 
 $(document).ready(function () {
 
-    Dropzone.options.formProduct = { // The camelized version of the ID of the form element
+    initializeDropzone();
 
-        url: '/textbook/sell/product/store',
-        method: 'post',
+    $('.btn-to-details').click(function() {
+        $('.details').removeClass('hidden');
+        $('.ready').removeClass('hidden');
 
-        autoProcessQueue: false,
-        previewsContainer: '#dropzone-img-preview',
-        clickable: '#dropzone-img-preview',
-        addRemoveLinks: true,
-        dictRemoveFile: 'Remove',
+        $('html, body').animate({
+            scrollTop: $(".details").offset().top
+        }, 500);
+    });
 
-        uploadMultiple: true,
-        parallelUploads: 3,
-        maxFiles: 3,
-        maxFilesize: 5,
+    $('.btn-to-ready').click(function() {
+        $('html, body').animate({
+            scrollTop: $(".ready").offset().top
+        }, 500);
+    });
 
-        // The setting up of the dropzone
-        init: function () {
-            // disable submit button
-            $('button[type=submit]').attr('disabled', true);
+    function initializeDropzone() {
+        Dropzone.options.formProduct = { // The camelized version of the ID of the form element
 
-            var myDropzone = this;
+            url: '/textbook/sell/product/store',
+            method: 'post',
 
-            // First change the button to actually tell Dropzone to process the queue.
-            this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
-                // Make sure that the form isn't actually being sent.
-                e.preventDefault();
-                e.stopPropagation();
-                myDropzone.processQueue();
-            });
+            autoProcessQueue: false,
+            previewsContainer: '#dropzone-img-preview',
+            clickable: '#dropzone-img-preview',
+            addRemoveLinks: true,
+            dictRemoveFile: 'Remove',
 
-            // When a file is added to the list
-            this.on("addedfile", function () {
-                $('.dz-message').hide();
-                $('button[type=submit]').attr('disabled', false);
-            });
+            uploadMultiple: true,
+            parallelUploads: 3,
+            maxFiles: 3,
+            maxFilesize: 5,
 
-            // When a file is removed from the list
-            this.on("removedfile", function () {
-                // enable file upload
-                this.setupEventListeners();
+            // The setting up of the dropzone
+            init: function () {
+                // disable submit button
+                $('input[type=submit]').attr('disabled', true);
 
-                $('#dropzone-img-preview').removeClass('dz-unclickable');
-                $('#dropzone-img-preview').addClass('dz-clickable');
-            });
+                var myDropzone = this;
 
-            // When all files in the list are removed and the dropzone is reset to initial state.
-            this.on("reset", function () {
-                $('.dz-message').show();
-                $('button[type=submit]').attr('disabled', true);
-            });
+                // First change the button to actually tell Dropzone to process the queue.
+                this.element.querySelector("input[type=submit]").addEventListener("click", function (e) {
+                    // Make sure that the form isn't actually being sent.
+                    e.preventDefault();
+                    e.stopPropagation();
+                    myDropzone.processQueue();
+                });
 
-            // When the number of files accepted reaches the maxFiles limit.
-            this.on("maxfilesreached", function () {
-                // disable file upload
-                this.removeEventListeners();
+                // When a file is added to the list
+                this.on("addedfile", function () {
+                    $('.dz-message').hide();
+                    $('input[type=submit]').attr('disabled', false);
+                });
 
-                $('#dropzone-img-preview').removeClass('dz-clickable');
-                $('#dropzone-img-preview').addClass('dz-unclickable');
+                // When a file is removed from the list
+                this.on("removedfile", function () {
+                    // enable file upload
+                    this.setupEventListeners();
 
-            });
+                    $('#dropzone-img-preview').removeClass('dz-unclickable');
+                    $('#dropzone-img-preview').addClass('dz-clickable');
+                });
 
-            // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
-            // of the sending event because uploadMultiple is set to true.
-            this.on("sendingmultiple", function () {
-                // Gets triggered when the form is actually being sent.
-                // Hide the success button or the complete form.
-            });
-            this.on("successmultiple", function (files, response) {
-                // Gets triggered when the files have successfully been sent.
-                // Redirect user or notify of success.
-                console.log(response);
+                // When all files in the list are removed and the dropzone is reset to initial state.
+                this.on("reset", function () {
+                    $('.dz-message').show();
+                    $('input[type=submit]').attr('disabled', true);
+                });
 
-                if (response.success == true) {
-                    window.location.replace(response.redirect);
-                } else {
-                    // TODO: error message display
-                    $('.alert.alert-danger').remove();
+                // When the number of files accepted reaches the maxFiles limit.
+                this.on("maxfilesreached", function () {
+                    // disable file upload
+                    this.removeEventListeners();
 
-                    var error = '<div class="alert alert-danger" role="alert">';
+                    $('#dropzone-img-preview').removeClass('dz-clickable');
+                    $('#dropzone-img-preview').addClass('dz-unclickable');
 
-                    for (var field in response.fields) {
-                        error = error + '<span class="sr-only">Error:</span>' + response.fields[field] + '<br>'
+                });
+
+                // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
+                // of the sending event because uploadMultiple is set to true.
+                this.on("sendingmultiple", function () {
+                    // Gets triggered when the form is actually being sent.
+                    // Hide the success button or the complete form.
+                });
+                this.on("successmultiple", function (files, response) {
+                    // Gets triggered when the files have successfully been sent.
+                    // Redirect user or notify of success.
+                    console.log(response);
+
+                    if (response.success == true) {
+                        window.location.replace(response.redirect);
+                    } else {
+
+                        var alert = new Alert();
+                        alert.clear();
+
+                        for (var field in response.fields) {
+                            var message = response.fields[field];
+                            alert.flash('danger', message);
+                        }
+
+                        // reenable file upload
+                        for (var i = 0; i < files.length; i++) {
+                            files[i].status = Dropzone.QUEUED;
+                        }
+
                     }
-
-                    error = error + '</div>';
-
-                    $(error).insertBefore('#form-product');
-
-                    // reenable file upload
-                    for (var i = 0; i < files.length; i++) {
-                        files[i].status = Dropzone.QUEUED;
-                    }
-
-                }
-            });
-            this.on("errormultiple", function (files, response) {
-                // Gets triggered when there was an error sending the files.
-                // Maybe show form again, and notify user of error
-                console.log(response);
-            });
+                });
+                this.on("errormultiple", function (files, response) {
+                    // Gets triggered when there was an error sending the files.
+                    // Maybe show form again, and notify user of error
+                    console.log(response);
+                });
+            }
         }
     }
-
 });

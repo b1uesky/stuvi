@@ -31,6 +31,13 @@
   padding: 0;
 }
 
+#bookshelf-title-subtext {
+  color: $muted-text-color;
+  @media(min-width: 990px){
+    margin-left: 5px;
+  }
+}
+
 #search-term {
   border-radius: 4px 0 0 4px;
   border-right: none;
@@ -132,4 +139,6 @@ h5 {
 .fa-arrow-circle-left{
   padding: 10px;
 }
+
+
 

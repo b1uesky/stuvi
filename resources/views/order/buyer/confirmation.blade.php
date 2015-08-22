@@ -8,9 +8,22 @@
 
 @section('content')
 
-        <!-- TODO: breadcrumb cart progress bar -->
-
     <div class="container confirmation-container container-main-content">
+
+        <div class="row progress-cart-row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3 progress-cart">
+                <nav>
+                    <ol class="cd-breadcrumb triangle">
+                        <li><a href="{{url('/cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                        <li><a href="{{url('/order/create')}}"><i class="fa fa-credit-card"></i>
+                                Checkout</a></li>
+                        <li class="current"><em><i class="fa fa-check"></i>
+                                Confirmation</em></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
         <div class="confirmation-details">
             <h1>Thanks for using Stuvi!</h1>
             <h4>Your order number is: {{ Session::get('order')->id }}. <a href="{{ url('order/buyer/'.Session::get('order')->id) }}">View order details</a>.</h4>

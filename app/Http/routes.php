@@ -28,6 +28,8 @@ Route::get  ('/',           'HomeController@index');
 Route::get  ('/home',       ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get  ('/about',      'HomeController@about');
 Route::get  ('/coming',     'HomeController@coming');
+Route::get  ('/tos',        'tosPrivacyController@tos');
+Route::get  ('/privacy',    'tosPrivacyController@privacy');
 
 /*
 |--------------------------------------------------------------------------
