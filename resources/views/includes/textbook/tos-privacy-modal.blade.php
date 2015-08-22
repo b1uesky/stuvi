@@ -10,7 +10,7 @@
                 <h3>Terms of Use</h3>
             </div>
             <div class="modal-body">
-                @include('includes.textbook.tos-content')
+                @include('includes.tos-content')
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
                 <h3>Privacy Notice</h3>
             </div>
             <div class="modal-body">
-                @include('includes.textbook.privacy-content')
+                @include('includes.privacy-content')
             </div>
         </div>
     </div>

@@ -10,7 +10,6 @@
 @endsection
 
 @section('content')
-    @include('includes.textbook.flash-message')
 
     <div class="container create-container">
 
