@@ -26,3 +26,10 @@
 .remember-me, .forgot-password {
   display: inline;
 }
+
+// fix the bug that the nav bar links shift to right when open the modal.
+// https://github.com/twbs/bootstrap/issues/14040
+body.modal-open {
+  overflow-y: scroll;
+  padding-right: 0 !important;
+}
