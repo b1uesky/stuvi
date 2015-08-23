@@ -3,3 +3,21 @@
 .container-wrapper {
   min-height: calc(100vh - #{$footer-height});
 }
+
+.va-container-h {
+  width: 100%;
+}
+
+.va-container-v {
+  height: 100%;
+}
+
+.va-container {
+  display: table;
+  position: relative;
+}
+
+.va-middle {
+  vertical-align: middle;
+  display: table-cell;
+}
