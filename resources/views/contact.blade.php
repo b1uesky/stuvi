@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Contact us')
 
@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <div id="contact-main-container" class="container-main-content">
+    <div id="contact-main-container">
 
         <div class="container-fluid contact-container">
             <div class="row">

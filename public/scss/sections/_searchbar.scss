@@ -23,7 +23,7 @@
 
 .searchbar-input-container-university {
   width: 0.01%;
-  height: 3.5em;
+  height: 3em;
 }
 
 .searchbar-input-container-submit {
@@ -32,7 +32,7 @@
 
 .searchbar-input {
   width: 100%;
-  height: 3.5em;
+  height: 3em;
   background-color: $background-color;
 
   &:focus {
@@ -56,18 +56,20 @@
 
 .search-btn {
   width: auto;
-  height: 3.5em;
+  height: 3em;
+  padding-left: 20px;
+  padding-right: 20px;
   background: $primary-color;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border: none;
 
   &:hover {
-    background: $primary-color;
+    background: lighten($primary-color, 3%);
   }
   &:focus {
     outline: 0 !important;
-    background: $primary-color;
+    background: lighten($primary-color, 3%);
   }
 }
 

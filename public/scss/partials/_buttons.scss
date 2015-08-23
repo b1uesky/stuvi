@@ -1,6 +1,10 @@
 /*** BUTTON STYLES ***/
 @import "../modules/colors";
 
+.btn {
+  border-radius: 2px;
+}
+
 .button {
   &:focus {
     outline: none;

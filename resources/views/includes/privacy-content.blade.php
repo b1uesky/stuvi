@@ -1,6 +1,9 @@
 {{-- Privacy content used for both the modal and privacy page --}}
 
-<h1>Stuvi Privacy Policy</h1>
+<div class="page-header">
+    <h1>Stuvi Privacy Policy</h1>
+</div>
+
 <p>
     This privacy policy discloses the privacy practices for Stuvi.com. This privacy policy applies solely to information collected by this web site. It will notify you of the following:
 </p>

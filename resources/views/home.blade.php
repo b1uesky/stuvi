@@ -1,6 +1,6 @@
 <!-- Copyright Stuvi LLC 2015 -->
 
-@extends('app-home')
+@extends('layouts.home')
 @section('description', "Student Village, college service provider")
 @section('title', 'Boston Textbook Marketplace & More Coming Soon!')
 
@@ -8,11 +8,10 @@
     <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('libs/jquery-ui/themes/smoothness/jquery-ui.min.css') }}">
-
 @endsection
 
 @section('content')
-<div class="container-main-content">
+
     <!-- top half -->
     <div class="container-fluid" id="container-home-top">
         <div class="" id="navbar-container">
@@ -66,9 +65,7 @@
                     @endif
 
                     <div class="searchbar-input-container searchbar-input-container-submit default-guest-search-submit">
-                        <button class="btn btn-default search-btn" type="submit" value="Search">
-                            <i class="fa fa-search search-icon"></i>
-                        </button>
+                        <input class="btn primary-btn search-btn" type="submit" value="Search">
                     </div>
                 </form>
             </div>
@@ -114,12 +111,6 @@
             </div>
         </div>
     </section>
-</div>
-
-@section('modals')
-    {{--login-sign-up modal--}}
-    @include('auth.login-signup-modal')
-@endsection
 
 @endsection
 

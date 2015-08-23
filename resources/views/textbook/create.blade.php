@@ -1,7 +1,7 @@
 {{-- Page for creating a new textbook --}}
 
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Create a textbook')
 
@@ -12,7 +12,7 @@
 @section('content')
 
 <!-- top container..determines background -->
-<div class = "container-fluid create container-main-content">
+<div class = "container-fluid create">
     <!-- center the forms -->
     <div class="container col-md-8 col-md-offset-2 pad">
         <div class="row">

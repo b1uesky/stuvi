@@ -1,6 +1,6 @@
 {{-- Your orders page --}}
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Order details - Order #'.$seller_order->id)
 
@@ -10,8 +10,8 @@
 @endsection
 
 @section('content')
-    <div class="container show-order-container container-main-content">
-        {!! Breadcrumbs::render() !!}
+    <div class="container show-order-container">
+        {{--{!! Breadcrumbs::render() !!}--}}
 
         <div class="page-header">
             <h1>Order Details</h1>

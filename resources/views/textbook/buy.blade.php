@@ -1,6 +1,6 @@
 {{--Textbook buy page--}}
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Buy Textbooks')
 @section('description', 'Buy textbooks from other students without leaving home.')
@@ -24,7 +24,7 @@
         </ul>
     </div>
 
-    <div class="container-main-content">
+
         <!-- Search Bar Container-->
         <div class="container-fluid container-image">
             <div class="container">
@@ -53,9 +53,7 @@
                         @endif
 
                         <div class="searchbar-input-container searchbar-input-container-submit default-guest-search-submit">
-                            <button class="btn primary-btn search-btn" type="submit" value="Search">
-                                <i class="fa fa-search fa-lg search-icon"></i>
-                            </button>
+                            <input class="btn primary-btn search-btn" type="submit" value="Search">
                         </div>
                     </form>
                 </div>
@@ -155,8 +153,6 @@
                 </div>
             </div>
         </section>
-
-    </div>
 
 @endsection
 

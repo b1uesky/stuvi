@@ -13,7 +13,7 @@ $website    =   Auth::user()->profile->website;
 ?>
 
 
-@extends('app')
+@extends('layouts.textbook')
 @section('title', 'Profile - '.$first_name.' '.$last_name )
 
 @section('css')

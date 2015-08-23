@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Order #'.$buyer_order->id)
 
@@ -9,8 +9,8 @@
 @section('content')
 
             <!-- order details -->
-    <div class="container container-main-content">
-        {!! Breadcrumbs::render() !!}
+    <div class="container">
+        {{--{!! Breadcrumbs::render() !!}--}}
 
         <div class="page-header">
             <h1>Order Details</h1>

@@ -1,6 +1,6 @@
 <!-- Cart page -->
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Your Cart')
 
@@ -10,8 +10,8 @@
 
     @section('content')
 
-    <div class="container container-main-content">
-        {!! Breadcrumbs::render('shoppingCart') !!}
+    <div class="container">
+        {{--{!! Breadcrumbs::render('shoppingCart') !!}--}}
 
         @if(count($items) > 0)
         <div class="row progress-cart-row">

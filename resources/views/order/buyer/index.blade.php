@@ -1,6 +1,6 @@
 <!-- http://homestead.app/order/buyer -->
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Your orders')
 
@@ -10,7 +10,7 @@
 
 @section('content')
 
-    <div class="container container-main-content">
+    <div class="container">
         <div class="page-header">
             <h1>Your orders</h1>
         </div>

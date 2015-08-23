@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'About us')
 
@@ -9,7 +9,7 @@
 
 @section('content')
 
-    <div class="container-fluid about-background container-main-content">
+    <div class="container-fluid about-background">
         <div class="container col-md-12">                               <!-- container -->
             <div class = "col-md-2"></div>                                  <!-- Buffer -->
             <div class="jumbotron col-md-8" id = "about-jumbotron">              <!-- Jumbotron1 -->

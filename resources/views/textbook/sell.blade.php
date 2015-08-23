@@ -1,6 +1,6 @@
 {{--Textbook sell page--}}
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Sell Your Textbooks')
 @section('description', 'Sell your textbooks to other students without leaving home.')
@@ -25,7 +25,7 @@
         </ul>
     </div>
 
-    <div class="container-main-content">
+
         <!-- Search Bar Container-->
         <div class="container-fluid container-image">
 
@@ -42,10 +42,7 @@
                                        placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
                             </div>
                             <div class="searchbar-input-container searchbar-input-container-submit form-group">
-                                <button class="btn primary-btn search-btn" id="sell-search-btn" type="submit"
-                                        name="search">
-                                    <i class="fa fa-search fa-lg search-icon"></i>
-                                </button>
+                                <input class="btn primary-btn search-btn" type="submit" value="Search">
                             </div>
                         </form>
                     </div>
@@ -135,7 +132,7 @@
             </div>
             <!-- end container -->
         </section>
-    </div>
+
 @endsection
 
 @section('javascript')

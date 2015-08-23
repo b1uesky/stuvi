@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Order confirmation #'.Session::get('order')->id )
 
@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <div class="container confirmation-container container-main-content">
+    <div class="container confirmation-container">
 
         <div class="row progress-cart-row">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3 progress-cart">

@@ -1,4 +1,4 @@
-@extends('login-register')
+@extends('layouts.login-register')
 
 @section('title', 'Login & Register')
 
@@ -18,7 +18,7 @@
 @endif
 
 @section('content')
-    <div class="container-fluid content container-main-content">
+    <div class="container-fluid content">
         <!-- logo -->
         <a href="{{ url('/') }}" id="logo-link"><img src="{{asset('/img/logo-new-center.png')}}" class="img-responsive" id="login-logo"></a>
 

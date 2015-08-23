@@ -1,6 +1,6 @@
 {{-- Checkout page --}}
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Checkout')
 
@@ -10,8 +10,8 @@
 
 @section('content')
 
-    <div class="container container-main-content">
-        {!! Breadcrumbs::render('shoppingCart') !!}
+    <div class="container">
+        {{--{!! Breadcrumbs::render('shoppingCart') !!}--}}
 
 
         <div class="row progress-cart-row">

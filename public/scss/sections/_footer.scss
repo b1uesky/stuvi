@@ -5,6 +5,7 @@
 @import "../modules/all";
 
 .footer-distributed {
+  height: $footer-height;
   background-color: $background-dark;
   color: white;
   padding: $spacing-unit / 2;

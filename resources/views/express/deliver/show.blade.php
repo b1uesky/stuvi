@@ -1,4 +1,4 @@
-@extends('express')
+@extends('layouts.express')
 
 @section('title', 'Deliver')
 

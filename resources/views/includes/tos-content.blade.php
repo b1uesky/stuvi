@@ -1,7 +1,10 @@
 
 {{-- Terms of service content for modal and tos page --}}
 
-<h1>Stuvi Terms of Service</h1>
+<div class="page-header">
+    <h1>Stuvi Terms of Service</h1>
+</div>
+
 <p>
     Welcome to Stuvi. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern Stuvi’s relationship with you in relation to this website. If you disagree with any part of these terms and conditions, please do not use our website.
     The term ‘Stuvi’ or ‘us’ or ‘we’ refers to the owner of the website whose registered office is [address]. Our company registration number is [company registration number and place of registration]. The term ‘you’ refers to the user or viewer of our website.

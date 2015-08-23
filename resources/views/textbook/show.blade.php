@@ -1,6 +1,6 @@
 {{-- /textbook/buy/# --}}
 
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title',$book->title)
 
@@ -17,7 +17,7 @@
 
     @include('textbook/textbook-nav')
 
-    <div class="container container-main-content">
+    <div class="container">
 
         <div class="page-header">
             <h1>{{ $book->title }}</h1>

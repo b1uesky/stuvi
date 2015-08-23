@@ -1,13 +1,13 @@
 {{--textbook/buy/product/#--}}
 
 
-@extends('app')
+@extends('layouts.textbook')
 
 <title>Stuvi - Book Details - {{ $product->book->title }} </title>
 
 @section('css')
-   {{-- <link rel="stylesheet" href="{{ asset('libs/slick-carousel/slick/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('libs/slick-carousel/slick/slick-theme.css') }}">--}}
+    <link rel="stylesheet" href="{{ asset('libs/slick-carousel/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('libs/slick-carousel/slick/slick-theme.css') }}">
     <link rel="stylesheet" href="{{ asset('css/product_show.css') }}" type="text/css">
 @endsection
 
@@ -15,7 +15,7 @@
 
     <?php $book = $product->book; ?>
 
-    <div class="container container-main-content">
+    <div class="container">
         <div class="page-header">
             <h1>{{ $book->title }}</h1>
         </div>
@@ -199,8 +199,10 @@
 @endsection
 
 
+
+
 @section('javascript')
-{{--    <script src="{{ asset('libs/slick-carousel/slick/slick.min.js') }}"></script>--}}
+    <script src="{{ asset('libs/slick-carousel/slick/slick.min.js') }}"></script>
     <script src="{{ asset('js/product/show.js') }}"></script>
     <script src="{{ asset('js/cart.js') }}"></script>
 @endsection

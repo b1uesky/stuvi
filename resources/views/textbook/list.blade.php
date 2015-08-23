@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.textbook')
 
 @section('title', 'Search results for '.$query)
 
@@ -15,7 +15,7 @@
 
     @include('textbook/textbook-nav')
 
-    <div class="container-fluid textbook-list-container container-main-content">
+    <div class="container-fluid textbook-list-container">
 
         <div class="container textbook-list">
             {{-- HEADER --}}
