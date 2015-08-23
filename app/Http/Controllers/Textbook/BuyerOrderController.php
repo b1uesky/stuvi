@@ -87,6 +87,7 @@ class BuyerOrderController extends Controller
             return view('order.buyer.create')
                 ->with('subtotal', Price::convertIntegerToDecimal($this->cart->totalPrice()))
                 ->with('shipping', Price::convertIntegerToDecimal($this->cart->fee()))
+                ->with('discount', Price::convertIntegerToDecimal($this->cart->discount()))
                 ->with('tax', Price::convertIntegerToDecimal($this->cart->tax()))
                 ->with('total', Price::convertIntegerToDecimal($this->cart->subtotal()))
                 ->with('items', $this->cart->items)
