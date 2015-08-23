@@ -101,7 +101,7 @@
                         <div class="form-group">
                             <label class="sr-only" for="register-university">School</label>
                             <select class="form-control" name="university_id" id="register-university">
-                                <option selected disabled>University</option>
+                                <option selected disabled>Select a university</option>
                                 @foreach(\App\University::where('is_public', true)->get() as $university)
                                     <option value="{{ $university->id }}">{{ $university->name }}</option>
                                 @endforeach
