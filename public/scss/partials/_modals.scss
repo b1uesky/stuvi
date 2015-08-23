@@ -1,6 +1,10 @@
 /*** MODAL STYLING ***/
 @import "../modules/all";
 
+.modal-dialog {
+  margin: 15% auto;
+}
+
 .close-modal-btn {
   &:hover, &:focus {
     outline: 0;

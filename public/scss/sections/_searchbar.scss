@@ -34,11 +34,6 @@
   width: 100%;
   height: 3em;
   background-color: $background-color;
-
-  &:focus {
-    border: 1px solid $primary-color;
-    box-shadow: none;
-  }
 }
 
 .searchbar-input-query {
@@ -52,6 +47,7 @@
   border-right: 0;
   width: auto;
   -webkit-appearance: none;
+  color: $body-text-color;
 }
 
 .search-btn {
