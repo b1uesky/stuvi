@@ -1,13 +1,5 @@
 /*** FORM STYLING ***/
-@import '../modules/colors';
-@import '../modules/typography';
-
-.form-control {
-  &:focus {
-    border: 2px solid $primary-color;
-    box-shadow: none;
-  }
-}
+@import '../modules/all';
 
 .row-margin-sm {
   margin-bottom: $spacing-unit / 4;
@@ -19,4 +11,13 @@
 
 .row-margin-lg {
   margin-bottom: $spacing-unit;
+}
+
+.form-control {
+
+  &:focus {
+    border-color: $primary-color;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
 }
