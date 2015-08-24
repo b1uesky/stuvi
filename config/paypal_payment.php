@@ -1,29 +1,31 @@
 <?php
 
-return array(
+return [
 	# Account credentials from developer portal
-	'Account' => array(
-		'ClientId' => 'AcfuKtauq_EtoZ2rAKPjkXTsgpfl0ieU4dxFQhjqXBs-XAuQuXGyhgAp6qq1Ou3RLRmCAS-pwPjqTp_3',
+	'Account' => [
+		'ClientId'     => 'AcfuKtauq_EtoZ2rAKPjkXTsgpfl0ieU4dxFQhjqXBs-XAuQuXGyhgAp6qq1Ou3RLRmCAS-pwPjqTp_3',
 		'ClientSecret' => 'EJ_vVZIPvEYm4UNJmfyzVGbsUdV_h-1qK4LM3zIWVPOx6zCxB8q8jCps9DEJkArDOWdZASPSsCVt0FVD',
-	),
+	],
 
 	# Connection Information
-	'Http' => array(
+	'http'    => [
 		// 'ConnectionTimeOut' => 30,
 		'Retry' => 1,
 		//'Proxy' => 'http://[username:password]@hostname[:port][/path]',
-	),
+	],
+
+	'mode'    => 'sandbox',
 
 	# Service Configuration
-	'Service' => array(
+	'service' => [
 		# Live endpoint:    https://api.paypal.com
-        # Sandbox endpoint: https://api.sandbox.paypal.com
+		# Sandbox endpoint: https://api.sandbox.paypal.com
 		'EndPoint' => 'https://api.sandbox.paypal.com',
-	),
+	],
 
 
 	# Logging Information
-	'Log' => array(
+	'log'     => [
 		//'LogEnabled' => true,
 
 		# When using a relative path, the log file is created
@@ -36,5 +38,5 @@ return array(
 		# Logging is most verbose in the 'FINE' level and
 		# decreases as you proceed towards ERROR
 		//'LogLevel' => 'FINE',
-	),
-);
+	],
+];
