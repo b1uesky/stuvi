@@ -66,7 +66,7 @@ $(document).ready(function () {
             '<img src="' + image + '">' +
             '</div>' +
             '<div class="autocomplete-data">' +
-            '<div class="autocomplete-title">' + item.title + '</div>' +
+            '<div class="autocomplete-title"><h4>' + item.title + '</h4></div>' +
             '<div class="autocomplete-authors">' + authors + '</div>' +
             '<div class="autocomplete-isbn">ISBN-10:' + item.isbn10 + '</div>' +
             '<div class="autocomplete-isbn">ISBN-13:' + item.isbn13 + '</div>' +

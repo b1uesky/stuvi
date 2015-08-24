@@ -6,7 +6,6 @@
 
 @section('css')
     <link href="{{ asset('/css/textbook_show.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('libs/jquery-ui/themes/smoothness/jquery-ui.min.css') }}">
 @endsection
 
 @section('searchbar')

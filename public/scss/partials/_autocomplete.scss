@@ -7,20 +7,21 @@
 
 .autocomplete-thumbnail {
   display: inline-block;
-  margin: 5px;
+  margin-right: $spacing-unit / 2;
   vertical-align: middle;
   overflow: hidden;
   img {
     display: block;
-    max-width: 80px;
-    width: auto;
-    height: auto;
+    width: 80px;
+    height: 100px
   }
 }
 
 .autocomplete-data {
   display: inline-block;
   vertical-align: middle;
+  position: relative;
+  bottom: 10px;
 }
 
 .ui-helper-hidden-accessible {
