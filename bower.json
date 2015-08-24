@@ -4,10 +4,8 @@
   "dependencies": {
     "bootstrap": "latest",
     "font-awesome": "latest",
-    "lightbox2": "latest",
     "datetimepicker": "latest",
     "jquery.maskedinput": "latest",
-    "slidejs3": "*",
     "dropzone": "~4.0.1",
     "card": "~1.1.0",
     "ihover": "~1.0.0",
