@@ -101,7 +101,7 @@
                                 <div class="col-sm-6 form-space-offset">
                                     <input type="text" class="form-control" name="address_line1"
                                            id="address_line1-input"
-                                           value="185 Freeman St.">
+                                           value="">
                                 </div>
                             </div>
                             <br>
@@ -113,7 +113,7 @@
                                 <div class="col-sm-6 form-space-offset">
                                     <input type="text" class="form-control" name="address_line2"
                                            id="address_line2-input"
-                                           value="Apt. 739">
+                                           value="">
                                 </div>
                             </div>
                             <br>
@@ -123,7 +123,7 @@
 
                                 <div class="col-sm-6 form-space-offset">
                                     <input type="text" class="form-control" name="city" id="city-input"
-                                           value="Brookline">
+                                           value="">
                                 </div>
                             </div>
                             <br>
@@ -133,7 +133,7 @@
 
                                 <div class="col-sm-6 form-space-offset">
                                     <input type="text" class="form-control" name="state_a2" id="state_a2-input"
-                                           value="MA">
+                                           value="">
                                 </div>
                             </div>
                             <br>
@@ -142,7 +142,7 @@
                                 <label class="col-sm-4 control-label" for="zip-input">Zip</label>
 
                                 <div class="col-sm-6 form-space-offset">
-                                    <input type="text" class="form-control" name="zip" id="zip-input" value="02446">
+                                    <input type="text" class="form-control" name="zip" id="zip-input" value="">
                                 </div>
                             </div>
                             <br>
@@ -152,7 +152,7 @@
 
                                 <div class="col-sm-6 form-space-offset">
                                     <input type="tel" class="form-control phone_number" id="phone_number-input"
-                                           name="phone_number" value="(857) 206 4789">
+                                           name="phone_number" value="">
                                 </div>
                             </div>
                             <br>
