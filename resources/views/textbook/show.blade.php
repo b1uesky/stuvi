@@ -40,14 +40,14 @@
                     <div class="va-top">
                         <table class="table table-book-details">
                             <tr>
-                                <th class="col-xs-4 col-sm-3 col-md-2">
+                                <th class="col-xs-6 col-sm-3 col-md-2">
                                     @if(count($book->authors) > 1)
                                         Authors
                                     @else
                                         Author
                                     @endif
                                 </th>
-                                <td class="col-xs-8 col-sm-9 col-md-10">
+                                <td class="col-xs-6 col-sm-9 col-md-10">
                                     @foreach($book->authors as $index => $author)
                                         @if($index == 0)
                                             <span class="author">{{ $author->full_name }}</span>
