@@ -14,6 +14,10 @@
 }
 
 .form-control {
+  border-radius: 2px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-weight: 300;
 
   &:focus {
     border-color: $primary-color;

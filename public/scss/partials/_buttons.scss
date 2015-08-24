@@ -26,11 +26,6 @@
   }
 }
 
-.submit-btn {
-  width: 150px;
-  padding: 12px;
-}
-
 .secondary-btn {
   background: $secondary-color;
   color: $button-text-color;
@@ -63,8 +58,4 @@
     outline: 0 !important;
     background: $primary-color;
   }
-}
-
-.cancel-order-btn {
-  margin: 0;
 }

@@ -33,8 +33,9 @@
                         <div class="form-group">
                             <!-- remember me -->
                             <div class="remember-me checkbox">
-                                <label for="remember-me-box">
-                                    <input id="remember-me-box" type="checkbox" value="" checked>Remember me</label>
+                                <label>
+                                    <input type="checkbox">Remember me
+                                </label>
                             </div>
                             {{-- forgot password --}}
                             <div class="forgot-password pull-right">
