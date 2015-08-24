@@ -5,7 +5,6 @@
 @section('title', 'Boston Textbook Marketplace & More Coming Soon!')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('libs/jquery-ui/themes/smoothness/jquery-ui.min.css') }}">
     <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
 @endsection
 

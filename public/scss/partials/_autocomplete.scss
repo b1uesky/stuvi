@@ -1,4 +1,5 @@
 /* Search AutoComplete Suggestions */
+@import "../modules/all";
 
 #autocomplete {
   border-right: 0; // prevent the right border of the search bar from shaking when expanding
@@ -24,4 +25,28 @@
 
 .ui-helper-hidden-accessible {
   display: none;
+}
+
+.ui-widget-content {
+  border: 1px solid $border-color;
+  border-top: none;
+  background: $background-color;
+  color: $body-text-color;
+
+  .ui-state-focus {
+    border: 1px solid $border-color;
+    background: $accent-color;
+    color: white;
+  }
+}
+
+.ui-widget {
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+}
+
+.ui-menu .ui-menu-item {
+  border-bottom: 1px solid $border-color;
+  margin-bottom: 1px;
+  padding: $spacing-unit / 2;
 }
