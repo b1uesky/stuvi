@@ -3,6 +3,8 @@
 /* pages: /order/buy/ and /order/sell */
 
 @import "modules/all";
+@import "sections/searchbar";
+@import "partials/autocomplete";
 
 
 /******* TEXTBOOK NAVIGATION BAR ******/
@@ -81,9 +83,6 @@
     max-width: 900px;
   }
 }
-
-@import "partials/autocomplete";
-@import "sections/searchbar";
 
 /******  TEXTBOOK BOTTOM HALF ****/
 
