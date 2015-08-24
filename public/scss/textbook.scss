@@ -54,16 +54,6 @@
   color: white;
 }
 
-/******* ERROR MESSAGE ******/
-
-#message {
-  font-style: italic;
-}
-
-#message-cont {
-  padding: 1%;
-}
-
 /******* TEXTBOOK SEARCH AREA ******/
 
 #title {
@@ -87,41 +77,19 @@
 /******  TEXTBOOK BOTTOM HALF ****/
 
 .textbook-intro {
-  .row {
-    margin: $spacing-unit * 2;
+  .container {
+    max-width: 900px;
+
+    .row {
+      padding: $spacing-unit * 2 0;
+    }
   }
-}
 
-#shrink-xs {
-  @media(max-width: 767px) {
-    text-align: center;
+  p {
+    font-size: 16px;
+    letter-spacing: $extra-letter-spacing;
   }
+
+  font-weight: 300;
+  line-height: 26px;
 }
-
-
-.textbook-bottom-img {
-  width: 250px;
-  height: 250px;
-  @media(max-width: 320px){
-    width: 150px;
-    height: auto;
-  }
-}
-
-#truck-img {
-  width: 300px;
-  height: 168px;
-  @media(max-width: 320px){
-    width: 150px;
-    height: auto;
-  }
-}
-
-.google-img {
-  font-size: 17em;
-  color: $primary-color;
-  @media(max-width: 320px){
-    font-size: 11em;
-  }
-}
-

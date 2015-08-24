@@ -91,18 +91,14 @@
         <!-- Textbook page bottom half -->
         <section class="textbook-intro">
             <div class="container">
-                <!-- Row 1 -->
-                <div class="row">
-                    <!-- Row 1 Col 1 -->
-                    <!-- xs: stack-->
-                    <div class="col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id="shrink-xs">
-                        <img class="textbook-bottom-img" src="{{ asset('/img/textbook/search.png') }}" alt="placeholder">
-                    </div>
-                    <!-- Row 1 Col 2 -->
-                    <div class="col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-2 col-md-offset-1 col-lg-offset-0"
-                         id="shrink-xs">
-                        <h3 id="h3-1">Find your books</h3>
 
+                <div class="row">
+                    <div class="col-sm-6">
+                        {{--<div>Icon made by <a href="http://handdrawngoods.com" title="Hand Drawn Goods">Hand Drawn Goods</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>--}}
+                        <img class="img-responsive img-intro center-block" src="{{ asset('/img/icon/books104.png') }}" alt="placeholder">
+                    </div>
+                    <div class="col-sm-6">
+                        <h3>Find your books</h3>
                         <p>
                             Search the Stuvi database to find books from students near you. We are currently servicing
                             Boston area
@@ -112,18 +108,8 @@
                 </div>
 
                 <div class="row">
-                    <!-- Row 2 Col 1 -->
-                    <!-- xs: stack-->
-                    <!-- col-xs-push/pull changes the ordering when it is not xs -->
-                    <!-- need to fix xs -->
-                    <div class="col-xs-12 col-sm-3 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-sm-push-7"
-                         id="shrink-xs">
-                        <img id="truck-img" src="{{ asset('/img/textbook/truck.png') }}" alt="placeholder">
-                    </div>
-                    <!-- Row 2 Col 2 -->
-                    <div class="col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
-                         id="shrink-xs">
-                        <h3 id="h3-2">Book delivery</h3>
+                    <div class="col-sm-6">
+                        <h3>Book delivery</h3>
 
                         <p>
                             We will deliver the book directly to you after you make a purchase. Our own team of couriers
@@ -132,17 +118,20 @@
                             condition.
                         </p>
                     </div>
+
+                    <div class="col-sm-6">
+                        {{--<div>Icon made by <a href="http://handdrawngoods.com" title="Hand Drawn Goods">Hand Drawn Goods</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>--}}
+                        <img class="img-responsive img-intro center-block" src="{{ asset('/img/icon/transport625.png') }}" alt="placeholder">
+                    </div>
+
                 </div>
                 <div class="row">
-                    <!-- Row 3 Col 1 -->
-                    <!-- xs: stack-->
-                    <div class="col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id="shrink-xs">
-                        <i class="material-icons google-img">library_books</i>
+                    <div class="col-sm-6">
+                        {{--<div>Icon made by <a href="http://handdrawngoods.com" title="Hand Drawn Goods">Hand Drawn Goods</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>--}}
+                        <img class="img-responsive img-intro center-block" src="{{ asset('img/icon/currency36.png') }}" alt="">
                     </div>
-                    <!-- Row 3 Col 2 -->
-                    <div class="col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
-                         id="shrink-xs">
-                        <h3 id="h3-3">Save money and study</h3>
+                    <div class="col-sm-6">
+                        <h3>Save money and study</h3>
 
                         <p>
                             Find the best prices for textbooks without leaving the comfort of your dorm.
