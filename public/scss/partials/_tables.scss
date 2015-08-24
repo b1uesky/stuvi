@@ -31,6 +31,16 @@
   }
 }
 
+.table-details {
+  margin-bottom: 0;
+
+  tbody {
+    tr td, tr th {
+      border: none;
+    }
+  }
+}
+
 .table-book-details {
   margin-bottom: 0;
 
