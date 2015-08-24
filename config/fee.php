@@ -7,6 +7,6 @@
  */
 
 return [
-    'service_fee'   => 299,
+    'service_fee'   => 0,
     'payout_service_fee'    => 0
 ];

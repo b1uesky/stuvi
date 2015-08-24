@@ -47,8 +47,8 @@ $(document).ready(function () {
             },
             dataType: 'json',
             success: function (data, status) {
-                $('.text-scheduled-pickup-time').text('Scheduled pickup time: ' + data['scheduled_pickup_time']);
-                $('.schedule-pickup-time').text(data['message']);
+                $('.text-scheduled-pickup-time').text('Scheduled pickup time: ' + data.scheduled_pickup_time);
+                $('.schedule-pickup-time').text(data.message);
             },
             error: function (xhr, status, errorThrown) {
                 console.log(status);
@@ -99,11 +99,11 @@ $(document).ready(function () {
                 //console.log(data['address']);
                 $this = $this.parents().find('.address-list');
                 var address = {};
-                address['addressee'] = $.trim($this.find('.seller-address-addressee').text());
+                address.addressee = $.trim($this.find('.seller-address-addressee').text());
                 address['address-line'] = $.trim($this.find('.seller-address-address-line').text());
-                address['city'] = $.trim($this.find('.seller-address-city').text());
-                address['state'] = $.trim($this.find('.seller-address-state').text());
-                address['zip'] = $.trim($this.find('.seller-address-zip').text());
+                address.city = $.trim($this.find('.seller-address-city').text());
+                address.state = $.trim($this.find('.seller-address-state').text());
+                address.zip = $.trim($this.find('.seller-address-zip').text());
 
                 updateAddress($(".seller-address"), address);
 
@@ -130,7 +130,7 @@ $(document).ready(function () {
             },
             dataType: 'json',
             success: function (data, status) {
-                var address = data["address"];
+                var address = data.address;
                 updateAddress($("#seller-address-form"),address);
                 $("#delete-address").show();
                 $("#address-form-modal").modal("show");
@@ -157,7 +157,7 @@ $(document).ready(function () {
             },
             dataType: 'json',
             success: function (data, status){
-                if(data['is_deleted']){
+                if(data.is_deleted){
                     address_panel.hide();
                     $("#address-form-modal").modal("hide");
                 }
@@ -194,12 +194,12 @@ $(document).ready(function () {
                 phone_number : $form.find("input[name=phone_number]").val()
             },
             success: function (data,status){
-                var address= data["address"];
-                address_id = address["id"];
-                if(address["address_line2"]) {
-                    address["address-line"] = address["address_line1"] + " " + address["address_line2"];
+                var address= data.address;
+                address_id = address.id;
+                if(address.address_line2) {
+                    address["address-line"] = address.address_line1 + " " + address.address_line2;
                 }else{
-                    address["address-line"] = address["address_line1"];
+                    address["address-line"] = address.address_line1;
                 }
                 $.ajax({
                     type: 'GET',
@@ -234,22 +234,22 @@ $(document).ready(function () {
      */
     function updateAddress($this/*the address list need to be update*/, address) {
         if ($this.is("form")) {
-            $this.find("input[name=addressee]").val(address["addressee"]);
-            $this.find("input[name=address_id]").val(address["id"]);
-            $this.find("input[name=address_line1]").val(address["address_line1"]);
-            $this.find("input[name=address_line2]").val(address["address_line2"]);
-            $this.find("input[name=city]").val(address["city"]);
-            $this.find("input[name=state_a2]").val(address["state_a2"] ? address["state_a2"] : address["state_name"]);
-            $this.find("input[name=zip]").val(address["zip"]);
-            $this.find("input[name=phone_number]").val(address["phone_number"]);
+            $this.find("input[name=addressee]").val(address.addressee);
+            $this.find("input[name=address_id]").val(address.id);
+            $this.find("input[name=address_line1]").val(address.address_line1);
+            $this.find("input[name=address_line2]").val(address.address_line2);
+            $this.find("input[name=city]").val(address.city);
+            $this.find("input[name=state_a2]").val(address.state_a2 ? address.state_a2 : address.state_name);
+            $this.find("input[name=zip]").val(address.zip);
+            $this.find("input[name=phone_number]").val(address.phone_number);
         } else {
-            $this.find(".seller-address-addressee").text($.trim(address["addressee"]));
+            $this.find(".seller-address-addressee").text($.trim(address.addressee));
             $this.find(".seller-address-address-line").text($.trim(address["address-line"]));
-            $this.find(".seller-address-city").text($.trim(address["city"]));
-            $this.find(".seller-address-state").text($.trim(address["state"]));
-            $this.find(".seller-address-zip").text($.trim(address["zip"]));
-            $this.find(".seller-address-country").text($.trim(address["country_name"]));
-            $this.find(".seller-address-phone").text($.trim(address["phone_number"]));
+            $this.find(".seller-address-city").text($.trim(address.city));
+            $this.find(".seller-address-state").text($.trim(address.state));
+            $this.find(".seller-address-zip").text($.trim(address.zip));
+            $this.find(".seller-address-country").text($.trim(address.country_name));
+            $this.find(".seller-address-phone").text($.trim(address.phone_number));
         }
     }
 

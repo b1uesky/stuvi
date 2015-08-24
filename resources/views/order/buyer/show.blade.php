@@ -102,7 +102,7 @@
 
                             <div class="row">
                                 <span class="pull-left">Total before tax:</span>
-                                <span class="pull-right">${{ $buyer_order->decimalSubtotal() - $buyer_order->decimalDiscount() }}</span>
+                                <span class="pull-right">${{ $buyer_order->decimalSubtotal() + $buyer_order->decimalFee() - $buyer_order->decimalDiscount() }}</span>
                             </div>
 
                             <div class="row">

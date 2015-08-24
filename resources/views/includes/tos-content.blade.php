@@ -7,7 +7,7 @@
 
 <p>
     Welcome to Stuvi. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern Stuvi’s relationship with you in relation to this website. If you disagree with any part of these terms and conditions, please do not use our website.
-    The term ‘Stuvi’ or ‘us’ or ‘we’ refers to the owner of the website whose registered office is [address]. Our company registration number is [company registration number and place of registration]. The term ‘you’ refers to the user or viewer of our website.
+    The term ‘Stuvi’ or ‘us’ or ‘we’ refers to the owner of the website whose registered office is 185 Freeman St. Apt 739, Brookline, MA 02246. The term ‘you’ refers to the user or viewer of our website.
     The use of this website is subject to the following terms of use: <br>
     The content of the pages of this website is for your general information and use only. It is subject to change without notice.
     This website uses cookies to monitor browsing preferences. If you do allow cookies to be used, the following personal information may be stored by us for use by third parties.

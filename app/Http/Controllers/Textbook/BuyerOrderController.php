@@ -87,6 +87,7 @@ class BuyerOrderController extends Controller
             return view('order.buyer.create')
                 ->with('subtotal', Price::convertIntegerToDecimal($this->cart->totalPrice()))
                 ->with('shipping', Price::convertIntegerToDecimal($this->cart->fee()))
+                ->with('discount', Price::convertIntegerToDecimal($this->cart->discount()))
                 ->with('tax', Price::convertIntegerToDecimal($this->cart->tax()))
                 ->with('total', Price::convertIntegerToDecimal($this->cart->subtotal()))
                 ->with('items', $this->cart->items)
@@ -99,6 +100,7 @@ class BuyerOrderController extends Controller
             return view('order.buyer.create')
                 ->with('subtotal', Price::convertIntegerToDecimal($this->cart->totalPrice()))
                 ->with('shipping', Price::convertIntegerToDecimal($this->cart->fee()))
+                ->with('discount', Price::convertIntegerToDecimal($this->cart->discount()))
                 ->with('tax', Price::convertIntegerToDecimal($this->cart->tax()))
                 ->with('total', Price::convertIntegerToDecimal($this->cart->subtotal()))
                 ->with('items', $this->cart->items)
@@ -220,6 +222,10 @@ class BuyerOrderController extends Controller
 
         // total price of all items
         $subtotal   = Price::convertIntegerToDecimal($this->cart->totalPrice()) - $discount;
+        if ($subtotal < 0)
+        {
+            $subtotal = 0;
+        }
         $shipping   = Price::convertIntegerToDecimal($this->cart->fee());
         $tax        = Price::convertIntegerToDecimal($this->cart->tax());
 
@@ -283,8 +289,10 @@ class BuyerOrderController extends Controller
                 'tax'                   => $this->cart->tax(),
                 'fee'                   => $this->cart->fee(),
                 'discount'              => $this->cart->discount(),
+                'subtotal'              => $this->cart->totalPrice(),
                 'amount'                => Price::convertDecimalToInteger($total),
                 'authorization_id'      => $authorization->getId()
+
             ]);
 
             // create seller order(s) according to the Cart items

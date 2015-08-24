@@ -336,7 +336,7 @@
                                             <div class="col-md-6 col-md-offset-3">
                                                 {{--Paypal account--}}
                                                 <div class="form-group">
-                                                    <label>Paypal Account</label>
+                                                    <label>Paypal Account</label>&nbsp;<a href="https://www.paypal.com/us/signup/account" target="_blank">(No Paypal account?)</a>
                                                     <input type="email" name="paypal" class="form-control"
                                                            value="{{ $paypal or '' }}" placeholder="Paypal email address">
                                                 </div>
@@ -345,7 +345,7 @@
 
                                         <div class="row">
                                             <div class="col-md-6 col-md-offset-3">
-                                                <input type="submit" name="submit" class="btn primary-btn btn-block" value="Post book">
+                                                <input type="submit" name="submit" class="btn primary-btn btn-block" value="Upload images and post book">
                                             </div>
                                         </div>
                                         <div class="tos-privacy-container">
