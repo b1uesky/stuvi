@@ -26,53 +26,56 @@
         <div class="row">
 
             {{-- Image --}}
-            <div class="col-md-3">
+            <div class="col-xs-4 col-sm-3 col-md-2">
                 @if($book->imageSet->medium_image)
-                    <img class="img-medium img-responsive" src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->medium_image }}">
+                    <img class="img-responsive" src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->medium_image }}">
                 @else
-                    <img class="img-medium img-responsive" src="{{ config('book.default_image_path.medium') }}">
+                    <img class="img-responsive" src="{{ config('book.default_image_path.medium') }}">
                 @endif
             </div>
-
-            <br/>
-
+            
             {{-- Details --}}
-            <div class="col-md-9">
-                <table class="table table-book-details">
-                    <tr>
-                        <th>
-                            @if(count($book->authors) > 1)
-                                Authors
-                            @else
-                                Author
-                            @endif
-                        </th>
-                        <td>
-                            @foreach($book->authors as $index => $author)
-                                @if($index == 0)
-                                    <span class="author">{{ $author->full_name }}</span>
-                                @else
-                                    <span class="author">, {{ $author->full_name }}</span>
-                                @endif
-                            @endforeach
-                        </td>
-                    </tr>
+            <div class="col-xs-8 col-sm-9 col-md-10">
+                <div class="va-container va-container-h va-container-v">
+                    <div class="va-top">
+                        <table class="table table-book-details">
+                            <tr>
+                                <th class="col-xs-4 col-sm-3 col-md-2">
+                                    @if(count($book->authors) > 1)
+                                        Authors
+                                    @else
+                                        Author
+                                    @endif
+                                </th>
+                                <td class="col-xs-8 col-sm-9 col-md-10">
+                                    @foreach($book->authors as $index => $author)
+                                        @if($index == 0)
+                                            <span class="author">{{ $author->full_name }}</span>
+                                        @else
+                                            <span class="author">, {{ $author->full_name }}</span>
+                                        @endif
+                                    @endforeach
+                                </td>
+                            </tr>
 
-                    <tr>
-                        <th>ISBN-10</th>
-                        <td>{{ $book->isbn10 }}</td>
-                    </tr>
+                            <tr>
+                                <th>ISBN-10</th>
+                                <td>{{ $book->isbn10 }}</td>
+                            </tr>
 
-                    <tr>
-                        <th>ISBN-13</th>
-                        <td>{{ $book->isbn13 }}</td>
-                    </tr>
+                            <tr>
+                                <th>ISBN-13</th>
+                                <td>{{ $book->isbn13 }}</td>
+                            </tr>
 
-                    <tr>
-                        <th>Number of pages</th>
-                        <td>{{ $book->num_pages }}</td>
-                    </tr>
-                </table>
+                            <tr>
+                                <th>Number of pages</th>
+                                <td>{{ $book->num_pages }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </div>
 
