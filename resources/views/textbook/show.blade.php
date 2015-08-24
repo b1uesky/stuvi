@@ -33,7 +33,7 @@
                     <img class="img-responsive" src="{{ config('book.default_image_path.medium') }}">
                 @endif
             </div>
-            
+
             {{-- Details --}}
             <div class="col-xs-8 col-sm-9 col-md-10">
                 <div class="va-container va-container-h va-container-v">
@@ -125,13 +125,15 @@
 
                 </table>
             @else
-                <h3>Sorry, this book is not available for now.</h3>
+                <h4 class="text-center">Sorry, this book is not available for now.</h4>
             @endif
 
             <div class="text-center">
                 {{-- if the user is not logged in --}}
                 @if(Auth::guest())
-                    <p>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy or sell a textbook.</p>
+                    @if(count($book->availableProducts()) > 0)
+                        <p>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy or sell a textbook.</p>
+                    @endif
                 @else
                     <p>Have one to sell? <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Sell yours now.</a></p>
                 @endif
