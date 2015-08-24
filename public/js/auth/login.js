@@ -81,6 +81,7 @@ $(document).ready(function () {
                 invalid: null,
                 validating: null
             },
+            live: 'disabled',
             fields: {
                 first_name: {
                     trigger: 'blur',

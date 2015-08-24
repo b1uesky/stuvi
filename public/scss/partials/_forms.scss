@@ -20,7 +20,7 @@
   font-weight: 300;
 
   &:focus {
-    border-color: $primary-color;
+    border-color: $input-border-color;
     -webkit-box-shadow: none;
     box-shadow: none;
   }
@@ -29,4 +29,21 @@
 .has-error .form-control {
   -webkit-box-shadow: none;
   box-shadow: none;
+
+  &:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
 }
+
+.has-success .form-control {
+  border-color: $input-border-color;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  &:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+

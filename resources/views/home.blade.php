@@ -5,9 +5,8 @@
 @section('title', 'Boston Textbook Marketplace & More Coming Soon!')
 
 @section('css')
-    <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
-    <link type="text/css" href="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('libs/jquery-ui/themes/smoothness/jquery-ui.min.css') }}">
+    <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
