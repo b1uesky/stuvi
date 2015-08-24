@@ -527,6 +527,10 @@
                                 <td class="text-right">${{ $shipping }}</td>
                             </tr>
                             <tr>
+                                <td class="text-left">Discount:</td>
+                                <td class="text-right">- ${{ $discount }}</td>
+                            </tr>
+                            <tr>
                                 <td class="text-left">Total before tax:</td>
                                 <td class="text-right">${{ $subtotal + $shipping }}</td>
                             </tr>
