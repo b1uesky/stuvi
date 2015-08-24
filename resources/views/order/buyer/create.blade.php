@@ -406,10 +406,10 @@
 
                         <!-- Nav tabs for payment methods -->
                         <ul class="nav nav-tabs nav-justified" role="tablist">
-                            <li role="presentation" class="active"><a href="#paypal" aria-controls="paypal" role="tab"
-                                                       data-toggle="tab"></a></li>
                             {{--<li role="presentation" class="active"><a href="#credit-card" aria-controls="credit-card"--}}
                                                                       {{--role="tab" data-toggle="tab">Credit Card</a></li>--}}
+                            <li role="presentation" class="active"><a href="#paypal" aria-controls="paypal" role="tab"
+                                                       data-toggle="tab"></a></li>
                         </ul>
 
                         <!-- Tab panes -->
@@ -527,12 +527,8 @@
                                 <td class="text-right">${{ $shipping }}</td>
                             </tr>
                             <tr>
-                                <td class="text-left">Discount:</td>
-                                <td class="text-right">- ${{ $discount }}</td>
-                            </tr>
-                            <tr>
                                 <td class="text-left">Total before tax:</td>
-                                <td class="text-right">${{ $subtotal + $shipping - $discount }}</td>
+                                <td class="text-right">${{ $subtotal + $shipping }}</td>
                             </tr>
                             <tr>
                                 <td class="text-left">Estimated tax to be collected:</td>
@@ -551,7 +547,7 @@
                             <form action="{{ url('order/store') }}" method="POST" id="form-place-order">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input type="hidden" name="selected_address_id" value="{{ $default_address_id }}">
-                                <input type="hidden" name="payment_method" value="credit_card">
+                                <input type="hidden" name="payment_method" value="paypal">
 
                                 <input type="submit" class="btn primary-btn" value="Place your order">
                             </form>
