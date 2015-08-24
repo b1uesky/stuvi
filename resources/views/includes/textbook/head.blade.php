@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="{{ asset('libs/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('libs/font-awesome/css/font-awesome.min.css') }}">
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    {{--<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>--}}
     <link rel="stylesheet" href="{{ asset('/css/main.css') }}">
 
     @yield('css')

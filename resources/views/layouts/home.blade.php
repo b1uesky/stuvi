@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="{{ asset('libs/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('libs/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}">
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Signika:400' rel='stylesheet' type='text/css'>
+    {{--<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>--}}
+    {{--<link href='http://fonts.googleapis.com/css?family=Signika:400' rel='stylesheet' type='text/css'>--}}
     <link rel="stylesheet" href="{{ asset('/css/app-home.css') }}"/>
 
     @yield('css')

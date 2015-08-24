@@ -5,8 +5,15 @@
  *
  */
 
+//@import url(http://fonts.googleapis.com/css?family=Lato:400,300);
+//@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300);
+//@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,300);
+//@import url(http://fonts.googleapis.com/css?family=Oxygen:400,300);
+//@import url(http://fonts.googleapis.com/css?family=Muli:400,300);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+
 /* BASE STYLES */
-$base-font-family: "Roboto", Helvetica, Arial, sans-serif;
+$base-font-family: "Open Sans", Helvetica, Arial, sans-serif;
 $large-font-size: 18px;
 $base-font-size: 14px;
 $small-font-size: 12px;
@@ -20,11 +27,6 @@ $text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 $fixed-font-family: monospace;
 $fixed-font-size: 85%;
 $fixed-line-height: $base-line-height;
-
-/* HEADERS */
-$header-font-family: null;
-$title-font-family: 'Signika', 'Roboto', Helvetica, Arial, sans-serif;
-$header-text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 
 /* NAVIGATION */
 $navigation-font-family: null;
