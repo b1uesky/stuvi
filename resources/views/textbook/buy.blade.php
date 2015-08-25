@@ -100,28 +100,25 @@
                     <div class="col-sm-6">
                         <h3>Find your books</h3>
                         <p>
-                            Search the Stuvi database to find books from students near you. We are currently servicing
-                            Boston area
-                            students. Search by book name, author or ISBN to continue!
+                            Search the Stuvi database to find books from students near you. Search by book name, author or ISBN to continue!
                         </p>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 col-sm-push-6">
+                        {{--<div>Icon made by <a href="http://handdrawngoods.com" title="Hand Drawn Goods">Hand Drawn Goods</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>--}}
+                        <img class="img-responsive img-intro center-block" src="{{ asset('/img/icon/transport625.png') }}" alt="placeholder">
+                    </div>
+
+                    <div class="col-sm-6 col-sm-pull-6">
                         <h3>Book delivery</h3>
 
                         <p>
                             We will deliver the book directly to you after you make a purchase. Our own team of couriers
-                            will
-                            make sure your book is delivered quickly, and check that your book is in its advertised
+                            will make sure your book is delivered quickly, and check that your book is in its advertised
                             condition.
                         </p>
-                    </div>
-
-                    <div class="col-sm-6">
-                        {{--<div>Icon made by <a href="http://handdrawngoods.com" title="Hand Drawn Goods">Hand Drawn Goods</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>--}}
-                        <img class="img-responsive img-intro center-block" src="{{ asset('/img/icon/transport625.png') }}" alt="placeholder">
                     </div>
 
                 </div>

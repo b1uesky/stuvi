@@ -77,11 +77,15 @@
 /******  TEXTBOOK BOTTOM HALF ****/
 
 .textbook-intro {
+  margin: $spacing-unit 0;
+  font-weight: 300;
+  line-height: 26px;
+
   .container {
     max-width: 900px;
 
     .row {
-      padding: $spacing-unit * 2 0;
+      padding: $spacing-unit 0;
     }
   }
 
@@ -90,6 +94,7 @@
     letter-spacing: $extra-letter-spacing;
   }
 
-  font-weight: 300;
-  line-height: 26px;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 }
