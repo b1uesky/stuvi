@@ -28,7 +28,8 @@
             {{-- Image --}}
             <div class="col-xs-4 col-sm-3 col-md-2">
                 @if($book->imageSet->medium_image)
-                    <img class="img-responsive" src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->medium_image }}">
+                    <img class="img-responsive"
+                         src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->medium_image }}">
                 @else
                     <img class="img-responsive" src="{{ config('book.default_image_path.medium') }}">
                 @endif
@@ -87,10 +88,10 @@
                 <table class="table table-responsive table-default">
                     <thead>
                     <tr class="active">
-                        <th>Price</th>
-                        <th>Condition</th>
-                        <th>Details</th>
-                        <th></th>
+                        <th class="col-xs-3">Price</th>
+                        <th class="col-xs-3">Condition</th>
+                        <th class="col-xs-3">Details</th>
+                        <th class="col-xs-3"></th>
                     </tr>
                     </thead>
                     @foreach($book->availableProducts() as $product)
@@ -104,22 +105,26 @@
                             <td>
                                 <a href="{{ url('textbook/buy/product/'.$product->id) }}">View Details</a>
                             </td>
-                            @if(Auth::check())
-                                <td class="cart-btn-col">
+
+                            <td class="text-right">
+                                @if(Auth::check())
                                     @if($product->isInCart(Auth::user()->id))
-                                        <a class="btn primary-btn add-cart-btn btn-block disabled" href="#" role="button" id="added-to-cart-btn">
+                                        <a class="btn primary-btn add-cart-btn disabled" href="#"
+                                           role="button" id="added-to-cart-btn">
                                             Added to cart</a>
                                     @elseif($product->seller == Auth::user())
-                                        <a class="btn muted-btn add-cart-btn btn-block disabled" href="#" role="button">Posted by
+                                        <a class="btn muted-btn add-cart-btn disabled" href="#" role="button">Posted
+                                            by
                                             you</a>
                                     @else
                                         <form method="post" class="add-to-cart">
                                             <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                            <input class="btn primary-btn add-cart-btn btn-block" type="submit" value="Add to cart">
+                                            <input class="btn primary-btn add-cart-btn" type="submit" value="Add to cart">
                                         </form>
                                     @endif
-                                </td>
-                            @endif
+                                @endif
+                            </td>
+
                         </tr>
                     @endforeach
 
@@ -132,10 +137,13 @@
                 {{-- if the user is not logged in --}}
                 @if(Auth::guest())
                     @if(count($book->availableProducts()) > 0)
-                        <p>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy or sell a textbook.</p>
+                        <p>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal"
+                                                                                             href="#signup-modal">Sign
+                                up</a> to buy or sell a textbook.</p>
                     @endif
                 @else
-                    <p>Have one to sell? <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Sell yours now.</a></p>
+                    <p>Have one to sell? <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Sell yours
+                            now.</a></p>
                 @endif
             </div>
         </div>

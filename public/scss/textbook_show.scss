@@ -7,11 +7,3 @@
 @import "modules/all";
 @import "partials/autocomplete";
 @import "sections/searchbar";
-@import "partials/image";
-
-.cart-btn-col {
-  width: 150px;
-  @media (max-width: 500px) {
-    width: 90px;
-  }
-}
