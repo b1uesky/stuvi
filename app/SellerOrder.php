@@ -301,4 +301,52 @@ class SellerOrder extends Model
     {
         return !$this->assignedToCourier();
     }
+
+    /**
+     * Build a query for searching seller orders with books title keywords.
+     *
+     * @param $keywords
+     *
+     * @return mixed
+     */
+    public static function buildQueryWithBookTitle($keywords)
+    {
+        $keywords = explode(' ', $keywords);
+
+        $query = SellerOrder::join('products as p', 'seller_orders.product_id', '=', 'p.id')
+                            ->join('books as b', 'p.book_id', '=', 'b.id');
+
+        foreach ($keywords as $keyword)
+        {
+            $query = $query->where('b.title', 'LIKE', '%'.$keyword.'%');
+        }
+
+        return $query->select('seller_orders.*')->distinct();
+    }
+
+    /**
+     * Build a query for searching seller orders sold by keywords.
+     *
+     * @param $keywords
+     *
+     * @return mixed
+     */
+    public static function buildQueryWithSellerName($keywords)
+    {
+        $keywords = explode(' ', $keywords);
+
+        $query = SellerOrder::join('products as p', 'seller_orders.product_id', '=', 'p.id')
+                            ->join('users as u', 'p.seller_id', '=', 'u.id');
+
+        foreach ($keywords as $keyword)
+        {
+            $query = $query->where(function ($query) use ($keyword)
+            {
+                $query->where('u.first_name', 'LIKE', $keyword);
+                $query->orWhere('u.last_name', 'LIKE', $keyword);
+            });
+        }
+
+        return $query->select('seller_orders.*')->distinct();
+    }
 }

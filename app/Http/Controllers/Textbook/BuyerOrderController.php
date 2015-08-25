@@ -347,6 +347,7 @@ class BuyerOrderController extends Controller
         $order = BuyerOrder::create([
             'buyer_id'              => Auth::id(),
             'shipping_address_id'   => $shipping_address_id,
+            'subtotal'              => $subtotal,
             'tax'                   => $tax,
             'fee'                   => $fee,
             'discount'              => $discount,
