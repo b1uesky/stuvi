@@ -11,6 +11,40 @@
 
     <h1>Buyer Orders</h1>
 
+    <form class="form-inline" role="form" action="{{ url('admin/order/buyer') }}" method="get">
+        <div class="form-group">
+            <select name="filter" class="form-control">
+                <option value="id" @if ($pagination_params['filter'] == 'id') selected @endif>ID</option>
+                <option value="buyer" @if ($pagination_params['filter'] == 'buyer') selected @endif>Buyer</option>
+            </select>
+        </div> <!-- form group [rows] -->
+        <div class="form-group">
+            <input type="text" class="form-control input-large" name="keyword" value="{{ $pagination_params['keyword'] }}">
+        </div><!-- form group [search] -->
+        <div class="form-group">
+            <label class="filter-col" style="margin-right:0;">Order by:</label>
+            <select name="order_by" class="form-control">
+                <option value="id" @if ($pagination_params['order_by'] == 'id') selected @endif>ID</option>
+                <option value="first_name" @if ($pagination_params['order_by'] == 'first_name') selected @endif>Buyer First Name</option>
+                <option value="last_name" @if ($pagination_params['order_by'] == 'last_name') selected @endif>Buyer Last Name</option>
+                <option value="time_delivered" @if ($pagination_params['order_by'] == 'time_delivered') selected @endif>Time Delivered</option>
+                <option value="created_at" @if ($pagination_params['order_by'] == 'created_at') selected @endif>Created At</option>
+                <option value="updated_at" @if ($pagination_params['order_by'] == 'updated_at') selected @endif>Updated At</option>
+            </select>
+        </div> <!-- form group [rows] -->
+        <div class="form-group">
+            <select name="order" class="form-control">
+                <option value="DESC" @if ($pagination_params['order'] == 'DESC') selected @endif>DESC</option>
+                <option value="ASC" @if ($pagination_params['order'] == 'ASC') selected @endif>ASC</option>
+            </select>
+        </div> <!-- form group [rows] -->
+        <div class="form-group">
+            <button type="submit" class="btn btn-default filter-col">
+                Search
+            </button>
+        </div>
+    </form>
+
     <table class="table table-hover">
         <tr>
             <th>ID</th>
@@ -33,5 +67,5 @@
         @endforeach
     </table>
 
-    {!! $buyer_orders->render() !!}
+    {!! $buyer_orders->appends($pagination_params)->render() !!}
 @endsection
