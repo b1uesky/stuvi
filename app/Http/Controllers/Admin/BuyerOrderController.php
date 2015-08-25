@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\BuyerOrder;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use Config;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
+use Input;
 
 class BuyerOrderController extends Controller
 {
@@ -17,10 +18,47 @@ class BuyerOrderController extends Controller
      */
     public function index()
     {
-        $buyer_orders = BuyerOrder::orderBy('id', 'DESC')->paginate(config('pagination.limit.admin.buyer_order'));
+        $filter   = Input::get('filter');
+        $keyword  = strtolower(Input::get('keyword'));
+        $order_by = Input::get('order_by', 'id');
+        $order    = Input::get('order', 'DESC');
+
+        // filter
+        if (empty($keyword))
+        {
+            $query = BuyerOrder::query();
+        }
+        elseif ($filter == 'id')
+        {
+            $query = BuyerOrder::where('buyer_orders.id', intval($keyword));
+        }
+        elseif ($filter == 'buyer')
+        {
+            $query = BuyerOrder::buildQueryWithBuyerName($keyword);
+        }
+        else
+        {
+            $query = BuyerOrder::query();
+        }
+
+        // order
+        if ($order_by == 'first_name' || $order_by == 'last_name')
+        {
+            $query = $query->join('users', 'buyer_orders.buyer_id', '=', 'users.id')
+                           ->select('buyer_orders.*', 'users.'.$order_by);
+        }
+
+        $buyer_orders = $query->orderBy($order_by, $order)->paginate(Config::get('pagination.limit.admin.buyer_order'));
 
         return view('admin.buyerOrder.index')
-            ->with('buyer_orders', $buyer_orders);
+            ->with('buyer_orders', $buyer_orders)
+            ->with('pagination_params', Input::only([
+                                                        'filter',
+                                                        'keyword',
+                                                        'order_by',
+                                                        'order',
+                                                        'page',
+                                                    ]));
     }
 
     /**

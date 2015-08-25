@@ -11,30 +11,33 @@
 @section('content')
 
     <div class="container">
-        {{--{!! Breadcrumbs::render('shoppingCart') !!}--}}
 
-
-        <div class="row progress-cart-row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3 progress-cart">
-                <nav>
-                    <ol class="cd-breadcrumb triangle">
-                        <li class=""><a href="{{url('/cart')}}"><i class="fa fa-shopping-cart"></i>
-                                Cart</a></li>
-                        <li class="current"><em><i class="fa fa-credit-card"></i>
-                                Checkout</em></li>
-                        <li><em><i class="fa fa-check"></i>
-                                Confirmation</em></li>
-                    </ol>
-                </nav>
-            </div>
+        {{-- Breadcrumb --}}
+        <div class="row margin-30">
+            <nav>
+                <ol class="cd-multi-steps text-top">
+                    <li class="visited">
+                        <a href="{{ url('/cart') }}">Cart</a>
+                    </li>
+                    <li class="current">
+                        <span>Checkout</span>
+                    </li>
+                    <li>
+                        <span>Done</span>
+                    </li>
+                </ol>
+            </nav>
         </div>
 
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-9">
 
                 {{-- Shipping address --}}
                 <div class="row">
-                    <h2>1 Shipping address</h2>
+
+                    <h2 class="no-margin-top">Shipping address</h2>
+
+                    <hr>
 
                     @forelse ($addresses as $address)
                         @if ($address -> is_default)
@@ -60,7 +63,8 @@
                         <div class="thumbnail col-md-8 displayAllAddresses {{ $address -> id }}"
                              style={{$default_address_id != -1 ? "display:none" : ""}}>
                             <div class="panel-body">
-                            <button type="button" class="close deleteThisAddress" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <button type="button" class="close deleteThisAddress" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
                                 <ul class="address-list all-addresses-list">
                                     <li class="address address_id">{{ $address -> id }}</li>
                                     <li class="address addressee">{{ $address -> addressee }}</li>
@@ -399,13 +403,16 @@
                 {{-- Payment method --}}
                 <div class="row" id="paymentDiv">
                     @if ($display_payment)
-                        <h2>2 Payment method</h2>
+                        <h2>Payment method</h2>
+
+                        <hr>
+
                         <div class="row payment-errors-row">
                             <span class="payment-errors"></span>
                         </div>
 
                         <!-- Nav tabs for payment methods -->
-                        <ul class="nav nav-tabs nav-justified" role="tablist">
+                        <ul class="nav nav-pills" role="tablist">
                             {{--<li role="presentation" class="active"><a href="#credit-card" aria-controls="credit-card"--}}
                                                                       {{--role="tab" data-toggle="tab">Credit Card</a></li>--}}
                             <li role="presentation" class="active"><a href="#paypal" aria-controls="paypal" role="tab"
@@ -427,34 +434,39 @@
 
                                             {{--<div class="row">--}}
                                                 {{--<div class="form-group col-xs-12">--}}
-                                                    {{--<input id="payment-number" class="form-control" placeholder="Card number" type="text">--}}
+                                                    {{--<input id="payment-number" class="form-control"--}}
+                                                           {{--placeholder="Card number" type="text">--}}
                                                 {{--</div>--}}
                                             {{--</div>--}}
 
                                             {{--<div class="row">--}}
                                                 {{--<div class="form-group col-xs-12">--}}
-                                                    {{--<input id="payment-name" class="form-control" placeholder="Full name" type="text">--}}
+                                                    {{--<input id="payment-name" class="form-control"--}}
+                                                           {{--placeholder="Full name" type="text">--}}
                                                 {{--</div>--}}
                                             {{--</div>--}}
 
                                             {{--<div class="row">--}}
                                                 {{--<div class="form-group col-xs-4">--}}
-                                                    {{--<input id="payment-month" class="form-control" placeholder="MM" type="text" maxlength="2">--}}
+                                                    {{--<input id="payment-month" class="form-control" placeholder="MM"--}}
+                                                           {{--type="text" maxlength="2">--}}
                                                 {{--</div>--}}
 
                                                 {{--<div class="form-group col-xs-4">--}}
-                                                    {{--<input id="payment-year" class="form-control" placeholder="YY" type="text" maxlength="4">--}}
+                                                    {{--<input id="payment-year" class="form-control" placeholder="YY"--}}
+                                                           {{--type="text" maxlength="4">--}}
                                                 {{--</div>--}}
 
                                                 {{--<div class="form-group col-xs-4">--}}
-                                                    {{--<input id="payment-cvc" class="form-control" placeholder="CVC" type="text">--}}
+                                                    {{--<input id="payment-cvc" class="form-control" placeholder="CVC"--}}
+                                                           {{--type="text">--}}
                                                 {{--</div>--}}
                                             {{--</div>--}}
                                         {{--</form>--}}
                                     {{--</div>--}}
                                 {{--</div>--}}
                             {{--</div>--}}
-                            <div role="tabpanel" class="tab-pane fade in active" id="paypal">
+                            <div role="tabpanel" class="tab-pane fade" id="paypal">
                                 <div class="paypal-content">
                                     <img class="center-block img-responsive"
                                          src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png"
@@ -472,17 +484,12 @@
 
                 {{-- Review items --}}
                 <div class="row">
-                    <h2>3 Review items</h2>
+                    <h2>Review items</h2>
 
-                    <table class="table table-responsive table-default">
-                        <thead>
-                            <tr>
-                                <th>Book</th>
-                                <th> </th>
-                                <th>ISBN</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
+                    <hr>
+
+                    <table class="table table-no-border table-default">
+
                         @forelse ($items as $item)
                             <tr>
                                 <td>
@@ -510,10 +517,10 @@
             </div>
 
             {{-- Total Price --}}
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Order Summary</h3>
+                        <h2 class="panel-title">Order Summary</h2>
                     </div>
                     <div class="panel-body">
                         <table class="table table-panel">
@@ -527,11 +534,15 @@
                                 <td class="text-right">${{ $shipping }}</td>
                             </tr>
                             <tr>
-                                <td class="text-left">Total before tax:</td>
-                                <td class="text-right">${{ $subtotal + $shipping }}</td>
+                                <td class="text-left">Discount:</td>
+                                <td class="text-right">- ${{ $discount }}</td>
                             </tr>
                             <tr>
-                                <td class="text-left">Estimated tax to be collected:</td>
+                                <td class="text-left">Total before tax:</td>
+                                <td class="text-right">${{ $subtotal + $shipping - $discount }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Estimated tax:</td>
                                 <td class="text-right">${{ $tax }}</td>
                             </tr>
                             </tbody>
@@ -542,7 +553,6 @@
                             </tr>
                             </tfoot>
                         </table>
-                        <hr>
                         <div>
                             <form action="{{ url('order/store') }}" method="POST" id="form-place-order">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
