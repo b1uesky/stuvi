@@ -109,17 +109,17 @@
                             <td class="text-right">
                                 @if(Auth::check())
                                     @if($product->isInCart(Auth::user()->id))
-                                        <a class="btn btn-primary add-cart-btn disabled" href="#"
+                                        <a class="btn btn-primary add-cart-btn disabled width-130" href="#"
                                            role="button" id="added-to-cart-btn">
                                             Added to cart</a>
                                     @elseif($product->seller == Auth::user())
-                                        <a class="btn btn-muted add-cart-btn disabled" href="#" role="button">Posted
+                                        <a class="btn btn-muted add-cart-btn disabled width-130" href="#" role="button">Posted
                                             by
                                             you</a>
                                     @else
                                         <form method="post" class="add-to-cart">
                                             <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                            <input class="btn btn-primary add-cart-btn" type="submit" value="Add to cart">
+                                            <input class="btn btn-primary add-cart-btn width-130" type="submit" value="Add to cart">
                                         </form>
                                     @endif
                                 @endif
