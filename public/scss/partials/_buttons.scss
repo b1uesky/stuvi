@@ -25,6 +25,11 @@
     color: $button-text-color;
     border: 1px solid $primary-color !important;
   }
+
+  &:disabled {
+    background-color: $primary-color-light;
+    border-color: $primary-color-light;
+  }
 }
 
 .btn-secondary {
@@ -41,6 +46,10 @@
 .btn-muted {
   color: $button-text-color;
   background-color: $background-light-grey;
+
+  &:hover, &:focus {
+    color: $button-text-color;
+  }
 }
 
 .btn-search {
