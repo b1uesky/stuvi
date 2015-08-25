@@ -8,21 +8,6 @@ $(document).ready(function () {
 
     initializeDropzone();
 
-    $('.btn-to-details').click(function() {
-        $('.details').removeClass('hidden');
-        $('.ready').removeClass('hidden');
-
-        $('html, body').animate({
-            scrollTop: $(".details").offset().top
-        }, 500);
-    });
-
-    $('.btn-to-ready').click(function() {
-        $('html, body').animate({
-            scrollTop: $(".ready").offset().top
-        }, 500);
-    });
-
     function initializeDropzone() {
         Dropzone.options.formProduct = { // The camelized version of the ID of the form element
 

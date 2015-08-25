@@ -94,6 +94,7 @@ Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
         Route::get  ('/',                       'TextbookController@sell');
         Route::post ('/search',                 'TextbookController@sellSearch');
         Route::get  ('/create',                 'TextbookController@create');
+        Route::get  ('/product/{book}/confirm', 'ProductController@confirm');
         Route::get  ('/product/{book}/create',  'ProductController@create');
     });
 });

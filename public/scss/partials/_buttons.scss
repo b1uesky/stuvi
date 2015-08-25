@@ -10,8 +10,40 @@
   }
 }
 
+.btn-default.active.focus,
+.btn-default.active:focus,
+.btn-default.active:hover,
+.btn-default:active.focus,
+.btn-default:active:focus,
+.btn-default:active:hover,
+.open>.dropdown-toggle.btn-default.focus,
+.open>.dropdown-toggle.btn-default:focus,
+.open>.dropdown-toggle.btn-default:hover {
+  background-color: $primary-color-light !important;
+  outline: 0 !important;
+  color: $button-text-color !important;
+  border: 1px solid $primary-color !important;
+}
+
+.btn-default.active,
+.btn-default:active,
+.open>.dropdown-toggle.btn-default {
+  background-color: $primary-color !important;
+  outline: 0 !important;
+  color: $button-text-color !important;
+  border: 1px solid $primary-color !important;
+}
+
 .btn-default {
   color: $text-color;
+  border: 1px solid $border-color;
+
+  &:hover, &:focus {
+    background-color: $primary-color-light !important;
+    outline: 0 !important;
+    color: $button-text-color;
+    border: 1px solid $primary-color !important;
+  }
 }
 
 .btn-primary {
