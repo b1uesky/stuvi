@@ -34,9 +34,9 @@
 
 // this can't be placed above in the .filter styles
 .filter.active {
-  border-bottom: 5px solid white;
+  border-bottom: 4px solid white;
   @media(max-width: 320px){
-    border-bottom: 3px solid white;
+    border-bottom: 2px solid white;
   }
 }
 
@@ -54,27 +54,10 @@
   color: white;
 }
 
-/******* ERROR MESSAGE ******/
-
-#message {
-  font-style: italic;
-}
-
-#message-cont {
-  padding: 1%;
-}
-
 /******* TEXTBOOK SEARCH AREA ******/
 
-#title {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #FFFFFF;
-  text-shadow: $text-shadow;
-}
-
 .container-image {
-  background: rgba(0, 0, 0, 0.3) url('../img/open-book.jpg') no-repeat center top;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)), url('../img/bg/open-book.jpg') no-repeat center;
   background-size: cover;
   height: 350px;
 
@@ -82,46 +65,37 @@
     margin-top: $spacing-unit * 3;
     max-width: 900px;
   }
+
+  .title {
+    margin-bottom: $spacing-unit / 2;
+    color: white;
+    text-align: center;
+    font-size: $title-font-size-md;
+    text-shadow: $text-shadow;
+  }
 }
 
 /******  TEXTBOOK BOTTOM HALF ****/
 
 .textbook-intro {
-  .row {
-    margin: $spacing-unit * 2;
-  }
-}
+  margin: $spacing-unit 0;
+  font-weight: 300;
+  line-height: 26px;
 
-#shrink-xs {
-  @media(max-width: 767px) {
+  .container {
+    max-width: 900px;
+
+    .row {
+      padding: $spacing-unit 0;
+    }
+  }
+
+  p {
+    font-size: 16px;
+    letter-spacing: $extra-letter-spacing;
+  }
+
+  @media (max-width: 768px) {
     text-align: center;
   }
 }
-
-
-.textbook-bottom-img {
-  width: 250px;
-  height: 250px;
-  @media(max-width: 320px){
-    width: 150px;
-    height: auto;
-  }
-}
-
-#truck-img {
-  width: 300px;
-  height: 168px;
-  @media(max-width: 320px){
-    width: 150px;
-    height: auto;
-  }
-}
-
-.google-img {
-  font-size: 17em;
-  color: $primary-color;
-  @media(max-width: 320px){
-    font-size: 11em;
-  }
-}
-

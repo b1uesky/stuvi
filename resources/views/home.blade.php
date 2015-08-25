@@ -42,7 +42,6 @@
                                 <label class="sr-only" for="uni_id">University</label>
                                 <select name="university_id" class="form-control searchbar-input searchbar-input-university"
                                         id="uni_id">
-                                    {{--<option value="" selected disabled>Select a university</option>--}}
                                     @foreach(\App\University::where('is_public', true)->get() as $university)
                                         <option value="{{ $university->id }}">{{ $university->abbreviation }}</option>
                                     @endforeach
@@ -69,7 +68,6 @@
                             <div class="xs-guest-search-bar-input-uni">
                                 <label class="sr-only" for="xs-uni_id">University ID</label>
                                 <select name="university_id" class="form-control searchbar-input" id="xs-uni-id">
-                                    {{--<option value="" selected disabled>Select a university</option>--}}
                                     @foreach(\App\University::where('is_public', true)->get() as $university)
                                         <option value="{{ $university->id }}">{{ $university->abbreviation }}</option>
                                     @endforeach

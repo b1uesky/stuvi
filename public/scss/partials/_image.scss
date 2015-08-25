@@ -1,3 +1,5 @@
+@import "../modules/all";
+
 .img-small {
   width: 100px;
 }
@@ -12,4 +14,8 @@
 
 .img-container {
   margin: $spacing-unit / 2 0;
+}
+
+.img-intro {
+  height: 200px;
 }
