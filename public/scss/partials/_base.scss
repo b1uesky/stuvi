@@ -78,13 +78,11 @@ body {
 
 /* Bootstrap Override */
 a {
+  text-decoration: none !important;
   color: $primary-color;
 
-  &:hover {
+  &:hover, &:focus {
     color: $primary-color;
-  }
-
-  &:focus {
     outline: none;
   }
 }

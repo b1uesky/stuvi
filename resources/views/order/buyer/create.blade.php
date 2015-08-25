@@ -11,22 +11,22 @@
 @section('content')
 
     <div class="container">
-        {{--{!! Breadcrumbs::render('shoppingCart') !!}--}}
 
-
-        <div class="row progress-cart-row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3 progress-cart">
-                <nav>
-                    <ol class="cd-breadcrumb triangle">
-                        <li class=""><a href="{{url('/cart')}}"><i class="fa fa-shopping-cart"></i>
-                                Cart</a></li>
-                        <li class="current"><em><i class="fa fa-credit-card"></i>
-                                Checkout</em></li>
-                        <li><em><i class="fa fa-check"></i>
-                                Confirmation</em></li>
-                    </ol>
-                </nav>
-            </div>
+        {{-- Breadcrumb --}}
+        <div class="row margin-30">
+            <nav>
+                <ol class="cd-multi-steps text-top">
+                    <li class="visited">
+                        <a href="{{ url('/cart') }}">Cart</a>
+                    </li>
+                    <li class="current">
+                        <span>Checkout</span>
+                    </li>
+                    <li>
+                        <span>Done</span>
+                    </li>
+                </ol>
+            </nav>
         </div>
 
         <div class="row">
@@ -60,7 +60,8 @@
                         <div class="thumbnail col-md-8 displayAllAddresses {{ $address -> id }}"
                              style={{$default_address_id != -1 ? "display:none" : ""}}>
                             <div class="panel-body">
-                            <button type="button" class="close deleteThisAddress" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <button type="button" class="close deleteThisAddress" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
                                 <ul class="address-list all-addresses-list">
                                     <li class="address address_id">{{ $address -> id }}</li>
                                     <li class="address addressee">{{ $address -> addressee }}</li>
@@ -427,27 +428,32 @@
 
                                             <div class="row">
                                                 <div class="form-group col-xs-12">
-                                                    <input id="payment-number" class="form-control" placeholder="Card number" type="text">
+                                                    <input id="payment-number" class="form-control"
+                                                           placeholder="Card number" type="text">
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="form-group col-xs-12">
-                                                    <input id="payment-name" class="form-control" placeholder="Full name" type="text">
+                                                    <input id="payment-name" class="form-control"
+                                                           placeholder="Full name" type="text">
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="form-group col-xs-4">
-                                                    <input id="payment-month" class="form-control" placeholder="MM" type="text" maxlength="2">
+                                                    <input id="payment-month" class="form-control" placeholder="MM"
+                                                           type="text" maxlength="2">
                                                 </div>
 
                                                 <div class="form-group col-xs-4">
-                                                    <input id="payment-year" class="form-control" placeholder="YY" type="text" maxlength="4">
+                                                    <input id="payment-year" class="form-control" placeholder="YY"
+                                                           type="text" maxlength="4">
                                                 </div>
 
                                                 <div class="form-group col-xs-4">
-                                                    <input id="payment-cvc" class="form-control" placeholder="CVC" type="text">
+                                                    <input id="payment-cvc" class="form-control" placeholder="CVC"
+                                                           type="text">
                                                 </div>
                                             </div>
                                         </form>
@@ -476,12 +482,12 @@
 
                     <table class="table table-responsive table-default">
                         <thead>
-                            <tr>
-                                <th>Book</th>
-                                <th> </th>
-                                <th>ISBN</th>
-                                <th>Price</th>
-                            </tr>
+                        <tr>
+                            <th>Book</th>
+                            <th></th>
+                            <th>ISBN</th>
+                            <th>Price</th>
+                        </tr>
                         </thead>
                         @forelse ($items as $item)
                             <tr>
