@@ -77,7 +77,7 @@
                             </div>
                         @endif
                         <div class="xs-guest-search-bar-input-submit">
-                            <button class="btn primary-btn" type="submit" value="Search" style="width:100%;">
+                            <button class="btn primary-btn btn-lg btn-block" type="submit" value="Search">
                                 Search
                             </button>
                         </div>
