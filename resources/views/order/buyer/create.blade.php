@@ -30,11 +30,14 @@
         </div>
 
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-9">
 
                 {{-- Shipping address --}}
                 <div class="row">
-                    <h2>1 Shipping address</h2>
+
+                    <h2 class="no-margin-top">Shipping address</h2>
+
+                    <hr>
 
                     @forelse ($addresses as $address)
                         @if ($address -> is_default)
@@ -400,13 +403,16 @@
                 {{-- Payment method --}}
                 <div class="row" id="paymentDiv">
                     @if ($display_payment)
-                        <h2>2 Payment method</h2>
+                        <h2>Payment method</h2>
+
+                        <hr>
+
                         <div class="row payment-errors-row">
                             <span class="payment-errors"></span>
                         </div>
 
                         <!-- Nav tabs for payment methods -->
-                        <ul class="nav nav-tabs nav-justified" role="tablist">
+                        <ul class="nav nav-pills" role="tablist">
                             <li role="presentation" class="active"><a href="#credit-card" aria-controls="credit-card"
                                                                       role="tab" data-toggle="tab">Credit Card</a></li>
                             <li role="presentation"><a href="#paypal" aria-controls="paypal" role="tab"
@@ -414,7 +420,7 @@
                         </ul>
 
                         <!-- Tab panes -->
-                        <div class="tab-content payment-method-tabs">
+                        <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade in active" id="credit-card">
                                 <div class="payment-card-container">
                                     <div class="row">
@@ -478,17 +484,12 @@
 
                 {{-- Review items --}}
                 <div class="row">
-                    <h2>3 Review items</h2>
+                    <h2>Review items</h2>
 
-                    <table class="table table-responsive table-default">
-                        <thead>
-                        <tr>
-                            <th>Book</th>
-                            <th></th>
-                            <th>ISBN</th>
-                            <th>Price</th>
-                        </tr>
-                        </thead>
+                    <hr>
+
+                    <table class="table table-no-border table-default">
+
                         @forelse ($items as $item)
                             <tr>
                                 <td>
@@ -516,10 +517,10 @@
             </div>
 
             {{-- Total Price --}}
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Order Summary</h3>
+                        <h2 class="panel-title">Order Summary</h2>
                     </div>
                     <div class="panel-body">
                         <table class="table table-panel">
@@ -541,7 +542,7 @@
                                 <td class="text-right">${{ $subtotal + $shipping - $discount }}</td>
                             </tr>
                             <tr>
-                                <td class="text-left">Estimated tax to be collected:</td>
+                                <td class="text-left">Estimated tax:</td>
                                 <td class="text-right">${{ $tax }}</td>
                             </tr>
                             </tbody>
@@ -552,7 +553,6 @@
                             </tr>
                             </tfoot>
                         </table>
-                        <hr>
                         <div>
                             <form action="{{ url('order/store') }}" method="POST" id="form-place-order">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">

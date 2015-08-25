@@ -96,8 +96,6 @@
                                 </tr>
                             </table>
 
-                            <hr>
-
                             <div>
                                 <a class="btn btn-primary" href="{{ url('/order/create') }}" role="button">Proceed to
                                     checkout</a>

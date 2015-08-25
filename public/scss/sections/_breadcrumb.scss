@@ -42,11 +42,11 @@ Basic Style
 }
 .cd-breadcrumb li.current > *, .cd-multi-steps li.current > * {
   /* selected step */
-  color: $primary-color-accent;
+  color: $primary-color;
 }
 .no-touch .cd-breadcrumb a:hover, .no-touch .cd-multi-steps a:hover {
   /* steps already visited */
-  color: $primary-color-accent;
+  color: $primary-color;
 }
 .cd-breadcrumb.custom-separator li::after, .cd-multi-steps.custom-separator li::after {
   /* replace the default arrow separator with a custom icon */
@@ -135,8 +135,8 @@ Triangle breadcrumb
   .cd-breadcrumb.triangle li.current > * {
     /* selected step */
     color: #ffffff;
-    background-color: $primary-color-accent;
-    border-color:$primary-color-accent;
+    background-color: $primary-color;
+    border-color:$primary-color;
   }
   .cd-breadcrumb.triangle li:first-of-type > * {
     padding-left: 1.6em;
@@ -259,7 +259,7 @@ Multi steps indicator
     margin: 0;
   }
   .cd-multi-steps li.visited::after {
-    background-color:$primary-color-accent;
+    background-color:$primary-color;
   }
   .cd-multi-steps li > *, .cd-multi-steps li.current > * {
     position: relative;
@@ -293,7 +293,7 @@ Multi steps indicator
   }
   .cd-multi-steps.text-center li.current > *, .cd-multi-steps.text-center li.visited > * {
     color: #ffffff;
-    background-color:$primary-color-accent;
+    background-color:$primary-color;
   }
   .cd-multi-steps.text-center.custom-icons li.visited a::before {
     /* change the custom icon for the visited item - check icon */
@@ -331,10 +331,10 @@ Multi steps indicator
   .cd-multi-steps.text-top li.visited > *::before,
   .cd-multi-steps.text-top li.current > *::before, .cd-multi-steps.text-bottom li.visited > *::before,
   .cd-multi-steps.text-bottom li.current > *::before {
-    background-color:$primary-color-accent;
+    background-color:$primary-color;
   }
   .no-touch .cd-multi-steps.text-top a:hover, .no-touch .cd-multi-steps.text-bottom a:hover {
-    color:$primary-color-accent;
+    color:$primary-color;
   }
   .no-touch .cd-multi-steps.text-top a:hover::before, .no-touch .cd-multi-steps.text-bottom a:hover::before {
     box-shadow: 0 0 0 3px rgba(150, 192, 61, 0.3);
