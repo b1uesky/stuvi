@@ -98,7 +98,12 @@
 }
 
 .navbar-default .navbar-nav>.open>a {
+  background-color: $transparent;
+
+  &:hover, &:focus {
     background-color: $transparent;
+    color: white;
+  }
 }
 
 /* NAVIGATION HAMBURGER MENU */
