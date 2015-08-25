@@ -59,7 +59,7 @@
             <tr>
                 <td>{{ $seller_order->id }}</td>
                 <td><a href="{{ url('admin/product/'.$seller_order->product_id) }}">{{ $seller_order->product->book->title }}</a></td>
-                <td>{{ $seller_order->seller()->first_name.' '.$seller_order->seller()->last_name }}</td>
+                <td><a href="{{ url('admin/user/'.$seller_order->seller()->id) }}">{{ $seller_order->seller()->first_name.' '.$seller_order->seller()->last_name }}</a></td>
                 <td>@if($seller_order->cancelled) Yes @else No @endif</td>
                 <td>{{ $seller_order->scheduled_pickup_time }}</td>
                 <td>{{ $seller_order->pickup_time }}</td>
