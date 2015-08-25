@@ -51,7 +51,7 @@
                                         <li class="address inline zip">{{ $address -> zip }}</li>
                                         <li class="address phone">{{ $address -> phone_number }}</li>
                                     </ul>
-                                    <button class="btn btn-default primary-btn address-btn show-addresses">Change
+                                    <button class="btn btn-default btn-primary address-btn show-addresses">Change
                                         Address
                                     </button>
                                 </div>
@@ -74,7 +74,7 @@
                                     <li class="address zip inline">{{ $address -> zip }}</li>
                                     <li class="address phone">{{ $address -> phone_number }}</li>
                                 </ul>
-                                <button class="btn btn-default primary-btn address-btn editThisAddress">
+                                <button class="btn btn-default btn-primary address-btn editThisAddress">
                                     Edit
                                 </button>
                             </div>
@@ -156,7 +156,7 @@
                                 </div>
                             </div>
                             <br>
-                            <button class="btn btn-default primary-btn address-btn" id="storeAddress"
+                            <button class="btn btn-default btn-primary address-btn" id="storeAddress"
                                     type="submit">
                                 Add Address
                             </button>
@@ -274,7 +274,7 @@
                                     </button>
                                     <i class="fa fa-spinner fa-pulse fa-2x" id="update-loading"></i>
                                     <button id="storeUpdatedAddress" type="button"
-                                            class="btn btn-default primary-btn address-btn form-btn">
+                                            class="btn btn-default btn-primary address-btn form-btn">
                                         Update Address
                                     </button>
                                 </div>
@@ -387,7 +387,7 @@
                                     </button>
                                     <i class="fa fa-spinner fa-pulse fa-2x" id="add-loading"></i>
                                     <button id="storeAddedAddress" type="button"
-                                            class="btn btn-default primary-btn address-btn form-btn">
+                                            class="btn btn-default btn-primary address-btn form-btn">
                                         Add Address
                                     </button>
                                 </div>
@@ -553,7 +553,7 @@
                                 <input type="hidden" name="selected_address_id" value="{{ $default_address_id }}">
                                 <input type="hidden" name="payment_method" value="credit_card">
 
-                                <input type="submit" class="btn primary-btn" value="Place your order">
+                                <input type="submit" class="btn btn-primary" value="Place your order">
                             </form>
 
                         </div>

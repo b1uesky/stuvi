@@ -185,7 +185,7 @@
                         <!-- Save changes button -->
                         <div class="form-group">
                             <div class=" col-sm-offset-3 col-sm-6">
-                                <button id="save-info-btn" type="submit" class="btn primary-btn">Update Profile
+                                <button id="save-info-btn" type="submit" class="btn btn-primary">Update Profile
                                 </button>
                             </div>
                         </div>

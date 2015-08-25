@@ -66,7 +66,7 @@ $(document).ready(function() {
                     var address_panel = $('<div class="thumbnail col-md-8 displayAllAddresses ' + address.id + '">' +
                         '<div class="panel-body">' +
                         '<button type="button" class="close deleteThisAddress" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
-                        '<button class="btn btn-default primary-btn address-btn editThisAddress">' +
+                        '<button class="btn btn-default btn-primary address-btn editThisAddress">' +
                         'Edit' +
                         '</button>' +
                         '</div>' +

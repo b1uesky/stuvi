@@ -73,7 +73,7 @@
                                             <form action="{{ url('/user/email/primary') }}" method="post">
                                                 {!! csrf_field() !!}
                                                 <input type="hidden" name="id" value="{{ $email->id }}">
-                                                <input type="submit" class="btn primary-btn" value="Set as primary">
+                                                <input type="submit" class="btn btn-primary" value="Set as primary">
                                             </form>
                                         </td>
                                         @endif
@@ -82,7 +82,7 @@
                                                 <form action="{{ url('/user/email/remove') }}" method="post">
                                                     {!! csrf_field() !!}
                                                     <input type="hidden" name="id" value="{{ $email->id }}">
-                                                    <input type="submit" class="btn primary-btn" value="Remove">
+                                                    <input type="submit" class="btn btn-primary" value="Remove">
                                                 </form>
                                             @endif
                                         </td>
@@ -98,7 +98,7 @@
                                 <input type="email" name="email" class="form-control email-input"
                                        value="{{ old('email') }}">
                                 <br>
-                                <button type="submit" class="btn primary-btn email-btn">Add</button>
+                                <button type="submit" class="btn btn-primary email-btn">Add</button>
                             </div>
                             @if (Session::has('email_validation_error'))
                                 @foreach (Session::get('email_validation_error')->get('email') as $err)

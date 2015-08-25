@@ -63,7 +63,7 @@
                     <input type="file" name="image" class="upload-file"/>
                 </div>
 
-                <input type="submit" name="submit" class="btn primary-btn create-btn" id="create-btn" value="Submit"/>
+                <input type="submit" name="submit" class="btn btn-primary create-btn" id="create-btn" value="Submit"/>
             </form>
         </div> <!-- End row -->
     </div> <!-- end container -->

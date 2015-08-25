@@ -72,11 +72,11 @@
 
                                 @if ($seller_order->isPickupConfirmable())
                                     <div class="row">
-                                        <button type="button" class="btn primary-btn btn-change-address col-md-1">Change
+                                        <button type="button" class="btn btn-primary btn-change-address col-md-1">Change
                                         </button>
                                         {{-- Add a new address --}}
                                         <div id="add-new-address-btn-1">
-                                            <button class="btn primary-btn add-address-btn col-md-1">Add</button>
+                                            <button class="btn btn-primary add-address-btn col-md-1">Add</button>
                                             <br><br>
                                         </div>
                                     </div>
@@ -138,7 +138,7 @@
                         @else
                             {{-- Add a new address --}}
                             <div id="add-new-address-btn-2">
-                                <button class="btn primary-btn add-address-btn">Add a new address</button>
+                                <button class="btn btn-primary add-address-btn">Add a new address</button>
                                 <br><br>
                             </div>
                         @endif
@@ -306,7 +306,7 @@
                                                        name="scheduled_pickup_time">
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn primary-btn">
+                                        <button type="submit" class="btn btn-primary">
                                             <!-- scheduled already and not cancelled. allows for reschedule -->
                                             @if($seller_order->scheduledPickupTime() && !$seller_order->cancelled)
                                                 Reschedule
@@ -387,12 +387,12 @@
                         <div class="col-md-3">
                             {{-- Confirm pickup --}}
                             @if ($seller_order->isPickupConfirmable())
-                                <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn primary-btn btn-block">Confirm Pickup</a>
+                                <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary btn-block">Confirm Pickup</a>
                             @endif
 
                             {{-- cancel order --}}
                             @if ($seller_order->isCancellable())
-                                <a class="btn secondary-btn btn-block cancel-order-btn" href="/order/seller/cancel/{{ $seller_order->id }}"
+                                <a class="btn btn-secondary btn-block cancel-order-btn" href="/order/seller/cancel/{{ $seller_order->id }}"
                                    role="button">Cancel Order</a>
                             @endif
                         </div>

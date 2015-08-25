@@ -92,15 +92,15 @@
                         <div class="panel-footer">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <a href="{{ url('textbook/sell') }}" class="btn muted-btn btn-block">
+                                    <a href="{{ url('textbook/sell') }}" class="btn btn-muted btn-block">
                                         No, this is not the book I want to sell.
                                     </a>
                                 </div>
                                 <div class="col-sm-6">
                                     @if(Auth::guest())
-                                        <a href="#" class="btn primary-btn btn-block btn-to-details disabled">Continue</a>
+                                        <a href="#" class="btn btn-primary btn-block btn-to-details disabled">Continue</a>
                                     @else
-                                        <a href="#" class="btn primary-btn btn-block btn-to-details">Continue</a>
+                                        <a href="#" class="btn btn-primary btn-block btn-to-details">Continue</a>
                                     @endif
                                 </div>
                             </div>
@@ -303,7 +303,7 @@
                                 {{--<div class="panel-footer">--}}
                                     {{--<div class="row">--}}
                                         {{--<div class="col-sm-6 col-sm-offset-3">--}}
-                                            {{--<a href="#" class="btn primary-btn btn-block btn-to-ready">Continue</a>--}}
+                                            {{--<a href="#" class="btn btn-primary btn-block btn-to-ready">Continue</a>--}}
                                         {{--</div>--}}
                                     {{--</div>--}}
                                 {{--</div>--}}
@@ -345,7 +345,7 @@
 
                                         <div class="row">
                                             <div class="col-md-6 col-md-offset-3">
-                                                <input type="submit" name="submit" class="btn primary-btn btn-block" value="Upload images and post book">
+                                                <input type="submit" name="submit" class="btn btn-primary btn-block" value="Upload images and post book">
                                             </div>
                                         </div>
                                         <div class="tos-privacy-container">

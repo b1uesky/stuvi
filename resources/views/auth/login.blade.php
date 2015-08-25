@@ -72,7 +72,7 @@
                                 <!-- forgot pw -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
-                                        <button type="submit" class="btn primary-btn submit-btn">Login</button>
+                                        <button type="submit" class="btn btn-primary submit-btn">Login</button>
                                         <br>
                                         <a class="btn btn-link" id="forgot-password"
                                            href="{{ url('/password/email') }}">Forgot Your Password?</a>
@@ -145,7 +145,7 @@
                                 <!-- sign up button-->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
-                                        <button type="submit" class="btn primary-btn submit-btn">Sign Up</button>
+                                        <button type="submit" class="btn btn-primary submit-btn">Sign Up</button>
                                     </div>
                                 </div>
                             </form>
