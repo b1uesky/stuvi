@@ -136,12 +136,6 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::post ('/seller/transfer',            'SellerOrderController@transfer');
 });
 
-// Stripe authorization
-Route::group(['middleware'=>'auth', 'prefix'=>'stripe'], function()
-{
-    Route::get  ('/store', 'StripeAuthorizationCredentialController@store');
-});
-
 // cart
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], function()
 {

@@ -2,7 +2,6 @@
 
 use Aloha\Twilio\Twilio;
 use App\Address;
-use App\Helpers\StripeKey;
 use App\Http\Controllers\Controller;
 use App\SellerOrder;
 use Auth;
@@ -360,23 +359,6 @@ class SellerOrderController extends Controller
 //            // Something else happened, completely unrelated to Stripe
 //            $error6 = $e->getMessage();
 //        }
-    }
-
-    /**
-     * Build and return Stripe Connect account authorize url.
-     * @return string
-     */
-    protected function buildStripeAuthRequestUrl()
-    {
-        $authorize_request_body = [
-            'response_type' => 'code',
-            'scope'         => Config::get('stripe.scope'),
-            'client_id'     => StripeKey::getClientId(),
-        ];
-
-        $url = Config::get('stripe.authorize_url') . '?' . http_build_query($authorize_request_body);
-
-        return $url;
     }
 
     /**

@@ -1,6 +1,5 @@
 <?php namespace App;
 
-use App\Helpers\StripeKey;
 use App\Helpers\Paypal;
 use App\Helpers\Price;
 use Carbon\Carbon;
