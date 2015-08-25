@@ -20,7 +20,7 @@
                     <div class="modal-body">
                         <p>You have no books in your shopping cart. <i class="fa fa-frown-o fa-lg"></i></p>
 
-                        <p><a class="btn primary-btn" href="{{url('/textbook')}}">Shop now!</a></p>
+                        <p><a class="btn btn-primary" href="{{url('/textbook')}}">Shop now!</a></p>
                     </div>
                    <div class="modal-footer">
                        <button type="button" class="btn btn-default modal-close" data-dismiss="modal" aria-label="close">Close</button>

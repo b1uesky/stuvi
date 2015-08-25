@@ -181,16 +181,6 @@ class SellerOrder extends Model
     }
 
     /**
-     * Get the Stripe transfer record of this seller order.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function stripeTransfer()
-    {
-        return $this->hasOne('App\StripeTransfer');
-    }
-
-    /**
      * Check whether the seller has scheduled a pickup time.
      *
      * @return bool
@@ -215,10 +205,10 @@ class SellerOrder extends Model
      *
      * @return bool
      */
-    public function isTransferred()
-    {
-        return !$this->stripeTransfer()->get()->isEmpty();
-    }
+//    public function isTransferred()
+//    {
+//        return !$this->stripeTransfer()->get()->isEmpty();
+//    }
 
     /**
      * Get the seller order status and status detail.
@@ -227,12 +217,12 @@ class SellerOrder extends Model
      */
     public function getOrderStatus()
     {
-        if ($this->isTransferred())
-        {
-            $status = 'Balance Transferred';
-            $detail = 'The money has been transferred to your Stripe account.';
-        }
-        elseif ($this->isDelivered())
+//        if ($this->isTransferred())
+//        {
+//            $status = 'Balance Transferred';
+//            $detail = 'The money has been transferred to your Stripe account.';
+//        }
+        if ($this->isDelivered())
         {
             $status = 'Order Delivered';
             $detail = 'Your order has been delivered.';

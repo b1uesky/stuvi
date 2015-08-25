@@ -112,11 +112,11 @@
                             {{-- action buttons --}}
                             <div class="col-md-3">
                                 {{-- order details --}}
-                                <a class="btn primary-btn btn-block" href="/order/seller/{{$order->id}}">Order Details</a>
+                                <a class="btn btn-primary btn-block" href="/order/seller/{{$order->id}}">Order Details</a>
 
                                 {{-- cancel order --}}
                                 @if ($order->isCancellable())
-                                    <a class="btn secondary-btn btn-block cancel-order-btn" href="/order/seller/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
+                                    <a class="btn btn-secondary btn-block cancel-order-btn" href="/order/seller/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
                                 @endif
                             </div>
                         </div>

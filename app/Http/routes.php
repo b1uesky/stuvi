@@ -94,6 +94,7 @@ Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
         Route::get  ('/',                       'TextbookController@sell');
         Route::post ('/search',                 'TextbookController@sellSearch');
         Route::get  ('/create',                 'TextbookController@create');
+        Route::get  ('/product/{book}/confirm', 'ProductController@confirm');
         Route::get  ('/product/{book}/create',  'ProductController@create');
     });
 });
@@ -134,12 +135,6 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::post ('/seller/storeAddress',        'SellerOrderController@storeAddress');
     Route::get  ('/seller/{id}/confirmPickup',  'SellerOrderController@confirmPickup');
     Route::post ('/seller/transfer',            'SellerOrderController@transfer');
-});
-
-// Stripe authorization
-Route::group(['middleware'=>'auth', 'prefix'=>'stripe'], function()
-{
-    Route::get  ('/store', 'StripeAuthorizationCredentialController@store');
 });
 
 // cart

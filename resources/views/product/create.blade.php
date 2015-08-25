@@ -13,103 +13,6 @@
 
     <div class="container">
 
-        <section class="confirm">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="panel panel-presentation">
-                        <div class="panel-heading">
-                            <h2>Confirm Your Book</h2>
-                        </div>
-                        <div class="panel-body">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-xs-4">
-                                        @if($book->imageSet->large_image)
-                                            <img class="img-responsive"
-                                                 src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->large_image }}">
-                                        @else
-                                            <img class="img-responsive"
-                                                 src="{{ config('book.default_image_path.large') }}"/>
-                                        @endif
-                                    </div>
-
-                                    <div class="col-xs-8">
-                                        <h4>{{ $book->title }}</h4>
-
-                                        <table class="table table-book-details">
-                                            <tr>
-                                                <th>
-                                                    @if(count($book->authors) > 1)
-                                                        Authors:
-                                                    @else
-                                                        Author:
-                                                    @endif
-                                                </th>
-                                                <td>
-                                                    @foreach($book->authors as $index => $author)
-                                                        @if($index == 0)
-                                                            {{ $author->full_name }}
-                                                        @else
-                                                            , {{ $author->full_name }}
-                                                        @endif
-                                                    @endforeach
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <th>
-                                                    ISBN-10:
-                                                </th>
-                                                <td>
-                                                    {{ $book->isbn10 }}
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <th>
-                                                    ISBN-13:
-                                                </th>
-                                                <td>
-                                                    {{ $book->isbn13 }}
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <th>
-                                                    Number of Pages:
-                                                </th>
-                                                <td>
-                                                    {{ $book->num_pages }}
-                                                </td>
-                                            </tr>
-                                        </table>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="panel-footer">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <a href="{{ url('textbook/sell') }}" class="btn muted-btn btn-block">
-                                        No, this is not the book I want to sell.
-                                    </a>
-                                </div>
-                                <div class="col-sm-6">
-                                    @if(Auth::guest())
-                                        <a href="#" class="btn primary-btn btn-block btn-to-details disabled">Continue</a>
-                                    @else
-                                        <a href="#" class="btn primary-btn btn-block btn-to-details">Continue</a>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <div class="row">
             {{-- form --}}
             <div class="col-md-8 col-md-offset-2">
@@ -119,7 +22,7 @@
                         <input type="hidden" name="book_id" value="{{ $book->id }}"/>
                         <input type="hidden" name="book_title" value="{{ $book->title }}">
 
-                        <section class="details hidden">
+                        <section class="details">
                             <div class="panel panel-presentation">
                                 <div class="panel-heading">
                                     <h2>Complete Book Details</h2>
@@ -299,18 +202,10 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                {{--<div class="panel-footer">--}}
-                                    {{--<div class="row">--}}
-                                        {{--<div class="col-sm-6 col-sm-offset-3">--}}
-                                            {{--<a href="#" class="btn primary-btn btn-block btn-to-ready">Continue</a>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
                             </div>
                         </section>
 
-                        <section class="ready hidden">
+                        <section class="ready">
                             <div class="panel panel-presentation">
                                 <div class="panel-heading">
                                     <h2>Ready to Go!</h2>
@@ -318,41 +213,42 @@
                                 <div class="panel-body">
                                     <div class="container-fluid">
                                         <div class="row">
-                                            <div class="col-md-6 col-md-offset-3">
+                                            <div class="col-sm-8 col-sm-offset-2">
                                                 {{--your price--}}
                                                 <div class="form-group">
-                                                    <label>Price</label>
+                                                    <label>Sale Price</label>
 
                                                     <div class="input-group">
                                                         <div class="input-group-addon">$</div>
                                                         <input type="number" step="0.01" min="0.00" name="price"
-                                                               class="form-control" placeholder="Amount">
+                                                               class="form-control" placeholder="Set the sale price for your book">
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="row">
-                                            <div class="col-md-6 col-md-offset-3">
                                                 {{--Paypal account--}}
                                                 <div class="form-group">
-                                                    <label>Paypal Account</label>&nbsp;<a href="https://www.paypal.com/us/signup/account" target="_blank">(No Paypal account?)</a>
+                                                    <label class="full-width">
+                                                        <span>Paypal Account</span>
+                                                        <span class="pull-right">
+                                                            <small>
+                                                                <a href="https://www.paypal.com/us/signup/account" target="_blank">No Paypal account?</a>
+                                                            </small>
+                                                        </span>
+                                                    </label>
+
+
                                                     <input type="email" name="paypal" class="form-control"
                                                            value="{{ $paypal or '' }}" placeholder="Paypal email address">
                                                 </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="row">
-                                            <div class="col-md-6 col-md-offset-3">
-                                                <input type="submit" name="submit" class="btn primary-btn btn-block" value="Upload images and post book">
+                                                <div class="form-group">
+                                                    <small>By posting your book, you agree to Stuvi's
+                                                        <a href="#" data-toggle="modal" data-target="#terms-modal">Terms of Service</a>
+                                                        and <a href="#" data-toggle="modal" data-target="#privacy-modal"> Privacy Notice</a>.</small>
+                                                </div>
+
+                                                <input type="submit" name="submit" class="btn btn-primary btn-block" value="Upload images and post book">
                                             </div>
-                                        </div>
-                                        <div class="tos-privacy-container">
-                                            <br>
-                                            <small>By posting your book, you agree to Stuvi's
-                                                <a href="#" data-toggle="modal" data-target="#terms-modal">Terms of Service</a>
-                                                and <a href="#" data-toggle="modal" data-target="#privacy-modal"> Privacy Notice</a>.</small>
                                         </div>
                                     </div>
 

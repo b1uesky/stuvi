@@ -91,7 +91,8 @@ class TextbookController extends Controller
         // book found in database
         if ($db_book)
         {
-            return redirect('textbook/sell/product/' . $db_book->id . '/create');
+//            return redirect('textbook/sell/product/' . $db_book->id . '/create');
+            return redirect('textbook/sell/product/' . $db_book->id . '/confirm');
         }
         else
         {
@@ -101,7 +102,7 @@ class TextbookController extends Controller
             {
                 $book = Book::createFromGoogleBook($google_book);
 
-                return redirect('textbook/sell/product/' . $book->id . '/create');
+                return redirect('textbook/sell/product/' . $book->id . '/confirm');
             }
 
             // allow the seller fill in book information and create a new book record

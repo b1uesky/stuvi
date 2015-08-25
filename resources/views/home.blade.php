@@ -50,7 +50,7 @@
                         @endif
 
                         <div class="searchbar-input-container searchbar-input-container-submit default-guest-search-submit">
-                            <input class="btn primary-btn search-btn" type="submit" value="Search">
+                            <input class="btn btn-primary btn-search" type="submit" value="Search">
                         </div>
                     </form>
                 </div>
@@ -75,7 +75,7 @@
                             </div>
                         @endif
                         <div class="xs-guest-search-bar-input-submit">
-                            <button class="btn primary-btn btn-lg" type="submit" value="Search" style="width:100%;">
+                            <button class="btn btn-primary btn-lg" type="submit" value="Search" style="width:100%;">
                                 Search
                             </button>
                         </div>
@@ -91,7 +91,7 @@
             <div class="container text-center">
                 <h1>What is Stuvi?</h1>
                 <p>Stuvi is a marketplace built for college students, by college students. We're here to provide relevant services to help you succeed at school, and we're launching here in Boston, Massachusetts!</p>
-                <p><a class="btn primary-btn btn-lg" href="{{ url('/about/') }}" role="button">Learn more</a></p>
+                <p><a class="btn btn-primary btn-lg" href="{{ url('/about/') }}" role="button">Learn more</a></p>
             </div>
         </div>
     </section>

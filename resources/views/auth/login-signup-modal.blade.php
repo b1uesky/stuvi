@@ -43,7 +43,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn primary-btn btn-block">Login</button>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -112,7 +112,7 @@
                             <small>By signing up, you agree to Stuvi's <a href="{{url('/tos')}}" target="_blank" > Terms of Service</a>
                                 and <a href="{{url('/privacy')}}" target="_blank"> Privacy Notice</a>.</small>
                         </div>
-                        <button type="submit" class="btn primary-btn btn-block">Sign Up</button>
+                        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
                     </form>
                 </div>
                 <div class="modal-footer">

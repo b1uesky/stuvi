@@ -25,9 +25,36 @@
   display: none;
 }
 
+.btn-change-address{
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.add-address-btn{
+    margin-left: 15px;
+}
+
 
 .seller-address-book-box{
   padding: 10px;
+  height: 100%;
+  width: auto;
+  outline: none;
+  padding: 15px;
+  margin: 5px 1px 3px 5px;
+  border: 1px solid #DDDDDD;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  &:hover{
+    -moz-box-shadow: 5px 0 5px $primary-color;
+    -webkit-box-shadow: 5px 0 5px $primary-color;
+    box-shadow: 0 0 5px $primary-color;
+    padding: 15px;
+    margin: 5px 1px 3px 5px;
+    border: 1px solid $primary-color;
+  }
 }
 
 .book-details-row {

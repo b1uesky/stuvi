@@ -32,12 +32,12 @@
   border: 1px solid $border-color;
   border-top: none;
   background: $background-color;
-  color: $body-text-color;
+  color: $text-color;
 
   .ui-state-focus {
     border: 1px solid $border-color;
-    background: $accent-color;
-    color: white;
+    background: $tiffany-light;
+    color: $text-color;
   }
 }
 

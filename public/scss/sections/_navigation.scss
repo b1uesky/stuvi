@@ -12,7 +12,7 @@ a:focus {
 /******* NAVIGATION BAR *******/
 
 #nav {
-  background: $nav-background-color;
+  background: white;
   border-radius: 0;
   border: none;
   box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
@@ -21,10 +21,10 @@ a:focus {
 }
 
 .navbar-default .navbar-nav>li>a {
-  color: $body-text-color;
+  color: $text-color;
 
   &:hover{
-    color: $body-text-color;
+    color: $text-color;
     background-color: $background-hover-color;
   }
 
@@ -34,7 +34,7 @@ a:focus {
 }
 
 .active-nav {
-  background-color: $nav-background-color;
+  background-color: white;
   @media (min-width: 768px) {
     border-bottom: 5px solid #{$primary-color};
   }

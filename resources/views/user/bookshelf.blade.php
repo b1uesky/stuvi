@@ -60,7 +60,7 @@
                                 <span class="for-sale-isbn">ISBN-13: {{ $product->book->isbn13 }}</span><br>
                                 <span class="for-sale-isbn">
                                     <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}"
-                                       class="btn primary-btn edit-btn">
+                                       class="btn btn-primary edit-btn">
                                         <i class="fa fa-pencil"></i> Edit
                                     </a>
                                 </span>
@@ -69,7 +69,7 @@
                                       class="delete-form">
                                     {!! csrf_field() !!}
                                     <input type="hidden" name="id" value="{{ $product->id }}">
-                                    <button type="submit" class="btn primary-btn sell-btn">
+                                    <button type="submit" class="btn btn-primary sell-btn">
                                         <i class="fa fa-trash"></i> Delete
                                     </button>
                                 </form>

@@ -244,7 +244,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn primary-btn sell-btn">Update</button>
+                <button type="submit" class="btn btn-primary sell-btn">Update</button>
             </form>
         </div>
     </div>

@@ -1,26 +1,15 @@
 /*** FORM STYLING ***/
 @import '../modules/all';
 
-.row-margin-sm {
-  margin-bottom: $spacing-unit / 4;
-}
-
-.row-margin-md {
-  margin-bottom: $spacing-unit / 2;
-}
-
-.row-margin-lg {
-  margin-bottom: $spacing-unit;
-}
-
 .form-control {
   border-radius: 2px;
+  border-color: $border-color;
   -webkit-box-shadow: none;
   box-shadow: none;
   font-weight: 300;
 
   &:focus {
-    border-color: $input-border-color;
+    border-color: $primary-color-light;
     -webkit-box-shadow: none;
     box-shadow: none;
   }
@@ -37,7 +26,7 @@
 }
 
 .has-success .form-control {
-  border-color: $input-border-color;
+  border-color: $border-color;
   -webkit-box-shadow: none;
   box-shadow: none;
 
@@ -45,5 +34,9 @@
     -webkit-box-shadow: none;
     box-shadow: none;
   }
+}
+
+.input-group-addon {
+  border-radius: 2px;
 }
 

@@ -25,27 +25,29 @@
                 @if($product->isDeleted())
                     <a class="btn btn-default disabled" href="#" role="button">Archived</a>
                 @elseif($product->isInCart(Auth::user()->id))
-                    <a class="btn primary-btn add-cart-btn disabled" href="#" role="button">Added
+                    <a class="btn btn-primary add-cart-btn disabled" href="#" role="button">Added
                         To Cart</a>
                 @elseif(!$product->isSold() && $product->seller == Auth::user())
-                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn primary-btn edit-btn">
+                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}"
+                       class="btn btn-primary edit-btn">
                         <i class="fa fa-pencil"></i> Edit</a>
 
                     <form action="{{ url('/textbook/sell/product/delete') }}" method="post">
                         {!! csrf_field() !!}
                         <input type="hidden" name="id" value="{{ $product->id }}">
-                        <button type="submit" class="btn secondary-btn delete-btn"><i class="fa fa-trash"></i> Delete</button>
+                        <button type="submit" class="btn btn-secondary delete-btn"><i class="fa fa-trash"></i> Delete
+                        </button>
                     </form>
                 @else
                     <form method="post" class="add-to-cart">
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        <input class="btn primary-btn add-cart-btn" type="submit" value="Add to cart">
+                        <input class="btn btn-primary add-cart-btn" type="submit" value="Add to cart">
                     </form>
                 @endif
             @else
                 <span>
                     Please <a data-toggle="modal" href="#login-modal">Login</a> or <a
-            data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.
+                            data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.
                 </span>
             @endif
         </div>
@@ -79,8 +81,8 @@
 
                 <tbody>
                 <tr>
-                    <td>Price</td>
-                    <td class="price">${{ $product->decimalPrice() }}</td>
+                    <td class="col-xs-6">Price</td>
+                    <td class="col-xs-6 price">${{ $product->decimalPrice() }}</td>
                 </tr>
 
                 <!-- General Condition -->

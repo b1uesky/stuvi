@@ -13,7 +13,7 @@
 //#nav-sort {
 //  li {
 //    a {
-//      color: $muted-text-color;
+//      color: $text-color-light;
 //      &:hover {
 //        background-color: #DDDDDD;
 //      }
@@ -32,7 +32,7 @@
 }
 
 #bookshelf-title-subtext {
-  color: $muted-text-color;
+  color: $text-color-light;
   @media(min-width: 990px){
     margin-left: 5px;
   }
@@ -48,7 +48,7 @@
   }
 }
 
-.search-btn {
+.btn-search {
   background: $primary-color;
   border: none;
   height: 34px;
@@ -64,7 +64,7 @@
 }
 
 .search-icon {
-  color: $button-text-color;
+  color: white;
 }
 
 /* BOOKS FOR SALE */

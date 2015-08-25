@@ -30,13 +30,13 @@
                 </p>
             </div>
             <a name="secure"></a>
-            <div class="question-answer">
-                <h3>Is my credit card info secure?</h3>
-                <p>
-                    Yes! We use <a href="https://stripe.com/" target="_blank">Stripe</a> to
-                    secure all credit/debit card transactions.
-                </p>
-            </div>
+            {{--<div class="question-answer">--}}
+                {{--<h3>Is my credit card info secure?</h3>--}}
+                {{--<p>--}}
+                    {{--Yes! We use <a href="https://stripe.com/" target="_blank">Stripe</a> to--}}
+                    {{--secure all credit/debit card transactions.--}}
+                {{--</p>--}}
+            {{--</div>--}}
             <a name="cancel-order"></a>
             <div class="question-answer">
                 <h3>How do I cancel an order?</h3>

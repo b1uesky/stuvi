@@ -18,6 +18,17 @@ use Validator;
 
 class ProductController extends Controller
 {
+    /**
+     * The page for book confirmation after sell search.
+     *
+     * @param $book
+     * @return \Illuminate\View\View
+     */
+    public function confirm($book)
+    {
+        return view('product.confirm')
+            ->withBook($book);
+    }
 
     /**
      * Show the form for creating a new product.

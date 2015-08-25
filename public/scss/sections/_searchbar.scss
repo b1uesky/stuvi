@@ -47,24 +47,7 @@
   border-right: 0;
   width: auto;
   -webkit-appearance: none;
-  color: $body-text-color;
-}
-
-.search-btn {
-  padding: 9px 27px;
-  height: 3em;
-  background: $primary-color;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border: none;
-
-  &:hover {
-    background: lighten($primary-color, 3%);
-  }
-  &:focus {
-    outline: 0 !important;
-    background: lighten($primary-color, 3%);
-  }
+  color: $text-color;
 }
 
 /* XS SCREEN COMPATIBILITY */
