@@ -1,5 +1,7 @@
 @import "../modules/colors";
 
+/* BOOTSTRAP BUTTONS OVERRIDE */
+
 .btn {
   border-radius: 2px;
 }
@@ -46,6 +48,28 @@
   }
 }
 
+.btn-primary.disabled,
+.btn-primary.disabled.active,
+.btn-primary.disabled.focus,
+.btn-primary.disabled:active,
+.btn-primary.disabled:focus,
+.btn-primary.disabled:hover,
+.btn-primary[disabled],
+.btn-primary[disabled].active,
+.btn-primary[disabled].focus,
+.btn-primary[disabled]:active,
+.btn-primary[disabled]:focus,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary,
+fieldset[disabled] .btn-primary.active,
+fieldset[disabled] .btn-primary.focus,
+fieldset[disabled] .btn-primary:active,
+fieldset[disabled] .btn-primary:focus,
+fieldset[disabled] .btn-primary:hover {
+    background-color: $primary-color-light !important;
+    border-color: $primary-color-light !important;
+}
+
 .btn-primary {
   background-color: $primary-color;
   color: $button-text-color;
@@ -57,12 +81,9 @@
     color: $button-text-color;
     border: 1px solid $primary-color !important;
   }
-
-  &:disabled {
-    background-color: $primary-color-light;
-    border-color: $primary-color-light;
-  }
 }
+
+/* CUSTOMIZED BUTTONS */
 
 .btn-secondary {
   background-color: $secondary-color;
