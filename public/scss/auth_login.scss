@@ -42,7 +42,7 @@ button:focus {
 #tabs > li.active > a:focus {
   background-color: $primary-color;
   color: white;
-  border: 1px solid $table-border-color;
+  border: 1px solid $border-color;
 }
 
 /* space between first form input and tabs */

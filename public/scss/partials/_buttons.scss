@@ -12,7 +12,7 @@
 }
 
 .btn-default {
-  color: $body-text-color;
+  color: $text-color;
 }
 
 .primary-btn {
@@ -20,19 +20,18 @@
   color: $button-text-color;
   border: none;
   &:hover, &:focus {
-    background: $button-primary-hover-color;
+    background: $primary-color-light;
     outline: 0 !important;
     color: $button-text-color;
   }
 }
 
 .secondary-btn {
-  background: $secondary-color;
+  background: $salmon;
   color: $button-text-color;
   border: none;
-  margin: 5px;
   &:hover, &:focus{
-    background: $button-secondary-hover-color;
+    background: $salmon-light;
     outline: 0;
     color: $button-text-color;
   }
@@ -44,7 +43,7 @@
   border: none;
 
   &:hover {
-    color: $muted-text-color;
+    color: $text-color-light;
   }
 }
 

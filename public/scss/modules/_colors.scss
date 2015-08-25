@@ -3,6 +3,26 @@
  * Please use these variables for any colors used.
  */
 
+/* COLOR PALLETES */
+$sea-green: #00A896;
+$sea-green-light: #00B2A4;
+
+$tiffany: #81D8D0;
+$tiffany-light: #d9f1f1;
+
+$salmon: #F26F6D;
+$salmon-light: #F27B79;
+
+/* BRAND COLORS */
+$primary-color: $sea-green;
+$primary-color-light: $sea-green-light;
+$second-color: $salmon;
+$second-color-light: $salmon-light;
+
+/* TEXT COLORS */
+$text-color: #50514f;
+$text-color-light: #979995;
+
 /* BACKGROUND COLORS */
 $background-color: #ffffff;
 $background-hover-color: #f5f5f5;
@@ -10,43 +30,8 @@ $background-light-grey: #cccccc;
 $background-grey: #aaa;
 $background-dark: #444;
 
-/* TEXT COLORS */
-$body-text-color: #565a5c;
-$muted-text-color: grey;
-$heading-text-color: whitesmoke;
-
-/* GENERAL COLORS */
-$primary-color: #00A496;
-$accent-color: #69C8C8;
-$secondary-color: #F16521;
-$light-orange-color: #F9AA62;
-$error-color: #ca000a;
-$border-color: #eee;
+/* UTILITY COLORS */
 $transparent: rgba(0, 0, 0, 0);
+$button-text-color: #ffffff;
+$border-color: #ddd;
 $price-color: #F14147;
-$light-turquoise: #d9f1f1;
-
-/* HEADER/NAV COLORS */
-$nav-background-color: #fff;
-$nav-text-color: black;              // for links
-$nav-tab-active-border-bottom-color: #90B4DF;
-
-/* FOOTER COLORS */
-$footer-background-color: #292c2f;
-$footer-text-color: white;
-$footer-social-icon-color: null;
-$footer-copyright-text-color: #8f9296;
-
-/* TABLE COLORS */
-$table-background-color: white;
-$table-border-color: #DDDDDD;
-
-/* FORM COLORS */
-$input-border-color: #ccc;
-
-/* BUTTON COLORS */
-$button-text-color: white;
-$cart-remove-color: #0044CC;
-$button-primary-hover-color: #00B2A4;
-$button-secondary-hover-color: #FF6720;
-$button-shadow-color: #5B86AA;
