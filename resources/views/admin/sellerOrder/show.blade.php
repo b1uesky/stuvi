@@ -6,6 +6,7 @@
 
     <h1>Seller Order Detail</h1>
 
+    <p><strong>Overview</strong></p>
     <table class="table table-hover">
         <tr>
             <th>ID</th>
@@ -33,6 +34,10 @@
             <th>Updated At</th>
             <td>{{ $seller_order->updated_at }}</td>
         </tr>
+    </table>
+
+    <p><strong>Delivery</strong></p>
+    <table class="table table-hover">
         <tr>
             <th>Scheduled Pickup Time</th>
             <td>{{ $seller_order->scheduled_pickup_time }}</td>
@@ -54,11 +59,22 @@
         </tr>
         <tr>
             <th>Courier</th>
-            <td>@if ($seller_order->courier){{ $seller_order->courier->first_name }} {{ $seller_order->courier->last_name }}@endif</td>
+            <td>@if ($seller_order->courier)
+                    <a href="{{ url('admin/user/'.$seller_order->courier->id) }}">{{ $seller_order->courier->first_name }} {{ $seller_order->courier->last_name }}</a>
+                @endif
+            </td>
         </tr>
         <tr>
             <th>Pickup Time</th>
             <td>{{ $seller_order->pickup_time }}</td>
+        </tr>
+    </table>
+
+    <p><strong>Payout</strong></p>
+    <table class="table table-hover">
+        <tr>
+            <th>Payout Item ID</th>
+            <td>{{ $seller_order->payout_item_id }}</td>
         </tr>
     </table>
 
