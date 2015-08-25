@@ -26,10 +26,10 @@
 
 
         <!-- Search Bar Container-->
-        <div class="container-fluid container-image">
+        <div class="container-fluid container-image text-center">
             <div class="container">
             <div class="row">
-                <h1 id="title">Buy Textbooks</h1>
+                <h1 class="title">Buy Textbooks</h1>
                 <div class="searchbar default-searchbar">
                     <form action="/textbook/buy/search" method="get">
                         <div class="searchbar-input-container searchbar-input-container-query">
