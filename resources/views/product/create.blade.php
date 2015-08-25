@@ -213,7 +213,7 @@
                                 <div class="panel-body">
                                     <div class="container-fluid">
                                         <div class="row">
-                                            <div class="col-md-6 col-md-offset-3">
+                                            <div class="col-sm-8 col-sm-offset-2">
                                                 {{--your price--}}
                                                 <div class="form-group">
                                                     <label>Sale Price</label>
