@@ -27,81 +27,21 @@
 
 /** TEXTBOOK LIST HEADER **/
 
-.textbook-list-header {
-  width: 100%;
-  height: 30px;
-}
-
-.textbook-list-title {
-  display: inline;
-  float: left;
-}
-
-.textbook-list-results {
-  display: inline;
-  float: right;
-  margin-top: 40px;
-}
-
 /* TEXTBOOK LIST */
-.textbook-img-container {
-  width: 100px;
-}
 
-.textbook-img {
-  width: 100px;
-  height: 135px;
-}
-
-.textbook-list {
-  max-width: 800px;
-}
-
-.textbook-table {
-  width: 100%;
-  /* white space bottom fix */
-  height: 70vh;
-}
-
-.textbook-item {
-  font-size: small
-}
-
-.textbook-info-1 {
-  width: 350px;
-}
-
-.table-offset {
-  width: 200px;
-}
-
-.textbook-title {
-  font-size: medium;
-  font-weight: bold;
-}
-
-.textbook-pub-date {
-  font-size: medium;
-}
-
-.textbook-price {
-  color: $price-color;
-  font-weight: 500;
-}
-
-@media (max-width: 970px) {
-  .home {
-    max-width: 500px;
-  }
-
-  .textbook-list {
-    max-width: 650px;
-  }
-
-  #details, #textbook {
-    text-align: center;
-  }
-}
+//@media (max-width: 970px) {
+//  .home {
+//    max-width: 500px;
+//  }
+//
+//  .textbook-list {
+//    max-width: 650px;
+//  }
+//
+//  #details, #textbook {
+//    text-align: center;
+//  }
+//}
 
 #pagination {
   text-align: center;

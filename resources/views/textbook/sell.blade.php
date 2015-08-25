@@ -31,7 +31,7 @@
 
             <div class="container">
             <div class="row">
-                <h1 id="title">Sell Your Textbooks</h1>
+                <h1 class="title">Sell Your Textbooks</h1>
                     <div class="searchbar default-searchbar">
                         <form action="/textbook/sell/search" method="post" id="form-isbn">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -58,7 +58,7 @@
                                    placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
                         </div>
                         <div class="xs-guest-search-bar-input-submit">
-                            <button class="btn primary-btn" id="xs-sell-search-btn" type="submit"
+                            <button class="btn primary-btn btn-lg btn-block" id="xs-sell-search-btn" type="submit"
                                     name="search" value="Search"> Search
                             </button>
                         </div>
@@ -71,66 +71,54 @@
 
         <section class="textbook-intro">
             <div class="container">
-                <!-- Row 1 -->
+
                 <div class="row">
-                    <!-- Row 1 Col 1 -->
-                    <!-- xs: stack-->
-                    <div class="col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id="shrink-xs">
-                        <i class="material-icons google-img">school</i>
+                    <div class="col-sm-6">
+                        {{--<div>Icon made by <a href="http://handdrawngoods.com" title="Hand Drawn Goods">Hand Drawn Goods</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>--}}
+                        <img class="img-responsive img-intro center-block" src="{{ asset('/img/icon/worldwide3.png') }}" alt="placeholder">
                     </div>
-                    <!-- Row 1 Col 2 -->
-                    <div class="col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
-                         id="shrink-xs">
-                        <h3 id="h3-1">Sell to your classmates</h3>
+                    <div class="col-sm-6">
+                        <h3>Sell to your classmates</h3>
 
                         <p>Sell to students near you with the same classes. We make the the entire process smooth and
-                            easy, so you
-                            can spend less time selling and more time doing the things you enjoy.</p>
+                            easy, so you can spend less time selling and more time doing the things you enjoy.</p>
                     </div>
                 </div>
+
                 <div class="row">
-                    <!-- Row 2 Col 1 -->
-                    <!-- xs: stack-->
-                    <!-- col-xs-push/pull changes the ordering when it is not xs -->
-                    <!-- need to fix xs -->
-                    <div class="col-xs-12 col-sm-3 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-sm-push-7"
-                         id="shrink-xs">
-                        <img class="textbook-bottom-img" src="{{ asset('/img/textbook/clock.png') }}" alt="Clock">
+                    <div class="col-sm-6 col-sm-push-6">
+                        {{--<div>Icon made by <a href="http://handdrawngoods.com" title="Hand Drawn Goods">Hand Drawn Goods</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>--}}
+                        <img class="img-responsive img-intro center-block" src="{{ asset('/img/icon/dailycalendar20.png') }}" alt="placeholder">
                     </div>
-                    <!-- Row 2 Col 2 -->
-                    <div class="col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-pull-4"
-                         id="shrink-xs">
-                        <h3 id="h3-2">Select your pickup time</h3>
+
+                    <div class="col-sm-6 col-sm-pull-6">
+                        <h3>Select your pickup time</h3>
 
                         <p>
                             You will be notified once your book has been sold. Then you can select a time
                             for us to come pickup your book. You will then be paid via Paypal once the book is delivered.
                         </p>
                     </div>
+
                 </div>
+
                 <div class="row">
-                    <!-- Row 1 Col 1 -->
-                    <!-- xs: stack-->
-                    <div class="col-sm-4 col-xs-offset-0 col-sm-offset-0 col-md-offset-1" id="shrink-xs">
-                        <img class="textbook-bottom-img" src="{{ asset('/img/textbook/dollar.png') }}"
-                             alt="Truck">
+                    <div class="col-sm-6">
+                        {{--<div>Icon made by <a href="http://handdrawngoods.com" title="Hand Drawn Goods">Hand Drawn Goods</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>--}}
+                        <img class="img-responsive img-intro center-block" src="{{ asset('img/icon/currency36.png') }}" alt="">
                     </div>
-                    <!-- Row 1 Col 2 -->
-                    <div class="col-xs-12 col-sm-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-1 col-lg-offset-0"
-                         id="shrink-xs">
-                        <h3 id="h3-1">Save Money!</h3>
+                    <div class="col-sm-6">
+                        <h3>Save Money!</h3>
 
                         <p>There's no need to pay for packaging supplies and shipping. We take care of the entire
                             process. With
                             <strong>NO</strong> fee, you can spend the extra dough on important things such as:
                             underage alcohol consumption,
                             laser hair removal, bail fees, life insurance scams, and more!
-
                         </p>
                     </div>
                 </div>
             </div>
-            <!-- end container -->
         </section>
 
 @endsection
