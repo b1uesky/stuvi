@@ -24,6 +24,8 @@
             @if(Auth::check())
                 @if($product->isDeleted())
                     <a class="btn btn-default disabled" href="#" role="button">Archived</a>
+                @elseif($product->sold)
+                    <a class="btn btn-default disabled" href="#" role="button">Sold</a>
                 @elseif($product->isInCart(Auth::user()->id))
                     <a class="btn btn-primary add-cart-btn disabled" href="#" role="button">Added
                         To Cart</a>
