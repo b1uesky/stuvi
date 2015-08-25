@@ -416,11 +416,11 @@
                             {{--<li role="presentation" class="active"><a href="#credit-card" aria-controls="credit-card"--}}
                                                                       {{--role="tab" data-toggle="tab">Credit Card</a></li>--}}
                             <li role="presentation" class="active"><a href="#paypal" aria-controls="paypal" role="tab"
-                                                       data-toggle="tab"></a></li>
+                                                       data-toggle="tab">PayPal</a></li>
                         </ul>
 
                         <!-- Tab panes -->
-                        <div class="tab-content payment-method-tabs">
+                        <div class="tab-content">
                             {{--<div role="tabpanel" class="tab-pane fade in active" id="credit-card">--}}
                                 {{--<div class="payment-card-container">--}}
                                     {{--<div class="row">--}}
@@ -466,7 +466,7 @@
                                     {{--</div>--}}
                                 {{--</div>--}}
                             {{--</div>--}}
-                            <div role="tabpanel" class="tab-pane fade" id="paypal">
+                            <div role="tabpanel" class="tab-pane fade in active" id="paypal">
                                 <div class="paypal-content">
                                     <img class="center-block img-responsive"
                                          src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png"
