@@ -281,13 +281,18 @@ class TextbookController extends Controller
             {
                 $google_book = new GoogleBooks(Config::get('services.google.books.api_key'));
 
-                if ($google_book->searchByISBN($isbn))
+                // error on searching (e.g. item not found)
+                if (!$google_book->searchByISBN($isbn))
                 {
-                    $book = Book::createFromGoogleBook($google_book);
-
-                    return view('textbook.show')
-                        ->withBook($book);
+                    return view('textbook.list')
+                        ->with('books', [])
+                        ->with('query', $isbn);
                 }
+
+                $book = Book::createFromGoogleBook($google_book);
+
+                return view('textbook.show')
+                    ->withBook($book);
             }
         }
         else

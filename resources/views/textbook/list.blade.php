@@ -21,17 +21,6 @@
                 <h1>Books</h1>
             </div>
 
-            {{--@if(trim($query) != "")--}}
-            {{--<div class="textbook-list-results">--}}
-            {{--{{ count($books) }} results for {{ $query }}--}}
-            {{--</div>--}}
-            {{--@else--}}
-            {{--<div class="textbook-list-results">--}}
-            {{--{{ count($books) }} results--}}
-            {{--</div>--}}
-            {{--@endif--}}
-
-
             @forelse($books as $book)
                 <div class="margin-large border-bottom">
                     <table class="table table-no-border">
@@ -108,9 +97,12 @@
 
     </div>
 
-    <div id="pagination">
-        {!! $books->appends(Request::only('query'))->render() !!}
-    </div>
+    @if (!empty($books))
+        <div id="pagination">
+            {!! $books->appends(Request::only('query'))->render() !!}
+        </div>
+    @endif
+
 @endsection
 
 @section('javascript')
