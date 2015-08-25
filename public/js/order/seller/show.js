@@ -97,13 +97,15 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data, status) {
                 //console.log(data['address']);
-                $this = $this.parents().find('.address-list');
+                $this = $this.closest('.seller-address-book-box');
                 var address = {};
                 address.addressee = $.trim($this.find('.seller-address-addressee').text());
                 address['address-line'] = $.trim($this.find('.seller-address-address-line').text());
                 address.city = $.trim($this.find('.seller-address-city').text());
                 address.state = $.trim($this.find('.seller-address-state').text());
                 address.zip = $.trim($this.find('.seller-address-zip').text());
+                address.country_name = $.trim($this.find('.seller-address-country').text());
+                address.phone_number = $.trim($this.find('.seller-address-phone').text());
 
                 updateAddress($(".seller-address"), address);
 
@@ -142,11 +144,11 @@ $(document).ready(function () {
         });
     });
 
-    $("#delete-address").click(function(e){
+    $(".deleteThisAddress").click(function(e){
         e.preventDefault();
         var $this = $(this);
-        var address_id = $this.parentsUntil(".modal-dialog").find('input[name=address_id]').val();
-        var address_panel = $(".form-update-default-address").find("input[value="+address_id+"]").closest('div').parent();
+        var address_id = $this.parent().find('input[name=address_id]').val();
+        var address_panel = $this.parent();
 
         $.ajax({
             type: "POST",
@@ -169,7 +171,6 @@ $(document).ready(function () {
     $(".add-address-btn").click(function(e){
         e.preventDefault();
         $("#seller-address-form").find("input[type=text], input[name=address_id], input[name=phone_number]").val("");
-        $("#delete-address").hide();
         $("#address-form-modal").modal("show");
     });
 
@@ -261,7 +262,7 @@ $(document).ready(function () {
         $('.seller-address-book').slideToggle();
 
         // toggle button text
-        if ($('.btn-change-address').text() == 'Change') {
+        if ($.trim($('.btn-change-address').text()) === 'Change') {
             $('.btn-change-address').text('Cancel');
         } else {
             $('.btn-change-address').text('Change');

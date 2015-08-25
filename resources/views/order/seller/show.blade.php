@@ -71,9 +71,14 @@
                                 <br>
 
                                 @if ($seller_order->isPickupConfirmable())
-                                    <div>
-                                        <button type="button" class="btn primary-btn btn-change-address">Change
+                                    <div class="row">
+                                        <button type="button" class="btn primary-btn btn-change-address col-md-1">Change
                                         </button>
+                                        {{-- Add a new address --}}
+                                        <div id="add-new-address-btn-1">
+                                            <button class="btn primary-btn add-address-btn col-md-1">Add</button>
+                                            <br><br>
+                                        </div>
                                     </div>
                                     <br>
                                 @endif
@@ -81,7 +86,8 @@
                                 {{-- Invisible by default. Show after click the change button. --}}
                                 <div class="seller-address-book">
                                     @foreach($seller_order->seller()->addresses as $address)
-                                        <div class="col-md-3 col-sm-5 seller-address-book-box">
+                                        <div class="thumbnail col-md-3 col-sm-5 seller-address-book-box">
+                                            <button type="button" class="close deleteThisAddress" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             <span class="seller-address-addressee">{{ $address->addressee }}</span>
                                             <br>
                                 <span class="seller-address-address-line">
@@ -113,7 +119,7 @@
                                                            class="btn btn-default"/>
                                                 </form>
 
-                                                {{-- TODO: Edit address --}}
+                                                {{-- Edit address --}}
                                                 <form action="" method="post"
                                                       class="form-edit-address col-xs-1 col-xs-offset-1 col-sm-offset-2 "
                                                       id="edit-address-form">
@@ -126,13 +132,6 @@
                                         </div>
 
                                     @endforeach
-
-                                    {{-- Add a new address --}}
-                                    <div id="add-new-address-btn-1">
-                                        <button class="btn primary-btn add-address-btn">Add a new address</button>
-                                        <br><br>
-
-                                    </div>
                                 </div>
                             </div>
                             {{--@elseif($order_has_address)--}}
@@ -253,8 +252,6 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close
-                                        </button>
-                                        <button type="button" id="delete-address" class="btn btn-primary">Delete
                                         </button>
                                         <button type="button" id="submit-address-form" class="btn btn-primary">Save
                                             changes
