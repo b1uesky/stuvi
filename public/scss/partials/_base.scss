@@ -78,17 +78,20 @@ body {
 
 /* Bootstrap Override */
 a {
+  text-decoration: none !important;
   color: $primary-color;
 
-  &:hover {
+  &:hover, &:focus {
     color: $primary-color;
-  }
-
-  &:focus {
     outline: none;
   }
+}
+
+.nav-pills>li>a {
+  border-radius: 2px;
 }
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
   background-color: $primary-color;
 }
+
