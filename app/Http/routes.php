@@ -134,7 +134,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::get  ('/seller/assignAddress',       'SellerOrderController@assignAddress');
     Route::post ('/seller/storeAddress',        'SellerOrderController@storeAddress');
     Route::get  ('/seller/{id}/confirmPickup',  'SellerOrderController@confirmPickup');
-    Route::post ('/seller/transfer',            'SellerOrderController@transfer');
+    Route::post ('/seller/{id}/payout',         'SellerOrderController@payout');
 });
 
 // cart
