@@ -2,8 +2,8 @@
 
 // order/buyer/confirmation.blade.php
 
-@import "modules/all";
-@import "sections/breadcrumb";
+@import "../modules/all";
+@import "../sections/breadcrumb";
 
 .cart-line {
   max-width: 50%;

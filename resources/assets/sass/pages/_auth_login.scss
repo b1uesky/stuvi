@@ -2,7 +2,7 @@
 
 /* Used by login.blade.php and register.blade.php and password.blade.php */
 
-@import "modules/all";
+@import "../modules/all";
 
 button:focus {
   outline: 0 !important;

@@ -3,7 +3,7 @@
 /* (c) Stuvi LLC 2015
 * Used for the home page styling.*/
 
-@import "modules/all";
+@import "../modules/all";
 
 .container-header {
   position: absolute;
@@ -137,7 +137,6 @@
 
 
 .header-text {
-  font-family: $title-font-family;
   color: white;
   font-size: 5.5em;
 
@@ -154,7 +153,6 @@
 }
 
 .tagline {
-  font-family: $title-font-family;
   color: whitesmoke;
 
   @media(min-width: 2500px){
