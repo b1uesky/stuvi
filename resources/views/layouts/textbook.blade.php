@@ -6,8 +6,10 @@
 <body>
 
 <div class="container-wrapper">
-    {{-- Nav bar --}}
-    @include('includes.textbook.header')
+    @section('textbook-header')
+        {{-- Nav bar --}}
+        @include('includes.textbook.header')
+    @show
 
     {{-- Session flash messages --}}
     @include('includes.alerts')

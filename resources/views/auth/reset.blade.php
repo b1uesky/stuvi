@@ -2,10 +2,6 @@
 
 @section('title','Reset your password')
 
-@section('css')
-	<link rel="stylesheet" href="{{asset('/css/auth_reset.css')}}" type="text/css">
-@endsection
-
 @section('content')
 
 <div class="container-fluid">

@@ -1,7 +1,7 @@
 /* CSS FOR EDITING YOUR PROFILE */
 
-@import "modules/all";
-@import "sections/user/user-profile";
+@import "../modules/all";
+@import "../partials/user-profile";
 
 #bio{
   max-width: 500px;

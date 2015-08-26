@@ -4,10 +4,6 @@
 
 @section('title',$book->title)
 
-@section('css')
-    <link href="{{ asset('/css/textbook_show.css') }}" rel="stylesheet">
-@endsection
-
 @section('searchbar')
     @include('includes.textbook.searchbar')
 @endsection

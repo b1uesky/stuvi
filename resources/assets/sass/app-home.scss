@@ -1,6 +1,8 @@
 // base scss for home page
 // navigation is excluded because the home page has a different header
 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
+
 
 /* PARTIALS */
 @import 'partials/base';
@@ -10,9 +12,10 @@
 @import "partials/tables";
 @import "partials/modals";
 @import "partials/autocomplete";
+@import 'partials/alert';
+@import 'partials/footer';
+@import "partials/searchbar";
+@import "partials/loader";
 
-/* SECTIONS */
-@import 'sections/alert';
-@import 'sections/footer';
-@import "sections/searchbar";
-@import "sections/loader";
+/* PAGES */
+@import 'pages/home';

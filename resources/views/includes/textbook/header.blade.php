@@ -1,12 +1,8 @@
 {{-- Navigation Bar --}}
 
-{{-- Styling can be found in sass/sections/_navigation.sass--}}
-
-{{-- Header.blade.php Variables--}}
-<?php $url = Request::url() ?>
 
 <header>
-    <nav class="navbar navbar-default" id="nav" role="navigation">
+    <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <!-- Toggle Nav into hamburger menu for small screens -->
@@ -23,7 +19,7 @@
 
                 <div class="logo-container">
                     {{-- If on homepage, show the home logo which has white text--}}
-                    @if($url == url('/home') or $url == url('/'))
+                    @if(Request::url() == url('/home') or Request::url() == url('/'))
                         <a href="{{url('/home')}}">
                             <img src="{{asset('/img/logo-home-md.png')}}" class="img-responsive" alt="stuvi logo">
                         </a>

@@ -3,7 +3,6 @@
 @section('title', 'About us')
 
 @section('css')
-    <link href="{{ asset('/css/about.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('libs/ihover/src/ihover.min.css') }}">
 @endsection
 

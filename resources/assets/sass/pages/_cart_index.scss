@@ -1,8 +1,8 @@
 /* CSS for /cart/index.blade.php */
-@import "modules/all";
-@import "partials/tables";
-@import "partials/image";
-@import "sections/breadcrumb";
+@import "../modules/all";
+@import "../partials/tables";
+@import "../partials/image";
+@import "../partials/breadcrumb";
 
 .back-row {
   margin-top: 10px;

@@ -1,17 +1,8 @@
-/* SCSS for navigation bar. See _colors.scss and _footer.scss */
-
-/* VARIABLES */
-
-/*  CSS FOR NAVIGATION BAR  */
 @import '../modules/all';
-
-a:focus {
-  outline: 0;
-}
 
 /******* NAVIGATION BAR *******/
 
-#nav {
+.navbar-default {
   background: white;
   border-radius: 0;
   border: none;
@@ -27,18 +18,6 @@ a:focus {
     color: $text-color;
     background-color: $background-hover-color;
   }
-
-  @media(max-width: 767px){
-    text-align: center;
-  }
-}
-
-.active-nav {
-  background-color: white;
-  @media (min-width: 768px) {
-    border-bottom: 5px solid #{$primary-color};
-  }
-  color: $primary-color !important;
 }
 
 
@@ -52,11 +31,6 @@ a:focus {
   @media (max-width: 767px) {
     display: none;
   }
-}
-
-
-.nav-login {
-  height: 50px;
 }
 
 /******* NAVIGATION HAMBURGER MENU *******/

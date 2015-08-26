@@ -16,10 +16,6 @@ $website    =   Auth::user()->profile->website;
 @extends('layouts.textbook')
 @section('title', 'Profile - '.$first_name.' '.$last_name )
 
-@section('css')
-    <link href="{{ asset('/css/user_profile.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
     <!-- User template has the second nav bar and the profile side bar -->
     @include('user-template')

@@ -2,10 +2,6 @@
 
 @section('title','Activation Required')
 
-@section('css')
-    <link rel="stylesheet" href="{{asset('/css/user_waitForActivation.css')}}">
-@endsection
-
 @section('content')
 
     <div class="container-fluid container-main">
@@ -23,7 +19,4 @@
                     your code</a>.</p>
         </div>
     </div>
-@endsection
-
-@section('javascript')
 @endsection
