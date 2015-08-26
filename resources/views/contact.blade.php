@@ -2,10 +2,6 @@
 
 @section('title', 'Contact us')
 
-@section('css')
-    <link href="{{ asset('/css/contact.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
 
     <div id="contact-main-container">

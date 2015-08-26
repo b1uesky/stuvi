@@ -1,0 +1,33 @@
+/*********  FAQ PAGE  *********/
+@import "../modules/all";
+
+.faq-container {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  min-height: 90vh;
+}
+
+.faq-list {
+  list-style: none;
+  padding-left: 2px;
+  li {
+    margin-bottom: 10px;
+    a {
+      color: $primary-color;
+    }
+  }
+}
+
+.qa-container {
+  h2 {
+    color: $primary-color;
+  }
+}
+
+.question-answer {
+  margin-bottom: 40px;
+}
+
+.faq-line {
+  border-color: $text-color-light;
+}

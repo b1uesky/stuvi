@@ -1,0 +1,49 @@
+/* CSS FOR EDITING YOUR PROFILE */
+
+@import "../modules/all";
+@import "../partials/user-profile";
+
+#bio{
+  max-width: 500px;
+  max-height: 300px;
+}
+
+.edit-pro-labels{
+
+}
+
+.profile-content{
+  min-height: 900px !important;
+  overflow: auto;
+}
+
+.edit-pro{
+  max-width: 700px;
+}
+
+.edit {
+  margin: 0 !important;
+  max-height: 0;
+}
+
+.profile-usermenu{
+  margin-top: 0 !important;
+}
+
+.align{
+  padding-top:6px;
+}
+
+label{
+  text-align:left !important;
+}
+
+
+#save-info-btn {
+  width: 150px;
+  padding: 12px;
+}
+/*
+#school{
+  color: $text-color-light;
+}*/

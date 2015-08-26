@@ -1,0 +1,129 @@
+@charset "utf-8";
+/* CSS Document */
+/* (c) Stuvi LLC 2015
+* Used for the home page styling.*/
+@import "../modules/all";
+
+.container-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.container-bg {
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url('../img/bg/wooden-table.jpg') no-repeat center;
+  background-size: cover;
+  padding: 0;
+  height: 600px;
+}
+
+.container-top-half {
+  position: relative;
+  height: 550px;
+  top: 50px;
+  padding-bottom: 102px;
+
+  @media (max-width: 767px) {
+    padding-bottom: 208px;
+  }
+}
+
+.container-text {
+  height: 100%;
+  width: 100%;
+}
+
+.container-search {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: $spacing-unit 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* TRANSPARENT NAVIGATION */
+
+#navbar-transparent {
+  position: absolute;
+  top: 0;
+  z-index: 8;
+  width: 100%;
+
+  @media(max-width: 767px) {
+    position: relative;
+  }
+}
+
+#navbar-transparent .navbar-default {
+  background-color: $transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#navbar-transparent .navbar-default .navbar-nav > li > a {
+  color: white;
+
+  &:hover {
+    color: white;
+    background-color: $transparent;
+  }
+
+  &:focus {
+    color: white;
+  }
+
+  @media(max-width: 767px) {
+    color: $text-color;
+    &:hover, &:focus {
+      color: $primary-color;
+    }
+  }
+}
+
+#navbar-transparent .navbar-default .navbar-nav > .open > a {
+  background-color: $transparent;
+
+  &:hover, &:focus {
+    background-color: $transparent;
+    color: white;
+  }
+}
+
+/* HEADER TEXT */
+
+.header-text {
+  color: white;
+  font-size: 5.5em;
+
+  @media(min-width: 2500px) {
+    font-size: 10em;
+  }
+
+  @media(max-width: 767px) {
+    font-size: 5em;
+  }
+  @media(max-width: 555px) {
+    font-size: 4em;
+  }
+}
+
+.tagline {
+  color: whitesmoke;
+
+  @media(min-width: 2500px) {
+    font-size: 3em;
+  }
+
+  @media(max-width: 359px) {
+    font-size: 1em;
+  }
+}
+
+/******** BOTTOM HALF ********/
+
+.jumbotron {
+  margin-bottom: 0;
+  background-color: white;
+}
+

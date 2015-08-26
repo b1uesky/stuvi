@@ -4,3 +4,4 @@ vendor/
 **.DS_Store
 public/libs
 public/css
+node_modules

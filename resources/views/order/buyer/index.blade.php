@@ -4,10 +4,6 @@
 
 @section('title', 'Your orders')
 
-@section('css')
-    <link href="{{ asset('/css/order_index.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
 
     <div class="container">

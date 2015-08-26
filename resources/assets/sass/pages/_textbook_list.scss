@@ -1,0 +1,59 @@
+/******* TEXTBOOK SEARCH LIST PAGE *******/
+/* Used for list.blade.php*/
+
+@import "../modules/all";
+@import "../partials/autocomplete";
+@import "../partials/searchbar";
+
+/* TOP SECTION */
+
+/* Header */
+#search-term{
+  font-size: 2em;
+  @media(min-width: 970px){
+    padding-left: 4%;
+  }
+}
+
+
+/** TEXTBOOK SEARCH LIST **/
+
+.textbook-list-container {
+  background-color: $background-color;
+  h1 {
+    margin-left: 30px;
+  }
+}
+
+/** TEXTBOOK LIST HEADER **/
+
+/* TEXTBOOK LIST */
+
+//@media (max-width: 970px) {
+//  .home {
+//    max-width: 500px;
+//  }
+//
+//  .textbook-list {
+//    max-width: 650px;
+//  }
+//
+//  #details, #textbook {
+//    text-align: center;
+//  }
+//}
+
+#pagination {
+  text-align: center;
+  .active {
+    span {
+      background-color: $primary-color;
+      border-color: $primary-color;
+    }
+  }
+  li {
+    a {
+      color: $primary-color;
+    }
+  }
+}

@@ -5,10 +5,6 @@
 
 @section('title', 'Create a textbook')
 
-@section('css')
-    <link href="{{ asset('/css/textbook_create.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
 
 <!-- top container..determines background -->

@@ -2,10 +2,6 @@
 
 @section('title', 'Order #'.$buyer_order->id)
 
-@section('css')
-    <link href="{{ asset('/css/order_show.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
 
             <!-- order details -->

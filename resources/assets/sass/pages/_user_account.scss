@@ -1,0 +1,27 @@
+/*  CSS FOR account.blade.php */
+
+@import "../modules/all";
+@import "../partials/user-profile";
+
+.quick-links,
+.account-edit{
+  padding-right: 0%;
+  max-width: 700px;
+}
+
+.control-label {
+  text-align: left !important;
+}
+
+/****** EDIT INFO ******/
+
+#save-info-btn {
+  width: 150px;
+  padding: 12px;
+  margin: 0;
+}
+
+.alert{
+  padding: 5px;
+  max-width: 90%;
+}
