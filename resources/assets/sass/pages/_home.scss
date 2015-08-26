@@ -2,7 +2,6 @@
 /* CSS Document */
 /* (c) Stuvi LLC 2015
 * Used for the home page styling.*/
-
 @import "../modules/all";
 
 .container-header {
@@ -19,7 +18,7 @@
   height: 600px;
 }
 
-.container-content {
+.container-top-half {
   position: relative;
   height: 550px;
   top: 50px;
@@ -43,111 +42,68 @@
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+/* TRANSPARENT NAVIGATION */
 
-/* NAVIGATION */
-
-//#nav {
-//  background-color: $transparent;
-//  border: none;
-//  @media(max-width: 767px){
-//    background-color: $background-color;
-//  }
-//}
-//
-//#navbar-container{
-//  position: absolute;
-//  top: 0;
-//  z-index: 8;
-//  width: 100%;
-//  @media(max-width: 767px){
-//    position: relative;
-//  }
-//}
-//
-//.logo-container {
-//  width: 120px;
-//  height: 48px;
-//  img {
-//    width: 100%;
-//    height: auto;
-//  }
-//  @media (max-width: 767px) {
-//    display: none;
-//  }
-//}
-//
-//.navbar-default .navbar-nav>li>a {
-//  color: white;
-//
-//  &:hover {
-//    color: white;
-//    background-color: $transparent;
-//  }
-//
-//  &:focus {
-//    color: white;
-//  }
-//
-//  @media(max-width: 767px){
-//    text-align: center;
-//    color: $text-color;
-//    &:hover, &:focus{
-//      color: $primary-color;
-//    }
-//  }
-//}
-//
-//.navbar-default .navbar-nav>.open>a {
-//  background-color: $transparent;
-//
-//  &:hover, &:focus {
-//    background-color: $transparent;
-//    color: white;
-//  }
-//}
-
-/* NAVIGATION HAMBURGER MENU */
-
-#xs-screen-logo-link{
+#navbar-transparent {
   position: absolute;
-  left:0;
-  @media(min-width: 767px){
-    visibility: hidden;
+  top: 0;
+  z-index: 8;
+  width: 100%;
+
+  @media(max-width: 767px) {
+    position: relative;
   }
 }
 
-#xs-screen-logo-img{
-  height: 50px;
-  width: auto;
+#navbar-transparent .navbar-default {
+  background-color: $transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
+#navbar-transparent .navbar-default .navbar-nav > li > a {
+  color: white;
 
-#nav-toggle-collapse {
-  border: none;
-  z-index: 50;
-  margin-left: 10px;
+  &:hover {
+    color: white;
+    background-color: $transparent;
+  }
+
+  &:focus {
+    color: white;
+  }
+
+  @media(max-width: 767px) {
+    color: $text-color;
+    &:hover, &:focus {
+      color: $primary-color;
+    }
+  }
+}
+
+#navbar-transparent .navbar-default .navbar-nav > .open > a {
+  background-color: $transparent;
+
   &:hover, &:focus {
-    background: none;
-  }
-  .fa-bars {
-    color: $primary-color;
-    font-size: 1.5em;
+    background-color: $transparent;
+    color: white;
   }
 }
 
+/* HEADER TEXT */
 
 .header-text {
   color: white;
   font-size: 5.5em;
 
-  @media(min-width: 2500px){
+  @media(min-width: 2500px) {
     font-size: 10em;
   }
 
-  @media(max-width: 767px){
+  @media(max-width: 767px) {
     font-size: 5em;
   }
-  @media(max-width: 555px){
+  @media(max-width: 555px) {
     font-size: 4em;
   }
 }
@@ -155,12 +111,12 @@
 .tagline {
   color: whitesmoke;
 
-  @media(min-width: 2500px){
+  @media(min-width: 2500px) {
     font-size: 3em;
   }
 
-  @media(max-width: 359px){
-  font-size: 1em;
+  @media(max-width: 359px) {
+    font-size: 1em;
   }
 }
 

@@ -48,21 +48,6 @@
   }
 }
 
-.btn-search {
-  background: $primary-color;
-  border: none;
-  height: 34px;
-  width: 38px;
-  margin-left: 0 !important;
-  &:hover{
-    background: $primary-color;
-  }
-  &:focus{
-    outline: 0 !important;
-    background: $primary-color;
-  }
-}
-
 .search-icon {
   color: white;
 }
