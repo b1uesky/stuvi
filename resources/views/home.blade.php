@@ -4,9 +4,6 @@
 @section('description', "Student Village, college service provider")
 @section('title', 'Boston Textbook Marketplace & More Coming Soon!')
 
-@section('css')
-@endsection
-
 @section('content')
 
     <div class="container-header">

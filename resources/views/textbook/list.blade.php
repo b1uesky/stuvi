@@ -2,10 +2,6 @@
 
 @section('title', 'Search results for '.$query)
 
-@section('css')
-    <link href="{{ asset('/css/textbook_list.css') }}" rel="stylesheet">
-@endsection
-
 @section('searchbar')
     @include('includes.textbook.searchbar')
 @endsection

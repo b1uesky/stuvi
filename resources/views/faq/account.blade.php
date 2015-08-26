@@ -2,10 +2,6 @@
 
 @section('title', 'FAQ - Account')
 
-@section('css')
-    <link href="{{ asset('/css/faq.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
     <div class="container faq-container">
         @include('faq.side-nav')

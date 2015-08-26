@@ -4,10 +4,6 @@
 @extends('layouts.textbook')
 @section('title', 'Email - '.Auth::user()->first_name.' '.Auth::user()->last_name )
 
-@section('css')
-    <link href="{{ asset('/css/user_email.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
     <!-- User template has the second nav bar and the profile side bar -->
     @include('user-template')

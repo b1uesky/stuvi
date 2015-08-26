@@ -5,7 +5,6 @@
 @section('title', 'Order details - Order #'.$seller_order->id)
 
 @section('css')
-    <link href="{{ asset('/css/order_show.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('libs/datetimepicker/jquery.datetimepicker.css') }}">
 @endsection
 

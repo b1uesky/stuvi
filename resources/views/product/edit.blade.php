@@ -6,7 +6,6 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('libs/dropzone/dist/min/dropzone.min.css') }}">
-    <link href="{{ asset('/css/product_create.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
