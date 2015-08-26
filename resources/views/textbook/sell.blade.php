@@ -8,7 +8,6 @@
 @section('css')
     {{-- Used for icons in sell page--}}
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="{{ asset('/css/textbook.css') }}">
 @endsection
 
 @section('content')

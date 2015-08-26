@@ -4,7 +4,6 @@
 @section('title', 'Edit Profile - '.Auth::user()->first_name.' '.Auth::user()->last_name)
 
 @section('css')
-    <link href="{{ asset('/css/user_profileEdit.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('libs/datetimepicker/jquery.datetimepicker.css') }}">
 @endsection
 

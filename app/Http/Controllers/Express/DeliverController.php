@@ -164,12 +164,6 @@ class DeliverController extends Controller
                                  'time_delivered'    => date(config('database.datetime_format')),
                              ]);
 
-        // capture authorized payment from buyer
-        $buyer_order->capturePayment();
-
-        // create payouts to sellers
-        $buyer_order->payout();
-
         // convert the buyer order and corresponding objects to an array
         $buyer_order_arr                        = $buyer_order->toArray();
         $buyer_order_arr['buyer']               = $buyer_order->buyer->allToArray();
@@ -191,6 +185,12 @@ class DeliverController extends Controller
         {
             $message->to($buyer_order_arr['buyer']['email'])->subject('Your order #'.$buyer_order_arr['id'].' has been delivered!');
         });
+
+        // capture authorized payment from buyer
+        $buyer_order->capturePayment();
+
+        // create payouts to sellers
+        $buyer_order->payout();
 
         return redirect()->back();
     }

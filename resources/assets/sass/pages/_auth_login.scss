@@ -1,0 +1,116 @@
+/******** LOGIN PAGE ********/
+
+/* Used by login.blade.php and register.blade.php and password.blade.php */
+
+@import "../modules/all";
+
+button:focus {
+  outline: 0 !important;
+}
+
+#logo-link {
+  width: 350px;
+  height: 140px;
+  display: block;
+  margin: 80px auto 40px;
+}
+
+#login-logo {
+  width: 350px;
+  height: 140px;
+}
+
+/******** LOGIN/REGISTER FORM ********/
+
+/* space between form and logo */
+.vertical-center {
+  margin-top: 40px;
+}
+
+#form-container {
+  max-width: 500px;
+}
+
+/* inactive tab font color */
+#tabs > li > a {
+  color: $primary-color;
+}
+
+/* active tab color */
+#tabs > li.active > a,
+#tabs > li.active > a:hover,
+#tabs > li.active > a:focus {
+  background-color: $primary-color;
+  color: white;
+  border: 1px solid $border-color;
+}
+
+/* space between first form input and tabs */
+.form-space-offset {
+  margin-top: 25px;
+}
+
+/*.scrollable-dropdown {*/
+/*height: auto;*/
+/*max-height: 200px;*/
+/*overflow-x: hidden;*/
+/*}*/
+
+.login-btn {
+  width: 150px;
+  padding: 12px;
+}
+
+#password-group {
+  margin-bottom: 0;
+}
+
+#forgot-password {
+  color: $primary-color;
+  padding: 0;
+  margin-top: 10px;
+  text-align: center;
+  padding-left: 2px;
+}
+
+#remember-me{
+  margin-left: 5px;
+}
+
+.tos {
+  padding: 0 10px 10px 5px;
+}
+
+/****** RESET PASSWORD ******/
+
+.reset-container {
+  padding-top: 15%;
+  padding-bottom: 15%;
+  background-image: url('../img/activation(2).jpg');
+  background-size: cover;
+}
+
+#reset-title{
+  color: white;
+  text-shadow: $text-shadow;
+  margin-top: 0;
+}
+
+.reset-label {
+  color: white;
+  text-shadow: $text-shadow;
+}
+
+#reset-button {
+  width: 200px;
+}
+
+#password-jumbotron{
+  background-color: rgba(153, 159, 163, 0.45);
+  @media(max-width: 767px){
+    padding: 3%;
+  }
+}
+
+
+

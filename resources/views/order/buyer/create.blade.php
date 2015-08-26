@@ -4,10 +4,6 @@
 
 @section('title', 'Checkout')
 
-@section('css')
-    <link href="{{ asset('/css/order_buyer_create.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
 
     <div class="container">

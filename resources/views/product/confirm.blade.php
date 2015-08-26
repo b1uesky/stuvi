@@ -2,10 +2,6 @@
 
 @section('title', 'Confirm your book')
 
-@section('css')
-    {{--<link href="{{ asset('/css/product_confirm.css') }}" rel="stylesheet">--}}
-@endsection
-
 @section('content')
     <div class="container">
         <div class="row">

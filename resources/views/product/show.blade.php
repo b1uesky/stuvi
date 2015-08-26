@@ -8,7 +8,6 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('libs/slick-carousel/slick/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('libs/slick-carousel/slick/slick-theme.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/product_show.css') }}" type="text/css">
 @endsection
 
 @section('content')

@@ -2,10 +2,6 @@
 
 @section('title', 'Your Sold books')
 
-@section('css')
-    <link href="{{ asset('/css/order_index.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
 
     <!-- Message -->

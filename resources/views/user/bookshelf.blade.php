@@ -4,10 +4,6 @@
 
 @section('title','Bookshelf')
 
-@section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/user_bookshelf.css')}}">
-@endsection
-
 @section('content')
     @include('user-template')
 
