@@ -9,10 +9,7 @@
     <link rel="icon" type="image/ico" href="{{ asset('img/favicon.ico') }}"/>
     <title>Stuvi - @yield('title')</title>
 
-    <link rel="stylesheet" href="{{ asset('libs/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('libs/font-awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('libs/jquery-ui/themes/smoothness/jquery-ui.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/css/formValidation.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/main.css') }}">
 
     @yield('css')
