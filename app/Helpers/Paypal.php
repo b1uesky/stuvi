@@ -9,8 +9,7 @@
  * API: https://github.com/paypal/PayPal-PHP-SDK/tree/master/lib/PayPal/Api
  */
 
-use PayPal\Auth\OAuthTokenCredential;
-use PayPal\Rest\ApiContext;
+use Config;
 use PayPal\Api\Address;
 use PayPal\Api\Amount;
 use PayPal\Api\Authorization;
@@ -26,14 +25,14 @@ use PayPal\Api\Payer;
 use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Payout;
-use PayPal\Api\PayoutSenderBatchHeader;
 use PayPal\Api\PayoutItem;
+use PayPal\Api\PayoutSenderBatchHeader;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Refund;
 use PayPal\Api\Sale;
 use PayPal\Api\Transaction;
-
-use Config;
+use PayPal\Auth\OAuthTokenCredential;
+use PayPal\Rest\ApiContext;
 
 class Paypal extends \App\Helpers\Payment
 {
@@ -449,14 +448,14 @@ class Paypal extends \App\Helpers\Payment
      * @param $authorization
      * @return mixed
      */
-    public function captureAuthorizedPayment(Authorization $authorization)
+    public function captureAuthorizedPayment(Authorization $authorization, $amount=null)
     {
         // ### Capture Payment
         // You can capture and process a previously created authorization
         // by invoking the $authorization->capture method
         // with a valid ApiContext (See bootstrap.php for more on `ApiContext`)
         try {
-            $total = $authorization->getAmount()->getTotal();
+            $total = $amount?:$authorization->getAmount()->getTotal();
 
             $amt = new Amount();
             $amt->setCurrency("USD")
@@ -497,14 +496,14 @@ class Paypal extends \App\Helpers\Payment
             ->setEmailSubject("You have a Payout!");
 
         $amount = new Currency();
-        $amount->setCurrency($item['currency'])
-            ->setValue($item['value']);
+        $amount->setCurrency($item['amount']['currency'])
+            ->setValue($item['amount']['value']);
 
         $senderItem = new PayoutItem();
         $senderItem->setRecipientType($item['recipient_type'])
             ->setNote($item['note'])
             ->setReceiver($item['receiver'])
-            ->setSenderItemId($item['item_id'])
+            ->setSenderItemId($item['sender_item_id'])
             ->setAmount($amount);
 
         $payouts->setSenderBatchHeader($senderBatchHeader)
