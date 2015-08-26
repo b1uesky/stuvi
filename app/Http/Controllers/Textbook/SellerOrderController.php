@@ -361,6 +361,49 @@ class SellerOrderController extends Controller
 //        }
     }
 
+    public function payout()
+    {
+        $seller_order_id = Input::get('seller_order_id');
+        $seller_order = SellerOrder::find($seller_order_id);
+
+        // check if this seller order belongs to the current user, or null.
+        if (empty($seller_order) || !$seller_order->isBelongTo(Auth::id()))
+        {
+            return redirect('/order/seller')
+                ->with('message', 'Order not found.');
+        }
+
+        // check if this seller order is transferred.
+        if ($seller_order->isTransferred())
+        {
+            return redirect('/order/seller/' . $seller_order_id)
+                ->with('message', 'You have already transferred the balance of this order to your Paypal account.');
+        }
+
+        // check if this seller order is delivered
+        if (!$seller_order->isDelivered())
+        {
+            return redirect('/order/seller/' . $seller_order_id)
+                ->with('message', 'This order is not delivered yet. You can get your money back once the buyer get the book.');
+        }
+
+        if ($seller_order->cancelled)
+        {
+            return redirect('/order/seller/' . $seller_order_id)
+                ->with('message', 'This order has been cancelled.');
+        }
+
+        $payout_item = $seller_order->payout();
+        if (!$payout_item)
+        {
+            redirect('/order/seller/'.$seller_order_id)
+                ->with('message', 'Sorry, we cannot transfer the balance to your Paypal account. Please contact Stuvi.');
+        }
+
+        return redirect('/order/seller/'.$seller_order_id)
+            ->with('message', 'The balance has been transferred to your paypal account '.$seller_order->seller()->profile->paypal);
+    }
+
     /**
      * Send a sms to the courier that the order has been cancelled.
      *

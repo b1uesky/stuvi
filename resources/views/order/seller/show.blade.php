@@ -17,6 +17,15 @@
             <h1>Order Details</h1>
         </div>
 
+        @if ($seller_order->isDelivered()
+        && empty($seller_order->payout_item_id)
+        && empty($seller_order->seller()->profile->paypal))
+            <div class="alert alert-warning" role="alert">
+                Please fill in your Paypal account in <a href="{{ url('user/profile') }}"><strong>profile</strong></a> to transfer your balance.
+            </div>
+        @endif
+
+
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="container-fluid">
@@ -400,6 +409,39 @@
                 </div>
             </div>
         </div>
+
+        {{-- balance --}}
+        @if ($seller_order->isDelivered())
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <h3>Balance</h3>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                    @if ($seller_order->payout_item_id)
+                        <p>Payout Item ID: {{ $seller_order->payout_item_id}}</p>
+                    @else
+                        <form action="{{url('/order/seller/'.$seller_order->seller()->id.'/payout')}}" method="POST" class="form-horizontal">
+                            {!! csrf_field() !!}
+                            <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
+
+                            <div class="form-group">
+                                <div class=" col-sm-offset-3 col-sm-6">
+                                    <button id="save-info-btn" type="submit" class="btn btn-primary">Transfer balance to my Paypal account
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
     </div>
 @endsection
 

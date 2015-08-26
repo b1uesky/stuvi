@@ -1,5 +1,7 @@
 <?php namespace App;
 
+use App\Helpers\Paypal;
+use App\Helpers\Price;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
@@ -201,14 +203,14 @@ class SellerOrder extends Model
     }
 
     /**
-     * Check whether the amount of this seller order is transferred to seller's Stripe account.
+     * Check whether the amount of this seller order is transferred to seller's Paypal account.
      *
      * @return bool
      */
-//    public function isTransferred()
-//    {
-//        return !$this->stripeTransfer()->get()->isEmpty();
-//    }
+    public function isTransferred()
+    {
+        return !is_null($this->payout_item_id);
+    }
 
     /**
      * Get the seller order status and status detail.
@@ -217,12 +219,12 @@ class SellerOrder extends Model
      */
     public function getOrderStatus()
     {
-//        if ($this->isTransferred())
-//        {
-//            $status = 'Balance Transferred';
-//            $detail = 'The money has been transferred to your Stripe account.';
-//        }
-        if ($this->isDelivered())
+        if ($this->isTransferred())
+        {
+            $status = 'Balance Transferred';
+            $detail = 'The money has been transferred to your Paypal account.';
+        }
+        elseif ($this->isDelivered())
         {
             $status = 'Order Delivered';
             $detail = 'Your order has been delivered.';
@@ -348,5 +350,68 @@ class SellerOrder extends Model
         }
 
         return $query->select('seller_orders.*')->distinct();
+    }
+
+    /**
+     * create a Paypal payout item.
+     *
+     * @return array
+     */
+    public function createPaypalPayoutItem()
+    {
+        $receiver = $this->seller()->profile->paypal;
+
+        if (empty($receiver))
+        {
+            return false;
+        }
+
+        $value = Price::convertIntegerToDecimal($this->product->price - config('fee.payout_service_fee'));
+
+        $item = array(
+            'recipient_type'    => 'EMAIL',
+            'receiver'          => $receiver,
+            'note'              => 'Thank you for your trust on Stuvi!',
+            'sender_item_id'    => $this->id,
+            'amount'            => array(
+                'value'             => $value,
+                'currency'          => 'USD',
+            )
+        );
+
+        return $item;
+    }
+
+    /**
+     * Payout the seller via paypal.
+     *
+     * @return bool|\PayPal\Api\PayoutItemDetails
+     */
+    public function payout()
+    {
+        // not delivered yet.
+        if (!$this->isDelivered())
+        {
+            return false;
+        }
+
+        $item = $this->createPaypalPayoutItem();
+
+        // seller does not paypal account.
+        if (!$item)
+        {
+            return false;
+        }
+
+        $paypal = new Paypal();
+        $payout_batch = $paypal->createSinglePayout($item);
+        $payout_batch_status = $paypal->getPayoutBatchStatus($payout_batch);
+        $payout_item = $payout_batch_status->getItems()[0];
+
+        $this->update([
+            'payout_item_id' => $payout_item->getPayoutItemId(),
+                      ]);
+
+        return $payout_item;
     }
 }
