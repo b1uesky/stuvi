@@ -71,7 +71,7 @@
                         <div class="info">
                             <div class="info-back">
                                 <h3>Desmond Ding</h3>
-                                <p>Back End Developer</p>
+                                <p>Full Stack Developer</p>
                             </div>
                         </div></a>
                     </div>
