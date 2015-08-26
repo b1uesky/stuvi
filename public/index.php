@@ -46,9 +46,9 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 |
 */
 
-// compile scss files
+// compile sass files
 // https://github.com/panique/laravel-sass
-SassCompiler::run('../resources/assets/scss/', "css/");
+SassCompiler::run('../resources/assets/sass/', "css/");
 
 $kernel = $app->make('Illuminate\Contracts\Http\Kernel');
 

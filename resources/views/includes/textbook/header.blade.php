@@ -1,6 +1,6 @@
 {{-- Navigation Bar --}}
 
-{{-- Styling can be found in scss/sections/_navigation.scss--}}
+{{-- Styling can be found in sass/sections/_navigation.sass--}}
 
 {{-- Header.blade.php Variables--}}
 <?php $url = Request::url() ?>
