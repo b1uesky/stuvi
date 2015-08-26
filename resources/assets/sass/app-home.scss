@@ -12,12 +12,10 @@
 @import "partials/tables";
 @import "partials/modals";
 @import "partials/autocomplete";
-
-/* SECTIONS */
-@import 'sections/alert';
-@import 'sections/footer';
-@import "sections/searchbar";
-@import "sections/loader";
+@import 'partials/alert';
+@import 'partials/footer';
+@import "partials/searchbar";
+@import "partials/loader";
 
 /* PAGES */
 @import 'pages/home';
