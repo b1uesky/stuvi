@@ -430,7 +430,7 @@
                             <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
 
                             <div class="form-group">
-                                <div class=" col-sm-offset-3 col-sm-6">
+                                <div class=" col-sm-6">
                                     <button id="save-info-btn" type="submit" class="btn btn-primary">Transfer balance to my Paypal account
                                     </button>
                                 </div>
