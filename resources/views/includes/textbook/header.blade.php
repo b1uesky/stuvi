@@ -6,7 +6,7 @@
 <?php $url = Request::url() ?>
 
 <header>
-    <nav class="navbar navbar-default" id="nav" role="navigation">
+    <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <!-- Toggle Nav into hamburger menu for small screens -->

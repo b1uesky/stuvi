@@ -1,14 +1,10 @@
 <!-- Copyright Stuvi LLC 2015 -->
 
-@extends('layouts.home')
+@extends('layouts.textbook')
 @section('description', "Student Village, college service provider")
 @section('title', 'Boston Textbook Marketplace & More Coming Soon!')
 
 @section('content')
-
-    <div class="container-header">
-        @include('includes.textbook.header')
-    </div>
 
     <div class="container-fluid container-bg">
 
