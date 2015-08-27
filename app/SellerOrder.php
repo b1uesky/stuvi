@@ -211,7 +211,7 @@ class SellerOrder extends Model
      */
     public function isDelivered()
     {
-        return $this->buyerOrder->isDelivered();
+        return !$this->cancelled && $this->buyerOrder->isDelivered();
     }
 
     /**
@@ -401,7 +401,7 @@ class SellerOrder extends Model
      */
     public function payout()
     {
-        // not delivered yet.
+        // not delivered.
         if (!$this->isDelivered())
         {
             return false;
