@@ -368,9 +368,10 @@ class BuyerOrder extends Model
         $paypal = new Paypal();
         $authorization = $paypal->getAuthorization($this->authorization_id);
 
+        // get the latest buyer order total amount (it may change when a seller order gets cancelled)
+        $amount = $this->decimalAmount();
 
-        $this->
-        $capture = $paypal->captureAuthorizedPayment($authorization);
+        $capture = $paypal->captureAuthorizedPayment($authorization, $amount);
 
         $this->update([
             'capture_id'    => $capture->getId()
