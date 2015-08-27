@@ -27,7 +27,6 @@
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
         "fzaninotto/faker": "1.5.*@dev",
-        "panique/laravel-sass": "1.0"
 	},
 	"autoload": {
 		"classmap": [
