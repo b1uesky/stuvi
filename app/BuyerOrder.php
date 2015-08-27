@@ -367,6 +367,9 @@ class BuyerOrder extends Model
         // TODO: only capture the total amount of product delivered.
         $paypal = new Paypal();
         $authorization = $paypal->getAuthorization($this->authorization_id);
+
+
+        $this->
         $capture = $paypal->captureAuthorizedPayment($authorization);
 
         $this->update([

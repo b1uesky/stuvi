@@ -50,6 +50,18 @@ class SellerOrder extends Model
         $this->product->sold  = false;
         $this->push();
 
+        // update the price of buyer order
+        $new_subtotal = $this->buyerOrder->subtotal - $this->product->price;
+        $new_total_before_tax = $new_subtotal + $this->buyerOrder->fee - $this->buyerOrder->discount;
+        $new_tax = Price::calculateTax($new_total_before_tax);
+        $new_amount = $new_total_before_tax + $new_tax;
+
+        $this->buyerOrder->update([
+            'subtotal'  => $new_subtotal,
+            'tax'       => $new_tax,
+            'amount'    => $new_amount
+        ]);
+
         // update book price range
         $this->product->book->addPrice($this->product->price);
     }
