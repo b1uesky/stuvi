@@ -22,4 +22,16 @@ class Price {
     {
         return intval(floatval($price) * 100);
     }
+
+    /**
+     * Calculate tax from the total (subtotal + shipping - discount)
+     *
+     * @param integer $total
+     * @return int
+     */
+    public static function calculateTax($total)
+    {
+        return intval($total * config('tax.MA'));
+    }
+
 }

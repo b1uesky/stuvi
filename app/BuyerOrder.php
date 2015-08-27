@@ -170,9 +170,11 @@ class BuyerOrder extends Model
             return false;
         }
 
+        // if there is more than one seller orders that are not cancelled and not pickup,
+        // then this buyer order is not deliverable.
         foreach ($this->seller_orders as $seller_order)
         {
-            if (!$seller_order->pickedUp())
+            if (!($seller_order->pickedUp() || $seller_order->cancelled))
             {
                 return false;
             }
@@ -364,10 +366,13 @@ class BuyerOrder extends Model
      */
     public function capturePayment()
     {
-        // TODO: only capture the total amount of product delivered.
         $paypal = new Paypal();
         $authorization = $paypal->getAuthorization($this->authorization_id);
-        $capture = $paypal->captureAuthorizedPayment($authorization);
+
+        // get the latest buyer order total amount (it may change when a seller order gets cancelled)
+        $amount = $this->decimalAmount();
+
+        $capture = $paypal->captureAuthorizedPayment($authorization, $amount);
 
         $this->update([
             'capture_id'    => $capture->getId()

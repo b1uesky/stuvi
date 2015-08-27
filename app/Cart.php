@@ -117,6 +117,7 @@ class Cart extends Model
     }
 
     /**
+     * TODO: RENAME TO SUBTOTAL
      * Get the total price of all items.
      *
      * @return int
@@ -144,6 +145,7 @@ class Cart extends Model
     }
 
     /**
+     * TODO: RENAME TO SHIPPING
      * Get the total fee.
      *
      * @return int
@@ -164,6 +166,7 @@ class Cart extends Model
     }
 
     /**
+     * // TODO: RENAME TO TOTAL/AMOUNT
      * Get the subtotal of this cart (how much the buyer needs to pay)
      *
      * @return int

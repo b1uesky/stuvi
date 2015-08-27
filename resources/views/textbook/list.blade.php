@@ -21,7 +21,7 @@
                 <div class="margin-large border-bottom">
                     <table class="table table-no-border">
                         <tr>
-                            <td class="col-xs-2">
+                            <td class="col-xs-3 col-sm-2">
                                 <a href="{{ url("textbook/buy/".$book->id) }}">
                                     @if($book->imageSet->small_image)
                                         <img class="img-responsive"
@@ -32,13 +32,13 @@
                                 </a>
                             </td>
 
-                            <td class="col-xs-10">
+                            <td class="col-xs-9 col-sm-10">
                                 <table class="table-details full-width rel-bot-10">
                                     <tr>
-                                        <td class="col-xs-6">
+                                        <td class="col-sm-8 col-xs-12">
                                             <h4><a href="{{ url("textbook/buy/".$book->id) }}">{{ $book->title }}</a></h4>
                                         </td>
-                                        <td class="col-xs-4 text-right">
+                                        <td class="col-sm-4 text-right hidden-xs">
                                             @if(count($book->products) > 1)
                                                 <span class="price">${{ $book->decimalLowestPrice() }}</span>
                                                 <span class="text-muted"> ~ </span>
