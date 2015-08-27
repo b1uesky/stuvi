@@ -6,9 +6,6 @@ Licensed under MIT
 
 @import "../modules/all";
 
-body {
-  background: $background-color;
-}
 
 /* Profile container */
 .profile {
@@ -101,9 +98,6 @@ body {
 
 }
 
-#edit-btn {
-}
-
 /* Profile Content */
 .profile-content {
   padding: 20px;
@@ -119,7 +113,6 @@ body {
 .edit{
   text-align: center;
   margin: 2%;
-
 }
 
 @media (max-width: 900px){
