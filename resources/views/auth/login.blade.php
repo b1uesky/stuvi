@@ -19,7 +19,10 @@
             <div class="col-sm-6 col-sm-offset-3">
 
                 <div class="container-fluid container-login-signup">
-                    <img src="{{asset('/img/logo-new-center.png')}}" class="img-responsive center-block">
+                    <a href="{{ url('home') }}">
+                        <img src="{{asset('/img/logo-new-center.png')}}" class="img-responsive center-block">
+                    </a>
+                    
 
                     <ul class="nav nav-tabs nav-justified" role="tablist">
                         <!-- login -->
