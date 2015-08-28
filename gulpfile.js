@@ -11,6 +11,13 @@ var elixir = require('laravel-elixir');
  |
  */
 
-elixir(function(mix) {
-    mix.less('app.less');
+elixir(function (mix) {
+    mix.sass('main.scss', './public/css/main.css');
+
+    //mix.styles([
+    //    '../libs/bootstrap/dist/css/bootstrap.min.css',
+    //    '../libs/jquery-ui/themes/smoothness/jquery-ui.min.css',
+    //    '../libs-paid/formvalidation-dist-v0.6.3/dist/css/formValidation.min.css',
+    //    '../../../public/css/main.css'
+    //], 'public/css/main.css');
 });

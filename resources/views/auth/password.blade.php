@@ -4,10 +4,6 @@
 
 @section('title','Forgot Password')
 
-@section('css')
-    <link href="{{ asset('/css/auth_login.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
 
 <div class="container-fluid reset-container">
@@ -28,7 +24,7 @@
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" class="btn primary-btn submit-btn" id="reset-button">
+                            <button type="submit" class="btn btn-primary submit-btn" id="reset-button">
                                 Send Password Reset Link
                             </button>
                         </div>

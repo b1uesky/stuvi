@@ -1,0 +1,25 @@
+/*  CSS FOR profile.blade.php */
+
+@import "../modules/all";
+@import "../partials/user-profile";
+
+/* User side bar */
+
+.edit{
+  text-align: center;
+  margin: 2%;
+}
+
+h5{
+  margin:0 0 3px 0;
+}
+
+@media (max-width: 970px) {
+  .home {
+    max-width: 500px;
+  }
+  #details,#for-sale {
+    text-align: center;
+  }
+}
+

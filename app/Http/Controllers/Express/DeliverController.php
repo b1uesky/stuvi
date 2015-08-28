@@ -159,16 +159,10 @@ class DeliverController extends Controller
             return redirect('express/deliver')->withError('This buyer order has already been delivered.');
         }
 
-        // capture authorized payment from buyer
-        $buyer_order->capturePayment();
-
-        // create payouts to sellers
-        $buyer_order->createPayout();
-
         $buyer_order->update([
-            // add deliver time to the seller order
-            'time_delivered'    => date(Config::get('database.datetime_format')),
-        ]);
+                                 // add deliver time to the buyer order
+                                 'time_delivered'    => date(config('database.datetime_format')),
+                             ]);
 
         // convert the buyer order and corresponding objects to an array
         $buyer_order_arr                        = $buyer_order->toArray();
@@ -191,6 +185,12 @@ class DeliverController extends Controller
         {
             $message->to($buyer_order_arr['buyer']['email'])->subject('Your order #'.$buyer_order_arr['id'].' has been delivered!');
         });
+
+        // capture authorized payment from buyer
+        $buyer_order->capturePayment();
+
+        // create payouts to sellers
+        $buyer_order->payout();
 
         return redirect()->back();
     }

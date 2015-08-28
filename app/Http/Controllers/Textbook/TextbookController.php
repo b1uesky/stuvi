@@ -91,7 +91,8 @@ class TextbookController extends Controller
         // book found in database
         if ($db_book)
         {
-            return redirect('textbook/sell/product/' . $db_book->id . '/create');
+//            return redirect('textbook/sell/product/' . $db_book->id . '/create');
+            return redirect('textbook/sell/product/' . $db_book->id . '/confirm');
         }
         else
         {
@@ -101,7 +102,7 @@ class TextbookController extends Controller
             {
                 $book = Book::createFromGoogleBook($google_book);
 
-                return redirect('textbook/sell/product/' . $book->id . '/create');
+                return redirect('textbook/sell/product/' . $book->id . '/confirm');
             }
 
             // allow the seller fill in book information and create a new book record
@@ -280,13 +281,18 @@ class TextbookController extends Controller
             {
                 $google_book = new GoogleBooks(Config::get('services.google.books.api_key'));
 
-                if ($google_book->searchByISBN($isbn))
+                // error on searching (e.g. item not found)
+                if (!$google_book->searchByISBN($isbn))
                 {
-                    $book = Book::createFromGoogleBook($google_book);
-
-                    return view('textbook.show')
-                        ->withBook($book);
+                    return view('textbook.list')
+                        ->with('books', [])
+                        ->with('query', $isbn);
                 }
+
+                $book = Book::createFromGoogleBook($google_book);
+
+                return view('textbook.show')
+                    ->withBook($book);
             }
         }
         else

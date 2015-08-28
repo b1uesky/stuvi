@@ -4,30 +4,28 @@
 
 @section('title', 'Your Cart')
 
-@section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/cart_index.css')}}">
-    @endsection
 
     @section('content')
 
     <div class="container">
-        {{--{!! Breadcrumbs::render('shoppingCart') !!}--}}
 
+        {{-- Breadcrumb --}}
         @if(count($items) > 0)
-        <div class="row progress-cart-row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-offset-3 progress-cart">
+            <div class="row margin-30">
                 <nav>
-                    <ol class="cd-breadcrumb triangle">
-                        <li class="current"><em><i class="fa fa-shopping-cart"></i>
-                                Cart</em></li>
-                        <li><em><i class="fa fa-credit-card"></i>
-                                Checkout</em></li>
-                        <li><em><i class="fa fa-check"></i>
-                                Confirmation</em></li>
+                    <ol class="cd-multi-steps text-top">
+                        <li class="current">
+                            <span>Cart</span>
+                        </li>
+                        <li>
+                            <span>Checkout</span>
+                        </li>
+                        <li>
+                            <span>Done</span>
+                        </li>
                     </ol>
                 </nav>
             </div>
-        </div>
         @endif
 
         <div class="row shopping-cart">
@@ -95,10 +93,8 @@
                                 </tr>
                             </table>
 
-                            <hr>
-
                             <div>
-                                <a class="btn primary-btn" href="{{ url('/order/create') }}" role="button">Proceed to
+                                <a class="btn btn-primary" href="{{ url('/order/create') }}" role="button">Proceed to
                                     checkout</a>
                             </div>
                         </div>

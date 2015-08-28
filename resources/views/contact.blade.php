@@ -2,10 +2,6 @@
 
 @section('title', 'Contact us')
 
-@section('css')
-    <link href="{{ asset('/css/contact.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
 
     <div id="contact-main-container">
@@ -43,7 +39,7 @@
                         <textarea class="form-control" rows="8" name="message" placeholder="Message"></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-lg btn-block primary-btn">Submit</button>
+                    <button type="submit" class="btn btn-lg btn-block btn-primary">Submit</button>
                 </form>
 
                 <hr>

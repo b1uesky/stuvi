@@ -1,0 +1,69 @@
+/*http://homestead.app/order/buyer/#*/
+/*http://homestead.app/order/seller/#*/
+/* CSS For both showSellerOrder and showBuyerOrder
+ *
+ * Page is accessed when viewing more details of an order
+ */
+@import "../modules/all";
+
+/* Seller Address */
+.seller-address {
+  /*border: 1px solid #eee;*/
+  display: inline-block;
+  /*margin: 20px;*/
+  padding: 0;
+  a {
+    min-width: 30%;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+}
+
+.seller-address-book {
+  display: none;
+}
+
+.btn-change-address{
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.add-address-btn{
+    margin-left: 15px;
+}
+
+
+.seller-address-book-box{
+  padding: 10px;
+  height: 175px;
+  outline: none;
+  padding: 15px;
+  margin: 5px 1px 3px 5px;
+  border: 1px solid #DDDDDD;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  &:hover{
+    -moz-box-shadow: 5px 0 5px $primary-color;
+    -webkit-box-shadow: 5px 0 5px $primary-color;
+    box-shadow: 0 0 5px $primary-color;
+    padding: 15px;
+    margin: 5px 1px 3px 5px;
+    border: 1px solid $primary-color;
+  }
+  .address-panel{
+      list-style-type: none;
+      margin: 0 0 10px 0;
+      padding: 0;
+  }
+}
+
+.book-details-row {
+  margin: 10px 0;
+  @media(min-width: 990px){
+    margin-left: 15px;
+  }
+}

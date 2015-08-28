@@ -178,6 +178,8 @@ class BuyerOrderController extends Controller
             return redirect('/order/buyer');
         }
 
+//        Session::flash('order', BuyerOrder::find(1));
+
         return view('order.buyer.confirmation');
     }
 
@@ -345,6 +347,7 @@ class BuyerOrderController extends Controller
         $order = BuyerOrder::create([
             'buyer_id'              => Auth::id(),
             'shipping_address_id'   => $shipping_address_id,
+            'subtotal'              => $subtotal,
             'tax'                   => $tax,
             'fee'                   => $fee,
             'discount'              => $discount,

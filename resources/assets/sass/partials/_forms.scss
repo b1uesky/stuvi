@@ -1,0 +1,42 @@
+/*** FORM STYLING ***/
+@import '../modules/all';
+
+.form-control {
+  border-radius: 2px;
+  border-color: $border-color;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-weight: 300;
+
+  &:focus {
+    border-color: $primary-color-light;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+.has-error .form-control {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  &:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+.has-success .form-control {
+  border-color: $border-color;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  &:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+.input-group-addon {
+  border-radius: 2px;
+}
+

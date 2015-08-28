@@ -62,43 +62,23 @@
     <p><strong>Payment</strong></p>
     <table class="table table-hover">
         <tr>
-            <th>Fee</th>
+            <th>Subtotal</th>
             <th>Discount</th>
+            <th>Fee</th>
             <th>Tax</th>
             <th>Total</th>
+            <th>Authorization ID</th>
+            <th>Capture ID</th>
         </tr>
         <tr>
-            <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->fee) }}</td>
+            <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->subtotal) }}</td>
             <td>- {{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->discount) }}</td>
+            <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->fee) }}</td>
             <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->tax) }}</td>
             <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->amount) }}</td>
+            <td>{{ $buyer_order->authorization_id }}</td>
+            <td>{{ $buyer_order->capture_id }}</td>
         </tr>
     </table>
-
-    <p><strong>Refund</strong></p>
-    <table>
-        {{--@if ($buyer_order->isRefundable())--}}
-        {{--<form action="{{ url('admin/order/buyer/refund') }}" method="POST">--}}
-        {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
-        {{--<input type="hidden" name="buyer_order_id" value="{{ $buyer_order->id }}">--}}
-        {{-- refund amount --}}
-        {{--<div class="form-group">--}}
-        {{--<label>$</label>--}}
-        {{--<input type="number" step="0.01" name="refund_amount" value="{{ $buyer_order->refundableAmount()/100 }}">--}}
-        {{--<input type="submit" name="submit" class="btn" value="Refund"/>--}}
-        {{--</div>--}}
-
-        {{--</form>--}}
-        {{--@endif--}}
-
-        {{--<tr>--}}
-        {{--<td>--}}
-        {{--@foreach($buyer_order->stripeRefunds as $refund)--}}
-        {{--<p>${{ $refund->amount/100 }} @ {{ $refund->created_at }}</p>--}}
-        {{--@endforeach--}}
-        {{--</td>--}}
-        {{--</tr>--}}
-    </table>
-
 
 @endsection

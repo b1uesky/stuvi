@@ -1,0 +1,16 @@
+@import "../modules/all";
+
+.panel-presentation {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  .panel-heading {
+    color: $text-color;
+    border-bottom: 1px solid $border-color;
+  }
+
+  .panel-footer {
+    border: none;
+    background-color: $background-color;
+  }
+}

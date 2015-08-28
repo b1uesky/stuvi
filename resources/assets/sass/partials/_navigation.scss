@@ -1,0 +1,70 @@
+@import '../modules/all';
+
+/******* NAVIGATION BAR *******/
+
+.navbar-default {
+  background: white;
+  border-radius: 0;
+  border: none;
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
+  z-index: 8;
+  margin-bottom: 0;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: $text-color;
+
+  &:hover{
+    color: $text-color;
+    background-color: $background-hover-color;
+  }
+}
+
+
+.logo-container {
+  width: 120px;
+  height: 48px;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+/******* NAVIGATION HAMBURGER MENU *******/
+
+#xs-screen-logo-link{
+  position: absolute;
+  left:0;
+  @media(min-width: 767px){
+    visibility: hidden;
+  }
+}
+
+#xs-screen-logo-img{
+  height: 50px;
+  width: auto;
+}
+
+
+#nav-toggle-collapse{
+  float: right;
+  border: none;
+  z-index: 50;
+  margin-left: 10px;
+  &:hover, &:focus {
+    background: none;
+  }
+  .fa-bars {
+    color: $primary-color;
+    font-size: 1.5em;
+  }
+}
+
+@media(max-width: 767px){
+  .navbar-nav{
+    margin: 0;
+  }
+}

@@ -179,20 +179,12 @@ return [
          */
         'Intervention\Image\ImageServiceProvider',
 
-		/*
-		 * Breadcrumbs Service Provider
-		 */
-		'DaveJamesMiller\Breadcrumbs\ServiceProvider',
 
 		/*
 		 * Sitemap Service Provider
 		 */
 		'Roumen\Sitemap\SitemapServiceProvider',
 
-		/*
-		 * Paypal Service Provider
-		 */
-//		'Anouar\Paypalpayment\PaypalpaymentServiceProvider',
 	],
 
 	/*
@@ -244,8 +236,6 @@ return [
         'Twilio'    	=> 'Aloha\Twilio\Support\Laravel\Facade',
         'AWS'       	=> 'Aws\Laravel\AwsFacade',
         'Image'     	=> 'Intervention\Image\Facades\Image',
-		'Breadcrumbs' 	=> 'DaveJamesMiller\Breadcrumbs\Facade',
-//		'Paypalpayment' => 'Anouar\Paypalpayment\Facades\PaypalPayment',
 
 	],
 

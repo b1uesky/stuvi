@@ -4,60 +4,38 @@
 @extends('layouts.textbook')
 @section('title', 'Email - '.Auth::user()->first_name.' '.Auth::user()->last_name )
 
-@section('css')
-    <link href="{{ asset('/css/user_email.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
-    <!-- User template has the second nav bar and the profile side bar -->
-    @include('user-template')
-            <div class="col-md-9">
-                <div class="profile-content">
-                    <!-- right box -->
-                    <div class="container col-xs-12 col-md-12" id = "email-details">
-                        @if (Session::has('email_set_primary_success'))
-                            <div class="alert alert-success" id="message">
-                                <i class="fa fa-check-square-o"></i>
-                                {{ Session::get('email_set_primary_success') }}
-                            </div>
-                        @elseif (Session::has('email_remove_success'))
-                            <div class="alert alert-success" id="message">
-                                <i class="fa fa-check-square-o"></i>
-                                {{ Session::get('email_remove_success') }}
-                            </div>
-                        @elseif (Session::has('email_add_success'))
-                            <div class="alert alert-success" id="message">
-                                <i class="fa fa-check-square-o"></i>
-                                {{ Session::get('email_add_success') }}
-                            </div>
-                        @elseif (Session::has('email_verify_success'))
-                            <div class="alert alert-success" id="message">
-                                <i class="fa fa-check-square-o"></i>
-                                {{ Session::get('email_verify_success') }}
-                            </div>
-                        @elseif (Session::has('email_remove_error'))
-                            <div class="alert alert-danger" id="message">
-                                <i class="fa fa-exclamation-triangle"></i>
-                                {{ Session::get('email_remove_error') }}
-                            </div>
-                        @elseif (Session::has('email_set_primary_error'))
-                            <div class="alert alert-danger" id="message">
-                                <i class="fa fa-exclamation-triangle"></i>
-                                {{ Session::get('email_set_primary_error') }}
-                            </div>
-                        @elseif (Session::has('email_verify_error'))
-                            <div class="alert alert-danger" id="message">
-                                <i class="fa fa-exclamation-triangle"></i>
-                                {{ Session::get('email_verify_error') }}
-                            </div>
-                        @endif
-                        <h3>Email</h3>
-                        {{-- Email List --}}
-                        <p>Note: Stuvi will send all notification emails to your primary email.</p>
-                        <table class="table table-hover">
+    <div class="container page-content">
+        {{-- Left nav--}}
+        <div class="col-md-3 col-sm-4">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation"><a href="{{ url('user/profile') }}">Profile Settings</a></li>
+                <li role="presentation"><a href="{{ url('user/account') }}">Account Settings</a></li>
+                <li role="presentation" class="active"><a href="{{ url('user/email') }}">Email Settings</a></li>
+                <li role="presentation"><a href="{{ url('user/bookshelf') }}">Bookshelf</a></li>
+            </ul>
+        </div>
+
+        {{-- Right content --}}
+        <div class="col-md-6 col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Email settings</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="container-fluid">
+                        <table class="table table-no-border">
+                            <caption>Stuvi will send all notification emails to your primary email.</caption>
+                            <thead>
+                                <tr>
+                                    <th>Emails</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
                             @foreach ($emails as $email)
                                 <tr>
-                                    <td class="email-address-cell"><strong>{{ $email->email_address }}</strong></td>
+                                    <td>{{ $email->email_address }}</td>
                                     @if ($email->isPrimary())
                                         <td>
                                             Primary
@@ -70,19 +48,19 @@
                                             </td>
                                         @else
                                             <td>
-                                            <form action="{{ url('/user/email/primary') }}" method="post">
-                                                {!! csrf_field() !!}
-                                                <input type="hidden" name="id" value="{{ $email->id }}">
-                                                <input type="submit" class="btn primary-btn" value="Set as primary">
-                                            </form>
-                                        </td>
+                                                <form action="{{ url('/user/email/primary') }}" method="post">
+                                                    {!! csrf_field() !!}
+                                                    <input type="hidden" name="id" value="{{ $email->id }}">
+                                                    <input type="submit" class="btn btn-primary" value="Set as primary">
+                                                </form>
+                                            </td>
                                         @endif
                                         <td>
                                             @if (!$email->isCollegeEmail())
                                                 <form action="{{ url('/user/email/remove') }}" method="post">
                                                     {!! csrf_field() !!}
                                                     <input type="hidden" name="id" value="{{ $email->id }}">
-                                                    <input type="submit" class="btn primary-btn" value="Remove">
+                                                    <input type="submit" class="btn btn-primary" value="Remove">
                                                 </form>
                                             @endif
                                         </td>
@@ -91,34 +69,16 @@
                             @endforeach
                         </table>
                         {{-- Add an email --}}
-                        <form action="{{ url('/user/email/add') }}" method="post">
+                        <form action="{{ url('/user/email/add') }}" method="post" class="form-inline">
                             {!! csrf_field() !!}
-                            <label>Add an email</label>
-                            <div class="form-group form-inline">
-                                <input type="email" name="email" class="form-control email-input"
-                                       value="{{ old('email') }}">
-                                <br>
-                                <button type="submit" class="btn primary-btn email-btn">Add</button>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" placeholder="Add a new email" value="{{ old('email') }}">
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
-                            @if (Session::has('email_validation_error'))
-                                @foreach (Session::get('email_validation_error')->get('email') as $err)
-                                    <div class="alert alert-warning" id="message">
-                                        <i class="fa fa-exclamation-triangle"></i> {{ $err }}
-                                    </div>
-                                @endforeach
-                            @endif
                         </form>
                     </div>
-                 </div>
+                </div>
             </div>
-<!-- needed to end user bar -->
         </div>
     </div>
-</div>
-
-@endsection
-
-<!-- inserted at the end of app -->
-@section('javascript')
-    <script type="text/javascript" src="{{asset('js/user/email.js')}}"></script>
 @endsection

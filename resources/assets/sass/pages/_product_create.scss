@@ -1,0 +1,53 @@
+/***** SELLER PRODUCT CREATE PAGE *****/
+@import "../modules/all";
+@import "../partials/panels";
+
+/** SECTIONS **/
+//.confirm, .details, .ready {
+//  margin: 10% 0;
+//}
+
+/*** PRODUCT CONDITION ***/
+
+.fa-question-circle {
+  color: $tiffany;
+  cursor: pointer;
+}
+
+/** FILE UPLOAD **/
+
+.dropzone {
+  padding: 0;
+}
+
+#form-product {
+  border: none;
+  background: none;
+}
+
+#dropzone-img-preview {
+  border: 1px dashed $border-color;
+  background: $background-color;
+  border-radius: 2px;
+  padding: $spacing-unit / 2;
+
+  &:hover {
+    border: 1px dashed $primary-color-light;
+  }
+}
+
+.dz-image img {
+  width: 100%;
+}
+
+.dz-clickable {
+  cursor: pointer;
+}
+
+.dz-unclickable {
+  cursor: default;
+}
+
+.dz-error-message{
+  top: 150px !important;
+}

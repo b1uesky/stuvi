@@ -1,12 +1,8 @@
 {{-- Navigation Bar --}}
 
-{{-- Styling can be found in scss/sections/_navigation.scss--}}
-
-{{-- Header.blade.php Variables--}}
-<?php $url = Request::url() ?>
 
 <header>
-    <nav class="navbar navbar-default" id="nav" role="navigation">
+    <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <!-- Toggle Nav into hamburger menu for small screens -->
@@ -23,7 +19,7 @@
 
                 <div class="logo-container">
                     {{-- If on homepage, show the home logo which has white text--}}
-                    @if($url == url('/home') or $url == url('/'))
+                    @if(Request::url() == url('/home') or Request::url() == url('/'))
                         <a href="{{url('/home')}}">
                             <img src="{{asset('/img/logo-home-md.png')}}" class="img-responsive" alt="stuvi logo">
                         </a>
@@ -61,17 +57,13 @@
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="nav-dropdown">
                                 <li role="presentation">
-                                    <a role="menuitem" tabindex="-1" href="{{ url('/user/profile') }}">Profile</a>
-                                </li>
-                                <li role="presentation">
                                     <a role="menuitem" tabindex="-1" href="{{ url('/user/account') }}">Your Account</a>
                                 </li>
                                 <li role="presentation">
-                                    <a role="menuitem" tabindex="-1" href="{{ url('/user/bookshelf') }}">Your
-                                        Bookshelf</a>
+                                    <a role="menuitem" tabindex="-1" href="{{ url('/order/buyer') }}">Your Orders</a>
                                 </li>
                                 <li role="presentation">
-                                    <a role="menuitem" tabindex="-1" href="{{ url('/order/buyer') }}">Your Orders</a>
+                                    <a role="menuitem" tabindex="-1" href="{{ url('/user/bookshelf') }}">Your Bookshelf</a>
                                 </li>
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1" href="{{ url('/order/seller') }}">Sold Books</a>

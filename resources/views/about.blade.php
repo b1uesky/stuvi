@@ -3,7 +3,6 @@
 @section('title', 'About us')
 
 @section('css')
-    <link href="{{ asset('/css/about.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('libs/ihover/src/ihover.min.css') }}">
 @endsection
 
@@ -71,7 +70,7 @@
                         <div class="info">
                             <div class="info-back">
                                 <h3>Desmond Ding</h3>
-                                <p>Back End Developer</p>
+                                <p>Full Stack Developer</p>
                             </div>
                         </div></a>
                     </div>

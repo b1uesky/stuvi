@@ -47,6 +47,10 @@
             <td>{{ $product->updated_at }}</td>
         </tr>
         <tr>
+            <th>Deleted At</th>
+            <td>{{ $product->deleted_at }}</td>
+        </tr>
+        <tr>
             <th>{{ $conditions['general_condition']['title'] }}</th>
             <td>{{ $conditions['general_condition'][$product->condition->general_condition] }}</td>
         </tr>

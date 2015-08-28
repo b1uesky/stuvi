@@ -8,7 +8,6 @@
 @section('css')
     {{-- Used for icons in sell page--}}
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="{{ asset('/css/textbook.css') }}">
 @endsection
 
 @section('content')
@@ -42,7 +41,7 @@
                                        placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
                             </div>
                             <div class="searchbar-input-container searchbar-input-container-submit form-group">
-                                <input class="btn primary-btn search-btn" type="submit" value="Search">
+                                <input class="btn btn-primary btn-search" type="submit" value="Search">
                             </div>
                         </form>
                     </div>
@@ -58,7 +57,7 @@
                                    placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
                         </div>
                         <div class="xs-guest-search-bar-input-submit">
-                            <button class="btn primary-btn btn-lg btn-block" id="xs-sell-search-btn" type="submit"
+                            <button class="btn btn-primary btn-lg btn-block" id="xs-sell-search-btn" type="submit"
                                     name="search" value="Search"> Search
                             </button>
                         </div>

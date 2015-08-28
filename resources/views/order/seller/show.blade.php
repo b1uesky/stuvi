@@ -5,7 +5,6 @@
 @section('title', 'Order details - Order #'.$seller_order->id)
 
 @section('css')
-    <link href="{{ asset('/css/order_show.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('libs/datetimepicker/jquery.datetimepicker.css') }}">
 @endsection
 
@@ -16,6 +15,15 @@
         <div class="page-header">
             <h1>Order Details</h1>
         </div>
+
+        @if ($seller_order->isDelivered()
+        && empty($seller_order->payout_item_id)
+        && empty($seller_order->seller()->profile->paypal))
+            <div class="alert alert-warning" role="alert">
+                Please fill in your Paypal account in <a href="{{ url('user/profile') }}"><strong>profile</strong></a> to transfer your balance.
+            </div>
+        @endif
+
 
         <div class="panel panel-default">
             <div class="panel-body">
@@ -72,11 +80,11 @@
 
                                 @if ($seller_order->isPickupConfirmable())
                                     <div class="row">
-                                        <button type="button" class="btn primary-btn btn-change-address col-md-1">Change
+                                        <button type="button" class="btn btn-primary btn-change-address col-md-1">Change
                                         </button>
                                         {{-- Add a new address --}}
                                         <div id="add-new-address-btn-1">
-                                            <button class="btn primary-btn add-address-btn col-md-1">Add</button>
+                                            <button class="btn btn-primary add-address-btn col-md-1">Add</button>
                                             <br><br>
                                         </div>
                                     </div>
@@ -123,7 +131,7 @@
                         @else
                             {{-- Add a new address --}}
                             <div id="add-new-address-btn-2">
-                                <button class="btn primary-btn add-address-btn">Add a new address</button>
+                                <button class="btn btn-primary add-address-btn">Add a new address</button>
                                 <br><br>
                             </div>
                         @endif
@@ -291,7 +299,7 @@
                                                        name="scheduled_pickup_time">
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn primary-btn">
+                                        <button type="submit" class="btn btn-primary">
                                             <!-- scheduled already and not cancelled. allows for reschedule -->
                                             @if($seller_order->scheduledPickupTime() && !$seller_order->cancelled)
                                                 Reschedule
@@ -372,12 +380,12 @@
                         <div class="col-md-3">
                             {{-- Confirm pickup --}}
                             @if ($seller_order->isPickupConfirmable())
-                                <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn primary-btn btn-block">Confirm Pickup</a>
+                                <a href="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" class="btn btn-primary btn-block">Confirm Pickup</a>
                             @endif
 
                             {{-- cancel order --}}
                             @if ($seller_order->isCancellable())
-                                <a class="btn secondary-btn btn-block cancel-order-btn" href="/order/seller/cancel/{{ $seller_order->id }}"
+                                <a class="btn btn-secondary btn-block cancel-order-btn" href="/order/seller/cancel/{{ $seller_order->id }}"
                                    role="button">Cancel Order</a>
                             @endif
                         </div>
@@ -385,6 +393,39 @@
                 </div>
             </div>
         </div>
+
+        {{-- balance --}}
+        @if ($seller_order->isDelivered())
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <h3>Balance</h3>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                    @if ($seller_order->payout_item_id)
+                        <p>Payout Item ID: {{ $seller_order->payout_item_id}}</p>
+                    @else
+                        <form action="{{url('/order/seller/'.$seller_order->seller()->id.'/payout')}}" method="POST" class="form-horizontal">
+                            {!! csrf_field() !!}
+                            <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
+
+                            <div class="form-group">
+                                <div class=" col-sm-6">
+                                    <button id="save-info-btn" type="submit" class="btn btn-primary">Transfer balance to my Paypal account
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
     </div>
 @endsection
 

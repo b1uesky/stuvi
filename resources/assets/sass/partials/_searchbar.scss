@@ -1,0 +1,106 @@
+/* Reponsive Searchbar
+ * Inspired by: http://jsfiddle.net/eUhTM/3/
+ */
+
+@import "../modules/all";
+
+.searchbar {
+  display: table;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 900px;
+}
+
+.searchbar-input-container {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.searchbar-input-container-query {
+  width: 66%;
+}
+
+.searchbar-input-container-university {
+  width: 0.01%;
+  height: 3em;
+}
+
+.searchbar-input-container-submit {
+  width: 0.01%;
+}
+
+.searchbar-input {
+  width: 100%;
+  height: 3em;
+  background-color: $background-color;
+}
+
+.searchbar-input-query {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0;
+}
+
+.searchbar-input-university {
+  min-width: 100px;
+  border-radius: 0;
+  border-right: 0;
+  width: auto;
+  -webkit-appearance: none;
+  color: $text-color;
+}
+
+/* XS SCREEN COMPATIBILITY */
+
+.xs-guest-search-bar{
+  display: none;
+  height: 0;
+  width: 0;
+  padding: 0 15px 0 15px;
+
+  @media(max-width: 767px){
+    display: block;
+    height: auto;
+    width: auto;
+    .searchbar-input-query{
+      width: 100%;
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+      border-right: 1px solid #C4C4C4;
+      &:focus{
+        border-right: 1px solid $primary-color;
+      }
+    }
+  }
+}
+
+@media(max-width: 767px){
+  .default-searchbar{
+    display: none;
+    height: 0;
+    width: 0;
+  }
+  .xs-guest-search-bar-input, .xs-guest-search-bar-input-uni{
+    margin-bottom: 10px;
+  }
+}
+
+@media(max-width: 360px){
+  .xs-guest-search-bar-input-submit{
+    margin-bottom: 20px;
+  }
+}
+
+
+// this class used in textbook.js when there is an isbn input error
+.search-btn-fix {
+  margin-bottom: 31px;
+}
+
+.search-icon {
+  color: white;
+}
+
+#xs-sell-search-btn{
+  width: 100%;
+}

@@ -1,22 +1,115 @@
 <!-- Copyright Stuvi LLC 2015 -->
 
-@extends('layouts.home')
+@extends('layouts.textbook')
 @section('description', "Student Village, college service provider")
 @section('title', 'Boston Textbook Marketplace & More Coming Soon!')
 
-@section('css')
-    <link type="text/css" href="{{ asset('css/home.css') }}" rel="stylesheet">
-@endsection
+@section('textbook-header')
+    {{-- Navigation Bar --}}
+    <div id="navbar-transparent">
+        <header>
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <!-- Toggle Nav into hamburger menu for small screens -->
+                        <button id="nav-toggle-collapse" type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle Navigation</span>
+                            <i class="fa fa-bars"></i>
+                        </button>
+
+                        {{-- Logo only when nav bar collapses into hamburger menu --}}
+                        <a id="xs-screen-logo-link" class="" href="{{url('/home')}}" >
+                            <img id="xs-screen-logo-img" class="" src="{{asset('/img/logo-new-center.png')}}" alt="stuvi logo">
+                        </a>
+
+                        <div class="logo-container">
+                            {{-- If on homepage, show the home logo which has white text--}}
+                            @if(Request::url() == url('/home') or Request::url() == url('/'))
+                                <a href="{{url('/home')}}">
+                                    <img src="{{asset('/img/logo-home-md.png')}}" class="img-responsive" alt="stuvi logo">
+                                </a>
+                            @else
+                                <a href="{{url('/home')}}">
+                                    <img src="{{asset('/img/logo-new-md.png')}}" class="img-responsive" alt="stuvi logo">
+                                </a>
+                            @endif
+
+                        </div>
+                    </div>
+                    <!-- End Navbar header -->
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <!-- Navbar left -->
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><a class="nav-link" href="{{ url('/textbook') }}">Textbooks</a></li>
+                        </ul>
+
+                        <!-- Navbar right -->
+                        <ul class="nav navbar-nav navbar-right">
+                            @yield('searchbar')
+
+                            {{-- Not logged in --}}
+                            @if (Auth::guest())
+                                <li><a class="nav-link" data-toggle="modal" href="#login-modal">Login</a></li>
+                                <li><a class="nav-link" data-toggle="modal" href="#signup-modal">Sign Up</a></li>
+                                {{-- Logged in --}}
+                                @else
+                                        <!-- profile dropdown -->
+                                <li class="dropdown" class="nav-link" style="z-index: 500;">
+                                    <a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button" aria-expanded="true">
+                                        <span>{{ Auth::user()->first_name }} </span>
+                                        <span class="caret nav-caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="nav-dropdown">
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="{{ url('/user/account') }}">Your Account</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="{{ url('/order/buyer') }}">Your Orders</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="{{ url('/user/bookshelf') }}">Your Bookshelf</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="{{ url('/order/seller') }}">Sold Books</a>
+                                        </li>
+                                        <li role="separator" class="divider"></li>
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="{{ url('/auth/logout') }}">Logout</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- cart -->
+                                <li class="cart">
+                                    <?php $cartQty = Auth::user()->cart->quantity; ?>
+                                    {{-- If cart empty, open modal --}}
+                                    <label class="sr-only" for="nav-right-cart-link">Cart</label>
+                                    <a href="{{ url('/cart') }}">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        @if($cartQty == 0)
+                                            <span class="cart-quantity hide">{{$cartQty}}</span>
+                                        @else
+                                            <span class="cart-quantity">{{$cartQty}}</span>
+                                        @endif
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
+                    <!-- End collapse container -->
+                </div>
+                <!-- End navbar container -->
+            </nav>
+        </header>
+    </div>
+@overwrite
 
 @section('content')
 
-    <div class="container-header">
-        @include('includes.textbook.header')
-    </div>
-
     <div class="container-fluid container-bg">
 
-        <div class="container-content">
+        <div class="container-top-half">
 
             <div class="va-container va-container-h va-container-v">
                 <div class="va-middle text-center">
@@ -50,7 +143,7 @@
                         @endif
 
                         <div class="searchbar-input-container searchbar-input-container-submit default-guest-search-submit">
-                            <input class="btn primary-btn search-btn" type="submit" value="Search">
+                            <input class="btn btn-primary btn-search" type="submit" value="Search">
                         </div>
                     </form>
                 </div>
@@ -75,7 +168,7 @@
                             </div>
                         @endif
                         <div class="xs-guest-search-bar-input-submit">
-                            <button class="btn primary-btn btn-lg" type="submit" value="Search" style="width:100%;">
+                            <button class="btn btn-primary btn-lg" type="submit" value="Search" style="width:100%;">
                                 Search
                             </button>
                         </div>
@@ -91,7 +184,7 @@
             <div class="container text-center">
                 <h1>What is Stuvi?</h1>
                 <p>Stuvi is a marketplace built for college students, by college students. We're here to provide relevant services to help you succeed at school, and we're launching here in Boston, Massachusetts!</p>
-                <p><a class="btn primary-btn btn-lg" href="{{ url('/about/') }}" role="button">Learn more</a></p>
+                <p><a class="btn btn-primary btn-lg" href="{{ url('/about/') }}" role="button">Learn more</a></p>
             </div>
         </div>
     </section>

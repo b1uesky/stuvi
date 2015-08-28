@@ -170,9 +170,11 @@ class BuyerOrder extends Model
             return false;
         }
 
+        // if there is more than one seller orders that are not cancelled and not pickup,
+        // then this buyer order is not deliverable.
         foreach ($this->seller_orders as $seller_order)
         {
-            if (!$seller_order->pickedUp())
+            if (!($seller_order->pickedUp() || $seller_order->cancelled))
             {
                 return false;
             }
@@ -366,7 +368,11 @@ class BuyerOrder extends Model
     {
         $paypal = new Paypal();
         $authorization = $paypal->getAuthorization($this->authorization_id);
-        $capture = $paypal->captureAuthorizedPayment($authorization);
+
+        // get the latest buyer order total amount (it may change when a seller order gets cancelled)
+        $amount = $this->decimalAmount();
+
+        $capture = $paypal->captureAuthorizedPayment($authorization, $amount);
 
         $this->update([
             'capture_id'    => $capture->getId()
@@ -376,44 +382,36 @@ class BuyerOrder extends Model
     /**
      * Create Paypal payout to sellers.
      */
-    public function createPayout()
+    public function payout()
     {
-        $items = array();
-
         foreach ($this->seller_orders as $seller_order)
         {
-            $receiver = $seller_order->seller()->profile->paypal;
-
-            $value = Price::convertIntegerToDecimal($seller_order->product->price - config('fee.payout_service_fee'));
-
-            $item = array(
-                'recipient_type'    => 'EMAIL',
-                'receiver'          => $receiver,
-                'note'              => 'Thank you!',
-                'sender_item_id'    => $seller_order->id,
-                'amount'            => array(
-                    'value'             => $value,
-                    'currency'          => 'USD',
-                )
-            );
-
-            array_push($items, $item);
+            $seller_order->payout();
         }
+    }
 
-        $paypal = new Paypal();
-        $payout_batch = $paypal->createBatchPayout($items);
-        $payout_batch_with_items = $paypal->getPayoutBatchStatus($payout_batch);
+    /**
+     * Build a query for searching buyer orders sold by keywords.
+     *
+     * @param $keywords
+     *
+     * @return mixed
+     */
+    public static function buildQueryWithBuyerName($keywords)
+    {
+        $keywords = explode(' ', $keywords);
 
-        // save each payout_item_id to its corresponding seller order
-        // because we need payout_item_id to retrieve details about a specific
-        // payout item
-        foreach ($payout_batch_with_items->getItems() as $payout_item_details)
+        $query = BuyerOrder::join('users as u', 'buyer_orders.buyer_id', '=', 'u.id');
+
+        foreach ($keywords as $keyword)
         {
-            $payout_item = $payout_item_details->getPayoutItem();
-            $seller_order = SellerOrder::find($payout_item->getSenderItemId());
-            $seller_order->update([
-                'payout_item_id' => $payout_item_details->getPayoutItemId()
-            ]);
+            $query = $query->where(function ($query) use ($keyword)
+            {
+                $query->where('u.first_name', 'LIKE', $keyword);
+                $query->orWhere('u.last_name', 'LIKE', $keyword);
+            });
         }
+
+        return $query->select('buyer_orders.*')->distinct();
     }
 }

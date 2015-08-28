@@ -7,7 +7,6 @@
 
 @section('css')
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="{{ asset('/css/textbook.css') }}">
 @endsection
 
 @section('content')
@@ -52,7 +51,7 @@
                         @endif
 
                         <div class="searchbar-input-container searchbar-input-container-submit default-guest-search-submit">
-                            <input class="btn primary-btn search-btn" type="submit" value="Search">
+                            <input class="btn btn-primary btn-search" type="submit" value="Search">
                         </div>
                     </form>
                 </div>
@@ -77,7 +76,7 @@
                             </div>
                         @endif
                         <div class="xs-guest-search-bar-input-submit">
-                            <button class="btn primary-btn btn-lg btn-block" type="submit" value="Search">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit" value="Search">
                                 Search
                             </button>
                         </div>

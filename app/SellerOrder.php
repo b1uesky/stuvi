@@ -1,5 +1,7 @@
 <?php namespace App;
 
+use App\Helpers\Paypal;
+use App\Helpers\Price;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
@@ -47,6 +49,18 @@ class SellerOrder extends Model
         $this->cancelled_time = Carbon::now();
         $this->product->sold  = false;
         $this->push();
+
+        // update the price of buyer order
+        $new_subtotal = $this->buyerOrder->subtotal - $this->product->price;
+        $new_total_before_tax = $new_subtotal + $this->buyerOrder->fee - $this->buyerOrder->discount;
+        $new_tax = Price::calculateTax($new_total_before_tax);
+        $new_amount = $new_total_before_tax + $new_tax;
+
+        $this->buyerOrder->update([
+            'subtotal'  => $new_subtotal,
+            'tax'       => $new_tax,
+            'amount'    => $new_amount
+        ]);
 
         // update book price range
         $this->product->book->addPrice($this->product->price);
@@ -197,18 +211,18 @@ class SellerOrder extends Model
      */
     public function isDelivered()
     {
-        return $this->buyerOrder->isDelivered();
+        return !$this->cancelled && $this->buyerOrder->isDelivered();
     }
 
     /**
-     * Check whether the amount of this seller order is transferred to seller's Stripe account.
+     * Check whether the amount of this seller order is transferred to seller's Paypal account.
      *
      * @return bool
      */
-//    public function isTransferred()
-//    {
-//        return !$this->stripeTransfer()->get()->isEmpty();
-//    }
+    public function isTransferred()
+    {
+        return !is_null($this->payout_item_id);
+    }
 
     /**
      * Get the seller order status and status detail.
@@ -217,12 +231,12 @@ class SellerOrder extends Model
      */
     public function getOrderStatus()
     {
-//        if ($this->isTransferred())
-//        {
-//            $status = 'Balance Transferred';
-//            $detail = 'The money has been transferred to your Stripe account.';
-//        }
-        if ($this->isDelivered())
+        if ($this->isTransferred())
+        {
+            $status = 'Balance Transferred';
+            $detail = 'The money has been transferred to your Paypal account.';
+        }
+        elseif ($this->isDelivered())
         {
             $status = 'Order Delivered';
             $detail = 'Your order has been delivered.';
@@ -300,5 +314,116 @@ class SellerOrder extends Model
     public function isPickUpConfirmable()
     {
         return !$this->assignedToCourier();
+    }
+
+    /**
+     * Build a query for searching seller orders with books title keywords.
+     *
+     * @param $keywords
+     *
+     * @return mixed
+     */
+    public static function buildQueryWithBookTitle($keywords)
+    {
+        $keywords = explode(' ', $keywords);
+
+        $query = SellerOrder::join('products as p', 'seller_orders.product_id', '=', 'p.id')
+                            ->join('books as b', 'p.book_id', '=', 'b.id');
+
+        foreach ($keywords as $keyword)
+        {
+            $query = $query->where('b.title', 'LIKE', '%'.$keyword.'%');
+        }
+
+        return $query->select('seller_orders.*')->distinct();
+    }
+
+    /**
+     * Build a query for searching seller orders sold by keywords.
+     *
+     * @param $keywords
+     *
+     * @return mixed
+     */
+    public static function buildQueryWithSellerName($keywords)
+    {
+        $keywords = explode(' ', $keywords);
+
+        $query = SellerOrder::join('products as p', 'seller_orders.product_id', '=', 'p.id')
+                            ->join('users as u', 'p.seller_id', '=', 'u.id');
+
+        foreach ($keywords as $keyword)
+        {
+            $query = $query->where(function ($query) use ($keyword)
+            {
+                $query->where('u.first_name', 'LIKE', $keyword);
+                $query->orWhere('u.last_name', 'LIKE', $keyword);
+            });
+        }
+
+        return $query->select('seller_orders.*')->distinct();
+    }
+
+    /**
+     * create a Paypal payout item.
+     *
+     * @return array
+     */
+    public function createPaypalPayoutItem()
+    {
+        $receiver = $this->seller()->profile->paypal;
+
+        if (empty($receiver))
+        {
+            return false;
+        }
+
+        $value = Price::convertIntegerToDecimal($this->product->price - config('fee.payout_service_fee'));
+
+        $item = array(
+            'recipient_type'    => 'EMAIL',
+            'receiver'          => $receiver,
+            'note'              => 'Thank you for your trust on Stuvi!',
+            'sender_item_id'    => $this->id,
+            'amount'            => array(
+                'value'             => $value,
+                'currency'          => 'USD',
+            )
+        );
+
+        return $item;
+    }
+
+    /**
+     * Payout the seller via paypal.
+     *
+     * @return bool|\PayPal\Api\PayoutItemDetails
+     */
+    public function payout()
+    {
+        // not delivered.
+        if (!$this->isDelivered())
+        {
+            return false;
+        }
+
+        $item = $this->createPaypalPayoutItem();
+
+        // seller does not paypal account.
+        if (!$item)
+        {
+            return false;
+        }
+
+        $paypal = new Paypal();
+        $payout_batch = $paypal->createSinglePayout($item);
+        $payout_batch_status = $paypal->getPayoutBatchStatus($payout_batch);
+        $payout_item = $payout_batch_status->getItems()[0];
+
+        $this->update([
+            'payout_item_id' => $payout_item->getPayoutItemId(),
+                      ]);
+
+        return $payout_item;
     }
 }

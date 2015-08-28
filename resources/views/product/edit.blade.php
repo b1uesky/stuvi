@@ -6,7 +6,6 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('libs/dropzone/dist/min/dropzone.min.css') }}">
-    <link href="{{ asset('/css/product_create.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -244,7 +243,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn primary-btn sell-btn">Update</button>
+                <button type="submit" class="btn btn-primary sell-btn">Update</button>
             </form>
         </div>
     </div>

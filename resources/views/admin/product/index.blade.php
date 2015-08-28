@@ -35,6 +35,7 @@
                 <option value="activated" @if ($pagination_params['order_by'] == 'activated') selected @endif>Activated</option>
                 <option value="created_at" @if ($pagination_params['order_by'] == 'created_at') selected @endif>Created At</option>
                 <option value="updated_at" @if ($pagination_params['order_by'] == 'updated_at') selected @endif>Updated At</option>
+                <option value="deleted_at" @if ($pagination_params['order_by'] == 'deleted_at') selected @endif>Deleted At</option>
             </select>
         </div> <!-- form group [rows] -->
         <div class="form-group">
@@ -60,7 +61,6 @@
             <th>Images</th>
             <th>Sold</th>
             <th>Verified</th>
-            <th>Updated At</th>
             <th>Actions</th>
         </tr>
 
@@ -85,7 +85,6 @@
                 </td>
                 <td>{{ $product->isSold2() }}</td>
                 <td>{{ $product->isVerified() }}</td>
-                <td>{{ $product->updated_at }}</td>
 
                 <!-- we will also add show, edit, and delete buttons -->
                 <td>

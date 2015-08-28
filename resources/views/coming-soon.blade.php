@@ -2,10 +2,6 @@
 
 @section('title', 'Coming Soon!')
 
-@section('css')
-    <link rel="stylesheet" href="{{asset('css/comingSoon.css')}}" type="text/css">
-@endsection
-
 @section('content')
 
     <div class="container-fluid background">

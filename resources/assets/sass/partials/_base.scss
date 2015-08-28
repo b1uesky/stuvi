@@ -1,0 +1,124 @@
+@import '../modules/all';
+
+/* Common classes */
+body {
+  font-family: $base-font-family;
+  background: $background-color;
+  color: $text-color;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.page-content {
+  padding-top: $spacing-unit;
+}
+
+.padding-large {
+  padding: 15px;
+}
+
+.margin-small {
+  margin: 5px;
+}
+
+.margin-medium {
+  margin: 10px;
+}
+
+.margin-large {
+  margin: 15px;
+}
+
+.margin-30 {
+  margin: 30px;
+}
+
+.margin-top-5 {
+  margin-top: 5px;
+}
+
+.margin-bottom-5 {
+  margin-bottom: 5px;
+}
+
+.no-margin-top {
+  margin-top: 0;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+
+.no-margin-left {
+  margin-left: 0;
+}
+
+.no-margin-right {
+  margin-right: 0;
+}
+
+.border-bottom {
+  border-bottom: 1px solid $border-color;
+}
+
+.rel-bot-10 {
+  position: relative;
+  bottom: 10px;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-grey {
+  background-color: $background-grey;
+}
+
+.white {
+  color: white;
+}
+
+.price {
+  color: $price-color;
+}
+
+.width-130 {
+  width: 130px;
+}
+
+/* Bootstrap Override */
+a {
+  text-decoration: none !important;
+  color: $primary-color;
+
+  &:hover, &:focus {
+    color: $primary-color;
+    outline: none;
+  }
+}
+
+.nav-pills>li>a {
+  border-radius: 2px;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+  background-color: $primary-color;
+}
+
+
+.dropdown-menu {
+  border: 0;
+  border-radius: 2px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  &:hover, &:focus {
+    outline: 0;
+  }
+
+  li {
+    height: $spacing-unit;
+  }
+}

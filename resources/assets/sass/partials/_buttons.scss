@@ -1,0 +1,113 @@
+@import "../modules/colors";
+
+/* BOOTSTRAP BUTTONS OVERRIDE */
+
+.btn {
+  border-radius: 2px;
+}
+
+.button {
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn-default.active.focus,
+.btn-default.active:focus,
+.btn-default.active:hover,
+.btn-default:active.focus,
+.btn-default:active:focus,
+.btn-default:active:hover,
+.open>.dropdown-toggle.btn-default.focus,
+.open>.dropdown-toggle.btn-default:focus,
+.open>.dropdown-toggle.btn-default:hover {
+  background-color: $primary-color-light !important;
+  outline: 0 !important;
+  color: $button-text-color !important;
+  border: 1px solid $primary-color !important;
+}
+
+.btn-default.active,
+.btn-default:active,
+.open>.dropdown-toggle.btn-default {
+  background-color: $primary-color !important;
+  outline: 0 !important;
+  color: $button-text-color !important;
+  border: 1px solid $primary-color !important;
+}
+
+.btn-default {
+  color: $text-color;
+  border: 1px solid $border-color;
+
+  &:hover, &:focus {
+    background-color: $primary-color-light !important;
+    outline: 0 !important;
+    color: $button-text-color;
+    border: 1px solid $primary-color !important;
+  }
+}
+
+.btn-primary.disabled,
+.btn-primary.disabled.active,
+.btn-primary.disabled.focus,
+.btn-primary.disabled:active,
+.btn-primary.disabled:focus,
+.btn-primary.disabled:hover,
+.btn-primary[disabled],
+.btn-primary[disabled].active,
+.btn-primary[disabled].focus,
+.btn-primary[disabled]:active,
+.btn-primary[disabled]:focus,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary,
+fieldset[disabled] .btn-primary.active,
+fieldset[disabled] .btn-primary.focus,
+fieldset[disabled] .btn-primary:active,
+fieldset[disabled] .btn-primary:focus,
+fieldset[disabled] .btn-primary:hover {
+    background-color: $primary-color-light !important;
+    border-color: $primary-color-light !important;
+}
+
+.btn-primary {
+  background-color: $primary-color;
+  color: $button-text-color;
+  border: 1px solid $primary-color;
+
+  &:hover, &:focus {
+    background-color: $primary-color-light !important;
+    outline: 0 !important;
+    color: $button-text-color;
+    border: 1px solid $primary-color !important;
+  }
+}
+
+/* CUSTOMIZED BUTTONS */
+
+.btn-secondary {
+  background-color: $secondary-color;
+  color: $button-text-color;
+  border: none;
+  &:hover, &:focus{
+    background-color: $secondary-color-light;
+    outline: 0;
+    color: $button-text-color;
+  }
+}
+
+.btn-muted {
+  color: $button-text-color;
+  background-color: $background-light-grey;
+
+  &:hover, &:focus {
+    color: $button-text-color;
+  }
+}
+
+.btn-search {
+  padding: 9px 27px;
+  height: 3em;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

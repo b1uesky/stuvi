@@ -3,7 +3,6 @@
 @section('title', 'Login & Register')
 
 @section('css')
-    <link href="{{ asset('/css/auth_login.css') }}" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/css/bootstrap-select.min.css" rel="stylesheet">
 @endsection
 
@@ -72,7 +71,7 @@
                                 <!-- forgot pw -->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
-                                        <button type="submit" class="btn primary-btn submit-btn">Login</button>
+                                        <button type="submit" class="btn btn-primary submit-btn">Login</button>
                                         <br>
                                         <a class="btn btn-link" id="forgot-password"
                                            href="{{ url('/password/email') }}">Forgot Your Password?</a>
@@ -145,7 +144,7 @@
                                 <!-- sign up button-->
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
-                                        <button type="submit" class="btn primary-btn submit-btn">Sign Up</button>
+                                        <button type="submit" class="btn btn-primary submit-btn">Sign Up</button>
                                     </div>
                                 </div>
                             </form>
