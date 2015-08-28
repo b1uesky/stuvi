@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "bootstrap": "latest",
+    "bootstrap-select": "~1.7.3",
     "card": "~1.1.0",
     "datetimepicker": "latest",
     "dropzone": "~4.0.1",
