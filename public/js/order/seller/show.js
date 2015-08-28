@@ -65,11 +65,23 @@ $(document).ready(function () {
     });
 
     // Ajax: update seller default address
-    $('.form-update-default-address').submit(function (e) {
+    $(document).on('click', '.address-panel' ,function (e) {
         e.preventDefault();
         var $this = $(this);
         var seller_order_id = $('input[name=seller_order_id]').val();
         var selected_address_id = $this.find('input[name=address_id]').val();
+
+        $this = $this.closest('.seller-address-book-box');
+        var address = {};
+        address.addressee = $.trim($this.find('.seller-address-addressee').text());
+        address['address-line'] = $.trim($this.find('.seller-address-address-line').text());
+        address.city = $.trim($this.find('.seller-address-city').text());
+        address.state = $.trim($this.find('.seller-address-state').text());
+        address.zip = $.trim($this.find('.seller-address-zip').text());
+        address.country_name = $.trim($this.find('.seller-address-country').text());
+        address.phone_number = $.trim($this.find('.seller-address-phone').text());
+        updateAddress($(".seller-address"), address);
+        toggleAddress();
 
         $.ajax({
             type: 'GET',
@@ -97,19 +109,19 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data, status) {
                 //console.log(data['address']);
-                $this = $this.closest('.seller-address-book-box');
-                var address = {};
-                address.addressee = $.trim($this.find('.seller-address-addressee').text());
-                address['address-line'] = $.trim($this.find('.seller-address-address-line').text());
-                address.city = $.trim($this.find('.seller-address-city').text());
-                address.state = $.trim($this.find('.seller-address-state').text());
-                address.zip = $.trim($this.find('.seller-address-zip').text());
-                address.country_name = $.trim($this.find('.seller-address-country').text());
-                address.phone_number = $.trim($this.find('.seller-address-phone').text());
-
-                updateAddress($(".seller-address"), address);
-
-                toggleAddress();
+                // $this = $this.closest('.seller-address-book-box');
+                // var address = {};
+                // address.addressee = $.trim($this.find('.seller-address-addressee').text());
+                // address['address-line'] = $.trim($this.find('.seller-address-address-line').text());
+                // address.city = $.trim($this.find('.seller-address-city').text());
+                // address.state = $.trim($this.find('.seller-address-state').text());
+                // address.zip = $.trim($this.find('.seller-address-zip').text());
+                // address.country_name = $.trim($this.find('.seller-address-country').text());
+                // address.phone_number = $.trim($this.find('.seller-address-phone').text());
+                //
+                // updateAddress($(".seller-address"), address);
+                //
+                // toggleAddress();
             },
             error: function (xhr, status, errorThrown) {
                 console.log(status);
