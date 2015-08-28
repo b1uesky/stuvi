@@ -160,7 +160,7 @@
                         @if(Auth::guest())
                             <div class="xs-guest-search-bar-input-uni">
                                 <label class="sr-only" for="xs-uni_id">University ID</label>
-                                <select name="university_id" class="form-control searchbar-input" id="xs-uni-id">
+                                <select name="university_id" class="form-control searchbar-input input-lg" id="xs-uni-id">
                                     @foreach(\App\University::where('is_public', true)->get() as $university)
                                         <option value="{{ $university->id }}">{{ $university->abbreviation }}</option>
                                     @endforeach
@@ -168,7 +168,7 @@
                             </div>
                         @endif
                         <div class="xs-guest-search-bar-input-submit">
-                            <button class="btn btn-primary btn-lg" type="submit" value="Search" style="width:100%;">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit" value="Search">
                                 Search
                             </button>
                         </div>
