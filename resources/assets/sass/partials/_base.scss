@@ -11,6 +11,10 @@ body {
   width: 100%;
 }
 
+.page-content {
+  padding-top: $spacing-unit;
+}
+
 .padding-large {
   padding: 15px;
 }
@@ -29,6 +33,14 @@ body {
 
 .margin-30 {
   margin: 30px;
+}
+
+.margin-top-5 {
+  margin-top: 5px;
+}
+
+.margin-bottom-5 {
+  margin-bottom: 5px;
 }
 
 .no-margin-top {

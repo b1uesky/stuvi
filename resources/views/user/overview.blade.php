@@ -18,7 +18,6 @@ $website    =   Auth::user()->profile->website;
 
 @section('content')
     <!-- User template has the second nav bar and the profile side bar -->
-    @include('user-template')
             <div class="col-md-9">
                 <div class="profile-content">
                     <!-- right box -->
