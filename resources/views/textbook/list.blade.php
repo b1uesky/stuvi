@@ -18,7 +18,7 @@
             </div>
 
             @forelse($books as $book)
-                <div class="margin-large border-bottom">
+                <div class="margin-15 border-bottom">
                     <table class="table table-no-border">
                         <tr>
                             <td class="col-xs-3 col-sm-2">

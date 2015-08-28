@@ -5,11 +5,10 @@
  * http://thesassway.com/beginner/how-to-structure-a-sass-project
  */
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
-
 
 /* PARTIALS */
 @import 'partials/base';
+@import 'partials/utility';
 @import 'partials/buttons';
 @import 'partials/containers';
 @import 'partials/forms';

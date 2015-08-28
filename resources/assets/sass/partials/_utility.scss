@@ -1,0 +1,81 @@
+@import '../modules/all';
+
+/* WIDTH */
+.full-width {
+  width: 100%;
+}
+
+.width-130 {
+  width: 130px;
+}
+
+/* PADDING */
+.page-content {
+  padding-top: $spacing-unit;
+}
+
+.padding-30 {
+  padding: 30px;
+}
+
+.padding-60 {
+  padding: 60px;
+}
+
+/* MARGIN */
+.margin-15 {
+  margin: 15px;
+}
+
+.margin-30 {
+  margin: 30px;
+}
+
+.margin-top-5 {
+  margin-top: 5px;
+}
+
+.margin-bottom-5 {
+  margin-bottom: 5px;
+}
+
+.no-margin-top {
+  margin-top: 0;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+
+.no-margin-left {
+  margin-left: 0;
+}
+
+.no-margin-right {
+  margin-right: 0;
+}
+
+.border-bottom {
+  border-bottom: 1px solid $border-color;
+}
+
+/* POSITION */
+.rel-bot-10 {
+  position: relative;
+  bottom: 10px;
+}
+
+/* BACKGROUND */
+.bg-white {
+  background-color: white;
+}
+
+.bg-grey {
+  background-color: $background-grey;
+}
+
+
+/* COLOR */
+.price {
+  color: $price-color;
+}
