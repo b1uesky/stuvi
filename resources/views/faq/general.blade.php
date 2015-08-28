@@ -3,7 +3,7 @@
 @section('title', 'FAQ - General')
 
 @section('content')
-    <div class="container faq-container">
+    <div class="container page-content">
         @include('faq.side-nav')
 
         <div class="col-sm-7 col-sm-offset-1 qa-container">
