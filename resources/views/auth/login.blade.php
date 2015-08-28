@@ -102,10 +102,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <!-- tos statement-->
-                                    By signing up, you agree to Stuvi's
-                                    <a href="#" data-toggle="modal" data-target=".terms-modal">Terms of Service</a> and
-                                    <a href="#" data-toggle="modal" data-target=".privacy-modal"> Privacy Notice</a>.
+                                    <small>By signing up, you agree to Stuvi's <a href="{{url('/tos')}}" target="_blank" > Terms of Service</a>
+                                        and <a href="{{url('/privacy')}}" target="_blank"> Privacy Notice</a>.</small>
                                 </div>
                                 <!-- sign up button-->
                                 <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
@@ -117,8 +115,6 @@
 
         </div>
     </div>
-
-    @include('includes.textbook.tos-privacy-modal')
 
 @endsection
 
