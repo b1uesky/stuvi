@@ -110,10 +110,7 @@
                         <h3>Save Money!</h3>
 
                         <p>There's no need to pay for packaging supplies and shipping. We take care of the entire
-                            process. With
-                            <strong>NO</strong> fee, you can spend the extra dough on important things such as:
-                            underage alcohol consumption,
-                            laser hair removal, bail fees, life insurance scams, and more!
+                            process!
                         </p>
                     </div>
                 </div>
