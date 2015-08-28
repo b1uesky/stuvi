@@ -37,8 +37,7 @@
 
 .seller-address-book-box{
   padding: 10px;
-  height: 100%;
-  width: auto;
+  height: 175px;
   outline: none;
   padding: 15px;
   margin: 5px 1px 3px 5px;
@@ -54,6 +53,11 @@
     padding: 15px;
     margin: 5px 1px 3px 5px;
     border: 1px solid $primary-color;
+  }
+  .address-panel{
+      list-style-type: none;
+      margin: 0 0 10px 0;
+      padding: 0;
   }
 }
 

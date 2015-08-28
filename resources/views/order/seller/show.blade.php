@@ -88,49 +88,34 @@
                                     @foreach($seller_order->seller()->addresses as $address)
                                         <div class="thumbnail col-md-3 col-sm-5 seller-address-book-box">
                                             <button type="button" class="close deleteThisAddress" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <span class="seller-address-addressee">{{ $address->addressee }}</span>
-                                            <br>
-                                <span class="seller-address-address-line">
-                                    @if($address->address_line2)
-                                        {{ $address->address_line1 }}, {{ $address->address_line2 }}
-                                    @else
-                                        {{ $address->address_line1 }}
-                                    @endif
-                                </span>
-                                            <br>
-                                <span>
-                                    <span class="seller-address-city">{{ $address->city }}, </span>
-                                    <span class="seller-address-state">{{ $address->state_a2 }} </span>
-                                    <span class="seller-address-zip">{{ $address->zip }}</span>
-                                </span>
-                                            <br>
-                                            <span class="seller-address-country">{{ $address->country_name }}</span>
-                                            <br>
-                                            <span class="seller-address-phone">Phone: {{ $address->phone_number }}</span>
-                                            <br>
-
-                                            <div class="row">
-                                                {{-- Ajax: select default address --}}
-                                                <form action="" method="post"
-                                                      class="form-update-default-address col-xs-1"
-                                                      id="select-address-form">
-                                                    <input type="hidden" name="address_id" value="{{ $address->id }}"/>
-                                                    <input type="submit" name="submit" value="Select"
-                                                           class="btn btn-default"/>
-                                                </form>
-
-                                                {{-- Edit address --}}
-                                                <form action="" method="post"
-                                                      class="form-edit-address col-xs-1 col-xs-offset-1 col-sm-offset-2 "
-                                                      id="edit-address-form">
-                                                    <input type="hidden" name="address_id" value="{{ $address->id }}"/>
-                                                    <input type="submit" name="submit" value="Edit"
-                                                           class="btn btn-default"/>
-                                                </form>
-                                            </div>
-
-                                        </div>
-
+                                            <ul class="address-panel">
+                                                <li class="seller-address-addressee">{{ $address->addressee }}</li>
+                                                <li class="seller-address-address-line">
+                                                    @if($address->address_line2)
+                                                        {{ $address->address_line1 }}, {{ $address->address_line2 }}
+                                                    @else
+                                                        {{ $address->address_line1 }}
+                                                    @endif
+                                                </li>
+                                                <li>
+                                                    <span class="seller-address-city">{{ $address->city }}, </span>
+                                                    <span class="seller-address-state">{{ $address->state_a2 }} </span>
+                                                    <span class="seller-address-zip">{{ $address->zip }}</span>
+                                                </li>
+                                                <span class="seller-address-country">{{ $address->country_name }}</span>
+                                                <br>
+                                                <span class="seller-address-phone">Phone: {{ $address->phone_number }}</span>
+                                                <br>
+                                            </ul>
+                                            {{-- Edit address --}}
+                                            <form action="" method="post"
+                                                  class="form-edit-address"
+                                                  id="edit-address-form">
+                                                <input type="hidden" name="address_id" value="{{ $address->id }}"/>
+                                                <input type="submit" name="submit" value="Edit"
+                                                       class="btn btn-default"/>
+                                            </form>
+                                    </div>
                                     @endforeach
                                 </div>
                             </div>
