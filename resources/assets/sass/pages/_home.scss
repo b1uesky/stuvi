@@ -20,12 +20,11 @@
 
 .container-top-half {
   position: relative;
-  height: 550px;
+  height: 450px;
   top: 50px;
-  padding-bottom: 102px;
 
-  @media (max-width: 767px) {
-    padding-bottom: 208px;
+  @media(max-width: 767px) {
+    top: 0;
   }
 }
 
@@ -39,7 +38,7 @@
   left: 0;
   right: 0;
   padding: $spacing-unit 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: $transparent;
 }
 
 /* TRANSPARENT NAVIGATION */
