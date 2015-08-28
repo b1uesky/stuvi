@@ -7,7 +7,7 @@
         @include('faq.side-nav')
         <div class="col-sm-7 col-sm-offset-1 qa-container">
             <h2>FAQ - Textbook</h2>
-            <hr class="faq-line">
+            <hr>
             <a name="text-condition"></a>
             <div class="question-answer">
                 <h3>Will the textbooks be in good condition?</h3>

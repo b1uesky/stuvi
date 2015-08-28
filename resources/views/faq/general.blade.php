@@ -8,7 +8,7 @@
 
         <div class="col-sm-7 col-sm-offset-1 qa-container">
             <h2>FAQ - General Questions</h2>
-            <hr class="faq-line">
+            <hr>
             <a name="school-email"></a>
             <div class="question-answer">
                 <h3>Why do I need to log in with a school email address?</h3>
