@@ -481,6 +481,31 @@ class Paypal extends \App\Helpers\Payment
     }
 
     /**
+     * Void an authorized payment.
+     *
+     * @param $authorizationId
+     * @return Authorization|string
+     */
+    public function voidAuthorization($authorizationId)
+    {
+        // ### VoidAuthorization
+        // You can void a previously authorized payment
+        // by invoking the $authorization->void method
+        // with a valid ApiContext (See bootstrap.php for more on `ApiContext`)
+        try {
+            // Lookup the authorization
+            $authorization = Authorization::get($authorizationId, $this->api_context);
+            // Void the authorization
+            $voidedAuth = $authorization->void($this->api_context);
+        } catch (Exception $ex) {
+            return "Exception: " . $ex->getMessage() . PHP_EOL;
+            exit(1);
+        }
+
+        return $voidedAuth;
+    }
+
+    /**
      * Create a single payout.
      * https://github.com/paypal/PayPal-PHP-SDK/blob/master/sample/payouts/CreateSinglePayout.php
      *
