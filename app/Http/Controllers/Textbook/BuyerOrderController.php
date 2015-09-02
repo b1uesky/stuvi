@@ -178,8 +178,6 @@ class BuyerOrderController extends Controller
             return redirect('/order/buyer');
         }
 
-//        Session::flash('order', BuyerOrder::find(1));
-
         return view('order.buyer.confirmation');
     }
 
