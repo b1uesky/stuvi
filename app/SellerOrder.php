@@ -313,7 +313,7 @@ class SellerOrder extends Model
      */
     public function isPickUpConfirmable()
     {
-        return !$this->assignedToCourier();
+        return !$this->assignedToCourier() && !$this->cancelled;
     }
 
     /**

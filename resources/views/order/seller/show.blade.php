@@ -29,16 +29,24 @@
             <div class="panel-body">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-sm-5">
                             <span>Sold on {{ $seller_order->created_at }}</span>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-sm-5">
+                            @if($seller_order->cancelled)
+                                <span>Cancelled at {{ $seller_order->cancelled_time }}</span>
+                            @endif
+                        </div>
+                        <div class="col-sm-2">
                             <span>Order #{{ $seller_order->id }}</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        {{-- If the order is not cancelled --}}
+        @if(!$seller_order->cancelled)
 
         {{-- select address --}}
         <div class="panel panel-default">
@@ -258,13 +266,13 @@
             </div>
         </div>
 
+
         {{-- pickup time --}}
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="container-fluid">
                     <div class="row">
-                        {{-- If the order is not cancelled --}}
-                        @if(!$seller_order->cancelled)
+
 
                             {{-- Schedule pickup time --}}
                             <h3>Pickup Time</h3>
@@ -316,11 +324,12 @@
                                 Pickup time:
                                 <mark>{{ date(config('app.datetime_format'), strtotime($seller_order->pickup_time)) }}</mark>
                             @endif
-                        @endif
+
                     </div>
                 </div>
             </div>
         </div>
+        @endif
 
         {{-- item --}}
         <div class="panel panel-default">
