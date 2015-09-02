@@ -52,7 +52,11 @@
   min-width: 100px;
   border-radius: 0;
   border-right: 0;
-  width: auto;
+  -webkit-appearance: none;
+  color: $text-color;
+}
+
+.searchbar-input-university-with-border {
   -webkit-appearance: none;
   color: $text-color;
 }

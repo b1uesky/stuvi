@@ -62,14 +62,14 @@
                             <div class="xs-guest-search-bar-input">
                                 <label class="sr-only" for="autocompleteBuy">Search for Textbooks by ISBN, Title or Author</label>
                                 <input type="text" name="query" id="autocompleteBuy"
-                                       class="form-control searchbar-input searchbar-input-query"
+                                       class="form-control searchbar-input"
                                        placeholder="Enter the textbook ISBN, Title, or Author"/>
                             </div>
                             @if(Auth::guest())
                                 {{-- Show school selection if it's a guest --}}
                                 <div class="xs-guest-search-bar-input-uni">
-                                    <label class="sr-only" for="uni-id-2">University ID</label>
-                                    <select name="university_id" class="form-control" id="uni-id-2">
+                                    <label class="sr-only">University ID</label>
+                                    <select name="university_id" class="form-control searchbar-input searchbar-input-university-with-border">
                                         @foreach($universities as $university)
                                             <option value="{{ $university->id }}">{{ $university->abbreviation }}</option>
                                         @endforeach

@@ -53,7 +53,7 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <div class="xs-guest-search-bar-input" id="xs-textbook-search">
-                                <input type="text" name="isbn" class="form-control searchbar-input searchbar-input-query"
+                                <input type="text" name="isbn" class="form-control searchbar-input"
                                        id="sell-search-input"
                                        placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
                             </div>

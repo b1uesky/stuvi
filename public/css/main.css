@@ -562,7 +562,10 @@ body.modal-open {
   min-width: 100px;
   border-radius: 0;
   border-right: 0;
-  width: auto;
+  -webkit-appearance: none;
+  color: #50514f; }
+
+.searchbar-input-university-with-border {
   -webkit-appearance: none;
   color: #50514f; }
 
@@ -1599,7 +1602,7 @@ Add a counter to the multi-steps indicator
 
 .container-top-half {
   position: relative;
-  height: 480px;
+  height: 430px;
   top: 50px; }
   @media (max-width: 767px) {
     .container-top-half {
