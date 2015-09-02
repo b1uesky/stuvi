@@ -146,6 +146,10 @@ class BuyerOrder extends Model
         {
             $seller_order->cancel();
         }
+
+        // void authorized payment
+        $paypal = new Paypal();
+        $paypal->voidAuthorization($this->authorization_id);
     }
 
     /**

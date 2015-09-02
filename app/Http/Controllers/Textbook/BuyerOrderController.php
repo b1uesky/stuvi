@@ -152,17 +152,17 @@ class BuyerOrderController extends Controller
                 $buyer_order->cancel();
 
                 return redirect('order/buyer/' . $id)
-                    ->with('message', 'Your cancel request has been submitted. We will process your request in 2 days.');
+                    ->with('success', 'Your cancel request has been submitted. We will process your request in 2 days.');
             }
             else
             {
                 return redirect('order/buyer/' . $id)
-                    ->with('message', 'Sorry, this order cannot be cancelled. We have picked up one or more books from seller.');
+                    ->with('error', 'Sorry, this order cannot be cancelled. We have picked up one or more books from seller.');
             }
         }
 
         return redirect('order/buyer')
-            ->with('message', 'Order not found.');
+            ->with('error', 'Order not found.');
     }
 
     /**
