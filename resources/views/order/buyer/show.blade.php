@@ -49,7 +49,7 @@
             <div class="panel-body">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-sm-6">
                             <?php $addr = $buyer_order->shipping_address ?>
 
                             <div class="row">
@@ -66,17 +66,17 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
-                            <div class="row">
-                                <h4>Payment Method</h4>
-                            </div>
+                        {{--<div class="col-md-4">--}}
+                            {{--<div class="row">--}}
+                                {{--<h4>Payment Method</h4>--}}
+                            {{--</div>--}}
 
-                            <div class="row">
+                            {{--<div class="row">--}}
                                  {{--TODO--}}
-                            </div>
-                        </div>
+                            {{--</div>--}}
+                        {{--</div>--}}
 
-                        <div class="col-md-4">
+                        <div class="col-sm-6">
                             <div class="row">
                                 <h4>Order Summary</h4>
                             </div>
