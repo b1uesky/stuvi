@@ -59,13 +59,13 @@ class BuyerOrderController extends Controller
         if ($this->cart->items->count() < 1)
         {
             return redirect('/cart')
-                ->with('message', 'Cannot proceed to checkout because cart is empty.');
+                ->with('error', 'Cannot proceed to checkout because cart is empty.');
         }
 
         if (!$this->cart->isValid())
         {
             return redirect('/cart')
-                ->with('message', 'Cannot proceed to checkout because one or more items in your cart are sold. Please press "Update" button.');
+                ->with('error', 'Cannot proceed to checkout because one or more items in your cart are sold. Please press "Update" button.');
         }
 
         $user      = Auth::user();
@@ -130,7 +130,7 @@ class BuyerOrderController extends Controller
         }
 
         return redirect('order/buyer')
-            ->with('message', 'Order not found.');
+            ->with('error', 'Order not found.');
     }
 
     /**
@@ -192,7 +192,7 @@ class BuyerOrderController extends Controller
     {
         if (!$this->cart->isValid())
         {
-            return redirect('/cart')->with('message', 'Cannot proceed to checkout because one or more items in your cart are sold. Please press "Update" button.');
+            return redirect('/cart')->with('error', 'Cannot proceed to checkout because one or more items in your cart are sold. Please press "Update" button.');
         }
 
         // Paypal items

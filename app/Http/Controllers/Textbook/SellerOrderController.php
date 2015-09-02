@@ -54,7 +54,7 @@ class SellerOrderController extends Controller
         }
 
         return redirect('order/seller')
-            ->with('message', 'Order not found');
+            ->with('error', 'Order not found');
     }
 
     /**
@@ -83,17 +83,17 @@ class SellerOrderController extends Controller
                 }
 
                 return redirect('order/seller/' . $id)
-                    ->with('message', 'Your cancel request has been submitted. We will process your request in 2 days.');
+                    ->with('success', 'Your cancel request has been submitted. We will process your request in 2 days.');
             }
             else
             {
                 return redirect('order/seller/' . $id)
-                    ->with('message', 'Sorry, this order cannot be cancelled.');
+                    ->with('error', 'Sorry, this order cannot be cancelled.');
             }
         }
 
         return redirect('order/seller')
-            ->with('message', 'Order not found.');
+            ->with('error', 'Order not found.');
     }
 
     /**
@@ -154,7 +154,7 @@ class SellerOrderController extends Controller
                 return Response::json([
                     'success'               => true,
                     'scheduled_pickup_time' => $scheduled_pickup_time,
-                    'message'               => 'Successfully schedule pickup time.',
+                    'error'               => 'Successfully schedule pickup time.',
                 ]);
             }
 
@@ -370,38 +370,38 @@ class SellerOrderController extends Controller
         if (empty($seller_order) || !$seller_order->isBelongTo(Auth::id()))
         {
             return redirect('/order/seller')
-                ->with('message', 'Order not found.');
+                ->with('error', 'Order not found.');
         }
 
         // check if this seller order is transferred.
         if ($seller_order->isTransferred())
         {
             return redirect('/order/seller/' . $seller_order_id)
-                ->with('message', 'You have already transferred the balance of this order to your Paypal account.');
+                ->with('error', 'You have already transferred the balance of this order to your Paypal account.');
         }
 
         // check if this seller order is delivered
         if (!$seller_order->isDelivered())
         {
             return redirect('/order/seller/' . $seller_order_id)
-                ->with('message', 'This order is not delivered yet. You can get your money back once the buyer get the book.');
+                ->with('error', 'This order is not delivered yet. You can get your money back once the buyer get the book.');
         }
 
         if ($seller_order->cancelled)
         {
             return redirect('/order/seller/' . $seller_order_id)
-                ->with('message', 'This order has been cancelled.');
+                ->with('error', 'This order has been cancelled.');
         }
 
         $payout_item = $seller_order->payout();
         if (!$payout_item)
         {
             redirect('/order/seller/'.$seller_order_id)
-                ->with('message', 'Sorry, we cannot transfer the balance to your Paypal account. Please contact Stuvi.');
+                ->with('error', 'Sorry, we cannot transfer the balance to your Paypal account. Please contact Stuvi.');
         }
 
         return redirect('/order/seller/'.$seller_order_id)
-            ->with('message', 'The balance has been transferred to your paypal account '.$seller_order->seller()->profile->paypal);
+            ->with('success', 'The balance has been transferred to your paypal account '.$seller_order->seller()->profile->paypal);
     }
 
     /**

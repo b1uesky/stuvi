@@ -106,7 +106,7 @@ class TextbookController extends Controller
 
             // allow the seller fill in book information and create a new book record
             return redirect('textbook/sell/create')
-                ->with('message', 'Looks like your textbook is currently not in our database, please fill in the textbook information below.')
+                ->with('info', 'Looks like your textbook is currently not in our database, please fill in the textbook information below.')
                 ->withInput(Input::all());
         }
     }

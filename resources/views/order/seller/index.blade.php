@@ -17,12 +17,10 @@
             <h1>Sold books</h1>
         </div>
 
-        <strong id="order-list-text">Order List</strong>
         @foreach ($orders as $order)
             <div class="panel panel-default">
                 <div class="panel-heading">
 
-                    <em>Order Details</em>
                     <div class="container-fluid text-muted">
                         <div class="col-xs-2">
                             <div class="row">
@@ -125,7 +123,4 @@
     {{--<p>You haven't sold any books. Why not <a href="{{ url('/textbook/sell') }}">sell some</a>?</p>--}}
 
     </div>
-@endsection
-
-@section('javascript')
 @endsection
