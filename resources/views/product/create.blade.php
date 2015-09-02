@@ -264,10 +264,6 @@
 
 @endsection
 
-@section('modals')
-    @include('includes.textbook.tos-privacy-modal')
-@endsection
-
 @section('javascript')
     <script src="{{ asset('libs/dropzone/dist/min/dropzone.min.js') }}"></script>
 

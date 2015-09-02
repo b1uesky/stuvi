@@ -2,10 +2,6 @@
 
 @section('title', 'Login & Register')
 
-@section('css')
-    <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/css/bootstrap-select.min.css" rel="stylesheet">
-@endsection
-
 {{--set starting tab based on clicked nav button--}}
 {{--the code below is not commented, it's blade syntax for variables--}}
 @if (isset($loginType) && $loginType == 'login')
@@ -17,153 +13,110 @@
 @endif
 
 @section('content')
-    <div class="container-fluid content">
-        <!-- logo -->
-        <a href="{{ url('/') }}" id="logo-link"><img src="{{asset('/img/logo-new-center.png')}}" class="img-responsive" id="login-logo"></a>
 
-        <div class="row vertical-center">
+    <div class="container">
+        <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
-                <div class="container" id="form-container">
-                    <!-- tabs -->
-                    <ul class="nav nav-tabs nav-justified" role="tablist" id="tabs">
-                        <!-- login tab-->
-                        <li role="presentation" class="{{ $loginActive }}" id="login-tab">
+
+                <div class="container-fluid container-login-signup">
+                    <a href="{{ url('home') }}">
+                        <img src="{{asset('/img/logo-new-center.png')}}" class="img-responsive center-block">
+                    </a>
+
+                    <ul class="nav nav-tabs nav-justified" role="tablist">
+                        <!-- login -->
+                        <li role="presentation" class="{{ $loginActive }}">
                             <a href="#login-body" aria-controls="login-body" role="tab" data-toggle="tab">Login</a>
                         </li>
-                        <!-- signup tab-->
-                        <li role="presentation" class="{{ $signupActive }}" id="signup-tab">
+                        <!-- signup -->
+                        <li role="presentation" class="{{ $signupActive }}">
                             <a href="#signup-body" aria-controls="signup-body" role="tab" data-toggle="tab">Sign Up</a>
                         </li>
                     </ul>
-                    <!-- end tabs -->
+
+                    <br>
 
                     <div class="tab-content">
-                        <!-- login -->
-                        <div class="tab-pane {{ $loginActive }}" id="login-body">
-                            <form class="form-horizontal login-form" role="form" method="POST"
-                                  action="{{ url('/auth/login') }}">
+                        <div id="login-body" class="tab-pane {{ $loginActive }}">
+                            <form method="POST" action="{{ url('/auth/login') }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <!-- email -->
                                 <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-8 form-space-offset">
-                                        <label class="sr-only" for="login-email">Email address</label>
-                                        <input type="email" class="form-control input" name="email" id="login-email" placeholder="Email"
-                                               value="{{ old('email') }}">
-                                    </div>
+                                    <label class="sr-only" for="login-email">Email address</label>
+                                    <input type="email" class="form-control" name="email" placeholder="Email address" value="{{ old('email') }}">
                                 </div>
                                 <!-- password -->
-                                <div id="password-group" class="form-group">
+                                <div class="form-group">
                                     <label class="sr-only" for="login-password">Password</label>
-                                    <div class="col-sm-offset-2 col-sm-8">
-                                        <input type="password" class="form-control" name="password" id="login-password" placeholder="Password">
-                                    </div>
+                                    <input type="password" class="form-control" name="password" placeholder="Password">
                                 </div>
                                 <!-- remember -->
                                 <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-8">
-                                        <div class="checkbox" id="remember-me">
-                                            <label for="remember-me-box">
-                                                <input type="checkbox" name="remember" id="remember-me-box"> Remember Me
-                                            </label>
-                                        </div>
+                                    <label for="remember-me-box">
+                                        <input type="checkbox" name="remember"> Remember Me
+                                    </label>
+
+                                    <div class="pull-right">
+                                        <a href="{{ url('/password/email') }}">Forgot Your Password?</a>
                                     </div>
                                 </div>
-                                <!-- forgot pw -->
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-8">
-                                        <button type="submit" class="btn btn-primary submit-btn">Login</button>
-                                        <br>
-                                        <a class="btn btn-link" id="forgot-password"
-                                           href="{{ url('/password/email') }}">Forgot Your Password?</a>
-                                    </div>
-                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Login</button>
                             </form>
                         </div>
-                        <!-- sign up -->
-                        <div class="tab-pane {{ $signupActive }}" id="signup-body">
-                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
+
+                        <div id="signup-body" class="tab-pane {{ $signupActive }}">
+                            <form method="POST" action="{{ url('/auth/register') }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <!-- first name -->
                                 <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-8 form-space-offset">
-                                        <label class="sr-only" for="register-first">First name</label>
-                                        <input type="text" class="form-control" name="first_name" id="register-first"
-                                               placeholder="First Name" value="{{ old('first_name') }}">
-                                    </div>
+                                    <label class="sr-only">First name</label>
+                                    <input type="text" class="form-control" name="first_name" placeholder="First Name" value="{{ old('first_name') }}">
                                 </div>
                                 <!-- last name -->
                                 <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-8">
-                                        <label class="sr-only" for="register-last">Last name</label>
-                                        <input type="text" class="form-control" name="last_name" id="register-last"
-                                               placeholder="Last Name" value="{{ old('last_name') }}">
-                                    </div>
+                                    <label class="sr-only">Last name</label>
+                                    <input type="text" class="form-control" name="last_name" placeholder="Last Name" value="{{ old('last_name') }}">
                                 </div>
                                 <!-- email -->
                                 <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-8">
-                                        <label class="sr-only" for="register-email">Email address</label>
-                                        <input type="email" class="form-control" name="email" id="register-email"
-                                               placeholder="Email" value="{{ old('email') }}">
-                                    </div>
+                                    <label class="sr-only">Email address</label>
+                                    <input type="email" class="form-control" name="email" placeholder="Email (.edu required)" value="{{ old('email') }}">
                                 </div>
                                 <!-- password -->
                                 <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-8">
-                                        <label class="sr-only" for="register-password">Password</label>
-                                        <input type="password" class="form-control" name="password" id="register-password"
-                                               placeholder="Password">
-                                    </div>
+                                    <label class="sr-only">Password</label>
+                                    <input type="password" class="form-control" name="password" placeholder="Password">
                                 </div>
                                 <!-- phone number -->
                                 <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-8">
-                                        <label class="sr-only" for="register-phone">Phone Number</label>
-                                        <input type="tel" class="form-control phone_number" name="phone_number" id="register-phone"
-                                               placeholder="Phone Number" value="{{ old('phone_number') }}">
-                                    </div>
+                                    <label class="sr-only">Phone Number</label>
+                                    <input type="tel" class="form-control" name="phone_number" placeholder="Phone Number" value="{{ old('phone_number') }}">
                                 </div>
                                 <!-- school -->
                                 <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-8">
-                                        <select class="form-control" name="university_id">
-                                            <label class="sr-only" for="register-uni">School</label>
-                                            <option id="register-uni" selected disabled>University</option>
-                                            @foreach($universities as $university)
-                                                <option value="{{ $university->id }}">{{ $university->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                    <select class="form-control selectpicker" name="university_id">
+                                        <label class="sr-only" for="register-uni">University</label>
+                                        <option id="register-uni" selected disabled>Select a university</option>
+                                        @foreach($universities as $university)
+                                            <option value="{{ $university->id }}">{{ $university->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                                <!-- tos statement-->
-                                <div class="tos col-sm-offset-2 col-sm-8">
-                                    By creating an account, you agree to Stuvi's
-                                    <a href="#" data-toggle="modal" data-target=".terms-modal">Terms of Service</a> and
-                                    <a href="#" data-toggle="modal" data-target=".privacy-modal"> Privacy Notice</a>.
+
+                                <div class="form-group">
+                                    <small>By signing up, you agree to Stuvi's <a href="{{url('/tos')}}" target="_blank" > Terms of Service</a>
+                                        and <a href="{{url('/privacy')}}" target="_blank"> Privacy Notice</a>.</small>
                                 </div>
                                 <!-- sign up button-->
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-8">
-                                        <button type="submit" class="btn btn-primary submit-btn">Sign Up</button>
-                                    </div>
-                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
-
-
-        @include('includes.textbook.tos-privacy-modal')
-
     </div>
 
-@endsection
-
-@section('javascript')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>
 @endsection
 

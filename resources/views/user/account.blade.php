@@ -5,66 +5,51 @@
 @section('title','Account Settings - '.Auth::user()->first_name.' '.Auth::user()->last_name)
 
 @section('content')
-    <!-- User template has the second nav bar and the profile side bar -->
-    @include('user-template')
-            <!-- right side bar-->
-    <div class="col-md-9">
-        <div class="profile-content">
+        <div class="container page-content">
+            {{-- Left nav--}}
+            <div class="col-md-3 col-sm-4">
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation"><a href="{{ url('user/profile') }}">Profile Settings</a></li>
+                    <li role="presentation" class="active"><a href="{{ url('user/account') }}">Account Settings</a></li>
+                    <li role="presentation"><a href="{{ url('user/email') }}">Email Settings</a></li>
+                    <li role="presentation"><a href="{{ url('user/bookshelf') }}">Bookshelf</a></li>
+                </ul>
+            </div>
 
-            <!-- Account Settings -->
-            <h1>Account Settings</h1>
-                <hr>
-            <!-- change account info -->
-            <div class="container col-md-11 account-edit">
-                <h4>Change Password</h4>
-                <form class="form-horizontal" role="form" method="POST" action="/user/account/password/reset">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            {{-- Right content --}}
+            <div class="col-md-6 col-sm-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Change password</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                            <form role="form" method="POST" action="/user/account/password/reset">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <!-- Change password...current password -->
-                    <div class="form-group">
-                        <label class="control-label col-sm-3" for="pwd">Current Password:</label>
+                                    <!-- Change password...current password -->
+                                    <div class="form-group">
+                                        <label>Current password</label>
+                                        <input type="password" class="form-control" name="current_password">
+                                    </div>
 
-                        <div class="col-sm-6">
-                            <input type="password" class="form-control" name="current_password" id="pwd">
+                                    <!-- New password -->
+                                    <div class="form-group">
+                                        <label>New password</label>
+                                        <input type="password" class="form-control" name="new_password">
+                                    </div>
+
+                                    <!-- Confirmed New password -->
+                                    <div class="form-group">
+                                        <label>Confirm new password</label>
+                                        <input type="password" class="form-control" name="new_password_confirmation">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Update password</button>
+                            </form>
                         </div>
                     </div>
-
-                    <!-- New password -->
-                    <div class="form-group">
-                        <label class="control-label col-sm-3" for="new-pwd">New Password:</label>
-
-                        <div class="col-sm-6">
-                            <input type="password" class="form-control" name="new_password" id="new-pwd">
-                        </div>
-                    </div>
-
-                    <!-- Confirmed New password -->
-                    <div class="form-group">
-                        <label class="control-label col-sm-3" for="new-pwd">Confirm New Password:</label>
-
-                        <div class="col-sm-6">
-                            <input type="password" class="form-control" name="new_password_confirmation" id="new-pwd">
-                        </div>
-                    </div>
-                    <!-- Save changes button -->
-                    <div class="form-group">
-                        <div class=" col-sm-offset-3 col-sm-6">
-                            <button id="save-info-btn" type="submit" class="btn btn-primary">Update Password
-                            </button>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-    {{--need these closing tags--}}
-    </div>
-    </div>
-    </div>
-@endsection
-
-        <!-- inserted at the end of app -->
-@section('javascript')
-    <script src="{{asset('/js/maskedinput/jquery.maskedinput.min.js')}}"></script>
-    <script src="{{asset('/js/user/account.js')}}" type="text/javascript"></script>
 @endsection

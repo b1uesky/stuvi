@@ -3,12 +3,12 @@
 @section('title', 'FAQ - Orders')
 
 @section('content')
-    <div class="container faq-container">
+    <div class="container page-content">
         @include('faq.side-nav')
 
         <div class="col-sm-7 col-sm-offset-1 qa-container">
             <h2>FAQ - Orders</h2>
-            <hr class="faq-line">
+            <hr>
             <a name="after-buy"></a>
             <div class="question-answer">
                 <h3>What happens after I buy a book?</h3>

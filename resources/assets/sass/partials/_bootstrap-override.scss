@@ -1,0 +1,35 @@
+@import '../modules/all';
+
+a {
+  text-decoration: none !important;
+  color: $primary-color;
+
+  &:hover, &:focus {
+    color: $primary-color;
+    outline: none;
+  }
+}
+
+.nav-pills>li>a {
+  border-radius: 2px;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+  background-color: $primary-color;
+}
+
+
+.dropdown-menu {
+  border: 1px solid $border-color;
+  border-radius: 2px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  &:hover, &:focus {
+    outline: 0;
+  }
+
+  li {
+    height: $spacing-unit;
+  }
+}

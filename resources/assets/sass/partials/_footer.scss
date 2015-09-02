@@ -28,6 +28,10 @@
       display: inline;
     }
   }
+
+  @media (max-width: 768px) {
+    height: $footer-height-mobile;
+  }
 }
 
 .footer-links, .company-info {

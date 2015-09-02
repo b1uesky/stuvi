@@ -43,7 +43,7 @@ class EmailController extends Controller
         if ($validator->fails())
         {
             return back()
-                ->with('email_validation_error', $validator->errors());
+                ->with('errors', $validator->errors());
         }
 
         $email = Email::create([
@@ -56,7 +56,7 @@ class EmailController extends Controller
         $email->sendVerificationEmail();
 
         return redirect('user/email')
-            ->with('email_add_success', $email->email_address.' has been added to your account. Please check your email and confirm your new email address.');
+            ->with('success', $email->email_address.' has been added to your account. Please check your email and confirm your new email address.');
     }
 
     /**
@@ -107,23 +107,23 @@ class EmailController extends Controller
             if ($email->isPrimary())    // cannot delete primary email
             {
                 return redirect('user/email')
-                    ->with('email_remove_error', 'Sorry, we cannot delete your primary email.');
+                    ->with('danger', 'Sorry, we cannot delete your primary email.');
             }
             elseif ($email->isCollegeEmail())   // cannot delete college email
             {
                 return redirect('user/email')
-                    ->with('email_remove_error', 'Sorry, we cannot delete your college email.');
+                    ->with('danger', 'Sorry, we cannot delete your college email.');
             }
             else
             {
                 $email->delete();
                 return redirect('user/email')
-                    ->with('email_remove_success', $email->email_address.' has been removed.');
+                    ->with('success', $email->email_address.' has been removed.');
             }
         }
 
         return redirect('user/email')
-            ->with('email_remove_error', 'Sorry, we did not find the email.');
+            ->with('danger', 'Sorry, we did not find the email.');
     }
 
     /**
@@ -138,11 +138,11 @@ class EmailController extends Controller
         if (!$email)
         {
             return redirect('user/email')
-                ->with('email_set_primary_error', 'Sorry, we did not find the email.');
+                ->with('danger', 'Sorry, we did not find the email.');
         }
 
         return redirect('user/email')
-            ->with('email_set_primary_success', $email->email_address.' is now your primary email.');
+            ->with('success', $email->email_address.' is now your primary email.');
     }
 
     public function verify($id, $code)
@@ -151,22 +151,22 @@ class EmailController extends Controller
 
         if (!($email && $email->isBelongTo(Auth::id())))
         {
-            $msg_title   = 'email_verify_error';
+            $msg_type   = 'danger';
             $msg_content = 'Sorry, the requested email cannot be found.';
         }
         elseif ($email->verify($code))
         {
-            $msg_title   = 'email_verify_success';
+            $msg_type   = 'success';
             $msg_content = $email->email_address.' has been verified successfully.';
         }
         else
         {
-            $msg_title   = 'email_verify_error';
+            $msg_type   = 'danger';
             $msg_content = 'Sorry, we cannot verify your email '.$email->email_address;
         }
 
         return redirect('/user/email')
-            ->with($msg_title, $msg_content);
+            ->with($msg_type, $msg_content);
     }
 
 }

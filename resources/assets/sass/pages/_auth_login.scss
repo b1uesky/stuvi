@@ -4,82 +4,18 @@
 
 @import "../modules/all";
 
-button:focus {
-  outline: 0 !important;
-}
-
-#logo-link {
-  width: 350px;
-  height: 140px;
-  display: block;
-  margin: 80px auto 40px;
-}
-
-#login-logo {
-  width: 350px;
-  height: 140px;
-}
 
 /******** LOGIN/REGISTER FORM ********/
 
-/* space between form and logo */
-.vertical-center {
-  margin-top: 40px;
+.container-login-signup {
+  max-width: 300px;
+  padding-top: $spacing-unit;
+
+  img {
+    margin-bottom: $spacing-unit;
+  }
 }
 
-#form-container {
-  max-width: 500px;
-}
-
-/* inactive tab font color */
-#tabs > li > a {
-  color: $primary-color;
-}
-
-/* active tab color */
-#tabs > li.active > a,
-#tabs > li.active > a:hover,
-#tabs > li.active > a:focus {
-  background-color: $primary-color;
-  color: white;
-  border: 1px solid $border-color;
-}
-
-/* space between first form input and tabs */
-.form-space-offset {
-  margin-top: 25px;
-}
-
-/*.scrollable-dropdown {*/
-/*height: auto;*/
-/*max-height: 200px;*/
-/*overflow-x: hidden;*/
-/*}*/
-
-.login-btn {
-  width: 150px;
-  padding: 12px;
-}
-
-#password-group {
-  margin-bottom: 0;
-}
-
-#forgot-password {
-  color: $primary-color;
-  padding: 0;
-  margin-top: 10px;
-  text-align: center;
-  padding-left: 2px;
-}
-
-#remember-me{
-  margin-left: 5px;
-}
-
-.tos {
-  padding: 0 10px 10px 5px;
-}
 
 /****** RESET PASSWORD ******/
 

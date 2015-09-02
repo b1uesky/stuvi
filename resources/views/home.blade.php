@@ -153,14 +153,14 @@
                         <label class="sr-only" for="autocompleteBuy">Textbook Search</label>
                         <div class="xs-guest-search-bar-input">
                             <input type="text" name="query" id="autocompleteBuy"
-                                   class="form-control searchbar-input searchbar-input-query"
+                                   class="form-control searchbar-input"
                                    placeholder="Enter the textbook ISBN, Title, or Author"/>
                         </div>
                         {{--Show school selection if it's a guest--}}
                         @if(Auth::guest())
                             <div class="xs-guest-search-bar-input-uni">
-                                <label class="sr-only" for="xs-uni_id">University ID</label>
-                                <select name="university_id" class="form-control searchbar-input" id="xs-uni-id">
+                                <label class="sr-only">University ID</label>
+                                <select name="university_id" class="form-control searchbar-input searchbar-input-university-with-border">
                                     @foreach(\App\University::where('is_public', true)->get() as $university)
                                         <option value="{{ $university->id }}">{{ $university->abbreviation }}</option>
                                     @endforeach
@@ -168,7 +168,7 @@
                             </div>
                         @endif
                         <div class="xs-guest-search-bar-input-submit">
-                            <button class="btn btn-primary btn-lg" type="submit" value="Search" style="width:100%;">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit" value="Search">
                                 Search
                             </button>
                         </div>

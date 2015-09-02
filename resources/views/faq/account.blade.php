@@ -3,11 +3,11 @@
 @section('title', 'FAQ - Account')
 
 @section('content')
-    <div class="container faq-container">
+    <div class="container page-content">
         @include('faq.side-nav')
         <div class="col-sm-7 col-sm-offset-1 qa-container">
             <h2>FAQ - Account</h2>
-            <hr class="faq-line">
+            <hr>
             <a name="edit-account-info"></a>
             <div class="question-answer">
                 <h3>How do I edit my account information?</h3>
