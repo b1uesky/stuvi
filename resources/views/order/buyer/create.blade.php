@@ -408,61 +408,61 @@
                         </div>
 
                         <!-- Nav tabs for payment methods -->
-                        <ul class="nav nav-pills" role="tablist">
-                            <li role="presentation" class="active"><a href="#credit-card" aria-controls="credit-card"
-                                                                      role="tab" data-toggle="tab">Credit Card</a></li>
-                            <li role="presentation"><a href="#paypal" aria-controls="paypal" role="tab"
-                                                       data-toggle="tab">PayPal</a></li>
-                        </ul>
+                        {{--<ul class="nav nav-pills" role="tablist">--}}
+                            {{--<li role="presentation" class="active"><a href="#credit-card" aria-controls="credit-card"--}}
+                                                                      {{--role="tab" data-toggle="tab">Credit Card</a></li>--}}
+                            {{--<li role="presentation" class="active"><a href="#paypal" aria-controls="paypal" role="tab"--}}
+                                                       {{--data-toggle="tab">PayPal</a></li>--}}
+                        {{--</ul>--}}
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane fade in active" id="credit-card">
-                                <div class="payment-card-container">
-                                    <div class="row">
-                                        <div class="card-wrapper"></div>
+                            {{--<div role="tabpanel" class="tab-pane fade in active" id="credit-card">--}}
+                                {{--<div class="payment-card-container">--}}
+                                    {{--<div class="row">--}}
+                                        {{--<div class="card-wrapper"></div>--}}
 
-                                        <form action="{{ url('/order/store') }}" method="POST" id="form-payment">
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="hidden" name="selected_address_id"
-                                                   value="{{ $default_address_id }}">
-                                            <input type="hidden" name="payment_method" value="credit_card">
+                                        {{--<form action="{{ url('/order/store') }}" method="POST" id="form-payment">--}}
+                                            {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
+                                            {{--<input type="hidden" name="selected_address_id"--}}
+                                                   {{--value="{{ $default_address_id }}">--}}
+                                            {{--<input type="hidden" name="payment_method" value="credit_card">--}}
 
-                                            <div class="row">
-                                                <div class="form-group col-xs-12">
-                                                    <input id="payment-number" class="form-control"
-                                                           placeholder="Card number" type="text">
-                                                </div>
-                                            </div>
+                                            {{--<div class="row">--}}
+                                                {{--<div class="form-group col-xs-12">--}}
+                                                    {{--<input id="payment-number" class="form-control"--}}
+                                                           {{--placeholder="Card number" type="text">--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
 
-                                            <div class="row">
-                                                <div class="form-group col-xs-12">
-                                                    <input id="payment-name" class="form-control"
-                                                           placeholder="Full name" type="text">
-                                                </div>
-                                            </div>
+                                            {{--<div class="row">--}}
+                                                {{--<div class="form-group col-xs-12">--}}
+                                                    {{--<input id="payment-name" class="form-control"--}}
+                                                           {{--placeholder="Full name" type="text">--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
 
-                                            <div class="row">
-                                                <div class="form-group col-xs-4">
-                                                    <input id="payment-month" class="form-control" placeholder="MM"
-                                                           type="text" maxlength="2">
-                                                </div>
+                                            {{--<div class="row">--}}
+                                                {{--<div class="form-group col-xs-4">--}}
+                                                    {{--<input id="payment-month" class="form-control" placeholder="MM"--}}
+                                                           {{--type="text" maxlength="2">--}}
+                                                {{--</div>--}}
 
-                                                <div class="form-group col-xs-4">
-                                                    <input id="payment-year" class="form-control" placeholder="YY"
-                                                           type="text" maxlength="4">
-                                                </div>
+                                                {{--<div class="form-group col-xs-4">--}}
+                                                    {{--<input id="payment-year" class="form-control" placeholder="YY"--}}
+                                                           {{--type="text" maxlength="4">--}}
+                                                {{--</div>--}}
 
-                                                <div class="form-group col-xs-4">
-                                                    <input id="payment-cvc" class="form-control" placeholder="CVC"
-                                                           type="text">
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade" id="paypal">
+                                                {{--<div class="form-group col-xs-4">--}}
+                                                    {{--<input id="payment-cvc" class="form-control" placeholder="CVC"--}}
+                                                           {{--type="text">--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</form>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            <div role="tabpanel" class="tab-pane fade in active" id="paypal">
                                 <div class="paypal-content">
                                     <img class="center-block img-responsive"
                                          src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png"
@@ -553,7 +553,7 @@
                             <form action="{{ url('order/store') }}" method="POST" id="form-place-order">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input type="hidden" name="selected_address_id" value="{{ $default_address_id }}">
-                                <input type="hidden" name="payment_method" value="credit_card">
+                                <input type="hidden" name="payment_method" value="paypal">
 
                                 <input type="submit" class="btn btn-primary" value="Place your order">
                             </form>
