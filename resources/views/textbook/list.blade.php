@@ -68,8 +68,10 @@
                             <span class="price">${{ $book->decimalLowestPrice() }}</span>
                             <span class="text-muted"> ~ </span>
                             <span class="price">${{ $book->decimalHighestPrice() }}</span>
-                        @else
+                        @elseif(count($book->products) == 1)
                             <span class="price">${{ $book->decimalLowestPrice() }}</span>
+                        @else
+                            <span class="text-muted">Not available</span>
                         @endif
                     </div>
                 </div>

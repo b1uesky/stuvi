@@ -91,7 +91,6 @@ class TextbookController extends Controller
         // book found in database
         if ($db_book)
         {
-//            return redirect('textbook/sell/product/' . $db_book->id . '/create');
             return redirect('textbook/sell/product/' . $db_book->id . '/confirm');
         }
         else
