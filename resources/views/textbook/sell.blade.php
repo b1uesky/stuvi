@@ -28,9 +28,10 @@
         <!-- Search Bar Container-->
         <div class="container-fluid container-image">
 
-            <div class="container">
-            <div class="row">
-                <h1 class="title">Sell Your Textbooks</h1>
+            <div class="va-container va-container-h va-container-v">
+                <div class="va-middle text-center">
+                    <h1 class="title">Sell Your Textbooks</h1>
+
                     <div class="searchbar default-searchbar">
                         <form action="/textbook/sell/search" method="post" id="form-isbn">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -46,25 +47,27 @@
                         </form>
                     </div>
 
-                {{-- Search bar when xs screen --}}
-                <div class="xs-guest-search-bar">
-                    <form action="/textbook/sell/search" method="post" id="form-isbn">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    {{-- Search bar when xs screen --}}
+                    <div class="xs-guest-search-bar">
+                        <form action="/textbook/sell/search" method="post" id="form-isbn">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                        <div class="xs-guest-search-bar-input" id="xs-textbook-search">
-                            <input type="text" name="isbn" class="form-control searchbar-input searchbar-input-query"
-                                   id="sell-search-input"
-                                   placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
-                        </div>
-                        <div class="xs-guest-search-bar-input-submit">
-                            <button class="btn btn-primary btn-lg btn-block" id="xs-sell-search-btn" type="submit"
-                                    name="search" value="Search"> Search
-                            </button>
-                        </div>
-                    </form>
+                            <div class="xs-guest-search-bar-input" id="xs-textbook-search">
+                                <input type="text" name="isbn" class="form-control searchbar-input searchbar-input-query"
+                                       id="sell-search-input"
+                                       placeholder="Enter the textbook ISBN (10 or 13 digits)"/>
+                            </div>
+                            <div class="xs-guest-search-bar-input-submit">
+                                <button class="btn btn-primary btn-lg btn-block" id="xs-sell-search-btn" type="submit"
+                                        name="search" value="Search"> Search
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
-            </div>
+
         </div>
 
 

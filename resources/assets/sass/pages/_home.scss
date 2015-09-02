@@ -14,13 +14,12 @@
 .container-bg {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url('../img/bg/wooden-table.jpg') no-repeat center;
   background-size: cover;
-  padding: 0;
   height: 600px;
 }
 
 .container-top-half {
   position: relative;
-  height: 450px;
+  height: 480px;
   top: 50px;
 
   @media(max-width: 767px) {
@@ -31,14 +30,6 @@
 .container-text {
   height: 100%;
   width: 100%;
-}
-
-.container-search {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: $spacing-unit 0;
-  background-color: $transparent;
 }
 
 /* TRANSPARENT NAVIGATION */
@@ -102,8 +93,11 @@
   @media(max-width: 767px) {
     font-size: 5em;
   }
-  @media(max-width: 555px) {
+  @media(max-width: 767px) and (min-width: 555px) {
     font-size: 4em;
+  }
+  @media(max-width: 555px) {
+    font-size: 2.5em;
   }
 }
 
