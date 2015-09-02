@@ -43,17 +43,18 @@
                         </tr>
                         </thead>
                         <tbody>
+
                         @foreach($items as $item)
                             <tr value="{{ $item->product_id }}">
                                 {{-- Book --}}
                                 <td>
-                                    {{-- Book image --}}
+                                     {{--Book image --}}
                                     @if($item->product->book->imageSet->small_image)
                                         <img class="img-small"
                                              src="{{ config('aws.url.stuvi-book-img') . $item->product->book->imageSet->small_image }}"
                                              alt="">
                                     @else
-                                        <img src="{{ config('book.default_image_path') }}" alt="">
+                                        <img class="img-small" src="{{ config('book.default_image_path.small') }}" alt="">
                                     @endif
                                 </td>
                                 <td>
@@ -74,6 +75,7 @@
                         </tbody>
                     </table>
                 </div>
+
                 {{-- Subtotal --}}
                 <div class="col-md-3">
                     <div class="panel panel-default text-center">

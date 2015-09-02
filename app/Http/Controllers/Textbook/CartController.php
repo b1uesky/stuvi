@@ -41,7 +41,6 @@ class CartController extends Controller
         if (!$this->cart->isValid())
         {
             Session::flash('message', 'One or more items in your cart has sold. Please update your cart before proceeding to checkout.');
-            Session::flash('alert-class', 'alert-danger');
         }
 
         return view('cart.index')

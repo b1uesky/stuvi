@@ -408,12 +408,12 @@
                         </div>
 
                         <!-- Nav tabs for payment methods -->
-                        <ul class="nav nav-pills" role="tablist">
+                        {{--<ul class="nav nav-pills" role="tablist">--}}
                             {{--<li role="presentation" class="active"><a href="#credit-card" aria-controls="credit-card"--}}
                                                                       {{--role="tab" data-toggle="tab">Credit Card</a></li>--}}
-                            <li role="presentation" class="active"><a href="#paypal" aria-controls="paypal" role="tab"
-                                                       data-toggle="tab">PayPal</a></li>
-                        </ul>
+                            {{--<li role="presentation" class="active"><a href="#paypal" aria-controls="paypal" role="tab"--}}
+                                                       {{--data-toggle="tab">PayPal</a></li>--}}
+                        {{--</ul>--}}
 
                         <!-- Tab panes -->
                         <div class="tab-content">
@@ -495,7 +495,7 @@
                                              src="{{ config('aws.url.stuvi-book-img') . $item->product->book->imageSet->small_image }}"
                                              alt="">
                                     @else
-                                        <img src="{{ config('book.default_image_path') }}" alt="">
+                                        <img src="{{ config('book.default_image_path.small_image') }}" alt="">
                                     @endif
                                 </td>
                                 <td>{{ $item->product->book->title }}</td>
