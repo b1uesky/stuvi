@@ -152,8 +152,6 @@ a {
   box-shadow: none; }
   .dropdown-menu:hover, .dropdown-menu:focus {
     outline: 0; }
-  .dropdown-menu li {
-    height: 30px; }
 
 /*
  * Stuvi color palette

@@ -195,13 +195,13 @@ class SellerOrder extends Model
     }
 
     /**
-     * Check whether the seller has scheduled a pickup time.
+     * Check whether the seller has scheduled a pickup time and address.
      *
      * @return bool
      */
     public function isScheduled()
     {
-        return (!empty($this->scheduled_pickup_time));
+        return ($this->scheduled_pickup_time && $this->address_id);
     }
 
     /**
@@ -425,5 +425,21 @@ class SellerOrder extends Model
                       ]);
 
         return $payout_item;
+    }
+
+    public static function confirmPickupRules()
+    {
+        $rules = array(
+            'scheduled_pickup_time'    => 'required|date',
+            'addressee'                 => 'required|string|Max:100',
+            'address_line1'             => 'required|string|Max:100',
+            'address_line2'             => 'string|Max:100',
+            'city'                      => 'required|string',
+            'state_a2'                  => 'required|Alpha|size:2',
+            'zip'                       => 'required|AlphaDash|Min:5|Max:10', // https://www.barnesandnoble.com/help/cds2.asp?PID=8134
+            'phone_number'              => 'required|string'
+        );
+
+        return $rules;
     }
 }
