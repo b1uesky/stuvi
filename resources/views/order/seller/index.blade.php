@@ -105,6 +105,8 @@
 
                             {{-- action buttons --}}
                             <div class="col-md-3">
+                                @if ($order->)
+
                                 {{-- order details --}}
                                 <a class="btn btn-primary btn-block" href="/order/seller/{{$order->id}}">Order Details</a>
 
