@@ -129,11 +129,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::get  ('/seller',                     ['as' => 'sellerOrders', 'uses' => 'SellerOrderController@index']);
     Route::get  ('/seller/{id}',                ['as' => 'sellerOrderDetail', 'uses' => 'SellerOrderController@show']);
     Route::get  ('/seller/cancel/{id}',         'SellerOrderController@cancel');
-    Route::get  ('/seller/{id}/addAddress',     'SellerOrderController@addAddress');
-    Route::get  ('/seller/assignAddress',       'SellerOrderController@assignAddress');
-    Route::post ('/seller/storeAddress',        'SellerOrderController@storeAddress');
     Route::get  ('/seller/{id}/schedulePickup', 'SellerOrderController@schedulePickup');
-    Route::post ('/seller/schedulePickupTime',  'SellerOrderController@schedulePickupTime');
     Route::post ('/seller/{id}/confirmPickup',  'SellerOrderController@confirmPickup');
     Route::post ('/seller/{id}/payout',         'SellerOrderController@payout');
 });
