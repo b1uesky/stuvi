@@ -25,381 +25,122 @@
             </nav>
         </div>
 
+        <?php $address = Auth::user()->defaultAddress(); ?>
+
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
 
                 {{-- Shipping address --}}
                 <div class="row">
 
-                    <h2 class="no-margin-top">Shipping address</h2>
+                    @if(!$address)
+                        <h3>Enter a new shipping address</h3>
 
-                    <hr>
+                        <hr>
 
-                    @forelse ($addresses as $address)
-                        @if ($address -> is_default)
-                            <div class="thumbnail col-md-4 displayDefaultAddress">
-                                <div class="panel-body">
-                                    <ul class="address-list" id="default-address-list">
-                                        <li class="address addressee">{{ $address -> addressee }}</li>
-                                        <li class="address address_line1">{{ $address -> address_line1}}</li>
-                                        @if($address -> address_line2 != null)
-                                            <li class="address address_line2">{{ $address -> address_line2}}</li>
-                                        @endif
-                                        <li class="address inline city">{{ $address -> city }},</li>
-                                        <li class="address inline state_a2">{{ $address -> state_a2 }}</li>
-                                        <li class="address inline zip">{{ $address -> zip }}</li>
-                                        <li class="address phone">{{ $address -> phone_number }}</li>
-                                    </ul>
-                                    <button class="btn btn-default btn-primary address-btn show-addresses">Change
-                                        Address
-                                    </button>
-                                </div>
-                            </div>
-                        @endif
-                        <div class="thumbnail col-md-8 displayAllAddresses {{ $address -> id }}"
-                             style={{$default_address_id != -1 ? "display:none" : ""}}>
-                            <div class="panel-body">
-                                <button type="button" class="close deleteThisAddress" aria-label="Close"><span
-                                            aria-hidden="true">&times;</span></button>
-                                <ul class="address-list all-addresses-list">
-                                    <li class="address address_id">{{ $address -> id }}</li>
-                                    <li class="address addressee">{{ $address -> addressee }}</li>
-                                    <li class="address address_line1">{{ $address -> address_line1}}</li>
-                                    @if($address -> address_line2 != null)
-                                        <li class="address address_line2">{{ $address -> address_line2}}</li>
-                                    @endif
-                                    <li class="address city inline">{{ $address -> city }},</li>
-                                    <li class="address state_a2 inline"
-                                        id="default_state_a2">{{ $address -> state_a2 }}</li>
-                                    <li class="address zip inline">{{ $address -> zip }}</li>
-                                    <li class="address phone">{{ $address -> phone_number }}</li>
-                                </ul>
-                                <button class="btn btn-default btn-primary address-btn editThisAddress">
-                                    Edit
-                                </button>
-                            </div>
-                        </div>
-                    @empty
-                        <form action="{{ url('/address/store') }}" method="POST"
-                              class="address-form">
+                        <form action="{{ url('address/store') }}" method="post">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="addressee-input">Full name</label>
-
-                                <div class="col-sm-6 form-space-offset">
-                                    <input type="text" class="form-control" name="addressee" id="addressee-input"
-                                           value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
-                                </div>
+                                <label for="">Full name</label>
+                                <input type="text" class="form-control" name="addressee">
                             </div>
-                            <br>
 
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="address_line1-input">Address line
-                                    1</label>
-
-                                <div class="col-sm-6 form-space-offset">
-                                    <input type="text" class="form-control" name="address_line1"
-                                           id="address_line1-input"
-                                           value="185 Freeman St.">
-                                </div>
+                                <label for="">Address line 1</label>
+                                <input type="text" class="form-control" name="address_line1">
                             </div>
-                            <br>
 
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="address_line2-input">Address line
-                                    2</label>
-
-                                <div class="col-sm-6 form-space-offset">
-                                    <input type="text" class="form-control" name="address_line2"
-                                           id="address_line2-input"
-                                           value="Apt. 739">
-                                </div>
+                                <label for="">Address line 2</label>
+                                <input type="text" class="form-control"
+                                       name="address_line2" placeholder="Apartment, suite, unit, building, etc.">
                             </div>
-                            <br>
 
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="city-input">City</label>
-
-                                <div class="col-sm-6 form-space-offset">
-                                    <input type="text" class="form-control" name="city" id="city-input"
-                                           value="Brookline">
-                                </div>
+                                <label for="">City</label>
+                                <input type="text" class="form-control" name="city">
                             </div>
-                            <br>
 
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="state_a2-input">State</label>
-
-                                <div class="col-sm-6 form-space-offset">
-                                    <input type="text" class="form-control" name="state_a2" id="state_a2-input"
-                                           value="MA">
-                                </div>
+                                <label for="">State</label>
+                                <input type="text" class="form-control" name="state_a2">
                             </div>
-                            <br>
 
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="zip-input">Zip</label>
-
-                                <div class="col-sm-6 form-space-offset">
-                                    <input type="text" class="form-control" name="zip" id="zip-input" value="02446">
-                                </div>
+                                <label for="">ZIP</label>
+                                <input type="text" class="form-control" name="zip">
                             </div>
-                            <br>
 
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" for="phone_number-input">Phone</label>
-
-                                <div class="col-sm-6 form-space-offset">
-                                    <input type="tel" class="form-control phone_number" id="phone_number-input"
-                                           name="phone_number" value="(857) 206 4789">
-                                </div>
+                                <label for="">Phone number</label>
+                                <input type="text" class="form-control" name="phone_number">
                             </div>
-                            <br>
-                            <button class="btn btn-default btn-primary address-btn" id="storeAddress"
-                                    type="submit">
-                                Add Address
-                            </button>
+
+                            <input type="submit" class="btn btn-primary" value="Use this address">
                         </form>
-                    @endforelse
-                    <div id="new-address-panel" class="thumbnail col-sm-5">
-                        <div class="panel-body">
-                            <h4>Add New Address</h4>
-                            <i class="fa fa-plus-square fa-4x"></i>
-                        </div>
-                    </div>
+                    @else
+                        <h3>Choose a shipping address</h3>
 
-                    <!--Modals-->
-                    <div class="modal fade" id="update-address-modal" tabindex="-1" role="dialog"
-                         aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close close-modal-btn" data-dismiss="modal"
-                                            aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Please Enter Address</h4>
-                                </div>
-                                <div class="modal-body address-form-body">
-                                    <form action="{{ url('/address/update') }}" method="POST"
-                                          id="update-address-form">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="hidden" name="address_id" value="">
+                        <hr>
 
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label"
-                                                   for="addressee-input-modal-update">Full name</label>
+                        <ul class="list-group">
 
-                                            <div class="col-sm-6 form-space-offset">
-                                                <input type="text" class="form-control" name="addressee"
-                                                       id="addressee-input-modal-update"
-                                                       value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
-                                            </div>
-                                        </div>
+                            @foreach(Auth::user()->addresses as $address)
+                                <li class="list-group-item">
+                                    <ul class="no-bullet no-padding-left">
+                                        <li>{{ $address->addressee }}</li>
+                                        <li>
+                                            {{ $address->address_line1 }}
+                                            @if($address->address_line2)
+                                                , {{ $address->address_line2 }}
+                                            @endif
+                                        </li>
+                                        <li>{{ $address->city }}, {{ $address->state_a2 }} {{ $address->zip }}</li>
+                                        <li>
+                                            {{ $address->phone_number }}
+                                            <a href="#edit-address" data-toggle="modal"
+                                               data-address_id="{{ $address->id }}"
+                                               data-addressee="{{ $address->addressee }}"
+                                               data-address_line1="{{ $address->address_line1 }}"
+                                               data-address_line2="{{ $address->address_line2 }}"
+                                               data-city="{{ $address->city }}"
+                                               data-state_a2="{{ $address->state_a2 }}"
+                                               data-zip="{{ $address->zip }}"
+                                               data-phone_number="{{ $address->phone_number }}">
+                                                Edit
+                                            </a>
+                                        </li>
                                         <br>
+                                        <li>
+                                            @if($address->is_default)
+                                                <button class="btn btn-primary disabled">Selected address</button>
+                                            @else
+                                                <form action="{{ url('address/select') }}" method="post" class="no-margin-bottom">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                    <input type="hidden" name="selected_address_id" value="{{ $address->id }}">
+                                                    <input type="submit" class="btn btn-primary" value="Use this address">
+                                                </form>
+                                            @endif
+                                        </li>
+                                    </ul>
+                                </li>
+                            @endforeach
 
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label"
-                                                   for="address_line1-input-modal-update">Address line 1</label>
-
-                                            <div class="col-sm-6 form-space-offset">
-                                                <input type="text" class="form-control"
-                                                       id="address_line1-input-modal-update"
-                                                       name="address_line1">
-                                            </div>
-                                        </div>
-                                        <br>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label"
-                                                   for="address_line2-input-modal-update">Address line 2</label>
-
-                                            <div class="col-sm-6 form-space-offset">
-                                                <input type="text" class="form-control"
-                                                       id="address_line2-input-modal-update"
-                                                       name="address_line2">
-                                            </div>
-                                        </div>
-                                        <br>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label"
-                                                   for="city-input-modal-update">City</label>
-
-                                            <div class="col-sm-6 form-space-offset">
-                                                <input type="text" class="form-control" name="city"
-                                                       id="city-input-modal-update">
-                                            </div>
-                                        </div>
-                                        <br>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label" for="state_a2-input-modal-update">State</label>
-
-                                            <div class="col-sm-6 form-space-offset">
-                                                <input type="text" class="form-control" name="state_a2"
-                                                       id="state_a2-input-modal-update">
-                                            </div>
-                                        </div>
-                                        <br>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label"
-                                                   for="zip-input-modal-update">Zip</label>
-
-                                            <div class="col-sm-6 form-space-offset">
-                                                <input type="text" class="form-control" name="zip"
-                                                       id="zip-input-modal-update">
-                                            </div>
-                                        </div>
-                                        <br>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label"
-                                                   for="phone_number-input-update">Phone</label>
-
-                                            <div class="col-sm-6 form-space-offset">
-                                                <input type="tel" class="form-control phone_number"
-                                                       id="phone_number-input-update"
-                                                       name="phone_number">
-                                            </div>
-                                        </div>
-                                        <input type="hidden" name="address_id" value="">
-                                        <br>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default close-btn" data-dismiss="modal">
-                                        Close
-                                    </button>
-                                    <i class="fa fa-spinner fa-pulse fa-2x" id="update-loading"></i>
-                                    <button id="storeUpdatedAddress" type="button"
-                                            class="btn btn-default btn-primary address-btn form-btn">
-                                        Update Address
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal fade" id="add-address-modal" tabindex="-1" role="dialog"
-                         aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close close-modal-btn" data-dismiss="modal"
-                                            aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Please Enter Address</h4>
-                                </div>
-                                <div class="modal-body address-form-body">
-                                    <form action="{{ url('/address/store') }}" method="POST"
-                                          id="add-address-form">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label" for="addresse-input-modal">Full
-                                                name</label>
-
-                                            <div class="col-sm-6 form-space-offset">
-                                                <input type="text" class="form-control" name="addressee"
-                                                       id="addresse-input-modal"
-                                                       value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
-                                            </div>
-                                        </div>
-                                        <br>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label" for="address_line1-input-modal">
-                                                Address Line 1</label>
-
-                                            <div class="col-sm-6 form-space-offset">
-                                                <input type="text" class="form-control"
-                                                       id="address_line1-input-modal"
-                                                       name="address_line1">
-                                            </div>
-                                        </div>
-                                        <br>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label" for="address_line2-input-modal">
-                                                Address line 2</label>
-
-                                            <div class="col-sm-6 form-space-offset">
-                                                <input type="text" class="form-control"
-                                                       id="address_line2-input-modal"
-                                                       name="address_line2">
-                                            </div>
-                                        </div>
-                                        <br>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label" for="city-input-modal">
-                                                City</label>
-
-                                            <div class="col-sm-6 form-space-offset">
-                                                <input type="text" class="form-control" name="city"
-                                                       id="city-input-modal">
-                                            </div>
-                                        </div>
-                                        <br>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label" for="state_a2-input-modal">
-                                                State</label>
-
-                                            <div class="col-sm-6 form-space-offset">
-                                                <input type="text" class="form-control" name="state_a2"
-                                                       id="state_a2-input-modal">
-                                            </div>
-                                        </div>
-                                        <br>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label" for="zip-input-modal">
-                                                Zip</label>
-
-                                            <div class="col-sm-6 form-space-offset">
-                                                <input type="text" class="form-control" name="zip"
-                                                       id="zip-input-modal">
-                                            </div>
-                                        </div>
-                                        <br>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-4 control-label"
-                                                   for="phone_number-input-modal">Phone</label>
-
-                                            <div class="col-sm-6 form-space-offset">
-                                                <input type="tel" class="form-control phone_number"
-                                                       id="phone_number-input-modal"
-                                                       name="phone_number">
-                                            </div>
-                                        </div>
-                                        <input type="hidden" name="address_id" value="">
-                                        <br>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default close-btn"
-                                            data-dismiss="modal">
-                                        Close
-                                    </button>
-                                    <i class="fa fa-spinner fa-pulse fa-2x" id="add-loading"></i>
-                                    <button id="storeAddedAddress" type="button"
-                                            class="btn btn-default btn-primary address-btn form-btn">
-                                        Add Address
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            {{-- Add a new address --}}
+                            <li class="list-group-item">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-address">
+                                    Add a new address
+                                </button>
+                            </li>
+                        </ul>
+                    @endif
                 </div>
 
                 {{-- Payment method --}}
                 <div class="row" id="paymentDiv">
                     @if ($display_payment)
-                        <h2>Payment method</h2>
+                        <h3>Payment method</h3>
 
                         <hr>
 
@@ -425,7 +166,7 @@
                                         {{--<form action="{{ url('/order/store') }}" method="POST" id="form-payment">--}}
                                             {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
                                             {{--<input type="hidden" name="selected_address_id"--}}
-                                                   {{--value="{{ $default_address_id }}">--}}
+                                                   {{--value="{{ Auth::user()->defaultAddress()->id or '' }}">--}}
                                             {{--<input type="hidden" name="payment_method" value="credit_card">--}}
 
                                             {{--<div class="row">--}}
@@ -469,7 +210,7 @@
                                          alt="PayPal"/>
                                     <hr>
                                     <p class="text-center">
-                                        After you place your order, we will redirect you to PayPal website to finish up
+                                        After placing your order, we will redirect you to PayPal website to finish up
                                         the payment.
                                     </p>
                                 </div>
@@ -480,7 +221,7 @@
 
                 {{-- Review items --}}
                 <div class="row">
-                    <h2>Review items</h2>
+                    <h3>Review items</h3>
 
                     <hr>
 
@@ -513,7 +254,7 @@
             </div>
 
             {{-- Total Price --}}
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
                         <h2 class="panel-title">Order Summary</h2>
@@ -552,7 +293,7 @@
                         <div>
                             <form action="{{ url('order/store') }}" method="POST" id="form-place-order">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <input type="hidden" name="selected_address_id" value="{{ $default_address_id }}">
+                                <input type="hidden" name="selected_address_id" value="{{ Auth::user()->defaultAddress()->id or '' }}">
                                 <input type="hidden" name="payment_method" value="paypal">
 
                                 <input type="submit" class="btn btn-primary" value="Place your order">
@@ -565,6 +306,9 @@
         </div>
     </div>
 @endsection
+
+@include('includes.modal.add-address')
+@include('includes.modal.edit-address')
 
 @section('javascript')
     <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>

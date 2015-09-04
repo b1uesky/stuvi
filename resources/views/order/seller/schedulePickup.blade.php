@@ -16,8 +16,6 @@
 
                 <?php $address = $seller_order->seller()->defaultAddress(); ?>
 
-                {{--{{dd($address)}}--}}
-
                 @if(!$address)
                     <h3>Enter a new pickup address</h3>
 

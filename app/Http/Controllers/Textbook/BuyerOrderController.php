@@ -68,46 +68,14 @@ class BuyerOrderController extends Controller
                 ->with('error', 'Cannot proceed to checkout because one or more items in your cart are sold. Please press "Update" button.');
         }
 
-        $user      = Auth::user();
-        $default_address_id = -1;
-        $addresses = Address::where('user_id', $user->id)
-                            ->where('is_enabled', '1')
-                            ->get();
-        foreach ($addresses as $address)
-        {
-            if ($address->is_default == true)
-            {
-                $default_address_id = $address->id;
-            }
-        }
-        $addresses->toArray();
-
-        if (count($addresses) > 0 && $default_address_id != -1)
-        {
-            return view('order.buyer.create')
+        return view('order.buyer.create')
                 ->with('subtotal', Price::convertIntegerToDecimal($this->cart->totalPrice()))
                 ->with('shipping', Price::convertIntegerToDecimal($this->cart->fee()))
                 ->with('discount', Price::convertIntegerToDecimal($this->cart->discount()))
                 ->with('tax', Price::convertIntegerToDecimal($this->cart->tax()))
                 ->with('total', Price::convertIntegerToDecimal($this->cart->subtotal()))
                 ->with('items', $this->cart->items)
-                ->with('addresses', $addresses)
-                ->with('default_address_id', $default_address_id)
                 ->with('display_payment', true);
-        }
-        else
-        {
-            return view('order.buyer.create')
-                ->with('subtotal', Price::convertIntegerToDecimal($this->cart->totalPrice()))
-                ->with('shipping', Price::convertIntegerToDecimal($this->cart->fee()))
-                ->with('discount', Price::convertIntegerToDecimal($this->cart->discount()))
-                ->with('tax', Price::convertIntegerToDecimal($this->cart->tax()))
-                ->with('total', Price::convertIntegerToDecimal($this->cart->subtotal()))
-                ->with('items', $this->cart->items)
-                ->with('addresses', $addresses)
-                ->with('default_address_id', $default_address_id)
-                ->with('display_payment', false);
-        }
     }
 
     /**
