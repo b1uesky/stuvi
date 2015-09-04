@@ -129,9 +129,9 @@
 
                             {{-- Add a new address --}}
                             <li class="list-group-item">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-address">
-                                    Add a new address
-                                </button>
+                                <a href="#add-address" data-toggle="modal">
+                                    <span class="glyphicon glyphicon-plus"></span> Add a new address
+                                </a>
                             </li>
                         </ul>
                     @endif
