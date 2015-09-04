@@ -36,8 +36,6 @@
                         @if(!$address)
                             <h3>Enter a new shipping address</h3>
 
-                            <hr>
-
                             <form action="{{ url('address/store') }}" method="post">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -81,8 +79,6 @@
                             </form>
                         @else
                             <h3>Choose a shipping address</h3>
-
-                            <hr>
 
                             <ul class="list-group">
 
@@ -141,8 +137,6 @@
                     <div class="row">
                         @if ($display_payment)
                             <h3>Payment method</h3>
-
-                            <hr>
 
                             <!-- Nav tabs for payment methods -->
                             {{--<ul class="nav nav-pills" role="tablist">--}}
@@ -218,8 +212,6 @@
                     {{-- Review items --}}
                     <div class="row">
                         <h3>Review items</h3>
-
-                        <hr>
 
                         <div class="table-responsive">
                             <table class="table table-no-border table-default">
