@@ -22,7 +22,7 @@
                 <div class="panel-heading">
 
                     <div class="container-fluid text-muted">
-                        <div class="col-xs-2">
+                        <div class="col-xs-4">
                             <div class="row">
                                 <span>ORDER SOLD</span>
                             </div>
@@ -32,7 +32,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-2">
+                        <div class="col-xs-4">
                             <div class="row">
                                 <span>TOTAL</span>
                             </div>
@@ -42,7 +42,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-2 col-xs-offset-6 text-right">
+                        <div class="col-xs-4 text-right">
                             <div class="row">
                                 <span>ORDER #{{ $order->id }}</span>
                             </div>
@@ -81,23 +81,26 @@
 
                                         {{-- book details --}}
                                         <div class="col-md-10">
-                                            <div class="row">
+                                            <div class="container-fluid">
+                                                <div class="row">
                                                 <span>
                                                     <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a>
                                                 </span>
+                                                </div>
+
+                                                <div class="row">
+                                                    <span>ISBN-10: {{ $product->book->isbn10 }}</span>
+                                                </div>
+
+                                                <div class="row">
+                                                    <span>ISBN-13: {{ $product->book->isbn13 }}</span>
+                                                </div>
+
+                                                <div class="row">
+                                                    <span class="price">${{ $product->decimalPrice() }}</span>
+                                                </div>
                                             </div>
 
-                                            <div class="row">
-                                                <span>ISBN-10: {{ $product->book->isbn10 }}</span>
-                                            </div>
-
-                                            <div class="row">
-                                                <span>ISBN-13: {{ $product->book->isbn13 }}</span>
-                                            </div>
-
-                                            <div class="row">
-                                                <span class="price">${{ $product->decimalPrice() }}</span>
-                                            </div>
                                         </div>
                                     </div>
                                     <br>
