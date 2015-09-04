@@ -1,11 +1,24 @@
 /**
  * Created by Desmond on 9/3/15.
+ *
+ * https://eonasdan.github.io/bootstrap-datetimepicker/
  */
 
 $(document).ready(function() {
+    var enabledDates = [moment(), moment().add(1, 'd')];
+    var enabledHours = [];
+
+    for (var i = moment().hour(); i <= 24; i++) {
+        enabledHours.push(i);
+    }
+
     $('#datetimepicker').datetimepicker({
         inline: true,
-        sideBySide: true
+        sideBySide: true,
+        stepping: 15,
+        defaultDate: $('input[name=scheduled_pickup_time]').val(),
+        enabledDates: enabledDates,
+        enabledHours: enabledHours
     });
 
     // fill in edit address modal
