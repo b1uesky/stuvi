@@ -62,8 +62,8 @@ Route::controllers([
 Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
     Route::post ('/store','AddressController@store');
     Route::post ('/update','AddressController@update');
-    Route::post ('/delete','AddressController@ajaxDelete');
-    Route::post ('/select','AddressController@ajaxSelect');
+    Route::post ('/delete','AddressController@delete');
+    Route::post ('/select','AddressController@select');
     Route::get  ('/show',  'AddressController@show');
 });
 

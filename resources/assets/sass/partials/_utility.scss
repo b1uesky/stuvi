@@ -1,5 +1,10 @@
 @import '../modules/all';
 
+/* LIST */
+.no-bullet {
+  list-style-type: none;
+}
+
 /* WIDTH */
 .full-width {
   width: 100%;
@@ -24,6 +29,10 @@
 
 .padding-60 {
   padding: 60px;
+}
+
+.no-padding-left {
+  padding-left: 0;
 }
 
 /* MARGIN */

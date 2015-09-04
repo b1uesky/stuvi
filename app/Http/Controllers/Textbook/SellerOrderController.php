@@ -128,25 +128,11 @@ class SellerOrderController extends Controller
             return redirect()->back()->withErrors($v->errors());
         }
 
-        $address = Address::create([
-            'user_id'       => Auth::id(),
-            'is_default'    => true,
-            'addressee'     => Input::get('addressee'),
-            'address_line1' => Input::get('address_line1'),
-            'address_line2' => Input::get('address_line2'),
-            'city'          => Input::get('city'),
-            'state_a2'      => Input::get('state_a2'),
-            'zip'           => Input::get('zip'),
-            'phone_number'  => Input::get('phone_number')
-        ]);
-
-        $address->setDefault();
-
         $seller_order->update([
-            'scheduled_pickup_time' =>  DateTime::createFromFormat(
+            'address_id'            => Input::get('address_id'),
+            'scheduled_pickup_time' => DateTime::createFromFormat(
                 Config::get('app.datetime_format'), Input::get('scheduled_pickup_time'))
-                ->format(Config::get('database.datetime_format')),
-            'address_id'            => $address->id
+                ->format(Config::get('database.datetime_format'))
         ]);
 
         // send an email with a verification code to the seller to verify

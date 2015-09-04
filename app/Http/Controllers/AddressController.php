@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Response;
 use Input;
 use Mail;
 use Session;
+use Validator;
 
 class AddressController extends Controller
 {
@@ -44,8 +45,12 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        // validate the address info
-        $this->validate($request, Address::rules());
+        $v = Validator::make(Input::all(), Address::rules());
+
+        if ($v->fails())
+        {
+            return redirect()->back()->withErrors($v->errors());
+        }
 
         // store the buyer shipping address
         $address = Address::create([
@@ -60,17 +65,9 @@ class AddressController extends Controller
             'phone_number' => Input::get('phone_number')
         ]);
 
-
         $address->setDefault();
 
-        if($request->ajax()){
-            return Response::json([
-                'success' => true,
-                'address' => $address->toArray()
-            ]);
-        }else{
-            return redirect('order/create');
-        }
+        return redirect()->back();
     }
 
     /**
@@ -118,12 +115,19 @@ class AddressController extends Controller
      */
     public function update(Request $request)
     {
-        $this->validate($request, Address::rules());
+        $v = Validator::make(Input::all(), Address::rules());
+
+        if ($v->fails())
+        {
+            return redirect()->back()->withErrors($v->errors());
+        }
 
         $address_id = Input::get('address_id');
         $address = Address::find($address_id);
+
         if ($address->isBelongTo(Auth::id())) {
             $address->disable();
+
             $address = Address::create([
                 'user_id' => Auth::id(),
                 'is_default' => true,
@@ -136,18 +140,13 @@ class AddressController extends Controller
                 'phone_number' => Input::get('phone_number')
             ]);
 
-
             $address->setDefault();
 
-            if ($request -> ajax()) {
-
-                return Response::json([
-                    'success' => true,
-                    'address' => $address->toArray()
-                ]);
-            } else {
-                return redirect('order/create');
-            }
+            return redirect()->back();
+        }
+        else
+        {
+            return redirect()->back()->withError('Cannot edit the address.');
         }
     }
 
@@ -156,28 +155,37 @@ class AddressController extends Controller
      *
      * @return Response
      */
-    public function ajaxDelete()
+    public function delete()
     {
         $address_id = Input::get('address_id');
         $address_to_be_deleted = Address::find($address_id);
-        if ($address_to_be_deleted->isBelongTo(Auth::id())) {
-            $address_to_be_deleted->update([
-                'is_default' => false
-            ]);
 
-            return response()->json([
-                'is_deleted' => $address_to_be_deleted->disable(),
-                'num_of_user_addresses' => Auth::user()->addresses->count()
-            ]);
+        if ($address_to_be_deleted->isBelongTo(Auth::id())) {
+            $address_to_be_deleted->disable();
+
+            return redirect()->back();
         }
 
-        return response()->json(['is_deleted' => false]);
+        return response()->back()->withError('Cannot delete the address.');
     }
 
-    public function ajaxSelect()
+    /**
+     * Set the selected address as default address.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function select()
     {
-        $selected_address_id = Input::get('selected_address_id');
-        $if_set_as_default = Address::find($selected_address_id)->setDefault();
-        return response()->json(['set_as_default' => $if_set_as_default]);
+        $selected_address = Address::find(Input::get('selected_address_id'));
+
+        if ($selected_address)
+        {
+            $selected_address->setDefault();
+            return redirect()->back();
+        }
+        else
+        {
+            return redirect()->back()->withError('The address you selected does not exist.');
+        }
     }
 }

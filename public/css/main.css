@@ -47,6 +47,10 @@ body {
  */
 /* TYPOGRAPHY */
 /* FOOTER */
+/* LIST */
+.no-bullet {
+  list-style-type: none; }
+
 /* WIDTH */
 .full-width {
   width: 100%; }
@@ -66,6 +70,9 @@ body {
 
 .padding-60 {
   padding: 60px; }
+
+.no-padding-left {
+  padding-left: 0; }
 
 /* MARGIN */
 .margin-15 {
@@ -2639,6 +2646,31 @@ Add a counter to the multi-steps indicator
   @media (min-width: 990px) {
     .book-details-row {
       margin-left: 15px; } }
+
+/* Import of all modules */
+/*
+ * Stuvi color palette
+ * Please use these variables for any colors used.
+ */
+/* COLOR PALLETES */
+/* BRAND COLORS */
+/* TEXT COLORS */
+/* BACKGROUND COLORS */
+/* UTILITY COLORS */
+/*
+ * FOR GENERAL TEXT STYLING
+ * Fonts, font sizes, etc.
+ * Avoid using colors here. See _colors.scss.
+ *
+ */
+/* TYPOGRAPHY */
+/* FOOTER */
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover {
+  background-color: #00A896 !important; }
+
+.bootstrap-datetimepicker-widget table td.today:before {
+  border-bottom-color: #00A896 !important; }
 
 /***** SELLER PRODUCT CREATE PAGE *****/
 /* Import of all modules */
