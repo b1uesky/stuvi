@@ -112,27 +112,13 @@ class Address extends Model
         }
 
         $this->update(["is_default" => true]);
-
-        if($this->is_default)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
 
     public function disable()
     {
         $this->update([
+            'is_default' => false,
             'is_enabled' => false
         ]);
-        if($this->is_enabled)
-        {
-            return false;
-        }
-
-        return true;
     }
 }

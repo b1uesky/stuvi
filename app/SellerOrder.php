@@ -195,13 +195,13 @@ class SellerOrder extends Model
     }
 
     /**
-     * Check whether the seller has scheduled a pickup time.
+     * Check whether the seller has scheduled a pickup time and address.
      *
      * @return bool
      */
     public function isScheduled()
     {
-        return (!empty($this->scheduled_pickup_time));
+        return ($this->scheduled_pickup_time && $this->address_id);
     }
 
     /**
@@ -425,5 +425,15 @@ class SellerOrder extends Model
                       ]);
 
         return $payout_item;
+    }
+
+    public static function confirmPickupRules()
+    {
+        $rules = array(
+            'address_id'            => 'required|exists:addresses,id',
+            'scheduled_pickup_time' => 'required|date'
+        );
+
+        return $rules;
     }
 }

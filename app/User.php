@@ -219,7 +219,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function addresses()
     {
-        return $this->hasMany('App\Address')->where('is_enabled', true);
+        return $this->hasMany('App\Address')->where('is_enabled', true)
+            ->orderBy('created_at', 'desc');
     }
 
     /**
