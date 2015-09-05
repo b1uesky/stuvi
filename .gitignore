@@ -5,3 +5,4 @@ vendor/
 public/libs
 public/css
 node_modules
+.env
