@@ -19,8 +19,6 @@
                 @if(!$address)
                     <h3>Enter a new pickup address</h3>
 
-                    <hr>
-
                     <form action="{{ url('address/store') }}" method="post">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -64,8 +62,6 @@
                     </form>
                 @else
                     <h3>Choose a pickup address</h3>
-
-                    <hr>
 
                     <ul class="list-group">
 
@@ -121,17 +117,29 @@
 
                 <h3>Choose a pickup time</h3>
 
-                <hr>
-
-                <div id="datetimepicker"></div>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="datetimepicker"></div>
+                        </div>
+                    </div>
 
                     <br>
 
 
                 <form action="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="hidden" name="address_id" value="{{ $seller_order->seller()->defaultAddress()->id or '' }}">
-                    <input type="hidden" name="scheduled_pickup_time" value="{{ date(config('app.datetime_format'), strtotime($seller_order->scheduled_pickup_time)) }}">
+
+                    @if($seller_order->seller()->defaultAddress())
+                        <input type="hidden" name="address_id" value="{{ $seller_order->seller()->defaultAddress()->id }}">
+                    @else
+                        <input type="hidden" name="address_id">
+                    @endif
+
+                    @if($seller_order->scheduled_pickup_time)
+                        <input type="hidden" name="scheduled_pickup_time" value="{{ date(config('app.datetime_format'), strtotime($seller_order->scheduled_pickup_time)) }}">
+                    @else
+                        <input type="hidden" name="scheduled_pickup_time">
+                    @endif
 
                     <input type="submit" class="btn btn-primary" value="Update pickup details">
                 </form>

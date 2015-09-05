@@ -418,4 +418,14 @@ class BuyerOrder extends Model
 
         return $query->select('buyer_orders.*')->distinct();
     }
+
+    public static function rules()
+    {
+        $rules = array(
+            'selected_address_id'   => 'required|exists:addresses,id',
+            'payment_method'        => 'required|string'
+        );
+
+        return $rules;
+    }
 }

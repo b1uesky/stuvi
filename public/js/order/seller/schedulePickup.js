@@ -5,6 +5,13 @@
  */
 
 $(document).ready(function() {
+    var scheduled_pickup_time = $('input[name=scheduled_pickup_time]').val();
+
+    // if pickup time not scheduled, use current time plus 2 hours
+    if (scheduled_pickup_time == '' || scheduled_pickup_time == null) {
+        scheduled_pickup_time = moment().add(2, 'h');
+    }
+
     var enabledDates = [moment(), moment().add(1, 'd')];
     var enabledHours = [];
 
@@ -16,7 +23,7 @@ $(document).ready(function() {
         inline: true,
         sideBySide: true,
         stepping: 15,
-        defaultDate: $('input[name=scheduled_pickup_time]').val(),
+        defaultDate: scheduled_pickup_time,
         enabledDates: enabledDates,
         enabledHours: enabledHours
     });

@@ -294,10 +294,18 @@
                         <div>
                             <form action="{{ url('order/store') }}" method="POST" id="form-place-order">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <input type="hidden" name="selected_address_id" value="{{ Auth::user()->defaultAddress()->id or '' }}">
                                 <input type="hidden" name="payment_method" value="paypal">
 
-                                <input type="submit" class="btn btn-primary" value="Place your order">
+                                @if(Auth::user()->defaultAddress())
+                                    <input type="hidden" name="selected_address_id" value="{{ Auth::user()->defaultAddress()->id }}">
+                                    <input type="submit" class="btn btn-primary" value="Place your order">
+                                @else
+                                    <input type="hidden" name="selected_address_id">
+                                    <input type="submit" class="btn btn-primary disabled" value="Place your order">
+                                @endif
+
+
+
                             </form>
 
                         </div>

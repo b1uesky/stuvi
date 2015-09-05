@@ -161,6 +161,13 @@ class BuyerOrderController extends Controller
             return redirect('/cart')->with('error', 'Cannot proceed to checkout because one or more items in your cart are sold. Please press "Update" button.');
         }
 
+        $v = Validator::make(Input::all(), BuyerOrder::rules());
+
+        if ($v->fails())
+        {
+            return redirect()->back()->withErrors($v->errors());
+        }
+
         // Paypal items
         $items = array();
 
