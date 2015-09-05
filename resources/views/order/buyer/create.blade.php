@@ -49,95 +49,32 @@
                                     <input type="text" class="form-control" name="address_line1">
                                 </div>
 
-<<<<<<< HEAD
-                                <div class="col-sm-6 form-space-offset">
-                                    <input type="text" class="form-control" name="address_line1"
-                                           id="address_line1-input"
-                                           value="">
-=======
                                 <div class="form-group">
                                     <label for="">Address line 2</label>
                                     <input type="text" class="form-control"
                                            name="address_line2" placeholder="Apartment, suite, unit, building, etc.">
->>>>>>> dev
                                 </div>
 
-<<<<<<< HEAD
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label" for="address_line2-input">Address line
-                                    2</label>
-
-                                <div class="col-sm-6 form-space-offset">
-                                    <input type="text" class="form-control" name="address_line2"
-                                           id="address_line2-input"
-                                           value="">
-=======
                                 <div class="form-group">
                                     <label for="">City</label>
                                     <input type="text" class="form-control" name="city">
->>>>>>> dev
                                 </div>
 
-<<<<<<< HEAD
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label" for="city-input">City</label>
-
-                                <div class="col-sm-6 form-space-offset">
-                                    <input type="text" class="form-control" name="city" id="city-input"
-                                           value="">
-=======
                                 <div class="form-group">
                                     <label for="">State</label>
                                     <input type="text" class="form-control" name="state_a2">
->>>>>>> dev
                                 </div>
 
-<<<<<<< HEAD
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label" for="state_a2-input">State</label>
-
-                                <div class="col-sm-6 form-space-offset">
-                                    <input type="text" class="form-control" name="state_a2" id="state_a2-input"
-                                           value="">
-=======
                                 <div class="form-group">
                                     <label for="">ZIP</label>
                                     <input type="text" class="form-control" name="zip">
->>>>>>> dev
                                 </div>
 
-<<<<<<< HEAD
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label" for="zip-input">Zip</label>
-
-                                <div class="col-sm-6 form-space-offset">
-                                    <input type="text" class="form-control" name="zip" id="zip-input" value="">
-=======
                                 <div class="form-group">
                                     <label for="">Phone number</label>
                                     <input type="text" class="form-control" name="phone_number">
->>>>>>> dev
                                 </div>
 
-<<<<<<< HEAD
-                                <div class="col-sm-6 form-space-offset">
-                                    <input type="tel" class="form-control phone_number" id="phone_number-input"
-                                           name="phone_number" value="">
-                                </div>
-                            </div>
-                            <br>
-                            <button class="btn btn-default btn-primary address-btn" id="storeAddress"
-                                    type="submit">
-                                Add Address
-                            </button>
-                        </form>
-                    @endforelse
-                    <div id="new-address-panel" class="thumbnail col-sm-5">
-                        <div class="panel-body">
-                            <h4>Add New Address</h4>
-                            <i class="fa fa-plus-square fa-4x"></i>
-                        </div>
-=======
                                 <input type="submit" class="btn btn-primary" value="Use this address">
                             </form>
                         @else
@@ -194,7 +131,6 @@
                                 </li>
                             </ul>
                         @endif
->>>>>>> dev
                     </div>
 
                     {{-- Payment method --}}
@@ -280,12 +216,12 @@
                         <div class="table-responsive">
                             <table class="table table-no-border table-default">
                                 <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Title</th>
-                                        <th>ISBN-10</th>
-                                        <th>Price</th>
-                                    </tr>
+                                <tr>
+                                    <th></th>
+                                    <th>Title</th>
+                                    <th>ISBN-10</th>
+                                    <th>Price</th>
+                                </tr>
                                 </thead>
 
                                 @forelse ($items as $item)
@@ -314,33 +250,7 @@
                         </div>
 
 
-<<<<<<< HEAD
-                        @forelse ($items as $item)
-                            <tr>
-                                <td>
-                                    {{-- Book image --}}
-                                    @if($item->product->book->imageSet->small_image)
-                                        <img class="img-small"
-                                             src="{{ config('aws.url.stuvi-book-img') . $item->product->book->imageSet->small_image }}"
-                                             alt="">
-                                    @else
-                                        <img src="{{ config('book.default_image_path.small_image') }}" alt="">
-                                    @endif
-                                </td>
-                                <td>{{ $item->product->book->title }}</td>
-                                <td>{{ $item->product->book->isbn10 }}</td>
-                                <td>${{ $item->product->decimalPrice() }}</td>
-                                @if ($item->product->sold)
-                                    <p>Warning: This product has been sold.</p>
-                                @endif
-                            </tr>
-                        @empty
-                            <p>You don't have any products in shopping cart.</p>
-                        @endforelse
-                    </table>
-=======
                     </div>
->>>>>>> dev
                 </div>
             </div>
 
