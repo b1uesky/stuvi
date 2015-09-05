@@ -32,7 +32,7 @@
 		</style>
 	</head>
 	<body>
-		<div class="container-fluid">
+		<div class="container">
 			<div class="content">
 				<div class="title">Be right back.</div>
 			</div>

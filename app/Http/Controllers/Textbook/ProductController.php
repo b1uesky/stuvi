@@ -151,17 +151,17 @@ class ProductController extends Controller
         if (!($product && $product->isBelongTo(Auth::id())))
         {
             return back()
-                ->with('message', 'Sorry, the product is not found.');
+                ->with('error', 'Sorry, the product is not found.');
         }
         elseif ($product->sold)
         {
             return back()
-                ->with('message', 'Product is sold.');
+                ->with('error', 'Product is sold.');
         }
         elseif ($product->isDeleted())
         {
             return back()
-                ->with('message', 'Product is archived.');
+                ->with('error', 'Product is archived.');
         }
 
         return view('product.edit')
@@ -302,7 +302,7 @@ class ProductController extends Controller
             // if the request is not AJAX (Dropzone does not contain any image)
             // we do not need to save any image, just redirect to the product page
             return redirect('/textbook/buy/product/' . $product->id)
-                ->with('message', 'The product is updated successfully.');
+                ->with('success', 'The product is updated successfully.');
         }
     }
 
@@ -316,7 +316,7 @@ class ProductController extends Controller
         if (!Input::has('id'))
         {
             return redirect('/user/bookshelf')
-                ->with('message', 'Please enter a valid product id.');
+                ->with('error', 'Please enter a valid product id.');
         }
 
         $product = Product::find(Input::get('id'));
@@ -325,14 +325,14 @@ class ProductController extends Controller
         if (!($product && $product->isBelongTo(Auth::id())))
         {
             return redirect('/user/bookshelf')
-                ->with('message', 'Please enter a valid product id.');
+                ->with('error', 'Please enter a valid product id.');
         }
 
         // check if it is sold.
         if ($product->sold)
         {
             return redirect('/user/bookshelf')
-                ->with('message', $product->book->title.' cannot be deleted because it is sold.');
+                ->with('error', $product->book->title.' cannot be deleted because it is sold.');
         }
 
         $book = $product->book;
@@ -347,6 +347,6 @@ class ProductController extends Controller
         $book->removePrice($price);
 
         return redirect('/user/bookshelf')
-            ->with('message', $product->book->title.' has been deleted.');
+            ->with('error', $product->book->title.' has been deleted.');
     }
 }

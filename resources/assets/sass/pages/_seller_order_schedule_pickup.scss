@@ -1,0 +1,10 @@
+@import '../modules/all';
+
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover {
+  background-color: $primary-color !important;
+}
+
+.bootstrap-datetimepicker-widget table td.today:before {
+  border-bottom-color: $primary-color !important;
+}

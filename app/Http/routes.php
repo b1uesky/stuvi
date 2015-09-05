@@ -62,8 +62,8 @@ Route::controllers([
 Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
     Route::post ('/store','AddressController@store');
     Route::post ('/update','AddressController@update');
-    Route::post ('/delete','AddressController@ajaxDelete');
-    Route::post ('/select','AddressController@ajaxSelect');
+    Route::post ('/delete','AddressController@delete');
+    Route::post ('/select','AddressController@select');
     Route::get  ('/show',  'AddressController@show');
 });
 
@@ -129,11 +129,8 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::get  ('/seller',                     ['as' => 'sellerOrders', 'uses' => 'SellerOrderController@index']);
     Route::get  ('/seller/{id}',                ['as' => 'sellerOrderDetail', 'uses' => 'SellerOrderController@show']);
     Route::get  ('/seller/cancel/{id}',         'SellerOrderController@cancel');
-    Route::post ('/seller/schedulePickupTime',  'SellerOrderController@schedulePickupTime');
-    Route::get  ('/seller/{id}/addAddress',     'SellerOrderController@addAddress');
-    Route::get  ('/seller/assignAddress',       'SellerOrderController@assignAddress');
-    Route::post ('/seller/storeAddress',        'SellerOrderController@storeAddress');
-    Route::get  ('/seller/{id}/confirmPickup',  'SellerOrderController@confirmPickup');
+    Route::get  ('/seller/{id}/schedulePickup', 'SellerOrderController@schedulePickup');
+    Route::post ('/seller/{id}/confirmPickup',  'SellerOrderController@confirmPickup');
     Route::post ('/seller/{id}/payout',         'SellerOrderController@payout');
 });
 

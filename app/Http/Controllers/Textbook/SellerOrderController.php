@@ -54,7 +54,7 @@ class SellerOrderController extends Controller
         }
 
         return redirect('order/seller')
-            ->with('message', 'Order not found');
+            ->with('error', 'Order not found');
     }
 
     /**
@@ -83,151 +83,31 @@ class SellerOrderController extends Controller
                 }
 
                 return redirect('order/seller/' . $id)
-                    ->with('message', 'Your cancel request has been submitted. We will process your request in 2 days.');
+                    ->with('success', 'Your cancel request has been submitted. We will process your request in 2 days.');
             }
             else
             {
                 return redirect('order/seller/' . $id)
-                    ->with('message', 'Sorry, this order cannot be cancelled.');
+                    ->with('error', 'Sorry, this order cannot be cancelled.');
             }
         }
 
         return redirect('order/seller')
-            ->with('message', 'Order not found.');
+            ->with('error', 'Order not found.');
     }
 
     /**
-     * AJAX: set a pickup time for the seller order.
+     * Schedule pickup page.
      *
-     * @return Json Response
+     * @param $seller_order_id
+     * @return mixed
      */
-    public function schedulePickupTime()
+    public function schedulePickup($seller_order_id)
     {
-        if (Request::ajax())
-        {
-            // validation
-            $v = Validator::make(Input::all(), [
-                'scheduled_pickup_time' => 'required|date'
-            ]);
+        $seller_order = SellerOrder::find($seller_order_id);
 
-            if ($v->fails())
-            {
-                return Response::json([
-                    'success' => false,
-                    'errors'  => $v->getMessageBag()->toArray()
-                ], 400);
-            }
-
-            $scheduled_pickup_time = Input::get('scheduled_pickup_time');
-            $seller_order_id = Input::get('seller_order_id');
-            $seller_order = SellerOrder::find($seller_order_id);
-
-            // check if this seller order belongs to the current user.
-            if ($seller_order && $seller_order->isBelongTo(Auth::id()))
-            {
-                // if this seller order is cancelled, user cannot set up pickup time
-                if ($seller_order->cancelled)
-                {
-                    return Response::json([
-                        'success' => false,
-                        'errors'  => [
-                            'cancelled' => 'Fail to set pickup time because this order has been cancelled.'
-                        ]
-                    ], 400);
-                }
-//                elseif (!$seller_order->isPickUpConfirmable())
-//                {
-//                    return Response::json([
-//                        'success' => false,
-//                        'errors'  => [
-//                            'pickup'
-//                        ],
-//                                          ])
-//                }
-
-                $seller_order->scheduled_pickup_time = DateTime::createFromFormat(
-                    Config::get('app.datetime_format'), $scheduled_pickup_time)
-                    ->format(Config::get('database.datetime_format'));
-
-                $seller_order->save();
-
-                return Response::json([
-                    'success'               => true,
-                    'scheduled_pickup_time' => $scheduled_pickup_time,
-                    'message'               => 'Successfully schedule pickup time.',
-                ]);
-            }
-
-            return Response::json([
-                'success' => false,
-                'errors'  => [
-                    'order_not_found' => 'Order not found'
-                ]
-            ]);
-        }
-    }
-
-    /**
-     * Page for adding a new address.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function addAddress($id)
-    {
-        $seller_order = SellerOrder::find($id);
-
-        return view('order.seller.addAddress')->withSellerOrder($seller_order);
-    }
-
-    /**
-     * Assign an address for the seller order.
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function assignAddress()
-    {
-        if(Request::ajax()){
-            $address_id = Input::get('selected_address_id');
-            $seller_order_id = Input::get('seller_order_id');
-
-            $seller_order = SellerOrder::find($seller_order_id);
-            $seller_order->address_id = $address_id;
-            $seller_order->save();
-
-            return response()->json(['success' => true]);
-        }
-    }
-
-    /**
-     * Store the new address for seller.
-     *
-     * @return $this|\Illuminate\Http\RedirectResponse
-     */
-    public function storeAddress()
-    {
-        // validation
-        $v = Validator::make(Input::all(), Address::rules());
-
-        if ($v->fails())
-        {
-            return redirect()->back()->withErrors($v->errors());
-        }
-
-        $address = new Address();
-        $address->user_id = Auth::user()->id;
-        $address->is_default = true;
-        $address->addressee = Input::get('addressee');
-        $address->address_line1 = Input::get('address_line1');
-        $address->address_line2 = Input::get('address_line2');
-        $address->city = Input::get('city');
-        $address->state_a2 = Input::get('state_a2');
-        $address->zip = Input::get('zip');
-        $address->phone_number = Input::get('phone_number');
-        $address->save();
-
-        $seller_order_id = Input::get('seller_order_id');
-
-        return redirect('order/seller/' . $seller_order_id);
+        return view('order.seller.schedulePickup')
+            ->withSellerOrder($seller_order);
     }
 
     /**
@@ -241,24 +121,19 @@ class SellerOrderController extends Controller
     {
         $seller_order = SellerOrder::find($id);
 
-        // validation: check if pickup time and address has been selected
-        $confirm_pickup_errors = array();
+        $v = Validator::make(Input::all(), SellerOrder::confirmPickupRules());
 
-        if (!$seller_order->scheduled_pickup_time)
+        if ($v->fails())
         {
-            array_push($confirm_pickup_errors, 'Please schedule a pickup time.');
+            return redirect()->back()->withErrors($v->errors());
         }
 
-        if (!$seller_order->address_id)
-        {
-            array_push($confirm_pickup_errors, 'Please select a pickup address.');
-        }
-
-        if (count($confirm_pickup_errors) > 0)
-        {
-            return redirect()->back()
-                ->withConfirmPickupErrors($confirm_pickup_errors);
-        }
+        $seller_order->update([
+            'address_id'            => Input::get('address_id'),
+            'scheduled_pickup_time' => DateTime::createFromFormat(
+                Config::get('app.datetime_format'), Input::get('scheduled_pickup_time'))
+                ->format(Config::get('database.datetime_format'))
+        ]);
 
         // send an email with a verification code to the seller to verify
         // that the courier has picked up the book
@@ -275,7 +150,7 @@ class SellerOrderController extends Controller
         });
 
         return redirect()->back()
-            ->withSuccess("You have successfully scheduled the pickup and we'll email you the details shortly.");
+            ->withSuccess("You have successfully updated the pickup and we'll email you the details shortly.");
     }
 
     /**
@@ -370,38 +245,38 @@ class SellerOrderController extends Controller
         if (empty($seller_order) || !$seller_order->isBelongTo(Auth::id()))
         {
             return redirect('/order/seller')
-                ->with('message', 'Order not found.');
+                ->with('error', 'Order not found.');
         }
 
         // check if this seller order is transferred.
         if ($seller_order->isTransferred())
         {
             return redirect('/order/seller/' . $seller_order_id)
-                ->with('message', 'You have already transferred the balance of this order to your Paypal account.');
+                ->with('error', 'You have already transferred the balance of this order to your Paypal account.');
         }
 
         // check if this seller order is delivered
         if (!$seller_order->isDelivered())
         {
             return redirect('/order/seller/' . $seller_order_id)
-                ->with('message', 'This order is not delivered yet. You can get your money back once the buyer get the book.');
+                ->with('error', 'This order is not delivered yet. You can get your money back once the buyer get the book.');
         }
 
         if ($seller_order->cancelled)
         {
             return redirect('/order/seller/' . $seller_order_id)
-                ->with('message', 'This order has been cancelled.');
+                ->with('error', 'This order has been cancelled.');
         }
 
         $payout_item = $seller_order->payout();
         if (!$payout_item)
         {
             redirect('/order/seller/'.$seller_order_id)
-                ->with('message', 'Sorry, we cannot transfer the balance to your Paypal account. Please contact Stuvi.');
+                ->with('error', 'Sorry, we cannot transfer the balance to your Paypal account. Please contact Stuvi.');
         }
 
         return redirect('/order/seller/'.$seller_order_id)
-            ->with('message', 'The balance has been transferred to your paypal account '.$seller_order->seller()->profile->paypal);
+            ->with('success', 'The balance has been transferred to your paypal account '.$seller_order->seller()->profile->paypal);
     }
 
     /**

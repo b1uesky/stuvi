@@ -40,7 +40,7 @@ class CartController extends Controller
         // check the Cart
         if (!$this->cart->isValid())
         {
-            Session::flash('message', 'One or more items in your cart has sold. Please update your cart before proceeding to checkout.');
+            Session::flash('error', 'One or more items in your cart has sold. Please update your cart before proceeding to checkout.');
         }
 
         return view('cart.index')
@@ -63,31 +63,26 @@ class CartController extends Controller
         {
             if ($this->cart->hasProduct($item->id))
             {
-                Session::flash('message', 'Item has already been added to the cart.');
-                Session::flash('alert-class', 'alert-danger');
+                Session::flash('error', 'Item has already been added to the cart.');
             }
             elseif ($item->sold)
             {
-                Session::flash('message', 'Product has been sold.');
-                Session::flash('alert-class', 'alert-danger');
+                Session::flash('error', 'Product has been sold.');
             }
             elseif ($item->seller_id == Auth::id())
             {
-                Session::flash('message', 'Can not add your own product to the cart.');
-                Session::flash('alert-class', 'alert-danger');
+                Session::flash('error', 'Can not add your own product to the cart.');
             }
             else
             {
                 $this->cart->add($item);
-                Session::flash('message', 'Product Added Successfully.');
-                Session::flash('alert-class', 'alert-success');
+                Session::flash('success', 'Product Added Successfully.');
 
             }
         }
         else
         {
-            Session::flash('message', 'Sorry, we cannot find the product.');
-            Session::flash('alert-class', 'alert-danger');
+            Session::flash('error', 'Sorry, we cannot find the product.');
         }
 
         return redirect()->back();
@@ -162,8 +157,7 @@ class CartController extends Controller
         }
 
         return redirect('/cart')
-            ->with('message', $message)
-            ->with('alert-class', 'alert-info');
+            ->with('info', $message);
     }
 
     /**

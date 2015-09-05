@@ -90,11 +90,11 @@ class BuyerOrderController extends Controller
             if ($refund)
             {
                 return redirect('admin/order/buyer/'.$buyer_order_id)
-                    ->with('message', 'Refund succeeded..');
+                    ->with('success', 'Refund succeeded..');
             }
         }
 
         return redirect('admin/order/buyer/'.$buyer_order_id)
-            ->with('message', 'Refund failed.');
+            ->with('error', 'Refund failed.');
     }
 }

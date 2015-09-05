@@ -80,8 +80,9 @@
 
         {{-- Product list --}}
         <div class="row">
+
             @if(count($book->availableProducts()) > 0)
-                <table class="table table-responsive table-default">
+                <table class="table">
                     <thead>
                     <tr class="active">
                         <th class="col-xs-3">Price</th>

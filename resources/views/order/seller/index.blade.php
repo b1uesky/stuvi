@@ -17,14 +17,12 @@
             <h1>Sold books</h1>
         </div>
 
-        <strong id="order-list-text">Order List</strong>
         @foreach ($orders as $order)
             <div class="panel panel-default">
                 <div class="panel-heading">
 
-                    <em>Order Details</em>
                     <div class="container-fluid text-muted">
-                        <div class="col-xs-2">
+                        <div class="col-xs-4">
                             <div class="row">
                                 <span>ORDER SOLD</span>
                             </div>
@@ -34,7 +32,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-2">
+                        <div class="col-xs-4">
                             <div class="row">
                                 <span>TOTAL</span>
                             </div>
@@ -44,9 +42,13 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-2 col-xs-offset-6 text-right">
+                        <div class="col-xs-4 text-right">
                             <div class="row">
                                 <span>ORDER #{{ $order->id }}</span>
+                            </div>
+
+                            <div class="row">
+                                <span><a href="/order/seller/{{$order->id}}">View Details</a></span>
                             </div>
                         </div>
                     </div>
@@ -83,23 +85,26 @@
 
                                         {{-- book details --}}
                                         <div class="col-md-10">
-                                            <div class="row">
+                                            <div class="container-fluid">
+                                                <div class="row">
                                                 <span>
                                                     <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a>
                                                 </span>
+                                                </div>
+
+                                                <div class="row">
+                                                    <span>ISBN-10: {{ $product->book->isbn10 }}</span>
+                                                </div>
+
+                                                <div class="row">
+                                                    <span>ISBN-13: {{ $product->book->isbn13 }}</span>
+                                                </div>
+
+                                                <div class="row">
+                                                    <span class="price">${{ $product->decimalPrice() }}</span>
+                                                </div>
                                             </div>
 
-                                            <div class="row">
-                                                <span>ISBN-10: {{ $product->book->isbn10 }}</span>
-                                            </div>
-
-                                            <div class="row">
-                                                <span>ISBN-13: {{ $product->book->isbn13 }}</span>
-                                            </div>
-
-                                            <div class="row">
-                                                <span class="price">${{ $product->decimalPrice() }}</span>
-                                            </div>
                                         </div>
                                     </div>
                                     <br>
@@ -107,8 +112,9 @@
 
                             {{-- action buttons --}}
                             <div class="col-md-3">
-                                {{-- order details --}}
-                                <a class="btn btn-primary btn-block" href="/order/seller/{{$order->id}}">Order Details</a>
+                                @if ($order->isPickupConfirmable())
+                                    <a class="btn btn-primary btn-block" href="{{ url('order/seller/' . $order->id . '/schedulePickup') }}">Update Pickup Details</a>
+                                @endif
 
                                 {{-- cancel order --}}
                                 @if ($order->isCancellable())
@@ -125,7 +131,4 @@
     {{--<p>You haven't sold any books. Why not <a href="{{ url('/textbook/sell') }}">sell some</a>?</p>--}}
 
     </div>
-@endsection
-
-@section('javascript')
 @endsection
