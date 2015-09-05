@@ -15,7 +15,7 @@ $(document).ready(function() {
     var enabledDates = [moment(), moment().add(1, 'd')];
     var enabledHours = [];
 
-    for (var i = moment().hour(); i <= 24; i++) {
+    for (var i = 9; i <= 24; i++) {
         enabledHours.push(i);
     }
 
