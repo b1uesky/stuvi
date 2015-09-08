@@ -19,6 +19,7 @@ class BuyerOrder extends Model
         'shipping_address_id',
         'cancelled',
         'cancelled_time',
+        'cancelled_by',
         'subtotal',
         'tax',
         'fee',
@@ -134,7 +135,7 @@ class BuyerOrder extends Model
     /**
      * Cancel this buyer order and corresponding seller orders.
      */
-    public function cancel()
+    public function cancel($cancelled_by)
     {
         // cancel buyer order
         $this->cancelled = true;

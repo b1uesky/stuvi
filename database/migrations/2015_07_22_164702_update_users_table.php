@@ -14,7 +14,6 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function ($table) {
             $table->integer('primary_email_id')->unsigned()->nullable();
-
             $table->foreign('primary_email_id')->references('id')->on('emails');
         });
     }
@@ -27,7 +26,8 @@ class UpdateUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('primary_email_id');
+            $table->dropForeign('users_primary_email_id_foreign');
+            $table->dropColumn('primary_email_id');
         });
     }
 }

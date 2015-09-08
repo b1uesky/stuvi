@@ -44,10 +44,11 @@ class SellerOrder extends Model
     /**
      * Cancel a seller order.
      */
-    public function cancel()
+    public function cancel($cancelled_by)
     {
         $this->cancelled      = true;
         $this->cancelled_time = Carbon::now();
+        $this->canceleld_by   = $canceleld_by;
         $this->product->sold  = false;
         $this->push();
 

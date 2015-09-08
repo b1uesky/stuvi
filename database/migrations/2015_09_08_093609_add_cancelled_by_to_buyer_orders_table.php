@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCancelledByToSellerOrdersTable extends Migration
+class AddCancelledByToBuyerOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class AddCancelledByToSellerOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::table('seller_orders', function (Blueprint $table) {
+        Schema::table('buyer_orders', function (Blueprint $table) {
             $table->integer('cancelled_by')->nullable()->unsigned();
             $table->foreign('cancelled_by')->references('id')->on('users');
         });
@@ -25,8 +25,8 @@ class AddCancelledByToSellerOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::table('seller_orders', function (Blueprint $table) {
-            $table->dropForeign('seller_orders_cancelled_by_foreign');
+        Schema::table('buyer_orders', function (Blueprint $table) {
+            $table->dropForeign('buyer_orders_cancelled_by_foreign');
             $table->dropColumn('cancelled_by');
         });
     }
