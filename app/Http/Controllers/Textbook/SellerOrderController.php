@@ -32,7 +32,7 @@ class SellerOrderController extends Controller
         $order = $this->hasColumn('seller_orders', $order) ? $order : 'id';
 
         return view('order.seller.index')
-            ->with('orders', Auth::user()->sellerOrders()->orderBy($order, 'DESC')->get());
+            ->with('seller_orders', Auth::user()->sellerOrders()->orderBy($order, 'DESC')->get());
     }
 
     /**
@@ -66,6 +66,16 @@ class SellerOrderController extends Controller
      */
     public function cancel($id)
     {
+        $v = Validator::make(Input::all(), [
+            'cancel_reason' => 'required|string'
+        ]);
+
+        if ($v->fails())
+        {
+            return redirect()->back()->withErrors($v->errors());
+        }
+
+        $cancel_reason = Input::get('cancel_reason');
         $seller_order = SellerOrder::find($id);
 
         // check if this order belongs to the current user.
@@ -73,7 +83,9 @@ class SellerOrderController extends Controller
         {
             if ($seller_order->isCancellable())
             {
-                $seller_order->cancel(Auth::id());
+                $seller_order->cancel(Auth::id(), $cancel_reason);
+
+                $this->notifyBuyerAboutSellerOrderCancellation($seller_order);
 
                 // if the order is assigned to a courier, send a sms to let the courier know
                 // that the order has been cancelled
@@ -296,5 +308,19 @@ class SellerOrderController extends Controller
         $message = 'Order #' . $seller_order->id . ' has been cancelled by the seller at ' . $seller_order->getCancelledTime();
 
         $twilio->message($phone_number, $message);
+    }
+
+    protected function notifyBuyerAboutSellerOrderCancellation($seller_order)
+    {
+        $seller_order_arr = $seller_order->allToArray();
+        // $buyer = $seller_order->buyerOrder;
+
+        // email buyer about the cancellation
+        Mail::queue('emails.sellerOrder.notifyBuyerAboutSellerOrderCancellation', [
+            'seller_order' => $seller_order_arr
+        ], function ($message) use ($seller_order_arr)
+        {
+            $message->to($seller_order_arr['seller']['email'])->subject('Your order has been cancelled by the seller.');
+        });
     }
 }

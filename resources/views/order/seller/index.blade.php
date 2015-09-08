@@ -4,20 +4,12 @@
 
 @section('content')
 
-    <!-- Message -->
-    <div class="container" xmlns="http://www.w3.org/1999/html">
-        @if (Session::has('message'))
-            <br>
-            <div class="flash-message warning bg-warning">{{ Session::get('message') }}</div>
-        @endif
-    </div>
-
     <div class="container">
         <div class="page-header">
             <h1>Sold books</h1>
         </div>
 
-        @foreach ($orders as $order)
+        @foreach ($seller_orders as $seller_order)
             <div class="panel panel-default">
                 <div class="panel-heading">
 
@@ -28,7 +20,7 @@
                             </div>
 
                             <div class="row">
-                                <span>{{ date('M d, Y', strtotime($order->created_at)) }}</span>
+                                <span>{{ date('M d, Y', strtotime($seller_order->created_at)) }}</span>
                             </div>
                         </div>
 
@@ -38,17 +30,17 @@
                             </div>
 
                             <div class="row">
-                                <span>${{ $order->product->decimalPrice() }}</span>
+                                <span>${{ $seller_order->product->decimalPrice() }}</span>
                             </div>
                         </div>
 
                         <div class="col-xs-4 text-right">
                             <div class="row">
-                                <span>ORDER #{{ $order->id }}</span>
+                                <span>ORDER #{{ $seller_order->id }}</span>
                             </div>
 
                             <div class="row">
-                                <span><a href="/order/seller/{{$order->id}}">View Details</a></span>
+                                <span><a href="/order/seller/{{$seller_order->id}}">View Details</a></span>
                             </div>
                         </div>
                     </div>
@@ -58,8 +50,8 @@
                     <div class="container-fluid">
                         {{-- order status --}}
                         <div class="row">
-                            <h3>{{ $order->getOrderStatus()['status'] }}</h3>
-                            <small>{{ $order->getOrderStatus()['detail'] }}</small>
+                            <h3>{{ $seller_order->getOrderStatus()['status'] }}</h3>
+                            <small>{{ $seller_order->getOrderStatus()['detail'] }}</small>
                         </div>
 
                         <br>
@@ -68,7 +60,7 @@
                             <div class="col-md-9">
                                 <!-- product list -->
                                     <div class="row">
-                                        <?php $product = $order->product; ?>
+                                        <?php $product = $seller_order->product; ?>
 
                                         {{-- book image --}}
                                         <div class="col-md-2">
@@ -112,13 +104,13 @@
 
                             {{-- action buttons --}}
                             <div class="col-md-3">
-                                @if ($order->isPickupConfirmable())
-                                    <a class="btn btn-primary btn-block" href="{{ url('order/seller/' . $order->id . '/schedulePickup') }}">Update Pickup Details</a>
+                                @if ($seller_order->isPickupConfirmable())
+                                    <a class="btn btn-primary btn-block" href="{{ url('order/seller/' . $seller_order->id . '/schedulePickup') }}">Update Pickup Details</a>
                                 @endif
 
                                 {{-- cancel order --}}
-                                @if ($order->isCancellable())
-                                    <a class="btn btn-secondary btn-block cancel-order-btn" href="/order/seller/cancel/{{ $order->id }}" role="'button">Cancel Order</a>
+                                @if ($seller_order->isCancellable())
+                                    <a class="btn btn-secondary btn-block" href="#cancel-seller-order" data-toggle="modal">Cancel Order</a>
                                 @endif
                             </div>
                         </div>
@@ -131,4 +123,6 @@
     {{--<p>You haven't sold any books. Why not <a href="{{ url('/textbook/sell') }}">sell some</a>?</p>--}}
 
     </div>
+
+    @include('includes.modal.cancel-seller-order')
 @endsection
