@@ -15,27 +15,6 @@ class Book extends Model
         'list_price', 'lowest_price', 'highest_price'];
 
     /**
-     * Validation rules
-     *
-     * @return array
-     */
-    public static function rules()
-    {
-        $rules = array(
-            'isbn'      => 'required',
-            'title'     => 'required|string',
-            'authors'   => 'required|string',
-            'edition'   => 'required|integer|min:1',
-            'num_pages' => 'required|integer|min:1',
-            'language'  => 'required|string'
-        );
-
-        $rules['image'] = 'required|mimes:jpeg,png|max:5120';
-
-        return $rules;
-    }
-
-    /**
      * Get textbook authors
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -297,6 +276,27 @@ class Book extends Model
         }
 
         return $book;
+    }
+
+    /**
+     * Validation rules
+     *
+     * @return array
+     */
+    public static function rules()
+    {
+        $rules = array(
+            'isbn'      => 'required',
+            'title'     => 'required|string',
+            'authors'   => 'required|string',
+            'edition'   => 'required|integer|min:1',
+            'num_pages' => 'required|integer|min:1',
+            'language'  => 'required|string'
+        );
+
+        $rules['image'] = 'required|mimes:jpeg,png|max:5120';
+
+        return $rules;
     }
 
 }
