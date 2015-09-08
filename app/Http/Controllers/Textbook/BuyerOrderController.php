@@ -117,7 +117,7 @@ class BuyerOrderController extends Controller
         {
             if ($buyer_order->isCancellable())
             {
-                $buyer_order->cancel();
+                $buyer_order->cancel(Auth::id());
 
                 return redirect('order/buyer/' . $id)
                     ->with('success', 'Your cancel request has been submitted. We will process your request in 2 days.');

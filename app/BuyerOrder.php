@@ -99,6 +99,16 @@ class BuyerOrder extends Model
     }
 
     /**
+     * Get seller orders that are not cancelled.
+     *
+     * @return [type] [description]
+     */
+    public function getUncancelledSellerOrders()
+    {
+        return $this->seller_orders->where('cancelled', false);
+    }
+
+    /**
      * Check whether this buyer order is belong to a given user.
      *
      * @param $id  User id
@@ -134,23 +144,36 @@ class BuyerOrder extends Model
 
     /**
      * Cancel this buyer order and corresponding seller orders.
+     *
+     * @param $cancelled_by (user_id)
      */
     public function cancel($cancelled_by)
     {
         // cancel buyer order
         $this->cancelled = true;
         $this->cancelled_time = Carbon::now();
+        $this->cancelled_by = $cancelled_by;
         $this->save();
 
         // cancel seller orders
-        foreach ($this->seller_orders as $seller_order)
+        foreach ($this->getUncancelledSellerOrders() as $seller_order)
         {
-            $seller_order->cancel();
+            $seller_order->cancel($cancelled_by);
         }
 
         // void authorized payment
         $paypal = new Paypal();
         $paypal->voidAuthorization($this->authorization_id);
+    }
+
+    /**
+     * Check if the order is cancelled by buyer.
+     *
+     * @return boolean
+     */
+    public function isCancelledByBuyer()
+    {
+        return $this->cancelled_by == $this->buyer_id;
     }
 
     /**

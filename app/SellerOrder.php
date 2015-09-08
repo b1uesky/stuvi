@@ -43,12 +43,14 @@ class SellerOrder extends Model
 
     /**
      * Cancel a seller order.
+     *
+     * @param $cancelled_by (user_id)
      */
     public function cancel($cancelled_by)
     {
         $this->cancelled      = true;
         $this->cancelled_time = Carbon::now();
-        $this->canceleld_by   = $canceleld_by;
+        $this->cancelled_by   = $cancelled_by;
         $this->product->sold  = false;
         $this->push();
 
@@ -64,6 +66,12 @@ class SellerOrder extends Model
             'amount'    => $new_amount
         ]);
 
+        // if all seller orders have been cancelled, cancel the buyer order as well
+        if (count($this->buyerOrder->getUncancelledSellerOrders()) == 0)
+        {
+            $this->buyerOrder->cancel($cancelled_by);
+        }
+
         // update book price range
         $this->product->book->addPrice($this->product->price);
     }
@@ -76,6 +84,16 @@ class SellerOrder extends Model
     public function getCancelledTime()
     {
         return $this->cancelled_time->toDateTimeString();
+    }
+
+    /**
+     * Check if the order is cancelled by seller.
+     *
+     * @return boolean
+     */
+    public function isCancelledBySeller()
+    {
+        return $this->cancelled_by == $this->seller()->id;
     }
 
     /**

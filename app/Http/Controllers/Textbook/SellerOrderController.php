@@ -73,7 +73,7 @@ class SellerOrderController extends Controller
         {
             if ($seller_order->isCancellable())
             {
-                $seller_order->cancel();
+                $seller_order->cancel(Auth::id());
 
                 // if the order is assigned to a courier, send a sms to let the courier know
                 // that the order has been cancelled
@@ -83,7 +83,7 @@ class SellerOrderController extends Controller
                 }
 
                 return redirect('order/seller/' . $id)
-                    ->with('success', 'Your cancel request has been submitted. We will process your request in 2 days.');
+                    ->with('success', 'Your order has been cancelled.');
             }
             else
             {
