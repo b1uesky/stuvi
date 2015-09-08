@@ -18,6 +18,7 @@ class SellerOrder extends Model
         'address_id',
         'cancelled',
         'cancelled_time',
+        'cancelled_by',
         'payout_item_id'
     ];
 
