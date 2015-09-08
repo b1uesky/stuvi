@@ -132,7 +132,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::get  ('/seller/{id}/schedulePickup', 'SellerOrderController@schedulePickup');
     Route::post ('/seller/{id}/confirmPickup',  'SellerOrderController@confirmPickup');
     Route::post ('/seller/{id}/payout',         'SellerOrderController@payout');
-    Route::post ('/seller/{id}/cancel',         'SellerOrderController@cancel');
+    Route::post ('/seller/cancel',              'SellerOrderController@cancel');
 });
 
 // cart

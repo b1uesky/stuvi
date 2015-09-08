@@ -64,10 +64,11 @@ class SellerOrderController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function cancel($id)
+    public function cancel()
     {
         $v = Validator::make(Input::all(), [
-            'cancel_reason' => 'required|string'
+            'seller_order_id'   => 'required|integer|exists:seller_orders,id',
+            'cancel_reason'     => 'required|string'
         ]);
 
         if ($v->fails())
@@ -75,31 +76,30 @@ class SellerOrderController extends Controller
             return redirect()->back()->withErrors($v->errors());
         }
 
+        $seller_order_id = Input::get('seller_order_id');
+        $seller_order = SellerOrder::find($seller_order_id);
         $cancel_reason = Input::get('cancel_reason');
-        $seller_order = SellerOrder::find($id);
 
         // check if this order belongs to the current user.
-        if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
+        if ($seller_order->isBelongTo(Auth::id()))
         {
             if ($seller_order->isCancellable())
             {
                 $seller_order->cancel(Auth::id(), $cancel_reason);
 
-                $this->notifyBuyerAboutSellerOrderCancellation($seller_order);
-
                 // if the order is assigned to a courier, send a sms to let the courier know
                 // that the order has been cancelled
                 if ($seller_order->assignedToCourier())
                 {
-                    $this->notifyCourierCancelledOrder($seller_order);
+                    $seller_order->notifyCourierCancelledOrder();
                 }
 
-                return redirect('order/seller/' . $id)
+                return redirect('order/seller/' . $seller_order_id)
                     ->with('success', 'Your order has been cancelled.');
             }
             else
             {
-                return redirect('order/seller/' . $id)
+                return redirect('order/seller/' . $seller_order_id)
                     ->with('error', 'Sorry, this order cannot be cancelled.');
             }
         }
@@ -291,36 +291,5 @@ class SellerOrderController extends Controller
             ->with('success', 'The balance has been transferred to your paypal account '.$seller_order->seller()->profile->paypal);
     }
 
-    /**
-     * Send a sms to the courier that the order has been cancelled.
-     *
-     * @param $seller_order
-     */
-    protected function notifyCourierCancelledOrder($seller_order)
-    {
-        $twilio = new Twilio(
-            Config::get('twilio.twilio.connections.twilio.sid'),
-            Config::get('twilio.twilio.connections.twilio.token'),
-            Config::get('twilio.twilio.connections.twilio.from')
-        );
 
-        $phone_number = $seller_order->courier->phone_number;
-        $message = 'Order #' . $seller_order->id . ' has been cancelled by the seller at ' . $seller_order->getCancelledTime();
-
-        $twilio->message($phone_number, $message);
-    }
-
-    protected function notifyBuyerAboutSellerOrderCancellation($seller_order)
-    {
-        $seller_order_arr = $seller_order->allToArray();
-        // $buyer = $seller_order->buyerOrder;
-
-        // email buyer about the cancellation
-        Mail::queue('emails.sellerOrder.notifyBuyerAboutSellerOrderCancellation', [
-            'seller_order' => $seller_order_arr
-        ], function ($message) use ($seller_order_arr)
-        {
-            $message->to($seller_order_arr['seller']['email'])->subject('Your order has been cancelled by the seller.');
-        });
-    }
 }

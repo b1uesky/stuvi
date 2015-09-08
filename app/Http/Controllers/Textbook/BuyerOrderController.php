@@ -120,12 +120,12 @@ class BuyerOrderController extends Controller
                 $buyer_order->cancel(Auth::id());
 
                 return redirect('order/buyer/' . $id)
-                    ->with('success', 'Your cancel request has been submitted. We will process your request in 2 days.');
+                    ->with('success', 'Your order has been cancelled.');
             }
             else
             {
                 return redirect('order/buyer/' . $id)
-                    ->with('error', 'Sorry, this order cannot be cancelled. We have picked up one or more books from seller.');
+                    ->with('error', 'Sorry, this order cannot be cancelled.');
             }
         }
 

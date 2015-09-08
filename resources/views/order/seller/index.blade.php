@@ -110,7 +110,7 @@
 
                                 {{-- cancel order --}}
                                 @if ($seller_order->isCancellable())
-                                    <a class="btn btn-secondary btn-block" href="#cancel-seller-order" data-toggle="modal">Cancel Order</a>
+                                    <a class="btn btn-secondary btn-block" href="#cancel-seller-order" data-toggle="modal" data-seller_order_id="{{ $seller_order->id }}">Cancel Order</a>
                                 @endif
                             </div>
                         </div>
@@ -125,4 +125,8 @@
     </div>
 
     @include('includes.modal.cancel-seller-order')
+@endsection
+
+@section('javascript')
+    <script src="{{ asset('js/order/seller/index.js') }}"></script>
 @endsection

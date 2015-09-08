@@ -46,11 +46,12 @@ class SellerOrder extends Model
      *
      * @param $cancelled_by (user_id)
      */
-    public function cancel($cancelled_by)
+    public function cancel($cancelled_by, $cancel_reason)
     {
         $this->cancelled      = true;
         $this->cancelled_time = Carbon::now();
         $this->cancelled_by   = $cancelled_by;
+        $this->cancel_reason  = $cancel_reason;
         $this->product->sold  = false;
         $this->push();
 
@@ -74,6 +75,8 @@ class SellerOrder extends Model
 
         // update book price range
         $this->product->book->addPrice($this->product->price);
+
+        $this->notifyBuyerAboutSellerOrderCancellation();
     }
 
     /**
@@ -455,5 +458,42 @@ class SellerOrder extends Model
         );
 
         return $rules;
+    }
+
+    /**
+     * Send a sms to the courier that the order has been cancelled.
+     */
+    protected function notifyCourierCancelledOrder()
+    {
+        $twilio = new Twilio(
+            Config::get('twilio.twilio.connections.twilio.sid'),
+            Config::get('twilio.twilio.connections.twilio.token'),
+            Config::get('twilio.twilio.connections.twilio.from')
+        );
+
+        $phone_number = $this->courier->phone_number;
+        $message = 'Order #' . $this->id . ' has been cancelled by the seller at ' . $this->getCancelledTime();
+
+        $twilio->message($phone_number, $message);
+    }
+
+    /**
+     * Email buyer about the cancellation of the seller order.
+     */
+    protected function notifyBuyerAboutSellerOrderCancellation()
+    {
+        $data = array(
+            'to'                => $this->buyerOrder->buyer->primaryEmail->email_address,
+            'first_name'        => $this->buyerOrder->buyer->first_name,
+            'book_title'        => $this->product->book->title,
+            'cancel_reason'     => $this->cancel_reason,
+            'buyer_order_id'    => $this->buyerOrder->id
+        );
+
+        // email buyer about the cancellation
+        Mail::queue('emails.sellerOrder.notifyBuyerAboutSellerOrderCancellation', $data, function ($message) use ($data)
+        {
+            $message->to($data['to'])->subject('Your order has been cancelled by the seller.');
+        });
     }
 }
