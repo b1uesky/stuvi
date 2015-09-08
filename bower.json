@@ -5,13 +5,10 @@
     "bootstrap": "latest",
     "bootstrap-select": "~1.7.3",
     "card": "~1.1.0",
-    "datetimepicker": "latest",
     "dropzone": "~4.0.1",
     "eonasdan-bootstrap-datetimepicker": "~4.15.35",
     "font-awesome": "latest",
-    "ihover": "~1.0.0",
     "jquery-ui": "~1.11.4",
-    "jquery.maskedinput": "latest",
     "slick-carousel": "~1.5.8"
   }
 }
