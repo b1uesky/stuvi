@@ -130,7 +130,9 @@
                     <div class="row">
                         <div class="col-md-9">
                             <!-- product list -->
-                            @foreach($buyer_order->products() as $product)
+                            @foreach($buyer_order->seller_orders as $seller_order)
+                                <?php $product = $seller_order->product; ?>
+
                                 <div class="row">
 
                                     {{-- book image --}}
@@ -165,6 +167,13 @@
                                         <div class="row">
                                             <span class="price">${{ $product->decimalPrice() }}</span>
                                         </div>
+
+                                        @if($seller_order->isCancelledBySeller())
+                                            <br>
+                                            <div class="row text-muted">
+                                                <span class="glyphicon glyphicon-info-sign"></span> Cancelled by seller
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <br>
