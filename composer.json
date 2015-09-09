@@ -15,7 +15,8 @@
 		"intervention/image": "^2.3",
 	  	"desmond/google-books": "dev-master",
 		"roumen/sitemap": "^2.5",
-	  	"paypal/rest-api-sdk-php": "1.5.0"
+	  	"paypal/rest-api-sdk-php": "1.5.0",
+		"snowfire/beautymail": "dev-master"
 	},
     "repositories": [
       {

@@ -27,11 +27,11 @@
                             {{-- If on homepage, show the home logo which has white text--}}
                             @if(Request::url() == url('/home') or Request::url() == url('/'))
                                 <a href="{{url('/home')}}">
-                                    <img src="{{asset('/img/logo-home-md.png')}}" class="img-responsive" alt="stuvi logo">
+                                    <img src="{{asset('/img/logo/logo-text-white-sm.png')}}" class="center-block" alt="stuvi logo">
                                 </a>
                             @else
                                 <a href="{{url('/home')}}">
-                                    <img src="{{asset('/img/logo-new-md.png')}}" class="img-responsive" alt="stuvi logo">
+                                    <img src="{{asset('/img/logo/logo-sm.png')}}" class="center-block" alt="stuvi logo">
                                 </a>
                             @endif
 

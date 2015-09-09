@@ -185,6 +185,11 @@ return [
 		 */
 		'Roumen\Sitemap\SitemapServiceProvider',
 
+		/*
+		 * Beautymail Service Provider
+		 */
+		'Snowfire\Beautymail\BeautymailServiceProvider',
+
 	],
 
 	/*

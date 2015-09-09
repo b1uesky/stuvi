@@ -282,23 +282,14 @@ Route::post ('/contact/store',  'ContactController@store');
 Route::get  ('/sitemap', 'SitemapController@index');
 
 
-/*
-|--------------------------------------------------------------------------
-| Housing Routes
-|--------------------------------------------------------------------------
-*/
-//Route::get('/housing', 'HousingController@index');
-
-/*
-|--------------------------------------------------------------------------
-| Club Routes
-|--------------------------------------------------------------------------
-*/
-//Route::get('/club', 'ClubController@index');
-
-/*
-|--------------------------------------------------------------------------
-| Group Routes
-|--------------------------------------------------------------------------
-*/
-//Route::get('/group', 'GroupController@index');
+Route::get('/test', function()
+{
+    $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
+    $beautymail->send('emails.test', [], function($message)
+    {
+        $message
+            ->from('info@stuvi.com')
+            ->to('test@bu.edu', 'Pengcheng Ding')
+            ->subject('Welcome!');
+    });
+});
