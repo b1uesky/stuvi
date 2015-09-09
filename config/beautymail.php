@@ -4,22 +4,22 @@ return [
 
     'colors' => [
 
-        'highlight' => '#004ca3',
-        'button'    => '#004cad',
+        'highlight' => '#81D8D0',
+        'button'    => '#00A896',
 
     ],
     'view' => [
-        'senderName'  => null,
+        'senderName'  => 'Stuvi',
         'reminder'    => null,
         'unsubscribe' => null,
         'address'     => null,
         'logo'        => [
-            'path'   => '%PUBLIC%/vendor/beautymail/assets/images/sunny/logo.png',
+            'path'   => '%PUBLIC%/img/logo/logo-md.png',
             'width'  => '',
-            'height' => '',
+            'height' => '100',
         ],
-        'twitter'  => null,
-        'facebook' => null,
+        'twitter'  => 'https://twitter.com/StuviBoston',
+        'facebook' => 'https://www.facebook.com/StuviBoston',
         'flickr'   => null,
     ],
 

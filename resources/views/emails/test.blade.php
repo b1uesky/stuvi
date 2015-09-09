@@ -1,21 +1,12 @@
-@extends('beautymail::templates.sunny')
+@extends('beautymail::templates.widgets')
 
 @section('content')
 
-    @include ('beautymail::templates.sunny.heading' , [
-        'heading' => 'Hello!',
-        'level' => 'h1',
-    ])
+    @include('beautymail::templates.widgets.articleStart', ['color' => '#81D8D0'])
 
-    @include('beautymail::templates.sunny.contentStart')
+        <h4 class="secondary"><strong>Hello World</strong></h4>
+        <p>This is a test</p>
 
-        <p>Today will be a great day!</p>
-
-    @include('beautymail::templates.sunny.contentEnd')
-
-    @include('beautymail::templates.sunny.button', [
-            'title' => 'Click me',
-            'link' => 'http://google.com'
-    ])
+    @include('beautymail::templates.widgets.articleEnd')
 
 @stop
