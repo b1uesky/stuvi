@@ -332,24 +332,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
-     * Send an activation email to a given user.
-     */
-    public function sendActivationEmail()
-    {
-        // send an email to the user with welcome message
-        $user_arr                      = $this->toArray();
-        $user_arr['university']        = $this->university->toArray();
-        $user_arr['email']             = $this->collegeEmail()->email_address;
-        $user_arr['return_to']         = urlencode(Session::get('url.intended', '/home'));    // return_to attribute.
-        $user_arr['verification_code'] = $this->collegeEmail()->verification_code;
-
-        Mail::queue('emails.welcome', ['user' => $user_arr], function ($message) use ($user_arr)
-        {
-            $message->to($user_arr['email'])->subject('Welcome to Stuvi!');
-        });
-    }
-
-    /**
      * @override
      * Get the e-mail address where password reset links are sent.
      *

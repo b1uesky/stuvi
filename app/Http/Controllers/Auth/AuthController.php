@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Auth;
 
 use App\Email;
+use App\Events\UserWasSignedUp;
 use App\Http\Controllers\Controller;
 use App\Profile;
 use App\University;
@@ -56,19 +57,23 @@ class AuthController extends Controller {
             'first_name'    => $data['first_name'],
             'last_name'     => $data['last_name'],
         ]);
+
         $email = Email::create([
             'user_id'       => $user->id,
             'email_address' => $data['email'],
         ]);
+
         $email->assignVerificationCode();
+
         $user->update([
             'primary_email_id'  => $email->id,
         ]);
+
         $profile = Profile::create([
             'user_id'       => $user->id
         ]);
 
-        $user->sendActivationEmail();
+        event(new UserWasSignedUp($user));
 
         return $user;
     }
