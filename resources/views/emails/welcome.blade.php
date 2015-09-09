@@ -1,15 +1,21 @@
-@extends('beautymail::templates.widgets')
+@extends('beautymail::templates.sunny')
 
 @section('content')
 
-    @include('beautymail::templates.widgets.articleStart', ['color' => '#81D8D0'])
+    @include ('beautymail::templates.sunny.heading' , [
+        'heading' => 'Welcome to Stuvi, ' . $first_name . '!',
+        'level' => 'h1',
+    ])
 
-        <h4 class="secondary">
-            <strong>Welcome to Stuvi, {{ $first_name }}!</strong>
-        </h4>
+    @include('beautymail::templates.sunny.contentStart')
 
-        <p>Please <a href="{{ url('/user/activate/'.$verification_code.'?return_to='.$return_to)}}" target="_blank">click here</a> to verify your Email address.</p>
+    <p>Please verify your Email address by clicking the button below:</p>
 
-    @include('beautymail::templates.widgets.articleEnd')
+    @include('beautymail::templates.sunny.contentEnd')
+
+    @include('beautymail::templates.sunny.button', [
+            'title' => 'Confirm my account',
+            'link' => url('/user/activate/'.$verification_code.'?return_to='.$return_to)
+    ])
 
 @stop
