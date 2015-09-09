@@ -2,7 +2,9 @@
 
 use Aloha\Twilio\Twilio;
 use App\Address;
+use App\Events\SellerOrderPickupWasScheduled;
 use App\Http\Controllers\Controller;
+use App\Listeners\EmailSellerOrderPickupConfirmation;
 use App\SellerOrder;
 use Auth;
 use Cart;
@@ -147,19 +149,10 @@ class SellerOrderController extends Controller
                 ->format(Config::get('database.datetime_format'))
         ]);
 
-        // send an email with a verification code to the seller to verify
-        // that the courier has picked up the book
-        $seller = $seller_order->seller();
+        // send an email with a pickup verification code to the seller
         $seller_order->generatePickupCode();
 
-        $seller_order_arr = $seller_order->allToArray();
-
-        Mail::queue('emails.sellerOrderScheduledPickupTime', [
-            'seller_order' => $seller_order_arr
-        ], function ($message) use ($seller_order_arr)
-        {
-            $message->to($seller_order_arr['seller']['email'])->subject('Your textbook pickup has been scheduled.');
-        });
+        event(new SellerOrderPickupWasScheduled($seller_order));
 
         return redirect()->back()
             ->withSuccess("You have successfully updated the pickup and we'll email you the details shortly.");

@@ -20,9 +20,17 @@ class EventServiceProvider extends ServiceProvider {
 			'App\Listeners\EmailBuyerOrderConfirmation',
 		],
 
-		// a seller order will be created after a buyer order was placed
 		'App\Events\SellerOrderWasCreated' => [
 			'App\Listeners\EmailSellerOrderConfirmation',
+		],
+
+		'App\Events\SellerOrderPickupWasScheduled' => [
+			// to seller
+			'App\Listeners\EmailSellerOrderPickupConfirmation',
+			'App\Listeners\SMSSellerOrderPickupConfirmation',
+
+			// to stuvi
+			'App\Listeners\EmailSellerOrderPickupNotification',
 		],
 	];
 
