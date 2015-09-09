@@ -17,7 +17,11 @@ class EventServiceProvider extends ServiceProvider {
 
 		'App\Events\UserWasSignedUp' => [
 			'App\Listeners\EmailSignedUpConfirmation',
-		]
+		],
+
+		'App\Events\BuyerOrderWasPlaced' => [
+			'App\Listeners\EmailBuyerOrderConfirmation',
+		],
 	];
 
 	/**

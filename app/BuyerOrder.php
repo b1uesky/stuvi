@@ -377,19 +377,6 @@ class BuyerOrder extends Model
     }
 
     /**
-     * Email buyer the buyer order confirmation
-     */
-    public function emailOrderConfirmation()
-    {
-        // convert the buyer order and corresponding objects to an array
-        $buyer_order_arr = $this->allToArray();
-        Mail::queue('emails.buyerOrderConfirmation', ['buyer_order' => $buyer_order_arr], function ($message) use ($buyer_order_arr)
-        {
-            $message->to($buyer_order_arr['buyer']['email'])->subject('Confirmation of your order #' . $this->id);
-        });
-    }
-
-    /**
      * Capture authorized payment.
      */
     public function capturePayment()

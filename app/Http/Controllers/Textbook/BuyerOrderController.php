@@ -2,6 +2,7 @@
 
 use App\Address;
 use App\BuyerOrder;
+use App\Events\BuyerOrderWasPlaced;
 use App\Helpers\Paypal;
 use App\Helpers\Price;
 use App\Http\Controllers\Controller;
@@ -277,7 +278,7 @@ class BuyerOrderController extends Controller
             $this->cart->clear();
 
             // send confirmation email to buyer
-            $order->emailOrderConfirmation();
+            event(new BuyerOrderWasPlaced($order));
 
             return redirect('/order/confirmation')
                 ->with('order', $order);
@@ -335,7 +336,7 @@ class BuyerOrderController extends Controller
         $this->cart->clear();
 
         // send confirmation email to buyer
-        $order->emailOrderConfirmation();
+        event(new BuyerOrderWasPlaced($order));
 
         return redirect('/order/confirmation')
             ->with('order', $order);

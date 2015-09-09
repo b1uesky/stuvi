@@ -299,6 +299,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
+     * Get the user primary email address.
+     *
+     * @return mixed
+     */
+    public function primaryEmailAddress()
+    {
+        return $this->primaryEmail->email_address;
+    }
+
+    /**
      * Set the primary email for user.
      *
      * @param $email_id

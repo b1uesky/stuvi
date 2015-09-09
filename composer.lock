@@ -304,12 +304,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kingdido999/Beautymail.git",
-                "reference": "5c5767c3ef2dba54a0c401728e15be4d848d0a5e"
+                "reference": "736e51294182309aa23e2a796ce8ace78c47ea55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kingdido999/Beautymail/zipball/5c5767c3ef2dba54a0c401728e15be4d848d0a5e",
-                "reference": "5c5767c3ef2dba54a0c401728e15be4d848d0a5e",
+                "url": "https://api.github.com/repos/kingdido999/Beautymail/zipball/736e51294182309aa23e2a796ce8ace78c47ea55",
+                "reference": "736e51294182309aa23e2a796ce8ace78c47ea55",
                 "shasum": ""
             },
             "require": {
@@ -339,7 +339,7 @@
                 "html",
                 "laravel"
             ],
-            "time": "2015-09-09 16:28:56"
+            "time": "2015-09-09 17:34:44"
         },
         {
             "name": "desmond/google-books",

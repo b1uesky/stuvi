@@ -32,6 +32,7 @@ class EmailSignedUpConfirmation
         $user = $event->user;
 
         $data = array(
+            'subject'           => 'Welcome to Stuvi!',
             'to'                => $user->collegeEmail()->email_address,
             'first_name'        => $user->first_name,
             'return_to'         => urlencode(Session::get('url.intended', '/home')),
@@ -43,7 +44,7 @@ class EmailSignedUpConfirmation
         {
             $message
                 ->to($data['to'])
-                ->subject('Welcome to Stuvi!');
+                ->subject($data['subject']);
         });
     }
 }
