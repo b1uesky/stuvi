@@ -9,7 +9,7 @@ return [
 
     ],
     'view' => [
-        'senderName'  => 'Stuvi',
+        'senderName'  => '© 2015 Stuvi, LLC.',
         'reminder'    => null,
         'unsubscribe' => null,
         'address'     => null,
