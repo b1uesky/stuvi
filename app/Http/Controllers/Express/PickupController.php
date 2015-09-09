@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Express;
 
+use App\Events\SellerOrderWasAssignedToCourier;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -119,6 +120,8 @@ class PickupController extends Controller
         // assign the order to the current courier
         $seller_order->courier_id = Auth::user()->id;
         $seller_order->save();
+
+        event(new SellerOrderWasAssignedToCourier($seller_order));
 
         return redirect()->back();
     }

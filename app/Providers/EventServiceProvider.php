@@ -32,6 +32,13 @@ class EventServiceProvider extends ServiceProvider {
 			// to stuvi
 			'App\Listeners\EmailSellerOrderPickupNotification',
 		],
+
+		'App\Events\SellerOrderWasAssignedToCourier' => [
+			// to seller
+			'App\Listeners\EmailSellerOrderReadyToPickupNotification',
+			'App\Listeners\SMSSellerOrderReadyToPickupNotification',
+		],
+
 	];
 
 	/**
