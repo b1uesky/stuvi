@@ -20,7 +20,7 @@
 
                 <div class="container-fluid container-login-signup">
                     <a href="{{ url('home') }}">
-                        <img src="{{asset('/img/logo-new-center.png')}}" class="img-responsive center-block">
+                        <img src="{{asset('/img/logo/logo-md.png')}}" class="img-responsive center-block">
                     </a>
 
                     <ul class="nav nav-tabs nav-justified" role="tablist">
@@ -119,4 +119,3 @@
     </div>
 
 @endsection
-

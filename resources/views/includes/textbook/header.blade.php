@@ -14,7 +14,7 @@
 
                 {{-- Logo only when nav bar collapses into hamburger menu --}}
                 <a id="xs-screen-logo-link" class="" href="{{url('/home')}}" >
-                    <img id="xs-screen-logo-img" class="" src="{{asset('/img/logo-new-center.png')}}" alt="stuvi logo">
+                    <img id="xs-screen-logo-img" class="" src="{{asset('/img/logo/logo-sm.png')}}" alt="stuvi logo">
                 </a>
 
                 <div class="logo-container">
