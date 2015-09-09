@@ -11,9 +11,6 @@ class EventServiceProvider extends ServiceProvider {
 	 * @var array
 	 */
 	protected $listen = [
-		'event.name' => [
-			'EventListener',
-		],
 
 		'App\Events\UserWasSignedUp' => [
 			'App\Listeners\EmailSignedUpConfirmation',
@@ -21,6 +18,11 @@ class EventServiceProvider extends ServiceProvider {
 
 		'App\Events\BuyerOrderWasPlaced' => [
 			'App\Listeners\EmailBuyerOrderConfirmation',
+		],
+
+		// a seller order will be created after a buyer order was placed
+		'App\Events\SellerOrderWasCreated' => [
+			'App\Listeners\EmailSellerOrderConfirmation',
 		],
 	];
 

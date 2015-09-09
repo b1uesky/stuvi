@@ -316,20 +316,6 @@ class SellerOrder extends Model
     }
 
     /**
-     * Email seller the seller order confirmation
-     */
-    public function emailOrderConfirmation()
-    {
-        // convert the seller order and corresponding objects to an array
-        $seller_order_arr = $this->allToArray();
-
-        Mail::queue('emails.sellerOrderConfirmation', ['seller_order' => $seller_order_arr], function ($message) use ($seller_order_arr)
-        {
-            $message->to($seller_order_arr['seller']['email'])->subject('Your book ' . $this->product->book->title . ' has sold!');
-        });
-    }
-
-    /**
      * Check whether this order is allowed to reconfirm pickup details.
      *
      * @return bool

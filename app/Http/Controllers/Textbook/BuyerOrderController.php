@@ -3,6 +3,7 @@
 use App\Address;
 use App\BuyerOrder;
 use App\Events\BuyerOrderWasPlaced;
+use App\Events\SellerOrderWasCreated;
 use App\Helpers\Paypal;
 use App\Helpers\Price;
 use App\Http\Controllers\Controller;
@@ -369,7 +370,7 @@ class BuyerOrderController extends Controller
             ]);
 
             // send confirmation email to seller
-            $order->emailOrderConfirmation();
+            event(new SellerOrderWasCreated($order));
         }
     }
 }
