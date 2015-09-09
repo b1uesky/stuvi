@@ -12,6 +12,8 @@
             <a href="{{ URL::to('express/pickup/pickedUp') }}" role="button" class="btn btn-default">Picked Up</a>
         </div>
 
+        <br>
+
         {{-- A list of scheduled seller orders --}}
         @if (!empty($seller_orders))
             <div class="list-group">

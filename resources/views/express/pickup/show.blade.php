@@ -12,6 +12,8 @@
             <a href="{{ URL::to('express/pickup/pickedUp') }}" role="button" class="btn btn-default">Picked Up</a>
         </div>
 
+        <br>
+
         {{-- Seller Order Details --}}
         <div class="list-group">
             {{-- Order Number --}}
@@ -73,6 +75,12 @@
         @elseif(!$seller_order->pickedUp())
             <form action="{{ URL::to('express/pickup/' . $seller_order->id . '/confirm') }}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                <div class="form-group">
+                    By confirming the pickup, you agree to Stuvi's <a href="{{url('/tos')}}" target="_blank" > Terms of Service</a>
+                        and <a href="{{url('/privacy')}}" target="_blank"> Privacy Notice</a>.
+                </div>
+
                 <div class="form-group">
                     <input type="number" class="form-control input-lg" name="code" placeholder="Enter the 4-digit verification code" required/>
                 </div>

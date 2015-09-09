@@ -12,6 +12,8 @@
             <a href="{{ URL::to('express/deliver/delivered') }}" role="button" class="btn btn-default">Delivered</a>
         </div>
 
+        <br>
+
         {{-- Buyer Order Details --}}
         <div class="list-group">
             {{-- Order Number --}}
