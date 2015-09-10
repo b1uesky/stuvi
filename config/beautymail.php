@@ -16,10 +16,10 @@ return [
         'logo'        => [
             'path'   => '%PUBLIC%/img/logo/logo-md.png',
             'width'  => '',
-            'height' => '100',
+            'height' => '80',
         ],
-        'twitter'  => 'https://twitter.com/StuviBoston',
-        'facebook' => 'https://www.facebook.com/StuviBoston',
+        'twitter'  => 'StuviBoston',
+        'facebook' => 'StuviBoston',
         'flickr'   => null,
     ],
 

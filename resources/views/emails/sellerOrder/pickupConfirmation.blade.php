@@ -3,7 +3,7 @@
 @section('content')
 
     @include ('beautymail::templates.sunny.heading' , [
-        'heading' => 'You have scheduled your textbook pickup!',
+        'heading' => 'Pickup Confirmation',
         'level' => 'h1',
     ])
 
