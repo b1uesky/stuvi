@@ -150,12 +150,6 @@ class DeliverController extends Controller
 
         event(new BuyerOrderWasDelivered($buyer_order));
 
-        // capture authorized payment from buyer
-        $buyer_order->capturePayment();
-
-        // create payouts to sellers
-        $buyer_order->payout();
-
         return redirect()->back();
     }
 }

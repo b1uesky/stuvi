@@ -26,6 +26,6 @@ class CreatePayoutToSellers
      */
     public function handle(BuyerOrderWasDelivered $event)
     {
-        //
+        $event->buyer_order->payout();
     }
 }

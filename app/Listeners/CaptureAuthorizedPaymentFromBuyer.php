@@ -26,6 +26,6 @@ class CaptureAuthorizedPaymentFromBuyer
      */
     public function handle(BuyerOrderWasDelivered $event)
     {
-        //
+        $event->buyer_order->capturePayment();
     }
 }
