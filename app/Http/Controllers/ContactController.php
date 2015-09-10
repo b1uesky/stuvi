@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ContactMessageWasCreated;
 use Illuminate\Http\Request;
 
 use App\Contact;
@@ -49,7 +50,9 @@ class ContactController extends Controller
                 ->withInput(Input::all());
         }
 
-        Contact::create(Input::all());
+        $contact = Contact::create(Input::all());
+
+        event(new ContactMessageWasCreated($contact));
 
         return redirect()->back()
                 ->withSuccess('We have received your message and we will reach out to you soon.');

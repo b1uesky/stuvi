@@ -13,7 +13,7 @@
 
     <p>The password for your Stuvi Account - {{ $user->primaryEmailAddress() }} - was recently changed.</p>
 
-    <p>If you didn't change your password, please contact us at {{ config('phone_number.customer_service') }} as soon as possible.</p>
+    <p>If you didn't change your password, please contact us at {{ config('customer_service.phone') }} as soon as possible.</p>
 
     @include('beautymail::templates.sunny.contentEnd')
 

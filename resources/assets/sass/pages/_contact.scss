@@ -2,9 +2,6 @@
 
 @import "../modules/all";
 
-#contact-main-container{
-}
-
 .contact-title, .contact-subtitle, .contact-email, .contact-details, .contact-alerts {
   text-align: center;
 }
@@ -12,10 +9,6 @@
 .contact-subtitle {
   color: $text-color-light;
   margin-bottom: $spacing-unit / 2;
-}
-
-.contact-email {
-  color: $text-color-light;
 }
 
 .contact-container {

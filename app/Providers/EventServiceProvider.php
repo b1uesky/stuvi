@@ -12,6 +12,7 @@ class EventServiceProvider extends ServiceProvider {
 	 */
 	protected $listen = [
 
+		// user
 		'App\Events\UserWasSignedUp' => [
 			'App\Listeners\EmailSignedUpConfirmation',
 		],
@@ -62,6 +63,11 @@ class EventServiceProvider extends ServiceProvider {
 		'App\Events\SellerOrderWasCancelled' => [
 			'App\Listeners\MessageSellerOrderCancellationToCourier',
 			'App\Listeners\EmailSellerOrderCancellationToBuyer',
+		],
+
+		// contact
+		'App\Events\ContactMessageWasCreated' => [
+			'App\Listeners\EmailContactMessageToStaff',
 		],
 
 	];
