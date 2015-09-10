@@ -280,16 +280,3 @@ Route::post ('/contact/store',  'ContactController@store');
 |--------------------------------------------------------------------------
 */
 Route::get  ('/sitemap', 'SitemapController@index');
-
-
-Route::get('/test', function()
-{
-    $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-    $beautymail->send('emails.test', [], function($message)
-    {
-        $message
-            ->from('info@stuvi.com')
-            ->to('test@bu.edu', 'Pengcheng Ding')
-            ->subject('Welcome!');
-    });
-});

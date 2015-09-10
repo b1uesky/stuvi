@@ -3,6 +3,7 @@
 use Aloha\Twilio\Twilio;
 use App\Address;
 use App\Events\SellerOrderPickupWasScheduled;
+use App\Events\SellerOrderWasCancelled;
 use App\Http\Controllers\Controller;
 use App\Listeners\EmailSellerOrderPickupConfirmation;
 use App\SellerOrder;
@@ -89,12 +90,7 @@ class SellerOrderController extends Controller
             {
                 $seller_order->cancel(Auth::id(), $cancel_reason);
 
-                // if the order is assigned to a courier, send a sms to let the courier know
-                // that the order has been cancelled
-                if ($seller_order->assignedToCourier())
-                {
-                    $seller_order->notifyCourierCancelledOrder();
-                }
+                event(new SellerOrderWasCancelled($seller_order));
 
                 return redirect('order/seller/' . $seller_order_id)
                     ->with('success', 'Your order has been cancelled.');

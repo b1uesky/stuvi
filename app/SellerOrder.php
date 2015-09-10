@@ -42,44 +42,6 @@ class SellerOrder extends Model
     }
 
     /**
-     * Cancel a seller order.
-     *
-     * @param $cancelled_by (user_id)
-     */
-    public function cancel($cancelled_by, $cancel_reason)
-    {
-        $this->cancelled      = true;
-        $this->cancelled_time = Carbon::now();
-        $this->cancelled_by   = $cancelled_by;
-        $this->cancel_reason  = $cancel_reason;
-        $this->product->sold  = false;
-        $this->push();
-
-        // update the price of buyer order
-        $new_subtotal = $this->buyerOrder->subtotal - $this->product->price;
-        $new_total_before_tax = $new_subtotal + $this->buyerOrder->fee - $this->buyerOrder->discount;
-        $new_tax = Price::calculateTax($new_total_before_tax);
-        $new_amount = $new_total_before_tax + $new_tax;
-
-        $this->buyerOrder->update([
-            'subtotal'  => $new_subtotal,
-            'tax'       => $new_tax,
-            'amount'    => $new_amount
-        ]);
-
-        // if all seller orders have been cancelled, cancel the buyer order as well
-        if (count($this->buyerOrder->getUncancelledSellerOrders()) == 0)
-        {
-            $this->buyerOrder->cancel($cancelled_by);
-        }
-
-        // update book price range
-        $this->product->book->addPrice($this->product->price);
-
-        $this->notifyBuyerAboutSellerOrderCancellation();
-    }
-
-    /**
      * Get the order cancelled time.
      *
      * @return mixed
@@ -326,6 +288,42 @@ class SellerOrder extends Model
     }
 
     /**
+     * Cancel a seller order.
+     *
+     * @param $cancelled_by (user_id)
+     */
+    public function cancel($cancelled_by, $cancel_reason)
+    {
+        $this->cancelled      = true;
+        $this->cancelled_time = Carbon::now();
+        $this->cancelled_by   = $cancelled_by;
+        $this->cancel_reason  = $cancel_reason;
+        $this->product->sold  = false;
+        $this->push();
+
+        // update the price of buyer order
+        $new_subtotal = $this->buyerOrder->subtotal - $this->product->price;
+        $new_total_before_tax = $new_subtotal + $this->buyerOrder->fee - $this->buyerOrder->discount;
+        $new_tax = Price::calculateTax($new_total_before_tax);
+        $new_amount = $new_total_before_tax + $new_tax;
+
+        $this->buyerOrder->update([
+            'subtotal'  => $new_subtotal,
+            'tax'       => $new_tax,
+            'amount'    => $new_amount
+        ]);
+
+        // if all seller orders have been cancelled, cancel the buyer order as well
+        if (count($this->buyerOrder->getUncancelledSellerOrders()) == 0)
+        {
+            $this->buyerOrder->cancel($cancelled_by);
+        }
+
+        // update book price range
+        $this->product->book->addPrice($this->product->price);
+    }
+
+    /**
      * Build a query for searching seller orders with books title keywords.
      *
      * @param $keywords
@@ -444,42 +442,5 @@ class SellerOrder extends Model
         );
 
         return $rules;
-    }
-
-    /**
-     * Send a sms to the courier that the order has been cancelled.
-     */
-    protected function notifyCourierCancelledOrder()
-    {
-        $twilio = new Twilio(
-            Config::get('twilio.twilio.connections.twilio.sid'),
-            Config::get('twilio.twilio.connections.twilio.token'),
-            Config::get('twilio.twilio.connections.twilio.from')
-        );
-
-        $phone_number = $this->courier->phone_number;
-        $message = 'Order #' . $this->id . ' has been cancelled by the seller at ' . $this->getCancelledTime();
-
-        $twilio->message($phone_number, $message);
-    }
-
-    /**
-     * Email buyer about the cancellation of the seller order.
-     */
-    protected function notifyBuyerAboutSellerOrderCancellation()
-    {
-        $data = array(
-            'to'                => $this->buyerOrder->buyer->primaryEmail->email_address,
-            'first_name'        => $this->buyerOrder->buyer->first_name,
-            'book_title'        => $this->product->book->title,
-            'cancel_reason'     => $this->cancel_reason,
-            'buyer_order_id'    => $this->buyerOrder->id
-        );
-
-        // email buyer about the cancellation
-        Mail::queue('emails.sellerOrder.notifyBuyerAboutSellerOrderCancellation', $data, function ($message) use ($data)
-        {
-            $message->to($data['to'])->subject('Your order has been cancelled by the seller.');
-        });
     }
 }

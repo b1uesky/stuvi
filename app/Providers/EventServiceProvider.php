@@ -16,27 +16,9 @@ class EventServiceProvider extends ServiceProvider {
 			'App\Listeners\EmailSignedUpConfirmation',
 		],
 
+		// buyer order
 		'App\Events\BuyerOrderWasPlaced' => [
 			'App\Listeners\EmailBuyerOrderConfirmation',
-		],
-
-		'App\Events\SellerOrderWasCreated' => [
-			'App\Listeners\EmailSellerOrderConfirmation',
-		],
-
-		'App\Events\SellerOrderPickupWasScheduled' => [
-			// to seller
-			'App\Listeners\EmailSellerOrderPickupConfirmation',
-			'App\Listeners\SMSSellerOrderPickupConfirmation',
-
-			// to stuvi
-			'App\Listeners\EmailSellerOrderPickupNotification',
-		],
-
-		'App\Events\SellerOrderWasAssignedToCourier' => [
-			// to seller
-			'App\Listeners\EmailSellerOrderReadyToPickupNotification',
-			'App\Listeners\SMSSellerOrderReadyToPickupNotification',
 		],
 
 		'App\Events\BuyerOrderWasShipped' => [
@@ -47,6 +29,31 @@ class EventServiceProvider extends ServiceProvider {
 			'App\Listeners\EmailBuyerOrderDeliveredNotification',
 			'App\Listeners\CaptureAuthorizedPaymentFromBuyer',
 			'App\Listeners\CreatePayoutToSellers',
+		],
+
+		// seller order
+		'App\Events\SellerOrderWasCreated' => [
+			'App\Listeners\EmailSellerOrderConfirmation',
+		],
+
+		'App\Events\SellerOrderPickupWasScheduled' => [
+			// to seller
+			'App\Listeners\EmailSellerOrderPickupConfirmation',
+//			'App\Listeners\MessageSellerOrderPickupConfirmation',
+
+			// to stuvi
+			'App\Listeners\EmailSellerOrderPickupNotification',
+		],
+
+		'App\Events\SellerOrderWasAssignedToCourier' => [
+			// to seller
+			'App\Listeners\EmailSellerOrderReadyToPickupNotification',
+//			'App\Listeners\MessageSellerOrderReadyToPickupNotification',
+		],
+
+		'App\Events\SellerOrderWasCancelled' => [
+			'App\Listeners\MessageSellerOrderCancellationToCourier',
+			'App\Listeners\EmailSellerOrderCancellationToBuyer',
 		],
 
 	];
