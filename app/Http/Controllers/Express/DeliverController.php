@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Express;
 
+use App\Events\BuyerOrderWasDelivered;
 use App\Events\BuyerOrderWasShipped;
 
 use App\BuyerOrder;
@@ -147,27 +148,7 @@ class DeliverController extends Controller
                                  'time_delivered'    => date(config('database.datetime_format')),
                              ]);
 
-        // convert the buyer order and corresponding objects to an array
-        $buyer_order_arr                        = $buyer_order->toArray();
-        $buyer_order_arr['buyer']               = $buyer_order->buyer->allToArray();
-        $buyer_order_arr['shipping_address']    = $buyer_order->shipping_address->toArray();
-
-        foreach ($buyer_order->products() as $product)
-        {
-            $temp           = $product->toArray();
-            $temp['book']   = $product->book->toArray();
-            $temp['book']['authors']        = $product->book->authors->toArray();
-            $temp['book']['image_set']      = $product->book->imageSet->toArray();
-            $buyer_order_arr['products'][]   = $temp;
-        }
-
-        // send an email notification to the buyer
-        Mail::queue('emails.buyerOrder.confirmDelivery', [
-            'buyer_order'   => $buyer_order_arr
-        ], function($message) use ($buyer_order_arr)
-        {
-            $message->to($buyer_order_arr['buyer']['email'])->subject('Your order #'.$buyer_order_arr['id'].' has been delivered!');
-        });
+        event(new BuyerOrderWasDelivered($buyer_order));
 
         // capture authorized payment from buyer
         $buyer_order->capturePayment();
