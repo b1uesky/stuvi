@@ -17,36 +17,4 @@
 }
 
 
-/****** RESET PASSWORD ******/
-
-.reset-container {
-  padding-top: 15%;
-  padding-bottom: 15%;
-  background-image: url('../img/activation(2).jpg');
-  background-size: cover;
-}
-
-#reset-title{
-  color: white;
-  text-shadow: $text-shadow;
-  margin-top: 0;
-}
-
-.reset-label {
-  color: white;
-  text-shadow: $text-shadow;
-}
-
-#reset-button {
-  width: 200px;
-}
-
-#password-jumbotron{
-  background-color: rgba(153, 159, 163, 0.45);
-  @media(max-width: 767px){
-    padding: 3%;
-  }
-}
-
-
 

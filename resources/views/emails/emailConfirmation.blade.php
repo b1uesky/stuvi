@@ -9,7 +9,7 @@
 
     @include('beautymail::templates.sunny.contentStart')
 
-    <p>Hi, {{ $email->user->first_name }},</p>
+    <p>Hi {{ $email->user->first_name }},</p>
 
     <p>You recently added this email address to your Stuvi account. Please click the button below to verify your email address.</p>
 
