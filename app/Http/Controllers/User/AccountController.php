@@ -7,6 +7,7 @@
  * Time: 2:17 PM
  */
 
+use App\Events\UserPasswordWasChanged;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,7 @@ class AccountController extends Controller
     public function passwordReset()
     {
         $validator = Validator::make(Input::all(), User::passwordResetRules());
+
         if ($validator->fails())
         {
             return back()
@@ -50,6 +52,8 @@ class AccountController extends Controller
         Auth::user()->update([
             'password'  => bcrypt($new_password),
         ]);
+
+        event(new UserPasswordWasChanged(Auth::user()));
 
         return back()
             ->withSuccess('Your password has been reset.');

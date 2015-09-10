@@ -11,7 +11,7 @@
 		<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
 
             <div class="page-header">
-                <h1>Forgot password</h1>
+                <h1>Password reset</h1>
             </div>
 
             <form method="POST" action="{{ url('/password/email') }}">

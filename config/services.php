@@ -29,21 +29,6 @@ return [
 		'region' => 'us-east-1',
 	],
 
-//    'stripe' => [
-//        'secret' => 'sk_test_1z2tEIbWtbZVvpWnnzgfymyC',
-//    ],
-
-	// Amazon Product Advertising API credentials
-	'amazon' => [
-		'access_key_id'     =>  'AKIAICSPEAJYPA3CBSNQ',
-		'secret_access_key' =>  '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',
-		'associate_id'      =>  'stuvi07-20',
-	],
-
-    'isbndb' => [
-		'token' => 'YPKFSSUW'// api key for isbndb.com
-	],
-
 	'google' => [
 		'books'	=> [
 			'api_key'	=> 'AIzaSyD6Uers3Lug2GFdRpb9FCfftgA0e26fKnc'
