@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Express;
 
+use App\Events\BuyerOrderWasShipped;
+
 use App\BuyerOrder;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;

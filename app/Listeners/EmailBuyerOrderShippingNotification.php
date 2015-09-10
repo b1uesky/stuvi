@@ -35,10 +35,8 @@ class EmailBuyerOrderShippingNotification
             'to'                => $buyer_order->buyer->primaryEmailAddress(),
         );
 
-        $buyer_order_arr = $buyer_order->allToArray();
-
         $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-        $beautymail->send('emails.buyerOrder.shipped', $data, function($message) use ($data, $buyer_order_arr)
+        $beautymail->send('emails.buyerOrder.shippingNotification', ['buyer_order'  => $buyer_order], function($message) use ($data)
         {
             $message
                 ->to($data['to'])
