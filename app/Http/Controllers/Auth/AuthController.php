@@ -59,17 +59,16 @@ class AuthController extends Controller {
         ]);
 
         $email = Email::create([
-            'user_id'       => $user->id,
-            'email_address' => $data['email'],
+            'user_id'           => $user->id,
+            'email_address'     => $data['email'],
+            'verification_code' => \App\Helpers\generateRandomCode(config('user.verification_code_length'))
         ]);
-
-        $email->assignVerificationCode();
 
         $user->update([
             'primary_email_id'  => $email->id,
         ]);
 
-        $profile = Profile::create([
+        Profile::create([
             'user_id'       => $user->id
         ]);
 

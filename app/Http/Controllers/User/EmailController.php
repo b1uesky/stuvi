@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\User;
 
 use App\Email;
+use App\Events\UserEmailWasAdded;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -49,11 +50,10 @@ class EmailController extends Controller
         $email = Email::create([
             'user_id'       => Auth::id(),
             'email_address' => Input::get('email'),
+            'verification_code' => \App\Helpers\generateRandomCode(config('user.verification_code_length'))
         ]);
 
-        // verify the new email.
-        $email->assignVerificationCode();
-        $email->sendVerificationEmail();
+        event(new UserEmailWasAdded($email));
 
         return redirect('user/email')
             ->with('success', $email->email_address.' has been added to your account. Please check your email and confirm your new email address.');
