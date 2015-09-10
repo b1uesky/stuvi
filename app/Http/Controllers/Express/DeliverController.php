@@ -110,26 +110,7 @@ class DeliverController extends Controller
         $buyer_order->courier_id = Auth::user()->id;
         $buyer_order->save();
 
-        // convert the buyer order and corresponding objects to an array
-        $buyer_order_arr                        = $buyer_order->toArray();
-        $buyer_order_arr['buyer']               = $buyer_order->buyer->allToArray();
-        $buyer_order_arr['shipping_address']    = $buyer_order->shipping_address->toArray();
-        foreach ($buyer_order->products() as $product)
-        {
-            $temp           = $product->toArray();
-            $temp['book']   = $product->book->toArray();
-            $temp['book']['authors']        = $product->book->authors->toArray();
-            $temp['book']['image_set']      = $product->book->imageSet->toArray();
-            $buyer_order_arr['products'][]   = $temp;
-        }
-
-        // send an email notification to the buyer
-        Mail::queue('emails.buyerOrder.ready', [
-            'buyer_order' => $buyer_order_arr
-        ], function($message) use ($buyer_order_arr)
-        {
-            $message->to($buyer_order_arr['buyer']['email'])->subject('Your order #'.$buyer_order_arr['id'].' is on the way!');
-        });
+        event(new BuyerOrderWasShipped($buyer_order));
 
         return redirect()->back();
     }

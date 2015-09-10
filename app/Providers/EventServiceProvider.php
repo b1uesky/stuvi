@@ -39,6 +39,10 @@ class EventServiceProvider extends ServiceProvider {
 			'App\Listeners\SMSSellerOrderReadyToPickupNotification',
 		],
 
+		'App\Events\BuyerOrderWasShipped' => [
+			'App\Listeners\EmailBuyerOrderShippingNotification',
+		],
+
 	];
 
 	/**
