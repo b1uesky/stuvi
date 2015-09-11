@@ -40,6 +40,10 @@ class EventServiceProvider extends ServiceProvider {
 			'App\Listeners\CreatePayoutToSellers',
 		],
 
+        'App\Events\BuyerOrderWasCancelled' => [
+            'App\Listeners\EmailBuyerOrderCancelledNotification',
+        ],
+
 		// seller order
 		'App\Events\SellerOrderWasCreated' => [
 			'App\Listeners\EmailSellerOrderConfirmation',

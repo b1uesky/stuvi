@@ -2,6 +2,7 @@
 
 use App\Address;
 use App\BuyerOrder;
+use App\Events\BuyerOrderWasCancelled;
 use App\Events\BuyerOrderWasPlaced;
 use App\Events\SellerOrderWasCreated;
 use App\Helpers\Paypal;
@@ -120,6 +121,8 @@ class BuyerOrderController extends Controller
             if ($buyer_order->isCancellable())
             {
                 $buyer_order->cancel(Auth::id());
+
+                event(new BuyerOrderWasCancelled($buyer_order));
 
                 return redirect('order/buyer/' . $id)
                     ->with('success', 'Your order has been cancelled.');

@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Events\BuyerOrderWasCancelled;
 use App\Helpers\Paypal;
 use App\Helpers\Price;
 use Carbon\Carbon;
@@ -319,6 +320,8 @@ class SellerOrder extends Model
         if ($this->isCancelledBySeller() && count($this->buyerOrder->getUncancelledSellerOrders()) == 0)
         {
             $this->buyerOrder->cancel($cancelled_by);
+
+            event(new BuyerOrderWasCancelled($this->buyerOrder()));
         }
 
         // update book price range
