@@ -28,10 +28,10 @@
                 BuyerOrder <span class="badge">{{ \App\BuyerOrder::count() }}</span>
             </a>
         </li>
-        <li>
-            <a href="{{ URL::to('admin/contact') }}">
-                Contact <span class="badge">{{ \App\Contact::where('is_replied', false)->count() }}</span>
-            </a>
-        </li>
+        {{--<li>--}}
+            {{--<a href="{{ URL::to('admin/contact') }}">--}}
+                {{--Contact <span class="badge">{{ \App\Contact::where('is_replied', false)->count() }}</span>--}}
+            {{--</a>--}}
+        {{--</li>--}}
     </ul>
 </header>

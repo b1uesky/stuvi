@@ -34,6 +34,7 @@ class UserTableSeeder extends Seeder {
 
         $user = User::create([
             'password'        => bcrypt('123456'),
+            'phone_number'    => '8572655018',
             'first_name'      => 'Pengcheng',
             'last_name'       => 'Ding',
             'university_id'   => $bu->id,
@@ -41,7 +42,7 @@ class UserTableSeeder extends Seeder {
         ]);
         $email = Email::create([
             'user_id'       => $user->id,
-            'email_address' => 'test@bu.edu',
+            'email_address' => 'desmond@bu.edu',
             'verified'       => true,
             'verification_code' => \App\Helpers\generateRandomCode(Config::get('user.verification_code_length')),
         ]);
@@ -49,6 +50,7 @@ class UserTableSeeder extends Seeder {
 
         $user = User::create([
             'password'        => bcrypt('123456'),
+            'phone_number'    => '8572655018',
             'first_name'      => 'Seller',
             'last_name'       => 'Stuvi',
             'university_id'   => $bu->id,
@@ -64,6 +66,7 @@ class UserTableSeeder extends Seeder {
 
         $user = User::create([
             'password'        => bcrypt('123456'),
+            'phone_number'    => '8572655018',
             'first_name'      => 'Buyer',
             'last_name'       => 'Stuvi',
             'university_id'   => $bu->id,
@@ -79,6 +82,7 @@ class UserTableSeeder extends Seeder {
 
         $user = User::create([
             'password'        => bcrypt('123456'),
+            'phone_number'    => '8572655018',
             'first_name'      => 'Courier',
             'last_name'       => 'Stuvi',
             'university_id'   => $bu->id,

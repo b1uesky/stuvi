@@ -16,10 +16,6 @@
             <td>{{ $contact->created_at }}</td>
         </tr>
         <tr>
-            <th>Replied</th>
-            <td>{{ $contact->isReplied() }}</td>
-        </tr>
-        <tr>
             <th>Name</th>
             <td>{{ $contact->name }}</td>
         </tr>
@@ -33,19 +29,19 @@
         </tr>
     </table>
 
-    @if($contact->is_replied == false)
-        <div class="contact-response">
-            <form action="/admin/contact/reply" method="post">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="hidden" name="contact_id" value="{{ $contact->id }}">
+    {{--@if($contact->is_replied == false)--}}
+        {{--<div class="contact-response">--}}
+            {{--<form action="/admin/contact/reply" method="post">--}}
+                {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
+                {{--<input type="hidden" name="contact_id" value="{{ $contact->id }}">--}}
 
-                <div class="form-group">
-                    <textarea class="form-control" rows="8" name="response" placeholder="Reply..."></textarea>
-                </div>
+                {{--<div class="form-group">--}}
+                    {{--<textarea class="form-control" rows="8" name="response" placeholder="Reply..."></textarea>--}}
+                {{--</div>--}}
 
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    @endif
+                {{--<button type="submit" class="btn btn-primary">Submit</button>--}}
+            {{--</form>--}}
+        {{--</div>--}}
+    {{--@endif--}}
 
 @endsection
