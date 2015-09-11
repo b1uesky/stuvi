@@ -8,11 +8,19 @@
 /******** LOGIN/REGISTER FORM ********/
 
 .container-login-signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   max-width: 300px;
-  padding-top: $spacing-unit;
+  height: 80vh;
+  padding: $spacing-unit 0;
 
   img {
-    margin-bottom: $spacing-unit;
+    margin-bottom: $spacing-unit / 2;
+  }
+
+  @media(max-width: 767px) {
+    height: auto;
   }
 }
 
