@@ -18,8 +18,8 @@ return [
             'width'  => '',
             'height' => '80',
         ],
-        'twitter'  => 'StuviBoston',
-        'facebook' => 'StuviBoston',
+        'twitter'  => null,
+        'facebook' => null,
         'flickr'   => null,
     ],
 

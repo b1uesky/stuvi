@@ -61,20 +61,20 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.3.4",
+            "version": "3.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "acbd3e0a1333479dac05cf6d8b8e9a0d533562b7"
+                "reference": "bae73eb3673228b95329ecf0a8fd75a262004d66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/acbd3e0a1333479dac05cf6d8b8e9a0d533562b7",
-                "reference": "acbd3e0a1333479dac05cf6d8b8e9a0d533562b7",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/bae73eb3673228b95329ecf0a8fd75a262004d66",
+                "reference": "bae73eb3673228b95329ecf0a8fd75a262004d66",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/guzzle": ">=5.3|~6.0.1|~6.1",
+                "guzzlehttp/guzzle": "~5.3|~6.0.1|~6.1",
                 "guzzlehttp/promises": "~1.0",
                 "guzzlehttp/psr7": "~1.0",
                 "mtdowling/jmespath.php": "~2.2",
@@ -133,7 +133,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-09-03 22:28:06"
+            "time": "2015-09-10 19:12:33"
         },
         {
             "name": "aws/aws-sdk-php-laravel",
@@ -304,12 +304,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kingdido999/Beautymail.git",
-                "reference": "736e51294182309aa23e2a796ce8ace78c47ea55"
+                "reference": "db8753d0e82a932ef2cd239112119bef347c9f22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kingdido999/Beautymail/zipball/736e51294182309aa23e2a796ce8ace78c47ea55",
-                "reference": "736e51294182309aa23e2a796ce8ace78c47ea55",
+                "url": "https://api.github.com/repos/kingdido999/Beautymail/zipball/db8753d0e82a932ef2cd239112119bef347c9f22",
+                "reference": "db8753d0e82a932ef2cd239112119bef347c9f22",
                 "shasum": ""
             },
             "require": {
@@ -339,7 +339,7 @@
                 "html",
                 "laravel"
             ],
-            "time": "2015-09-09 17:34:44"
+            "time": "2015-09-11 12:59:26"
         },
         {
             "name": "desmond/google-books",
@@ -1457,7 +1457,7 @@
                     "name": "Jeremy Lindblom",
                     "email": "jeremeamia@gmail.com",
                     "homepage": "https://github.com/jeremeamia",
-                    "role": "developer"
+                    "role": "Developer"
                 }
             ],
             "description": "Serialize Closure objects, including their context and binding",
