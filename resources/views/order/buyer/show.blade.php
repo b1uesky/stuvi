@@ -77,39 +77,41 @@
                         {{--</div>--}}
 
                         <div class="col-sm-6">
-                            <div class="row">
-                                <h4>Order Summary</h4>
-                            </div>
+                            @if(!$buyer_order->cancelled)
+                                <div class="row">
+                                    <h4>Order Summary</h4>
+                                </div>
 
-                            <div class="row">
-                                <span class="pull-left">Item(s) subtotal:</span>
-                                <span class="pull-right">${{ $buyer_order->decimalSubtotal() }}</span>
-                            </div>
+                                <div class="row">
+                                    <span class="pull-left">Item(s) subtotal:</span>
+                                    <span class="pull-right">${{ $buyer_order->decimalSubtotal() }}</span>
+                                </div>
 
-                            <div class="row">
-                                <span class="pull-left">Shipping & Handling:</span>
-                                <span class="pull-right">${{ $buyer_order->decimalFee() }}</span>
-                            </div>
+                                <div class="row">
+                                    <span class="pull-left">Shipping & Handling:</span>
+                                    <span class="pull-right">${{ $buyer_order->decimalFee() }}</span>
+                                </div>
 
-                            <div class="row">
-                                <span class="pull-left">Discount:</span>
-                                <span class="pull-right">-${{ $buyer_order->decimalDiscount() }}</span>
-                            </div>
+                                <div class="row">
+                                    <span class="pull-left">Discount:</span>
+                                    <span class="pull-right">-${{ $buyer_order->decimalDiscount() }}</span>
+                                </div>
 
-                            <div class="row">
-                                <span class="pull-left">Total before tax:</span>
-                                <span class="pull-right">${{ $buyer_order->decimalSubtotal() + $buyer_order->decimalFee() - $buyer_order->decimalDiscount() }}</span>
-                            </div>
+                                <div class="row">
+                                    <span class="pull-left">Total before tax:</span>
+                                    <span class="pull-right">${{ $buyer_order->decimalSubtotal() + $buyer_order->decimalFee() - $buyer_order->decimalDiscount() }}</span>
+                                </div>
 
-                            <div class="row">
-                                <span class="pull-left">Estimated tax to be collected:</span>
-                                <span class="pull-right">${{ $buyer_order->decimalTax() }}</span>
-                            </div>
+                                <div class="row">
+                                    <span class="pull-left">Estimated tax to be collected:</span>
+                                    <span class="pull-right">${{ $buyer_order->decimalTax() }}</span>
+                                </div>
 
-                            <div class="row">
-                                <span class="pull-left">Total:</span>
-                                <span class="pull-right"><strong>${{ $buyer_order->decimalAmount() }}</strong></span>
-                            </div>
+                                <div class="row">
+                                    <span class="pull-left">Total:</span>
+                                    <span class="pull-right"><strong>${{ $buyer_order->decimalAmount() }}</strong></span>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

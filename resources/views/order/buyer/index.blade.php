@@ -29,13 +29,15 @@
                         </div>
 
                         <div class="col-xs-2">
-                            <div class="row">
-                                <span>TOTAL</span>
-                            </div>
+                            @if(!$buyer_order->cancelled)
+                                <div class="row">
+                                    <span>TOTAL</span>
+                                </div>
 
-                            <div class="row">
-                                <span>${{ $buyer_order->decimalAmount() }}</span>
-                            </div>
+                                <div class="row">
+                                    <span>${{ $buyer_order->decimalAmount() }}</span>
+                                </div>
+                            @endif
                         </div>
 
                         <div class="col-xs-2 col-xs-offset-6 text-right">
