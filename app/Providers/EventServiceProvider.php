@@ -63,6 +63,7 @@ class EventServiceProvider extends ServiceProvider {
 		'App\Events\SellerOrderWasCancelled' => [
 			'App\Listeners\MessageSellerOrderCancellationToCourier',
 			'App\Listeners\EmailSellerOrderCancellationToBuyer',
+            'App\Listeners\EmailSellerOrderCancellationToSeller',
 		],
 
 		// contact

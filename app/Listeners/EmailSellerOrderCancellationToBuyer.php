@@ -30,17 +30,21 @@ class EmailSellerOrderCancellationToBuyer
     {
         $seller_order = $event->seller_order;
 
-        $data = array(
-            'subject'           => 'Your Stuvi order ' . $seller_order->book()->title . ' was cancelled by the seller.',
-            'to'                => $seller_order->buyerOrder->buyer->primaryEmail->email_address,
-        );
-
-        $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-        $beautymail->send('emails.sellerOrder.cancellationNotification', ['seller_order' => $seller_order], function($message) use ($data)
+        // only send email to buyer if the seller order is cancelled by seller (not buyer)
+        if ($seller_order->isCancelledBySeller())
         {
-            $message
-                ->to($data['to'])
-                ->subject($data['subject']);
-        });
+            $data = array(
+                'subject'           => 'Your Stuvi order ' . $seller_order->book()->title . ' was cancelled by the seller.',
+                'to'                => $seller_order->buyerOrder->buyer->primaryEmail->email_address,
+            );
+
+            $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
+            $beautymail->send('emails.sellerOrder.cancellationNotificationToBuyer', ['seller_order' => $seller_order], function($message) use ($data)
+            {
+                $message
+                    ->to($data['to'])
+                    ->subject($data['subject']);
+            });
+        }
     }
 }

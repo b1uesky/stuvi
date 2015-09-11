@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Events\SellerOrderWasCancelled;
 use App\Helpers\Paypal;
 use App\Helpers\Price;
 use Carbon\Carbon;
@@ -98,14 +99,15 @@ class BuyerOrder extends Model
         return $this->hasMany('App\SellerOrder', 'buyer_order_id', 'id');
     }
 
+
     /**
      * Get seller orders that are not cancelled.
      *
-     * @return [type] [description]
+     * @return mixed
      */
     public function getUncancelledSellerOrders()
     {
-        return $this->seller_orders->where('cancelled', false);
+        return $this->seller_orders()->where('cancelled', false)->get();
     }
 
     /**
@@ -158,7 +160,10 @@ class BuyerOrder extends Model
         // cancel seller orders
         foreach ($this->getUncancelledSellerOrders() as $seller_order)
         {
-            $seller_order->cancel($cancelled_by);
+            $cancel_reason = 'Book buyer has cancelled this order.';
+            $seller_order->cancel($cancelled_by, $cancel_reason);
+
+            event(new SellerOrderWasCancelled($seller_order));
         }
 
         // void authorized payment

@@ -287,10 +287,12 @@ class SellerOrder extends Model
         return !$this->assignedToCourier() && !$this->cancelled;
     }
 
+
     /**
      * Cancel a seller order.
      *
-     * @param $cancelled_by (user_id)
+     * @param $cancelled_by
+     * @param string $cancel_reason
      */
     public function cancel($cancelled_by, $cancel_reason)
     {
@@ -314,7 +316,7 @@ class SellerOrder extends Model
         ]);
 
         // if all seller orders have been cancelled, cancel the buyer order as well
-        if (count($this->buyerOrder->getUncancelledSellerOrders()) == 0)
+        if ($this->isCancelledBySeller() && count($this->buyerOrder->getUncancelledSellerOrders()) == 0)
         {
             $this->buyerOrder->cancel($cancelled_by);
         }
