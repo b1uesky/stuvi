@@ -30,13 +30,12 @@
 
 .ui-widget-content {
   border: 1px solid $border-color;
-  border-top: none;
   background: $background-color;
   color: $text-color;
 
   .ui-state-focus {
     border: 1px solid $border-color;
-    background: $tiffany-light;
+    background: $background-hover-color;
     color: $text-color;
   }
 }
