@@ -108,7 +108,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <span class="pull-left">Total:</span>
+                                    <span class="pull-left"><strong>Grand Total:</strong></span>
                                     <span class="pull-right"><strong>${{ $buyer_order->decimalAmount() }}</strong></span>
                                 </div>
                             @endif
