@@ -23,6 +23,13 @@ $text-color: #50514f;
 $font-family-base: "Open Sans", Helvetica, Arial, sans-serif;
 $font-size-base: 14px;
 
+//== Components
+$border-radius-base: 2px;
+$border-radius-large: 2px;
+$border-radius-small: 2px;
+
 //== Buttons
 $btn-primary-border: $brand-primary;
+$btn-info-border: $brand-info;
+$btn-warning-border: $brand-warning;
 $btn-danger-border: $brand-danger;
