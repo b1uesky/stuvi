@@ -56,8 +56,6 @@ fieldset[disabled] .btn-primary:hover {
 }
 
 .btn-primary {
-  border: 1px solid $primary-color;
-
   &:hover, &:focus {
     background-color: $primary-color-light !important;
     outline: 0 !important;
