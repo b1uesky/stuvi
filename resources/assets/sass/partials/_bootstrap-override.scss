@@ -24,8 +24,19 @@ a {
   border-radius: 2px;
   -webkit-box-shadow: none;
   box-shadow: none;
+  padding: 0;
 
   &:hover, &:focus {
     outline: 0;
+  }
+
+  li {
+    a {
+      padding: $spacing-unit/2;
+    }
+  }
+
+  .divider {
+    margin: 0;
   }
 }
