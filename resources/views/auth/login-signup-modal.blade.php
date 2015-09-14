@@ -15,6 +15,7 @@
                     <!-- header -->
                     <h4 class="modal-title">Login</h4>
                 </div>
+                <div class="container-login-alert"></div>
                 <div class="modal-body">
                     <form role="form" action="{{ url('/auth/login') }}" method="post" id="form-login">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
