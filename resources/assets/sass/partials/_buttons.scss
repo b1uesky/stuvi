@@ -56,30 +56,16 @@ fieldset[disabled] .btn-primary:hover {
 }
 
 .btn-primary {
-  background-color: $primary-color;
-  color: $button-text-color;
   border: 1px solid $primary-color;
 
   &:hover, &:focus {
     background-color: $primary-color-light !important;
     outline: 0 !important;
-    color: $button-text-color;
     border: 1px solid $primary-color !important;
   }
 }
 
 /* CUSTOMIZED BUTTONS */
-
-.btn-secondary {
-  background-color: $secondary-color;
-  color: $button-text-color;
-  border: none;
-  &:hover, &:focus{
-    background-color: $secondary-color-light;
-    outline: 0;
-    color: $button-text-color;
-  }
-}
 
 .btn-muted {
   color: $button-text-color;

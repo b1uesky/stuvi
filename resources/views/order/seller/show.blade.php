@@ -103,7 +103,7 @@
 
                             {{-- cancel order --}}
                             @if ($seller_order->isCancellable())
-                                <a class="btn btn-secondary btn-block cancel-order-btn" href="/order/seller/cancel/{{ $seller_order->id }}"
+                                <a class="btn btn-danger btn-block cancel-order-btn" href="/order/seller/cancel/{{ $seller_order->id }}"
                                    role="button">Cancel Order</a>
                             @endif
                         </div>

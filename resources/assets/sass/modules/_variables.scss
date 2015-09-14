@@ -6,10 +6,21 @@ $text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 $footer-height: 120px;
 $footer-height-mobile: 200px;
 
-/* BOOTSTRAP VARIABLES */
+// Bootstrap variables
+// http://getbootstrap.com/customize/#colors
+
+//== Colors
 $brand-primary: #00A896;
-$brand-danger: #F26F6D;
+$brand-info: #337FCC;
+$brand-warning: #FFE066;
+$brand-danger: #F25F5C;
+
+//== Scaffolding
 $body-bg: #fff;
 $text-color: #50514f;
+
+//== Typography
 $font-family-base: "Open Sans", Helvetica, Arial, sans-serif;
 $font-size-base: 14px;
+
+//== Buttons
