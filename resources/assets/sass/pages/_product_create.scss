@@ -26,13 +26,12 @@
 }
 
 #dropzone-img-preview {
-  border: 1px dashed $border-color;
-  background: $background-color;
+  border: 4px dashed $border-color;
   border-radius: 2px;
   padding: $spacing-unit / 2;
 
   &:hover {
-    border: 1px dashed $primary-color-light;
+    border: 4px dashed $primary-color-light;
   }
 }
 
