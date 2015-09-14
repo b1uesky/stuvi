@@ -21,7 +21,7 @@
                 <img src="{{asset('/img/logo/logo-md.png')}}" class="img-responsive center-block">
             </a>
 
-            <ul class="nav nav-tabs nav-justified" role="tablist">
+            <ul class="nav nav-pills nav-justified" role="tablist">
                 <!-- login -->
                 <li role="presentation" class="{{ $loginActive }}">
                     <a href="#login-body" aria-controls="login-body" role="tab" data-toggle="tab">Login</a>
