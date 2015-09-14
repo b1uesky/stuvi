@@ -1,17 +1,3 @@
-/*
- * FOR GENERAL TEXT STYLING
- * Fonts, font sizes, etc.
- * Avoid using colors here. See _colors.scss.
- *
- */
-
-
-/* TYPOGRAPHY */
-$base-font-family: "Open Sans", Helvetica, Arial, sans-serif;
-$base-font-size: 14px;
-$large-font-size: 16px;
-$title-font-size-md: 3.2em;
-
 $spacing-unit: 30px;
 $extra-letter-spacing: 0.2px;
 $text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
@@ -19,3 +5,11 @@ $text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 /* FOOTER */
 $footer-height: 120px;
 $footer-height-mobile: 200px;
+
+/* BOOTSTRAP VARIABLES */
+$brand-primary: #00A896;
+$brand-danger: #F26F6D;
+$body-bg: #fff;
+$text-color: #50514f;
+$font-family-base: "Open Sans", Helvetica, Arial, sans-serif;
+$font-size-base: 14px;
