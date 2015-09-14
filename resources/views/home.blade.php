@@ -42,7 +42,13 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <!-- Navbar left -->
                         <ul class="nav navbar-nav navbar-left">
-                            <li><a class="nav-link" href="{{ url('/textbook') }}">Textbooks</a></li>
+                            <li>
+                                <a class="nav-link dropdown-toggle disabled" href="{{ url('/textbook') }}" data-toggle="dropdown" data-hover="dropdown">Textbooks</a>
+                                <ul class="dropdown-menu">
+                                    <li><a tabindex="-1" href="{{ url('/textbook/buy') }}">Buy</a></li>
+                                    <li><a tabindex="-1" href="{{ url('/textbook/sell') }}">Sell</a></li>
+                                </ul>
+                            </li>
                         </ul>
 
                         <!-- Navbar right -->
@@ -192,6 +198,6 @@
 @endsection
 
 @section('javascript')
-    <script src="libs/jquery-ui/jquery-ui.min.js"></script>
-    <script src="{{asset('js/autocomplete.js')}}"></script>
+    <script src="{{ asset('libs/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/autocomplete.js') }}"></script>
 @endsection

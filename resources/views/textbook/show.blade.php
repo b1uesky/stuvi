@@ -10,8 +10,6 @@
 
 @section('content')
 
-    @include('textbook/textbook-nav')
-
     <div class="container">
 
         <div class="page-header">
