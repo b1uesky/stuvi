@@ -7,6 +7,13 @@
 @section('content')
 
     <div class="container">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="{{ url('textbook') }}">Home</a></li>
+                <li class="active">Your orders</li>
+            </ol>
+        </div>
+
         <div class="page-header">
             <h1>Your orders</h1>
         </div>

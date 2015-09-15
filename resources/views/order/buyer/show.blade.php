@@ -4,9 +4,14 @@
 
 @section('content')
 
-            <!-- order details -->
     <div class="container">
-        {{--{!! Breadcrumbs::render() !!}--}}
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="{{ url('textbook') }}">Home</a></li>
+                <li><a href="{{ url('order/buyer') }}">Your orders</a></li>
+                <li class="active">Order #{{ $buyer_order->id }}</li>
+            </ol>
+        </div>
 
         <div class="page-header">
             <h1>Order Details</h1>
@@ -167,7 +172,7 @@
 
                         {{-- action buttons --}}
                         <div class="col-md-3">
---}
+
                             {{-- cancel order --}}
                             @if ($buyer_order->isCancellable())
                                 <a class="btn btn-danger btn-block cancel-order-btn" href="/order/buyer/cancel/{{ $buyer_order->id }}"
