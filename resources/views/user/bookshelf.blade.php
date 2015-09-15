@@ -31,8 +31,7 @@
                         <h3 class="panel-title">Your books for sale</h3>
                     </div>
                     <div class="panel-body">
-                        <div class="container-fluid">
-                            <table class="table table-responsive table-default">
+                            <table class="table table-default table-no-border">
                                 @foreach ($productsForSale as $product)
                                     <tr>
                                         <td class="col-sm-3">
@@ -92,7 +91,6 @@
                                     </tr>
                                 @endforeach
                             </table>
-                        </div>
                     </div>
                 </div>
             </div>
