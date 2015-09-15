@@ -78,9 +78,21 @@
         </div>
 
         <!-- Textbook page bottom half -->
-        <section class="textbook-intro">
-            <div class="container">
 
+        <section class="textbook-buy-sell-switch">
+            <div class="container">
+                <div class="row">
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="active"><a href="{{ url('textbook/buy') }}">Buy</a></li>
+                        <li role="presentation"><a href="{{ url('textbook/sell') }}">Sell</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="textbook-intro">
+
+            <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
                         {{--<div>Icon made by <a href="http://handdrawngoods.com" title="Hand Drawn Goods">Hand Drawn Goods</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>--}}

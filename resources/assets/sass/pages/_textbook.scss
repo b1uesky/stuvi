@@ -22,8 +22,24 @@
   }
 }
 
-// description sections
+.textbook-buy-sell-switch {
+  .container {
+    max-width: 900px;
 
+    .row {
+      padding: $spacing-unit/2 0;
+      font-size: large;
+    }
+  }
+
+  .nav-tabs {
+    li a {
+      padding: 10px $spacing-unit;
+    }
+  }
+}
+
+// description section
 .textbook-intro {
   margin: $spacing-unit 0;
   font-weight: 300;
