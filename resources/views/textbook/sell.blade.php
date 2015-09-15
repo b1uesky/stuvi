@@ -57,6 +57,16 @@
 
         </div>
 
+        <section class="textbook-buy-sell-switch">
+            <div class="container">
+                <div class="row">
+                    <ul>
+                        <li><a href="{{ url('textbook/buy') }}">Buy</a></li>
+                        <li class="active"><a href="{{ url('textbook/sell') }}">Sell</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
         <section class="textbook-intro">
             <div class="container">

@@ -2,8 +2,6 @@
 
 @import "../modules/all";
 
-// textbook search
-
 .container-image {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)), url('../img/bg/open-book.jpg') no-repeat center;
   background-size: cover;
@@ -22,8 +20,52 @@
   }
 }
 
-// description sections
+.textbook-buy-sell-switch {
+  .container {
+    max-width: 900px;
 
+    .row {
+      font-size: 20px;
+      padding: $spacing-unit/2 0;
+      border-bottom: 1px solid $border-color;
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        float: right;
+
+        li {
+          display: inline;
+          padding: $spacing-unit/2 $spacing-unit;
+
+          a {
+            color: $text-color-light;
+
+            &:hover {
+              color: $text-color;
+            }
+          }
+        }
+
+        .active {
+          border-bottom: 3px solid $primary-color;
+          font-weight: 600;
+
+          a {
+            color: $primary-color;
+
+            &:hover {
+              color: $primary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// description section
 .textbook-intro {
   margin: $spacing-unit 0;
   font-weight: 300;

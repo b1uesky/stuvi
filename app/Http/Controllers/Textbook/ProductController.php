@@ -39,11 +39,9 @@ class ProductController extends Controller
     {
         if (Auth::check())
         {
-            $paypal = Auth::user()->profile->paypal;
-
             return view('product.create')
                 ->withBook($book)
-                ->withPaypal($paypal);
+                ->withPaypal(Auth::user()->profile->paypal);
         }
         else
         {
@@ -134,7 +132,9 @@ class ProductController extends Controller
      */
     public function show($product)
     {
-        return view('product.show')->withProduct($product);
+        return view('product.show')
+            ->withProduct($product)
+            ->withQuery(Input::get('query'));
     }
 
     /**
@@ -165,7 +165,9 @@ class ProductController extends Controller
         }
 
         return view('product.edit')
-            ->with('product', $product);
+            ->with('book', $product->book)
+            ->with('product', $product)
+            ->with('paypal', Auth::user()->profile->paypal);
     }
 
     /**

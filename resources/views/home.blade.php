@@ -63,7 +63,7 @@
                                 @else
                                         <!-- profile dropdown -->
                                 <li class="dropdown" class="nav-link" style="z-index: 500;">
-                                    <a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" data-hover="dropdown" data-hover-delay="200" aria-expanded="true">
+                                    <a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" aria-expanded="true">
                                         <span>{{ Auth::user()->first_name }} </span>
                                         <span class="caret nav-caret"></span>
                                     </a>

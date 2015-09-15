@@ -35,6 +35,7 @@
 
   &:hover, &:focus {
     color: $button-text-color;
+    background-color: $background-grey;
   }
 }
 
@@ -43,6 +44,10 @@
   height: 3em;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.btn-search-icon {
+  height: 34px;
 }
 
 .fa-question-circle {

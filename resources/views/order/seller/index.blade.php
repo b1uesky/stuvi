@@ -5,6 +5,13 @@
 @section('content')
 
     <div class="container">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="{{ url('textbook') }}">Home</a></li>
+                <li class="active">Your sold books</li>
+            </ol>
+        </div>
+
         <div class="page-header">
             <h1>Sold books</h1>
         </div>

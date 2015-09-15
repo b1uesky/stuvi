@@ -4,13 +4,10 @@
 
 /** FILE UPLOAD **/
 
-.dropzone {
-  padding: 0;
-}
-
 #form-product {
   border: none;
   background: none;
+  padding: 0;
 }
 
 #dropzone-img-preview {
@@ -25,6 +22,7 @@
 
 .dz-image img {
   width: 100%;
+  height: 100%;
 }
 
 .dz-clickable {

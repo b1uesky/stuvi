@@ -5,7 +5,14 @@
 @section('title', 'Order details - Order #'.$seller_order->id)
 
 @section('content')
-    <div class="container show-order-container">
+    <div class="container">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="{{ url('textbook') }}">Home</a></li>
+                <li><a href="{{ url('order/seller') }}">Your sold books</a></li>
+                <li class="active">Order #{{ $seller_order->id }}</li>
+            </ol>
+        </div>
 
         <div class="page-header">
             <h1>Order Details</h1>

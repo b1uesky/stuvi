@@ -12,6 +12,14 @@
 
     <div class="container">
 
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="{{ url('textbook/buy') }}">Home</a></li>
+                <li><a href="{{ url('textbook/buy/search?query=' . $query) }}">Search results</a></li>
+                <li class="active">{{ $book->title }}</li>
+            </ol>
+        </div>
+
         <div class="page-header">
             <h1>{{ $book->title }}</h1>
         </div>
@@ -98,7 +106,7 @@
                                 {{ $product->general_condition() }}
                             </td>
                             <td>
-                                <a href="{{ url('textbook/buy/product/'.$product->id) }}">View Details</a>
+                                <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}">View Details</a>
                             </td>
 
                             <td class="text-right">
@@ -128,17 +136,22 @@
                 <h4 class="text-center">Sorry, this book is not available for now.</h4>
             @endif
 
-            <div class="text-center">
+            <div class="text-left">
                 {{-- if the user is not logged in --}}
                 @if(Auth::guest())
                     @if(count($book->availableProducts()) > 0)
-                        <p>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal"
+                        <p>
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                            Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal"
                                                                                              href="#signup-modal">Sign
-                                up</a> to buy or sell a textbook.</p>
+                                up</a> to buy or sell a textbook.
+                        </p>
                     @endif
                 @else
-                    <p>Have one to sell? <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Sell yours
-                            now.</a></p>
+                    <p>
+                        <span class="glyphicon glyphicon-question-sign"></span>
+                         <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Have one to sell?</a>
+                    </p>
                 @endif
             </div>
         </div>

@@ -54,6 +54,9 @@ $text-color: #50514f;
 $font-family-base: "Open Sans", Helvetica, Arial, sans-serif;
 $font-size-base: 14px;
 
+//== Iconography
+$icon-font-path: "../../../../libs/bootstrap/fonts/";
+
 //== Components
 $border-radius-base: 2px;
 $border-radius-large: 2px;
@@ -73,3 +76,7 @@ $navbar-margin-bottom: 0px;
 $navbar-border-radius: 0px;
 $navbar-default-color: $text-color;
 $navbar-default-link-color: $text-color;
+
+//== Breadcrumbs
+$breadcrumb-separator: "/";
+$breadcrumb-bg: $background-color;
