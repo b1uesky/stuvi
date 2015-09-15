@@ -35,7 +35,7 @@ $(document).ready(function () {
             var countFiles = 0;
             var countMockFiles = 0;
 
-            $('button[type=submit]').attr('disabled', true);
+            $('input[type=submit]').attr('disabled', true);
 
             // retrieve product images that already exists on the server
             // and display them in the preview image container
@@ -95,7 +95,7 @@ $(document).ready(function () {
             });
 
             // First change the button to actually tell Dropzone to process the queue.
-            this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
+            this.element.querySelector("input[type=submit]").addEventListener("click", function (e) {
 
                 // if there is a new image added
                 if (countFiles - countMockFiles > 0) {
@@ -125,7 +125,7 @@ $(document).ready(function () {
                     countMockFiles = countMockFiles + 1;
                 }
 
-                $('button[type=submit]').attr('disabled', false);
+                $('input[type=submit]').attr('disabled', false);
             });
 
             // When a file is removed from the list
@@ -174,7 +174,7 @@ $(document).ready(function () {
             this.on("reset", function () {
                 if (countFiles == 0) {
                     $('.dz-message').show();
-                    $('button[type=submit]').attr('disabled', true);
+                    $('input[type=submit]').attr('disabled', true);
                 }
             });
 
