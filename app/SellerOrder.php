@@ -264,28 +264,6 @@ class SellerOrder extends Model
     }
 
     /**
-     * Convert all attributes and related model instances of this seller order to an array.
-     *
-     * @return array
-     */
-    public function allToArray()
-    {
-        $seller_order_arr                                 = $this->toArray();
-        $seller_order_arr['seller']                       = $this->seller()->allToArray();
-        $seller_order_arr['scheduled_pickup_time']        =
-            $this->scheduled_pickup_time ?
-            Carbon::createFromFormat('Y-m-d H:i:s', $this->scheduled_pickup_time)
-                ->format(config('app.datetime_format')) : '';
-        $seller_order_arr['product']                      = $this->product->toArray();
-        $seller_order_arr['product']['image']             = $this->product->images->first()->toArray();
-        $seller_order_arr['product']['book']              = $this->product->book->toArray();
-        $seller_order_arr['product']['book']['authors']   = $this->product->book->authors->toArray();
-        $seller_order_arr['product']['book']['image_set'] = $this->product->book->imageSet->toArray();
-
-        return $seller_order_arr;
-    }
-
-    /**
      * Check whether this order is allowed to reconfirm pickup details.
      *
      * @return bool
