@@ -134,7 +134,9 @@ class ProductController extends Controller
      */
     public function show($product)
     {
-        return view('product.show')->withProduct($product);
+        return view('product.show')
+            ->withProduct($product)
+            ->withQuery(Input::get('query'));
     }
 
     /**

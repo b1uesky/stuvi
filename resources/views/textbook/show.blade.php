@@ -12,6 +12,14 @@
 
     <div class="container">
 
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="{{ url('textbook/buy') }}">Home</a></li>
+                <li><a href="{{ url('textbook/buy/search?query=' . $query) }}">Search results</a></li>
+                <li class="active">{{ $book->title }}</li>
+            </ol>
+        </div>
+
         <div class="page-header">
             <h1>{{ $book->title }}</h1>
         </div>
@@ -98,7 +106,7 @@
                                 {{ $product->general_condition() }}
                             </td>
                             <td>
-                                <a href="{{ url('textbook/buy/product/'.$product->id) }}">View Details</a>
+                                <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}">View Details</a>
                             </td>
 
                             <td class="text-right">

@@ -10,6 +10,13 @@
 
     <div class="container">
 
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="{{ url('textbook/buy') }}">Home</a></li>
+                <li class="active">Search results</li>
+            </ol>
+        </div>
+
         <div class="page-header">
             <h1>Books</h1>
         </div>
@@ -32,7 +39,7 @@
 
                     <div class="col-md-8 col-sm-7 col-xs-8">
                         <h4 class="col-sm-12 no-margin-top"><a
-                                    href="{{ url("textbook/buy/".$book->id) }}">{{ $book->title }}</a></h4>
+                                    href="{{ url("textbook/buy/".$book->id.'?query=' . Input::get('query')) }}">{{ $book->title }}</a></h4>
 
                         <table class="table-details full-width">
                             <tbody>

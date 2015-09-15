@@ -5,6 +5,10 @@
 
 <title>Stuvi - Book Details - {{ $product->book->title }} </title>
 
+@section('searchbar')
+    @include('includes.textbook.searchbar')
+@endsection
+
 @section('css')
     <link rel="stylesheet" href="{{ asset('libs/slick-carousel/slick/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('libs/slick-carousel/slick/slick-theme.css') }}">
@@ -15,6 +19,16 @@
     <?php $book = $product->book; ?>
 
     <div class="container">
+
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="{{ url('textbook/buy') }}">Home</a></li>
+                <li><a href="{{ url('textbook/buy/search?query=' . $query) }}">Search results</a></li>
+                <li><a href="{{ url('textbook/buy/' . $product->book->id . '?query=' . $query) }}">{{ $product->book->title }}</a></li>
+                <li class="active">Details</li>
+            </ol>
+        </div>
+
         <div class="page-header">
             <h1>{{ $book->title }}</h1>
         </div>
@@ -30,14 +44,12 @@
                         To Cart</a>
                 @elseif(!$product->isSold() && $product->seller == Auth::user())
                     <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}"
-                       class="btn btn-primary edit-btn">
-                        <i class="fa fa-pencil"></i> Edit</a>
+                       class="btn btn-primary">Edit</a>
 
                     <form action="{{ url('/textbook/sell/product/delete') }}" method="post">
                         {!! csrf_field() !!}
                         <input type="hidden" name="id" value="{{ $product->id }}">
-                        <button type="submit" class="btn btn-danger delete-btn"><i class="fa fa-trash"></i> Delete
-                        </button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 @else
                     <form method="post" class="add-to-cart">
