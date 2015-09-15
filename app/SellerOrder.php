@@ -221,39 +221,46 @@ class SellerOrder extends Model
         {
             $status = 'Balance Transferred';
             $detail = 'The money has been transferred to your Paypal account.';
+            $value = 100;
         }
         elseif ($this->isDelivered())
         {
             $status = 'Order Delivered';
             $detail = 'Your order has been delivered.';
+            $value = 75;
         }
         elseif ($this->pickedUp())
         {
             $status = 'Picked Up';
             $detail = 'Your order has been picked up at ' . date(config('app.datetime_format'), strtotime($this->pickup_time)) . '.';
+            $value = 60;
         }
         elseif ($this->cancelled)
         {
             $status = 'Order Cancelled';
             $detail = 'Your order has been cancelled.';
+            $value = null;
         }
         elseif ($this->assignedToCourier())
         {
-            $status = 'Courier Assigned';
+            $status = 'Shipped';
             $detail = 'Your order has been assigned to a Stuvi courier and the courier is on the way.';
+            $value = 45;
         }
         elseif ($this->isScheduled())
         {
             $status = 'Order Processing';
             $detail = 'Your order is waiting to be assigned to a Stuvi courier.';
+            $value = 30;
         }
         else
         {
             $status = 'Pick-up Details Required';
             $detail = 'Please schedule your pick-up time and location for this order.';
+            $value = 15;
         }
 
-        return ['status' => $status, 'detail' => $detail];
+        return ['status' => $status, 'detail' => $detail, 'value' => $value];
     }
 
     /**

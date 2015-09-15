@@ -50,8 +50,18 @@
                     <div class="container-fluid">
                         {{-- order status --}}
                         <div class="row">
-                            <h3>{{ $seller_order->getOrderStatus()['status'] }}</h3>
-                            <small>{{ $seller_order->getOrderStatus()['detail'] }}</small>
+                            <?php $order_status = $seller_order->getOrderStatus(); ?>
+
+                            @if(!$seller_order->cancelled)
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{ $order_status['value'] }}" aria-valuemin="0" aria-valuemax="100" style="{{ 'width: ' . $order_status['value'] . '%;' }}">
+                                        <span class="sr-only">{{ $order_status['value'] }}% Complete</span>
+                                    </div>
+                                </div>
+                            @endif
+
+                            <h3>{{ $order_status['status'] }}</h3>
+                            <span>{{ $order_status['detail'] }}</span>
                         </div>
 
                         <br>
