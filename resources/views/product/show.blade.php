@@ -36,7 +36,7 @@
                     <form action="{{ url('/textbook/sell/product/delete') }}" method="post">
                         {!! csrf_field() !!}
                         <input type="hidden" name="id" value="{{ $product->id }}">
-                        <button type="submit" class="btn btn-secondary delete-btn"><i class="fa fa-trash"></i> Delete
+                        <button type="submit" class="btn btn-danger delete-btn"><i class="fa fa-trash"></i> Delete
                         </button>
                     </form>
                 @else

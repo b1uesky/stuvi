@@ -14,7 +14,7 @@
                         <textarea class="form-control" name="cancel_reason" rows="4" placeholder="Reason for cancellation. We will also email this message to the buyer." required></textarea>
                     </div>
 
-                    <input type="submit" class="btn btn-secondary" value="Cancel order">
+                    <input type="submit" class="btn btn-danger" value="Cancel order">
                 </form>
             </div>
         </div>

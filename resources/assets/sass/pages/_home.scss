@@ -1,7 +1,6 @@
+// Homepage
+
 @charset "utf-8";
-/* CSS Document */
-/* (c) Stuvi LLC 2015
-* Used for the home page styling.*/
 @import "../modules/all";
 
 .container-header {
@@ -31,56 +30,6 @@
   height: 100%;
   width: 100%;
 }
-
-/* TRANSPARENT NAVIGATION */
-
-#navbar-transparent {
-  position: absolute;
-  top: 0;
-  z-index: 8;
-  width: 100%;
-
-  @media(max-width: 767px) {
-    position: relative;
-  }
-}
-
-#navbar-transparent .navbar-default {
-  background-color: $transparent;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-
-#navbar-transparent .navbar-default .navbar-nav > li > a {
-  color: white;
-
-  &:hover {
-    color: white;
-    background-color: $transparent;
-  }
-
-  &:focus {
-    color: white;
-  }
-
-  @media(max-width: 767px) {
-    color: $text-color;
-    &:hover, &:focus {
-      color: $primary-color;
-    }
-  }
-}
-
-#navbar-transparent .navbar-default .navbar-nav > .open > a {
-  background-color: $transparent;
-
-  &:hover, &:focus {
-    background-color: $transparent;
-    color: white;
-  }
-}
-
-/* HEADER TEXT */
 
 .header-text {
   color: white;
@@ -113,10 +62,7 @@
   }
 }
 
-/******** BOTTOM HALF ********/
-
 .jumbotron {
   margin-bottom: 0;
-  background-color: white;
 }
 

@@ -13,7 +13,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <!-- header -->
-                    <h4 class="modal-title">Login</h4>
+                    <h4 class="modal-title text-center">Login</h4>
                 </div>
                 <div class="container-login-alert"></div>
                 <div class="modal-body">
@@ -64,7 +64,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <!-- header -->
-                    <h4 class="modal-title">Sign Up</h4>
+                    <h4 class="modal-title text-center">Sign Up</h4>
                 </div>
                 <div class="modal-body">
                     <form role="form" method="POST" id="form-register">

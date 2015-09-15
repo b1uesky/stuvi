@@ -1,57 +1,8 @@
-/* STYLING FOR TEXTBOOK PAGE ***/
-
-/* pages: /order/buy/ and /order/sell */
+// textbook/buy and textbook/sell
 
 @import "../modules/all";
 
-/******* TEXTBOOK NAVIGATION BAR ******/
-
-.tab-filter-container {
-  width: 100%;
-  background: $primary-color;
-  height: 40px;
-  @media(max-width: 320px){
-    height: 80px;
-  }
-}
-
-.tab-filters {
-  list-style-type: none;
-  text-align: center;
-  padding-right: 40px;
-
-}
-
-.filter {
-  display: inline-block;
-  height: 40px;
-  padding-top: 5px;
-
-}
-
-// this can't be placed above in the .filter styles
-.filter.active {
-  border-bottom: 4px solid white;
-  @media(max-width: 320px){
-    border-bottom: 2px solid white;
-  }
-}
-
-.filter-link {
-  font-size: 20px;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0 40px;
-}
-
-// this can't be placed above in the .filter-link styles
-.filter-link:hover,
-.filter-link:focus,
-.filter-link.active {
-  text-decoration: none;
-  color: white;
-}
-
-/******* TEXTBOOK SEARCH AREA ******/
+// textbook search
 
 .container-image {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)), url('../img/bg/open-book.jpg') no-repeat center;
@@ -71,7 +22,7 @@
   }
 }
 
-/******  TEXTBOOK BOTTOM HALF ****/
+// description sections
 
 .textbook-intro {
   margin: $spacing-unit 0;
