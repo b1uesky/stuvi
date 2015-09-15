@@ -1,26 +1,61 @@
 @import '../modules/all';
 
-/******* NAVIGATION BAR *******/
-
 .navbar-default {
-  background: #f5f5f5;
-  border-radius: 0;
   border: 0;
   -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
   z-index: 8;
-  margin-bottom: 0;
 }
 
-.navbar-default .navbar-nav>li>a {
-  color: $text-color;
+// Transparent navbar
 
-  &:hover{
-    color: $text-color;
-    background-color: $background-hover-color;
+#navbar-transparent {
+  position: absolute;
+  top: 0;
+  z-index: 8;
+  width: 100%;
+
+  @media(max-width: 767px) {
+    position: relative;
   }
 }
 
+#navbar-transparent .navbar-default {
+  background-color: $transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#navbar-transparent .navbar-default .navbar-nav > li > a {
+  color: white;
+
+  &:hover {
+    color: white;
+    background-color: $transparent;
+  }
+
+  &:focus {
+    color: white;
+  }
+
+  @media(max-width: 767px) {
+    color: $text-color;
+    &:hover, &:focus {
+      color: $primary-color;
+    }
+  }
+}
+
+#navbar-transparent .navbar-default .navbar-nav > .open > a {
+  background-color: $transparent;
+
+  &:hover, &:focus {
+    background-color: $transparent;
+    color: white;
+  }
+}
+
+// Logo container
 
 .logo-container {
   width: 120px;
@@ -36,7 +71,7 @@
   }
 }
 
-/******* NAVIGATION HAMBURGER MENU *******/
+// Navbar on xs screen
 
 #xs-screen-logo-link{
   position: absolute;

@@ -2,8 +2,6 @@
 @import '../modules/all';
 
 .form-control {
-  border-radius: 2px;
-  border-color: $border-color;
   -webkit-box-shadow: none;
   box-shadow: none;
   font-weight: 300;
@@ -36,7 +34,7 @@
   }
 }
 
-.input-group-addon {
-  border-radius: 2px;
+.remember-me, .forgot-password {
+  display: inline;
 }
 

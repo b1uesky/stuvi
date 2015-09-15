@@ -1,6 +1,4 @@
-@import "../modules/colors";
-
-/* BOOTSTRAP BUTTONS OVERRIDE */
+@import "../modules/all";
 
 .btn-default.active,
 .btn-default:active,
@@ -31,8 +29,6 @@
   }
 }
 
-/* CUSTOMIZED BUTTONS */
-
 .btn-muted {
   color: $button-text-color;
   background-color: $background-light-grey;
@@ -47,4 +43,9 @@
   height: 3em;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.fa-question-circle {
+  color: $tiffany;
+  cursor: pointer;
 }
