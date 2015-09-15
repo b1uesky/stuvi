@@ -63,26 +63,26 @@
                                 @else
                                         <!-- profile dropdown -->
                                 <li class="dropdown" class="nav-link" style="z-index: 500;">
-                                    <a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" role="button" aria-expanded="true">
+                                    <a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" data-hover="dropdown" data-hover-delay="200" aria-expanded="true">
                                         <span>{{ Auth::user()->first_name }} </span>
                                         <span class="caret nav-caret"></span>
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="nav-dropdown">
                                         <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="{{ url('/user/account') }}">Your Account</a>
+                                            <a role="menuitem" tabindex="-1" href="{{ url('/order/buyer') }}">Your orders</a>
                                         </li>
                                         <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="{{ url('/order/buyer') }}">Your Orders</a>
+                                            <a role="menuitem" tabindex="-1" href="{{ url('/order/seller') }}">Your sold books</a>
                                         </li>
                                         <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="{{ url('/user/bookshelf') }}">Your Bookshelf</a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="{{ url('/order/seller') }}">Sold Books</a>
+                                            <a role="menuitem" tabindex="-1" href="{{ url('/user/bookshelf') }}">Your bookshelf</a>
                                         </li>
                                         <li role="separator" class="divider"></li>
                                         <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="{{ url('/auth/logout') }}">Logout</a>
+                                            <a role="menuitem" tabindex="-1" href="{{ url('/user/account') }}">Settings</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="{{ url('/auth/logout') }}">Sign out</a>
                                         </li>
                                     </ul>
                                 </li>
