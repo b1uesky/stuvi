@@ -17,7 +17,7 @@
                 <div class="row">
                     <ol class="breadcrumb">
                         <li><a href="{{ url('textbook/sell') }}">Home</a></li>
-                        <li><a href="{{ url('user/bookshelf') }}">Bookshelf</a></li>
+                        <li><a href="{{ url('user/bookshelf') }}">Your bookshelf</a></li>
                         <li class="active">Edit</li>
                     </ol>
                 </div>
