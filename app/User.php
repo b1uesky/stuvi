@@ -353,17 +353,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
-     * @return array
-     */
-    public function allToArray()
-    {
-        $user_arr          = $this->toArray();
-        $user_arr['email'] = $this->primaryEmail->email_address;
-
-        return $user_arr;
-    }
-
-    /**
      * Get user's full name.
      *
      * @return string

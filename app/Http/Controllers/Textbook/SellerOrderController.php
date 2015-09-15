@@ -92,18 +92,13 @@ class SellerOrderController extends Controller
 
                 event(new SellerOrderWasCancelled($seller_order));
 
-                return redirect('order/seller/' . $seller_order_id)
+                return redirect()->back()
                     ->with('success', 'Your order has been cancelled.');
-            }
-            else
-            {
-                return redirect('order/seller/' . $seller_order_id)
-                    ->with('error', 'Sorry, this order cannot be cancelled.');
             }
         }
 
-        return redirect('order/seller')
-            ->with('error', 'Order not found.');
+        return redirect()->back()
+            ->with('error', 'Sorry, this order cannot be cancelled.');
     }
 
     /**

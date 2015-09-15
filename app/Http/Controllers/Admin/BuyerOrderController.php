@@ -72,29 +72,4 @@ class BuyerOrderController extends Controller
         return view('admin.buyerOrder.show')
             ->with('buyer_order', BuyerOrder::find($id));
     }
-
-    /**
-     * Buyer order refund.
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function refund()
-    {
-        $buyer_order_id = Input::get('buyer_order_id');
-        $refund_amount  = intval(Input::get('refund_amount') * 100);    // convert to cent.
-
-        $buyer_order = BuyerOrder::find($buyer_order_id);
-        if ($buyer_order && $buyer_order->isRefundable() && $refund_amount <= $buyer_order->refundableAmount())
-        {
-            $refund = $buyer_order->refund($refund_amount, Auth::id());
-            if ($refund)
-            {
-                return redirect('admin/order/buyer/'.$buyer_order_id)
-                    ->with('success', 'Refund succeeded..');
-            }
-        }
-
-        return redirect('admin/order/buyer/'.$buyer_order_id)
-            ->with('error', 'Refund failed.');
-    }
 }

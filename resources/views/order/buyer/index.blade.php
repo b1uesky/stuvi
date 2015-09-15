@@ -53,7 +53,7 @@
                         {{-- order status --}}
                         <div class="row">
                             <h3>{{ $buyer_order->getOrderStatus()['status'] }}</h3>
-                            <small>{{ $buyer_order->getOrderStatus()['detail'] }}</small>
+                            <span>{{ $buyer_order->getOrderStatus()['detail'] }}</span>
                         </div>
 
                         <br>
