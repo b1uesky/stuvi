@@ -4,13 +4,22 @@
 
 @section('content')
     <div class="container">
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                <div class="row">
+                    <ol class="breadcrumb">
+                        <li><a href="{{ url('textbook/sell') }}">Home</a></li>
+                        <li class="active">Confirm</li>
+                    </ol>
+                </div>
+
                 <div class="page-header">
                     <h1>Confirm Your Book</h1>
                 </div>
 
                 <div class="container-fluid">
+
                     <div class="row">
                         <div class="col-xs-4">
                             @if($book->imageSet->medium_image)
