@@ -190,7 +190,7 @@
 --}}
                             {{-- cancel order --}}
                             @if ($buyer_order->isCancellable())
-                                <a class="btn btn-secondary btn-block cancel-order-btn" href="/order/buyer/cancel/{{ $buyer_order->id }}"
+                                <a class="btn btn-danger btn-block cancel-order-btn" href="/order/buyer/cancel/{{ $buyer_order->id }}"
                                    role="button">Cancel Order</a>
                             @endif
                         </div>

@@ -28,7 +28,7 @@
             </div>
         @endif
 
-        <div class="row shopping-cart">
+        <div class="row">
             @if(count($items) > 0)
                 {{-- Cart items --}}
                 <div class="col-md-9">

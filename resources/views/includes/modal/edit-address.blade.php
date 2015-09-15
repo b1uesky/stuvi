@@ -52,7 +52,7 @@
                 <form action="{{ url('address/delete') }}" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="address_id">
-                    <input type="submit" class="btn btn-secondary btn-block" value="Delete">
+                    <input type="submit" class="btn btn-danger btn-block" value="Delete">
                 </form>
             </div>
         </div>

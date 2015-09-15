@@ -1,8 +1,7 @@
-/* product/show.blade.php */
+// textbook/buy/product/{id}
 
 @import "../modules/all";
 
-/** BUTTONS ON THE TOP-RIGHT CORNER **/
 .actions {
   a {
     display: inline-block;
@@ -14,7 +13,7 @@
   }
 }
 
-/** SLICK SLIDER **/
+// Slider
 .slick-slide {
   max-height: 400px;
   outline: none;
@@ -29,9 +28,4 @@
   &:before {
     color: $background-grey;
   }
-}
-
-.fa-question-circle {
-  color: $tiffany;
-  cursor: pointer;
 }
