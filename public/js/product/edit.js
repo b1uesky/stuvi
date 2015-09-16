@@ -5,12 +5,18 @@
  */
 
 
-function goBack() {
-    window.history.back();
-}
-
-
 $(document).ready(function () {
+
+    // check radio buttons based on selected product conditions
+    var general_condition = $('input[name=general_condition_selected]').val();
+    var highlights_and_notes = $('input[name=highlights_and_notes_selected]').val();
+    var damaged_pages = $('input[name=damaged_pages_selected]').val();
+    var broken_binding = $('input[name=broken_binding_selected]').val();
+
+    $('input[name=general_condition][value=' + general_condition + ']').prop('checked', true);
+    $('input[name=highlights_and_notes][value=' + highlights_and_notes + ']').prop('checked', true);
+    $('input[name=damaged_pages][value=' + damaged_pages + ']').prop('checked', true);
+    $('input[name=broken_binding][value=' + broken_binding + ']').prop('checked', true);
 
     Dropzone.options.formProduct = { // The camelized version of the ID of the form element
 
