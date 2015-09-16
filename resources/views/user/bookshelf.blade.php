@@ -81,12 +81,10 @@
                                         </td>
                                         <td class="col-sm-3">
                                             <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-primary btn-block">Edit</a>
-
-                                            <form action="{{ url('/textbook/sell/product/delete') }}" method="post" class="margin-top-5">
-                                                {!! csrf_field() !!}
-                                                <input type="hidden" name="id" value="{{ $product->id }}">
-                                                <input type="submit" class="btn btn-danger btn-block">Delete</input>
-                                            </form>
+                                            <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
+                                                    data-target="#delete-product"
+                                                    data-product-id="{{ $product->id }}"
+                                                    data-book-title="{{ $product->book->title }}">Delete</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -98,4 +96,10 @@
 
     </div>
 
+    @include('includes.modal.delete-product')
+
+@endsection
+
+@section('javascript')
+    <script src="{{ asset('js/user/bookshelf.js') }}"></script>
 @endsection

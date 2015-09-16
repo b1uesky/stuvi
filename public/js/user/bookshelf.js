@@ -1,16 +1,8 @@
 /**
- * Created by Desmond on 8/20/15.
+ * Created by kingdido999 on 9/16/15.
  */
 
-$(document).ready(function(){
-    // slick: https://github.com/kenwheeler/slick/
-    $('.image-slider').slick({
-        autoplay: true,
-        autoplaySpeed: 5000,
-        dots: true
-    });
-
-    // product delete modal
+$(document).ready(function() {
     $('#delete-product').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget);
         var productId = button.data('product-id');

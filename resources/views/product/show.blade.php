@@ -46,11 +46,10 @@
                     <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}"
                        class="btn btn-primary">Edit</a>
 
-                    <form action="{{ url('/textbook/sell/product/delete') }}" method="post">
-                        {!! csrf_field() !!}
-                        <input type="hidden" name="id" value="{{ $product->id }}">
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                            data-target="#delete-product"
+                            data-product-id="{{ $product->id }}"
+                            data-book-title="{{ $product->book->title }}">Delete</button>
                 @else
                     <form method="post" class="add-to-cart">
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -209,12 +208,8 @@
 
 @endsection
 
-@section('modals')
-    @include('includes.textbook.condition-modals')
-@endsection
-
-
-
+@include('includes.modal.delete-product')
+@include('includes.modal.product-conditions')
 
 @section('javascript')
     <script src="{{ asset('libs/slick-carousel/slick/slick.min.js') }}"></script>
