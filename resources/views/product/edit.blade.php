@@ -31,6 +31,10 @@
                         <form id="form-product" class="dropzone">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="product_id" value="{{ $product->id }}"/>
+                            <input type="hidden" name="general_condition_selected" value="{{ $product->condition->general_condition }}">
+                            <input type="hidden" name="highlights_and_notes_selected" value="{{ $product->condition->highlights_and_notes }}">
+                            <input type="hidden" name="damaged_pages_selected" value="{{ $product->condition->damaged_pages }}">
+                            <input type="hidden" name="broken_binding_selected" value="{{ $product->condition->broken_binding }}">
 
                             <section class="details">
                                 <div class="panel panel-presentation">
@@ -39,149 +43,83 @@
 
                                         {{--General Condition--}}
                                         <div class="form-group">
-                                            <label>{{ Config::get('product.conditions.general_condition.title') }}</label>
+                                            <label>General condition</label>
                                             {{--Open modal button--}}
                                             <i class="fa fa-question-circle" data-toggle="modal"
                                                data-target=".condition-modal"></i>
                                             <br>
-                                            {{--General Condition Modal--}}
-                                            <div class="modal fade condition-modal" tabindex="-1" role="dialog"
-                                                 aria-labelledby="General Conditions">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close close-modal-btn"
-                                                                    data-dismiss="modal" aria-label="close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                            <h3>{{ Config::get('product.conditions.general_condition.title') }}</h3>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            @for ($i = 0; $i < 4; $i++)
-                                                                <dl>
-                                                                    <dt>{{ Config::get('product.conditions.general_condition')[$i] }}</dt>
-                                                                    <dd>{{ Config::get('product.conditions.general_condition.description')[$i] }}</dd>
-                                                                </dl>
-                                                            @endfor
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {{--General Conditon Buttons--}}
-                                            <div class="btn-group btn-group-justified" data-toggle="buttons">
-                                                @for ($i = 0; $i < 4; $i++)
-                                                    <label class="btn btn-default">
-                                                        <input type="radio" name="general_condition"
-                                                               value="{{$i}}"> {{ Config::get('product.conditions.general_condition')[$i] }}
-                                                    </label>
-                                                @endfor
+
+                                            <div class="radio-product-condition">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="general_condition" value="0"> Brand new
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="general_condition" value="1"> Excellent
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="general_condition" value="2"> Good
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="general_condition" value="3"> Acceptable
+                                                </label>
                                             </div>
                                         </div>
 
                                         {{--Highlights/Notes--}}
                                         <div class="form-group">
-                                            <label>{{ Config::get('product.conditions.highlights_and_notes.title') }}</label>
+                                            <label>Highlights/Notes</label>
                                             {{--Open modal button--}}
                                             <i class="fa fa-question-circle" data-toggle="modal"
                                                data-target=".highlight-modal"></i>
                                             <br>
-                                            {{--Highlights / Notes modal--}}
-                                            <div class="modal fade highlight-modal" tabindex="-1" role="dialog"
-                                                 aria-labelledby="Highlights/Notes">
-                                                <div class="modal-dialog modal-md">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close close-modal-btn"
-                                                                    data-dismiss="modal" aria-label="close">
-                                                                <span id="close-span" aria-hidden="true">&times;</span>
-                                                            </button>
-                                                            <h3>{{ Config::get('product.conditions.highlights_and_notes.title') }}</h3>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>{{ Config::get('product.conditions.highlights_and_notes.description') }}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {{--Highlights / Notes buttons--}}
-                                            <div class="btn-group btn-group-justified" data-toggle="buttons">
-                                                @for ($i = 0; $i < 3; $i++)
-                                                    <label class="btn btn-default">
-                                                        <input type="radio" name="highlights_and_notes"
-                                                               value="{{$i}}"> {{ Config::get('product.conditions.highlights_and_notes')[$i] }}
-                                                    </label>
-                                                @endfor
+
+                                            <div class="radio-product-condition">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="highlights_and_notes" value="0"> 0 - 5 pages
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="highlights_and_notes" value="1"> 6 - 15 pages
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="highlights_and_notes" value="2"> > 15 pages
+                                                </label>
                                             </div>
                                         </div>
 
                                         {{--Damaged Pages--}}
                                         <div class="form-group">
-                                            <label>{{ Config::get('product.conditions.damaged_pages.title') }}</label>
+                                            <label>Damaged pages</label>
                                             <i class="fa fa-question-circle" data-toggle="modal"
                                                data-target=".damage-modal"></i>
                                             <br>
-                                            {{--Damaged pages modal--}}
-                                            <div class="modal fade damage-modal" tabindex="-1" role="dialog"
-                                                 aria-labelledby="Damaged Pages">
-                                                <div class="modal-dialog modal-md">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close close-modal-btn"
-                                                                    data-dismiss="modal" aria-label="close">
-                                                                <span id="close-span" aria-hidden="true">&times;</span>
-                                                            </button>
-                                                            <h3>{{ Config::get('product.conditions.damaged_pages.title') }}</h3>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>{{ Config::get('product.conditions.damaged_pages.description') }}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {{--Damaged pages buttons--}}
-                                            <div class="btn-group btn-group-justified" data-toggle="buttons">
-                                                @for($i = 0; $i < 3; $i++)
-                                                    <label class="btn btn-default">
-                                                        <input type="radio" name="damaged_pages"
-                                                               value="{{$i}}"> {{ Config::get('product.conditions.damaged_pages')[$i] }}
-                                                    </label>
-                                                @endfor
+
+                                            <div class="radio-product-condition">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="damaged_pages" value="0"> 0
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="damaged_pages" value="1"> 1 - 3 pages
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="damaged_pages" value="2"> > 3 pages
+                                                </label>
                                             </div>
                                         </div>
 
                                         {{--Broken Binding--}}
                                         <div class="form-group">
-                                            <label>{{ Config::get('product.conditions.broken_binding.title') }}</label>
+                                            <label>Broken book binding</label>
                                             <i class="fa fa-question-circle" data-toggle="modal"
                                                data-target=".binding-modal"></i>
                                             <br>
-                                            {{--Broken binding modal--}}
-                                            <div class="modal fade binding-modal" tabindex="-1" role="dialog"
-                                                 aria-labelledby="Broken Binding">
-                                                <div class="modal-dialog modal-md">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close close-modal-btn"
-                                                                    data-dismiss="modal"
-                                                                    aria-label="close">
-                                                                <span id="close-span" aria-hidden="true">&times;</span>
-                                                            </button>
-                                                            <h3>{{ Config::get('product.conditions.broken_binding.title') }}</h3>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>{{ Config::get('product.conditions.broken_binding.description') }}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {{--Broken binding buttons--}}
-                                            <div class="btn-group btn-group-justified" data-toggle="buttons">
-                                                @for($i = 0; $i < 2; $i++)
-                                                    <label class="btn btn-default">
-                                                        <input type="radio" name="broken_binding"
-                                                               value="{{$i}}"> {{ Config::get('product.conditions.broken_binding')[$i] }}
-                                                    </label>
-                                                @endfor
+
+                                            <div class="radio-product-condition">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="broken_binding" value="0"> No
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="broken_binding" value="1"> Yes
+                                                </label>
                                             </div>
                                         </div>
 
@@ -251,6 +189,8 @@
             </div>
         </div>
     </div>
+
+    @include('includes.modal.product-conditions')
 
 @endsection
 
