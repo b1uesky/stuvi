@@ -1,4 +1,4 @@
-<div class="modal fade" id="delete-buyer-order" tabindex="-1" role="dialog" aria-labelledby="deleteBuyerOrder">
+<div class="modal fade" id="cancel-buyer-order" tabindex="-1" role="dialog" aria-labelledby="deleteBuyerOrder">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">

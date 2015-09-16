@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#delete-buyer-order').on('show.bs.modal', function(event) {
+    $('#cancel-buyer-order').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget);
         var buyerOrderId = button.data('buyer-order-id');
 
