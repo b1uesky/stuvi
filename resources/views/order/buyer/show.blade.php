@@ -175,8 +175,9 @@
 
                             {{-- cancel order --}}
                             @if ($buyer_order->isCancellable())
-                                <a class="btn btn-danger btn-block cancel-order-btn" href="/order/buyer/cancel/{{ $buyer_order->id }}"
-                                   role="button">Cancel Order</a>
+                                <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
+                                        data-target="#cancel-buyer-order"
+                                        data-buyer-order-id="{{ $buyer_order->id }}">Cancel order</button>
                             @endif
                         </div>
                     </div>
@@ -186,4 +187,10 @@
 
     </div>
 
+@endsection
+
+@include('includes.modal.cancel-buyer-order')
+
+@section('javascript')
+    <script src="{{ asset('js/order/buyer/show.js') }}"></script>
 @endsection
