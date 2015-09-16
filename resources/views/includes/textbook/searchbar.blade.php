@@ -7,7 +7,7 @@
             @endif
 
             <div class="input-group-btn">
-                <button class="btn btn-primary" type="submit">
+                <button class="btn btn-primary btn-search-icon" type="submit">
                     <i class="fa fa-search search-icon"></i>
                 </button>
             </div>

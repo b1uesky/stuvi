@@ -1,43 +1,36 @@
-/***** SELLER PRODUCT CREATE PAGE *****/
+// textbook/sell/product/{id}/create
+
 @import "../modules/all";
-@import "../partials/panels";
-
-/** SECTIONS **/
-//.confirm, .details, .ready {
-//  margin: 10% 0;
-//}
-
-/*** PRODUCT CONDITION ***/
-
-.fa-question-circle {
-  color: $tiffany;
-  cursor: pointer;
-}
-
-/** FILE UPLOAD **/
-
-.dropzone {
-  padding: 0;
-}
 
 #form-product {
   border: none;
   background: none;
+  padding: 0;
 }
 
+// product condition radio buttons
+.radio-product-condition {
+  padding-bottom: $spacing-unit/2;
+
+  .radio-inline {
+    margin-right: $spacing-unit/2;
+  }
+}
+
+// image upload
 #dropzone-img-preview {
-  border: 1px dashed $border-color;
-  background: $background-color;
+  border: 4px dashed $border-color;
   border-radius: 2px;
   padding: $spacing-unit / 2;
 
   &:hover {
-    border: 1px dashed $primary-color-light;
+    border: 4px dashed $primary-color-light;
   }
 }
 
 .dz-image img {
   width: 100%;
+  height: 100%;
 }
 
 .dz-clickable {

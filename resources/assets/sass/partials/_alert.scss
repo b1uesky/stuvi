@@ -1,25 +1,21 @@
 @import "../modules/all";
 
-/** GLOBAL ALERT **/
+// Alert messages
 
 .alert {
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 2px;
+  padding: $spacing-unit/2;
+  margin: 0;
+  border-radius: 0;
 }
 
 .session-alert, .js-alert {
-  z-index: 999;
-  position: fixed;
-  left: 0;
-  right: 0;
-  margin: 0 10%;
 
   .alert-dismissible .close {
     position: relative;
     top: 0;
     right: 0;
   }
+
 }
 
 .modal-open {

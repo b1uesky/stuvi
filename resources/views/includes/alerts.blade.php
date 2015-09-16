@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container-alert">
 
     {{-- Session alert --}}
-    <div class="row session-alert">
+    <div class="session-alert">
 
         @if(Session::has('success'))
             <div class="alert alert-dismissible alert-success fade in" role="alert">
@@ -62,7 +62,7 @@
     </div>
 
     {{-- JS alert --}}
-    <div class="row js-alert">
+    <div class="js-alert">
         {{-- Use alert module (js/alert.js) to append message to this container --}}
     </div>
 

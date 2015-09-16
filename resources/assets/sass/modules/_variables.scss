@@ -1,16 +1,33 @@
-/*
- * FOR GENERAL TEXT STYLING
- * Fonts, font sizes, etc.
- * Avoid using colors here. See _colors.scss.
- *
- */
+/* COLOR PALLETES */
+$sea-green:       #00A896;
+$sea-green-light: #00B2A4;
+$tiffany:         #81D8D0;
+$tiffany-light:   #d9f1f1;
+$salmon:          #F26F6D;
+$salmon-light:    #F27B79;
 
+/* BRAND COLORS */
+$primary-color:         #00A896;
+$primary-color-light:   #00B2A4;
+$primary-color-accent:  #81D8D0;
+$secondary-color:       #F26F6D;
+$secondary-color-light: #F27B79;
 
-/* TYPOGRAPHY */
-$base-font-family: "Open Sans", Helvetica, Arial, sans-serif;
-$base-font-size: 14px;
-$large-font-size: 16px;
-$title-font-size-md: 3.2em;
+/* TEXT COLORS */
+$text-color-light:  #979995;
+
+/* BACKGROUND COLORS */
+$background-color:        #ffffff;
+$background-hover-color:  #f5f5f5;
+$background-light-grey:   #cccccc;
+$background-grey:         #aaa;
+$background-dark:         #50514F;
+
+/* UTILITY COLORS */
+$transparent:         rgba(0, 0, 0, 0);
+$button-text-color:   #ffffff;
+$border-color:        #ddd;
+$price-color:         #F25F5C;
 
 $spacing-unit: 30px;
 $extra-letter-spacing: 0.2px;
@@ -19,3 +36,47 @@ $text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 /* FOOTER */
 $footer-height: 120px;
 $footer-height-mobile: 200px;
+
+// Bootstrap variables
+// http://getbootstrap.com/customize/#colors
+
+//== Colors
+$brand-primary: #00A896;
+$brand-info: #337FCC;
+$brand-warning: #FFE066;
+$brand-danger: #F25F5C;
+
+//== Scaffolding
+$body-bg: #fff;
+$text-color: #50514f;
+
+//== Typography
+$font-family-base: "Open Sans", Helvetica, Arial, sans-serif;
+$font-size-base: 14px;
+
+//== Iconography
+$icon-font-path: "../../../../libs/bootstrap/fonts/";
+
+//== Components
+$border-radius-base: 2px;
+$border-radius-large: 2px;
+$border-radius-small: 2px;
+
+//== Buttons
+$btn-primary-border: $brand-primary;
+$btn-info-border: $brand-info;
+$btn-warning-border: $brand-warning;
+$btn-danger-border: $brand-danger;
+
+//== Forms
+$input-border: $border-color;
+
+//== Navbar
+$navbar-margin-bottom: 0px;
+$navbar-border-radius: 0px;
+$navbar-default-color: $text-color;
+$navbar-default-link-color: $text-color;
+
+//== Breadcrumbs
+$breadcrumb-separator: "/";
+$breadcrumb-bg: $background-color;

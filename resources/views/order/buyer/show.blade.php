@@ -4,9 +4,14 @@
 
 @section('content')
 
-            <!-- order details -->
     <div class="container">
-        {{--{!! Breadcrumbs::render() !!}--}}
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="{{ url('textbook') }}">Home</a></li>
+                <li><a href="{{ url('order/buyer') }}">Your orders</a></li>
+                <li class="active">Order #{{ $buyer_order->id }}</li>
+            </ol>
+        </div>
 
         <div class="page-header">
             <h1>Order Details</h1>
@@ -26,23 +31,6 @@
                 </div>
             </div>
         </div>
-
-        {{-- TODO: show status of scheduled pickup or not--}}
-        {{--<p>Scheduled pickup time:--}}
-            {{--@if ($seller_order->scheduled_pickup_time)--}}
-                {{--{{ date($datetime_format, strtotime($seller_order->scheduled_pickup_time)) }}--}}
-            {{--@else--}}
-                {{--N/A--}}
-            {{--@endif--}}
-        {{--</p>--}}
-
-        {{--<p>Pickup time:--}}
-            {{--@if ($seller_order->pickup_time)--}}
-                {{--{{ date($datetime_format, strtotime($seller_order->pickup_time)) }}--}}
-            {{--@else--}}
-                {{--N/A--}}
-            {{--@endif--}}
-        {{--</p>--}}
 
         {{-- order details --}}
         <div class="panel panel-default">
@@ -108,7 +96,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <span class="pull-left">Total:</span>
+                                    <span class="pull-left"><strong>Grand Total:</strong></span>
                                     <span class="pull-right"><strong>${{ $buyer_order->decimalAmount() }}</strong></span>
                                 </div>
                             @endif
@@ -124,7 +112,7 @@
                     {{-- order status --}}
                     <div class="row">
                         <h3>{{ $buyer_order->getOrderStatus()['status'] }}</h3>
-                        <small>{{ $buyer_order->getOrderStatus()['detail'] }}</small>
+                        <span>{{ $buyer_order->getOrderStatus()['detail'] }}</span>
                     </div>
 
                     <br>
@@ -184,13 +172,10 @@
 
                         {{-- action buttons --}}
                         <div class="col-md-3">
-                          {{--  --}}{{-- order details --}}{{--
-                            <a class="btn btn-primary btn-block" href="/order/buyer/{{$buyer_order->id}}">Order
-                                Details</a>
---}}
+
                             {{-- cancel order --}}
                             @if ($buyer_order->isCancellable())
-                                <a class="btn btn-secondary btn-block cancel-order-btn" href="/order/buyer/cancel/{{ $buyer_order->id }}"
+                                <a class="btn btn-danger btn-block cancel-order-btn" href="/order/buyer/cancel/{{ $buyer_order->id }}"
                                    role="button">Cancel Order</a>
                             @endif
                         </div>

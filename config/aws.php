@@ -15,10 +15,10 @@ return [
     |
     */
     'credentials' => [
-        'key'    => 'AKIAICSPEAJYPA3CBSNQ',
-        'secret' => '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',
+        'key'    => env('AWS_KEY'),
+        'secret' => env('AWS_SECRET'),
     ],
-    'region' => env('AWS_REGION', 'us-east-1'),
+    'region' => env('AWS_REGION'),
     'version' => 'latest',
 
     'url' => [

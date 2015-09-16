@@ -31,7 +31,7 @@ $(document).ready(function () {
                 // prevent updating input
                 event.preventDefault();
                 // go to the book's url
-                window.location.href = "/textbook/buy/" + ui.item.id;
+                window.location.href = "/textbook/buy/" + ui.item.id + "?query=" + this.value;
             },
             close: function()
             {

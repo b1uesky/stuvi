@@ -53,7 +53,7 @@ $(document).ready(function () {
                 // login failed
                 if (response.success == false) {
 
-                    var alert = new Alert($('#form-login'));
+                    var alert = new Alert($('.container-login-alert'));
                     alert.clear();
 
                     for (var field in response.fields) {

@@ -3,8 +3,8 @@
 return [
 	# Account credentials from developer portal
 	'Account' => [
-		'ClientId'     => 'AcfuKtauq_EtoZ2rAKPjkXTsgpfl0ieU4dxFQhjqXBs-XAuQuXGyhgAp6qq1Ou3RLRmCAS-pwPjqTp_3',
-		'ClientSecret' => 'EJ_vVZIPvEYm4UNJmfyzVGbsUdV_h-1qK4LM3zIWVPOx6zCxB8q8jCps9DEJkArDOWdZASPSsCVt0FVD',
+		'ClientId'     => env('PAYPAL_CLIENT_ID'),
+		'ClientSecret' => env('PAYPAL_CLIENT_SECRET'),
 	],
 
 	# Connection Information
