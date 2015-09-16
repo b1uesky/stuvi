@@ -85,7 +85,7 @@
                                             <form action="{{ url('/textbook/sell/product/delete') }}" method="post" class="margin-top-5">
                                                 {!! csrf_field() !!}
                                                 <input type="hidden" name="id" value="{{ $product->id }}">
-                                                <button type="submit" class="btn btn-danger btn-block">Delete</button>
+                                                <input type="submit" class="btn btn-danger btn-block">Delete</input>
                                             </form>
                                         </td>
                                     </tr>

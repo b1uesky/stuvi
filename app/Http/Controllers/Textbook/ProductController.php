@@ -349,6 +349,6 @@ class ProductController extends Controller
         $book->removePrice($price);
 
         return redirect('/user/bookshelf')
-            ->with('error', $product->book->title.' has been deleted.');
+            ->with('success', $product->book->title.' has been deleted.');
     }
 }
