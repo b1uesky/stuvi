@@ -122,12 +122,13 @@
                             <div class="col-md-3">
                                 {{-- order details --}}
                                 <a class="btn btn-primary btn-block" href="/order/buyer/{{$buyer_order->id}}">Order
-                                    Details</a>
+                                    details</a>
 
                                 {{-- cancel order --}}
                                 @if ($buyer_order->isCancellable())
-                                    <a class="btn btn-danger btn-block cancel-order-btn" href="/order/buyer/cancel/{{ $buyer_order->id }}"
-                                       role="button">Cancel Order</a>
+                                    <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
+                                            data-target="#delete-buyer-order"
+                                            data-buyer-order-id="{{ $buyer_order->id }}">Cancel order</button>
                                 @endif
                             </div>
                         </div>
@@ -136,4 +137,10 @@
             </div>
         @endforeach
     </div>
+@endsection
+
+@include('includes.modal.delete-buyer-order')
+
+@section('javascript')
+    <script src="{{ asset('js/order/buyer/index.js') }}"></script>
 @endsection
