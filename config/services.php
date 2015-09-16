@@ -20,7 +20,7 @@ return [
 	],
 
 	'mandrill' => [
-		'secret' => '52J8eOGSRB_Zu1FPoPfdWA',
+		'secret' => env('MANDRILL_SECRET'),
 	],
 
 	'ses' => [
@@ -31,7 +31,7 @@ return [
 
 	'google' => [
 		'books'	=> [
-			'api_key'	=> 'AIzaSyD6Uers3Lug2GFdRpb9FCfftgA0e26fKnc'
+			'api_key'	=> env('GOOGLE_BOOKS_KEY')
 		]
 	]
 ];
