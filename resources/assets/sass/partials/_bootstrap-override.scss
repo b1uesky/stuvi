@@ -5,6 +5,7 @@ a {
   color: $primary-color;
 
   &:hover, &:focus {
+    text-decoration: none !important;
     color: $primary-color;
     outline: none;
   }
