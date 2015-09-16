@@ -8,7 +8,7 @@
                         data-dismiss="modal" aria-label="close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h3>{{ Config::get('product.conditions.general_condition.title') }}</h3>
+                <h4 class="modal-title">General condition</h4>
             </div>
             <div class="modal-body">
                 @for ($i = 0; $i < 4; $i++)
@@ -25,14 +25,14 @@
 {{--Highlights / Notes modal--}}
 <div class="modal fade highlight-modal" tabindex="-1" role="dialog"
      aria-labelledby="Highlights/Notes">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close close-modal-btn"
                         data-dismiss="modal" aria-label="close">
                     <span id="close-span" aria-hidden="true">&times;</span>
                 </button>
-                <h3>{{ Config::get('product.conditions.highlights_and_notes.title') }}</h3>
+                <h4 class="modal-title">Highlights/Notes</h4>
             </div>
             <div class="modal-body">
                 <p>{{ Config::get('product.conditions.highlights_and_notes.description') }}</p>
@@ -44,14 +44,14 @@
 {{--Damaged pages modal--}}
 <div class="modal fade damage-modal" tabindex="-1" role="dialog"
      aria-labelledby="Damaged Pages">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close close-modal-btn"
                         data-dismiss="modal" aria-label="close">
                     <span id="close-span" aria-hidden="true">&times;</span>
                 </button>
-                <h3>{{ Config::get('product.conditions.damaged_pages.title') }}</h3>
+                <h4 class="modal-title">Damaged pages</h4>
             </div>
             <div class="modal-body">
                 <p>{{ Config::get('product.conditions.damaged_pages.description') }}</p>
@@ -63,7 +63,7 @@
 {{--Broken binding modal--}}
 <div class="modal fade binding-modal" tabindex="-1" role="dialog"
      aria-labelledby="Broken Binding">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close close-modal-btn"
@@ -71,7 +71,7 @@
                         aria-label="close">
                     <span id="close-span" aria-hidden="true">&times;</span>
                 </button>
-                <h3>{{ Config::get('product.conditions.broken_binding.title') }}</h3>
+                <h4 class="modal-title">Broken book binding</h4>
             </div>
             <div class="modal-body">
                 <p>{{ Config::get('product.conditions.broken_binding.description') }}</p>
