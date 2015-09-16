@@ -1,4 +1,5 @@
-/* Search AutoComplete Suggestions */
+// Search AutoComplete
+
 @import "../modules/all";
 
 #autocomplete {
@@ -30,24 +31,21 @@
 
 .ui-widget-content {
   border: 1px solid $border-color;
-  border-top: none;
   background: $background-color;
   color: $text-color;
 
   .ui-state-focus {
     border: 1px solid $border-color;
-    background: $tiffany-light;
+    background: $background-hover-color;
     color: $text-color;
   }
 }
 
 .ui-widget {
-  font-family: $base-font-family;
-  font-size: $base-font-size;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
 }
 
 .ui-menu .ui-menu-item {
-  border-bottom: 1px solid $border-color;
-  margin-bottom: 1px;
   padding: $spacing-unit / 2;
 }

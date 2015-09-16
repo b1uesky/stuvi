@@ -40,7 +40,8 @@ class TextbookController extends Controller
     public function show($book)
     {
         return view("textbook.show")
-            ->with('book', $book);
+            ->with('book', $book)
+            ->with('query', Input::get('query'));
     }
 
     /***************************************************/

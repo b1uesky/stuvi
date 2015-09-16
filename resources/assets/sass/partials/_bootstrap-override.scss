@@ -10,22 +10,41 @@ a {
   }
 }
 
-.nav-pills>li>a {
-  border-radius: 2px;
-}
-
-.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
-  background-color: $primary-color;
-}
-
-
 .dropdown-menu {
   border: 1px solid $border-color;
   border-radius: 2px;
   -webkit-box-shadow: none;
   box-shadow: none;
+  padding: 0;
 
   &:hover, &:focus {
     outline: 0;
   }
+
+  li {
+    a {
+      padding: 10px $spacing-unit/2;
+    }
+  }
+
+  .divider {
+    margin: 0;
+  }
+}
+
+
+.breadcrumb {
+  margin-bottom: 0;
+
+  // remove breadcrumb extra '\00a0'
+  > li {
+    + li:before {
+      content: "#{$breadcrumb-separator}";
+    }
+  }
+}
+
+.page-header {
+  padding: 0;
+  margin: 0 0 $spacing-unit/2 0;
 }

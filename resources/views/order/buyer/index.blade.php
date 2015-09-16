@@ -7,6 +7,13 @@
 @section('content')
 
     <div class="container">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="{{ url('textbook') }}">Home</a></li>
+                <li class="active">Your orders</li>
+            </ol>
+        </div>
+
         <div class="page-header">
             <h1>Your orders</h1>
         </div>
@@ -53,7 +60,7 @@
                         {{-- order status --}}
                         <div class="row">
                             <h3>{{ $buyer_order->getOrderStatus()['status'] }}</h3>
-                            <small>{{ $buyer_order->getOrderStatus()['detail'] }}</small>
+                            <span>{{ $buyer_order->getOrderStatus()['detail'] }}</span>
                         </div>
 
                         <br>
@@ -119,7 +126,7 @@
 
                                 {{-- cancel order --}}
                                 @if ($buyer_order->isCancellable())
-                                    <a class="btn btn-secondary btn-block cancel-order-btn" href="/order/buyer/cancel/{{ $buyer_order->id }}"
+                                    <a class="btn btn-danger btn-block cancel-order-btn" href="/order/buyer/cancel/{{ $buyer_order->id }}"
                                        role="button">Cancel Order</a>
                                 @endif
                             </div>

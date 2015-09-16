@@ -1,4 +1,3 @@
-/*** MODAL STYLING ***/
 @import "../modules/all";
 
 .modal-dialog {
@@ -17,14 +16,6 @@
 .modal-header {
   background-color: $primary-color;
   color: white;
-}
-
-.modal-footer {
-  background-color: $background-color;
-}
-
-.remember-me, .forgot-password {
-  display: inline;
 }
 
 // fix the bug that the nav bar links shift to right when open the modal.

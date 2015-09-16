@@ -72,11 +72,11 @@ class BuyerOrderController extends Controller
         }
 
         return view('order.buyer.create')
-                ->with('subtotal', Price::convertIntegerToDecimal($this->cart->totalPrice()))
+                ->with('subtotal', Price::convertIntegerToDecimal($this->cart->subtotal()))
                 ->with('shipping', Price::convertIntegerToDecimal($this->cart->fee()))
                 ->with('discount', Price::convertIntegerToDecimal($this->cart->discount()))
                 ->with('tax', Price::convertIntegerToDecimal($this->cart->tax()))
-                ->with('total', Price::convertIntegerToDecimal($this->cart->subtotal()))
+                ->with('total', Price::convertIntegerToDecimal($this->cart->total()))
                 ->with('items', $this->cart->items)
                 ->with('display_payment', true);
     }
@@ -201,7 +201,7 @@ class BuyerOrderController extends Controller
         ));
 
         // total price of all items
-        $subtotal   = Price::convertIntegerToDecimal($this->cart->totalPrice()) - $discount;
+        $subtotal   = Price::convertIntegerToDecimal($this->cart->subtotal()) - $discount;
         if ($subtotal < 0)
         {
             $subtotal = 0;
@@ -269,7 +269,7 @@ class BuyerOrderController extends Controller
                 'tax'                   => $this->cart->tax(),
                 'fee'                   => $this->cart->fee(),
                 'discount'              => $this->cart->discount(),
-                'subtotal'              => $this->cart->totalPrice(),
+                'subtotal'              => $this->cart->subtotal(),
                 'amount'                => Price::convertDecimalToInteger($total),
                 'authorization_id'      => $authorization->getId()
 
@@ -309,7 +309,7 @@ class BuyerOrderController extends Controller
         $payer_id = Input::get('PayerID');
         $shipping_address_id = Input::get('shipping_address_id');
 
-        $subtotal = $this->cart->totalPrice();
+        $subtotal = $this->cart->subtotal();
         $tax = $this->cart->tax();
         $fee = $this->cart->fee();
         $discount = $this->cart->discount();

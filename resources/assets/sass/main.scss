@@ -1,12 +1,5 @@
-/*
- * This is the Stuvi default styling. It comes _AFTER_ Bootstrap's app.css
- * This file is compiled to main.css which is then linked in head.blade.php
- * Thus, every page will have this styling.
- * http://thesassway.com/beginner/how-to-structure-a-sass-project
- */
+// Compiled to public/css/main.css
 
-
-/* PARTIALS */
 @import 'partials/base';
 @import 'partials/utility';
 @import 'partials/bootstrap-override';
@@ -20,26 +13,16 @@
 @import 'partials/searchbar';
 @import 'partials/navigation';
 @import 'partials/footer';
-@import 'partials/login-signup-modal';
 @import 'partials/alert';
-@import 'partials/loader';
+@import "partials/breadcrumb";
+@import "partials/panels";
 
-/* PAGES */
 @import 'pages/auth_login';
-@import 'pages/cart_index';
 @import 'pages/contact';
 @import 'pages/faq';
 @import 'pages/home';
-@import 'pages/order_buyer_confirmation';
 @import 'pages/order_buyer_create';
-@import 'pages/order_index';
-@import 'pages/order_show';
-@import 'pages/seller_order_schedule_pickup';
 @import 'pages/product_create';
 @import 'pages/product_show';
 @import 'pages/textbook';
-@import 'pages/textbook_create';
 @import 'pages/textbook_list';
-@import 'pages/textbook_nav';
-@import 'pages/textbook_show';
-@import 'pages/tos-privacy';

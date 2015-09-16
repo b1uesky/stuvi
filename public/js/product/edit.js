@@ -5,12 +5,18 @@
  */
 
 
-function goBack() {
-    window.history.back();
-}
-
-
 $(document).ready(function () {
+
+    // check radio buttons based on selected product conditions
+    var general_condition = $('input[name=general_condition_selected]').val();
+    var highlights_and_notes = $('input[name=highlights_and_notes_selected]').val();
+    var damaged_pages = $('input[name=damaged_pages_selected]').val();
+    var broken_binding = $('input[name=broken_binding_selected]').val();
+
+    $('input[name=general_condition][value=' + general_condition + ']').prop('checked', true);
+    $('input[name=highlights_and_notes][value=' + highlights_and_notes + ']').prop('checked', true);
+    $('input[name=damaged_pages][value=' + damaged_pages + ']').prop('checked', true);
+    $('input[name=broken_binding][value=' + broken_binding + ']').prop('checked', true);
 
     Dropzone.options.formProduct = { // The camelized version of the ID of the form element
 
@@ -35,7 +41,7 @@ $(document).ready(function () {
             var countFiles = 0;
             var countMockFiles = 0;
 
-            $('button[type=submit]').attr('disabled', true);
+            $('input[type=submit]').attr('disabled', true);
 
             // retrieve product images that already exists on the server
             // and display them in the preview image container
@@ -95,7 +101,7 @@ $(document).ready(function () {
             });
 
             // First change the button to actually tell Dropzone to process the queue.
-            this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
+            this.element.querySelector("input[type=submit]").addEventListener("click", function (e) {
 
                 // if there is a new image added
                 if (countFiles - countMockFiles > 0) {
@@ -125,7 +131,7 @@ $(document).ready(function () {
                     countMockFiles = countMockFiles + 1;
                 }
 
-                $('button[type=submit]').attr('disabled', false);
+                $('input[type=submit]').attr('disabled', false);
             });
 
             // When a file is removed from the list
@@ -174,7 +180,7 @@ $(document).ready(function () {
             this.on("reset", function () {
                 if (countFiles == 0) {
                     $('.dz-message').show();
-                    $('button[type=submit]').attr('disabled', true);
+                    $('input[type=submit]').attr('disabled', true);
                 }
             });
 

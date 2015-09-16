@@ -117,12 +117,11 @@ class Cart extends Model
     }
 
     /**
-     * TODO: RENAME TO SUBTOTAL
      * Get the total price of all items.
      *
      * @return int
      */
-    public function totalPrice()
+    public function subtotal()
     {
         $price = 0;
 
@@ -141,7 +140,7 @@ class Cart extends Model
      */
     public function tax()
     {
-        return intval(($this->totalPrice()+$this->fee()-$this->discount()) * config('tax.MA'));
+        return intval(($this->subtotal()+$this->fee()-$this->discount()) * config('tax.MA'));
     }
 
     /**
@@ -166,14 +165,13 @@ class Cart extends Model
     }
 
     /**
-     * // TODO: RENAME TO TOTAL/AMOUNT
      * Get the subtotal of this cart (how much the buyer needs to pay)
      *
      * @return int
      */
-    public function subtotal()
+    public function total()
     {
-        return $this->totalPrice() + $this->fee() - $this->discount() + $this->tax();
+        return $this->subtotal() + $this->fee() - $this->discount() + $this->tax();
     }
 
     /**
