@@ -12,6 +12,8 @@
     "eonasdan-bootstrap-datetimepicker": "~4.15.35",
     "font-awesome": "latest",
     "jquery-ui": "~1.11.4",
-    "slick-carousel": "~1.5.8"
+    "lazyload": "~3.2.1",
+    "slick-carousel": "~1.5.8",
+    "zoom.js": "v0.0.1"
   }
 }

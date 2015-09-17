@@ -28,6 +28,35 @@ class ProductImage extends Model {
         return substr($this->small_image, 0, 4) == 'http';
     }
 
+    public function getImagePath($size)
+    {
+        switch ($size)
+        {
+            case 'large':
+                $image_path = $this->large_image;
+                break;
+            case 'medium':
+                $image_path = $this->medium_image;
+                break;
+            case 'small':
+                $image_path = $this->small_image;
+                break;
+            default:
+                $image_path = $this->medium_image;
+        }
+
+
+        if ($this->isTestImage())
+        {
+            return $image_path;
+        }
+        else
+        {
+            return config('aws.url.stuvi-product-img') . $image_path;
+        }
+    }
+
+
     /**
      * Generate a filename for a product image, add size if necessary
      *

@@ -4,6 +4,11 @@
 
 @section('title',$book->title)
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('libs/zoom.js/css/zoom.css') }}">
+    <script src="{{ asset('libs/lazyload/build/lazyload.min.js') }}"></script>
+@endsection
+
 @section('searchbar')
     @include('includes.textbook.searchbar')
 @endsection
@@ -108,12 +113,11 @@
                             </td>
                             <td>
                                 @foreach($product->images as $image)
-                                    @if(!$image->isTestImage())
-                                        <img class="img-rounded img-small margin-right-5"
-                                             src="{{ config('aws.url.stuvi-product-img') . $image->small_image }}">
-                                    @else
-                                        <img class="img-rounded img-small margin-right-5" src="{{ $image->small_image }}">
-                                    @endif
+                                    <img class="img-rounded img-small margin-right-5"
+                                         src="{{ config('image.lazyload') }}"
+                                         data-action="zoom"
+                                         data-src="{{ $image->getImagePath('large') }}"
+                                         onload="lzld(this)">
                                 @endforeach
                             </td>
                             <td>
@@ -155,5 +159,6 @@
     <script src="{{ asset('js/navbar.js') }}"></script>
     <script src="{{ asset('libs/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/autocomplete.js')}} "></script>
+    <script src="{{ asset('libs/zoom.js/js/zoom.js') }}"></script>
     <script src="{{ asset('js/cart.js') }}"></script>
 @endsection

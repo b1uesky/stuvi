@@ -34,6 +34,8 @@ return array(
      */
     'temp_path' => storage_path() . '/temp/',
 
-    'debug' => true
+    'debug' => true,
+
+    'lazyload' => 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
 
 );
