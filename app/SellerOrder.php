@@ -375,7 +375,7 @@ class SellerOrder extends Model
             return false;
         }
 
-        $value = Price::convertIntegerToDecimal($this->product->price - config('fee.payout_service_fee'));
+        $value = Price::convertIntegerToDecimal($this->product->price - config('sale.payout_service'));
 
         $item = array(
             'recipient_type'    => 'EMAIL',
