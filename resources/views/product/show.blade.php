@@ -71,13 +71,7 @@
             <div class="image-slider">
                 @forelse($product->images as $index => $image)
                     <div>
-                        @if($image->isTestImage())
-                            <img class="img-responsive" src="{{ $image->large_image }}" alt="Product Image">
-                        @else
-                            <img class="img-responsive"
-                                 src="{{ config('aws.url.stuvi-product-img') . $image->large_image }}"
-                                 alt="Product Image">
-                        @endif
+                        <img class="img-responsive" src="{{ $image->getImagePath('large') }}" data-action="zoom">
                     </div>
                 @empty
                     <div><h3>No images were provided.</h3></div>
@@ -132,12 +126,14 @@
                     <td>{{ Config::get('product.conditions.broken_binding')[$product->condition->broken_binding] }}</td>
                 </tr>
                 <!-- Seller Description -->
-                <tr>
-                    <td>Seller's Description</td>
-                    <td>
-                        {{ $product->condition->description }}
-                    </td>
-                </tr>
+                @if($product->condition->hasDescription())
+                    <tr>
+                        <td>Seller's Description</td>
+                        <td>
+                            {{ $product->condition->description }}
+                        </td>
+                    </tr>
+                @endif
                 </tbody>
             </table>
         </div>
@@ -215,4 +211,5 @@
     <script src="{{ asset('libs/slick-carousel/slick/slick.min.js') }}"></script>
     <script src="{{ asset('js/product/show.js') }}"></script>
     <script src="{{ asset('js/cart.js') }}"></script>
+    <script src="{{ asset('libs/zoom.js/js/zoom.js') }}"></script>
 @endsection
