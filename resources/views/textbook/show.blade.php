@@ -24,6 +24,7 @@
             <h1>{{ $book->title }}</h1>
         </div>
 
+
         {{-- Book info --}}
         <div class="row">
 
@@ -141,7 +142,6 @@
                 @if(Auth::guest())
                     @if(count($book->availableProducts()) > 0)
                         <p>
-                            <span class="glyphicon glyphicon-info-sign"></span>
                             Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal"
                                                                                              href="#signup-modal">Sign
                                 up</a> to buy or sell a textbook.
@@ -149,8 +149,7 @@
                     @endif
                 @else
                     <p>
-                        <span class="glyphicon glyphicon-question-sign"></span>
-                         <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Have one to sell?</a>
+                        <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Have one to sell?</a>
                     </p>
                 @endif
             </div>

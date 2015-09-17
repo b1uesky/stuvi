@@ -25,63 +25,72 @@
             {{-- Only show the book if it has product available --}}
             {{-- NOTE: this is not an optimal solution, we could modify our Book query in the back end. --}}
             @if(count($book->availableProducts()) > 0)
-                <div class="row padding-15 border-bottom">
-                    <div class="col-md-2 col-sm-2 col-xs-4">
-                        <a href="{{ url("textbook/buy/".$book->id) }}">
-                            @if($book->imageSet->small_image)
-                                <img class="img-responsive"
-                                     src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->small_image }}">
-                            @else
-                                <img class="img-responsive" src="{{ config('book.default_image_path.small')}}">
-                            @endif
-                        </a>
-                    </div>
+                <div class="row padding-vertical-15">
 
-                    <div class="col-md-8 col-sm-7 col-xs-8">
-                        <h4 class="col-sm-12 no-margin-top"><a
-                                    href="{{ url("textbook/buy/".$book->id.'?query=' . Input::get('query')) }}">{{ $book->title }}</a></h4>
+                        <div class="col-md-2 col-xs-4">
+                            <a href="{{ url("textbook/buy/".$book->id) }}">
+                                @if($book->imageSet->small_image)
+                                    <img class="img-responsive"
+                                         src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->small_image }}">
+                                @else
+                                    <img class="img-responsive" src="{{ config('book.default_image_path.small')}}">
+                                @endif
+                            </a>
+                        </div>
 
-                        <table class="table-details full-width">
-                            <tbody>
-                            <tr>
-                                <td class="col-xs-2">
-                                    <span>Author(s):</span>
-                                </td>
-                                <td class="col-xs-10">
-                                    @foreach($book->authors as $i => $author)
-                                        @if($i == 0)
-                                            <span>{{ $author->full_name }}</span>
-                                        @else
-                                            <span>, {{ $author->full_name }}</span>
-                                        @endif
-                                    @endforeach
-                                </td>
-                            </tr>
+                        <div class="col-md-10 col-xs-8">
+                            <div class="row">
+                                <h4 class="no-margin-top">
+                                    <a href="{{ url("textbook/buy/".$book->id.'?query=' . Input::get('query')) }}">{{ $book->title }}</a>
+                                </h4>
+                            </div>
 
-                            <tr>
-                                <td class="col-xs-2">ISBN-10:</td>
-                                <td class="col-xs-10">{{ $book->isbn10 }}</td>
-                            </tr>
+                            <div class="row padding-bottom-5">
+                            <span class="text-muted">
+                                by
+                                @foreach($book->authors as $i => $author)
+                                    @if($i == 0)
+                                        <span>{{ $author->full_name }}</span>
+                                    @else
+                                        <span>, {{ $author->full_name }}</span>
+                                    @endif
+                                @endforeach
+                            </span>
+                            </div>
 
-                            <tr>
-                                <td class="col-xs-2">ISBN-13:</td>
-                                <td class="col-xs-10">{{ $book->isbn13 }}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                            <div class="row padding-bottom-5">
+                                <?php $count_product = count($book->availableProducts()); ?>
 
-                    <div class="col-md-2 col-sm-3 hidden-xs">
-                        @if(count($book->products) > 1)
-                            <span class="price">${{ $book->decimalLowestPrice() }}</span>
-                            <span class="text-muted"> ~ </span>
-                            <span class="price">${{ $book->decimalHighestPrice() }}</span>
-                        @elseif(count($book->products) == 1)
-                            <span class="price">${{ $book->decimalLowestPrice() }}</span>
-                        @else
-                            <span class="text-muted">Not available</span>
-                        @endif
-                    </div>
+                                <span class="text-bold">
+                                @if($count_product > 1)
+                                        <span class="price">${{ $book->decimalLowestPrice() }}</span>
+                                        <span class="text-muted"> ~ </span>
+                                        <span class="price">${{ $book->decimalHighestPrice() }}</span>
+                                    @else
+                                        <span class="price">${{ $book->decimalLowestPrice() }}</span>
+                                    @endif
+                            </span>
+
+                            <span class="text-muted">
+                                @if($count_product > 1)
+                                    ({{ $count_product }} offers)
+                                @else
+                                    (1 offer)
+                                @endif
+                            </span>
+                            </div>
+
+                            <div class="row">
+                                <span>ISBN-10: </span>
+                                <span>{{ $book->isbn10 }}</span>
+                            </div>
+
+                            <div class="row">
+                                <span>ISBN-13: </span>
+                                <span>{{ $book->isbn13 }}</span>
+                            </div>
+                        </div>
+
                 </div>
             @endif
         @empty
