@@ -2,6 +2,8 @@
 
 class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
+	public $baseUrl = 'http://stuvi.app';
+
 	/**
 	 * Creates the application.
 	 *
