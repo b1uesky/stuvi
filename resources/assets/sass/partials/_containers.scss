@@ -30,3 +30,11 @@
   vertical-align: top;
   display: table-cell;
 }
+
+.container-flex {
+  display: flex;
+}
+
+.item-flex-grow-1 {
+  flex-grow: 1;
+}

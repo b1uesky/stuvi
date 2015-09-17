@@ -10,6 +10,18 @@
   width: 100%;
 }
 
+.width-33-percent {
+  width: 33%;
+}
+
+.width-30-percent {
+  width: 30%;
+}
+
+.width-25-percent {
+  width: 25%;
+}
+
 .width-130 {
   width: 130px;
 }
@@ -72,12 +84,24 @@
   margin-bottom: 5px;
 }
 
+.margin-bottom-15 {
+  margin-bottom: 15px;
+}
+
 .margin-right-5 {
   margin-right: 5px;
 }
 
+.margin-right-15 {
+  margin-right: 15px;
+}
+
 .margin-vertical-5 {
   margin: 5px 0;
+}
+
+.margin-3-percent {
+  margin: 3%;
 }
 
 .no-margin-top {
@@ -98,6 +122,15 @@
 
 .border-bottom {
   border-bottom: 1px solid $border-color;
+}
+
+// Display
+.inline-block {
+  display: inline-block;
+}
+
+.inline {
+  display: inline;
 }
 
 /* POSITION */

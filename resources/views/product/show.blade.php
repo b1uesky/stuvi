@@ -10,8 +10,9 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('libs/slick-carousel/slick/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('libs/slick-carousel/slick/slick-theme.css') }}">
+    {{--<link rel="stylesheet" href="{{ asset('libs/slick-carousel/slick/slick.css') }}">--}}
+    {{--<link rel="stylesheet" href="{{ asset('libs/slick-carousel/slick/slick-theme.css') }}">--}}
+    <link rel="stylesheet" href="{{ asset('libs/zoom.js/css/zoom.css') }}">
 @endsection
 
 @section('content')
@@ -33,53 +34,47 @@
             <h1>{{ $book->title }}</h1>
         </div>
 
-        <div class="actions text-right">
-            @if(Auth::check())
-                @if($product->isDeleted())
-                    <a class="btn btn-default disabled" href="#" role="button">Archived</a>
-                @elseif($product->sold)
-                    <a class="btn btn-default disabled" href="#" role="button">Sold</a>
-                @elseif($product->isInCart(Auth::user()->id))
-                    <a class="btn btn-primary add-cart-btn disabled" href="#" role="button">Added
-                        To Cart</a>
-                @elseif(!$product->isSold() && $product->seller == Auth::user())
-                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}"
-                       class="btn btn-primary">Edit</a>
-
-                    <button type="button" class="btn btn-danger" data-toggle="modal"
-                            data-target="#delete-product"
-                            data-product-id="{{ $product->id }}"
-                            data-book-title="{{ $product->book->title }}">Delete</button>
-                @else
-                    <form method="post" class="add-to-cart">
-                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        <input class="btn btn-primary add-cart-btn" type="submit" value="Add to cart">
-                    </form>
-                @endif
-            @else
-                <span>
-                    Please <a data-toggle="modal" href="#login-modal">Login</a> or <a
-                            data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.
-                </span>
-            @endif
-        </div>
-
-        <br>
-
         <div class="row">
-            {{-- image slider --}}
-            <div class="image-slider">
+            <div class="col-md-10 margin-bottom-15">
                 @forelse($product->images as $index => $image)
-                    <div>
-                        <img class="img-responsive" src="{{ $image->getImagePath('large') }}" data-action="zoom">
-                    </div>
+                    <img class="img-rounded inline-block margin-right-5 width-25-percent" src="{{ $image->getImagePath('large') }}" data-action="zoom">
                 @empty
-                    <div><h3>No images were provided.</h3></div>
+                    <h3>No images were provided.</h3>
                 @endforelse
             </div>
-        </div>
 
-        <br>
+            <div class="col-md-2">
+                @if(Auth::check())
+                    @if($product->isDeleted())
+                        <a class="btn btn-default btn-block disabled" href="#" role="button">Archived</a>
+                    @elseif($product->sold)
+                        <a class="btn btn-default btn-block disabled" href="#" role="button">Sold</a>
+                    @elseif($product->isInCart(Auth::user()->id))
+                        <a class="btn btn-primary btn-block add-cart-btn disabled" href="#" role="button">Added
+                            To Cart</a>
+                    @elseif(!$product->isSold() && $product->seller == Auth::user())
+                        <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}"
+                           class="btn btn-primary btn-block">Edit</a>
+
+                        <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
+                                data-target="#delete-product"
+                                data-product-id="{{ $product->id }}"
+                                data-book-title="{{ $product->book->title }}">Delete</button>
+                    @else
+                        <form method="post" class="add-to-cart">
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <input class="btn btn-primary btn-block add-cart-btn" type="submit" value="Add to cart">
+                        </form>
+                    @endif
+                @else
+                    <span>
+                    Please <a data-toggle="modal" href="#login-modal">Login</a> or <a
+                                data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.
+                </span>
+                @endif
+            </div>
+
+        </div>
 
         <div class="row">
             <!-- product conditions -->
@@ -137,8 +132,6 @@
                 </tbody>
             </table>
         </div>
-
-        <br>
 
         <div class="row">
             <div class="panel panel-default">
@@ -208,7 +201,7 @@
 @include('includes.modal.product-conditions')
 
 @section('javascript')
-    <script src="{{ asset('libs/slick-carousel/slick/slick.min.js') }}"></script>
+    {{--<script src="{{ asset('libs/slick-carousel/slick/slick.min.js') }}"></script>--}}
     <script src="{{ asset('js/product/show.js') }}"></script>
     <script src="{{ asset('js/cart.js') }}"></script>
     <script src="{{ asset('libs/zoom.js/js/zoom.js') }}"></script>
