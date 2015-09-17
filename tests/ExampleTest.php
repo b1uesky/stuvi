@@ -2,6 +2,8 @@
 
 class ExampleTest extends TestCase {
 
+	protected $baseUrl = '';
+
 	/**
 	 * A basic functional test example.
 	 *
