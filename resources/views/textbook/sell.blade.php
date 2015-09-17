@@ -118,13 +118,3 @@
         </section>
 
 @endsection
-
-@section('javascript')
-    @if(Auth::check())
-        {{-- FormValidation --}}
-        <script src="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js') }}"></script>
-        <script src="{{ asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js') }}"></script>
-    @endif
-
-    <script src="{{ asset('/js/textbook/sell.js' )}}"></script>
-@endsection
