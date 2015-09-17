@@ -19,8 +19,7 @@ return array(
 
     'resize' => [
         'small'     => [
-            'width'     => 60,
-            'height'    => 60
+            'height'     => 100
         ],
         'medium'    => [
             'height'    => 340

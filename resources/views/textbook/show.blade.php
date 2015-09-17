@@ -92,10 +92,10 @@
                 <table class="table">
                     <thead>
                     <tr class="active">
-                        <th class="col-xs-3">Price</th>
-                        <th class="col-xs-3">Condition</th>
-                        <th class="col-xs-3">Details</th>
-                        <th class="col-xs-3"></th>
+                        <th class="col-xs-2">Price</th>
+                        <th class="col-xs-2">Condition</th>
+                        <th class="col-xs-6">Images</th>
+                        <th class="col-xs-2">Details</th>
                     </tr>
                     </thead>
                     @foreach($book->availableProducts() as $product)
@@ -107,26 +107,17 @@
                                 {{ $product->general_condition() }}
                             </td>
                             <td>
-                                <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}">View Details</a>
-                            </td>
-
-                            <td class="text-right">
-                                @if(Auth::check())
-                                    @if($product->isInCart(Auth::user()->id))
-                                        <a class="btn btn-primary add-cart-btn disabled width-130" href="#"
-                                           role="button" id="added-to-cart-btn">
-                                            Added to cart</a>
-                                    @elseif($product->seller == Auth::user())
-                                        <a class="btn btn-muted add-cart-btn disabled width-130" href="#" role="button">Posted
-                                            by
-                                            you</a>
+                                @foreach($product->images as $image)
+                                    @if(!$image->isTestImage())
+                                        <img class="img-rounded img-small margin-right-5"
+                                             src="{{ config('aws.url.stuvi-product-img') . $image->small_image }}">
                                     @else
-                                        <form method="post" class="add-to-cart">
-                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                            <input class="btn btn-primary add-cart-btn width-130" type="submit" value="Add to cart">
-                                        </form>
+                                        <img class="img-rounded img-small margin-right-5" src="{{ $image->small_image }}">
                                     @endif
-                                @endif
+                                @endforeach
+                            </td>
+                            <td>
+                                <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}">View Details</a>
                             </td>
 
                         </tr>
