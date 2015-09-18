@@ -14,18 +14,18 @@
 
                 {{-- Logo only when nav bar collapses into hamburger menu --}}
                 <a id="xs-screen-logo-link" class="" href="{{url('/home')}}" >
-                    <img id="xs-screen-logo-img" class="" src="{{asset('/img/logo/logo-sm.png')}}" alt="stuvi logo">
+                    <img id="xs-screen-logo-img" class="" src="{{asset('/img/logo/logo-md.png')}}" alt="stuvi logo">
                 </a>
 
                 <div class="logo-container">
                     {{-- If on homepage, show the home logo which has white text--}}
                     @if(Request::url() == url('/home') or Request::url() == url('/'))
                         <a href="{{url('/home')}}">
-                            <img src="{{asset('/img//logo/logo-text-white-sm.png')}}" class="center-block" alt="stuvi logo">
+                            <img src="{{asset('/img//logo/logo-text-white-md.png')}}" class="center-block" alt="stuvi logo">
                         </a>
                     @else
                         <a href="{{url('/home')}}">
-                            <img src="{{asset('/img/logo/logo-sm.png')}}" class="center-block" alt="stuvi logo">
+                            <img src="{{asset('/img/logo/logo-md.png')}}" class="center-block" alt="stuvi logo">
                         </a>
                     @endif
 
