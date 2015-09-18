@@ -1,30 +1,16 @@
 @import "../modules/all";
 
-.btn-default.active,
-.btn-default:active,
-.open>.dropdown-toggle.btn-default {
-  background-color: $primary-color-light !important;
-  outline: 0 !important;
-  color: $button-text-color !important;
-  border: 1px solid $primary-color-light !important;
-}
-
 .btn-default {
-  color: $text-color;
-  border: 1px solid $border-color;
 
   &:hover, &:focus {
-    background-color: $primary-color-light !important;
-    outline: 0 !important;
-    color: $button-text-color;
-    border: 1px solid $primary-color !important;
+    outline: none !important;
   }
 }
 
 .btn-primary {
   &:hover, &:focus {
     background-color: $primary-color-light !important;
-    outline: 0 !important;
+    outline: none !important;
     border: 1px solid $primary-color !important;
   }
 }

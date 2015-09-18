@@ -24,4 +24,14 @@ class ProductCondition extends Model
         return $this->belongsTo('App\Product');
     }
 
+    /**
+     * Check if it has description.
+     *
+     * @return bool
+     */
+    public function hasDescription()
+    {
+        return $this->description && trim($this->description) != '';
+    }
+
 }

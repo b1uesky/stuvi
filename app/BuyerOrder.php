@@ -23,7 +23,7 @@ class BuyerOrder extends Model
         'cancelled_by',
         'subtotal',
         'tax',
-        'fee',
+        'shipping',
         'discount',
         'amount',
         'payment_id',
@@ -36,9 +36,9 @@ class BuyerOrder extends Model
         return Price::convertIntegerToDecimal($this->subtotal);
     }
 
-    public function decimalFee()
+    public function decimalShipping()
     {
-        return Price::convertIntegerToDecimal($this->fee);
+        return Price::convertIntegerToDecimal($this->shipping);
     }
 
     public function decimalTax()

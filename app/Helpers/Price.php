@@ -31,7 +31,7 @@ class Price {
      */
     public static function calculateTax($total)
     {
-        return intval($total * config('tax.MA'));
+        return intval($total * config('sale.tax'));
     }
 
 }

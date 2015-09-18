@@ -228,13 +228,7 @@
                                     <tr>
                                         <td>
                                             {{-- Book image --}}
-                                            @if($item->product->book->imageSet->small_image)
-                                                <img class="img-small"
-                                                     src="{{ config('aws.url.stuvi-book-img') . $item->product->book->imageSet->small_image }}"
-                                                     alt="">
-                                            @else
-                                                <img class="img-small" src="{{ config('book.default_image_path.small') }}" alt="">
-                                            @endif
+                                            <img class="img-responsive" src="{{ $item->product->book->imageSet->getImagePath('small') }}" alt="">
                                         </td>
                                         <td>{{ $item->product->book->title }}</td>
                                         <td>{{ $item->product->book->isbn10 }}</td>
@@ -323,6 +317,6 @@
     <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
     <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
 
-    <script src="{{ asset('libs/card/lib/js/jquery.card.js') }}"></script>
+    {{--<script src="{{ asset('libs/card/lib/js/jquery.card.js') }}"></script>--}}
     <script src="{{ asset('/js/order/buyer/create.js') }}"></script>
 @endsection

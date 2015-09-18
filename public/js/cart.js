@@ -5,7 +5,7 @@
 $(document).ready(function() {
     $('.add-to-cart').submit(function(e) {
         e.preventDefault();
-        var submit_btn = $(this).find('input[type=submit]');
+        var submit_btn = $(this).find('[type=submit]');
 
         $.ajax({
             url: location.protocol + '//' + document.domain + '/cart/add',

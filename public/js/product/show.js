@@ -4,11 +4,11 @@
 
 $(document).ready(function(){
     // slick: https://github.com/kenwheeler/slick/
-    $('.image-slider').slick({
-        autoplay: true,
-        autoplaySpeed: 5000,
-        dots: true
-    });
+    //$('.image-slider').slick({
+    //    autoplay: true,
+    //    autoplaySpeed: 5000,
+    //    dots: true
+    //});
 
     // product delete modal
     $('#delete-product').on('show.bs.modal', function(event) {

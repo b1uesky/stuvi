@@ -63,6 +63,8 @@ $border-radius-large: 2px;
 $border-radius-small: 2px;
 
 //== Buttons
+$btn-default-color: $text-color;
+$btn-default-border: $border-color;
 $btn-primary-border: $brand-primary;
 $btn-info-border: $brand-info;
 $btn-warning-border: $brand-warning;
@@ -80,3 +82,4 @@ $navbar-default-link-color: $text-color;
 //== Breadcrumbs
 $breadcrumb-separator: "/";
 $breadcrumb-bg: $background-color;
+$breadcrumb-padding-vertical: $spacing-unit/2;

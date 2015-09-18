@@ -15,13 +15,8 @@
 
         <div class="row page-content">
             {{-- Left nav--}}
-            <div class="col-sm-3 margin-bottom-5">
-                <ul class="nav nav-pills nav-stacked">
-                    <li role="presentation"><a href="{{ url('user/profile') }}">Profile Settings</a></li>
-                    <li role="presentation"><a href="{{ url('user/account') }}">Account Settings</a></li>
-                    <li role="presentation"><a href="{{ url('user/email') }}">Email Settings</a></li>
-                    <li role="presentation" class="active"><a href="{{ url('user/bookshelf') }}">Bookshelf</a></li>
-                </ul>
+            <div class="col-sm-3">
+                @include('includes.textbook.settings-panel')
             </div>
 
             {{-- Right content --}}
@@ -31,64 +26,25 @@
                         <h3 class="panel-title">Your books for sale</h3>
                     </div>
                     <div class="panel-body">
-                            <table class="table table-default table-no-border">
-                                @foreach ($productsForSale as $product)
-                                    <tr>
-                                        <td class="col-sm-3">
-                                            @if($product->book->imageSet->isManuallyCreated())
-                                                @if($product->book->imageSet->small_image)
-                                                    <a href="{{ url('textbook/buy/product/'.$product->id) }}">
-                                                        <img class="img-responsive img-small" src="{{ config('aws.url.stuvi-book-img') . $product->book->imageSet->small_image }}">
-                                                    </a>
-                                                @else
-                                                    <a href="{{ url('textbook/buy/product/'.$product->id) }}">
-                                                        <img class="img-responsive img-small" src="{{ config('book.default_image_path.small') }}" alt="">
-                                                    </a>
-                                                @endif
-                                            @else
-                                                <a href="{{ url('textbook/buy/product/'.$product->id) }}">
-                                                    <img class="img-responsive img-small" src="{{ $product->book->imageSet->medium_image or config('book.default_image_path.medium') }}">
-                                                </a>
-                                            @endif
-                                        </td>
-                                        <td class="col-sm-6">
-                                            <div class="row">
-                                                <a href="{{ url('textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a>
-                                            </div>
+                        @foreach($productsForSale as $product)
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    @include('includes.textbook.product-details')
+                                </div>
 
-                                            <div class="row">
-                                                @foreach($product->book->authors as $i => $author)
-                                                    @if($i == 0)
-                                                        <span class="for-sale-by">Author(s): </span>
-                                                        <span class="for-sale-author">{{ $author->full_name }}</span>
-                                                    @else
-                                                        <span class="for-sale-author">, {{ $author->full_name }}</span>
-                                                    @endif
-                                                @endforeach
-                                            </div>
+                                <br>
 
-                                            <div class="row">
-                                                <span>ISBN-10: {{ $product->book->isbn10 }}</span>
-                                            </div>
+                                <div class="col-sm-2">
+                                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-primary btn-block">Edit</a>
+                                    <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
+                                            data-target="#delete-product"
+                                            data-product-id="{{ $product->id }}"
+                                            data-book-title="{{ $product->book->title }}">Delete</button>
+                                </div>
+                            </div>
 
-                                            <div class="row">
-                                                <span>ISBN-13: {{ $product->book->isbn13 }}</span>
-                                            </div>
-
-                                            <div class="row">
-                                                <span class="price">${{ $product->decimalPrice() }}</span>
-                                            </div>
-                                        </td>
-                                        <td class="col-sm-3">
-                                            <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-primary btn-block">Edit</a>
-                                            <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
-                                                    data-target="#delete-product"
-                                                    data-product-id="{{ $product->id }}"
-                                                    data-book-title="{{ $product->book->title }}">Delete</button>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </table>
+                            <hr>
+                        @endforeach
                     </div>
                 </div>
             </div>

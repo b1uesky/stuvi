@@ -24,19 +24,19 @@ $(document).ready(function() {
      * A BEAUTIFUL CARD!
      * https://github.com/jessepollak/card
      */
-    $('#form-payment').card({
-        // a selector or DOM element for the container
-        // where you want the card to appear
-        container: '.card-wrapper', // *required*
-        width: 350,
-
-        formSelectors: {
-            numberInput: '#payment-number',
-            nameInput: '#payment-name',
-            expiryInput: '#payment-month, #payment-year',
-            cvcInput: '#payment-cvc'
-        }
-    });
+    //$('#form-payment').card({
+    //    // a selector or DOM element for the container
+    //    // where you want the card to appear
+    //    container: '.card-wrapper', // *required*
+    //    width: 350,
+    //
+    //    formSelectors: {
+    //        numberInput: '#payment-number',
+    //        nameInput: '#payment-name',
+    //        expiryInput: '#payment-month, #payment-year',
+    //        cvcInput: '#payment-cvc'
+    //    }
+    //});
 
     /**
      * Form Validation for credit card

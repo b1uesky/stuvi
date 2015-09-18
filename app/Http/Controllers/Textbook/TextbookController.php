@@ -76,7 +76,7 @@ class TextbookController extends Controller
         if ($isbn_validator->validation->isbn($isbn) == false)
         {
             return redirect()->back()
-                ->withMessage('Please enter a valid 10 or 13 digit ISBN number.');
+                ->withError('Please enter a valid 10 or 13 digit ISBN number.');
         }
 
         // database lookup
