@@ -10,8 +10,8 @@ return [
     'conditions' => [
 
         'general_condition'         =>  [
-            'title' =>  'General Condition',
-            0       =>  'Brand New',
+            'title' =>  'General condition',
+            0       =>  'Brand new',
             1       =>  'Excellent',
             2       =>  'Good',
             3       =>  'Acceptable',
@@ -28,30 +28,26 @@ return [
             0 => '0 - 5 pages',
             1 => '6 - 15 pages',
             2 => '> 15 pages',
-            'description' => 'Please select the approximate number of pages that contain highlighted/underlined material or notes.',
-            'description_show' => 'The approximate number of pages that contain highlighted/underlined material or notes.'
+            'description' => 'The approximate number of pages that contain highlighted/underlined material or notes.',
         ],
 
         'damaged_pages'             =>  [
-            'title' =>  'Damaged Pages',
+            'title' =>  'Damaged pages',
             0       =>  '0',
-            1 => '1 - 3 pages',
+            1       => '1 - 3 pages',
             2       =>  '> 3 pages',
-            'description' => 'Please select the approximate number of damaged pages. This includes folded pages, partially torn pages, and water damage.',
-            'description_show' => 'The approximate number of damaged pages. This includes folded pages, partially torn pages, and water damage.'
+            'description' => 'The approximate number of damaged pages. This includes folded pages, partially torn pages, and water damage.',
         ],
 
         'broken_binding'            =>  [
-            'title' =>  'Broken Book Binding',
+            'title' =>  'Broken binding',
             0       =>  'No',
             1       =>  'Yes',
-            'description' => 'Please select "Yes" if the binding is severely damaged or completely broken. Please note that the buyer will be warned about this book\'s poor condition and will likely not be willing to pay full price for this book.',
-            'description_show' => '"Yes" means that the books\'s binding is severely damaged or completely broken. This book will be in poor condition but can be bought at a low price.'
-
+            'description' => 'The book binding is severely damaged or not.',
         ],
 
         'description'               =>  [
-            'title' =>  'Description',
+            'title' =>  'Additional description',
             'placeholder'   =>  '(Optional) More description on your book conditions.'
         ],
     ],

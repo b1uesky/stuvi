@@ -33,7 +33,7 @@
 
         {{-- price --}}
         <div class="row padding-bottom-5">
-            <span class="text-bold price">
+            <span class="price">
                 ${{ $product->decimalPrice() }}
             </span>
         </div>

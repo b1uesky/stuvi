@@ -50,18 +50,18 @@
 
                 <tbody>
                 <tr>
-                    <td class="col-xs-6">Price</td>
-                    <td class="col-xs-6 price">${{ $product->decimalPrice() }}</td>
+                    <td class="col-sm-6 col-xs-8">Price</td>
+                    <td class="col-sm-6 col-xs-4 price">${{ $product->decimalPrice() }}</td>
                 </tr>
 
                 <!-- General Condition -->
                 <tr>
-                    <td class="col-xs-4">
+                    <td>
                         {{ Config::get('product.conditions.general_condition.title') }}
                         <i class="fa fa-question-circle" data-toggle="modal" data-target=".condition-modal"></i>
                     </td>
 
-                    <td class="col-xs-8">{{ Config::get('product.conditions.general_condition')[$product->condition->general_condition] }}</td>
+                    <td>{{ Config::get('product.conditions.general_condition')[$product->condition->general_condition] }}</td>
                 </tr>
                 <!-- Highlights / Notes -->
                 <tr>
@@ -91,7 +91,7 @@
                 <!-- Seller Description -->
                 @if($product->condition->hasDescription())
                     <tr>
-                        <td>Seller's Description</td>
+                        <td>{{ Config::get('product.conditions.description.title') }}</td>
                         <td>
                             {{ $product->condition->description }}
                         </td>

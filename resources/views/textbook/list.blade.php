@@ -36,7 +36,7 @@
 
     @if (!empty($books))
         <div id="pagination">
-            {!! $books->appends(Request::only('query'))->render() !!}
+            {!! $books->appends(Request::only('query', 'university_id'))->render() !!}
         </div>
     @endif
 
