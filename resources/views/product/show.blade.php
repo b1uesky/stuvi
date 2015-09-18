@@ -118,7 +118,7 @@
                     @else
                         <form method="post" class="add-to-cart">
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <input class="btn btn-primary btn-block add-cart-btn" type="submit" value="Add to cart">
+                            <button class="btn btn-primary btn-block add-cart-btn" type="submit">Add to cart</button>
                         </form>
                     @endif
                 @else

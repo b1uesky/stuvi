@@ -29,59 +29,7 @@
             <h1>{{ $book->title }}</h1>
         </div>
 
-
-        {{-- Book info --}}
-        <div class="row">
-
-            {{-- Image --}}
-            <div class="col-xs-4 col-sm-3 col-md-2">
-                <img class="img-responsive" src="{{ $book->imageSet->getImagePath('medium') }}">
-            </div>
-
-            {{-- Details --}}
-            <div class="col-xs-8 col-sm-9 col-md-10">
-                <div class="va-container va-container-h va-container-v">
-                    <div class="va-top">
-                        <table class="table table-book-details">
-                            <tr>
-                                <th class="col-xs-6 col-sm-3 col-md-2">
-                                    @if(count($book->authors) > 1)
-                                        Authors
-                                    @else
-                                        Author
-                                    @endif
-                                </th>
-                                <td class="col-xs-6 col-sm-9 col-md-10">
-                                    @foreach($book->authors as $index => $author)
-                                        @if($index == 0)
-                                            <span class="author">{{ $author->full_name }}</span>
-                                        @else
-                                            <span class="author">, {{ $author->full_name }}</span>
-                                        @endif
-                                    @endforeach
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>ISBN-10</th>
-                                <td>{{ $book->isbn10 }}</td>
-                            </tr>
-
-                            <tr>
-                                <th>ISBN-13</th>
-                                <td>{{ $book->isbn13 }}</td>
-                            </tr>
-
-                            <tr>
-                                <th>Number of pages</th>
-                                <td>{{ $book->num_pages }}</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+        @include('includes.textbook.book-details')
 
         <br/>
 
