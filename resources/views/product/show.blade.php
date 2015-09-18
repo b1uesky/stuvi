@@ -22,8 +22,20 @@
         <div class="row">
             <ol class="breadcrumb">
                 <li><a href="{{ url('textbook/buy') }}">Home</a></li>
-                <li><a href="{{ url('textbook/buy/search?query=' . $query) }}">Search results</a></li>
-                <li><a href="{{ url('textbook/buy/' . $product->book->id . '?query=' . $query) }}">{{ $product->book->title }}</a></li>
+                <li>
+                    @if(Auth::check())
+                        <a href="{{ url('textbook/buy/search?query=' . $query) }}">Search results</a>
+                    @else
+                        <a href="{{ url('textbook/buy/search?query=' . $query . '&university_id=' . $university_id) }}">Search results</a>
+                    @endif
+                </li>
+                <li>
+                    @if(Auth::check())
+                        <a href="{{ url('textbook/buy/' . $product->book->id . '?query=' . $query) }}">{{ $product->book->title }}</a>
+                    @else
+                        <a href="{{ url('textbook/buy/' . $product->book->id . '?query=' . $query . '&university_id=' . $university_id) }}">{{ $product->book->title }}</a>
+                    @endif
+                </li>
                 <li class="active">Details</li>
             </ol>
         </div>
@@ -142,6 +154,9 @@
 @include('includes.modal.product-conditions')
 
 @section('javascript')
+    <script src="{{ asset('js/navbar.js') }}"></script>
+    <script src="{{ asset('libs/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/autocomplete.js')}} "></script>
     <script src="{{ asset('js/product/show.js') }}"></script>
     <script src="{{ asset('js/cart.js') }}"></script>
     <script src="{{ asset('libs/zoom.js/js/zoom.js') }}"></script>
