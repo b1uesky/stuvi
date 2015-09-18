@@ -32,7 +32,16 @@
 }
 
 .container-flex {
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+
   display: flex;
+  flex-direction: row;
+
+  div {
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+  }
 }
 
 .item-flex-grow-1 {

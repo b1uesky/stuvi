@@ -34,47 +34,18 @@
             <h1>{{ $book->title }}</h1>
         </div>
 
-        <div class="row">
-            <div class="col-md-10 margin-bottom-15">
+        <div class="row container-flex">
                 @forelse($product->images as $index => $image)
-                    <img class="img-rounded inline-block margin-right-5 width-25-percent" src="{{ $image->getImagePath('large') }}" data-action="zoom">
+                    <div class="margin-5">
+                        <img class="img-rounded full-width" src="{{ $image->getImagePath('large') }}" data-action="zoom">
+                    </div>
                 @empty
                     <h3>No images were provided.</h3>
                 @endforelse
-            </div>
-
-            <div class="col-md-2">
-                @if(Auth::check())
-                    @if($product->isDeleted())
-                        <a class="btn btn-default btn-block disabled" href="#" role="button">Archived</a>
-                    @elseif($product->sold)
-                        <a class="btn btn-default btn-block disabled" href="#" role="button">Sold</a>
-                    @elseif($product->isInCart(Auth::user()->id))
-                        <a class="btn btn-primary btn-block add-cart-btn disabled" href="#" role="button">Added
-                            To Cart</a>
-                    @elseif(!$product->isSold() && $product->seller == Auth::user())
-                        <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}"
-                           class="btn btn-primary btn-block">Edit</a>
-
-                        <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
-                                data-target="#delete-product"
-                                data-product-id="{{ $product->id }}"
-                                data-book-title="{{ $product->book->title }}">Delete</button>
-                    @else
-                        <form method="post" class="add-to-cart">
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <input class="btn btn-primary btn-block add-cart-btn" type="submit" value="Add to cart">
-                        </form>
-                    @endif
-                @else
-                    <span>
-                    Please <a data-toggle="modal" href="#login-modal">Login</a> or <a
-                                data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.
-                </span>
-                @endif
-            </div>
 
         </div>
+
+        <br>
 
         <div class="row">
             <!-- product conditions -->
@@ -133,64 +104,34 @@
             </table>
         </div>
 
-        <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    {{-- Book info --}}
-                    <div class="row">
+        <div class="row text-right">
+            @if(Auth::check())
+                @if($product->isInCart(Auth::user()->id))
+                    <a class="btn btn-primary add-cart-btn disabled" href="#" role="button">Added
+                        To Cart</a>
+                @elseif(!$product->isSold() && $product->seller == Auth::user())
+                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}"
+                       class="btn btn-primary">Edit</a>
 
-                        {{-- Image --}}
-                        <div class="col-md-3">
-                            @if($book->imageSet->small_image)
-                                <img class="img-responsive"
-                                     src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->small_image }}">
-                            @else
-                                <img class="img-responsive" src="{{ config('book.default_image_path.small') }}">
-                            @endif
-                        </div>
-
-                        {{-- Details --}}
-                        <div class="col-md-9">
-                            <table class="table-book-details">
-                                <tr>
-                                    <th>
-                                        @if(count($book->authors) > 1)
-                                            Authors
-                                        @else
-                                            Author
-                                        @endif
-                                    </th>
-                                    <td>
-                                        @foreach($book->authors as $index => $author)
-                                            @if($index == 0)
-                                                <span class="author">{{ $author->full_name }}</span>
-                                            @else
-                                                <span class="author">, {{ $author->full_name }}</span>
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th>ISBN-10</th>
-                                    <td>{{ $book->isbn10 }}</td>
-                                </tr>
-
-                                <tr>
-                                    <th>ISBN-13</th>
-                                    <td>{{ $book->isbn13 }}</td>
-                                </tr>
-
-                                <tr>
-                                    <th>Number of pages</th>
-                                    <td>{{ $book->num_pages }}</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                            data-target="#delete-product"
+                            data-product-id="{{ $product->id }}"
+                            data-book-title="{{ $product->book->title }}">Delete</button>
+                @else
+                    <form method="post" class="add-to-cart">
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <input class="btn btn-primary add-cart-btn" type="submit" value="Add to cart">
+                    </form>
+                @endif
+            @else
+                <span>
+                    Please <a data-toggle="modal" href="#login-modal">Login</a> or <a
+                            data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.
+                </span>
+            @endif
         </div>
+
+        <br>
 
     </div>
 
