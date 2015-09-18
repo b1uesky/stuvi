@@ -6,7 +6,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                 <div class="page-header">
                     <h1>Contact us</h1>
                 </div>
