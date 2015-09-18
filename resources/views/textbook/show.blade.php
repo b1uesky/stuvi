@@ -20,7 +20,15 @@
         <div class="row">
             <ol class="breadcrumb">
                 <li><a href="{{ url('textbook/buy') }}">Home</a></li>
-                <li><a href="{{ url('textbook/buy/search?query=' . $query) }}">Search results</a></li>
+
+                <li>
+                    @if(Auth::check())
+                        <a href="{{ url('textbook/buy/search?query=' . $query) }}">Search results</a>
+                    @else
+                        <a href="{{ url('textbook/buy/search?query=' . $query . '&university_id=' . $university_id) }}">Search results</a>
+                    @endif
+                </li>
+
                 <li class="active">{{ $book->title }}</li>
             </ol>
         </div>
@@ -66,7 +74,11 @@
                                 @endforeach
                             </td>
                             <td>
-                                <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}">View details</a>
+                                @if(Auth::check())
+                                    <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}">View details</a>
+                                @else
+                                    <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query.'&university_id='.$university_id) }}">View details</a>
+                                @endif
                             </td>
 
                         </tr>
@@ -79,7 +91,7 @@
         </div>
 
         <div class="row">
-            <div class="col-xs-12 text-right">
+            <div class="col-xs-12 text-center">
                 {{-- if the user is not logged in --}}
                 @if(Auth::guest())
                     @if(count($book->availableProducts()) > 0)

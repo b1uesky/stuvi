@@ -134,7 +134,8 @@ class ProductController extends Controller
     {
         return view('product.show')
             ->withProduct($product)
-            ->withQuery(Input::get('query'));
+            ->withQuery(Input::get('query'))
+            ->with('university_id', Input::get('university_id'));
     }
 
     /**

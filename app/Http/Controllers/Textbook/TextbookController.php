@@ -41,7 +41,8 @@ class TextbookController extends Controller
     {
         return view("textbook.show")
             ->with('book', $book)
-            ->with('query', Input::get('query'));
+            ->with('query', Input::get('query'))
+            ->with('university_id', Input::get('university_id'));
     }
 
     /***************************************************/
