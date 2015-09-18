@@ -15,13 +15,8 @@
 
         <div class="row page-content">
             {{-- Left nav--}}
-            <div class="col-sm-3 margin-bottom-5">
-                <ul class="nav nav-pills nav-stacked">
-                    <li role="presentation"><a href="{{ url('user/profile') }}">Profile Settings</a></li>
-                    <li role="presentation"><a href="{{ url('user/account') }}">Account Settings</a></li>
-                    <li role="presentation"><a href="{{ url('user/email') }}">Email Settings</a></li>
-                    <li role="presentation" class="active"><a href="{{ url('user/bookshelf') }}">Bookshelf</a></li>
-                </ul>
+            <div class="col-sm-3">
+                @include('includes.textbook.settings-panel')
             </div>
 
             {{-- Right content --}}
