@@ -5,7 +5,7 @@
 @section('title', 'Your Cart')
 
 
-    @section('content')
+@section('content')
 
     <div class="container">
 
@@ -26,48 +26,47 @@
                     </ol>
                 </nav>
             </div>
-        @endif
 
-        <div class="row">
-            @if(count($items) > 0)
+            <div class="row">
                 {{-- Cart items --}}
                 <div class="col-md-9">
-                    <table class="table table-responsive table-default">
-                        <thead>
-                        <tr>
-                            <th>Book</th>
-                            <th></th>
-                            <th>ISBN</th>
-                            <th>Price</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        @foreach($items as $item)
-                            <tr value="{{ $item->product_id }}">
-                                {{-- Book --}}
-                                <td>
-                                    {{--Book image --}}
-                                    <img class="img-responsive" src="{{ $item->product->book->imageSet->getImagePath('small') }}">
-                                </td>
-                                <td>
-                                    {{-- Book title --}}
-                                    <a href="{{ url('textbook/buy/product/'.$item->product->id) }}">{{ $item->product->book->title }}</a>
-                                </td>
-                                {{-- ISBN --}}
-                                <td>{{ $item->product->book->isbn10 }}</td>
-                                {{-- Price --}}
-                                <td>${{ $item->product->decimalPrice()}}</td>
-                                {{-- Remove --}}
-                                <td>
-                                    <button type="button" class="close remove-cart-item" aria-label="Close"><span
-                                                aria-hidden="true">&times;</span></button>
-                                </td>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Book</th>
+                                <th></th>
+                                <th class="hidden-xs">ISBN</th>
+                                <th>Price</th>
+                                <th></th>
                             </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+
+                            @foreach($items as $item)
+                                <tr value="{{ $item->product_id }}">
+                                    {{-- Book --}}
+                                    <td>
+                                        {{--Book image --}}
+                                        <img class="img-responsive"
+                                             src="{{ $item->product->book->imageSet->getImagePath('small') }}">
+                                    </td>
+                                    <td>
+                                        {{-- Book title --}}
+                                        <a href="{{ url('textbook/buy/product/'.$item->product->id) }}">{{ $item->product->book->title }}</a>
+                                    </td>
+                                    {{-- ISBN --}}
+                                    <td class="hidden-xs">{{ $item->product->book->isbn10 }}</td>
+                                    {{-- Price --}}
+                                    <td>${{ $item->product->decimalPrice()}}</td>
+                                    {{-- Remove --}}
+                                    <td>
+                                        <button type="button" class="close remove-cart-item" aria-label="Close"><span
+                                                    aria-hidden="true">&times;</span></button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                 </div>
 
                 {{-- Subtotal --}}
@@ -96,12 +95,13 @@
                         </div>
                     </div>
                 </div>
-            @else
-                <div class="cart-empty text-center text-muted">
-                    <h2>Your shopping cart is empty.</h2>
-                </div>
-            @endif
-        </div>
+            </div>
+        @else
+            <div class="cart-empty text-center text-muted">
+                <h2>Your shopping cart is empty.</h2>
+            </div>
+        @endif
+
     </div>
 
 
