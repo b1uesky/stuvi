@@ -49,3 +49,10 @@ a {
   padding: 0;
   margin: 0 0 $spacing-unit/2 0;
 }
+
+// order/seller/{id}/schedulePickup
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover
+{
+  background-color: $primary-color !important;
+}

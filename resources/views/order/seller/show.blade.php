@@ -75,33 +75,7 @@
                             <div class="row">
                                 <?php $product = $seller_order->product;?>
 
-                                {{-- book image --}}
-                                <div class="col-md-2">
-                                    <a href="{{ url('/textbook/buy/product/'.$product->id) }}">
-                                        <img class="img-responsive" src="{{ $product->book->imageSet->getImagePath('small') }}">
-                                    </a>
-                                </div>
-
-                                {{-- book details --}}
-                                <div class="col-md-10 book-details-row">
-                                    <div class="row">
-                                                <span>
-                                                    <a href="{{ url('/textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a>
-                                                </span>
-                                    </div>
-
-                                    <div class="row">
-                                        <span>ISBN-10: {{ $product->book->isbn10 }}</span>
-                                    </div>
-
-                                    <div class="row">
-                                        <span>ISBN-13: {{ $product->book->isbn13 }}</span>
-                                    </div>
-
-                                    <div class="row">
-                                        <span class="price">${{ $product->decimalPrice() }}</span>
-                                    </div>
-                                </div>
+                                @include('includes.textbook.product-details')
                             </div>
                         </div>
 
