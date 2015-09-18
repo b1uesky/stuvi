@@ -94,13 +94,13 @@
         <div class="row">
 
             @if(count($book->availableProducts()) > 0)
-                <div class="table-responsive">
+
                     <table class="table">
                         <thead>
                         <tr class="active">
                             <th class="col-xs-2">Price</th>
                             <th class="col-xs-2">Condition</th>
-                            <th class="col-xs-6">Images</th>
+                            <th class="col-xs-6 hidden-xs">Images</th>
                             <th class="col-xs-2">Details</th>
                         </tr>
                         </thead>
@@ -112,7 +112,7 @@
                                 <td>
                                     {{ $product->general_condition() }}
                                 </td>
-                                <td class="container-flex">
+                                <td class="container-flex hidden-xs">
                                     @foreach($product->images as $image)
                                         <div>
                                             <img class="img-rounded img-small margin-5 full-width"
@@ -131,7 +131,6 @@
                         @endforeach
 
                     </table>
-                </div>
             @else
                 <h4 class="text-center">Sorry, this book is not available for now.</h4>
             @endif
