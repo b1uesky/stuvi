@@ -28,6 +28,12 @@ class ProductImage extends Model {
         return substr($this->small_image, 0, 4) == 'http';
     }
 
+    /**
+     * Get an image path with specific size.
+     *
+     * @param $size
+     * @return mixed|string
+     */
     public function getImagePath($size)
     {
         switch ($size)

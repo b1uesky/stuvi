@@ -35,21 +35,9 @@
                                 @foreach ($productsForSale as $product)
                                     <tr>
                                         <td class="col-sm-3">
-                                            @if($product->book->imageSet->isManuallyCreated())
-                                                @if($product->book->imageSet->small_image)
-                                                    <a href="{{ url('textbook/buy/product/'.$product->id) }}">
-                                                        <img class="img-responsive img-small" src="{{ config('aws.url.stuvi-book-img') . $product->book->imageSet->small_image }}">
-                                                    </a>
-                                                @else
-                                                    <a href="{{ url('textbook/buy/product/'.$product->id) }}">
-                                                        <img class="img-responsive img-small" src="{{ config('book.default_image_path.small') }}" alt="">
-                                                    </a>
-                                                @endif
-                                            @else
-                                                <a href="{{ url('textbook/buy/product/'.$product->id) }}">
-                                                    <img class="img-responsive img-small" src="{{ $product->book->imageSet->medium_image or config('book.default_image_path.medium') }}">
-                                                </a>
-                                            @endif
+                                            <a href="{{ url('textbook/buy/product/'.$product->id) }}">
+                                                <img class="img-responsive" src="{{ $product->book->imageSet->getImagePath('small') }}">
+                                            </a>
                                         </td>
                                         <td class="col-sm-6">
                                             <div class="row">

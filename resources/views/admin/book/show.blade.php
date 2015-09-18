@@ -14,15 +14,7 @@
         <tr>
             <th>Cover</th>
             <td>
-                @if($book->imageSet->small_image)
-                    <a href="{{ config('aws.url.stuvi-book-img') . $book->imageSet->large_image }}">
-                        <img class="admin-img-preview" alt="" src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->small_image }}">
-                    </a>
-                @else
-                    <a href="{{ config('book.default_image_path.large')}}">
-                        <img class="admin-img-preview" alt="" src="{{ config('book.default_image_path.small') }}">
-                    </a>
-                @endif
+                <img class="img-responsive" src="{{ $book->imageSet->getImagePath('small') }}">
             </td>
         </tr>
         <tr>
@@ -53,10 +45,10 @@
             <th>Language</th>
             <td>{{ $book->language }}</td>
         </tr>
-        <tr>
-            <th>List Price</th>
-            <td>$ {{ $book->list_price }}</td>
-        </tr>
+        {{--<tr>--}}
+            {{--<th>List Price</th>--}}
+            {{--<td>$ {{ $book->list_price }}</td>--}}
+        {{--</tr>--}}
         <tr>
             <th>Highest Price</th>
             <td>$ {{ \App\Helpers\Price::convertIntegerToDecimal($book->highest_price) }}</td>
@@ -95,15 +87,9 @@
                 <td><a href="{{ url('/admin/user/'.$product->seller->id) }}">{{ $product->seller->first_name }} {{ $product->seller->last_name }}</a></td>
                 <td>
                     @foreach($product->images as $product_image)
-                        @if($product_image->isTestImage())
-                            <a href="{{ $product_image->large_image }}" target="_blank">
-                                <img src="{{ $product_image->small_image }}" class="admin-img-preview" alt=""/>
-                            </a>
-                        @else
-                            <a href="{{ Config::get('aws.url.stuvi-product-img') . $product_image->large_image }}" target="_blank">
-                                <img src="{{ Config::get('aws.url.stuvi-product-img') . $product_image->small_image }}" class="admin-img-preview" alt=""/>
-                            </a>
-                        @endif
+                        <a href="{{ $product_image->large_image }}" target="_blank">
+                            <img src="{{ $product_image->getImagePath('small') }}"/>
+                        </a>
                     @endforeach
                 </td>
                 <td>{{ $product->isSold2() }}</td>
@@ -118,7 +104,7 @@
 
                     <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
                     <div class="btn-group-vertical" role="group">
-                        <a class="btn btn-info" role="button" href="{{ URL::to('admin/product/' . $product->id) }}">Details</a>
+                        <a class="btn btn-default" role="button" href="{{ URL::to('admin/product/' . $product->id) }}">Details</a>
                         @if(!$product->verified)
                             <a class="btn btn-success" role="button"
                                href="{{ URL::to('admin/product/' . $product->id . '/approve') }}">Approve</a>

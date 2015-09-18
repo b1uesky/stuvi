@@ -48,14 +48,8 @@
                             <tr value="{{ $item->product_id }}">
                                 {{-- Book --}}
                                 <td>
-                                     {{--Book image --}}
-                                    @if($item->product->book->imageSet->small_image)
-                                        <img class="img-small"
-                                             src="{{ config('aws.url.stuvi-book-img') . $item->product->book->imageSet->small_image }}"
-                                             alt="">
-                                    @else
-                                        <img class="img-small" src="{{ config('book.default_image_path.small') }}" alt="">
-                                    @endif
+                                    {{--Book image --}}
+                                    <img class="img-responsive" src="{{ $item->product->book->imageSet->getImagePath('small') }}">
                                 </td>
                                 <td>
                                     {{-- Book title --}}

@@ -78,13 +78,7 @@
                                 {{-- book image --}}
                                 <div class="col-md-2">
                                     <a href="{{ url('/textbook/buy/product/'.$product->id) }}">
-                                        @if($product->book->imageSet->small_image)
-                                            <img class="img-responsive img-small"
-                                                 src="{{ config('aws.url.stuvi-book-img') . $product->book->imageSet->small_image}}">
-                                        @else
-                                            <img class="img-responsive img-small"
-                                                 src="{{ config('book.default_image_path.large') }}">
-                                        @endif
+                                        <img class="img-responsive" src="{{ $product->book->imageSet->getImagePath('small') }}">
                                     </a>
                                 </div>
 

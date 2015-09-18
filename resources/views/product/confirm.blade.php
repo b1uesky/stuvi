@@ -22,13 +22,8 @@
 
                     <div class="row">
                         <div class="col-xs-4">
-                            @if($book->imageSet->medium_image)
-                                <img class="img-responsive"
-                                     src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->medium_image }}">
-                            @else
-                                <img class="img-responsive"
-                                     src="{{ config('book.default_image_path.medium') }}"/>
-                            @endif
+                            <img class="img-responsive" src="{{ $book->imageSet->getImagePath('small') }}"/>
+
                         </div>
 
                         <div class="col-xs-8">

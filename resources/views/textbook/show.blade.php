@@ -35,12 +35,7 @@
 
             {{-- Image --}}
             <div class="col-xs-4 col-sm-3 col-md-2">
-                @if($book->imageSet->medium_image)
-                    <img class="img-responsive"
-                         src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->medium_image }}">
-                @else
-                    <img class="img-responsive" src="{{ config('book.default_image_path.medium') }}">
-                @endif
+                <img class="img-responsive" src="{{ $book->imageSet->getImagePath('medium') }}">
             </div>
 
             {{-- Details --}}
@@ -92,52 +87,51 @@
 
         {{-- Product list --}}
         <div class="row">
-
             @if(count($book->availableProducts()) > 0)
 
-                    <table class="table">
-                        <thead>
-                        <tr class="active">
-                            <th class="col-xs-2">Price</th>
-                            <th class="col-xs-2">Condition</th>
-                            <th class="col-xs-6 hidden-xs">Images</th>
-                            <th class="col-xs-2">Details</th>
+                <table class="table">
+                    <thead>
+                    <tr class="active">
+                        <th class="col-xs-2">Price</th>
+                        <th class="col-xs-2">Condition</th>
+                        <th class="col-xs-6 hidden-xs">Images</th>
+                        <th class="col-xs-2">Details</th>
+                    </tr>
+                    </thead>
+                    @foreach($book->availableProducts() as $product)
+                        <tr>
+                            <td class="price">
+                                ${{ $product->decimalPrice() }}
+                            </td>
+                            <td>
+                                {{ $product->general_condition() }}
+                            </td>
+                            <td class="container-flex hidden-xs">
+                                @foreach($product->images as $image)
+                                    <div>
+                                        <img class="img-rounded img-small margin-5 full-width"
+                                             src="{{ config('image.lazyload') }}"
+                                             data-action="zoom"
+                                             data-src="{{ $image->getImagePath('large') }}"
+                                             onload="lzld(this)">
+                                    </div>
+                                @endforeach
+                            </td>
+                            <td>
+                                <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}">View Details</a>
+                            </td>
+
                         </tr>
-                        </thead>
-                        @foreach($book->availableProducts() as $product)
-                            <tr>
-                                <td class="price">
-                                    ${{ $product->decimalPrice() }}
-                                </td>
-                                <td>
-                                    {{ $product->general_condition() }}
-                                </td>
-                                <td class="container-flex hidden-xs">
-                                    @foreach($product->images as $image)
-                                        <div>
-                                            <img class="img-rounded img-small margin-5 full-width"
-                                                 src="{{ config('image.lazyload') }}"
-                                                 data-action="zoom"
-                                                 data-src="{{ $image->getImagePath('large') }}"
-                                                 onload="lzld(this)">
-                                        </div>
-                                    @endforeach
-                                </td>
-                                <td>
-                                    <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}">View Details</a>
-                                </td>
+                    @endforeach
 
-                            </tr>
-                        @endforeach
-
-                    </table>
+                </table>
             @else
                 <h4 class="text-center">Sorry, this book is not available for now.</h4>
             @endif
         </div>
 
         <div class="row">
-            <div class="text-left">
+            <div class="col-xs-12 text-right">
                 {{-- if the user is not logged in --}}
                 @if(Auth::guest())
                     @if(count($book->availableProducts()) > 0)
