@@ -43,7 +43,7 @@
                         <th class="col-xs-2">Price</th>
                         <th class="col-xs-2">Condition</th>
                         <th class="col-xs-6 hidden-xs">Images</th>
-                        <th class="col-xs-2">Details</th>
+                        <th class="col-xs-2"></th>
                     </tr>
                     </thead>
                     @foreach($book->availableProducts() as $product)
@@ -66,7 +66,7 @@
                                 @endforeach
                             </td>
                             <td>
-                                <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}">View Details</a>
+                                <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}">View details</a>
                             </td>
 
                         </tr>
