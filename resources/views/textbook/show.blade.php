@@ -94,51 +94,57 @@
         <div class="row">
 
             @if(count($book->availableProducts()) > 0)
-                <table class="table">
-                    <thead>
-                    <tr class="active">
-                        <th class="col-xs-2">Price</th>
-                        <th class="col-xs-2">Condition</th>
-                        <th class="col-xs-6">Images</th>
-                        <th class="col-xs-2">Details</th>
-                    </tr>
-                    </thead>
-                    @foreach($book->availableProducts() as $product)
-                        <tr>
-                            <td class="price">
-                                ${{ $product->decimalPrice() }}
-                            </td>
-                            <td>
-                                {{ $product->general_condition() }}
-                            </td>
-                            <td>
-                                @foreach($product->images as $image)
-                                    <img class="img-rounded img-small margin-right-5"
-                                         src="{{ config('image.lazyload') }}"
-                                         data-action="zoom"
-                                         data-src="{{ $image->getImagePath('large') }}"
-                                         onload="lzld(this)">
-                                @endforeach
-                            </td>
-                            <td>
-                                <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}">View Details</a>
-                            </td>
-
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr class="active">
+                            <th class="col-xs-2">Price</th>
+                            <th class="col-xs-2">Condition</th>
+                            <th class="col-xs-6">Images</th>
+                            <th class="col-xs-2">Details</th>
                         </tr>
-                    @endforeach
+                        </thead>
+                        @foreach($book->availableProducts() as $product)
+                            <tr>
+                                <td class="price">
+                                    ${{ $product->decimalPrice() }}
+                                </td>
+                                <td>
+                                    {{ $product->general_condition() }}
+                                </td>
+                                <td class="container-flex">
+                                    @foreach($product->images as $image)
+                                        <div>
+                                            <img class="img-rounded img-small margin-5 full-width"
+                                                 src="{{ config('image.lazyload') }}"
+                                                 data-action="zoom"
+                                                 data-src="{{ $image->getImagePath('large') }}"
+                                                 onload="lzld(this)">
+                                        </div>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}">View Details</a>
+                                </td>
 
-                </table>
+                            </tr>
+                        @endforeach
+
+                    </table>
+                </div>
             @else
                 <h4 class="text-center">Sorry, this book is not available for now.</h4>
             @endif
+        </div>
 
+        <div class="row">
             <div class="text-left">
                 {{-- if the user is not logged in --}}
                 @if(Auth::guest())
                     @if(count($book->availableProducts()) > 0)
                         <p>
                             Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal"
-                                                                                             href="#signup-modal">Sign
+                                                                                              href="#signup-modal">Sign
                                 up</a> to buy or sell a textbook.
                         </p>
                     @endif
