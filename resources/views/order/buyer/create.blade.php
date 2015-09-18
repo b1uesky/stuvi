@@ -213,41 +213,34 @@
                     <div class="row">
                         <h3>Review items</h3>
 
-                        <div class="table-responsive">
-                            <table class="table table-no-border table-default">
-                                <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Title</th>
-                                    <th>ISBN-10</th>
-                                    <th>Price</th>
-                                </tr>
-                                </thead>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Book</th>
+                                <th></th>
+                                <th class="hidden-xs">ISBN-10</th>
+                                <th>Price</th>
+                            </tr>
+                            </thead>
 
-                                @forelse ($items as $item)
-                                    <tr>
-                                        <td>
-                                            {{-- Book image --}}
-                                            @if($item->product->book->imageSet->small_image)
-                                                <img class="img-small"
-                                                     src="{{ config('aws.url.stuvi-book-img') . $item->product->book->imageSet->small_image }}"
-                                                     alt="">
-                                            @else
-                                                <img class="img-small" src="{{ config('book.default_image_path.small') }}" alt="">
-                                            @endif
-                                        </td>
-                                        <td>{{ $item->product->book->title }}</td>
-                                        <td>{{ $item->product->book->isbn10 }}</td>
-                                        <td>${{ $item->product->decimalPrice() }}</td>
-                                        @if ($item->product->sold)
-                                            <p>Warning: This product has been sold.</p>
-                                        @endif
-                                    </tr>
-                                @empty
-                                    <p>You don't have any products in shopping cart.</p>
-                                @endforelse
-                            </table>
-                        </div>
+                            @forelse ($items as $item)
+                                <tr>
+                                    <td>
+                                        {{-- Book image --}}
+                                        <img class="img-responsive" src="{{ $item->product->book->imageSet->getImagePath('small') }}" alt="">
+                                    </td>
+                                    <td>{{ $item->product->book->title }}</td>
+                                    <td class="hidden-xs">{{ $item->product->book->isbn10 }}</td>
+                                    <td>${{ $item->product->decimalPrice() }}</td>
+                                    @if ($item->product->sold)
+                                        <p>Warning: This product has been sold.</p>
+                                    @endif
+                                </tr>
+                            @empty
+                                <p>You don't have any products in shopping cart.</p>
+                            @endforelse
+                        </table>
+
 
 
                     </div>
@@ -303,9 +296,6 @@
                                     <input type="hidden" name="selected_address_id">
                                     <input type="submit" class="btn btn-primary disabled" value="Place your order">
                                 @endif
-
-
-
                             </form>
 
                         </div>
@@ -323,6 +313,6 @@
     <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
     <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
 
-    <script src="{{ asset('libs/card/lib/js/jquery.card.js') }}"></script>
+    {{--<script src="{{ asset('libs/card/lib/js/jquery.card.js') }}"></script>--}}
     <script src="{{ asset('/js/order/buyer/create.js') }}"></script>
 @endsection

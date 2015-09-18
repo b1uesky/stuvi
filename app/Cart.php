@@ -140,7 +140,7 @@ class Cart extends Model
      */
     public function tax()
     {
-        return intval(($this->subtotal()+$this->fee()-$this->discount()) * config('tax.MA'));
+        return intval(($this->subtotal()+$this->shipping()-$this->discount()) * config('sale.tax'));
     }
 
     /**
@@ -149,9 +149,9 @@ class Cart extends Model
      *
      * @return int
      */
-    public function fee()
+    public function shipping()
     {
-        return config('fee.service_fee');
+        return config('sale.shipping');
     }
 
     /**
@@ -161,7 +161,7 @@ class Cart extends Model
      */
     public function discount()
     {
-        return config('discount');
+        return config('sale.discount');
     }
 
     /**
@@ -171,7 +171,7 @@ class Cart extends Model
      */
     public function total()
     {
-        return $this->subtotal() + $this->fee() - $this->discount() + $this->tax();
+        return $this->subtotal() + $this->shipping() - $this->discount() + $this->tax();
     }
 
     /**

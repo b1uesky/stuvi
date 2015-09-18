@@ -73,7 +73,7 @@ class BuyerOrderController extends Controller
 
         return view('order.buyer.create')
                 ->with('subtotal', Price::convertIntegerToDecimal($this->cart->subtotal()))
-                ->with('shipping', Price::convertIntegerToDecimal($this->cart->fee()))
+                ->with('shipping', Price::convertIntegerToDecimal($this->cart->shipping()))
                 ->with('discount', Price::convertIntegerToDecimal($this->cart->discount()))
                 ->with('tax', Price::convertIntegerToDecimal($this->cart->tax()))
                 ->with('total', Price::convertIntegerToDecimal($this->cart->total()))
@@ -206,7 +206,7 @@ class BuyerOrderController extends Controller
         {
             $subtotal = 0;
         }
-        $shipping   = Price::convertIntegerToDecimal($this->cart->fee());
+        $shipping   = Price::convertIntegerToDecimal($this->cart->shipping());
         $tax        = Price::convertIntegerToDecimal($this->cart->tax());
 
         // final amount that user will pay
@@ -267,7 +267,7 @@ class BuyerOrderController extends Controller
                 'buyer_id'              => Auth::id(),
                 'shipping_address_id'   => $shipping_address_id,
                 'tax'                   => $this->cart->tax(),
-                'fee'                   => $this->cart->fee(),
+                'shipping'              => $this->cart->shipping(),
                 'discount'              => $this->cart->discount(),
                 'subtotal'              => $this->cart->subtotal(),
                 'amount'                => Price::convertDecimalToInteger($total),
@@ -311,9 +311,9 @@ class BuyerOrderController extends Controller
 
         $subtotal = $this->cart->subtotal();
         $tax = $this->cart->tax();
-        $fee = $this->cart->fee();
+        $shipping = $this->cart->shipping();
         $discount = $this->cart->discount();
-        $total = $subtotal + $tax + $fee - $discount;
+        $total = $subtotal + $tax + $shipping - $discount;
 
         $paypal = new Paypal();
         $payment = $paypal->executePayment($payment_id, $payer_id);
@@ -327,7 +327,7 @@ class BuyerOrderController extends Controller
             'shipping_address_id'   => $shipping_address_id,
             'subtotal'              => $subtotal,
             'tax'                   => $tax,
-            'fee'                   => $fee,
+            'shipping'              => $shipping,
             'discount'              => $discount,
             'amount'                => $total,
             'authorization_id'      => $authorization->getId()

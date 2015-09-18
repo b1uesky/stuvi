@@ -41,7 +41,8 @@ class TextbookController extends Controller
     {
         return view("textbook.show")
             ->with('book', $book)
-            ->with('query', Input::get('query'));
+            ->with('query', Input::get('query'))
+            ->with('university_id', Input::get('university_id'));
     }
 
     /***************************************************/
@@ -76,7 +77,7 @@ class TextbookController extends Controller
         if ($isbn_validator->validation->isbn($isbn) == false)
         {
             return redirect()->back()
-                ->withMessage('Please enter a valid 10 or 13 digit ISBN number.');
+                ->withError('Please enter a valid 10 or 13 digit ISBN number.');
         }
 
         // database lookup

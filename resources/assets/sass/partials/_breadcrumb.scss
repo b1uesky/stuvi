@@ -1,5 +1,11 @@
 @import "../modules/all";
 
+.breadcrumb {
+  @media(max-width: 767px) {
+    display: none;
+  }
+}
+
 /* --------------------------------
 
 Basic Style

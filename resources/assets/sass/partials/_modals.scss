@@ -7,15 +7,7 @@
 .close-modal-btn {
   &:hover, &:focus {
     outline: 0;
-    color: white;
-    text-shadow: none;
-    opacity: 1;
   }
-}
-
-.modal-header {
-  background-color: $primary-color;
-  color: white;
 }
 
 // fix the bug that the nav bar links shift to right when open the modal.

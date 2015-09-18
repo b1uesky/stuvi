@@ -1,5 +1,15 @@
 @import "../modules/all";
 
+.table {
+  thead {
+    tr {
+      th {
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
 .table-default {
 
   thead {

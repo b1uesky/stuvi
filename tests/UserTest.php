@@ -1,29 +1,34 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Desmond
- * Date: 7/21/15
- * Time: 11:32 AM
- */
 
-use App\User;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class UserTest extends TestCase {
+class UserTest extends TestCase
+{
+    use DatabaseTransactions;
 
-//    public function testDefaultAddress4()
-//    {
-//        $expected = 4;
-//        $actual = User::find(2)->defaultAddress()->id;
-//
-//        $this->assertEquals($expected, $actual);
-//    }
-//
-//    public function testDefaultAddress8()
-//    {
-//        $expected = 8;
-//        $actual = User::find(3)->defaultAddress()->id;
-//
-//        $this->assertEquals($expected, $actual);
-//    }
+    public function testNewUserSignedUp()
+    {
+        $this->withoutEvents();
 
+        $this->visit('/auth/register')
+            ->type('John', 'first_name')
+            ->type('Wayne', 'last_name')
+            ->type('johnwayne@bu.edu', 'email')
+            ->type('123456', 'password')
+            ->type('8572655018', 'phone_number')
+            ->select('1', 'university_id')
+            ->press('Sign Up')
+            ->seePageIs('/user/activate');
+    }
+
+    public function testUserLoggedIn()
+    {
+        $this->visit('/auth/login')
+            ->type('seller@bu.edu', 'email')
+            ->type('123456', 'password')
+            ->press('Login')
+            ->seePageIs('/home');
+    }
 }

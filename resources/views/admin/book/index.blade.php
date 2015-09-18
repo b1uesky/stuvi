@@ -59,11 +59,7 @@
             <tr>
                 <td>{{ $book->id }}</td>
                 <td>
-                @if($book->imageSet->small_image)
-                    <img class="admin-img-preview" alt="" src="{{ config('aws.url.stuvi-book-img') . $book->imageSet->small_image }}">
-                @else
-                    <img class="admin-img-preview" alt="" src="{{ config('book.default_image_path.small')}}">
-                @endif
+                    <img class="img-responsive" src="{{ $book->imageSet->getImagePath('small') }}">
                 </td>
                 <td><a href="{{ URL::to('admin/book/' . $book->id) }}">{{ $book->title }}</a></td>
                 <td>{{ $book->edition }}</td>

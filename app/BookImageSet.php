@@ -23,13 +23,37 @@ class BookImageSet extends Model
     }
 
     /**
-     * Check if the book image set is manually created, i.e., has a relative url.
+     * Get an image path with specific size.
      *
-     * @return bool
+     * @param $size
+     * @return mixed|string
      */
-    public function isManuallyCreated()
+    public function getImagePath($size)
     {
-        return substr($this->small_image, 0, 4) != 'http';
+        switch ($size)
+        {
+            case 'large':
+                $image_path = $this->large_image;
+                break;
+            case 'medium':
+                $image_path = $this->medium_image;
+                break;
+            case 'small':
+                $image_path = $this->small_image;
+                break;
+            default:
+                $image_path = $this->medium_image;
+        }
+
+
+        if ($image_path)
+        {
+            return config('aws.url.stuvi-book-img') . $image_path;
+        }
+        else
+        {
+            return config('book.default_image_path.' . $size);
+        }
     }
 
     /**
