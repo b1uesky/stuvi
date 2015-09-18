@@ -31,52 +31,25 @@
                         <h3 class="panel-title">Your books for sale</h3>
                     </div>
                     <div class="panel-body">
-                            <table class="table table-default table-no-border">
-                                @foreach ($productsForSale as $product)
-                                    <tr>
-                                        <td class="col-sm-3">
-                                            <a href="{{ url('textbook/buy/product/'.$product->id) }}">
-                                                <img class="img-responsive" src="{{ $product->book->imageSet->getImagePath('small') }}">
-                                            </a>
-                                        </td>
-                                        <td class="col-sm-6">
-                                            <div class="row">
-                                                <a href="{{ url('textbook/buy/product/'.$product->id) }}">{{ $product->book->title }}</a>
-                                            </div>
+                        @foreach($productsForSale as $product)
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    @include('includes.textbook.product-details')
+                                </div>
 
-                                            <div class="row">
-                                                @foreach($product->book->authors as $i => $author)
-                                                    @if($i == 0)
-                                                        <span class="for-sale-by">Author(s): </span>
-                                                        <span class="for-sale-author">{{ $author->full_name }}</span>
-                                                    @else
-                                                        <span class="for-sale-author">, {{ $author->full_name }}</span>
-                                                    @endif
-                                                @endforeach
-                                            </div>
+                                <br>
 
-                                            <div class="row">
-                                                <span>ISBN-10: {{ $product->book->isbn10 }}</span>
-                                            </div>
+                                <div class="col-sm-2">
+                                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-primary btn-block">Edit</a>
+                                    <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
+                                            data-target="#delete-product"
+                                            data-product-id="{{ $product->id }}"
+                                            data-book-title="{{ $product->book->title }}">Delete</button>
+                                </div>
+                            </div>
 
-                                            <div class="row">
-                                                <span>ISBN-13: {{ $product->book->isbn13 }}</span>
-                                            </div>
-
-                                            <div class="row">
-                                                <span class="price">${{ $product->decimalPrice() }}</span>
-                                            </div>
-                                        </td>
-                                        <td class="col-sm-3">
-                                            <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-primary btn-block">Edit</a>
-                                            <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
-                                                    data-target="#delete-product"
-                                                    data-product-id="{{ $product->id }}"
-                                                    data-book-title="{{ $product->book->title }}">Delete</button>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </table>
+                            <hr>
+                        @endforeach
                     </div>
                 </div>
             </div>

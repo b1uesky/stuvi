@@ -9,9 +9,9 @@
                 This action <strong>CANNOT</strong> be undone. This will permanently cancel your order.
             </div>
             <div class="modal-footer">
-                <a class="btn btn-danger cancel-order-btn" href="/order/buyer/cancel/{{ $buyer_order->id }}"
-                   role="button">Cancel order</a>
+                <a class="btn btn-danger cancel-order-btn">Cancel order</a>
             </div>
         </div>
     </div>
 </div>
+
