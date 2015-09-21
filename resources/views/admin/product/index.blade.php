@@ -2,13 +2,8 @@
 
 @section('title', 'Product')
 
-@section('content')
 
-    {{--<div class="btn-group" role="group">--}}
-        {{--<a href="{{ URL::to('admin/product') }}" class="btn btn-default">All</a>--}}
-        {{--<a href="{{ URL::to('admin/product/unverified') }}" class="btn btn-default">Unverified Only</a>--}}
-        {{--<a href="{{ URL::to('admin/product/verified') }}" class="btn btn-default">Verified Only</a>--}}
-    {{--</div>--}}
+@section('content')
 
     <form class="form-inline" role="form" action="{{ url('admin/product') }}" method="get">
         <div class="form-group">
@@ -60,7 +55,7 @@
             <th>Seller</th>
             <th>Images</th>
             <th>Sold</th>
-            <th>Verified</th>
+            {{--<th>Verified</th>--}}
             <th>Actions</th>
         </tr>
 
@@ -68,23 +63,22 @@
             <tr>
                 <td>{{ $product->id }}</td>
                 <td><a href="{{ url('admin/book/'.$product->book->id) }}">{{ $product->book->title }}</a></td>
-                <td>$ {{ $product->decimalPrice() }}</td>
+                <td>${{ $product->decimalPrice() }}</td>
                 <td><a href="{{ url('/admin/user/'.$product->seller->id) }}">{{ $product->seller->first_name }} {{ $product->seller->last_name }}</a></td>
-                <td>
-                    @foreach($product->images as $product_image)
-                        @if($product_image->isTestImage())
-                            <a href="{{ $product_image->large_image }}" target="_blank">
-                                <img src="{{ $product_image->small_image }}" class="admin-img-preview" alt=""/>
-                            </a>
-                        @else
-                            <a href="{{ config('aws.url.stuvi-product-img') . $product_image->large_image }}" target="_blank">
-                                <img src="{{ config('aws.url.stuvi-product-img') . $product_image->small_image }}" class="admin-img-preview" alt=""/>
-                            </a>
-                        @endif
+                <td class="container-flex">
+                    @foreach($product->images as $image)
+                        <div>
+                            <img class="img-rounded img-small margin-5 full-width"
+                                 src="{{ config('image.lazyload') }}"
+                                 data-action="zoom"
+                                 data-src="{{ $image->getImagePath('large') }}"
+                                 onload="lzld(this)">
+                        </div>
+
                     @endforeach
                 </td>
                 <td>{{ $product->isSoldToStr() }}</td>
-                <td>{{ $product->isVerified() }}</td>
+                {{--<td>{{ $product->isVerified() }}</td>--}}
 
                 <!-- we will also add show, edit, and delete buttons -->
                 <td>

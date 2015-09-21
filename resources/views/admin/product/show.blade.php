@@ -36,18 +36,6 @@
             {{--<td>{{ $product->isVerified() }}</td>--}}
         {{--</tr>--}}
         <tr>
-            <th>Created At</th>
-            <td>{{ $product->created_at }}</td>
-        </tr>
-        <tr>
-            <th>Updated At</th>
-            <td>{{ $product->updated_at }}</td>
-        </tr>
-        <tr>
-            <th>Deleted At</th>
-            <td>{{ $product->deleted_at }}</td>
-        </tr>
-        <tr>
             <th>{{ $conditions['general_condition']['title'] }}</th>
             <td>{{ $conditions['general_condition'][$product->condition->general_condition] }}</td>
         </tr>
@@ -70,25 +58,33 @@
         <tr>
             <th>Images</th>
             <td>
-                @forelse($product->images as $product_image)
-                    @if($product_image->isTestImage())
-                        <a href="{{ $product_image->large_image }}" target="_blank">
-                            <img src="{{ $product_image->small_image }}" class="admin-img-preview" alt=""/>
-                        </a>
-                    @else
-                        <a href="{{ config('aws.url.stuvi-product-img') . $product_image->large_image }}" target="_blank">
-                            <img src="{{ config('aws.url.stuvi-product-img') . $product_image->small_image }}" class="admin-img-preview" alt=""/>
-                        </a>
-                    @endif
-                @empty
-                    No images.
-                @endforelse
+                @foreach($product->images as $image)
+                    <div>
+                        <img class="img-rounded img-small margin-5 full-width"
+                             src="{{ config('image.lazyload') }}"
+                             data-action="zoom"
+                             data-src="{{ $image->getImagePath('large') }}"
+                             onload="lzld(this)">
+                    </div>
+                @endforeach
             </td>
+        </tr>
+        <tr>
+            <th>Created At</th>
+            <td>{{ $product->created_at }}</td>
+        </tr>
+        <tr>
+            <th>Updated At</th>
+            <td>{{ $product->updated_at }}</td>
+        </tr>
+        <tr>
+            <th>Deleted At</th>
+            <td>{{ $product->deleted_at }}</td>
         </tr>
     </table>
 
     <p><strong>Seller Orders</strong></p>
-    <table class="table table-hover">
+    <table class="table">
         <tr>
             <th>ID</th>
             <th>BuyerOrder ID</th>
