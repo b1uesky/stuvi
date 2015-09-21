@@ -4,14 +4,11 @@
 
 @section('content')
 
-    <h1>Product Detail
-    {{-- Approve/Disapprove --}}
-    @if(!$product->verified)
-        <a class="btn btn-success" href="{{ URL::to('admin/product/' . $product->id . '/approve') }}">Approve</a>
-    @else
-        <a class="btn btn-danger" href="{{ URL::to('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
-    @endif
-    </h1>
+    {{--@if(!$product->verified)--}}
+        {{--<a class="btn btn-success" href="{{ URL::to('admin/product/' . $product->id . '/approve') }}">Approve</a>--}}
+    {{--@else--}}
+        {{--<a class="btn btn-danger" href="{{ URL::to('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>--}}
+    {{--@endif--}}
 
     <table class="table table-hover">
         <tr>
@@ -34,10 +31,10 @@
             <th>Sold</th>
             <td>{{ $product->isSoldToStr() }}</td>
         </tr>
-        <tr>
-            <th>Verified</th>
-            <td>{{ $product->isVerified() }}</td>
-        </tr>
+        {{--<tr>--}}
+            {{--<th>Verified</th>--}}
+            {{--<td>{{ $product->isVerified() }}</td>--}}
+        {{--</tr>--}}
         <tr>
             <th>Created At</th>
             <td>{{ $product->created_at }}</td>

@@ -4,8 +4,6 @@
 
 @section('content')
 
-    <h1>Books</h1>
-
     <form class="form-inline" role="form" action="{{ url('admin/book') }}" method="get">
         <div class="form-group">
             <select name="filter" class="form-control">
@@ -43,7 +41,7 @@
 
     <br>
 
-    <table class="table table-hover">
+    <table class="table">
         <tr>
             <th>ID</th>
             <th>Cover</th>
@@ -66,7 +64,7 @@
                 <td>{{ $book->isbn10 }}</td>
                 <td>{{ $book->isbn13 }}</td>
                 <td>{{ $book->is_verified }}</td>
-                <td><a class="btn btn-default" role="button" href="{{ URL::to('admin/book/' . $book->id) }}">Details</a></td>
+                <td><a class="btn btn-primary btn-block" role="button" href="{{ URL::to('admin/book/' . $book->id) }}">Details</a></td>
             </tr>
         @endforeach
     </table>

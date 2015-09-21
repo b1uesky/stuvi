@@ -7,13 +7,17 @@
 
 <body>
 
-<section class="menu">
-    @include('includes.admin.header')
-</section>
+<div class="container-fluid">
+    <div class="row page-content">
+        <div class="col-md-2">
+            @include('includes.admin.header')
+        </div>
 
-<section class="content">
-    @yield('content')
-</section>
+        <div class="col-md-10">
+            @yield('content')
+        </div>
+    </div>
+</div>
 
 @include('includes.admin.footer')
 

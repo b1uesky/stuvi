@@ -4,8 +4,6 @@
 
 @section('content')
 
-    <h1>Buyer Order Detail</h1>
-
     <p><strong>Overview</strong></p>
     <table class="table table-hover">
         <tr>

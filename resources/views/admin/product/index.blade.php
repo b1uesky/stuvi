@@ -10,8 +10,6 @@
         {{--<a href="{{ URL::to('admin/product/verified') }}" class="btn btn-default">Verified Only</a>--}}
     {{--</div>--}}
 
-    <h1>Products</h1>
-
     <form class="form-inline" role="form" action="{{ url('admin/product') }}" method="get">
         <div class="form-group">
             <select name="filter" class="form-control">
@@ -96,14 +94,14 @@
 
                     <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
                     <div class="btn-group-vertical" role="group">
-                        <a class="btn btn-info" role="button" href="{{ URL::to('admin/product/' . $product->id) }}">Details</a>
-                        @if(!$product->verified)
-                            <a class="btn btn-success" role="button"
-                               href="{{ URL::to('admin/product/' . $product->id . '/approve') }}">Approve</a>
-                        @else
-                            <a class="btn btn-danger" role="button"
-                               href="{{ URL::to('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
-                        @endif
+                        <a class="btn btn-primary btn-block" role="button" href="{{ URL::to('admin/product/' . $product->id) }}">Details</a>
+                        {{--@if(!$product->verified)--}}
+                            {{--<a class="btn btn-success btn-block" role="button"--}}
+                               {{--href="{{ URL::to('admin/product/' . $product->id . '/approve') }}">Approve</a>--}}
+                        {{--@else--}}
+                            {{--<a class="btn btn-warning btn-block" role="button"--}}
+                               {{--href="{{ URL::to('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>--}}
+                        {{--@endif--}}
                     </div>
 
                 </td>
