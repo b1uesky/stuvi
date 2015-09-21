@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\University;
 use Auth;
-use Config;
 use DB;
 use GoogleBooks\GoogleBooks;
 use Illuminate\Http\Request;
@@ -97,7 +96,7 @@ class TextbookController extends Controller
         }
         else
         {
-            $google_book = new GoogleBooks(Config::get('services.google.books.api_key'));
+            $google_book = new GoogleBooks(config('services.google.books.api_key'));
 
             if ($google_book->searchByISBN($isbn))
             {
@@ -282,7 +281,7 @@ class TextbookController extends Controller
             }
             else
             {
-                $google_book = new GoogleBooks(Config::get('services.google.books.api_key'));
+                $google_book = new GoogleBooks(config('services.google.books.api_key'));
 
                 // error on searching (e.g. item not found)
                 if (!$google_book->searchByISBN($isbn))
@@ -332,7 +331,7 @@ class TextbookController extends Controller
             }
 
             // Define how many items we want to be visible in each page
-            $perPage = Config::get('pagination.limit.textbook');
+            $perPage = config('pagination.limit.textbook');
 
             // Slice the collection to get the items to display in current page
             $currentPageSearchResults = $books->slice(($currentPage) * $perPage, $perPage)->all();

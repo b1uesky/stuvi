@@ -43,7 +43,7 @@
                     <input type="string" name="zip" value="{{ Input::old('zip') }}" class="form-control"/>
                 </div>
 
-                @if(Config::get('addresses.show_country'))
+                @if(config('addresses.show_country'))
                     <div class="form-group">
                         <label>Country</label>
                         <input type="string" name="country" value="{{ Input::old('country') }}" class="form-control"/>

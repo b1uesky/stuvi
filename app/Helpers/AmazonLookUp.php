@@ -1,7 +1,5 @@
 <?php namespace App\Helpers;
 
-use Config;
-
 use ApaiIO\Configuration\GenericConfiguration;
 use ApaiIO\Operations\Lookup;
 use ApaiIO\ApaiIO;
@@ -34,9 +32,9 @@ class AmazonLookUp
         try {
             $this->conf
                 ->setCountry('com')
-                ->setAccessKey(Config::get('services.amazon.access_key_id'))
-                ->setSecretKey(Config::get('services.amazon.secret_access_key'))
-                ->setAssociateTag(Config::get('services.amazon.associate_id'));
+                ->setAccessKey(config('services.amazon.access_key_id'))
+                ->setSecretKey(config('services.amazon.secret_access_key'))
+                ->setAssociateTag(config('services.amazon.associate_id'));
         } catch (\Exception $e) {
             echo $e->getMessage();
         }

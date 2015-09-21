@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Book;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use Config;
 use Illuminate\Http\Request;
 use Input;
 
@@ -52,10 +51,10 @@ class BookController extends Controller
         }
 
         $books = $query->orderBy($order_by, $order)
-                       ->paginate(Config::get('pagination.limit.admin.default'));
+                       ->paginate(config('pagination.limit.admin.default'));
 
 
-        //        $books = Book::paginate(Config::get('pagination.limit.admin.default'));
+        //        $books = Book::paginate(config('pagination.limit.admin.default'));
         return view('admin.book.index')
             ->with('books', $books)
             ->with('pagination_params', Input::only([

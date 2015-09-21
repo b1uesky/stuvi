@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Eloquent\Model;
 use File;
-use Config;
 use Aws\Laravel\AwsFacade;
 use Intervention\Image\Facades\Image;
 
@@ -95,11 +94,11 @@ class ProductImage extends Model {
      */
     public function resize($image)
     {
-        $temp_path = Config::get('image.temp_path');
+        $temp_path = config('image.temp_path');
 
-        $small_img_height = Config::get('image.resize.small.height');
-        $medium_img_height = Config::get('image.resize.medium.height');
-        $large_img_height = Config::get('image.resize.large.height');
+        $small_img_height = config('image.resize.small.height');
+        $medium_img_height = config('image.resize.medium.height');
+        $large_img_height = config('image.resize.large.height');
 
         // small
         Image::make($image)->orientate()->resize(null, $small_img_height, function ($constraint)
@@ -134,7 +133,7 @@ class ProductImage extends Model {
      */
     public function uploadToAWS()
     {
-        $temp_path = Config::get('image.temp_path');
+        $temp_path = config('image.temp_path');
 
         // upload images to amazon s3
         foreach([$this->small_image, $this->medium_image, $this->large_image] as $key)
@@ -142,7 +141,7 @@ class ProductImage extends Model {
             $s3 = AwsFacade::createClient('s3');
 
             $s3->putObject(array(
-                'Bucket'        => Config::get('aws.buckets.product_image'),
+                'Bucket'        => config('aws.buckets.product_image'),
                 'Key'           => $key,
                 'SourceFile'    => $temp_path . $key,
                 'ACL'           => 'public-read'
@@ -162,7 +161,7 @@ class ProductImage extends Model {
             $s3 = AwsFacade::createClient('s3');
 
             $s3->deleteObject(array(
-                'Bucket'        => Config::get('aws.buckets.product_image'),
+                'Bucket'        => config('aws.buckets.product_image'),
                 'Key'           => $key,
             ));
 

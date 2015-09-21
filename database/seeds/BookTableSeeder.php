@@ -37,7 +37,7 @@ public function run()
         '1593271441',       // Hacking: The Art of Exploitation, 2nd Edition
     ];
 
-    $key = Config::get('services.google.books.api_key');
+    $key = config('services.google.books.api_key');
 
     foreach($isbns as $isbn)
     {

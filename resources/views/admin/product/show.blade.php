@@ -79,8 +79,8 @@
                             <img src="{{ $product_image->small_image }}" class="admin-img-preview" alt=""/>
                         </a>
                     @else
-                        <a href="{{ Config::get('aws.url.stuvi-product-img') . $product_image->large_image }}" target="_blank">
-                            <img src="{{ Config::get('aws.url.stuvi-product-img') . $product_image->small_image }}" class="admin-img-preview" alt=""/>
+                        <a href="{{ config('aws.url.stuvi-product-img') . $product_image->large_image }}" target="_blank">
+                            <img src="{{ config('aws.url.stuvi-product-img') . $product_image->small_image }}" class="admin-img-preview" alt=""/>
                         </a>
                     @endif
                 @empty

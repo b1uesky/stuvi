@@ -3,7 +3,6 @@
 use Illuminate\Database\Eloquent\Model;
 
 use File;
-use Config;
 use Aws\Laravel\AwsFacade;
 use Intervention\Image\Facades\Image;
 
@@ -96,11 +95,11 @@ class BookImageSet extends Model
      */
     public function resize($image)
     {
-        $temp_path = Config::get('image.temp_path');
-        $small_img_width = Config::get('image.resize.small.width');
-        $small_img_height = Config::get('image.resize.small.height');
-        $medium_img_height = Config::get('image.resize.medium.height');
-        $large_img_height = Config::get('image.resize.large.height');
+        $temp_path = config('image.temp_path');
+        $small_img_width = config('image.resize.small.width');
+        $small_img_height = config('image.resize.small.height');
+        $medium_img_height = config('image.resize.medium.height');
+        $large_img_height = config('image.resize.large.height');
 
         // small
         Image::make($image)
@@ -133,14 +132,14 @@ class BookImageSet extends Model
      */
     public function uploadToAWS()
     {
-        $temp_path = Config::get('image.temp_path');
+        $temp_path = config('image.temp_path');
         $s3 = AwsFacade::createClient('s3');
 
         // upload images to amazon s3
         foreach([$this->small_image, $this->medium_image, $this->large_image] as $key)
         {
             $s3->putObject(array(
-                'Bucket'        => Config::get('aws.buckets.book_image'),
+                'Bucket'        => config('aws.buckets.book_image'),
                 'Key'           => $key,
                 'SourceFile'    => $temp_path . $key,
                 'ACL'           => 'public-read'
@@ -160,7 +159,7 @@ class BookImageSet extends Model
         foreach([$this->small_image, $this->medium_image, $this->large_image] as $key)
         {
             $s3->deleteObject(array(
-                'Bucket'        => Config::get('aws.buckets.book_image'),
+                'Bucket'        => config('aws.buckets.book_image'),
                 'Key'           => $key,
             ));
 

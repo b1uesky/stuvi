@@ -10,7 +10,7 @@
  * NOTE: before migrate the database, modify "laravel-addresses/src/migrations/2014_10_13_105422_create_addresses.php"
  *       1. comment out line 13-17 and add "$table->integer('user_id')->unsigned()->index();".
  *       2. Change "::" in get() method to ".",
- *          e.g. "\Config::get('addresses::default_country')" to "\Config::get('addresses.default_country').
+ *          e.g. "\config('addresses::default_country')" to "\config('addresses.default_country').
  *
  *       Then run command "php artisan migrate --path=vendor/rtconner/laravel-addresses/src/migrations" to migrate db.
  */

@@ -125,9 +125,9 @@
 
                                         {{--Description--}}
                                         <div class="form-group">
-                                            <label>{{ Config::get('product.conditions.description.title') }}</label>
+                                            <label>{{ config('product.conditions.description.title') }}</label>
                                                 <textarea name="description" class="form-control" rows="5"
-                                                          placeholder="{{ Config::get('product.conditions.description.placeholder') }}">{{ $product->condition->description }}</textarea>
+                                                          placeholder="{{ config('product.conditions.description.placeholder') }}">{{ $product->condition->description }}</textarea>
                                         </div>
 
                                         {{--Upload Images using Dropzone--}}

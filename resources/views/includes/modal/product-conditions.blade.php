@@ -13,8 +13,8 @@
             <div class="modal-body">
                 @for ($i = 0; $i < 4; $i++)
                     <dl>
-                        <dt>{{ Config::get('product.conditions.general_condition')[$i] }}</dt>
-                        <dd>{{ Config::get('product.conditions.general_condition.description')[$i] }}</dd>
+                        <dt>{{ config('product.conditions.general_condition')[$i] }}</dt>
+                        <dd>{{ config('product.conditions.general_condition.description')[$i] }}</dd>
                     </dl>
                 @endfor
             </div>
@@ -35,7 +35,7 @@
                 <h4 class="modal-title">Highlights/Notes</h4>
             </div>
             <div class="modal-body">
-                <p>{{ Config::get('product.conditions.highlights_and_notes.description') }}</p>
+                <p>{{ config('product.conditions.highlights_and_notes.description') }}</p>
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
                 <h4 class="modal-title">Damaged pages</h4>
             </div>
             <div class="modal-body">
-                <p>{{ Config::get('product.conditions.damaged_pages.description') }}</p>
+                <p>{{ config('product.conditions.damaged_pages.description') }}</p>
             </div>
         </div>
     </div>
@@ -74,7 +74,7 @@
                 <h4 class="modal-title">Broken book binding</h4>
             </div>
             <div class="modal-body">
-                <p>{{ Config::get('product.conditions.broken_binding.description') }}</p>
+                <p>{{ config('product.conditions.broken_binding.description') }}</p>
             </div>
         </div>
     </div>
