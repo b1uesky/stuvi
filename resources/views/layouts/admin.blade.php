@@ -7,6 +7,9 @@
 
 <body>
 
+{{-- Session flash messages --}}
+@include('includes.alerts')
+
 <div class="container-fluid">
     <div class="row page-content">
         <div class="col-md-2">

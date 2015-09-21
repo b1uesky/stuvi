@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <table class="table table-hover">
+    <table class="table">
         <tr>
             <th>ID</th>
             <td>{{ $book->id }}</td>

@@ -43,7 +43,7 @@
 
     <br>
 
-    <table class="table table-hover">
+    <table class="table">
         <tr>
             <th>ID</th>
             <th>Product</th>

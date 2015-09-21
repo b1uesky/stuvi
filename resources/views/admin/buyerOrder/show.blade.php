@@ -5,7 +5,7 @@
 @section('content')
 
     <p><strong>Overview</strong></p>
-    <table class="table table-hover">
+    <table class="table">
         <tr>
             <th>ID</th>
             <td>{{ $buyer_order->id }}</td>

@@ -13,10 +13,10 @@
             </select>
         </div> <!-- form group [rows] -->
         <div class="form-group">
-            <input type="text" class="form-control input-large" name="keyword" value="{{ $pagination_params['keyword'] }}">
+            <input type="text" class="form-control" name="keyword" value="{{ $pagination_params['keyword'] }}">
         </div><!-- form group [search] -->
         <div class="form-group">
-            <label class="filter-col" style="margin-right:0;">Order by:</label>
+            <label class="filter-col">Order by:</label>
             <select name="order_by" class="form-control">
                 <option value="id" @if ($pagination_params['order_by'] == 'id') selected @endif>ID</option>
                 <option value="title" @if ($pagination_params['order_by'] == 'title') selected @endif>Title</option>

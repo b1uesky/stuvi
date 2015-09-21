@@ -10,7 +10,7 @@
         {{--<a class="btn btn-danger" href="{{ URL::to('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>--}}
     {{--@endif--}}
 
-    <table class="table table-hover">
+    <table class="table">
         <tr>
             <th>ID</th>
             <td>{{ $product->id }}</td>
