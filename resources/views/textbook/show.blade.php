@@ -41,6 +41,24 @@
 
         <br/>
 
+        <div class="row">
+            <div class="col-xs-12">
+                @if(Auth::guest())
+                    <p>
+                        Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal"
+                                                                                          href="#signup-modal">Sign
+                            up</a> to buy or sell a textbook.
+                    </p>
+                @else
+                    <p>
+                        <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Have one to sell?</a>
+                    </p>
+                @endif
+            </div>
+        </div>
+
+        <br>
+
         {{-- Product list --}}
         <div class="row">
             @if(count($book->availableProducts()) > 0)
@@ -86,25 +104,6 @@
 
                 </table>
             @endif
-        </div>
-
-        <div class="row">
-            <div class="col-xs-12 text-center">
-                {{-- if the user is not logged in --}}
-                @if(Auth::guest())
-                    @if(count($book->availableProducts()) > 0)
-                        <p>
-                            Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal"
-                                                                                              href="#signup-modal">Sign
-                                up</a> to buy or sell a textbook.
-                        </p>
-                    @endif
-                @else
-                    <p>
-                        <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Have one to sell?</a>
-                    </p>
-                @endif
-            </div>
         </div>
 
 
