@@ -38,25 +38,29 @@
         <div class="row padding-bottom-5">
             <?php $count_product = count($book->availableProducts()); ?>
 
-            {{-- price --}}
-            <span class="text-bold">
-                @if($count_product > 1)
-                    <span class="price">${{ $book->decimalLowestPrice() }}</span>
-                    <span class="text-muted"> ~ </span>
-                    <span class="price">${{ $book->decimalHighestPrice() }}</span>
-                @else
-                    <span class="price">${{ $book->decimalLowestPrice() }}</span>
-                @endif
-            </span>
+            @if($count_product > 0)
+                {{-- price --}}
+                <span class="text-bold">
+                    @if($count_product > 1)
+                        <span class="price">${{ $book->decimalLowestPrice() }}</span>
+                        <span class="text-muted"> ~ </span>
+                        <span class="price">${{ $book->decimalHighestPrice() }}</span>
+                    @else
+                        <span class="price">${{ $book->decimalLowestPrice() }}</span>
+                    @endif
+                </span>
 
-            {{-- # of available products --}}
-            <span class="text-muted">
-                @if($count_product > 1)
-                    ({{ $count_product }} offers)
-                @else
-                    (1 offer)
-                @endif
-            </span>
+                {{-- # of available products --}}
+                <span class="text-muted">
+                    @if($count_product > 1)
+                        ({{ $count_product }} offers)
+                    @else
+                        (1 offer)
+                    @endif
+                </span>
+            @else
+                <span class="text-danger">Not available</span>
+            @endif
         </div>
 
         {{-- isbn 10 --}}

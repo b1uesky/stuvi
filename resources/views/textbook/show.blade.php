@@ -85,8 +85,6 @@
                     @endforeach
 
                 </table>
-            @else
-                <h4 class="text-center">Sorry, this book is not available for now.</h4>
             @endif
         </div>
 
