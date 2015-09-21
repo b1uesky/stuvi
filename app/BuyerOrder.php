@@ -182,7 +182,7 @@ class BuyerOrder extends Model
      *
      * @return bool
      */
-    public function assignedToCourier()
+    public function isAssignedToCourier()
     {
         return !empty($this->courier_id);
     }
