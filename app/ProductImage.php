@@ -102,19 +102,19 @@ class ProductImage extends Model {
         $large_img_height = Config::get('image.resize.large.height');
 
         // small
-        Image::make($image)->resize(null, $small_img_height, function ($constraint)
+        Image::make($image)->orientate()->resize(null, $small_img_height, function ($constraint)
         {
             $constraint->aspectRatio();
         })->save($temp_path . $this->small_image);
 
         // medium
-        Image::make($image)->resize(null, $medium_img_height, function ($constraint)
+        Image::make($image)->orientate()->resize(null, $medium_img_height, function ($constraint)
         {
             $constraint->aspectRatio();
         })->save($temp_path . $this->medium_image);
 
         // large
-        $large_img = Image::make($image);
+        $large_img = Image::make($image)->orientate();
 
         // only resize if the original image height is greater than the height we specified
         if ($large_img->height() > $large_img_height)
