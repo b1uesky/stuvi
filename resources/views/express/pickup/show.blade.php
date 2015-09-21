@@ -67,7 +67,7 @@
         </div>
 
         {{-- Ready to pick up --}}
-        @if(!$seller_order->assignedToCourier())
+        @if(!$seller_order->isAssignedToCourier())
             <a href="{{ URL::to('express/pickup/'. $seller_order->id . '/readyToPickUp') }}" class="btn btn-primary btn-lg btn-block">
                 Ready to pick up
             </a>

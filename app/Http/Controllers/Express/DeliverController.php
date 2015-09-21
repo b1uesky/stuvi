@@ -104,7 +104,7 @@ class DeliverController extends Controller
             return redirect('express/deliver')->withError('This buyer order has already been delivered.');
         }
 
-        if ($buyer_order->assignedToCourier())
+        if ($buyer_order->isAssignedToCourier())
         {
             return redirect('express/deliver')->withError('This buyer order has already been taken by another courier.');
         }
@@ -133,7 +133,7 @@ class DeliverController extends Controller
             return redirect('express/deliver')->withError('This buyer order has been cancelled.');
         }
 
-        if (!$buyer_order->assignedToCourier())
+        if (!$buyer_order->isAssignedToCourier())
         {
             return redirect('express/deliver')->withError('This buyer order is not assigned to any courier.');
         }

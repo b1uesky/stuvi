@@ -85,7 +85,7 @@
                         @endif
                     @endforeach
                 </td>
-                <td>{{ $product->isSold2() }}</td>
+                <td>{{ $product->isSoldToStr() }}</td>
                 <td>{{ $product->isVerified() }}</td>
 
                 <!-- we will also add show, edit, and delete buttons -->

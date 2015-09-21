@@ -112,7 +112,7 @@ class PickupController extends Controller
             return redirect('express/pickup')->withError('This seller order has not been scheduled yet.');
         }
 
-        if ($seller_order->assignedToCourier())
+        if ($seller_order->isAssignedToCourier())
         {
             return redirect('express/pickup')->withError('This seller order has already been taken by another courier.');
         }

@@ -16,10 +16,6 @@ class Product extends Model
         'deleted_at',
     ];
 
-    /**
-     * Get the book this product belongs to.
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function book()
     {
         return $this->belongsTo('App\Book');
@@ -33,6 +29,16 @@ class Product extends Model
     public function condition()
     {
         return $this->hasOne('App\ProductCondition');
+    }
+
+    public function sellerOrders()
+    {
+        return $this->hasMany('App\SellerOrder');
+    }
+
+    public function images()
+    {
+        return $this->hasMany('App\ProductImage');
     }
 
     public function isInCart($user_id)
@@ -49,16 +55,6 @@ class Product extends Model
     }
 
     /**
-     * Get all seller orders of this product.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function sellerOrders()
-    {
-        return $this->hasMany('App\SellerOrder');
-    }
-
-    /**
      * Return the text description of product's general condition as defined in config/product.php.
      *
      * @return mixed
@@ -69,17 +65,9 @@ class Product extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function images()
-    {
-        return $this->hasMany('App\ProductImage');
-    }
-
-    /**
      * @return string
      */
-    public function isSold2()
+    public function isSoldToStr()
     {
         if ($this->sold)
         {

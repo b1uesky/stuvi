@@ -29,7 +29,7 @@ class MessageSellerOrderCancellationToCourier
     {
         $seller_order = $event->seller_order;
 
-        if ($seller_order->assignedToCourier())
+        if ($seller_order->isAssignedToCourier())
         {
             $twilio = new Twilio(
                 config('twilio.twilio.connections.twilio.sid'),

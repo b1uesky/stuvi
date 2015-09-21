@@ -24,6 +24,36 @@ class SellerOrder extends Model
     ];
 
     /**
+     * Return the seller order book.
+     *
+     * @return Book
+     */
+    public function book()
+    {
+        return $this->product->book;
+    }
+
+    /**
+     * Return the seller order address.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function address()
+    {
+        return $this->belongsTo('App\Address');
+    }
+
+    /**
+     * Get the buyer order that this seller order belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function buyerOrder()
+    {
+        return $this->belongsTo('App\BuyerOrder', 'buyer_order_id', 'id');
+    }
+
+    /**
      * Get the product of this seller order.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -31,6 +61,26 @@ class SellerOrder extends Model
     public function product()
     {
         return $this->belongsTo('App\Product');
+    }
+
+    /**
+     * Return the seller that owns this seller order.
+     *
+     * @return User
+     */
+    public function seller()
+    {
+        return $this->product->seller;
+    }
+
+    /**
+     * Return the courier who is assigned to this order.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function courier()
+    {
+        return $this->belongsTo('App\User', 'courier_id');
     }
 
     /**
@@ -75,26 +125,6 @@ class SellerOrder extends Model
     }
 
     /**
-     * Return the seller that owns this seller order.
-     *
-     * @return User
-     */
-    public function seller()
-    {
-        return $this->product->seller;
-    }
-
-    /**
-     * Return the courier who is assigned to this order.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function courier()
-    {
-        return $this->belongsTo('App\User', 'courier_id');
-    }
-
-    /**
      * Generate a 4-digit pickup code for the seller order
      * to verify that the courier has picked up the book.
      *
@@ -135,7 +165,7 @@ class SellerOrder extends Model
      *
      * @return bool
      */
-    public function assignedToCourier()
+    public function isAssignedToCourier()
     {
         return !empty($this->courier_id);
     }
@@ -145,39 +175,9 @@ class SellerOrder extends Model
      *
      * @return bool
      */
-    public function assignedAddress()
+    public function isAddsignedAddress()
     {
         return !empty($this->address_id);
-    }
-
-    /**
-     * Return the seller order book.
-     *
-     * @return Book
-     */
-    public function book()
-    {
-        return $this->product->book;
-    }
-
-    /**
-     * Return the seller order address.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function address()
-    {
-        return $this->belongsTo('App\Address');
-    }
-
-    /**
-     * Get the buyer order that this seller order belongs to.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function buyerOrder()
-    {
-        return $this->belongsTo('App\BuyerOrder', 'buyer_order_id', 'id');
     }
 
     /**
@@ -241,7 +241,7 @@ class SellerOrder extends Model
             $detail = 'Your order has been cancelled.';
             $value = null;
         }
-        elseif ($this->assignedToCourier())
+        elseif ($this->isAssignedToCourier())
         {
             $status = 'Shipped';
             $detail = 'Your order has been assigned to a Stuvi courier and the courier is on the way.';
@@ -270,7 +270,7 @@ class SellerOrder extends Model
      */
     public function isPickUpConfirmable()
     {
-        return !$this->assignedToCourier() && !$this->cancelled;
+        return !$this->isAssignedToCourier() && !$this->cancelled;
     }
 
 

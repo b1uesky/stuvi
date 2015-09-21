@@ -119,100 +119,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
-     * Get all products the current user have bought.
-     *
-     * @return array
-     */
-    public function productsBought()
-    {
-        $products = [];
-
-        foreach ($this->buyerOrders as $buyer_order)
-        {
-            if (!$buyer_order->cancelled)
-            {
-                foreach ($buyer_order->seller_orders as $seller_order)
-                {
-                    if (!$seller_order->cancelled)
-                    {
-                        $products[] = $seller_order->product;
-                    }
-                }
-            }
-        }
-
-        return $products;
-    }
-
-    /**
-     * Get all products the current user have sold.
-     *
-     * @return mixed
-     */
-    public function productsSold()
-    {
-        return $this->products()->where('sold', 1)->get();
-    }
-
-    /**
-     * Get all products the current user have post but not yet sold.
-     *
-     * @return mixed
-     */
-    public function productsForSale()
-    {
-        return $this->products()->where('sold', 0)->whereNull('deleted_at')->orderBy('created_at', 'DESC')->get();
-    }
-
-    /**
-     * Check if the user has a given role.
-     *
-     * @param null $role can be a multi-role string, e.g. ac
-     *
-     * @return bool
-     */
-    public function hasRole($role = null)
-    {
-        if (!is_null($role))
-        {
-            foreach (str_split($role) as $r)
-            {
-                if (strpos($this->role, $r) !== false)
-                {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Check if this user is activated.
-     *
-     * @return bool
-     */
-    public function isActivated()
-    {
-        return $this->collegeEmail()->verified;
-    }
-
-    /**
-     * Return Yes/No to indicate if the user is activated
-     *
-     * @return string
-     */
-    public function isActivated2()
-    {
-        if ($this->isActivated())
-        {
-            return 'Yes';
-        }
-
-        return 'No';
-    }
-
-    /**
      * Get all addresses of this user.
      *
      * @return mixed
@@ -309,6 +215,110 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
+     * Get the college email of this user.
+     *
+     * @return Email
+     */
+    public function collegeEmail()
+    {
+        return $this->emails()->where('email_address', 'like', '%' . $this->university->email_suffix)->first();
+    }
+
+    /**
+     * Get all products the current user have bought.
+     *
+     * @return array
+     */
+    public function productsBought()
+    {
+        $products = [];
+
+        foreach ($this->buyerOrders as $buyer_order)
+        {
+            if (!$buyer_order->cancelled)
+            {
+                foreach ($buyer_order->seller_orders as $seller_order)
+                {
+                    if (!$seller_order->cancelled)
+                    {
+                        $products[] = $seller_order->product;
+                    }
+                }
+            }
+        }
+
+        return $products;
+    }
+
+    /**
+     * Get all products the current user have sold.
+     *
+     * @return mixed
+     */
+    public function productsSold()
+    {
+        return $this->products()->where('sold', 1)->get();
+    }
+
+    /**
+     * Get all products the current user have post but not yet sold.
+     *
+     * @return mixed
+     */
+    public function productsForSale()
+    {
+        return $this->products()->where('sold', 0)->whereNull('deleted_at')->orderBy('created_at', 'DESC')->get();
+    }
+
+    /**
+     * Check if the user has a given role.
+     *
+     * @param null $role can be a multi-role string, e.g. ac
+     *
+     * @return bool
+     */
+    public function hasRole($role = null)
+    {
+        if (!is_null($role))
+        {
+            foreach (str_split($role) as $r)
+            {
+                if (strpos($this->role, $r) !== false)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Check if this user is activated.
+     *
+     * @return bool
+     */
+    public function isActivated()
+    {
+        return $this->collegeEmail()->verified;
+    }
+
+    /**
+     * Return Yes/No to indicate if the user is activated
+     *
+     * @return string
+     */
+    public function isActivatedToStr()
+    {
+        if ($this->isActivated())
+        {
+            return 'Yes';
+        }
+
+        return 'No';
+    }
+
+    /**
      * Set the primary email for user.
      *
      * @param $email_id
@@ -329,16 +339,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
 
         return false;
-    }
-
-    /**
-     * Get the college email of this user.
-     *
-     * @return Email
-     */
-    public function collegeEmail()
-    {
-        return $this->emails()->where('email_address', 'like', '%' . $this->university->email_suffix)->first();
     }
 
     /**

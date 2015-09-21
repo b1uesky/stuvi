@@ -75,30 +75,14 @@ class Address extends Model
         return Address::where('user_id','=',Auth::id());
     }
 
-    /**
-     * Delete the given address of the user.
-     *
-     * @param $id  The address id
-     * @param $user_id  The user id of the current user.
-     * @return bool|null
-     */
-    public function del($id, $user_id)
-    {
-        $address = $this->findOrFail($id);
-
-        // check if this address belongs to the user with $user_id
-        if ($address->user_id == $user_id) {
-            return $address->delete();
-        }
-
-        return false;
-    }
-
     public function isBelongTo($user_id)
     {
-        return $this -> user_id == $user_id;
+        return $this->user_id == $user_id;
     }
 
+    /**
+     * Set this address as default.
+     */
     public function setDefault()
     {
         $stored_addresses = Address::where('user_id',$this -> user_id)->get();
@@ -114,6 +98,9 @@ class Address extends Model
         $this->update(["is_default" => true]);
     }
 
+    /**
+     * Disable this address.
+     */
     public function disable()
     {
         $this->update([
