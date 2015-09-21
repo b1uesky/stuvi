@@ -165,10 +165,6 @@ class BuyerOrder extends Model
 
             event(new SellerOrderWasCancelled($seller_order));
         }
-
-        // void authorized payment
-        $paypal = new Paypal();
-        $paypal->voidAuthorization($this->authorization_id);
     }
 
     /**
