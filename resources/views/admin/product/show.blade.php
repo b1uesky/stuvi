@@ -32,7 +32,7 @@
         </tr>
         <tr>
             <th>Sold</th>
-            <td>{{ $product->isSold2() }}</td>
+            <td>{{ $product->isSoldToStr() }}</td>
         </tr>
         <tr>
             <th>Verified</th>

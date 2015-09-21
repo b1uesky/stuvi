@@ -26,7 +26,7 @@
         </tr>
         <tr>
             <th>Activated</th>
-            <td>{{ $user->isActivated2() }}</td>
+            <td>{{ $user->isActivatedToStr() }}</td>
         </tr>
         <tr>
             <th>Role</th>

@@ -66,7 +66,7 @@
         </div>
 
         {{-- Show Ready to ship button if the order is not yet assigned --}}
-        @if(!$buyer_order->assignedToCourier())
+        @if(!$buyer_order->isAssignedToCourier())
             <a href="{{ URL::to('express/deliver/' . $buyer_order->id . '/readyToShip') }}" class="btn btn-primary btn-lg btn-block">Ready to ship!</a>
         @elseif(!$buyer_order->isDelivered())
             {{-- Show Confirm Delivery button --}}

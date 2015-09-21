@@ -276,7 +276,9 @@ class TextbookController extends Controller
             if ($book)
             {
                 return view('textbook.show')
-                    ->withBook($book);
+                    ->withBook($book)
+                    ->with('query', $query)
+                    ->with('university_id', Input::get('university_id'));
             }
             else
             {
@@ -287,13 +289,16 @@ class TextbookController extends Controller
                 {
                     return view('textbook.list')
                         ->with('books', [])
-                        ->with('query', $isbn);
+                        ->with('query', $isbn)
+                        ->with('university_id', Input::get('university_id'));
                 }
 
                 $book = Book::createFromGoogleBook($google_book);
 
                 return view('textbook.show')
-                    ->withBook($book);
+                    ->withBook($book)
+                    ->with('query', $query)
+                    ->with('university_id', Input::get('university_id'));
             }
         }
         else
@@ -340,7 +345,8 @@ class TextbookController extends Controller
 
             return view('textbook.list')
                 ->with('books', $paginatedSearchResults)
-                ->with('query', $query);
+                ->with('query', $query)
+                ->with('university_id', Input::get('university_id'));
         }
     }
 

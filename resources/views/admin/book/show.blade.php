@@ -92,7 +92,7 @@
                         </a>
                     @endforeach
                 </td>
-                <td>{{ $product->isSold2() }}</td>
+                <td>{{ $product->isSoldToStr() }}</td>
                 <td>{{ $product->isVerified() }}</td>
                 <td>{{ $product->updated_at }}</td>
 
