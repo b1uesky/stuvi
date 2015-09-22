@@ -62,7 +62,7 @@
                 <td>{{ $user->isActivatedToStr() }}</td>
                 <td>{{ $user->role }}</td>
                 <td>{{ $user->created_at }}</td>
-                <td><a class="btn btn-primary btn-block" role="button" href="{{ URL::to('admin/user/' . $user->id) }}">Details</a></td>
+                <td><a class="btn btn-primary btn-block" role="button" href="{{ url('admin/user/' . $user->id) }}">Details</a></td>
             </tr>
         @endforeach
     </table>

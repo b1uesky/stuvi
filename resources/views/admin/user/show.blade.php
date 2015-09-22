@@ -99,13 +99,13 @@
 
                     <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
                     <div class="btn-group-vertical" role="group">
-                        <a class="btn btn-info" role="button" href="{{ URL::to('admin/product/' . $product->id) }}">Details</a>
+                        <a class="btn btn-info" role="button" href="{{ url('admin/product/' . $product->id) }}">Details</a>
                         @if(!$product->verified)
                             <a class="btn btn-success" role="button"
-                               href="{{ URL::to('admin/product/' . $product->id . '/approve') }}">Approve</a>
+                               href="{{ url('admin/product/' . $product->id . '/approve') }}">Approve</a>
                         @else
                             <a class="btn btn-danger" role="button"
-                               href="{{ URL::to('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
+                               href="{{ url('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
                         @endif
                     </div>
 
@@ -130,7 +130,7 @@
                 <td>{{ $buyer_order->cancelled }}</td>
                 <td>{{ $buyer_order->time_delivered }}</td>
                 <td>{{ $buyer_order->created_at }}</td>
-                <td><a class="btn btn-info" role="button" href="{{ URL::to('admin/order/buyer/' . $buyer_order->id) }}">Details</a></td>
+                <td><a class="btn btn-info" role="button" href="{{ url('admin/order/buyer/' . $buyer_order->id) }}">Details</a></td>
             </tr>
         @endforeach
     </table>
@@ -157,7 +157,7 @@
                 <td>{{ $seller_order->scheduled_pickup_time }}</td>
                 <td>{{ $seller_order->pickup_time }}</td>
                 <td>{{ $seller_order->created_at }}</td>
-                <td><a class="btn btn-info" role="button" href="{{ URL::to('admin/order/seller/' . $seller_order->id) }}">Details</a></td>
+                <td><a class="btn btn-info" role="button" href="{{ url('admin/order/seller/' . $seller_order->id) }}">Details</a></td>
             </tr>
         @endforeach
     </table>

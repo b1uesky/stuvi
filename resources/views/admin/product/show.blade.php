@@ -5,9 +5,9 @@
 @section('content')
 
     {{--@if(!$product->verified)--}}
-        {{--<a class="btn btn-success" href="{{ URL::to('admin/product/' . $product->id . '/approve') }}">Approve</a>--}}
+        {{--<a class="btn btn-success" href="{{ url('admin/product/' . $product->id . '/approve') }}">Approve</a>--}}
     {{--@else--}}
-        {{--<a class="btn btn-danger" href="{{ URL::to('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>--}}
+        {{--<a class="btn btn-danger" href="{{ url('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>--}}
     {{--@endif--}}
 
     <table class="table">
@@ -103,7 +103,7 @@
                 <td>{{ $seller_order->scheduled_pickup_time }}</td>
                 <td>{{ $seller_order->pickup_time }}</td>
                 <td>{{ $seller_order->created_at }}</td>
-                <td><a class="btn btn-info" role="button" href="{{ URL::to('admin/order/seller/' . $seller_order->id) }}">Details</a></td>
+                <td><a class="btn btn-info" role="button" href="{{ url('admin/order/seller/' . $seller_order->id) }}">Details</a></td>
             </tr>
         @endforeach
     </table>

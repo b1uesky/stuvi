@@ -57,7 +57,7 @@
                 <td>@if($buyer_order->cancelled) Yes @else No @endif</td>
                 <td>{{ $buyer_order->time_delivered }}</td>
                 <td>{{ $buyer_order->created_at }}</td>
-                <td><a class="btn btn-primary btn-block" role="button" href="{{ URL::to('admin/order/buyer/' . $buyer_order->id) }}">Details</a></td>
+                <td><a class="btn btn-primary btn-block" role="button" href="{{ url('admin/order/buyer/' . $buyer_order->id) }}">Details</a></td>
             </tr>
         @endforeach
     </table>

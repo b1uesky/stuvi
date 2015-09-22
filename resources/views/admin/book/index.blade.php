@@ -59,12 +59,12 @@
                 <td>
                     <img class="img-responsive" src="{{ $book->imageSet->getImagePath('small') }}">
                 </td>
-                <td><a href="{{ URL::to('admin/book/' . $book->id) }}">{{ $book->title }}</a></td>
+                <td><a href="{{ url('admin/book/' . $book->id) }}">{{ $book->title }}</a></td>
                 <td>{{ $book->edition }}</td>
                 <td>{{ $book->isbn10 }}</td>
                 <td>{{ $book->isbn13 }}</td>
                 <td>{{ $book->is_verified }}</td>
-                <td><a class="btn btn-primary btn-block" role="button" href="{{ URL::to('admin/book/' . $book->id) }}">Details</a></td>
+                <td><a class="btn btn-primary btn-block" role="button" href="{{ url('admin/book/' . $book->id) }}">Details</a></td>
             </tr>
         @endforeach
     </table>
