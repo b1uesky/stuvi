@@ -69,41 +69,41 @@
                 <!-- General Condition -->
                 <tr>
                     <td>
-                        {{ Config::get('product.conditions.general_condition.title') }}
+                        {{ config('product.conditions.general_condition.title') }}
                         <i class="fa fa-question-circle" data-toggle="modal" data-target=".condition-modal"></i>
                     </td>
 
-                    <td>{{ Config::get('product.conditions.general_condition')[$product->condition->general_condition] }}</td>
+                    <td>{{ config('product.conditions.general_condition')[$product->condition->general_condition] }}</td>
                 </tr>
                 <!-- Highlights / Notes -->
                 <tr>
                     <td>
-                        {{ Config::get('product.conditions.highlights_and_notes.title') }}
+                        {{ config('product.conditions.highlights_and_notes.title') }}
                         <i class="fa fa-question-circle" data-toggle="modal" data-target=".highlight-modal"></i>
                     </td>
-                    <td>{{ Config::get('product.conditions.highlights_and_notes')[$product->condition->highlights_and_notes] }}</td>
+                    <td>{{ config('product.conditions.highlights_and_notes')[$product->condition->highlights_and_notes] }}</td>
                 </tr>
                 <!-- Damaged Pages -->
                 <tr>
                     <td>
-                        {{ Config::get('product.conditions.damaged_pages.title') }}
+                        {{ config('product.conditions.damaged_pages.title') }}
                         <i class="fa fa-question-circle" data-toggle="modal" data-target=".damage-modal"></i>
                     </td>
-                    <td>{{ Config::get('product.conditions.damaged_pages')[$product->condition->damaged_pages] }}</td>
+                    <td>{{ config('product.conditions.damaged_pages')[$product->condition->damaged_pages] }}</td>
                 </tr>
                 <!-- Broken Binding -->
                 <tr>
                     <td>
-                        {{ Config::get('product.conditions.broken_binding.title') }}
+                        {{ config('product.conditions.broken_binding.title') }}
                         <i class="fa fa-question-circle" data-toggle="modal" data-target=".binding-modal"></i>
 
                     </td>
-                    <td>{{ Config::get('product.conditions.broken_binding')[$product->condition->broken_binding] }}</td>
+                    <td>{{ config('product.conditions.broken_binding')[$product->condition->broken_binding] }}</td>
                 </tr>
                 <!-- Seller Description -->
                 @if($product->condition->hasDescription())
                     <tr>
-                        <td>{{ Config::get('product.conditions.description.title') }}</td>
+                        <td>{{ config('product.conditions.description.title') }}</td>
                         <td>
                             {{ $product->condition->description }}
                         </td>

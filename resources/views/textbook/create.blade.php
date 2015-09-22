@@ -48,7 +48,7 @@
                 <div class="form-group">
                     <label><b>Language</b></label>
                     <select class="selectpicker textbook-create form-control" name="language" id="lang">
-                        @foreach(Config::get('book.languages') as $key => $value)
+                        @foreach(config('book.languages') as $key => $value)
                             <option value="{{ $value }}" class="lang-select">{{ $value }}</option>
                         @endforeach
                     </select>

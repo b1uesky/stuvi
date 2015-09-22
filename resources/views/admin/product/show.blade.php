@@ -4,16 +4,15 @@
 
 @section('content')
 
-    <h1>Product Detail
-    {{-- Approve/Disapprove --}}
-    @if(!$product->verified)
-        <a class="btn btn-success" href="{{ URL::to('admin/product/' . $product->id . '/approve') }}">Approve</a>
-    @else
-        <a class="btn btn-danger" href="{{ URL::to('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
-    @endif
-    </h1>
+    {{--@if(!$product->verified)--}}
+        {{--<a class="btn btn-success" href="{{ url('admin/product/' . $product->id . '/approve') }}">Approve</a>--}}
+    {{--@else--}}
+        {{--<a class="btn btn-danger" href="{{ url('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>--}}
+    {{--@endif--}}
 
-    <table class="table table-hover">
+    <table class="table table-condensed">
+        <caption>Details</caption>
+
         <tr>
             <th>ID</th>
             <td>{{ $product->id }}</td>
@@ -24,7 +23,7 @@
         </tr>
         <tr>
             <th>Price</th>
-            <td>{{ $product->decimalPrice() }}</td>
+            <td class="price">${{ $product->decimalPrice() }}</td>
         </tr>
         <tr>
             <th>Seller</th>
@@ -34,22 +33,10 @@
             <th>Sold</th>
             <td>{{ $product->isSoldToStr() }}</td>
         </tr>
-        <tr>
-            <th>Verified</th>
-            <td>{{ $product->isVerified() }}</td>
-        </tr>
-        <tr>
-            <th>Created At</th>
-            <td>{{ $product->created_at }}</td>
-        </tr>
-        <tr>
-            <th>Updated At</th>
-            <td>{{ $product->updated_at }}</td>
-        </tr>
-        <tr>
-            <th>Deleted At</th>
-            <td>{{ $product->deleted_at }}</td>
-        </tr>
+        {{--<tr>--}}
+            {{--<th>Verified</th>--}}
+            {{--<td>{{ $product->isVerified() }}</td>--}}
+        {{--</tr>--}}
         <tr>
             <th>{{ $conditions['general_condition']['title'] }}</th>
             <td>{{ $conditions['general_condition'][$product->condition->general_condition] }}</td>
@@ -72,47 +59,62 @@
         </tr>
         <tr>
             <th>Images</th>
-            <td>
-                @forelse($product->images as $product_image)
-                    @if($product_image->isTestImage())
-                        <a href="{{ $product_image->large_image }}" target="_blank">
-                            <img src="{{ $product_image->small_image }}" class="admin-img-preview" alt=""/>
-                        </a>
-                    @else
-                        <a href="{{ Config::get('aws.url.stuvi-product-img') . $product_image->large_image }}" target="_blank">
-                            <img src="{{ Config::get('aws.url.stuvi-product-img') . $product_image->small_image }}" class="admin-img-preview" alt=""/>
-                        </a>
-                    @endif
-                @empty
-                    No images.
-                @endforelse
+            <td class="container-flex">
+                @foreach($product->images as $image)
+                    <div>
+                        <img class="img-rounded img-small margin-5 full-width"
+                             src="{{ config('image.lazyload') }}"
+                             data-action="zoom"
+                             data-src="{{ $image->getImagePath('large') }}"
+                             onload="lzld(this)">
+                    </div>
+                @endforeach
             </td>
+        </tr>
+        <tr>
+            <th>Created At</th>
+            <td>{{ $product->created_at }}</td>
+        </tr>
+        <tr>
+            <th>Updated At</th>
+            <td>{{ $product->updated_at }}</td>
+        </tr>
+        <tr>
+            <th>Deleted At</th>
+            <td>{{ $product->deleted_at }}</td>
         </tr>
     </table>
 
-    <p><strong>Seller Orders</strong></p>
-    <table class="table table-hover">
-        <tr>
-            <th>ID</th>
-            <th>BuyerOrder ID</th>
-            <th>Cancelled</th>
-            <th>Scheduled Pickup Time</th>
-            <th>Pickup Time</th>
-            <th>Created At</th>
-            <th>Actions</th>
-        </tr>
 
-        @foreach($seller_orders as $seller_order)
-            <tr>
-                <td>{{ $seller_order->id }}</td>
-                <td><a href="{{ url('admin/order/buyer/'.$seller_order->buyer_order_id) }}">{{ $seller_order->buyer_order_id }}</a></td>
-                <td>{{ $seller_order->cancelled }}</td>
-                <td>{{ $seller_order->scheduled_pickup_time }}</td>
-                <td>{{ $seller_order->pickup_time }}</td>
-                <td>{{ $seller_order->created_at }}</td>
-                <td><a class="btn btn-info" role="button" href="{{ URL::to('admin/order/seller/' . $seller_order->id) }}">Details</a></td>
+    <table class="table table-condensed" data-sortable>
+        <caption>Seller orders</caption>
+
+        <thead>
+            <tr class="active">
+                <th>ID</th>
+                <th>BuyerOrder ID</th>
+                <th>Cancelled</th>
+                <th>Scheduled Pickup Time</th>
+                <th>Pickup Time</th>
+                <th>Created At</th>
+                <th>Actions</th>
             </tr>
-        @endforeach
+        </thead>
+
+        <tbody>
+            @foreach($seller_orders as $seller_order)
+                <tr>
+                    <td>{{ $seller_order->id }}</td>
+                    <td><a href="{{ url('admin/order/buyer/'.$seller_order->buyer_order_id) }}">{{ $seller_order->buyer_order_id }}</a></td>
+                    <td>{{ $seller_order->cancelled }}</td>
+                    <td>{{ $seller_order->scheduled_pickup_time }}</td>
+                    <td>{{ $seller_order->pickup_time }}</td>
+                    <td>{{ $seller_order->created_at }}</td>
+                    <td><a class="btn btn-info" role="button" href="{{ url('admin/order/seller/' . $seller_order->id) }}">Details</a></td>
+                </tr>
+            @endforeach
+        </tbody>
+
     </table>
 
 @endsection

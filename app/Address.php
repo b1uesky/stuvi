@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-use Auth, Config;
+use Auth;
 use League\Flysystem\Exception;
 
 /**
@@ -58,7 +58,7 @@ class Address extends Model
             'phone_number'  => 'required|string'
         );
 
-        if(Config::get('addresses::show_country')) {
+        if(config('addresses::show_country')) {
             $rules['country_a2'] = 'required|Alpha|size:2';
         }
 

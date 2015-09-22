@@ -4,10 +4,9 @@
 
 @section('content')
 
-    <h1>User Detail</h1>
+    <table class="table table-condensed">
+        <caption>Details</caption>
 
-    <p><strong>Overview</strong></p>
-    <table class="table table-hover">
         <tr>
             <th>ID</th>
             <td>{{ $user->id }}</td>
@@ -42,126 +41,150 @@
         </tr>
     </table>
 
-    <p><strong>Emails</strong></p>
-    <table class="table table-hover">
-        <tr>
-            <th>Address</th>
-            <th>Verified</th>
-            <th>Primary</th>
-        </tr>
-        @foreach($emails as $email)
-            <tr>
-                <td>{{ $email->email_address }}</td>
-                <td>{{ $email->verified }}</td>
-                <td>{{ $email->isPrimary() }}</td>
+    <table class="table table-condensed" data-sortable>
+        <caption>Email</caption>
+
+        <thead>
+            <tr class="active">
+                <th>Address</th>
+                <th>Verified</th>
+                <th>Primary</th>
             </tr>
-        @endforeach
+        </thead>
+
+        <tbody>
+            @foreach($emails as $email)
+                <tr>
+                    <td>{{ $email->email_address }}</td>
+                    <td>{{ $email->verified }}</td>
+                    <td>{{ $email->isPrimary() }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+
     </table>
 
-    <p><strong>Bookshelf</strong></p>
-    <table class="table table-hover">
-        <tr>
-            <th>ID</th>
-            <th>Book Title</th>
-            <th>Price</th>
-            <th>Images</th>
-            <th>Sold</th>
-            <th>Verified</th>
-            <th>Updated At</th>
-            <th>Actions</th>
-        </tr>
 
-        @foreach($products as $product)
-            <tr>
-                <td>{{ $product->id }}</td>
-                <td><a href="{{ url('admin/book/'.$product->book->id) }}">{{ $product->book->title }}</a></td>
-                <td>{{ $product->decimalPrice() }}</td>
-                <td>
-                    @foreach($product->images as $product_image)
-                        @if($product_image->isTestImage())
-                            <a href="{{ $product_image->large_image }}" target="_blank">
-                                <img src="{{ $product_image->small_image }}" class="admin-img-preview" alt=""/>
-                            </a>
-                        @else
-                            <a href="{{ Config::get('aws.url.stuvi-product-img') . $product_image->large_image }}" target="_blank">
-                                <img src="{{ Config::get('aws.url.stuvi-product-img') . $product_image->small_image }}" class="admin-img-preview" alt=""/>
-                            </a>
-                        @endif
-                    @endforeach
-                </td>
-                <td>{{ $product->isSold() }}</td>
-                <td>{{ $product->isVerified() }}</td>
-                <td>{{ $product->updated_at }}</td>
+    <table class="table table-condensed" data-sortable>
+        <caption>Bookshelf</caption>
 
-                <!-- we will also add show, edit, and delete buttons -->
-                <td>
-
-                    <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                    <!-- we will add this later since its a little more complicated than the other two buttons -->
-
-                    <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
-                    <div class="btn-group-vertical" role="group">
-                        <a class="btn btn-info" role="button" href="{{ URL::to('admin/product/' . $product->id) }}">Details</a>
-                        @if(!$product->verified)
-                            <a class="btn btn-success" role="button"
-                               href="{{ URL::to('admin/product/' . $product->id . '/approve') }}">Approve</a>
-                        @else
-                            <a class="btn btn-danger" role="button"
-                               href="{{ URL::to('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
-                        @endif
-                    </div>
-
-                </td>
+        <thead>
+            <tr class="active">
+                <th>ID</th>
+                <th>Book Title</th>
+                <th>Price</th>
+                <th>Images</th>
+                <th>Sold</th>
+                {{--<th>Verified</th>--}}
+                <th>Updated At</th>
+                <th>Actions</th>
             </tr>
-        @endforeach
+        </thead>
+
+        <tbody>
+            @foreach($products as $product)
+                <tr>
+                    <td>{{ $product->id }}</td>
+                    <td><a href="{{ url('admin/book/'.$product->book->id) }}">{{ $product->book->title }}</a></td>
+                    <td class="price">${{ $product->decimalPrice() }}</td>
+                    <td class="container-flex">
+                        @foreach($product->images as $image)
+                            <div>
+                                <img class="img-rounded img-small margin-5 full-width"
+                                     src="{{ config('image.lazyload') }}"
+                                     data-action="zoom"
+                                     data-src="{{ $image->getImagePath('large') }}"
+                                     onload="lzld(this)">
+                            </div>
+                        @endforeach
+                    </td>
+                    <td>{{ $product->isSold() }}</td>
+                    {{--<td>{{ $product->isVerified() }}</td>--}}
+                    <td>{{ $product->updated_at }}</td>
+
+                    <!-- we will also add show, edit, and delete buttons -->
+                    <td>
+
+                        <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
+                        <!-- we will add this later since its a little more complicated than the other two buttons -->
+
+                        <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
+                        <div class="btn-group-vertical" role="group">
+                            <a class="btn btn-default" role="button" href="{{ url('admin/product/' . $product->id) }}">Details</a>
+                            @if(!$product->verified)
+                                <a class="btn btn-success" role="button"
+                                   href="{{ url('admin/product/' . $product->id . '/approve') }}">Approve</a>
+                            @else
+                                <a class="btn btn-danger" role="button"
+                                   href="{{ url('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
+                            @endif
+                        </div>
+
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+
     </table>
 
-    <p><strong>Buyer Orders</strong></p>
-    <table class="table table-hover">
-        <tr>
-            <th>ID</th>
-            <th>Cancelled</th>
-            <th>Delivered Time</th>
-            <th>Created At</th>
-            <th>Actions</th>
-        </tr>
+    <table class="table table-condensed" data-sortable>
+        <caption>Buyer orders</caption>
 
-        @foreach($buyer_orders as $buyer_order)
-            <tr>
-                <td>{{ $buyer_order->id }}</td>
-                <td>{{ $buyer_order->cancelled }}</td>
-                <td>{{ $buyer_order->time_delivered }}</td>
-                <td>{{ $buyer_order->created_at }}</td>
-                <td><a class="btn btn-info" role="button" href="{{ URL::to('admin/order/buyer/' . $buyer_order->id) }}">Details</a></td>
+        <thead>
+            <tr class="active">
+                <th>ID</th>
+                <th>Cancelled</th>
+                <th>Delivered Time</th>
+                <th>Created At</th>
+                <th>Actions</th>
             </tr>
-        @endforeach
+        </thead>
+
+        <tbody>
+            @foreach($buyer_orders as $buyer_order)
+                <tr>
+                    <td>{{ $buyer_order->id }}</td>
+                    <td>{{ $buyer_order->cancelled }}</td>
+                    <td>{{ $buyer_order->time_delivered }}</td>
+                    <td>{{ $buyer_order->created_at }}</td>
+                    <td><a class="btn btn-info" role="button" href="{{ url('admin/order/buyer/' . $buyer_order->id) }}">Details</a></td>
+                </tr>
+            @endforeach
+        </tbody>
+
     </table>
 
-    <p><strong>Seller Orders</strong></p>
-    <table class="table table-hover">
-        <tr>
-            <th>ID</th>
-            <th>Product ID</th>
-            <th>BuyerOrder ID</th>
-            <th>Cancelled</th>
-            <th>Scheduled Pickup Time</th>
-            <th>Pickup Time</th>
-            <th>Created At</th>
-            <th>Actions</th>
-        </tr>
+    <table class="table table-condensed" data-sortable>
+        <caption>Seller orders</caption>
 
-        @foreach($seller_orders as $seller_order)
-            <tr>
-                <td>{{ $seller_order->id }}</td>
-                <td>{{ $seller_order->product_id }}</td>
-                <td>{{ $seller_order->buyer_order_id }}</td>
-                <td>{{ $seller_order->cancelled }}</td>
-                <td>{{ $seller_order->scheduled_pickup_time }}</td>
-                <td>{{ $seller_order->pickup_time }}</td>
-                <td>{{ $seller_order->created_at }}</td>
-                <td><a class="btn btn-info" role="button" href="{{ URL::to('admin/order/seller/' . $seller_order->id) }}">Details</a></td>
+        <thead>
+            <tr class="active">
+                <th>ID</th>
+                <th>Product ID</th>
+                <th>BuyerOrder ID</th>
+                <th>Cancelled</th>
+                <th>Scheduled Pickup Time</th>
+                <th>Pickup Time</th>
+                <th>Created At</th>
+                <th>Actions</th>
             </tr>
-        @endforeach
+        </thead>
+
+        <tbody>
+            @foreach($seller_orders as $seller_order)
+                <tr>
+                    <td>{{ $seller_order->id }}</td>
+                    <td>{{ $seller_order->product_id }}</td>
+                    <td>{{ $seller_order->buyer_order_id }}</td>
+                    <td>{{ $seller_order->cancelled }}</td>
+                    <td>{{ $seller_order->scheduled_pickup_time }}</td>
+                    <td>{{ $seller_order->pickup_time }}</td>
+                    <td>{{ $seller_order->created_at }}</td>
+                    <td><a class="btn btn-info" role="button" href="{{ url('admin/order/seller/' . $seller_order->id) }}">Details</a></td>
+                </tr>
+            @endforeach
+        </tbody>
+
     </table>
 
 @endsection

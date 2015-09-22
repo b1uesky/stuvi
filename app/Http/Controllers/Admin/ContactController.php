@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Contact;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use Config;
 use Input;
 use Mail;
 
@@ -18,7 +17,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::orderBy('created_at', 'DESC')->paginate(Config::get('pagination.limit.admin.default'));
+        $contacts = Contact::orderBy('created_at', 'DESC')->paginate(config('pagination.limit.admin.default'));
         return view('admin.contact.index')
             ->with('contacts', $contacts);
     }

@@ -4,10 +4,9 @@
 
 @section('content')
 
-    <h1>Buyer Order Detail</h1>
+    <table class="table table-condensed">
+        <caption>Details</caption>
 
-    <p><strong>Overview</strong></p>
-    <table class="table table-hover">
         <tr>
             <th>ID</th>
             <td>{{ $buyer_order->id }}</td>
@@ -59,26 +58,34 @@
         </tr>
     </table>
 
-    <p><strong>Payment</strong></p>
-    <table class="table table-hover">
-        <tr>
-            <th>Subtotal</th>
-            <th>Discount</th>
-            <th>Fee</th>
-            <th>Tax</th>
-            <th>Total</th>
-            <th>Authorization ID</th>
-            <th>Capture ID</th>
-        </tr>
-        <tr>
-            <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->subtotal) }}</td>
-            <td>- {{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->discount) }}</td>
-            <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->fee) }}</td>
-            <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->tax) }}</td>
-            <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->amount) }}</td>
-            <td>{{ $buyer_order->authorization_id }}</td>
-            <td>{{ $buyer_order->capture_id }}</td>
-        </tr>
+
+    <table class="table table-condensed" data-sortable>
+        <caption>Payment</caption>
+
+        <thead>
+            <tr class="active">
+                <th>Subtotal</th>
+                <th>Discount</th>
+                <th>Fee</th>
+                <th>Tax</th>
+                <th>Total</th>
+                <th>Authorization ID</th>
+                <th>Capture ID</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->subtotal) }}</td>
+                <td>- {{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->discount) }}</td>
+                <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->fee) }}</td>
+                <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->tax) }}</td>
+                <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->amount) }}</td>
+                <td>{{ $buyer_order->authorization_id }}</td>
+                <td>{{ $buyer_order->capture_id }}</td>
+            </tr>
+        </tbody>
+
     </table>
 
 @endsection

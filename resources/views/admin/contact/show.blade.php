@@ -3,10 +3,8 @@
 @section('title', 'Contact')
 
 @section('content')
-
-    <h1>Contact Detail</h1>
     
-    <table class="table table-hover">
+    <table class="table">
         <tr>
             <th>ID</th>
             <td>{{ $contact->id }}</td>

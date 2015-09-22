@@ -9,7 +9,6 @@ use App\Listeners\EmailSellerOrderPickupConfirmation;
 use App\SellerOrder;
 use Auth;
 use Cart;
-use Config;
 use DateTime;
 use DB;
 use Input;
@@ -136,8 +135,8 @@ class SellerOrderController extends Controller
         $seller_order->update([
             'address_id'            => Input::get('address_id'),
             'scheduled_pickup_time' => DateTime::createFromFormat(
-                Config::get('app.datetime_format'), Input::get('scheduled_pickup_time'))
-                ->format(Config::get('database.datetime_format'))
+                config('app.datetime_format'), Input::get('scheduled_pickup_time'))
+                ->format(config('database.datetime_format'))
         ]);
 
         // send an email with a pickup verification code to the seller
@@ -191,9 +190,9 @@ class SellerOrderController extends Controller
 //        {
 //            $transfer = \Stripe\Transfer::create([
 //                'amount'             => ($seller_order->product->price),
-//                'currency'           => Config::get('stripe.currency'),
+//                'currency'           => config('stripe.currency'),
 //                'destination'        => $credential->stripe_user_id,
-//                'application_fee'    => Config::get('stripe.application_fee'),
+//                'application_fee'    => config('stripe.application_fee'),
 //                'source_transaction' => $seller_order->buyerOrder->buyer_payment->charge_id,
 //            ]);
 //

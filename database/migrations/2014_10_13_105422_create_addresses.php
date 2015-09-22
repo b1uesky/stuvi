@@ -19,8 +19,8 @@ class CreateAddresses extends Migration {
 			$table->string('state_a2', 2);
 			$table->string('state_name', 60)->nullable();
 			$table->string('zip', 11);
-			$table->string('country_a2', 2)->default(Config::get('addresses.default_country'));
-			$table->string('country_name', 60)->default(Config::get('addresses.default_country_name'));
+			$table->string('country_a2', 2)->default(config('addresses.default_country'));
+			$table->string('country_name', 60)->default(config('addresses.default_country_name'));
 			$table->string('phone_number', 20)->nullable();
             $table->timestamps();
 

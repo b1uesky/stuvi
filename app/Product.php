@@ -1,7 +1,6 @@
 <?php namespace App;
 
 use App\Helpers\Price;
-use Config;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -61,7 +60,7 @@ class Product extends Model
      */
     public function general_condition()
     {
-        return Config::get('product.conditions.general_condition')[$this->condition->general_condition];
+        return config('product.conditions.general_condition')[$this->condition->general_condition];
     }
 
     /**
