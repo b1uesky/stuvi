@@ -13,10 +13,10 @@
             </select>
         </div> <!-- form group [rows] -->
         <div class="form-group">
-            <input type="text" class="form-control input-large" name="keyword" value="{{ $pagination_params['keyword'] }}">
+            <input type="text" class="form-control" name="keyword" value="{{ $pagination_params['keyword'] }}">
         </div><!-- form group [search] -->
         <div class="form-group">
-            <button type="submit" class="btn btn-default filter-col">
+            <button type="submit" class="btn btn-default">
                 Search
             </button>
         </div>
@@ -24,7 +24,7 @@
 
     <br>
 
-    <table class="table" data-sortable>
+    <table class="table table-condensed" data-sortable>
         <thead>
             <tr class="active">
                 <th>ID</th>

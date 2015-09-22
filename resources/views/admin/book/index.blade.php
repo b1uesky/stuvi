@@ -16,7 +16,7 @@
             <input type="text" class="form-control" name="keyword" value="{{ $pagination_params['keyword'] }}">
         </div><!-- form group [search] -->
         <div class="form-group">
-            <button type="submit" class="btn btn-default filter-col">
+            <button type="submit" class="btn btn-default">
                 Search
             </button>
         </div>
@@ -43,7 +43,7 @@
             <tr>
                 <td>{{ $book->id }}</td>
                 <td>
-                    <img class="img-responsive" src="{{ $book->imageSet->getImagePath('small') }}">
+                    <img class="img-small" src="{{ $book->imageSet->getImagePath('small') }}">
                 </td>
                 <td><a href="{{ url('admin/book/' . $book->id) }}">{{ $book->title }}</a></td>
                 {{--<td>{{ $book->edition }}</td>--}}
