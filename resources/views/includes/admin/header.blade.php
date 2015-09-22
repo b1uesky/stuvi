@@ -26,4 +26,16 @@
             Buyer order <span class="badge">{{ \App\BuyerOrder::count() }}</span>
         </a>
     </div>
+
+
+    <div class="dropdown">
+        <button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdownMenuAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <span class="glyphicon glyphicon-user"></span> {{ Auth::user()->first_name }} <span class="caret"></span>
+        </button>
+
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuAdmin">
+            <li><a href="{{ url('auth/logout') }}">Sign out</a></li>
+        </ul>
+    </div>
+
 </div>
