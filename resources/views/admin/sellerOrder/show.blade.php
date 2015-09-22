@@ -4,7 +4,6 @@
 
 @section('content')
 
-    <p><strong>Overview</strong></p>
     <table class="table">
         <tr>
             <th>ID</th>
@@ -34,8 +33,9 @@
         </tr>
     </table>
 
-    <p><strong>Delivery</strong></p>
-    <table class="table table-hover">
+    <h2>Delivery</h2>
+
+    <table class="table">
         <tr>
             <th>Scheduled Pickup Time</th>
             <td>{{ $seller_order->scheduled_pickup_time }}</td>

@@ -25,6 +25,7 @@
         <a class="list-group-item {{ Request::segment(2) == 'order' && Request::segment(3) == 'buyer' ? 'active' : '' }}" href="{{ url('admin/order/buyer') }}">
             Buyer order <span class="badge">{{ \App\BuyerOrder::count() }}</span>
         </a>
+
     </div>
 
 

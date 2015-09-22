@@ -57,7 +57,7 @@
         </tr>
         <tr>
             <th>Images</th>
-            <td>
+            <td class="container-flex">
                 @foreach($product->images as $image)
                     <div>
                         <img class="img-rounded img-small margin-5 full-width"
@@ -83,29 +83,36 @@
         </tr>
     </table>
 
-    <p><strong>Seller Orders</strong></p>
-    <table class="table">
-        <tr>
-            <th>ID</th>
-            <th>BuyerOrder ID</th>
-            <th>Cancelled</th>
-            <th>Scheduled Pickup Time</th>
-            <th>Pickup Time</th>
-            <th>Created At</th>
-            <th>Actions</th>
-        </tr>
 
-        @foreach($seller_orders as $seller_order)
-            <tr>
-                <td>{{ $seller_order->id }}</td>
-                <td><a href="{{ url('admin/order/buyer/'.$seller_order->buyer_order_id) }}">{{ $seller_order->buyer_order_id }}</a></td>
-                <td>{{ $seller_order->cancelled }}</td>
-                <td>{{ $seller_order->scheduled_pickup_time }}</td>
-                <td>{{ $seller_order->pickup_time }}</td>
-                <td>{{ $seller_order->created_at }}</td>
-                <td><a class="btn btn-info" role="button" href="{{ url('admin/order/seller/' . $seller_order->id) }}">Details</a></td>
+    <h2>Seller orders</h2>
+
+    <table class="table table-condensed" data-sortable>
+        <thead>
+            <tr class="active">
+                <th>ID</th>
+                <th>BuyerOrder ID</th>
+                <th>Cancelled</th>
+                <th>Scheduled Pickup Time</th>
+                <th>Pickup Time</th>
+                <th>Created At</th>
+                <th>Actions</th>
             </tr>
-        @endforeach
+        </thead>
+
+        <tbody>
+            @foreach($seller_orders as $seller_order)
+                <tr>
+                    <td>{{ $seller_order->id }}</td>
+                    <td><a href="{{ url('admin/order/buyer/'.$seller_order->buyer_order_id) }}">{{ $seller_order->buyer_order_id }}</a></td>
+                    <td>{{ $seller_order->cancelled }}</td>
+                    <td>{{ $seller_order->scheduled_pickup_time }}</td>
+                    <td>{{ $seller_order->pickup_time }}</td>
+                    <td>{{ $seller_order->created_at }}</td>
+                    <td><a class="btn btn-info" role="button" href="{{ url('admin/order/seller/' . $seller_order->id) }}">Details</a></td>
+                </tr>
+            @endforeach
+        </tbody>
+
     </table>
 
 @endsection

@@ -35,10 +35,10 @@
             <th>Number of Pages</th>
             <td>{{ $book->num_pages }}</td>
         </tr>
-        <tr>
-            <th>Verified</th>
-            <td>{{ $book->is_verified }}</td>
-        </tr>
+        {{--<tr>--}}
+            {{--<th>Verified</th>--}}
+            {{--<td>{{ $book->is_verified }}</td>--}}
+        {{--</tr>--}}
         <tr>
             <th>Language</th>
             <td>{{ $book->language }}</td>
@@ -49,11 +49,11 @@
         {{--</tr>--}}
         <tr>
             <th>Highest Price</th>
-            <td>$ {{ \App\Helpers\Price::convertIntegerToDecimal($book->highest_price) }}</td>
+            <td class="price">${{ \App\Helpers\Price::convertIntegerToDecimal($book->highest_price) }}</td>
         </tr>
         <tr>
             <th>Lowest Price</th>
-            <td>$ {{ \App\Helpers\Price::convertIntegerToDecimal($book->lowest_price) }}</td>
+            <td class="price">${{ \App\Helpers\Price::convertIntegerToDecimal($book->lowest_price) }}</td>
         </tr>
         <tr>
             <th>Created At</th>
@@ -65,33 +65,41 @@
         </tr>
     </table>
 
-    <p><strong>Products</strong></p>
-    <table class="table table-hover">
-        <tr>
-            <th>ID</th>
-            <th>Price</th>
-            <th>Seller</th>
-            <th>Images</th>
-            <th>Sold</th>
-            <th>Verified</th>
-            <th>Updated At</th>
-            <th>Actions</th>
-        </tr>
+    <h2>Products</h2>
 
+    <table class="table table-condensed" data-sortable>
+        <thead>
+            <tr class="active">
+                <th>ID</th>
+                <th>Price</th>
+                <th>Seller</th>
+                <th>Images</th>
+                <th>Sold</th>
+                {{--<th>Verified</th>--}}
+                <th>Updated At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
         @foreach($products as $product)
             <tr>
                 <td>{{ $product->id }}</td>
-                <td>{{ $product->decimalPrice() }}</td>
+                <td class="price">${{ $product->decimalPrice() }}</td>
                 <td><a href="{{ url('/admin/user/'.$product->seller->id) }}">{{ $product->seller->first_name }} {{ $product->seller->last_name }}</a></td>
-                <td>
-                    @foreach($product->images as $product_image)
-                        <a href="{{ $product_image->large_image }}" target="_blank">
-                            <img src="{{ $product_image->getImagePath('small') }}"/>
-                        </a>
+                <td class="container-flex">
+                    @foreach($product->images as $image)
+                        <div>
+                            <img class="img-rounded img-small margin-5 full-width"
+                                 src="{{ config('image.lazyload') }}"
+                                 data-action="zoom"
+                                 data-src="{{ $image->getImagePath('large') }}"
+                                 onload="lzld(this)">
+                        </div>
                     @endforeach
                 </td>
                 <td>{{ $product->isSoldToStr() }}</td>
-                <td>{{ $product->isVerified() }}</td>
+                {{--<td>{{ $product->isVerified() }}</td>--}}
                 <td>{{ $product->updated_at }}</td>
 
                 <!-- we will also add show, edit, and delete buttons -->
@@ -115,6 +123,10 @@
                 </td>
             </tr>
         @endforeach
+        </tbody>
+
+
+
 
     </table>
 

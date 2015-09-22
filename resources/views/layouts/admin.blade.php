@@ -35,6 +35,7 @@
 <script src="{{ asset('libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/alert.js') }}"></script>
 <script src="{{ asset('libs/zoom.js/js/zoom.js') }}"></script>
+<script src="{{ asset('libs/sortable/js/sortable.min.js') }}"></script>
 
 @yield('javascript')
 
