@@ -2,7 +2,6 @@
 
 use App\Helpers\Price;
 use Aws\Laravel\AwsFacade;
-use Config;
 use DB;
 use File;
 use Illuminate\Database\Eloquent\Model;
@@ -249,7 +248,7 @@ class Book extends Model
         $book_image_set->book_id = $book->id;
         $book_image_set->save();
 
-        $temp_path = Config::get('image.temp_path');
+        $temp_path = config('image.temp_path');
         $image_url = $google_book->getThumbnail();
 
         if ($image_url)
@@ -268,7 +267,7 @@ class Book extends Model
 
             // upload images to amazon s3
             $s3->putObject(array(
-                'Bucket'        => Config::get('aws.buckets.book_image'),
+                'Bucket'        => config('aws.buckets.book_image'),
                 'Key'           => $image_filename,
                 'SourceFile'    => $image_path,
                 'ACL'           => 'public-read'

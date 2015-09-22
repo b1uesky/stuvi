@@ -9,7 +9,6 @@ use App\BuyerOrder;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Auth;
-use Config;
 use Illuminate\Http\RedirectResponse;
 use Mail;
 

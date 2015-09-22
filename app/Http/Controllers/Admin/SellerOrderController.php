@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\SellerOrder;
-use Config;
 use Input;
 
 class SellerOrderController extends Controller
@@ -17,6 +16,7 @@ class SellerOrderController extends Controller
      */
     public function index()
     {
+        $filters = ['id', 'title', 'seller'];
         $filter   = Input::get('filter');
         $keyword  = strtolower(Input::get('keyword'));
         $order_by = Input::get('order_by', 'id');
@@ -58,9 +58,10 @@ class SellerOrderController extends Controller
                            ->select('seller_orders.*', 'users.'.$order_by);
         }
 
-        $seller_orders = $query->orderBy($order_by, $order)->paginate(Config::get('pagination.limit.admin.seller_order'));
+        $seller_orders = $query->orderBy($order_by, $order)->paginate(config('pagination.limit.admin.seller_order'));
 
         return view('admin.sellerOrder.index')->withSellerOrders($seller_orders)
+            ->with('filters', $filters)
             ->with('pagination_params', Input::only([
                                                         'filter',
                                                         'keyword',

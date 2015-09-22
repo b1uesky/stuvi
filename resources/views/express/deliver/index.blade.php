@@ -3,13 +3,12 @@
 @section('title', 'Deliver')
 
 @section('content')
-    <div class="container">
 
         {{-- New/Todo/Delivered switch buttons --}}
         <div class="btn-group btn-group-justified" role="group">
-            <a href="{{ URL::to('express/deliver') }}" role="button" class="btn btn-default">New</a>
-            <a href="{{ URL::to('express/deliver/todo') }}" role="button" class="btn btn-default">Todo</a>
-            <a href="{{ URL::to('express/deliver/delivered') }}" role="button" class="btn btn-default">Delivered</a>
+            <a href="{{ url('express/deliver') }}" role="button" class="btn btn-default">New</a>
+            <a href="{{ url('express/deliver/todo') }}" role="button" class="btn btn-default">Todo</a>
+            <a href="{{ url('express/deliver/delivered') }}" role="button" class="btn btn-default">Delivered</a>
         </div>
 
         <br>
@@ -19,7 +18,7 @@
             <div class="list-group">
                 @foreach($buyer_orders as $buyer_order)
                     @if(count($buyer_order->products()) > 0)
-                        <a href="{{ URL::to('express/deliver/' . $buyer_order->id) }}" class="list-group-item">
+                        <a href="{{ url('express/deliver/' . $buyer_order->id) }}" class="list-group-item">
                             <h4 class="list-group-item-heading">Order #{{ $buyer_order->id }}</h4>
                             @foreach($buyer_order->products() as $p_index => $product)
                                 <p class="list-group-item-text">{{ $p_index + 1 }}. {{ $product->book->title }}</p>
@@ -29,5 +28,4 @@
                 @endforeach
             </div>
         @endif
-    </div>
 @endsection

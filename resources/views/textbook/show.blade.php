@@ -63,7 +63,7 @@
         <div class="row">
             @if(count($book->availableProducts()) > 0)
 
-                <table class="table">
+                <table class="table" data-sortable>
                     <thead>
                     <tr class="active">
                         <th class="col-xs-2">Price</th>

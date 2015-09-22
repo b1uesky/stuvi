@@ -3,7 +3,6 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\User;
-use Config;
 use Input;
 
 
@@ -17,6 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        $filters = ['id', 'name', 'phone', 'role'];
         $filter   = Input::get('filter', 'id');
         $keyword  = strtolower(Input::get('keyword'));
         $order_by = Input::get('order_by', 'id');
@@ -48,10 +48,11 @@ class UserController extends Controller
             $query = User::query();
         }
 
-        $users = $query->orderBy($order_by, $order)->paginate(Config::get('pagination.limit.admin.user'));
+        $users = $query->orderBy($order_by, $order)->paginate(config('pagination.limit.admin.user'));
 
         return view('admin.user.index')
             ->with('users', $users)
+            ->with('filters', $filters)
             ->with('pagination_params', Input::only([
                                                         'filter',
                                                         'keyword',

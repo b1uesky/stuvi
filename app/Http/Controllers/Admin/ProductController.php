@@ -3,7 +3,6 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Product;
-use Config;
 use Input;
 
 class ProductController extends Controller
@@ -16,6 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $filters = ['id', 'title', 'seller'];
         $filter   = Input::get('filter');
         $keyword  = strtolower(Input::get('keyword'));
         $order_by = Input::get('order_by', 'id');
@@ -55,10 +55,11 @@ class ProductController extends Controller
                             ->select('products.*', 'users.'.$order_by);
         }
 
-        $products = $query->orderBy($order_by, $order)->paginate(Config::get('pagination.limit.admin.product'));
+        $products = $query->orderBy($order_by, $order)->paginate(config('pagination.limit.admin.product'));
 
         return view('admin.product.index')
             ->with('products', $products)
+            ->with('filters', $filters)
             ->with('pagination_params', Input::only([
                                                         'filter',
                                                         'keyword',
@@ -105,7 +106,7 @@ class ProductController extends Controller
     {
         return view('admin.product.show')
             ->with('product', $product)
-            ->with('conditions', Config::get('product.conditions'))
+            ->with('conditions', config('product.conditions'))
             ->with('seller_orders', $product->sellerOrders);
     }
 

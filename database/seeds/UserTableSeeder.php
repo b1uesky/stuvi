@@ -28,7 +28,7 @@ class UserTableSeeder extends Seeder {
             'user_id'       => $user->id,
             'email_address' => 'luoty@bu.edu',
             'verified'       => true,
-            'verification_code' => \App\Helpers\generateRandomCode(Config::get('user.verification_code_length')),
+            'verification_code' => \App\Helpers\generateRandomCode(config('user.verification_code_length')),
         ]);
         $user->setPrimaryEmail($email->id);
 
@@ -44,7 +44,7 @@ class UserTableSeeder extends Seeder {
             'user_id'       => $user->id,
             'email_address' => 'desmond@bu.edu',
             'verified'       => true,
-            'verification_code' => \App\Helpers\generateRandomCode(Config::get('user.verification_code_length')),
+            'verification_code' => \App\Helpers\generateRandomCode(config('user.verification_code_length')),
         ]);
         $user->setPrimaryEmail($email->id);
 
@@ -60,7 +60,7 @@ class UserTableSeeder extends Seeder {
             'user_id'       => $user->id,
             'email_address' => 'seller@bu.edu',
             'verified'       => true,
-            'verification_code' => \App\Helpers\generateRandomCode(Config::get('user.verification_code_length')),
+            'verification_code' => \App\Helpers\generateRandomCode(config('user.verification_code_length')),
         ]);
         $user->setPrimaryEmail($email->id);
 
@@ -76,7 +76,7 @@ class UserTableSeeder extends Seeder {
             'user_id'       => $user->id,
             'email_address' => 'buyer@bu.edu',
             'verified'       => true,
-            'verification_code' => \App\Helpers\generateRandomCode(Config::get('user.verification_code_length')),
+            'verification_code' => \App\Helpers\generateRandomCode(config('user.verification_code_length')),
         ]);
         $user->setPrimaryEmail($email->id);
 
@@ -92,7 +92,7 @@ class UserTableSeeder extends Seeder {
             'user_id'       => $user->id,
             'email_address' => 'courier@bu.edu',
             'verified'       => true,
-            'verification_code' => \App\Helpers\generateRandomCode(Config::get('user.verification_code_length')),
+            'verification_code' => \App\Helpers\generateRandomCode(config('user.verification_code_length')),
         ]);
         $user->setPrimaryEmail($email->id);
 

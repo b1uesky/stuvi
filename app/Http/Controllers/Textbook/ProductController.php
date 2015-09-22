@@ -8,7 +8,6 @@ use App\ProductCondition;
 use App\ProductImage;
 use Auth;
 use Carbon\Carbon;
-use Config;
 use Illuminate\Http\Request;
 use Input;
 use Response;

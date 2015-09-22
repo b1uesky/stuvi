@@ -16,7 +16,7 @@ class ProductTableSeeder extends Seeder {
         DB::table('products')->delete();
 
         $faker = Factory::create();
-        $folder = Config::get('upload.image.product');
+        $folder = config('upload.image.product');
         $num_users = User::count();
         $books = Book::all();
 

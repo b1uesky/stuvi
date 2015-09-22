@@ -3,13 +3,13 @@
 @section('title', 'Deliver')
 
 @section('content')
-    <div class="container">
+
 
         {{-- New/Todo/Delivered switch buttons --}}
         <div class="btn-group btn-group-justified" role="group">
-            <a href="{{ URL::to('express/deliver') }}" role="button" class="btn btn-default">New</a>
-            <a href="{{ URL::to('express/deliver/todo') }}" role="button" class="btn btn-default">Todo</a>
-            <a href="{{ URL::to('express/deliver/delivered') }}" role="button" class="btn btn-default">Delivered</a>
+            <a href="{{ url('express/deliver') }}" role="button" class="btn btn-default">New</a>
+            <a href="{{ url('express/deliver/todo') }}" role="button" class="btn btn-default">Todo</a>
+            <a href="{{ url('express/deliver/delivered') }}" role="button" class="btn btn-default">Delivered</a>
         </div>
 
         <br>
@@ -67,13 +67,13 @@
 
         {{-- Show Ready to ship button if the order is not yet assigned --}}
         @if(!$buyer_order->isAssignedToCourier())
-            <a href="{{ URL::to('express/deliver/' . $buyer_order->id . '/readyToShip') }}" class="btn btn-primary btn-lg btn-block">Ready to ship!</a>
+            <a href="{{ url('express/deliver/' . $buyer_order->id . '/readyToShip') }}" class="btn btn-primary btn-lg btn-block">Ready to ship!</a>
         @elseif(!$buyer_order->isDelivered())
             {{-- Show Confirm Delivery button --}}
-            <a href="{{ URL::to('express/deliver/' . $buyer_order->id . '/confirmDelivery') }}" class="btn btn-warning btn-lg btn-block">Confirm Delivery</a>
+            <a href="{{ url('express/deliver/' . $buyer_order->id . '/confirmDelivery') }}" class="btn btn-warning btn-lg btn-block">Confirm Delivery</a>
         @else
             {{-- The order has been delivered --}}
             <div class="alert alert-success" role="alert">The textbook has been delivered.</div>
         @endif
-    </div>
+
 @endsection

@@ -9,7 +9,6 @@
  * API: https://github.com/paypal/PayPal-PHP-SDK/tree/master/lib/PayPal/Api
  */
 
-use Config;
 use PayPal\Api\Address;
 use PayPal\Api\Amount;
 use PayPal\Api\Authorization;
@@ -53,13 +52,13 @@ class Paypal extends \App\Helpers\Payment
 
     public function __construct()
     {
-        $this->client_id = Config::get('paypal_payment.Account.ClientId');
-        $this->client_secret = Config::get('paypal_payment.Account.ClientSecret');
+        $this->client_id = config('paypal_payment.Account.ClientId');
+        $this->client_secret = config('paypal_payment.Account.ClientSecret');
         $this->api_context = new ApiContext(
             new OAuthTokenCredential($this->client_id, $this->client_secret)
         );
 
-        $flatConfig = array_dot(Config::get('paypal_payment')); // Flatten the array with dots
+        $flatConfig = array_dot(config('paypal_payment')); // Flatten the array with dots
         $this->api_context->setConfig($flatConfig);
     }
 

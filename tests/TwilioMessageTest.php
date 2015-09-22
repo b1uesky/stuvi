@@ -19,9 +19,9 @@ class TwilioMessageTest extends TestCase {
     public function testSendMessage()
     {
         $twilio = new Twilio(
-            Config::get('twilio.twilio.connections.twilio.sid'),
-            Config::get('twilio.twilio.connections.twilio.token'),
-            Config::get('twilio.twilio.connections.twilio.from')
+            config('twilio.twilio.connections.twilio.sid'),
+            config('twilio.twilio.connections.twilio.token'),
+            config('twilio.twilio.connections.twilio.from')
         );
 
         $twilio->message('+18572064789', 'Hello World!');

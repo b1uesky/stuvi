@@ -10,7 +10,6 @@ use App\Helpers\Price;
 use App\Http\Controllers\Controller;
 use App\SellerOrder;
 use Auth;
-use Config;
 use DB;
 use Illuminate\Http\RedirectResponse;
 use Input;
@@ -97,7 +96,7 @@ class BuyerOrderController extends Controller
         {
             return view('order.buyer.show')
                 ->with('buyer_order', $buyer_order)
-                ->with('datetime_format', Config::get('app.datetime_format'));
+                ->with('datetime_format', config('app.datetime_format'));
         }
 
         return redirect('order/buyer')
