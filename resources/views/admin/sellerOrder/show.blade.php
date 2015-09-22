@@ -4,7 +4,9 @@
 
 @section('content')
 
-    <table class="table">
+    <table class="table table-condensed">
+        <caption>Details</caption>
+
         <tr>
             <th>ID</th>
             <td>{{ $seller_order->id }}</td>
@@ -33,9 +35,10 @@
         </tr>
     </table>
 
-    <h2>Delivery</h2>
 
-    <table class="table">
+    <table class="table table-condensed">
+        <caption>Delivery</caption>
+
         <tr>
             <th>Scheduled Pickup Time</th>
             <td>{{ $seller_order->scheduled_pickup_time }}</td>
@@ -68,8 +71,9 @@
         </tr>
     </table>
 
-    <p><strong>Payout</strong></p>
-    <table class="table table-hover">
+    <table class="table table-condensed">
+        <caption>Payout</caption>
+
         <tr>
             <th>Payout Item ID</th>
             <td>{{ $seller_order->payout_item_id }}</td>

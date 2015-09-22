@@ -4,8 +4,9 @@
 
 @section('content')
 
-    <p><strong>Overview</strong></p>
-    <table class="table">
+    <table class="table table-condensed">
+        <caption>Details</caption>
+
         <tr>
             <th>ID</th>
             <td>{{ $buyer_order->id }}</td>
@@ -57,9 +58,10 @@
         </tr>
     </table>
 
-    <h2>Payments</h2>
 
     <table class="table table-condensed" data-sortable>
+        <caption>Payment</caption>
+
         <thead>
             <tr class="active">
                 <th>Subtotal</th>

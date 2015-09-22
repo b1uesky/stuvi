@@ -10,7 +10,9 @@
         {{--<a class="btn btn-danger" href="{{ url('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>--}}
     {{--@endif--}}
 
-    <table class="table">
+    <table class="table table-condensed">
+        <caption>Details</caption>
+
         <tr>
             <th>ID</th>
             <td>{{ $product->id }}</td>
@@ -21,7 +23,7 @@
         </tr>
         <tr>
             <th>Price</th>
-            <td>{{ $product->decimalPrice() }}</td>
+            <td class="price">${{ $product->decimalPrice() }}</td>
         </tr>
         <tr>
             <th>Seller</th>
@@ -84,9 +86,9 @@
     </table>
 
 
-    <h2>Seller orders</h2>
-
     <table class="table table-condensed" data-sortable>
+        <caption>Seller orders</caption>
+
         <thead>
             <tr class="active">
                 <th>ID</th>

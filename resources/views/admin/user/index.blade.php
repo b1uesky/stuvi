@@ -17,22 +17,6 @@
             <input type="text" class="form-control input-large" name="keyword" value="{{ $pagination_params['keyword'] }}">
         </div><!-- form group [search] -->
         <div class="form-group">
-            <label class="filter-col" style="margin-right:0;">Order by:</label>
-            <select name="order_by" class="form-control">
-                <option value="id" @if ($pagination_params['order_by'] == 'id') selected @endif>ID</option>
-                <option value="first_name" @if ($pagination_params['order_by'] == 'first_name') selected @endif>First Name</option>
-                <option value="last_name" @if ($pagination_params['order_by'] == 'last_name') selected @endif>Last Name</option>
-                <option value="phone_number" @if ($pagination_params['order_by'] == 'phone_number') selected @endif>Phone</option>
-                <option value="role" @if ($pagination_params['order_by'] == 'role') selected @endif>Role</option>
-            </select>
-        </div> <!-- form group [rows] -->
-        <div class="form-group">
-            <select name="order" class="form-control">
-                <option value="DESC" @if ($pagination_params['order'] == 'DESC') selected @endif>DESC</option>
-                <option value="ASC" @if ($pagination_params['order'] == 'ASC') selected @endif>ASC</option>
-            </select>
-        </div> <!-- form group [rows] -->
-        <div class="form-group">
             <button type="submit" class="btn btn-default filter-col">
                 Search
             </button>

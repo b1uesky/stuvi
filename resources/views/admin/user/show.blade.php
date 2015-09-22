@@ -4,7 +4,9 @@
 
 @section('content')
 
-    <table class="table">
+    <table class="table table-condensed">
+        <caption>Details</caption>
+
         <tr>
             <th>ID</th>
             <td>{{ $user->id }}</td>
@@ -39,9 +41,9 @@
         </tr>
     </table>
 
-    <h2>Emails</h2>
-
     <table class="table table-condensed" data-sortable>
+        <caption>Email</caption>
+
         <thead>
             <tr class="active">
                 <th>Address</th>
@@ -62,9 +64,10 @@
 
     </table>
 
-    <h2>Bookshelf</h2>
 
     <table class="table table-condensed" data-sortable>
+        <caption>Bookshelf</caption>
+
         <thead>
             <tr class="active">
                 <th>ID</th>
@@ -124,9 +127,9 @@
 
     </table>
 
-    <h2>Buyer orders</h2>
-
     <table class="table table-condensed" data-sortable>
+        <caption>Buyer orders</caption>
+
         <thead>
             <tr class="active">
                 <th>ID</th>
@@ -151,9 +154,9 @@
 
     </table>
 
-    <h2>Seller orders</h2>
-
     <table class="table table-condensed" data-sortable>
+        <caption>Seller orders</caption>
+
         <thead>
             <tr class="active">
                 <th>ID</th>
