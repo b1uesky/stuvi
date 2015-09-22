@@ -17,10 +17,10 @@ class BookController extends Controller
      */
     public function index()
     {
-        $filter   = Input::get('filter', 'id');
-        $keyword  = strtolower(Input::get('keyword'));
-        $order_by = Input::get('order_by', 'id');
-        $order    = Input::get('order', 'DESC');
+        $filters = ['id', 'title', 'isbn10', 'isbn13'];
+
+        $filter   = Input::get('filter');
+        $keyword  = trim(strtolower(Input::get('keyword')));
 
         if (empty($keyword))
         {
@@ -50,20 +50,12 @@ class BookController extends Controller
             $query = Book::query();
         }
 
-        $books = $query->orderBy($order_by, $order)
-                       ->paginate(config('pagination.limit.admin.default'));
+        $books = $query->paginate(config('pagination.limit.admin.default'));
 
-
-        //        $books = Book::paginate(config('pagination.limit.admin.default'));
         return view('admin.book.index')
             ->with('books', $books)
-            ->with('pagination_params', Input::only([
-                                                        'filter',
-                                                        'keyword',
-                                                        'order_by',
-                                                        'order',
-                                                        'page',
-                                                    ]));
+            ->with('filters', $filters)
+            ->with('pagination_params', Input::only(['filter', 'keyword', 'page']));
     }
 
     /**

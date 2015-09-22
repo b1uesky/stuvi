@@ -7,13 +7,15 @@
 
 <body>
 
+@include('includes.admin.header')
+
 {{-- Session flash messages --}}
 @include('includes.alerts')
 
 <div class="container-fluid">
     <div class="row page-content">
         <div class="col-md-2">
-            @include('includes.admin.header')
+            @include('includes.admin.menu')
         </div>
 
         <div class="col-md-10">

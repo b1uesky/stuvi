@@ -16,6 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        $filters = ['id', 'name', 'phone', 'role'];
         $filter   = Input::get('filter', 'id');
         $keyword  = strtolower(Input::get('keyword'));
         $order_by = Input::get('order_by', 'id');
@@ -51,6 +52,7 @@ class UserController extends Controller
 
         return view('admin.user.index')
             ->with('users', $users)
+            ->with('filters', $filters)
             ->with('pagination_params', Input::only([
                                                         'filter',
                                                         'keyword',

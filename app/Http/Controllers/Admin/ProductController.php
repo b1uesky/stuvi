@@ -15,6 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $filters = ['id', 'title', 'seller'];
         $filter   = Input::get('filter');
         $keyword  = strtolower(Input::get('keyword'));
         $order_by = Input::get('order_by', 'id');
@@ -58,6 +59,7 @@ class ProductController extends Controller
 
         return view('admin.product.index')
             ->with('products', $products)
+            ->with('filters', $filters)
             ->with('pagination_params', Input::only([
                                                         'filter',
                                                         'keyword',

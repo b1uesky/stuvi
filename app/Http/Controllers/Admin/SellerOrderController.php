@@ -16,6 +16,7 @@ class SellerOrderController extends Controller
      */
     public function index()
     {
+        $filters = ['id', 'title', 'seller'];
         $filter   = Input::get('filter');
         $keyword  = strtolower(Input::get('keyword'));
         $order_by = Input::get('order_by', 'id');
@@ -60,6 +61,7 @@ class SellerOrderController extends Controller
         $seller_orders = $query->orderBy($order_by, $order)->paginate(config('pagination.limit.admin.seller_order'));
 
         return view('admin.sellerOrder.index')->withSellerOrders($seller_orders)
+            ->with('filters', $filters)
             ->with('pagination_params', Input::only([
                                                         'filter',
                                                         'keyword',

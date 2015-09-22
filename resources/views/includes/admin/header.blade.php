@@ -1,42 +1,48 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h2 class="panel-title">Stuvi admin</h2>
-    </div>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Stuvi Admin</a>
+        </div>
 
-    <div class="list-group">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-        {{-- toggle menu item active state depending on the url --}}
-        <a class="list-group-item {{ Request::segment(2) == 'user' ? 'active' : '' }}" href="{{ url('admin/user') }}">
-            User <span class="badge">{{ \App\User::count() }}</span>
-        </a>
+            <form class="navbar-form navbar-left" action="{{ url(Request::path()) }}" method="get">
+                <div class="form-group">
+                    <select name="filter" class="form-control">
+                        @foreach($filters as $filter)
+                            <option value="{{ $filter }}" @if ($pagination_params['filter'] == $filter) selected @endif>{{ $filter }}</option>
+                        @endforeach
+                    </select>
+                </div> <!-- form group [rows] -->
+                <div class="form-group">
+                    <input type="text" class="form-control" name="keyword" value="{{ $pagination_params['keyword'] }}">
+                </div><!-- form group [search] -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">
+                        Search
+                    </button>
+                </div>
+            </form>
 
-        <a class="list-group-item {{ Request::segment(2) == 'book' ? 'active' : '' }}" href="{{ url('admin/book') }}">
-            Book <span class="badge">{{ \App\Book::count() }}</span>
-        </a>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" id="dropdownMenuAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <span class="glyphicon glyphicon-user"></span> {{ Auth::user()->first_name }} <span class="caret"></span>
+                    </a>
 
-        <a class="list-group-item {{ Request::segment(2) == 'product' ? 'active' : '' }}" href="{{ url('admin/product') }}">
-            Product <span class="badge">{{ \App\Product::count() }}</span>
-        </a>
-
-        <a class="list-group-item {{ Request::segment(2) == 'order' && Request::segment(3) == 'seller' ? 'active' : '' }}" href="{{ url('admin/order/seller') }}">
-            Seller order <span class="badge">{{ \App\SellerOrder::count() }}</span>
-        </a>
-
-        <a class="list-group-item {{ Request::segment(2) == 'order' && Request::segment(3) == 'buyer' ? 'active' : '' }}" href="{{ url('admin/order/buyer') }}">
-            Buyer order <span class="badge">{{ \App\BuyerOrder::count() }}</span>
-        </a>
-
-    </div>
-
-
-    <div class="dropdown">
-        <button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdownMenuAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            <span class="glyphicon glyphicon-user"></span> {{ Auth::user()->first_name }} <span class="caret"></span>
-        </button>
-
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuAdmin">
-            <li><a href="{{ url('auth/logout') }}">Sign out</a></li>
-        </ul>
-    </div>
-
-</div>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuAdmin">
+                        <li><a href="{{ url('auth/logout') }}">Sign out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>

@@ -4,27 +4,6 @@
 
 @section('content')
 
-    <form class="form-inline" role="form" action="{{ url('admin/user') }}" method="get">
-        <div class="form-group">
-            <select name="filter" class="form-control">
-                <option value="id" @if ($pagination_params['filter'] == 'id') selected @endif>ID</option>
-                <option value="name" @if ($pagination_params['filter'] == 'name') selected @endif>Name</option>
-                <option value="phone" @if ($pagination_params['filter'] == 'phone') selected @endif>Phone</option>
-                <option value="role" @if ($pagination_params['filter'] == 'role') selected @endif>Role</option>
-            </select>
-        </div> <!-- form group [rows] -->
-        <div class="form-group">
-            <input type="text" class="form-control" name="keyword" value="{{ $pagination_params['keyword'] }}">
-        </div><!-- form group [search] -->
-        <div class="form-group">
-            <button type="submit" class="btn btn-default">
-                Search
-            </button>
-        </div>
-    </form>
-
-    <br>
-
     <table class="table table-condensed" data-sortable>
         <thead>
             <tr class="active">

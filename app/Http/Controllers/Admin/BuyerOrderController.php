@@ -17,6 +17,7 @@ class BuyerOrderController extends Controller
      */
     public function index()
     {
+        $filters = ['id', 'buyer'];
         $filter   = Input::get('filter');
         $keyword  = strtolower(Input::get('keyword'));
         $order_by = Input::get('order_by', 'id');
@@ -51,6 +52,7 @@ class BuyerOrderController extends Controller
 
         return view('admin.buyerOrder.index')
             ->with('buyer_orders', $buyer_orders)
+            ->with('filters', $filters)
             ->with('pagination_params', Input::only([
                                                         'filter',
                                                         'keyword',
