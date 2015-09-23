@@ -11,8 +11,10 @@
     "dropzone": "~4.0.1",
     "eonasdan-bootstrap-datetimepicker": "~4.15.35",
     "font-awesome": "latest",
+    "html5shiv": "~3.7.3",
     "jquery-ui": "~1.11.4",
     "lazyload": "~3.2.1",
+    "respond": "~1.4.2",
     "slick-carousel": "~1.5.8",
     "sortable": "~0.8.0",
     "zoom.js": "v0.0.1"
