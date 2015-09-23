@@ -15,9 +15,23 @@ elixir(function (mix) {
     // fonts
     mix.copy('resources/assets/libs/bootstrap/fonts', 'public/build/fonts');
 
-    // textbook
-    mix.sass('textbook.scss', './public/build/css/textbook.css');
+    // core js
+    mix.scripts([
+        '../libs/html5shiv/dist/html5shiv.min.js',
+        '../libs/respond/dest/respond.min.js',
+        '../libs/jquery/dist/jquery.min.js',
+        '../libs/bootstrap/dist/js/bootstrap.min.js',
+        '../libs/sortable/js/sortable.min.js',
+        '../libs/zoom.js/js/zoom.js',
+        'alert.js',
+    ], 'public/build/js/core.js');
 
+    // compile scss to css
+    mix.sass('textbook.scss', './public/build/css/textbook.css');
+    mix.sass('admin.scss', './public/build/css/admin.css');
+    mix.sass('express.scss', './public/build/css/express.css');
+
+    // textbook css
     mix.styles([
         '../libs/jquery-ui/themes/smoothness/jquery-ui.min.css',
         '../libs/bootstrap-select/dist/css/bootstrap-select.min.css',
@@ -28,6 +42,7 @@ elixir(function (mix) {
         '../../../public/build/css/textbook.css'
     ], 'public/build/css/textbook.css');
 
+    // textbook js
     mix.scriptsIn('resources/assets/js', 'public/build/js/textbook.js');
 
     mix.scripts([
@@ -48,11 +63,4 @@ elixir(function (mix) {
         '../../../public/build/js/textbook.js'
     ], 'public/build/js/textbook.js');
 
-
-
-    // admin
-    mix.sass('admin.scss', './public/build/css/admin.css');
-
-    // express
-    mix.sass('express.scss', './public/build/css/express.css');
 });

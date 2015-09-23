@@ -19,7 +19,8 @@
 
 
 @include('includes.express.footer')
-@include('includes.express.js')
+
+<script src="{{ asset('build/js/core.js') }}"></script>
 
 </body>
 </html>

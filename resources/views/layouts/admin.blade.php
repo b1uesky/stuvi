@@ -25,7 +25,8 @@
 </div>
 
 @include('includes.admin.footer')
-@include('includes.admin.js')
+
+<script src="{{ asset('build/js/core.js') }}"></script>
 
 </body>
 </html>
