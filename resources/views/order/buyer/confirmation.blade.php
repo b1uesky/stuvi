@@ -43,6 +43,3 @@
 
     </div>
 @endsection
-
-@section('javascript')
-@endsection

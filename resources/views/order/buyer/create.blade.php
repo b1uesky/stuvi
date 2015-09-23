@@ -310,9 +310,5 @@
 @include('includes.modal.edit-address')
 
 @section('javascript')
-    <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js')}}"></script>
-    <script src="{{asset('libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js')}}"></script>
-
-    {{--<script src="{{ asset('libs/card/lib/js/jquery.card.js') }}"></script>--}}
     <script src="{{ asset('/js/order/buyer/create.js') }}"></script>
 @endsection
