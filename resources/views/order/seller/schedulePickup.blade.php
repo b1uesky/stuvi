@@ -114,7 +114,7 @@
 
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <div id="datetimepicker"></div>
+                            <div id="datetimepicker-pickup-time"></div>
                         </div>
                     </div>
 
@@ -151,7 +151,5 @@
 @include('includes.modal.edit-address')
 
 @section('javascript')
-    <script src="{{ asset('libs/moment/min/moment.min.js') }}"></script>
-    <script src="{{ asset('libs/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
     <script src="{{ asset('js/order/seller/schedulePickup.js') }}"></script>
 @endsection

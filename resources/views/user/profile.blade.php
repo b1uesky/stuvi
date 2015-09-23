@@ -76,7 +76,7 @@
                                 <!-- birthday -->
                                 <div class="form-group">
                                     <label>Birthday</label>
-                                    <input class="form-control" id="datetimepicker1" class="date" type="text" name="birth" value={{$profile->birthday}}>
+                                    <input class="form-control" id="datetimepicker-profile-birthday" type="text" name="birth" value={{$profile->birthday}}>
                                 </div>
 
                                 <!-- title -->
@@ -102,7 +102,7 @@
                                 <div class="form-group">
                                     <label>Expected Graduation</label>
 
-                                    <input class="form-control" id="datetimepicker" class="date" type="text" name="grad" value={{$profile->graduation_date}}>
+                                    <input class="form-control" id="datetimepicker-profile-grad" type="text" name="grad" value={{$profile->graduation_date}}>
                                 </div>
 
                                 <!-- Area of Study / Major -->
@@ -147,6 +147,5 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('libs/datetimepicker/jquery.datetimepicker.js') }}"></script>
     <script type="text/javascript" src="{{asset('js/user/profile-edit.js')}}"></script>
 @endsection

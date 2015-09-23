@@ -13,6 +13,9 @@
         @include('includes.textbook.header')
     @show
 
+    {{-- Session flash messages --}}
+    @include('includes.alerts')
+
     {{-- Page content --}}
     @yield('content')
 
@@ -22,9 +25,6 @@
 
 {{-- footer --}}
 @include('includes.textbook.footer')
-
-{{-- Session flash messages --}}
-@include('includes.alerts')
 
 {{-- js files --}}
 @include('includes.textbook.js')

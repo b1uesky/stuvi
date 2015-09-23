@@ -4,18 +4,11 @@
 
 $(document).ready(function(){
 
-    $('#datetimepicker1').datetimepicker({
-        lang:'en',
-        timepicker:false,
-        scrollInput:false,
-        format:'m-d-Y'
+    $('#datetimepicker-profile-birthday').datetimepicker({
+        format: 'M/D/YYYY'
     });
 
-    $('#datetimepicker').datetimepicker({
-        format: 'm-d-Y', // config/app datetime_format
-        lang: 'en',
-        timepicker:false,
-        scrollInput:false,
-        step: 30
+    $('#datetimepicker-profile-grad').datetimepicker({
+        format: 'MM/YYYY'
     });
 });

@@ -19,7 +19,7 @@ $(document).ready(function() {
         enabledHours.push(i);
     }
 
-    $('#datetimepicker').datetimepicker({
+    $('#datetimepicker-pickup-time').datetimepicker({
         inline: true,
         sideBySide: true,
         stepping: 15,
