@@ -148,7 +148,3 @@
 @endsection
 
 @include('includes.modal.cancel-buyer-order')
-
-@section('javascript')
-    <script src="{{ asset('js/order/buyer/show.js') }}"></script>
-@endsection

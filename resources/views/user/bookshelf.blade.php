@@ -55,7 +55,3 @@
     @include('includes.modal.delete-product')
 
 @endsection
-
-@section('javascript')
-    <script src="{{ asset('js/user/bookshelf.js') }}"></script>
-@endsection

@@ -193,8 +193,4 @@
 
 @section('javascript')
     <script src="{{ asset('libs/dropzone/dist/min/dropzone.min.js') }}"></script>
-
-    @if(Auth::check())
-        <script src="{{ asset('js/product/create.js') }}"></script>
-    @endif
 @endsection

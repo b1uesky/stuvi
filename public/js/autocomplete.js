@@ -74,5 +74,25 @@ $(document).ready(function () {
             '</div>')
             .appendTo(ul);
     };
-    ;
+
+    // navbar autocomplete
+    $('.navbar-form #autocomplete').focus(function() {
+        if(screen.width > 767){
+            $(this).animate({
+                width: '+=300px'
+            });
+        }
+
+        $(this).attr('placeholder', 'Enter the textbook ISBN, Title, or Author');
+    });
+
+    $('.navbar-form #autocomplete').blur(function() {
+        if(screen.width > 767){
+            $(this).animate({
+                width: '-=300px'
+            });
+        }
+
+        $(this).attr('placeholder', 'Search');
+    });
 });

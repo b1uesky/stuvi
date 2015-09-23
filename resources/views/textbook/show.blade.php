@@ -112,7 +112,6 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('js/navbar.js') }}"></script>
     <script src="{{ asset('libs/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/autocomplete.js')}} "></script>
     <script src="{{ asset('libs/zoom.js/js/zoom.js') }}"></script>

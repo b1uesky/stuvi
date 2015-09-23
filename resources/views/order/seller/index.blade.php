@@ -108,7 +108,3 @@
 
     @include('includes.modal.cancel-seller-order')
 @endsection
-
-@section('javascript')
-    <script src="{{ asset('js/order/seller/index.js') }}"></script>
-@endsection
