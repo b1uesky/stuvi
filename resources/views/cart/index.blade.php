@@ -7,7 +7,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container shopping-cart">
 
         {{-- Breadcrumb --}}
         @if(count($items) > 0)
@@ -108,5 +108,5 @@
 @endsection
 
 @section('javascript')
-    <script src="{{asset('/js/cart/index.js')}}"></script>
+    <script src="{{ asset('js/cart.js') }}"></script>
 @endsection
