@@ -2,11 +2,6 @@
 
 @section('title', 'Schedule a pickup')
 
-@section('css')
-    <link rel="stylesheet"
-          href="{{ asset('libs/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}"/>
-@endsection
-
 @section('content')
 
     <div class="container">

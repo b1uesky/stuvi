@@ -4,10 +4,6 @@
 
 @section('title', 'Enter Product Info')
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('libs/dropzone/dist/min/dropzone.min.css') }}">
-@endsection
-
 @section('content')
 
     <div class="container">
@@ -42,8 +38,8 @@
                                             <div class="form-group">
                                                 <label>General condition</label>
                                                 {{--Open modal button--}}
-                                                <i class="fa fa-question-circle" data-toggle="modal"
-                                                   data-target=".condition-modal"></i>
+                                                <span class="glyphicon glyphicon-question-sign" data-toggle="modal"
+                                                      data-target=".condition-modal"></span>
                                                 <br>
 
                                                 <div class="radio-product-condition">
@@ -66,8 +62,8 @@
                                             <div class="form-group">
                                                 <label>Highlights/Notes</label>
                                                 {{--Open modal button--}}
-                                                <i class="fa fa-question-circle" data-toggle="modal"
-                                                   data-target=".highlight-modal"></i>
+                                                <span class="glyphicon glyphicon-question-sign" data-toggle="modal"
+                                                   data-target=".highlight-modal"></span>
                                                 <br>
 
                                                 <div class="radio-product-condition">
@@ -86,8 +82,8 @@
                                             {{--Damaged Pages--}}
                                             <div class="form-group">
                                                 <label>Damaged pages</label>
-                                                <i class="fa fa-question-circle" data-toggle="modal"
-                                                   data-target=".damage-modal"></i>
+                                                <span class="glyphicon glyphicon-question-sign" data-toggle="modal"
+                                                   data-target=".damage-modal"></span>
                                                 <br>
 
                                                 <div class="radio-product-condition">
@@ -106,8 +102,8 @@
                                             {{--Broken Binding--}}
                                             <div class="form-group">
                                                 <label>Broken book binding</label>
-                                                <i class="fa fa-question-circle" data-toggle="modal"
-                                                   data-target=".binding-modal"></i>
+                                                <span class="glyphicon glyphicon-question-sign" data-toggle="modal"
+                                                   data-target=".binding-modal"></span>
                                                 <br>
 
                                                 <div class="radio-product-condition">
@@ -193,4 +189,5 @@
 
 @section('javascript')
     <script src="{{ asset('libs/dropzone/dist/min/dropzone.min.js') }}"></script>
+    <script src="{{ asset('js/product/create.js') }}"></script>
 @endsection

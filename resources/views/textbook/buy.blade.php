@@ -5,10 +5,6 @@
 @section('title', 'Buy Textbooks')
 @section('description', 'Buy textbooks from other students without leaving home.')
 
-@section('css')
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-@endsection
-
 @section('content')
 
         <!-- Search Bar Container-->

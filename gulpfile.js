@@ -12,15 +12,17 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function (mix) {
-    mix.sass('main.scss', './public/css/main.css');
+    mix.sass('textbook.scss', './public/css/textbook.css');
     mix.sass('admin.scss', './public/css/admin.css');
     mix.sass('express.scss', './public/css/express.css');
 
-
-    //mix.styles([
-    //    '../libs/bootstrap/dist/css/bootstrap.min.css',
-    //    '../libs/jquery-ui/themes/smoothness/jquery-ui.min.css',
-    //    '../libs-paid/formvalidation-dist-v0.6.3/dist/css/formValidation.min.css',
-    //    '../../../public/css/main.css'
-    //], 'public/css/main.css');
+    mix.styles([
+        '../../../public/libs/jquery-ui/themes/smoothness/jquery-ui.min.css',
+        '../../../public/libs/bootstrap-select/dist/css/bootstrap-select.min.css',
+        '../../../public/libs/sortable/css/sortable-theme-minimal.css',
+        '../../../public/libs/zoom.js/css/zoom.css',
+        '../../../public/libs/dropzone/dist/min/dropzone.min.css',
+        '../../../public/libs/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+        '../../../public/css/textbook.css'
+    ], 'public/css/textbook.css');
 });

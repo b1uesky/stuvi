@@ -9,12 +9,9 @@
     <title>Stuvi - @yield('title')</title>
 
     <link rel="icon" type="image/ico" href="{{ asset('img/favicon.ico') }}"/>
+
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600'>
-    <link rel="stylesheet" href="{{ asset('libs/font-awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('libs/jquery-ui/themes/smoothness/jquery-ui.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('libs/bootstrap-select/dist/css/bootstrap-select.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('libs/sortable/css/sortable-theme-minimal.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/textbook.css') }}">
 
     @yield('css')
 

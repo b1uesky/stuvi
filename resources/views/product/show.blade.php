@@ -9,10 +9,6 @@
     @include('includes.textbook.searchbar')
 @endsection
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('libs/zoom.js/css/zoom.css') }}">
-@endsection
-
 @section('content')
 
     <?php $book = $product->book; ?>
@@ -70,7 +66,7 @@
                 <tr>
                     <td>
                         {{ config('product.conditions.general_condition.title') }}
-                        <i class="fa fa-question-circle" data-toggle="modal" data-target=".condition-modal"></i>
+                        <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target=".condition-modal"></span>
                     </td>
 
                     <td>{{ config('product.conditions.general_condition')[$product->condition->general_condition] }}</td>
@@ -79,7 +75,7 @@
                 <tr>
                     <td>
                         {{ config('product.conditions.highlights_and_notes.title') }}
-                        <i class="fa fa-question-circle" data-toggle="modal" data-target=".highlight-modal"></i>
+                        <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target=".highlight-modal"></span>
                     </td>
                     <td>{{ config('product.conditions.highlights_and_notes')[$product->condition->highlights_and_notes] }}</td>
                 </tr>
@@ -87,7 +83,7 @@
                 <tr>
                     <td>
                         {{ config('product.conditions.damaged_pages.title') }}
-                        <i class="fa fa-question-circle" data-toggle="modal" data-target=".damage-modal"></i>
+                        <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target=".damage-modal"></span>
                     </td>
                     <td>{{ config('product.conditions.damaged_pages')[$product->condition->damaged_pages] }}</td>
                 </tr>
@@ -95,7 +91,7 @@
                 <tr>
                     <td>
                         {{ config('product.conditions.broken_binding.title') }}
-                        <i class="fa fa-question-circle" data-toggle="modal" data-target=".binding-modal"></i>
+                        <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target=".binding-modal"></span>
 
                     </td>
                     <td>{{ config('product.conditions.broken_binding')[$product->condition->broken_binding] }}</td>

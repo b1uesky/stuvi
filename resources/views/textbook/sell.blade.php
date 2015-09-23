@@ -5,11 +5,6 @@
 @section('title', 'Sell Your Textbooks')
 @section('description', 'Sell your textbooks to other students without leaving home.')
 
-@section('css')
-    {{-- Used for icons in sell page--}}
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-@endsection
-
 @section('content')
 
         <!-- Search Bar Container-->

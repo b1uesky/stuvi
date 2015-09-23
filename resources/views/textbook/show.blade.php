@@ -5,7 +5,6 @@
 @section('title',$book->title)
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('libs/zoom.js/css/zoom.css') }}">
     <script src="{{ asset('libs/lazyload/build/lazyload.min.js') }}"></script>
 @endsection
 

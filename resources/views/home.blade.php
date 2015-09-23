@@ -15,7 +15,9 @@
                         <button id="nav-toggle-collapse" type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                                 data-target="#bs-example-navbar-collapse-1">
                             <span class="sr-only">Toggle Navigation</span>
-                            <i class="fa fa-bars"></i>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
                         </button>
 
                         {{-- Logo only when nav bar collapses into hamburger menu --}}
@@ -92,7 +94,7 @@
                                     {{-- If cart empty, open modal --}}
                                     <label class="sr-only" for="nav-right-cart-link">Cart</label>
                                     <a href="{{ url('/cart') }}">
-                                        <i class="fa fa-shopping-cart"></i>
+                                        <span class="glyphicon glyphicon-shopping-cart"></span>
                                         @if($cartQty == 0)
                                             <span class="cart-quantity hide">{{$cartQty}}</span>
                                         @else

@@ -10,23 +10,23 @@
             </ul>
 
             <ul class="social-links col-sm-4 text-center">
-                <li>
-                    <a href="https://www.facebook.com/StuviBoston" target="_blank" name="facebook">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                </li>
+                {{--<li>--}}
+                    {{--<a href="https://www.facebook.com/StuviBoston" target="_blank" name="facebook">--}}
+                        {{--<i class="fa fa-facebook"></i>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
 
-                <li>
-                    <a href="https://twitter.com/StuviBoston" target="_blank" name="twitter">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                </li>
+                {{--<li>--}}
+                    {{--<a href="https://twitter.com/StuviBoston" target="_blank" name="twitter">--}}
+                        {{--<i class="fa fa-twitter"></i>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
 
-                <li>
-                    <a href="https://www.linkedin.com/company/stuvi" target="_blank" name="linkedin">
-                        <i class="fa fa-linkedin"></i>
-                    </a>
-                </li>
+                {{--<li>--}}
+                    {{--<a href="https://www.linkedin.com/company/stuvi" target="_blank" name="linkedin">--}}
+                        {{--<i class="fa fa-linkedin"></i>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
             </ul>
 
             <ul class="company-info col-sm-4 text-center">
