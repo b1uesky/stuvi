@@ -189,8 +189,3 @@
     @include('includes.modal.product-conditions')
 
 @endsection
-
-@section('javascript')
-    <script src="{{ asset('libs/dropzone/dist/min/dropzone.min.js') }}"></script>
-    <script src="{{ asset('js/product/edit.js') }}"></script>
-@endsection

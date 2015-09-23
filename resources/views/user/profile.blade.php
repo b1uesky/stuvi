@@ -145,7 +145,3 @@
 
     </div>
 @endsection
-
-@section('javascript')
-    <script type="text/javascript" src="{{asset('js/user/profile-edit.js')}}"></script>
-@endsection

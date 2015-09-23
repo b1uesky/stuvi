@@ -109,8 +109,3 @@
     </div>
 
 @endsection
-
-@section('javascript')
-    <script src="{{ asset('js/autocomplete.js')}} "></script>
-    <script src="{{ asset('js/cart.js') }}"></script>
-@endsection

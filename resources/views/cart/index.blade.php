@@ -106,7 +106,3 @@
 
 
 @endsection
-
-@section('javascript')
-    <script src="{{ asset('js/cart.js') }}"></script>
-@endsection

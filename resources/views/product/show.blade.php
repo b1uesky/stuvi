@@ -148,8 +148,3 @@
 
 @include('includes.modal.delete-product')
 @include('includes.modal.product-conditions')
-
-@section('javascript')
-    <script src="{{ asset('js/autocomplete.js')}} "></script>
-    <script src="{{ asset('js/cart.js') }}"></script>
-@endsection

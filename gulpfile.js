@@ -25,6 +25,8 @@ elixir(function (mix) {
         '../../../public/build/css/textbook.css'
     ], 'public/build/css/textbook.css');
 
+    mix.scriptsIn('resources/assets/js', 'public/build/js/textbook.js');
+
     mix.scripts([
         '../../../public/libs/html5shiv/dist/html5shiv.min.js',
         '../../../public/libs/respond/dest/respond.min.js',
@@ -37,9 +39,13 @@ elixir(function (mix) {
         '../../../public/libs/zoom.js/js/zoom.js',
         '../../../public/libs/moment/min/moment.min.js',
         '../../../public/libs/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+        '../../../public/libs/dropzone/dist/min/dropzone.min.js',
         '../../../public/libs-paid/formvalidation-dist-v0.6.3/dist/js/formValidation.min.js',
-        '../../../public/libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js'
+        '../../../public/libs-paid/formvalidation-dist-v0.6.3/dist/js/framework/bootstrap.min.js',
+        '../../../public/build/js/textbook.js'
     ], 'public/build/js/textbook.js');
+
+
 
     // admin
     mix.sass('admin.scss', './public/build/css/admin.css');

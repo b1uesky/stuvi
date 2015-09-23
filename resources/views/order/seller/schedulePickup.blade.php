@@ -149,7 +149,3 @@
 
 @include('includes.modal.add-address')
 @include('includes.modal.edit-address')
-
-@section('javascript')
-    <script src="{{ asset('js/order/seller/schedulePickup.js') }}"></script>
-@endsection

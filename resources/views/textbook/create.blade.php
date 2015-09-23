@@ -66,6 +66,3 @@
 </div> <!-- End fluid container (background) -->
 
 @endsection
-
-@section('javascript')
-@endsection

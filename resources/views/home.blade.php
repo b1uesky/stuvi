@@ -198,7 +198,3 @@
     </section>
 
 @endsection
-
-@section('javascript')
-    <script src="{{ asset('js/autocomplete.js') }}"></script>
-@endsection

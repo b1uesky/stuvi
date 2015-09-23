@@ -15,8 +15,3 @@
     </div>
 
     @endsection
-
-<!-- all javascript is loaded after the footer -->
-@section('javascript')
-
-@endsection

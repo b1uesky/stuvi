@@ -308,7 +308,3 @@
 
 @include('includes.modal.add-address')
 @include('includes.modal.edit-address')
-
-@section('javascript')
-    <script src="{{ asset('/js/order/buyer/create.js') }}"></script>
-@endsection
