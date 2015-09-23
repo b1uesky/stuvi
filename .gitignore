@@ -1,9 +1,9 @@
-.idea/
 composer.lock
-vendor/
-**.DS_Store
-public/libs
-public/css
 node_modules
+vendor/
+public/libs
+public/build
 .env
+.idea/
+**.DS_Store
 **.swp

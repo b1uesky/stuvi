@@ -150,8 +150,6 @@
 @include('includes.modal.product-conditions')
 
 @section('javascript')
-    <script src="{{ asset('libs/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/autocomplete.js')}} "></script>
     <script src="{{ asset('js/cart.js') }}"></script>
-    <script src="{{ asset('libs/zoom.js/js/zoom.js') }}"></script>
 @endsection

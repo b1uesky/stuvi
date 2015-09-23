@@ -11,7 +11,7 @@
     <link rel="icon" type="image/ico" href="{{ asset('img/favicon.ico') }}"/>
 
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600'>
-    <link rel="stylesheet" href="{{ asset('css/textbook.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/css/textbook.css') }}">
 
     @yield('css')
 
