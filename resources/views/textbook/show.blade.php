@@ -4,10 +4,6 @@
 
 @section('title',$book->title)
 
-@section('css')
-    <script src="{{ asset('libs/lazyload/build/lazyload.min.js') }}"></script>
-@endsection
-
 @section('searchbar')
     @include('includes.textbook.searchbar')
 @endsection
@@ -83,10 +79,8 @@
                                 @foreach($product->images as $image)
                                     <div>
                                         <img class="img-rounded img-small margin-5 full-width"
-                                             src="{{ config('image.lazyload') }}"
-                                             data-action="zoom"
-                                             data-src="{{ $image->getImagePath('large') }}"
-                                             onload="lzld(this)">
+                                             src="{{ $image->getImagePath('large') }}"
+                                             data-action="zoom">
                                     </div>
                                 @endforeach
                             </td>

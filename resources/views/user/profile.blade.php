@@ -3,10 +3,6 @@
 @extends('layouts.textbook')
 @section('title', 'Edit Profile - '.Auth::user()->first_name.' '.Auth::user()->last_name)
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('libs/datetimepicker/jquery.datetimepicker.css') }}">
-@endsection
-
 @section('content')
     <div class="container">
         <div class="row">

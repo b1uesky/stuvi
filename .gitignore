@@ -1,8 +1,8 @@
 composer.lock
 node_modules
 vendor/
-public/libs
 public/build
+resources/assets/libs
 .env
 .idea/
 **.DS_Store
