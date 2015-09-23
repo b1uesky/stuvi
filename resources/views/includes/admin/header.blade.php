@@ -14,23 +14,25 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-            <form class="navbar-form navbar-left" action="{{ url(Request::path()) }}" method="get">
-                <div class="form-group">
-                    <select name="filter" class="form-control">
-                        @foreach($filters as $filter)
-                            <option value="{{ $filter }}" @if ($pagination_params['filter'] == $filter) selected @endif>{{ $filter }}</option>
-                        @endforeach
-                    </select>
-                </div> <!-- form group [rows] -->
-                <div class="form-group">
-                    <input type="text" class="form-control" name="keyword" value="{{ $pagination_params['keyword'] }}">
-                </div><!-- form group [search] -->
-                <div class="form-group">
-                    <button type="submit" class="btn btn-default">
-                        Search
-                    </button>
-                </div>
-            </form>
+            @if(isset($filters))
+                <form class="navbar-form navbar-left" action="{{ url(Request::path()) }}" method="get">
+                    <div class="form-group">
+                        <select name="filter" class="form-control">
+                            @foreach($filters as $filter)
+                                <option value="{{ $filter }}" @if ($pagination_params['filter'] == $filter) selected @endif>{{ $filter }}</option>
+                            @endforeach
+                        </select>
+                    </div> <!-- form group [rows] -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="keyword" value="{{ $pagination_params['keyword'] }}">
+                    </div><!-- form group [search] -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">
+                            Search
+                        </button>
+                    </div>
+                </form>
+            @endif
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
