@@ -43,7 +43,7 @@
         <div class="row container-flex">
                 @forelse($product->images as $index => $image)
                     <div class="margin-5">
-                        <img class="img-rounded full-width" src="{{ $image->getImagePath('large') }}" data-action="zoom">
+                        <img class="img-rounded full-width max-width-380" src="{{ $image->getImagePath('large') }}" data-action="zoom">
                     </div>
                 @empty
                     <h3>No images were provided.</h3>
