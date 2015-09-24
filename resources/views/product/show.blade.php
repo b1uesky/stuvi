@@ -58,8 +58,8 @@
 
                 <tbody>
                 <tr>
-                    <td class="col-sm-6 col-xs-8">Price</td>
-                    <td class="col-sm-6 col-xs-4 price">${{ $product->decimalPrice() }}</td>
+                    <td class="col-sm-6 col-xs-7">Price</td>
+                    <td class="col-sm-6 col-xs-5 price">${{ $product->decimalPrice() }}</td>
                 </tr>
 
                 <!-- General Condition -->
@@ -109,7 +109,7 @@
             </table>
         </div>
 
-        <div class="row text-center">
+        <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
                 @if(Auth::check())
                     @if($product->isInCart(Auth::user()->id))

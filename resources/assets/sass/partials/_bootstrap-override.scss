@@ -1,5 +1,17 @@
 @import '../modules/all';
 
+h1 {
+  @media (max-width: 767px) {
+    font-size: 8vw;
+  }
+}
+
+h2 {
+  @media (max-width: 767px) {
+    font-size: 6vw;
+  }
+}
+
 a {
   text-decoration: none !important;
   color: $primary-color;
