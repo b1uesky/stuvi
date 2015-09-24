@@ -73,7 +73,7 @@
                                 </li>
                                 <li role="separator" class="divider"></li>
                                 <li role="presentation">
-                                    <a role="menuitem" tabindex="-1" href="{{ url('/user/account') }}">Settings</a>
+                                    <a role="menuitem" tabindex="-1" href="{{ url('/user/profile') }}">Settings</a>
                                 </li>
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1" href="{{ url('/auth/logout') }}">Sign out</a>
