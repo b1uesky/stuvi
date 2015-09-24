@@ -188,23 +188,28 @@ class BuyerOrderController extends Controller
             array_push($items, $item_paypal);
         }
 
-        // add discount as an item
+        // add discount as an item if necessary
         $discount = Price::convertIntegerToDecimal($this->cart->discount());
 
-        array_push($items, array(
-            'name'          => 'Discount',
-            'description'   => 'Discount',
-            'currency'      => 'USD',
-            'quantity'      => 1,
-            'price'         => - $discount
-        ));
+        if ($discount > 0)
+        {
+            array_push($items, array(
+                'name'          => 'Discount',
+                'description'   => 'Discount',
+                'currency'      => 'USD',
+                'quantity'      => 1,
+                'price'         => - $discount
+            ));
+        }
 
         // total price of all items
         $subtotal   = Price::convertIntegerToDecimal($this->cart->subtotal()) - $discount;
+
         if ($subtotal < 0)
         {
             $subtotal = 0;
         }
+
         $shipping   = Price::convertIntegerToDecimal($this->cart->shipping());
         $tax        = Price::convertIntegerToDecimal($this->cart->tax());
 

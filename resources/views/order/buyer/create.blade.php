@@ -264,10 +264,12 @@
                                 <td class="text-left">Shipping & handling:</td>
                                 <td class="text-right">${{ $shipping }}</td>
                             </tr>
-                            <tr>
-                                <td class="text-left">Discount:</td>
-                                <td class="text-right">- ${{ $discount }}</td>
-                            </tr>
+                            @if($discount > 0)
+                                <tr>
+                                    <td class="text-left">Discount:</td>
+                                    <td class="text-right">- ${{ $discount }}</td>
+                                </tr>
+                            @endif
                             <tr>
                                 <td class="text-left">Total before tax:</td>
                                 <td class="text-right">${{ $subtotal + $shipping - $discount }}</td>

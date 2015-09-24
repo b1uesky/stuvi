@@ -80,10 +80,12 @@
                                     <span class="pull-right">${{ $buyer_order->decimalShipping() }}</span>
                                 </div>
 
-                                <div class="row">
-                                    <span class="pull-left">Discount:</span>
-                                    <span class="pull-right">-${{ $buyer_order->decimalDiscount() }}</span>
-                                </div>
+                                @if($buyer_order->decimalDiscount() > 0)
+                                    <div class="row">
+                                        <span class="pull-left">Discount:</span>
+                                        <span class="pull-right">-${{ $buyer_order->decimalDiscount() }}</span>
+                                    </div>
+                                @endif
 
                                 <div class="row">
                                     <span class="pull-left">Total before tax:</span>
