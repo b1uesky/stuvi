@@ -25,12 +25,16 @@ return [
         'domain' => 'https://s3.amazonaws.com/',
 
         // buckets
-        'stuvi-product-img' => 'https://s3.amazonaws.com/stuvi-product-img/',
-        'stuvi-book-img'    => 'https://s3.amazonaws.com/stuvi-book-img/'
+        'stuvi-product-img'         => 'https://s3.amazonaws.com/stuvi-product-img/',
+        'stuvi-book-img'            => 'https://s3.amazonaws.com/stuvi-book-img/',
+        'stuvi-test-product-img'    => 'https://s3.amazonaws.com/stuvi-test-product-img/',
+        'stuvi-test-book-img'       => 'https://s3.amazonaws.com/stuvi-test-book-img/',
     ],
 
     'buckets' => [
-        'product_image' =>  'stuvi-product-img',
-        'book_image'    =>  'stuvi-book-img'
+        'product_image'         =>  'stuvi-product-img',
+        'book_image'            =>  'stuvi-book-img',
+        'test_product_image'    =>  'stuvi-test-product-img',
+        'test_book_image'       =>  'stuvi-test-book-img',
     ],
 ];

@@ -264,10 +264,11 @@ class Book extends Model
             ]);
 
             $s3 = AwsFacade::createClient('s3');
+            $bucket = app()->environment('production') ? config('aws.buckets.book_image') : config('aws.buckets.test_book_image');
 
             // upload images to amazon s3
             $s3->putObject(array(
-                'Bucket'        => config('aws.buckets.book_image'),
+                'Bucket'        => $bucket,
                 'Key'           => $image_filename,
                 'SourceFile'    => $image_path,
                 'ACL'           => 'public-read'

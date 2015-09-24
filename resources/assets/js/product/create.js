@@ -6,10 +6,7 @@
 
 $(document).ready(function () {
 
-    initializeDropzone();
-
-    function initializeDropzone() {
-        Dropzone.options.formProduct = { // The camelized version of the ID of the form element
+    Dropzone.options.formCreateProduct = { // The camelized version of the ID of the form element
 
             url: '/textbook/sell/product/store',
             method: 'post',
@@ -108,5 +105,5 @@ $(document).ready(function () {
                 });
             }
         }
-    }
+
 });

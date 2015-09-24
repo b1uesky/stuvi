@@ -57,7 +57,8 @@ class ProductImage extends Model {
         }
         else
         {
-            return config('aws.url.stuvi-product-img') . $image_path;
+            $bucket = app()->environment('production') ? config('aws.url.stuvi-product-img') : config('aws.url.stuvi-test-product-img');
+            return $bucket . $image_path;
         }
     }
 
@@ -139,9 +140,10 @@ class ProductImage extends Model {
         foreach([$this->small_image, $this->medium_image, $this->large_image] as $key)
         {
             $s3 = AwsFacade::createClient('s3');
+            $bucket = app()->environment('production') ? config('aws.buckets.product_image') : config('aws.buckets.test_product_image');
 
             $s3->putObject(array(
-                'Bucket'        => config('aws.buckets.product_image'),
+                'Bucket'        => $bucket,
                 'Key'           => $key,
                 'SourceFile'    => $temp_path . $key,
                 'ACL'           => 'public-read'
@@ -159,9 +161,10 @@ class ProductImage extends Model {
         foreach([$this->small_image, $this->medium_image, $this->large_image] as $key)
         {
             $s3 = AwsFacade::createClient('s3');
+            $bucket = app()->environment('production') ? config('aws.buckets.product_image') : config('aws.buckets.test_product_image');
 
             $s3->deleteObject(array(
-                'Bucket'        => config('aws.buckets.product_image'),
+                'Bucket'        => $bucket,
                 'Key'           => $key,
             ));
 

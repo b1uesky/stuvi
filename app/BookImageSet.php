@@ -44,10 +44,10 @@ class BookImageSet extends Model
                 $image_path = $this->medium_image;
         }
 
-
         if ($image_path)
         {
-            return config('aws.url.stuvi-book-img') . $image_path;
+            $bucket = app()->environment('production') ? config('aws.url.stuvi-book-img') : config('aws.url.stuvi-test-book-img');
+            return $bucket . $image_path;
         }
         else
         {
@@ -134,12 +134,13 @@ class BookImageSet extends Model
     {
         $temp_path = config('image.temp_path');
         $s3 = AwsFacade::createClient('s3');
+        $bucket = app()->environment('production') ? config('aws.buckets.book_image') : config('aws.buckets.test_book_image');
 
         // upload images to amazon s3
         foreach([$this->small_image, $this->medium_image, $this->large_image] as $key)
         {
             $s3->putObject(array(
-                'Bucket'        => config('aws.buckets.book_image'),
+                'Bucket'        => $bucket,
                 'Key'           => $key,
                 'SourceFile'    => $temp_path . $key,
                 'ACL'           => 'public-read'
@@ -155,11 +156,12 @@ class BookImageSet extends Model
     public function deleteFromAWS()
     {
         $s3 = AwsFacade::createClient('s3');
+        $bucket = app()->environment('production') ? config('aws.buckets.book_image') : config('aws.buckets.test_book_image');
 
         foreach([$this->small_image, $this->medium_image, $this->large_image] as $key)
         {
             $s3->deleteObject(array(
-                'Bucket'        => config('aws.buckets.book_image'),
+                'Bucket'        => $bucket,
                 'Key'           => $key,
             ));
 

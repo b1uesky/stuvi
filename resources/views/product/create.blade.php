@@ -24,7 +24,7 @@
 
                 <div class="row">
                     @if(Auth::check())
-                        <form id="form-product" class="dropzone">
+                        <form id="form-create-product" class="dropzone form-product">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="book_id" value="{{ $book->id }}"/>
                             <input type="hidden" name="book_title" value="{{ $book->title }}">

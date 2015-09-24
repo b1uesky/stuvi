@@ -24,7 +24,7 @@
 
                 <div class="row">
                     @if(Auth::check())
-                        <form id="form-product" class="dropzone">
+                        <form id="form-edit-product" class="dropzone form-product">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="product_id" value="{{ $product->id }}"/>
                             <input type="hidden" name="general_condition_selected" value="{{ $product->condition->general_condition }}">

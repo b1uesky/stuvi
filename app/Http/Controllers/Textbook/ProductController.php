@@ -182,6 +182,7 @@ class ProductController extends Controller
 
         return Response::json([
             'success'   => true,
+            'env'       => app()->environment(),
             'images'    => $product_images
         ]);
     }

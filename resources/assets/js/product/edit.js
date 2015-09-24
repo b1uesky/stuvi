@@ -18,7 +18,7 @@ $(document).ready(function () {
     $('input[name=damaged_pages][value=' + damaged_pages + ']').prop('checked', true);
     $('input[name=broken_binding][value=' + broken_binding + ']').prop('checked', true);
 
-    Dropzone.options.formProduct = { // The camelized version of the ID of the form element
+    Dropzone.options.formEditProduct = { // The camelized version of the ID of the form element
 
         url: '/textbook/sell/product/update',
         method: 'post',
@@ -56,14 +56,16 @@ $(document).ready(function () {
 
                     if (response.success) {
                         var images = response.images;
+                        console.log(images);
 
                         for (var i = 0; i < images.length; i++) {
 
                             // check if it's test image
-                            if (images[i].medium_image.slice(0, 4) == 'http') {
-                                var imageUrl = images[i].medium_image;
+                            if (images[i].small_image.slice(0, 4) == 'http') {
+                                var imageUrl = images[i].small_image;
                             } else {
-                                var imageUrl = 'https://s3.amazonaws.com/stuvi-product-img/' + images[i].medium_image;
+                                var bucket = images[i].env == 'production' ? 'https://s3.amazonaws.com/stuvi-product-img/' : 'https://s3.amazonaws.com/stuvi-test-product-img/';
+                                var imageUrl = bucket + images[i].small_image;
                             }
 
                             // https://github.com/enyo/dropzone/wiki/FAQ#how-to-show-files-already-stored-on-server
