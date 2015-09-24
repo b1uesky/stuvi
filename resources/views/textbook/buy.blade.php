@@ -92,7 +92,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         {{--<div>Icon made by <a href="http://handdrawngoods.com" title="Hand Drawn Goods">Hand Drawn Goods</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>--}}
-                        <img class="img-responsive img-intro center-block" src="{{ asset('/img/icon/books104.png') }}" alt="placeholder">
+                        <img class="img-responsive img-intro center-block" src="https://s3.amazonaws.com/stuvi-icon/books104.png" alt="placeholder">
                     </div>
                     <div class="col-sm-6">
                         <h3>Find your books</h3>
@@ -105,7 +105,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-sm-push-6">
                         {{--<div>Icon made by <a href="http://handdrawngoods.com" title="Hand Drawn Goods">Hand Drawn Goods</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>--}}
-                        <img class="img-responsive img-intro center-block" src="{{ asset('/img/icon/transport625.png') }}" alt="placeholder">
+                        <img class="img-responsive img-intro center-block" src="https://s3.amazonaws.com/stuvi-icon/transport625.png" alt="placeholder">
                     </div>
 
                     <div class="col-sm-6 col-sm-pull-6">
@@ -122,7 +122,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         {{--<div>Icon made by <a href="http://handdrawngoods.com" title="Hand Drawn Goods">Hand Drawn Goods</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>--}}
-                        <img class="img-responsive img-intro center-block" src="{{ asset('img/icon/currency36.png') }}" alt="">
+                        <img class="img-responsive img-intro center-block" src="https://s3.amazonaws.com/stuvi-icon/currency36.png" alt="">
                     </div>
                     <div class="col-sm-6">
                         <h3>Save money and study</h3>

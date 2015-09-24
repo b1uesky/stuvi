@@ -1,7 +1,7 @@
 /**
  * Created by Desmond on 8/21/15.
  *
- * Floating alert messages.
+ * Alert messages.
  * http://getbootstrap.com/components/#alerts
  */
 

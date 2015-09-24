@@ -18,7 +18,7 @@
         <div class="row">
 
             <a href="{{ url('home') }}">
-                <img src="{{asset('/img/logo/logo-md.png')}}" class="img-responsive center-block">
+                <img src="https://s3.amazonaws.com/stuvi-logo/logo-md.png" class="img-responsive center-block">
             </a>
 
             <ul class="nav nav-pills nav-justified" role="tablist">
