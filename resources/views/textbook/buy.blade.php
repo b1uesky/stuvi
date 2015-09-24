@@ -26,7 +26,7 @@
                             @if(Auth::guest())
                                 <div class="searchbar-input-container searchbar-input-container-university">
                                     <label class="sr-only" for="uni-id">University ID</label>
-                                    <select name="university_id" class="form-control searchbar-input searchbar-input-university" id="uni_id">
+                                    <select name="university_id" class="form-control selectpicker searchbar-input searchbar-input-university" id="uni_id">
                                         @foreach($universities as $university)
                                             <option value="{{ $university->id }}">{{ $university->abbreviation }}</option>
                                         @endforeach
@@ -52,7 +52,7 @@
                                 {{-- Show school selection if it's a guest --}}
                                 <div class="xs-guest-search-bar-input-uni">
                                     <label class="sr-only">University ID</label>
-                                    <select name="university_id" class="form-control searchbar-input searchbar-input-university-with-border">
+                                    <select name="university_id" class="form-control selectpicker searchbar-input searchbar-input-university-with-border">
                                         @foreach($universities as $university)
                                             <option value="{{ $university->id }}">{{ $university->abbreviation }}</option>
                                         @endforeach

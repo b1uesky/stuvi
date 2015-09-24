@@ -29,7 +29,6 @@
 
 .searchbar-input-container-university {
   width: 0.01%;
-  height: 3em;
 }
 
 .searchbar-input-container-submit {
@@ -39,6 +38,10 @@
 .searchbar-input {
   width: 100%;
   height: 3em;
+
+  button {
+    height: 100%;
+  }
 }
 
 .searchbar-input-query {
@@ -51,7 +54,6 @@
   min-width: 100px;
   border-radius: 0;
   border-right: 0;
-  -webkit-appearance: none;
   color: $text-color;
 }
 
