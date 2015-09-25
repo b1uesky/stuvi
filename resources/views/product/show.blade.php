@@ -58,15 +58,15 @@
 
                 <tbody>
                 <tr>
-                    <td class="col-sm-6 col-xs-7">Price</td>
-                    <td class="col-sm-6 col-xs-5 price">${{ $product->decimalPrice() }}</td>
+                    <td class="col-md-3 col-sm-6 col-xs-7">Price</td>
+                    <td class="col-md-9 col-sm-6 col-xs-5 price">${{ $product->decimalPrice() }}</td>
                 </tr>
 
                 <!-- General Condition -->
                 <tr>
                     <td>
                         {{ config('product.conditions.general_condition.title') }}
-                        <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target=".condition-modal"></span>
+                        <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".condition-modal"></span>
                     </td>
 
                     <td>{{ config('product.conditions.general_condition')[$product->condition->general_condition] }}</td>
@@ -75,7 +75,7 @@
                 <tr>
                     <td>
                         {{ config('product.conditions.highlights_and_notes.title') }}
-                        <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target=".highlight-modal"></span>
+                        <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".highlight-modal"></span>
                     </td>
                     <td>{{ config('product.conditions.highlights_and_notes')[$product->condition->highlights_and_notes] }}</td>
                 </tr>
@@ -83,7 +83,7 @@
                 <tr>
                     <td>
                         {{ config('product.conditions.damaged_pages.title') }}
-                        <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target=".damage-modal"></span>
+                        <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".damage-modal"></span>
                     </td>
                     <td>{{ config('product.conditions.damaged_pages')[$product->condition->damaged_pages] }}</td>
                 </tr>
@@ -91,7 +91,7 @@
                 <tr>
                     <td>
                         {{ config('product.conditions.broken_binding.title') }}
-                        <span class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target=".binding-modal"></span>
+                        <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".binding-modal"></span>
 
                     </td>
                     <td>{{ config('product.conditions.broken_binding')[$product->condition->broken_binding] }}</td>
