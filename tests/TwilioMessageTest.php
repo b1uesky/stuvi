@@ -24,7 +24,7 @@ class TwilioMessageTest extends TestCase {
             config('twilio.twilio.connections.twilio.from')
         );
 
-        $twilio->message('+18572064789', 'Hello World!');
+        $twilio->message('+18572655018', 'Hello World!');
     }
 
 }
