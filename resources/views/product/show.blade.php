@@ -53,64 +53,64 @@
         <br>
 
         <div class="row">
-            <!-- product conditions -->
-            <table class="table table-default">
+            <div class="col-sm-9">
+                <!-- product conditions -->
+                <table class="table">
 
-                <tbody>
-                <tr>
-                    <td class="col-md-3 col-sm-6 col-xs-7">Price</td>
-                    <td class="col-md-9 col-sm-6 col-xs-5 price">${{ $product->decimalPrice() }}</td>
-                </tr>
-
-                <!-- General Condition -->
-                <tr>
-                    <td>
-                        {{ config('product.conditions.general_condition.title') }}
-                        <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".condition-modal"></span>
-                    </td>
-
-                    <td>{{ config('product.conditions.general_condition')[$product->condition->general_condition] }}</td>
-                </tr>
-                <!-- Highlights / Notes -->
-                <tr>
-                    <td>
-                        {{ config('product.conditions.highlights_and_notes.title') }}
-                        <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".highlight-modal"></span>
-                    </td>
-                    <td>{{ config('product.conditions.highlights_and_notes')[$product->condition->highlights_and_notes] }}</td>
-                </tr>
-                <!-- Damaged Pages -->
-                <tr>
-                    <td>
-                        {{ config('product.conditions.damaged_pages.title') }}
-                        <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".damage-modal"></span>
-                    </td>
-                    <td>{{ config('product.conditions.damaged_pages')[$product->condition->damaged_pages] }}</td>
-                </tr>
-                <!-- Broken Binding -->
-                <tr>
-                    <td>
-                        {{ config('product.conditions.broken_binding.title') }}
-                        <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".binding-modal"></span>
-
-                    </td>
-                    <td>{{ config('product.conditions.broken_binding')[$product->condition->broken_binding] }}</td>
-                </tr>
-                <!-- Seller Description -->
-                @if($product->condition->hasDescription())
+                    <tbody>
                     <tr>
-                        <td>{{ config('product.conditions.description.title') }}</td>
-                        <td>
-                            {{ $product->condition->description }}
-                        </td>
+                        <th class="col-sm-6 col-xs-7">Price</th>
+                        <td class="col-sm-6 col-xs-5 price">${{ $product->decimalPrice() }}</td>
                     </tr>
-                @endif
-                </tbody>
-            </table>
-        </div>
 
-        <div class="row">
-            <div class="col-sm-4 col-sm-offset-4">
+                    <!-- General Condition -->
+                    <tr>
+                        <th>
+                            General condition
+                            <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".condition-modal"></span>
+                        </th>
+
+                        <td>{{ config('product.conditions.general_condition')[$product->condition->general_condition] }}</td>
+                    </tr>
+                    <!-- Highlights / Notes -->
+                    <tr>
+                        <th>
+                            Highlights/Notes
+                            <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".highlight-modal"></span>
+                        </th>
+                        <td>{{ config('product.conditions.highlights_and_notes')[$product->condition->highlights_and_notes] }}</td>
+                    </tr>
+                    <!-- Damaged Pages -->
+                    <tr>
+                        <th>
+                            Damaged pages
+                            <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".damage-modal"></span>
+                        </th>
+                        <td>{{ config('product.conditions.damaged_pages')[$product->condition->damaged_pages] }}</td>
+                    </tr>
+                    <!-- Broken Binding -->
+                    <tr>
+                        <th>
+                            Broken binding
+                            <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".binding-modal"></span>
+
+                        </th>
+                        <td>{{ config('product.conditions.broken_binding')[$product->condition->broken_binding] }}</td>
+                    </tr>
+                    <!-- Seller Description -->
+                    @if($product->condition->hasDescription())
+                        <tr>
+                            <th>Additional description</th>
+                            <td>
+                                {{ $product->condition->description }}
+                            </td>
+                        </tr>
+                    @endif
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-sm-3">
                 @if(Auth::check())
                     @if($product->isInCart(Auth::user()->id))
                         <a class="btn btn-primary btn-block add-cart-btn disabled" href="#" role="button">Added
@@ -124,19 +124,17 @@
                                 data-product-id="{{ $product->id }}"
                                 data-book-title="{{ $product->book->title }}">Delete</button>
                     @else
-                        <form method="post" class="add-to-cart">
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <button class="btn btn-primary btn-block add-cart-btn" type="submit">Add to cart</button>
+                        <form method="post" class="add-to-cart" action="{{ url('cart/add/' . $product->id) }}">
+                            {!! csrf_field() !!}
+                            <input type="submit" class="btn btn-primary btn-block add-cart-btn" value="Add to cart">
                         </form>
                     @endif
                 @else
-                    <span>
-                    Please <a data-toggle="modal" href="#login-modal">Login</a> or <a
+                    <span>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a
                                 data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.
-                </span>
+            </span>
                 @endif
             </div>
-
         </div>
 
         <br>

@@ -52,12 +52,14 @@
                                     </td>
                                     <td>
                                         {{-- Book title --}}
-                                        <a href="{{ url('textbook/buy/product/'.$item->product->id) }}">{{ $item->product->book->title }}</a>
+                                        <a href="{{ url('textbook/buy/product/'.$item->product->id) }}">
+                                            {{ $item->product->book->title }}
+                                        </a>
                                     </td>
                                     {{-- ISBN --}}
                                     <td class="hidden-xs">{{ $item->product->book->isbn10 }}</td>
                                     {{-- Price --}}
-                                    <td>${{ $item->product->decimalPrice()}}</td>
+                                    <td class="price">${{ $item->product->decimalPrice()}}</td>
                                     {{-- Remove --}}
                                     <td>
                                         <button type="button" class="close remove-cart-item" aria-label="Close"><span
@@ -97,10 +99,20 @@
                 </div>
             </div>
         @else
-            <div class="cart-empty text-center text-muted">
-                <h2>Your shopping cart is empty.</h2>
+            <div class="jumbotron text-center">
+                <h1>Your cart is empty...</h1>
+                <br>
+                <p><a href="{{ url('textbook/buy') }}" class="btn btn-primary btn-lg">Find a book</a></p>
             </div>
         @endif
+
+        <div class="cart-empty hidden">
+            <div class="jumbotron text-center">
+                <h1>Your cart is empty...</h1>
+                <br>
+                <p><a href="{{ url('textbook/buy') }}" class="btn btn-primary btn-lg">Find a book</a></p>
+            </div>
+        </div>
 
     </div>
 

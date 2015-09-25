@@ -30,7 +30,9 @@
                 <td>{{ $book->isbn10 }}</td>
                 <td>{{ $book->isbn13 }}</td>
                 {{--<td>{{ $book->is_verified }}</td>--}}
-                <td><a class="btn btn-primary btn-block" role="button" href="{{ url('admin/book/' . $book->id) }}">Details</a></td>
+                <td>
+                    <a class="btn btn-primary btn-block" role="button" href="{{ url('admin/book/' . $book->id) }}">Details</a>
+                </td>
             </tr>
         @endforeach
         </tbody>

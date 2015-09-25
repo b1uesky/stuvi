@@ -138,10 +138,10 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], function()
 {
     Route::get('/',         ['as' => 'shoppingCart', 'uses' => 'CartController@index']);
-    Route::get('/add/{id}', 'CartController@addItem');
+    Route::post('/add/{id}', 'CartController@addItem');
     Route::post('/add',     'CartController@addItemAjax');
     Route::get('/rmv/{id}', 'CartController@removeItem');
-    Route::get('/rmv',      'CartController@removeItemAjax');
+    Route::post('/rmv',      'CartController@removeItemAjax');
     Route::get('/empty',    'CartController@emptyCart');
     Route::get('/update',   'CartController@updateCart');
 });

@@ -58,31 +58,31 @@ class CartController extends Controller
     public function addItem($id)
     {
         $item = Product::find($id);
+        $book_title = $item->book->title;
 
         if ($item)
         {
             if ($this->cart->hasProduct($item->id))
             {
-                Session::flash('error', 'Item has already been added to the cart.');
+                Session::flash('error', $book_title . ' has already been added to the cart.');
             }
             elseif ($item->sold)
             {
-                Session::flash('error', 'Product has been sold.');
+                Session::flash('error', $book_title . ' has been sold.');
             }
             elseif ($item->seller_id == Auth::id())
             {
-                Session::flash('error', 'Can not add your own product to the cart.');
+                Session::flash('error', 'Can not add your own book to the cart.');
             }
             else
             {
                 $this->cart->add($item);
-                Session::flash('success', 'Product Added Successfully.');
-
+                return redirect('/cart');
             }
         }
         else
         {
-            Session::flash('error', 'Sorry, we cannot find the product.');
+            Session::flash('error', 'Sorry, we cannot find the book you want.');
         }
 
         return redirect()->back();
