@@ -52,8 +52,6 @@
             </div>
         </div>
 
-        <br>
-
         {{-- Product list --}}
         <div class="row">
             @if(count($book->availableProducts()) > 0)
