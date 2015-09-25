@@ -237,11 +237,12 @@ class Book extends Model
     {
         // save this book to our database
         $book = Book::create([
-            'isbn10'    => $google_book->getIsbn10(),
-            'isbn13'    => $google_book->getIsbn13(),
-            'title'     => $google_book->getTitle(),
-            'language'  => $google_book->getLanguage(),
-            'num_pages' => $google_book->getPageCount(),
+            'isbn10'        => $google_book->getIsbn10(),
+            'isbn13'        => $google_book->getIsbn13(),
+            'title'         => $google_book->getTitle(),
+            'language'      => $google_book->getLanguage(),
+            'num_pages'     => $google_book->getPageCount(),
+            'description'   => $google_book->getDescription(),
         ]);
 
         $book_image_set = new BookImageSet();
