@@ -61,7 +61,7 @@ class AuthController extends Controller {
         $email = Email::create([
             'user_id'           => $user->id,
             'email_address'     => $data['email'],
-            'verification_code' => \App\Helpers\generateRandomCode(config('user.verification_code_length'))
+            'verification_code' => \App\Helpers\generateRandomCode(config('mail.verification_code_length'))
         ]);
 
         $user->update([

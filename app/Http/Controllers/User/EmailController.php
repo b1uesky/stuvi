@@ -50,7 +50,7 @@ class EmailController extends Controller
         $email = Email::create([
             'user_id'       => Auth::id(),
             'email_address' => Input::get('email'),
-            'verification_code' => \App\Helpers\generateRandomCode(config('user.verification_code_length'))
+            'verification_code' => \App\Helpers\generateRandomCode(config('mail.verification_code_length'))
         ]);
 
         event(new UserEmailWasAdded($email));
