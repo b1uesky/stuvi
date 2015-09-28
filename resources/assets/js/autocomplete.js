@@ -46,7 +46,7 @@ $(document).ready(function () {
             }
         })
         .autocomplete('instance')._renderItem = function (ul, item) {
-        // TODO: use default image if no image.
+        // use default image if no image.
         var image = 'https://s3.amazonaws.com/stuvi-book-img/placeholder.png';
 
         if (item.image) {
@@ -67,9 +67,9 @@ $(document).ready(function () {
             '</div>' +
             '<div class="autocomplete-data">' +
             '<div class="autocomplete-title"><h4>' + item.title + '</h4></div>' +
-            '<div class="autocomplete-authors">' + authors + '</div>' +
-            '<div class="autocomplete-isbn">ISBN-10:' + item.isbn10 + '</div>' +
-            '<div class="autocomplete-isbn">ISBN-13:' + item.isbn13 + '</div>' +
+            '<div class="autocomplete-authors">by ' + authors + '</div>' +
+            '<div class="autocomplete-isbn">ISBN-10: ' + item.isbn10 + '</div>' +
+            '<div class="autocomplete-isbn">ISBN-13: ' + item.isbn13 + '</div>' +
             '</div>' +
             '</div>')
             .appendTo(ul);
