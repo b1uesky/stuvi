@@ -14,7 +14,7 @@ $(document).ready(function () {
                     dataType: 'json',
                     data: {
                         term: request.term,
-                        university_id: $('.search-input-university').val()
+                        university_id: $('[name=university_id]').val()
                     },
                     success: function (data) {
                         console.log(data);
@@ -75,7 +75,7 @@ $(document).ready(function () {
             .appendTo(ul);
     };
 
-    // navbar autocomplete
+    // navbar autocomplete expand/shrink
     $('.navbar-form #autocomplete').focus(function() {
         if(screen.width > 767){
             $(this).animate({
