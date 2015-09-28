@@ -42,6 +42,8 @@
     </script>
 @endif
 
+@yield('javascript')
+
 </body>
 
 </html>

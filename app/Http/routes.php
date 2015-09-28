@@ -25,33 +25,10 @@ Route::pattern('product',   '[0-9]+');
 */
 
 Route::get  ('/',           'HomeController@index');
-Route::get  ('/home',       ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get  ('/home',       'HomeController@index');
 Route::get  ('/about',      'HomeController@about');
 Route::get  ('/tos',        'tosPrivacyController@tos');
 Route::get  ('/privacy',    'tosPrivacyController@privacy');
-
-/*
-|--------------------------------------------------------------------------
-| User Routes
-|--------------------------------------------------------------------------
-*/
-Route::group(['middleware'=>'auth', 'prefix'=>'user'], function()
-{
-    Route::get('/profile', 'UserController@profile');
-    Route::get('/profile-edit', 'UserController@profileEdit');
-    Route::get('/account', 'UserController@account');
-    Route::post('/account/edit', 'UserController@edit');
-    Route::get('/bookshelf', 'UserController@bookshelf');
-    Route::get('/activate', 'UserController@waitForActivation');
-    Route::get('/activate/resend', 'UserController@resendActivationEmail');
-    Route::get('/activate/{code}', 'UserController@activateAccount');
-    Route::post('/updateDefaultAddress', 'UserController@updateDefaultAddress');
-});
-
-Route::controllers([
-    'auth' => 'Auth\AuthController',
-    'password' => 'Auth\PasswordController',
-]);
 
 /*
 |--------------------------------------------------------------------------
@@ -162,6 +139,7 @@ Route::group(['namespace'=>'User', 'middleware'=>'auth', 'prefix'=>'user'], func
     Route::get ('/activate',        'UserController@waitForActivation');
     Route::get ('/activate/resend', 'UserController@resendActivationEmail');
     Route::get ('/activate/{code}', 'UserController@activateAccount');
+    Route::get ('/activated', 'UserController@activated');
     Route::post('/updateDefaultAddress', 'UserController@updateDefaultAddress');
 
     Route::group(['prefix'=>'email'], function()
@@ -174,8 +152,6 @@ Route::group(['namespace'=>'User', 'middleware'=>'auth', 'prefix'=>'user'], func
     });
 
 });
-
-//Route::get ('user/activate',        'UserController@waitForActivation');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

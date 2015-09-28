@@ -35,7 +35,7 @@ class EmailSignedUpConfirmation
             'subject'           => 'Welcome to Stuvi!',
             'to'                => $user->collegeEmail()->email_address,
             'first_name'        => $user->first_name,
-            'return_to'         => urlencode(Session::get('url.intended', '/home')),
+            'return_to'         => urlencode(Session::get('url.intended', '/user/activated')),
             'verification_code' => $user->collegeEmail()->verification_code
         );
 

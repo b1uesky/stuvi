@@ -76,24 +76,18 @@ class UserController extends Controller
         // check if the current user is activated
         if (Auth::user()->isActivated())
         {
-            $url     = Input::has('return_to') ? urldecode(Input::get('return_to')) : '/home';
-
-            return redirect($url)
-                ->with('error', 'Your account has already been activated.');
+            return redirect('/home');
+//                ->with('info', 'Your account has already been activated.');
         }
         elseif (Auth::user()->collegeEmail()->verify($code))
         {
-            $url     = Input::has('return_to') ? urldecode(Input::get('return_to')) : '/home';
-            $message = 'Your account has been successfully activated.';
 
-            return redirect($url)
+            return redirect(urldecode(Input::get('return_to')))
                 ->with('success', 'Your account has been successfully activated.');
         }
         else
         {
-            $url     = '/user/activate';
-
-            return redirect($url)
+            return redirect('/user/activate')
                 ->with('error', 'Sorry, account activation failed because of an invalid activation code.');
         }
     }
@@ -111,6 +105,21 @@ class UserController extends Controller
         }
 
         return view('user.waitForActivation')->with('user', Auth::user());
+    }
+
+    /**
+     * The buffer page after user confirmed his/her account.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
+    public function activated()
+    {
+        if (Auth::user()->isActivated())
+        {
+            return view('user.activated');
+        }
+
+        return redirect('/home');
     }
 
     /**
