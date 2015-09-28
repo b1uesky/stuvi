@@ -159,33 +159,28 @@ class Book extends Model
      */
     public static function queryWithBuyerID($query, $buyer_id)
     {
-        $terms = explode(' ', $query);
-        $clauses = array();
+        // wildcard can only append to the word, i.e., '*word' is not allowed in MySQL full text search
+        $q = $query . '*';
 
-        foreach ($terms as $term) {
-            $clauses[] = 'title LIKE "%' . $term . '%"' .
-                'OR a.full_name LIKE "%' . $term . '%"' .
-                'OR isbn10 LIKE "%' . $term . '%"' .
-                'OR isbn13 LIKE "%' . $term . '%"';
-        }
-
-        $filter = implode(' OR ', $clauses);
-
-        $books = Book::whereRaw($filter)
+        $books = Book::whereRaw(
+            "MATCH(title, isbn10, isbn13) AGAINST(? IN BOOLEAN MODE)" .
+            "OR MATCH(a.full_name) AGAINST(? IN BOOLEAN MODE)",
+            [$q, $q]
+        )
             ->join('book_authors as a', 'a.book_id', '=', 'books.id')
             ->join('products as p', 'p.book_id', '=', 'books.id')
             ->join('users as seller', 'seller.id', '=', 'p.seller_id')
-            ->whereIn('seller.university_id', function ($q) use ($buyer_id) {
-                $q->select('uu.from_uid')
-                    ->from(DB::raw('users as buyer, university_university as uu'))
-                    ->where('buyer.id', '=', $buyer_id);
-            })
+            ->where('is_verified', true)
             ->whereIn('seller.university_id', function ($q) {
                 $q->select('id')
                     ->from('universities')
                     ->where('is_public', '=', true);
             })
-            ->where('is_verified', true)
+            ->whereIn('seller.university_id', function ($q) use ($buyer_id) {
+                $q->select('uu.from_uid')
+                    ->from(DB::raw('users as buyer, university_university as uu'))
+                    ->where('buyer.id', '=', $buyer_id);
+            })
             ->select('books.*')->distinct()->get();
 
         return $books;
@@ -200,33 +195,28 @@ class Book extends Model
      */
     public static function queryWithUniversityID($query, $university_id)
     {
-        $terms = explode(' ', $query);
-        $clauses = array();
+        // wildcard can only append to the word, i.e., '*word' is not allowed in MySQL full text search
+        $q = $query . '*';
 
-        foreach ($terms as $term) {
-            $clauses[] = 'title LIKE "%' . $term . '%"' .
-                'OR a.full_name LIKE "%' . $term . '%"' .
-                'OR isbn10 LIKE "%' . $term . '%"' .
-                'OR isbn13 LIKE "%' . $term . '%"';
-        }
-
-        $filter = implode(' OR ', $clauses);
-
-        $books = Book::whereRaw($filter)
+        $books = Book::whereRaw(
+            "MATCH(title, isbn10, isbn13) AGAINST(? IN BOOLEAN MODE)" .
+            "OR MATCH(a.full_name) AGAINST(? IN BOOLEAN MODE)",
+            [$q, $q]
+        )
             ->join('book_authors as a', 'a.book_id', '=', 'books.id')
             ->join('products as p', 'p.book_id', '=', 'books.id')
             ->join('users as seller', 'seller.id', '=', 'p.seller_id')
-            ->whereIn('seller.university_id', function ($q) use ($university_id) {
-                $q->select('from_uid')->distinct()
-                    ->from('university_university')
-                    ->where('to_uid', '=', $university_id);
-            })
+            ->where('is_verified', true)
             ->whereIn('seller.university_id', function ($q) {
                 $q->select('id')
                     ->from('universities')
                     ->where('is_public', '=', true);
             })
-            ->where('is_verified', true)
+            ->whereIn('seller.university_id', function ($q) use ($university_id) {
+                $q->select('from_uid')->distinct()
+                    ->from('university_university')
+                    ->where('to_uid', '=', $university_id);
+            })
             ->select('books.*')->distinct()->get();
 
         return $books;
