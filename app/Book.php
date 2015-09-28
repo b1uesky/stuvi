@@ -163,7 +163,10 @@ class Book extends Model
         $clauses = array();
 
         foreach ($terms as $term) {
-            $clauses[] = 'title LIKE "%' . $term . '%" OR a.full_name LIKE "%' . $term . '%"';
+            $clauses[] = 'title LIKE "%' . $term . '%"' .
+                'OR a.full_name LIKE "%' . $term . '%"' .
+                'OR isbn10 LIKE "%' . $term . '%"' .
+                'OR isbn13 LIKE "%' . $term . '%"';
         }
 
         $filter = implode(' OR ', $clauses);
@@ -201,7 +204,10 @@ class Book extends Model
         $clauses = array();
 
         foreach ($terms as $term) {
-            $clauses[] = 'title LIKE "%' . $term . '%" OR a.full_name LIKE "%' . $term . '%"';
+            $clauses[] = 'title LIKE "%' . $term . '%"' .
+                'OR a.full_name LIKE "%' . $term . '%"' .
+                'OR isbn10 LIKE "%' . $term . '%"' .
+                'OR isbn13 LIKE "%' . $term . '%"';
         }
 
         $filter = implode(' OR ', $clauses);

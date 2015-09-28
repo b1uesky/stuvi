@@ -17,7 +17,7 @@ $(document).ready(function () {
                         university_id: $('[name=university_id]').val()
                     },
                     success: function (data) {
-                        console.log(data);
+                        //console.log(data);
                         response(data);
                     }
                 })
@@ -46,36 +46,50 @@ $(document).ready(function () {
             }
         })
         .autocomplete('instance')._renderItem = function (ul, item) {
-        // use default image if no image.
-        var image = 'https://s3.amazonaws.com/stuvi-book-img/placeholder.png';
 
-        if (item.image) {
-            image = 'https://s3.amazonaws.com/stuvi-book-img/' + item.image;
-        }
+            // use default image if no image.
+            var image = 'https://s3.amazonaws.com/stuvi-book-img/placeholder.png';
 
-        var authors = 'Unknown';
+            if (item.image) {
+                image = 'https://s3.amazonaws.com/stuvi-book-img/' + item.image;
+            }
 
-        if (item.authors && item.authors.length > 0) {
-            authors = item.authors.join(', ');
-        }
+            var authors = 'Unknown';
 
-        return $("<li>")
-            .append(
-            '<div class="autocomplete-result">' +
-            '<div class="autocomplete-thumbnail">' +
-            '<img src="' + image + '">' +
-            '</div>' +
-            '<div class="autocomplete-data">' +
-            '<div class="autocomplete-title"><h4>' + item.title + '</h4></div>' +
-            '<div class="autocomplete-authors">' + authors + '</div>' +
-            '<div class="autocomplete-isbn">ISBN-10: ' + item.isbn10 + '</div>' +
-            '<div class="autocomplete-isbn">ISBN-13: ' + item.isbn13 + '</div>' +
-            '</div>' +
-            '</div>')
-            .appendTo(ul);
+            if (item.authors && item.authors.length > 0) {
+                authors = item.authors.join(', ');
+            }
+
+            var highlightedTitle = highlightTerm(item.title, this.term);
+            var highlightedAuthors = highlightTerm(authors, this.term);
+            var highlightedISBN10 = highlightTerm(item.isbn10, this.term);
+            var highlightedISBN13 = highlightTerm(item.isbn13, this.term);
+
+            return $("<li>")
+                .append(
+                '<div class="autocomplete-result">' +
+                '<div class="autocomplete-thumbnail">' +
+                '<img src="' + image + '">' +
+                '</div>' +
+                '<div class="autocomplete-data">' +
+                '<div class="autocomplete-title"><h4>' + highlightedTitle + '</h4></div>' +
+                '<div class="autocomplete-authors">' + highlightedAuthors + '</div>' +
+                '<div class="autocomplete-isbn">ISBN-10: ' + highlightedISBN10 + '</div>' +
+                '<div class="autocomplete-isbn">ISBN-13: ' + highlightedISBN13 + '</div>' +
+                '</div>' +
+                '</div>')
+                .appendTo(ul);
     };
 
-    // navbar autocomplete expand/shrink
+    // highlight term in the matching text
+    function highlightTerm(text, term) {
+        return String(text).replace(
+            new RegExp(term, 'gi'),
+            "<span class='text-bold color-primary'>$&</span>"
+        );
+    }
+
+    // navbar search expand/shrink
     $('.navbar-form #autocomplete').focus(function() {
         if(screen.width > 767){
             $(this).animate({
