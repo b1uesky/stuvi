@@ -20,7 +20,6 @@
         {{-- authors --}}
         <div class="row padding-bottom-5">
             <span class="text-muted">
-                by
                 @foreach($product->book->authors as $i => $author)
                     @if($i == 0)
                         <span>{{ $author->full_name }}</span>
