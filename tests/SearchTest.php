@@ -47,9 +47,16 @@ class SearchTest extends TestCase
             ->seePageIs('/textbook/sell/product/' . App\Book::where('isbn10', $isbn)->first()->id . '/confirm');
     }
 
-    public function testAutocompleteSearch()
+    public function testAutocompleteSearchWithEmptyTerm()
     {
         $response = $this->call('GET', 'textbook/searchAutoComplete?term=&university_id=1');
+
+        $this->assertEquals(200, $response->status());
+    }
+
+    public function testAutocompleteSearchWithAlg()
+    {
+        $response = $this->call('GET', 'textbook/searchAutoComplete?term=alg&university_id=1');
 
         $this->assertEquals(200, $response->status());
     }
