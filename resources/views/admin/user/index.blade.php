@@ -10,6 +10,7 @@
                 <th>ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Primary Email</th>
                 <th>Phone Number</th>
                 <th>Activated</th>
                 <th>Role</th>
@@ -24,11 +25,15 @@
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->first_name }}</td>
                     <td>{{ $user->last_name }}</td>
+                    <td>{{ $user->primaryEmailAddress() }}</td>
                     <td>{{ $user->phone_number }}</td>
                     <td>{{ $user->isActivatedToStr() }}</td>
                     <td>{{ $user->role }}</td>
                     <td>{{ $user->created_at }}</td>
-                    <td><a class="btn btn-primary btn-block" role="button" href="{{ url('admin/user/' . $user->id) }}">Details</a></td>
+                    <td>
+                        <a href="{{ url('admin/user/' . $user->id) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
+                        <a href="{{ url('admin/user/' . $user->id . '/edit') }}"><span class="glyphicon glyphicon-edit"></span></a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

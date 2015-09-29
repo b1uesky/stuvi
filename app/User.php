@@ -88,6 +88,19 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $rules;
     }
 
+    public static function updateRules()
+    {
+        $rules = [
+            'first_name'    => 'required|string',
+            'last_name'     => 'required|string',
+            'phone_number'  => 'required|phone:US',
+            'university_id' => 'required|numeric',
+            'activated'     => 'required|boolean'
+        ];
+
+        return $rules;
+    }
+
     /**
      * Get all buyer orders of this user.
      *

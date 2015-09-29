@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\User;
+use Illuminate\Support\Facades\Validator;
 use Input;
 
 
@@ -69,7 +70,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.create');
     }
 
     /**
@@ -79,7 +80,7 @@ class UserController extends Controller
      */
     public function store()
     {
-        //
+
     }
 
     /**
@@ -112,7 +113,8 @@ class UserController extends Controller
      */
     public function edit($user)
     {
-        //
+        return view('admin.user.edit')
+            ->with('user', $user);
     }
 
     /**
@@ -124,7 +126,20 @@ class UserController extends Controller
      */
     public function update($user)
     {
-        //
+        $v = Validator::make(Input::all(), $user->updateRules());
+
+        if ($v->fails())
+        {
+            return redirect()->back()->with('errors', $v->errors());
+        }
+
+        $user->update(Input::except('activated'));
+
+        $user->primaryEmail()->update([
+            'activated' => Input::get('activated')
+        ]);
+
+        return redirect('admin/user')->with('success', 'Updated.');
     }
 
     /**
