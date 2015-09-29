@@ -31,7 +31,7 @@
                 <td>{{ $book->isbn13 }}</td>
                 {{--<td>{{ $book->is_verified }}</td>--}}
                 <td>
-                    <a class="btn btn-primary btn-block" role="button" href="{{ url('admin/book/' . $book->id) }}">Details</a>
+                    <a href="{{ url('admin/book/' . $book->id) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
                 </td>
             </tr>
         @endforeach

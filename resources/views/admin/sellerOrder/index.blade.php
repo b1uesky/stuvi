@@ -28,7 +28,7 @@
                     <td>{{ $seller_order->scheduled_pickup_time }}</td>
                     <td>{{ $seller_order->pickup_time }}</td>
                     <td>{{ $seller_order->created_at }}</td>
-                    <td><a class="btn btn-primary btn-block" role="button" href="{{ url('admin/order/seller/' . $seller_order->id) }}">Details</a></td>
+                    <td><a href="{{ url('admin/order/seller/' . $seller_order->id) }}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
                 </tr>
             @endforeach
         </tbody>

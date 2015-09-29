@@ -46,7 +46,7 @@
 
                         <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
                         <div class="btn-group-vertical" role="group">
-                            <a class="btn btn-primary btn-block" role="button" href="{{ url('admin/product/' . $product->id) }}">Details</a>
+                            <a href="{{ url('admin/product/' . $product->id) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
                             {{--@if(!$product->verified)--}}
                             {{--<a class="btn btn-success btn-block" role="button"--}}
                             {{--href="{{ url('admin/product/' . $product->id . '/approve') }}">Approve</a>--}}
