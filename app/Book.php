@@ -159,31 +159,7 @@ class Book extends Model
      */
     public static function queryWithBuyerID($query, $buyer_id)
     {
-        // wildcard can only append to the word, i.e., '*word' is not allowed in MySQL full text search
-        $q = $query . '*';
-
-        $books = Book::whereRaw(
-            "MATCH(title, isbn10, isbn13) AGAINST(? IN BOOLEAN MODE)" .
-            "OR MATCH(a.full_name) AGAINST(? IN BOOLEAN MODE)",
-            [$q, $q]
-        )
-            ->join('book_authors as a', 'a.book_id', '=', 'books.id')
-            ->join('products as p', 'p.book_id', '=', 'books.id')
-            ->join('users as seller', 'seller.id', '=', 'p.seller_id')
-            ->where('is_verified', true)
-            ->whereIn('seller.university_id', function ($q) {
-                $q->select('id')
-                    ->from('universities')
-                    ->where('is_public', '=', true);
-            })
-            ->whereIn('seller.university_id', function ($q) use ($buyer_id) {
-                $q->select('uu.from_uid')
-                    ->from(DB::raw('users as buyer, university_university as uu'))
-                    ->where('buyer.id', '=', $buyer_id);
-            })
-            ->select('books.*')->distinct()->get();
-
-        return $books;
+        return Book::queryBooks($query, $buyer_id, 'buyer_id');
     }
 
     /**
@@ -195,29 +171,84 @@ class Book extends Model
      */
     public static function queryWithUniversityID($query, $university_id)
     {
-        // wildcard can only append to the word, i.e., '*word' is not allowed in MySQL full text search
-        $q = $query . '*';
+        return Book::queryBooks($query, $university_id, 'university_id');
+    }
 
-        $books = Book::whereRaw(
-            "MATCH(title, isbn10, isbn13) AGAINST(? IN BOOLEAN MODE)" .
-            "OR MATCH(a.full_name) AGAINST(? IN BOOLEAN MODE)",
-            [$q, $q]
-        )
-            ->join('book_authors as a', 'a.book_id', '=', 'books.id')
-            ->join('products as p', 'p.book_id', '=', 'books.id')
-            ->join('users as seller', 'seller.id', '=', 'p.seller_id')
-            ->where('is_verified', true)
-            ->whereIn('seller.university_id', function ($q) {
-                $q->select('id')
-                    ->from('universities')
-                    ->where('is_public', '=', true);
-            })
-            ->whereIn('seller.university_id', function ($q) use ($university_id) {
-                $q->select('from_uid')->distinct()
-                    ->from('university_university')
-                    ->where('to_uid', '=', $university_id);
-            })
-            ->select('books.*')->distinct()->get();
+    /**
+     * Buy book search query.
+     *
+     * @param $query
+     * @param $id
+     * @param $type
+     * @return mixed
+     */
+    protected static function queryBooks($query, $id, $type)
+    {
+        if (trim($query) == '')
+        {
+            // search for all books
+            $books = Book::join('book_authors as a', 'a.book_id', '=', 'books.id')
+                ->join('products as p', 'p.book_id', '=', 'books.id')
+                ->join('users as seller', 'seller.id', '=', 'p.seller_id')
+                ->where('is_verified', true)
+                ->whereIn('seller.university_id', function ($q) {
+                    $q->select('id')
+                        ->from('universities')
+                        ->where('is_public', '=', true);
+                })
+                ->whereIn('seller.university_id', function ($q) use ($id, $type) {
+                    if ($type == 'buyer_id')
+                    {
+                        $q->select('uu.from_uid')
+                            ->from(DB::raw('users as buyer, university_university as uu'))
+                            ->where('buyer.id', '=', $id);
+                    }
+
+                    if ($type == 'university_id')
+                    {
+                        $q->select('from_uid')->distinct()
+                            ->from('university_university')
+                            ->where('to_uid', '=', $id);
+                    }
+                })
+                ->select('books.*')->distinct()->get();
+        }
+        else
+        {
+            // full text search against the query
+            $books = Book::whereRaw(
+                "MATCH(title, isbn10, isbn13) AGAINST(? IN BOOLEAN MODE)" .
+                "OR MATCH(a.full_name) AGAINST(? IN BOOLEAN MODE)",
+                // wildcard can only append to the word, i.e.,'*word'
+                // is not allowed in MySQL full text search
+                [$query . '*', $query . '*']
+            )
+                ->join('book_authors as a', 'a.book_id', '=', 'books.id')
+                ->join('products as p', 'p.book_id', '=', 'books.id')
+                ->join('users as seller', 'seller.id', '=', 'p.seller_id')
+                ->where('is_verified', true)
+                ->whereIn('seller.university_id', function ($q) {
+                    $q->select('id')
+                        ->from('universities')
+                        ->where('is_public', '=', true);
+                })
+                ->whereIn('seller.university_id', function ($q) use ($id, $type) {
+                    if ($type == 'buyer_id')
+                    {
+                        $q->select('uu.from_uid')
+                            ->from(DB::raw('users as buyer, university_university as uu'))
+                            ->where('buyer.id', '=', $id);
+                    }
+
+                    if ($type == 'university_id')
+                    {
+                        $q->select('from_uid')->distinct()
+                            ->from('university_university')
+                            ->where('to_uid', '=', $id);
+                    }
+                })
+                ->select('books.*')->distinct()->get();
+        }
 
         return $books;
     }
