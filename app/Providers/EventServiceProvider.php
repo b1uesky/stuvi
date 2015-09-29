@@ -28,6 +28,9 @@ class EventServiceProvider extends ServiceProvider {
 		// buyer order
 		'App\Events\BuyerOrderWasPlaced' => [
 			'App\Listeners\EmailBuyerOrderConfirmation',
+
+			// to stuvi
+			'App\Listeners\MessageBuyerOrderPlacedNotification',
 		],
 
 		'App\Events\BuyerOrderWasShipped' => [
