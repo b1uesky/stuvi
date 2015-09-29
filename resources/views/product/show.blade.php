@@ -106,6 +106,13 @@
                             </td>
                         </tr>
                     @endif
+
+                    <tr>
+                        <th>Posted time</th>
+                        <td>
+                            <span class="product-posted-time">{{ $product->created_at }}</span>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
