@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Input;
+use Validator;
 
 class BookController extends Controller
 {
@@ -97,26 +98,35 @@ class BookController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  Book $book
      *
      * @return Response
      */
-    public function edit($id)
+    public function edit($book)
     {
-        //
+        return view('admin.book.edit')
+            ->with('book', $book);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request $request
-     * @param  int     $id
+     * @param  Book $book
      *
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update($book)
     {
-        //
+        $v = Validator::make(Input::all(), Book::updateRules());
+
+        if ($v->fails())
+        {
+            return redirect()->back()->with('errors', $v->errors());
+        }
+
+        $book->update(Input::all());
+
+        return redirect('admin/book')->with('success', 'Updated.');
     }
 
     /**

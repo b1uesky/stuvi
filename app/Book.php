@@ -16,7 +16,7 @@ class Book extends Model
         'isbn10',
         'isbn13',
         'num_pages',
-        'verified',
+        'is_verified',
         'language',
         'list_price',
         'lowest_price',
@@ -337,4 +337,16 @@ class Book extends Model
         return $rules;
     }
 
+    public static function updateRules()
+    {
+        $rules = array(
+            'title'     => 'required|string',
+            'edition'   => 'required|integer|min:1',
+            'num_pages' => 'required|integer|min:1',
+            'language'  => 'required|string',
+            'is_verified'   => 'required|boolean'
+        );
+
+        return $rules;
+    }
 }

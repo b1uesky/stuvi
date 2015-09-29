@@ -136,7 +136,7 @@ class UserController extends Controller
         $user->update(Input::except('activated'));
 
         $user->primaryEmail()->update([
-            'activated' => Input::get('activated')
+            'verified' => Input::get('activated')
         ]);
 
         return redirect('admin/user')->with('success', 'Updated.');

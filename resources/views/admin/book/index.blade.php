@@ -13,7 +13,7 @@
                 {{--<th>Edition</th>--}}
                 <th>ISBN10</th>
                 <th>ISBN13</th>
-                {{--<th>Verified</th>--}}
+                <th>Verified</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -29,9 +29,10 @@
                 {{--<td>{{ $book->edition }}</td>--}}
                 <td>{{ $book->isbn10 }}</td>
                 <td>{{ $book->isbn13 }}</td>
-                {{--<td>{{ $book->is_verified }}</td>--}}
+                <td>{{ $book->is_verified }}</td>
                 <td>
                     <a href="{{ url('admin/book/' . $book->id) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
+                    <a href="{{ url('admin/book/' . $book->id . '/edit') }}"><span class="glyphicon glyphicon-edit"></span></a>
                 </td>
             </tr>
         @endforeach
