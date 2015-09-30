@@ -35,11 +35,15 @@
                                 <br>
 
                                 <div class="col-sm-2">
-                                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-primary btn-block">Edit</a>
+                                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-primary btn-block">
+                                        <span class="glyphicon glyphicon-edit"></span> Edit
+                                    </a>
                                     <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
                                             data-target="#delete-product"
                                             data-product-id="{{ $product->id }}"
-                                            data-book-title="{{ $product->book->title }}">Delete</button>
+                                            data-book-title="{{ $product->book->title }}">
+                                        <span class="glyphicon glyphicon-remove"></span> Delete
+                                    </button>
                                 </div>
                             </div>
 

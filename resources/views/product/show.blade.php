@@ -53,7 +53,7 @@
         <br>
 
         <div class="row">
-            <div class="col-sm-9">
+            <div class="col-md-10 col-sm-9">
                 <!-- product conditions -->
                 <table class="table">
 
@@ -117,23 +117,30 @@
                 </table>
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-md-2 col-sm-3">
                 @if(Auth::check())
                     @if($product->isInCart(Auth::user()->id))
-                        <a class="btn btn-primary btn-block add-cart-btn disabled" href="#" role="button">Added
-                            To Cart</a>
+                        <a class="btn btn-primary btn-block add-cart-btn disabled" href="#" role="button">
+                            <span class="glyphicon glyphicon-ok"></span>
+                            Added to cart
+                        </a>
                     @elseif(!$product->isSold() && $product->seller == Auth::user())
-                        <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}"
-                           class="btn btn-primary btn-block">Edit</a>
+                        <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-primary btn-block">
+                            <span class="glyphicon glyphicon-edit"></span> Edit
+                        </a>
 
                         <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
                                 data-target="#delete-product"
                                 data-product-id="{{ $product->id }}"
-                                data-book-title="{{ $product->book->title }}">Delete</button>
+                                data-book-title="{{ $product->book->title }}">
+                            <span class="glyphicon glyphicon-remove"></span> Delete
+                        </button>
                     @else
                         <form method="post" class="add-to-cart" action="{{ url('cart/add/' . $product->id) }}">
                             {!! csrf_field() !!}
-                            <input type="submit" class="btn btn-primary btn-block add-cart-btn" value="Add to cart">
+                            <button type="submit" class="btn btn-primary btn-block add-cart-btn">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
+                            </button>
                         </form>
                     @endif
                 @else
