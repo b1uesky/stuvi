@@ -76,7 +76,7 @@ class UserController extends Controller
         // check if the current user is activated
         if (Auth::user()->isActivated())
         {
-            return redirect('/home');
+            return redirect('/');
 //                ->with('info', 'Your account has already been activated.');
         }
         elseif (Auth::user()->collegeEmail()->verify($code))
@@ -101,7 +101,7 @@ class UserController extends Controller
     {
         if (Auth::user()->isActivated())
         {
-            return redirect('/home');
+            return redirect('/');
         }
 
         return view('user.waitForActivation')->with('user', Auth::user());
@@ -119,7 +119,7 @@ class UserController extends Controller
             return view('user.activated');
         }
 
-        return redirect('/home');
+        return redirect('/');
     }
 
     /**
@@ -134,7 +134,7 @@ class UserController extends Controller
         // check if this user has been activated.
         if ($user->isActivated())
         {
-            return redirect('/home')->with('error', 'Your account has already been activated.');
+            return redirect('/')->with('error', 'Your account has already been activated.');
         }
 
         $user->sendActivationEmail();

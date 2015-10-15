@@ -15,14 +15,14 @@
                 </button>
 
                 {{-- Logo only when nav bar collapses into hamburger menu --}}
-                <a id="xs-screen-logo-link" class="" href="{{url('/home')}}" >
+                <a id="xs-screen-logo-link" class="" href="{{url('/')}}" >
                     <img id="xs-screen-logo-img" class="" src="https://s3.amazonaws.com/stuvi-logo/logo-md.png" alt="stuvi logo">
                 </a>
 
                 <div class="logo-container">
                     {{-- If on homepage, show the home logo which has white text--}}
-                    <a href="{{url('/home')}}">
-                        @if(Request::url() == url('/home') or Request::url() == url('/'))
+                    <a href="{{url('/')}}">
+                        @if(Request::url() == url('/') or Request::url() == url('/'))
                             <img src="https://s3.amazonaws.com/stuvi-logo/logo-text-white-md.png" class="center-block" alt="stuvi logo">
                         @else
                             <img src="https://s3.amazonaws.com/stuvi-logo/logo-md.png" class="center-block" alt="stuvi logo">

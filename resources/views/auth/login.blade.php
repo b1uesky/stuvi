@@ -17,7 +17,7 @@
     <div class="container container-login-signup">
         <div class="row">
 
-            <a href="{{ url('home') }}">
+            <a href="{{ url('/') }}">
                 <img src="https://s3.amazonaws.com/stuvi-logo/logo-md.png" class="img-responsive center-block">
             </a>
 
