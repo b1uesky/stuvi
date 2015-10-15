@@ -406,7 +406,7 @@ class SellerOrder extends Model
 
         $item = $this->createPaypalPayoutItem();
 
-        // seller does not paypal account.
+        // seller does not have paypal account.
         if (!$item)
         {
             return false;
@@ -419,7 +419,7 @@ class SellerOrder extends Model
 
         $this->update([
             'payout_item_id' => $payout_item->getPayoutItemId(),
-                      ]);
+        ]);
 
         return $payout_item;
     }
