@@ -33,7 +33,11 @@
         {{-- price --}}
         <div class="row padding-bottom-5">
             <span class="price">
-                ${{ $product->decimalPrice() }}
+                @if($product->sell_to == 'users')
+                    ${{ $product->decimalPrice() }}
+                @else
+                    Price to be determined
+                @endif
             </span>
         </div>
 

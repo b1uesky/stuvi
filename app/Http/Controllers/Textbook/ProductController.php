@@ -60,8 +60,10 @@ class ProductController extends Controller
     public function store()
     {
         $images = Input::file('file');
+        $sell_to = Input::get('sell_to');
+
         // validation
-        $v = Validator::make(Input::all(), Product::rules($images));
+        $v = Validator::make(Input::all(), Product::rules($images, $sell_to));
 
         if ($v->fails())
         {
@@ -76,15 +78,20 @@ class ProductController extends Controller
             'paypal'    => Input::get('paypal')
         ]);
 
-        $int_price = Price::ConvertDecimalToInteger(Input::get('price'));
-
         $product = Product::create([
-            'price' => $int_price,
-            'book_id' => Input::get('book_id'),
+            'book_id'   => Input::get('book_id'),
             'seller_id' => Auth::user()->id,
+            'sell_to'   => $sell_to
         ]);
 
-        $product->book->addPrice($int_price);
+        // if sell to users, add product price
+        if ($sell_to == 'users')
+        {
+            $int_price = Price::ConvertDecimalToInteger(Input::get('price'));
+            $product->price = $int_price;
+            $product->save();
+            $product->book->addPrice($int_price);
+        }
 
         $condition = ProductCondition::create([
             'product_id' => $product->id,

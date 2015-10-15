@@ -13,6 +13,7 @@ class Product extends Model
         'sold',
         'verified',
         'deleted_at',
+        'sell_to'
     ];
 
     public function book()
@@ -147,19 +148,26 @@ class Product extends Model
      * Validation rules.
      *
      * @param $images
+     * @param int $sell_to
      *
      * @return array
      */
-    public static function rules($images)
+    public static function rules($images, $sell_to)
     {
         $rules = [
-            'general_condition'    => 'required|integer',
-            'highlights_and_notes' => 'required|integer',
-            'damaged_pages'        => 'required|integer',
-            'broken_binding'       => 'required|boolean',
-            'price'                => 'required|numeric|min:0',
-            'paypal'               => 'required|email'
+            'general_condition'     => 'required|integer',
+            'highlights_and_notes'  => 'required|integer',
+            'damaged_pages'         => 'required|integer',
+            'broken_binding'        => 'required|boolean',
+            'sell_to'               => 'required|string|in:users,stuvi',
+            'paypal'                => 'required|email'
         ];
+
+        // if sell to users
+        if ($sell_to == 'users')
+        {
+            $rules['price'] = 'required|numeric|min:0';
+        }
 
         // validate input images
         foreach (range(0, count($images) - 1) as $index)

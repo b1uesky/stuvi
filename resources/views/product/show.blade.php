@@ -60,7 +60,13 @@
                     <tbody>
                     <tr>
                         <th class="col-sm-6 col-xs-7">Price</th>
-                        <td class="col-sm-6 col-xs-5 price">${{ $product->decimalPrice() }}</td>
+                        <td class="col-sm-6 col-xs-5 price">
+                            @if($product->sell_to == 'users')
+                                ${{ $product->decimalPrice() }}
+                            @else
+                                Price to be determined
+                            @endif
+                        </td>
                     </tr>
 
                     <!-- General Condition -->

@@ -20,67 +20,7 @@
 
                 <div class="container-fluid">
 
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <img class="img-responsive" src="{{ $book->imageSet->getImagePath('small') }}"/>
-
-                        </div>
-
-                        <div class="col-xs-8">
-                            <h3 class="no-margin-top">
-                                <a href="{{ url('textbook/buy/' . $book->id) }}">{{ $book->title }}</a>
-                            </h3>
-
-                            <table class="table table-book-details">
-                                <tr>
-                                    <th>
-                                        @if(count($book->authors) > 1)
-                                            Authors:
-                                        @else
-                                            Author:
-                                        @endif
-                                    </th>
-                                    <td>
-                                        @foreach($book->authors as $index => $author)
-                                            @if($index == 0)
-                                                {{ $author->full_name }}
-                                            @else
-                                                , {{ $author->full_name }}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th>
-                                        ISBN-10:
-                                    </th>
-                                    <td>
-                                        {{ $book->isbn10 }}
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th>
-                                        ISBN-13:
-                                    </th>
-                                    <td>
-                                        {{ $book->isbn13 }}
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th>
-                                        Number of Pages:
-                                    </th>
-                                    <td>
-                                        {{ $book->num_pages }}
-                                    </td>
-                                </tr>
-                            </table>
-
-                        </div>
-                    </div>
+                    @include('includes.textbook.book-details-confirm')
 
                     <br>
 

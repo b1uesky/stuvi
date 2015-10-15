@@ -6,6 +6,17 @@
 
 $(document).ready(function () {
 
+    // sell to stuvi or users
+    $('input[name=sell_to]:radio').change(function() {
+        if ($('#sell-to-users').prop("checked")) {
+            $('#sale-price').removeClass('hidden');
+        }
+
+        if ($('#sell-to-stuvi').prop("checked")) {
+            $('#sale-price').addClass('hidden');
+        }
+    });
+
     Dropzone.options.formCreateProduct = { // The camelized version of the ID of the form element
 
             url: '/textbook/sell/product/store',
