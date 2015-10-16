@@ -8,6 +8,7 @@
         <thead>
             <tr class="active">
                 <th>ID</th>
+                <th>Sold To</th>
                 <th>Product</th>
                 <th>Seller</th>
                 <th>Cancelled</th>
@@ -22,6 +23,7 @@
             @foreach($seller_orders as $seller_order)
                 <tr>
                     <td>{{ $seller_order->id }}</td>
+                    <td>{{ $seller_order->isSoldToStuvi() ? 'Stuvi' : 'User' }}</td>
                     <td><a href="{{ url('admin/product/'.$seller_order->product_id) }}">{{ $seller_order->product->book->title }}</a></td>
                     <td><a href="{{ url('admin/user/'.$seller_order->seller()->id) }}">{{ $seller_order->seller()->first_name.' '.$seller_order->seller()->last_name }}</a></td>
                     <td>@if($seller_order->cancelled) Yes @else No @endif</td>

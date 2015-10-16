@@ -1,11 +1,13 @@
 <?php namespace App\Http\Controllers\Textbook;
 
+use App\BuyerOrder;
 use App\Helpers\Price;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Product;
 use App\ProductCondition;
 use App\ProductImage;
+use App\SellerOrder;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -123,10 +125,36 @@ class ProductController extends Controller
             $product_image->uploadToAWS();
         }
 
-        return Response::json([
-            'success' => true,
-            'redirect' => '/textbook/buy/product/' . $product->id,
-        ]);
+        if ($sell_to == 'users')
+        {
+            return Response::json([
+                'success' => true,
+                'redirect' => '/textbook/buy/product/' . $product->id,
+            ]);
+        }
+        else
+        {
+//            $shipping = config('sale.shipping');
+//            $discount = config('sale.discount');
+//            $subtotal = $product->price;
+//            $tax = intval(($shipping - $discount + $subtotal) * config('sale.tax'));
+//            $amount = $shipping - $discount + $subtotal + $tax;
+
+            // sell to stuvi, create seller order directly (without creating a buyer order)
+            $seller_order = SellerOrder::create([
+                'product_id'    => $product->id
+            ]);
+
+            // TODO: trigger event, email seller
+
+            // redirect to schedule pickup page
+            return Response::json([
+                'success' => true,
+                'redirect' => '/order/seller/' . $seller_order->id . '/schedulePickup',
+            ]);
+        }
+
+
     }
 
     /**

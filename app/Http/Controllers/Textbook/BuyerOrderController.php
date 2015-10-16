@@ -45,9 +45,9 @@ class BuyerOrderController extends Controller
 
         return view('order.buyer.index')
             ->with('orders', Auth::user()
-                                 ->buyerOrders()
-                                 ->orderBy($order, 'DESC')
-                                 ->get());
+            ->buyerOrders()
+            ->orderBy($order, 'DESC')
+            ->get());
     }
 
     /**

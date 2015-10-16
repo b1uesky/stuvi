@@ -197,6 +197,11 @@ class SellerOrder extends Model
      */
     public function isDelivered()
     {
+        if ($this->isSoldToStuvi())
+        {
+            return !$this->cancelled && $this->pickedUp();
+        }
+
         return !$this->cancelled && $this->buyerOrder->isDelivered();
     }
 
@@ -273,6 +278,26 @@ class SellerOrder extends Model
         return !$this->isAssignedToCourier() && !$this->cancelled;
     }
 
+    /**
+     * Check if the order is sold to Stuvi.
+     *
+     * @return bool
+     */
+    public function isSoldToStuvi()
+    {
+        return !$this->buyer_order_id;
+    }
+
+    /**
+     * Check if the order is sold to a user.
+     *
+     * @return bool
+     */
+    public function isSoldToUser()
+    {
+        return $this->buyer_order_id;
+    }
+
 
     /**
      * Cancel a seller order.
@@ -289,28 +314,32 @@ class SellerOrder extends Model
         $this->product->sold  = false;
         $this->push();
 
-        // update the price of buyer order
-        $new_subtotal = $this->buyerOrder->subtotal - $this->product->price;
-        $new_total_before_tax = $new_subtotal + $this->buyerOrder->fee - $this->buyerOrder->discount;
-        $new_tax = Price::calculateTax($new_total_before_tax);
-        $new_amount = $new_total_before_tax + $new_tax;
-
-        $this->buyerOrder->update([
-            'subtotal'  => $new_subtotal,
-            'tax'       => $new_tax,
-            'amount'    => $new_amount
-        ]);
-
-        // if all seller orders have been cancelled, cancel the buyer order as well
-        if ($this->isCancelledBySeller() && count($this->buyerOrder->getUncancelledSellerOrders()) == 0)
+        if ($this->isSoldToUser())
         {
-            $this->buyerOrder->cancel($cancelled_by);
+            // update the price of buyer order
+            $new_subtotal = $this->buyerOrder->subtotal - $this->product->price;
+            $new_total_before_tax = $new_subtotal + $this->buyerOrder->fee - $this->buyerOrder->discount;
+            $new_tax = Price::calculateTax($new_total_before_tax);
+            $new_amount = $new_total_before_tax + $new_tax;
 
-            event(new BuyerOrderWasCancelled($this->buyerOrder()));
+            $this->buyerOrder->update([
+                'subtotal'  => $new_subtotal,
+                'tax'       => $new_tax,
+                'amount'    => $new_amount
+            ]);
+
+            // if all seller orders have been cancelled, cancel the buyer order as well
+            if ($this->isCancelledBySeller() && count($this->buyerOrder->getUncancelledSellerOrders()) == 0)
+            {
+                $this->buyerOrder->cancel($cancelled_by);
+
+                event(new BuyerOrderWasCancelled($this->buyerOrder()));
+            }
+
+            // update book price range
+            $this->product->book->addPrice($this->product->price);
         }
 
-        // update book price range
-        $this->product->book->addPrice($this->product->price);
     }
 
     /**

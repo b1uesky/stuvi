@@ -62,8 +62,6 @@ class SellerOrderController extends Controller
     /**
      * Cancel a specific seller order.
      *
-     * @param $id  The buyer order id.
-     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function cancel()

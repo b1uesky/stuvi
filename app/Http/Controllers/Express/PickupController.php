@@ -170,6 +170,11 @@ class PickupController extends Controller
         $seller_order->pickup_time = date(config('database.datetime_format'));
         $seller_order->save();
 
+//        if ($seller_order->isSoldToStuvi())
+//        {
+//            $seller_order->payout();
+//        }
+
         return redirect()->back();
     }
 }
