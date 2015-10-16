@@ -61,8 +61,9 @@ class Book extends Model
     public function availableProducts()
     {
         $products = $this->products()
+            ->where('verified', true)
             ->where('sell_to', 'users')
-            ->where('sold', 0)
+            ->where('sold', false)
             ->whereNull('deleted_at')
             ->join('product_conditions as cond', 'products.id', '=', 'cond.product_id')
             ->orderBy('cond.general_condition')

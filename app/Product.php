@@ -112,6 +112,19 @@ class Product extends Model
     }
 
     /**
+     * @return string
+     */
+    public function isRejected()
+    {
+        if ($this->is_rejected)
+        {
+            return 'Yes';
+        }
+
+        return 'No';
+    }
+
+    /**
      * Check whether this product is deleted.
      *
      * @return bool

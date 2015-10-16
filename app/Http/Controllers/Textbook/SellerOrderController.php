@@ -34,7 +34,8 @@ class SellerOrderController extends Controller
         $order = $this->hasColumn('seller_orders', $order) ? $order : 'id';
 
         return view('order.seller.index')
-            ->with('seller_orders', Auth::user()->sellerOrders()->orderBy($order, 'DESC')->get());
+            ->with('seller_orders', Auth::user()->sellerOrders()
+                ->orderBy($order, 'DESC')->get());
     }
 
     /**

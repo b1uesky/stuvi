@@ -9,12 +9,13 @@
         <thead>
             <tr class="active">
                 <th>ID</th>
+                <th>Sell To</th>
                 <th>Book Title</th>
                 <th>Price</th>
                 <th>Seller</th>
                 <th>Sold</th>
                 <th>Images</th>
-                {{--<th>Verified</th>--}}
+                <th>Verified</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,6 +24,7 @@
             @foreach($products as $product)
                 <tr>
                     <td>{{ $product->id }}</td>
+                    <td>{{ $product->sell_to == 'stuvi' ? 'Stuvi' : 'User' }}</td>
                     <td><a href="{{ url('admin/book/'.$product->book->id) }}">{{ $product->book->title }}</a></td>
                     <td class="price">${{ $product->decimalPrice() }}</td>
                     <td><a href="{{ url('/admin/user/'.$product->seller->id) }}">{{ $product->seller->first_name }} {{ $product->seller->last_name }}</a></td>
@@ -36,7 +38,7 @@
                             </div>
                         @endforeach
                     </td>
-                    {{--<td>{{ $product->isVerified() }}</td>--}}
+                    <td>{{ $product->isVerified() }}</td>
 
                     <!-- we will also add show, edit, and delete buttons -->
                     <td>

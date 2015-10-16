@@ -177,6 +177,9 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
     Route::get('/product/unverified', 'ProductController@showUnverified');
     Route::get('/product/{id}/approve', 'ProductController@approve');
     Route::get('/product/{id}/disapprove', 'ProductController@disapprove');
+    Route::post('/product/{id}/updatePriceAndApprove', 'ProductController@updatePriceAndApprove');
+    Route::post('/product/{id}/reject', 'ProductController@reject');
+    Route::post('/product/{id}/accept', 'ProductController@accept');
     Route::resource('product', 'ProductController');
 
     // seller order

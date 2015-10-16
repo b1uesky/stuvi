@@ -91,6 +91,7 @@ class ProductController extends Controller
         {
             $int_price = Price::ConvertDecimalToInteger(Input::get('price'));
             $product->price = $int_price;
+            $product->verified = true;
             $product->save();
             $product->book->addPrice($int_price);
         }
@@ -134,23 +135,11 @@ class ProductController extends Controller
         }
         else
         {
-//            $shipping = config('sale.shipping');
-//            $discount = config('sale.discount');
-//            $subtotal = $product->price;
-//            $tax = intval(($shipping - $discount + $subtotal) * config('sale.tax'));
-//            $amount = $shipping - $discount + $subtotal + $tax;
-
-            // sell to stuvi, create seller order directly (without creating a buyer order)
-            $seller_order = SellerOrder::create([
-                'product_id'    => $product->id
-            ]);
-
             // TODO: trigger event, email seller
-
-            // redirect to schedule pickup page
+            
             return Response::json([
                 'success' => true,
-                'redirect' => '/order/seller/' . $seller_order->id . '/schedulePickup',
+                'redirect' => '/textbook/buy/product/' . $product->id
             ]);
         }
 

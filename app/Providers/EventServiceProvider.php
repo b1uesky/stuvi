@@ -25,6 +25,15 @@ class EventServiceProvider extends ServiceProvider {
 			'App\Listeners\EmailUserPasswordChangedNotification',
 		],
 
+		// product that sells to stuvi
+		'App\Events\ProductWasUpdatedPriceAndApproved' => [
+			'App\Listeners\EmailSellerProductUpdatedPriceAndApprovedNotification',
+		],
+
+		'App\Events\ProductWasRejected' => [
+			'App\Listeners\EmailSellerProductRejectedNotification',
+		],
+
 		// buyer order
 		'App\Events\BuyerOrderWasPlaced' => [
 			'App\Listeners\EmailBuyerOrderConfirmation',

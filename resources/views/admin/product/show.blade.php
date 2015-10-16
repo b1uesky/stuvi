@@ -4,12 +4,6 @@
 
 @section('content')
 
-    {{--@if(!$product->verified)--}}
-        {{--<a class="btn btn-success" href="{{ url('admin/product/' . $product->id . '/approve') }}">Approve</a>--}}
-    {{--@else--}}
-        {{--<a class="btn btn-danger" href="{{ url('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>--}}
-    {{--@endif--}}
-
     <table class="table table-condensed">
         <caption>Details</caption>
 
@@ -30,13 +24,17 @@
             <td><a href="{{ url('admin/user/'.$product->seller_id) }}">{{ $product->seller->first_name }} {{ $product->seller->last_name }}</a></td>
         </tr>
         <tr>
+            <th>Verified</th>
+            <td>{{ $product->isVerified() }}</td>
+        </tr>
+        <tr>
+            <th>Rejected</th>
+            <td>{{ $product->isRejected() }}</td>
+        </tr>
+        <tr>
             <th>Sold</th>
             <td>{{ $product->isSoldToStr() }}</td>
         </tr>
-        {{--<tr>--}}
-            {{--<th>Verified</th>--}}
-            {{--<td>{{ $product->isVerified() }}</td>--}}
-        {{--</tr>--}}
         <tr>
             <th>{{ $conditions['general_condition']['title'] }}</th>
             <td>{{ $conditions['general_condition'][$product->condition->general_condition] }}</td>
@@ -114,5 +112,49 @@
         </tbody>
 
     </table>
+
+    <hr>
+
+    @if($product->sell_to == 'user')
+        @if(!$product->verified)
+            <a class="btn btn-success" href="{{ url('admin/product/' . $product->id . '/approve') }}">Approve</a>
+        @else
+            <a class="btn btn-danger" href="{{ url('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
+        @endif
+    @else
+        @if(!$product->verified)
+            <form action="{{ url('admin/product/' . $product->id . '/updatePriceAndApprove') }}" method="post">
+                {!! csrf_field() !!}
+
+                <div class="form-group">
+                    <input type="number" step="0.01" class="form-control" name="price" placeholder="Product price">
+                </div>
+
+                <input type="submit" class="btn btn-success" value="Update price and approve">
+            </form>
+        @else
+            <a class="btn btn-danger" href="{{ url('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
+        @endif
+
+        <hr>
+
+        @if(!$product->is_rejected)
+            <form action="{{ url('admin/product/' . $product->id . '/reject') }}" method="post">
+                {!! csrf_field() !!}
+
+                <div class="form-group">
+                    <textarea class="form-control" name="rejected_reason" placeholder="Reason for rejection"></textarea>
+                </div>
+
+                <input type="submit" class="btn btn-danger" value="Reject">
+            </form>
+        @else
+            <form action="{{ url('admin/product/' . $product->id . '/accept') }}" method="post">
+                {!! csrf_field() !!}
+
+                <input type="submit" class="btn btn-success" value="Accept">
+            </form>
+        @endif
+    @endif
 
 @endsection

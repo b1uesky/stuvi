@@ -1,8 +1,13 @@
 <?php namespace App\Http\Controllers\Admin;
 
+use App\Events\ProductWasRejected;
+use App\Events\ProductWasUpdatedPriceAndApproved;
+use App\Helpers\Price;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Product;
+use App\SellerOrder;
+use Illuminate\Support\Facades\Validator;
 use Input;
 
 class ProductController extends Controller
@@ -159,6 +164,107 @@ class ProductController extends Controller
 
         return redirect()
             ->back()
-            ->withError('Product ' . $product->id . ' has already been disapproved');
+            ->withError('Product ' . $product->id . ' has already been disapproved.');
+    }
+
+    /**
+     * Update price and approve the product that sells to Stuvi.
+     *
+     * @param $id
+     * @return $this
+     */
+    public function updatePriceAndApprove($id)
+    {
+        $v = Validator::make(Input::all(), [
+            'price'   => 'required|numeric|min:0'
+        ]);
+
+        if ($v->fails())
+        {
+            return redirect()->back()
+                ->withErrors($v->errors());
+        }
+
+        $product = Product::find($id);
+        $price = Input::get('price');
+
+        $product->verified = true;
+        $product->price = Price::convertDecimalToInteger($price);
+        $product->save();
+
+        $seller_order = SellerOrder::where('product_id', '=', $product->id)->first();
+
+        // check if seller order already exists
+        if (!$seller_order)
+        {
+            // create a seller order directly (without creating a buyer order)
+            // so the book now can be picked up
+            $seller_order = SellerOrder::create([
+                'product_id'    => $product->id
+            ]);
+
+            event(new ProductWasUpdatedPriceAndApproved($seller_order));
+        }
+
+        return redirect()->back()
+            ->withSuccess('Product ' . $product->id . ' has been approved.');
+
+    }
+
+    /**
+     * Reject a product that sells to Stuvi
+     *
+     * @param $id
+     * @return $this
+     */
+    public function reject($id)
+    {
+        $v = Validator::make(Input::all(), [
+            'rejected_reason'   => 'required|string|max:255'
+        ]);
+
+        if ($v->fails())
+        {
+            return redirect()->back()
+                ->withErrors($v->errors());
+        }
+
+        $product = Product::find($id);
+        $rejected_reason = Input::get('rejected_reason');
+
+        if (!$product->is_rejected)
+        {
+            $product->is_rejected = true;
+            $product->rejected_reason = $rejected_reason;
+            $product->save();
+
+            event(new ProductWasRejected($product));
+
+            return redirect()->back()
+                ->withSuccess('Product ' . $product->id . ' has been rejected.');
+        }
+    }
+
+    /**
+     * Accept a product that sells to Stuvi
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function accept($id)
+    {
+        $product = Product::find($id);
+
+        if ($product->is_rejected)
+        {
+            $product->is_rejected = false;
+            $product->rejected_reason = '';
+            $product->save();
+
+            // TODO: email seller the product is accepted
+
+            return redirect()->back()
+                ->withSuccess('Product ' . $product->id . ' has been accepted.');
+        }
     }
 }
