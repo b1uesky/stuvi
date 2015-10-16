@@ -126,24 +126,10 @@ class ProductController extends Controller
             $product_image->uploadToAWS();
         }
 
-        if ($sell_to == 'users')
-        {
-            return Response::json([
-                'success' => true,
-                'redirect' => '/textbook/buy/product/' . $product->id,
-            ]);
-        }
-        else
-        {
-            // TODO: trigger event, email seller
-            
-            return Response::json([
-                'success' => true,
-                'redirect' => '/textbook/buy/product/' . $product->id
-            ]);
-        }
-
-
+        return Response::json([
+            'success' => true,
+            'redirect' => '/textbook/buy/product/' . $product->id,
+        ]);
     }
 
     /**

@@ -142,7 +142,7 @@
 
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="sell_to" id="sell-to-stuvi" value="stuvi"> Sell the book to Stuvi and get paid instantly
+                                                    <input type="radio" name="sell_to" id="sell-to-stuvi" value="stuvi"> Sell the book to Stuvi and get paid after it is approved
                                                 </label>
                                             </div>
 
@@ -186,7 +186,7 @@
                                                 and <a href="#" data-toggle="modal" data-target="#privacy-modal"> Privacy Notice</a>.</small>
                                         </div>
 
-                                        <input type="submit" name="submit" class="btn btn-lg btn-primary center-block" value="Upload images and post book">
+                                        <input type="submit" name="submit" class="btn btn-lg btn-primary center-block" value="Submit">
                                     </div>
                                 </div>
                             </section>

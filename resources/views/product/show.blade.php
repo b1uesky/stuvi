@@ -36,6 +36,12 @@
             </ol>
         </div>
 
+        @if(!$product->verified && !$product->is_rejected && !$product->price)
+            <div class="alert alert-info fade in" role="alert">
+                This book is waiting for the approval by Stuvi. We'll email you as soon as it is approved.
+            </div>
+        @endif
+
         <div class="page-header">
             <h1>{{ $book->title }}</h1>
         </div>
@@ -61,10 +67,10 @@
                     <tr>
                         <th class="col-sm-6 col-xs-7">Price</th>
                         <td class="col-sm-6 col-xs-5 price">
-                            @if($product->sell_to == 'users')
+                            @if($product->price)
                                 ${{ $product->decimalPrice() }}
                             @else
-                                Price to be determined
+                                To be determined...
                             @endif
                         </td>
                     </tr>
