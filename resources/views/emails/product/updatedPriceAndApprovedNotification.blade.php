@@ -11,11 +11,11 @@
 
     <p>Hi {{ $first_name }},</p>
 
-    <p>Congratulations, we have decided to buy your book <strong><a href="{{ url('textbook/buy/' . $seller_order->product->book->id) }}">{{ $book_title }}</a></strong> at a price of <span style="color: #F25F5C">${{ $seller_order->product->decimalPrice() }}</span>.</p>
+    <p>Congratulations, we have decided to buy your book <strong><a href="{{ url('textbook/buy/' . $seller_order->product->book->id) }}">{{ $book_title }}</a></strong> at the price of <span style="color: #F25F5C">${{ $seller_order->product->decimalPrice() }}</span>.</p>
 
     <p>If you have any questions regarding to the price, please feel free to <a href="{{ url('/contact') }}">contact us</a>.</p>
 
-    <p>Before our courier coming to pick up your book, please provide us the pickup information by clicking the button below:</p>
+    <p>Before our courier coming to pick up your book, please provide us pickup details by clicking the button below:</p>
 
     @include('beautymail::templates.sunny.contentEnd')
 

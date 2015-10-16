@@ -13,9 +13,10 @@
                 <th>Book Title</th>
                 <th>Price</th>
                 <th>Seller</th>
+                <th>Verified</th>
+                <th>Rejected</th>
                 <th>Sold</th>
                 <th>Images</th>
-                <th>Verified</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -28,6 +29,8 @@
                     <td><a href="{{ url('admin/book/'.$product->book->id) }}">{{ $product->book->title }}</a></td>
                     <td class="price">${{ $product->decimalPrice() }}</td>
                     <td><a href="{{ url('/admin/user/'.$product->seller->id) }}">{{ $product->seller->first_name }} {{ $product->seller->last_name }}</a></td>
+                    <td>{{ $product->isVerified() }}</td>
+                    <td>{{ $product->is_rejected ? 'Yes' : 'No' }}</td>
                     <td>{{ $product->isSoldToStr() }}</td>
                     <td class="container-flex">
                         @foreach($product->images as $image)
@@ -38,7 +41,7 @@
                             </div>
                         @endforeach
                     </td>
-                    <td>{{ $product->isVerified() }}</td>
+
 
                     <!-- we will also add show, edit, and delete buttons -->
                     <td>

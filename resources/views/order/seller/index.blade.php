@@ -59,9 +59,9 @@
                         <div class="row">
                             <?php $order_status = $seller_order->getOrderStatus(); ?>
 
-                            @if(!$seller_order->cancelled)
+                            @if(!$seller_order->cancelled && !$seller_order->isTransferred())
                                 <div class="progress">
-                                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{ $order_status['value'] }}" aria-valuemin="0" aria-valuemax="100" style="{{ 'width: ' . $order_status['value'] . '%;' }}">
+                                    <div class="progress-bar active" role="progressbar" aria-valuenow="{{ $order_status['value'] }}" aria-valuemin="0" aria-valuemax="100" style="{{ 'width: ' . $order_status['value'] . '%;' }}">
                                         <span class="sr-only">{{ $order_status['value'] }}% Complete</span>
                                     </div>
                                 </div>

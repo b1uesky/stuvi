@@ -22,6 +22,12 @@
                 <p class="list-group-item-text">{{ $seller_order->id }}</p>
             </li>
 
+            {{-- Sell to --}}
+            <li class="list-group-item">
+                <h4 class="list-group-item-heading">Sell To</h4>
+                <p class="list-group-item-text">{{ $seller_order->product->sell_to }}</p>
+            </li>
+
             {{-- Book Info --}}
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">{{ $seller_order->book()->title }}</h4>
@@ -58,6 +64,14 @@
                 <h4 class="list-group-item-heading">Phone Number</h4>
                 <p class="list-group-item-text">
                     {{ $seller_order->address->phone_number }}
+                </p>
+            </li>
+
+            {{-- Price --}}
+            <li class="list-group-item">
+                <h4 class="list-group-item-heading">Price</h4>
+                <p class="list-group-item-text price">
+                    ${{ $seller_order->product->decimalPrice() }}
                 </p>
             </li>
         </div>
