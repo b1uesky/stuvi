@@ -32,7 +32,8 @@ class ProductTableSeeder extends Seeder {
                     'seller_id' => $faker->numberBetween(1, $num_users),
                     'price'     => $int_price,
                     'sell_to'   => 'users',
-                    'verified'  => true
+                    'verified'  => true,
+                    'payout_method' => 'paypal'
                 ]);
 
                 $product->book->addPrice($int_price);
