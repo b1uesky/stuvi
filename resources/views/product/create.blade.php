@@ -142,13 +142,13 @@
 
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="sell_to" id="sell-to-stuvi" value="stuvi"> Sell the book to Stuvi and get paid after it is approved
+                                                    <input type="radio" name="sell_to" id="sell-to-users" value="users"> Post the book on the website and get paid after it is sold
                                                 </label>
                                             </div>
 
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="sell_to" id="sell-to-users" value="users"> Post the book on the website and get paid after it is sold
+                                                    <input type="radio" name="sell_to" id="sell-to-stuvi" value="stuvi"> Sell the book to Stuvi and get paid after approval
                                                 </label>
                                             </div>
                                         </div>
@@ -164,8 +164,25 @@
                                             </div>
                                         </div>
 
-                                        {{--Paypal account--}}
+                                        {{-- Receive money --}}
                                         <div class="form-group">
+                                            <label>Receive money</label>
+
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="payout_method" id="payout_paypal" value="paypal"> PayPal
+                                                </label>
+                                            </div>
+
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="payout_method" id="payout_cash" value="cash"> Cash
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        {{--Paypal account--}}
+                                        <div class="form-group hidden" id="paypal_account">
                                             <label class="full-width">
                                                 <span>Paypal account</span>
                                                     <span class="pull-right">
@@ -174,7 +191,6 @@
                                                         </small>
                                                     </span>
                                             </label>
-
 
                                             <input type="email" name="paypal" class="form-control"
                                                    value="{{ $paypal or '' }}" placeholder="Paypal email address">

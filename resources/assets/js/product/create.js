@@ -17,6 +17,17 @@ $(document).ready(function () {
         }
     });
 
+    // receive money
+    $('input[name=payout_method]:radio').change(function() {
+        if ($('#payout_paypal').prop("checked")) {
+            $('#paypal_account').removeClass('hidden');
+        }
+
+        if ($('#payout_cash').prop("checked")) {
+            $('#paypal_account').addClass('hidden');
+        }
+    });
+
     Dropzone.options.formCreateProduct = { // The camelized version of the ID of the form element
 
             url: '/textbook/sell/product/store',

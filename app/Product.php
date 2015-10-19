@@ -165,7 +165,7 @@ class Product extends Model
      *
      * @return array
      */
-    public static function rules($images, $sell_to)
+    public static function rules($images)
     {
         $rules = [
             'general_condition'     => 'required|integer',
@@ -173,14 +173,10 @@ class Product extends Model
             'damaged_pages'         => 'required|integer',
             'broken_binding'        => 'required|boolean',
             'sell_to'               => 'required|string|in:users,stuvi',
-            'paypal'                => 'required|email'
+            'price'                 => 'required_if:sell_to,users|numeric|min:0',
+            'payout_method'         => 'required|string|in:paypal,cash',
+            'paypal'                => 'required_if:payout_method,paypal|email'
         ];
-
-        // if sell to users
-        if ($sell_to == 'users')
-        {
-            $rules['price'] = 'required|numeric|min:0';
-        }
 
         // validate input images
         foreach (range(0, count($images) - 1) as $index)

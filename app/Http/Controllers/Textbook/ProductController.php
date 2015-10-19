@@ -63,9 +63,10 @@ class ProductController extends Controller
     {
         $images = Input::file('file');
         $sell_to = Input::get('sell_to');
+        $payout_method = Input::get('payout_method');
 
         // validation
-        $v = Validator::make(Input::all(), Product::rules($images, $sell_to));
+        $v = Validator::make(Input::all(), Product::rules($images));
 
         if ($v->fails())
         {
@@ -76,14 +77,18 @@ class ProductController extends Controller
         }
 
         // update user's Paypal email address
-        Auth::user()->profile->update([
-            'paypal'    => Input::get('paypal')
-        ]);
+        if ($payout_method == 'paypal')
+        {
+            Auth::user()->profile->update([
+                'paypal'    => Input::get('paypal')
+            ]);
+        }
 
         $product = Product::create([
             'book_id'   => Input::get('book_id'),
             'seller_id' => Auth::user()->id,
-            'sell_to'   => $sell_to
+            'sell_to'   => $sell_to,
+            'payout_method' => $payout_method
         ]);
 
         // if sell to users, add product price
