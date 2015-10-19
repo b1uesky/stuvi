@@ -170,6 +170,13 @@ class PickupController extends Controller
         $seller_order->pickup_time = date(config('database.datetime_format'));
         $seller_order->save();
 
+        // if payout method is cash, update the amount of cash paid of the seller order
+        if ($seller_order->product->payout_method == 'cash')
+        {
+            $seller_order->cash_paid = $seller_order->product->price - config('sale.service_fee');
+            $seller_order->save();
+        }
+
         // if sell to stuvi, pay the seller
         if ($seller_order->isSoldToStuvi())
         {

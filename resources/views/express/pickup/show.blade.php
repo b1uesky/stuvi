@@ -67,13 +67,33 @@
                 </p>
             </li>
 
-            {{-- Price --}}
-            <li class="list-group-item">
-                <h4 class="list-group-item-heading">Price</h4>
-                <p class="list-group-item-text price">
-                    ${{ $seller_order->product->decimalPrice() }}
-                </p>
-            </li>
+            {{-- Sale price --}}
+            {{--<li class="list-group-item">--}}
+                {{--<h4 class="list-group-item-heading">Price</h4>--}}
+                {{--<p class="list-group-item-text price">--}}
+                    {{--${{ $seller_order->product->decimalPrice() }}--}}
+                {{--</p>--}}
+            {{--</li>--}}
+
+            @if($seller_order->product->payout_method == 'cash')
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        Please pay seller <span class="price">${{ $seller_order->product->decimalPrice() }}</span> in cash.
+                    </h4>
+
+                    @if(config('sale.payout_service') > 0)
+                        <p class="list-group-item-text">
+                            Sale price: ${{ $seller_order->product->decimalPrice() }}
+                        </p>
+
+                        <p class="list-group-item-text">
+                            Payout service fee: -${{ \App\Helpers\Price::convertIntegerToDecimal(config('sale.payout_service')) }}
+                        </p>
+                    @endif
+
+                </li>
+            @endif
+
         </div>
 
         {{-- Ready to pick up --}}
