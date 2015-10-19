@@ -5,16 +5,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-//    protected $fillable = [
-//        'book_id',
-//        'price',
-//        'book_id',
-//        'seller_id',
-//        'sold',
-//        'verified',
-//        'deleted_at',
-//        'sell_to'
-//    ];
     protected $guarded = [];
 
     public function book()
