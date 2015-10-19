@@ -63,6 +63,37 @@
                     {{ $buyer_order->shipping_address->phone_number }}
                 </p>
             </li>
+
+            {{-- Payment method --}}
+            <li class="list-group-item">
+                <h4 class="list-group-item-heading">Payment Method</h4>
+                <p class="list-group-item-text">
+                    {{ $buyer_order->payment_method }}
+                </p>
+            </li>
+
+            {{-- Collect cash from buyer --}}
+            @if($buyer_order->payment_method == 'cash')
+                <li class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        Please collect <span class="price">${{ $buyer_order->decimalAmount() }}</span> from buyer.
+                    </h4>
+                    <p class="list-group-item-text">
+                        Subtotal: ${{ $buyer_order->decimalSubtotal() }}
+                    </p>
+                    <p class="list-group-item-text">
+                        Shipping: ${{ $buyer_order->decimalShipping() }}
+                    </p>
+                    <p class="list-group-item-text">
+                        Tax: ${{ $buyer_order->decimalTax() }}
+                    </p>
+                    @if($buyer_order->decimalDiscount() > 0))
+                        <p class="list-group-item-text">
+                            Discount: ${{ $buyer_order->decimalDiscount() }}
+                        </p>
+                    @endif
+                </li>
+            @endif
         </div>
 
         {{-- Show Ready to ship button if the order is not yet assigned --}}

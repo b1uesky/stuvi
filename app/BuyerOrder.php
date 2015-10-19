@@ -12,24 +12,7 @@ class BuyerOrder extends Model
 {
 
     protected $table = 'buyer_orders';
-
-    protected $fillable = [
-        'buyer_id',
-        'courier_id',
-        'time_delivered',
-        'shipping_address_id',
-        'cancelled',
-        'cancelled_time',
-        'cancelled_by',
-        'subtotal',
-        'tax',
-        'shipping',
-        'discount',
-        'amount',
-        'payment_id',
-        'authorization_id',
-        'capture_id'
-    ];
+    protected $guarded = [];
 
     public function decimalSubtotal()
     {
@@ -274,7 +257,10 @@ class BuyerOrder extends Model
     {
         foreach ($this->seller_orders as $seller_order)
         {
-            $seller_order->payout();
+            if ($seller_order->product->payout_method == 'paypal')
+            {
+                $seller_order->payout();
+            }
         }
     }
 
@@ -307,7 +293,7 @@ class BuyerOrder extends Model
     {
         $rules = array(
             'selected_address_id'   => 'required|exists:addresses,id',
-            'payment_method'        => 'required|string'
+            'payment_method'        => 'required|string|in:paypal,cash'
         );
 
         return $rules;

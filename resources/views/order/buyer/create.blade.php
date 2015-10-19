@@ -135,8 +135,21 @@
 
                     {{-- Payment method --}}
                     <div class="row">
-                        @if ($display_payment)
-                            <h3>Payment method</h3>
+
+                        <h3>Payment method</h3>
+
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="payment_method_select" id="payment_method_paypal" value="paypal" checked> PayPal
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="payment_method_select" id="payment_method_cash" value="cash"> Cash
+                            </label>
+                        </div>
+
+
 
                             <!-- Nav tabs for payment methods -->
                             {{--<ul class="nav nav-pills" role="tablist">--}}
@@ -147,7 +160,7 @@
                             {{--</ul>--}}
 
                             <!-- Tab panes -->
-                            <div class="tab-content">
+                            {{--<div class="tab-content">--}}
                                 {{--<div role="tabpanel" class="tab-pane fade in active" id="credit-card">--}}
                                 {{--<div class="payment-card-container">--}}
                                 {{--<div class="row">--}}
@@ -193,20 +206,19 @@
                                 {{--</div>--}}
                                 {{--</div>--}}
                                 {{--</div>--}}
-                                <div role="tabpanel" class="tab-pane fade in active" id="paypal">
-                                    <div class="paypal-content">
-                                        <img class="center-block img-responsive"
-                                             src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png"
-                                             alt="PayPal"/>
-                                        <hr>
-                                        <p class="text-center">
-                                            After placing your order, we will redirect you to PayPal website to finish up
-                                            the payment.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
+                                {{--<div role="tabpanel" class="tab-pane fade in active" id="paypal">--}}
+                                    {{--<div class="paypal-content">--}}
+                                        {{--<img class="center-block img-responsive"--}}
+                                             {{--src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png"--}}
+                                             {{--alt="PayPal"/>--}}
+                                        {{--<hr>--}}
+                                        {{--<p class="text-center">--}}
+                                            {{--After placing your order, we will redirect you to PayPal website to finish up--}}
+                                            {{--the payment.--}}
+                                        {{--</p>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                     </div>
 
                     {{-- Review items --}}

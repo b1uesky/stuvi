@@ -143,9 +143,9 @@ class DeliverController extends Controller
         }
 
         $buyer_order->update([
-                                 // add deliver time to the buyer order
-                                 'time_delivered'    => date(config('database.datetime_format')),
-                             ]);
+            // add deliver time to the buyer order
+            'time_delivered'    => date(config('database.datetime_format')),
+        ]);
 
         event(new BuyerOrderWasDelivered($buyer_order));
 

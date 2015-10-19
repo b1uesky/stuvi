@@ -26,6 +26,11 @@ class CaptureAuthorizedPaymentFromBuyer
      */
     public function handle(BuyerOrderWasDelivered $event)
     {
-        $event->buyer_order->capturePayment();
+        $buyer_order = $event->buyer_order;
+
+        if ($buyer_order->payment_method == 'paypal')
+        {
+            $buyer_order->capturePayment();
+        }
     }
 }

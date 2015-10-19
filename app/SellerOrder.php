@@ -433,6 +433,12 @@ class SellerOrder extends Model
             return false;
         }
 
+        // check if payout method is paypal
+        if ($this->product->payout_method != 'paypal')
+        {
+            return false;
+        }
+
         $item = $this->createPaypalPayoutItem();
 
         // seller does not have paypal account.

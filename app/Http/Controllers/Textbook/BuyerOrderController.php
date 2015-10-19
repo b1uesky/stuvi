@@ -76,8 +76,7 @@ class BuyerOrderController extends Controller
                 ->with('discount', Price::convertIntegerToDecimal($this->cart->discount()))
                 ->with('tax', Price::convertIntegerToDecimal($this->cart->tax()))
                 ->with('total', Price::convertIntegerToDecimal($this->cart->total()))
-                ->with('items', $this->cart->items)
-                ->with('display_payment', true);
+                ->with('items', $this->cart->items);
     }
 
     /**
@@ -213,59 +212,24 @@ class BuyerOrderController extends Controller
         $shipping   = Price::convertIntegerToDecimal($this->cart->shipping());
         $tax        = Price::convertIntegerToDecimal($this->cart->tax());
 
-        // final amount that user will pay
+        // final amount that user will pay ($subtotal includes $discount)
         $total = $subtotal + $shipping + $tax;
 
         $shipping_address_id = Input::get('selected_address_id');
         $payment_method = Input::get('payment_method');
 
-        if ($payment_method == 'credit_card')
+        if ($payment_method == 'paypal')
         {
-            // prepare credit card info
-            $number                 = preg_replace('/[^\d]/', '', Input::get('number')); // digits only
-            $type                   = Paypal::getCreditCardType($number);
-            $expire_month           = Input::get('expire_month');
-            $expire_year            = Paypal::getFullExpireYear(Input::get('expire_year'));
-            $cvv                    = Input::get('cvc');
-            $name                   = strtoupper(Input::get('name'));
-            $first_name             = explode(' ', $name)[0];
-            $last_name              = explode(' ', $name)[1];
-
-            // validation
-            $v = Validator::make(array(
-                'address_id'    => $shipping_address_id,
-                'number'        => $number,
-                'type'          => $type,
-                'expire_month'  => $expire_month,
-                'expire_year'   => $expire_year,
-                'cvv'           => $cvv,
-                'first_name'    => $first_name,
-                'last_name'     => $last_name
-            ), Paypal::rules());
-
-            if ($v->fails())
-            {
-                return redirect()->back()
-                    ->withErrors($v->errors());
-            }
-
-            // Paypal address
-            $address = Address::find($shipping_address_id)->toArray();
-
-            // Paypal credit card
-            $credit_card = array(
-                'type'          => $type,
-                'number'        => $number,
-                'expire_month'  => $expire_month,
-                'expire_year'   => $expire_year,
-                'cvv'           => $cvv,
-                'first_name'    => $first_name,
-                'last_name'     => $last_name
-            );
-
             $paypal = new Paypal();
-            $authorization = $paypal->authorizePaymentByCreditCard($address, $credit_card, $items, $subtotal, $shipping, $tax, $total);
+            $payment = $paypal->authorizePaymentByPalpal($items, $subtotal, $shipping, $tax, $total, $shipping_address_id);
+            $approvalUrl = $payment->getApprovalLink();
 
+            // redirect user to Paypal checkout page
+            return Redirect::to($approvalUrl);
+        }
+
+        if ($payment_method == 'cash')
+        {
             // create buyer order
             $order = BuyerOrder::create([
                 'buyer_id'              => Auth::id(),
@@ -274,9 +238,8 @@ class BuyerOrderController extends Controller
                 'shipping'              => $this->cart->shipping(),
                 'discount'              => $this->cart->discount(),
                 'subtotal'              => $this->cart->subtotal(),
-                'amount'                => Price::convertDecimalToInteger($total),
-                'authorization_id'      => $authorization->getId()
-
+                'amount'                => $this->cart->total(),
+                'payment_method'        => $payment_method
             ]);
 
             // create seller order(s) according to the Cart items
@@ -291,15 +254,79 @@ class BuyerOrderController extends Controller
             return redirect('/order/confirmation')
                 ->with('order', $order);
         }
-        elseif ($payment_method == 'paypal')
-        {
-            $paypal = new Paypal();
-            $payment = $paypal->authorizePaymentByPalpal($items, $subtotal, $shipping, $tax, $total, $shipping_address_id);
-            $approvalUrl = $payment->getApprovalLink();
 
-            // redirect user to Paypal checkout page
-            return Redirect::to($approvalUrl);
-        }
+        //        if ($payment_method == 'credit_card')
+//        {
+//            // prepare credit card info
+//            $number                 = preg_replace('/[^\d]/', '', Input::get('number')); // digits only
+//            $type                   = Paypal::getCreditCardType($number);
+//            $expire_month           = Input::get('expire_month');
+//            $expire_year            = Paypal::getFullExpireYear(Input::get('expire_year'));
+//            $cvv                    = Input::get('cvc');
+//            $name                   = strtoupper(Input::get('name'));
+//            $first_name             = explode(' ', $name)[0];
+//            $last_name              = explode(' ', $name)[1];
+//
+//            // validation
+//            $v = Validator::make(array(
+//                'address_id'    => $shipping_address_id,
+//                'number'        => $number,
+//                'type'          => $type,
+//                'expire_month'  => $expire_month,
+//                'expire_year'   => $expire_year,
+//                'cvv'           => $cvv,
+//                'first_name'    => $first_name,
+//                'last_name'     => $last_name
+//            ), Paypal::rules());
+//
+//            if ($v->fails())
+//            {
+//                return redirect()->back()
+//                    ->withErrors($v->errors());
+//            }
+//
+//            // Paypal address
+//            $address = Address::find($shipping_address_id)->toArray();
+//
+//            // Paypal credit card
+//            $credit_card = array(
+//                'type'          => $type,
+//                'number'        => $number,
+//                'expire_month'  => $expire_month,
+//                'expire_year'   => $expire_year,
+//                'cvv'           => $cvv,
+//                'first_name'    => $first_name,
+//                'last_name'     => $last_name
+//            );
+//
+//            $paypal = new Paypal();
+//            $authorization = $paypal->authorizePaymentByCreditCard($address, $credit_card, $items, $subtotal, $shipping, $tax, $total);
+//
+//            // create buyer order
+//            $order = BuyerOrder::create([
+//                'buyer_id'              => Auth::id(),
+//                'shipping_address_id'   => $shipping_address_id,
+//                'tax'                   => $this->cart->tax(),
+//                'shipping'              => $this->cart->shipping(),
+//                'discount'              => $this->cart->discount(),
+//                'subtotal'              => $this->cart->subtotal(),
+//                'amount'                => Price::convertDecimalToInteger($total),
+//                'authorization_id'      => $authorization->getId()
+//
+//            ]);
+//
+//            // create seller order(s) according to the Cart items
+//            $this->createSellerOrders($order->id);
+//
+//            // remove payed items from Cart
+//            $this->cart->clear();
+//
+//            // send confirmation email to buyer
+//            event(new BuyerOrderWasPlaced($order));
+//
+//            return redirect('/order/confirmation')
+//                ->with('order', $order);
+//        }
     }
 
     /**
@@ -334,6 +361,7 @@ class BuyerOrderController extends Controller
             'shipping'              => $shipping,
             'discount'              => $discount,
             'amount'                => $total,
+            'payment_method'        => 'paypal',
             'authorization_id'      => $authorization->getId()
         ]);
 
