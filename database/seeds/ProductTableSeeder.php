@@ -31,6 +31,7 @@ class ProductTableSeeder extends Seeder {
                     'book_id'   => $book->id,
                     'seller_id' => $faker->numberBetween(1, $num_users),
                     'price'     => $int_price,
+                    'available_at'  => \Carbon\Carbon::now()->toDateString(),
                     'sell_to'   => 'users',
                     'verified'  => true,
                     'payout_method' => 'paypal'
