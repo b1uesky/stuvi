@@ -162,6 +162,7 @@ class Product extends Model
             'highlights_and_notes'  => 'required|integer',
             'damaged_pages'         => 'required|integer',
             'broken_binding'        => 'required|boolean',
+            'available_at'          => 'required|date',
             'sell_to'               => 'required|string|in:users,stuvi',
             'price'                 => 'required_if:sell_to,users|numeric|min:0',
             'payout_method'         => 'required|string|in:paypal,cash',

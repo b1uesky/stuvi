@@ -112,13 +112,13 @@
 
                 <h3>Choose a pickup time</h3>
 
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div id="datetimepicker-pickup-time"></div>
-                        </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="datetimepicker-pickup-time"></div>
                     </div>
+                </div>
 
-                    <br>
+                <br>
 
 
                 <form action="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" method="post">

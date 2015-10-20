@@ -6,6 +6,33 @@
 
 $(document).ready(function () {
 
+    // available date
+    var date_format = 'M/D/YYYY';
+
+    // default value to current date
+    $('input[name=available_at]:radio').val(moment().format(date_format));
+
+    // toggle datetimepicker
+    $('input[name=available_at]:radio').change(function() {
+        if ($('#available_now').prop("checked")) {
+            $('#datetimepicker-available-date').addClass('hidden');
+        }
+
+        if ($('#available_future').prop("checked")) {
+            $('#datetimepicker-available-date').removeClass('hidden');
+        }
+    });
+
+    $('#datetimepicker-available-date').datetimepicker({
+        format: date_format,
+        minDate: moment()
+    });
+
+    // update available date when changing the datetimepicker
+    $(document).on('dp.change', function(e) {
+        $('#available_future').val(e.date.format(date_format));
+    });
+
     // sell to stuvi or users
     $('input[name=sell_to]:radio').change(function() {
         if ($('#sell-to-users').prop("checked")) {

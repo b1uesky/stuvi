@@ -118,9 +118,9 @@
 
                                         {{--Description--}}
                                         <div class="form-group">
-                                            <label>{{ config('product.conditions.description.title') }}</label>
-                                            <textarea name="description" class="form-control" rows="5"
-                                                      placeholder="{{ config('product.conditions.description.placeholder') }}"></textarea>
+                                            <label>Additional description <small>(optional)</small></label>
+                                            <textarea name="description" class="form-control" rows="3"
+                                                      placeholder="More description on your book conditions."></textarea>
                                         </div>
 
                                         {{--Upload Images using Dropzone--}}
@@ -134,6 +134,26 @@
                                                     </small>
                                                 </div>
                                             </div>
+                                        </div>
+
+                                        <div class="from-group">
+                                            <label>Availability</label>
+
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="available_at" id="available_now" value="" checked> Now
+                                                </label>
+                                            </div>
+
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="available_at" id="available_future" value=""> In the future
+                                                </label>
+                                            </div>
+
+                                            <input type="text" class="hidden form-control" id="datetimepicker-available-date">
+
+                                            <br>
                                         </div>
 
                                         {{-- Sell to --}}
