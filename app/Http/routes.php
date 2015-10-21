@@ -75,8 +75,8 @@ Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
 
     // donate
     Route::group(['prefix'=>'donate'], function() {
-        Route::get  ('/',   'TextbookController@donate');
-        Route::post ('/store', 'TextbookController@storeDonation');
+        Route::get  ('/',   'DonationController@index');
+        Route::post ('/store', 'DonationController@store');
     });
 });
 
