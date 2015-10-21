@@ -10,18 +10,8 @@ use Intervention\Image\Facades\Image;
 class Book extends Model
 {
 
-    protected $fillable = [
-        'title',
-        'edition',
-        'isbn10',
-        'isbn13',
-        'num_pages',
-        'is_verified',
-        'language',
-        'list_price',
-        'lowest_price',
-        'highest_price'
-    ];
+    protected $table = 'books';
+    protected $guarded = [];
 
     /**
      * Get textbook authors

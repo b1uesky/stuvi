@@ -15,27 +15,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     use Authenticatable, Authorizable, CanResetPassword;
 
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
     protected $table = 'users';
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'password',
-        'phone_number',
-        'first_name',
-        'last_name',
-        'university_id',
-        'role',
-        'primary_email_id',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes excluded from the model's JSON form.

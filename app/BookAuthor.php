@@ -4,7 +4,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class BookAuthor extends Model
 {
-    protected $fillable = ['book_id', 'full_name', 'first_name', 'last_name'];
+
+    protected $table = 'book_authors';
+    protected $guarded = [];
 
     /**
      * Get the book.

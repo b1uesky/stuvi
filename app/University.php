@@ -6,12 +6,8 @@ use DB;
 
 class University extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['name', 'abbreviation', 'email_suffix', 'is_public'];
+    protected $table = 'universities';
+    protected $guarded = [];
 
     /**
      * Indicates if the model should be timestamped.

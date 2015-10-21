@@ -5,14 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 class ProductCondition extends Model
 {
 
-    protected $fillable = [
-        'general_condition',
-        'highlights_and_notes',
-        'damaged_pages',
-        'broken_binding',
-        'description',
-        'product_id'
-    ];
+    protected $table = 'product_conditions';
+    protected $guarded = [];
 
     /**
      * Get the product.

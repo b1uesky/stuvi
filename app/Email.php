@@ -8,12 +8,9 @@ use Illuminate\Support\Facades\Mail;
 
 class Email extends Model
 {
-    protected $fillable = [
-        'user_id',
-        'email_address',
-        'verification_code',
-        'verified',
-    ];
+
+    protected $table = 'emails';
+    protected $guarded = [];
 
     /**
      * Get the user that this user email belongs to.

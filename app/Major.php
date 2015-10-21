@@ -6,12 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Major extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['name', 'abbreviation', 'college_id'];
+
+    protected $table = 'majors';
+    protected $guarded = [];
 
     /**
      * Indicates if the model should be timestamped.

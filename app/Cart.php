@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
 
-    protected $fillable = ['user_id', 'quantity'];
+    protected $table = 'carts';
+    protected $guarded = [];
 
     /**
      * Get the user that this cart belongs to.

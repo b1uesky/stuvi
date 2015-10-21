@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class CartItem extends Model
 {
-    protected $fillable = ['cart_id', 'product_id'];
+
+    protected $table = 'cart_items';
+    protected $guarded = [];
 
     /**
      * Get the cart that this cart item belongs to.

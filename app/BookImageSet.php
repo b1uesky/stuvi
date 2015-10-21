@@ -9,7 +9,8 @@ use Intervention\Image\Facades\Image;
 class BookImageSet extends Model
 {
 
-    protected $fillable = ['book_id', 'small_image', 'medium_image', 'large_image'];
+    protected $table = 'book_image_sets';
+    protected $guarded = ['book_id', 'small_image', 'medium_image', 'large_image'];
 
     /**
      * Get the book.

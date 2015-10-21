@@ -7,6 +7,9 @@ use Intervention\Image\Facades\Image;
 
 class ProductImage extends Model {
 
+    protected $table = 'product_images';
+    protected $guarded = [];
+
     /**
      * Get the product.
      *

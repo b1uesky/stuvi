@@ -15,32 +15,10 @@ use League\Flysystem\Exception;
 
 class Address extends Model
 {
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
+
     protected $table = 'addresses';
-
+    protected $guarded = [];
     protected $dates = ['deleted_at'];
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'user_id',
-        'is_enabled',
-        'is_default',
-        'addressee',
-        'address_line1',
-        'address_line2',
-        'city' ,
-        'state_a2' ,
-        'zip',
-        'phone_number'
-    ];
 
     /**
      * Get the rules of addressee, street, city, state, zip

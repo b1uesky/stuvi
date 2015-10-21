@@ -9,19 +9,8 @@ use Illuminate\Support\Facades\Mail;
 
 class SellerOrder extends Model
 {
-    protected $fillable = [
-        'product_id',
-        'scheduled_pickup_time',
-        'pickup_time',
-        'pickup_code',
-        'courier_id',
-        'buyer_order_id',
-        'address_id',
-        'cancelled',
-        'cancelled_time',
-        'cancelled_by',
-        'payout_item_id'
-    ];
+    protected $table = 'seller_orders';
+    protected $guarded = [];
 
     /**
      * Return the seller order book.
