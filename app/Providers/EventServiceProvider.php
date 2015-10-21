@@ -25,6 +25,11 @@ class EventServiceProvider extends ServiceProvider {
 			'App\Listeners\EmailUserPasswordChangedNotification',
 		],
 
+		// product that sells to user
+		'App\Events\ProductIsAvailableSoon' => [
+			'App\Listeners\EmailSellerProductAvailableSoonNotification',
+		],
+
 		// product that sells to stuvi
 		'App\Events\ProductWasUpdatedPriceAndApproved' => [
 			'App\Listeners\EmailSellerProductUpdatedPriceAndApprovedNotification',

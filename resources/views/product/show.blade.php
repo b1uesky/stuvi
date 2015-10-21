@@ -60,10 +60,10 @@
 
         <div class="row">
             <div class="col-md-10 col-sm-9">
-                <!-- product conditions -->
                 <table class="table">
 
                     <tbody>
+                    {{-- Price --}}
                     <tr>
                         <th class="col-sm-6 col-xs-7">Price</th>
                         <td class="col-sm-6 col-xs-5 price">
@@ -73,6 +73,12 @@
                                 To be determined...
                             @endif
                         </td>
+                    </tr>
+
+                    {{-- Availability --}}
+                    <tr>
+                        <th>Availability</th>
+                        <td>{{ $product->availability() }}</td>
                     </tr>
 
                     <!-- General Condition -->

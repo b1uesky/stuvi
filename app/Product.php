@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use App\Helpers\Price;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -30,6 +31,70 @@ class Product extends Model
     public function images()
     {
         return $this->hasMany('App\ProductImage');
+    }
+
+    /**
+     * Get products that are available now.
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeAvailableNow($query)
+    {
+        return $query->where('available_at', '<=', Carbon::today());
+    }
+
+    /**
+     * Get products that are available in $num_days days.
+     *
+     * @param $query
+     * @param int $num_days
+     * @return mixed
+     */
+    public function scopeAvailableInDays($query, $num_days)
+    {
+        return $query->where('available_at', '=', Carbon::today()->addDay($num_days));
+    }
+
+    /**
+     * Get products that are sold.
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeSold($query)
+    {
+        return $query->where('sold', '=', true);
+    }
+
+    /**
+     * Return the availability of this product. (available now or in x days)
+     *
+     * @return string
+     */
+    public function availability()
+    {
+        $today = Carbon::today();
+        $available_date = Carbon::parse($this->available_at);
+
+        if ($available_date <= $today)
+        {
+            return 'Now';
+        }
+        else
+        {
+            return 'In ' . $today->diffInDays($available_date) . ' days';
+        }
+    }
+
+    public function currentSellerOrder()
+    {
+        if (count($this->sellerOrders) > 0)
+        {
+            return $this->sellerOrders->where('cancelled', '=', false)->first();
+        }
+
+        return false;
     }
 
     public function isInCart($user_id)

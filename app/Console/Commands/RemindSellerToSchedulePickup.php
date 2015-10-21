@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Events\ProductIsAvailableSoon;
 use Illuminate\Console\Command;
 use App\Product;
 
@@ -38,6 +39,15 @@ class RemindSellerToSchedulePickup extends Command
      */
     public function handle()
     {
+        $products = Product::sold()->availableInDays(2)->get();
 
+        foreach ($products as $product)
+        {
+            // if seller has not scheduled a pickup for the order
+            if (!$product->currentSellerOrder()->scheduledPickupTime())
+            {
+                event(new ProductIsAvailableSoon($product));
+            }
+        }
     }
 }
