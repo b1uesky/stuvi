@@ -72,6 +72,12 @@ Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
         Route::get  ('/product/{book}/confirm', 'ProductController@confirm');
         Route::get  ('/product/{book}/create',  'ProductController@create');
     });
+
+    // donate
+    Route::group(['prefix'=>'donate'], function() {
+        Route::get  ('/',   'TextbookController@donate');
+        Route::post ('/store', 'TextbookController@storeDonation');
+    });
 });
 
 // auth required

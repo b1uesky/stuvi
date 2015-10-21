@@ -46,6 +46,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a tabindex="-1" href="{{ url('/textbook/buy') }}">Buy</a></li>
                                     <li><a tabindex="-1" href="{{ url('/textbook/sell') }}">Sell</a></li>
+                                    <li><a tabindex="-1" href="{{ url('/textbook/donate') }}">Donate</a></li>
                                 </ul>
                             </li>
                         </ul>
