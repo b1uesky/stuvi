@@ -88,6 +88,17 @@ class EventServiceProvider extends ServiceProvider {
             'App\Listeners\EmailSellerOrderCancellationToSeller',
 		],
 
+		// Donation
+		'App\Events\DonationWasCreated' => [
+			// to stuvi
+			'App\Listeners\EmailDonationPickupNotification',
+		],
+
+		'App\Events\DonationWasAssignedToCourier' => [
+			// to donator
+			'App\Listeners\EmailDonationReadyToPickupNotification',
+		],
+
 		// contact
 		'App\Events\ContactMessageWasCreated' => [
 			'App\Listeners\EmailContactMessageToStaff',

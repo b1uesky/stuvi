@@ -92,7 +92,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
     Route::group(['prefix'=>'donate'], function() {
         Route::get  ('/',   'DonationController@index');
         Route::post ('/store', 'DonationController@store');
-        Route::get  ('/confirmation', 'DonationController@confirmation');
+        Route::get  ('{id}/confirmation', 'DonationController@confirmation');
     });
 
 });
@@ -228,6 +228,9 @@ Route::group(['namespace'=>'Express', 'middleware'=>['auth', 'role:ac'], 'prefix
     Route::get('/pickup/{id}', 'PickupController@show');
     Route::get('/pickup/{id}/readyToPickUp', 'PickupController@readyToPickUp');
     Route::post('/pickup/{id}/confirm', 'PickupController@confirmPickup');
+    Route::get('/pickup/donation/{id}', 'PickupController@showDonation');
+    Route::get('/pickup/donation/{id}/readyToPickUp', 'PickupController@readyToPickUpDonation');
+    Route::post('/pickup/donation/{id}/confirm', 'PickupController@confirmPickupDonation');
 
     // deliver
     Route::get('/deliver', 'DeliverController@index');

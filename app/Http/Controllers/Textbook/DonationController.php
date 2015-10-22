@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Textbook;
 
 use App\Donation;
+use App\Events\DonationWasCreated;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
+use DateTime;
 
 class DonationController extends Controller
 {
@@ -39,12 +42,16 @@ class DonationController extends Controller
         $donation = Donation::create([
             'user_id'               => Auth::id(),
             'address_id'            => Input::get('address_id'),
-            'scheduled_pickup_time' => Input::get('scheduled_pickup_time'),
-            'quantity'              => Input::get('quantity')
+            'scheduled_pickup_time' => DateTime::createFromFormat(
+                config('app.datetime_format'), Input::get('scheduled_pickup_time'))
+                ->format(config('database.datetime_format')),
+            'quantity'              => Input::get('quantity'),
+            'pickup_code'           => \App\Helpers\generateNumber(4)
         ]);
 
-        return redirect('donation/confirmation')
-            ->with('donation', $donation);
+        event(new DonationWasCreated($donation));
+
+        return redirect('textbook/donate/' . $donation->id . '/confirmation');
     }
 
     /**
@@ -52,9 +59,10 @@ class DonationController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function confirmation()
+    public function confirmation($id)
     {
-        return view('donation.confirmation');
+        return view('donation.confirmation')
+            ->with('donation', Donation::find($id));
     }
 
     /**

@@ -19,6 +19,7 @@ $(document).ready(function() {
         enabledHours.push(i);
     }
 
+    // seller order
     $('#datetimepicker-pickup-time').datetimepicker({
         inline: true,
         sideBySide: true,
@@ -26,6 +27,15 @@ $(document).ready(function() {
         defaultDate: scheduled_pickup_time,
         enabledDates: enabledDates,
         enabledHours: enabledHours
+    });
+
+    // donation
+    $('#datetimepicker-donation-pickup-time').datetimepicker({
+        inline: true,
+        sideBySide: true,
+        stepping: 15,
+        defaultDate: scheduled_pickup_time,
+        minDate: moment()
     });
 });
 

@@ -13,7 +13,14 @@
                 </div>
 
                 @include('includes.textbook.pickup-address')
-                @include('includes.textbook.pickup-time')
+
+                <h3>Choose a pickup time</h3>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="datetimepicker-donation-pickup-time"></div>
+                    </div>
+                </div>
 
                 <form action="{{ url('textbook/donate/store') }}" method="post">
                     {!! csrf_field() !!}

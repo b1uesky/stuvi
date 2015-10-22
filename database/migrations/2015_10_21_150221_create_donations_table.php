@@ -19,7 +19,8 @@ class CreateDonationsTable extends Migration
             $table->integer('address_id')->unsigned();
             $table->timestamp('scheduled_pickup_time');
             $table->integer('courier_id')->unsigned()->nullable();
-            $table->timestamp('pickup_time');
+            $table->timestamp('pickup_time')->nullable();
+            $table->integer('pickup_code')->unsigned();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

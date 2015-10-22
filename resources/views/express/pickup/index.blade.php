@@ -14,13 +14,20 @@
 
         <br>
 
-        {{-- A list of scheduled seller orders --}}
-        @if (!empty($seller_orders))
+        {{-- A list of scheduled seller orders and donations --}}
+        @if (!empty($seller_orders) || !empty($donations))
             <div class="list-group">
                 @foreach($seller_orders as $seller_order)
                     <a href="{{ url('express/pickup/' . $seller_order->id) }}" class="list-group-item">
                         <h4 class="list-group-item-heading">Order #{{ $seller_order->id }}: {{ $seller_order->book()->title }}</h4>
                         <p class="list-group-item-text">Scheduled Pickup: {{ $seller_order->scheduled_pickup_time }}</p>
+                    </a>
+                @endforeach
+
+                @foreach($donations as $donation)
+                    <a href="{{ url('express/pickup/donation/' . $donation->id) }}" class="list-group-item">
+                        <h4 class="list-group-item-heading">Donation #{{ $donation->id }}</h4>
+                        <p class="list-group-item-text">Scheduled Pickup: {{ $donation->scheduled_pickup_time }}</p>
                     </a>
                 @endforeach
             </div>

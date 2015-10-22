@@ -112,7 +112,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control input-lg" name="code" placeholder="Enter the 4-digit verification code" required/>
+                    <input type="number" class="form-control input-lg" name="code" placeholder="Enter the 4-digit verification code" required/>
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Confirm Pickup</button>

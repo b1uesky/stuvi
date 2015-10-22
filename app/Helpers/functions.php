@@ -30,3 +30,14 @@ function generateRandomCode($length)
 {
     return substr(md5(uniqid(mt_rand(), true)) , 0, $length);
 }
+
+/**
+ * Generate a random number with given digits.
+ *
+ * @param $digits
+ * @return int
+ */
+function generateNumber($digits)
+{
+    return rand(pow(10, $digits - 1), pow(10, $digits) - 1);
+}

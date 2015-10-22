@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Express;
 
+use App\Donation;
+use App\Events\DonationWasAssignedToCourier;
 use App\Events\SellerOrderWasAssignedToCourier;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -30,8 +32,11 @@ class PickupController extends Controller
             ->whereNull('pickup_time')
             ->get();
 
+        $donations = Donation::unassigned()->notPickedup()->get();
+
         return view('express.pickup.index')
-            ->withSellerOrders($seller_orders);
+            ->withSellerOrders($seller_orders)
+            ->withDonations($donations);
     }
 
     /**
@@ -41,14 +46,17 @@ class PickupController extends Controller
      */
     public function indexTodo()
     {
-        $seller_orders = SellerOrder::where('courier_id', '=', Auth::user()->id)
+        $seller_orders = SellerOrder::where('courier_id', '=', Auth::id())
             ->where('cancelled', '=', false)
             ->whereNotNull('scheduled_pickup_time')
             ->whereNull('pickup_time')
             ->get();
 
+        $donations = Donation::assignedTo(Auth::id())->notPickedup()->get();
+
         return view('express.pickup.index')
-            ->withSellerOrders($seller_orders);
+            ->withSellerOrders($seller_orders)
+            ->withDonations($donations);
     }
 
     /**
@@ -58,14 +66,17 @@ class PickupController extends Controller
      */
     public function indexPickedUp()
     {
-        $seller_orders = SellerOrder::where('courier_id', '=', Auth::user()->id)
+        $seller_orders = SellerOrder::where('courier_id', '=', Auth::id())
             ->where('cancelled', '=', false)
             ->whereNotNull('scheduled_pickup_time')
             ->whereNotNull('pickup_time')
             ->get();
 
+        $donations = Donation::assignedTo(Auth::id())->pickedup()->get();
+
         return view('express.pickup.index')
-            ->withSellerOrders($seller_orders);
+            ->withSellerOrders($seller_orders)
+            ->withDonations($donations);
     }
 
     /**
@@ -182,6 +193,87 @@ class PickupController extends Controller
         {
             $seller_order->payout();
         }
+
+        return redirect()->back();
+    }
+
+    /**
+     * Display the specified donation.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function showDonation($id)
+    {
+        $donation = Donation::find($id);
+
+        return view('express.pickup.showDonation')
+            ->withDonation($donation);
+    }
+
+    /**
+     * Ready to pick up the donation.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function readyToPickUpDonation($id)
+    {
+        $donation = Donation::find($id);
+
+        if ($donation->courier_id)
+        {
+            return redirect('express/pickup')->withError('This donation has already been taken by another courier.');
+        }
+
+        // assign the order to the current courier
+        $donation->courier_id = Auth::user()->id;
+        $donation->save();
+
+        event(new DonationWasAssignedToCourier($donation));
+
+        return redirect()->back();
+    }
+
+    /**
+     * Confirm the seller order has been picked up.
+     *
+     * @param $id
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
+    public function confirmPickupDonation($id)
+    {
+        $donation = Donation::find($id);
+        $code = Input::get('pickup_code');
+
+        // validation
+        $v = Validator::make(Input::all(), [
+            'pickup_code'  => 'required|digits:4'
+        ]);
+
+        $v->after(function($v) use ($donation, $code)
+        {
+            if ($donation->pickup_time)
+            {
+                return redirect('express/pickup')->withError('This donation has already been picked up.');
+            }
+
+            // check if the code is correct
+            if ($v->errors()->has('pickup_code') == false && $code != $donation->pickup_code)
+            {
+                $v->errors()->add('pickup_code', 'Sorry, the code is incorrect. Please try again.');
+            }
+        });
+
+        if ($v->fails())
+        {
+            return redirect()->back()
+                ->withErrors($v->errors());
+        }
+
+        // add pickup time to the seller order
+        $donation->pickup_time = date(config('database.datetime_format'));
+        $donation->save();
 
         return redirect()->back();
     }

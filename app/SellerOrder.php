@@ -125,7 +125,7 @@ class SellerOrder extends Model
     public function generatePickupCode()
     {
         $digits            = 4;
-        $this->pickup_code = rand(pow(10, $digits - 1), pow(10, $digits) - 1);
+        $this->pickup_code = \App\Helpers\generateNumber($digits);
         $this->save();
     }
 
