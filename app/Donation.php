@@ -20,4 +20,13 @@ class Donation extends Model
         return $this->belongsTo('App\User', 'courier_id');
     }
 
+    public static function rules()
+    {
+        return [
+            'address_id'            => 'required|exists:addresses,id',
+            'scheduled_pickup_time' => 'required|date',
+            'quantity'              => 'required|integer|min:1'
+        ];
+    }
+
 }

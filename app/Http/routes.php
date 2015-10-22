@@ -92,6 +92,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
     Route::group(['prefix'=>'donate'], function() {
         Route::get  ('/',   'DonationController@index');
         Route::post ('/store', 'DonationController@store');
+        Route::get  ('/confirmation', 'DonationController@confirmation');
     });
 
 });
