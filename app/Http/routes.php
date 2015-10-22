@@ -72,12 +72,6 @@ Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
         Route::get  ('/product/{book}/confirm', 'ProductController@confirm');
         Route::get  ('/product/{book}/create',  'ProductController@create');
     });
-
-    // donate
-    Route::group(['prefix'=>'donate'], function() {
-        Route::get  ('/',   'DonationController@index');
-        Route::post ('/store', 'DonationController@store');
-    });
 });
 
 // auth required
@@ -92,6 +86,12 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
         Route::post ('/product/deleteImage',    'ProductController@deleteImage');
         Route::post ('/product/update',         'ProductController@update');
         Route::post ('/product/delete',         'ProductController@destroy');
+    });
+
+    // donate
+    Route::group(['prefix'=>'donate'], function() {
+        Route::get  ('/',   'DonationController@index');
+        Route::post ('/store', 'DonationController@store');
     });
 
 });
