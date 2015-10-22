@@ -14,6 +14,7 @@ class CreateDonationsTable extends Migration
     {
         Schema::create('donations', function(Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->tinyInteger('quantity')->unsigned();
             $table->integer('address_id')->unsigned();
             $table->timestamp('scheduled_pickup_time');
@@ -21,6 +22,7 @@ class CreateDonationsTable extends Migration
             $table->timestamp('pickup_time');
             $table->timestamps();
 
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('address_id')->references('id')->on('addresses');
             $table->foreign('courier_id')->references('id')->on('users');
         });

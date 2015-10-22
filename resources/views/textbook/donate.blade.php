@@ -1,6 +1,3 @@
-{{-- Page for creating a new textbook --}}
-
-
 @extends('layouts.textbook')
 
 @section('title', 'Donate a textbook')
@@ -30,7 +27,7 @@
                         <input type="number" name="quantity" class="form-control" min="1" value="1">
                     </div>
 
-                    <input type="submit" class="btn btn-lg btn-primary" value="Donate">
+                    <input type="submit" class="btn btn-primary" value="Donate">
                 </form>
 
                 <br>
