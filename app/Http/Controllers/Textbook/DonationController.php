@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Textbook;
 
 use App\Donation;
 use App\Events\DonationWasCreated;
+use App\Helpers\DateTime;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
-use DateTime;
 
 class DonationController extends Controller
 {
@@ -42,9 +42,7 @@ class DonationController extends Controller
         $donation = Donation::create([
             'user_id'               => Auth::id(),
             'address_id'            => Input::get('address_id'),
-            'scheduled_pickup_time' => DateTime::createFromFormat(
-                config('app.datetime_format'), Input::get('scheduled_pickup_time'))
-                ->format(config('database.datetime_format')),
+            'scheduled_pickup_time' => DateTime::saveDatetime(Input::get('scheduled_pickup_time')),
             'quantity'              => Input::get('quantity'),
             'pickup_code'           => \App\Helpers\generateNumber(4)
         ]);

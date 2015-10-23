@@ -23,4 +23,9 @@ class DateTime
     {
         return Carbon::parse($datetime)->format(config('app.datetime_format'));
     }
+
+    public static function saveDatetime($datetime)
+    {
+        return Carbon::parse($datetime)->format(config('database.datetime_format'));
+    }
 }

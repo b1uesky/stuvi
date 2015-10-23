@@ -6,6 +6,7 @@ use App\Events\BuyerOrderDeliveryWasScheduled;
 use App\Events\BuyerOrderWasCancelled;
 use App\Events\BuyerOrderWasPlaced;
 use App\Events\SellerOrderWasCreated;
+use App\Helpers\DateTime;
 use App\Helpers\Paypal;
 use App\Helpers\Price;
 use App\Http\Controllers\Controller;
@@ -18,7 +19,6 @@ use Mail;
 use Redirect;
 use Session;
 use Validator;
-use DateTime;
 
 
 class BuyerOrderController extends Controller
@@ -443,10 +443,8 @@ class BuyerOrderController extends Controller
         }
 
         $buyer_order->update([
-            'shipping_address_id'     => Input::get('address_id'),
-            'scheduled_delivery_time' => DateTime::createFromFormat(
-                config('app.datetime_format'), Input::get('scheduled_delivery_time'))
-                ->format(config('database.datetime_format'))
+            'shipping_address_id'       => Input::get('address_id'),
+            'scheduled_delivery_time'   => DateTime::saveDatetime(Input::get('scheduled_delivery_time'))
         ]);
 
         event(new BuyerOrderDeliveryWasScheduled($buyer_order));

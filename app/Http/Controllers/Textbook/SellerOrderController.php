@@ -4,12 +4,12 @@ use Aloha\Twilio\Twilio;
 use App\Address;
 use App\Events\SellerOrderPickupWasScheduled;
 use App\Events\SellerOrderWasCancelled;
+use App\Helpers\DateTime;
 use App\Http\Controllers\Controller;
 use App\Listeners\EmailSellerOrderPickupConfirmation;
 use App\SellerOrder;
 use Auth;
 use Cart;
-use DateTime;
 use DB;
 use Input;
 use Log;
@@ -133,9 +133,7 @@ class SellerOrderController extends Controller
 
         $seller_order->update([
             'address_id'            => Input::get('address_id'),
-            'scheduled_pickup_time' => DateTime::createFromFormat(
-                config('app.datetime_format'), Input::get('scheduled_pickup_time'))
-                ->format(config('database.datetime_format'))
+            'scheduled_pickup_time' => DateTime::saveDatetime(Input::get('scheduled_pickup_time'))
         ]);
 
         // send an email with a pickup verification code to the seller
