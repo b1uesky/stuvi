@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Express;
 
 use App\Donation;
+use App\Events\BuyerOrderWasDeliverable;
 use App\Events\DonationWasAssignedToCourier;
 use App\Events\SellerOrderWasAssignedToCourier;
 use App\Http\Requests;
@@ -192,6 +193,13 @@ class PickupController extends Controller
         if ($seller_order->isSoldToStuvi())
         {
             $seller_order->payout();
+        }
+
+        // if all seller orders of a buyer order are picked up
+        // then the buyer order is deliverable
+        if ($seller_order->buyerOrder->isDeliverable())
+        {
+            event(new BuyerOrderWasDeliverable($seller_order->buyerOrder));
         }
 
         return redirect()->back();

@@ -34,6 +34,3 @@
         </div>
     </div>
 @endsection
-
-@include('includes.modal.add-address')
-@include('includes.modal.edit-address')

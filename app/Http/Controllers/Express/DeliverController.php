@@ -29,8 +29,8 @@ class DeliverController extends Controller
                 return $buyer_order->isDeliverable();
             });
 
-
-        return view('express.deliver.index')->withBuyerOrders($buyer_orders);
+        return view('express.deliver.index')
+            ->withBuyerOrders($buyer_orders);
     }
 
     /**

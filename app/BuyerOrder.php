@@ -14,31 +14,6 @@ class BuyerOrder extends Model
     protected $table = 'buyer_orders';
     protected $guarded = [];
 
-    public function decimalSubtotal()
-    {
-        return Price::convertIntegerToDecimal($this->subtotal);
-    }
-
-    public function decimalShipping()
-    {
-        return Price::convertIntegerToDecimal($this->shipping);
-    }
-
-    public function decimalTax()
-    {
-        return Price::convertIntegerToDecimal($this->tax);
-    }
-
-    public function decimalDiscount()
-    {
-        return Price::convertIntegerToDecimal($this->discount);
-    }
-
-    public function decimalAmount()
-    {
-        return Price::convertIntegerToDecimal($this->amount);
-    }
-
     /**
      * Get the buyer of this buyer order.
      *
@@ -91,6 +66,31 @@ class BuyerOrder extends Model
     public function getUncancelledSellerOrders()
     {
         return $this->seller_orders()->where('cancelled', false)->get();
+    }
+
+    public function decimalSubtotal()
+    {
+        return Price::convertIntegerToDecimal($this->subtotal);
+    }
+
+    public function decimalShipping()
+    {
+        return Price::convertIntegerToDecimal($this->shipping);
+    }
+
+    public function decimalTax()
+    {
+        return Price::convertIntegerToDecimal($this->tax);
+    }
+
+    public function decimalDiscount()
+    {
+        return Price::convertIntegerToDecimal($this->discount);
+    }
+
+    public function decimalAmount()
+    {
+        return Price::convertIntegerToDecimal($this->amount);
     }
 
     /**
@@ -297,5 +297,13 @@ class BuyerOrder extends Model
         );
 
         return $rules;
+    }
+
+    public static function confirmDeliveryRules()
+    {
+        return [
+            'address_id'            => 'required|exists:addresses,id',
+            'scheduled_delivery_time' => 'required|date'
+        ];
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Address;
 use App\BuyerOrder;
+use App\Events\BuyerOrderDeliveryWasScheduled;
 use App\Events\BuyerOrderWasCancelled;
 use App\Events\BuyerOrderWasPlaced;
 use App\Events\SellerOrderWasCreated;
@@ -17,6 +18,7 @@ use Mail;
 use Redirect;
 use Session;
 use Validator;
+use DateTime;
 
 
 class BuyerOrderController extends Controller
@@ -407,5 +409,49 @@ class BuyerOrderController extends Controller
             // send confirmation email to seller
             event(new SellerOrderWasCreated($order));
         }
+    }
+
+    /**
+     * Schedule delivery page.
+     *
+     * @param $id
+     * @return $this
+     */
+    public function scheduleDelivery($id)
+    {
+        $buyer_order = BuyerOrder::find($id);
+
+        if ($buyer_order->isDeliverable())
+        {
+            return view('order.buyer.scheduleDelivery')
+                ->with('buyer_order', $buyer_order);
+        }
+
+        return redirect()->back()
+            ->with('error', 'This order is not ready to schedule a delivery yet.');
+    }
+
+    public function confirmDelivery($id)
+    {
+        $buyer_order = BuyerOrder::find($id);
+
+        $v = Validator::make(Input::all(), BuyerOrder::confirmDeliveryRules());
+
+        if ($v->fails())
+        {
+            return redirect()->back()->withErrors($v->errors());
+        }
+
+        $buyer_order->update([
+            'shipping_address_id'     => Input::get('address_id'),
+            'scheduled_delivery_time' => DateTime::createFromFormat(
+                config('app.datetime_format'), Input::get('scheduled_delivery_time'))
+                ->format(config('database.datetime_format'))
+        ]);
+
+        event(new BuyerOrderDeliveryWasScheduled($buyer_order));
+
+        return redirect()->back()
+            ->withSuccess("You have successfully scheduled the delivery and we'll notify you once your book is on the way.");
     }
 }

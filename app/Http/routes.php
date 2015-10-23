@@ -35,11 +35,11 @@ Route::get  ('/privacy',    'tosPrivacyController@privacy');
 |--------------------------------------------------------------------------
 */
 Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
-    Route::post ('/store','AddressController@store');
-    Route::post ('/update','AddressController@update');
-    Route::post ('/delete','AddressController@delete');
-    Route::post ('/select','AddressController@select');
-    Route::get  ('/show',  'AddressController@show');
+    Route::post ('/store',  'AddressController@store');
+    Route::post ('/update', 'AddressController@update');
+    Route::post ('/delete', 'AddressController@delete');
+    Route::post ('/select', 'AddressController@select');
+    Route::get  ('/show',   'AddressController@show');
 });
 
 
@@ -52,16 +52,16 @@ Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
 // auth not required
 Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
 {
-    Route::get  ('/',   'TextbookController@showBuyPage');
+    Route::get  ('/',                   'TextbookController@showBuyPage');
     Route::get  ('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
-    Route::post ('/validateISBN', 'TextbookController@validateISBN');
+    Route::post ('/validateISBN',       'TextbookController@validateISBN');
 
     // buy
     Route::group(['prefix'=>'buy'], function() {
-        Route::get  ('/', ['as' => 'buyTextbook', 'uses' => 'TextbookController@showBuyPage']);
-        Route::get  ('/{book}', 'TextbookController@show');
-        Route::get  ('/search', 'TextbookController@buySearch');
-        Route::get  ('/product/{product}', 'ProductController@show');
+        Route::get  ('/',                   'TextbookController@showBuyPage');
+        Route::get  ('/{book}',             'TextbookController@show');
+        Route::get  ('/search',             'TextbookController@buySearch');
+        Route::get  ('/product/{product}',  'ProductController@show');
     });
 
     // sell
@@ -90,9 +90,9 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 
     // donate
     Route::group(['prefix'=>'donate'], function() {
-        Route::get  ('/',   'DonationController@index');
-        Route::post ('/store', 'DonationController@store');
-        Route::get  ('{id}/confirmation', 'DonationController@confirmation');
+        Route::get  ('/',                   'DonationController@index');
+        Route::post ('/store',              'DonationController@store');
+        Route::get  ('{id}/confirmation',   'DonationController@confirmation');
     });
 
 });
@@ -100,17 +100,20 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 // order
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'], function()
 {
-    Route::get  ('/buyer',              ['as' => 'buyerOrders', 'uses' => 'BuyerOrderController@index']);
-    Route::get  ('/confirmation',       'BuyerOrderController@confirmation');
-    Route::get  ('/executePayment',     'BuyerOrderController@executePayment');
-    Route::get  ('/create',             ['as' => 'checkout','uses'=>'BuyerOrderController@create']);
-    Route::post ('/store',              'BuyerOrderController@store');
-    Route::get  ('/buyer/{id}',         ['as' => 'buyerOrderDetail', 'uses' => 'BuyerOrderController@show']);
-    Route::get  ('/buyer/cancel/{id}',  'BuyerOrderController@cancel');
+    // buyer order
+    Route::get  ('/buyer',                      'BuyerOrderController@index');
+    Route::get  ('/confirmation',               'BuyerOrderController@confirmation');
+    Route::get  ('/executePayment',             'BuyerOrderController@executePayment');
+    Route::get  ('/create',                     'BuyerOrderController@create');
+    Route::post ('/store',                      'BuyerOrderController@store');
+    Route::get  ('/buyer/{id}',                 'BuyerOrderController@show');
+    Route::get  ('/buyer/cancel/{id}',          'BuyerOrderController@cancel');
+    Route::get  ('/buyer/{id}/scheduleDelivery','BuyerOrderController@scheduleDelivery');
+    Route::post ('/buyer/{id}/confirmDelivery', 'BuyerOrderController@confirmDelivery');
 
-    Route::get  ('/seller',                     ['as' => 'sellerOrders', 'uses' => 'SellerOrderController@index']);
-    Route::get  ('/seller/{id}',                ['as' => 'sellerOrderDetail', 'uses' => 'SellerOrderController@show']);
-    // Route::get  ('/seller/cancel/{id}',         'SellerOrderController@cancel');
+    // seller order
+    Route::get  ('/seller',                     'SellerOrderController@index');
+    Route::get  ('/seller/{id}',                'SellerOrderController@show');
     Route::get  ('/seller/{id}/schedulePickup', 'SellerOrderController@schedulePickup');
     Route::post ('/seller/{id}/confirmPickup',  'SellerOrderController@confirmPickup');
     Route::post ('/seller/{id}/payout',         'SellerOrderController@payout');
@@ -120,11 +123,11 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
 // cart
 Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], function()
 {
-    Route::get('/',         ['as' => 'shoppingCart', 'uses' => 'CartController@index']);
-    Route::post('/add/{id}', 'CartController@addItem');
+    Route::get('/',         'CartController@index');
+    Route::post('/add/{id}','CartController@addItem');
     Route::post('/add',     'CartController@addItemAjax');
     Route::get('/rmv/{id}', 'CartController@removeItem');
-    Route::post('/rmv',      'CartController@removeItemAjax');
+    Route::post('/rmv',     'CartController@removeItemAjax');
     Route::get('/empty',    'CartController@emptyCart');
     Route::get('/update',   'CartController@updateCart');
 });
@@ -136,24 +139,24 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'cart'], 
 */
 Route::group(['namespace'=>'User', 'middleware'=>'auth', 'prefix'=>'user'], function()
 {
-    Route::get ('/overview',        'UserController@overview');
-    Route::get ('/profile',         'ProfileController@index');
-    Route::post('/profile/update',  'ProfileController@update');
-    Route::get ('/account',         'AccountController@index');
-    Route::post('/account/password/reset',    'AccountController@passwordReset');
-    Route::get ('/bookshelf',       'UserController@bookshelf');
-    Route::get ('/activate',        'UserController@waitForActivation');
-    Route::get ('/activate/resend', 'UserController@resendActivationEmail');
-    Route::get ('/activate/{code}', 'UserController@activateAccount');
-    Route::get ('/activated', 'UserController@activated');
-    Route::post('/updateDefaultAddress', 'UserController@updateDefaultAddress');
+    Route::get ('/overview',                'UserController@overview');
+    Route::get ('/profile',                 'ProfileController@index');
+    Route::post('/profile/update',          'ProfileController@update');
+    Route::get ('/account',                 'AccountController@index');
+    Route::post('/account/password/reset',  'AccountController@passwordReset');
+    Route::get ('/bookshelf',               'UserController@bookshelf');
+    Route::get ('/activate',                'UserController@waitForActivation');
+    Route::get ('/activate/resend',         'UserController@resendActivationEmail');
+    Route::get ('/activate/{code}',         'UserController@activateAccount');
+    Route::get ('/activated',               'UserController@activated');
+    Route::post('/updateDefaultAddress',    'UserController@updateDefaultAddress');
 
     Route::group(['prefix'=>'email'], function()
     {
-        Route::get ('/',        'EmailController@index');
-        Route::post('/add',     'EmailController@store');
-        Route::post('/remove',  'EmailController@destroy');
-        Route::post('/primary', 'EmailController@setPrimary');
+        Route::get ('/',                    'EmailController@index');
+        Route::post('/add',                 'EmailController@store');
+        Route::post('/remove',              'EmailController@destroy');
+        Route::post('/primary',             'EmailController@setPrimary');
         Route::get ('/{id}/verify/{code}',  'EmailController@verify');
     });
 
@@ -180,27 +183,28 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
     Route::resource('book', 'BookController');
 
     // product
-    Route::get('/product/verified', 'ProductController@showVerified');
-    Route::get('/product/unverified', 'ProductController@showUnverified');
-    Route::get('/product/{id}/approve', 'ProductController@approve');
-    Route::get('/product/{id}/disapprove', 'ProductController@disapprove');
-    Route::post('/product/{id}/updatePriceAndApprove', 'ProductController@updatePriceAndApprove');
-    Route::post('/product/{id}/reject', 'ProductController@reject');
-    Route::post('/product/{id}/accept', 'ProductController@accept');
+    Route::get('/product/verified',                     'ProductController@showVerified');
+    Route::get('/product/unverified',                   'ProductController@showUnverified');
+    Route::get('/product/{id}/approve',                 'ProductController@approve');
+    Route::get('/product/{id}/disapprove',              'ProductController@disapprove');
+    Route::post('/product/{id}/updatePriceAndApprove',  'ProductController@updatePriceAndApprove');
+    Route::post('/product/{id}/reject',                 'ProductController@reject');
+    Route::post('/product/{id}/accept',                 'ProductController@accept');
+
     Route::resource('product', 'ProductController');
 
     // seller order
     Route::group(['prefix'=>'order/seller'], function()
     {
-        Route::get  ('/', 'SellerOrderController@index');
-        Route::get  ('/{id}', 'SellerOrderController@show');
+        Route::get  ('/',       'SellerOrderController@index');
+        Route::get  ('/{id}',   'SellerOrderController@show');
     });
 
     // buyer order
     Route::group(['prefix'=>'order/buyer'], function()
     {
-        Route::get  ('/', 'BuyerOrderController@index');
-        Route::get  ('/{id}', 'BuyerOrderController@show');
+        Route::get  ('/',       'BuyerOrderController@index');
+        Route::get  ('/{id}',   'BuyerOrderController@show');
         Route::post ('/refund', 'BuyerOrderController@refund');
     });
 
@@ -208,8 +212,8 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
     Route::resource('buyer/payment', 'BuyerPaymentController');
 
     // contact
-    Route::post('contact/reply', 'ContactController@reply');
-    Route::resource('contact', 'ContactController');
+    Route::post('contact/reply','ContactController@reply');
+    Route::resource('contact',  'ContactController');
 });
 
 /*
@@ -222,22 +226,22 @@ Route::group(['namespace'=>'Express', 'middleware'=>['auth', 'role:ac'], 'prefix
     Route::get('/', 'PickupController@index');
 
     // pickup
-    Route::get('/pickup', 'PickupController@index');
-    Route::get('/pickup/todo', 'PickupController@indexTodo');
-    Route::get('/pickup/pickedUp', 'PickupController@indexPickedUp');
-    Route::get('/pickup/{id}', 'PickupController@show');
-    Route::get('/pickup/{id}/readyToPickUp', 'PickupController@readyToPickUp');
-    Route::post('/pickup/{id}/confirm', 'PickupController@confirmPickup');
-    Route::get('/pickup/donation/{id}', 'PickupController@showDonation');
-    Route::get('/pickup/donation/{id}/readyToPickUp', 'PickupController@readyToPickUpDonation');
-    Route::post('/pickup/donation/{id}/confirm', 'PickupController@confirmPickupDonation');
+    Route::get('/pickup',                               'PickupController@index');
+    Route::get('/pickup/todo',                          'PickupController@indexTodo');
+    Route::get('/pickup/pickedUp',                      'PickupController@indexPickedUp');
+    Route::get('/pickup/{id}',                          'PickupController@show');
+    Route::get('/pickup/{id}/readyToPickUp',            'PickupController@readyToPickUp');
+    Route::post('/pickup/{id}/confirm',                 'PickupController@confirmPickup');
+    Route::get('/pickup/donation/{id}',                 'PickupController@showDonation');
+    Route::get('/pickup/donation/{id}/readyToPickUp',   'PickupController@readyToPickUpDonation');
+    Route::post('/pickup/donation/{id}/confirm',        'PickupController@confirmPickupDonation');
 
     // deliver
-    Route::get('/deliver', 'DeliverController@index');
-    Route::get('/deliver/todo', 'DeliverController@indexTodo');
-    Route::get('/deliver/delivered', 'DeliverController@indexDelivered');
-    Route::get('/deliver/{id}', 'DeliverController@show');
-    Route::get('/deliver/{id}/readyToShip', 'DeliverController@readyToShip');
+    Route::get('/deliver',                      'DeliverController@index');
+    Route::get('/deliver/todo',                 'DeliverController@indexTodo');
+    Route::get('/deliver/delivered',            'DeliverController@indexDelivered');
+    Route::get('/deliver/{id}',                 'DeliverController@show');
+    Route::get('/deliver/{id}/readyToShip',     'DeliverController@readyToShip');
     Route::get('/deliver/{id}/confirmDelivery', 'DeliverController@confirmDelivery');
 });
 
@@ -247,10 +251,10 @@ Route::group(['namespace'=>'Express', 'middleware'=>['auth', 'role:ac'], 'prefix
 |--------------------------------------------------------------------------
 */
 
-Route::get('/faq', 'FAQController@general');
-Route::get('/faq/general', 'FAQController@general');
-Route::get('/faq/orders', 'FAQController@orders');
-Route::get('/faq/account', 'FAQController@account');
+Route::get('/faq',          'FAQController@general');
+Route::get('/faq/general',  'FAQController@general');
+Route::get('/faq/orders',   'FAQController@orders');
+Route::get('/faq/account',  'FAQController@account');
 Route::get('/faq/textbook', 'FAQController@textbook');
 
 /*
@@ -268,7 +272,11 @@ Route::post ('/contact/store',  'ContactController@store');
 */
 Route::get  ('/sitemap', 'SitemapController@index');
 
-
+/*
+|--------------------------------------------------------------------------
+| Testing Routes
+|--------------------------------------------------------------------------
+*/
 Route::get('/test', function()
 {
     $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
@@ -281,5 +289,3 @@ Route::get('/test', function()
     });
 
 });
-
-

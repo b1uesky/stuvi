@@ -39,6 +39,14 @@
                 @endif
             @endforeach
 
+            {{-- Time --}}
+            <li class="list-group-item">
+                <h4 class="list-group-item-heading">Scheduled time</h4>
+                <p class="list-group-item-text">
+                    {{ date(config('app.datetime_format'), strtotime($buyer_order->scheduled_delivery_time)) }}
+                </p>
+            </li>
+
             {{-- Address --}}
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">Address</h4>

@@ -5,9 +5,10 @@
  */
 
 $(document).ready(function() {
+    // pickup
     var scheduled_pickup_time = $('input[name=scheduled_pickup_time]').val();
 
-    // if pickup time not scheduled, use current time plus 2 hours
+    // if pickup time not scheduled
     if (scheduled_pickup_time == '' || scheduled_pickup_time == null) {
         scheduled_pickup_time = moment().add(2, 'h');
     }
@@ -35,11 +36,31 @@ $(document).ready(function() {
         sideBySide: true,
         stepping: 15,
         defaultDate: scheduled_pickup_time,
-        minDate: moment()
+        minDate: moment(),
+        enabledHours: enabledHours
+    });
+
+    // delivery
+    var scheduled_delivery_time = $('input[name=scheduled_delivery_time]').val();
+
+    // if delivery time not scheduled
+    if (scheduled_delivery_time == '' || scheduled_delivery_time == null) {
+        scheduled_delivery_time = moment().add(2, 'h');
+    }
+
+    // buyer order
+    $('#datetimepicker-delivery-time').datetimepicker({
+        inline: true,
+        sideBySide: true,
+        stepping: 15,
+        defaultDate: scheduled_delivery_time,
+        minDate: moment(),
+        enabledHours: enabledHours
     });
 });
 
 // update scheduled pickup time when changing the datetimepicker
 $(document).on('dp.change', function(e) {
     $('input[name=scheduled_pickup_time]').val(e.date.format('M/D/YYYY hh:mm A'));
+    $('input[name=scheduled_delivery_time]').val(e.date.format('M/D/YYYY hh:mm A'));
 });
