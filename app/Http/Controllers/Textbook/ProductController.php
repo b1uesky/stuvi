@@ -16,7 +16,6 @@ use Response;
 use Session;
 use URL;
 use Validator;
-use DateTime;
 
 class ProductController extends Controller
 {
@@ -88,7 +87,7 @@ class ProductController extends Controller
         $product = Product::create([
             'book_id'   => Input::get('book_id'),
             'seller_id' => Auth::user()->id,
-            'available_at'  => DateTime::createFromFormat('m/d/Y', Input::get('available_at')),
+            'available_at' => Carbon::parse(Input::get('available_at')),
             'sell_to'   => $sell_to,
             'payout_method' => $payout_method
         ]);
