@@ -3,10 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\BuyerOrderWasShipped;
+use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-
-use Snowfire;
 
 class EmailBuyerOrderShippingNotification
 {
@@ -30,17 +29,15 @@ class EmailBuyerOrderShippingNotification
     {
         $buyer_order = $event->buyer_order;
 
-        $data = array(
-            'subject'           => 'Your Stuvi order has shipped!',
-            'to'                => $buyer_order->buyer->primaryEmailAddress(),
+        $email = new Email(
+            $subject = 'Your Stuvi order has shipped!',
+            $to = $buyer_order->buyer->primaryEmailAddress(),
+            $view = 'emails.buyerOrder.shippingNotification',
+            $data = [
+                'buyer_order'  => $buyer_order
+            ]
         );
 
-        $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-        $beautymail->send('emails.buyerOrder.shippingNotification', ['buyer_order'  => $buyer_order], function($message) use ($data)
-        {
-            $message
-                ->to($data['to'])
-                ->subject($data['subject']);
-        });
+        $email->send();
     }
 }

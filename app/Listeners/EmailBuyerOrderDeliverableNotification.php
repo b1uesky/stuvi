@@ -3,9 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\BuyerOrderWasDeliverable;
+use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Snowfire;
 
 class EmailBuyerOrderDeliverableNotification
 {
@@ -29,19 +29,16 @@ class EmailBuyerOrderDeliverableNotification
     {
         $buyer_order = $event->buyer_order;
 
-        $data = array(
-            'subject'           => 'Schedule a delivery time for your books.',
-            'to'                => $buyer_order->buyer->primaryEmailAddress(),
-            'first_name'        => $buyer_order->buyer->first_name,
-            'buyer_order_id'    => $buyer_order->id
+        $email = new Email(
+            $subject = 'Schedule a delivery time for your books.',
+            $to = $buyer_order->buyer->primaryEmailAddress(),
+            $view = 'emails.buyerOrder.deliverableNotification',
+            $data = [
+                'first_name'        => $buyer_order->buyer->first_name,
+                'buyer_order_id'    => $buyer_order->id
+            ]
         );
 
-        $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-        $beautymail->send('emails.buyerOrder.deliverableNotification', $data, function($message) use ($data)
-        {
-            $message
-                ->to($data['to'])
-                ->subject($data['subject']);
-        });
+        $email->send();
     }
 }

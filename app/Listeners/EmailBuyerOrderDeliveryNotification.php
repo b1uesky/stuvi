@@ -4,9 +4,9 @@ namespace App\Listeners;
 
 use App\Events\BuyerOrderDeliveryWasScheduled;
 use App\Helpers\DateTime;
+use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Snowfire;
 
 class EmailBuyerOrderDeliveryNotification
 {
@@ -30,19 +30,16 @@ class EmailBuyerOrderDeliveryNotification
     {
         $buyer_order = $event->buyer_order;
 
-        $data = array(
-            'subject'           => 'Delivery: #' . $buyer_order->id,
-            'to'                => 'express@stuvi.com',
-            'buyer_order_id'    => $buyer_order->id,
-            'scheduled_delivery_time'   => DateTime::showDatetime($buyer_order->scheduled_delivery_time),
+        $email = new Email(
+            $subject = 'Delivery: #' . $buyer_order->id,
+            $to = 'express@stuvi.com',
+            $view = 'emails.express.deliveryNotification',
+            $data = [
+                'buyer_order_id'    => $buyer_order->id,
+                'scheduled_delivery_time'   => DateTime::showDatetime($buyer_order->scheduled_delivery_time),
+            ]
         );
 
-        $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-        $beautymail->send('emails.express.deliveryNotification', $data, function($message) use ($data)
-        {
-            $message
-                ->to($data['to'])
-                ->subject($data['subject']);
-        });
+        $email->send();
     }
 }

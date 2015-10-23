@@ -3,10 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\UserEmailWasAdded;
+use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-
-use Snowfire;
 
 class EmailUserEmailAddedConfirmation
 {
@@ -28,19 +27,17 @@ class EmailUserEmailAddedConfirmation
      */
     public function handle(UserEmailWasAdded $event)
     {
-        $email = $event->email;
+        $new_email = $event->email;
 
-        $data = array(
-            'subject'           => 'Please verify your Stuvi Email address.',
-            'to'                => $email->email_address,
+        $email = new Email(
+            $subject = 'Please verify your Stuvi Email address.',
+            $to = $new_email->email_address,
+            $view = 'emails.emailConfirmation',
+            $data = [
+                'email' => $new_email
+            ]
         );
 
-        $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-        $beautymail->send('emails.emailConfirmation', ['email' => $email], function($message) use ($data)
-        {
-            $message
-                ->to($data['to'])
-                ->subject($data['subject']);
-        });
+        $email->send();
     }
 }

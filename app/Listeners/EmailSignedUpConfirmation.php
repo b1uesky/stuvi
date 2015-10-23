@@ -3,11 +3,11 @@
 namespace App\Listeners;
 
 use App\Events\UserWasSignedUp;
+use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 use Illuminate\Support\Facades\Session;
-use Snowfire;
 
 class EmailSignedUpConfirmation
 {
@@ -31,20 +31,17 @@ class EmailSignedUpConfirmation
     {
         $user = $event->user;
 
-        $data = array(
-            'subject'           => 'Welcome to Stuvi!',
-            'to'                => $user->collegeEmail()->email_address,
-            'first_name'        => $user->first_name,
-            'return_to'         => urlencode(Session::get('url.intended', '/user/activated')),
-            'verification_code' => $user->collegeEmail()->verification_code
+        $email = new Email(
+            $subject = 'Welcom to Stuvi!',
+            $to = $user->primaryEmailAddress(),
+            $view = 'emails.welcome',
+            $data = [
+                'first_name'        => $user->first_name,
+                'return_to'         => urlencode(Session::get('url.intended', '/user/activated')),
+                'verification_code' => $user->collegeEmail()->verification_code
+            ]
         );
 
-        $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-        $beautymail->send('emails.welcome', $data, function($message) use ($data)
-        {
-            $message
-                ->to($data['to'])
-                ->subject($data['subject']);
-        });
+        $email->send();
     }
 }

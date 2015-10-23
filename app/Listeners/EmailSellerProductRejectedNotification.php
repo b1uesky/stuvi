@@ -3,9 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\ProductWasRejected;
+use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Snowfire;
 
 class EmailSellerProductRejectedNotification
 {
@@ -31,20 +31,17 @@ class EmailSellerProductRejectedNotification
         $seller = $product->seller;
         $book_title = $product->book->title;
 
-        $data = array(
-            'subject'           => 'Sorry, your book ' . $book_title . ' is not accepted by Stuvi.',
-            'to'                => $seller->primaryEmailAddress(),
-            'product'           => $product,
-            'first_name'        => $seller->first_name,
-            'book_title'        => $book_title
+        $email = new Email(
+            $subject = 'Sorry, your book ' . $book_title . ' is not accepted by Stuvi.',
+            $to = $seller->primaryEmailAddress(),
+            $view = 'emails.product.rejectedNotification',
+            $data = [
+                'product'           => $product,
+                'first_name'        => $seller->first_name,
+                'book_title'        => $book_title
+            ]
         );
 
-        $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-        $beautymail->send('emails.product.rejectedNotification', $data, function($message) use ($data)
-        {
-            $message
-                ->to($data['to'])
-                ->subject($data['subject']);
-        });
+        $email->send();
     }
 }

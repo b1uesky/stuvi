@@ -3,10 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\SellerOrderWasCancelled;
+use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-
-use Snowfire;
 
 class EmailSellerOrderCancellationToSeller
 {
@@ -32,33 +31,27 @@ class EmailSellerOrderCancellationToSeller
 
         if ($seller_order->isCancelledBySeller())
         {
-            $data = array(
-                'subject'           => 'Your have cancelled your Stuvi order ' . $seller_order->book()->title . '.',
-                'to'                => $seller_order->seller()->primaryEmailAddress(),
+            $email = new Email(
+                $subject = 'Your have cancelled your Stuvi order ' . $seller_order->book()->title . '.',
+                $to = $seller_order->seller()->primaryEmailAddress(),
+                $view = 'emails.sellerOrder.cancelledBySellerNotificationToSeller',
+                $data = [
+                    'seller_order' => $seller_order
+                ]
             );
-
-            $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-            $beautymail->send('emails.sellerOrder.cancelledBySellerNotificationToSeller', ['seller_order' => $seller_order], function($message) use ($data)
-            {
-                $message
-                    ->to($data['to'])
-                    ->subject($data['subject']);
-            });
         }
         else
         {
-            $data = array(
-                'subject'           => 'Your book buyer has decided not to purchase your book ' . $seller_order->book()->title . '.',
-                'to'                => $seller_order->seller()->primaryEmailAddress(),
+            $email = new Email(
+                $subject = 'Your book buyer has decided not to purchase your book ' . $seller_order->book()->title . '.',
+                $to = $seller_order->seller()->primaryEmailAddress(),
+                $view = 'emails.sellerOrder.cancelledByBuyerNotificationToSeller',
+                $data = [
+                    'seller_order' => $seller_order
+                ]
             );
-
-            $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-            $beautymail->send('emails.sellerOrder.cancelledByBuyerNotificationToSeller', ['seller_order' => $seller_order], function($message) use ($data)
-            {
-                $message
-                    ->to($data['to'])
-                    ->subject($data['subject']);
-            });
         }
+
+        $email->send();
     }
 }

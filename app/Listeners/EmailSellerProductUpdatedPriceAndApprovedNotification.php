@@ -3,10 +3,10 @@
 namespace App\Listeners;
 
 use App\Events\ProductWasUpdatedPriceAndApproved;
+use App\Helpers\Email;
 use App\Product;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Snowfire;
 
 class EmailSellerProductUpdatedPriceAndApprovedNotification
 {
@@ -31,20 +31,17 @@ class EmailSellerProductUpdatedPriceAndApprovedNotification
         $seller = $seller_order->product->seller;
         $book_title = $seller_order->product->book->title;
 
-        $data = array(
-            'subject'           => 'Your book ' . $book_title . ' has been accepted by Stuvi.',
-            'to'                => $seller->primaryEmailAddress(),
-            'seller_order'      => $seller_order,
-            'first_name'        => $seller->first_name,
-            'book_title'        => $book_title
+        $email = new Email(
+            $subject = 'Your book ' . $book_title . ' has been accepted by Stuvi.',
+            $to = $seller->primaryEmailAddress(),
+            $view = 'emails.product.updatedPriceAndApprovedNotification',
+            $data = [
+                'seller_order'      => $seller_order,
+                'first_name'        => $seller->first_name,
+                'book_title'        => $book_title
+            ]
         );
 
-        $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-        $beautymail->send('emails.product.updatedPriceAndApprovedNotification', $data, function($message) use ($data)
-        {
-            $message
-                ->to($data['to'])
-                ->subject($data['subject']);
-        });
+        $email->send();
     }
 }

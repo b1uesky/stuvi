@@ -220,7 +220,6 @@ return [
         'Twilio'    => Aloha\Twilio\Support\Laravel\Facade::class,
         'AWS'       => Aws\Laravel\AwsFacade::class,
         'Image'     => Intervention\Image\Facades\Image::class,
-
 	],
 
 ];

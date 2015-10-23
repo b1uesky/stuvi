@@ -4,9 +4,9 @@ namespace App\Listeners;
 
 use App\Events\DonationWasAssignedToCourier;
 use App\Helpers\DateTime;
+use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Snowfire;
 
 class EmailDonationReadyToPickupNotification
 {
@@ -30,21 +30,18 @@ class EmailDonationReadyToPickupNotification
     {
         $donation = $event->donation;
 
-        $data = array(
-            'subject'               => 'Stuvi courier is ready to pickup your books',
-            'to'                    => $donation->donator->primaryEmailAddress(),
-            'first_name'            => $donation->donator->first_name,
-            'scheduled_pickup_time' => DateTime::showDatetime($donation->scheduled_pickup_time),
-            'courier_phone_number'  => $donation->courier->phone_number,
-            'pickup_code'           => $donation->pickup_code
+        $email = new Email(
+            $subject = 'We are ready to pickup your book donation.',
+            $to = $donation->donator->primaryEmailAddress(),
+            $view = 'emails.donation.readyToPickupNotification',
+            $data = [
+                'first_name'            => $donation->donator->first_name,
+                'scheduled_pickup_time' => DateTime::showDatetime($donation->scheduled_pickup_time),
+                'courier_phone_number'  => $donation->courier->phone_number,
+                'pickup_code'           => $donation->pickup_code
+            ]
         );
 
-        $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-        $beautymail->send('emails.donation.readyToPickupNotification', $data, function($message) use ($data)
-        {
-            $message
-                ->to($data['to'])
-                ->subject($data['subject']);
-        });
+        $email->send();
     }
 }

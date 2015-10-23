@@ -3,10 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\BuyerOrderWasCancelled;
+use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-
-use Snowfire;
 
 class EmailBuyerOrderCancelledNotification
 {
@@ -32,18 +31,16 @@ class EmailBuyerOrderCancelledNotification
 
         if ($buyer_order->isCancelledByBuyer())
         {
-            $data = array(
-                'subject'           => 'Your Stuvi order has been cancelled.',
-                'to'                => $buyer_order->buyer->primaryEmailAddress(),
+            $email = new Email(
+                $subject = 'Your Stuvi order has been cancelled.',
+                $to = $buyer_order->buyer->primaryEmailAddress(),
+                $view = 'emails.buyerOrder.cancelledNotification',
+                $data = [
+                    'buyer_order' => $buyer_order
+                ]
             );
 
-            $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-            $beautymail->send('emails.buyerOrder.cancelledNotification', ['buyer_order' => $buyer_order], function($message) use ($data)
-            {
-                $message
-                    ->to($data['to'])
-                    ->subject($data['subject']);
-            });
+            $email->send();
         }
     }
 }

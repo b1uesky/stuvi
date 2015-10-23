@@ -3,10 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\UserPasswordWasChanged;
+use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-
-use Snowfire;
 
 class EmailUserPasswordChangedNotification
 {
@@ -30,17 +29,15 @@ class EmailUserPasswordChangedNotification
     {
         $user = $event->user;
 
-        $data = array(
-            'subject'           => 'Your Stuvi password has changed.',
-            'to'                => $user->primaryEmailAddress(),
+        $email = new Email(
+            $subject = 'Your Stuvi password has changed.',
+            $to = $user->primaryEmailAddress(),
+            $view = 'emails.passwordChanged',
+            $data = [
+                'user' => $user
+            ]
         );
 
-        $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-        $beautymail->send('emails.passwordChanged', ['user' => $user], function($message) use ($data)
-        {
-            $message
-                ->to($data['to'])
-                ->subject($data['subject']);
-        });
+        $email->send();
     }
 }
