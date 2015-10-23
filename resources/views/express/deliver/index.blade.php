@@ -20,7 +20,7 @@
                     @if(count($buyer_order->products()) > 0)
                         <a href="{{ url('express/deliver/' . $buyer_order->id) }}" class="list-group-item">
                             <h4 class="list-group-item-heading">Order #{{ $buyer_order->id }}</h4>
-                            <p class="list-group-item-text">{{ date(config('app.datetime_format'), strtotime($buyer_order->scheduled_delivery_time)) }}</p>
+                            <p class="list-group-item-text">{{ \App\Helpers\DateTime::showDatetime($buyer_order->scheduled_delivery_time) }}</p>
 
                             @foreach($buyer_order->products() as $p_index => $product)
                                 <p class="list-group-item-text">{{ $p_index + 1 }}. {{ $product->book->title }}</p>

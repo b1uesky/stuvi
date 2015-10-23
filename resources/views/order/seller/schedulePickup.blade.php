@@ -21,7 +21,7 @@
                     <input type="hidden" name="address_id" value="{{ $address ? $address->id : '' }}">
 
                     @if($seller_order->scheduled_pickup_time)
-                        <input type="hidden" name="scheduled_pickup_time" value="{{ date(config('app.datetime_format'), strtotime($seller_order->scheduled_pickup_time)) }}">
+                        <input type="hidden" name="scheduled_pickup_time" value="{{ \App\Helpers\DateTime::showDatetime($seller_order->scheduled_pickup_time) }}">
                     @else
                         <input type="hidden" name="scheduled_pickup_time">
                     @endif

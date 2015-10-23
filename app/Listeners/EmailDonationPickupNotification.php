@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\DonationWasCreated;
+use App\Helpers\DateTime;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Snowfire;
@@ -33,7 +34,7 @@ class EmailDonationPickupNotification
             'subject'               => 'Pickup book donation: #' . $donation->id,
             'to'                    => 'express@stuvi.com',
             'donation'              => $donation,
-            'scheduled_pickup_time' => date(config('app.datetime_format'), strtotime($donation->scheduled_pickup_time)),
+            'scheduled_pickup_time' => DateTime::showDatetime($donation->scheduled_pickup_time),
         );
 
         $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);

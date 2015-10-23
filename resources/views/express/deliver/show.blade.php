@@ -43,7 +43,7 @@
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">Scheduled time</h4>
                 <p class="list-group-item-text">
-                    {{ date(config('app.datetime_format'), strtotime($buyer_order->scheduled_delivery_time)) }}
+                    {{ \App\Helpers\DateTime::showDatetime($buyer_order->scheduled_delivery_time) }}
                 </p>
             </li>
 

@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\DonationWasAssignedToCourier;
+use App\Helpers\DateTime;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Snowfire;
@@ -33,7 +34,7 @@ class EmailDonationReadyToPickupNotification
             'subject'               => 'Stuvi courier is ready to pickup your books',
             'to'                    => $donation->donator->primaryEmailAddress(),
             'first_name'            => $donation->donator->first_name,
-            'scheduled_pickup_time' => date(config('app.datetime_format'), strtotime($donation->scheduled_pickup_time)),
+            'scheduled_pickup_time' => DateTime::showDatetime($donation->scheduled_pickup_time),
             'courier_phone_number'  => $donation->courier->phone_number,
             'pickup_code'           => $donation->pickup_code
         );

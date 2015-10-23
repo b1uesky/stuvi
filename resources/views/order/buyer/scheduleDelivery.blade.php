@@ -21,7 +21,7 @@
                     <input type="hidden" name="address_id" value="{{ $address ? $address->id : '' }}">
 
                     @if($buyer_order->scheduled_delivery_time)
-                        <input type="hidden" name="scheduled_delivery_time" value="{{ date(config('app.datetime_format'), strtotime($buyer_order->scheduled_delivery_time)) }}">
+                        <input type="hidden" name="scheduled_delivery_time" value="{{ \App\Helpers\DateTime::showDatetime($buyer_order->scheduled_delivery_time) }}">
                     @else
                         <input type="hidden" name="scheduled_delivery_time">
                     @endif

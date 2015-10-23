@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use App\Events\BuyerOrderWasCancelled;
+use App\Helpers\DateTime;
 use App\Helpers\Paypal;
 use App\Helpers\Price;
 use Carbon\Carbon;
@@ -226,7 +227,7 @@ class SellerOrder extends Model
         elseif ($this->pickedUp())
         {
             $status = 'Picked Up';
-            $detail = 'Your order has been picked up at ' . date(config('app.datetime_format'), strtotime($this->pickup_time)) . '.';
+            $detail = 'Your order has been picked up at ' . DateTime::showDatetime($this->pickup_time) . '.';
             $value = 60;
         }
         elseif ($this->cancelled)

@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\SellerOrderPickupWasScheduled;
+use App\Helpers\DateTime;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -35,7 +36,7 @@ class EmailSellerOrderPickupNotification
             'to'                => 'express@stuvi.com',
             'seller_order_id'   => $seller_order->id,
             'book_title'        => $seller_order->book()->title,
-            'time'              => date(config('app.datetime_format'), strtotime($seller_order->scheduled_pickup_time)),
+            'time'              => DateTime::showDatetime($seller_order->scheduled_pickup_time),
         );
 
         $beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);

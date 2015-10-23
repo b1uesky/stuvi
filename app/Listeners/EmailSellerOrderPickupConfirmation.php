@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\SellerOrderPickupWasScheduled;
+use App\Helpers\DateTime;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -43,7 +44,7 @@ class EmailSellerOrderPickupConfirmation
             'state_a2'          => $seller_order->address->state_a2,
             'zip'               => $seller_order->address->zip,
             'phone_number'      => $seller_order->address->phone_number,
-            'time'              => date(config('app.datetime_format'), strtotime($seller_order->scheduled_pickup_time)),
+            'time'              => DateTime::showDatetime($seller_order->scheduled_pickup_time),
             'pickup_code'       => $seller_order->pickup_code
         );
 
