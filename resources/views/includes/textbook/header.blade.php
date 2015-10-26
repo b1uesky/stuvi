@@ -83,13 +83,17 @@
                         </li>
                         <!-- cart -->
                         <li class="cart">
-                                <?php $cartQty = Auth::user()->cart->quantity; ?>
-                                {{-- If cart empty, open modal --}}
-                                <label class="sr-only" for="nav-right-cart-link">Cart</label>
-                                <a href="{{ url('/cart') }}">
-                                    <span class="glyphicon glyphicon-shopping-cart cart-icon"></span>
-                                    <span class="cart-quantity">{{ $cartQty > 0 ? $cartQty : ' ' }}</span>
-                                </a>
+                            <?php $cartQty = Auth::user()->cart->quantity; ?>
+
+                            <label class="sr-only" for="nav-right-cart-link">Cart</label>
+                            <a href="{{ url('/cart') }}">
+                                <span class="glyphicon glyphicon-shopping-cart"></span>
+                                @if($cartQty == 0)
+                                    <span class="cart-quantity hide">{{$cartQty}}</span>
+                                @else
+                                    <span class="cart-quantity">{{$cartQty}}</span>
+                                @endif
+                            </a>
                         </li>
                     @endif
                 </ul>
