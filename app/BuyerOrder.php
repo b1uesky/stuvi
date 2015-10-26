@@ -181,6 +181,16 @@ class BuyerOrder extends Model
     }
 
     /**
+     * Check whether this order is allowed to reconfirm pickup details.
+     *
+     * @return bool
+     */
+    public function isPickUpConfirmable()
+    {
+        return !$this->isAssignedToCourier() && !$this->cancelled;
+    }
+
+    /**
      * Check if the buyer order is deliverable, that is, check if all products of this buyer order is picked up.
      *
      * @return bool
@@ -250,7 +260,7 @@ class BuyerOrder extends Model
         }
         else
         {
-            $status = 'Preparing Your Order';
+            $status = 'Preparing your order';
             $detail = 'Your order is being processed by Stuvi.';
         }
 

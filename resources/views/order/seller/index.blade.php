@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="row">
-                                <span><a href="/order/seller/{{$seller_order->id}}">View Details</a></span>
+                                <span><a href="/order/seller/{{$seller_order->id}}">View details</a></span>
                             </div>
                         </div>
                     </div>
@@ -87,12 +87,12 @@
                             {{-- action buttons --}}
                             <div class="col-md-3">
                                 @if ($seller_order->isPickupConfirmable())
-                                    <a class="btn btn-primary btn-block" href="{{ url('order/seller/' . $seller_order->id . '/schedulePickup') }}">Update Pickup Details</a>
+                                    <a class="btn btn-primary btn-block" href="{{ url('order/seller/' . $seller_order->id . '/schedulePickup') }}">Update pickup details</a>
                                 @endif
 
                                 {{-- cancel order --}}
                                 @if ($seller_order->isCancellable())
-                                    <a class="btn btn-danger btn-block" href="#cancel-seller-order" data-toggle="modal" data-seller_order_id="{{ $seller_order->id }}">Cancel Order</a>
+                                    <a class="btn btn-danger btn-block" href="#cancel-seller-order" data-toggle="modal" data-seller_order_id="{{ $seller_order->id }}">Cancel order</a>
                                 @endif
                             </div>
                         </div>
