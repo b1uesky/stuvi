@@ -181,16 +181,6 @@ class BuyerOrder extends Model
     }
 
     /**
-     * Check whether this order is allowed to reconfirm delivery details.
-     *
-     * @return bool
-     */
-    public function isDeliveryConfirmable()
-    {
-        return !$this->isAssignedToCourier() && !$this->cancelled;
-    }
-
-    /**
      * Check if the buyer order is deliverable, that is, check if all products of this buyer order is picked up.
      *
      * @return bool

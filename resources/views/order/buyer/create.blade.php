@@ -140,14 +140,18 @@
 
                         <div class="radio">
                             <label>
-                                <input type="radio" name="payment_method_select" id="payment_method_paypal" value="paypal" checked> PayPal
+                                <input type="radio" name="payment_method_select" id="payment_method_paypal" value="paypal" checked>
+                                <strong>PayPal</strong>
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="payment_method_select" id="payment_method_cash" value="cash"> Cash
+                                <input type="radio" name="payment_method_select" id="payment_method_cash" value="cash">
+                                <strong>Cash</strong>
                             </label>
                         </div>
+
+                        <small class="text-success">We only collect the payment after delivery.</small>
 
 
 

@@ -57,7 +57,7 @@ class SellerOrderController extends Controller
         }
 
         return redirect('order/seller')
-            ->with('error', 'Order not found');
+            ->with('error', 'Order not found.');
     }
 
     /**
@@ -109,14 +109,14 @@ class SellerOrderController extends Controller
     {
         $seller_order = SellerOrder::find($seller_order_id);
 
-        if ($seller_order->isPickupConfirmable())
+        if ($seller_order->isBelongTo(Auth::id()) && $seller_order->isPickupConfirmable())
         {
             return view('order.seller.schedulePickup')
                 ->withSellerOrder($seller_order);
         }
-
+        
         return redirect('order/seller')
-            ->with('error', 'You cannot update the pickup details because the order has been assigned to a courier or cancelled.');
+            ->with('error', 'You cannot update the pickup details for this order.');
     }
 
     /**

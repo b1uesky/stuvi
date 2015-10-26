@@ -420,7 +420,7 @@ class BuyerOrderController extends Controller
     {
         $buyer_order = BuyerOrder::find($id);
 
-        if ($buyer_order->isDeliverable())
+        if ($buyer_order->isBelongTo(Auth::id()) && $buyer_order->isDeliverable())
         {
             return view('order.buyer.scheduleDelivery')
                 ->with('buyer_order', $buyer_order);
