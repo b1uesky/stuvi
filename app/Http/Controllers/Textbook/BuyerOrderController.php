@@ -448,7 +448,7 @@ class BuyerOrderController extends Controller
 
         event(new BuyerOrderDeliveryWasScheduled($buyer_order));
 
-        return redirect()->back()
+        return redirect('order/buyer')
             ->withSuccess("You have successfully scheduled the delivery and we'll notify you once your book is on the way.");
     }
 }

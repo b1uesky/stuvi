@@ -14,7 +14,7 @@
 
                 <br>
 
-                <form action="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" method="post">
+                <form action="{{ url('/order/seller/' . $seller_order->id . '/confirmPickup') }}" method="post" id="form-confirm-pickup">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <?php $address = Auth::user()->defaultAddress(); ?>

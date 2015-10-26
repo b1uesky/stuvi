@@ -114,7 +114,7 @@ class SellerOrderController extends Controller
             return view('order.seller.schedulePickup')
                 ->withSellerOrder($seller_order);
         }
-        
+
         return redirect('order/seller')
             ->with('error', 'You cannot update the pickup details for this order.');
     }
@@ -147,7 +147,7 @@ class SellerOrderController extends Controller
 
         event(new SellerOrderPickupWasScheduled($seller_order));
 
-        return redirect()->back()
+        return redirect('order/seller')
             ->withSuccess("You have successfully updated the pickup and we'll email you the details shortly.");
     }
 
