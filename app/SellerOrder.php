@@ -212,45 +212,45 @@ class SellerOrder extends Model
      */
     public function getOrderStatus()
     {
-        if ($this->isTransferred())
+        if ($this->cancelled)
         {
-            $status = 'Balance Transferred';
+            $status = 'Order cancelled';
+            $detail = 'Your order has been cancelled.';
+            $value = null;
+        }
+        elseif ($this->isTransferred())
+        {
+            $status = 'Balance transferred';
             $detail = 'The money has been transferred to your Paypal account.';
             $value = 100;
         }
         elseif ($this->isDelivered())
         {
-            $status = 'Order Delivered';
+            $status = 'Order delivered';
             $detail = 'Your order has been delivered.';
             $value = 75;
         }
         elseif ($this->pickedUp())
         {
-            $status = 'Picked Up';
+            $status = 'Order picked up';
             $detail = 'Your order has been picked up at ' . DateTime::showDatetime($this->pickup_time) . '.';
             $value = 60;
         }
-        elseif ($this->cancelled)
-        {
-            $status = 'Order Cancelled';
-            $detail = 'Your order has been cancelled.';
-            $value = null;
-        }
         elseif ($this->isAssignedToCourier())
         {
-            $status = 'Shipped';
-            $detail = 'Your order has been assigned to a Stuvi courier and the courier is on the way.';
+            $status = 'Order shipped';
+            $detail = 'Your order is on its way.';
             $value = 45;
         }
         elseif ($this->isScheduled())
         {
-            $status = 'Order Processing';
+            $status = 'Assigning a courier';
             $detail = 'Your order is waiting to be assigned to a Stuvi courier.';
             $value = 30;
         }
         else
         {
-            $status = 'Pick-up Details Required';
+            $status = 'Pick-up details required';
             $detail = 'Please schedule your pick-up time and location for this order.';
             $value = 15;
         }

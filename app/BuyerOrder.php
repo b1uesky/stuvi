@@ -161,6 +161,16 @@ class BuyerOrder extends Model
     }
 
     /**
+     * Check if the order is scheduled a delivery time and address.
+     *
+     * @return bool
+     */
+    public function isScheduled()
+    {
+        return $this->scheduled_delivery_time && $this->shipping_address_id;
+    }
+
+    /**
      * Check whether the order has been assigned to a courier or not
      *
      * @return bool
@@ -215,17 +225,32 @@ class BuyerOrder extends Model
     {
         if ($this->cancelled)
         {
-            $status = 'Order Cancelled';
+            $status = 'Order cancelled';
             $detail = 'Your order has been cancelled.';
         }
         elseif ($this->isDelivered())
         {
-            $status = 'Order Delivered';
+            $status = 'Order delivered';
             $detail = 'Your order has been delivered.';
+        }
+        elseif ($this->isAssignedToCourier())
+        {
+            $status = 'Order shipped';
+            $detail = 'Your order is on its way.';
+        }
+        elseif ($this->isScheduled())
+        {
+            $status = 'Assigning a courier';
+            $detail = 'Your order is waiting to be assigned to a Stuvi courier.';
+        }
+        elseif ($this->isDeliverable())
+        {
+            $status = 'Delivery details required';
+            $detail = 'Please schedule your delivery time and location for this order.';
         }
         else
         {
-            $status = 'Order Processing';
+            $status = 'Preparing Your Order';
             $detail = 'Your order is being processed by Stuvi.';
         }
 
