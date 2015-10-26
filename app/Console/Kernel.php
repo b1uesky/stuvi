@@ -23,8 +23,7 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected function schedule(Schedule $schedule)
 	{
-		$schedule->command('inspire')->everyMinute();
-		$schedule->command('reminder:pickup')->daily();
+		$schedule->command('reminder:pickup')->dailyAt('17:00');
 	}
 
 }

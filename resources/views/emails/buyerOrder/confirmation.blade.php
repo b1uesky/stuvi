@@ -11,7 +11,7 @@
 
     <p>Hi {{ $first_name }},</p>
 
-    <p>Thank you for shopping with us. We will send a confirmation when your order is on its way!</p>
+    <p>Thank you for shopping with us. We will let you know when your order is on its way!</p>
 
     @include('beautymail::templates.sunny.contentEnd')
 
