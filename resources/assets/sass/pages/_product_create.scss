@@ -19,13 +19,18 @@
 
 // image upload
 #dropzone-img-preview {
-  border: 4px dashed $border-color;
-  border-radius: 2px;
+  border: 2px dashed $border-color;
+  border-radius: $border-radius-base;
   padding: $spacing-unit / 2;
 
   &:hover {
-    border: 4px dashed $primary-color-light;
+    border: 2px dashed $primary-color-light;
   }
+}
+
+// Dropzone image preview
+.dropzone .dz-preview .dz-image {
+  border-radius: $border-radius-base;
 }
 
 .dz-image img {
