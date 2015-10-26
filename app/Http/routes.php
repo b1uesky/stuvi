@@ -25,6 +25,7 @@ Route::pattern('product',   '[0-9]+');
 */
 
 Route::get  ('/',           'HomeController@index');
+Route::get  ('/home',       'HomeController@index');
 Route::get  ('/about',      'HomeController@about');
 Route::get  ('/tos',        'tosPrivacyController@tos');
 Route::get  ('/privacy',    'tosPrivacyController@privacy');

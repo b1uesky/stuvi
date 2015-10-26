@@ -434,6 +434,12 @@ class BuyerOrderController extends Controller
     {
         $buyer_order = BuyerOrder::find($id);
 
+        if (!$buyer_order->isBelongTo(Auth::id()) || !$buyer_order->isDeliverable())
+        {
+            return redirect()->back()
+                ->with('error', 'You cannot update the delivery details for this order.');
+        }
+
         $v = Validator::make(Input::all(), BuyerOrder::confirmDeliveryRules());
 
         if ($v->fails())

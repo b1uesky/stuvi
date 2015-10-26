@@ -130,6 +130,12 @@ class SellerOrderController extends Controller
     {
         $seller_order = SellerOrder::find($id);
 
+        if (!$seller_order->isBelongTo(Auth::id()) || !$seller_order->isPickupConfirmable())
+        {
+            return redirect('order/seller')
+                ->with('error', 'You cannot update the pickup details for this order.');
+        }
+
         $v = Validator::make(Input::all(), SellerOrder::confirmPickupRules());
 
         if ($v->fails())
