@@ -427,7 +427,7 @@ class BuyerOrderController extends Controller
         }
 
         return redirect()->back()
-            ->with('error', 'This order is not ready to schedule a delivery yet.');
+            ->with('error', 'You cannot update the delivery details for this order.');
     }
 
     public function confirmDelivery($id)

@@ -109,8 +109,14 @@ class SellerOrderController extends Controller
     {
         $seller_order = SellerOrder::find($seller_order_id);
 
-        return view('order.seller.schedulePickup')
-            ->withSellerOrder($seller_order);
+        if ($seller_order->isPickupConfirmable())
+        {
+            return view('order.seller.schedulePickup')
+                ->withSellerOrder($seller_order);
+        }
+
+        return redirect('order/seller')
+            ->with('error', 'You cannot update the pickup details because the order has been assigned to a courier or cancelled.');
     }
 
     /**

@@ -181,11 +181,11 @@ class BuyerOrder extends Model
     }
 
     /**
-     * Check whether this order is allowed to reconfirm pickup details.
+     * Check whether this order is allowed to reconfirm delivery details.
      *
      * @return bool
      */
-    public function isPickUpConfirmable()
+    public function isDeliveryConfirmable()
     {
         return !$this->isAssignedToCourier() && !$this->cancelled;
     }
@@ -197,7 +197,7 @@ class BuyerOrder extends Model
      */
     public function isDeliverable()
     {
-        if ($this->cancelled || $this->isDelivered() || $this->courier_id)
+        if ($this->cancelled || $this->isDelivered() || $this->isAssignedToCourier())
         {
             return false;
         }
