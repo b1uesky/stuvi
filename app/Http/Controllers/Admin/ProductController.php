@@ -202,9 +202,9 @@ class ProductController extends Controller
             $seller_order = SellerOrder::create([
                 'product_id'    => $product->id
             ]);
-
-            event(new ProductWasUpdatedPriceAndApproved($seller_order));
         }
+
+        event(new ProductWasUpdatedPriceAndApproved($seller_order));
 
         return redirect()->back()
             ->withSuccess('Product ' . $product->id . ' has been approved.');

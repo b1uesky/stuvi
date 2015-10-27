@@ -17,11 +17,29 @@
         </tr>
         <tr>
             <th>Price</th>
-            <td class="price">${{ $product->decimalPrice() }}</td>
+            <td class="price">
+                @if($product->price)
+                    ${{ $product->decimalPrice() }}
+                @else
+                    N/A
+                @endif
+            </td>
         </tr>
         <tr>
             <th>Seller</th>
             <td><a href="{{ url('admin/user/'.$product->seller_id) }}">{{ $product->seller->first_name }} {{ $product->seller->last_name }}</a></td>
+        </tr>
+        <tr>
+            <th>Sell to</th>
+            <td>{{ $product->sell_to }}</td>
+        </tr>
+        <tr>
+            <th>Available at</th>
+            <td>{{ $product->available_at }}</td>
+        </tr>
+        <tr>
+            <th>Payout method</th>
+            <td>{{ $product->payout_method }}</td>
         </tr>
         <tr>
             <th>Verified</th>

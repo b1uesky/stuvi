@@ -23,6 +23,10 @@
             Buyer order <span class="badge">{{ \App\BuyerOrder::count() }}</span>
         </a>
 
+        <a class="list-group-item {{ Request::segment(2) == 'order' }}" href="{{ url('admin/donation') }}">
+            Donation <span class="badge">{{ \App\Donation::count() }}</span>
+        </a>
+
     </div>
 
 </div>

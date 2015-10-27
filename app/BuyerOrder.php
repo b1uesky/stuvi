@@ -57,6 +57,11 @@ class BuyerOrder extends Model
         return $this->hasMany('App\SellerOrder', 'buyer_order_id', 'id');
     }
 
+    public function courier()
+    {
+        return $this->belongsTo('App\User', 'courier_id', 'id');
+    }
+
 
     /**
      * Get seller orders that are not cancelled.

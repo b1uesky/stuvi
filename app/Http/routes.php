@@ -212,9 +212,12 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
     // buyer payment
     Route::resource('buyer/payment', 'BuyerPaymentController');
 
+    // donation
+    Route::resource('donation', 'DonationController');
+
     // contact
-    Route::post('contact/reply','ContactController@reply');
-    Route::resource('contact',  'ContactController');
+//    Route::post('contact/reply','ContactController@reply');
+//    Route::resource('contact',  'ContactController');
 });
 
 /*

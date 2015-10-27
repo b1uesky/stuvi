@@ -54,12 +54,12 @@ class BuyerOrderController extends Controller
             ->with('buyer_orders', $buyer_orders)
             ->with('filters', $filters)
             ->with('pagination_params', Input::only([
-                                                        'filter',
-                                                        'keyword',
-                                                        'order_by',
-                                                        'order',
-                                                        'page',
-                                                    ]));
+                'filter',
+                'keyword',
+                'order_by',
+                'order',
+                'page',
+            ]));
     }
 
     /**

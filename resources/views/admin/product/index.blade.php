@@ -27,7 +27,13 @@
                     <td>{{ $product->id }}</td>
                     <td>{{ $product->sell_to == 'stuvi' ? 'Stuvi' : 'User' }}</td>
                     <td><a href="{{ url('admin/book/'.$product->book->id) }}">{{ $product->book->title }}</a></td>
-                    <td class="price">${{ $product->decimalPrice() }}</td>
+                    <td class="price">
+                        @if($product->price)
+                            ${{ $product->decimalPrice() }}
+                        @else
+                            N/A
+                        @endif
+                    </td>
                     <td><a href="{{ url('/admin/user/'.$product->seller->id) }}">{{ $product->seller->first_name }} {{ $product->seller->last_name }}</a></td>
                     <td>{{ $product->isVerified() }}</td>
                     <td>{{ $product->is_rejected ? 'Yes' : 'No' }}</td>

@@ -12,16 +12,16 @@
             <td>{{ $buyer_order->id }}</td>
         </tr>
         <tr>
-            <th>Buyer ID</th>
+            <th>Buyer</th>
             <td><a href="{{ url('admin/user/'.$buyer_order->buyer_id) }}">{{ $buyer_order->buyer->first_name }} {{ $buyer_order->buyer->last_name }}</a></td>
         </tr>
         <tr>
-            <th>Cancelled</th>
-            <td>{{ $buyer_order->cancelled }}
-                @if ($buyer_order->cancelled)
-                    @ {{ $buyer_order->cancelled_time }}
-                @endif
-            </td>
+            <th>Scheduled delivery time</th>
+            <td>{{ \App\Helpers\DateTime::showDatetime($buyer_order->scheduled_delivery_time) }}</td>
+        </tr>
+        <tr>
+            <th>Delivered time</th>
+            <td>{{ \App\Helpers\DateTime::showDatetime($buyer_order->time_delivered) }}</td>
         </tr>
         <tr>
             <th>Shipping Address</th>
@@ -34,15 +34,11 @@
         <tr>
             <th>Courier</th>
             <td>
-                @if ($buyer_order->courier)
+                @if($buyer_order->courier_id)
                     <a href="{{ url('admin/user/'.$buyer_order->courier_id) }}">{{ $buyer_order->courier->first_name }} {{ $buyer_order->courier->last_name }}
                     </a>
                 @endif
             </td>
-        </tr>
-        <tr>
-            <th>Delivered Time</th>
-            <td>{{ $buyer_order->time_delivered }}</td>
         </tr>
         <tr>
             <th>Items</th>
@@ -56,6 +52,14 @@
             </table>
             </td>
         </tr>
+        <tr>
+            <th>Cancelled</th>
+            <td>{{ $buyer_order->cancelled }}
+                @if ($buyer_order->cancelled)
+                    @ {{ $buyer_order->cancelled_time }}
+                @endif
+            </td>
+        </tr>
     </table>
 
 
@@ -64,25 +68,31 @@
 
         <thead>
             <tr class="active">
+                <th>Payment method</th>
                 <th>Subtotal</th>
                 <th>Discount</th>
                 <th>Fee</th>
                 <th>Tax</th>
                 <th>Total</th>
-                <th>Authorization ID</th>
-                <th>Capture ID</th>
+                @if($buyer_order->payment_method == 'paypal')
+                    <th>Authorization ID</th>
+                    <th>Capture ID</th>
+                @endif
             </tr>
         </thead>
 
         <tbody>
             <tr>
-                <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->subtotal) }}</td>
-                <td>- {{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->discount) }}</td>
-                <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->fee) }}</td>
-                <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->tax) }}</td>
-                <td>{{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->amount) }}</td>
-                <td>{{ $buyer_order->authorization_id }}</td>
-                <td>{{ $buyer_order->capture_id }}</td>
+                <td>{{ $buyer_order->payment_method }}</td>
+                <td>${{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->subtotal) }}</td>
+                <td>- ${{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->discount) }}</td>
+                <td>${{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->fee) }}</td>
+                <td>${{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->tax) }}</td>
+                <td class="price">${{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->amount) }}</td>
+                @if($buyer_order->payment_method == 'paypal')
+                    <td>{{ $buyer_order->authorization_id }}</td>
+                    <td>{{ $buyer_order->capture_id }}</td>
+                @endif
             </tr>
         </tbody>
 

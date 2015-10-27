@@ -16,8 +16,18 @@
             <td><a href="{{ url('admin/product/'.$seller_order->product_id) }}">{{ $seller_order->product->book->title }}</a></td>
         </tr>
         <tr>
+            <th>Sell to</th>
+            <td>{{ $seller_order->product->sell_to }}</td>
+        </tr>
+        <tr>
             <th>BuyerOrder ID</th>
-            <td><a href="{{ url('admin/order/buyer/'.$seller_order->buyer_order_id) }}">{{ $seller_order->buyer_order_id }}</a></td>
+            <td>
+                @if($seller_order->product->sell_to == 'users')
+                    <a href="{{ url('admin/order/buyer/'.$seller_order->buyer_order_id) }}">{{ $seller_order->buyer_order_id }}</a>
+                @else
+                    N/A
+                @endif
+            </td>
         </tr>
         <tr>
             <th>Cancelled</th>
@@ -75,9 +85,21 @@
         <caption>Payout</caption>
 
         <tr>
-            <th>Payout Item ID</th>
-            <td>{{ $seller_order->payout_item_id }}</td>
+            <th>Payout method</th>
+            <td>{{ $seller_order->product->payout_method }}</td>
         </tr>
+
+        @if($seller_order->product->payout_method == 'paypal')
+            <tr>
+                <th>Payout Item ID</th>
+                <td>{{ $seller_order->payout_item_id }}</td>
+            </tr>
+        @else
+            <tr>
+                <th>Cash paid</th>
+                <td class="price">${{ $seller_order->cash_paid }}</td>
+            </tr>
+        @endif
     </table>
 
 @endsection
