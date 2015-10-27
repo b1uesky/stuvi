@@ -44,7 +44,7 @@ class DonationController extends Controller
             'address_id'            => Input::get('address_id'),
             'scheduled_pickup_time' => DateTime::saveDatetime(Input::get('scheduled_pickup_time')),
             'quantity'              => Input::get('quantity'),
-            'pickup_code'           => \App\Helpers\generateNumber(4)
+            'pickup_code'           => \App\Helpers\generateRandomNumber(4)
         ]);
 
         event(new DonationWasCreated($donation));

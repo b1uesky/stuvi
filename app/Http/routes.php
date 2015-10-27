@@ -246,7 +246,7 @@ Route::group(['namespace'=>'Express', 'middleware'=>['auth', 'role:ac'], 'prefix
     Route::get('/deliver/delivered',            'DeliverController@indexDelivered');
     Route::get('/deliver/{id}',                 'DeliverController@show');
     Route::get('/deliver/{id}/readyToShip',     'DeliverController@readyToShip');
-    Route::get('/deliver/{id}/confirmDelivery', 'DeliverController@confirmDelivery');
+    Route::post('/deliver/{id}/confirmDelivery', 'DeliverController@confirmDelivery');
 });
 
 /*

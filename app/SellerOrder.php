@@ -115,22 +115,6 @@ class SellerOrder extends Model
     }
 
     /**
-     * Generate a 4-digit pickup code for the seller order
-     * to verify that the courier has picked up the book.
-     *
-     * This code will be sent to the seller once he/she has
-     * scheduled a pickup time.
-     *
-     * @return int
-     */
-    public function generatePickupCode()
-    {
-        $digits            = 4;
-        $this->pickup_code = \App\Helpers\generateNumber($digits);
-        $this->save();
-    }
-
-    /**
      * Return if this seller order has been scheduled a pickup time.
      *
      * @return bool

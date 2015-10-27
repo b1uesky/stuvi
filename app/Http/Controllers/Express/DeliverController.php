@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 use Mail;
 
 
@@ -125,21 +127,42 @@ class DeliverController extends Controller
      */
     public function confirmDelivery($id)
     {
+        $delivery_code = Input::get('delivery_code');
         $buyer_order = BuyerOrder::find($id);
 
-        if ($buyer_order->cancelled)
-        {
-            return redirect('express/deliver')->withError('This buyer order has been cancelled.');
-        }
+        // validation
+        $v = Validator::make(Input::all(), [
+            'delivery_code'  => 'required|digits:4'
+        ]);
 
-        if (!$buyer_order->isAssignedToCourier())
+        $v->after(function($v) use ($buyer_order, $delivery_code)
         {
-            return redirect('express/deliver')->withError('This buyer order is not assigned to any courier.');
-        }
+            if ($buyer_order->cancelled)
+            {
+                return redirect('express/deliver')->withError('This buyer order has been cancelled.');
+            }
 
-        if ($buyer_order->isDelivered())
+            if (!$buyer_order->isAssignedToCourier())
+            {
+                return redirect('express/deliver')->withError('This buyer order is not assigned to any courier.');
+            }
+
+            if ($buyer_order->isDelivered())
+            {
+                return redirect('express/deliver')->withError('This buyer order has already been delivered.');
+            }
+
+            // check if the code is correct
+            if ($v->errors()->has('delivery_code') == false && $delivery_code != $buyer_order->delivery_code)
+            {
+                $v->errors()->add('code', 'Sorry, the code is incorrect. Please try again.');
+            }
+        });
+
+        if ($v->fails())
         {
-            return redirect('express/deliver')->withError('This buyer order has already been delivered.');
+            return redirect()->back()
+                ->withErrors($v->errors());
         }
 
         $buyer_order->update([

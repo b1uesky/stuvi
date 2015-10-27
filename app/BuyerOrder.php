@@ -186,19 +186,44 @@ class BuyerOrder extends Model
     }
 
     /**
-     * Check if the buyer order is deliverable, that is, check if all products of this buyer order is picked up.
+     * Check whether this order is allowed to reconfirm delivery details.
      *
      * @return bool
      */
-    public function isDeliverable()
+    public function isDeliveryConfirmable()
     {
         if ($this->cancelled || $this->isDelivered() || $this->isAssignedToCourier())
         {
             return false;
         }
 
-        // if there is more than one seller orders that are not cancelled and not pickup,
-        // then this buyer order is not deliverable.
+        return $this->hasAllSellerOrdersPickedup();
+    }
+
+    /**
+     * Check if the buyer order is deliverable, that is, check if all products of this buyer order is picked up.
+     *
+     * @return bool
+     */
+    public function isDeliverable()
+    {
+        if ($this->cancelled || $this->isDelivered() || $this->isAssignedToCourier() || !$this->isScheduled())
+        {
+            return false;
+        }
+
+        return $this->hasAllSellerOrdersPickedup();
+    }
+
+    /**
+     * Check if all seller orders that belong to this buyer order
+     * are picked up.
+     *
+     * @return bool
+     */
+    public function hasAllSellerOrdersPickedup()
+    {
+
         foreach ($this->seller_orders as $seller_order)
         {
             if (!($seller_order->pickedUp() || $seller_order->cancelled))
@@ -208,7 +233,6 @@ class BuyerOrder extends Model
         }
 
         return true;
-
     }
 
     /**
@@ -248,7 +272,7 @@ class BuyerOrder extends Model
             $status = 'Assigning a courier';
             $detail = 'Your order is waiting to be assigned to a Stuvi courier.';
         }
-        elseif ($this->isDeliverable())
+        elseif ($this->isDeliveryConfirmable())
         {
             $status = 'Delivery details required';
             $detail = 'Please schedule your delivery time and location for this order.';

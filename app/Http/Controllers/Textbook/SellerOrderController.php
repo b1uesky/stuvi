@@ -145,11 +145,9 @@ class SellerOrderController extends Controller
 
         $seller_order->update([
             'address_id'            => Input::get('address_id'),
-            'scheduled_pickup_time' => DateTime::saveDatetime(Input::get('scheduled_pickup_time'))
+            'scheduled_pickup_time' => DateTime::saveDatetime(Input::get('scheduled_pickup_time')),
+            'pickup_code'           => \App\Helpers\generateRandomNumber(4)
         ]);
-
-        // send an email with a pickup verification code to the seller
-        $seller_order->generatePickupCode();
 
         event(new SellerOrderPickupWasScheduled($seller_order));
 

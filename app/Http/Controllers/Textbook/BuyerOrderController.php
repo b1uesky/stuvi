@@ -420,7 +420,7 @@ class BuyerOrderController extends Controller
     {
         $buyer_order = BuyerOrder::find($id);
 
-        if ($buyer_order->isBelongTo(Auth::id()) && $buyer_order->isDeliverable())
+        if ($buyer_order->isBelongTo(Auth::id()) && $buyer_order->isDeliveryConfirmable())
         {
             return view('order.buyer.scheduleDelivery')
                 ->with('buyer_order', $buyer_order);
@@ -434,7 +434,7 @@ class BuyerOrderController extends Controller
     {
         $buyer_order = BuyerOrder::find($id);
 
-        if (!$buyer_order->isBelongTo(Auth::id()) || !$buyer_order->isDeliverable())
+        if (!$buyer_order->isBelongTo(Auth::id()) || !$buyer_order->isDeliveryConfirmable())
         {
             return redirect()->back()
                 ->with('error', 'You cannot update the delivery details for this order.');
@@ -449,7 +449,8 @@ class BuyerOrderController extends Controller
 
         $buyer_order->update([
             'shipping_address_id'       => Input::get('address_id'),
-            'scheduled_delivery_time'   => DateTime::saveDatetime(Input::get('scheduled_delivery_time'))
+            'scheduled_delivery_time'   => DateTime::saveDatetime(Input::get('scheduled_delivery_time')),
+            'delivery_code'             => \App\Helpers\generateRandomNumber(4)
         ]);
 
         event(new BuyerOrderDeliveryWasScheduled($buyer_order));

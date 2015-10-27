@@ -115,7 +115,7 @@
                     <input type="number" class="form-control input-lg" name="code" placeholder="Enter the 4-digit verification code" required/>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Confirm Pickup</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Confirm pickup</button>
             </form>
         @else
             <div class="alert alert-success" role="alert">The textbook has been picked up.</div>
