@@ -14,9 +14,9 @@ return [
         'unsubscribe' => null,
         'address'     => null,
         'logo'        => [
-            'path'   => 'https://s3.amazonaws.com/stuvi-logo/logo-md.png',
+            'path'   => 'https://s3.amazonaws.com/stuvi-logo/stuvi-logo-with-text-md.png',
             'width'  => '',
-            'height' => '80',
+            'height' => '100',
         ],
         'twitter'  => null,
         'facebook' => null,

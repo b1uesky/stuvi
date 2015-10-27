@@ -10,10 +10,6 @@
   height: 80vh;
   padding: $spacing-unit 0;
 
-  img {
-    margin-bottom: $spacing-unit / 2;
-  }
-
   @media(max-width: 767px) {
     height: auto;
   }

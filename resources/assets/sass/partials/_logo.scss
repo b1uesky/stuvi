@@ -1,7 +1,6 @@
 @import "../modules/all";
 
 // Logo container
-
 .logo-container {
   width: 120px;
   height: 100%;
@@ -14,6 +13,23 @@
 
   @media (max-width: 767px) {
     display: none;
+  }
+}
+
+.logo-container-lg {
+  padding: $spacing-unit 0;
+  text-align: center;
+
+  img {
+    height: 120px;
+  }
+
+  span {
+    color: $tiffany;
+    font-size: 5.5em;
+    font-weight: 300;
+    vertical-align: middle;
+    padding: 0 $spacing-unit/2;
   }
 }
 

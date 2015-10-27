@@ -16,7 +16,7 @@
 
                 {{-- Logo only when nav bar collapses into hamburger menu --}}
                 <a id="xs-screen-logo-link" class="" href="{{url('/')}}" >
-                    <img id="xs-screen-logo-img" class="" src="https://s3.amazonaws.com/stuvi-logo/logo-md.png" alt="stuvi logo">
+                    <img id="xs-screen-logo-img" class="" src="https://s3.amazonaws.com/stuvi-logo/stuvi-logo-sm.png" alt="stuvi logo">
                 </a>
 
                 <div class="logo-container">
