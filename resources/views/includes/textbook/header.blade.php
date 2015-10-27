@@ -20,14 +20,19 @@
                 </a>
 
                 <div class="logo-container">
-                    {{-- If on homepage, show the home logo which has white text--}}
-                    <a href="{{url('/')}}">
-                        @if(Request::url() == url('/') or Request::url() == url('/'))
-                            <img src="https://s3.amazonaws.com/stuvi-logo/logo-text-white-md.png" class="center-block" alt="stuvi logo">
+
+                    <a href="{{ url('/') }}">
+                        <img src="https://s3.amazonaws.com/stuvi-logo/stuvi-logo-sm.png" class="img-logo-sm" alt="stuvi logo">
+
+                        {{-- If on homepage, show the home logo which has white text--}}
+                        @if(Request::url() == url('/'))
+                            <span class="logo-text-white">Stuvi</span>
                         @else
-                            <img src="https://s3.amazonaws.com/stuvi-logo/logo-md.png" class="center-block" alt="stuvi logo">
+                            <span class="logo-text-black">Stuvi</span>
                         @endif
                     </a>
+
+
 
                 </div>
             </div>

@@ -58,22 +58,6 @@
   }
 }
 
-// Logo container
-
-.logo-container {
-  width: 120px;
-  height: 50px;
-
-  img {
-    width: auto;
-    height: 100%;
-  }
-
-  @media (max-width: 767px) {
-    display: none;
-  }
-}
-
 // Navbar on xs screen
 
 #xs-screen-logo-link{
