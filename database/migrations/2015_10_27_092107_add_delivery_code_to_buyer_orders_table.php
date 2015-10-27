@@ -13,7 +13,7 @@ class AddDeliveryCodeToBuyerOrdersTable extends Migration
     public function up()
     {
         Schema::table('buyer_orders', function (Blueprint $table) {
-            $table->integer('delivery_code')->nullable();
+            $table->tinyInteger('delivery_code')->nullable();
         });
     }
 
@@ -25,7 +25,7 @@ class AddDeliveryCodeToBuyerOrdersTable extends Migration
     public function down()
     {
         Schema::table('buyer_orders', function (Blueprint $table) {
-            $table->dropColumn('delivery_cde');
+            $table->dropColumn('delivery_code');
         });
     }
 }
