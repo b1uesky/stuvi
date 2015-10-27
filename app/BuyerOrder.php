@@ -190,7 +190,7 @@ class BuyerOrder extends Model
      *
      * @return bool
      */
-    public function isDeliveryConfirmable()
+    public function isDeliverySchedulable()
     {
         if ($this->cancelled || $this->isDelivered() || $this->isAssignedToCourier())
         {
@@ -272,7 +272,7 @@ class BuyerOrder extends Model
             $status = 'Assigning a courier';
             $detail = 'Your order is waiting to be assigned to a Stuvi courier.';
         }
-        elseif ($this->isDeliveryConfirmable())
+        elseif ($this->isDeliverySchedulable())
         {
             $status = 'Delivery details required';
             $detail = 'Please schedule your delivery time and location for this order.';

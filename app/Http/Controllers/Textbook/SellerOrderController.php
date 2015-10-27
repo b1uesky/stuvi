@@ -109,7 +109,7 @@ class SellerOrderController extends Controller
     {
         $seller_order = SellerOrder::find($seller_order_id);
 
-        if ($seller_order->isBelongTo(Auth::id()) && $seller_order->isPickupConfirmable())
+        if ($seller_order->isBelongTo(Auth::id()) && $seller_order->isPickupSchedulable())
         {
             return view('order.seller.schedulePickup')
                 ->withSellerOrder($seller_order);
@@ -130,7 +130,7 @@ class SellerOrderController extends Controller
     {
         $seller_order = SellerOrder::find($id);
 
-        if (!$seller_order->isBelongTo(Auth::id()) || !$seller_order->isPickupConfirmable())
+        if (!$seller_order->isBelongTo(Auth::id()) || !$seller_order->isPickupSchedulable())
         {
             return redirect('order/seller')
                 ->with('error', 'You cannot update the pickup details for this order.');

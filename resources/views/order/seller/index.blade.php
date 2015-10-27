@@ -86,7 +86,7 @@
 
                             {{-- action buttons --}}
                             <div class="col-md-3">
-                                @if ($seller_order->isPickupConfirmable())
+                                @if ($seller_order->isPickupSchedulable())
                                     <a class="btn btn-primary btn-block" href="{{ url('order/seller/' . $seller_order->id . '/schedulePickup') }}">Update pickup details</a>
                                 @endif
 

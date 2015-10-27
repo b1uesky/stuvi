@@ -420,7 +420,7 @@ class BuyerOrderController extends Controller
     {
         $buyer_order = BuyerOrder::find($id);
 
-        if ($buyer_order->isBelongTo(Auth::id()) && $buyer_order->isDeliveryConfirmable())
+        if ($buyer_order->isBelongTo(Auth::id()) && $buyer_order->isDeliverySchedulable())
         {
             return view('order.buyer.scheduleDelivery')
                 ->with('buyer_order', $buyer_order);
@@ -434,7 +434,7 @@ class BuyerOrderController extends Controller
     {
         $buyer_order = BuyerOrder::find($id);
 
-        if (!$buyer_order->isBelongTo(Auth::id()) || !$buyer_order->isDeliveryConfirmable())
+        if (!$buyer_order->isBelongTo(Auth::id()) || !$buyer_order->isDeliverySchedulable())
         {
             return redirect()->back()
                 ->with('error', 'You cannot update the delivery details for this order.');

@@ -247,7 +247,7 @@ class SellerOrder extends Model
      *
      * @return bool
      */
-    public function isPickUpConfirmable()
+    public function isPickupSchedulable()
     {
         return !$this->isAssignedToCourier() && !$this->cancelled;
     }

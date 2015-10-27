@@ -82,7 +82,7 @@
 
                             {{-- action buttons --}}
                             <div class="col-md-3">
-                                @if($buyer_order->isDeliveryConfirmable())
+                                @if($buyer_order->isDeliverySchedulable())
                                     <a class="btn btn-primary btn-block" href="{{ url('order/buyer/' . $buyer_order->id . '/scheduleDelivery') }}">Update delivery details</a>
                                 @endif
 
