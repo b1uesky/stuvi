@@ -147,6 +147,12 @@ class ProductController extends Controller
      */
     public function show($product)
     {
+        if ($product->isSold() || !$product->verified)
+        {
+            return redirect('textbook/buy')
+                ->with('error', 'This book is not available.');
+        }
+
         return view('product.show')
             ->withProduct($product)
             ->withQuery(Input::get('query'))
