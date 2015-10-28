@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3>Confirm your delivery address</h3>
+        <h3 class="panel-title">Confirm your delivery address</h3>
     </div>
 
     <ul class="list-group">

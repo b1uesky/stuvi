@@ -147,7 +147,10 @@ class ProductController extends Controller
      */
     public function show($product)
     {
-        if (!$product->verified || !$product->isSoldToBuyer(Auth::id()))
+        // do not show the product if:
+        // 1. the product is not verified or
+        // 2. the product is sold to someone else
+        if (!$product->verified || ($product->isSold() && !$product->isSoldToBuyer(Auth::id())))
         {
             return redirect('textbook/buy')
                 ->with('error', 'This book is not available.');

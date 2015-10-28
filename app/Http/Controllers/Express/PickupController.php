@@ -197,7 +197,7 @@ class PickupController extends Controller
 
         // if all seller orders of a buyer order are picked up
         // then the buyer order is deliverable
-        if ($seller_order->buyerOrder->isDeliverable())
+        if ($seller_order->buyerOrder->hasAllSellerOrdersPickedup())
         {
             event(new BuyerOrderWasDeliverable($seller_order->buyerOrder));
         }
