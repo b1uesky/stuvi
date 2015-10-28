@@ -68,3 +68,19 @@ a {
 {
   background-color: $primary-color !important;
 }
+
+// navbar
+.navbar-brand {
+  padding: 10px 15px !important;
+
+  img {
+    display: inline-block;
+    height: 100%;
+  }
+
+  span {
+    @media (max-width: 767px) {
+      color: $navbar-default-color;
+    }
+  }
+}

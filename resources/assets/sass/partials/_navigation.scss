@@ -57,39 +57,3 @@
     color: white;
   }
 }
-
-// Navbar on xs screen
-
-#xs-screen-logo-link{
-  position: absolute;
-  left:0;
-  @media(min-width: 767px){
-    visibility: hidden;
-  }
-}
-
-#xs-screen-logo-img{
-  height: 50px;
-  width: auto;
-}
-
-
-#nav-toggle-collapse{
-  float: right;
-  border: none;
-  z-index: 50;
-  margin-left: 10px;
-  &:hover, &:focus {
-    background: none;
-  }
-  .fa-bars {
-    color: $primary-color;
-    font-size: 1.5em;
-  }
-}
-
-@media(max-width: 767px){
-  .navbar-nav{
-    margin: 0;
-  }
-}

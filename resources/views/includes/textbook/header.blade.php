@@ -14,27 +14,17 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                {{-- Logo only when nav bar collapses into hamburger menu --}}
-                <a id="xs-screen-logo-link" class="" href="{{url('/')}}" >
-                    <img id="xs-screen-logo-img" class="" src="https://s3.amazonaws.com/stuvi-logo/stuvi-logo-sm.png" alt="stuvi logo">
+                <a href="{{ url('/') }}" class="navbar-brand">
+                    <img src="https://s3.amazonaws.com/stuvi-logo/stuvi-logo-sm.png" class="" alt="stuvi logo">
+
+                    {{-- If on homepage, show the home logo which has white text--}}
+                    @if(Request::url() == url('/'))
+                        <span class="logo-text-white">Stuvi</span>
+                    @else
+                        <span class="logo-text-black">Stuvi</span>
+                    @endif
                 </a>
 
-                <div class="logo-container">
-
-                    <a href="{{ url('/') }}">
-                        <img src="https://s3.amazonaws.com/stuvi-logo/stuvi-logo-sm.png" class="img-logo-sm" alt="stuvi logo">
-
-                        {{-- If on homepage, show the home logo which has white text--}}
-                        @if(Request::url() == url('/'))
-                            <span class="logo-text-white">Stuvi</span>
-                        @else
-                            <span class="logo-text-black">Stuvi</span>
-                        @endif
-                    </a>
-
-
-
-                </div>
             </div>
             <!-- End Navbar header -->
 
