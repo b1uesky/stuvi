@@ -32,7 +32,7 @@ class EmailProductAvailableSoonNotificationToSeller
         $book_title = $product->book->title;
 
         $email = new Email(
-            $subject = 'Please schedule a pickup for your book ' . $book_title . '.',
+            $subject = 'Please schedule a pickup for your book',
             $to = $seller->primaryEmailAddress(),
             $view = 'emails.product.available-soon',
             $data = [

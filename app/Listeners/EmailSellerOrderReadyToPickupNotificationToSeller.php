@@ -31,7 +31,7 @@ class EmailSellerOrderReadyToPickupNotificationToSeller
         $seller_order = $event->seller_order;
 
         $email = new Email(
-            $subject = 'We are ready to pickup your textbook: ' . $seller_order->book()->title . '.',
+            $subject = 'We are ready to pickup your book',
             $to = $seller_order->seller()->primaryEmailAddress(),
             $view = 'emails.sellerOrder.ready-to-pickup',
             $data = [

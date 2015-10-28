@@ -32,7 +32,7 @@ class EmailProductRejectedNotificationToSeller
         $book_title = $product->book->title;
 
         $email = new Email(
-            $subject = 'Sorry, your book ' . $book_title . ' is not accepted by Stuvi.',
+            $subject = 'Sorry, your book ' . $book_title . ' is not accepted by Stuvi',
             $to = $seller->primaryEmailAddress(),
             $view = 'emails.product.rejected',
             $data = [

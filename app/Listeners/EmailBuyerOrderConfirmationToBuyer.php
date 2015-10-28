@@ -30,7 +30,7 @@ class EmailBuyerOrderConfirmationToBuyer
         $buyer_order = $event->buyer_order;
 
         $email = new Email(
-            $subject = 'Your Stuvi order confirmation.',
+            $subject = 'Your Stuvi order confirmation',
             $to = $buyer_order->buyer->primaryEmailAddress(),
             $view = 'emails.buyerOrder.confirmation',
             $data = [

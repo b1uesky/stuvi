@@ -30,7 +30,7 @@ class EmailBuyerOrderDeliveredNotificationToBuyer
         $buyer_order = $event->buyer_order;
 
         $email = new Email(
-            $subject = 'Your Stuvi order has Delivered.',
+            $subject = 'Your Stuvi order has delivered',
             $to = $buyer_order->buyer->primaryEmailAddress(),
             $view = 'emails.buyerOrder.delivered',
             $data = [

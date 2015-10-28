@@ -30,7 +30,7 @@ class EmailNewEmailAddedConfirmationToUser
         $new_email = $event->email;
 
         $email = new Email(
-            $subject = 'Please verify your Stuvi Email address.',
+            $subject = 'Verify your new Stuvi email address',
             $to = $new_email->email_address,
             $view = 'emails.user.new-email-added',
             $data = [

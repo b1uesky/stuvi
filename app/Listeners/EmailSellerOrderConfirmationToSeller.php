@@ -30,7 +30,7 @@ class EmailSellerOrderConfirmationToSeller
         $seller_order = $event->seller_order;
 
         $email = new Email(
-            $subject = 'Your book ' . $seller_order->book()->title . ' has sold!',
+            $subject = 'Your book ' . $seller_order->book()->title . ' has sold',
             $to = $seller_order->seller()->primaryEmailAddress(),
             $view = 'emails.sellerOrder.confirmation',
             $data = [

@@ -31,7 +31,7 @@ class EmailDonationReadyToPickupNotificationToDonator
         $donation = $event->donation;
 
         $email = new Email(
-            $subject = 'We are ready to pickup your book donation.',
+            $subject = 'We are ready to pickup your book donation',
             $to = $donation->donator->primaryEmailAddress(),
             $view = 'emails.donation.ready-to-pickup',
             $data = [

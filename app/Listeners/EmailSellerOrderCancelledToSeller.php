@@ -32,7 +32,7 @@ class EmailSellerOrderCancelledToSeller
         if ($seller_order->isCancelledBySeller())
         {
             $email = new Email(
-                $subject = 'Your have cancelled your Stuvi order ' . $seller_order->book()->title . '.',
+                $subject = 'Your have cancelled your Stuvi order ' . $seller_order->book()->title,
                 $to = $seller_order->seller()->primaryEmailAddress(),
                 $view = 'emails.sellerOrder.cancelled-by-seller-to-seller',
                 $data = [

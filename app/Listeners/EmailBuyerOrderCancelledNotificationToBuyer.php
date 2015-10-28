@@ -32,7 +32,7 @@ class EmailBuyerOrderCancelledNotificationToBuyer
         if ($buyer_order->isCancelledByBuyer())
         {
             $email = new Email(
-                $subject = 'Your Stuvi order has been cancelled.',
+                $subject = 'Your Stuvi order was cancelled',
                 $to = $buyer_order->buyer->primaryEmailAddress(),
                 $view = 'emails.buyerOrder.cancelled',
                 $data = [

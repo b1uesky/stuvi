@@ -31,7 +31,7 @@ class EmailSellerOrderPickupScheduledConfirmationToSeller
         $seller_order = $event->seller_order;
 
         $email = new Email(
-            $subject = 'Your have scheduled a pickup for ' . $seller_order->book()->title . '.',
+            $subject = 'Your have scheduled a pickup for ' . $seller_order->book()->title,
             $to = $seller_order->seller()->primaryEmailAddress(),
             $view = 'emails.sellerOrder.pickup-scheduled',
             $data = [
