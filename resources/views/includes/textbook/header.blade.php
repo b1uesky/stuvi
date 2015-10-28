@@ -14,7 +14,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a href="{{ url('/') }}" class="navbar-brand">
+                <a href="{{ url('/') }}" class="navbar-brand navbar-brand-lg">
                     <img src="https://s3.amazonaws.com/stuvi-logo/stuvi-logo-sm.png" class="" alt="stuvi logo">
 
                     {{-- If on homepage, show the home logo which has white text--}}
