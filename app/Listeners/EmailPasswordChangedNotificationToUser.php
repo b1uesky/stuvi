@@ -32,7 +32,7 @@ class EmailPasswordChangedNotificationToUser
         $email = new Email(
             $subject = 'Your Stuvi password has changed.',
             $to = $user->primaryEmailAddress(),
-            $view = 'emails.passwordChanged',
+            $view = 'emails.user.password-changed',
             $data = [
                 'user' => $user
             ]

@@ -1,9 +1,12 @@
 <?php namespace App\Http\Controllers\Auth;
 
+use App\Helpers\Email;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 
 class PasswordController extends Controller {
 

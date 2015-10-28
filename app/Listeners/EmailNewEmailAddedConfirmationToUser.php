@@ -32,7 +32,7 @@ class EmailNewEmailAddedConfirmationToUser
         $email = new Email(
             $subject = 'Please verify your Stuvi Email address.',
             $to = $new_email->email_address,
-            $view = 'emails.emailConfirmation',
+            $view = 'emails.user.new-email-added',
             $data = [
                 'email' => $new_email
             ]

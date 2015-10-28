@@ -34,7 +34,7 @@ class EmailSignedUpConfirmationToUser
         $email = new Email(
             $subject = 'Welcom to Stuvi!',
             $to = $user->primaryEmailAddress(),
-            $view = 'emails.user.signedUp',
+            $view = 'emails.user.signed-up',
             $data = [
                 'first_name'        => $user->first_name,
                 'return_to'         => urlencode(Session::get('url.intended', '/user/activated')),
