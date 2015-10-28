@@ -29,7 +29,7 @@
                 <hr>
 
                 <p>You will receive an email confirmation shortly at <code>{{ Auth::user()->primaryEmail->email_address }}</code>.</p>
-                <p>Once our courier is ready, you will be notified the delivery time of your books.</p>
+                <p>When your order is ready, you will be notified to schedule a delivery time for your books.</p>
                 <p>Please feel free to <a href="{{ url('/contact') }}">contact us</a> with any questions or concerns.</p>
 
                 <br>
