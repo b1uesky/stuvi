@@ -35,18 +35,9 @@ class EmailSellerOrderPickupScheduledConfirmationToSeller
             $to = $seller_order->seller()->primaryEmailAddress(),
             $view = 'emails.sellerOrder.pickup-scheduled',
             $data = [
+                'seller_order'      => $seller_order,
                 'first_name'        => $seller_order->seller()->first_name,
-                'book_title'        => $seller_order->book()->title,
-                'seller_order_id'   => $seller_order->id,
-                'addressee'         => $seller_order->address->addressee,
-                'address_line1'     => $seller_order->address->address_line1,
-                'address_line2'     => $seller_order->address->address_line2,
-                'city'              => $seller_order->address->city,
-                'state_a2'          => $seller_order->address->state_a2,
-                'zip'               => $seller_order->address->zip,
-                'phone_number'      => $seller_order->address->phone_number,
-                'time'              => DateTime::showDatetime($seller_order->scheduled_pickup_time),
-                'pickup_code'       => $seller_order->pickup_code
+                'book_title'        => $seller_order->book()->title
             ]
         );
 

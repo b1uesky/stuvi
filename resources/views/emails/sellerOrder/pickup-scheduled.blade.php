@@ -3,11 +3,13 @@
 @section('content')
 
     @include ('beautymail::templates.sunny.heading' , [
-        'heading' => 'Pickup Confirmation',
+        'heading' => 'Pickup Scheduled',
         'level' => 'h1',
     ])
 
     @include('beautymail::templates.sunny.contentStart')
+
+    <?php $address = $seller_order->address; ?>
 
     <p>Hi {{ $first_name }},</p>
 
@@ -15,28 +17,24 @@
 
     <h2>Scheduled pickup address</h2>
 
-    <blockquote>
-        <address>
-            {{ $addressee }}<br>
-            {{ $address_line1 }}
-            @if($address_line2)
-                , {{ $address_line2 }}
-            @endif
-            <br>
-            {{ $city }}, {{ $state_a2 }} {{ $zip }}<br>
-            {{ $phone_number }}
-        </address>
-    </blockquote>
+    <address>
+        {{ $address->addressee }}<br>
+        {{ $address->address_line1 }}
+        @if($address->address_line2)
+            , {{ $address->address_line2 }}
+        @endif
+        <br>
+        {{ $address->city }}, {{ $address->state_a2 }} {{ $address->zip }}<br>
+        {{ $address->phone_number }}
+    </address>
 
     <h2>Scheduled pickup time</h2>
 
-    <blockquote>
-        <span>{{ $time }}</span>
-    </blockquote>
+    <p>{{ \App\Helpers\DateTime::showDatetime($seller_order->scheduled_pickup_time) }}</p>
 
-    <p>You can <a href="{{ url('/order/seller/'.$seller_order_id.'/schedulePickup') }}">reschedule</a> the pickup before it is assigned to our courier.</p>
+    <p>You can <a href="{{ url('/order/seller/'.$seller_order->id.'/schedulePickup') }}">reschedule</a> the pickup before it is assigned to our courier.</p>
 
-    <p>Once our courier has picked up your textbook, please show the following code to the courier: <strong>{{ $pickup_code }}</strong></p>
+    <p>Once our courier has picked up your textbook, please show the following code to the courier: <strong>{{ $seller_order->pickup_code }}</strong></p>
 
     @include('beautymail::templates.sunny.contentEnd')
 

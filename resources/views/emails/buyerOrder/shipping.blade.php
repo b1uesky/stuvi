@@ -45,7 +45,7 @@
         <strong>Grand total: ${{ $buyer_order->decimalAmount() }}</strong>
     </p>
 
-    <p>Once our courier has delivered your books, please show the following code to the courier: <strong>{{ $buyer_order->delivery_code }}</strong></p>
+    <p>Once our courier has arrived, please show the following code to the courier: <strong>{{ $buyer_order->delivery_code }}</strong></p>
 
     @include('beautymail::templates.sunny.contentEnd')
 

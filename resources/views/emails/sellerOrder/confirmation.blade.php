@@ -9,7 +9,9 @@
 
     @include('beautymail::templates.sunny.contentStart')
 
-    <p>{{ $first_name }}, your book <a href="{{ url('/order/seller/' . $seller_order_id) }}">{{ $book_title }}</a> has sold!</p>
+    <p>Hi {{ $first_name }},</p>
+
+    <p>Your book <a href="{{ url('/order/seller/' . $seller_order_id) }}">{{ $book_title }}</a> has sold!</p>
 
     <p>Please schedule a pickup at your convenience by clicking the button below.</p>
 
