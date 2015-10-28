@@ -8,7 +8,7 @@ use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmailBuyerOrderDeliveryNotification
+class EmailBuyerOrderDeliveryScheduledNotificationToStuvi
 {
     /**
      * Create the event listener.

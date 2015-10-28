@@ -2,13 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Events\DonationWasAssignedToCourier;
+use App\Events\DonationWasCreated;
 use App\Helpers\DateTime;
 use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmailDonationReadyToPickupNotification
+class EmailDonationPickupNotificationToStuvi
 {
     /**
      * Create the event listener.
@@ -23,22 +23,20 @@ class EmailDonationReadyToPickupNotification
     /**
      * Handle the event.
      *
-     * @param  DonationWasAssignedToCourier  $event
+     * @param  DonationWasCreated  $event
      * @return void
      */
-    public function handle(DonationWasAssignedToCourier $event)
+    public function handle(DonationWasCreated $event)
     {
         $donation = $event->donation;
 
         $email = new Email(
-            $subject = 'We are ready to pickup your book donation.',
-            $to = $donation->donator->primaryEmailAddress(),
-            $view = 'emails.donation.readyToPickupNotification',
+            $subject = 'Pickup book donation: #' . $donation->id,
+            $to = 'express@stuvi.com',
+            $view = 'emails.express.pickupDonationNotification',
             $data = [
-                'first_name'            => $donation->donator->first_name,
+                'donation'              => $donation,
                 'scheduled_pickup_time' => DateTime::showDatetime($donation->scheduled_pickup_time),
-                'courier_phone_number'  => $donation->courier->phone_number,
-                'pickup_code'           => $donation->pickup_code
             ]
         );
 

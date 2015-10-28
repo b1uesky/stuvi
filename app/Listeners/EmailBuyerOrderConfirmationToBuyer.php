@@ -2,12 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Events\BuyerOrderWasDelivered;
+use App\Events\BuyerOrderWasPlaced;
 use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmailBuyerOrderDeliveredNotification
+class EmailBuyerOrderConfirmationToBuyer
 {
     /**
      * Create the event listener.
@@ -22,19 +22,20 @@ class EmailBuyerOrderDeliveredNotification
     /**
      * Handle the event.
      *
-     * @param  BuyerOrderWasDelivered  $event
+     * @param  BuyerOrderWasPlaced  $event
      * @return void
      */
-    public function handle(BuyerOrderWasDelivered $event)
+    public function handle(BuyerOrderWasPlaced $event)
     {
         $buyer_order = $event->buyer_order;
 
         $email = new Email(
-            $subject = 'Your Stuvi order has Delivered.',
+            $subject = 'Your Stuvi order confirmation.',
             $to = $buyer_order->buyer->primaryEmailAddress(),
-            $view = 'emails.buyerOrder.deliveredNotification',
+            $view = 'emails.buyerOrder.confirmation',
             $data = [
-                'buyer_order'  => $buyer_order
+                'first_name'        => $buyer_order->buyer->first_name,
+                'buyer_order_id'    => $buyer_order->id
             ]
         );
 

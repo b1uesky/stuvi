@@ -7,7 +7,7 @@ use App\Helpers\Paypal;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class VoidAuthorizedPayment
+class VoidPaypalAuthorizedPaymentOfBuyerOrder
 {
     /**
      * Create the event listener.

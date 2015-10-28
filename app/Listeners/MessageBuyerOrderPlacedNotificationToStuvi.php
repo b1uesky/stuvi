@@ -7,7 +7,7 @@ use App\Events\BuyerOrderWasPlaced;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class MessageBuyerOrderPlacedNotification
+class MessageBuyerOrderPlacedNotificationToStuvi
 {
     /**
      * Create the event listener.

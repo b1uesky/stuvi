@@ -6,7 +6,7 @@ use App\Events\BuyerOrderWasDelivered;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class CreatePayoutToSellers
+class CreatePaypalPayoutToSellers
 {
     /**
      * Create the event listener.

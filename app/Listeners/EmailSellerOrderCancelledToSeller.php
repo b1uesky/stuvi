@@ -7,7 +7,7 @@ use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmailSellerOrderCancellationToSeller
+class EmailSellerOrderCancelledToSeller
 {
     /**
      * Create the event listener.

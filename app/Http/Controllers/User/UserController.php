@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\User;
 
+use App\Events\UserWasSignedUp;
 use App\Http\Controllers\Controller;
 use App\Profile;
 use Auth;
@@ -137,8 +138,9 @@ class UserController extends Controller
             return redirect('/')->with('error', 'Your account has already been activated.');
         }
 
-        $user->sendActivationEmail();
+        event(new UserWasSignedUp($user));
 
-        return redirect('user/activate')->with('success', 'An activation email has been sent. Please check your email.');
+        return redirect('user/activate')
+            ->with('success', 'An activation email has been sent. Please check your email.');
     }
 }

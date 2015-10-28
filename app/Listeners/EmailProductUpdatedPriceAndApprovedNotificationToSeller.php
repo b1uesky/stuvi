@@ -8,7 +8,7 @@ use App\Product;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmailSellerProductUpdatedPriceAndApprovedNotification
+class EmailProductUpdatedPriceAndApprovedNotificationToSeller
 {
     /**
      * Create the event listener.

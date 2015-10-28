@@ -2,12 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Events\ProductWasRejected;
+use App\Events\ProductIsAvailableSoon;
 use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmailSellerProductRejectedNotification
+class EmailProductAvailableSoonNotificationToSeller
 {
     /**
      * Create the event listener.
@@ -22,19 +22,19 @@ class EmailSellerProductRejectedNotification
     /**
      * Handle the event.
      *
-     * @param  ProductWasRejected  $event
+     * @param  ProductIsAvailableSoon  $event
      * @return void
      */
-    public function handle(ProductWasRejected $event)
+    public function handle(ProductIsAvailableSoon $event)
     {
         $product = $event->product;
         $seller = $product->seller;
         $book_title = $product->book->title;
 
         $email = new Email(
-            $subject = 'Sorry, your book ' . $book_title . ' is not accepted by Stuvi.',
+            $subject = 'Please schedule a pickup for your book ' . $book_title . '.',
             $to = $seller->primaryEmailAddress(),
-            $view = 'emails.product.rejectedNotification',
+            $view = 'emails.product.availableSoonNotification',
             $data = [
                 'product'           => $product,
                 'first_name'        => $seller->first_name,

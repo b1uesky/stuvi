@@ -7,7 +7,7 @@ use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmailBuyerOrderShippingNotification
+class EmailBuyerOrderShippedNotificationToBuyer
 {
     /**
      * Create the event listener.

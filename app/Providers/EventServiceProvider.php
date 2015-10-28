@@ -12,103 +12,123 @@ class EventServiceProvider extends ServiceProvider {
 	 */
 	protected $listen = [
 
-		// user
+		/*
+		|--------------------------------------------------------------------------
+		| User events
+		|--------------------------------------------------------------------------
+		*/
+
 		'App\Events\UserWasSignedUp' => [
-			'App\Listeners\EmailSignedUpConfirmation',
+			'App\Listeners\EmailSignedUpConfirmationToUser',
 		],
 
 		'App\Events\UserEmailWasAdded' => [
-			'App\Listeners\EmailUserEmailAddedConfirmation',
+			'App\Listeners\EmailNewEmailAddedConfirmationToUser',
 		],
 
 		'App\Events\UserPasswordWasChanged' => [
-			'App\Listeners\EmailUserPasswordChangedNotification',
+			'App\Listeners\EmailPasswordChangedNotificationToUser',
 		],
+
+		/*
+		|--------------------------------------------------------------------------
+		| Product events
+		|--------------------------------------------------------------------------
+		*/
 
 		// product that sells to user
 		'App\Events\ProductIsAvailableSoon' => [
-			'App\Listeners\EmailSellerProductAvailableSoonNotification',
+			'App\Listeners\EmailProductAvailableSoonNotificationToSeller',
 		],
 
 		// product that sells to stuvi
 		'App\Events\ProductWasUpdatedPriceAndApproved' => [
-			'App\Listeners\EmailSellerProductUpdatedPriceAndApprovedNotification',
+			'App\Listeners\EmailProductUpdatedPriceAndApprovedNotificationToSeller',
 		],
 
 		'App\Events\ProductWasRejected' => [
-			'App\Listeners\EmailSellerProductRejectedNotification',
+			'App\Listeners\EmailProductRejectedNotificationToSeller',
 		],
 
-		// buyer order
-		'App\Events\BuyerOrderWasPlaced' => [
-			'App\Listeners\EmailBuyerOrderConfirmation',
+		/*
+		|--------------------------------------------------------------------------
+		| Buyer order events
+		|--------------------------------------------------------------------------
+		*/
 
-			// to stuvi
-			'App\Listeners\MessageBuyerOrderPlacedNotification',
+		'App\Events\BuyerOrderWasPlaced' => [
+			'App\Listeners\EmailBuyerOrderConfirmationToBuyer',
+			'App\Listeners\MessageBuyerOrderPlacedNotificationToStuvi',
 		],
 
 		'App\Events\BuyerOrderWasDeliverable' => [
-			'App\Listeners\EmailBuyerOrderDeliverableNotification',
+			'App\Listeners\EmailBuyerOrderDeliverableNotificationToBuyer',
 		],
 
 		'App\Events\BuyerOrderDeliveryWasScheduled' => [
-			// to stuvi
-			'App\Listeners\EmailBuyerOrderDeliveryNotification',
+			'App\Listeners\EmailBuyerOrderDeliveryScheduledNotificationToStuvi',
 		],
 
 		'App\Events\BuyerOrderWasShipped' => [
-			'App\Listeners\EmailBuyerOrderShippingNotification',
+			'App\Listeners\EmailBuyerOrderShippedNotificationToBuyer',
 		],
 
 		'App\Events\BuyerOrderWasDelivered' => [
-			'App\Listeners\EmailBuyerOrderDeliveredNotification',
-			'App\Listeners\CaptureAuthorizedPaymentFromBuyer',
-			'App\Listeners\CreatePayoutToSellers',
+			'App\Listeners\EmailBuyerOrderDeliveredNotificationToBuyer',
+			'App\Listeners\CapturePaypalAuthorizedPaymentFromBuyer',
+			'App\Listeners\CreatePaypalPayoutToSellers',
 		],
 
         'App\Events\BuyerOrderWasCancelled' => [
-            'App\Listeners\EmailBuyerOrderCancelledNotification',
-			'App\Listeners\VoidAuthorizedPayment',
+            'App\Listeners\EmailBuyerOrderCancelledNotificationToBuyer',
+			'App\Listeners\VoidPaypalAuthorizedPaymentOfBuyerOrder',
         ],
 
-		// seller order
+		/*
+		|--------------------------------------------------------------------------
+		| Seller order events
+		|--------------------------------------------------------------------------
+		*/
+
 		'App\Events\SellerOrderWasCreated' => [
-			'App\Listeners\EmailSellerOrderConfirmation',
+			'App\Listeners\EmailSellerOrderConfirmationToSeller',
 		],
 
 		'App\Events\SellerOrderPickupWasScheduled' => [
-			// to seller
-			'App\Listeners\EmailSellerOrderPickupConfirmation',
-//			'App\Listeners\MessageSellerOrderPickupConfirmation',
-
-			// to stuvi
-			'App\Listeners\EmailSellerOrderPickupNotification',
+			'App\Listeners\EmailSellerOrderPickupScheduledConfirmationToSeller',
+			'App\Listeners\EmailSellerOrderPickupScheduledNotificationToStuvi',
 		],
 
 		'App\Events\SellerOrderWasAssignedToCourier' => [
-			// to seller
-			'App\Listeners\EmailSellerOrderReadyToPickupNotification',
-//			'App\Listeners\MessageSellerOrderReadyToPickupNotification',
+			'App\Listeners\EmailSellerOrderReadyToPickupNotificationToSeller',
 		],
 
 		'App\Events\SellerOrderWasCancelled' => [
-			'App\Listeners\MessageSellerOrderCancellationToCourier',
-			'App\Listeners\EmailSellerOrderCancellationToBuyer',
-            'App\Listeners\EmailSellerOrderCancellationToSeller',
+			'App\Listeners\MessageSellerOrderCancelledToCourier',
+			'App\Listeners\EmailSellerOrderCancelledToBuyer',
+            'App\Listeners\EmailSellerOrderCancelledToSeller',
 		],
 
-		// Donation
+		/*
+		|--------------------------------------------------------------------------
+		| Donation events
+		|--------------------------------------------------------------------------
+		*/
+
 		'App\Events\DonationWasCreated' => [
-			// to stuvi
-			'App\Listeners\EmailDonationPickupNotification',
+			'App\Listeners\EmailDonationPickupNotificationToStuvi',
 		],
 
 		'App\Events\DonationWasAssignedToCourier' => [
-			// to donator
-			'App\Listeners\EmailDonationReadyToPickupNotification',
+			'App\Listeners\EmailDonationReadyToPickupNotificationToDonator',
 		],
 
-		// contact
+		/*
+		|--------------------------------------------------------------------------
+		| Contact events
+		|--------------------------------------------------------------------------
+		*/
+
 		'App\Events\ContactMessageWasCreated' => [
 			'App\Listeners\EmailContactMessageToStaff',
 		],

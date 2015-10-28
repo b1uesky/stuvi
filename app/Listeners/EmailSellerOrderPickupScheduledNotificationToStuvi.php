@@ -8,7 +8,7 @@ use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmailSellerOrderPickupNotification
+class EmailSellerOrderPickupScheduledNotificationToStuvi
 {
     /**
      * Create the event listener.

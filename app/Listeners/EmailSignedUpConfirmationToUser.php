@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 use Illuminate\Support\Facades\Session;
 
-class EmailSignedUpConfirmation
+class EmailSignedUpConfirmationToUser
 {
     /**
      * Create the event listener.
@@ -34,7 +34,7 @@ class EmailSignedUpConfirmation
         $email = new Email(
             $subject = 'Welcom to Stuvi!',
             $to = $user->primaryEmailAddress(),
-            $view = 'emails.welcome',
+            $view = 'emails.user.signedUp',
             $data = [
                 'first_name'        => $user->first_name,
                 'return_to'         => urlencode(Session::get('url.intended', '/user/activated')),

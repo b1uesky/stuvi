@@ -2,12 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Events\UserEmailWasAdded;
+use App\Events\UserPasswordWasChanged;
 use App\Helpers\Email;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmailUserEmailAddedConfirmation
+class EmailPasswordChangedNotificationToUser
 {
     /**
      * Create the event listener.
@@ -22,19 +22,19 @@ class EmailUserEmailAddedConfirmation
     /**
      * Handle the event.
      *
-     * @param  UserEmailWasAdded  $event
+     * @param  UserPasswordWasChanged  $event
      * @return void
      */
-    public function handle(UserEmailWasAdded $event)
+    public function handle(UserPasswordWasChanged $event)
     {
-        $new_email = $event->email;
+        $user = $event->user;
 
         $email = new Email(
-            $subject = 'Please verify your Stuvi Email address.',
-            $to = $new_email->email_address,
-            $view = 'emails.emailConfirmation',
+            $subject = 'Your Stuvi password has changed.',
+            $to = $user->primaryEmailAddress(),
+            $view = 'emails.passwordChanged',
             $data = [
-                'email' => $new_email
+                'user' => $user
             ]
         );
 

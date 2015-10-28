@@ -7,7 +7,7 @@ use App\Events\SellerOrderWasCancelled;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class MessageSellerOrderCancellationToCourier
+class MessageSellerOrderCancelledToCourier
 {
     /**
      * Create the event listener.
