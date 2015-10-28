@@ -99,6 +99,24 @@ class Product extends Model
         return false;
     }
 
+    /**
+     * Check if the product is sold to a specific buyer.
+     *
+     * @param $buyer_id
+     * @return bool
+     */
+    public function isSoldToBuyer($buyer_id)
+    {
+        $seller_order = $this->currentSellerOrder();
+
+        if ($seller_order)
+        {
+            return $buyer_id == $seller_order->buyerOrder->buyer_id;
+        }
+
+        return false;
+    }
+
     public function isInCart($user_id)
     {
         $cart = Cart::where('user_id', $user_id)

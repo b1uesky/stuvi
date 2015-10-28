@@ -142,29 +142,35 @@
                             <span class="glyphicon glyphicon-ok"></span>
                             Added to cart
                         </a>
-                    @elseif(!$product->isSold() && $product->seller == Auth::user())
-                        <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-primary btn-block">
-                            <span class="glyphicon glyphicon-edit"></span> Edit
-                        </a>
+                    @elseif(!$product->isSold())
+                        @if($product->seller == Auth::user())
+                            <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-primary btn-block">
+                                <span class="glyphicon glyphicon-edit"></span> Edit
+                            </a>
 
-                        <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
-                                data-target="#delete-product"
-                                data-product-id="{{ $product->id }}"
-                                data-book-title="{{ $product->book->title }}">
-                            <span class="glyphicon glyphicon-remove"></span> Delete
-                        </button>
-                    @else
-                        <form method="post" class="add-to-cart" action="{{ url('cart/add/' . $product->id) }}">
-                            {!! csrf_field() !!}
-                            <button type="submit" class="btn btn-primary btn-block add-cart-btn">
-                                <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
+                            <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
+                                    data-target="#delete-product"
+                                    data-product-id="{{ $product->id }}"
+                                    data-book-title="{{ $product->book->title }}">
+                                <span class="glyphicon glyphicon-remove"></span> Delete
                             </button>
-                        </form>
+                        @else
+                            <form method="post" class="add-to-cart" action="{{ url('cart/add/' . $product->id) }}">
+                                {!! csrf_field() !!}
+                                <button type="submit" class="btn btn-primary btn-block add-cart-btn">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
+                                </button>
+                            </form>
+                        @endif
+                    @else
+                        <a class="btn btn-primary btn-block disabled" href="#" role="button">
+                            Ordered by you
+                        </a>
                     @endif
                 @else
                     <span>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a
                                 data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.
-            </span>
+                    </span>
                 @endif
             </div>
         </div>

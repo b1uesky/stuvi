@@ -9,15 +9,52 @@
 
     @include('beautymail::templates.sunny.contentStart')
 
+    <?php
+    $count_items = count($buyer_order->seller_orders);
+    $address = $buyer_order->shipping_address;
+    ?>
+
     <p>Hi {{ $first_name }},</p>
 
-    <p>Thank you for shopping with us. We will let you know when your order is on its way!</p>
+    <p>Thank you for shopping with us. You ordered the following {{ $count_items > 1 ? 'items' : 'item' }}:</p>
+
+    <ol>
+        @foreach($buyer_order->products() as $product)
+            <li><a href="{{ url('textbook/buy/product/' . $product->id) }}">{{ $product->book->title }}</a></li>
+        @endforeach
+    </ol>
+
+    <h2>Details</h2>
+
+    <hr>
+    
+    <p>Ship to:</p>
+
+    <address>
+        {{ $address->addressee }}<br>
+        {{ $address->address_line1 }}
+        @if($address->address_line2)
+            , {{ $address->address_line2 }}
+        @endif
+        <br>
+        {{ $address->city }}, {{ $address->state_a2 }} {{ $address->zip }}
+    </address>
+
+    <br>
+
+    <p>
+        Total before tax: ${{ $buyer_order->decimalSubtotal() }}<br>
+        Tax collected: ${{ $buyer_order->decimalTax() }}<br>
+        <strong>Grand total: ${{ $buyer_order->decimalAmount() }}</strong>
+    </p>
+
+    <p>Once your order is ready, we will notify you to schedule a delivery.</p>
 
     @include('beautymail::templates.sunny.contentEnd')
 
     @include('beautymail::templates.sunny.button', [
             'title' => 'View order details',
-            'link' => url('order/buyer/' . $buyer_order_id)
+            'link' => url('order/buyer/' . $buyer_order->id)
     ])
 
 @stop
