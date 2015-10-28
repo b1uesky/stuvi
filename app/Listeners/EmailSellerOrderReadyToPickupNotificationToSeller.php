@@ -33,7 +33,7 @@ class EmailSellerOrderReadyToPickupNotificationToSeller
         $email = new Email(
             $subject = 'We are ready to pickup your textbook: ' . $seller_order->book()->title . '.',
             $to = $seller_order->seller()->primaryEmailAddress(),
-            $view = 'emails.sellerOrder.readyToPickupNotification',
+            $view = 'emails.sellerOrder.ready-to-pickup',
             $data = [
                 'first_name'        => $seller_order->seller()->first_name,
                 'book_title'        => $seller_order->book()->title,

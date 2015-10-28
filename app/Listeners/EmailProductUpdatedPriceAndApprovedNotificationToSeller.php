@@ -34,7 +34,7 @@ class EmailProductUpdatedPriceAndApprovedNotificationToSeller
         $email = new Email(
             $subject = 'Your book ' . $book_title . ' has been accepted by Stuvi.',
             $to = $seller->primaryEmailAddress(),
-            $view = 'emails.product.updatedPriceAndApprovedNotification',
+            $view = 'emails.product.updated-price-and-approved',
             $data = [
                 'seller_order'      => $seller_order,
                 'first_name'        => $seller->first_name,

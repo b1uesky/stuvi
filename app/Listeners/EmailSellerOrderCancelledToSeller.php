@@ -34,7 +34,7 @@ class EmailSellerOrderCancelledToSeller
             $email = new Email(
                 $subject = 'Your have cancelled your Stuvi order ' . $seller_order->book()->title . '.',
                 $to = $seller_order->seller()->primaryEmailAddress(),
-                $view = 'emails.sellerOrder.cancelledBySellerNotificationToSeller',
+                $view = 'emails.sellerOrder.cancelled-by-seller-to-seller',
                 $data = [
                     'seller_order' => $seller_order
                 ]
@@ -45,7 +45,7 @@ class EmailSellerOrderCancelledToSeller
             $email = new Email(
                 $subject = 'Your book buyer has decided not to purchase your book ' . $seller_order->book()->title . '.',
                 $to = $seller_order->seller()->primaryEmailAddress(),
-                $view = 'emails.sellerOrder.cancelledByBuyerNotificationToSeller',
+                $view = 'emails.sellerOrder.cancelled-by-buyer-to-seller',
                 $data = [
                     'seller_order' => $seller_order
                 ]

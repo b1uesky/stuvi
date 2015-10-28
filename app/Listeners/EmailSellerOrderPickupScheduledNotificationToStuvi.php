@@ -33,7 +33,7 @@ class EmailSellerOrderPickupScheduledNotificationToStuvi
         $email = new Email(
             $subject = 'Pickup: #' . $seller_order->id . ' - ' . $seller_order->book()->title,
             $to = 'express@stuvi.com',
-            $view = 'emails.express.pickupNotification',
+            $view = 'emails.express.pickup',
             $data = [
                 'seller_order_id'   => $seller_order->id,
                 'book_title'        => $seller_order->book()->title,

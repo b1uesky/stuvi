@@ -33,7 +33,7 @@ class EmailDonationReadyToPickupNotificationToDonator
         $email = new Email(
             $subject = 'We are ready to pickup your book donation.',
             $to = $donation->donator->primaryEmailAddress(),
-            $view = 'emails.donation.readyToPickupNotification',
+            $view = 'emails.donation.ready-to-pickup',
             $data = [
                 'first_name'            => $donation->donator->first_name,
                 'scheduled_pickup_time' => DateTime::showDatetime($donation->scheduled_pickup_time),

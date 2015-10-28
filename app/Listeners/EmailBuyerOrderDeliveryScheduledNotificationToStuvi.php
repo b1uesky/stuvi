@@ -33,7 +33,7 @@ class EmailBuyerOrderDeliveryScheduledNotificationToStuvi
         $email = new Email(
             $subject = 'Delivery: #' . $buyer_order->id,
             $to = 'express@stuvi.com',
-            $view = 'emails.express.deliveryNotification',
+            $view = 'emails.express.delivery',
             $data = [
                 'buyer_order_id'    => $buyer_order->id,
                 'scheduled_delivery_time'   => DateTime::showDatetime($buyer_order->scheduled_delivery_time),

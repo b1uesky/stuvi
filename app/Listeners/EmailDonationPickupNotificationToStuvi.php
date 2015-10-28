@@ -33,7 +33,7 @@ class EmailDonationPickupNotificationToStuvi
         $email = new Email(
             $subject = 'Pickup book donation: #' . $donation->id,
             $to = 'express@stuvi.com',
-            $view = 'emails.express.pickupDonationNotification',
+            $view = 'emails.express.pickup-donation',
             $data = [
                 'donation'              => $donation,
                 'scheduled_pickup_time' => DateTime::showDatetime($donation->scheduled_pickup_time),
