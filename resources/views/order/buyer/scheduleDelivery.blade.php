@@ -1,6 +1,6 @@
 @extends('layouts.textbook')
 
-@section('title', 'Schedule a pickup')
+@section('title', 'Schedule a delivery')
 
 @section('content')
 
@@ -8,6 +8,10 @@
 
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+
+                <div class="page-header">
+                    <h1>Schedule delivery</h1>
+                </div>
 
                 @include('includes.textbook.delivery-address')
                 @include('includes.textbook.delivery-time')

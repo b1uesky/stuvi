@@ -13,7 +13,7 @@
 
     <p>Hi {{ $first_name }},</p>
 
-    <p>You have successfully scheduled the pickup for your textbook <a href="{{ url('/order/seller/' . $seller_order_id) }}">{{ $book_title }}</a>!</p>
+    <p>You have successfully scheduled the pickup for your textbook <a href="{{ url('/order/seller/' . $seller_order->id) }}">{{ $book_title }}</a>!</p>
 
     <h2>Scheduled pickup address</h2>
 
@@ -27,6 +27,8 @@
         {{ $address->city }}, {{ $address->state_a2 }} {{ $address->zip }}<br>
         {{ $address->phone_number }}
     </address>
+
+    <br>
 
     <h2>Scheduled pickup time</h2>
 

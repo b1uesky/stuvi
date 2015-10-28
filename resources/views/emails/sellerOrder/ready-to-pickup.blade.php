@@ -28,6 +28,8 @@
         {{ $address->phone_number }}
     </address>
 
+    <br>
+
     <h2>Scheduled pickup time</h2>
 
     <p>{{ \App\Helpers\DateTime::showDatetime($seller_order->scheduled_pickup_time) }}</p>

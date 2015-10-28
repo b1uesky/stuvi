@@ -36,7 +36,7 @@ class EmailSellerOrderConfirmationToSeller
             $data = [
                 'first_name'        => $seller_order->seller()->first_name,
                 'book_title'        => $seller_order->book()->title,
-                'seller_order_id'   => $seller_order->id,
+                'seller_order'   => $seller_order,
             ]
         );
 

@@ -9,6 +9,10 @@
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
 
+                <div class="page-header">
+                    <h1>Schedule pickup</h1>
+                </div>
+
                 @include('includes.textbook.pickup-address')
                 @include('includes.textbook.pickup-time')
 

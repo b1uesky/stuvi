@@ -11,7 +11,7 @@
 
     <p>Hi {{ $first_name }},</p>
 
-    <p>Your book <a href="{{ url('/order/seller/' . $seller_order_id) }}">{{ $book_title }}</a> has sold!</p>
+    <p>Your book <a href="{{ url('/order/seller/' . $seller_order->id) }}">{{ $book_title }}</a> has sold!</p>
 
     <p>Please schedule a pickup at your convenience by clicking the button below.</p>
 
@@ -19,7 +19,7 @@
 
     @include('beautymail::templates.sunny.button', [
             'title' => 'Schedule pickup',
-            'link' => url('/order/seller/' . $seller_order_id . '/schedulePickup')
+            'link' => url('/order/seller/' . $seller_order->id . '/schedulePickup')
     ])
 
 @stop
