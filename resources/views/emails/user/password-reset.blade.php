@@ -1,4 +1,4 @@
-<p>Hi, Stuvier</p>
+<p>Hi Stuvier,</p>
 
 <p>It looks like you tried to reset your password. If it's not you, please contact us at {{ config('customer_service.phone') }} as soon as possible.</p>
 

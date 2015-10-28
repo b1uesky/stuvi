@@ -11,11 +11,17 @@
 
     <p>Hi {{ $buyer_order->buyer->first_name }},</p>
 
-    <p>Your order is out for delivery by a Stuvi Courier!</p>
+    <p>Your order is out for delivery!</p>
 
     <h2>Details</h2>
 
     <hr>
+
+    <ol>
+        @foreach($buyer_order->products() as $product)
+            <li><a href="{{ url('textbook/buy/product/' . $product->id) }}">{{ $product->book->title }}</a></li>
+        @endforeach
+    </ol>
 
     <p>Shipped to:</p>
 
@@ -36,7 +42,7 @@
     <p>
         Total before tax: ${{ $buyer_order->decimalSubtotal() }}<br>
         Tax collected: ${{ $buyer_order->decimalTax() }}<br>
-        Grand total: ${{ $buyer_order->decimalAmount() }}
+        <strong>Grand total: ${{ $buyer_order->decimalAmount() }}</strong>
     </p>
 
     <p>Once our courier has delivered your books, please show the following code to the courier: <strong>{{ $buyer_order->delivery_code }}</strong></p>

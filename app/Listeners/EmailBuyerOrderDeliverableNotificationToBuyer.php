@@ -35,7 +35,7 @@ class EmailBuyerOrderDeliverableNotificationToBuyer
             $view = 'emails.buyerOrder.deliverable',
             $data = [
                 'first_name'        => $buyer_order->buyer->first_name,
-                'buyer_order_id'    => $buyer_order->id
+                'buyer_order'    => $buyer_order
             ]
         );
 

@@ -1,2 +1,2 @@
-Hi, {{ $contact['name'] }}, your message sent to Stuvi: {{ $contact['message'] }}
+Hi {{ $contact['name'] }}, your message sent to Stuvi: {{ $contact['message'] }}
 Stuvi's response: {{ $response }}

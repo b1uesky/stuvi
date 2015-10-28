@@ -17,6 +17,12 @@
 
     <hr>
 
+    <ol>
+        @foreach($buyer_order->products() as $product)
+            <li><a href="{{ url('textbook/buy/product/' . $product->id) }}">{{ $product->book->title }}</a></li>
+        @endforeach
+    </ol>
+
     <p>Delivered to:</p>
 
     <?php $address = $buyer_order->shipping_address; ?>
@@ -36,7 +42,7 @@
     <p>
         Total before tax: ${{ $buyer_order->decimalSubtotal() }}<br>
         Tax collected: ${{ $buyer_order->decimalTax() }}<br>
-        Grand total: ${{ $buyer_order->decimalAmount() }}
+        <strong>Grand total: ${{ $buyer_order->decimalAmount() }}</strong>
     </p>
 
     @include('beautymail::templates.sunny.contentEnd')

@@ -9,7 +9,7 @@
 
     @include('beautymail::templates.sunny.contentStart')
 
-    <p>Hi, {{ $first_name }}</p>
+    <p>Hi {{ $first_name }},</p>
 
     <p>Please verify your Email address by clicking the button below:</p>
 
