@@ -14,9 +14,10 @@
 
                 @include('includes.textbook.pickup-address')
 
-                <h3>Choose a pickup time</h3>
-
                 <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Choose a pickup time</h3>
+                    </div>
                     <div class="panel-body">
                         <div id="datetimepicker-donation-pickup-time"></div>
                     </div>
