@@ -14,28 +14,33 @@
                     </ol>
                 </div>
 
-                <div class="page-header">
-                    <h1>Confirm Your Book</h1>
-                </div>
+                <br>
 
-                <div class="container-fluid">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Do you want to sell this book?
+                        </h3>
+                    </div>
 
-                    @include('includes.textbook.book-details-confirm')
+                    <div class="panel-body">
+                        @include('includes.textbook.book-details-confirm')
+                    </div>
 
-                    <br>
-
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a href="{{ url('textbook/sell') }}" class="btn btn-muted btn-block">
-                                No, this is not the book I want to sell.
-                            </a>
-                        </div>
-                        <div class="col-xs-6">
-                            @if(Auth::guest())
-                                <a href="#" class="btn btn-primary btn-block disabled">Login or singup to continue</a>
-                            @else
-                                <a href="{{ url('textbook/sell/product/' . $book->id . '/create') }}" class="btn btn-primary btn-block btn-to-details">Continue</a>
-                            @endif
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="{{ url('textbook/sell') }}" class="btn btn-default btn-block">
+                                    No, go back
+                                </a>
+                            </div>
+                            <div class="col-xs-6">
+                                @if(Auth::guest())
+                                    <a href="#" class="btn btn-primary btn-block disabled">Login or singup to continue</a>
+                                @else
+                                    <a href="{{ url('textbook/sell/product/' . $book->id . '/create') }}" class="btn btn-primary btn-block btn-to-details">Continue</a>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -29,9 +29,7 @@
                             <input type="hidden" name="book_id" value="{{ $book->id }}"/>
                             <input type="hidden" name="book_title" value="{{ $book->title }}">
 
-                            <section class="details">
-                                <div class="panel panel-presentation">
-
+                            <div class="panel panel-presentation">
                                     <div class="panel-body">
 
                                         {{--General Condition--}}
@@ -137,7 +135,7 @@
                                         </div>
 
                                         <div class="from-group">
-                                            <label>Availability</label>
+                                            <label>When is it available?</label>
 
                                             <div class="radio">
                                                 <label>
@@ -151,7 +149,9 @@
                                                 </label>
                                             </div>
 
-                                            <input type="text" class="hidden form-control" id="datetimepicker-available-date">
+                                            <div id="datetimepicker-available-date" class="hidden"></div>
+
+                                            {{--<input type="text" class="hidden form-control" id="datetimepicker-available-date">--}}
 
                                             <br>
                                         </div>
@@ -168,7 +168,7 @@
 
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="sell_to" id="sell-to-stuvi" value="stuvi"> Sell the book to Stuvi and get paid after approval
+                                                    <input type="radio" name="sell_to" id="sell-to-stuvi" value="stuvi"> Sell the book directly to Stuvi and get paid after approval
                                                 </label>
                                             </div>
                                         </div>
@@ -180,7 +180,7 @@
                                             <div class="input-group">
                                                 <div class="input-group-addon">$</div>
                                                 <input type="number" step="0.01" min="0.00" name="price"
-                                                       class="form-control" placeholder="Set a sale price for your book">
+                                                       class="form-control" placeholder="Set a price for your book">
                                             </div>
                                         </div>
 
@@ -225,7 +225,6 @@
                                         <input type="submit" name="submit" class="btn btn-lg btn-primary center-block" value="Submit">
                                     </div>
                                 </div>
-                            </section>
                         </form>
                     @endif
                 </div>

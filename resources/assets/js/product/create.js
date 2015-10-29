@@ -24,6 +24,7 @@ $(document).ready(function () {
     });
 
     $('#datetimepicker-available-date').datetimepicker({
+        inline: true,
         format: date_format,
         minDate: moment()
     });
