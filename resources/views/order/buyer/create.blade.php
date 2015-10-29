@@ -30,139 +30,41 @@
                 <div class="container-fluid">
                     {{-- Shipping address --}}
                     <div class="row">
-
-                        @if(count(Auth::user()->addresses) < 1)
-                            <h3>Enter a new shipping address</h3>
-
-                            <form action="{{ url('address/store') }}" method="post">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                                <div class="form-group">
-                                    <label for="">Full name</label>
-                                    <input type="text" class="form-control" name="addressee">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="">Address line 1</label>
-                                    <input type="text" class="form-control" name="address_line1">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="">Address line 2</label>
-                                    <input type="text" class="form-control"
-                                           name="address_line2" placeholder="Apartment, suite, unit, building, etc.">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="">City</label>
-                                    <input type="text" class="form-control" name="city">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="">State</label>
-                                    <input type="text" class="form-control" name="state_a2">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="">ZIP</label>
-                                    <input type="text" class="form-control" name="zip">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="">Phone number</label>
-                                    <input type="text" class="form-control" name="phone_number">
-                                </div>
-
-                                <input type="submit" class="btn btn-primary" value="Use this address">
-                            </form>
-                        @else
-                            <h3>Choose a shipping address</h3>
-
-                            <ul class="list-group">
-
-                                @foreach(Auth::user()->addresses as $address)
-                                    <li class="list-group-item">
-                                        <ul class="no-bullet no-padding-left">
-                                            <li>{{ $address->addressee }}</li>
-                                            <li>
-                                                {{ $address->address_line1 }}
-                                                @if($address->address_line2)
-                                                    , {{ $address->address_line2 }}
-                                                @endif
-                                            </li>
-                                            <li>{{ $address->city }}, {{ $address->state_a2 }} {{ $address->zip }}</li>
-                                            <li>
-                                                {{ $address->phone_number }}
-                                                <a href="#edit-address" data-toggle="modal"
-                                                   data-address_id="{{ $address->id }}"
-                                                   data-addressee="{{ $address->addressee }}"
-                                                   data-address_line1="{{ $address->address_line1 }}"
-                                                   data-address_line2="{{ $address->address_line2 }}"
-                                                   data-city="{{ $address->city }}"
-                                                   data-state_a2="{{ $address->state_a2 }}"
-                                                   data-zip="{{ $address->zip }}"
-                                                   data-phone_number="{{ $address->phone_number }}">
-                                                    Edit
-                                                </a>
-                                            </li>
-                                            <br>
-                                            <li>
-                                                @if($address->is_default)
-                                                    <button class="btn btn-primary disabled">Selected address</button>
-                                                @else
-                                                    <form action="{{ url('address/select') }}" method="post" class="no-margin-bottom">
-                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                        <input type="hidden" name="selected_address_id" value="{{ $address->id }}">
-                                                        <input type="submit" class="btn btn-primary" value="Use this address">
-                                                    </form>
-                                                @endif
-                                            </li>
-                                        </ul>
-                                    </li>
-                                @endforeach
-
-                                {{-- Add a new address --}}
-                                <li class="list-group-item">
-                                    <a href="#add-address" data-toggle="modal">
-                                        <span class="glyphicon glyphicon-plus"></span> Add a new address
-                                    </a>
-                                </li>
-                            </ul>
-                        @endif
+                        @include('includes.textbook.shipping-address')
                     </div>
 
                     {{-- Payment method --}}
                     <div class="row">
 
-                        <h3>Payment method</h3>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Payment method</h3>
+                            </div>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="payment_method_select" id="payment_method_paypal" value="paypal" checked>
-                                <strong>PayPal</strong>
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="payment_method_select" id="payment_method_cash" value="cash">
-                                <strong>Cash</strong>
-                            </label>
-                        </div>
+                            <div class="panel-body">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="payment_method_select" id="payment_method_paypal" value="paypal" checked>
+                                        <strong>PayPal</strong>
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="payment_method_select" id="payment_method_cash" value="cash">
+                                        <strong>Cash</strong>
+                                    </label>
+                                </div>
 
-                        <small class="text-success">We only collect the payment after delivery.</small>
+                                <!-- Nav tabs for payment methods -->
+                                {{--<ul class="nav nav-pills" role="tablist">--}}
+                                {{--<li role="presentation" class="active"><a href="#credit-card" aria-controls="credit-card"--}}
+                                {{--role="tab" data-toggle="tab">Credit Card</a></li>--}}
+                                {{--<li role="presentation" class="active"><a href="#paypal" aria-controls="paypal" role="tab"--}}
+                                {{--data-toggle="tab">PayPal</a></li>--}}
+                                {{--</ul>--}}
 
-
-
-                            <!-- Nav tabs for payment methods -->
-                            {{--<ul class="nav nav-pills" role="tablist">--}}
-                            {{--<li role="presentation" class="active"><a href="#credit-card" aria-controls="credit-card"--}}
-                            {{--role="tab" data-toggle="tab">Credit Card</a></li>--}}
-                            {{--<li role="presentation" class="active"><a href="#paypal" aria-controls="paypal" role="tab"--}}
-                            {{--data-toggle="tab">PayPal</a></li>--}}
-                            {{--</ul>--}}
-
-                            <!-- Tab panes -->
-                            {{--<div class="tab-content">--}}
+                                <!-- Tab panes -->
+                                {{--<div class="tab-content">--}}
                                 {{--<div role="tabpanel" class="tab-pane fade in active" id="credit-card">--}}
                                 {{--<div class="payment-card-container">--}}
                                 {{--<div class="row">--}}
@@ -209,54 +111,44 @@
                                 {{--</div>--}}
                                 {{--</div>--}}
                                 {{--<div role="tabpanel" class="tab-pane fade in active" id="paypal">--}}
-                                    {{--<div class="paypal-content">--}}
-                                        {{--<img class="center-block img-responsive"--}}
-                                             {{--src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png"--}}
-                                             {{--alt="PayPal"/>--}}
-                                        {{--<hr>--}}
-                                        {{--<p class="text-center">--}}
-                                            {{--After placing your order, we will redirect you to PayPal website to finish up--}}
-                                            {{--the payment.--}}
-                                        {{--</p>--}}
-                                    {{--</div>--}}
+                                {{--<div class="paypal-content">--}}
+                                {{--<img class="center-block img-responsive"--}}
+                                {{--src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png"--}}
+                                {{--alt="PayPal"/>--}}
+                                {{--<hr>--}}
+                                {{--<p class="text-center">--}}
+                                {{--After placing your order, we will redirect you to PayPal website to finish up--}}
+                                {{--the payment.--}}
+                                {{--</p>--}}
                                 {{--</div>--}}
-                            {{--</div>--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+                            </div>
+
+                            <div class="panel-footer">
+                                <small class="text-success">We only collect the payment after delivery.</small>
+                            </div>
+                        </div>
                     </div>
 
                     {{-- Review items --}}
                     <div class="row">
-                        <h3>Review items</h3>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Review items
+                                </h3>
+                            </div>
 
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>Book</th>
-                                <th></th>
-                                <th class="hidden-xs">ISBN-10</th>
-                                <th>Price</th>
-                            </tr>
-                            </thead>
-
-                            @forelse ($items as $item)
-                                <tr>
-                                    <td>
-                                        {{-- Book image --}}
-                                        <img class="img-responsive" src="{{ $item->product->book->imageSet->getImagePath('small') }}" alt="">
-                                    </td>
-                                    <td>{{ $item->product->book->title }}</td>
-                                    <td class="hidden-xs">{{ $item->product->book->isbn10 }}</td>
-                                    <td>${{ $item->product->decimalPrice() }}</td>
-                                    @if ($item->product->sold)
-                                        <p>Warning: This product has been sold.</p>
-                                    @endif
-                                </tr>
-                            @empty
-                                <p>You don't have any products in shopping cart.</p>
-                            @endforelse
-                        </table>
-
-
-
+                            <ul class="list-group">
+                                @foreach($items as $item)
+                                    <?php $product = $item->product; ?>
+                                    <li class="list-group-item">
+                                        @include('includes.textbook.product-details')
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -295,7 +187,7 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <td class="text-left">Order total:</td>
+                                <td class="text-left"><strong>Order total:</strong></td>
                                 <td class="text-right price">${{ $total }}</td>
                             </tr>
                             </tfoot>
@@ -321,6 +213,3 @@
         </div>
     </div>
 @endsection
-
-@include('includes.modal.add-address')
-@include('includes.modal.edit-address')

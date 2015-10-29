@@ -30,6 +30,7 @@
             <div class="row">
                 {{-- Cart items --}}
                 <div class="col-md-9">
+                    <div class="panel panel-default">
                         <table class="table">
                             <thead>
                             <tr>
@@ -69,6 +70,9 @@
                             @endforeach
                             </tbody>
                         </table>
+                    </div>
+
+
                 </div>
 
                 {{-- Subtotal --}}
