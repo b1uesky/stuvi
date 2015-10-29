@@ -55,12 +55,13 @@ class DonationController extends Controller
     /**
      * Show the confirmation page after user donates books.
      *
+     * @param Donation $donation
      * @return \Illuminate\View\View
      */
-    public function confirmation($id)
+    public function confirmation($donation)
     {
         return view('donation.confirmation')
-            ->with('donation', Donation::find($id));
+            ->with('donation', $donation);
     }
 
     /**

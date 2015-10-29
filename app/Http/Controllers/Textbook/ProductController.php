@@ -163,14 +163,12 @@ class ProductController extends Controller
     /**
      * Show product edit page.
      *
-     * @param $id
+     * @param Product $product
      *
      * @return $this|\Illuminate\Http\RedirectResponse
      */
-    public function edit($id)
+    public function edit($product)
     {
-        $product = Product::find($id);
-
         if (!($product && $product->isBelongTo(Auth::id())))
         {
             return back()

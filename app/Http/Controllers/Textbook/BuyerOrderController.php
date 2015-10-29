@@ -84,14 +84,12 @@ class BuyerOrderController extends Controller
     /**
      * Display a specific buyer order.
      *
-     * @param  int $id
+     * @param  BuyerOrder $buyer_order
      *
      * @return Response
      */
-    public function show($id)
+    public function show($buyer_order)
     {
-        $buyer_order = BuyerOrder::find($id);
-
         // check if this order belongs to the current user.
         if (!empty($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
         {
@@ -106,14 +104,12 @@ class BuyerOrderController extends Controller
     /**
      * Cancel a specific buyer order and corresponding seller orders.
      *
-     * @param $id  The buyer order id.
+     * @param BuyerOrder $buyer_order
      *
      * @return RedirectResponse
      */
-    public function cancel($id)
+    public function cancel($buyer_order)
     {
-        $buyer_order = BuyerOrder::find($id);
-
         // check if this order belongs to the current user.
         if ($buyer_order && $buyer_order->isBelongTo(Auth::id()))
         {
@@ -413,13 +409,11 @@ class BuyerOrderController extends Controller
     /**
      * Schedule delivery page.
      *
-     * @param $id
+     * @param BuyerOrder $buyer_order
      * @return $this
      */
-    public function scheduleDelivery($id)
+    public function scheduleDelivery($buyer_order)
     {
-        $buyer_order = BuyerOrder::find($id);
-
         if ($buyer_order->isBelongTo(Auth::id()) && $buyer_order->isDeliverySchedulable())
         {
             return view('order.buyer.scheduleDelivery')
@@ -430,10 +424,14 @@ class BuyerOrderController extends Controller
             ->with('error', 'You cannot update the delivery details for this order.');
     }
 
-    public function confirmDelivery($id)
+    /**
+     * Confirm delivery.
+     *
+     * @param BuyerOrder $buyer_order
+     * @return mixed
+     */
+    public function confirmDelivery($buyer_order)
     {
-        $buyer_order = BuyerOrder::find($id);
-
         if (!$buyer_order->isBelongTo(Auth::id()) || !$buyer_order->isDeliverySchedulable())
         {
             return redirect()->back()

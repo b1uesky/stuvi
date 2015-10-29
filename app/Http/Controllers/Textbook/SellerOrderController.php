@@ -41,14 +41,12 @@ class SellerOrderController extends Controller
     /**
      * Display a specific seller order.
      *
-     * @param $id
+     * @param SellerOrder $seller_order
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function show($id)
+    public function show($seller_order)
     {
-        $seller_order = SellerOrder::find($id);
-
         // check if this order belongs to the current user.
         if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
         {
@@ -102,13 +100,11 @@ class SellerOrderController extends Controller
     /**
      * Schedule pickup page.
      *
-     * @param $seller_order_id
+     * @param SellerOrder $seller_order
      * @return mixed
      */
-    public function schedulePickup($seller_order_id)
+    public function schedulePickup($seller_order)
     {
-        $seller_order = SellerOrder::find($seller_order_id);
-
         if ($seller_order->isBelongTo(Auth::id()) && $seller_order->isPickupSchedulable())
         {
             return view('order.seller.schedulePickup')
@@ -122,14 +118,12 @@ class SellerOrderController extends Controller
     /**
      * The pickup has been confirmed and send an email to the seller about the pickup details.
      *
-     * @param $id
+     * @param SellerOrder $seller_order
      *
      * @return mixed
      */
-    public function confirmPickup($id)
+    public function confirmPickup($seller_order)
     {
-        $seller_order = SellerOrder::find($id);
-
         if (!$seller_order->isBelongTo(Auth::id()) || !$seller_order->isPickupSchedulable())
         {
             return redirect('order/seller')
@@ -155,11 +149,14 @@ class SellerOrderController extends Controller
             ->withSuccess("You have successfully updated the pickup and we'll email you the details shortly.");
     }
 
-    public function payout()
+    /**
+     * Pay the seller.
+     *
+     * @param $seller_order
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function payout($seller_order)
     {
-        $seller_order_id = Input::get('seller_order_id');
-        $seller_order = SellerOrder::find($seller_order_id);
-
         // check if this seller order belongs to the current user, or null.
         if (empty($seller_order) || !$seller_order->isBelongTo(Auth::id()))
         {
@@ -170,31 +167,32 @@ class SellerOrderController extends Controller
         // check if this seller order is transferred.
         if ($seller_order->isTransferred())
         {
-            return redirect('/order/seller/' . $seller_order_id)
+            return redirect('/order/seller/' . $seller_order->id)
                 ->with('error', 'You have already transferred the balance of this order to your Paypal account.');
         }
 
         // check if this seller order is delivered
         if (!$seller_order->isDelivered())
         {
-            return redirect('/order/seller/' . $seller_order_id)
+            return redirect('/order/seller/' . $seller_order->id)
                 ->with('error', 'This order is not delivered yet. You can get your money back once the buyer get the book.');
         }
 
         if ($seller_order->cancelled)
         {
-            return redirect('/order/seller/' . $seller_order_id)
+            return redirect('/order/seller/' . $seller_order->id)
                 ->with('error', 'This order has been cancelled.');
         }
 
         $payout_item = $seller_order->payout();
+
         if (!$payout_item)
         {
-            redirect('/order/seller/'.$seller_order_id)
+            redirect('/order/seller/'.$seller_order->id)
                 ->with('error', 'Sorry, we cannot transfer the balance to your Paypal account. Please contact Stuvi.');
         }
 
-        return redirect('/order/seller/'.$seller_order_id)
+        return redirect('/order/seller/'.$seller_order->id)
             ->with('success', 'The balance has been transferred to your paypal account '.$seller_order->seller()->profile->paypal);
     }
 

@@ -24,13 +24,22 @@ class RouteServiceProvider extends ServiceProvider {
 	{
 		parent::boot($router);
 
-        // 'id' in routes is always numbers
-        $router->pattern('id', '[0-9]+');
+		$router->patterns([
+			'id'			=> '[0-9]+',
+			'user'			=> '[0-9]+',
+			'book'			=> '[0-9]+',
+			'product'		=> '[0-9]+',
+			'seller_order'	=> '[0-9]+',
+			'buyer_order'	=> '[0-9]+',
+			'donation'		=> '[0-9]+'
+		]);
 
-		$router->model('user', 'App\User');
-        $router->model('book', 'App\Book');
-        $router->model('product', 'App\Product');
-
+		$router->model('user', 			'App\User');
+        $router->model('book', 			'App\Book');
+        $router->model('product', 		'App\Product');
+		$router->model('seller_order', 	'App\SellerOrder');
+		$router->model('buyer_order', 	'App\BuyerOrder');
+		$router->model('donation', 		'App\Donation');
 	}
 
 	/**
