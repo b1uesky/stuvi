@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <form action="{{ url('address/update') }}" method="post">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    {!! csrf_field() !!}
                     <input type="hidden" name="address_id">
 
                     <div class="form-group">
@@ -50,7 +50,7 @@
                 </form>
 
                 <form action="{{ url('address/delete') }}" method="post">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    {!! csrf_field() !!}
                     <input type="hidden" name="address_id">
                     <input type="submit" class="btn btn-danger btn-block" value="Delete">
                 </form>

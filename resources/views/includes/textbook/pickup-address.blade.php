@@ -1,4 +1,4 @@
-@if(!Auth::user()->defaultAddress())
+@if(count(Auth::user()->addresses) < 1)
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Enter a new pickup address</h3>

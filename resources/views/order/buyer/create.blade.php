@@ -25,15 +25,13 @@
             </nav>
         </div>
 
-        <?php $address = Auth::user()->defaultAddress(); ?>
-
         <div class="row">
             <div class="col-md-8">
                 <div class="container-fluid">
                     {{-- Shipping address --}}
                     <div class="row">
 
-                        @if(!$address)
+                        @if(count(Auth::user()->addresses) < 1)
                             <h3>Enter a new shipping address</h3>
 
                             <form action="{{ url('address/store') }}" method="post">

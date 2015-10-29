@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
     Route::post ('/update', 'AddressController@update');
     Route::post ('/delete', 'AddressController@delete');
     Route::post ('/select', 'AddressController@select');
-    Route::get  ('/show',   'AddressController@show');
+//    Route::get  ('/show',   'AddressController@show');
 });
 
 
