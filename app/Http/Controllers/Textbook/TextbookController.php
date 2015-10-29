@@ -403,20 +403,6 @@ class TextbookController extends Controller
         return Response::json($book_data);
     }
 
-    /***************************************************/
-    /******************   Donate Part   ****************/
-    /***************************************************/
-
-    public function donate()
-    {
-        return view('textbook.donate');
-    }
-
-    public function storeDonation()
-    {
-
-    }
-
     /**
      * AJAX: validate ISBN.
      *
