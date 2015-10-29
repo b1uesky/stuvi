@@ -141,16 +141,14 @@ class ProductController extends Controller
     /**
      * Display the specified product.
      *
-     * @param  Product
+     * @param Requests\ShowProductRequest $request
+     * @param Product $product
      *
      * @return Response
      */
-    public function show($product)
+    public function show(Requests\ShowProductRequest $request, $product)
     {
-        // do not show the product if:
-        // 1. the product is not verified or
-        // 2. the product is sold to someone else
-        if (!$product->verified || ($product->isSold() && !$product->isSoldToBuyer(Auth::id())))
+        if (!$request->authorize())
         {
             return redirect('textbook/buy')
                 ->with('error', 'This book is not available.');
