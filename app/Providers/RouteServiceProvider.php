@@ -24,15 +24,8 @@ class RouteServiceProvider extends ServiceProvider {
 	{
 		parent::boot($router);
 
-		$router->patterns([
-			'id'			=> '[0-9]+',
-			'user'			=> '[0-9]+',
-			'book'			=> '[0-9]+',
-			'product'		=> '[0-9]+',
-			'seller_order'	=> '[0-9]+',
-			'buyer_order'	=> '[0-9]+',
-			'donation'		=> '[0-9]+'
-		]);
+		// 'id' in routes is always numbers
+		$router->pattern('id', '[0-9]+');
 
 		$router->model('user', 			'App\User');
         $router->model('book', 			'App\Book');

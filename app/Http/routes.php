@@ -1,5 +1,13 @@
 <?php
 
+Route::pattern('id',            '[0-9]+');
+Route::pattern('user',          '[0-9]+');
+Route::pattern('book',          '[0-9]+');
+Route::pattern('product',       '[0-9]+');
+Route::pattern('buyer_order',   '[0-9]+');
+Route::pattern('seller_order',  '[0-9]+');
+Route::pattern('donation',      '[0-9]+');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
