@@ -27,23 +27,16 @@ class DonationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param Requests\StoreDonationRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Requests\StoreDonationRequest $request)
     {
-        $v = Validator::make(Input::all(), Donation::rules());
-
-        if ($v->fails())
-        {
-            return redirect()->back()
-                ->with('errors', $v->errors());
-        }
-
         $donation = Donation::create([
             'user_id'               => Auth::id(),
-            'address_id'            => Input::get('address_id'),
-            'scheduled_pickup_time' => DateTime::saveDatetime(Input::get('scheduled_pickup_time')),
-            'quantity'              => Input::get('quantity'),
+            'address_id'            => $request->get('address_id'),
+            'scheduled_pickup_time' => DateTime::saveDatetime($request->get('scheduled_pickup_time')),
+            'quantity'              => $request->get('quantity'),
             'pickup_code'           => \App\Helpers\generateRandomNumber(4)
         ]);
 

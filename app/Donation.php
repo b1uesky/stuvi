@@ -10,6 +10,12 @@ class Donation extends Model
     protected $table = 'donations';
     protected $guarded = [];
 
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
+
     public function donator()
     {
         return $this->belongsTo('App\User', 'user_id');
@@ -24,6 +30,12 @@ class Donation extends Model
     {
         return $this->belongsTo('App\Address', 'address_id');
     }
+
+    /*
+	|--------------------------------------------------------------------------
+	| Scopes
+	|--------------------------------------------------------------------------
+	*/
 
     /**
      * Get donations that are not assigned to couriers.
@@ -69,14 +81,4 @@ class Donation extends Model
     {
         return $query->whereNotNull('pickup_time');
     }
-
-    public static function rules()
-    {
-        return [
-            'address_id'            => 'required|exists:addresses,id',
-            'scheduled_pickup_time' => 'required|date',
-            'quantity'              => 'required|integer|min:1'
-        ];
-    }
-
 }
