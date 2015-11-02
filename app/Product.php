@@ -247,6 +247,7 @@ class Product extends Model
             'highlights_and_notes'  => 'required|integer',
             'damaged_pages'         => 'required|integer',
             'broken_binding'        => 'required|boolean',
+            'description'           => 'string',
             'available_at'          => 'required|date',
             'sell_to'               => 'required|string|in:users,stuvi',
             'price'                 => 'required_if:sell_to,users|numeric|min:0',
@@ -272,11 +273,15 @@ class Product extends Model
     public static function rulesUpdate($images)
     {
         $rules = [
-            'general_condition'    => 'integer',
-            'highlights_and_notes' => 'integer',
-            'damaged_pages'        => 'integer',
-            'broken_binding'       => 'boolean',
-            'price'                => 'required|numeric|min:0',
+            'general_condition'     => 'required|integer',
+            'highlights_and_notes'  => 'required|integer',
+            'damaged_pages'         => 'required|integer',
+            'broken_binding'        => 'required|boolean',
+            'available_at'          => 'required|date',
+            'sell_to'               => 'required|string|in:users,stuvi',
+            'price'                 => 'required|numeric|min:0',
+            'payout_method'         => 'required|string|in:paypal,cash',
+            'paypal'                => 'required_if:payout_method,paypal|email'
         ];
 
         // validate input images

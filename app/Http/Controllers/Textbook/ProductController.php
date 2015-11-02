@@ -192,39 +192,6 @@ class ProductController extends Controller
     }
 
     /**
-     * AJAX: get product images.
-     *
-     * @return mixed
-     */
-    public function getImages()
-    {
-        $product = Product::find(Input::get('product_id'));
-        $product_images = $product->images;
-
-        return Response::json([
-            'success'   => true,
-            'env'       => app()->environment(),
-            'images'    => $product_images
-        ]);
-    }
-
-    /**
-     * AJAX: delete a product image according to the product image ID.
-     *
-     * @return mixed
-     */
-    public function deleteImage()
-    {
-        $product_image = ProductImage::find(Input::get('productImageID'));
-        $product_image->deleteFromAWS();
-        $product_image->delete();
-
-        return Response::json([
-            'success'   => true
-        ]);
-    }
-
-    /**
      * Update product info.
      *
      * If AJAX, we'll update images.
@@ -238,7 +205,7 @@ class ProductController extends Controller
         $images = Input::file('file');
 
         // validation
-        $v = Validator::make(Input::all(), Product::rulesUpdate($images));
+        $v = Validator::make(Input::all(), Product::rules($images));
 
         $v->after(function($v) use ($product)
         {
@@ -273,25 +240,78 @@ class ProductController extends Controller
 
         }
 
-        $int_price = Price::ConvertDecimalToInteger(Input::get('price'));
-        $condition = array_filter(Input::only(
-            'general_condition',
-            'highlights_and_notes',
-            'damaged_pages',
-            'broken_binding',
-            'description'), function($element)
-        {
-            return !is_null($element);      // filter out null values.
-        });
-
-        // update product
+        $payout_method = Input::get('payout_method');
+        $sell_to = Input::get('sell_to');
         $old_price = $product->price;
-        $product->update(['price' => $int_price]);
-        $product->condition->update($condition);
+        $int_price = Price::ConvertDecimalToInteger(Input::get('price'));
+        $new_available_at = Carbon::parse(Input::get('available_at'));
 
-        // update book price range
-        $product->book->removePrice($old_price);
-        $product->book->addPrice($product->price);
+        if ($sell_to == 'users')
+        {
+            $product->update([
+                'verified'      => true,
+                'price'         => $int_price,
+                'available_at'  => $new_available_at,
+                'sell_to'       => $sell_to,
+                'payout_method' => $payout_method
+            ]);
+
+            // remove old price if it exists
+            if ($old_price)
+            {
+                $product->book->removePrice($old_price);
+            }
+
+            $product->book->addPrice($int_price);
+        }
+
+        if ($sell_to == 'stuvi')
+        {
+            $product->update([
+                'verified'      => false, // stuvi needs to verify this product
+                'price'         => null,
+                'available_at'  => $new_available_at,
+                'sell_to'       => $sell_to,
+                'payout_method' => $payout_method
+            ]);
+
+            // remove old price if it exists
+            if ($old_price)
+            {
+                $product->book->removePrice($old_price);
+            }
+        }
+
+        // update user's Paypal email address
+        if ($payout_method == 'paypal')
+        {
+            Auth::user()->profile->update([
+                'paypal'    => Input::get('paypal')
+            ]);
+        }
+
+        // update product condition
+        $product->condition->update([
+            'general_condition' => Input::get('general_condition'),
+            'highlights_and_notes' => Input::get('highlights_and_notes'),
+            'damaged_pages' => Input::get('damaged_pages'),
+            'broken_binding' => Input::get('broken_binding'),
+            'description' => Input::get('description'),
+        ]);
+
+        // update condition
+//        $condition = array_filter(Input::only(
+//            'general_condition',
+//            'highlights_and_notes',
+//            'damaged_pages',
+//            'broken_binding',
+//            'description'), function($element)
+//        {
+//            return !is_null($element);      // filter out null values.
+//        });
+//
+//        $product->condition->update($condition);
+
 
         // if AJAX request, save images
         if ($request->ajax())
@@ -372,5 +392,38 @@ class ProductController extends Controller
 
         return redirect('/user/bookshelf')
             ->with('success', $product->book->title.' has been deleted.');
+    }
+
+    /**
+     * AJAX: get product images.
+     *
+     * @return mixed
+     */
+    public function getImages()
+    {
+        $product = Product::find(Input::get('product_id'));
+        $product_images = $product->images;
+
+        return Response::json([
+            'success'   => true,
+            'env'       => app()->environment(),
+            'images'    => $product_images
+        ]);
+    }
+
+    /**
+     * AJAX: delete a product image according to the product image ID.
+     *
+     * @return mixed
+     */
+    public function deleteImage()
+    {
+        $product_image = ProductImage::find(Input::get('productImageID'));
+        $product_image->deleteFromAWS();
+        $product_image->delete();
+
+        return Response::json([
+            'success'   => true
+        ]);
     }
 }

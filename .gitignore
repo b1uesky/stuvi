@@ -3,6 +3,7 @@ node_modules
 vendor/
 public/build
 resources/assets/libs
+resources/assets/semantic
 .env
 .idea/
 **.DS_Store

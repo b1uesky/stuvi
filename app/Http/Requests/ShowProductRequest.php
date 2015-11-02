@@ -17,10 +17,8 @@ class ShowProductRequest extends Request
     {
         $product = $this->route('product');
 
-        // do not show the product if:
-        // 1. the product is not verified or
-        // 2. the product is sold to someone else
-        if (!$product->verified || ($product->isSold() && !$product->isSoldToBuyer(Auth::id())))
+        // do not show the product if the product is sold to someone else
+        if (($product->isSold() && !$product->isSoldToBuyer(Auth::id())))
         {
             return false;
         }

@@ -134,6 +134,7 @@
                                             </div>
                                         </div>
 
+                                        {{-- Availability --}}
                                         <div class="from-group">
                                             <label>When is it available?</label>
 
@@ -150,8 +151,6 @@
                                             </div>
 
                                             <div id="datetimepicker-available-date" class="hidden"></div>
-
-                                            {{--<input type="text" class="hidden form-control" id="datetimepicker-available-date">--}}
 
                                             <br>
                                         </div>

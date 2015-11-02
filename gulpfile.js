@@ -13,34 +13,34 @@ var elixir = require('laravel-elixir');
 
 elixir(function (mix) {
     // fonts
-    mix.copy('resources/assets/libs/bootstrap/fonts', 'public/build/fonts');
+    //mix.copy('resources/assets/libs/bootstrap/fonts', 'public/build/fonts');
 
     // core js
-    mix.scripts([
-        '../libs/html5shiv/dist/html5shiv.min.js',
-        '../libs/respond/dest/respond.min.js',
-        '../libs/jquery/dist/jquery.min.js',
-        '../libs/bootstrap/dist/js/bootstrap.min.js',
-        '../libs/sortable/js/sortable.min.js',
-        '../libs/zoom.js/js/zoom.js',
-        'alert.js',
-    ], 'public/build/js/core.js');
+    //mix.scripts([
+    //    '../libs/html5shiv/dist/html5shiv.min.js',
+    //    '../libs/respond/dest/respond.min.js',
+    //    '../libs/jquery/dist/jquery.min.js',
+    //    '../libs/bootstrap/dist/js/bootstrap.min.js',
+    //    '../libs/sortable/js/sortable.min.js',
+    //    '../libs/zoom.js/js/zoom.js',
+    //    'alert.js',
+    //], 'public/build/js/core.js');
 
     // compile scss to css
-    mix.sass('textbook.scss', './public/build/css/textbook.css');
-    mix.sass('admin.scss', './public/build/css/admin.css');
-    mix.sass('express.scss', './public/build/css/express.css');
+    //mix.sass('textbook.scss', './public/build/css/textbook.css');
+    //mix.sass('admin.scss', './public/build/css/admin.css');
+    //mix.sass('express.scss', './public/build/css/express.css');
 
     // textbook css
-    mix.styles([
-        '../libs/jquery-ui/themes/smoothness/jquery-ui.min.css',
-        '../libs/bootstrap-select/dist/css/bootstrap-select.min.css',
-        '../libs/sortable/css/sortable-theme-minimal.css',
-        '../libs/zoom.js/css/zoom.css',
-        '../libs/dropzone/dist/min/dropzone.min.css',
-        '../libs/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
-        '../../../public/build/css/textbook.css'
-    ], 'public/build/css/textbook.css');
+    //mix.styles([
+    //    '../libs/jquery-ui/themes/smoothness/jquery-ui.min.css',
+    //    '../libs/bootstrap-select/dist/css/bootstrap-select.min.css',
+    //    '../libs/sortable/css/sortable-theme-minimal.css',
+    //    '../libs/zoom.js/css/zoom.css',
+    //    '../libs/dropzone/dist/min/dropzone.min.css',
+    //    '../libs/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+    //    '../../../public/build/css/textbook.css'
+    //], 'public/build/css/textbook.css');
 
     // textbook js
     mix.scriptsIn('resources/assets/js', 'public/build/js/textbook.js');

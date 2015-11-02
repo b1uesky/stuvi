@@ -31,6 +31,7 @@
                             <input type="hidden" name="highlights_and_notes_selected" value="{{ $product->condition->highlights_and_notes }}">
                             <input type="hidden" name="damaged_pages_selected" value="{{ $product->condition->damaged_pages }}">
                             <input type="hidden" name="broken_binding_selected" value="{{ $product->condition->broken_binding }}">
+                            <input type="hidden" name="available_at_selected" value="{{ $product->available_at }}">
 
                             <section class="details">
                                 <div class="panel panel-presentation">
@@ -141,8 +142,49 @@
                                             </div>
                                         </div>
 
-                                        {{--your price--}}
+                                        {{-- Availability --}}
+                                        <div class="from-group">
+                                            <label>When is it available?</label>
+
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="available_at" id="available_now" value=""> Now
+                                                </label>
+                                            </div>
+
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="available_at" id="available_future" value=""> In the future
+                                                </label>
+                                            </div>
+
+                                            <div id="datetimepicker-available-date-update" class="hidden"></div>
+
+                                            <br>
+                                        </div>
+
+                                        {{-- Sell to --}}
                                         <div class="form-group">
+
+                                            <label>I want to...</label>
+
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="sell_to" id="sell-to-users" value="users"
+                                                            {{ $product->sell_to == 'users' ? 'checked' : '' }}> Post the book on the website and get paid after it is sold
+                                                </label>
+                                            </div>
+
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="sell_to" id="sell-to-stuvi" value="stuvi"
+                                                            {{ $product->sell_to == 'stuvi' ? 'checked' : '' }}> Sell the book directly to Stuvi and get paid after approval
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        {{--your price--}}
+                                        <div class="form-group" id="sale-price">
                                             <label>Sale Price</label>
 
                                             <div class="input-group">
@@ -152,8 +194,27 @@
                                             </div>
                                         </div>
 
-                                        {{--Paypal account--}}
+                                        {{-- Receive money --}}
                                         <div class="form-group">
+                                            <label>Receive money</label>
+
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="payout_method" id="payout_paypal" value="paypal"
+                                                            {{ $product->payout_method == 'paypal' ? 'checked' : '' }}> PayPal
+                                                </label>
+                                            </div>
+
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="payout_method" id="payout_cash" value="cash"
+                                                            {{ $product->payout_method == 'cash' ? 'checked' : '' }}> Cash
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        {{--Paypal account--}}
+                                        <div class="form-group" id="paypal_account">
                                             <label class="full-width">
                                                 <span>Paypal Account</span>
                                                         <span class="pull-right">

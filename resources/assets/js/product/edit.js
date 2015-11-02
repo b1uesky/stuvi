@@ -12,11 +12,76 @@ $(document).ready(function () {
     var highlights_and_notes = $('input[name=highlights_and_notes_selected]').val();
     var damaged_pages = $('input[name=damaged_pages_selected]').val();
     var broken_binding = $('input[name=broken_binding_selected]').val();
+    var available_at = $('input[name=available_at_selected]').val();
 
     $('input[name=general_condition][value=' + general_condition + ']').prop('checked', true);
     $('input[name=highlights_and_notes][value=' + highlights_and_notes + ']').prop('checked', true);
     $('input[name=damaged_pages][value=' + damaged_pages + ']').prop('checked', true);
     $('input[name=broken_binding][value=' + broken_binding + ']').prop('checked', true);
+
+    // available date
+    var date_format = 'M/D/YYYY';
+
+    // toggle datetimepicker
+    $('input[name=available_at]:radio').change(function() {
+        if ($('#available_now').prop("checked")) {
+            $('#datetimepicker-available-date-update').addClass('hidden');
+        }
+
+        if ($('#available_future').prop("checked")) {
+            $('#datetimepicker-available-date-update').removeClass('hidden');
+        }
+    });
+
+    // if available in the future
+    if (moment(available_at).isAfter(moment())) {
+        $('#available_future').prop('checked', true);
+        $('#datetimepicker-available-date-update').removeClass('hidden');
+    } else {
+        $('available_now').prop('checked', true);
+    }
+
+    $('#datetimepicker-available-date-update').datetimepicker({
+        inline: true,
+        format: date_format,
+        defaultDate: available_at,
+        minDate: moment()
+    });
+
+    // update available date when changing the datetimepicker
+    $(document).on('dp.change', function(e) {
+        $('#available_future').val(e.date.format(date_format));
+    });
+
+    // sell to stuvi or users
+    $('input[name=sell_to]:radio').change(function() {
+        if ($('#sell-to-users').prop("checked")) {
+            $('#sale-price').removeClass('hidden');
+        }
+
+        if ($('#sell-to-stuvi').prop("checked")) {
+            $('#sale-price').addClass('hidden');
+        }
+    });
+
+    if ($('#sell-to-stuvi').prop('checked')) {
+        $('#sale-price').addClass('hidden');
+    }
+
+    // receive money
+    $('input[name=payout_method]:radio').change(function() {
+        if ($('#payout_paypal').prop("checked")) {
+            $('#paypal_account').removeClass('hidden');
+        }
+
+        if ($('#payout_cash').prop("checked")) {
+            $('#paypal_account').addClass('hidden');
+        }
+    });
+
+    if ($('#payout_cash').prop('checked')) {
+        $('#paypal_account').addClass('hidden');
+    }
 
     Dropzone.options.formEditProduct = { // The camelized version of the ID of the form element
 

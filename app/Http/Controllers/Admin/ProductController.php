@@ -190,6 +190,7 @@ class ProductController extends Controller
 
         $product->verified = true;
         $product->price = Price::convertDecimalToInteger($price);
+        $product->sold = true;
         $product->save();
 
         $seller_order = SellerOrder::where('product_id', '=', $product->id)->first();
