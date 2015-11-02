@@ -299,20 +299,6 @@ class ProductController extends Controller
             'description' => Input::get('description'),
         ]);
 
-        // update condition
-//        $condition = array_filter(Input::only(
-//            'general_condition',
-//            'highlights_and_notes',
-//            'damaged_pages',
-//            'broken_binding',
-//            'description'), function($element)
-//        {
-//            return !is_null($element);      // filter out null values.
-//        });
-//
-//        $product->condition->update($condition);
-
-
         // if AJAX request, save images
         if ($request->ajax())
         {

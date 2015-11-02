@@ -265,34 +265,6 @@ class Product extends Model
     }
 
     /**
-     * Validation rules for product edit.
-     *
-     * @param $images
-     * @return array
-     */
-    public static function rulesUpdate($images)
-    {
-        $rules = [
-            'general_condition'     => 'required|integer',
-            'highlights_and_notes'  => 'required|integer',
-            'damaged_pages'         => 'required|integer',
-            'broken_binding'        => 'required|boolean',
-            'available_at'          => 'required|date',
-            'sell_to'               => 'required|string|in:users,stuvi',
-            'price'                 => 'required|numeric|min:0',
-            'payout_method'         => 'required|string|in:paypal,cash',
-            'paypal'                => 'required_if:payout_method,paypal|email'
-        ];
-
-        // validate input images
-        foreach (range(0, count($images) - 1) as $index) {
-            $rules['file' . $index] = 'mimes:jpeg,png|max:5120';
-        }
-
-        return $rules;
-    }
-
-    /**
      * Build a query for searching products with books title keywords.
      *
      * @param $keywords
