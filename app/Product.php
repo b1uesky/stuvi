@@ -243,9 +243,9 @@ class Product extends Model
     public static function rules($images)
     {
         $rules = [
-            'general_condition'     => 'required|integer',
-            'highlights_and_notes'  => 'required|integer',
-            'damaged_pages'         => 'required|integer',
+            'general_condition'     => 'required|integer|in:0,1,2',
+            'highlights_and_notes'  => 'required|integer|in:0,1,2',
+            'damaged_pages'         => 'required|integer|in:0,1,2',
             'broken_binding'        => 'required|boolean',
             'description'           => 'string',
             'available_at'          => 'required|date',

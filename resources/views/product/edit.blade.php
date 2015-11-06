@@ -48,16 +48,13 @@
 
                                             <div class="radio-product-condition">
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="general_condition" value="0"> Brand new
+                                                    <input type="radio" name="general_condition" value="0"> Like new
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="general_condition" value="1"> Excellent
+                                                    <input type="radio" name="general_condition" value="1"> Good
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="general_condition" value="2"> Good
-                                                </label>
-                                                <label class="radio-inline">
-                                                    <input type="radio" name="general_condition" value="3"> Acceptable
+                                                    <input type="radio" name="general_condition" value="2"> Acceptable
                                                 </label>
                                             </div>
                                         </div>
