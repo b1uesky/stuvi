@@ -144,7 +144,6 @@
                     @if($product->is_rejected)
                         <th>Rejected Reason</th>
                     @endif
-                    <th>Traded in</th>
                     <th>Price</th>
                     <th>Actions</th>
                 </tr>
@@ -159,7 +158,6 @@
                         @if($product->is_rejected)
                             <td>{{ $product->rejected_reason }}</td>
                         @endif
-                        <td>{{ $product->is_traded_in ? 'Yes' : 'No' }}</td>
                         <td>
                             <input type="number" step="0.01" class="form-control" name="price" value="{{ $product->trade_in_price ? $product->decimalTradeInPrice() : '' }}" placeholder="Trade-In price">
                         </td>
