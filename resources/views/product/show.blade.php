@@ -67,13 +67,17 @@
                     <tr>
                         <th class="col-sm-6 col-xs-7">Price</th>
                         <td class="col-sm-6 col-xs-5 price">
-                            @if($product->price)
-                                ${{ $product->decimalPrice() }}
-                            @else
-                                To be determined...
-                            @endif
+                            ${{ $product->decimalPrice() }}
                         </td>
                     </tr>
+
+                    {{-- Trade-in price --}}
+                    @if($product->accept_trade_in && $product->trade_in_price)
+                        <tr>
+                            <th>Trade-in price</th>
+                            <td class="price">${{ $product->decimalTradeInPrice() }}</td>
+                        </tr>
+                    @endif
 
                     {{-- Availability --}}
                     <tr>

@@ -3,7 +3,7 @@
 @section('content')
 
     @include ('beautymail::templates.sunny.heading' , [
-        'heading' => 'Pickup Details Required',
+        'heading' => 'Textbook Trade-In',
         'level' => 'h1',
     ])
 
@@ -11,11 +11,11 @@
 
     <p>Hi {{ $first_name }},</p>
 
-    <p>Congratulations, we have decided to buy your book <strong><a href="{{ url('textbook/buy/' . $seller_order->product->book->id) }}">{{ $book_title }}</a></strong> at the price of <span style="color: #F25F5C">${{ $seller_order->product->decimalPrice() }}</span>.</p>
+    <p>We notice that you are interested in trading in your book <strong><a href="{{ url('textbook/buy/' . $seller_order->product->book->id) }}">{{ $book_title }}</a></strong> to Stuvi, after careful review, we would like to purchase the book at a price of <span style="color: #F25F5C">${{ $seller_order->product->decimalTradeInPrice() }}</span>.</p>
 
-    <p>If you have any questions regarding to the price, please feel free to <a href="{{ url('/contact') }}">contact us</a>.</p>
+    <p>If you no longer wish to trade-in your book, please ignore this email.</p>
 
-    <p>Before our courier coming to pick up your book, please provide us pickup details by clicking the button below:</p>
+    <p>If you do like to trade it in, please schedule a book pickup by clicking the button below:</p>
 
     @include('beautymail::templates.sunny.contentEnd')
 

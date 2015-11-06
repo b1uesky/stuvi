@@ -52,7 +52,6 @@ class Book extends Model
     {
         $products = $this->products()
             ->where('verified', true)
-            ->where('sell_to', 'users')
             ->where('sold', false)
             ->whereNull('deleted_at')
             ->join('product_conditions as cond', 'products.id', '=', 'cond.product_id')

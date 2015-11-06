@@ -2,7 +2,7 @@
 
     {{-- book image --}}
     <div class="col-md-2 col-xs-4">
-        <a href="{{ url("textbook/buy/product/".$product->id) }}">
+        <a href="{{ url("textbook/buy/".$product->book->id) }}">
             <img class="img-responsive" src="{{ $product->book->imageSet->getImagePath('small') }}">
         </a>
     </div>
@@ -13,7 +13,7 @@
         {{-- title --}}
         <div class="row">
             <h4 class="no-margin-top">
-                <a href="{{ url("textbook/buy/product/".$product->id) }}">{{ $product->book->title }}</a>
+                <a href="{{ url("textbook/buy/".$product->book->id) }}">{{ $product->book->title }}</a>
             </h4>
         </div>
 
@@ -30,16 +30,17 @@
             </span>
         </div>
 
-        {{-- price --}}
+        {{-- Sale price --}}
         <div class="row padding-bottom-5">
-            <span class="price">
-                @if($product->price)
-                    ${{ $product->decimalPrice() }}
-                @else
-                    Price to be determined
-                @endif
-            </span>
+            Sale price: <span class="price">${{ $product->decimalPrice() }}</span>
         </div>
+
+        @if($product->accept_trade_in && $product->trade_in_price)
+            {{-- Trade-in price --}}
+            <div class="row padding-bottom-5">
+                Trade-in price: <span class="price">${{ $product->decimalTradeInPrice() }}</span>
+            </div>
+        @endif
 
         {{-- isbn 10 --}}
         <div class="row">

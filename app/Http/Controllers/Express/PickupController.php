@@ -185,7 +185,16 @@ class PickupController extends Controller
         // if payout method is cash, update the amount of cash paid of the seller order
         if ($seller_order->product->payout_method == 'cash')
         {
-            $seller_order->cash_paid = $seller_order->product->price - config('sale.service_fee');
+            if ($seller_order->isSoldToUser())
+            {
+                $seller_order->cash_paid = $seller_order->product->price - config('sale.service_fee');
+            }
+
+            if ($seller_order->isSoldToStuvi())
+            {
+                $seller_order->cash_paid = $seller_order->product->trade_in_price - config('sale.service_fee');
+            }
+
             $seller_order->save();
         }
 
@@ -197,7 +206,7 @@ class PickupController extends Controller
 
         // if all seller orders of a buyer order are picked up
         // then the buyer order is deliverable
-        if ($seller_order->buyerOrder->hasAllSellerOrdersPickedup())
+        if ($seller_order->isSoldToUser() && $seller_order->buyerOrder->hasAllSellerOrdersPickedup())
         {
             event(new BuyerOrderWasDeliverable($seller_order->buyerOrder));
         }

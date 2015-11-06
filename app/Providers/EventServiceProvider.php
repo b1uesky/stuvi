@@ -41,7 +41,7 @@ class EventServiceProvider extends ServiceProvider {
 			'App\Listeners\EmailProductAvailableSoonNotificationToSeller',
 		],
 
-		// product that sells to stuvi
+		// product that can trade in to Stuvi
 		'App\Events\ProductWasUpdatedPriceAndApproved' => [
 			'App\Listeners\EmailProductUpdatedPriceAndApprovedNotificationToSeller',
 		],

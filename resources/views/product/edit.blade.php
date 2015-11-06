@@ -160,26 +160,6 @@
                                             <br>
                                         </div>
 
-                                        {{-- Sell to --}}
-                                        <div class="form-group">
-
-                                            <label>I want to...</label>
-
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="sell_to" id="sell-to-users" value="users"
-                                                            {{ $product->sell_to == 'users' ? 'checked' : '' }}> Post the book on the website and get paid after it is sold
-                                                </label>
-                                            </div>
-
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="sell_to" id="sell-to-stuvi" value="stuvi"
-                                                            {{ $product->sell_to == 'stuvi' ? 'checked' : '' }}> Sell the book directly to Stuvi and get paid after approval
-                                                </label>
-                                            </div>
-                                        </div>
-
                                         {{--your price--}}
                                         <div class="form-group" id="sale-price">
                                             <label>Sale Price</label>
@@ -224,6 +204,15 @@
 
                                             <input type="email" name="paypal" class="form-control"
                                                    value="{{ $paypal or '' }}" placeholder="Paypal email address">
+                                        </div>
+
+                                        {{-- Sell to --}}
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label for="">
+                                                    <input type="checkbox" name="accept_trade_in" {{ $product->accept_trade_in ? 'checked' : '' }}> I would like to join the Stuvi Trade-In program
+                                                </label>
+                                            </div>
                                         </div>
 
                                         <div class="form-group">

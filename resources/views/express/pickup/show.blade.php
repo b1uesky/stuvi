@@ -22,12 +22,6 @@
                 <p class="list-group-item-text">{{ $seller_order->id }}</p>
             </li>
 
-            {{-- Sell to --}}
-            <li class="list-group-item">
-                <h4 class="list-group-item-heading">Sell To</h4>
-                <p class="list-group-item-text">{{ $seller_order->product->sell_to }}</p>
-            </li>
-
             {{-- Book Info --}}
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">{{ $seller_order->book()->title }}</h4>
@@ -78,7 +72,13 @@
             @if($seller_order->product->payout_method == 'cash')
                 <li class="list-group-item">
                     <h4 class="list-group-item-heading">
-                        Please pay seller <span class="price">${{ $seller_order->product->decimalPrice() }}</span> in cash.
+                        Please pay seller <span class="price">
+                            @if($seller_order->buyer_order_id)
+                                ${{ $seller_order->product->decimalPrice() }}
+                            @else
+                                ${{ $seller_order->product->decimalTradeInPrice() }}
+                            @endif
+                        </span> in cash.
                     </h4>
 
                     @if(config('sale.payout_service') > 0)

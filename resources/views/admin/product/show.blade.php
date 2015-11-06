@@ -30,10 +30,6 @@
             <td><a href="{{ url('admin/user/'.$product->seller_id) }}">{{ $product->seller->first_name }} {{ $product->seller->last_name }}</a></td>
         </tr>
         <tr>
-            <th>Sell to</th>
-            <td>{{ $product->sell_to }}</td>
-        </tr>
-        <tr>
             <th>Available at</th>
             <td>{{ $product->available_at }}</td>
         </tr>
@@ -44,10 +40,6 @@
         <tr>
             <th>Verified</th>
             <td>{{ $product->isVerified() }}</td>
-        </tr>
-        <tr>
-            <th>Rejected</th>
-            <td>{{ $product->isRejected() }}</td>
         </tr>
         <tr>
             <th>Sold</th>
@@ -99,6 +91,13 @@
         </tr>
     </table>
 
+    @if(!$product->verified)
+        <a class="btn btn-success" href="{{ url('admin/product/' . $product->id . '/approve') }}">Approve</a>
+    @else
+        <a class="btn btn-danger" href="{{ url('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
+    @endif
+
+    <hr>
 
     <table class="table table-condensed" data-sortable>
         <caption>Seller orders</caption>
@@ -133,28 +132,44 @@
 
     <hr>
 
-    @if($product->sell_to == 'user')
-        @if(!$product->verified)
-            <a class="btn btn-success" href="{{ url('admin/product/' . $product->id . '/approve') }}">Approve</a>
-        @else
-            <a class="btn btn-danger" href="{{ url('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
-        @endif
-    @else
-        @if(!$product->verified)
-            <form action="{{ url('admin/product/' . $product->id . '/updatePriceAndApprove') }}" method="post">
-                {!! csrf_field() !!}
+    {{-- Trade-in --}}
+    @if($product->verified && $product->accept_trade_in)
+        <table class="table table-condensed" data-sortable>
+            <caption>Trade-In</caption>
 
-                <div class="form-group">
-                    <input type="number" step="0.01" class="form-control" name="price" placeholder="Product price">
-                </div>
+            <thead>
+                <tr class="active">
+                    {{--<th>Accept</th>--}}
+                    <th>Rejected</th>
+                    @if($product->is_rejected)
+                        <th>Rejected Reason</th>
+                    @endif
+                    <th>Traded in</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
 
-                <input type="submit" class="btn btn-success" value="Update price and approve">
-            </form>
-        @else
-            <a class="btn btn-danger" href="{{ url('admin/product/' . $product->id . '/disapprove') }}">Disapprove</a>
-        @endif
-
-        <hr>
+            <tbody>
+                <form action="{{ url('admin/product/' . $product->id . '/updatePriceAndApprove') }}" method="post">
+                    {!! csrf_field() !!}
+                    <tr>
+                        {{--<td>{{ $product->accept_trade_in ? 'Yes' : 'No' }}</td>--}}
+                        <td>{{ $product->is_rejected ? 'Yes' : 'No' }}</td>
+                        @if($product->is_rejected)
+                            <td>{{ $product->rejected_reason }}</td>
+                        @endif
+                        <td>{{ $product->is_traded_in ? 'Yes' : 'No' }}</td>
+                        <td>
+                            <input type="number" step="0.01" class="form-control" name="price" value="{{ $product->trade_in_price ? $product->decimalTradeInPrice() : '' }}" placeholder="Trade-In price">
+                        </td>
+                        <td>
+                            <input type="submit" class="btn btn-success" value="Update price and approve trade-in" {{ $product->is_rejected ? 'disabled' : '' }}>
+                        </td>
+                    </tr>
+                </form>
+            </tbody>
+        </table>
 
         @if(!$product->is_rejected)
             <form action="{{ url('admin/product/' . $product->id . '/reject') }}" method="post">
@@ -164,13 +179,12 @@
                     <textarea class="form-control" name="rejected_reason" placeholder="Reason for rejection"></textarea>
                 </div>
 
-                <input type="submit" class="btn btn-danger" value="Reject">
+                <input type="submit" class="btn btn-danger" value="Reject trade-in">
             </form>
         @else
             <form action="{{ url('admin/product/' . $product->id . '/accept') }}" method="post">
                 {!! csrf_field() !!}
-
-                <input type="submit" class="btn btn-success" value="Accept">
+                <input type="submit" class="btn btn-info" value="Undo reject trade-in">
             </form>
         @endif
     @endif

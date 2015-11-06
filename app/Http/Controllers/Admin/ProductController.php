@@ -188,10 +188,9 @@ class ProductController extends Controller
         $product = Product::find($id);
         $price = Input::get('price');
 
-        $product->verified = true;
-        $product->price = Price::convertDecimalToInteger($price);
-        $product->sold = true;
-        $product->save();
+        $product->update([
+            'trade_in_price'    => Price::convertDecimalToInteger($price)
+        ]);
 
         $seller_order = SellerOrder::where('product_id', '=', $product->id)->first();
 
@@ -213,7 +212,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Reject a product that sells to Stuvi
+     * Reject a product that trades in to Stuvi
      *
      * @param $id
      * @return $this
@@ -237,6 +236,7 @@ class ProductController extends Controller
         {
             $product->is_rejected = true;
             $product->rejected_reason = $rejected_reason;
+            $product->trade_in_price = null;
             $product->save();
 
             event(new ProductWasRejected($product));

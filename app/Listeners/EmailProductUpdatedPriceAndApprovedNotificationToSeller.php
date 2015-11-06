@@ -32,7 +32,7 @@ class EmailProductUpdatedPriceAndApprovedNotificationToSeller
         $book_title = $seller_order->product->book->title;
 
         $email = new Email(
-            $subject = 'Your book ' . $book_title . ' has been accepted by Stuvi',
+            $subject = 'Your book ' . $book_title . ' is eligible for the Stuvi Trade-In program',
             $to = $seller->primaryEmailAddress(),
             $view = 'emails.product.updated-price-and-approved',
             $data = [

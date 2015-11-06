@@ -16,13 +16,9 @@
             <td><a href="{{ url('admin/product/'.$seller_order->product_id) }}">{{ $seller_order->product->book->title }}</a></td>
         </tr>
         <tr>
-            <th>Sell to</th>
-            <td>{{ $seller_order->product->sell_to }}</td>
-        </tr>
-        <tr>
             <th>BuyerOrder ID</th>
             <td>
-                @if($seller_order->product->sell_to == 'users')
+                @if($seller_order->buyer_order_id)
                     <a href="{{ url('admin/order/buyer/'.$seller_order->buyer_order_id) }}">{{ $seller_order->buyer_order_id }}</a>
                 @else
                     N/A
@@ -32,7 +28,10 @@
         <tr>
             <th>Cancelled</th>
             <td>
-                {{ $seller_order->cancelled }} @if ($seller_order->cancelled) @ {{ $seller_order->cancelled_time }} @endif
+                {{ $seller_order->cancelled ? 'Yes' : 'No' }}
+                @if ($seller_order->cancelled)
+                    , cancelled at: {{ $seller_order->cancelled_time }}
+                @endif
             </td>
         </tr>
         <tr>
@@ -97,7 +96,7 @@
         @else
             <tr>
                 <th>Cash paid</th>
-                <td class="price">${{ $seller_order->cash_paid }}</td>
+                <td class="price">${{ \App\Helpers\Price::convertIntegerToDecimal($seller_order->cash_paid) }}</td>
             </tr>
         @endif
     </table>

@@ -38,35 +38,20 @@ $(document).ready(function () {
         $('#available_future').prop('checked', true);
         $('#datetimepicker-available-date-update').removeClass('hidden');
     } else {
-        $('available_now').prop('checked', true);
+        $('#available_now').prop('checked', true);
     }
 
     $('#datetimepicker-available-date-update').datetimepicker({
         inline: true,
         format: date_format,
         defaultDate: available_at,
-        minDate: moment()
+        //minDate: moment(), cannot set minDate here because it will cause a bug
     });
 
     // update available date when changing the datetimepicker
     $(document).on('dp.change', function(e) {
         $('#available_future').val(e.date.format(date_format));
     });
-
-    // sell to stuvi or users
-    $('input[name=sell_to]:radio').change(function() {
-        if ($('#sell-to-users').prop("checked")) {
-            $('#sale-price').removeClass('hidden');
-        }
-
-        if ($('#sell-to-stuvi').prop("checked")) {
-            $('#sale-price').addClass('hidden');
-        }
-    });
-
-    if ($('#sell-to-stuvi').prop('checked')) {
-        $('#sale-price').addClass('hidden');
-    }
 
     // receive money
     $('input[name=payout_method]:radio').change(function() {
@@ -121,7 +106,6 @@ $(document).ready(function () {
 
                     if (response.success) {
                         var images = response.images;
-                        console.log(images);
 
                         for (var i = 0; i < images.length; i++) {
 

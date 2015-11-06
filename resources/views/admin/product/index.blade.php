@@ -9,13 +9,13 @@
         <thead>
             <tr class="active">
                 <th>ID</th>
-                <th>Sell To</th>
                 <th>Book Title</th>
                 <th>Price</th>
                 <th>Seller</th>
-                <th>Verified</th>
-                <th>Rejected</th>
+                {{--<th>Verified</th>--}}
+                {{--<th>Rejected</th>--}}
                 <th>Sold</th>
+                <th>Accept trade-in</th>
                 <th>Images</th>
                 <th>Actions</th>
             </tr>
@@ -25,7 +25,6 @@
             @foreach($products as $product)
                 <tr>
                     <td>{{ $product->id }}</td>
-                    <td>{{ $product->sell_to == 'stuvi' ? 'Stuvi' : 'User' }}</td>
                     <td><a href="{{ url('admin/book/'.$product->book->id) }}">{{ $product->book->title }}</a></td>
                     <td class="price">
                         @if($product->price)
@@ -35,9 +34,10 @@
                         @endif
                     </td>
                     <td><a href="{{ url('/admin/user/'.$product->seller->id) }}">{{ $product->seller->first_name }} {{ $product->seller->last_name }}</a></td>
-                    <td>{{ $product->isVerified() }}</td>
-                    <td>{{ $product->is_rejected ? 'Yes' : 'No' }}</td>
-                    <td>{{ $product->isSoldToStr() }}</td>
+                    {{--<td>{{ $product->isVerified() }}</td>--}}
+{{--                    <td>{{ $product->is_rejected ? 'Yes' : 'No' }}</td>--}}
+                    <td>{{ $product->sold ? 'Yes' : 'No' }}</td>
+                    <td>{{ $product->accept_trade_in ? 'Yes' : 'No' }}</td>
                     <td class="container-flex">
                         @foreach($product->images as $image)
                             <div>

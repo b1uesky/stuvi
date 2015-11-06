@@ -34,17 +34,6 @@ $(document).ready(function () {
         $('#available_future').val(e.date.format(date_format));
     });
 
-    // sell to stuvi or users
-    $('input[name=sell_to]:radio').change(function() {
-        if ($('#sell-to-users').prop("checked")) {
-            $('#sale-price').removeClass('hidden');
-        }
-
-        if ($('#sell-to-stuvi').prop("checked")) {
-            $('#sale-price').addClass('hidden');
-        }
-    });
-
     // receive money
     $('input[name=payout_method]:radio').change(function() {
         if ($('#payout_paypal').prop("checked")) {

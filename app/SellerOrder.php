@@ -200,46 +200,48 @@ class SellerOrder extends Model
         {
             $status = 'Order cancelled';
             $detail = 'Your order has been cancelled.';
-            $value = null;
         }
         elseif ($this->isTransferred())
         {
             $status = 'Balance transferred';
             $detail = 'The money has been transferred to your Paypal account.';
-            $value = 100;
         }
         elseif ($this->isDelivered())
         {
-            $status = 'Order delivered';
-            $detail = 'Your order has been delivered.';
-            $value = 75;
+            if ($this->isSoldToUser())
+            {
+                $status = 'Order delivered';
+                $detail = 'Your book has been delivered to the buyer.';
+            }
+
+            if ($this->isSoldToStuvi())
+            {
+                $status = 'Order delivered';
+                $detail = 'Your book trade-in has been received by Stuvi.';
+            }
         }
         elseif ($this->pickedUp())
         {
             $status = 'Order picked up';
             $detail = 'Your order has been picked up at ' . DateTime::showDatetime($this->pickup_time) . '.';
-            $value = 60;
         }
         elseif ($this->isAssignedToCourier())
         {
             $status = 'Order shipped';
             $detail = 'Your order is on its way.';
-            $value = 45;
         }
         elseif ($this->isScheduled())
         {
             $status = 'Assigning a courier';
             $detail = 'Your order is waiting to be assigned to a Stuvi courier.';
-            $value = 30;
         }
         else
         {
             $status = 'Pick-up details required';
             $detail = 'Please schedule your pick-up time and location for this order.';
-            $value = 15;
         }
 
-        return ['status' => $status, 'detail' => $detail, 'value' => $value];
+        return ['status' => $status, 'detail' => $detail];
     }
 
     /**
@@ -367,9 +369,10 @@ class SellerOrder extends Model
     /**
      * create a Paypal payout item.
      *
+     * @param decimal $value
      * @return array
      */
-    public function createPaypalPayoutItem()
+    public function createPaypalPayoutItem($value)
     {
         $receiver = $this->seller()->profile->paypal;
 
@@ -377,8 +380,6 @@ class SellerOrder extends Model
         {
             return false;
         }
-
-        $value = Price::convertIntegerToDecimal($this->product->price - config('sale.payout_service'));
 
         $item = array(
             'recipient_type'    => 'EMAIL',
@@ -413,7 +414,18 @@ class SellerOrder extends Model
             return false;
         }
 
-        $item = $this->createPaypalPayoutItem();
+        // determine what price to pay
+        if ($this->isSoldToUser())
+        {
+            $value = Price::convertIntegerToDecimal($this->product->price - config('sale.payout_service'));
+        }
+
+        if ($this->isSoldToStuvi())
+        {
+            $value = Price::convertIntegerToDecimal($this->product->trade_in_price - config('sale.payout_service'));
+        }
+
+        $item = $this->createPaypalPayoutItem($value);
 
         // seller does not have paypal account.
         if (!$item)

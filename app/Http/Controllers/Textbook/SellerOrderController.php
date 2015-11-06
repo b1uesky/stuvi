@@ -143,6 +143,14 @@ class SellerOrderController extends Controller
             'pickup_code'           => \App\Helpers\generateRandomNumber(4)
         ]);
 
+        // if this order is sold to stuvi, mark the product as sold
+        if ($seller_order->isSoldToStuvi())
+        {
+            $seller_order->product->update([
+                'sold'  => true
+            ]);
+        }
+
         event(new SellerOrderPickupWasScheduled($seller_order));
 
         return redirect('order/seller')

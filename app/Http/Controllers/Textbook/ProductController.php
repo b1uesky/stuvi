@@ -62,7 +62,7 @@ class ProductController extends Controller
     public function store()
     {
         $images = Input::file('file');
-        $sell_to = Input::get('sell_to');
+        $int_price = Price::ConvertDecimalToInteger(Input::get('price'));
         $payout_method = Input::get('payout_method');
 
         // validation
@@ -76,33 +76,22 @@ class ProductController extends Controller
             ]);
         }
 
-        // update user's Paypal email address
-        if ($payout_method == 'paypal')
-        {
-            Auth::user()->profile->update([
-                'paypal'    => Input::get('paypal')
-            ]);
-        }
-
+        // create product
         $product = Product::create([
-            'book_id'   => Input::get('book_id'),
-            'seller_id' => Auth::user()->id,
-            'available_at' => Carbon::parse(Input::get('available_at')),
-            'sell_to'   => $sell_to,
-            'payout_method' => $payout_method
+            'book_id'           => Input::get('book_id'),
+            'seller_id'         => Auth::user()->id,
+            'price'             => $int_price,
+            'available_at'      => Carbon::parse(Input::get('available_at')),
+            'payout_method'     => $payout_method,
+            'accept_trade_in'   => Input::has('accept_trade_in') ? true : false,
+            'verified'          => true
         ]);
 
-        // if sell to users, add product price
-        if ($sell_to == 'users')
-        {
-            $int_price = Price::ConvertDecimalToInteger(Input::get('price'));
-            $product->price = $int_price;
-            $product->verified = true;
-            $product->save();
-            $product->book->addPrice($int_price);
-        }
+        // update book price range
+        $product->book->addPrice($int_price);
 
-        $condition = ProductCondition::create([
+
+        ProductCondition::create([
             'product_id' => $product->id,
             'general_condition' => Input::get('general_condition'),
             'highlights_and_notes' => Input::get('highlights_and_notes'),
@@ -130,6 +119,14 @@ class ProductController extends Controller
 
             // upload image with different sizes to aws s3
             $product_image->uploadToAWS();
+        }
+
+        // update user's Paypal email address
+        if ($payout_method == 'paypal')
+        {
+            Auth::user()->profile->update([
+                'paypal'    => Input::get('paypal')
+            ]);
         }
 
         return Response::json([
@@ -241,46 +238,24 @@ class ProductController extends Controller
         }
 
         $payout_method = Input::get('payout_method');
-        $sell_to = Input::get('sell_to');
         $old_price = $product->price;
         $int_price = Price::ConvertDecimalToInteger(Input::get('price'));
         $new_available_at = Carbon::parse(Input::get('available_at'));
 
-        if ($sell_to == 'users')
+        $product->update([
+            'price'             => $int_price,
+            'available_at'      => $new_available_at,
+            'payout_method'     => $payout_method,
+            'accept_trade_in'   => Input::has('accept_trade_in') ? true : false
+        ]);
+
+        // remove old price if it exists
+        if ($old_price)
         {
-            $product->update([
-                'verified'      => true,
-                'price'         => $int_price,
-                'available_at'  => $new_available_at,
-                'sell_to'       => $sell_to,
-                'payout_method' => $payout_method
-            ]);
-
-            // remove old price if it exists
-            if ($old_price)
-            {
-                $product->book->removePrice($old_price);
-            }
-
-            $product->book->addPrice($int_price);
+            $product->book->removePrice($old_price);
         }
 
-        if ($sell_to == 'stuvi')
-        {
-            $product->update([
-                'verified'      => false, // stuvi needs to verify this product
-                'price'         => null,
-                'available_at'  => $new_available_at,
-                'sell_to'       => $sell_to,
-                'payout_method' => $payout_method
-            ]);
-
-            // remove old price if it exists
-            if ($old_price)
-            {
-                $product->book->removePrice($old_price);
-            }
-        }
+        $product->book->addPrice($int_price);
 
         // update user's Paypal email address
         if ($payout_method == 'paypal')

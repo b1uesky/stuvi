@@ -5,42 +5,43 @@
  */
 
 $(document).ready(function() {
-    // pickup
+    /**
+     * Schedule a pickup
+     */
     var scheduled_pickup_time = $('input[name=scheduled_pickup_time]').val();
+    var isTradeIn = $('input[name=is_trade_in]').val();
 
     // if pickup time not scheduled
     if (scheduled_pickup_time == '' || scheduled_pickup_time == null) {
         scheduled_pickup_time = moment().add(2, 'h');
     }
 
-    var enabledDates = [moment(), moment().add(1, 'd')];
+    // pickup time days range
+    if (isTradeIn) {
+        // if it's trade-in, allow more time
+        var daysLimit = 7;
+    } else {
+        var daysLimit = 2;
+    }
+
     var enabledHours = [];
 
     for (var i = 9; i <= 24; i++) {
         enabledHours.push(i);
     }
 
-    // seller order
     $('#datetimepicker-pickup-time').datetimepicker({
         inline: true,
         sideBySide: true,
         stepping: 15,
         defaultDate: scheduled_pickup_time,
-        enabledDates: enabledDates,
+        maxDate: moment().add(daysLimit, 'd'),
         enabledHours: enabledHours
     });
 
-    // donation
-    $('#datetimepicker-donation-pickup-time').datetimepicker({
-        inline: true,
-        sideBySide: true,
-        stepping: 15,
-        defaultDate: scheduled_pickup_time,
-        minDate: moment(),
-        enabledHours: enabledHours
-    });
-
-    // delivery
+    /**
+     * Schedule a delivery
+     */
     var scheduled_delivery_time = $('input[name=scheduled_delivery_time]').val();
 
     // if delivery time not scheduled
@@ -48,12 +49,23 @@ $(document).ready(function() {
         scheduled_delivery_time = moment().add(2, 'h');
     }
 
-    // buyer order
     $('#datetimepicker-delivery-time').datetimepicker({
         inline: true,
         sideBySide: true,
         stepping: 15,
         defaultDate: scheduled_delivery_time,
+        minDate: moment(),
+        enabledHours: enabledHours
+    });
+
+    /**
+     * Schedule a donation
+     */
+    $('#datetimepicker-donation-pickup-time').datetimepicker({
+        inline: true,
+        sideBySide: true,
+        stepping: 15,
+        defaultDate: scheduled_pickup_time,
         minDate: moment(),
         enabledHours: enabledHours
     });

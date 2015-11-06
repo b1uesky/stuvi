@@ -19,6 +19,7 @@
         </div>
 
         @if ($seller_order->isDelivered()
+        && $seller_order->product->payout_method == 'paypal'
         && empty($seller_order->payout_item_id)
         && empty($seller_order->seller()->profile->paypal))
             <div class="alert alert-warning" role="alert">
@@ -89,7 +90,7 @@
         </div>
 
         {{-- balance --}}
-        @if ($seller_order->isDelivered())
+        @if ($seller_order->isDelivered() && $seller_order->product->payout_method == 'paypal')
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="container-fluid">
