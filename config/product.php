@@ -11,15 +11,14 @@ return [
 
         'general_condition'         =>  [
             'title' =>  'General condition',
-            0       =>  'Brand new',
-            1       =>  'Excellent',
-            2       =>  'Good',
-            3       =>  'Acceptable',
+            'count' =>  3,
+            0       =>  'Like new',
+            1       =>  'Good',
+            2       =>  'Acceptable',
             'description'   => [
-                0   =>  'A new, unread, unused book in perfect condition with no missing or damaged pages.',
-                1   =>  'No missing or damaged pages, no creases or tears, and no underlining/highlighting of text or writing in the margins. Very minimal wear and tear.',
-                2   =>  'Very minimal damage to the cover, but no holes or tears. The majority of pages are undamaged with minimal creasing or tearing. Minimal underlining or highlighting. No missing pages.',
-                3   =>  'A book with obvious wear. The binding may be slightly damaged but not broken. Possible writing in margins, possible underlining and highlighting of text, but no missing pages or anything that would compromise the legibility or understanding of the text.'
+                0   =>  'No missing or damaged pages, no creases or tears, and no underlining/highlighting of text or writing in the margins. Very minimal wear and tear.',
+                1   =>  'The majority of pages are undamaged with minimal creasing or tearing. Minimal underlining or highlighting. No missing pages.',
+                2   =>  'A book with obvious wear. Possible writing in margins, possible underlining and highlighting of text, but no missing pages or anything that would compromise the legibility or understanding of the text.'
             ]
         ],
 

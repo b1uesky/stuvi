@@ -11,7 +11,7 @@
                 <h4 class="modal-title">General condition</h4>
             </div>
             <div class="modal-body">
-                @for ($i = 0; $i < 4; $i++)
+                @for ($i = 0; $i < config('product.conditions.general_condition.count'); $i++)
                     <dl>
                         <dt>{{ config('product.conditions.general_condition')[$i] }}</dt>
                         <dd>{{ config('product.conditions.general_condition.description')[$i] }}</dd>

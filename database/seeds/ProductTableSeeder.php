@@ -41,7 +41,7 @@ class ProductTableSeeder extends Seeder {
 
                 ProductCondition::create([
                     'product_id'            =>  $product->id,
-                    'general_condition'     =>  $faker->numberBetween(0, 3),
+                    'general_condition'     =>  $faker->numberBetween(0, 2),
                     'highlights_and_notes'  =>  $faker->numberBetween(0, 2),
                     'damaged_pages'         =>  $faker->numberBetween(0, 1),
                     'description'           =>  $faker->randomElement([

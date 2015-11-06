@@ -18,7 +18,7 @@ class CreateProductConditionsTable extends Migration {
             $table->text('description');
 			$table->timestamps();
             $table->boolean('broken_binding');
-            $table->tinyInteger('general_condition'); // 0: Brand new, 1: Excellent, 2: Good, 3: Acceptable
+            $table->tinyInteger('general_condition'); // 0: Like new, 1: Good, 2: Acceptable
             $table->tinyInteger('highlights_and_notes');
             $table->tinyInteger('damaged_pages');
             $table->integer('product_id')->unsigned();
