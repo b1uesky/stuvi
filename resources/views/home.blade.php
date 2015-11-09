@@ -3,9 +3,6 @@
 @section('title', 'Boston Textbook Marketplace & More Coming Soon!')
 
 @section('textbook-header')
-    {{--<div id="navbar-transparent">--}}
-        {{--@include('includes.textbook.header')--}}
-    {{--</div>--}}
 @overwrite
 
 @section('content')
@@ -28,8 +25,8 @@
         </div>
     </div>
 
+    <!-- Intro -->
     <section class="intro bg-white">
-        <!-- Intro -->
         <div class="jumbotron">
             <div class="container">
                 <div class="row">
@@ -130,10 +127,26 @@
                                 </form>
                             </div>
                         </div>
-
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
+    {{-- How it works --}}
+    <section>
+        <div class="jumbotron">
+            <div class="container">
+                <h2 class="text-center">How it works</h2>
+            </div>
+        </div>
+    </section>
+
+    {{-- Features --}}
+    <section>
+        <div class="jumbotron">
+            <div class="container">
+                <h2 class="text-center">We made it easy</h2>
             </div>
         </div>
     </section>

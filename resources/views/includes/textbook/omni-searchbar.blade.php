@@ -1,4 +1,4 @@
-<form action="/textbook/search" method="get">
+<form action="{{ url('textbook/search') }}" method="get" id="home-search">
     <input type="hidden" name="university_id" value="1">
 
     <div class="input-group">

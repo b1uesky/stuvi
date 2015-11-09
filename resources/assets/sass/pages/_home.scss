@@ -66,3 +66,12 @@
   background-color: $background-color;
 }
 
+#home-search {
+  input {
+    border: none;
+  }
+
+  [type~="submit"] {
+    border-color: white;
+  }
+}
