@@ -12,7 +12,7 @@
 
         <div class="row">
             <ol class="breadcrumb">
-                <li><a href="{{ url('textbook/buy') }}">Home</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
                 <li class="active">Search results</li>
             </ol>
         </div>

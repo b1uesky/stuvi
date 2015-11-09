@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <ol class="breadcrumb">
-                <li><a href="{{ url('textbook') }}">Home</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
                 <li><a href="{{ url('order/buyer') }}">Your orders</a></li>
                 <li class="active">Order #{{ $buyer_order->id }}</li>
             </ol>

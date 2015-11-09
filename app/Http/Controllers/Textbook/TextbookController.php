@@ -44,71 +44,107 @@ class TextbookController extends Controller
             ->with('university_id', Input::get('university_id'));
     }
 
-    /***************************************************/
-    /******************   Sell Part   ******************/
-    /***************************************************/
-
     /**
-     * Show the sell page, which is a search box of isbn.
+     * Search for a textbook by ISBN, title or author.
      *
-     * @return Response
+     * @return $this
      */
-    public function sell()
+    public function search()
     {
-        return view('textbook.sell');
-    }
-
-    /**
-     * Search function for the sell page.
-     *
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function sellSearch(Request $request)
-    {
+        $query = Input::get('query');
         $isbn_validator = new Isbn();
+        $university_id = Input::get('university_id');
 
-        // remove isbn hyphens
-        $isbn = $isbn_validator->hyphens->removeHyphens(Input::get('isbn'));
-
-        // check if the input is a valid ISBN
-        if ($isbn_validator->validation->isbn($isbn) == false)
+        if (!$university_id || trim($university_id) == '')
         {
-            return redirect()->back()
-                ->withError('Please enter a valid 10 or 13 digit ISBN number.');
+            $university_id = 1;
         }
 
-        // database lookup
-        if (strlen($isbn) == 10)
+        // if ISBN, return the specific textbook page
+        if ($isbn_validator->validation->isbn($query))
         {
-            $db_book = Book::where('isbn10', '=', $isbn)->first();
-        }
-        else
-        {
-            $db_book = Book::where('isbn13', '=', $isbn)->first();
-        }
+            $isbn = $isbn_validator->hyphens->removeHyphens($query);
 
-        // book found in database
-        if ($db_book)
-        {
-            return redirect('textbook/sell/product/' . $db_book->id . '/confirm');
-        }
-        else
-        {
-            $google_book = new GoogleBooks(config('services.google.books.api_key'));
-
-            if ($google_book->searchByISBN($isbn))
+            if (strlen($isbn) == 10)
             {
-                $book = Book::createFromGoogleBook($google_book);
-
-                return redirect('textbook/sell/product/' . $book->id . '/confirm');
+                $book = Book::where('isbn10', '=', $isbn)
+                    ->where('is_verified', true)
+                    ->first();
+            }
+            else
+            {
+                $book = Book::where('isbn13', '=', $isbn)
+                    ->where('is_verified', true)
+                    ->first();
             }
 
-            // allow the seller fill in book information and create a new book record
-            return redirect('textbook/sell/create')
-                ->with('info', 'Looks like your textbook is currently not in our database, please fill in the textbook information below.')
-                ->withInput(Input::all());
+            // if book is in the database
+            if ($book)
+            {
+                return view('textbook.confirm')
+                    ->with('book', $book);
+            }
+            else
+            {
+                $google_book = new GoogleBooks(config('services.google.books.api_key'));
+
+                // error on searching (e.g. item not found)
+                if (!$google_book->searchByISBN($isbn))
+                {
+                    return view('textbook.list')
+                        ->with('books', [])
+                        ->with('query', $isbn)
+                        ->with('university_id', $university_id);
+                }
+
+                $book = Book::createFromGoogleBook($google_book);
+
+                return view('textbook.confirm')
+                    ->with('book', $book)
+                    ->with('query', $query)
+                    ->with('university_id', $university_id);
+            }
+        }
+        else
+        {
+
+            if (Auth::check())
+            {
+                // if the user is logged in, search books by the user's university id
+                $books = Book::queryWithBuyerID($query, Auth::id());
+            }
+            else
+            {
+                // guest user, search books by the university id
+                $books = Book::queryWithUniversityID($query, $university_id);
+            }
+
+            // Get current page form url e.g. &page=1
+            if (Input::has('page'))
+            {
+                $currentPage = LengthAwarePaginator::resolveCurrentPage() - 1;
+            }
+            else
+            {
+                $currentPage = 0;
+            }
+
+            // Define how many items we want to be visible in each page
+            $perPage = config('pagination.limit.textbook');
+
+            // Slice the collection to get the items to display in current page
+            $currentPageSearchResults = $books->slice(($currentPage) * $perPage, $perPage)->all();
+
+            // Create our paginator and pass it to the view
+            $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($books), $perPage);
+
+            // Set paginator uri
+            $paginatedSearchResults->setPath('');
+
+            return view('textbook.list')
+                ->with('books', $paginatedSearchResults)
+                ->with('query', $query)
+                ->with('university_id', $university_id);
         }
     }
 
@@ -228,134 +264,13 @@ class TextbookController extends Controller
             ->with('book', $book);
     }
 
-    /***************************************************/
-    /******************   Buy Part   *******************/
-    /***************************************************/
-
-    /**
-     * Show the textbook buy page.
-     *
-     * @return Response
-     */
-    public function showBuyPage()
-    {
-        return view('textbook.buy')
-            ->with('universities', University::where('is_public', true)->get());
-    }
-
-    /**
-     * Search function for the buy page.
-     *
-     * @return Response
-     */
-    public function buySearch()
-    {
-        $query = Input::get('query');
-        $isbn_validator = new Isbn();
-
-        // if ISBN, return the specific textbook page
-        if ($isbn_validator->validation->isbn($query))
-        {
-            $isbn = $isbn_validator->hyphens->removeHyphens($query);
-
-            if (strlen($isbn) == 10)
-            {
-                $book = Book::where('isbn10', '=', $isbn)
-                    ->where('is_verified', true)
-                    ->first();
-            }
-            else
-            {
-                $book = Book::where('isbn13', '=', $isbn)
-                    ->where('is_verified', true)
-                    ->first();
-            }
-
-            // if book is in the database
-            if ($book)
-            {
-                return view('textbook.show')
-                    ->withBook($book)
-                    ->with('query', $query)
-                    ->with('university_id', Input::get('university_id'));
-            }
-            else
-            {
-                $google_book = new GoogleBooks(config('services.google.books.api_key'));
-
-                // error on searching (e.g. item not found)
-                if (!$google_book->searchByISBN($isbn))
-                {
-                    return view('textbook.list')
-                        ->with('books', [])
-                        ->with('query', $isbn)
-                        ->with('university_id', Input::get('university_id'));
-                }
-
-                $book = Book::createFromGoogleBook($google_book);
-
-                return view('textbook.show')
-                    ->withBook($book)
-                    ->with('query', $query)
-                    ->with('university_id', Input::get('university_id'));
-            }
-        }
-        else
-        {
-            if (Auth::check())
-            {
-                // if the user is logged in, search books by the user's university id
-                $books = Book::queryWithBuyerID($query, Auth::user()->id);
-            }
-            else    // guest user
-            {
-                if (!Input::has('university_id'))
-                {
-                    return back()
-                        ->with('search_error', 'Please select your university.');
-                }
-
-                // search books by the university id selected by the user
-                $university_id = Input::get('university_id');
-                $books = Book::queryWithUniversityID($query, $university_id);
-            }
-
-            // Get current page form url e.g. &page=1
-            if (Input::has('page'))
-            {
-                $currentPage = LengthAwarePaginator::resolveCurrentPage() - 1;
-            }
-            else
-            {
-                $currentPage = 0;
-            }
-
-            // Define how many items we want to be visible in each page
-            $perPage = config('pagination.limit.textbook');
-
-            // Slice the collection to get the items to display in current page
-            $currentPageSearchResults = $books->slice(($currentPage) * $perPage, $perPage)->all();
-
-            // Create our paginator and pass it to the view
-            $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($books), $perPage);
-
-            // Set paginator uri
-            $paginatedSearchResults->setPath('');
-
-            return view('textbook.list')
-                ->with('books', $paginatedSearchResults)
-                ->with('query', $query)
-                ->with('university_id', Input::get('university_id'));
-        }
-    }
-
     /**
      * Search AutoComplete for the buy page.
      * Return book data in JSON format.
      *
      * @return JSON Response
      */
-    public function buySearchAutoComplete()
+    public function searchAutoComplete()
     {
         $query = Input::get('term');
 

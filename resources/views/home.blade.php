@@ -22,7 +22,7 @@
             </div>
 
             <div class="container-search">
-                @include('includes.textbook.buy-searchbar')
+                @include('includes.textbook.omni-searchbar')
             </div>
         </div>
     </div>

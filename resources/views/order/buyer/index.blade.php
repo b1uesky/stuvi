@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <ol class="breadcrumb">
-                <li><a href="{{ url('textbook') }}">Home</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
                 <li class="active">Your orders</li>
             </ol>
         </div>

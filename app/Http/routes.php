@@ -48,23 +48,19 @@ Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
 Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
 {
     Route::get  ('/',                   'TextbookController@showBuyPage');
-    Route::get  ('/searchAutoComplete', 'TextbookController@buySearchAutoComplete');
+    Route::get  ('/search',             'TextbookController@search');
+    Route::get  ('/searchAutoComplete', 'TextbookController@searchAutoComplete');
     Route::post ('/validateISBN',       'TextbookController@validateISBN');
 
     // buy
     Route::group(['prefix'=>'buy'], function() {
-        Route::get  ('/',                   'TextbookController@showBuyPage');
         Route::get  ('/{book}',             'TextbookController@show');
-        Route::get  ('/search',             'TextbookController@buySearch');
         Route::get  ('/product/{product}',  'ProductController@show');
     });
 
     // sell
     Route::group(['prefix'=>'sell'], function() {
-        Route::get  ('/',                       'TextbookController@sell');
-        Route::post ('/search',                 'TextbookController@sellSearch');
         Route::get  ('/create',                 'TextbookController@create');
-        Route::get  ('/product/{book}/confirm', 'ProductController@confirm');
         Route::get  ('/product/{book}/create',  'ProductController@create');
     });
 });

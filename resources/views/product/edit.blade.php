@@ -12,7 +12,7 @@
             <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
                 <div class="row">
                     <ol class="breadcrumb">
-                        <li><a href="{{ url('textbook/sell') }}">Home</a></li>
+                        <li><a href="{{ url('/') }}">Home</a></li>
                         <li><a href="{{ url('user/bookshelf') }}">Your bookshelf</a></li>
                         <li class="active">Edit</li>
                     </ol>

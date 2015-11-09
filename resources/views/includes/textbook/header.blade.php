@@ -30,16 +30,16 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <!-- Navbar left -->
-                <ul class="nav navbar-nav navbar-left">
-                    <li>
-                        <a class="nav-link dropdown-toggle disabled" href="{{ url('/textbook') }}" data-toggle="dropdown" data-hover="dropdown" data-hover-delay="100">Textbooks</a>
-                        <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="{{ url('/textbook/buy') }}">Buy</a></li>
-                            <li><a tabindex="-1" href="{{ url('/textbook/sell') }}">Sell</a></li>
-                            <li><a tabindex="-1" href="{{ url('/textbook/donate') }}">Donate</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                {{--<ul class="nav navbar-nav navbar-left">--}}
+                    {{--<li>--}}
+                        {{--<a class="nav-link dropdown-toggle disabled" href="{{ url('/textbook') }}" data-toggle="dropdown" data-hover="dropdown" data-hover-delay="100">Textbooks</a>--}}
+                        {{--<ul class="dropdown-menu">--}}
+                            {{--<li><a tabindex="-1" href="{{ url('/textbook/buy') }}">Buy</a></li>--}}
+                            {{--<li><a tabindex="-1" href="{{ url('/textbook/sell') }}">Sell</a></li>--}}
+                            {{--<li><a tabindex="-1" href="{{ url('/textbook/donate') }}">Donate</a></li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
 
                 <!-- Navbar right -->
                 <ul class="nav navbar-nav navbar-right">
