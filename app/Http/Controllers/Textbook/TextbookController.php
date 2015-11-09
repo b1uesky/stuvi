@@ -149,6 +149,18 @@ class TextbookController extends Controller
     }
 
     /**
+     * Textbook confirm page.
+     *
+     * @param $book
+     * @return $this
+     */
+    public function confirm($book)
+    {
+        return view('textbook.confirm')
+            ->with('book', $book);
+    }
+
+    /**
      * Show the form for creating a new textbook.
      *
      * @return Response

@@ -51,6 +51,7 @@ Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
     Route::get  ('/search',             'TextbookController@search');
     Route::get  ('/searchAutoComplete', 'TextbookController@searchAutoComplete');
     Route::post ('/validateISBN',       'TextbookController@validateISBN');
+    Route::get  ('/confirm/{book}',     'TextbookController@confirm');
 
     // buy
     Route::group(['prefix'=>'buy'], function() {

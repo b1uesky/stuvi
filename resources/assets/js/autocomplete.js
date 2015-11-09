@@ -30,8 +30,9 @@ $(document).ready(function () {
             select: function (event, ui) {
                 // prevent updating input
                 event.preventDefault();
-                // go to the book's url
-                window.location.href = "/textbook/buy/" + ui.item.id + "?query=" + this.value;
+                // go to book confirmation page
+                //window.location.href = "/textbook/buy/" + ui.item.id + "?query=" + this.value;
+                window.location.href = "/textbook/confirm/" + ui.item.id + "?query=" + this.value;
             },
             close: function()
             {
