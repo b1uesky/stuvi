@@ -13,7 +13,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="row">
                     <ol class="breadcrumb">
-                        <li><a href="{{ url('/') }}">Home</a></li>
+                        <li><a href="{{ url('textbook/sell') }}">Home</a></li>
                         <li class="active">Confirm</li>
                     </ol>
                 </div>
@@ -44,7 +44,7 @@
                                         Login or signup to sell this book
                                     </a>
                                 @else
-                                    <a href="{{ url('textbook/sell/product/' . $book->id . '/create') }}" class="btn btn-default btn-block btn-to-details">Sell</a>
+                                    <a href="{{ url('textbook/sell/product/' . $book->id . '/create') }}" class="btn btn-default btn-block">Sell</a>
                                 @endif
                             </div>
                         </div>
