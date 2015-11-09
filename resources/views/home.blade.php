@@ -38,7 +38,7 @@
 
                     {{-- Login/Signup form --}}
                     <div class="col-md-3 col-sm-4">
-                        <ul class="nav nav-tabs nav-justified">
+                        <ul class="nav nav-tabs nav-justified nav-underline">
                             <li class="active"><a href="#signup" data-toggle="tab">Sign up</a></li>
                             <li><a href="#login" data-toggle="tab">Login</a></li>
                         </ul>

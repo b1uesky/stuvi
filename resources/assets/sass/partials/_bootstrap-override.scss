@@ -69,6 +69,28 @@ a {
   background-color: $primary-color !important;
 }
 
+// nav
+.nav.nav-underline {
+  li {
+    a {
+      border: none !important;
+      color: $text-color !important;
+
+      &:hover {
+        background-color: $background-color !important;
+      }
+    }
+  }
+
+  li.active {
+    a {
+      border-bottom: 2px solid $primary-color !important;
+      color: $text-color !important;
+      font-weight: bold;
+    }
+  }
+}
+
 // navbar
 .navbar-brand {
 
