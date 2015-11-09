@@ -1,27 +1,13 @@
-<div class="searchbar default-searchbar">
-    <form action="/textbook/search" method="get">
-        <div class="searchbar-input-container searchbar-input-container-query">
-            <input type="hidden" name="university_id" value="1">
-            <input type="text" name="query" id="autocomplete"
-                   class="form-control searchbar-input searchbar-input-query"
-                   placeholder="Enter the textbook ISBN, Title, or Author"/>
-        </div>
+<form action="/textbook/search" method="get">
+    <input type="hidden" name="university_id" value="1">
 
-        {{--Show school selection if it's a guest--}}
-        {{--@if(Auth::guest())--}}
-            {{--<div class="searchbar-input-container searchbar-input-container-university">--}}
-                {{--<label class="sr-only" for="uni_id">University</label>--}}
-                {{--<select name="university_id" class="form-control searchbar-input searchbar-input-university selectpicker"--}}
-                        {{--id="uni_id">--}}
-                    {{--@foreach(\App\University::where('is_public', true)->get() as $university)--}}
-                        {{--<option value="{{ $university->id }}">{{ $university->abbreviation }}</option>--}}
-                    {{--@endforeach--}}
-                {{--</select>--}}
-            {{--</div>--}}
-        {{--@endif--}}
+    <div class="input-group">
+        <input type="text" name="query" id="autocomplete" class="form-control input-lg" placeholder="Enter the textbook ISBN, Title, or Author"/>
 
-        <div class="searchbar-input-container searchbar-input-container-submit default-guest-search-submit">
-            <input class="btn btn-primary btn-search" type="submit" value="Search">
+        <div class="input-group-btn">
+            <button class="btn btn-default btn-lg btn-inline-search" type="submit">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
         </div>
-    </form>
-</div>
+    </div>
+</form>

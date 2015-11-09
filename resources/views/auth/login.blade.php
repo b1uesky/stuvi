@@ -58,7 +58,7 @@
                         <!-- remember -->
                         <div class="form-group">
                             <label for="remember-me-box">
-                                <input type="checkbox" name="remember"> Remember Me
+                                <input type="checkbox" name="remember" checked> Remember Me
                             </label>
 
                             <div class="pull-right">

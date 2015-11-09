@@ -10,19 +10,19 @@
 }
 
 .container-bg {
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url('https://s3.amazonaws.com/stuvi-bg-img/wooden-table-compressed.jpg') no-repeat center;
-  background-size: cover;
-  height: 600px;
+  //background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url('https://s3.amazonaws.com/stuvi-bg-img/wooden-table-compressed.jpg') no-repeat center;
+  //background-size: cover;
+  background: $primary-color-light;
+  height: 300px;
 }
 
 .container-top-half {
   position: relative;
-  height: 430px;
-  top: 50px;
+  top: 30px;
+}
 
-  @media(max-width: 767px) {
-    top: 0;
-  }
+.container-searchbar {
+  width: 500px;
 }
 
 .container-text {
