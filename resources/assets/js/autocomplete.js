@@ -91,23 +91,23 @@ $(document).ready(function () {
     }
 
     // navbar search expand/shrink
-    $('.navbar-form #autocomplete').focus(function() {
-        if(screen.width > 767){
-            $(this).animate({
-                width: '+=300px'
-            });
-        }
-
-        $(this).attr('placeholder', 'Enter the textbook ISBN, Title, or Author');
-    });
-
-    $('.navbar-form #autocomplete').blur(function() {
-        if(screen.width > 767){
-            $(this).animate({
-                width: '-=300px'
-            });
-        }
-
-        $(this).attr('placeholder', 'Search');
-    });
+    //$('.navbar-form #autocomplete').focus(function() {
+    //    if(screen.width > 767){
+    //        $(this).animate({
+    //            width: '+=300px'
+    //        });
+    //    }
+    //
+    //    $(this).attr('placeholder', 'Enter the textbook ISBN, Title, or Author');
+    //});
+    //
+    //$('.navbar-form #autocomplete').blur(function() {
+    //    if(screen.width > 767){
+    //        $(this).animate({
+    //            width: '-=300px'
+    //        });
+    //    }
+    //
+    //    $(this).attr('placeholder', 'Search');
+    //});
 });
