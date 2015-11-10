@@ -40,14 +40,19 @@ class HomeController extends Controller
                 ->with('universities', University::where('is_public', true)->get());
         }
         else {
-            $products = Product::sold(false)
+//            $popular_products = Product::sold(false)
+//                ->take(8)
+//                ->get();
+
+            $new_products = Product::sold(false)
                 ->availableNow()
                 ->orderBy('created_at', 'DESC')
                 ->take(8)
                 ->get();
 
             return view('home-signedin')
-                ->with('products', $products);
+//                ->with('popular_products', $popular_products)
+                ->with('new_products', $new_products);
         }
     }
 
