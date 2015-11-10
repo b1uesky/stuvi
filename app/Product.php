@@ -62,11 +62,12 @@ class Product extends Model
      * Get products that are sold.
      *
      * @param $query
+     * @param bool $is_sold
      * @return mixed
      */
-    public function scopeSold($query)
+    public function scopeSold($query, $is_sold=true)
     {
-        return $query->where('sold', '=', true);
+        return $query->where('sold', '=', $is_sold);
     }
 
     /**

@@ -2,12 +2,7 @@
 
 @import "../modules/all";
 
-.container-header {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-}
+// For guest home page
 
 .container-bg {
   background: $primary-color-light url('https://s3.amazonaws.com/stuvi-bg-img/flat/educational-future-concept-sm.png') no-repeat 8% 100%;
@@ -27,8 +22,6 @@
     top: 20px;
   }
 }
-
-
 
 .container-searchbar {
   max-width: 600px;
@@ -116,4 +109,36 @@
 
 #features {
 
+}
+
+
+// For signed in user home page
+
+.section-header {
+  margin-top: $spacing-unit;
+}
+
+.section-title {
+  display: inline-block;
+  color: $text-color;
+  font-size: 1.6em;
+}
+
+.section-view-more {
+  display: inline-block;
+  margin-left: $spacing-unit;
+}
+
+.item {
+  width: 120px;
+  margin: $spacing-unit/2 auto;
+
+  .item-thumbnail {
+    height: 150px;
+
+    img {
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
 }

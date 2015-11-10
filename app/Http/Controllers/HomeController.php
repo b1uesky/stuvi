@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Product;
 use App\University;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,7 +40,14 @@ class HomeController extends Controller
                 ->with('universities', University::where('is_public', true)->get());
         }
         else {
-            return view('home-signedin');
+            $products = Product::sold(false)
+                ->availableNow()
+                ->orderBy('created_at', 'DESC')
+                ->take(8)
+                ->get();
+
+            return view('home-signedin')
+                ->with('products', $products);
         }
     }
 
