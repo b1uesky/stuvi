@@ -31,22 +31,16 @@
         <div class="jumbotron">
             <div class="container">
                 <div class="row">
-                    {{--<div class="text-center">--}}
-                        {{--<h2>What is Stuvi?</h2>--}}
-                        {{--<p>Stuvi is a marketplace built for college students, by college students. To help you succeed at school, we're launching our textbook trading service here in Boston!</p>--}}
-                        {{--<a class="btn btn-default btn-lg" href="{{ url('/about/') }}" role="button">Learn more</a></p>--}}
-                    {{--</div>--}}
-
 
                     @if(Auth::guest())
-                        <div class="col-lg-9 col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-7">
                             <h2>What is Stuvi?</h2>
                             <p>Stuvi is a marketplace built for college students, by college students. To help you succeed at school, we're launching our textbook trading service here in Boston!</p>
                             {{--<p><a class="btn btn-default btn-lg" href="{{ url('/about/') }}" role="button">Learn more</a></p>--}}
                         </div>
 
                          {{--Login/Signup form--}}
-                        <div class="col-lg-3 col-md-4 col-sm-5">
+                        <div class="col-md-4 col-sm-5">
                             <ul class="nav nav-tabs nav-justified nav-underline">
                                 <li class="active"><a href="#signup" data-toggle="tab">Sign up</a></li>
                                 <li><a href="#login" data-toggle="tab">Login</a></li>

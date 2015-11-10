@@ -83,6 +83,10 @@
 .jumbotron {
   margin-bottom: 0;
   background-color: $background-color;
+
+  .container {
+    max-width: 1000px;
+  }
 }
 
 #home-signup-form, #home-login-form {

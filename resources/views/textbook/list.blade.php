@@ -18,7 +18,7 @@
         </div>
 
         <div class="page-header">
-            <h1>Books</h1>
+            <h1>Textbooks</h1>
         </div>
 
         @forelse($books as $book)
