@@ -10,19 +10,38 @@
 }
 
 .container-bg {
-  //background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url('https://s3.amazonaws.com/stuvi-bg-img/wooden-table-compressed.jpg') no-repeat center;
-  //background-size: cover;
-  background: $primary-color-light;
-  height: 300px;
+  background: $primary-color-light url('https://s3.amazonaws.com/stuvi-bg-img/flat/educational-future-concept-sm.png') no-repeat 10% 100%;
+  height: 350px;
+
+  @media(max-width: 767px) {
+    background-image: none;
+    height: 200px;
+  }
 }
 
 .container-top-half {
   position: relative;
-  top: 30px;
+  top: 50px;
+
+  @media(max-width: 767px) {
+    top: 20px;
+  }
 }
 
+
+
 .container-searchbar {
-  width: 550px;
+  max-width: 600px;
+}
+
+#home-search {
+  input {
+    border: none;
+  }
+
+  [type~="submit"] {
+    border-color: white;
+  }
 }
 
 .container-text {
@@ -66,12 +85,33 @@
   background-color: $background-color;
 }
 
-#home-search {
-  input {
-    border: none;
+#home-signup-form, #home-login-form {
+  .form-group {
+    margin-bottom: 5px;
   }
 
-  [type~="submit"] {
-    border-color: white;
+  .col-xs-6:first-child {
+    padding-right: 3px;
   }
+
+  .col-xs-6:last-child {
+    padding-left: 3px;
+  }
+
+  .filter-option {
+    color: $text-color-light;
+  }
+}
+
+// sections
+#intro {
+  background-color: #eee;
+}
+
+#how-it-works {
+
+}
+
+#features {
+
 }

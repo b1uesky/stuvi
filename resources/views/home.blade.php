@@ -8,6 +8,7 @@
 @section('content')
 
     <div class="container-fluid container-bg">
+        <!-- Background image: <a href="http://www.freepik.com">Designed by Freepik</a> -->
 
         <div class="container container-top-half">
 
@@ -26,19 +27,26 @@
     </div>
 
     <!-- Intro -->
-    <section class="intro bg-white">
+    <section id="intro">
         <div class="jumbotron">
             <div class="container">
                 <div class="row">
+                    {{--<div class="text-center">--}}
+                        {{--<h2>What is Stuvi?</h2>--}}
+                        {{--<p>Stuvi is a marketplace built for college students, by college students. To help you succeed at school, we're launching our textbook trading service here in Boston!</p>--}}
+                        {{--<a class="btn btn-default btn-lg" href="{{ url('/about/') }}" role="button">Learn more</a></p>--}}
+                    {{--</div>--}}
+
+
                     @if(Auth::guest())
-                        <div class="col-md-9 col-sm-8">
+                        <div class="col-lg-9 col-md-8 col-sm-7">
                             <h2>What is Stuvi?</h2>
-                            <p>Stuvi is a marketplace built for college students, by college students. We're here to provide relevant services to help you succeed at school, and we're launching here in Boston, Massachusetts!</p>
-                            <p><a class="btn btn-default btn-lg" href="{{ url('/about/') }}" role="button">Learn more</a></p>
+                            <p>Stuvi is a marketplace built for college students, by college students. To help you succeed at school, we're launching our textbook trading service here in Boston!</p>
+                            {{--<p><a class="btn btn-default btn-lg" href="{{ url('/about/') }}" role="button">Learn more</a></p>--}}
                         </div>
 
-                        {{-- Login/Signup form --}}
-                        <div class="col-md-3 col-sm-4">
+                         {{--Login/Signup form--}}
+                        <div class="col-lg-3 col-md-4 col-sm-5">
                             <ul class="nav nav-tabs nav-justified nav-underline">
                                 <li class="active"><a href="#signup" data-toggle="tab">Sign up</a></li>
                                 <li><a href="#login" data-toggle="tab">Login</a></li>
@@ -49,21 +57,26 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="signup">
-                                    <form action="{{ url('auth/register') }}" method="post">
+                                    <form action="{{ url('auth/register') }}" method="post" id="home-signup-form">
                                         {{ csrf_field() }}
 
-                                        <!-- first name -->
-                                        <div class="form-group">
-                                            <label class="sr-only">First name</label>
-                                            <input type="text" class="form-control" name="first_name" placeholder="First name"
-                                                   value="{{ old('first_name') }}">
+                                        <div class="form-group row">
+                                            <!-- first name -->
+                                            <div class="col-xs-6">
+                                                <label class="sr-only">First name</label>
+                                                <input type="text" class="form-control" name="first_name" placeholder="First name"
+                                                       value="{{ old('first_name') }}">
+                                            </div>
+
+                                            <!-- last name -->
+                                            <div class="col-xs-6">
+                                                <label class="sr-only">Last name</label>
+                                                <input type="text" class="form-control" name="last_name" placeholder="Last name"
+                                                       value="{{ old('last_name') }}">
+                                            </div>
                                         </div>
-                                        <!-- last name -->
-                                        <div class="form-group">
-                                            <label class="sr-only">Last name</label>
-                                            <input type="text" class="form-control" name="last_name" placeholder="Last name"
-                                                   value="{{ old('last_name') }}">
-                                        </div>
+
+
                                         <!-- email -->
                                         <div class="form-group">
                                             <label class="sr-only">Email address</label>
@@ -97,7 +110,7 @@
                                     </form>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="login">
-                                    <form action="{{ url('/auth/login') }}" method="post">
+                                    <form action="{{ url('/auth/login') }}" method="post" id="home-login-form">
                                         {{ csrf_field() }}
 
                                         <!-- email -->
@@ -132,8 +145,8 @@
                     @else
                         <div class="text-center">
                             <h2>What is Stuvi?</h2>
-                            <p>Stuvi is a marketplace built for college students, by college students. We're here to provide relevant services to help you succeed at school, and we're launching here in Boston, Massachusetts!</p>
-                            <p><a class="btn btn-default btn-lg" href="{{ url('/about/') }}" role="button">Learn more</a></p>
+                            <p>Stuvi is a marketplace built for college students, by college students. To help you succeed at school, we're launching our textbook trading service here in Boston!</p>
+                            {{--<p><a class="btn btn-default btn-lg" href="{{ url('/about/') }}" role="button">Learn more</a></p>--}}
                         </div>
                     @endif
                 </div>
@@ -142,7 +155,7 @@
     </section>
 
     {{-- How it works --}}
-    <section>
+    <section id="how-it-works">
         <div class="jumbotron">
             <div class="container">
                 <h2 class="text-center">How it works</h2>
@@ -151,7 +164,7 @@
     </section>
 
     {{-- Features --}}
-    <section>
+    <section id="features">
         <div class="jumbotron">
             <div class="container">
                 <h2 class="text-center">We made it easy</h2>
