@@ -2,7 +2,7 @@
 
 
 <header>
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-inverse" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <!-- Toggle Nav into hamburger menu for small screens -->
@@ -14,29 +14,24 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a href="{{ url('/') }}" class="navbar-brand navbar-brand-lg">
-                    <img src="https://s3.amazonaws.com/stuvi-logo/stuvi-logo-sm.png" class="" alt="stuvi logo">
+                {{--<a href="{{ url('/') }}" class="navbar-brand navbar-brand-lg">--}}
+                    {{--<img src="https://s3.amazonaws.com/stuvi-logo/stuvi-logo-sm.png" class="" alt="stuvi logo">--}}
+                    {{--<span class="logo-text-white">Stuvi</span>--}}
+                {{--</a>--}}
 
-                    {{-- If on homepage, show the home logo which has white text--}}
-                    @if(Request::url() == url('/'))
-                        <span class="logo-text-white">Stuvi</span>
-                    @else
-                        <span class="logo-text-black">Stuvi</span>
-                    @endif
-                </a>
-
+                <a href="{{ url('/') }}" class="navbar-brand navbar-brand-lg">Stuvi</a>
             </div>
             <!-- End Navbar header -->
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <!-- Navbar left -->
-                {{--<ul class="nav navbar-nav navbar-left">--}}
-                    {{----}}
-                {{--</ul>--}}
+                <ul class="nav navbar-nav navbar-left">
+                    @include('includes.textbook.searchbar')
+                </ul>
 
                 <!-- Navbar right -->
                 <ul class="nav navbar-nav navbar-right">
-                    @yield('searchbar')
+
 
                     {{-- Not logged in --}}
                     @if (Auth::guest())
@@ -47,7 +42,7 @@
                         <!-- profile dropdown -->
                         <li class="dropdown" class="nav-link" style="z-index: 500;">
                             <a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" aria-expanded="true">
-                                <span>{{ Auth::user()->first_name }} </span>
+                                <span>{{ Auth::user()->first_name }}</span>
                                 <span class="caret nav-caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="nav-dropdown">

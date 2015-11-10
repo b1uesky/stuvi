@@ -4,10 +4,6 @@
 
 @section('title',$book->title)
 
-@section('searchbar')
-    @include('includes.textbook.searchbar')
-@endsection
-
 @section('content')
 
     <div class="container">

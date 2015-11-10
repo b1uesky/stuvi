@@ -2,10 +2,6 @@
 
 @section('title', 'Confirm your book')
 
-@section('searchbar')
-    @include('includes.textbook.searchbar')
-@endsection
-
 @section('content')
     <div class="container">
 

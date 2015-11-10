@@ -2,10 +2,6 @@
 
 @section('title', 'Search results for '.$query)
 
-@section('searchbar')
-    @include('includes.textbook.searchbar')
-@endsection
-
 @section('content')
 
     <div class="container">

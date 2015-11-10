@@ -64,13 +64,15 @@
 
 #searchbar-form {
   .input-group {
-    width: 550px;
+    width: 600px;
   }
 
   input {
-    &:focus {
-      border-color: $border-color;
-    }
+    border: none;
+  }
+
+  [type~="submit"] {
+    border-color: white;
   }
 }
 

@@ -5,10 +5,6 @@
 
 <title>Stuvi - Book Details - {{ $product->book->title }} </title>
 
-@section('searchbar')
-    @include('includes.textbook.searchbar')
-@endsection
-
 @section('content')
 
     <?php $book = $product->book; ?>

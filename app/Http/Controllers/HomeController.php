@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\University;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -32,8 +33,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home')
-            ->with('universities', University::where('is_public', true)->get());
+        if (Auth::guest())
+        {
+            return view('home')
+                ->with('universities', University::where('is_public', true)->get());
+        }
+        else {
+            return view('home-signedin');
+        }
     }
 
     public function about()

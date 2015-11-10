@@ -1,6 +1,6 @@
 /* COLOR PALLETES */
 $sea-green:       #00A896;
-$sea-green-light: #00B2A4;
+$sea-green-light: #00bfac;
 $tiffany:         #81D8D0;
 $tiffany-light:   #d9f1f1;
 $salmon:          #F26F6D;
@@ -8,7 +8,7 @@ $salmon-light:    #F27B79;
 
 /* BRAND COLORS */
 $primary-color:         #00A896;
-$primary-color-light:   #00B2A4;
+$primary-color-light:   #00bfac;
 $primary-color-accent:  #81D8D0;
 $secondary-color:       #F26F6D;
 $secondary-color-light: #F27B79;
@@ -77,8 +77,11 @@ $input-border: $border-color;
 $navbar-height: 60px;
 $navbar-margin-bottom: 0px;
 $navbar-border-radius: 0px;
-$navbar-default-color: $text-color;
-$navbar-default-link-color: $text-color;
+$navbar-inverse-border: none;
+$navbar-inverse-color: white;
+$navbar-inverse-link-color: white;
+$navbar-inverse-bg: $primary-color-light;
+$navbar-inverse-link-active-bg: lighten($navbar-inverse-bg, 2%);
 
 //== Breadcrumbs
 $breadcrumb-separator: "/";
