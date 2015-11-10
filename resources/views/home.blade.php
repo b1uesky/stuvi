@@ -98,7 +98,7 @@
                                         <div class="form-group">
                                             <select class="form-control selectpicker" name="university_id">
                                                 <label class="sr-only" for="register-uni">University</label>
-                                                <option id="register-uni" selected disabled>Select a university</option>
+                                                <option id="register-uni" selected disabled>University / College</option>
                                                 @foreach($universities as $university)
                                                     <option value="{{ $university->id }}">{{ $university->name }}</option>
                                                 @endforeach

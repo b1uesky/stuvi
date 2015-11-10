@@ -97,15 +97,13 @@
   .col-xs-6:last-child {
     padding-left: 3px;
   }
-
-  .filter-option {
-    color: $text-color-light;
-  }
 }
 
 // sections
 #intro {
-  background-color: #eee;
+  //.jumbotron {
+  //  background: white url('https://s3.amazonaws.com/stuvi-bg-img/flat/student-illustration-sm.png') no-repeat center;
+  //}
 }
 
 #how-it-works {
