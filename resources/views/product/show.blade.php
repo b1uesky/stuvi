@@ -171,14 +171,18 @@
                             </form>
                         @endif
                     @else
-                        <a class="btn btn-primary btn-block disabled" href="#" role="button">
-                            Ordered by you
-                        </a>
+                        @if($product->seller == Auth::user())
+                            <a class="btn btn-primary btn-block disabled" href="#" role="button">
+                                Ordered by you
+                            </a>
+                        @endif
                     @endif
                 @else
-                    <span>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a
-                                data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.
-                    </span>
+                    @if(!$product->sold)
+                        <span>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a
+                                    data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.
+                        </span>
+                    @endif
                 @endif
             </div>
         </div>
