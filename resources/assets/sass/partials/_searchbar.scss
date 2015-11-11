@@ -69,10 +69,12 @@
 
   input {
     border: none;
+    height: 2.4em;
   }
 
   [type~="submit"] {
-    border-color: white;
+    border: none;
+    height: 2.4em;
   }
 }
 
