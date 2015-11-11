@@ -13,11 +13,9 @@ $(document).ready(function () {
                     url: location.protocol + '//' + document.domain + '/textbook/searchAutoComplete',
                     dataType: 'json',
                     data: {
-                        term: request.term,
-                        university_id: $('[name=university_id]').val()
+                        term: request.term
                     },
                     success: function (data) {
-                        //console.log(data);
                         response(data);
                     }
                 })
@@ -31,7 +29,6 @@ $(document).ready(function () {
                 // prevent updating input
                 event.preventDefault();
                 // go to book confirmation page
-                //window.location.href = "/textbook/buy/" + ui.item.id + "?query=" + this.value;
                 window.location.href = "/textbook/confirm/" + ui.item.id + "?query=" + this.value;
             },
             close: function()
