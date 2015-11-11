@@ -1,13 +1,6 @@
 @import "../modules/all";
 
 // Alert messages
-
-.alert {
-  padding: $spacing-unit/2;
-  margin: 0;
-  border-radius: 0;
-}
-
 .session-alert, .js-alert {
 
   .alert-dismissible .close {

@@ -38,10 +38,66 @@ class TextbookController extends Controller
      */
     public function show($book)
     {
+        $order = Input::get('order');
+        $university_id = Input::get('university_id');
+
+        // if no $university_id in query but we have the user logged in
+        // apply $university_id with user's university_id
+        if (!$university_id && Auth::check())
+        {
+            $university_id = Auth::user()->university->id;
+        }
+
+        // prepare query for products
+        $query = $book->products()
+            ->where('verified', true)
+            ->where('sold', false)
+            ->whereNull('deleted_at');
+
+        // if the query contains $university_id, filter the product by
+        // university id
+        if ($university_id && trim($university_id) != '')
+        {
+            $query = $query
+                ->join('users as seller', 'seller.id', '=', 'products.seller_id')
+                ->whereIn('seller.university_id', function ($q) use ($university_id) {
+                    $q->select('from_uid')->distinct()
+                        ->from('university_university')
+                        ->where('to_uid', '=', $university_id);
+                });
+        }
+
+        // order the products by different types
+        if ($order == 'price')
+        {
+            $products = $query
+                ->orderBy('price')
+                ->get();
+        }
+        elseif ($order == 'condition')
+        {
+            $products = $query
+                ->join('product_conditions as cond', 'products.id', '=', 'cond.product_id')
+                ->orderBy('cond.general_condition')
+                ->select('products.*')
+                ->get();
+        }
+        else
+        {
+            $products = $query
+                ->join('product_conditions as cond', 'products.id', '=', 'cond.product_id')
+                ->orderBy('cond.general_condition')
+                ->select('products.*')
+                ->get();
+        }
+
         return view("textbook.show")
             ->with('book', $book)
+            ->with('products', $products)
             ->with('query', Input::get('query'))
-            ->with('university_id', Input::get('university_id'));
+            ->with('order', $order)
+            ->with('university_id', $university_id)
+            ->with('universities', University::availableUniversities());
     }
 
     /**
@@ -53,12 +109,6 @@ class TextbookController extends Controller
     {
         $query = Input::get('query');
         $isbn_validator = new Isbn();
-//        $university_id = Input::get('university_id');
-//
-//        if (!$university_id || trim($university_id) == '')
-//        {
-//            $university_id = 1;
-//        }
 
         // if ISBN, return the specific textbook page
         if ($isbn_validator->validation->isbn($query))
@@ -105,19 +155,7 @@ class TextbookController extends Controller
         }
         else
         {
-
-//            if (Auth::check())
-//            {
-//                // if the user is logged in, search books by the user's university id
-//                $books = Book::queryWithBuyerID($query, Auth::id());
-//            }
-//            else
-//            {
-//                // guest user, search books by the university id
-//                $books = Book::queryWithUniversityID($query, $university_id);
-//            }
             $books = Book::searchByQuery($query);
-
 
             // Get current page form url e.g. &page=1
             if (Input::has('page'))

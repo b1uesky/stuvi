@@ -13,7 +13,7 @@
                 <li><a href="{{ url('/') }}">Home</a></li>
 
                 <li>
-                    <a href="{{ url('textbook/buy/search?query=' . $query) }}">Search results</a>
+                    <a href="{{ url('textbook/search?query=' . $query) }}">Search results</a>
                 </li>
 
                 <li class="active">{{ $book->title }}</li>
@@ -24,30 +24,65 @@
             <h1>{{ $book->title }}</h1>
         </div>
 
-        @include('includes.textbook.book-details')
-
-        <br/>
-
         <div class="row">
             <div class="col-xs-12">
-                @if(Auth::guest())
-                    <p>
-                        Please <a data-toggle="modal" href="#login-modal">Login</a> or <a data-toggle="modal"
-                                                                                          href="#signup-modal">Sign
-                            up</a> to buy or sell a textbook.
-                    </p>
-                @else
-                    <p>
-                        <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Have one to sell?</a>
-                    </p>
-                @endif
+
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="sort-bar">
+                    <ul>
+                        <li><strong>Order by: </strong></li>
+                        <li><a href="{{ Request::url().'?query='.$query.'&order=price'.'&university_id='.$university_id }}" class="btn btn-default">Price</a></li>
+                        <li><a href="{{ Request::url().'?query='.$query.'&order=condition'.'&university_id='.$university_id }}" class="btn btn-default">Condition</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="filter-bar">
+                    <span class="filter-by"><strong>Filter by: </strong></span>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <?php $university = \App\University::find($university_id); ?>
+
+                            @if($university)
+                                {{ $university->abbreviation }}
+                            @else
+                                University / College
+                            @endif
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="{{ Request::url().'?query='.$query.'&order='.$order }}">All</a></li>
+                            @foreach($universities as $u)
+                                <li><a href="{{ Request::url().'?query='.$query.'&order='.$order.'&university_id='.$u->id }}">{{ $u->name }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="action-bar">
+                    @if(Auth::guest())
+                        <div class="text-muted">
+                            Please <a data-toggle="modal" href="#login-modal">Login</a> or
+                            <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy or sell this textbook.
+                        </div>
+                    @else
+                        <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="alert-link">Have one to sell?</a>
+                    @endif
+                </div>
             </div>
         </div>
 
         {{-- Product list --}}
         <div class="row">
-            @if(count($book->availableProducts()) > 0)
-
+            @if(count($products) > 0)
                 <table class="table" data-sortable>
                     <thead>
                     <tr class="active">
@@ -57,7 +92,7 @@
                         <th class="col-xs-2"></th>
                     </tr>
                     </thead>
-                    @foreach($book->availableProducts() as $product)
+                    @foreach($products as $product)
                         <tr>
                             <td class="price">
                                 ${{ $product->decimalPrice() }}
@@ -77,7 +112,6 @@
                             <td>
                                 <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}">View details</a>
                             </td>
-
                         </tr>
                     @endforeach
 

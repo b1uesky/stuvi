@@ -15,7 +15,7 @@
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Home</a></li>
                 <li>
-                    <a href="{{ url('textbook/buy/search?query=' . $query) }}">Search results</a>
+                    <a href="{{ url('textbook/search?query=' . $query) }}">Search results</a>
                 </li>
                 <li>
                     <a href="{{ url('textbook/buy/' . $product->book->id . '?query=' . $query) }}">{{ $product->book->title }}</a>

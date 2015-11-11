@@ -8,23 +8,6 @@ class SearchTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testBuySearchWithEmptyInput()
-    {
-        $this->visit('/textbook/buy')
-            ->select(1, 'university_id')
-            ->press('Search')
-            ->seePageIs('/textbook/buy/search?query=&university_id=1');
-    }
-
-    public function testBuySearchWithInputAlg()
-    {
-        $this->visit('/textbook/buy')
-            ->type('alg', 'query')
-            ->select(1, 'university_id')
-            ->press('Search')
-            ->seePageIs('/textbook/buy/search?query=alg&university_id=1');
-    }
-
     public function testSellSearchWithExistingISBN()
     {
         $isbn = '032157351X';
