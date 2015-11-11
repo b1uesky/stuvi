@@ -19,8 +19,19 @@
                 </div>
             </div>
 
+            {{-- Search bar --}}
             <div class="container-searchbar center-block">
-                @include('includes.textbook.omni-searchbar')
+                <form action="{{ url('textbook/search') }}" method="get" id="home-search">
+                    <div class="input-group">
+                        <input type="text" name="query" id="autocomplete" class="form-control input-lg" placeholder="Enter the textbook ISBN, Title, or Author"/>
+
+                        <div class="input-group-btn">
+                            <button class="btn btn-default btn-lg btn-inline-search" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
 
         </div>

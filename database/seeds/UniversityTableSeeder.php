@@ -22,21 +22,21 @@ class UniversityTableSeeder extends Seeder
             'name'         => 'Massachusetts Institute of Technology',
             'abbreviation' => 'MIT',
             'email_suffix' => 'mit.edu',
-            'is_public'    => false,
+            'is_public'    => true,
         ]);
 
         $neu = University::create([
             'name'  => 'Northeastern University',
             'abbreviation'  => 'NEU',
             'email_suffix'  => 'neu.edu',
-            'is_public'     => false,
+            'is_public'     => true,
         ]);
 
         $harvard = University::create([
             'name'  => 'Harvard University',
             'abbreviation'  => 'HARVARD',
             'email_suffix'  => 'harvard.edu',
-            'is_public'     => false,
+            'is_public'     => true,
         ]);
 
         $bc = University::create([

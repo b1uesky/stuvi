@@ -53,12 +53,12 @@ class TextbookController extends Controller
     {
         $query = Input::get('query');
         $isbn_validator = new Isbn();
-        $university_id = Input::get('university_id');
-
-        if (!$university_id || trim($university_id) == '')
-        {
-            $university_id = 1;
-        }
+//        $university_id = Input::get('university_id');
+//
+//        if (!$university_id || trim($university_id) == '')
+//        {
+//            $university_id = 1;
+//        }
 
         // if ISBN, return the specific textbook page
         if ($isbn_validator->validation->isbn($query))
@@ -93,31 +93,31 @@ class TextbookController extends Controller
                 {
                     return view('textbook.list')
                         ->with('books', [])
-                        ->with('query', $isbn)
-                        ->with('university_id', $university_id);
+                        ->with('query', $isbn);
                 }
 
                 $book = Book::createFromGoogleBook($google_book);
 
                 return view('textbook.confirm')
                     ->with('book', $book)
-                    ->with('query', $query)
-                    ->with('university_id', $university_id);
+                    ->with('query', $query);
             }
         }
         else
         {
 
-            if (Auth::check())
-            {
-                // if the user is logged in, search books by the user's university id
-                $books = Book::queryWithBuyerID($query, Auth::id());
-            }
-            else
-            {
-                // guest user, search books by the university id
-                $books = Book::queryWithUniversityID($query, $university_id);
-            }
+//            if (Auth::check())
+//            {
+//                // if the user is logged in, search books by the user's university id
+//                $books = Book::queryWithBuyerID($query, Auth::id());
+//            }
+//            else
+//            {
+//                // guest user, search books by the university id
+//                $books = Book::queryWithUniversityID($query, $university_id);
+//            }
+            $books = Book::searchByQuery($query);
+
 
             // Get current page form url e.g. &page=1
             if (Input::has('page'))
@@ -143,8 +143,7 @@ class TextbookController extends Controller
 
             return view('textbook.list')
                 ->with('books', $paginatedSearchResults)
-                ->with('query', $query)
-                ->with('university_id', $university_id);
+                ->with('query', $query);
         }
     }
 
@@ -285,19 +284,7 @@ class TextbookController extends Controller
     public function searchAutoComplete()
     {
         $query = Input::get('term');
-
-        if (Auth::check())
-        {
-            // if the user is logged in, search books by the user's university id
-            $books = Book::queryWithBuyerID($query, Auth::user()->id);
-        }
-        else
-        {
-            // guest user, search books by the university id selected by the user
-            $university_id = Input::get('university_id');
-            $books = Book::queryWithUniversityID($query, $university_id);
-        }
-
+        $books = Book::searchByQuery($query);
         $book_data = array();
 
         foreach ($books as $book)

@@ -37,7 +37,7 @@ class HomeController extends Controller
         if (Auth::guest())
         {
             return view('home')
-                ->with('universities', University::where('is_public', true)->get());
+                ->with('universities', University::availableUniversities());
         }
         else {
 //            $popular_products = Product::sold(false)

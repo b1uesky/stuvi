@@ -26,7 +26,20 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <!-- Navbar left -->
                 <ul class="nav navbar-nav navbar-left">
-                    @include('includes.textbook.searchbar')
+                    {{-- Search bar --}}
+                    <li>
+                        <form action="{{ url('textbook/search') }}" method="get" role="search" class="navbar-form navbar-left" id="searchbar-form">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="autocomplete" name="query" placeholder="Search" value="{{ Input::get('query') }}">
+
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default btn-inline-search" type="submit">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
                 </ul>
 
                 <!-- Navbar right -->

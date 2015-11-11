@@ -142,6 +142,46 @@ class Book extends Model
     }
 
     /**
+     * Search books by query.
+     *
+     * @param $query
+     * @return mixed
+     */
+    public static function searchByQuery($query)
+    {
+        // if empty query
+        if (trim($query) == '')
+        {
+            // search for all books
+            $books = Book::join('products as p', 'p.book_id', '=', 'books.id')
+                ->where('is_verified', true)
+                ->select('books.*')
+                ->distinct()
+                ->get();
+        }
+        else
+        {
+            // full text search against the query
+            $books = Book::whereRaw(
+                "MATCH(title, isbn10, isbn13) AGAINST(? IN BOOLEAN MODE)" .
+                "OR MATCH(a.full_name) AGAINST(? IN BOOLEAN MODE)",
+                // wildcard can only append to the word, i.e.,'*word'
+                // is not allowed in MySQL full text search
+                [$query . '*', $query . '*']
+            )
+                ->join('book_authors as a', 'a.book_id', '=', 'books.id')
+                ->join('products as p', 'p.book_id', '=', 'books.id')
+                ->where('is_verified', true)
+                ->select('books.*')
+                ->distinct()
+                ->get();
+        }
+
+        return $books;
+    }
+
+    /**
+     * @deprecated
      * Search for books that can be delivered to buyer's university given query title and buyer id.
      *
      * @param $query
@@ -154,6 +194,7 @@ class Book extends Model
     }
 
     /**
+     * @deprecated
      * Search for books that can be delivered to a specific university given query title and university id.
      *
      * @param $query
@@ -166,6 +207,7 @@ class Book extends Model
     }
 
     /**
+     * @deprecated
      * Buy book search query.
      *
      * @param $query
