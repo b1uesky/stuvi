@@ -11,6 +11,7 @@ use App\SellerOrder;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use Input;
 use Response;
 use Session;
@@ -138,18 +139,14 @@ class ProductController extends Controller
     /**
      * Display the specified product.
      *
-     * @param Requests\ShowProductRequest $request
      * @param Product $product
      *
      * @return Response
      */
-    public function show(Requests\ShowProductRequest $request, $product)
+    public function show($product)
     {
-        if (!$request->authorize())
-        {
-            return redirect('textbook/buy')
-                ->with('error', 'This book is not available.');
-        }
+        // increment product views by 1
+        Redis::incr('product:'.$product->id.':views');
 
         return view('product.show')
             ->withProduct($product)

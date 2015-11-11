@@ -253,7 +253,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function productsSold()
     {
-        return $this->products()->where('sold', 1)->get();
+        return $this->products()
+            ->where('sold', true)
+            ->get();
     }
 
     /**
@@ -263,7 +265,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function productsForSale()
     {
-        return $this->products()->where('sold', 0)->whereNull('deleted_at')->orderBy('created_at', 'DESC')->get();
+        return $this->products()
+            ->where('sold', false)
+            ->whereNull('deleted_at')
+            ->orderBy('created_at', 'DESC')
+            ->get();
     }
 
     /**

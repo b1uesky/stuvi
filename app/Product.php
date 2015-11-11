@@ -155,6 +155,7 @@ class Product extends Model
     }
 
     /**
+     * TODO: change name to belongsTo
      * Check whether this product is belong to a given user.
      *
      * @param $user_id

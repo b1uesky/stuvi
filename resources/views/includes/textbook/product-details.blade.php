@@ -2,7 +2,7 @@
 
     {{-- book image --}}
     <div class="col-md-2 col-xs-4">
-        <a href="{{ url("textbook/buy/".$product->book->id) }}">
+        <a href="{{ url("textbook/buy/product/".$product->id) }}">
             <img class="img-responsive" src="{{ $product->book->imageSet->getImagePath('small') }}">
         </a>
     </div>
@@ -13,7 +13,7 @@
         {{-- title --}}
         <div class="row">
             <h4 class="no-margin-top">
-                <a href="{{ url("textbook/buy/".$product->book->id) }}">{{ $product->book->title }}</a>
+                <a href="{{ url("textbook/buy/product/".$product->id) }}">{{ $product->book->title }}</a>
             </h4>
         </div>
 
@@ -53,6 +53,16 @@
             <span>ISBN-13: </span>
             <span>{{ $product->book->isbn13 }}</span>
         </div>
+
+        {{-- number of views --}}
+        @if($product->seller_id == Auth::id())
+            <?php $views = \Illuminate\Support\Facades\Redis::get('product:'.$product->id.':views'); ?>
+
+            <div class="row">
+                <span>Views: </span>
+                <span>{{ $views ? $views : 0 }}</span>
+            </div>
+        @endif
 
         @if(isset($seller_order) && $seller_order->isCancelledBySeller())
             <div class="row text-muted">

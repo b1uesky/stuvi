@@ -38,6 +38,12 @@
             </div>
         @endif
 
+        @if($product->sold)
+            <div class="alert alert-danger fade in" role="alert">
+                This book has been sold.
+            </div>
+        @endif
+
         <div class="page-header">
             <h1>{{ $book->title }}</h1>
         </div>
@@ -76,10 +82,12 @@
                     @endif
 
                     {{-- Availability --}}
-                    <tr>
-                        <th>Availability</th>
-                        <td>{{ $product->availability() }}</td>
-                    </tr>
+                    @if(!$product->sold)
+                        <tr>
+                            <th>Availability</th>
+                            <td>{{ $product->availability() }}</td>
+                        </tr>
+                    @endif
 
                     <!-- General Condition -->
                     <tr>

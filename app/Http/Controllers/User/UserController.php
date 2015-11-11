@@ -4,6 +4,7 @@ use App\Events\UserWasSignedUp;
 use App\Http\Controllers\Controller;
 use App\Profile;
 use Auth;
+use Illuminate\Support\Facades\Redis;
 use Input;
 use Mail;
 use Session;
@@ -62,7 +63,8 @@ class UserController extends Controller
      */
     public function bookshelf()
     {
-        return view('user.bookshelf')->with('productsForSale', Auth::user()->productsForSale());
+        return view('user.bookshelf')
+            ->with('productsForSale', Auth::user()->productsForSale());
     }
 
     /**
