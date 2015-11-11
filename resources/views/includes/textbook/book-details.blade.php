@@ -58,7 +58,7 @@
                     @endif
                 </span>
             @else
-                <span class="text-danger">Not available</span>
+                <span class="text-warning">Temporarily Out of Stock</span>
             @endif
         </div>
 

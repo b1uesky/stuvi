@@ -30,9 +30,13 @@
                     <div class="panel-footer">
                         <div class="row">
                             <div class="col-xs-6">
-                                <a href="{{ url('textbook/buy/' . $book->id) }}" class="btn btn-primary btn-block">
-                                    Buy
-                                </a>
+                                @if(count($book->availableProducts()) > 0)
+                                    <a href="{{ url('textbook/buy/' . $book->id) }}" class="btn btn-primary btn-block">
+                                        Buy
+                                    </a>
+                                @else
+                                    <a href="#" class="btn btn-warning btn-block disabled">Temporarily out of stock</a>
+                                @endif
                             </div>
                             <div class="col-xs-6">
                                 @if(Auth::guest())

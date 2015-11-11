@@ -25,7 +25,7 @@
                 <br>
             @endif
         @empty
-            <h3 class="text-center">Sorry, there are no search results matching "<i>{{ $query }}</i>."</h3>
+            <h4 class="text-center">Sorry, we can't find <span class="text-primary">{{ $query }}</span>... Please double check the ISBN or spelling.</h4>
         @endforelse
 
     </div>
