@@ -145,9 +145,12 @@ class ProductController extends Controller
      */
     public function show($product)
     {
-        // increment product views by 1
-        Redis::incr('product:'.$product->id.':views');
-
+        if ($product->seller_id != Auth::id())
+        {
+            // increment product views by 1
+            Redis::incr('product:'.$product->id.':views');
+        }
+        
         return view('product.show')
             ->withProduct($product)
             ->withQuery(Input::get('query'))
