@@ -13,11 +13,7 @@
                 <li><a href="{{ url('/') }}">Home</a></li>
 
                 <li>
-                    @if(Auth::check())
-                        <a href="{{ url('textbook/buy/search?query=' . $query) }}">Search results</a>
-                    @else
-                        <a href="{{ url('textbook/buy/search?query=' . $query . '&university_id=' . $university_id) }}">Search results</a>
-                    @endif
+                    <a href="{{ url('textbook/buy/search?query=' . $query) }}">Search results</a>
                 </li>
 
                 <li class="active">{{ $book->title }}</li>
@@ -79,11 +75,7 @@
                                 @endforeach
                             </td>
                             <td>
-                                @if(Auth::check())
-                                    <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}">View details</a>
-                                @else
-                                    <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query.'&university_id='.$university_id) }}">View details</a>
-                                @endif
+                                <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}">View details</a>
                             </td>
 
                         </tr>

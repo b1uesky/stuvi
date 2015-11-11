@@ -15,18 +15,10 @@
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Home</a></li>
                 <li>
-                    @if(Auth::check())
-                        <a href="{{ url('textbook/buy/search?query=' . $query) }}">Search results</a>
-                    @else
-                        <a href="{{ url('textbook/buy/search?query=' . $query . '&university_id=' . $university_id) }}">Search results</a>
-                    @endif
+                    <a href="{{ url('textbook/buy/search?query=' . $query) }}">Search results</a>
                 </li>
                 <li>
-                    @if(Auth::check())
-                        <a href="{{ url('textbook/buy/' . $product->book->id . '?query=' . $query) }}">{{ $product->book->title }}</a>
-                    @else
-                        <a href="{{ url('textbook/buy/' . $product->book->id . '?query=' . $query . '&university_id=' . $university_id) }}">{{ $product->book->title }}</a>
-                    @endif
+                    <a href="{{ url('textbook/buy/' . $product->book->id . '?query=' . $query) }}">{{ $product->book->title }}</a>
                 </li>
                 <li class="active">Details</li>
             </ol>

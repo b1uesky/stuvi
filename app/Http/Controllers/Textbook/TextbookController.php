@@ -276,8 +276,8 @@ class TextbookController extends Controller
     }
 
     /**
-     * Search AutoComplete for the buy page.
-     * Return book data in JSON format.
+     * Search AutoComplete.
+     * Return books data in JSON format.
      *
      * @return JSON Response
      */

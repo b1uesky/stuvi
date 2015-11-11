@@ -13,11 +13,7 @@
         {{-- title --}}
         <div class="row">
             <h4 class="no-margin-top">
-                @if(Auth::check())
-                    <a href="{{ url("textbook/buy/".$book->id.'?query=' . Input::get('query')) }}">{{ $book->title }}</a>
-                @else
-                    <a href="{{ url("textbook/buy/".$book->id.'?query=' . Input::get('query') . '&university_id=' . Input::get('university_id')) }}">{{ $book->title }}</a>
-                @endif
+                <a href="{{ url("textbook/buy/".$book->id.'?query=' . Input::get('query')) }}">{{ $book->title }}</a>
             </h4>
         </div>
 
