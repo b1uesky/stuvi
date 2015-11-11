@@ -3,6 +3,7 @@
 use App\Helpers\Price;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Redis;
 
 class Product extends Model
 {
@@ -68,6 +69,17 @@ class Product extends Model
     public function scopeSold($query, $is_sold=true)
     {
         return $query->where('sold', '=', $is_sold);
+    }
+
+    /**
+     * Get the number of views.
+     *
+     * @return mixed
+     */
+    public function views()
+    {
+        $views = Redis::get('product:'.$this->id.':views');
+        return $views ? $views : 0;
     }
 
     /**

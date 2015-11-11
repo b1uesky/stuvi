@@ -56,11 +56,10 @@
 
         {{-- number of views --}}
         @if($product->seller_id == Auth::id())
-            <?php $views = \Illuminate\Support\Facades\Redis::get('product:'.$product->id.':views'); ?>
 
             <div class="row">
                 <span>Views: </span>
-                <span>{{ $views ? $views : 0 }}</span>
+                <span>{{ $product->views() }}</span>
             </div>
         @endif
 

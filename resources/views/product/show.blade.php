@@ -65,80 +65,90 @@
                 <table class="table">
 
                     <tbody>
-                    {{-- Price --}}
-                    <tr>
-                        <th class="col-sm-6 col-xs-7">Price</th>
-                        <td class="col-sm-6 col-xs-5 price">
-                            ${{ $product->decimalPrice() }}
-                        </td>
-                    </tr>
-
-                    {{-- Trade-in price --}}
-                    @if($product->accept_trade_in && $product->trade_in_price)
+                        {{-- Price --}}
                         <tr>
-                            <th>Trade-in price</th>
-                            <td class="price">${{ $product->decimalTradeInPrice() }}</td>
-                        </tr>
-                    @endif
-
-                    {{-- Availability --}}
-                    @if(!$product->sold)
-                        <tr>
-                            <th>Availability</th>
-                            <td>{{ $product->availability() }}</td>
-                        </tr>
-                    @endif
-
-                    <!-- General Condition -->
-                    <tr>
-                        <th>
-                            General condition
-                            <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".condition-modal"></span>
-                        </th>
-
-                        <td>{{ config('product.conditions.general_condition')[$product->condition->general_condition] }}</td>
-                    </tr>
-                    <!-- Highlights / Notes -->
-                    <tr>
-                        <th>
-                            Highlights/Notes
-                            <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".highlight-modal"></span>
-                        </th>
-                        <td>{{ config('product.conditions.highlights_and_notes')[$product->condition->highlights_and_notes] }}</td>
-                    </tr>
-                    <!-- Damaged Pages -->
-                    <tr>
-                        <th>
-                            Damaged pages
-                            <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".damage-modal"></span>
-                        </th>
-                        <td>{{ config('product.conditions.damaged_pages')[$product->condition->damaged_pages] }}</td>
-                    </tr>
-                    <!-- Broken Binding -->
-                    <tr>
-                        <th>
-                            Broken binding
-                            <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".binding-modal"></span>
-
-                        </th>
-                        <td>{{ config('product.conditions.broken_binding')[$product->condition->broken_binding] }}</td>
-                    </tr>
-                    <!-- Seller Description -->
-                    @if($product->condition->hasDescription())
-                        <tr>
-                            <th>Additional description</th>
-                            <td>
-                                {{ $product->condition->description }}
+                            <th class="col-sm-6 col-xs-7">Price</th>
+                            <td class="col-sm-6 col-xs-5 price">
+                                ${{ $product->decimalPrice() }}
                             </td>
                         </tr>
-                    @endif
 
-                    <tr>
-                        <th>Posted time</th>
-                        <td>
-                            <span class="product-posted-time">{{ $product->created_at }}</span>
-                        </td>
-                    </tr>
+                        {{-- Trade-in price --}}
+                        @if($product->accept_trade_in && $product->trade_in_price)
+                            <tr>
+                                <th>Trade-in price</th>
+                                <td class="price">${{ $product->decimalTradeInPrice() }}</td>
+                            </tr>
+                        @endif
+
+                        {{-- Availability --}}
+                        @if(!$product->sold)
+                            <tr>
+                                <th>Availability</th>
+                                <td>{{ $product->availability() }}</td>
+                            </tr>
+                        @endif
+
+                        <!-- General Condition -->
+                        <tr>
+                            <th>
+                                General condition
+                                <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".condition-modal"></span>
+                            </th>
+
+                            <td>{{ config('product.conditions.general_condition')[$product->condition->general_condition] }}</td>
+                        </tr>
+                        <!-- Highlights / Notes -->
+                        <tr>
+                            <th>
+                                Highlights/Notes
+                                <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".highlight-modal"></span>
+                            </th>
+                            <td>{{ config('product.conditions.highlights_and_notes')[$product->condition->highlights_and_notes] }}</td>
+                        </tr>
+                        <!-- Damaged Pages -->
+                        <tr>
+                            <th>
+                                Damaged pages
+                                <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".damage-modal"></span>
+                            </th>
+                            <td>{{ config('product.conditions.damaged_pages')[$product->condition->damaged_pages] }}</td>
+                        </tr>
+                        <!-- Broken Binding -->
+                        <tr>
+                            <th>
+                                Broken binding
+                                <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".binding-modal"></span>
+
+                            </th>
+                            <td>{{ config('product.conditions.broken_binding')[$product->condition->broken_binding] }}</td>
+                        </tr>
+                        <!-- Seller Description -->
+                        @if($product->condition->hasDescription())
+                            <tr>
+                                <th>Additional description</th>
+                                <td>
+                                    {{ $product->condition->description }}
+                                </td>
+                            </tr>
+                        @endif
+
+                        {{-- Posted time--}}
+                        <tr>
+                            <th>Posted time</th>
+                            <td>
+                                <span class="product-posted-time">{{ $product->created_at }}</span>
+                            </td>
+                        </tr>
+
+                        @if($product->seller_id == Auth::id())
+                            <tr>
+                                <th>Views</th>
+                                <td>
+                                    {{ $product->views() }}
+                                </td>
+                            </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>
