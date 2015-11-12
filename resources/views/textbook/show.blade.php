@@ -57,12 +57,12 @@
                             @if($university)
                                 {{ $university->abbreviation }}
                             @else
-                                University / College
+                                All University / College
                             @endif
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuFilterBy">
-                            <li><a href="{{ Request::url().'?query='.$query.'&order='.$order }}">All</a></li>
+                            <li><a href="{{ Request::url().'?query='.$query.'&order='.$order }}">All University / College</a></li>
                             @foreach($universities as $u)
                                 <li><a href="{{ Request::url().'?query='.$query.'&order='.$order.'&university_id='.$u->id }}">{{ $u->name }}</a></li>
                             @endforeach

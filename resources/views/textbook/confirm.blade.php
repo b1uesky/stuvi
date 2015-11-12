@@ -6,15 +6,16 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="row">
-                    <ol class="breadcrumb">
-                        <li><a href="{{ url('textbook/sell') }}">Home</a></li>
-                        <li class="active">Confirm</li>
-                    </ol>
-                </div>
+            <ol class="breadcrumb">
+                <li><a href="{{ url('textbook/sell') }}">Home</a></li>
+                <li class="active">Confirm</li>
+            </ol>
+        </div>
 
-                <br>
+        <br>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
