@@ -7,59 +7,29 @@
   z-index: 8;
 }
 
-// Transparent navbar
+// searchbar
+#searchbar-form {
+  .form-group {
+    display: inline;
 
-#navbar-transparent {
-  position: absolute;
-  top: 0;
-  z-index: 8;
-  width: 100%;
+    .input-group {
+      display: table;
 
-  @media(max-width: 767px) {
-    position: relative;
-  }
-}
-
-#navbar-transparent .navbar-default {
-  -webkit-box-shadow: none;
-  box-shadow: none;
-
-  @media(min-width: 767px) {
-    background-color: $transparent;
-  }
-}
-
-#navbar-transparent .navbar-default .navbar-nav > li > a {
-  color: white;
-
-  &:hover {
-    color: white;
-    background-color: $transparent;
-  }
-
-  &:focus {
-    color: white;
-  }
-
-  @media(max-width: 767px) {
-    color: $text-color;
-    &:hover, &:focus {
-      color: $primary-color;
+      .input-group-btn {
+        width: 1%;
+      }
     }
   }
-}
 
-#navbar-transparent .navbar-default .navbar-nav > .open > a {
-  background-color: $transparent;
-
-  &:hover, &:focus {
-    background-color: $transparent;
-    color: white;
+  input {
+    border: none;
+    height: 2.4em;
   }
-}
 
-.navbar-brand-lg {
-  font-size: 2.2em;
+  [type~="submit"] {
+    border: none;
+    height: 2.4em;
+  }
 }
 
 // profile dropdown
@@ -115,4 +85,58 @@
       background-color: transparent;
     }
   }
+}
+
+// Transparent navbar
+#navbar-transparent {
+  position: absolute;
+  top: 0;
+  z-index: 8;
+  width: 100%;
+
+  @media(max-width: 767px) {
+    position: relative;
+  }
+}
+
+#navbar-transparent .navbar-default {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  @media(min-width: 767px) {
+    background-color: $transparent;
+  }
+}
+
+#navbar-transparent .navbar-default .navbar-nav > li > a {
+  color: white;
+
+  &:hover {
+    color: white;
+    background-color: $transparent;
+  }
+
+  &:focus {
+    color: white;
+  }
+
+  @media(max-width: 767px) {
+    color: $text-color;
+    &:hover, &:focus {
+      color: $primary-color;
+    }
+  }
+}
+
+#navbar-transparent .navbar-default .navbar-nav > .open > a {
+  background-color: $transparent;
+
+  &:hover, &:focus {
+    background-color: $transparent;
+    color: white;
+  }
+}
+
+.navbar-brand-lg {
+  font-size: 2.2em;
 }

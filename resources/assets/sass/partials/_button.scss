@@ -1,7 +1,6 @@
 @import "../modules/all";
 
 .btn-default {
-
   &:hover, &:focus {
     outline: none !important;
   }
@@ -25,14 +24,6 @@
   }
 }
 
-.btn-search {
-  padding: 9px 27px;
-  height: 3em;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  font-weight: 600;
-}
-
 .btn-inline-search {
   border-left: none;
   color: $text-color-light;
@@ -40,8 +31,4 @@
   &:hover, &:focus {
     background-color: $background-color;
   }
-}
-
-.btn-search-icon {
-  height: 34px;
 }

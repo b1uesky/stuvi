@@ -3,19 +3,17 @@
 @import 'partials/base';
 @import 'partials/utility';
 @import 'partials/bootstrap-override';
-@import 'partials/buttons';
-@import 'partials/containers';
-@import 'partials/forms';
-@import 'partials/tables';
-@import 'partials/modals';
+@import 'partials/button';
+@import 'partials/form';
+@import 'partials/table';
+@import 'partials/modal';
 @import 'partials/image';
 @import 'partials/autocomplete';
-@import 'partials/searchbar';
 @import 'partials/navigation';
 @import 'partials/footer';
 @import 'partials/alert';
 @import "partials/breadcrumb";
-@import "partials/panels";
+@import "partials/panel";
 @import "partials/logo";
 
 @import 'pages/auth_login';
