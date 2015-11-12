@@ -37,7 +37,7 @@ class HomeController extends Controller
     {
         if (Auth::guest())
         {
-            return view('home.guest')
+            return view('home-guest')
                 ->with('universities', University::availableUniversities());
         }
         else {

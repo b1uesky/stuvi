@@ -1,18 +1,28 @@
 @import "../modules/all";
 
+.book-details {
+  margin: $spacing-unit 0;
+}
+
+.bar {
+  padding-top: 10px;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+  margin-bottom: $spacing-unit/2;
+}
+
 .sort-bar, .filter-bar, .action-bar {
   height: 3em;
+  display: inline-block;
+}
+
+.sort-bar, .filter-bar {
+  float: right;
 }
 
 .sort-bar {
-  ul {
-    list-style: none;
-    padding: 0;
-
-    li {
-      display: inline-block;
-      margin-right: 5px;
-    }
+  .sort-by-type {
+    text-transform: capitalize;
   }
 }
 
@@ -20,15 +30,6 @@
   .filter-by, .dropdown {
     display: inline-block;
   }
-
-  .filter-by {
-    margin-right: 5px;
-  }
-}
-
-.action-bar {
-  position: relative;
-  top: 5px;
 }
 
 
