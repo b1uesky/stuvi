@@ -154,7 +154,10 @@ class Book extends Model
         {
             // search for all books
             $books = Book::join('products as p', 'p.book_id', '=', 'books.id')
-                ->where('is_verified', true)
+                ->where('books.is_verified', true)
+                ->where('p.verified', true)
+                ->where('p.sold', false)
+                ->whereNull('p.deleted_at')
                 ->select('books.*')
                 ->distinct()
                 ->get();
@@ -171,7 +174,9 @@ class Book extends Model
             )
                 ->join('book_authors as a', 'a.book_id', '=', 'books.id')
                 ->join('products as p', 'p.book_id', '=', 'books.id')
-                ->where('is_verified', true)
+                ->where('books.is_verified', true)
+                ->where('p.verified', true)
+                ->where('p.sold', false)
                 ->select('books.*')
                 ->distinct()
                 ->get();

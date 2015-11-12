@@ -32,13 +32,13 @@
 
         {{-- isbn 10 --}}
         <div class="row">
-            <span>ISBN-10: </span>
+            <span><strong>ISBN-10: </strong></span>
             <span>{{ $book->isbn10 }}</span>
         </div>
 
         {{-- isbn 13 --}}
         <div class="row">
-            <span>ISBN-13: </span>
+            <span><strong>ISBN-13: </strong></span>
             <span>{{ $book->isbn13 }}</span>
         </div>
     </div>

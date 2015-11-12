@@ -1,14 +1,14 @@
 <div class="row">
 
     {{-- book image --}}
-    <div class="col-md-2 col-xs-4">
+    <div class="col-md-2 col-sm-3 col-xs-4">
         <a href="{{ url("textbook/buy/".$book->id) }}">
             <img class="img-responsive" src="{{ $book->imageSet->getImagePath('small') }}">
         </a>
     </div>
 
     {{-- book details --}}
-    <div class="col-md-10 col-xs-8">
+    <div class="col-md-8 col-sm-7 col-xs-8">
 
         {{-- title --}}
         <div class="row">
@@ -69,6 +69,11 @@
             <span><strong>ISBN-13: </strong></span>
             <span>{{ $book->isbn13 }}</span>
         </div>
+    </div>
+
+    {{-- actions --}}
+    <div class="col-sm-2 hidden-xs text-right">
+        <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Sell</a>
     </div>
 
 </div>

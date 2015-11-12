@@ -18,12 +18,8 @@
         </div>
 
         @forelse($books as $book)
-            {{-- Only show the book if it has product available --}}
-            {{-- NOTE: this is not an optimal solution, we could modify our Book query in the back end. --}}
-            @if(count($book->availableProducts()) > 0)
-                @include('includes.textbook.book-details')
-                <br>
-            @endif
+            @include('includes.textbook.book-details-with-actions')
+            <hr>
         @empty
             <h4 class="text-center">Sorry, we can't find <span class="text-primary">{{ $query }}</span>... Please double check the ISBN or spelling.</h4>
         @endforelse
