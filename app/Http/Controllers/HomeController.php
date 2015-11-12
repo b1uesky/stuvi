@@ -3,6 +3,7 @@
 use App\Product;
 use App\University;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redis;
 
 class HomeController extends Controller
 {
@@ -36,18 +37,13 @@ class HomeController extends Controller
     {
         if (Auth::guest())
         {
-            return view('home')
+            return view('home.guest')
                 ->with('universities', University::availableUniversities());
         }
         else {
-            $new_products = Product::sold(false)
-                ->availableNow()
-                ->orderBy('created_at', 'DESC')
-                ->take(8)
-                ->get();
-
-            return view('home-signedin')
-                ->with('new_products', $new_products);
+            return view('home-user')
+                ->with('popular_products', Product::popular())
+                ->with('new_products', Product::newProducts());
         }
     }
 

@@ -72,13 +72,45 @@ class Product extends Model
     }
 
     /**
+     * Get popular products.
+     *
+     * @return array
+     */
+    public function scopePopular()
+    {
+        // sort a redis list called 'list:product_ids' by
+        // product views in desc order
+        $popular_product_ids = Redis::sort('list:product_ids', [
+            'by'    => 'product:*->views',
+            'limit' => [0, 10],
+            'sort'  => 'desc'
+        ]);
+
+        // map product ids to product objects
+        $popular_products = array_map(function($id) {
+            return Product::find($id);
+        }, $popular_product_ids);
+
+        return $popular_products;
+    }
+
+    public function scopeNewProducts($query)
+    {
+        return $query->sold(false)
+            ->availableNow()
+            ->orderBy('created_at', 'DESC')
+            ->take(8)
+            ->get();
+    }
+
+    /**
      * Get the number of views.
      *
      * @return mixed
      */
     public function views()
     {
-        $views = Redis::get('product:'.$this->id.':views');
+        $views = Redis::hget('product:'.$this->id, 'views');
         return $views ? $views : 0;
     }
 
