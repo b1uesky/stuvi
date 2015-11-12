@@ -23,7 +23,7 @@
             <div class="container-searchbar center-block">
                 <form action="{{ url('textbook/search') }}" method="get" id="home-search">
                     <div class="input-group">
-                        <input type="text" name="query" id="autocomplete" class="form-control input-lg" placeholder="Enter the textbook ISBN, Title, or Author"/>
+                        <input type="text" name="query" id="autocomplete" class="form-control input-lg" placeholder="Search by ISBN, title, or author"/>
 
                         <div class="input-group-btn">
                             <button class="btn btn-default btn-lg btn-inline-search" type="submit">

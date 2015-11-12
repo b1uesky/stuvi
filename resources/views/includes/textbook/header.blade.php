@@ -33,9 +33,10 @@
                     {{-- Logged in --}}
                     @else
                         <!-- profile dropdown -->
-                        <li class="dropdown" class="nav-link" style="z-index: 500;">
+                        <li class="dropdown" class="nav-link" id="profile-dropdown">
                             <a href="#" class="dropdown-toggle nav-dropdown" data-toggle="dropdown" aria-expanded="true">
-                                <span>{{ Auth::user()->first_name }}</span>
+                                <span class="username">Hi {{ Auth::user()->first_name }}</span>
+                                <span class="account">Your account</span>
                                 <span class="caret nav-caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="nav-dropdown">
@@ -72,17 +73,6 @@
                                     @endif
                                 </a>
                             </div>
-
-
-                            {{--<label class="sr-only" for="nav-right-cart-link">Cart</label>--}}
-                            {{--<a href="{{ url('/cart') }}">--}}
-                                {{--<span class="glyphicon glyphicon-shopping-cart"></span>--}}
-                                {{--@if($cartQty == 0)--}}
-                                    {{--<span class="cart-quantity hide">{{$cartQty}}</span>--}}
-                                {{--@else--}}
-                                    {{--<span class="cart-quantity">{{$cartQty}}</span>--}}
-                                {{--@endif--}}
-                            {{--</a>--}}
                         </li>
                     @endif
                 </ul>
@@ -91,7 +81,7 @@
                 <form action="{{ url('textbook/search') }}" method="get" role="search" class="navbar-form" id="searchbar-form">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="autocomplete" name="query" placeholder="Search" value="{{ Input::get('query') }}">
+                            <input type="text" class="form-control" id="autocomplete" name="query" placeholder="Search by ISBN, title, or author" value="{{ Input::get('query') }}">
 
                             <div class="input-group-btn">
                                 <button class="btn btn-default btn-inline-search" type="submit">
