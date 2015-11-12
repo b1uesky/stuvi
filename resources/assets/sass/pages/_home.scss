@@ -116,31 +116,90 @@
 
 // For signed in user home page
 
+.sections-container {
+  padding: 0 115px;
+}
+
 .section-header {
-  margin-top: $spacing-unit;
+  margin: 20px 0;
 }
 
 .section-title {
   display: inline-block;
-  color: $text-color;
-  font-size: 1.6em;
+  letter-spacing: $extra-letter-spacing;
+  font-size: 2em;
 }
 
 .section-see-more {
   display: inline-block;
-  margin-left: $spacing-unit;
+  margin-left: $spacing-unit/2;
+  position: relative;
+  bottom: 5px;
+
+  a {
+    color: $primary-color;
+
+    .glyphicon.glyphicon-menu-right {
+      font-size: 10px;
+    }
+  }
 }
 
-.item {
-  width: 120px;
-  margin: $spacing-unit/2 auto;
 
-  .item-thumbnail {
-    height: 150px;
+.section-items {
+  height: 342px;
+  overflow: hidden;
 
-    img {
-      max-height: 100%;
-      max-width: 100%;
+  .item {
+    display: inline-block;
+    vertical-align: top;
+    height: 340px;
+    width: 205px;
+    border: 1px solid $border-color;
+    margin-right: -4px;
+
+    .item-thumbnail {
+      overflow: visible;
+
+      img {
+        display: block;
+        width: 175px;
+        height: 175px;
+        margin: 10px auto 0 auto;
+      }
     }
+
+    .item-info {
+      padding: 5px 15px;
+
+      .item-price {
+        margin-bottom: 5px;
+        font-size: large;
+        font-weight: 600;
+        color: darken($text-color, 10%);
+      }
+
+      .item-title {
+        max-height: 55px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .item-condition {
+        color: $text-color-light;
+      }
+    }
+
+    //width: 120px;
+    //margin: $spacing-unit/2 auto;
+    //
+    //.item-thumbnail {
+    //  height: 150px;
+    //
+    //  img {
+    //    max-height: 100%;
+    //    max-width: 100%;
+    //  }
+    //}
   }
 }

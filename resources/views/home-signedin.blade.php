@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container-fluid sections-container">
 
         {{-- New --}}
         <div class="row">
@@ -12,29 +12,30 @@
                 <span class="section-title">New Textbooks</span>
 
                 <span class="section-see-more">
-                    <a href="{{ url('textbook/buy') }}" class="text-right">See more</a>
+                    <a href="{{ url('textbook/buy') }}" class="btn btn-default btn-sm">
+                        See More <span class="glyphicon glyphicon-menu-right"></span>
+                    </a>
                 </span>
-
-                <hr>
             </div>
 
-
-            @foreach($new_products as $product)
-                <div class="col-md-3 col-sm-4 col-xs-6">
+            <div class="section-items">
+                @foreach($new_products as $product)
                     <div class="item">
                         <div class="item-thumbnail">
                             <a href="{{ url('textbook/buy/product/'.$product->id) }}" target="_blank">
-                                <img src="{{ $product->book->imageSet->getImagePath('small') }}" alt="">
+                                <img src="{{ $product->images[0]->getImagePath('medium') }}" class="img-rounded" alt="">
                             </a>
                         </div>
 
-                        <div class="item-price">
-                            <div>${{ $product->decimalPrice() }}</div>
+                        <div class="item-info">
+                            <div class="item-price">${{ $product->decimalPrice() }}</div>
+                            <div class="item-title">{{ $product->book->title }}</div>
+                            <div class="item-condition">{{ config('product.conditions.general_condition')[$product->condition->general_condition] }}</div>
                         </div>
-                    </div>
 
-                </div>
-            @endforeach
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
 
