@@ -69,11 +69,15 @@
             <span><strong>ISBN-13: </strong></span>
             <span>{{ $book->isbn13 }}</span>
         </div>
+
+        <div class="row">
+            <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="text-warning">Have one to sell?</a>
+        </div>
     </div>
 
     {{-- actions --}}
-    <div class="col-sm-2 hidden-xs text-right">
-        <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}">Sell</a>
-    </div>
+    {{--<div class="col-sm-2 hidden-xs text-right">--}}
+        {{--<a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="btn btn-default btn-no-border">Sell</a>--}}
+    {{--</div>--}}
 
 </div>

@@ -21,25 +21,10 @@
         </div>
 
         <div class="book-details">
-            @include('includes.textbook.book-details')
+            @include('includes.textbook.book-details-with-actions')
         </div>
 
         <div class="row bar">
-
-            <div class="action-bar">
-                @if(Auth::guest())
-                    <div class="text-muted">
-                        Please <a data-toggle="modal" href="#login-modal">Login</a> or
-                        <a data-toggle="modal" href="#signup-modal">Sign up</a> to buy or sell this textbook.
-                    </div>
-                @else
-                    <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="btn btn-default btn-no-border">
-                        <strong>Have one to sell?</strong>
-                    </a>
-                @endif
-            </div>
-
-
                 <div class="sort-bar">
                     <div class="dropdown">
                         <button class="btn btn-default btn-no-border dropdown-toggle" id="dropdownMenuOrderBy" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

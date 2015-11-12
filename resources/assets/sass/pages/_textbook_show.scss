@@ -16,17 +16,15 @@
   display: inline-block;
 }
 
-.sort-bar, .filter-bar {
-  float: right;
-}
-
 .sort-bar {
+  float: right;
   .sort-by-type {
     text-transform: capitalize;
   }
 }
 
 .filter-bar {
+  float: left;
   .filter-by, .dropdown {
     display: inline-block;
   }
