@@ -40,10 +40,6 @@ class HomeController extends Controller
                 ->with('universities', University::availableUniversities());
         }
         else {
-//            $popular_products = Product::sold(false)
-//                ->take(8)
-//                ->get();
-
             $new_products = Product::sold(false)
                 ->availableNow()
                 ->orderBy('created_at', 'DESC')
@@ -51,7 +47,6 @@ class HomeController extends Controller
                 ->get();
 
             return view('home-signedin')
-//                ->with('popular_products', $popular_products)
                 ->with('new_products', $new_products);
         }
     }

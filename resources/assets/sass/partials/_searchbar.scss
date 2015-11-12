@@ -4,68 +4,19 @@
 
 @import "../modules/all";
 
-.container-search {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: $transparent;
-}
-
-.searchbar {
-  display: table;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 500px;
-}
-
-.searchbar-input-container {
-  display: table-cell;
-  vertical-align: top;
-}
-
-.searchbar-input-container-query {
-  width: 99%;
-}
-
-//.searchbar-input-container-university {
-//  width: 0.01%;
-//}
-
-.searchbar-input-container-submit {
-  width: 0.01%;
-}
-
-.searchbar-input {
-  width: 100%;
-  height: 3em;
-
-  button {
-    height: 100%;
-  }
-}
-
-.searchbar-input-query {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right: 0;
-}
-
-.searchbar-input-university {
-  min-width: 100px;
-  border-radius: 0;
-  border-right: 0;
-  color: $text-color;
-}
-
-.searchbar-input-university-with-border {
-  -webkit-appearance: none;
-  color: $text-color;
-}
-
 #searchbar-form {
-  .input-group {
-    width: 600px;
+  .form-group {
+    display: inline;
+
+    .input-group {
+      display: table;
+
+      .input-group-btn {
+        width: 1%;
+      }
+    }
   }
+
 
   input {
     border: none;
@@ -77,43 +28,3 @@
     height: 2.4em;
   }
 }
-
-/* XS SCREEN COMPATIBILITY */
-
-//.xs-guest-search-bar{
-//  display: none;
-//  height: 0;
-//  width: 0;
-//
-//  @media(max-width: 767px){
-//    display: block;
-//    height: auto;
-//    width: auto;
-//    .searchbar-input-query{
-//      width: 100%;
-//      border-top-right-radius: 2px;
-//      border-bottom-right-radius: 2px;
-//      border-right: 1px solid #C4C4C4;
-//      &:focus{
-//        border-right: 1px solid $primary-color;
-//      }
-//    }
-//  }
-//}
-//
-//@media(max-width: 767px){
-//  .default-searchbar{
-//    display: none;
-//    height: 0;
-//    width: 0;
-//  }
-//  .xs-guest-search-bar-input, .xs-guest-search-bar-input-uni{
-//    margin-bottom: 10px;
-//  }
-//}
-//
-//@media(max-width: 360px){
-//  .xs-guest-search-bar-input-submit{
-//    margin-bottom: 20px;
-//  }
-//}

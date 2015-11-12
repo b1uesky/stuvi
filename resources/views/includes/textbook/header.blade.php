@@ -24,28 +24,8 @@
             <!-- End Navbar header -->
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <!-- Navbar left -->
-                <ul class="nav navbar-nav navbar-left">
-                    {{-- Search bar --}}
-                    <li>
-                        <form action="{{ url('textbook/search') }}" method="get" role="search" class="navbar-form navbar-left" id="searchbar-form">
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="autocomplete" name="query" placeholder="Search" value="{{ Input::get('query') }}">
-
-                                <div class="input-group-btn">
-                                    <button class="btn btn-default btn-inline-search" type="submit">
-                                        <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </li>
-                </ul>
-
                 <!-- Navbar right -->
                 <ul class="nav navbar-nav navbar-right">
-
-
                     {{-- Not logged in --}}
                     @if (Auth::guest())
                         <li><a class="nav-link" data-toggle="modal" href="#login-modal">Login</a></li>
@@ -93,6 +73,22 @@
                         </li>
                     @endif
                 </ul>
+
+                {{-- Searchbar --}}
+                <form action="{{ url('textbook/search') }}" method="get" role="search" class="navbar-form" id="searchbar-form">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="autocomplete" name="query" placeholder="Search" value="{{ Input::get('query') }}">
+
+                            <div class="input-group-btn">
+                                <button class="btn btn-default btn-inline-search" type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
             </div>
             <!-- End collapse container -->
         </div>
