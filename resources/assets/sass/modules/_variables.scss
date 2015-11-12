@@ -82,6 +82,9 @@ $navbar-inverse-color: white;
 $navbar-inverse-link-color: white;
 $navbar-inverse-bg: $primary-color-light;
 $navbar-inverse-link-active-bg: lighten($navbar-inverse-bg, 2%);
+$navbar-inverse-toggle-border-color: transparent;
+$navbar-inverse-toggle-hover-bg: transparent;
+
 
 //== Breadcrumbs
 $breadcrumb-separator: "/";

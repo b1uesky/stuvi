@@ -58,18 +58,31 @@
                             </ul>
                         </li>
                         <!-- cart -->
-                        <li class="cart">
+                        <li id="cart">
                             <?php $cartQty = Auth::user()->cart->quantity; ?>
+                            <div class="input-group">
+                                <a href="{{ url('cart') }}" class="btn btn-default navbar-btn">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                                    <span>Cart</span>
 
-                            <label class="sr-only" for="nav-right-cart-link">Cart</label>
-                            <a href="{{ url('/cart') }}">
-                                <span class="glyphicon glyphicon-shopping-cart"></span>
-                                @if($cartQty == 0)
-                                    <span class="cart-quantity hide">{{$cartQty}}</span>
-                                @else
-                                    <span class="cart-quantity">{{$cartQty}}</span>
-                                @endif
-                            </a>
+                                    @if($cartQty == 0)
+                                        <span class="cart-quantity hide">{{$cartQty}}</span>
+                                    @else
+                                        <span class="cart-quantity">{{$cartQty}}</span>
+                                    @endif
+                                </a>
+                            </div>
+
+
+                            {{--<label class="sr-only" for="nav-right-cart-link">Cart</label>--}}
+                            {{--<a href="{{ url('/cart') }}">--}}
+                                {{--<span class="glyphicon glyphicon-shopping-cart"></span>--}}
+                                {{--@if($cartQty == 0)--}}
+                                    {{--<span class="cart-quantity hide">{{$cartQty}}</span>--}}
+                                {{--@else--}}
+                                    {{--<span class="cart-quantity">{{$cartQty}}</span>--}}
+                                {{--@endif--}}
+                            {{--</a>--}}
                         </li>
                     @endif
                 </ul>
