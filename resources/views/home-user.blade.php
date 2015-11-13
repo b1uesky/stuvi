@@ -11,11 +11,11 @@
             <div class="section-header">
                 <span class="section-title">Popular</span>
 
-                <span class="section-see-more">
-                    <a href="#" class="btn btn-default btn-sm">
-                        See More <span class="glyphicon glyphicon-menu-right"></span>
-                    </a>
-                </span>
+                {{--<span class="section-see-more">--}}
+                    {{--<a href="#" class="btn btn-default btn-sm">--}}
+                        {{--See More <span class="glyphicon glyphicon-menu-right"></span>--}}
+                    {{--</a>--}}
+                {{--</span>--}}
             </div>
 
             <div class="section-items">
@@ -43,11 +43,11 @@
             <div class="section-header">
                 <span class="section-title">New</span>
 
-                <span class="section-see-more">
-                    <a href="#" class="btn btn-default btn-sm">
-                        See More <span class="glyphicon glyphicon-menu-right"></span>
-                    </a>
-                </span>
+                {{--<span class="section-see-more">--}}
+                    {{--<a href="#" class="btn btn-default btn-sm">--}}
+                        {{--See More <span class="glyphicon glyphicon-menu-right"></span>--}}
+                    {{--</a>--}}
+                {{--</span>--}}
             </div>
 
             <div class="section-items">

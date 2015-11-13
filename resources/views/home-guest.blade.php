@@ -160,21 +160,21 @@
     </section>
 
     {{-- How it works --}}
-    <section id="how-it-works">
-        <div class="jumbotron">
-            <div class="container">
-                <h2 class="text-center">How it works</h2>
-            </div>
-        </div>
-    </section>
+    {{--<section id="how-it-works">--}}
+        {{--<div class="jumbotron">--}}
+            {{--<div class="container">--}}
+                {{--<h2 class="text-center">How it works</h2>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</section>--}}
 
     {{-- Features --}}
-    <section id="features">
-        <div class="jumbotron">
-            <div class="container">
-                <h2 class="text-center">We made it easy</h2>
-            </div>
-        </div>
-    </section>
+    {{--<section id="features">--}}
+        {{--<div class="jumbotron">--}}
+            {{--<div class="container">--}}
+                {{--<h2 class="text-center">We made it easy</h2>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</section>--}}
 
 @endsection
