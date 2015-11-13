@@ -16,13 +16,21 @@
   background: $clouds;
 
   &:hover {
-    color: $green-sea;
+    font-weight: 600;
   }
 }
 
 // Dropzone image preview
 .dropzone .dz-preview .dz-image {
-  border-radius: $border-radius-base;
+  border-radius: $border-radius-base !important;
+
+  img {
+    opacity: 0.8;
+  }
+}
+
+.dropzone .dz-preview.dz-image-preview {
+  background: transparent !important;
 }
 
 .dz-image img {
