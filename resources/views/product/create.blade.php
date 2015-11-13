@@ -131,11 +131,14 @@
                                         <div class="form-group">
                                             <div id="dropzone-img-preview" class="dropzone-previews dz-clickable">
                                                 <div class="dz-message">
-                                                    <h4>Drop or click here to upload textbook images.</h4>
+                                                    <h4>
+                                                        <span class="glyphicon glyphicon-picture"></span>
+                                                        Drop or click here to upload textbook images.
+                                                    </h4>
                                                     <br>
-                                                    <small class="text-muted">(A front cover image is required. You can upload a maximum of
-                                                        three images, at most 3MB per image.)
-                                                    </small>
+                                                    <p class="text-muted">A front cover image is required.</p>
+                                                    <p class="text-muted">You can upload a maximum of
+                                                        three images, at most 3MB per image.</p>
                                                 </div>
                                             </div>
                                         </div>

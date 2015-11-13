@@ -107,6 +107,15 @@ a {
 }
 
 // bootstrap-select
+.bootstrap-select .dropdown-toggle:focus {
+  outline: none;
+}
+
+.bootstrap-select .btn-default {
+  background-color: white !important;
+}
+
 .filter-option {
-  color: $text-color-light;
+  color: $input-color-placeholder !important;
+  font-weight: normal !important;
 }

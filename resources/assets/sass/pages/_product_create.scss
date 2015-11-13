@@ -10,12 +10,13 @@
 
 // image upload
 #dropzone-img-preview {
-  border: 2px dashed $border-color;
+  border: 2px solid $border-color;
   border-radius: $border-radius-base;
   padding: $spacing-unit / 2;
+  background: $clouds;
 
   &:hover {
-    border: 2px dashed $brand-primary;
+    color: $green-sea;
   }
 }
 

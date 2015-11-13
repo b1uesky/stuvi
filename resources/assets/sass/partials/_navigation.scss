@@ -22,12 +22,11 @@
   }
 
   input {
-    border: none;
+    border: white;
     height: 2.4em;
   }
 
   [type~="submit"] {
-    border: none;
     height: 2.4em;
   }
 }
@@ -58,13 +57,18 @@
 
 // shopping cart
 #cart {
+  .btn-default {
+    background: white;
+    border-color: white;
+
+    &:active, &:hover, &:focus {
+      background: white !important;
+      border-color: white !important;
+    }
+  }
+
   a {
     color: $brand-primary;
-    border: none;
-
-    &:hover, &:focus {
-      background-color: white;
-    }
   }
 
   .cart-quantity {

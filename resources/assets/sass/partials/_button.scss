@@ -2,24 +2,58 @@
 
 .btn-default {
   &:hover, &:focus {
+    background-color: darken($brand-default, 5%) !important;
     outline: none !important;
+    border: 1px solid darken($brand-default, 5%) !important;
   }
 }
 
-//.btn-primary {
-//  &:hover, &:focus {
-//    background-color: $primary-color-light !important;
-//    outline: none !important;
-//    border: 1px solid $primary-color !important;
-//  }
-//}
+.btn-primary {
+  &:hover, &:focus {
+    background-color: lighten($brand-primary, 3%) !important;
+    outline: none !important;
+    border: 1px solid lighten($brand-primary, 3%) !important;
+  }
+}
+
+.btn-info {
+  &:hover, &:focus {
+    background-color: lighten($brand-info, 3%) !important;
+    outline: none !important;
+    border: 1px solid lighten($brand-info, 3%) !important;
+  }
+}
+
+.btn-warning {
+  &:hover, &:focus {
+    background-color: lighten($brand-warning, 3%) !important;
+    outline: none !important;
+    border: 1px solid lighten($brand-warning, 3%) !important;
+  }
+}
+
+.btn-danger {
+  &:hover, &:focus {
+    background-color: lighten($brand-danger, 3%) !important;
+    outline: none !important;
+    border: 1px solid lighten($brand-danger, 3%) !important;
+  }
+}
+
+.btn-success {
+  &:hover, &:focus {
+    background-color: lighten($brand-success, 3%) !important;
+    outline: none !important;
+    border: 1px solid lighten($brand-success, 3%) !important;
+  }
+}
 
 .btn-muted {
-  color: $button-text-color;
+  color: white;
   background-color: $background-light-grey;
 
   &:hover, &:focus {
-    color: $button-text-color;
+    color: white;
     background-color: $background-grey;
   }
 }

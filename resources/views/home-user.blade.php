@@ -12,7 +12,7 @@
                 <span class="section-title">Popular</span>
 
                 <span class="section-see-more">
-                    <a href="{{ url('textbook/buy') }}" class="btn btn-default btn-sm">
+                    <a href="#" class="btn btn-default btn-sm">
                         See More <span class="glyphicon glyphicon-menu-right"></span>
                     </a>
                 </span>
@@ -44,7 +44,7 @@
                 <span class="section-title">New</span>
 
                 <span class="section-see-more">
-                    <a href="{{ url('textbook/buy') }}" class="btn btn-default btn-sm">
+                    <a href="#" class="btn btn-default btn-sm">
                         See More <span class="glyphicon glyphicon-menu-right"></span>
                     </a>
                 </span>

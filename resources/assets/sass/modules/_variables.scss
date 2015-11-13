@@ -40,9 +40,8 @@ $background-grey:         #aaa;
 $background-dark:         #333;
 
 /* UTILITY COLORS */
-$button-text-color:   #ffffff;
-$border-color:        #eee;
-$price-color:         #E74C3C;
+$border-color:        $clouds;
+$price-color:         $alizarin;
 
 $spacing-unit: 30px;
 $extra-letter-spacing: 0.2px;
@@ -56,6 +55,7 @@ $footer-height-mobile: 150px;
 // http://getbootstrap.com/customize/#colors
 
 //== Colors
+$brand-default: $clouds;
 $brand-primary: $turquoise;
 $brand-info: $peter-river;
 $brand-warning: $sun-flower;
@@ -79,15 +79,17 @@ $border-radius-large: 6px;
 $border-radius-small: 3px;
 
 //== Buttons
-$btn-default-color: $text-color;
-$btn-default-border: $border-color;
+$btn-font-weight: 600;
+$btn-default-color: lighten($text-color, 5%);
+$btn-default-border: $brand-default;
+$btn-default-bg: $brand-default;
 $btn-primary-border: $brand-primary;
 $btn-info-border: $brand-info;
 $btn-warning-border: $brand-warning;
 $btn-danger-border: $brand-danger;
 
 //== Forms
-$input-border: $border-color;
+$input-border: $clouds;
 
 //== Navbar
 $navbar-height: 60px;
