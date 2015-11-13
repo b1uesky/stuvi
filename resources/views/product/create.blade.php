@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="page-header">
-                    <h2>Sell your book</h2>
+                    <h1>Sell your book</h1>
                 </div>
 
                 <div class="row">
@@ -38,19 +38,22 @@
                                             {{--Open modal button--}}
                                             <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal"
                                                   data-target=".condition-modal"></span>
-                                            <br>
 
-                                            <div class="radio-product-condition">
+                                            <div class="radio-button-group">
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="general_condition" value="0"> Like new
+                                                    <input type="radio" name="general_condition" value="0">
+                                                    <span>Like new</span>
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="general_condition" value="1"> Good
+                                                    <input type="radio" name="general_condition" value="1">
+                                                    <span>Good</span>
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="general_condition" value="2"> Acceptable
+                                                    <input type="radio" name="general_condition" value="2">
+                                                    <span>Acceptable</span>
                                                 </label>
                                             </div>
+
                                         </div>
 
                                         {{--Highlights/Notes--}}
@@ -59,19 +62,22 @@
                                             {{--Open modal button--}}
                                             <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal"
                                                data-target=".highlight-modal"></span>
-                                            <br>
 
-                                            <div class="radio-product-condition">
+                                            <div class="radio-button-group">
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="highlights_and_notes" value="0"> 0 - 5 pages
+                                                    <input type="radio" name="highlights_and_notes" value="0">
+                                                    <span>0 ~ 5 pages</span>
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="highlights_and_notes" value="1"> 6 - 15 pages
+                                                    <input type="radio" name="highlights_and_notes" value="1">
+                                                    <span>6 ~ 15 pages</span>
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="highlights_and_notes" value="2"> > 15 pages
+                                                    <input type="radio" name="highlights_and_notes" value="2">
+                                                    <span>> 15 pages</span>
                                                 </label>
                                             </div>
+
                                         </div>
 
                                         {{--Damaged Pages--}}
@@ -79,17 +85,19 @@
                                             <label>Damaged pages</label>
                                             <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal"
                                                data-target=".damage-modal"></span>
-                                            <br>
 
-                                            <div class="radio-product-condition">
+                                            <div class="radio-button-group">
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="damaged_pages" value="0"> 0
+                                                    <input type="radio" name="damaged_pages" value="0">
+                                                    <span>0</span>
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="damaged_pages" value="1"> 1 - 3 pages
+                                                    <input type="radio" name="damaged_pages" value="1">
+                                                    <span>1 ~ 3 pages</span>
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="damaged_pages" value="2"> > 3 pages
+                                                    <input type="radio" name="damaged_pages" value="2">
+                                                    <span>> 3 pages</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -99,14 +107,15 @@
                                             <label>Broken book binding</label>
                                             <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal"
                                                data-target=".binding-modal"></span>
-                                            <br>
 
-                                            <div class="radio-product-condition">
+                                            <div class="radio-button-group">
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="broken_binding" value="0"> No
+                                                    <input type="radio" name="broken_binding" value="0">
+                                                    <span>No</span>
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="broken_binding" value="1"> Yes
+                                                    <input type="radio" name="broken_binding" value="1">
+                                                    <span>Yes</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -135,21 +144,20 @@
                                         <div class="from-group">
                                             <label>When is it available?</label>
 
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="available_at" id="available_now" value="" checked> Now
+                                            <div class="radio-button-group">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="available_at" id="available_now" value="" checked>
+                                                    <span>Now</span>
                                                 </label>
-                                            </div>
 
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="available_at" id="available_future" value=""> In the future
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="available_at" id="available_future" value="">
+                                                    <span>In the future</span>
                                                 </label>
                                             </div>
 
                                             <div id="datetimepicker-available-date" class="hidden"></div>
 
-                                            <br>
                                         </div>
 
                                         {{--your price--}}
@@ -167,17 +175,19 @@
                                         <div class="form-group">
                                             <label>Receive money</label>
 
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="payout_method" id="payout_paypal" value="paypal"> PayPal
+                                            <div class="radio-button-group">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="payout_method" id="payout_paypal" value="paypal">
+                                                    <span>PayPal</span>
+                                                </label>
+
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="payout_method" id="payout_cash" value="cash">
+                                                    <span>Cash</span>
                                                 </label>
                                             </div>
 
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="payout_method" id="payout_cash" value="cash"> Cash
-                                                </label>
-                                            </div>
+
                                         </div>
 
                                         {{--Paypal account--}}
