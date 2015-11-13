@@ -106,7 +106,7 @@
             <div class="jumbotron text-center">
                 <h1>Your cart is empty...</h1>
                 <br>
-                <p><a href="{{ url('textbook/buy') }}" class="btn btn-primary btn-lg">Find a book</a></p>
+                <p><a href="{{ url('textbook/search') }}" class="btn btn-primary btn-lg">Find a book</a></p>
             </div>
         @endif
 
@@ -114,7 +114,7 @@
             <div class="jumbotron text-center">
                 <h1>Your cart is empty...</h1>
                 <br>
-                <p><a href="{{ url('textbook/buy') }}" class="btn btn-primary btn-lg">Find a book</a></p>
+                <p><a href="{{ url('textbook/search') }}" class="btn btn-primary btn-lg">Find a book</a></p>
             </div>
         </div>
 
