@@ -59,7 +59,7 @@
 // shopping cart
 #cart {
   a {
-    color: $primary-color;
+    color: $brand-primary;
     border: none;
 
     &:hover, &:focus {
@@ -68,7 +68,7 @@
   }
 
   .cart-quantity {
-    background-color: $secondary-color;
+    background-color: $alizarin;
     color: white;
     position: absolute;
     right: -10px;
@@ -104,7 +104,7 @@
   box-shadow: none;
 
   @media(min-width: 767px) {
-    background-color: $transparent;
+    background-color: transparent;
   }
 }
 
@@ -113,7 +113,7 @@
 
   &:hover {
     color: white;
-    background-color: $transparent;
+    background-color: transparent;
   }
 
   &:focus {
@@ -123,16 +123,16 @@
   @media(max-width: 767px) {
     color: $text-color;
     &:hover, &:focus {
-      color: $primary-color;
+      color: $brand-primary;
     }
   }
 }
 
 #navbar-transparent .navbar-default .navbar-nav > .open > a {
-  background-color: $transparent;
+  background-color: transparent;
 
   &:hover, &:focus {
-    background-color: $transparent;
+    background-color: transparent;
     color: white;
   }
 }

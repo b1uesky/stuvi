@@ -6,13 +6,13 @@
   }
 }
 
-.btn-primary {
-  &:hover, &:focus {
-    background-color: $primary-color-light !important;
-    outline: none !important;
-    border: 1px solid $primary-color !important;
-  }
-}
+//.btn-primary {
+//  &:hover, &:focus {
+//    background-color: $primary-color-light !important;
+//    outline: none !important;
+//    border: 1px solid $primary-color !important;
+//  }
+//}
 
 .btn-muted {
   color: $button-text-color;

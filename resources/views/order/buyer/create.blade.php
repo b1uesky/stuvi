@@ -42,18 +42,24 @@
                             </div>
 
                             <div class="panel-body">
-                                <div class="radio">
-                                    <label>
+
+                                <div class="radio-button-group">
+                                    <label class="radio-inline">
                                         <input type="radio" name="payment_method_select" id="payment_method_paypal" value="paypal" checked>
-                                        <strong>PayPal</strong>
+                                        <span>PayPal</span>
                                     </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
+
+                                    <label class="radio-inline">
                                         <input type="radio" name="payment_method_select" id="payment_method_cash" value="cash">
-                                        <strong>Cash</strong>
+                                        <span>Cash</span>
                                     </label>
                                 </div>
+
+
+                                <div>
+                                    <span class="text-success">We only collect the payment after delivery.</span>
+                                </div>
+
 
                                 <!-- Nav tabs for payment methods -->
                                 {{--<ul class="nav nav-pills" role="tablist">--}}
@@ -123,10 +129,6 @@
                                 {{--</div>--}}
                                 {{--</div>--}}
                                 {{--</div>--}}
-                            </div>
-
-                            <div class="panel-footer">
-                                <small class="text-success">We only collect the payment after delivery.</small>
                             </div>
                         </div>
                     </div>

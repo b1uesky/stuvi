@@ -5,7 +5,7 @@
 // For guest home page
 
 .container-bg {
-  background: $primary-color-light url('https://s3.amazonaws.com/stuvi-bg-img/flat/educational-future-concept-sm.png') no-repeat 8% 100%;
+  background: $brand-primary url('https://s3.amazonaws.com/stuvi-bg-img/flat/educational-future-concept-sm.png') no-repeat 8% 100%;
   height: 320px;
 
   @media(max-width: 767px) {

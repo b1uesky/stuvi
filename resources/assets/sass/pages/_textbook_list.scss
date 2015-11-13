@@ -6,13 +6,13 @@
   text-align: center;
   .active {
     span {
-      background-color: $primary-color;
-      border-color: $primary-color;
+      background-color: $brand-primary;
+      border-color: $brand-primary;
     }
   }
   li {
     a {
-      color: $primary-color;
+      color: $brand-primary;
     }
   }
 }

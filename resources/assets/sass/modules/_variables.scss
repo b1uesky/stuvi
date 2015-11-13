@@ -6,12 +6,28 @@ $tiffany-light:   #d9f1f1;
 $salmon:          #F26F6D;
 $salmon-light:    #F27B79;
 
-/* BRAND COLORS */
-$primary-color:         #00A896;
-$primary-color-light:   #00bfac;
-$primary-color-accent:  #81D8D0;
-$secondary-color:       #F26F6D;
-$secondary-color-light: #F27B79;
+/* FLAT UI COLORS */
+/* http://designmodo.github.io/Flat-UI/ */
+$turquoise:       #1ABC9C;
+$green-sea:       #16A085;
+$emerald:         #2ECC71;
+$nephritis:       #27AE60;
+$peter-river:     #3498DB;
+$belize-hole:     #2980B9;
+$amethyst:        #9B59B6;
+$wisteria:        #8E44AD;
+$wet-asphalt:     #34495E;
+$midnight-blue:   #2C3E50;
+$sun-flower:      #F1C40F;
+$orange:          #F39C12;
+$carrot:          #E67E22;
+$pumpkin:         #D35400;
+$alizarin:        #E74C3C;
+$pomegranate:     #C0392B;
+$clouds:          #ECF0F1;
+$silver:          #BDC3C7;
+$concrete:        #95A5A6;
+$asbestos:        #7F8C8D;
 
 /* TEXT COLORS */
 $text-color-light:  #979995;
@@ -24,10 +40,9 @@ $background-grey:         #aaa;
 $background-dark:         #333;
 
 /* UTILITY COLORS */
-$transparent:         rgba(0, 0, 0, 0);
 $button-text-color:   #ffffff;
-$border-color:        #ddd;
-$price-color:         #F25F5C;
+$border-color:        #eee;
+$price-color:         #E74C3C;
 
 $spacing-unit: 30px;
 $extra-letter-spacing: 0.2px;
@@ -41,10 +56,11 @@ $footer-height-mobile: 150px;
 // http://getbootstrap.com/customize/#colors
 
 //== Colors
-$brand-primary: #00A896;
-$brand-info: #337FCC;
-$brand-warning: #ffa322;
-$brand-danger: #F25F5C;
+$brand-primary: $turquoise;
+$brand-info: $peter-river;
+$brand-warning: $sun-flower;
+$brand-danger: $alizarin;
+$brand-success: $emerald;
 
 //== Scaffolding
 $body-bg: #fff;
@@ -58,9 +74,9 @@ $font-size-base: 14px;
 $icon-font-path: "../../../../build/fonts/";
 
 //== Components
-$border-radius-base: 2px;
-$border-radius-large: 2px;
-$border-radius-small: 2px;
+$border-radius-base: 4px;
+$border-radius-large: 6px;
+$border-radius-small: 3px;
 
 //== Buttons
 $btn-default-color: $text-color;
@@ -80,7 +96,7 @@ $navbar-border-radius: 0px;
 $navbar-inverse-border: none;
 $navbar-inverse-color: white;
 $navbar-inverse-link-color: white;
-$navbar-inverse-bg: $primary-color-light;
+$navbar-inverse-bg: $brand-primary;
 $navbar-inverse-link-active-bg: lighten($navbar-inverse-bg, 2%);
 $navbar-inverse-toggle-border-color: transparent;
 $navbar-inverse-toggle-hover-bg: transparent;

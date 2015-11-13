@@ -18,15 +18,15 @@ input[type=radio] + span {
   background-color: #eee;
   color: lighten($text-color, 15%);
   font-weight: 600;
-  border-radius: 2px;
+  border-radius: 4px;
 
   &:hover {
-    background-color: lighten($salmon-light, 10%);
+    background-color: lighten($turquoise, 5%);
     color: white;
   }
 }
 
 input[type=radio]:checked + span {
-  background-color: $salmon-light;
+  background-color: $turquoise;
   color: white;
 }
