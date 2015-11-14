@@ -18,7 +18,9 @@
   }
 }
 
-.logo-text-white, .logo-text-black {
+// for home page
+.logo-text-white-home {
+  color: white;
   vertical-align: middle;
   font-size: 1.4em;
   font-weight: 300;
@@ -27,13 +29,12 @@
   left: 4px;
 }
 
+// for other pages
 .logo-text-white {
-  color: white;
-
-}
-
-.logo-text-black {
-  color: $text-color;
+  font-size: 1.6em;
+  position: relative;
+  top: 8px;
+  color: white !important;
 }
 
 

@@ -83,10 +83,14 @@
   }
 
   @media (max-width: 767px) {
+    .btn-default {
+      background: transparent;
+      border:none;
+      padding-left: 30px;
+    }
     a {
       color: white;
       border: none;
-      background-color: transparent;
     }
   }
 }

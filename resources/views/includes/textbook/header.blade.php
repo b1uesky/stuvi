@@ -19,7 +19,9 @@
                     {{--<span class="logo-text-white">Stuvi</span>--}}
                 {{--</a>--}}
 
-                <a href="{{ url('/') }}" class="navbar-brand navbar-brand-lg">Stuvi</a>
+                <a href="{{ url('/') }}" class="navbar-brand navbar-brand-lg">
+                    <span class="logo-text-white">Stuvi</span>
+                </a>
             </div>
             <!-- End Navbar header -->
 

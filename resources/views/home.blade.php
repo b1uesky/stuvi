@@ -19,7 +19,7 @@
 
                         <a href="{{ url('/') }}" class="navbar-brand navbar-brand-lg">
                             <img src="https://s3.amazonaws.com/stuvi-logo/stuvi-logo-sm.png" class="" alt="stuvi logo">
-                            <span class="logo-text-white">Stuvi</span>
+                            <span class="logo-text-white-home">Stuvi</span>
                         </a>
 
                     </div>
