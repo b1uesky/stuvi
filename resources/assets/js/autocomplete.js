@@ -83,7 +83,7 @@ $(document).ready(function () {
     function highlightTerm(text, term) {
         return String(text).replace(
             new RegExp(term, 'gi'),
-            "<span class='text-bold color-primary'>$&</span>"
+            "<span class='text-bold text-highlight'>$&</span>"
         );
     }
 

@@ -113,7 +113,8 @@
 
 #features {
   .jumbotron {
-    background: lighten($tiffany-light, 5%);
+    //background: lighten($tiffany-light, 5%);
+    background: $clouds;
 
     img {
       opacity: 0.8;

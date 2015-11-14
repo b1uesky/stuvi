@@ -11,7 +11,8 @@
 
         {{-- Breadcrumb --}}
         @if(count($items) > 0)
-            <div class="row margin-30">
+            <br>
+            <div class="row">
                 <nav>
                     <ol class="cd-multi-steps text-top">
                         <li class="current">
@@ -26,6 +27,7 @@
                     </ol>
                 </nav>
             </div>
+            <br>
 
             <div class="row">
                 {{-- Cart items --}}
