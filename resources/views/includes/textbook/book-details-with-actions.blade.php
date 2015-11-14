@@ -13,7 +13,7 @@
         {{-- title --}}
         <div class="row">
             <h4 class="no-margin-top">
-                <a href="{{ url("textbook/buy/".$book->id.'?query=' . Input::get('query')) }}">{{ $book->title }}</a>
+                <a href="{{ url("textbook/buy/".$book->id.'?query=' . Input::get('query')) }}"><strong>{{ $book->title }}</strong></a>
             </h4>
         </div>
 
@@ -71,7 +71,9 @@
         </div>
 
         <div class="row">
-            <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="text-warning">Have one to sell?</a>
+            <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="text-warning text-lg">
+                <strong>Have one to sell?</strong>
+            </a>
         </div>
     </div>
 
