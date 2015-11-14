@@ -212,7 +212,9 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label for="">
-                                                    <input type="checkbox" name="accept_trade_in" checked> I would like to join the Stuvi Book Trade-In program
+                                                    <input type="checkbox" name="accept_trade_in" checked>
+                                                    I would like to join the Stuvi Book Trade-In program
+                                                    <span class="glyphicon glyphicon-question-sign" id="book-trade-in-popover"></span>
                                                 </label>
                                             </div>
                                         </div>
