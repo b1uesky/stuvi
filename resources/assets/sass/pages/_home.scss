@@ -32,11 +32,9 @@
 #home-search {
   input {
     border: none;
-    height: 2.4em;
   }
 
   [type~="submit"] {
-    height: 2.4em;
   }
 }
 
@@ -76,6 +74,19 @@
   }
 }
 
+.sections {
+
+  h2 {
+    font-size: 3em;
+  }
+
+  h3 {
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
 .jumbotron {
   margin-bottom: 0;
   background-color: $background-color;
@@ -87,6 +98,9 @@
 
 // sections
 #intro {
+  h2 {
+    margin-bottom: 0.5em;
+  }
   //.jumbotron {
   //  background: white url('https://s3.amazonaws.com/stuvi-bg-img/flat/student-illustration-sm.png') no-repeat center;
   //}
@@ -97,7 +111,18 @@
 }
 
 #features {
+  .jumbotron {
+    background: lighten($tiffany-light, 5%);
 
+    img {
+      opacity: 0.8;
+    }
+
+    p {
+      font-size: 1.2em;
+      text-align: center;
+    }
+  }
 }
 
 

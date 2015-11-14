@@ -121,37 +121,78 @@
         </div>
     </div>
 
-    <!-- Intro -->
-    <section id="intro">
-        <div class="jumbotron">
-            <div class="container">
-                <div class="row">
-                    <div class="text-center">
-                        <h2>What is Stuvi?</h2>
-                        <p>Stuvi is a marketplace built for college students, by college students. To help you succeed at school, we're launching our textbook trading service here in Boston!</p>
-                        {{--<p><a class="btn btn-default btn-lg" href="{{ url('/about/') }}" role="button">Learn more</a></p>--}}
+    <div class="sections">
+        <!-- Intro -->
+        <section id="intro">
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h2>What is Stuvi?</h2>
+                            <p>Stuvi, or Student Village, is a marketplace built for college students, by college students.<br>
+                                To help you succeed at school, we're launching our textbook trading service here in Boston!</p>
+                            {{--<p><a class="btn btn-default btn-lg" href="{{ url('/about/') }}" role="button">Learn more</a></p>--}}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    {{-- How it works --}}
-    {{--<section id="how-it-works">--}}
-    {{--<div class="jumbotron">--}}
-    {{--<div class="container">--}}
-    {{--<h2 class="text-center">How it works</h2>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</section>--}}
+        {{-- How it works --}}
+        {{--<section id="how-it-works">--}}
+        {{--<div class="jumbotron">--}}
+        {{--<div class="container">--}}
+        {{--<h2 class="text-center">How it works</h2>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</section>--}}
 
-    {{-- Features --}}
-    {{--<section id="features">--}}
-    {{--<div class="jumbotron">--}}
-    {{--<div class="container">--}}
-    {{--<h2 class="text-center">We made it easy</h2>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</section>--}}
+        {{-- Features --}}
+        <section id="features">
+            <div class="jumbotron">
+                <div class="container">
+                    {{--<div>Icon made by <a href="http://handdrawngoods.com" title="Hand Drawn Goods">Hand Drawn Goods</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>--}}
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img class="img-responsive center-block" src="https://s3.amazonaws.com/stuvi-icon/book_128.png" alt="placeholder">
+
+                            <h3>Find your books</h3>
+                            <p>
+                                Get the best prices for textbooks from students near you, without leaving the comfort of your dorm.
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <img class="img-responsive center-block" src="https://s3.amazonaws.com/stuvi-icon/money_128.png" alt="">
+
+                            <h3>Quick cash?</h3>
+                            <p>
+                                Besides selling your books to other students, simply trade in your books to us for some quick money!
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <img class="img-responsive center-block" src="https://s3.amazonaws.com/stuvi-icon/paper-plane_128.png" alt="placeholder">
+
+                            <h3>No packaging</h3>
+                            <p>
+                                Pack and ship your book to us?<br>
+                                No, our own team of couriers will come and pickup your books.
+                            </p>
+
+                            {{--<h3>Book delivery</h3>--}}
+                            {{--<p>--}}
+                            {{--Our own team of couriers will make sure your book is delivered quickly, and check that your book is in its advertised--}}
+                            {{--condition.--}}
+                            {{--</p>--}}
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+
 
 @endsection
