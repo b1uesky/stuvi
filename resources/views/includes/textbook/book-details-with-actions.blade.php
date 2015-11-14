@@ -71,7 +71,7 @@
         </div>
 
         <div class="row">
-            <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="text-warning text-lg">
+            <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="text-lg carrot">
                 <strong>Have one to sell?</strong>
             </a>
         </div>
