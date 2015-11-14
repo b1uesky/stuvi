@@ -27,6 +27,11 @@
   img {
     opacity: 0.8;
   }
+
+  @media (max-width: 767px) {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 .dropzone .dz-preview.dz-image-preview {

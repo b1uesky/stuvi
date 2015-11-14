@@ -197,11 +197,11 @@
                                         <div class="form-group hidden" id="paypal_account">
                                             <label class="full-width">
                                                 <span>Paypal account</span>
-                                                    <span class="pull-right">
-                                                        <small>
-                                                            <a href="https://www.paypal.com/us/signup/account" target="_blank">No Paypal account?</a>
-                                                        </small>
-                                                    </span>
+                                                <span class="pull-right">
+                                                    <small>
+                                                        <a href="https://www.paypal.com/us/signup/account" target="_blank">No Paypal account?</a>
+                                                    </small>
+                                                </span>
                                             </label>
 
                                             <input type="email" name="paypal" class="form-control"
@@ -212,7 +212,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label for="">
-                                                    <input type="checkbox" name="accept_trade_in"> I would like to join the Stuvi Trade-In program
+                                                    <input type="checkbox" name="accept_trade_in" checked> I would like to join the Stuvi Book Trade-In program
                                                 </label>
                                             </div>
                                         </div>

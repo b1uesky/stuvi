@@ -46,15 +46,18 @@
                                                data-target=".condition-modal"></span>
                                             <br>
 
-                                            <div class="radio-product-condition">
+                                            <div class="radio-button-group">
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="general_condition" value="0"> Like new
+                                                    <input type="radio" name="general_condition" value="0">
+                                                    <span>Like new</span>
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="general_condition" value="1"> Good
+                                                    <input type="radio" name="general_condition" value="1">
+                                                    <span>Good</span>
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="general_condition" value="2"> Acceptable
+                                                    <input type="radio" name="general_condition" value="2">
+                                                    <span>Acceptable</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -67,15 +70,18 @@
                                                data-target=".highlight-modal"></span>
                                             <br>
 
-                                            <div class="radio-product-condition">
+                                            <div class="radio-button-group">
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="highlights_and_notes" value="0"> 0 - 5 pages
+                                                    <input type="radio" name="highlights_and_notes" value="0">
+                                                    <span>0 ~ 5 pages</span>
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="highlights_and_notes" value="1"> 6 - 15 pages
+                                                    <input type="radio" name="highlights_and_notes" value="1">
+                                                    <span>6 ~ 15 pages</span>
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="highlights_and_notes" value="2"> > 15 pages
+                                                    <input type="radio" name="highlights_and_notes" value="2">
+                                                    <span>> 15 pages</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -87,15 +93,18 @@
                                                data-target=".damage-modal"></span>
                                             <br>
 
-                                            <div class="radio-product-condition">
+                                            <div class="radio-button-group">
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="damaged_pages" value="0"> 0
+                                                    <input type="radio" name="damaged_pages" value="0">
+                                                    <span>0</span>
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="damaged_pages" value="1"> 1 - 3 pages
+                                                    <input type="radio" name="damaged_pages" value="1">
+                                                    <span>1 ~ 3 pages</span>
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="damaged_pages" value="2"> > 3 pages
+                                                    <input type="radio" name="damaged_pages" value="2">
+                                                    <span>> 3 pages</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -107,21 +116,23 @@
                                                data-target=".binding-modal"></span>
                                             <br>
 
-                                            <div class="radio-product-condition">
+                                            <div class="radio-button-group">
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="broken_binding" value="0"> No
+                                                    <input type="radio" name="broken_binding" value="0">
+                                                    <span>No</span>
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="broken_binding" value="1"> Yes
+                                                    <input type="radio" name="broken_binding" value="1">
+                                                    <span>Yes</span>
                                                 </label>
                                             </div>
                                         </div>
 
                                         {{--Description--}}
                                         <div class="form-group">
-                                            <label>{{ config('product.conditions.description.title') }}</label>
+                                            <label>Additional description <small>(optional)</small></label>
                                                 <textarea name="description" class="form-control" rows="5"
-                                                          placeholder="{{ config('product.conditions.description.placeholder') }}">{{ $product->condition->description }}</textarea>
+                                                          placeholder="More description on your book conditions.">{{ $product->condition->description }}</textarea>
                                         </div>
 
                                         {{--Upload Images using Dropzone--}}
@@ -130,11 +141,14 @@
 
                                             <div id="dropzone-img-preview" class="dropzone-previews dz-clickable">
                                                 <div class="dz-message">
-                                                    <h4>Drop or click here to upload textbook images.</h4>
+                                                    <h4>
+                                                        <span class="glyphicon glyphicon-picture"></span>
+                                                        Drop or click here to upload textbook images.
+                                                    </h4>
                                                     <br>
-                                                    <small class="text-muted">(A front cover image is required. You can upload a maximum of
-                                                        three images, at most 3MB per image.)
-                                                    </small>
+                                                    <p class="text-muted">A front cover image is required.</p>
+                                                    <p class="text-muted">You can upload a maximum of
+                                                        three images, at most 3MB per image.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -143,15 +157,15 @@
                                         <div class="from-group">
                                             <label>When is it available?</label>
 
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="available_at" id="available_now" value=""> Now
+                                            <div class="radio-button-group">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="available_at" id="available_now" value="" checked>
+                                                    <span>Now</span>
                                                 </label>
-                                            </div>
 
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="available_at" id="available_future" value=""> In the future
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="available_at" id="available_future" value="">
+                                                    <span>In the future</span>
                                                 </label>
                                             </div>
 
@@ -175,17 +189,17 @@
                                         <div class="form-group">
                                             <label>Receive money</label>
 
-                                            <div class="radio">
-                                                <label>
+                                            <div class="radio-button-group">
+                                                <label class="radio-inline">
                                                     <input type="radio" name="payout_method" id="payout_paypal" value="paypal"
-                                                            {{ $product->payout_method == 'paypal' ? 'checked' : '' }}> PayPal
+                                                            {{ $product->payout_method == 'paypal' ? 'checked' : '' }}>
+                                                    <span>PayPal</span>
                                                 </label>
-                                            </div>
 
-                                            <div class="radio">
-                                                <label>
+                                                <label class="radio-inline">
                                                     <input type="radio" name="payout_method" id="payout_cash" value="cash"
-                                                            {{ $product->payout_method == 'cash' ? 'checked' : '' }}> Cash
+                                                            {{ $product->payout_method == 'cash' ? 'checked' : '' }}>
+                                                    <span>Cash</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -194,11 +208,11 @@
                                         <div class="form-group" id="paypal_account">
                                             <label class="full-width">
                                                 <span>Paypal Account</span>
-                                                        <span class="pull-right">
-                                                            <small>
-                                                                <a href="https://www.paypal.com/us/signup/account" target="_blank">No Paypal account?</a>
-                                                            </small>
-                                                        </span>
+                                                <span class="pull-right">
+                                                    <small>
+                                                        <a href="https://www.paypal.com/us/signup/account" target="_blank">No Paypal account?</a>
+                                                    </small>
+                                                </span>
                                             </label>
 
 
@@ -210,7 +224,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label for="">
-                                                    <input type="checkbox" name="accept_trade_in" {{ $product->accept_trade_in ? 'checked' : '' }}> I would like to join the Stuvi Trade-In program
+                                                    <input type="checkbox" name="accept_trade_in" {{ $product->accept_trade_in ? 'checked' : '' }}> I would like to join the Stuvi Book Trade-In program
                                                 </label>
                                             </div>
                                         </div>
