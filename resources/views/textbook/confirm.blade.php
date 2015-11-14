@@ -29,7 +29,7 @@
                         <a href="#" class="btn btn-info disabled">Temporarily out of stock</a>
                     @endif
 
-                    <a href="{{ url('textbook/sell/product/' . $book->id . '/create') }}" class="btn btn-default">Sell this book</a>
+                    <a href="{{ url('textbook/sell/product/' . $book->id . '/create') }}" class="btn btn-warning">Sell this book</a>
                 </div>
 
                 <br>

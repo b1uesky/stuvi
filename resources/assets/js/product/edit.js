@@ -103,7 +103,6 @@ $(document).ready(function () {
                 },
                 dataType: 'json',
                 success: function (response, status) {
-
                     if (response.success) {
                         var images = response.images;
 
@@ -113,7 +112,7 @@ $(document).ready(function () {
                             if (images[i].small_image.slice(0, 4) == 'http') {
                                 var imageUrl = images[i].small_image;
                             } else {
-                                var bucket = images[i].env == 'production' ? 'https://s3.amazonaws.com/stuvi-product-img/' : 'https://s3.amazonaws.com/stuvi-test-product-img/';
+                                var bucket = (response.env == 'production') ? 'https://s3.amazonaws.com/stuvi-product-img/' : 'https://s3.amazonaws.com/stuvi-test-product-img/';
                                 var imageUrl = bucket + images[i].small_image;
                             }
 
