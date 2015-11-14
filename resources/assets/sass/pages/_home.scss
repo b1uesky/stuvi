@@ -98,12 +98,13 @@
 
 // sections
 #intro {
+  .jumbotron {
+    background: azure;
+  }
+
   h2 {
     margin-bottom: 0.5em;
   }
-  //.jumbotron {
-  //  background: white url('https://s3.amazonaws.com/stuvi-bg-img/flat/student-illustration-sm.png') no-repeat center;
-  //}
 }
 
 #how-it-works {

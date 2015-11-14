@@ -25,7 +25,7 @@
 
                     {{-- order details --}}
                     <div class="container-fluid text-muted">
-                        <div class="col-xs-2">
+                        <div class="col-xs-4">
                             <div class="row">
                                 <span>ORDER PLACED</span>
                             </div>
@@ -35,7 +35,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-2">
+                        <div class="col-xs-4">
                             @if(!$buyer_order->cancelled)
                                 <div class="row">
                                     <span>TOTAL</span>
@@ -47,7 +47,7 @@
                             @endif
                         </div>
 
-                        <div class="col-xs-2 col-xs-offset-6 text-right">
+                        <div class="col-xs-4 text-right">
                             <div class="row">
                                 <span>ORDER #{{ $buyer_order->id }}</span>
                             </div>

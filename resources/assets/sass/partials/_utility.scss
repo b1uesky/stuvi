@@ -170,6 +170,10 @@
 
 .carrot {
   color: $carrot;
+
+  &:hover {
+    color: $carrot;
+  }
 }
 
 // font

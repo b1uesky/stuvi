@@ -35,6 +35,8 @@
                 <br>
 
                 <a class="btn btn-primary" href="{{ url('order/buyer/'.Session::get('order')->id) }}">View order details</a>
+
+                <br>
             </div>
 
 
