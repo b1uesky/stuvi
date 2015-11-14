@@ -153,7 +153,7 @@
                             Added to cart
                         </a>
                     @elseif(!$product->isSold())
-                        @if($product->seller == Auth::user())
+                        @if($product->seller_id == Auth::id())
                             <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-primary btn-block">
                                 <span class="glyphicon glyphicon-edit"></span> Edit
                             </a>
@@ -173,16 +173,16 @@
                             </form>
                         @endif
                     @else
-                        @if($product->seller == Auth::user())
-                            <a class="btn btn-primary btn-block disabled" href="#" role="button">
-                                Ordered by you
+                        @if($product->seller_id == Auth::id())
+                            <a class="btn btn-default btn-block disabled" href="#" role="button">
+                                Purchased
                             </a>
                         @endif
                     @endif
                 @else
                     @if(!$product->sold)
-                        <span>Please <a data-toggle="modal" href="#login-modal">Login</a> or <a
-                                    data-toggle="modal" href="#signup-modal">Sign up</a> to buy this textbook.
+                        <span><a data-toggle="modal" href="#login-modal">Login</a> or <a
+                                    data-toggle="modal" href="#signup-modal">Sign up</a> <br> to buy this textbook.
                         </span>
                     @endif
                 @endif

@@ -114,7 +114,7 @@
                                                 Added to cart
                                             </a>
                                         @elseif(!$product->isSold())
-                                            @if($product->seller != Auth::user())
+                                            @if($product->seller_id != Auth::id())
                                                 <form method="post" class="add-to-cart" action="{{ url('cart/add/' . $product->id) }}">
                                                     {!! csrf_field() !!}
                                                     <button type="submit" class="btn btn-default btn-block add-cart-btn">
@@ -123,7 +123,7 @@
                                                 </form>
                                             @endif
                                         @else
-                                            @if($product->seller == Auth::user())
+                                            @if($product->seller_id == Auth::id())
                                                 <a class="btn btn-default btn-block disabled" href="#" role="button">
                                                     Purchased
                                                 </a>
