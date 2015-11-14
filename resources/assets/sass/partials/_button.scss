@@ -1,10 +1,12 @@
 @import "../modules/all";
 
 .btn-default {
+  border: none !important;
+
   &:hover, &:focus {
-    background-color: darken($brand-default, 5%) !important;
+    background-color: darken($brand-default, 3%) !important;
     outline: none !important;
-    border: 1px solid darken($brand-default, 5%) !important;
+    border: none !important;
   }
 }
 
