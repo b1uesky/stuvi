@@ -33,7 +33,7 @@
                     <div class="panel panel-default">
                         <table class="table">
                             <thead>
-                            <tr>
+                            <tr class="active">
                                 <th>Book</th>
                                 <th></th>
                                 <th class="hidden-xs">ISBN</th>
@@ -104,17 +104,17 @@
             </div>
         @else
             <div class="jumbotron text-center">
-                <h1>Your cart is empty...</h1>
-                <br>
-                <p><a href="{{ url('textbook/search') }}" class="btn btn-primary btn-lg">Find a book</a></p>
+                <h2>Your cart is empty...</h2>
+                {{--<br>--}}
+                {{--<p><a href="{{ url('textbook/search') }}" class="btn btn-primary btn-lg">Find a book</a></p>--}}
             </div>
         @endif
 
         <div class="cart-empty hidden">
             <div class="jumbotron text-center">
-                <h1>Your cart is empty...</h1>
-                <br>
-                <p><a href="{{ url('textbook/search') }}" class="btn btn-primary btn-lg">Find a book</a></p>
+                <h2>Your cart is empty...</h2>
+                {{--<br>--}}
+                {{--<p><a href="{{ url('textbook/search') }}" class="btn btn-primary btn-lg">Find a book</a></p>--}}
             </div>
         </div>
 
