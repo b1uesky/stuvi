@@ -122,12 +122,6 @@
                                                     </button>
                                                 </form>
                                             @endif
-                                        @else
-                                            @if($product->seller_id == Auth::id())
-                                                <a class="btn btn-default btn-block disabled" href="#" role="button">
-                                                    Purchased
-                                                </a>
-                                            @endif
                                         @endif
                                     @endif
                                 </td>
