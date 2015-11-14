@@ -35,16 +35,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::guest())
-        {
-            return view('home-guest')
-                ->with('universities', University::availableUniversities());
-        }
-        else {
-            return view('home-user')
-                ->with('popular_products', Product::popular())
-                ->with('new_products', Product::newProducts());
-        }
+        return view('home')
+            ->with('universities', University::availableUniversities());
     }
 
     public function about()

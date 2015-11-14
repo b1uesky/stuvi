@@ -1,0 +1,104 @@
+// Homepage
+
+@import "../modules/all";
+
+// For home page
+
+.container-bg {
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url('https://s3.amazonaws.com/stuvi-bg-img/wooden-table-compressed.jpg') no-repeat center;
+  background-size: cover;
+  height: 580px;
+
+  @media(max-width: 767px) {
+    height: 420px;
+  }
+}
+
+.container-top-half {
+  position: relative;
+  height: 430px;
+  top: 50px;
+
+  @media(max-width: 767px) {
+    top: 0px;
+    height: 330px;
+  }
+}
+
+.container-searchbar {
+  max-width: 800px;
+}
+
+#home-search {
+  input {
+    border: none;
+    height: 2.4em;
+  }
+
+  [type~="submit"] {
+    height: 2.4em;
+  }
+}
+
+.container-text {
+  height: 100%;
+  width: 100%;
+}
+
+.header-text {
+  color: white;
+  font-size: 5.5em;
+
+  @media(min-width: 2500px) {
+    font-size: 10em;
+  }
+
+  @media(max-width: 767px) {
+    font-size: 5em;
+  }
+  @media(max-width: 767px) and (min-width: 555px) {
+    font-size: 4em;
+  }
+  @media(max-width: 555px) {
+    font-size: 2.5em;
+  }
+}
+
+.tagline {
+  color: whitesmoke;
+
+  @media(min-width: 2500px) {
+    font-size: 3em;
+  }
+
+  @media(max-width: 359px) {
+    font-size: 1em;
+  }
+}
+
+.jumbotron {
+  margin-bottom: 0;
+  background-color: $background-color;
+
+  .container {
+    max-width: 1000px;
+  }
+}
+
+// sections
+#intro {
+  //.jumbotron {
+  //  background: white url('https://s3.amazonaws.com/stuvi-bg-img/flat/student-illustration-sm.png') no-repeat center;
+  //}
+}
+
+#how-it-works {
+
+}
+
+#features {
+
+}
+
+
+
