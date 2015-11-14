@@ -238,7 +238,7 @@ class SellerOrder extends Model
         else
         {
             $status = 'Pick-up details required';
-            $detail = 'Please schedule your pick-up time and location for this order.';
+            $detail = 'Please schedule a pickup for this order.';
         }
 
         return ['status' => $status, 'detail' => $detail];

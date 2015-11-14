@@ -275,7 +275,7 @@ class BuyerOrder extends Model
         elseif ($this->isDeliverySchedulable())
         {
             $status = 'Delivery details required';
-            $detail = 'Please schedule your delivery time and location for this order.';
+            $detail = 'Please schedule a delivery for this order.';
         }
         else
         {
