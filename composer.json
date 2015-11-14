@@ -16,8 +16,7 @@
 	  	"desmond/google-books": "dev-master",
 		"roumen/sitemap": "^2.5",
 	  	"paypal/rest-api-sdk-php": "1.5.0",
-		"desmond/beautymail": "dev-master",
-		"predis/predis": "^1.0"
+		"desmond/beautymail": "dev-master"
 	},
     "repositories": [
       {

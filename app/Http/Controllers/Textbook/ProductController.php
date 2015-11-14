@@ -134,12 +134,12 @@ class ProductController extends Controller
      */
     public function show($product)
     {
-        if ($product->seller_id != Auth::id())
-        {
-            // increment product views by 1
-            Redis::hincrby('product:'.$product->id, 'views', 1);
-            Redis::sadd('list:product_ids', $product->id);
-        }
+//        if ($product->seller_id != Auth::id())
+//        {
+//            // increment product views by 1
+//            Redis::hincrby('product:'.$product->id, 'views', 1);
+//            Redis::sadd('list:product_ids', $product->id);
+//        }
         
         return view('product.show')
             ->withProduct($product)

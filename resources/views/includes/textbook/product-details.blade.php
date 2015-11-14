@@ -13,7 +13,7 @@
         {{-- title --}}
         <div class="row">
             <h4 class="no-margin-top">
-                <a href="{{ url("textbook/buy/product/".$product->id) }}">{{ $product->book->title }}</a>
+                <a href="{{ url("textbook/buy/product/".$product->id) }}"><strong>{{ $product->book->title }}</strong></a>
             </h4>
         </div>
 

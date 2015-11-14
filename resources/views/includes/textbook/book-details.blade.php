@@ -13,7 +13,7 @@
         {{-- title --}}
         <div class="row">
             <h4 class="no-margin-top">
-                <a href="{{ url("textbook/buy/".$book->id.'?query=' . Input::get('query')) }}">{{ $book->title }}</a>
+                <a href="{{ url("textbook/buy/".$book->id.'?query=' . Input::get('query')) }}"><strong>{{ $book->title }}</strong></a>
             </h4>
         </div>
 

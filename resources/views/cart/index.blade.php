@@ -94,10 +94,14 @@
                                 </tr>
                             </table>
 
-                            <div>
-                                <a class="btn btn-primary" href="{{ url('/order/create') }}" role="button">Proceed to
-                                    checkout</a>
-                            </div>
+
+                            <a class="btn btn-warning" href="{{ url('/order/create') }}" role="button">Proceed to checkout</a>
+
+                            <hr>
+
+                            <a href="{{ URL::previous() }}" class="btn btn-default">Continue shopping</a>
+
+                            
                         </div>
                     </div>
                 </div>

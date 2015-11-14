@@ -201,10 +201,10 @@
 
                                 @if(Auth::user()->defaultAddress())
                                     <input type="hidden" name="selected_address_id" value="{{ Auth::user()->defaultAddress()->id }}">
-                                    <input type="submit" class="btn btn-primary" value="Place your order">
+                                    <input type="submit" class="btn btn-warning" value="Place your order">
                                 @else
                                     <input type="hidden" name="selected_address_id">
-                                    <input type="submit" class="btn btn-primary disabled" value="Place your order">
+                                    <input type="submit" class="btn btn-warning disabled" value="Place your order">
                                 @endif
                             </form>
 

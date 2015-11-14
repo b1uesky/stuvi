@@ -133,14 +133,14 @@
                             </td>
                         </tr>
 
-                        @if($product->seller_id == Auth::id())
-                            <tr>
-                                <th>Views</th>
-                                <td>
-                                    {{ $product->views() }}
-                                </td>
-                            </tr>
-                        @endif
+                        {{--@if($product->seller_id == Auth::id())--}}
+                            {{--<tr>--}}
+                                {{--<th>Views</th>--}}
+                                {{--<td>--}}
+                                    {{--{{ $product->views() }}--}}
+                                {{--</td>--}}
+                            {{--</tr>--}}
+                        {{--@endif--}}
                     </tbody>
                 </table>
             </div>
@@ -148,7 +148,7 @@
             <div class="col-md-2 col-sm-3">
                 @if(Auth::check())
                     @if($product->isInCart(Auth::user()->id))
-                        <a class="btn btn-primary btn-block add-cart-btn disabled" href="#" role="button">
+                        <a class="btn btn-default btn-block add-cart-btn disabled" href="#" role="button">
                             <span class="glyphicon glyphicon-ok"></span>
                             Added to cart
                         </a>
@@ -167,7 +167,7 @@
                         @else
                             <form method="post" class="add-to-cart" action="{{ url('cart/add/' . $product->id) }}">
                                 {!! csrf_field() !!}
-                                <button type="submit" class="btn btn-primary btn-block add-cart-btn">
+                                <button type="submit" class="btn btn-warning btn-block add-cart-btn">
                                     <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
                                 </button>
                             </form>

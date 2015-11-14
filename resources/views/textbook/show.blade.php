@@ -84,6 +84,9 @@
                             <th class="col-xs-2"></th>
                         </tr>
                         </thead>
+
+                        <?php $loggedin = Auth::check();?>
+
                         @foreach($products as $product)
                             <tr>
                                 <td class="price">
@@ -102,7 +105,31 @@
                                     @endforeach
                                 </td>
                                 <td>
-                                    <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}">View details</a>
+                                    <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}" class="btn btn-info btn-block margin-bottom-5">View details</a>
+
+                                    @if($loggedin)
+                                        @if($product->isInCart(Auth::user()->id))
+                                            <a class="btn btn-default btn-block add-cart-btn disabled" href="#" role="button">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                                Added to cart
+                                            </a>
+                                        @elseif(!$product->isSold())
+                                            @if($product->seller != Auth::user())
+                                                <form method="post" class="add-to-cart" action="{{ url('cart/add/' . $product->id) }}">
+                                                    {!! csrf_field() !!}
+                                                    <button type="submit" class="btn btn-default btn-block add-cart-btn">
+                                                        <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
+                                                    </button>
+                                                </form>
+                                            @endif
+                                        @else
+                                            @if($product->seller == Auth::user())
+                                                <a class="btn btn-default btn-block disabled" href="#" role="button">
+                                                    Purchased
+                                                </a>
+                                            @endif
+                                        @endif
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
