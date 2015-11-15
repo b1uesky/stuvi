@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\University;
 use Auth;
-use Aws\AwsClient;
+use Aws\Laravel\AwsFacade;
 use Aws\S3\Exception\S3Exception;
 use DB;
 use GoogleBooks\GoogleBooks;
@@ -116,91 +116,91 @@ class TextbookController extends Controller
         }
 
 
-        $query = Input::get('query');
-        $isbn_validator = new Isbn();
-
-        // if ISBN, return the specific textbook page
-        if ($isbn_validator->validation->isbn($query))
-        {
-            $isbn = $isbn_validator->hyphens->removeHyphens($query);
-
-            if (strlen($isbn) == 10)
-            {
-                $book = Book::where('isbn10', '=', $isbn)
-                    ->where('is_verified', true)
-                    ->first();
-            }
-            else
-            {
-                $book = Book::where('isbn13', '=', $isbn)
-                    ->where('is_verified', true)
-                    ->first();
-            }
-
-            // if book is in the database
-            if ($book)
-            {
-                return view('textbook.confirm')
-                    ->with('book', $book);
-            }
-            else
-            {
-                $google_book = new GoogleBooks(config('services.google.books.api_key'));
-
-                // error on searching (e.g. item not found)
-                if (!$google_book->searchByISBN($isbn))
-                {
-                    return view('textbook.list')
-                        ->with('books', [])
-                        ->with('query', $isbn);
-                }
-
-                $book = Book::createFromGoogleBook($google_book);
-
-                if ($book)
-                {
-                    return view('textbook.confirm')
-                        ->with('book', $book)
-                        ->with('query', $query);
-                }
-                else
-                {
-                    return redirect()->back()
-                        ->with('info', 'An error occured. Please try again.');
-                }
-
-            }
-        }
-        else
-        {
-            $books = Book::searchByQuery($query);
-
-            // Get current page form url e.g. &page=1
-            if (Input::has('page'))
-            {
-                $currentPage = LengthAwarePaginator::resolveCurrentPage() - 1;
-            }
-            else
-            {
-                $currentPage = 0;
-            }
-
-            // Define how many items we want to be visible in each page
-            $perPage = config('pagination.limit.textbook');
-
-            // Slice the collection to get the items to display in current page
-            $currentPageSearchResults = $books->slice(($currentPage) * $perPage, $perPage)->all();
-
-            // Create our paginator and pass it to the view
-            $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($books), $perPage);
-
-            // Set paginator uri
-            $paginatedSearchResults->setPath('');
-
-            return view('textbook.list')
-                ->with('books', $paginatedSearchResults)
-                ->with('query', $query);
-        }
+//        $query = Input::get('query');
+//        $isbn_validator = new Isbn();
+//
+//        // if ISBN, return the specific textbook page
+//        if ($isbn_validator->validation->isbn($query))
+//        {
+//            $isbn = $isbn_validator->hyphens->removeHyphens($query);
+//
+//            if (strlen($isbn) == 10)
+//            {
+//                $book = Book::where('isbn10', '=', $isbn)
+//                    ->where('is_verified', true)
+//                    ->first();
+//            }
+//            else
+//            {
+//                $book = Book::where('isbn13', '=', $isbn)
+//                    ->where('is_verified', true)
+//                    ->first();
+//            }
+//
+//            // if book is in the database
+//            if ($book)
+//            {
+//                return view('textbook.confirm')
+//                    ->with('book', $book);
+//            }
+//            else
+//            {
+//                $google_book = new GoogleBooks(config('services.google.books.api_key'));
+//
+//                // error on searching (e.g. item not found)
+//                if (!$google_book->searchByISBN($isbn))
+//                {
+//                    return view('textbook.list')
+//                        ->with('books', [])
+//                        ->with('query', $isbn);
+//                }
+//
+//                $book = Book::createFromGoogleBook($google_book);
+//
+//                if ($book)
+//                {
+//                    return view('textbook.confirm')
+//                        ->with('book', $book)
+//                        ->with('query', $query);
+//                }
+//                else
+//                {
+//                    return redirect()->back()
+//                        ->with('info', 'An error occured. Please try again.');
+//                }
+//
+//            }
+//        }
+//        else
+//        {
+//            $books = Book::searchByQuery($query);
+//
+//            // Get current page form url e.g. &page=1
+//            if (Input::has('page'))
+//            {
+//                $currentPage = LengthAwarePaginator::resolveCurrentPage() - 1;
+//            }
+//            else
+//            {
+//                $currentPage = 0;
+//            }
+//
+//            // Define how many items we want to be visible in each page
+//            $perPage = config('pagination.limit.textbook');
+//
+//            // Slice the collection to get the items to display in current page
+//            $currentPageSearchResults = $books->slice(($currentPage) * $perPage, $perPage)->all();
+//
+//            // Create our paginator and pass it to the view
+//            $paginatedSearchResults= new LengthAwarePaginator($currentPageSearchResults, count($books), $perPage);
+//
+//            // Set paginator uri
+//            $paginatedSearchResults->setPath('');
+//
+//            return view('textbook.list')
+//                ->with('books', $paginatedSearchResults)
+//                ->with('query', $query);
+//        }
     }
 
     /**
