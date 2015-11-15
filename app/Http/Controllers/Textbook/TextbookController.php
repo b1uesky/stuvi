@@ -347,7 +347,7 @@ class TextbookController extends Controller
                 'isbn10'  => $book->isbn10,
                 'isbn13'  => $book->isbn13,
                 'authors' => $authors,
-                'image'   => $book_image
+                'image'   => $book_image,
             ];
 
         }

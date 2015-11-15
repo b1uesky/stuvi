@@ -2,6 +2,7 @@
 
 use App\Helpers\Price;
 use Aws\Laravel\AwsFacade;
+use Aws\S3\Exception\S3Exception;
 use DB;
 use File;
 use Illuminate\Database\Eloquent\Model;
@@ -317,24 +318,39 @@ class Book extends Model
             $image = Image::make($image_url)->save($image_path);
             $image_filename = $book_image_set->generateFilename($size=null, $image);
 
-            $book_image_set->update([
-                'small_image'   => $image_filename,
-                'medium_image'  => $image_filename,
-                'large_image'   => $image_filename
-            ]);
-
             $s3 = AwsFacade::createClient('s3');
             $bucket = app()->environment('production') ? config('aws.buckets.book_image') : config('aws.buckets.test_book_image');
 
-            // upload images to amazon s3
-            $s3->putObject(array(
-                'Bucket'        => $bucket,
-                'Key'           => $image_filename,
-                'SourceFile'    => $image_path,
-                'ACL'           => 'public-read'
-            ));
+            $NUM_OF_ATTEMPTS = 3;
+            $attempts = 0;
+
+            do {
+                try {
+                    // upload images to amazon s3
+                    $s3->putObject(array(
+                        'Bucket'        => $bucket,
+                        'Key'           => $image_filename,
+                        'SourceFile'    => $image_path,
+                        'ACL'           => 'public-read'
+                    ));
+                } catch (S3Exception $e) {
+                    $attempts++;
+                    continue;
+                }
+
+                break;
+            } while ($attempts < $NUM_OF_ATTEMPTS);
 
             File::delete($image_path);
+
+            if ($attempts < $NUM_OF_ATTEMPTS)
+            {
+                $book_image_set->update([
+                    'small_image'   => $image_filename,
+                    'medium_image'  => $image_filename,
+                    'large_image'   => $image_filename
+                ]);
+            }
         }
 
         // save book authors
