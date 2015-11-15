@@ -10,7 +10,7 @@ class BookImageSet extends Model
 {
 
     protected $table = 'book_image_sets';
-    protected $guarded = ['book_id', 'small_image', 'medium_image', 'large_image'];
+    protected $guarded = [];
 
     /**
      * Get the book.
