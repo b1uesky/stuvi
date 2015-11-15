@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\University;
 use Auth;
+use Aws\AwsClient;
+use Aws\S3\Exception\S3Exception;
 use DB;
 use GoogleBooks\GoogleBooks;
 use Illuminate\Http\Request;
@@ -107,6 +109,13 @@ class TextbookController extends Controller
      */
     public function search()
     {
+        try {
+            $s3 = AwsFacade::createClient('s3');
+        } catch (S3Exception $e) {
+            dd($e->getMessage());
+        }
+
+
         $query = Input::get('query');
         $isbn_validator = new Isbn();
 
