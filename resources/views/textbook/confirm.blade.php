@@ -25,8 +25,6 @@
                 <div>
                     @if(count($book->availableProducts()) > 0)
                         <a href="{{ url('textbook/buy/' . $book->id) }}" class="btn btn-primary">Buy this book</a>
-                    @else
-                        <a href="#" class="btn btn-info disabled">Temporarily out of stock</a>
                     @endif
 
                     <a href="{{ url('textbook/sell/product/' . $book->id . '/create') }}" class="btn btn-warning">Sell this book</a>

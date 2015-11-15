@@ -46,7 +46,7 @@ $(document).ready(function () {
         .autocomplete('instance')._renderItem = function (ul, item) {
 
             // use default image if no image.
-            var image = 'https://s3.amazonaws.com/stuvi-book-img/placeholder.png';
+            var image = 'https://s3.amazonaws.com/stuvi-icon/picture_128.png';
 
             if (item.image) {
                 image = 'https://s3.amazonaws.com/stuvi-book-img/' + item.image;

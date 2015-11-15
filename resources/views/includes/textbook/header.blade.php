@@ -83,7 +83,7 @@
                 <form action="{{ url('textbook/search') }}" method="get" role="search" class="navbar-form" id="searchbar-form">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="autocomplete" name="query" placeholder="Search by ISBN, title, or author" value="{{ Input::get('query') }}">
+                            <input type="text" class="form-control" id="autocomplete" name="query" placeholder="ISBN, title, or author" value="{{ Input::get('query') }}">
 
                             <div class="input-group-btn">
                                 <button class="btn btn-default btn-inline-search" type="submit">
