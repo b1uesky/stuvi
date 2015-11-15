@@ -7,10 +7,12 @@ $(document).ready(function() {
     $('input[name=payment_method_select]:radio').change(function() {
         if ($('#payment_method_paypal').prop("checked")) {
             $('input[name=payment_method]').val('paypal');
+            $('.payment-info').text('After placing your order, a payment authorization will be created and we only charge you after books are delivered.');
         }
 
         if ($('#payment_method_cash').prop("checked")) {
             $('input[name=payment_method]').val('cash');
+            $('.payment-info').text('We only collect the payment after delivery.');
         }
     });
 

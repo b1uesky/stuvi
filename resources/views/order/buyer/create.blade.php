@@ -55,9 +55,10 @@
                                     </label>
                                 </div>
 
-
                                 <div>
-                                    <span class="text-success">We only collect the payment after delivery.</span>
+                                    <span class="text-success payment-info">
+                                        After placing your order, a payment authorization will be created and we only charge you after books are delivered.
+                                    </span>
                                 </div>
 
 
