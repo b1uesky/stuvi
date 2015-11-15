@@ -109,7 +109,7 @@
 
                                     @if($loggedin)
                                         @if($product->isInCart(Auth::user()->id))
-                                            <a class="btn btn-default btn-block add-cart-btn disabled" href="#" role="button">
+                                            <a class="btn btn-success btn-block add-cart-btn disabled" href="#" role="button">
                                                 <span class="glyphicon glyphicon-ok"></span>
                                                 Added to cart
                                             </a>
