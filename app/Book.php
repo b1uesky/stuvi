@@ -324,8 +324,8 @@ class Book extends Model
             }
             catch (S3Exception $e)
             {
-                echo $e->getMessage();
-                return false;
+                var_dump($e->getMessage());
+//                return false;
             }
 
             // save this book to our database
