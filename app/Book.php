@@ -309,24 +309,24 @@ class Book extends Model
             $s3 = AwsFacade::createClient('s3');
             $bucket = app()->environment('production') ? config('aws.buckets.book_image') : config('aws.buckets.test_book_image');
 
-            try
-            {
-                // upload images to amazon s3
-                $s3->putObject(array(
-                    'Bucket'        => $bucket,
-                    'Key'           => $image_filename,
-                    'SourceFile'    => $image_path,
-                    'ACL'           => 'public-read'
-                ));
-
-                // delete temp file
-                File::delete($image_path);
-            }
-            catch (S3Exception $e)
-            {
-                var_dump($e->getMessage());
-//                return false;
-            }
+//            try
+//            {
+//                // upload images to amazon s3
+//                $s3->putObject(array(
+//                    'Bucket'        => $bucket,
+//                    'Key'           => $image_filename,
+//                    'SourceFile'    => $image_path,
+//                    'ACL'           => 'public-read'
+//                ));
+//
+//                // delete temp file
+//                File::delete($image_path);
+//            }
+//            catch (S3Exception $e)
+//            {
+//                var_dump($e->getMessage());
+////                return false;
+//            }
 
             // save this book to our database
             $book = Book::create([
