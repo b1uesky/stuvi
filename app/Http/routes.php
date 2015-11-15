@@ -70,14 +70,15 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
 
     // sell
     Route::group(['prefix'=>'sell'], function() {
-        Route::get  ('/product/{book}/create',  'ProductController@create');
-        Route::post ('/store',                  'TextbookController@store');
-        Route::post ('/product/store',          'ProductController@store');
-        Route::get  ('/product/{product}/edit', 'ProductController@edit');
-        Route::get  ('/product/getImages',      'ProductController@getImages');
-        Route::post ('/product/deleteImage',    'ProductController@deleteImage');
-        Route::post ('/product/update',         'ProductController@update');
-        Route::post ('/product/delete',         'ProductController@destroy');
+        Route::post ('/store',                          'TextbookController@store');
+        Route::get  ('/product/{book}/create',          'ProductController@create');
+        Route::post ('/product/store',                  'ProductController@store');
+        Route::get  ('/product/{product}/edit',         'ProductController@edit');
+        Route::get  ('/product/getImages',              'ProductController@getImages');
+        Route::post ('/product/deleteImage',            'ProductController@deleteImage');
+        Route::post ('/product/update',                 'ProductController@update');
+        Route::post ('/product/delete',                 'ProductController@destroy');
+        Route::post ('/product/joinTradeIn',            'ProductController@joinTradeIn');
     });
 
     // donate

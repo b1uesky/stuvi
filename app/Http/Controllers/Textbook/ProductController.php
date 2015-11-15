@@ -198,15 +198,15 @@ class ProductController extends Controller
         {
             if (!($product || $product->isBelongTo(Auth::id())))
             {
-                $v->errors()->add('product', 'The product is not found.');
+                $v->errors()->add('product', 'The book is not found.');
             }
             elseif ($product->sold)
             {
-                $v->errors()->add('product', 'The product was sold');
+                $v->errors()->add('product', 'The book was sold');
             }
             elseif ($product->isDeleted())
             {
-                $v->errors()->add('product', 'The product is archived.');
+                $v->errors()->add('product', 'The book is archived.');
             }
         });
 
@@ -376,5 +376,31 @@ class ProductController extends Controller
         return Response::json([
             'success'   => true
         ]);
+    }
+
+    /**
+     * Accept a product for Stuvi Book Trade-in Program.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function joinTradeIn()
+    {
+        $product = Product::find(Input::get('product_id'));
+
+        if ($product && $product->seller_id == Auth::id() && $product->verified && !$product->sold)
+        {
+            if (!$product->accept_trade_in)
+            {
+                $product->update([
+                    'accept_trade_in'   => true
+                ]);
+            }
+
+            return redirect()->back()
+                ->with('success', 'You have successfully joined the Stuvi Book Trade-in Program, we will send you an email once we approved your book.');
+        }
+
+        return redirect()->back()
+            ->with('error', 'You cannot trade in this book.');
     }
 }

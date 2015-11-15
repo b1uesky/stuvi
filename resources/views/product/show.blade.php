@@ -73,8 +73,23 @@
                                         data-book-title="{{ $product->book->title }}">
                                     <span class="glyphicon glyphicon-remove"></span> Delete
                                 </button>
+
+                                @if(!$product->accept_trade_in)
+                                    <form action="{{ url('textbook/sell/product/joinTradeIn') }}" method="post" class="form-button">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        <button type="submit" class="btn btn-warning" id="book-trade-in-popover">
+                                            <span class="glyphicon glyphicon-usd"></span> Trade in my book
+                                        </button>
+                                    </form>
+                                @else
+                                    <a href="#" class="btn btn-default disabled">
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                        Trade-in Program
+                                    </a>
+                                @endif
                             @else
-                                <form method="post" class="add-to-cart" action="{{ url('cart/add/' . $product->id) }}">
+                                <form method="post" class="add-to-cart" action="{{ url('cart/add/' . $product->id) }}" class="form-button">
                                     {!! csrf_field() !!}
                                     <button type="submit" class="btn btn-warning add-cart-btn">
                                         <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
