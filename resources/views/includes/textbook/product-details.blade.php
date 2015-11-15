@@ -55,13 +55,13 @@
         </div>
 
         {{-- number of views --}}
-        @if($product->seller_id == Auth::id())
+        {{--@if($product->seller_id == Auth::id())--}}
 
-            <div class="row">
-                <span>Views: </span>
-                <span>{{ $product->views() }}</span>
-            </div>
-        @endif
+            {{--<div class="row">--}}
+                {{--<span>Views: </span>--}}
+                {{--<span>{{ $product->views() }}</span>--}}
+            {{--</div>--}}
+        {{--@endif--}}
 
         @if(isset($seller_order) && $seller_order->isCancelledBySeller())
             <div class="row text-muted">
