@@ -89,7 +89,7 @@
                                     </a>
                                 @endif
                             @else
-                                <form method="post" class="add-to-cart" action="{{ url('cart/add/' . $product->id) }}" class="form-button">
+                                <form method="post" class="add-to-cart form-button" action="{{ url('cart/add/' . $product->id) }}">
                                     {!! csrf_field() !!}
                                     <button type="submit" class="btn btn-warning add-cart-btn">
                                         <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
