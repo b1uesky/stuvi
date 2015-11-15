@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Helpers\FileUploader;
 use App\Helpers\Price;
 use Aws\Laravel\AwsFacade;
 use Aws\S3\Exception\S3Exception;
@@ -295,62 +296,74 @@ class Book extends Model
      */
     public static function createFromGoogleBook($google_book)
     {
-        // save this book to our database
-        $book = Book::create([
-            'isbn10'        => $google_book->getIsbn10(),
-            'isbn13'        => $google_book->getIsbn13(),
-            'title'         => $google_book->getTitle(),
-            'language'      => $google_book->getLanguage(),
-            'num_pages'     => $google_book->getPageCount(),
-            'description'   => $google_book->getDescription(),
-        ]);
-
-        $book_image_set = new BookImageSet();
-        $book_image_set->book_id = $book->id;
-        $book_image_set->save();
-
         $temp_path = config('image.temp_path');
         $image_url = $google_book->getThumbnail();
+        $title = $google_book->getTitle();
 
         if ($image_url)
         {
             $image_path = $temp_path . 'temp.jpeg';
             $image = Image::make($image_url)->save($image_path);
-            $image_filename = $book_image_set->generateFilename($size=null, $image);
+            $image_filename = FileUploader::generateFilename($size=null, $image, $title);
 
             $s3 = AwsFacade::createClient('s3');
             $bucket = app()->environment('production') ? config('aws.buckets.book_image') : config('aws.buckets.test_book_image');
 
-            $NUM_OF_ATTEMPTS = 3;
-            $attempts = 0;
-
-            do {
-                try {
-                    // upload images to amazon s3
-                    $s3->putObject(array(
-                        'Bucket'        => $bucket,
-                        'Key'           => $image_filename,
-                        'SourceFile'    => $image_path,
-                        'ACL'           => 'public-read'
-                    ));
-                } catch (S3Exception $e) {
-                    $attempts++;
-                    continue;
-                }
-
-                break;
-            } while ($attempts < $NUM_OF_ATTEMPTS);
-
-            File::delete($image_path);
-
-            if ($attempts < $NUM_OF_ATTEMPTS)
+            try
             {
-                $book_image_set->update([
-                    'small_image'   => $image_filename,
-                    'medium_image'  => $image_filename,
-                    'large_image'   => $image_filename
-                ]);
+                // upload images to amazon s3
+                $s3->putObject(array(
+                    'Bucket'        => $bucket,
+                    'Key'           => $image_filename,
+                    'SourceFile'    => $image_path,
+                    'ACL'           => 'public-read'
+                ));
+
+                // delete temp file
+                File::delete($image_path);
             }
+            catch (S3Exception $e)
+            {
+                return false;
+            }
+
+            // save this book to our database
+            $book = Book::create([
+                'isbn10'        => $google_book->getIsbn10(),
+                'isbn13'        => $google_book->getIsbn13(),
+                'title'         => $google_book->getTitle(),
+                'language'      => $google_book->getLanguage(),
+                'num_pages'     => $google_book->getPageCount(),
+                'description'   => $google_book->getDescription(),
+            ]);
+
+            // create book images
+            BookImageSet::create([
+                'book_id'       => $book->id,
+                'small_image'   => $image_filename,
+                'medium_image'  => $image_filename,
+                'large_image'   => $image_filename
+            ]);
+        }
+        else
+        {
+            // save this book to our database
+            $book = Book::create([
+                'isbn10'        => $google_book->getIsbn10(),
+                'isbn13'        => $google_book->getIsbn13(),
+                'title'         => $google_book->getTitle(),
+                'language'      => $google_book->getLanguage(),
+                'num_pages'     => $google_book->getPageCount(),
+                'description'   => $google_book->getDescription(),
+            ]);
+
+            // create book images
+            BookImageSet::create([
+                'book_id'       => $book->id,
+                'small_image'   => null,
+                'medium_image'  => null,
+                'large_image'   => null
+            ]);
         }
 
         // save book authors

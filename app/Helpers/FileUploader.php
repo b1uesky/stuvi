@@ -63,4 +63,30 @@ class FileUploader {
         $product_image->path = $this->path;
         $product_image->save();
     }
+
+    public static function generateFilename($size=null, $file, $_title)
+    {
+        $title = implode('-', explode(' ', $_title));
+
+        if ($file->extension)
+        {
+            // image created by Intervension
+            $extension = $file->extension;
+        }
+        else
+        {
+            $extension = $file->getClientOriginalExtension();
+        }
+
+        if ($size)
+        {
+            $filename = $title . '-' . uniqid() . '-' . $size . '.' . $extension;
+        }
+        else
+        {
+            $filename = $title . '-' . uniqid() . '.' . $extension;
+        }
+
+        return $filename;
+    }
 }

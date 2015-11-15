@@ -148,9 +148,18 @@ class TextbookController extends Controller
 
                 $book = Book::createFromGoogleBook($google_book);
 
-                return view('textbook.confirm')
-                    ->with('book', $book)
-                    ->with('query', $query);
+                if ($book)
+                {
+                    return view('textbook.confirm')
+                        ->with('book', $book)
+                        ->with('query', $query);
+                }
+                else
+                {
+                    return redirect()->back()
+                        ->with('info', 'An error occured. Please try again.');
+                }
+
             }
         }
         else
