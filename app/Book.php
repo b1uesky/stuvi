@@ -191,15 +191,20 @@ class Book extends Model
             // Wildcard can only append to the word, i.e.,'*word' is not allowed
             // in MySQL full text search
             $results = DB::select('
-                select distinct books.*, MATCH(title, isbn10, isbn13) AGAINST(? IN BOOLEAN MODE) AS score
+                select
+                  distinct books.*,
+                  MATCH(title, isbn10, isbn13) AGAINST(? IN BOOLEAN MODE) AS score,
+                  MATCH(a.full_name) AGAINST(? IN BOOLEAN MODE) AS score_author
                 from books, book_authors as a
                 where books.id = a.book_id
                 and books.is_verified = true
-                and MATCH(title, isbn10, isbn13) AGAINST(? IN BOOLEAN MODE)
-                or MATCH(a.full_name) AGAINST(? IN BOOLEAN MODE)
-                ORDER BY score DESC
+                and (
+                  MATCH(title, isbn10, isbn13) AGAINST(? IN BOOLEAN MODE) or
+                  MATCH(a.full_name) AGAINST(? IN BOOLEAN MODE)
+                )
+                ORDER BY score DESC, score_author DESC
                 LIMIT ?
-                ', [$query.'*', $query.'*', $query.'*', $full_text_search_limit]);
+                ', [$query.'*', $query.'*', $query.'*', $query.'*', $full_text_search_limit]);
 
             // make a collection of books from the array
             $books = collect($results)->map(function ($book) {
