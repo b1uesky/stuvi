@@ -18,6 +18,15 @@
   }
 }
 
+.autocomplete-title {
+  font-weight: bold;
+}
+
+.autocomplete-authors {
+  color: $text-color-light;
+  margin-bottom: 5px;
+}
+
 .autocomplete-data {
   display: inline-block;
   vertical-align: middle;

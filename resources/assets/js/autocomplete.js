@@ -64,8 +64,8 @@ $(document).ready(function () {
                 '<div class="autocomplete-data">' +
                 '<div class="autocomplete-title"><h4>' + highlightedTitle + '</h4></div>' +
                 '<div class="autocomplete-authors">' + highlightedAuthors + '</div>' +
-                '<div class="autocomplete-isbn">ISBN-10: ' + highlightedISBN10 + '</div>' +
-                '<div class="autocomplete-isbn">ISBN-13: ' + highlightedISBN13 + '</div>' +
+                '<div class="autocomplete-isbn"><strong>ISBN-10:</strong> ' + highlightedISBN10 + '</div>' +
+                '<div class="autocomplete-isbn"><strong>ISBN-13:</strong> ' + highlightedISBN13 + '</div>' +
                 '</div>' +
                 '</div>')
                 .appendTo(ul);
