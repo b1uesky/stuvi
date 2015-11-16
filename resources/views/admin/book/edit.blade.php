@@ -54,7 +54,10 @@
         </div>
 
         <div class="panel-body">
-            <p class="text-danger">It will delete all product related to this book.</p>
+            @if(count($book->products) > 0)
+                <p class="text-danger">It will also delete {{ count($book->products) }} product related to this book.</p>
+            @endif
+            
             <form action="{{ url('admin/book/' . $book->id) }}" method="post">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
