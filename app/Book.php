@@ -7,6 +7,7 @@ use Aws\S3\Exception\S3Exception;
 use DB;
 use File;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Intervention\Image\Facades\Image;
 
 class Book extends Model
@@ -43,6 +44,23 @@ class Book extends Model
     public function products()
     {
         return $this->hasMany('App\Product');
+    }
+
+    /**
+     * Get the book's authors' names.
+     *
+     * @return array
+     */
+    public function getAuthorsNames()
+    {
+        $names = array();
+
+        foreach ($this->authors as $author)
+        {
+            array_push($names, $author->full_name);
+        }
+
+        return $names;
     }
 
     /**
@@ -146,15 +164,15 @@ class Book extends Model
     /**
      * Search books by query.
      *
-     * @param $query
+     * @param string $query
+     * @param int $full_text_search_limit
      * @return mixed
      */
-    public static function searchByQuery($query)
+    public static function searchByQuery($query, $full_text_search_limit=20)
     {
-        // if empty query
+        // if empty query, search for all books
         if (trim($query) == '')
         {
-            // search for all books
             $books = Book::where('is_verified', true)
                 ->orderBy('created_at', 'desc')
                 ->take(50)
@@ -162,20 +180,31 @@ class Book extends Model
         }
         else
         {
-            // full text search against the query
-            $books = Book::whereRaw(
-                "MATCH(title, isbn10, isbn13) AGAINST(? IN BOOLEAN MODE)" .
-                "OR MATCH(a.full_name) AGAINST(? IN BOOLEAN MODE)",
-                // wildcard can only append to the word, i.e.,'*word'
-                // is not allowed in MySQL full text search
-                [$query . '*', $query . '*']
-            )
-                ->join('book_authors as a', 'a.book_id', '=', 'books.id')
-                ->where('books.is_verified', true)
-                ->select('books.*')
-                ->distinct()
-                ->take(20)
-                ->get();
+            // Full text search
+            //
+            // We could have used eloquent model to make full text search work,
+            // but I cannot find a possible way to use parameter in select()
+            // statement, which allows SQL injection.
+            // As suggested by Taylor, we need to run a raw query.
+            // https://github.com/laravel/framework/issues/214#issuecomment-12916104
+
+            // Wildcard can only append to the word, i.e.,'*word' is not allowed
+            // in MySQL full text search
+            $results = DB::select('
+                select distinct books.*, MATCH(title, isbn10, isbn13) AGAINST(? IN BOOLEAN MODE) AS score
+                from books, book_authors as a
+                where books.id = a.book_id
+                and books.is_verified = true
+                and MATCH(title, isbn10, isbn13) AGAINST(? IN BOOLEAN MODE)
+                or MATCH(a.full_name) AGAINST(? IN BOOLEAN MODE)
+                ORDER BY score DESC
+                LIMIT ?
+                ', [$query.'*', $query.'*', $query.'*', $full_text_search_limit]);
+
+            // make a collection of books from the array
+            $books = collect($results)->map(function ($book) {
+                return Book::find($book->id);
+            });
         }
 
         return $books;

@@ -333,34 +333,19 @@ class TextbookController extends Controller
     public function searchAutoComplete()
     {
         $query = Input::get('term');
-        $books = Book::searchByQuery($query);
+        $books = Book::searchByQuery($query, 5);
         $book_data = array();
 
         foreach ($books as $book)
         {
-            $authors = array();
-
-            foreach ($book->authors as $author)
-            {
-                array_push($authors, $author->full_name);
-            }
-
-            $book_image = null;
-
-            if ($book->imageSet && $book->imageSet->small_image)
-            {
-                $book_image = $book->imageSet->small_image;
-            }
-
             $book_data[] = [
                 'id'      => $book->id,
                 'title'   => $book->title,
                 'isbn10'  => $book->isbn10,
                 'isbn13'  => $book->isbn13,
-                'authors' => $authors,
-                'image'   => $book_image,
+                'authors' => $book->getAuthorsNames(),
+                'image'   => $book->imageSet->getImagePath('small'),
             ];
-
         }
 
         return Response::json($book_data);

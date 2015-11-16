@@ -44,14 +44,6 @@ $(document).ready(function () {
             }
         })
         .autocomplete('instance')._renderItem = function (ul, item) {
-
-            // use default image if no image.
-            var image = 'https://s3.amazonaws.com/stuvi-icon/picture_128.png';
-
-            if (item.image) {
-                image = 'https://s3.amazonaws.com/stuvi-book-img/' + item.image;
-            }
-
             var authors = 'Unknown';
 
             if (item.authors && item.authors.length > 0) {
@@ -67,7 +59,7 @@ $(document).ready(function () {
                 .append(
                 '<div class="autocomplete-result">' +
                 '<div class="autocomplete-thumbnail">' +
-                '<img src="' + image + '">' +
+                '<img src="' + item.image + '">' +
                 '</div>' +
                 '<div class="autocomplete-data">' +
                 '<div class="autocomplete-title"><h4>' + highlightedTitle + '</h4></div>' +
