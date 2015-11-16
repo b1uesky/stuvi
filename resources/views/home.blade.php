@@ -166,7 +166,7 @@
 
                             <h3>Quick cash?</h3>
                             <p>
-                                Besides selling your books to other students, simply trade in your books at a competitive price!
+                                Besides selling your books to other students, simply trade in your textbooks at a competitive price!
                             </p>
                         </div>
                         <div class="col-md-4">
