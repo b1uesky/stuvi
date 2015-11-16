@@ -87,7 +87,6 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'textbook
         Route::post ('/store',                  'DonationController@store');
         Route::get  ('{donation}/confirmation', 'DonationController@confirmation');
     });
-
 });
 
 // order

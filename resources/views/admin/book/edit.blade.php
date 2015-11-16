@@ -46,4 +46,23 @@
         <input type="submit" value="Update" class="btn btn-primary">
     </form>
 
+    <br>
+
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h3 class="panel-title">Danger Zone</h3>
+        </div>
+
+        <div class="panel-body">
+            <p class="text-danger">It will delete all product related to this book.</p>
+            <form action="{{ url('admin/book/' . $book->id) }}" method="post">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+
+                <input type="submit" value="Delete this book" class="btn btn-danger">
+            </form>
+        </div>
+    </div>
+
+
 @endsection

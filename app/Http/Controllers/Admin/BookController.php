@@ -132,12 +132,16 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  Book $book
      *
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($book)
     {
-        //
+        $title = $book->title;
+        $book->delete();
+
+        return redirect('admin/book')
+            ->with('success', 'You have successfully deleted book: '.$title);
     }
 }
