@@ -35,9 +35,7 @@
                                         {{--General Condition--}}
                                         <div class="form-group">
                                             <label>General condition</label>
-                                            {{--Open modal button--}}
-                                            <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal"
-                                                  data-target=".condition-modal"></span>
+                                            <span class="glyphicon glyphicon-question-sign" id="book-general-condition-popover"></span>
 
                                             <div class="radio-button-group">
                                                 <label class="radio-inline">
@@ -59,9 +57,7 @@
                                         {{--Highlights/Notes--}}
                                         <div class="form-group">
                                             <label>Highlights/Notes</label>
-                                            {{--Open modal button--}}
-                                            <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal"
-                                               data-target=".highlight-modal"></span>
+                                            <span class="glyphicon glyphicon-question-sign" id="book-highlights-notes-popover"></span>
 
                                             <div class="radio-button-group">
                                                 <label class="radio-inline">
@@ -83,8 +79,7 @@
                                         {{--Damaged Pages--}}
                                         <div class="form-group">
                                             <label>Damaged pages</label>
-                                            <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal"
-                                               data-target=".damage-modal"></span>
+                                            <span class="glyphicon glyphicon-question-sign" id="book-damaged-pages-popover"></span>
 
                                             <div class="radio-button-group">
                                                 <label class="radio-inline">
@@ -105,8 +100,7 @@
                                         {{--Broken Binding--}}
                                         <div class="form-group">
                                             <label>Broken book binding</label>
-                                            <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal"
-                                               data-target=".binding-modal"></span>
+                                            <span class="glyphicon glyphicon-question-sign" id="book-broken-binding-popover"></span>
 
                                             <div class="radio-button-group">
                                                 <label class="radio-inline">
@@ -235,7 +229,5 @@
             </div>
         </div>
     </div>
-
-    @include('includes.modal.product-conditions')
 
 @endsection

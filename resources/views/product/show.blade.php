@@ -146,7 +146,7 @@
                             <tr>
                                 <th>
                                     General condition
-                                    <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".condition-modal"></span>
+                                    <span class="glyphicon glyphicon-question-sign" id="book-general-condition-popover"></span>
                                 </th>
 
                                 <td>{{ config('product.conditions.general_condition')[$product->condition->general_condition] }}</td>
@@ -155,7 +155,7 @@
                             <tr>
                                 <th>
                                     Highlights/Notes
-                                    <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".highlight-modal"></span>
+                                    <span class="glyphicon glyphicon-question-sign" id="book-highlights-notes-popover"></span>
                                 </th>
                                 <td>{{ config('product.conditions.highlights_and_notes')[$product->condition->highlights_and_notes] }}</td>
                             </tr>
@@ -163,7 +163,7 @@
                             <tr>
                                 <th>
                                     Damaged pages
-                                    <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".damage-modal"></span>
+                                    <span class="glyphicon glyphicon-question-sign" id="book-damaged-pages-popover"></span>
                                 </th>
                                 <td>{{ config('product.conditions.damaged_pages')[$product->condition->damaged_pages] }}</td>
                             </tr>
@@ -171,8 +171,7 @@
                             <tr>
                                 <th>
                                     Broken binding
-                                    <span class="glyphicon glyphicon-question-sign text-muted cursor-pointer" data-toggle="modal" data-target=".binding-modal"></span>
-
+                                    <span class="glyphicon glyphicon-question-sign" id="book-broken-binding-popover"></span>
                                 </th>
                                 <td>{{ config('product.conditions.broken_binding')[$product->condition->broken_binding] }}</td>
                             </tr>
@@ -219,4 +218,3 @@
 @endsection
 
 @include('includes.modal.delete-product')
-@include('includes.modal.product-conditions')
