@@ -137,7 +137,9 @@
                     {{ csrf_field() }}
 
                     <input type="hidden" name="book_id" value="{{ $book->id }}">
-                    <input type="submit" class="btn btn-warning" value="Remind me when this book is available">
+                    <button type="submit" class="btn btn-sm btn-info">
+                        <span class="glyphicon glyphicon-bullhorn"></span> Remind me when this book is available
+                    </button>
                 </form>
             @endif
         @endif

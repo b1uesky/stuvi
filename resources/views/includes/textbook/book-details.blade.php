@@ -1,4 +1,5 @@
 <div class="row">
+    <?php $count_product = count($book->availableProducts()); ?>
 
     {{-- book image --}}
     <div class="col-md-2 col-xs-4">
@@ -30,10 +31,9 @@
             </span>
         </div>
 
-        <div class="row padding-bottom-5">
-            <?php $count_product = count($book->availableProducts()); ?>
-
-            @if($count_product > 0)
+        {{-- Prices --}}
+        @if($count_product > 0)
+            <div class="row padding-bottom-5">
                 {{-- price --}}
                 <span class="text-bold">
                     @if($count_product > 1)
@@ -44,19 +44,8 @@
                         <span class="price">${{ $book->decimalLowestPrice() }}</span>
                     @endif
                 </span>
-
-                {{-- # of available products --}}
-                <span class="text-muted">
-                    @if($count_product > 1)
-                        ({{ $count_product }} offers)
-                    @else
-                        (1 offer)
-                    @endif
-                </span>
-            @else
-                <span class="text-warning">Temporarily Out of Stock</span>
-            @endif
-        </div>
+            </div>
+        @endif
 
         {{-- isbn 10 --}}
         <div class="row">
@@ -68,6 +57,27 @@
         <div class="row">
             <span><strong>ISBN-13: </strong></span>
             <span>{{ $book->isbn13 }}</span>
+        </div>
+
+        {{-- Status --}}
+        <div class="row padding-bottom-5">
+            @if($count_product > 0)
+                {{-- In stock --}}
+                <small class="text-success">
+                    <strong>
+                        {{ $count_product }}
+                        @if($count_product > 1)
+                            Books
+                        @else
+                            Book
+                        @endif
+                        In Stock
+                    </strong>
+                </small>
+            @else
+                {{-- Out of stock --}}
+                <small class="text-warning"><strong>Temporarily Out of Stock</strong></small>
+            @endif
         </div>
     </div>
 

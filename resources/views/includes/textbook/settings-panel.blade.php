@@ -7,6 +7,7 @@
         <a class="list-group-item {{ Request::path() == 'user/profile' ? 'active' : '' }}" href="{{ url('user/profile') }}">Profile Settings</a>
         <a class="list-group-item {{ Request::path() == 'user/account' ? 'active' : '' }}" href="{{ url('user/account') }}">Account Settings</a>
         <a class="list-group-item {{ Request::path() == 'user/email' ? 'active' : '' }}" href="{{ url('user/email') }}">Email Settings</a>
+        <a class="list-group-item {{ Request::path() == 'user/reminder' ? 'active' : '' }}" href="{{ url('user/reminder') }}">Reminder Settings</a>
         <a class="list-group-item {{ Request::path() == 'user/bookshelf' ? 'active' : '' }}" href="{{ url('user/bookshelf') }}">Bookshelf</a>
     </div>
 </div>

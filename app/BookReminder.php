@@ -25,4 +25,17 @@ class BookReminder extends Model
             ->where('user_id', $user_id)
             ->exists();
     }
+
+    public static function getUsersByBookID($book_id)
+    {
+        $users = [];
+        $book_reminders = BookReminder::where('book_id', $book_id)->get();
+
+        foreach ($book_reminders as $br)
+        {
+            array_push($users, $br->user);
+        }
+
+        return $users;
+    }
 }

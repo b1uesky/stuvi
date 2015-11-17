@@ -28,17 +28,15 @@
                     <div class="panel-body">
                         @foreach($productsForSale as $product)
                             <div class="row">
-                                <div class="col-sm-10">
+                                <div class="col-sm-9 margin-bottom-15">
                                     @include('includes.textbook.product-details')
                                 </div>
 
-                                <br>
-
-                                <div class="col-sm-2">
-                                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-primary btn-block">
+                                <div class="col-sm-3">
+                                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-sm btn-primary btn-block">
                                         <span class="glyphicon glyphicon-edit"></span> Edit
                                     </a>
-                                    <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
+                                    <button type="button" class="btn btn-sm btn-default btn-block" data-toggle="modal"
                                             data-target="#delete-product"
                                             data-product-id="{{ $product->id }}"
                                             data-book-title="{{ $product->book->title }}">

@@ -155,6 +155,7 @@ Route::group(['namespace'=>'User', 'middleware'=>'auth', 'prefix'=>'user'], func
         Route::get ('/{id}/verify/{code}',  'EmailController@verify');
     });
 
+    Route::get ('/reminder',                'ReminderController@index');
 });
 
 Route::controllers([

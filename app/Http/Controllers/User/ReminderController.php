@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Textbook;
+namespace App\Http\Controllers\User;
 
+use App\BookReminder;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\BookReminder;
-use App\Book;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
-class BookReminderController extends Controller
+class ReminderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +17,10 @@ class BookReminderController extends Controller
      */
     public function index()
     {
-        //
+        $book_reminders = BookReminder::where('user_id', Auth::id())->get();
+
+        return view('user.reminder')
+            ->with('book_reminders', $book_reminders);
     }
 
     /**
@@ -39,21 +41,7 @@ class BookReminderController extends Controller
      */
     public function store(Request $request)
     {
-        $book_id = $request->get('book_id');
-
-        if (Book::where('id', $book_id)->exists())
-        {
-            BookReminder::create([
-                'book_id'   => $book_id,
-                'user_id'   => Auth::id()
-            ]);
-
-            return redirect()->back()
-                ->with('success', 'We will send you an email when this book is available.');
-        }
-
-        return redirect()->back()
-            ->with('error', 'Sorry, you cannot add a reminder for this book.');
+        //
     }
 
     /**
@@ -93,25 +81,11 @@ class BookReminderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $book_reminder = BookReminder::find($id);
-
-        if ($book_reminder)
-        {
-            $title = $book_reminder->book->title;
-            $book_reminder->delete();
-
-            return redirect()->back()
-                ->with('success', 'You have removed reminder for textbook: '.$title);
-        }
-        else
-        {
-            return redirect()->back()
-                ->with('error', 'You cannot remove this reminder');
-        }
+        //
     }
 }

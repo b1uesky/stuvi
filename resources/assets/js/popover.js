@@ -36,6 +36,16 @@ $(document).ready(function() {
         'Our team will review your book, offer a trade-in price and send you an email with details once we approved your book. ' +
         'Of course, you decide to take the deal or not. ' +
         'This process may take at most 2 days. You can change this option later.',
-        trigger: 'hover'
+        trigger: 'hover',
+        placement: 'auto'
+    });
+
+    // Receiving payment
+    $('#receiving-payment-popover').popover({
+        content: '<p><strong>PayPal: </strong>You will receive payment through PayPal after your book is delivered to the buyer. A PayPal account is required.</p>' +
+        '<p><strong>Cash: </strong>You will get paid by cash once our courier has picked up your book.</p>',
+        html: true,
+        trigger: 'hover',
+        placement: 'auto'
     });
 });

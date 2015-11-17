@@ -27,7 +27,7 @@
                         <a href="{{ url('textbook/buy/' . $book->id) }}" class="btn btn-primary">Buy this book</a>
                     @endif
 
-                    <a href="{{ url('textbook/sell/product/' . $book->id . '/create') }}" class="btn btn-warning">Sell this book</a>
+                    <a href="{{ url('textbook/sell/product/' . $book->id . '/create') }}" class="btn btn-default">Sell this book</a>
                 </div>
 
                 <br>

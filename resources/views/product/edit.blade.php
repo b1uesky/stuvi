@@ -179,6 +179,7 @@
                                         {{-- Receive money --}}
                                         <div class="form-group">
                                             <label>Receive money</label>
+                                            <span class="glyphicon glyphicon-question-sign" id="receiving-payment-popover"></span>
 
                                             <div class="radio-button-group">
                                                 <label class="radio-inline">

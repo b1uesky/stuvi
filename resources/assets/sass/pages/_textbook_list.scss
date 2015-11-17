@@ -2,6 +2,14 @@
 
 @import "../modules/all";
 
+.textbook-actions-xs {
+  margin-top: $spacing-unit/2;
+
+  .btn {
+    width: 28%;
+  }
+}
+
 #pagination {
   text-align: center;
   .active {

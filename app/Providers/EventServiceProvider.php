@@ -36,6 +36,11 @@ class EventServiceProvider extends ServiceProvider {
 		|--------------------------------------------------------------------------
 		*/
 
+		// book reminder
+		'App\Events\ProductWasCreated' => [
+			'App\Listeners\EmailBookAvailableNotificationToUsers',
+		],
+
 		// product that sells to user
 		'App\Events\ProductIsAvailableSoon' => [
 			'App\Listeners\EmailProductAvailableSoonNotificationToSeller',

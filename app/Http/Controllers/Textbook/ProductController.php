@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Textbook;
 
 use App\BuyerOrder;
+use App\Events\ProductWasCreated;
 use App\Helpers\Price;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -119,6 +120,8 @@ class ProductController extends Controller
             ]);
         }
 
+        event(new ProductWasCreated($product));
+
         return Response::json([
             'success' => true,
             'redirect' => '/textbook/buy/product/' . $product->id,
@@ -140,7 +143,7 @@ class ProductController extends Controller
 //            Redis::hincrby('product:'.$product->id, 'views', 1);
 //            Redis::sadd('list:product_ids', $product->id);
 //        }
-        
+
         return view('product.show')
             ->withProduct($product)
             ->withQuery(Input::get('query'))

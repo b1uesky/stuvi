@@ -1,4 +1,5 @@
 <div class="row">
+    <?php $count_product = count($book->availableProducts()); ?>
 
     {{-- book image --}}
     <div class="col-md-2 col-sm-3 col-xs-4">
@@ -30,10 +31,9 @@
             </span>
         </div>
 
-        <div class="row padding-bottom-5">
-            <?php $count_product = count($book->availableProducts()); ?>
-
-            @if($count_product > 0)
+        {{-- Prices --}}
+        @if($count_product > 0)
+            <div class="row padding-bottom-5">
                 {{-- price --}}
                 <span class="text-bold">
                     @if($count_product > 1)
@@ -44,22 +44,8 @@
                         <span class="price">${{ $book->decimalLowestPrice() }}</span>
                     @endif
                 </span>
-
-                {{-- # of available products --}}
-                <span class="text-muted">
-                    @if($count_product > 1)
-                        ({{ $count_product }} offers)
-                    @else
-                        (1 offer)
-                    @endif
-                </span>
-            @else
-                <span class="label label-warning">Temporarily Out of Stock</span>
-                @if(App\BookReminder::exists($book->id, Auth::id()))
-                    <span class="label label-info">Reminded</span>
-                @endif
-            @endif
-        </div>
+            </div>
+        @endif
 
         {{-- isbn 10 --}}
         <div class="row">
@@ -68,21 +54,46 @@
         </div>
 
         {{-- isbn 13 --}}
-        <div class="row">
+        <div class="row padding-bottom-5">
             <span><strong>ISBN-13: </strong></span>
             <span>{{ $book->isbn13 }}</span>
         </div>
 
-        <div class="row">
-            <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="text-lg carrot">
-                <strong>Have one to sell?</strong>
-            </a>
+        {{-- Status --}}
+        <div class="row padding-bottom-5">
+            @if($count_product > 0)
+                {{-- In stock --}}
+                <small class="text-success">
+                    <strong>
+                        {{ $count_product }}
+                        @if($count_product > 1)
+                            Books
+                        @else
+                            Book
+                        @endif
+                        In Stock
+                    </strong>
+                </small>
+            @else
+                {{-- Out of stock --}}
+                <small class="text-warning"><strong>Temporarily Out of Stock</strong></small>
+            @endif
         </div>
     </div>
 
     {{-- actions --}}
-    {{--<div class="col-sm-2 hidden-xs text-right">--}}
-        {{--<a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="btn btn-default btn-no-border">Sell</a>--}}
-    {{--</div>--}}
+    <div class="col-sm-2 col-xs-12 hidden-xs">
+        @if($count_product > 0)
+            <a href="{{ url("textbook/buy/".$book->id.'?query=' . Input::get('query')) }}" class="btn btn-sm btn-primary btn-block">Buy</a>
+        @endif
+        <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="btn btn-sm btn-default btn-block">Sell</a>
+    </div>
+
+    <div class="col-xs-12 visible-xs textbook-actions-xs">
+        @if($count_product > 0)
+            <a href="{{ url("textbook/buy/".$book->id.'?query=' . Input::get('query')) }}" class="btn btn-sm btn-primary">Buy</a>
+        @endif
+        <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="btn btn-sm btn-default">Sell</a>
+    </div>
 
 </div>
