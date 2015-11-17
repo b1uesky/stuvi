@@ -54,7 +54,10 @@
                     @endif
                 </span>
             @else
-                <span class="text-warning">Temporarily Out of Stock</span>
+                <span class="label label-warning">Temporarily Out of Stock</span>
+                @if(App\BookReminder::exists($book->id, Auth::id()))
+                    <span class="label label-info">Reminded</span>
+                @endif
             @endif
         </div>
 

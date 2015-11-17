@@ -18,4 +18,11 @@ class BookReminder extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public static function exists($book_id, $user_id)
+    {
+        return BookReminder::where('book_id', $book_id)
+            ->where('user_id', $user_id)
+            ->exists();
+    }
 }

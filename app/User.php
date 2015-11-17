@@ -201,6 +201,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
+     * Get all book reminders that belong to this user.
+     *
+     * @return  \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bookReminders()
+    {
+        return $this->hasMany('App\BookReminder', 'user_id');
+    }
+
+    /**
      * Get the user primary email address.
      *
      * @return mixed

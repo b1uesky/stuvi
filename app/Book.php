@@ -47,6 +47,16 @@ class Book extends Model
     }
 
     /**
+     * Get all book reminders
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bookReminders()
+    {
+        return $this->hasMany('App\BookReminder', 'book_id');
+    }
+
+    /**
      * Get the book's authors' names.
      *
      * @return array
