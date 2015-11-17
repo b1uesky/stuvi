@@ -27,6 +27,10 @@
             Donation <span class="badge">{{ \App\Donation::count() }}</span>
         </a>
 
+        <a class="list-group-item {{ Request::segment(2) == 'textbookReminder' }}" href="{{ url('admin/textbookReminder') }}">
+            Textbook reminder <span class="badge">{{ \App\BookReminder::count() }}</span>
+        </a>
+
     </div>
 
 </div>

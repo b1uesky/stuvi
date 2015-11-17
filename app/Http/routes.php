@@ -210,6 +210,9 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>
     // donation
     Route::resource('donation', 'DonationController');
 
+    // textbook reminder
+    Route::resource('textbookReminder', 'TextbookReminderController');
+
     // contact
 //    Route::post('contact/reply','ContactController@reply');
 //    Route::resource('contact',  'ContactController');
