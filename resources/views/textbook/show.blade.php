@@ -93,7 +93,7 @@
                                         ${{ $product->decimalPrice() }}
                                     </td>
                                     <td>
-                                        {{ $product->general_condition() }}
+                                        <strong>{{ $product->general_condition() }}</strong>
                                     </td>
                                     <td class="container-flex hidden-xs">
                                         @foreach($product->images as $image)
