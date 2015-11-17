@@ -83,17 +83,11 @@
 
     {{-- actions --}}
     <div class="col-sm-2 col-xs-12 hidden-xs">
-        @if($count_product > 0)
-            <a href="{{ url("textbook/buy/".$book->id.'?query=' . Input::get('query')) }}" class="btn btn-sm btn-primary btn-block">Buy</a>
-        @endif
-        <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="btn btn-sm btn-default btn-block">Sell</a>
+        <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="btn btn-sm btn-warning btn-block">Sell</a>
     </div>
 
     <div class="col-xs-12 visible-xs textbook-actions-xs">
-        @if($count_product > 0)
-            <a href="{{ url("textbook/buy/".$book->id.'?query=' . Input::get('query')) }}" class="btn btn-sm btn-primary">Buy</a>
-        @endif
-        <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="btn btn-sm btn-default">Sell</a>
+        <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="btn btn-sm btn-warning">Sell</a>
     </div>
 
 </div>
