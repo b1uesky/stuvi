@@ -86,6 +86,11 @@
                             <span class="glyphicon glyphicon-envelope"></span> Remind me when it's available
                         </button>
                     </form>
+                @else
+                    <br>
+                    <a href="#" class="btn btn-xs btn-default disabled margin-top-5">
+                        <span class="glyphicon glyphicon-ok"></span> Added to reminder
+                    </a>
                 @endif
             @endif
         </div>
