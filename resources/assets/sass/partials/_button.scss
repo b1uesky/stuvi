@@ -6,6 +6,7 @@
   &:hover, &:focus {
     background-color: darken($brand-default, 3%) !important;
     outline: none !important;
+    border-color: $brand-default !important;
   }
 }
 
