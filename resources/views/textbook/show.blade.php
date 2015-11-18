@@ -131,17 +131,6 @@
                         </table>
                 </div>
             </div>
-        @else
-            @if(!App\BookReminder::exists($book->id, Auth::id()))
-                <form action="{{ url('textbook/reminder') }}" method="post">
-                    {{ csrf_field() }}
-
-                    <input type="hidden" name="book_id" value="{{ $book->id }}">
-                    <button type="submit" class="btn btn-sm btn-info">
-                        <span class="glyphicon glyphicon-bullhorn"></span> Remind me when this book is available
-                    </button>
-                </form>
-            @endif
         @endif
 
     </div>
