@@ -11,6 +11,8 @@
                     <div class="row">
                         <div class="col-xs-12 text-center">
                             <h1>Textbook Trade-In Program</h1>
+                            <br>
+                            <a href="{{ url('/') }}" class="btn btn-lg btn-warning">Sell Your Textbook Now</a>
                         </div>
                     </div>
                 </div>
@@ -70,26 +72,16 @@
         </section>
     </div>
 
-    {{--<div class="container">--}}
-
-        {{--<div class="row">--}}
-            {{----}}
-            {{----}}
-            {{----}}
-            {{--<div class="col-md-6 col-md-offset-3">--}}
-                {{--<div class="page-header">--}}
-                    {{--<h1>Textbook Trade-In Program</h1>--}}
-                {{--</div>--}}
-
-                {{--<p class="lead">--}}
-                    {{--By joining the Stuvi Book Trade-in program, you will have an option to sell the book directly to Stuvi.--}}
-                    {{--Our team will review your book, offer a trade-in price and send you an email with details once we approved your book.--}}
-                    {{--Of course, you decide to take the deal or not.--}}
-                    {{--This process may take at most 2 days. You can change this option later.--}}
-                {{--</p>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-
-    {{--</div>--}}
+    <section id="trade-in-final">
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row">
+                    <div class="text-center">
+                        <a href="{{ url('/') }}" class="btn btn-lg btn-warning">Sell Your Textbook Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 @endsection
