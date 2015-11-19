@@ -6,49 +6,44 @@
 .footer-distributed {
   height: $footer-height;
   background-color: $background-dark;
-  color: white;
-  padding: $spacing-unit / 2;
+  color: $silver;
+  padding: $spacing-unit * 2;
+
+  .container {
+    @media (min-width: 767px) {
+      max-width: 900px;
+    }
+  }
 
   a {
-    margin: $spacing-unit / 4;
-    color: white;
+    color: $silver;
     text-decoration: none;
+    font-weight: 300;
+    font-size: 1.1em;
 
     &:hover {
-      color: white;
+      color: $silver;
     }
   }
 
   ul {
-    margin: $spacing-unit 0;
+    margin: 10px 0 $spacing-unit/2 0;
+    padding-left: 0;
     list-style-type: none;
-
-    li {
-      display: inline;
-    }
   }
 
   @media (max-width: 768px) {
     height: $footer-height-mobile;
   }
-}
 
-.footer-links, .company-info {
-  ul {
-    li:after {
-      content: " \00b7";
-    }
+  .footer-section-title {
+    font-size: 1.4em;
+    font-weight: 300;
+  }
 
-    li.nobullet:after {
-      content: none;
-    }
+  .copyright {
+    color: darken($silver, 10%);
+    font-weight: 300;
   }
 }
 
-.social-links {
-  font-size: 18px;
-}
-
-.copyright {
-  margin-right: $spacing-unit / 4;
-}
