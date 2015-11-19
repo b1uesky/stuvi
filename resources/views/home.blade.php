@@ -90,7 +90,7 @@
 
 @section('content')
 
-    <div class="container-fluid container-bg">
+    <div class="container-fluid" id="home-bg">
 
         <div class="container-top-half">
 
