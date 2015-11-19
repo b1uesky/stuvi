@@ -59,7 +59,7 @@
 #cart {
   .btn-default {
     background: white;
-    border-color: white;
+    border-color: white !important;
 
     &:active, &:hover, &:focus {
       background: white !important;
