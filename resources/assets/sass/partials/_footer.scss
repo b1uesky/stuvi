@@ -6,23 +6,17 @@
 .footer-distributed {
   height: $footer-height;
   background-color: $background-dark;
-  color: $silver;
+  color: $clouds;
   padding: $spacing-unit * 2;
 
-  .container {
-    @media (min-width: 767px) {
-      max-width: 900px;
-    }
-  }
-
   a {
-    color: $silver;
+    color: $clouds;
     text-decoration: none;
     font-weight: 300;
     font-size: 1.1em;
 
     &:hover {
-      color: $silver;
+      color: $clouds;
     }
   }
 
@@ -42,7 +36,7 @@
   }
 
   .copyright {
-    color: darken($silver, 10%);
+    color: darken($clouds, 10%);
     font-weight: 300;
   }
 }
