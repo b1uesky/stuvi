@@ -26,7 +26,7 @@
 }
 
 .container-searchbar {
-  max-width: 800px;
+  max-width: 600px;
 }
 
 #home-search {
@@ -78,12 +78,18 @@
 
   h2 {
     font-size: 3em;
+    font-weight: 300;
+    margin-bottom: 1.4em;
   }
 
   h3 {
-    font-size: 1.4em;
-    font-weight: bold;
+    font-size: 1.6em;
+    font-weight: 300;
     text-align: center;
+  }
+
+  .row > div {
+    padding: $spacing-unit/2 0;
   }
 }
 
@@ -92,37 +98,63 @@
   background-color: $background-color;
 
   .container {
-    max-width: 900px;
+    //max-width: 1000px;
   }
 }
 
 // sections
 #intro {
   .jumbotron {
-    background: white;
-  }
+    background: #f8f8f8;
 
-  h2 {
-    margin-bottom: 0.5em;
+    img {
+      max-height: 48px;
+      position: relative;
+      right: 15px;
+      bottom: 6px;
+    }
   }
 }
 
 #how-it-works {
+  .jumbotron {
+    background: white;
 
+    img {
+      max-height: 64px;
+    }
+
+    h3 {
+      color: $green-sea;
+    }
+
+    p {
+      color: $text-color-light;
+      font-size: 1em;
+      text-align: center;
+    }
+  }
 }
 
 #features {
   .jumbotron {
-    //background: lighten($tiffany-light, 5%);
     background: $clouds;
 
     img {
-      opacity: 0.8;
+      max-height: 64px;
     }
 
     p {
-      font-size: 1.2em;
+      font-size: 1em;
       text-align: center;
+    }
+
+    .btn-feature {
+      background-color: darken($brand-default, 5%) !important;
+
+      &:hover {
+        background-color: darken($brand-default, 10%) !important;
+      }
     }
   }
 }
