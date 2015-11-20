@@ -196,11 +196,12 @@
 
 // container
 .container-wrapper {
-  min-height: calc(100vh - #{$footer-height});
-
-  @media (max-width: 768px) {
-    min-height: calc(100vh - #{$footer-height-mobile});
-  }
+  min-height: 100vh;
+  //min-height: calc(100vh - #{$footer-height});
+  //
+  //@media (max-width: 768px) {
+  //  min-height: calc(100vh - #{$footer-height-mobile});
+  //}
 }
 
 .va-container-h {
