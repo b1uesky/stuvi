@@ -6,6 +6,10 @@
   border: none;
   background: none;
   padding: 0;
+
+  .controll-label {
+    color: lighten($text-color, 10%);
+  }
 }
 
 // image upload
@@ -53,4 +57,11 @@
 
 .dz-error-message{
   top: 150px !important;
+}
+
+#datetimepicker-available-date, #datetimepicker-available-date-update {
+  @media (min-width: 767px) {
+    margin: $spacing-unit 0 0 (-$spacing-unit);
+  }
+
 }
