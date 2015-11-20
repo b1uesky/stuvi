@@ -24,6 +24,7 @@ Route::get  ('/home',       'HomeController@index');
 Route::get  ('/about',      'HomeController@about');
 Route::get  ('/tos',        'tosPrivacyController@tos');
 Route::get  ('/privacy',    'tosPrivacyController@privacy');
+Route::get  ('/trade-in-program',    'HomeController@tradeInProgram');
 
 /*
 |--------------------------------------------------------------------------

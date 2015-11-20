@@ -6,7 +6,6 @@
                 <span class="footer-section-title">Company</span>
                 <ul class="company">
                     <li><a href="{{ url('/about') }}">About</a></li>
-                    <li><a href="{{ url('/sitemap') }}">Sitemap</a></li>
                     <li><a href="{{ url('tos') }}">Terms</a></li>
                     <li><a href="{{ url('/privacy') }}">Privacy</a></li>
                 </ul>

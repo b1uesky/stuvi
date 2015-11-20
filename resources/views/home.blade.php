@@ -90,7 +90,7 @@
 
 @section('content')
 
-    <div class="container-fluid container-bg">
+    <div class="container-fluid" id="home-bg">
 
         <div class="container-top-half">
 
@@ -128,7 +128,7 @@
                     <div class="row">
                         <div class="col-xs-12 text-center">
                             <h2><img src="https://s3.amazonaws.com/stuvi-icon/light+bulbs.png" alt=""> What is Stuvi?</h2>
-                            <p>Stuvi, or Student Village, is a marketplace built for college students. <br> To help you succeed at school, we're launching our textbook trading service here in Boston!</p>
+                            <p>Stuvi, or Student Village, is a marketplace built for college students. To help you succeed at school, we're launching our textbook trading service here in Boston!</p>
                             {{--<p><a class="btn btn-default btn-lg" href="{{ url('/about/') }}" role="button">Learn more</a></p>--}}
                         </div>
                     </div>

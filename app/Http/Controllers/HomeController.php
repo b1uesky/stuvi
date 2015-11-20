@@ -48,5 +48,9 @@ class HomeController extends Controller
     {
         return view('coming-soon');
     }
-	
+
+    public function tradeInProgram()
+    {
+        return view('trade-in-program');
+    }
 }
