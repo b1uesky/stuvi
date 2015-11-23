@@ -163,7 +163,7 @@
 
                                             <div class="input-group">
                                                 <div class="input-group-addon">$</div>
-                                                <input type="number" step="0.01" min="0.00" name="price"
+                                                <input type="number" step="0.01" min="{{ config('sale.minimum_book_price') }}" name="price"
                                                        class="form-control" placeholder="Set a price for your book">
                                             </div>
                                         </div>
