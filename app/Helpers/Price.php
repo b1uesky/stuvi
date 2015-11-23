@@ -34,4 +34,16 @@ class Price {
         return intval($total * config('sale.tax'));
     }
 
+    /**
+     * Calculate PayPal receiving fee.
+     * https://www.paypal.com/webapps/mpp/paypal-fees
+     *
+     * @param integer $total
+     * @return mixed
+     */
+    public static function calculatePayPalReceivingFee($total)
+    {
+        return intval($total * 0.029 + 30);
+    }
+
 }

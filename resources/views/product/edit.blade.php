@@ -213,7 +213,7 @@
 
                                             <div>
                                                 <small class="text-success receiving-payment-info">
-                                                    A PayPal service fee (2.9% + $0.30) will be deducted from your receiving payment.
+                                                    A $0.25 PayPal transaction fee will be deducted from your receiving payment.
                                                 </small>
                                             </div>
                                         </div>

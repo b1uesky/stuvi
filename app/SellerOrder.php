@@ -417,12 +417,12 @@ class SellerOrder extends Model
         // determine what price to pay
         if ($this->isSoldToUser())
         {
-            $value = Price::convertIntegerToDecimal($this->product->price - config('sale.payout_service'));
+            $value = Price::convertIntegerToDecimal($this->product->price - config('sale.paypal_payout_fee'));
         }
 
         if ($this->isSoldToStuvi())
         {
-            $value = Price::convertIntegerToDecimal($this->product->trade_in_price - config('sale.payout_service'));
+            $value = Price::convertIntegerToDecimal($this->product->trade_in_price - config('sale.paypal_payout_fee'));
         }
 
         $item = $this->createPaypalPayoutItem($value);
