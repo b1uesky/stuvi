@@ -3,7 +3,7 @@
 @section('content')
 
     @include ('beautymail::templates.sunny.heading' , [
-        'heading' => 'Your book has sold!',
+        'heading' => 'Your book was sold!',
         'level' => 'h1',
     ])
 
@@ -11,7 +11,7 @@
 
     <p>Hi {{ $first_name }},</p>
 
-    <p>Your book <a href="{{ url('/order/seller/' . $seller_order->id) }}">{{ $book_title }}</a> has sold!</p>
+    <p>Your book <a href="{{ url('/order/seller/' . $seller_order->id) }}">{{ $book_title }}</a> was sold!</p>
 
     <p>Please schedule a pickup at your convenience by clicking the button below.</p>
 
