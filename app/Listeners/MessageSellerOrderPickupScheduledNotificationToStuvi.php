@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use Aloha\Twilio\Twilio;
 use App\Events\SellerOrderPickupWasScheduled;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;

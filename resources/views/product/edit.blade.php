@@ -210,6 +210,12 @@
 
                                             <input type="email" name="paypal" class="form-control"
                                                    value="{{ $paypal or '' }}" placeholder="Paypal email address">
+
+                                            <div>
+                                                <small class="text-success receiving-payment-info">
+                                                    A PayPal service fee (2.9% + $0.30) will be deducted from your receiving payment.
+                                                </small>
+                                            </div>
                                         </div>
 
                                         {{-- Sell to --}}
