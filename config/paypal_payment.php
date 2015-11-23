@@ -14,13 +14,13 @@ return [
 		//'Proxy' => 'http://[username:password]@hostname[:port][/path]',
 	],
 
-	'mode'    => 'sandbox',
+	'mode'    => env('PAYPAL_MODE'),
 
 	# Service Configuration
 	'service' => [
 		# Live endpoint:    https://api.paypal.com
 		# Sandbox endpoint: https://api.sandbox.paypal.com
-		'EndPoint' => 'https://api.sandbox.paypal.com',
+		'EndPoint' => env('PAYPAL_SERVICE_ENDPOINT'),
 	],
 
 
