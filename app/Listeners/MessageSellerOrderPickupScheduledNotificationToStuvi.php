@@ -2,12 +2,11 @@
 
 namespace App\Listeners;
 
-use Aloha\Twilio\Twilio;
-use App\Events\BuyerOrderWasPlaced;
+use App\Events\SellerOrderPickupWasScheduled;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class MessageBuyerOrderPlacedNotificationToStuvi
+class MessageSellerOrderPickupScheduledNotificationToStuvi
 {
     /**
      * Create the event listener.
@@ -22,12 +21,12 @@ class MessageBuyerOrderPlacedNotificationToStuvi
     /**
      * Handle the event.
      *
-     * @param  BuyerOrderWasPlaced  $event
+     * @param  SellerOrderPickupWasScheduled  $event
      * @return void
      */
-    public function handle(BuyerOrderWasPlaced $event)
+    public function handle(SellerOrderPickupWasScheduled $event)
     {
-        $buyer_order = $event->buyer_order;
+        $seller_order = $event->seller_order;
 
         $twilio = new Twilio(
             config('twilio.twilio.connections.twilio.sid'),
@@ -36,7 +35,7 @@ class MessageBuyerOrderPlacedNotificationToStuvi
         );
 
         $phone_number = config('customer_service.phone');
-        $message = 'Buyer order #' . $buyer_order->id . ' was placed!';
+        $message = 'Pickup: Seller order #' . $seller_order->id . ' was scheduled at ' . $seller_order->scheduled_pickup_time . '.';
 
         $twilio->message($phone_number, $message);
 //        $twilio->message('8572064789', $message);

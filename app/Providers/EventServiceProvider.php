@@ -72,6 +72,7 @@ class EventServiceProvider extends ServiceProvider {
 
 		'App\Events\BuyerOrderDeliveryWasScheduled' => [
 			'App\Listeners\EmailBuyerOrderDeliveryScheduledNotificationToStuvi',
+			'App\Listeners\MessageBuyerOrderDeliveryScheduledNotificationToStuvi',
 		],
 
 		'App\Events\BuyerOrderWasShipped' => [
@@ -97,11 +98,13 @@ class EventServiceProvider extends ServiceProvider {
 
 		'App\Events\SellerOrderWasCreated' => [
 			'App\Listeners\EmailSellerOrderConfirmationToSeller',
+//			'App\Listeners\MessageSellerOrderCreatedNotificationToStuvi',
 		],
 
 		'App\Events\SellerOrderPickupWasScheduled' => [
 			'App\Listeners\EmailSellerOrderPickupScheduledConfirmationToSeller',
 			'App\Listeners\EmailSellerOrderPickupScheduledNotificationToStuvi',
+			'App\Listeners\MessageSellerOrderPickupScheduledNotificationToStuvi',
 		],
 
 		'App\Events\SellerOrderWasAssignedToCourier' => [
