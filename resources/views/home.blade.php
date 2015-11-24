@@ -153,6 +153,8 @@
                             <img class="img-responsive center-block" src="https://s3.amazonaws.com/stuvi-icon/envelope89.png" alt="">
                             <h3>Someone Bought Your Book</h3>
                             <p>Choose a pickup time at your convenience.</p>
+
+                            <p><a href="{{ url('trade-in-program') }}" class="btn btn-primary btn-feature">Check Out Our Trade-In Program</a></p>
                         </div>
 
                         <div class="col-md-4">
@@ -190,8 +192,6 @@
                             <p>
                                 Besides selling your books to other students, simply trade in your textbooks at a competitive price!
                             </p>
-                            
-                            <p><a href="{{ url('trade-in-program') }}" class="btn btn-default btn-feature">Learn More</a></p>
                         </div>
                         <div class="col-md-4">
                             <img class="img-responsive center-block" src="https://s3.amazonaws.com/stuvi-icon/cardboard36.png" alt="placeholder">
@@ -200,12 +200,6 @@
                             <p>
                                 Pack and ship your book to us? No, our own team of couriers will come and pickup your books.
                             </p>
-
-                            {{--<h3>Book delivery</h3>--}}
-                            {{--<p>--}}
-                            {{--Our own team of couriers will make sure your book is delivered quickly, and check that your book is in its advertised--}}
-                            {{--condition.--}}
-                            {{--</p>--}}
                         </div>
                     </div>
 

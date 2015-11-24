@@ -305,7 +305,7 @@ class Product extends Model
             'broken_binding'        => 'required|boolean',
             'description'           => 'string',
             'available_at'          => 'required|date',
-            'price'                 => 'required|numeric|min:0',
+            'price'                 => 'required|numeric|min:'.config('sale.minimum_book_price'),
             'payout_method'         => 'required|string|in:paypal,cash',
             'paypal'                => 'required_if:payout_method,paypal|email'
         ];
