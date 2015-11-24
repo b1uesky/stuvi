@@ -2,6 +2,8 @@ composer.lock
 node_modules
 vendor/
 public/build
+public/css
+public/js
 resources/assets/libs
 resources/assets/semantic
 .env
