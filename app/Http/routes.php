@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'address'],function(){
 // auth not required
 Route::group(['namespace'=>'Textbook', 'prefix'=>'textbook'], function()
 {
-    Route::get  ('/',                   'TextbookController@showBuyPage');
+    Route::get  ('/',                   'TextbookController@index');
     Route::get  ('/search',             'TextbookController@search');
     Route::get  ('/searchAutoComplete', 'TextbookController@searchAutoComplete');
     Route::post ('/validateISBN',       'TextbookController@validateISBN');
