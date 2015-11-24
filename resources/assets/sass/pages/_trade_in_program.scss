@@ -1,15 +1,17 @@
 @import "../modules/all";
 
 #trade-in-sections {
+  text-align: center;
 
-    img {
-      max-width: 300px;
-    }
+  img {
+    max-width: 200px;
+    padding: 30px 0;
+  }
 }
 
 #trade-in-header {
   .jumbotron {
-    background: #b2dbca;
+    background: #fffee8;
 
     h1 {
       font-size: 4em;
@@ -23,7 +25,7 @@
 
 #trade-in-step-1 {
   .jumbotron {
-    background: #fffee8;
+    background: #fff;
   }
 
   .text-checkbox {
@@ -33,18 +35,18 @@
 
 #trade-in-step-2 {
   .jumbotron {
-    background: #d3f2f7;
+    background: #fff;
   }
 }
 
 #trade-in-step-3 {
   .jumbotron {
-    background: #d9f7e2;
+    background: #fff;
   }
 }
 
 #trade-in-final {
   .jumbotron {
-    background: #f7d99b;
+    background: #fffee8;
   }
 }
