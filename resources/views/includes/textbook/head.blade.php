@@ -2,7 +2,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="@yield('description')">
+    <meta name="description" content="A textbook marketplace built for college students in Boston.">
+    <meta name="keywords" content="Textbook, Student, College, Boston, Student Village">
     <meta name="author" content="Stuvi, Llc">
     <meta name="csrf_token" content="{{ csrf_token() }}">
 

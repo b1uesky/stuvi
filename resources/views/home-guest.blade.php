@@ -1,6 +1,5 @@
 @extends('layouts.textbook')
-@section('description', "Student Village, college service provider")
-@section('title', 'Boston Textbook Marketplace & More Coming Soon!')
+@section('title', 'Boston Textbook Marketplace')
 
 @section('textbook-header')
 @overwrite
