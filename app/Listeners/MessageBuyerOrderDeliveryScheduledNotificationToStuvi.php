@@ -39,7 +39,10 @@ class MessageBuyerOrderDeliveryScheduledNotificationToStuvi
         $message = 'Delivery: Buyer order #' . $buyer_order->id . ' was scheduled at ' . $buyer_order->scheduled_delivery_time . '.';
 
         $twilio->message($phone_number, $message);
-//        $twilio->message('8572064789', $message);
-//        $twilio->message('8572084775', $message);
+
+        if (app()->environment() == 'production') {
+            $twilio->message('8572064789', $message);
+            $twilio->message('8572084775', $message);
+        }
     }
 }

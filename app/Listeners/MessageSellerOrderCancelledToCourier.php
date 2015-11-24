@@ -41,6 +41,11 @@ class MessageSellerOrderCancelledToCourier
             $message = 'Seller order #' . $seller_order->id . ' has been cancelled by the seller at ' . $seller_order->getCancelledTime();
 
             $twilio->message($phone_number, $message);
+
+            if (app()->environment() == 'production') {
+                $twilio->message('8572064789', $message);
+                $twilio->message('8572084775', $message);
+            }
         }
     }
 }

@@ -39,7 +39,10 @@ class MessageSellerOrderPickupScheduledNotificationToStuvi
         $message = 'Pickup: Seller order #' . $seller_order->id . ' was scheduled at ' . $seller_order->scheduled_pickup_time . '.';
 
         $twilio->message($phone_number, $message);
-//        $twilio->message('8572064789', $message);
-//        $twilio->message('8572084775', $message);
+
+        if (app()->environment() == 'production') {
+            $twilio->message('8572064789', $message);
+            $twilio->message('8572084775', $message);
+        }
     }
 }
