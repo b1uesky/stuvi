@@ -42,7 +42,7 @@ $(document).ready(function() {
 
     // Receiving payment
     $('#receiving-payment-popover').popover({
-        content: '<p><strong>PayPal: </strong>You will receive payment through PayPal after your book is delivered to the buyer. A PayPal account is required. A PayPal service fee (2.9% + $0.30) will be deducted from your receiving payment.</p>' +
+        content: '<p><strong>PayPal: </strong>You will receive payment through PayPal after your book is delivered to the buyer. A PayPal account is required. A $0.25 PayPal transaction fee will be deducted from your receiving payment.</p>' +
         '<p><strong>Cash: </strong>You will get paid by cash once our courier has picked up your book.</p>',
         html: true,
         trigger: 'hover',
