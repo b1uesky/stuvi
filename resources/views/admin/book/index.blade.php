@@ -29,7 +29,7 @@
                 {{--<td>{{ $book->edition }}</td>--}}
                 <td>{{ $book->isbn10 }}</td>
                 <td>{{ $book->isbn13 }}</td>
-                <td>{{ $book->is_verified }}</td>
+                <td>{{ $book->is_verified ? 'Yes':'No' }}</td>
                 <td>
                     <a href="{{ url('admin/book/' . $book->id) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
                     <a href="{{ url('admin/book/' . $book->id . '/edit') }}"><span class="glyphicon glyphicon-edit"></span></a>
