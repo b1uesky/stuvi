@@ -167,6 +167,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
 		Roumen\Sitemap\SitemapServiceProvider::class,
 		Snowfire\Beautymail\BeautymailServiceProvider::class,
+		Frozennode\Administrator\AdministratorServiceProvider::class,
 
 	],
 

@@ -62,6 +62,11 @@ class BuyerOrder extends Model
         return $this->belongsTo('App\User', 'courier_id', 'id');
     }
 
+    public function getCancelledInStringAttribute()
+    {
+        return $this->cancelled ? 'Yes' : 'No';
+    }
+
 
     /**
      * Get seller orders that are not cancelled.

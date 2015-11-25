@@ -37,6 +37,47 @@ class Product extends Model
     }
 
     /**
+     * Get product images in html, for admin product images column
+     *
+     * @return string
+     */
+    public function getHTMLImagesAttribute()
+    {
+        $html = '';
+
+        foreach ($this->images as $img) {
+            $html .= '<img src="'.$img->getImagePath('small').'" />';
+        }
+
+        return $html;
+    }
+
+    public function getVerifiedInStringAttribute()
+    {
+        return $this->verified ? 'Yes' : 'No';
+    }
+
+    public function getSoldInStringAttribute()
+    {
+        return $this->sold ? 'Yes' : 'No';
+    }
+
+    public function getAcceptTradeInInStringAttribute()
+    {
+        return $this->accept_trade_in ? 'Yes' : 'No';
+    }
+
+    public function getTradeInPriceAttribute($value)
+    {
+        return Price::convertIntegerToDecimal($value);
+    }
+
+    public function getRejectedInStringAttribute()
+    {
+        return $this->is_rejected ? 'Yes' : 'No';
+    }
+
+    /**
      * Get products that are available now.
      *
      * @param $query

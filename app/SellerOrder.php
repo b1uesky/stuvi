@@ -73,6 +73,11 @@ class SellerOrder extends Model
         return $this->belongsTo('App\User', 'courier_id');
     }
 
+    public function getCancelledInStringAttribute()
+    {
+        return $this->cancelled ? 'Yes' : 'No';
+    }
+
     /**
      * Cancel the order.
      * Check whether this seller order is cancellable.

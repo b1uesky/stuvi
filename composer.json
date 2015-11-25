@@ -16,7 +16,8 @@
 	  	"desmond/google-books": "dev-master",
 		"roumen/sitemap": "^2.5",
 	  	"paypal/rest-api-sdk-php": "1.5.0",
-		"desmond/beautymail": "dev-master"
+		"desmond/beautymail": "dev-master",
+		"frozennode/administrator": " 5.*"
 	},
     "repositories": [
       {
