@@ -54,7 +54,11 @@ return [
 
         'cancelled_in_string' => [
             'title' => 'Cancelled',
-        ]
+        ],
+
+        'created_at'    => [
+            'title' => 'Created At'
+        ],
 
     ],
 
@@ -65,5 +69,24 @@ return [
             'type'  => 'bool',
         ],
 
+    ],
+
+    'filters'   => [
+        'id'    => [
+            'type'  => 'key',
+            'title' => 'ID'
+        ],
+
+        'buyerOrder'    => [
+            'type'          => 'relationship',
+            'title'         => 'Buyer Order ID',
+            'name_field'    => 'id'
+        ],
+
+        'product'   => [
+            'type'          => 'relationship',
+            'title'         => 'Product ID',
+            'name_field'    => 'id'
+        ],
     ]
 ];

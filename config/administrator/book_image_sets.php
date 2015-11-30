@@ -42,5 +42,13 @@ return [
             'type'  => 'text',
         ],
 
+    ],
+
+    'filters'   => [
+        'book'  => [
+            'type'          => 'relationship',
+            'title'         => 'Book',
+            'name_field'    => 'title'
+        ]
     ]
 ];

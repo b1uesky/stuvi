@@ -63,5 +63,38 @@ return [
             'type'  => 'text',
         ]
 
+    ],
+
+    'filters'   => [
+        'first_name' => [
+            'type'  => 'text',
+            'title' => 'First Name',
+        ],
+
+        'last_name' => [
+            'type'  => 'text',
+            'title' => 'Last Name',
+        ],
+
+        'university'    => [
+            'type'          => 'relationship',
+            'title'         => 'University',
+            'name_field'    => 'abbreviation'
+        ],
+
+        'phone_number'  => [
+            'type'  => 'text',
+            'title' => 'Phone Number'
+        ],
+
+        'role'  => [
+            'type'  => 'text',
+            'title' => 'Role'
+        ],
+
+        'created_at'    => [
+            'type'  => 'datetime',
+            'title' => 'Created At',
+        ],
     ]
 ];

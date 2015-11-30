@@ -79,7 +79,11 @@ return [
 
         'cancelled_in_string' => [
             'title' => 'Cancelled',
-        ]
+        ],
+
+        'created_at'    => [
+            'title' => 'Created At'
+        ],
 
     ],
 
@@ -90,5 +94,12 @@ return [
             'type'  => 'bool',
         ],
 
+    ],
+
+    'filters'   => [
+        'id'    => [
+            'type'  => 'key',
+            'title' => 'ID'
+        ]
     ]
 ];

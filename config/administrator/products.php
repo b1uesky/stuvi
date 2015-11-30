@@ -24,8 +24,8 @@ return [
             }
         ],
 
-        'available_at'  => [
-            'title' => 'Available At',
+        'html_images'   => [
+            'title' => 'Images',
         ],
 
         'accept_trade_in_in_string'   => [
@@ -40,6 +40,9 @@ return [
                 }
 
                 return 'N/A';
+            },
+            'visible'   => function($model) {
+                return ($model->trade_in_price > 0);
             }
         ],
 
@@ -65,8 +68,12 @@ return [
             'select'        => "CONCAT((:table).first_name, ' ', (:table).last_name)",
         ],
 
-        'html_images'   => [
-            'title' => 'Images',
+        'available_at'  => [
+            'title' => 'Available At',
+        ],
+
+        'created_at'    => [
+            'title' => 'Created At'
         ],
 
     ],
@@ -85,5 +92,58 @@ return [
             'type'  => 'bool',
         ],
 
+    ],
+
+    'filters'   => [
+        'id'    => [
+            'type'  => 'key',
+            'title' => 'ID'
+        ],
+
+        'book'  => [
+            'type'          => 'relationship',
+            'title'         => 'Book',
+            'name_field'    => 'title'
+        ],
+
+//        'price' => [
+//            'type'          => 'number',
+//            'title'         => 'Price',
+//            'description'   => 'The price in cents',
+//            'symbol'        => '$',
+//            'decimals'      => 0,
+//            'min_value'     => 100
+//        ],
+
+        'accept_trade_in'   => [
+            'type'  => 'bool',
+            'title' => 'Accept Trade In'
+        ],
+
+        'payout_method' => [
+            'type'      => 'enum',
+            'title'     => 'Payout Method',
+            'options'   => ['paypal', 'cash']
+        ],
+
+        'verified'  => [
+            'type'  => 'bool',
+            'title' => 'Verified'
+        ],
+
+        'sold'  => [
+            'type'  => 'bool',
+            'title' => 'Sold'
+        ],
+
+        'is_rejected'  => [
+            'type'  => 'bool',
+            'title' => 'Rejected'
+        ],
+
+        'created_at'    => [
+            'type'  => 'datetime',
+            'title' => 'Created At',
+        ],
     ]
 ];

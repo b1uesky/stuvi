@@ -19,6 +19,10 @@ return [
             'title'         => 'User',
             'relationship'  => 'user',
             'select'        => "CONCAT((:table).first_name, ' ', (:table).last_name)",
+        ],
+
+        'verified'  => [
+            'title' => 'Verified'
         ]
     ],
 

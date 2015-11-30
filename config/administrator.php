@@ -7,7 +7,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'uri' => 'admin',
+	'uri' => 'admin-new',
 
 	/**
 	 *  Domain for routing.
@@ -21,7 +21,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'title' => 'Admin',
+	'title' => 'Stuvi Admin',
 
 	/**
 	 * The path to your model config directory
@@ -77,7 +77,7 @@ return array(
 	 */
 	'permission'=> function()
 	{
-		return Auth::check();
+		return Auth::user()->hasRole('a');
 	},
 
 	/**

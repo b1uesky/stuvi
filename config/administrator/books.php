@@ -39,7 +39,11 @@ return [
             'output'    => function($value) {
                 return $value ? 'Yes' : 'No';
             }
-        ]
+        ],
+
+        'created_at'    => [
+            'title' => 'Created At'
+        ],
 
     ],
 
@@ -70,5 +74,37 @@ return [
             'type'  => 'bool',
         ],
 
+    ],
+
+    'filters'   => [
+        'title' => [
+            'type'  => 'text',
+            'title' => 'Title',
+        ],
+
+        'edition'   => [
+            'type'  => 'number',
+            'title' => 'Edition'
+        ],
+
+        'isbn10'    => [
+            'type'  => 'text',
+            'title' => 'ISBN-10',
+        ],
+
+        'isbn13'    => [
+            'type'  => 'text',
+            'title' => 'ISBN-13'
+        ],
+
+        'is_verified'  => [
+            'type'  => 'bool',
+            'title' => 'Verified'
+        ],
+
+        'created_at'    => [
+            'type'  => 'datetime',
+            'title' => 'Created At',
+        ],
     ]
 ];
