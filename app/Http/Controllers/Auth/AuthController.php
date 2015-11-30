@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Profile;
 use App\University;
 use App\User;
+use App\UserReferral;
 use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
@@ -124,7 +125,7 @@ class AuthController extends Controller {
     public function postRegister(Request $request)
     {
         // validation
-        $v = Validator::make(Input::all(), User::registerRules());
+        $v = Validator::make(Input::all(), array_merge(User::registerRules(), Email::registerRules()));
 
         $v->after(function($v) {
             $university_id = Input::get('university_id');
@@ -155,7 +156,24 @@ class AuthController extends Controller {
 
         }
 
-        Auth::login($this->create($request->all()));
+        // create the user
+        $user = $this->create($request->all());
+
+        // create user referral if necessary
+        if ($request->has('reference_email'))
+        {
+            $reference_email = $request->get('reference_email');
+            $reference_user_id = Email::where('email_address', $reference_email)->first()->user_id;
+
+            UserReferral::create([
+                'user_id'           => $user->id,
+                'reference_email'   => $reference_email,
+                'reference_user_id' => $reference_user_id,
+            ]);
+        }
+
+        // login the user
+        Auth::login($user);
 
         if ($request->ajax())
         {

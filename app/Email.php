@@ -62,7 +62,8 @@ class Email extends Model
     public static function registerRules()
     {
         return [
-            'email' => 'required|email|max:255|unique:emails,email_address',
+            'email'             => 'required|email|max:255|unique:emails,email_address',
+            'reference_email'   => 'email|max:255|exists:emails,email_address'
         ];
     }
 
