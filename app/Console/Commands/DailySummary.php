@@ -44,12 +44,6 @@ class DailySummary extends Command
      */
     public function handle()
     {
-        $list = [
-            'desmond@bu.edu',
-            'luoty@bu.edu',
-            'qcqcqcqc@bu.edu'
-        ];
-
         $data = [
             'count_signed_up'       => count(User::signedUpAfter(Carbon::today())->get()),
             'count_books'           => count(Book::createdAfter(Carbon::today())->get()),
@@ -58,12 +52,11 @@ class DailySummary extends Command
             'count_seller_orders'   => count(SellerOrder::createdAfter(Carbon::today())->get())
         ];
 
-        foreach ($list as $to)
+        foreach (config('summary.mailing_list') as $to)
         {
             $email = new Email('Stuvi daily summary', $to, 'emails.daily-summary', $data);
             $email->send();
         }
-
 
     }
 }
