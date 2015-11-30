@@ -105,11 +105,17 @@
                         <div class="form-group">
                             <select class="form-control selectpicker" name="university_id">
                                 <label class="sr-only" for="register-uni">University</label>
-                                <option id="register-uni" selected disabled>Select a university</option>
+                                <option id="register-uni" selected disabled>University / College</option>
                                 @foreach($universities as $university)
                                     <option value="{{ $university->id }}">{{ $university->name }}</option>
                                 @endforeach
                             </select>
+                        </div>
+
+                        {{-- referral --}}
+                        <div class="form-group">
+                            <label class="sr-only">Refrence Email</label>
+                            <input type="email" class="form-control" name="reference_email" placeholder="Who referred you to Stuvi? (Optional, Email)">
                         </div>
 
                         <div class="form-group">

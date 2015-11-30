@@ -36,15 +36,13 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public static function registerRules()
     {
-        $rules = [
+        return [
             'first_name'    => 'required|string',
             'last_name'     => 'required|string',
             'password'      => 'required|min:6',
             'phone_number'  => 'required|phone:US',
-            'university_id' => 'required|numeric',
-        ];
-
-        return array_merge($rules, Email::registerRules());
+            'university_id' => 'required|numeric'
+        ];;
     }
 
     /**
