@@ -28,60 +28,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'remember_token',
     ];
 
-
-    /**
-     * Validation register rules.
-     *
-     * @return array
-     */
-    public static function registerRules()
-    {
-        return [
-            'first_name'    => 'required|string',
-            'last_name'     => 'required|string',
-            'password'      => 'required|min:6',
-            'phone_number'  => 'required|phone:US',
-            'university_id' => 'required|numeric'
-        ];;
-    }
-
-    /**
-     * Validation login rules.
-     *
-     * @return array
-     */
-    public static function loginRules()
-    {
-        $rules = [
-            'password' => 'required|min:6',
-        ];
-
-        return array_merge($rules, Email::loginRules());
-    }
-
-    public static function passwordResetRules()
-    {
-        $rules = [
-            'current_password' => 'required|min:6',
-            'new_password'     => 'required|min:6|confirmed',
-        ];
-
-        return $rules;
-    }
-
-    public static function updateRules()
-    {
-        $rules = [
-            'first_name'    => 'required|string',
-            'last_name'     => 'required|string',
-            'phone_number'  => 'required|phone:US',
-            'university_id' => 'required|numeric',
-            'activated'     => 'required|boolean'
-        ];
-
-        return $rules;
-    }
-
     /**
      * Get all buyer orders of this user.
      *
@@ -206,6 +152,19 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function bookReminders()
     {
         return $this->hasMany('App\BookReminder', 'user_id');
+    }
+
+
+    /**
+     * Get users who signed up after a specific date.
+     *
+     * @param $query
+     * @param $date
+     * @return mixed
+     */
+    public function scopeSignedUpAfter($query, $date)
+    {
+        return $query->where('created_at', '>=', $date);
     }
 
     /**
@@ -370,5 +329,58 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function fullName()
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+
+    /**
+     * Validation register rules.
+     *
+     * @return array
+     */
+    public static function registerRules()
+    {
+        return [
+            'first_name'    => 'required|string',
+            'last_name'     => 'required|string',
+            'password'      => 'required|min:6',
+            'phone_number'  => 'required|phone:US',
+            'university_id' => 'required|numeric'
+        ];;
+    }
+
+    /**
+     * Validation login rules.
+     *
+     * @return array
+     */
+    public static function loginRules()
+    {
+        $rules = [
+            'password' => 'required|min:6',
+        ];
+
+        return array_merge($rules, Email::loginRules());
+    }
+
+    public static function passwordResetRules()
+    {
+        $rules = [
+            'current_password' => 'required|min:6',
+            'new_password'     => 'required|min:6|confirmed',
+        ];
+
+        return $rules;
+    }
+
+    public static function updateRules()
+    {
+        $rules = [
+            'first_name'    => 'required|string',
+            'last_name'     => 'required|string',
+            'phone_number'  => 'required|phone:US',
+            'university_id' => 'required|numeric',
+            'activated'     => 'required|boolean'
+        ];
+
+        return $rules;
     }
 }

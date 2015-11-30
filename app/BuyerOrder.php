@@ -62,6 +62,18 @@ class BuyerOrder extends Model
         return $this->belongsTo('App\User', 'courier_id', 'id');
     }
 
+    /**
+     * Get buyer orders that are created after a specific date.
+     *
+     * @param $query
+     * @param $date
+     * @return mixed
+     */
+    public function scopeCreatedAfter($query, $date)
+    {
+        return $query->where('created_at', '>=', $date);
+    }
+
 
     /**
      * Get seller orders that are not cancelled.
