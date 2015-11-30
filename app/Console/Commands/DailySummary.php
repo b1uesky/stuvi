@@ -4,12 +4,12 @@ namespace App\Console\Commands;
 
 use App\Book;
 use App\BuyerOrder;
-use App\Helpers\Email;
 use App\Product;
 use App\SellerOrder;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
 
 class DailySummary extends Command
 {
@@ -54,8 +54,9 @@ class DailySummary extends Command
 
         foreach (config('summary.mailing_list') as $to)
         {
-            $email = new Email('Stuvi daily summary', $to, 'emails.daily-summary', $data);
-            $email->send();
+            Mail::queue('emails.daily-summary', $data, function ($message) use ($to) {
+                $message->to($to)->subject('Stuvi daily summary');
+            });
         }
 
     }
