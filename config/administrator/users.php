@@ -39,6 +39,10 @@ return [
             'title' => 'Role'
         ],
 
+        'created_at'    => [
+            'title' => 'Created At'
+        ],
+
     ],
 
     'edit_fields'   => [
@@ -61,6 +65,11 @@ return [
         'role'  => [
             'title' => 'Role',
             'type'  => 'text',
+        ],
+
+        'university_id' => [
+            'title' => 'University ID',
+            'type'  => 'number'
         ]
 
     ],

@@ -24,6 +24,7 @@ return [
 
         'edition' => [
             'title' => 'Edition',
+            'visible'   => false,
         ],
 
         'isbn10'    => [
@@ -39,6 +40,12 @@ return [
             'output'    => function($value) {
                 return $value ? 'Yes' : 'No';
             }
+        ],
+
+        'num_of_product'    => [
+            'title'         => '# Products',
+            'relationship'  => 'products',
+            'select'        => 'COUNT((:table).id)'
         ],
 
         'created_at'    => [
