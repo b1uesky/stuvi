@@ -106,8 +106,8 @@
                     </div>
                     {{-- referral --}}
                     <div class="form-group">
-                        <label class="sr-only">Refrence Email</label>
-                        <input type="email" class="form-control" name="reference_email" placeholder="Who referred you to Stuvi? (Optional, Email)">
+                        <label class="sr-only">Reference Email</label>
+                        <input type="email" class="form-control" name="reference_email" placeholder="Who referred you to Stuvi? (Email, optional)">
                     </div>
 
                     <div class="form-group">
