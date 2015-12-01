@@ -62,15 +62,10 @@ return [
             'type'  => 'text',
         ],
 
-        'role'  => [
-            'title' => 'Role',
-            'type'  => 'text',
-        ],
-
-        'university_id' => [
-            'title' => 'University ID',
-            'type'  => 'number'
-        ]
+//        'role'  => [
+//            'title' => 'Role',
+//            'type'  => 'text',
+//        ],
 
     ],
 
