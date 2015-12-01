@@ -46,7 +46,7 @@ class Product extends Model
         $html = '';
 
         foreach ($this->images as $img) {
-            $html .= '<img src="'.$img->getImagePath('small').'" />';
+            $html .= '<a href="'.$img->getImagePath('large').'" target="__blank"><img src="'.$img->getImagePath('small').'" /></a>';
         }
 
         return $html;
