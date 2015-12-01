@@ -67,6 +67,7 @@ return array(
 		'products',
 		'buyer_orders',
 		'seller_orders',
+		'book_reminders'
 	),
 
 	/**
