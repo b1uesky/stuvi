@@ -96,6 +96,18 @@ class SellerOrder extends Model
     }
 
     /**
+     * Get seller orders that are created after a specific date.
+     *
+     * @param $query
+     * @param $date
+     * @return mixed
+     */
+    public function scopeCreatedAfter($query, $date)
+    {
+        return $query->where('created_at', '>=', $date);
+    }
+
+    /**
      * Cancel the order.
      * Check whether this seller order is cancellable.
      */

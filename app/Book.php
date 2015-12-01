@@ -57,6 +57,18 @@ class Book extends Model
     }
 
     /**
+     * Get books that are created after a specific date.
+     *
+     * @param $query
+     * @param $date
+     * @return mixed
+     */
+    public function scopeCreatedAfter($query, $date)
+    {
+        return $query->where('created_at', '>=', $date);
+    }
+
+    /**
      * Get the book's authors' names.
      *
      * @return array

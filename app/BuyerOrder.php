@@ -62,6 +62,7 @@ class BuyerOrder extends Model
         return $this->belongsTo('App\User', 'courier_id', 'id');
     }
 
+
     public function getCancelledInStringAttribute()
     {
         return $this->cancelled ? 'Yes' : 'No';
@@ -71,12 +72,25 @@ class BuyerOrder extends Model
     {
         $addr = $this->shipping_address;
 
-        return '<address>'.
-            $addr->addressee.'<br>'.
-            $addr->address_line1.'<br>'.
-            $addr->address_line2.'<br>'.
-            $addr->city.', '.$addr->state_a2.' '.$addr->zip.
+        return '<address>' .
+            $addr->addressee . '<br>' .
+            $addr->address_line1 . '<br>' .
+            $addr->address_line2 . '<br>' .
+            $addr->city . ', ' . $addr->state_a2 . ' ' . $addr->zip .
         '</address>';
+    }
+
+    /**
+     * Get buyer orders that are created after a specific date.
+     *
+     * @param $query
+     * @param $date
+     * @return mixed
+     */
+    public function scopeCreatedAfter($query, $date)
+    {
+        return $query->where('created_at', '>=', $date);
+
     }
 
 

@@ -161,6 +161,18 @@ class Product extends Model
     }
 
     /**
+     * Get products that are created after a specific date.
+     *
+     * @param $query
+     * @param $date
+     * @return mixed
+     */
+    public function scopeCreatedAfter($query, $date)
+    {
+        return $query->where('created_at', '>=', $date);
+    }
+
+    /**
      * Get the number of views.
      *
      * @return mixed

@@ -12,7 +12,8 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected $commands = [
 		'App\Console\Commands\Inspire',
-		'App\Console\Commands\RemindSellerToSchedulePickup'
+		'App\Console\Commands\RemindSellerToSchedulePickup',
+		'App\Console\Commands\DailySummary',
 	];
 
 	/**
@@ -24,6 +25,7 @@ class Kernel extends ConsoleKernel {
 	protected function schedule(Schedule $schedule)
 	{
 		$schedule->command('reminder:pickup')->dailyAt('17:00');
+		$schedule->command('daily-summary:report')->dailyAt('19:00');
 	}
 
 }

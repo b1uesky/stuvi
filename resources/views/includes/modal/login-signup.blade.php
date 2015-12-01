@@ -104,6 +104,12 @@
                             @endforeach
                         </select>
                     </div>
+                    {{-- referral --}}
+                    <div class="form-group">
+                        <label class="sr-only">Reference Email</label>
+                        <input type="email" class="form-control" name="reference_email" placeholder="Who referred you to Stuvi? (Email, optional)">
+                    </div>
+
                     <div class="form-group">
                         <small>By signing up, you agree to Stuvi's <a href="{{url('/tos')}}" target="_blank" > Terms of Service</a>
                             and <a href="{{url('/privacy')}}" target="_blank"> Privacy Notice</a>.</small>

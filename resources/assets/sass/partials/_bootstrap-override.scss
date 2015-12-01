@@ -108,17 +108,29 @@ a {
 
 // bootstrap-select
 .bootstrap-select .dropdown-toggle:focus {
-  outline: none;
+  outline: none !important;
 }
 
 .bootstrap-select .btn-default {
   border: 1px solid $input-border !important;
   background-color: white !important;
+  outline: none !important;
+
+  &:hover {
+    border: 1px solid $input-border !important;
+    background-color: white !important;
+  }
+
+  &:focus {
+    border: 1px solid $brand-primary !important;
+    background-color: white !important;
+    outline: none !important;
+  }
 }
 
 .filter-option {
   color: $input-color-placeholder !important;
-  font-weight: normal !important;
+  font-weight: 300 !important;
 }
 
 // text color
