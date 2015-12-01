@@ -72,6 +72,11 @@ class Product extends Model
         return Price::convertIntegerToDecimal($value);
     }
 
+    public function setTradeInPriceAttribute($value)
+    {
+        $this->attributes['trade_in_price'] = Price::convertDecimalToInteger($value);
+    }
+
     public function getRejectedInStringAttribute()
     {
         return $this->is_rejected ? 'Yes' : 'No';
