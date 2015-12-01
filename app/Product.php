@@ -67,6 +67,17 @@ class Product extends Model
         return $this->accept_trade_in ? 'Yes' : 'No';
     }
 
+    // TODO
+//    public function getPriceAttribute($value)
+//    {
+//        return Price::convertIntegerToDecimal($value);
+//    }
+//
+//    public function setPriceAttribute($value)
+//    {
+//        $this->attributes['price'] = Price::convertDecimalToInteger($value);
+//    }
+
     public function getTradeInPriceAttribute($value)
     {
         return Price::convertIntegerToDecimal($value);

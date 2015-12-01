@@ -17,6 +17,10 @@ return [
             'select'        => '(:table).title',
         ],
 
+        'html_images'   => [
+            'title' => 'Images',
+        ],
+
         'price' => [
             'title'     => 'Price',
             'output'    => function($value) {
@@ -24,40 +28,72 @@ return [
             }
         ],
 
-        'html_images'   => [
-            'title' => 'Images',
+        'general_condition' => [
+            'title'         => 'General Condition',
+            'relationship'  => 'condition',
+            'select'        => '(:table).general_condition',
+            'output'        => function($value) {
+                return config('product.conditions.general_condition')[$value];
+            }
+        ],
+
+        'highlights_and_notes' => [
+            'title'     => 'Highlights / Notes',
+            'relationship'  => 'condition',
+            'select'        => '(:table).highlights_and_notes',
+            'output'        => function($value) {
+                return config('product.conditions.highlights_and_notes')[$value];
+            }
+        ],
+
+        'damaged_pages' => [
+            'title'     => 'Damaged Pages',
+            'relationship'  => 'condition',
+            'select'        => '(:table).damaged_pages',
+            'output'        => function($value) {
+                return config('product.conditions.damaged_pages')[$value];
+            }
+        ],
+
+        'broken_binding' => [
+            'title'     => 'Broken Binding',
+            'relationship'  => 'condition',
+            'select'        => '(:table).broken_binding',
+            'output'        => function($value) {
+                return config('product.conditions.broken_binding')[$value];
+            }
         ],
 
         'accept_trade_in_in_string'   => [
             'title' => 'Accept Trade-in',
         ],
 
-        'trade_in_price'    => [
-            'title'     => 'Trade-in Price',
-            'output'    => function($value) {
-                if ($value > 0) {
-                    return '$'.$value;
-                }
-
-                return 'N/A';
-            }
-        ],
+//        'trade_in_price'    => [
+//            'title'     => 'Trade-in Price',
+//            'output'    => function($value) {
+//                if ($value > 0) {
+//                    return '$'.$value;
+//                }
+//
+//                return 'N/A';
+//            }
+//        ],
 
         'payout_method' => [
             'title' => 'Payout Method',
         ],
 
-        'verified_in_string'  => [
-            'title' => 'Verified',
-        ],
+//        'verified_in_string'  => [
+//            'title' => 'Verified',
+//        ],
 
         'sold_in_string'  => [
             'title' => 'Sold',
         ],
 
-        'rejected_in_string'    => [
-            'title' => 'Rejected',
-        ],
+//        'rejected_in_string'    => [
+//            'title' => 'Rejected',
+//        ],
 
         'seller'    => [
             'title' => 'Seller',
@@ -65,9 +101,9 @@ return [
             'select'        => "CONCAT((:table).first_name, ' ', (:table).last_name)",
         ],
 
-        'available_at'  => [
-            'title' => 'Available At',
-        ],
+//        'available_at'  => [
+//            'title' => 'Available At',
+//        ],
 
         'created_at'    => [
             'title' => 'Created At'
@@ -77,17 +113,11 @@ return [
 
     'edit_fields'   => [
 
-//        'price' => [
-//            'title'         => 'Price',
-//            'type'          => 'number',
-//            'description'   => 'In cents, e.g., $15.00 = ¢1500',
-//        ],
-
         'trade_in_price'    => [
             'title'         => 'Trade-In Price',
             'type'          => 'number',
-//            'description'   => 'To approve trade-in, update the Trade-In Price, click Save and click Approve Trade-In.',
-            'symbol'        => '$',
+            'description'   => 'To approve trade-in, update the Trade-In Price, click Save. Then, click Approve Trade-In.',
+//            'symbol'        => '$',
             'decimals'      => 2
         ],
 
@@ -97,7 +127,8 @@ return [
         ],
 
         'rejected_reason'   => [
-            'title' => 'Reason for Trade-In Rejection',
+            'title' => 'Trade-In Rejection Reason',
+            'description'   => 'To reject trade-in, update the reason for rejection, click Save. Then, click Reject Trade-In.',
             'type'  => 'textarea',
         ]
 
@@ -176,9 +207,14 @@ return [
 
             'action'        => function(&$product)
             {
+                if (!$product->accept_trade_in)
+                {
+                    return 'Error: This book does not accept trade-in.';
+                }
+
                 if ($product->trade_in_price == 0 || $product->trade_in_price == null)
                 {
-                    return 'Please update the trade-in price first.';
+                    return 'Error: Please update the trade-in price first.';
                 }
 
                 if ($product->is_rejected)
@@ -221,12 +257,12 @@ return [
             {
                 if ($product->is_rejected)
                 {
-                    return 'Already rejected.';
+                    return 'Error: Already rejected.';
                 }
 
                 if (!$product->rejected_reason || $product->rejected_reason == '')
                 {
-                    return 'You need to provide a reason for rejection first.';
+                    return 'Error: You need to provide a reason for rejection first.';
                 }
 
                 $product->update([

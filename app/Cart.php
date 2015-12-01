@@ -145,8 +145,7 @@ class Cart extends Model
     }
 
     /**
-     * TODO: RENAME TO SHIPPING
-     * Get the total fee.
+     * Get the shipping fee.
      *
      * @return int
      */

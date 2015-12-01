@@ -64,10 +64,13 @@ return array(
 		'products',
 		'buyer_orders',
 		'seller_orders',
-		'book_image_sets',
-		'book_reminders',
-		'emails',
-		'universities',
+		'More'	=> [
+			'book_image_sets',
+			'book_reminders',
+			'product_conditions',
+			'emails',
+			'universities',
+		]
 	),
 
 	/**
@@ -92,14 +95,14 @@ return array(
 	 *
 	 * @type bool
 	 */
-	'use_dashboard' => false,
+	'use_dashboard' => true,
 
 	/**
 	 * If you want to create a dashboard view, provide the view string here.
 	 *
 	 * @type string
 	 */
-	'dashboard_view' => '',
+	'dashboard_view' => 'admin.dashboard',
 
 	/**
 	 * The menu item that should be used as the default landing page of the administrative section
@@ -127,7 +130,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'logout_path' => false,
+	'logout_path' => 'auth/logout',
 
 	/**
 	 * This is the key of the return path that is sent with the redirection to your login_action. Session::get('redirect') will hold the return URL.
