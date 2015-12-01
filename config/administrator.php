@@ -77,7 +77,12 @@ return array(
 	 */
 	'permission'=> function()
 	{
-		return Auth::user()->hasRole('a');
+		if (Auth::check())
+		{
+			return Auth::user()->hasRole('a');
+		}
+
+		return false;
 	},
 
 	/**
