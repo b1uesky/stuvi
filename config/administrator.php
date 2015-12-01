@@ -60,14 +60,14 @@ return array(
 	 */
 	'menu' => array(
 		'users',
-		'universities',
-		'emails',
 		'books',
-		'book_image_sets',
 		'products',
 		'buyer_orders',
 		'seller_orders',
-		'book_reminders'
+		'book_image_sets',
+		'book_reminders',
+		'emails',
+		'universities',
 	),
 
 	/**

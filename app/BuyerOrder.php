@@ -67,6 +67,18 @@ class BuyerOrder extends Model
         return $this->cancelled ? 'Yes' : 'No';
     }
 
+    public function getHTMLShippingAddressAttribute()
+    {
+        $addr = $this->shipping_address;
+
+        return '<address>'.
+            $addr->addressee.'<br>'.
+            $addr->address_line1.'<br>'.
+            $addr->address_line2.'<br>'.
+            $addr->city.', '.$addr->state_a2.' '.$addr->zip.
+        '</address>';
+    }
+
 
     /**
      * Get seller orders that are not cancelled.

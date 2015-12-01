@@ -115,6 +115,12 @@ return [
             'name_field'    => 'title'
         ],
 
+        'seller'    => [
+            'type'          => 'relationship',
+            'title'         => 'Seller',
+            'name_field'    => 'last_name'
+        ],
+
 //        'price' => [
 //            'type'          => 'number',
 //            'title'         => 'Price',

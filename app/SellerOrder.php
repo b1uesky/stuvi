@@ -73,6 +73,23 @@ class SellerOrder extends Model
         return $this->belongsTo('App\User', 'courier_id');
     }
 
+    public function getHTMLAddressAttribute()
+    {
+        $addr = $this->address;
+
+        if ($addr)
+        {
+            return '<address>'.
+            $addr->addressee.'<br>'.
+            $addr->address_line1.'<br>'.
+            $addr->address_line2.'<br>'.
+            $addr->city.', '.$addr->state_a2.' '.$addr->zip.
+            '</address>';
+        }
+
+        return null;
+    }
+
     public function getCancelledInStringAttribute()
     {
         return $this->cancelled ? 'Yes' : 'No';

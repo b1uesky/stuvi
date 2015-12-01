@@ -11,6 +11,12 @@ return [
             'title' => 'ID',
         ],
 
+        'book_title'    => [
+            'title'         => 'Book Title',
+            'relationship'  => 'book',
+            'select'        => '(:table).title'
+        ],
+
         'small_image' => [
             'title' => 'Small',
         ],

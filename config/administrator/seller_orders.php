@@ -31,11 +31,9 @@ return [
             'select'        => "CONCAT((:table).first_name, ' ', (:table).last_name)",
         ],
 
-        // need better format
-        'address_id'   => [
-            'title' => 'Pickup Address',
-            'relationship'  => 'address',
-            'select'        => '(:table).address_line1'
+
+        'html_address'   => [
+            'title' => 'Address'
         ],
 
         'scheduled_pickup_time'   => [
