@@ -11,14 +11,27 @@
 
 #trade-in-header {
   .jumbotron {
-    background: #fffee8;
+    background: #fff3d0;
 
     h1 {
-      font-size: 4em;
+      font-size: 4.5em;
+
+      @media (min-width: $screen-sm-min) and (max-width: $screen-md-min) {
+        font-size: 4em;
+      }
 
       @media (max-width: $screen-sm-min) {
-        font-size: 1.8em;
+        font-size: 1.6em;
       }
+    }
+  }
+
+  .trade-in-search-container {
+    margin-top: 4em;
+    max-width: 800px;
+
+    input {
+      border-color: white;
     }
   }
 }
