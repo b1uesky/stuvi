@@ -7,7 +7,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'uri' => 'admin-new',
+	'uri' => 'admin',
 
 	/**
 	 *  Domain for routing.

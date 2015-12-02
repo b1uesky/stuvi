@@ -170,55 +170,55 @@ Route::controllers([
 | Admin Routes
 |--------------------------------------------------------------------------
 */
-Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>'admin'], function()
-{
-    Route::get('/', 'AdminController@index');
-
-    // user
-    Route::resource('user', 'UserController');
-
-    // book
-    Route::resource('book', 'BookController');
-
-    // product
-    Route::get('/product/verified',                     'ProductController@showVerified');
-    Route::get('/product/unverified',                   'ProductController@showUnverified');
-    Route::get('/product/{id}/approve',                 'ProductController@approve');
-    Route::get('/product/{id}/disapprove',              'ProductController@disapprove');
-    Route::post('/product/{id}/updatePriceAndApprove',  'ProductController@updatePriceAndApprove');
-    Route::post('/product/{id}/reject',                 'ProductController@reject');
-    Route::post('/product/{id}/accept',                 'ProductController@accept');
-
-    Route::resource('product', 'ProductController');
-
-    // seller order
-    Route::group(['prefix'=>'order/seller'], function()
-    {
-        Route::get  ('/',       'SellerOrderController@index');
-        Route::get  ('/{id}',   'SellerOrderController@show');
-    });
-
-    // buyer order
-    Route::group(['prefix'=>'order/buyer'], function()
-    {
-        Route::get  ('/',       'BuyerOrderController@index');
-        Route::get  ('/{id}',   'BuyerOrderController@show');
-        Route::post ('/refund', 'BuyerOrderController@refund');
-    });
-
-    // buyer payment
-    Route::resource('buyer/payment', 'BuyerPaymentController');
-
-    // donation
-    Route::resource('donation', 'DonationController');
-
-    // textbook reminder
-    Route::resource('textbookReminder', 'TextbookReminderController');
-
-    // contact
-//    Route::post('contact/reply','ContactController@reply');
-//    Route::resource('contact',  'ContactController');
-});
+//Route::group(['namespace'=>'Admin', 'middleware'=>['auth', 'role:a'], 'prefix'=>'admin'], function()
+//{
+//    Route::get('/', 'AdminController@index');
+//
+//    // user
+//    Route::resource('user', 'UserController');
+//
+//    // book
+//    Route::resource('book', 'BookController');
+//
+//    // product
+//    Route::get('/product/verified',                     'ProductController@showVerified');
+//    Route::get('/product/unverified',                   'ProductController@showUnverified');
+//    Route::get('/product/{id}/approve',                 'ProductController@approve');
+//    Route::get('/product/{id}/disapprove',              'ProductController@disapprove');
+//    Route::post('/product/{id}/updatePriceAndApprove',  'ProductController@updatePriceAndApprove');
+//    Route::post('/product/{id}/reject',                 'ProductController@reject');
+//    Route::post('/product/{id}/accept',                 'ProductController@accept');
+//
+//    Route::resource('product', 'ProductController');
+//
+//    // seller order
+//    Route::group(['prefix'=>'order/seller'], function()
+//    {
+//        Route::get  ('/',       'SellerOrderController@index');
+//        Route::get  ('/{id}',   'SellerOrderController@show');
+//    });
+//
+//    // buyer order
+//    Route::group(['prefix'=>'order/buyer'], function()
+//    {
+//        Route::get  ('/',       'BuyerOrderController@index');
+//        Route::get  ('/{id}',   'BuyerOrderController@show');
+//        Route::post ('/refund', 'BuyerOrderController@refund');
+//    });
+//
+//    // buyer payment
+//    Route::resource('buyer/payment', 'BuyerPaymentController');
+//
+//    // donation
+//    Route::resource('donation', 'DonationController');
+//
+//    // textbook reminder
+//    Route::resource('textbookReminder', 'TextbookReminderController');
+//
+//    // contact
+////    Route::post('contact/reply','ContactController@reply');
+////    Route::resource('contact',  'ContactController');
+//});
 
 /*
 |--------------------------------------------------------------------------
