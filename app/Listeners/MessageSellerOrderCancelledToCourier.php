@@ -42,7 +42,7 @@ class MessageSellerOrderCancelledToCourier
 
             $twilio->message($phone_number, $message);
 
-            if (app()->environment() == 'production') {
+            if (app()->environment() == 'production' && !env('APP_DEBUG')) {
                 $twilio->message('8572064789', $message);
                 $twilio->message('8572084775', $message);
             }
