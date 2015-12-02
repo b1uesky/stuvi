@@ -97,6 +97,17 @@ return [
         'id'    => [
             'type'  => 'key',
             'title' => 'ID'
-        ]
+        ],
+
+        'cancelled' => [
+            'type'  => 'bool',
+            'title' => 'Cancelled'
+        ],
+
+        'buyer'    => [
+            'type'          => 'relationship',
+            'title'         => 'Buyer',
+            'name_field'    => 'last_name'
+        ],
     ]
 ];

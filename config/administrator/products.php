@@ -171,16 +171,9 @@ return [
             'title' => 'ID'
         ],
 
-        'book'  => [
-            'type'          => 'relationship',
-            'title'         => 'Book',
-            'name_field'    => 'title'
-        ],
-
-        'seller'    => [
-            'type'          => 'relationship',
-            'title'         => 'Seller',
-            'name_field'    => 'last_name'
+        'accept_trade_in'   => [
+            'type'  => 'bool',
+            'title' => 'Accept Trade In'
         ],
 
 //        'price' => [
@@ -192,16 +185,11 @@ return [
 //            'min_value'     => 100
 //        ],
 
-        'accept_trade_in'   => [
-            'type'  => 'bool',
-            'title' => 'Accept Trade In'
-        ],
-
-        'payout_method' => [
-            'type'      => 'enum',
-            'title'     => 'Payout Method',
-            'options'   => ['paypal', 'cash']
-        ],
+//        'payout_method' => [
+//            'type'      => 'enum',
+//            'title'     => 'Payout Method',
+//            'options'   => ['paypal', 'cash']
+//        ],
 
         'verified'  => [
             'type'  => 'bool',
@@ -221,6 +209,18 @@ return [
         'created_at'    => [
             'type'  => 'datetime',
             'title' => 'Created At',
+        ],
+
+        'book'  => [
+            'type'          => 'relationship',
+            'title'         => 'Book',
+            'name_field'    => 'title'
+        ],
+
+        'seller'    => [
+            'type'          => 'relationship',
+            'title'         => 'Seller',
+            'name_field'    => 'last_name'
         ],
     ],
 
