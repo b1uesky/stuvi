@@ -86,5 +86,10 @@ return [
             'title'         => 'Product ID',
             'name_field'    => 'id'
         ],
+
+        'cancelled' => [
+            'type'  => 'bool',
+            'title' => 'Cancelled'
+        ]
     ]
 ];

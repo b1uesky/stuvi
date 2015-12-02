@@ -230,7 +230,28 @@ return [
                     ]);
                 }
 
-                // create a seller order directly (without creating a buyer order)
+                // need to cancel old trade-in offers
+                $old_trade_in_orders = \App\SellerOrder::where('product_id', $product->id)
+                    ->whereNull('buyer_order_id')
+                    ->get();
+
+                if ($old_trade_in_orders)
+                {
+                    foreach ($old_trade_in_orders as $order)
+                    {
+                        if ($order->isCancellable())
+                        {
+                            $order->update([
+                                'cancelled'         => true,
+                                'cancelled_time'    => \Carbon\Carbon::now(),
+                                'cancelled_by'      => Auth::id(),
+                                'cancel_reason'     => 'A new trade-in offer has been created.'
+                            ]);
+                        }
+                    }
+                }
+
+                // create a new seller order without creating a buyer order
                 // so the book now can be picked up
                 $seller_order = \App\SellerOrder::create([
                     'product_id'    => $product->id
