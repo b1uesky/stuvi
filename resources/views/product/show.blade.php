@@ -24,11 +24,11 @@
             </ol>
         </div>
 
-        @if(!$product->verified && !$product->is_rejected && !$product->price)
-            <div class="alert alert-info fade in" role="alert">
-                This book is waiting for the approval by Stuvi. We'll email you as soon as it is approved.
-            </div>
-        @endif
+        {{--@if(!$product->verified && !$product->is_rejected && !$product->price)--}}
+            {{--<div class="alert alert-info fade in" role="alert">--}}
+                {{--This book is waiting for the approval by Stuvi. We'll email you as soon as it is approved.--}}
+            {{--</div>--}}
+        {{--@endif--}}
 
         @if($product->sold)
             <div class="alert alert-danger fade in" role="alert">
@@ -127,10 +127,10 @@
                         </tr>
 
                         {{-- Trade-in price --}}
-                        @if($product->accept_trade_in && $product->trade_in_price)
+                        @if($product->accept_trade_in && $product->trade_in_price > 0)
                             <tr>
                                 <th>Trade-in price</th>
-                                <td class="price">${{ $product->decimalTradeInPrice() }}</td>
+                                <td class="price">${{ $product->trade_in_price }}</td>
                             </tr>
                         @endif
 

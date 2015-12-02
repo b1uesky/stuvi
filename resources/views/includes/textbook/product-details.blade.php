@@ -35,10 +35,10 @@
             Sale price: <span class="price">${{ $product->decimalPrice() }}</span>
         </div>
 
-        @if($product->accept_trade_in && $product->trade_in_price)
+        @if($product->accept_trade_in && $product->trade_in_price > 0)
             {{-- Trade-in price --}}
             <div class="row padding-bottom-5">
-                Trade-in price: <span class="price">${{ $product->decimalTradeInPrice() }}</span>
+                Trade-in price: <span class="price">${{ $product->trade_in_price }}</span>
             </div>
         @endif
 
