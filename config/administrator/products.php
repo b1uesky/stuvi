@@ -113,23 +113,54 @@ return [
 
     'edit_fields'   => [
 
+        'verified'    => [
+            'title' => 'Verified',
+            'type'  => 'bool',
+        ],
+
+        'accept_trade_in'    => [
+            'title'     => 'Accept Trade-In',
+            'type'      => 'bool',
+            'editable'  => false
+        ],
+
+        'sold'    => [
+            'title'     => 'Sold',
+            'type'      => 'bool',
+            'editable'  =>  false
+        ],
+
+//        'price'    => [
+//            'title'         => 'Sale Price',
+//            'type'          => 'number',
+//            'symbol'        => '$',
+//            'decimals'      => 2,
+//            'editable'      => false
+//        ],
+
         'trade_in_price'    => [
             'title'         => 'Trade-In Price',
             'type'          => 'number',
             'description'   => 'To approve trade-in, update the Trade-In Price, click Save. Then, click Approve Trade-In.',
-//            'symbol'        => '$',
-            'decimals'      => 2
-        ],
-
-        'verified'    => [
-            'title' => 'Verified',
-            'type'  => 'bool',
+            'decimals'      => 2,
+            'visible'       => function($product) {
+                return $product->verified && $product->accept_trade_in;
+            },
+            'editable'      => function($product) {
+                return $product->verified && $product->accept_trade_in && !$product->sold;
+            }
         ],
 
         'rejected_reason'   => [
             'title' => 'Trade-In Rejection Reason',
             'description'   => 'To reject trade-in, update the reason for rejection, click Save. Then, click Reject Trade-In.',
             'type'  => 'textarea',
+            'visible'       => function($product) {
+                return $product->verified && $product->accept_trade_in && !$product->sold;
+            },
+            'editable'      => function($product) {
+                return $product->verified && $product->accept_trade_in && !$product->sold;
+            }
         ]
 
     ],
