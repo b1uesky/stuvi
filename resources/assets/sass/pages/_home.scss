@@ -9,7 +9,7 @@
   background-size: cover;
   height: 580px;
 
-  @media(max-width: 767px) {
+  @media(max-width: $screen-sm-min) {
     height: 420px;
   }
 }
@@ -19,7 +19,7 @@
   height: 430px;
   top: 50px;
 
-  @media(max-width: 767px) {
+  @media(max-width: $screen-sm-min) {
     top: 0px;
     height: 330px;
   }
@@ -51,10 +51,10 @@
     font-size: 10em;
   }
 
-  @media(max-width: 767px) {
+  @media(max-width: $screen-sm-min) {
     font-size: 5em;
   }
-  @media(max-width: 767px) and (min-width: 555px) {
+  @media(max-width: $screen-sm-min) and (min-width: 555px) {
     font-size: 4em;
   }
   @media(max-width: 555px) {

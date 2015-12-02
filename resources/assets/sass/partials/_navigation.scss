@@ -62,7 +62,7 @@
   .input-group {
     padding-left: $spacing-unit/2;
 
-    @media (max-width: 767px) {
+    @media (max-width: $screen-sm-min) {
       padding-left: 0;
     }
   }
@@ -92,7 +92,7 @@
     border-radius: 50%;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: $screen-sm-min) {
     .btn-default {
       background: transparent;
       border:none;
@@ -111,7 +111,7 @@
   z-index: 8;
   width: 100%;
 
-  @media(max-width: 767px) {
+  @media(max-width: $screen-sm-min) {
     position: relative;
   }
 }
@@ -137,7 +137,7 @@
     color: white;
   }
 
-  @media(max-width: 767px) {
+  @media(max-width: $screen-sm-min) {
     color: $text-color;
     &:hover, &:focus {
       color: $brand-primary;
@@ -169,7 +169,7 @@
     color: white;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: $screen-sm-min) {
     a {
       color: $text-color;
       border: none;

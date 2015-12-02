@@ -1,13 +1,13 @@
 @import '../modules/all';
 
 h1 {
-  @media (max-width: 767px) {
+  @media (max-width: $screen-sm-min) {
     font-size: 8vw;
   }
 }
 
 h2 {
-  @media (max-width: 767px) {
+  @media (max-width: $screen-sm-min) {
     font-size: 6vw;
   }
 }
@@ -100,7 +100,7 @@ a {
   }
 
   span {
-    @media (max-width: 767px) {
+    @media (max-width: $screen-sm-min) {
       color: $navbar-default-color;
     }
   }

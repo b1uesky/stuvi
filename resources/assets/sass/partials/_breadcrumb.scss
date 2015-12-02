@@ -1,7 +1,7 @@
 @import "../modules/all";
 
 .breadcrumb {
-  @media(max-width: 767px) {
+  @media(max-width: $screen-sm-min) {
     display: none;
   }
 }
