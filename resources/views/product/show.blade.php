@@ -30,11 +30,11 @@
             {{--</div>--}}
         {{--@endif--}}
 
-        @if($product->sold)
-            <div class="alert alert-danger fade in" role="alert">
-                This book has been sold.
-            </div>
-        @endif
+        {{--@if($product->sold)--}}
+            {{--<div class="alert alert-danger fade in" role="alert">--}}
+                {{--This book has been sold.--}}
+            {{--</div>--}}
+        {{--@endif--}}
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -97,11 +97,9 @@
                                 </form>
                             @endif
                         @else
-                            @if($product->seller_id == Auth::id())
-                                <a class="btn btn-default disabled" href="#" role="button">
-                                    Purchased
-                                </a>
-                            @endif
+                            <a class="btn btn-default disabled" href="#" role="button">
+                                Sold
+                            </a>
                         @endif
                     @else
                         @if(!$product->sold)

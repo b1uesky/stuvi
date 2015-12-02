@@ -76,7 +76,7 @@
                             @if($seller_order->buyer_order_id)
                                 ${{ $seller_order->product->decimalPrice() }}
                             @else
-                                ${{ $seller_order->product->decimalTradeInPrice() }}
+                                ${{ $seller_order->product->trade_in_price }}
                             @endif
                         </span> in cash.
                     </h4>

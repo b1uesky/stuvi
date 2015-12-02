@@ -159,7 +159,7 @@
                             <td>{{ $product->rejected_reason }}</td>
                         @endif
                         <td>
-                            <input type="number" step="0.01" class="form-control" name="price" value="{{ $product->trade_in_price ? $product->decimalTradeInPrice() : '' }}" placeholder="Trade-In price">
+                            <input type="number" step="0.01" class="form-control" name="price" value="{{ $product->trade_in_price ? $product->trade_in_price : '' }}" placeholder="Trade-In price">
                         </td>
                         <td>
                             <input type="submit" class="btn btn-success" value="Update price and approve trade-in" {{ $product->is_rejected ? 'disabled' : '' }}>
