@@ -70,6 +70,7 @@ return array(
 			'product_conditions',
 			'emails',
 			'universities',
+			'user_referrals'
 		]
 	),
 

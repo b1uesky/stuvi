@@ -154,6 +154,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         return $this->hasMany('App\BookReminder', 'user_id');
     }
 
+    /**
+     * Get all user referrals that have this user as a reference.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function referrals()
+    {
+        return $this->hasMany('App\UserReferral', 'reference_user_id');
+    }
+
 
     /**
      * Get users who signed up after a specific date.

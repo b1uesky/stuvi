@@ -39,6 +39,12 @@ return [
             'title' => 'Role'
         ],
 
+        'referrals' => [
+            'title'         => '# of Referrals',
+            'relationship'  => 'referrals',
+            'select'        => 'COUNT((:table).id)'
+        ],
+
         'created_at'    => [
             'title' => 'Created At'
         ],
