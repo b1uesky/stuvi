@@ -217,6 +217,11 @@ return [
                     return 'Error: Please update the trade-in price first.';
                 }
 
+                if ($product->sold)
+                {
+                    return 'Error: This book has been sold.';
+                }
+
                 if ($product->is_rejected)
                 {
                     $product->update([
@@ -225,17 +230,11 @@ return [
                     ]);
                 }
 
-                $seller_order = \App\SellerOrder::where('product_id', '=', $product->id)->first();
-
-                // check if seller order already exists
-                if (!$seller_order)
-                {
-                    // create a seller order directly (without creating a buyer order)
-                    // so the book now can be picked up
-                    $seller_order = \App\SellerOrder::create([
-                        'product_id'    => $product->id
-                    ]);
-                }
+                // create a seller order directly (without creating a buyer order)
+                // so the book now can be picked up
+                $seller_order = \App\SellerOrder::create([
+                    'product_id'    => $product->id
+                ]);
 
                 event(new \App\Events\ProductWasUpdatedPriceAndApproved($seller_order));
 
@@ -255,6 +254,11 @@ return [
 
             'action'        => function(&$product)
             {
+                if ($product->sold)
+                {
+                    return 'Error: This book has been sold.';
+                }
+
                 if ($product->is_rejected)
                 {
                     return 'Error: Already rejected.';

@@ -41,15 +41,13 @@ class BuyerOrderController extends Controller
      */
     public function index()
     {
-        $order = Input::get('ord');
-        // check column existence
-        $order = $this->hasColumn('buyer_orders', $order) ? $order : 'id';
+        $buyer_orders = Auth::user()->buyerOrders()
+            ->orderBy('cancelled')
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         return view('order.buyer.index')
-            ->with('orders', Auth::user()
-            ->buyerOrders()
-            ->orderBy($order, 'DESC')
-            ->get());
+            ->with('buyer_orders', $buyer_orders);
     }
 
     /**

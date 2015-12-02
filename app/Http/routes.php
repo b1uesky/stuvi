@@ -114,6 +114,7 @@ Route::group(['namespace'=>'Textbook', 'middleware'=>'auth', 'prefix'=>'order'],
     Route::post ('/seller/{seller_order}/confirmPickup',    'SellerOrderController@confirmPickup');
     Route::post ('/seller/{seller_order}/payout',           'SellerOrderController@payout');
     Route::post ('/seller/cancel',                          'SellerOrderController@cancel');
+    Route::post ('/seller/cancelTradeIn',                   'SellerOrderController@cancelTradeIn');
 });
 
 // cart

@@ -17,7 +17,8 @@
         </div>
 
         @foreach ($seller_orders as $seller_order)
-            <div class="panel panel-default">
+            @if($seller_order->buyer_order_id)
+                <div class="panel panel-default">
                 <div class="panel-heading">
 
                     <div class="container-fluid text-muted">
@@ -59,14 +60,6 @@
                         <div class="row">
                             <?php $order_status = $seller_order->getOrderStatus(); ?>
 
-                            {{--@if(!$seller_order->cancelled && !$seller_order->isTransferred())--}}
-                                {{--<div class="progress">--}}
-                                    {{--<div class="progress-bar active" role="progressbar" aria-valuenow="{{ $order_status['value'] }}" aria-valuemin="0" aria-valuemax="100" style="{{ 'width: ' . $order_status['value'] . '%;' }}">--}}
-                                        {{--<span class="sr-only">{{ $order_status['value'] }}% Complete</span>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--@endif--}}
-
                             <h3>{{ $order_status['status'] }}</h3>
                             <span>{{ $order_status['detail'] }}</span>
                         </div>
@@ -92,13 +85,94 @@
 
                                 {{-- cancel order --}}
                                 @if ($seller_order->isCancellable())
-                                    <a class="btn btn-danger btn-block" href="#cancel-seller-order" data-toggle="modal" data-seller_order_id="{{ $seller_order->id }}">Cancel order</a>
+                                    <a class="btn btn-default btn-block" href="#cancel-seller-order" data-toggle="modal" data-seller_order_id="{{ $seller_order->id }}">Cancel order</a>
                                 @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @else
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+
+                        <div class="container-fluid text-muted">
+                            <div class="col-xs-4">
+                                <div class="row">
+                                    <span>TRADE-IN APPROVED</span>
+                                </div>
+
+                                <div class="row">
+                                    <span>{{ date('M d, Y', strtotime($seller_order->created_at)) }}</span>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-4">
+                                <div class="row">
+                                    <span>TRADE-IN PRICE</span>
+                                </div>
+
+                                <div class="row">
+                                    <span>${{ $seller_order->product->trade_in_price }}</span>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-4 text-right">
+                                <div class="row">
+                                    <span>ORDER #{{ $seller_order->id }}</span>
+                                </div>
+
+                                <div class="row">
+                                    <span><a href="/order/seller/{{$seller_order->id}}">View details</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                            {{-- order status --}}
+                            <div class="row">
+                                <?php $order_status = $seller_order->getOrderStatus(); ?>
+
+                                <h3>{{ $order_status['status'] }}</h3>
+                                <span>{{ $order_status['detail'] }}</span>
+                            </div>
+
+                            <br>
+
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <!-- product list -->
+                                    <div class="row">
+                                        <?php $product = $seller_order->product; ?>
+
+                                        @include('includes.textbook.product-details')
+                                    </div>
+                                    <br>
+                                </div>
+
+                                {{-- action buttons --}}
+                                <div class="col-md-3">
+                                    @if ($seller_order->isPickupSchedulable())
+                                        <a class="btn btn-primary btn-block" href="{{ url('order/seller/' . $seller_order->id . '/schedulePickup') }}">Update pickup details</a>
+                                    @endif
+
+                                    {{-- cancel order --}}
+                                    @if ($seller_order->isCancellable())
+                                        <form action="{{ url('order/seller/cancelTradeIn') }}" method="post" class="margin-top-5">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
+
+                                            <button type="submit" class="btn btn-default btn-block">Not interested</button>
+                                        </form>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
         @endforeach
     </div>
 

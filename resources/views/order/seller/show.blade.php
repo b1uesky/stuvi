@@ -33,7 +33,14 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-5">
-                            <span>Sold on {{ $seller_order->created_at }}</span>
+                            <span>
+                                @if($seller_order->buyer_order_id)
+                                    Sold on
+                                @else
+                                    Trade-in approved at
+                                @endif
+                                    {{ $seller_order->created_at }}
+                            </span>
                         </div>
                         <div class="col-sm-5">
                             @if($seller_order->cancelled)
@@ -80,8 +87,16 @@
 
                             {{-- cancel order --}}
                             @if ($seller_order->isCancellable())
-                                <a class="btn btn-danger btn-block cancel-order-btn" href="/order/seller/cancel/{{ $seller_order->id }}"
-                                   role="button">Cancel Order</a>
+                                @if($seller_order->buyer_order_id)
+                                    <a class="btn btn-danger btn-block cancel-order-btn" href="/order/seller/cancel/{{ $seller_order->id }}" role="button">Cancel Order</a>
+                                @else
+                                    <form action="{{ url('order/seller/cancelTradeIn') }}" method="post" class="margin-top-5">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="seller_order_id" value="{{ $seller_order->id }}">
+
+                                        <button type="submit" class="btn btn-default btn-block">Not interested</button>
+                                    </form>
+                                @endif
                             @endif
                         </div>
                     </div>

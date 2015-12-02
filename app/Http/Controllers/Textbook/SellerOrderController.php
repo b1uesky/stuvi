@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Listeners\EmailSellerOrderPickupConfirmation;
 use App\SellerOrder;
 use Auth;
+use Carbon\Carbon;
 use Cart;
 use DB;
 use Input;
@@ -29,13 +30,13 @@ class SellerOrderController extends Controller
      */
     public function index()
     {
-        $order = Input::get('ord');
-        // check column existence
-        $order = $this->hasColumn('seller_orders', $order) ? $order : 'id';
+        $seller_orders = Auth::user()->sellerOrders()
+            ->orderBy('cancelled')
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         return view('order.seller.index')
-            ->with('seller_orders', Auth::user()->sellerOrders()
-                ->orderBy($order, 'DESC')->get());
+            ->with('seller_orders', $seller_orders);
     }
 
     /**
@@ -95,6 +96,46 @@ class SellerOrderController extends Controller
 
         return redirect()->back()
             ->with('error', 'Sorry, this order cannot be cancelled.');
+    }
+
+    /**
+     * Cancel a book trade-in offer.
+     *
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
+    public function cancelTradeIn()
+    {
+        $v = Validator::make(Input::all(), [
+            'seller_order_id'   => 'required|integer|exists:seller_orders,id'
+        ]);
+
+        if ($v->fails())
+        {
+            return redirect()->back()->withErrors($v->errors());
+        }
+
+        $seller_order_id = Input::get('seller_order_id');
+        $seller_order = SellerOrder::find($seller_order_id);
+
+        // check if this order belongs to the current user.
+        if ($seller_order->isBelongTo(Auth::id()))
+        {
+            if ($seller_order->isCancellable())
+            {
+                $seller_order->update([
+                    'cancelled'         => true,
+                    'cancelled_time'    => Carbon::now(),
+                    'cancelled_by'      => Auth::id(),
+                    'cancel_reason'     => 'User was not interested in this trade-in offer.'
+                ]);
+
+                return redirect()->back()
+                    ->with('success', 'You have successfully removed this trade-in offer.');
+            }
+        }
+
+        return redirect()->back()
+            ->with('error', 'Sorry, you cannot remove this trade-in offer.');
     }
 
     /**

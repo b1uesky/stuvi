@@ -19,7 +19,7 @@
         </div>
 
         {{-- order list --}}
-        @foreach ($orders as $buyer_order)
+        @foreach ($buyer_orders as $buyer_order)
             <div class="panel panel-default">
                 <div class="panel-heading">
 
