@@ -181,7 +181,7 @@
                             @endif
                             <tr>
                                 <td class="text-left">Total before tax:</td>
-                                <td class="text-right">${{ $subtotal + $shipping - $discount }}</td>
+                                <td class="text-right">${{ $total_before_tax }}</td>
                             </tr>
                             <tr>
                                 <td class="text-left">Estimated tax:</td>
