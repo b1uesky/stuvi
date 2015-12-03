@@ -55,6 +55,8 @@
                                     </label>
                                 </div>
 
+                                <br>
+
                                 <div>
                                     <span class="text-success payment-info">
                                         After placing your order, a payment authorization will be created and we only charge you after books are delivered.
