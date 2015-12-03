@@ -53,7 +53,6 @@ class ProductController extends Controller
     public function store()
     {
         $images = Input::file('file');
-        $int_price = Price::ConvertDecimalToInteger(Input::get('price'));
         $payout_method = Input::get('payout_method');
 
         // validation
@@ -71,7 +70,7 @@ class ProductController extends Controller
         $product = Product::create([
             'book_id'           => Input::get('book_id'),
             'seller_id'         => Auth::user()->id,
-            'price'             => $int_price,
+            'price'             => Input::get('price'),
             'available_at'      => Carbon::parse(Input::get('available_at')),
             'payout_method'     => $payout_method,
             'accept_trade_in'   => Input::has('accept_trade_in') ? true : false,
@@ -79,8 +78,7 @@ class ProductController extends Controller
         ]);
 
         // update book price range
-        $product->book->addPrice($int_price);
-
+        $product->book->addPrice(Input::get('price'));
 
         ProductCondition::create([
             'product_id' => $product->id,
@@ -235,7 +233,7 @@ class ProductController extends Controller
         $new_available_at = Carbon::parse(Input::get('available_at'));
 
         $product->update([
-            'price'             => Price::ConvertDecimalToInteger(Input::get('price')),
+            'price'             => Input::get('price'),
             'available_at'      => $new_available_at,
             'payout_method'     => $payout_method,
             'accept_trade_in'   => Input::has('accept_trade_in') ? true : false

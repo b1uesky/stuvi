@@ -83,11 +83,11 @@
 
                     @if(config('sale.payout_service') > 0)
                         <p class="list-group-item-text">
-                            Sale price: ${{ $seller_order->product->decimalPrice() }}
+                            Sale price: ${{ $seller_order->product->price }}
                         </p>
 
                         <p class="list-group-item-text">
-                            Payout service fee: -${{ \App\Helpers\Price::convertIntegerToDecimal(config('sale.payout_service')) }}
+                            Payout service fee: -${{ config('sale.payout_service') }}
                         </p>
                     @endif
 
