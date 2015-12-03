@@ -240,6 +240,8 @@
                     <div class="col-md-9 col-sm-8">
                         <input type="email" name="paypal" class="form-control"
                                value="{{ $paypal or '' }}" placeholder="Paypal email address">
+
+                        <small class="text-muted">A $0.25 PayPal transaction fee will be deducted from your receiving payment.</small>
                     </div>
 
                 </div>

@@ -491,6 +491,7 @@ class SellerOrder extends Model
         // seller does not have paypal account.
         if (!$item)
         {
+            // TODO: notify seller
             return false;
         }
 
