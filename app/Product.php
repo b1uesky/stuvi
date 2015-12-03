@@ -146,6 +146,26 @@ class Product extends Model
     }
 
     /**
+     * Get products that are deleted.
+     *
+     * @param $query
+     * @param bool|true $is_deleted
+     * @return mixed
+     */
+    public function scopeDeleted($query, $is_deleted=true)
+    {
+        if ($is_deleted)
+        {
+            return $query->whereNotNull('deleted_at');
+        }
+        else
+        {
+            return $query->whereNull('deleted_at');
+        }
+
+    }
+
+    /**
      * Get popular products.
      *
      * @return array

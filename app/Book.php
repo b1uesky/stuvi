@@ -196,13 +196,25 @@ class Book extends Model
         // update the lowest price
         if ($price == $this->lowest_price)
         {
-            $this->update(['lowest_price' => $this->products()->where('sold', false)->get()->min('price')]);
+            $this->update([
+                'lowest_price' => $this->products()
+                    ->where('sold', false)
+                    ->whereNull('deleted_at')
+                    ->get()
+                    ->min('price')
+            ]);
         }
 
         // update the highest price
         if ($price == $this->highest_price)
         {
-            $this->update(['highest_price' => $this->products()->where('sold', false)->get()->max('price')]);
+            $this->update([
+                'highest_price' => $this->products()
+                    ->where('sold', false)
+                    ->whereNull('deleted_at')
+                    ->get()
+                    ->max('price')
+            ]);
         }
 
         // do nothing

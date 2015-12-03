@@ -142,6 +142,12 @@ class ProductController extends Controller
 //            Redis::sadd('list:product_ids', $product->id);
 //        }
 
+        if ($product->deleted_at)
+        {
+            return redirect('textbook/buy/'.$product->book_id)
+                ->with('error', 'This book has been deleted.');
+        }
+
         return view('product.show')
             ->withProduct($product)
             ->withQuery(Input::get('query'))
