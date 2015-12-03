@@ -72,34 +72,34 @@
 
                                 <div class="row">
                                     <span class="pull-left">Item(s) subtotal:</span>
-                                    <span class="pull-right">${{ $buyer_order->subtotal }}</span>
+                                    <span class="pull-right">${{ number_format($buyer_order->subtotal, 2, '.', '') }}</span>
                                 </div>
 
                                 <div class="row">
                                     <span class="pull-left">Shipping & Handling:</span>
-                                    <span class="pull-right">${{ $buyer_order->shipping }}</span>
+                                    <span class="pull-right">${{ number_format($buyer_order->shipping, 2, '.', '') }}</span>
                                 </div>
 
                                 @if($buyer_order->discount > 0)
                                     <div class="row">
                                         <span class="pull-left">Discount:</span>
-                                        <span class="pull-right">-${{ $buyer_order->discount }}</span>
+                                        <span class="pull-right">-${{ number_format($buyer_order->discount, 2, '.', '') }}</span>
                                     </div>
                                 @endif
 
                                 <div class="row">
                                     <span class="pull-left">Total before tax:</span>
-                                    <span class="pull-right">${{ $buyer_order->subtotal + $buyer_order->shipping - $buyer_order->discount }}</span>
+                                    <span class="pull-right">${{ number_format($buyer_order->subtotal + $buyer_order->shipping - $buyer_order->discount, 2, '.', '') }}</span>
                                 </div>
 
                                 <div class="row">
                                     <span class="pull-left">Estimated tax to be collected:</span>
-                                    <span class="pull-right">${{ $buyer_order->tax }}</span>
+                                    <span class="pull-right">${{ number_format($buyer_order->tax, 2, '.', '') }}</span>
                                 </div>
 
                                 <div class="row">
                                     <span class="pull-left"><strong>Grand Total:</strong></span>
-                                    <span class="pull-right"><strong>${{ $buyer_order->amount }}</strong></span>
+                                    <span class="pull-right"><strong>${{ number_format($buyer_order->amount, 2, '.', '') }}</strong></span>
                                 </div>
                             @endif
                         </div>
