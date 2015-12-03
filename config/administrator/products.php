@@ -5,6 +5,10 @@ return [
     'single'    => 'product',
     'model'     => 'App\Product',
 
+    'query_filter'  => function($query) {
+        $query->whereNull('deleted_at');
+    },
+
     'columns'   => [
 
         'id'    => [
@@ -146,9 +150,9 @@ return [
             'visible'       => function($product) {
                 return $product->verified && $product->accept_trade_in;
             },
-            'editable'      => function($product) {
-                return $product->verified && $product->accept_trade_in && !$product->sold;
-            }
+//            'editable'      => function($product) {
+//                return $product->verified && $product->accept_trade_in && !$product->sold;
+//            }
         ],
 
         'rejected_reason'   => [
