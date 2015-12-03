@@ -5,6 +5,10 @@ return [
     'single'    => 'product',
     'model'     => 'App\Product',
 
+    'query_filter'  => function($query) {
+        $query->whereNull('deleted_at');
+    },
+
     'columns'   => [
 
         'id'    => [
