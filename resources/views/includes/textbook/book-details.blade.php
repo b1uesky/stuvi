@@ -37,11 +37,11 @@
                 {{-- price --}}
                 <span class="text-bold">
                     @if($count_product > 1)
-                        <span class="price">${{ $book->decimalLowestPrice() }}</span>
+                        <span class="price">${{ $book->lowest_price }}</span>
                         <span class="text-muted"> ~ </span>
-                        <span class="price">${{ $book->decimalHighestPrice() }}</span>
+                        <span class="price">${{ $book->highest_price }}</span>
                     @else
-                        <span class="price">${{ $book->decimalLowestPrice() }}</span>
+                        <span class="price">${{ $book->lowest_price }}</span>
                     @endif
                 </span>
             </div>

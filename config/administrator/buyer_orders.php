@@ -14,35 +14,35 @@ return [
         'subtotal'  => [
             'title'     => 'Subtotal',
             'output'    => function($value) {
-                return '$'.\App\Helpers\Price::convertIntegerToDecimal($value);
+                return '$'.$value;
             }
         ],
 
         'tax'   => [
             'title'     => 'Tax',
             'output'    => function($value) {
-                return '$'.\App\Helpers\Price::convertIntegerToDecimal($value);
+                return '$'.$value;
             }
         ],
 
         'shipping'   => [
             'title'     => 'Shipping',
             'output'    => function($value) {
-                return '$'.\App\Helpers\Price::convertIntegerToDecimal($value);
+                return '$'.$value;
             }
         ],
 
         'discount'   => [
             'title'     => 'Discount',
             'output'    => function($value) {
-                return '$'.\App\Helpers\Price::convertIntegerToDecimal($value);
+                return '$'.$value;
             }
         ],
 
         'amount'   => [
             'title'     => 'Total',
             'output'    => function($value) {
-                return '$'.\App\Helpers\Price::convertIntegerToDecimal($value);
+                return '$'.$value;
             }
         ],
 

@@ -40,9 +40,9 @@
     <br>
 
     <p>
-        Total before tax: ${{ $buyer_order->decimalSubtotal() }}<br>
-        Tax collected: ${{ $buyer_order->decimalTax() }}<br>
-        <strong>Grand total: ${{ $buyer_order->decimalAmount() }}</strong>
+        Total before tax: ${{ $buyer_order->subtotal }}<br>
+        Tax collected: ${{ $buyer_order->tax }}<br>
+        <strong>Grand total: ${{ $buyer_order->amount }}</strong>
     </p>
 
     <p>Once our courier has arrived, please show the following code to the courier: <strong>{{ $buyer_order->delivery_code }}</strong></p>

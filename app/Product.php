@@ -11,6 +11,12 @@ class Product extends Model
     protected $table = 'products';
     protected $guarded = [];
 
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
+
     public function book()
     {
         return $this->belongsTo('App\Book');
@@ -35,6 +41,12 @@ class Product extends Model
     {
         return $this->hasMany('App\ProductImage');
     }
+
+    /*
+	|--------------------------------------------------------------------------
+	| Accessors & Mutators
+	|--------------------------------------------------------------------------
+	*/
 
     /**
      * Get product images in html, for admin product images column
@@ -67,16 +79,15 @@ class Product extends Model
         return $this->accept_trade_in ? 'Yes' : 'No';
     }
 
-    // TODO
-//    public function getPriceAttribute($value)
-//    {
-//        return Price::convertIntegerToDecimal($value);
-//    }
-//
-//    public function setPriceAttribute($value)
-//    {
-//        $this->attributes['price'] = Price::convertDecimalToInteger($value);
-//    }
+    public function getPriceAttribute($value)
+    {
+        return Price::convertIntegerToDecimal($value);
+    }
+
+    public function setPriceAttribute($value)
+    {
+        $this->attributes['price'] = Price::convertDecimalToInteger($value);
+    }
 
     public function getTradeInPriceAttribute($value)
     {
@@ -92,6 +103,12 @@ class Product extends Model
     {
         return $this->is_rejected ? 'Yes' : 'No';
     }
+
+    /*
+	|--------------------------------------------------------------------------
+	| Query Scopes
+	|--------------------------------------------------------------------------
+	*/
 
     /**
      * Get products that are available now.
@@ -336,26 +353,6 @@ class Product extends Model
         }
 
         $this->images()->delete();
-    }
-
-    /**
-     * Return decimal product price.
-     *
-     * @return string
-     */
-    public function decimalPrice()
-    {
-        return Price::convertIntegerToDecimal($this->price);
-    }
-
-    /**
-     * Return decimal trade-in price.
-     *
-     * @return string
-     */
-    public function decimalTradeInPrice()
-    {
-        return Price::convertIntegerToDecimal($this->trade_in_price);
     }
 
     /**

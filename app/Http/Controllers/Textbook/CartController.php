@@ -45,7 +45,7 @@ class CartController extends Controller
 
         return view('cart.index')
             ->with('items', $items)
-            ->with('subtotal', Price::convertIntegerToDecimal($this->cart->subtotal()));
+            ->with('subtotal', $this->cart->subtotal());
     }
 
     /**
@@ -182,7 +182,7 @@ class CartController extends Controller
         {
             return Response::json([
                 'removed'   => true,
-                'subtotal'  => Price::convertIntegerToDecimal($this->cart->subtotal()),
+                'subtotal'  => $this->cart->subtotal(),
                 'num_items' => count($this->cart->items)
             ]);
         }

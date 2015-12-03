@@ -232,11 +232,10 @@ class ProductController extends Controller
 
         $payout_method = Input::get('payout_method');
         $old_price = $product->price;
-        $int_price = Price::ConvertDecimalToInteger(Input::get('price'));
         $new_available_at = Carbon::parse(Input::get('available_at'));
 
         $product->update([
-            'price'             => $int_price,
+            'price'             => Price::ConvertDecimalToInteger(Input::get('price')),
             'available_at'      => $new_available_at,
             'payout_method'     => $payout_method,
             'accept_trade_in'   => Input::has('accept_trade_in') ? true : false
@@ -248,7 +247,7 @@ class ProductController extends Controller
             $product->book->removePrice($old_price);
         }
 
-        $product->book->addPrice($int_price);
+        $product->book->addPrice(Input::get('price'));
 
         // update user's Paypal email address
         if ($payout_method == 'paypal')
@@ -260,11 +259,11 @@ class ProductController extends Controller
 
         // update product condition
         $product->condition->update([
-            'general_condition' => Input::get('general_condition'),
-            'highlights_and_notes' => Input::get('highlights_and_notes'),
-            'damaged_pages' => Input::get('damaged_pages'),
-            'broken_binding' => Input::get('broken_binding'),
-            'description' => Input::get('description'),
+            'general_condition'     => Input::get('general_condition'),
+            'highlights_and_notes'  => Input::get('highlights_and_notes'),
+            'damaged_pages'         => Input::get('damaged_pages'),
+            'broken_binding'        => Input::get('broken_binding'),
+            'description'           => Input::get('description'),
         ]);
 
         // if AJAX request, save images
@@ -339,7 +338,7 @@ class ProductController extends Controller
         // soft delete.
         $product->update([
             'deleted_at' => Carbon::now(),
-                         ]);
+         ]);
 
         // update book's lowest or highest price if necessary
         $book->removePrice($price);

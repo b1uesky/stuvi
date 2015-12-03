@@ -13,15 +13,11 @@ class SellerOrder extends Model
     protected $table = 'seller_orders';
     protected $guarded = [];
 
-    /**
-     * Return the seller order book.
-     *
-     * @return Book
-     */
-    public function book()
-    {
-        return $this->product->book;
-    }
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
 
     /**
      * Return the seller order address.
@@ -54,6 +50,16 @@ class SellerOrder extends Model
     }
 
     /**
+     * Return the seller order book.
+     *
+     * @return Book
+     */
+    public function book()
+    {
+        return $this->product->book;
+    }
+
+    /**
      * Return the seller that owns this seller order.
      *
      * @return User
@@ -71,6 +77,22 @@ class SellerOrder extends Model
     public function courier()
     {
         return $this->belongsTo('App\User', 'courier_id');
+    }
+
+    /*
+	|--------------------------------------------------------------------------
+	| Accessors & Mutators
+	|--------------------------------------------------------------------------
+	*/
+
+    public function getCashPaidAttribute($value)
+    {
+        return Price::convertIntegerToDecimal($value);
+    }
+
+    public function setCashPaidAttribute($value)
+    {
+        $this->attributes['cash_paid'] = Price::convertDecimalToInteger($value);
     }
 
     public function getHTMLAddressAttribute()
@@ -94,6 +116,12 @@ class SellerOrder extends Model
     {
         return $this->cancelled ? 'Yes' : 'No';
     }
+
+    /*
+	|--------------------------------------------------------------------------
+	| Query Scopes
+	|--------------------------------------------------------------------------
+	*/
 
     /**
      * Get seller orders that are created after a specific date.
@@ -328,15 +356,14 @@ class SellerOrder extends Model
         {
             // update the price of buyer order
             $new_subtotal = $this->buyerOrder->subtotal - $this->product->price;
-            $new_total_before_tax = $new_subtotal + $this->buyerOrder->fee - $this->buyerOrder->discount;
+            $new_total_before_tax = $new_subtotal + $this->buyerOrder->shipping - $this->buyerOrder->discount;
             $new_tax = Price::calculateTax($new_total_before_tax);
             $new_amount = $new_total_before_tax + $new_tax;
 
-            $this->buyerOrder->update([
-                'subtotal'  => $new_subtotal,
-                'tax'       => $new_tax,
-                'amount'    => $new_amount
-            ]);
+            $this->buyerOrder->subtotal = $new_subtotal;
+            $this->buyerOrder->tax = $new_tax;
+            $this->buyerOrder->amount = $new_amount;
+            $this->buyerOrder->save();
 
             // if all seller orders have been cancelled, cancel the buyer order as well
             if ($this->isCancelledBySeller() && count($this->buyerOrder->getUncancelledSellerOrders()) == 0)
@@ -451,12 +478,12 @@ class SellerOrder extends Model
         // determine what price to pay
         if ($this->isSoldToUser())
         {
-            $value = Price::convertIntegerToDecimal($this->product->price - config('sale.paypal_payout_fee'));
+            $value = $this->product->price - config('sale.paypal_payout_fee');
         }
 
         if ($this->isSoldToStuvi())
         {
-            $value = Price::convertIntegerToDecimal($this->product->trade_in_price - config('sale.paypal_payout_fee'));
+            $value = $this->product->trade_in_price - config('sale.paypal_payout_fee');
         }
 
         $item = $this->createPaypalPayoutItem($value);

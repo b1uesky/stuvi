@@ -72,34 +72,34 @@
 
                                 <div class="row">
                                     <span class="pull-left">Item(s) subtotal:</span>
-                                    <span class="pull-right">${{ $buyer_order->decimalSubtotal() }}</span>
+                                    <span class="pull-right">${{ $buyer_order->subtotal }}</span>
                                 </div>
 
                                 <div class="row">
                                     <span class="pull-left">Shipping & Handling:</span>
-                                    <span class="pull-right">${{ $buyer_order->decimalShipping() }}</span>
+                                    <span class="pull-right">${{ $buyer_order->shipping }}</span>
                                 </div>
 
-                                @if($buyer_order->decimalDiscount() > 0)
+                                @if($buyer_order->discount > 0)
                                     <div class="row">
                                         <span class="pull-left">Discount:</span>
-                                        <span class="pull-right">-${{ $buyer_order->decimalDiscount() }}</span>
+                                        <span class="pull-right">-${{ $buyer_order->discount }}</span>
                                     </div>
                                 @endif
 
                                 <div class="row">
                                     <span class="pull-left">Total before tax:</span>
-                                    <span class="pull-right">${{ $buyer_order->decimalSubtotal() + $buyer_order->decimalShipping() - $buyer_order->decimalDiscount() }}</span>
+                                    <span class="pull-right">${{ $buyer_order->subtotal + $buyer_order->shipping - $buyer_order->discount }}</span>
                                 </div>
 
                                 <div class="row">
                                     <span class="pull-left">Estimated tax to be collected:</span>
-                                    <span class="pull-right">${{ $buyer_order->decimalTax() }}</span>
+                                    <span class="pull-right">${{ $buyer_order->tax }}</span>
                                 </div>
 
                                 <div class="row">
                                     <span class="pull-left"><strong>Grand Total:</strong></span>
-                                    <span class="pull-right"><strong>${{ $buyer_order->decimalAmount() }}</strong></span>
+                                    <span class="pull-right"><strong>${{ $buyer_order->amount }}</strong></span>
                                 </div>
                             @endif
                         </div>

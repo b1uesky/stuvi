@@ -206,7 +206,7 @@
                         <div class="input-group-addon">$</div>
                         <input type="number" step="0.01" min="0.00" name="price"
                                class="form-control" placeholder="Set a price for your book"
-                               value="{{ $product->decimalPrice() }}">
+                               value="{{ $product->price }}">
                     </div>
                 </div>
             </div>

@@ -38,7 +38,7 @@
                             </div>
 
                             <div class="row">
-                                <span>${{ $seller_order->product->decimalPrice() }}</span>
+                                <span>${{ $seller_order->product->price }}</span>
                             </div>
                         </div>
 

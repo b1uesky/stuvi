@@ -96,7 +96,7 @@
         @else
             <tr>
                 <th>Cash paid</th>
-                <td class="price">${{ \App\Helpers\Price::convertIntegerToDecimal($seller_order->cash_paid) }}</td>
+                <td class="price">${{ $seller_order->cash_paid }}</td>
             </tr>
         @endif
     </table>

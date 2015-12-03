@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="item-info">
-                            <div class="item-price">${{ $product->decimalPrice() }}</div>
+                            <div class="item-price">${{ $product->price }}</div>
                             <div class="item-title">{{ $product->book->title }}</div>
                             <div class="item-condition">{{ config('product.conditions.general_condition')[$product->condition->general_condition] }}</div>
                         </div>

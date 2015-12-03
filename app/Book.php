@@ -16,6 +16,12 @@ class Book extends Model
     protected $table = 'books';
     protected $guarded = [];
 
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
+
     /**
      * Get textbook authors
      *
@@ -55,6 +61,48 @@ class Book extends Model
     {
         return $this->hasMany('App\BookReminder', 'book_id');
     }
+
+    /*
+	|--------------------------------------------------------------------------
+	| Accessors & Mutators
+	|--------------------------------------------------------------------------
+	*/
+
+    public function getLowestPriceAttribute($value)
+    {
+        return Price::convertIntegerToDecimal($value);
+    }
+
+    public function setLowestPriceAttribute($value)
+    {
+        $this->attributes['lowest_price'] = Price::convertDecimalToInteger($value);
+    }
+
+    public function getHighestPriceAttribute($value)
+    {
+        return Price::convertIntegerToDecimal($value);
+    }
+
+    public function setHighestPriceAttribute($value)
+    {
+        $this->attributes['highest_price'] = Price::convertDecimalToInteger($value);
+    }
+
+    public function getListPriceAttribute($value)
+    {
+        return Price::convertIntegerToDecimal($value);
+    }
+
+    public function setListPriceAttribute($value)
+    {
+        $this->attributes['list_price'] = Price::convertDecimalToInteger($value);
+    }
+
+    /*
+	|--------------------------------------------------------------------------
+	| Query Scopes
+	|--------------------------------------------------------------------------
+	*/
 
     /**
      * Get books that are created after a specific date.
@@ -105,51 +153,32 @@ class Book extends Model
     }
 
     /**
-     * Get lowest price in two decimal places.
-     *
-     * @return string
-     */
-    public function decimalLowestPrice()
-    {
-        return Price::convertIntegerToDecimal($this->lowest_price);
-    }
-
-    /**
-     * Get highest price in two decimal places.
-     *
-     * @return string
-     */
-    public function decimalHighestPrice()
-    {
-        return Price::convertIntegerToDecimal($this->highest_price);
-    }
-
-    /**
      * Update book price range for adding a product price.
      * Used for adding new product or cancelling a seller order.
      *
-     * @param integer $price
+     * @param decimal $price
      * @return bool
      */
     public function addPrice($price)
     {
         // if both are not set, set them to the same price
         if ($this->lowest_price == null && $this->highest_price == null) {
-            $this->update([
-                'lowest_price' => $price,
-                'highest_price' => $price
-            ]);
+            $this->lowest_price = $price;
+            $this->highest_price = $price;
+            $this->save();
 
             return true;
         }
 
         // update lowest price
         if ($this->lowest_price && $price < $this->lowest_price) {
-            $this->update(['lowest_price' => $price]);
+            $this->lowest_price = $price;
+            $this->save();
         }
         // update highest price
         if ($this->highest_price && $price > $this->highest_price) {
-            $this->update(['highest_price' => $price]);
+            $this->highest_price = $price;
+            $this->save();
         }
 
         return false;
@@ -159,24 +188,21 @@ class Book extends Model
      * Update book price range for removing a product price.
      * Used for deleting a product or selling a product.
      *
-     * @param $price
+     * @param decimal $price
      * @return bool
      */
     public function removePrice($price)
-
     {
         // update the lowest price
         if ($price == $this->lowest_price)
         {
             $this->update(['lowest_price' => $this->products()->where('sold', false)->get()->min('price')]);
-
         }
 
         // update the highest price
         if ($price == $this->highest_price)
         {
             $this->update(['highest_price' => $this->products()->where('sold', false)->get()->max('price')]);
-
         }
 
         // do nothing

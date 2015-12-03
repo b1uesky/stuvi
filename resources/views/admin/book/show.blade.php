@@ -51,11 +51,11 @@
         {{--</tr>--}}
         <tr>
             <th>Highest Price</th>
-            <td class="price">${{ \App\Helpers\Price::convertIntegerToDecimal($book->highest_price) }}</td>
+            <td class="price">${{ $book->highest_price }}</td>
         </tr>
         <tr>
             <th>Lowest Price</th>
-            <td class="price">${{ \App\Helpers\Price::convertIntegerToDecimal($book->lowest_price) }}</td>
+            <td class="price">${{ $book->lowest_price }}</td>
         </tr>
         <tr>
             <th>Created At</th>
@@ -88,7 +88,7 @@
         @foreach($products as $product)
             <tr>
                 <td>{{ $product->id }}</td>
-                <td class="price">${{ $product->decimalPrice() }}</td>
+                <td class="price">${{ $product->price }}</td>
                 <td><a href="{{ url('/admin/user/'.$product->seller->id) }}">{{ $product->seller->first_name }} {{ $product->seller->last_name }}</a></td>
                 <td class="container-flex">
                     @foreach($product->images as $image)

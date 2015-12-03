@@ -42,7 +42,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <span>${{ $buyer_order->decimalAmount() }}</span>
+                                    <span>${{ $buyer_order->amount }}</span>
                                 </div>
                             @endif
                         </div>

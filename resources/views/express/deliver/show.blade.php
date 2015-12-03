@@ -80,20 +80,20 @@
             @if($buyer_order->payment_method == 'cash')
                 <li class="list-group-item">
                     <h4 class="list-group-item-heading">
-                        Please collect <span class="price">${{ $buyer_order->decimalAmount() }}</span> from buyer.
+                        Please collect <span class="price">${{ $buyer_order->amount }}</span> from buyer.
                     </h4>
                     <p class="list-group-item-text">
-                        Subtotal: ${{ $buyer_order->decimalSubtotal() }}
+                        Subtotal: ${{ $buyer_order->subtotal }}
                     </p>
                     <p class="list-group-item-text">
-                        Shipping: ${{ $buyer_order->decimalShipping() }}
+                        Shipping: ${{ $buyer_order->shipping }}
                     </p>
                     <p class="list-group-item-text">
-                        Tax: ${{ $buyer_order->decimalTax() }}
+                        Tax: ${{ $buyer_order->tax }}
                     </p>
-                    @if($buyer_order->decimalDiscount() > 0))
+                    @if($buyer_order->discount > 0))
                         <p class="list-group-item-text">
-                            Discount: ${{ $buyer_order->decimalDiscount() }}
+                            Discount: ${{ $buyer_order->discount }}
                         </p>
                     @endif
                 </li>

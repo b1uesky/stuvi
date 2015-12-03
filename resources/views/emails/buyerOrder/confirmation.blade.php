@@ -43,9 +43,9 @@
     <br>
 
     <p>
-        Total before tax: ${{ $buyer_order->decimalSubtotal() }}<br>
-        Tax collected: ${{ $buyer_order->decimalTax() }}<br>
-        <strong>Grand total: ${{ $buyer_order->decimalAmount() }}</strong>
+        Total before tax: ${{ $buyer_order->subtotal }}<br>
+        Tax collected: ${{ $buyer_order->tax }}<br>
+        <strong>Grand total: ${{ $buyer_order->amount }}</strong>
     </p>
 
     <p>Once your order is ready, we will notify you to schedule a delivery.</p>
