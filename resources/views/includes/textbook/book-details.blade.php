@@ -36,7 +36,7 @@
             <div class="row padding-bottom-5">
                 {{-- price --}}
                 <span class="text-bold">
-                    @if($count_product > 1)
+                    @if($count_product > 1 && $book->lowest_price != $book->highest_price)
                         <span class="price">${{ $book->lowest_price }}</span>
                         <span class="text-muted"> ~ </span>
                         <span class="price">${{ $book->highest_price }}</span>
