@@ -78,12 +78,14 @@ class EventServiceProvider extends ServiceProvider {
 
 		'App\Events\BuyerOrderWasShipped' => [
 			'App\Listeners\EmailBuyerOrderShippedNotificationToBuyer',
+			'App\Listeners\MessageBuyerOrderShippedNotificationToBuyer',
 		],
 
 		'App\Events\BuyerOrderWasDelivered' => [
 			'App\Listeners\EmailBuyerOrderDeliveredNotificationToBuyer',
 			'App\Listeners\CapturePaypalAuthorizedPaymentFromBuyer',
 			'App\Listeners\CreatePaypalPayoutToSellers',
+			'App\Listeners\EmailBuyerOrderDeliveredNotificationToSeller',
 		],
 
         'App\Events\BuyerOrderWasCancelled' => [
@@ -99,17 +101,22 @@ class EventServiceProvider extends ServiceProvider {
 
 		'App\Events\SellerOrderWasCreated' => [
 			'App\Listeners\EmailSellerOrderConfirmationToSeller',
-//			'App\Listeners\MessageSellerOrderCreatedNotificationToStuvi',
+			'App\Listeners\MessageSellerOrderConfirmationToSeller',
 		],
 
 		'App\Events\SellerOrderPickupWasScheduled' => [
-			'App\Listeners\EmailSellerOrderPickupScheduledConfirmationToSeller',
+//			'App\Listeners\EmailSellerOrderPickupScheduledConfirmationToSeller',
 			'App\Listeners\EmailSellerOrderPickupScheduledNotificationToStuvi',
 			'App\Listeners\MessageSellerOrderPickupScheduledNotificationToStuvi',
 		],
 
 		'App\Events\SellerOrderWasAssignedToCourier' => [
 			'App\Listeners\EmailSellerOrderReadyToPickupNotificationToSeller',
+			'App\Listeners\MessageSellerOrderReadyToPickupNotificationToSeller',
+		],
+
+		'App\Events\SellerOrderWasPickedUp' => [
+			'App\Listeners\EmailSellerOrderPickedupNotificationToSeller',
 		],
 
 		'App\Events\SellerOrderWasCancelled' => [
