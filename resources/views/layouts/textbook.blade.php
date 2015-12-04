@@ -29,7 +29,7 @@
 {{-- js files --}}
 <script src="{{ asset('build/js/textbook.js') }}"></script>
 
-@if(\App::environment('production'))
+@if(\App::environment('production') && !env('APP_DEBUG'))
     {{-- Google analytics tracking code --}}
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
