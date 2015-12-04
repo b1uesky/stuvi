@@ -14,6 +14,12 @@ class BuyerOrder extends Model
     protected $table = 'buyer_orders';
     protected $guarded = [];
 
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
+
     /**
      * Get the buyer of this buyer order.
      *
@@ -62,6 +68,61 @@ class BuyerOrder extends Model
         return $this->belongsTo('App\User', 'courier_id', 'id');
     }
 
+    /*
+	|--------------------------------------------------------------------------
+	| Accessors & Mutators
+	|--------------------------------------------------------------------------
+	*/
+
+    public function getSubtotalAttribute($value)
+    {
+        return Price::convertIntegerToDecimal($value);
+    }
+
+    public function setSubtotalAttribute($value)
+    {
+        $this->attributes['subtotal'] = Price::convertDecimalToInteger($value);
+    }
+
+    public function getTaxAttribute($value)
+    {
+        return Price::convertIntegerToDecimal($value);
+    }
+
+    public function setTaxAttribute($value)
+    {
+        $this->attributes['tax'] = Price::convertDecimalToInteger($value);
+    }
+
+    public function getShippingAttribute($value)
+    {
+        return Price::convertIntegerToDecimal($value);
+    }
+
+    public function setShippingAttribute($value)
+    {
+        $this->attributes['shipping'] = Price::convertDecimalToInteger($value);
+    }
+
+    public function getDiscountAttribute($value)
+    {
+        return Price::convertIntegerToDecimal($value);
+    }
+
+    public function setDiscountAttribute($value)
+    {
+        $this->attributes['discount'] = Price::convertDecimalToInteger($value);
+    }
+
+    public function getAmountAttribute($value)
+    {
+        return Price::convertIntegerToDecimal($value);
+    }
+
+    public function setAmountAttribute($value)
+    {
+        $this->attributes['amount'] = Price::convertDecimalToInteger($value);
+    }
 
     public function getCancelledInStringAttribute()
     {
@@ -80,6 +141,12 @@ class BuyerOrder extends Model
         '</address>';
     }
 
+    /*
+	|--------------------------------------------------------------------------
+	| Query Scopes
+	|--------------------------------------------------------------------------
+	*/
+
     /**
      * Get buyer orders that are created after a specific date.
      *
@@ -93,7 +160,6 @@ class BuyerOrder extends Model
 
     }
 
-
     /**
      * Get seller orders that are not cancelled.
      *
@@ -102,31 +168,6 @@ class BuyerOrder extends Model
     public function getUncancelledSellerOrders()
     {
         return $this->seller_orders()->where('cancelled', false)->get();
-    }
-
-    public function decimalSubtotal()
-    {
-        return Price::convertIntegerToDecimal($this->subtotal);
-    }
-
-    public function decimalShipping()
-    {
-        return Price::convertIntegerToDecimal($this->shipping);
-    }
-
-    public function decimalTax()
-    {
-        return Price::convertIntegerToDecimal($this->tax);
-    }
-
-    public function decimalDiscount()
-    {
-        return Price::convertIntegerToDecimal($this->discount);
-    }
-
-    public function decimalAmount()
-    {
-        return Price::convertIntegerToDecimal($this->amount);
     }
 
     /**
@@ -326,7 +367,7 @@ class BuyerOrder extends Model
         $authorization = $paypal->getAuthorization($this->authorization_id);
 
         // get the latest buyer order total amount (it may change when a seller order gets cancelled)
-        $amount = $this->decimalAmount();
+        $amount = $this->amount;
 
         $capture = $paypal->captureAuthorizedPayment($authorization, $amount);
 

@@ -28,7 +28,7 @@
                     <td><a href="{{ url('admin/book/'.$product->book->id) }}">{{ $product->book->title }}</a></td>
                     <td class="price">
                         @if($product->price)
-                            ${{ $product->decimalPrice() }}
+                            ${{ $product->price }}
                         @else
                             N/A
                         @endif

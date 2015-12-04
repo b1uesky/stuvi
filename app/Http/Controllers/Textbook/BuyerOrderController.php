@@ -71,12 +71,13 @@ class BuyerOrderController extends Controller
         }
 
         return view('order.buyer.create')
-                ->with('subtotal', Price::convertIntegerToDecimal($this->cart->subtotal()))
-                ->with('shipping', Price::convertIntegerToDecimal($this->cart->shipping()))
-                ->with('discount', Price::convertIntegerToDecimal($this->cart->discount()))
-                ->with('tax', Price::convertIntegerToDecimal($this->cart->tax()))
-                ->with('total', Price::convertIntegerToDecimal($this->cart->total()))
-                ->with('items', $this->cart->items);
+            ->with('subtotal', number_format($this->cart->subtotal(), 2, '.', ''))
+            ->with('shipping', number_format($this->cart->shipping(), 2, '.', ''))
+            ->with('discount', number_format($this->cart->discount(), 2, '.', ''))
+            ->with('total_before_tax', number_format($this->cart->totalBeforeTax(), 2, '.', ''))
+            ->with('tax', number_format($this->cart->tax(), 2, '.', ''))
+            ->with('total', number_format($this->cart->total(), 2, '.', ''))
+            ->with('items', $this->cart->items);
     }
 
     /**
@@ -176,14 +177,14 @@ class BuyerOrderController extends Controller
                 'description'   => $item->product->book->title,
                 'currency'      => 'USD',
                 'quantity'      => 1,
-                'price'         => $item->product->decimalPrice()
+                'price'         => $item->product->price
             );
 
             array_push($items, $item_paypal);
         }
 
         // add discount as an item if necessary
-        $discount = Price::convertIntegerToDecimal($this->cart->discount());
+        $discount = $this->cart->discount();
 
         if ($discount > 0)
         {
@@ -196,16 +197,16 @@ class BuyerOrderController extends Controller
             ));
         }
 
-        // total price of all items
-        $subtotal   = Price::convertIntegerToDecimal($this->cart->subtotal()) - $discount;
+        // total price of all items, including discount item
+        $subtotal   = $this->cart->subtotal() - $discount;
 
         if ($subtotal < 0)
         {
             $subtotal = 0;
         }
 
-        $shipping   = Price::convertIntegerToDecimal($this->cart->shipping());
-        $tax        = Price::convertIntegerToDecimal($this->cart->tax());
+        $shipping   = $this->cart->shipping();
+        $tax        = $this->cart->tax();
 
         // final amount that user will pay ($subtotal includes $discount)
         $total = $subtotal + $shipping + $tax;

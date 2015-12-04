@@ -26,12 +26,12 @@ class Price {
     /**
      * Calculate tax from the total (subtotal + shipping - discount)
      *
-     * @param integer $total
-     * @return int
+     * @param decimal $total
+     * @return decimal
      */
     public static function calculateTax($total)
     {
-        return intval($total * config('sale.tax'));
+        return round($total * config('sale.tax'), 2);
     }
 
     /**

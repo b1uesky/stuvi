@@ -4,7 +4,6 @@
 
 @section('content')
 
-
         {{-- New/Picked Up switch buttons --}}
         <div class="btn-group btn-group-justified" role="group">
             <a href="{{ url('express/pickup') }}" role="button" class="btn btn-default">New</a>
@@ -65,7 +64,7 @@
             {{--<li class="list-group-item">--}}
                 {{--<h4 class="list-group-item-heading">Price</h4>--}}
                 {{--<p class="list-group-item-text price">--}}
-                    {{--${{ $seller_order->product->decimalPrice() }}--}}
+                    {{--${{ $seller_order->product->price }}--}}
                 {{--</p>--}}
             {{--</li>--}}
 
@@ -74,7 +73,7 @@
                     <h4 class="list-group-item-heading">
                         Please pay seller <span class="price">
                             @if($seller_order->buyer_order_id)
-                                ${{ $seller_order->product->decimalPrice() }}
+                                ${{ $seller_order->product->price }}
                             @else
                                 ${{ $seller_order->product->trade_in_price }}
                             @endif

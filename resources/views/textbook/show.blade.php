@@ -90,7 +90,7 @@
                             @foreach($products as $product)
                                 <tr>
                                     <td class="price">
-                                        ${{ $product->decimalPrice() }}
+                                        ${{ $product->price }}
                                     </td>
                                     <td>
                                         <strong>{{ $product->general_condition() }}</strong>

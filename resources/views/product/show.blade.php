@@ -120,7 +120,7 @@
                         <tr>
                             <th class="col-sm-6 col-xs-7">Price</th>
                             <td class="col-sm-6 col-xs-5 price">
-                                ${{ $product->decimalPrice() }}
+                                ${{ $product->price }}
                             </td>
                         </tr>
 

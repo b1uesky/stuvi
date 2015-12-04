@@ -86,7 +86,7 @@
                 <tr>
                     <td>{{ $product->id }}</td>
                     <td><a href="{{ url('admin/book/'.$product->book->id) }}">{{ $product->book->title }}</a></td>
-                    <td class="price">${{ $product->decimalPrice() }}</td>
+                    <td class="price">${{ $product->price }}</td>
                     <td class="container-flex">
                         @foreach($product->images as $image)
                             <div>

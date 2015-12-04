@@ -71,7 +71,7 @@
                 <th>Payment method</th>
                 <th>Subtotal</th>
                 <th>Discount</th>
-                <th>Fee</th>
+                <th>Shipping</th>
                 <th>Tax</th>
                 <th>Total</th>
                 @if($buyer_order->payment_method == 'paypal')
@@ -84,11 +84,11 @@
         <tbody>
             <tr>
                 <td>{{ $buyer_order->payment_method }}</td>
-                <td>${{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->subtotal) }}</td>
-                <td>- ${{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->discount) }}</td>
-                <td>${{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->fee) }}</td>
-                <td>${{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->tax) }}</td>
-                <td class="price">${{ \App\Helpers\Price::convertIntegerToDecimal($buyer_order->amount) }}</td>
+                <td>${{ $buyer_order->subtotal }}</td>
+                <td>- ${{ $buyer_order->discount }}</td>
+                <td>${{ $buyer_order->shipping }}</td>
+                <td>${{ $buyer_order->tax }}</td>
+                <td class="price">${{ $buyer_order->amount }}</td>
                 @if($buyer_order->payment_method == 'paypal')
                     <td>{{ $buyer_order->authorization_id }}</td>
                     <td>{{ $buyer_order->capture_id }}</td>

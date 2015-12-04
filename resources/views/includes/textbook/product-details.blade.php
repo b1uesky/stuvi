@@ -39,7 +39,7 @@
 
         {{-- Sale price --}}
         <div class="row padding-bottom-5">
-            Sale price: <span class="price">${{ $product->decimalPrice() }}</span>
+            Sale price: <span class="price">${{ $product->price }}</span>
         </div>
 
         {{-- isbn 10 --}}

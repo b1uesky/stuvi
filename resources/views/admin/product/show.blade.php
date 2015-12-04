@@ -19,7 +19,7 @@
             <th>Price</th>
             <td class="price">
                 @if($product->price)
-                    ${{ $product->decimalPrice() }}
+                    ${{ $product->price }}
                 @else
                     N/A
                 @endif

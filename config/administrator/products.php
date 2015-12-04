@@ -28,7 +28,7 @@ return [
         'price' => [
             'title'     => 'Price',
             'output'    => function($value) {
-                return '$'.\App\Helpers\Price::convertIntegerToDecimal($value);
+                return '$'.$value;
             }
         ],
 
@@ -134,13 +134,13 @@ return [
             'editable'  =>  false
         ],
 
-//        'price'    => [
-//            'title'         => 'Sale Price',
-//            'type'          => 'number',
-//            'symbol'        => '$',
-//            'decimals'      => 2,
-//            'editable'      => false
-//        ],
+        'price'    => [
+            'title'         => 'Sale Price',
+            'type'          => 'number',
+            'symbol'        => '$',
+            'decimals'      => 2,
+            'editable'      => false
+        ],
 
         'trade_in_price'    => [
             'title'         => 'Trade-In Price',
@@ -180,14 +180,13 @@ return [
             'title' => 'Accept Trade In'
         ],
 
-//        'price' => [
-//            'type'          => 'number',
-//            'title'         => 'Price',
-//            'description'   => 'The price in cents',
-//            'symbol'        => '$',
-//            'decimals'      => 0,
-//            'min_value'     => 100
-//        ],
+        'price' => [
+            'type'          => 'number',
+            'title'         => 'Price',
+            'symbol'        => '$',
+            'decimals'      => 2,
+            'min_value'     => 1
+        ],
 
 //        'payout_method' => [
 //            'type'      => 'enum',

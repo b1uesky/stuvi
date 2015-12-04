@@ -189,7 +189,7 @@ class ProductController extends Controller
         $price = Input::get('price');
 
         $product->update([
-            'trade_in_price'    => Price::convertDecimalToInteger($price)
+            'trade_in_price'    => $price
         ]);
 
         $seller_order = SellerOrder::where('product_id', '=', $product->id)->first();
