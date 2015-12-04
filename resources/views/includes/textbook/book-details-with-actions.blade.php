@@ -103,13 +103,13 @@
 
     {{-- actions --}}
     <div class="col-sm-2 col-xs-12 hidden-xs">
-        <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="btn btn-sm btn-warning btn-block">Sell</a>
+        <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="btn btn-warning btn-block">Sell</a>
     </div>
 
     <div class="col-xs-12 visible-xs textbook-actions-xs">
         <div class="row">
-            <div class="col-xs-4">
-                <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="btn btn-sm btn-warning btn-block">Sell</a>
+            <div class="col-xs-12">
+                <a href="{{ url('textbook/sell/product/'.$book->id.'/create') }}" class="btn btn-default btn-block">Sell</a>
             </div>
         </div>
     </div>
