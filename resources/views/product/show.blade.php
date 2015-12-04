@@ -125,7 +125,7 @@
                         </tr>
 
                         {{-- Trade-in price --}}
-                        @if($product->accept_trade_in && $product->trade_in_price > 0)
+                        @if($product->seller_id == Auth::id() && $product->accept_trade_in && $product->trade_in_price > 0)
                             <tr>
                                 <th>Trade-in price</th>
                                 <td class="price">${{ $product->trade_in_price }}</td>

@@ -32,7 +32,7 @@ class EmailSignedUpConfirmationToUser
         $user = $event->user;
 
         $email = new Email(
-            $subject = 'Welcom to Stuvi!',
+            $subject = 'Welcome to Stuvi!',
             $to = $user->primaryEmailAddress(),
             $view = 'emails.user.signed-up',
             $data = [

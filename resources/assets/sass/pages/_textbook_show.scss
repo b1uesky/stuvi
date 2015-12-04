@@ -18,16 +18,23 @@
 }
 
 .sort-bar {
-  float: right;
   .sort-by-type {
     text-transform: capitalize;
+  }
+
+  @media(min-width: $screen-sm-min) {
+    float: right;
   }
 }
 
 .filter-bar {
-  float: left;
+
   .filter-by, .dropdown {
     display: inline-block;
+  }
+
+  @media(min-width: $screen-sm-min) {
+    float: left;
   }
 }
 

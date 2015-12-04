@@ -141,7 +141,7 @@ class SellerOrder extends Model
      */
     public function isCancellable()
     {
-        return !$this->pickedUp() && !$this->cancelled;
+        return !$this->scheduledPickupTime() && !$this->pickedUp() && !$this->cancelled;
     }
 
     /**

@@ -31,7 +31,7 @@
         </div>
 
         {{-- Trade-in price --}}
-        @if($product->accept_trade_in && $product->trade_in_price > 0)
+        @if($product->seller_id == Auth::id() && $product->accept_trade_in && $product->trade_in_price > 0)
             <div class="row padding-bottom-5">
                 Trade-in price: <span class="price">${{ $product->trade_in_price }}</span>
             </div>
