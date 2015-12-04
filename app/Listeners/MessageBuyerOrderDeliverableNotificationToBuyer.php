@@ -3,11 +3,11 @@
 namespace App\Listeners;
 
 use Aloha\Twilio\Twilio;
-use App\Events\SellerOrderWasCreated;
+use App\Events\BuyerOrderWasDeliverable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class MessageSellerOrderConfirmationToSeller
+class MessageBuyerOrderDeliverableNotificationToBuyer
 {
     /**
      * Create the event listener.
@@ -22,12 +22,12 @@ class MessageSellerOrderConfirmationToSeller
     /**
      * Handle the event.
      *
-     * @param  SellerOrderWasCreated  $event
+     * @param  BuyerOrderWasDeliverable  $event
      * @return void
      */
-    public function handle(SellerOrderWasCreated $event)
+    public function handle(BuyerOrderWasDeliverable $event)
     {
-        $seller_order = $event->seller_order;
+        $buyer_order = $event->buyer_order;
 
         $twilio = new Twilio(
             config('twilio.twilio.connections.twilio.sid'),
@@ -35,10 +35,10 @@ class MessageSellerOrderConfirmationToSeller
             config('twilio.twilio.connections.twilio.from')
         );
 
-        $phone_number = $seller_order->seller()->phone_number;
-        $message = 'Schedule a pickup: Your textbook '.$seller_order->product->book->title.' posted on Stuvi was sold. '.
-            'Please schedule a pickup at your convenience: '.
-            url('/order/seller/' . $seller_order->id . '/schedulePickup');
+        $phone_number = $buyer_order->buyer->phone_number;
+        $message = 'Schedule a delivery: Your Stuvi order is ready. '.
+            'Please schedule a delivery at your convenience: '.
+            url('/order/buyer/' . $buyer_order->id . '/scheduleDelivery');
 
         $twilio->message($phone_number, $message);
     }

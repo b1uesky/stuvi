@@ -6,6 +6,7 @@ use App\Donation;
 use App\Events\BuyerOrderWasDeliverable;
 use App\Events\DonationWasAssignedToCourier;
 use App\Events\SellerOrderWasAssignedToCourier;
+use App\Events\SellerOrderWasPickedUp;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -187,22 +188,24 @@ class PickupController extends Controller
         {
             if ($seller_order->isSoldToUser())
             {
-                $seller_order->cash_paid = $seller_order->product->price - config('sale.service_fee');
+                $seller_order->cash_paid = $seller_order->product->price;
             }
 
             if ($seller_order->isSoldToStuvi())
             {
-                $seller_order->cash_paid = $seller_order->product->trade_in_price - config('sale.service_fee');
+                $seller_order->cash_paid = $seller_order->product->trade_in_price;
             }
 
             $seller_order->save();
         }
 
-        // if sell to stuvi, pay the seller
-        if ($seller_order->isSoldToStuvi())
+        // if sell to stuvi and payment method is paypal, pay the seller
+        if ($seller_order->isSoldToStuvi() && $seller_order->product->payout_method == 'paypal')
         {
             $seller_order->payout();
         }
+
+        event(new SellerOrderWasPickedUp($seller_order));
 
         // if all seller orders of a buyer order are picked up
         // then the buyer order is deliverable

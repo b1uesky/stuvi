@@ -36,7 +36,7 @@ class MessageProductCreatedNotificationToStuvi
         );
 
         $phone_number = config('customer_service.phone');
-        $message = 'Product #' . $product->id . ' was created: '.url('textbook/buy/product/'.$product->id);
+        $message = 'New book was posted: '.url('textbook/buy/product/'.$product->id);
 
         $twilio->message($phone_number, $message);
 

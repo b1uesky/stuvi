@@ -81,15 +81,15 @@
                         </span> in cash.
                     </h4>
 
-                    @if(config('sale.payout_service') > 0)
-                        <p class="list-group-item-text">
-                            Sale price: ${{ $seller_order->product->decimalPrice() }}
-                        </p>
+                    {{--@if(config('sale.payout_service') > 0)--}}
+                        {{--<p class="list-group-item-text">--}}
+                            {{--Sale price: ${{ $seller_order->product->decimalPrice() }}--}}
+                        {{--</p>--}}
 
-                        <p class="list-group-item-text">
-                            Payout service fee: -${{ \App\Helpers\Price::convertIntegerToDecimal(config('sale.payout_service')) }}
-                        </p>
-                    @endif
+                        {{--<p class="list-group-item-text">--}}
+                            {{--Payout service fee: -${{ \App\Helpers\Price::convertIntegerToDecimal(config('sale.payout_service')) }}--}}
+                        {{--</p>--}}
+                    {{--@endif--}}
 
                 </li>
             @endif

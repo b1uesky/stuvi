@@ -64,11 +64,13 @@ class EventServiceProvider extends ServiceProvider {
 
 		'App\Events\BuyerOrderWasPlaced' => [
 			'App\Listeners\EmailBuyerOrderConfirmationToBuyer',
-			'App\Listeners\MessageBuyerOrderPlacedNotificationToStuvi',
+//			'App\Listeners\MessageBuyerOrderPlacedNotificationToStuvi',
 		],
 
+		// when all seller orders are picked up
 		'App\Events\BuyerOrderWasDeliverable' => [
 			'App\Listeners\EmailBuyerOrderDeliverableNotificationToBuyer',
+			'App\Listeners\MessageBuyerOrderDeliverableNotificationToBuyer',
 		],
 
 		'App\Events\BuyerOrderDeliveryWasScheduled' => [

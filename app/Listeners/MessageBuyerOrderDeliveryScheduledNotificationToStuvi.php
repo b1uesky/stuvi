@@ -36,7 +36,9 @@ class MessageBuyerOrderDeliveryScheduledNotificationToStuvi
         );
 
         $phone_number = config('customer_service.phone');
-        $message = 'Delivery: Buyer order #' . $buyer_order->id . ' was scheduled at ' . $buyer_order->scheduled_delivery_time . '.';
+        $message = 'Express Delivery: Buyer order #' . $buyer_order->id . '. '.
+            'Scheduled time: ' . \App\Helpers\DateTime::showDatetime($buyer_order->scheduled_delivery_time).' '.
+            url('/express/deliver/' . $buyer_order->id);
 
         $twilio->message($phone_number, $message);
 

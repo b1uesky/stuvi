@@ -28,7 +28,7 @@ class CapturePaypalAuthorizedPaymentFromBuyer
     {
         $buyer_order = $event->buyer_order;
 
-        if ($buyer_order->payment_method == 'paypal')
+        if ($buyer_order->payment_method == 'paypal' && !$buyer_order->capture_id)
         {
             $buyer_order->capturePayment();
         }

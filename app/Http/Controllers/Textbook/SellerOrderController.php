@@ -195,7 +195,7 @@ class SellerOrderController extends Controller
         event(new SellerOrderPickupWasScheduled($seller_order));
 
         return redirect('order/seller')
-            ->withSuccess("You have successfully updated the pickup and we'll email you the details shortly.");
+            ->withSuccess("You have successfully scheduled a pickup and we'll notify you once our courier is ready to pick up your book.");
     }
 
     /**

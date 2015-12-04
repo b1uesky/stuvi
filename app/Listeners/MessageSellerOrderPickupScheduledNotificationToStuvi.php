@@ -36,7 +36,9 @@ class MessageSellerOrderPickupScheduledNotificationToStuvi
         );
 
         $phone_number = config('customer_service.phone');
-        $message = 'Pickup: Seller order #' . $seller_order->id . ' was scheduled at ' . $seller_order->scheduled_pickup_time . '.';
+        $message = 'Express Pickup: '. $seller_order->book()->title.'. '.
+            'Scheduled time: ' . \App\Helpers\DateTime::showDatetime($seller_order->scheduled_pickup_time) . ' '.
+            url('/express/pickup/' . $seller_order->id);
 
         $twilio->message($phone_number, $message);
 
