@@ -146,7 +146,7 @@ class BuyerOrder extends Model
      */
     public function isCancellable()
     {
-        if ($this->isDelivered() || $this->cancelled)
+        if ($this->isScheduled() || $this->isDelivered() || $this->cancelled)
         {
             return false;
         }
