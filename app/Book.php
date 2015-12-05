@@ -9,6 +9,7 @@ use File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Intervention\Image\Facades\Image;
+use Response;
 
 class Book extends Model
 {
@@ -70,7 +71,7 @@ class Book extends Model
 
     public function getLowestPriceAttribute($value)
     {
-        return Price::convertIntegerToDecimal($value);
+        return $value != null ? Price::convertIntegerToDecimal($value) : null;
     }
 
     public function setLowestPriceAttribute($value)
@@ -80,7 +81,7 @@ class Book extends Model
 
     public function getHighestPriceAttribute($value)
     {
-        return Price::convertIntegerToDecimal($value);
+        return $value != null ? Price::convertIntegerToDecimal($value) : null;
     }
 
     public function setHighestPriceAttribute($value)
@@ -90,7 +91,7 @@ class Book extends Model
 
     public function getListPriceAttribute($value)
     {
-        return Price::convertIntegerToDecimal($value);
+        return $value != null ? Price::convertIntegerToDecimal($value) : null;
     }
 
     public function setListPriceAttribute($value)
@@ -162,7 +163,7 @@ class Book extends Model
     public function addPrice($price)
     {
         // if both are not set, set them to the same price
-        if ($this->lowest_price == null && $this->highest_price == null) {
+        if (!$this->lowest_price && !$this->highest_price) {
             $this->lowest_price = $price;
             $this->highest_price = $price;
             $this->save();
