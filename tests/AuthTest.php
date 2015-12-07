@@ -8,7 +8,7 @@ class AuthTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testUserRegistration()
+    public function test_user_registration()
     {
         $this->withoutEvents();
 
