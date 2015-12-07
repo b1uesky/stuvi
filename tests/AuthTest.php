@@ -12,16 +12,18 @@ class AuthTest extends TestCase
     {
         $this->withoutEvents();
 
+        $faker = \Faker\Factory::create();
+
         $user = [
-            'first_name'    => 'Wayne',
-            'last_name'     => 'Snyder',
-            'password'      => bcrypt('123456'),
-            'phone_number'  => '8572655018',
-            'university_id' => '1'
+            'first_name'    => $faker->firstName,
+            'last_name'     => $faker->lastName,
+            'password'      => $faker->password(6),
+            'phone_number'  => $faker->numerify('857#######'),
+            'university_id' => 1
         ];
 
         $email = [
-            'email_address' => 'johnwayne@bu.edu'
+            'email_address' => $faker->firstName . '@bu.edu'
         ];
 
         $this->visit('/auth/register')
@@ -32,22 +34,13 @@ class AuthTest extends TestCase
             ->type($user['phone_number'], 'phone_number')
             ->select($user['university_id'], 'university_id')
             ->press('Sign Up')
-            ->seeInDatabase('users', ['first_name' => $user['first_name']])
+            ->seeInDatabase('users', [
+                'first_name'    => $user['first_name'],
+                'last_name'     => $user['last_name'],
+                'phone_number'  => $user['phone_number'],
+                'university_id' => $user['university_id']
+            ])
             ->seeInDatabase('emails', $email)
             ->seePageIs('/user/activate');
-    }
-
-    public function testUserLogin()
-    {
-        $user = [
-            'email'     => 'seller@bu.edu',
-            'password'  => '123456'
-        ];
-
-        $this->visit('/auth/login')
-            ->type($user['email'], 'email')
-            ->type($user['password'], 'password')
-            ->press('Login')
-            ->seePageIs('/home');
     }
 }
