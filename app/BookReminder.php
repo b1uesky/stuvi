@@ -9,6 +9,12 @@ class BookReminder extends Model
     protected $table = 'book_reminders';
     protected $guarded = [];
 
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
+
     public function book()
     {
         return $this->belongsTo('App\Book');
@@ -18,6 +24,12 @@ class BookReminder extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /*
+	|--------------------------------------------------------------------------
+	| Methods
+	|--------------------------------------------------------------------------
+	*/
 
     public static function exists($book_id, $user_id)
     {

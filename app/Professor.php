@@ -17,6 +17,12 @@ class Professor extends Model
      */
     public $timestamps = false;
 
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
+
     /**
      * Get all universities that this professor belongs to.
      *

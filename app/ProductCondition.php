@@ -8,6 +8,12 @@ class ProductCondition extends Model
     protected $table = 'product_conditions';
     protected $guarded = [];
 
+    /*
+   |--------------------------------------------------------------------------
+   | Relationships
+   |--------------------------------------------------------------------------
+   */
+
     /**
      * Get the product.
      *
@@ -17,6 +23,12 @@ class ProductCondition extends Model
     {
         return $this->belongsTo('App\Product');
     }
+
+    /*
+   |--------------------------------------------------------------------------
+   | Methods
+   |--------------------------------------------------------------------------
+   */
 
     /**
      * Check if it has description.

@@ -117,6 +117,12 @@ class Book extends Model
         return $query->where('created_at', '>=', $date);
     }
 
+    /*
+	|--------------------------------------------------------------------------
+	| Methods
+	|--------------------------------------------------------------------------
+	*/
+
     /**
      * Get the book's authors' names.
      *
@@ -271,112 +277,6 @@ class Book extends Model
             $books = collect($results)->map(function ($book) {
                 return Book::find($book->id);
             });
-        }
-
-        return $books;
-    }
-
-    /**
-     * @deprecated
-     * Search for books that can be delivered to buyer's university given query title and buyer id.
-     *
-     * @param $query
-     * @param $buyer_id
-     * @return mixed
-     */
-    public static function queryWithBuyerID($query, $buyer_id)
-    {
-        return Book::queryBooks($query, $buyer_id, 'buyer_id');
-    }
-
-    /**
-     * @deprecated
-     * Search for books that can be delivered to a specific university given query title and university id.
-     *
-     * @param $query
-     * @param $university_id
-     * @return mixed
-     */
-    public static function queryWithUniversityID($query, $university_id)
-    {
-        return Book::queryBooks($query, $university_id, 'university_id');
-    }
-
-    /**
-     * @deprecated
-     * Buy book search query.
-     *
-     * @param $query
-     * @param $id
-     * @param $type
-     * @return mixed
-     */
-    protected static function queryBooks($query, $id, $type)
-    {
-        if (trim($query) == '')
-        {
-            // search for all books
-            $books = Book::join('book_authors as a', 'a.book_id', '=', 'books.id')
-                ->join('products as p', 'p.book_id', '=', 'books.id')
-                ->join('users as seller', 'seller.id', '=', 'p.seller_id')
-                ->where('is_verified', true)
-                ->whereIn('seller.university_id', function ($q) {
-                    $q->select('id')
-                        ->from('universities')
-                        ->where('is_public', '=', true);
-                })
-                ->whereIn('seller.university_id', function ($q) use ($id, $type) {
-                    if ($type == 'buyer_id')
-                    {
-                        $q->select('uu.from_uid')
-                            ->from(DB::raw('users as buyer, university_university as uu'))
-                            ->where('buyer.id', '=', $id);
-                    }
-
-                    if ($type == 'university_id')
-                    {
-                        $q->select('from_uid')->distinct()
-                            ->from('university_university')
-                            ->where('to_uid', '=', $id);
-                    }
-                })
-                ->select('books.*')->distinct()->get();
-        }
-        else
-        {
-            // full text search against the query
-            $books = Book::whereRaw(
-                "MATCH(title, isbn10, isbn13) AGAINST(? IN BOOLEAN MODE)" .
-                "OR MATCH(a.full_name) AGAINST(? IN BOOLEAN MODE)",
-                // wildcard can only append to the word, i.e.,'*word'
-                // is not allowed in MySQL full text search
-                [$query . '*', $query . '*']
-            )
-                ->join('book_authors as a', 'a.book_id', '=', 'books.id')
-                ->join('products as p', 'p.book_id', '=', 'books.id')
-                ->join('users as seller', 'seller.id', '=', 'p.seller_id')
-                ->where('is_verified', true)
-                ->whereIn('seller.university_id', function ($q) {
-                    $q->select('id')
-                        ->from('universities')
-                        ->where('is_public', '=', true);
-                })
-                ->whereIn('seller.university_id', function ($q) use ($id, $type) {
-                    if ($type == 'buyer_id')
-                    {
-                        $q->select('uu.from_uid')
-                            ->from(DB::raw('users as buyer, university_university as uu'))
-                            ->where('buyer.id', '=', $id);
-                    }
-
-                    if ($type == 'university_id')
-                    {
-                        $q->select('from_uid')->distinct()
-                            ->from('university_university')
-                            ->where('to_uid', '=', $id);
-                    }
-                })
-                ->select('books.*')->distinct()->get();
         }
 
         return $books;

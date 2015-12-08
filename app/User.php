@@ -28,6 +28,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'remember_token',
     ];
 
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
+
     /**
      * Get all buyer orders of this user.
      *
@@ -164,6 +170,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         return $this->hasMany('App\UserReferral', 'reference_user_id');
     }
 
+    /*
+	|--------------------------------------------------------------------------
+	| Query Scopes
+	|--------------------------------------------------------------------------
+	*/
 
     /**
      * Get users who signed up after a specific date.
@@ -176,6 +187,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         return $query->where('created_at', '>=', $date);
     }
+
+    /*
+	|--------------------------------------------------------------------------
+	| Methods
+	|--------------------------------------------------------------------------
+	*/
 
     /**
      * Get the user primary email address.
@@ -280,21 +297,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function isActivated()
     {
         return $this->collegeEmail()->verified;
-    }
-
-    /**
-     * Return Yes/No to indicate if the user is activated
-     *
-     * @return string
-     */
-    public function isActivatedToStr()
-    {
-        if ($this->isActivated())
-        {
-            return 'Yes';
-        }
-
-        return 'No';
     }
 
     /**

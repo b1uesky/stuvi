@@ -11,20 +11,6 @@ class Contact extends Model
     protected $guarded = [];
 
     /**
-     * Validation rules.
-     *
-     * @return array
-     */
-    public static function rules()
-    {
-        return [
-            'name'      => 'required|string',
-            'email'     => 'required|email',
-            'message'   => 'required|string'
-        ];
-    }
-
-    /**
      * Return Y: the contact message is replied.
      * Return N: otherwise.
      *
@@ -40,5 +26,19 @@ class Contact extends Model
         {
             return 'No';
         }
+    }
+
+    /**
+     * Validation rules.
+     *
+     * @return array
+     */
+    public static function rules()
+    {
+        return [
+            'name'      => 'required|string',
+            'email'     => 'required|email',
+            'message'   => 'required|string'
+        ];
     }
 }

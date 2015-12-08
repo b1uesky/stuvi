@@ -17,6 +17,12 @@ class College extends Model
      */
     public $timestamps = false;
 
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
+
     /**
      * Get the university that this college belongs to.
      *
