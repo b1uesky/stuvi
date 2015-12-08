@@ -11,3 +11,5 @@ resources/assets/semantic
 **.DS_Store
 **.swp
 tags
+
+tests/_output/*

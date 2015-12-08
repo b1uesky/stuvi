@@ -17,7 +17,9 @@
 		"roumen/sitemap": "^2.5",
 	  	"paypal/rest-api-sdk-php": "1.5.0",
 		"desmond/beautymail": "dev-master",
-		"frozennode/administrator": " 5.*"
+		"frozennode/administrator": " 5.*",
+		"mikey179/vfsStream": "^1.6",
+		"codeception/codeception": "*"
 	},
     "repositories": [
       {
