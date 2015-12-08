@@ -7,6 +7,9 @@
 class_name: AcceptanceTester
 modules:
     enabled:
-        - PhpBrowser:
+        - WebDriver:
             url: http://stuvi.app
+            browser: firefox
+            capabilities:
+              unexpectedAlertBehaviour: 'accept'
         - \Helper\Acceptance
