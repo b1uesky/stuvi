@@ -240,8 +240,13 @@ class Book extends Model
         // if empty query, search for all books
         if (trim($query) == '')
         {
-            $books = Book::where('is_verified', true)
-                ->orderBy('created_at', 'desc')
+            $books = Book::leftJoin('products as p', 'p.book_id', '=', 'books.id')
+                ->where('books.is_verified', true)
+                ->orderBy('p.verified', 'desc')
+                ->groupBy('books.id')
+                ->orderBy('books.created_at', 'desc')
+                ->select('books.*')
+                ->distinct()
                 ->take(50)
                 ->get();
         }
