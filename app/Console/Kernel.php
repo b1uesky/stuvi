@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel {
 	protected function schedule(Schedule $schedule)
 	{
 		$schedule->command('reminder:pickup')->dailyAt('17:00');
-		$schedule->command('daily-summary:report')->dailyAt('19:00');
+		$schedule->command('daily-summary:report')->dailyAt('23:59');
 	}
 
 }
