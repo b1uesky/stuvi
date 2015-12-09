@@ -133,7 +133,7 @@ class TextbookController extends Controller
             // if book is in the database
             if ($book)
             {
-                return view('textbook.confirm')
+                return redirect('textbook/confirm/'.$book->id)
                     ->with('book', $book);
             }
             else
@@ -152,7 +152,7 @@ class TextbookController extends Controller
 
                 if ($book)
                 {
-                    return view('textbook.confirm')
+                    return redirect('textbook/confirm/'.$book->id)
                         ->with('book', $book)
                         ->with('query', $query);
                 }

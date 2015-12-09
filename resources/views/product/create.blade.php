@@ -11,7 +11,7 @@
         <div class="row">
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Home</a></li>
-                <li><a href="{{ url('textbook/sell/product/' . $book->id . '/confirm') }}">Confirm</a></li>
+                <li><a href="{{ url('textbook/confirm/'.$book->id) }}">Confirm</a></li>
                 <li class="active">Sell your book</li>
             </ol>
         </div>
