@@ -56,6 +56,10 @@ class EventServiceProvider extends ServiceProvider {
 			'App\Listeners\EmailProductRejectedNotificationToSeller',
 		],
 
+		'App\Events\ProductHasInvalidPhoto'	=> [
+			'App\Listeners\EmailProductHasInvalidPhotoToSeller',
+		],
+
 		/*
 		|--------------------------------------------------------------------------
 		| Buyer order events

@@ -333,6 +333,28 @@ return [
 
                 return true;
             }
+        ],
+
+        'request_new_photo' => [
+
+            'title' => 'Request new photo (email)',
+
+            'messages'  => [
+                'active'    => 'Sending email...',
+                'success'   => 'Email sent!',
+                'error'     => 'There was an error while sending the email.'
+            ],
+
+            'action'    => function(&$product) {
+                if ($product->sold)
+                {
+                    return 'Error: This book has been sold.';
+                }
+
+                event(new \App\Events\ProductHasInvalidPhoto($product));
+
+                return true;
+            }
         ]
 
     ]
