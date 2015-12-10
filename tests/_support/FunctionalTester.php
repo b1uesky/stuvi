@@ -23,7 +23,6 @@ class FunctionalTester extends \Codeception\Actor
    /**
     * Define custom actions here
     */
-
     /**
      * Login as a user.
      *
@@ -38,4 +37,5 @@ class FunctionalTester extends \Codeception\Actor
         $I->fillField('password', $password);
         $I->click('#login-body button[type="submit"]');
     }
+
 }
