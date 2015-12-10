@@ -243,7 +243,6 @@ class Book extends Model
             $books = Book::leftJoin('products as p', 'p.book_id', '=', 'books.id')
                 ->where('books.is_verified', true)
                 ->orderBy('p.verified', 'desc')
-                ->groupBy('books.id')
                 ->orderBy('books.created_at', 'desc')
                 ->select('books.*')
                 ->distinct()
