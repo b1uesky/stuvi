@@ -376,7 +376,7 @@ class SellerOrder extends Model
             {
                 $this->buyerOrder->cancel($cancelled_by);
 
-                event(new BuyerOrderWasCancelled($this->buyerOrder()));
+                event(new BuyerOrderWasCancelled($this->buyerOrder));
             }
 
             // update book price range
