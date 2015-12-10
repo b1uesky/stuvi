@@ -12,6 +12,12 @@ class Email extends Model
     protected $table = 'emails';
     protected $guarded = [];
 
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
+
     /**
      * Get the user that this user email belongs to.
      *
@@ -21,6 +27,12 @@ class Email extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /*
+	|--------------------------------------------------------------------------
+	| Methods
+	|--------------------------------------------------------------------------
+	*/
 
     /**
      * Check whether this email belongs to the given user
@@ -55,6 +67,27 @@ class Email extends Model
     }
 
     /**
+     * Verify an account with a code.
+     *
+     * @param $code
+     *
+     * @return bool
+     */
+    public function verify($code)
+    {
+        if ($code === $this->verification_code)
+        {
+            $this->update([
+                'verified'  => true,
+            ]);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Validation register rules.
      *
      * @return array
@@ -77,26 +110,5 @@ class Email extends Model
         return [
             'email' => 'required|email|max:255',
         ];
-    }
-
-    /**
-     * Verify an account with a code.
-     *
-     * @param $code
-     *
-     * @return bool
-     */
-    public function verify($code)
-    {
-        if ($code === $this->verification_code)
-        {
-            $this->update([
-                'verified'  => true,
-            ]);
-
-            return true;
-        }
-
-        return false;
     }
 }

@@ -10,6 +10,12 @@ class ProductImage extends Model {
     protected $table = 'product_images';
     protected $guarded = [];
 
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
+
     /**
      * Get the product.
      *
@@ -19,6 +25,12 @@ class ProductImage extends Model {
 	{
 		return $this->belongsTo('App\Product');
 	}
+
+    /*
+	|--------------------------------------------------------------------------
+	| Methods
+	|--------------------------------------------------------------------------
+	*/
 
     /**
      * Check if it is a test image.
