@@ -9,8 +9,9 @@ $product = \App\Product::where('sold', false)
     ->where('seller_id', '!=', 4)
     ->first();
 
-$I->amOnAction('Textbook\CartController@addItem', $product->id);
-$I->amOnPage('/cart');
+$I->amOnPage('/textbook/buy/product/'.$product->id);
+$I->click('Add to cart');
+$I->seeCurrentUrlEquals('/cart');
 $I->click('Proceed to checkout');
 $I->seeCurrentUrlEquals('/order/create');
 $I->fillField('input[name="payment_method"]', 'cash');
