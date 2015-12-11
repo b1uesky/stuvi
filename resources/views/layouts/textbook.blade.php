@@ -22,6 +22,7 @@
 </div>
 
 @include('includes.modal.login-signup')
+@include('includes.modal.cart')
 
 {{-- footer --}}
 @include('includes.textbook.footer')

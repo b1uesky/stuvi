@@ -14,11 +14,6 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                {{--<a href="{{ url('/') }}" class="navbar-brand navbar-brand-lg">--}}
-                    {{--<img src="https://s3.amazonaws.com/stuvi-logo/stuvi-logo-sm.png" class="" alt="stuvi logo">--}}
-                    {{--<span class="logo-text-white">Stuvi</span>--}}
-                {{--</a>--}}
-
                 <a href="{{ url('/') }}" class="navbar-brand navbar-brand-lg">
                     <span class="logo-text-white">Stuvi</span>
                 </a>
@@ -64,7 +59,7 @@
                         <li id="cart">
                             <?php $cartQty = Auth::user()->cart->quantity; ?>
                             <div class="input-group">
-                                <a href="{{ url('cart') }}" class="btn btn-default navbar-btn">
+                                <a class="btn btn-default navbar-btn" data-toggle="modal" data-target="#cart-popup">
                                     <span class="glyphicon glyphicon-shopping-cart"></span>
                                     <span>Cart</span>
 

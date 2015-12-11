@@ -67,7 +67,7 @@ class BuyerOrderController extends Controller
         if (!$this->cart->isValid())
         {
             return redirect('/cart')
-                ->with('error', 'Cannot proceed to checkout because one or more items in your cart are sold. Please press "Update" button.');
+                ->with('error', 'Cannot proceed to checkout because one or more items in your cart are sold.');
         }
 
         return view('order.buyer.create')

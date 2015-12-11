@@ -56,7 +56,7 @@ class Cart extends Model
             $price += $cart_item->product->price;
         }
 
-        return $price;
+        return number_format($price, 2, '.', '');
     }
 
     /**
