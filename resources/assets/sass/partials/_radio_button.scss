@@ -2,34 +2,34 @@
 
 // convert radio button to a normal button
 .radio-button-group {
-}
+  .radio-inline {
+    padding-left: 0;
 
-.radio-inline {
-  padding-left: 0;
-
-  @media (max-width: 340px) {
-    font-size: x-small;
+    @media (max-width: 340px) {
+      font-size: x-small;
+    }
   }
-}
 
-input[type=radio] {
-  display: none;
-}
+  input[type=radio] {
+    display: none;
+  }
 
-input[type=radio] + span {
-  padding: 6px 12px;
-  background-color: #eee;
-  color: lighten($text-color, 15%);
-  font-weight: 600;
-  border-radius: 2px;
+  input[type=radio] + span {
+    padding: 6px 12px;
+    background-color: #eee;
+    color: lighten($text-color, 15%);
+    font-weight: 600;
+    border-radius: 2px;
 
-  &:hover {
-    background-color: lighten($turquoise, 5%);
+    &:hover {
+      background-color: lighten($turquoise, 5%);
+      color: white;
+    }
+  }
+
+  input[type=radio]:checked + span {
+    background-color: $turquoise;
     color: white;
   }
 }
 
-input[type=radio]:checked + span {
-  background-color: $turquoise;
-  color: white;
-}

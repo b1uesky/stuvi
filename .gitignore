@@ -6,6 +6,7 @@ public/css
 public/js
 resources/assets/libs
 resources/assets/semantic
+semantic/
 .env
 .idea/
 **.DS_Store
