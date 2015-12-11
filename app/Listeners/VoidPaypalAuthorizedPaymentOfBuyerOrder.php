@@ -27,7 +27,12 @@ class VoidPaypalAuthorizedPaymentOfBuyerOrder
      */
     public function handle(BuyerOrderWasCancelled $event)
     {
-        $paypal = new Paypal();
-        $paypal->voidAuthorization($event->buyer_order->authorization_id);
+        $buyer_order = $event->buyer_order;
+
+        if ($buyer_order->payment_method == 'paypal' && $buyer_order->authorization_id)
+        {
+            $paypal = new Paypal();
+            $paypal->voidAuthorization($event->buyer_order->authorization_id);
+        }
     }
 }

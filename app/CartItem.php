@@ -11,6 +11,12 @@ class CartItem extends Model
     protected $table = 'cart_items';
     protected $guarded = [];
 
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
+
     /**
      * Get the cart that this cart item belongs to.
      *

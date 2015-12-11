@@ -17,6 +17,12 @@ class Major extends Model
      */
     public $timestamps = false;
 
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
+
     /**
      * Get the college that this major belongs to.
      *

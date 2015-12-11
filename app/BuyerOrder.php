@@ -160,6 +160,12 @@ class BuyerOrder extends Model
 
     }
 
+    /*
+	|--------------------------------------------------------------------------
+	| Methods
+	|--------------------------------------------------------------------------
+	*/
+
     /**
      * Get seller orders that are not cancelled.
      *
@@ -388,31 +394,6 @@ class BuyerOrder extends Model
                 $seller_order->payout();
             }
         }
-    }
-
-    /**
-     * Build a query for searching buyer orders sold by keywords.
-     *
-     * @param $keywords
-     *
-     * @return mixed
-     */
-    public static function buildQueryWithBuyerName($keywords)
-    {
-        $keywords = explode(' ', $keywords);
-
-        $query = BuyerOrder::join('users as u', 'buyer_orders.buyer_id', '=', 'u.id');
-
-        foreach ($keywords as $keyword)
-        {
-            $query = $query->where(function ($query) use ($keyword)
-            {
-                $query->where('u.first_name', 'LIKE', $keyword);
-                $query->orWhere('u.last_name', 'LIKE', $keyword);
-            });
-        }
-
-        return $query->select('buyer_orders.*')->distinct();
     }
 
     public static function rules()

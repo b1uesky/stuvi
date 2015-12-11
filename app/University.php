@@ -16,21 +16,11 @@ class University extends Model
      */
     public $timestamps = false;
 
-    /**
-     * Check if the given email has the same email suffix as this university.
-     *
-     * @param $email
-     *
-     * @return bool
-     */
-	public function matchEmailSuffix($email)
-    {
-        if (preg_match('/.*@'.$this->email_suffix.'\z/i', $email))
-        {
-            return true;
-        }
-        return false;
-    }
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
 
     /**
      * Get all colleges that belongs to this university.
@@ -70,6 +60,28 @@ class University extends Model
     public function toUniversities()
     {
         return $this->hasMany('App\University', 'university_university', 'to_uid', 'id');
+    }
+
+    /*
+	|--------------------------------------------------------------------------
+	| Methods
+	|--------------------------------------------------------------------------
+	*/
+
+    /**
+     * Check if the given email has the same email suffix as this university.
+     *
+     * @param $email
+     *
+     * @return bool
+     */
+    public function matchEmailSuffix($email)
+    {
+        if (preg_match('/.*@'.$this->email_suffix.'\z/i', $email))
+        {
+            return true;
+        }
+        return false;
     }
 
     /**

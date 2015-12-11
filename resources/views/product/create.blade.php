@@ -11,7 +11,7 @@
         <div class="row">
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Home</a></li>
-                <li><a href="{{ url('textbook/sell/product/' . $book->id . '/confirm') }}">Confirm</a></li>
+                <li><a href="{{ url('textbook/confirm/'.$book->id) }}">Confirm</a></li>
                 <li class="active">Sell your book</li>
             </ol>
         </div>
@@ -142,14 +142,14 @@
 
                 {{--Upload Images using Dropzone--}}
                 <div class="form-group">
-                    <label class="col-md-3 col-sm-4 controll-label">Upload images</label>
+                    <label class="col-md-3 col-sm-4 controll-label">Upload textbook photos</label>
 
                     <div class="col-md-9 col-sm-8">
                         <div id="dropzone-img-preview" class="dropzone-previews dz-clickable">
                             <div class="dz-message">
                                 <h4>
-                                    <span class="glyphicon glyphicon-picture"></span>
-                                    Drop or click here to upload textbook images.
+                                    <span class="glyphicon glyphicon-camera"></span>
+                                    Drop or click here to upload photos.
                                 </h4>
                                 <br>
 

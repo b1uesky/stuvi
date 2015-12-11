@@ -20,38 +20,22 @@ class Address extends Model
     protected $guarded = [];
     protected $dates = ['deleted_at'];
 
-    /**
-     * Get the rules of addressee, street, city, state, zip
-     *
-     * @return array
-     */
-    public static function rules() {
-        $rules = array(
-            'addressee'     => 'required|string|Max:100',
-            'address_line1' => 'required|string|Max:100',
-            'address_line2' => 'string|Max:100',
-            'city'          => 'required|string',
-            'state_a2'      => 'required|Alpha|size:2',
-            'zip'           => 'required|AlphaDash|Min:5|Max:10', // https://www.barnesandnoble.com/help/cds2.asp?PID=8134
-            'phone_number'  => 'required|string'
-        );
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
 
-        if(config('addresses::show_country')) {
-            $rules['country_a2'] = 'required|Alpha|size:2';
-        }
-
-        return $rules;
-    }
-
-    /**
-     * Get all shipping addresses of the current user.
-     *
-     * @return mixed
-     */
-    public function userAddresses()
+    public function user()
     {
-        return Address::where('user_id','=',Auth::id());
+        return $this->belongsTo('App\User');
     }
+
+    /*
+	|--------------------------------------------------------------------------
+	| Methods
+	|--------------------------------------------------------------------------
+	*/
 
     public function isBelongTo($user_id)
     {
@@ -85,5 +69,28 @@ class Address extends Model
             'is_default' => false,
             'is_enabled' => false
         ]);
+    }
+
+    /**
+     * Get the rules of addressee, street, city, state, zip
+     *
+     * @return array
+     */
+    public static function rules() {
+        $rules = array(
+            'addressee'     => 'required|string|Max:100',
+            'address_line1' => 'required|string|Max:100',
+            'address_line2' => 'string|Max:100',
+            'city'          => 'required|string',
+            'state_a2'      => 'required|Alpha|size:2',
+            'zip'           => 'required|AlphaDash|Min:5|Max:10', // https://www.barnesandnoble.com/help/cds2.asp?PID=8134
+            'phone_number'  => 'required|string'
+        );
+
+        if(config('addresses::show_country')) {
+            $rules['country_a2'] = 'required|Alpha|size:2';
+        }
+
+        return $rules;
     }
 }

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stuvi - Login & Register</title>
+
+    <link rel="icon" type="image/png" href="https://s3.amazonaws.com/stuvi-logo/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="https://s3.amazonaws.com/stuvi-logo/favicon-16x16.png" sizes="16x16" />
+    <link rel="stylesheet" href="http://stuvi.app/build/css/textbook.css">
+
+    </head>
+
+<body>
+        <div class="container-alert">
+
+        <div class="session-alert">
+
+        
+        
+        
+        
+        
+        
+        
+                    </div>
+
+        <div class="js-alert">
+            </div>
+
+</div>
+    
+    <div class="container container-login-signup">
+        <div class="row">
+
+            <div class="logo-container-lg">
+                <a href="http://stuvi.app">
+                    <img src="https://s3.amazonaws.com/stuvi-logo/stuvi-logo-md.png">
+
+                    <span>Stuvi</span>
+                </a>
+            </div>
+
+
+
+            <ul class="nav nav-pills nav-justified" role="tablist">
+                <!-- login -->
+                <li role="presentation" class=" active">
+                    <a href="#login-body" aria-controls="login-body" role="tab" data-toggle="tab">Login</a>
+                </li>
+                <!-- signup -->
+                <li role="presentation" class="">
+                    <a href="#signup-body" aria-controls="signup-body" role="tab" data-toggle="tab">Sign Up</a>
+                </li>
+            </ul>
+
+            <br>
+
+            <div class="tab-content">
+                <div id="login-body" class="tab-pane  active">
+                    <form method="POST" action="http://stuvi.app/auth/login">
+                        <input type="hidden" name="_token" value="j9EISwDb8YXffU1hny5K4jwVVeiKWobaCKbqR4bP">
+                        <!-- email -->
+                        <div class="form-group">
+                            <label class="sr-only" for="login-email">Email address</label>
+                            <input type="email" class="form-control" name="email" placeholder="Email address"
+                                   value="">
+                        </div>
+                        <!-- password -->
+                        <div class="form-group">
+                            <label class="sr-only" for="login-password">Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="Password">
+                        </div>
+                        <!-- remember -->
+                        <div class="form-group">
+                            <label for="remember-me-box">
+                                <input type="checkbox" name="remember" checked> Remember Me
+                            </label>
+
+                            <div class="pull-right">
+                                <a href="http://stuvi.app/password/email">Forgot Your Password?</a>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </form>
+                </div>
+
+                <div id="signup-body" class="tab-pane ">
+                    <form method="POST" action="http://stuvi.app/auth/register">
+                        <input type="hidden" name="_token" value="j9EISwDb8YXffU1hny5K4jwVVeiKWobaCKbqR4bP">
+                        <!-- first name -->
+                        <div class="form-group">
+                            <label class="sr-only">First name</label>
+                            <input type="text" class="form-control" name="first_name" placeholder="First Name"
+                                   value="">
+                        </div>
+                        <!-- last name -->
+                        <div class="form-group">
+                            <label class="sr-only">Last name</label>
+                            <input type="text" class="form-control" name="last_name" placeholder="Last Name"
+                                   value="">
+                        </div>
+                        <!-- email -->
+                        <div class="form-group">
+                            <label class="sr-only">Email address</label>
+                            <input type="email" class="form-control" name="email" placeholder="Email (.edu required)"
+                                   value="">
+                        </div>
+                        <!-- password -->
+                        <div class="form-group">
+                            <label class="sr-only">Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="Password">
+                        </div>
+                        <!-- phone number -->
+                        <div class="form-group">
+                            <label class="sr-only">Phone Number</label>
+                            <input type="tel" class="form-control" name="phone_number" placeholder="Phone Number"
+                                   value="">
+                        </div>
+                        <!-- school -->
+                        <div class="form-group">
+                            <select class="form-control selectpicker" name="university_id">
+                                <label class="sr-only" for="register-uni">University</label>
+                                <option id="register-uni" selected disabled>University / College</option>
+                                                                    <option value="1">Boston University</option>
+                                                                    <option value="2">Massachusetts Institute of Technology</option>
+                                                                    <option value="3">Northeastern University</option>
+                                                                    <option value="4">Harvard University</option>
+                                                            </select>
+                        </div>
+
+                                                <div class="form-group">
+                            <label class="sr-only">Reference Email</label>
+                            <input type="email" class="form-control" name="reference_email" placeholder="Who referred you to Stuvi? (Email, optional)">
+                        </div>
+
+                        <div class="form-group">
+                            <small>By signing up, you agree to Stuvi's <a href="http://stuvi.app/tos" target="_blank"> Terms
+                                    of Service</a>
+                                and <a href="http://stuvi.app/privacy" target="_blank"> Privacy Notice</a>.
+                            </small>
+                        </div>
+                        <!-- sign up button-->
+                        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="http://stuvi.app/build/js/textbook.js"></script>
+</body>
+</html>

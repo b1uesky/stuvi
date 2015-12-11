@@ -12,6 +12,12 @@ class BookImageSet extends Model
     protected $table = 'book_image_sets';
     protected $guarded = [];
 
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
+
     /**
      * Get the book.
      *
@@ -21,6 +27,12 @@ class BookImageSet extends Model
     {
         return $this->belongsTo('App\Book');
     }
+
+    /*
+	|--------------------------------------------------------------------------
+	| Methods
+	|--------------------------------------------------------------------------
+	*/
 
     /**
      * Get an image path with specific size.

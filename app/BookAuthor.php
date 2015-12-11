@@ -8,6 +8,12 @@ class BookAuthor extends Model
     protected $table = 'book_authors';
     protected $guarded = [];
 
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
+
     /**
      * Get the book.
      *

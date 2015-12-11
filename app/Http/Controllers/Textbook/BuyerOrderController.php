@@ -118,12 +118,12 @@ class BuyerOrderController extends Controller
 
                 event(new BuyerOrderWasCancelled($buyer_order));
 
-                return redirect('order/buyer/' . $id)
+                return redirect('order/buyer/' . $buyer_order->id)
                     ->with('success', 'Your order has been cancelled.');
             }
             else
             {
-                return redirect('order/buyer/' . $id)
+                return redirect('order/buyer/' . $buyer_order->id)
                     ->with('error', 'Sorry, this order cannot be cancelled.');
             }
         }

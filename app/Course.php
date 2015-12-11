@@ -17,6 +17,12 @@ class Course extends Model
      */
     public $timestamps = false;
 
+    /*
+	|--------------------------------------------------------------------------
+	| Relationships
+	|--------------------------------------------------------------------------
+	*/
+
     /**
      * Get the major that this class belongs to.
      *

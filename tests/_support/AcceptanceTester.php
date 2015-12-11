@@ -23,16 +23,19 @@ class AcceptanceTester extends \Codeception\Actor
    /**
     * Define custom actions here
     */
-    function login()
+
+    /**
+     * Login as a user.
+     *
+     * @param $email
+     * @param $password
+     */
+    function login($email, $password)
     {
-        // if snapshot exists - skipping login
-        if ($this->loadSessionSnapshot('login')) return;
-        // logging in
-        $this->amOnPage('/auth/login');
-        $this->fillField('email', 'seller@bu.edu');
-        $this->fillField('password', '123456');
-        $this->click('#login-body button[type="submit"]');
-        // saving snapshot
-        $this->saveSessionSnapshot('login');
+        $I = $this;
+        $I->amOnPage('/auth/login');
+        $I->fillField('email', $email);
+        $I->fillField('password', $password);
+        $I->click('#login-body button[type="submit"]');
     }
 }

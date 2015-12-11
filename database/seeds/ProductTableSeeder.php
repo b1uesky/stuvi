@@ -25,18 +25,18 @@ class ProductTableSeeder extends Seeder {
             // create some products
             for ($i = 0; $i < $faker->numberBetween(3, 10); $i++)
             {
-                $int_price = $faker->numberBetween(1000, 5000);
+                $price = $faker->numberBetween(10, 100);
 
                 $product = Product::create([
                     'book_id'   => $book->id,
                     'seller_id' => $faker->numberBetween(1, $num_users),
-                    'price'     => $int_price,
+                    'price'     => $price,
                     'available_at'  => \Carbon\Carbon::now()->toDateString(),
                     'verified'  => true,
                     'payout_method' => 'paypal'
                 ]);
 
-                $product->book->addPrice($int_price);
+                $product->book->addPrice($price);
 
                 ProductCondition::create([
                     'product_id'            =>  $product->id,
