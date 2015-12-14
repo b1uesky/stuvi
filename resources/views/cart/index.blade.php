@@ -46,7 +46,7 @@
                             <tbody>
 
                             @foreach($items as $item)
-                                <tr value="{{ $item->product_id }}">
+                                <tr data-product-id="{{ $item->product_id }}">
                                     {{-- Book --}}
                                     <td>
                                         {{--Book image --}}
@@ -62,7 +62,7 @@
                                     {{-- ISBN --}}
                                     <td class="hidden-xs">{{ $item->product->book->isbn10 }}</td>
                                     {{-- Price --}}
-                                    <td class="price">${{ $item->product->price }}</td>
+                                    <td>${{ $item->product->price }}</td>
                                     {{-- Remove --}}
                                     <td>
                                         <button type="button" class="close remove-cart-item" aria-label="Close"><span

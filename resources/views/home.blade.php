@@ -64,7 +64,7 @@
                                 <li id="cart">
                                     <?php $cartQty = Auth::user()->cart->quantity; ?>
                                     <div class="input-group">
-                                        <a href="{{ url('cart') }}" class="btn btn-default navbar-btn">
+                                        <a class="btn btn-default navbar-btn" data-toggle="modal" data-target="#cart-popup">
                                             <span class="glyphicon glyphicon-shopping-cart"></span>
                                             <span>Cart</span>
 

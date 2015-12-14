@@ -126,6 +126,7 @@ class CartController extends Controller
 
                 return Response::json([
                     'success'   => true,
+                    'quantity' => $this->cart->quantity,
                     'message'   => 'Product Added Successfully.'
                 ]);
             }
@@ -183,7 +184,7 @@ class CartController extends Controller
             return Response::json([
                 'removed'   => true,
                 'subtotal'  => $this->cart->subtotal(),
-                'num_items' => count($this->cart->items)
+                'quantity' => $this->cart->quantity
             ]);
         }
     }

@@ -109,14 +109,14 @@
 
                                         @if($loggedin)
                                             @if($product->isInCart(Auth::user()->id))
-                                                <a class="btn btn-success btn-block add-cart-btn disabled" href="#" role="button">
-                                                    <span class="glyphicon glyphicon-ok"></span>
+                                                <a class="btn btn-default btn-block add-cart-btn disabled" href="#" role="button">
                                                     Added to cart
                                                 </a>
                                             @elseif(!$product->isSold())
                                                 @if($product->seller_id != Auth::id())
                                                     <form method="post" class="add-to-cart" action="{{ url('cart/add/' . $product->id) }}">
                                                         {!! csrf_field() !!}
+                                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
                                                         <button type="submit" class="btn btn-default btn-block add-cart-btn">
                                                             <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
                                                         </button>
