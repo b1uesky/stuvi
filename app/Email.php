@@ -41,7 +41,7 @@ class Email extends Model
      *
      * @return bool
      */
-    public function isBelongTo($user_id)
+    public function belongsToUser($user_id)
     {
         return $this->user_id == $user_id;
     }

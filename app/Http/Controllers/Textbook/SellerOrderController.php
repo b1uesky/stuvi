@@ -49,7 +49,7 @@ class SellerOrderController extends Controller
     public function show($seller_order)
     {
         // check if this order belongs to the current user.
-        if (!is_null($seller_order) && $seller_order->isBelongTo(Auth::id()))
+        if (!is_null($seller_order) && $seller_order->belongsToUser(Auth::id()))
         {
             return view('order.seller.show')
                 ->with('seller_order', $seller_order);
@@ -81,7 +81,7 @@ class SellerOrderController extends Controller
         $cancel_reason = Input::get('cancel_reason');
 
         // check if this order belongs to the current user.
-        if ($seller_order->isBelongTo(Auth::id()))
+        if ($seller_order->belongsToUser(Auth::id()))
         {
             if ($seller_order->isCancellable())
             {
@@ -118,7 +118,7 @@ class SellerOrderController extends Controller
         $seller_order = SellerOrder::find($seller_order_id);
 
         // check if this order belongs to the current user.
-        if ($seller_order->isBelongTo(Auth::id()))
+        if ($seller_order->belongsToUser(Auth::id()))
         {
             if ($seller_order->isCancellable())
             {
@@ -146,7 +146,7 @@ class SellerOrderController extends Controller
      */
     public function schedulePickup($seller_order)
     {
-        if ($seller_order->isBelongTo(Auth::id()) && $seller_order->isPickupSchedulable())
+        if ($seller_order->belongsToUser(Auth::id()) && $seller_order->isPickupSchedulable())
         {
             return view('order.seller.schedulePickup')
                 ->withSellerOrder($seller_order);
@@ -165,7 +165,7 @@ class SellerOrderController extends Controller
      */
     public function confirmPickup($seller_order)
     {
-        if (!$seller_order->isBelongTo(Auth::id()) || !$seller_order->isPickupSchedulable())
+        if (!$seller_order->belongsToUser(Auth::id()) || !$seller_order->isPickupSchedulable())
         {
             return redirect('order/seller')
                 ->with('error', 'You cannot update the pickup details for this order.');
@@ -207,7 +207,7 @@ class SellerOrderController extends Controller
     public function payout($seller_order)
     {
         // check if this seller order belongs to the current user, or null.
-        if (empty($seller_order) || !$seller_order->isBelongTo(Auth::id()))
+        if (empty($seller_order) || !$seller_order->belongsToUser(Auth::id()))
         {
             return redirect('/order/seller')
                 ->with('error', 'Order not found.');

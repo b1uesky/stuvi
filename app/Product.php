@@ -311,14 +311,13 @@ class Product extends Model
     }
 
     /**
-     * TODO: change name to belongsTo
      * Check whether this product is belong to a given user.
      *
      * @param $user_id
      *
      * @return bool
      */
-    public function isBelongTo($user_id)
+    public function belongsToUser($user_id)
     {
         return $this->seller_id == $user_id;
     }

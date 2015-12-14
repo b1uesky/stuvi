@@ -183,7 +183,7 @@ class BuyerOrder extends Model
      *
      * @return bool
      */
-    public function isBelongTo($id)
+    public function belongsToUser($id)
     {
         return ($this->buyer_id == $id);
     }

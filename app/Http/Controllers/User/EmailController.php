@@ -102,7 +102,7 @@ class EmailController extends Controller
     {
         $email = Email::find(Input::get('id'));
 
-        if ($email && $email->isBelongTo(Auth::id()))
+        if ($email && $email->belongsToUser(Auth::id()))
         {
             if ($email->isPrimary())    // cannot delete primary email
             {
@@ -149,7 +149,7 @@ class EmailController extends Controller
     {
         $email = Email::find($id);
 
-        if (!($email && $email->isBelongTo(Auth::id())))
+        if (!($email && $email->belongsToUser(Auth::id())))
         {
             $msg_type   = 'danger';
             $msg_content = 'Sorry, the requested email cannot be found.';

@@ -37,7 +37,7 @@ class Address extends Model
 	|--------------------------------------------------------------------------
 	*/
 
-    public function isBelongTo($user_id)
+    public function belongsToUser($user_id)
     {
         return $this->user_id == $user_id;
     }

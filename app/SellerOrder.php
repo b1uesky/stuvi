@@ -177,7 +177,7 @@ class SellerOrder extends Model
      *
      * @return bool
      */
-    public function isBelongTo($id)
+    public function belongsToUser($id)
     {
         return ($this->product->seller_id == $id);
     }

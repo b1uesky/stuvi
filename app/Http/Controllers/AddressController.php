@@ -63,7 +63,7 @@ class AddressController extends Controller
     {
 //        $address_id = Input::get('address_id');
 //        $address = Address::find($address_id);
-//        if ($address->isBelongTo(Auth::id())){
+//        if ($address->belongsToUser(Auth::id())){
 //            return Response::json([
 //                'success' => true,
 //                'address' => $address->toArray()

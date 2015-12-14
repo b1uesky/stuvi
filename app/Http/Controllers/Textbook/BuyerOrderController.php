@@ -90,7 +90,7 @@ class BuyerOrderController extends Controller
     public function show($buyer_order)
     {
         // check if this order belongs to the current user.
-        if (!empty($buyer_order) && $buyer_order->isBelongTo(Auth::id()))
+        if (!empty($buyer_order) && $buyer_order->belongsToUser(Auth::id()))
         {
             return view('order.buyer.show')
                 ->with('buyer_order', $buyer_order);
@@ -110,7 +110,7 @@ class BuyerOrderController extends Controller
     public function cancel($buyer_order)
     {
         // check if this order belongs to the current user.
-        if ($buyer_order && $buyer_order->isBelongTo(Auth::id()))
+        if ($buyer_order && $buyer_order->belongsToUser(Auth::id()))
         {
             if ($buyer_order->isCancellable())
             {
@@ -413,7 +413,7 @@ class BuyerOrderController extends Controller
      */
     public function scheduleDelivery($buyer_order)
     {
-        if ($buyer_order->isBelongTo(Auth::id()) && $buyer_order->isDeliverySchedulable())
+        if ($buyer_order->belongsToUser(Auth::id()) && $buyer_order->isDeliverySchedulable())
         {
             return view('order.buyer.scheduleDelivery')
                 ->with('buyer_order', $buyer_order);
@@ -431,7 +431,7 @@ class BuyerOrderController extends Controller
      */
     public function confirmDelivery($buyer_order)
     {
-        if (!$buyer_order->isBelongTo(Auth::id()) || !$buyer_order->isDeliverySchedulable())
+        if (!$buyer_order->belongsToUser(Auth::id()) || !$buyer_order->isDeliverySchedulable())
         {
             return redirect()->back()
                 ->with('error', 'You cannot update the delivery details for this order.');

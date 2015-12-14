@@ -310,7 +310,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         $email = Email::find($email_id);
 
-        if ($email && $email->isBelongTo($this->id) && $email->verified)
+        if ($email && $email->belongsToUser($this->id) && $email->verified)
         {
             $this->update([
                 'primary_email_id' => $email_id,

@@ -163,7 +163,7 @@ class ProductController extends Controller
      */
     public function edit($product)
     {
-        if (!($product && $product->isBelongTo(Auth::id())))
+        if (!($product && $product->belongsToUser(Auth::id())))
         {
             return back()
                 ->with('error', 'Sorry, the product is not found.');
@@ -203,7 +203,7 @@ class ProductController extends Controller
 
         $v->after(function($v) use ($product)
         {
-            if (!($product || $product->isBelongTo(Auth::id())))
+            if (!($product || $product->belongsToUser(Auth::id())))
             {
                 $v->errors()->add('product', 'The book is not found.');
             }
@@ -323,7 +323,7 @@ class ProductController extends Controller
         $product = Product::find(Input::get('id'));
 
         // check if it belongs to the current user.
-        if (!($product && $product->isBelongTo(Auth::id())))
+        if (!($product && $product->belongsToUser(Auth::id())))
         {
             return redirect('/user/bookshelf')
                 ->with('error', 'Please enter a valid product id.');
