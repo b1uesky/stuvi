@@ -74,6 +74,7 @@ class TextbookController extends Controller
         {
             $products = $query
                 ->orderBy('price')
+                ->select('products.*')
                 ->get();
         }
         elseif ($order == 'condition')
