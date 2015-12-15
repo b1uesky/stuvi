@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 use App\SellerOrder;
+use Auth;
 
 class CancelTradeInRequest extends Request
 {
