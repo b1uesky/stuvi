@@ -7,8 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\University;
 use Auth;
-use Aws\Laravel\AwsFacade;
-use Aws\S3\Exception\S3Exception;
 use DB;
 use GoogleBooks\GoogleBooks;
 use Illuminate\Http\Request;
@@ -220,6 +218,7 @@ class TextbookController extends Controller
     }
 
     /**
+     * @deprecated
      * Store a newly created book in storage.
      * Only if the input ISBN is not in our database and amazon database.
      *
