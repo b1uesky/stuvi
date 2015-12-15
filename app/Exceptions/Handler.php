@@ -29,7 +29,7 @@ class Handler extends ExceptionHandler {
 		if ($this->shouldReport($e)) {
 			$this->log->error($e);
 
-			// send exception report to admin
+			// email exception report
 			if (app()->environment() == 'production' && !env('APP_DEBUG'))
 			{
 				$data = [
@@ -39,10 +39,13 @@ class Handler extends ExceptionHandler {
 						'trace'		=> $e->getTraceAsString()
 				];
 
-				Mail::queue('emails.exception-report', $data, function($message) {
-					$message->to('kingdido999@gmail.com');
-					$message->subject('Stuvi Exception Report');
-				});
+				foreach (config('exception.mailing_list') as $email)
+				{
+					Mail::queue('emails.exception-report', $data, function($message) use ($email) {
+						$message->to($email);
+						$message->subject('Stuvi Exception Report');
+					});
+				}
 			}
 		}
 	}
