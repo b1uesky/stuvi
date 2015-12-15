@@ -464,14 +464,4 @@ class SellerOrder extends Model
 
         return $payout_item;
     }
-
-    public static function confirmPickupRules()
-    {
-        $rules = array(
-            'address_id'            => 'required|exists:addresses,id',
-            'scheduled_pickup_time' => 'required|date'
-        );
-
-        return $rules;
-    }
 }
