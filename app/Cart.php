@@ -66,7 +66,7 @@ class Cart extends Model
      */
     public function shipping()
     {
-        return config('sale.shipping');
+        return number_format(config('sale.shipping'), 2, '.', '');
     }
 
     /**
@@ -76,7 +76,7 @@ class Cart extends Model
      */
     public function discount()
     {
-        return config('sale.discount');
+        return number_format(config('sale.discount'), 2, '.', '');
     }
 
     /**
@@ -96,7 +96,7 @@ class Cart extends Model
      */
     public function totalBeforeTax()
     {
-        return $this->subtotal() + $this->shipping() - $this->discount();
+        return number_format($this->subtotal() + $this->shipping() - $this->discount(), 2, '.', '');
     }
 
     /**
@@ -106,7 +106,7 @@ class Cart extends Model
      */
     public function total()
     {
-        return $this->totalBeforeTax() + $this->tax();
+        return number_format($this->totalBeforeTax() + $this->tax(), 2, '.', '');
     }
 
     /**

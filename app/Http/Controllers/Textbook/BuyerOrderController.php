@@ -71,12 +71,12 @@ class BuyerOrderController extends Controller
         }
 
         return view('order.buyer.create')
-            ->with('subtotal', number_format($this->cart->subtotal(), 2, '.', ''))
-            ->with('shipping', number_format($this->cart->shipping(), 2, '.', ''))
-            ->with('discount', number_format($this->cart->discount(), 2, '.', ''))
-            ->with('total_before_tax', number_format($this->cart->totalBeforeTax(), 2, '.', ''))
-            ->with('tax', number_format($this->cart->tax(), 2, '.', ''))
-            ->with('total', number_format($this->cart->total(), 2, '.', ''))
+            ->with('subtotal', $this->cart->subtotal())
+            ->with('shipping', $this->cart->shipping())
+            ->with('discount', $this->cart->discount())
+            ->with('total_before_tax', $this->cart->totalBeforeTax())
+            ->with('tax', $this->cart->tax())
+            ->with('total', $this->cart->total())
             ->with('items', $this->cart->items);
     }
 
