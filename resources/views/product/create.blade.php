@@ -153,10 +153,8 @@
                                 </h4>
                                 <br>
 
-                                <p class="text-muted">A front cover image is required.</p>
-
-                                <p class="text-muted">You can upload a maximum of
-                                    three images, at most 3MB per image.</p>
+                                <p class="text-muted">A real front cover photo is required in order to help others better understand your book conditions.</p>
+                                <p class="text-muted">You can upload a maximum of 3 images, at most 3MB per image.</p>
                             </div>
                         </div>
                     </div>
