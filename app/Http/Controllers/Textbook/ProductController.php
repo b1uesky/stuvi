@@ -157,26 +157,17 @@ class ProductController extends Controller
     /**
      * Show product edit page.
      *
+     * @param $request
      * @param Product $product
      *
      * @return $this|\Illuminate\Http\RedirectResponse
      */
-    public function edit($product)
+    public function edit(Requests\EditProductRequest $request, $product)
     {
-        if (!($product && $product->belongsToUser(Auth::id())))
+        if ($product->sold || $product->isDeleted())
         {
             return back()
-                ->with('error', 'Sorry, the product is not found.');
-        }
-        elseif ($product->sold)
-        {
-            return back()
-                ->with('error', 'Product is sold.');
-        }
-        elseif ($product->isDeleted())
-        {
-            return back()
-                ->with('error', 'Product is archived.');
+                ->with('error', 'This book is not available.');
         }
 
         return view('product.edit')
@@ -186,14 +177,15 @@ class ProductController extends Controller
     }
 
     /**
+     * @need_refactor
      * Update product info.
      *
      * If AJAX, we'll update images.
      *
-     * @param Request $request
+     * @param $request
      * @return mixed
      */
-    public function update(Request $request)
+    public function update(Requests\UpdateProductRequest $request)
     {
         $product = Product::find(Input::get('product_id'));
         $images = Input::file('file');
@@ -203,17 +195,9 @@ class ProductController extends Controller
 
         $v->after(function($v) use ($product)
         {
-            if (!($product || $product->belongsToUser(Auth::id())))
+            if ($product->sold || $product->isDeleted())
             {
-                $v->errors()->add('product', 'The book is not found.');
-            }
-            elseif ($product->sold)
-            {
-                $v->errors()->add('product', 'The book was sold');
-            }
-            elseif ($product->isDeleted())
-            {
-                $v->errors()->add('product', 'The book is archived.');
+                $v->errors()->add('product', 'This book is not available.');
             }
         });
 
@@ -310,30 +294,18 @@ class ProductController extends Controller
     /**
      * Delete a product record.
      *
+     * @param $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy()
+    public function destroy(Requests\DestroyProductRequest $request)
     {
-        if (!Input::has('id'))
-        {
-            return redirect('/user/bookshelf')
-                ->with('error', 'Please enter a valid product id.');
-        }
-
-        $product = Product::find(Input::get('id'));
-
-        // check if it belongs to the current user.
-        if (!($product && $product->belongsToUser(Auth::id())))
-        {
-            return redirect('/user/bookshelf')
-                ->with('error', 'Please enter a valid product id.');
-        }
+        $product = Product::find($request->get('id'));
 
         // check if it is sold.
-        if ($product->sold)
+        if ($product->sold || $product->isDeleted())
         {
             return redirect('/user/bookshelf')
-                ->with('error', $product->book->title.' cannot be deleted because it is sold.');
+                ->with('error', 'Cannot delete this book.');
         }
 
         $book = $product->book;
@@ -387,13 +359,14 @@ class ProductController extends Controller
     /**
      * Accept a product for Stuvi Book Trade-in Program.
      *
+     * @param $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function joinTradeIn()
+    public function joinTradeIn(Requests\JoinTradeInRequest $request)
     {
-        $product = Product::find(Input::get('product_id'));
+        $product = Product::find($request->get('product_id'));
 
-        if ($product && $product->seller_id == Auth::id() && $product->verified && !$product->sold)
+        if ($product->verified && !$product->sold)
         {
             if (!$product->accept_trade_in)
             {
