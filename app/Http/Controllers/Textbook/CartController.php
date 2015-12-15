@@ -37,10 +37,11 @@ class CartController extends Controller
     {
         $items = $this->cart->items;
 
-        // check the Cart
+        // make sure no sold items in the cart
         if (!$this->cart->isValid())
         {
-            Session::flash('error', 'One or more items in your cart has sold. Please update your cart before proceeding to checkout.');
+            $this->cart->removeSoldItems();
+            Session::flash('error', 'One or more items in your cart was sold. Please confirm your items before checking out.');
         }
 
         return view('cart.index')
