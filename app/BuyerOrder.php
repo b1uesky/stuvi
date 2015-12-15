@@ -395,22 +395,4 @@ class BuyerOrder extends Model
             }
         }
     }
-
-    public static function rules()
-    {
-        $rules = array(
-            'selected_address_id'   => 'required|exists:addresses,id',
-            'payment_method'        => 'required|string|in:paypal,cash'
-        );
-
-        return $rules;
-    }
-
-    public static function confirmDeliveryRules()
-    {
-        return [
-            'address_id'            => 'required|exists:addresses,id',
-            'scheduled_delivery_time' => 'required|date'
-        ];
-    }
 }

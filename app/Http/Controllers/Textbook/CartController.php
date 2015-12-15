@@ -208,7 +208,7 @@ class CartController extends Controller
      */
     public function updateCart()
     {
-        $this->cart->validate();
+        $this->cart->removeSoldItems();
 
         return redirect('cart');
     }

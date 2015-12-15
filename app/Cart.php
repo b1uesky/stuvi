@@ -152,7 +152,7 @@ class Cart extends Model
     /**
      * Remove all sold items in cart.
      */
-    public function validate()
+    public function removeSoldItems()
     {
         foreach ($this->items as $item) {
             if ($item->product->sold) {

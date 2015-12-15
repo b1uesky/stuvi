@@ -10,6 +10,11 @@ use App\Helpers\DateTime;
 use App\Helpers\Paypal;
 use App\Helpers\Price;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CancelBuyerOrderRequest;
+use App\Http\Requests\ConfirmDeliveryRequest;
+use App\Http\Requests\ScheduleDeliveryRequest;
+use App\Http\Requests\ShowBuyerOrderRequest;
+use App\Http\Requests\StoreBuyerOrderRequest;
 use App\SellerOrder;
 use Auth;
 use DB;
@@ -64,10 +69,13 @@ class BuyerOrderController extends Controller
                 ->with('error', 'Cannot proceed to checkout because cart is empty.');
         }
 
+        // make sure no item in the cart was sold
         if (!$this->cart->isValid())
         {
+            $this->cart->removeSoldItems();
+
             return redirect('/cart')
-                ->with('error', 'Cannot proceed to checkout because one or more items in your cart are sold.');
+                ->with('error', 'One or more items in your cart are sold. Please confirm your items and try again.');
         }
 
         return view('order.buyer.create')
@@ -83,53 +91,41 @@ class BuyerOrderController extends Controller
     /**
      * Display a specific buyer order.
      *
-     * @param  BuyerOrder $buyer_order
+     * @param $request
+     * @param BuyerOrder $buyer_order
      *
      * @return Response
      */
-    public function show($buyer_order)
+    public function show(ShowBuyerOrderRequest $request, $buyer_order)
     {
-        // check if this order belongs to the current user.
-        if (!empty($buyer_order) && $buyer_order->belongsToUser(Auth::id()))
-        {
-            return view('order.buyer.show')
-                ->with('buyer_order', $buyer_order);
-        }
-
-        return redirect('order/buyer')
-            ->with('error', 'Order not found.');
+        return view('order.buyer.show')
+            ->with('buyer_order', $buyer_order);
     }
 
     /**
      * Cancel a specific buyer order and corresponding seller orders.
      *
+     * @param $request
      * @param BuyerOrder $buyer_order
      *
      * @return RedirectResponse
      */
-    public function cancel($buyer_order)
+    public function cancel(CancelBuyerOrderRequest $request, $buyer_order)
     {
-        // check if this order belongs to the current user.
-        if ($buyer_order && $buyer_order->belongsToUser(Auth::id()))
+        if ($buyer_order->isCancellable())
         {
-            if ($buyer_order->isCancellable())
-            {
-                $buyer_order->cancel(Auth::id());
+            $buyer_order->cancel(Auth::id());
 
-                event(new BuyerOrderWasCancelled($buyer_order));
+            event(new BuyerOrderWasCancelled($buyer_order));
 
-                return redirect('order/buyer/' . $buyer_order->id)
-                    ->with('success', 'Your order has been cancelled.');
-            }
-            else
-            {
-                return redirect('order/buyer/' . $buyer_order->id)
-                    ->with('error', 'Sorry, this order cannot be cancelled.');
-            }
+            return redirect('order/buyer/' . $buyer_order->id)
+                ->with('success', 'Your order has been cancelled.');
         }
-
-        return redirect('order/buyer')
-            ->with('error', 'Order not found.');
+        else
+        {
+            return redirect('order/buyer/' . $buyer_order->id)
+                ->with('error', 'Sorry, this order cannot be cancelled.');
+        }
     }
 
     /**
@@ -151,71 +147,68 @@ class BuyerOrderController extends Controller
     /**
      * Store a newly created buyer order and corresponding seller order(s) in storage.
      *
+     * @param $request
      * @return Response
      */
-    public function store()
+    public function store(StoreBuyerOrderRequest $request)
     {
+        // make sure no item in the cart was sold
         if (!$this->cart->isValid())
         {
-            return redirect('/cart')->with('error', 'Cannot proceed to checkout because one or more items in your cart are sold. Please press "Update" button.');
+            $this->cart->removeSoldItems();
+
+            return redirect('/cart')
+                ->with('error', 'One or more items in your cart are sold. Please confirm your items and try again.');
         }
-
-        $v = Validator::make(Input::all(), BuyerOrder::rules());
-
-        if ($v->fails())
-        {
-            return redirect()->back()->withErrors($v->errors());
-        }
-
-        // Paypal items
-        $items = array();
-
-        foreach ($this->cart->items as $item)
-        {
-            $item_paypal = array(
-                'name'          => $item->product->book->title,
-                'description'   => $item->product->book->title,
-                'currency'      => 'USD',
-                'quantity'      => 1,
-                'price'         => $item->product->price
-            );
-
-            array_push($items, $item_paypal);
-        }
-
-        // add discount as an item if necessary
-        $discount = $this->cart->discount();
-
-        if ($discount > 0)
-        {
-            array_push($items, array(
-                'name'          => 'Discount',
-                'description'   => 'Discount',
-                'currency'      => 'USD',
-                'quantity'      => 1,
-                'price'         => - $discount
-            ));
-        }
-
-        // total price of all items, including discount item
-        $subtotal   = $this->cart->subtotal() - $discount;
-
-        if ($subtotal < 0)
-        {
-            $subtotal = 0;
-        }
-
-        $shipping   = $this->cart->shipping();
-        $tax        = $this->cart->tax();
-
-        // final amount that user will pay ($subtotal includes $discount)
-        $total = $subtotal + $shipping + $tax;
 
         $shipping_address_id = Input::get('selected_address_id');
         $payment_method = Input::get('payment_method');
 
         if ($payment_method == 'paypal')
         {
+            // Paypal items
+            $items = array();
+            foreach ($this->cart->items as $item)
+            {
+                $item_paypal = array(
+                    'name'          => $item->product->book->title,
+                    'description'   => $item->product->book->title,
+                    'currency'      => 'USD',
+                    'quantity'      => 1,
+                    'price'         => $item->product->price
+                );
+                array_push($items, $item_paypal);
+            }
+
+            $discount = $this->cart->discount();
+            $shipping   = $this->cart->shipping();
+            $tax        = $this->cart->tax();
+
+            // We subtract discount from subtotal because PayPal API
+            // do not have a param for discount
+            $subtotal   = $this->cart->subtotal() - $discount;
+
+            // add discount as a paypal item
+            if ($discount > 0)
+            {
+                array_push($items, array(
+                    'name'          => 'Discount',
+                    'description'   => 'Discount',
+                    'currency'      => 'USD',
+                    'quantity'      => 1,
+                    'price'         => - $discount
+                ));
+            }
+
+            // subtotal cannot be less than 0
+            if ($subtotal < 0)
+            {
+                $subtotal = 0;
+            }
+
+            // final amount ($subtotal already includes $discount)
+            $total = $subtotal + $shipping + $tax;
+
             $paypal = new Paypal();
             $payment = $paypal->authorizePaymentByPalpal($items, $subtotal, $shipping, $tax, $total, $shipping_address_id);
             $approvalUrl = $payment->getApprovalLink();
@@ -223,8 +216,7 @@ class BuyerOrderController extends Controller
             // redirect user to Paypal checkout page
             return Redirect::to($approvalUrl);
         }
-
-        if ($payment_method == 'cash')
+        elseif ($payment_method == 'cash')
         {
             // create buyer order
             $order = BuyerOrder::create([
@@ -250,79 +242,6 @@ class BuyerOrderController extends Controller
             return redirect('/order/confirmation')
                 ->with('order', $order);
         }
-
-        //        if ($payment_method == 'credit_card')
-//        {
-//            // prepare credit card info
-//            $number                 = preg_replace('/[^\d]/', '', Input::get('number')); // digits only
-//            $type                   = Paypal::getCreditCardType($number);
-//            $expire_month           = Input::get('expire_month');
-//            $expire_year            = Paypal::getFullExpireYear(Input::get('expire_year'));
-//            $cvv                    = Input::get('cvc');
-//            $name                   = strtoupper(Input::get('name'));
-//            $first_name             = explode(' ', $name)[0];
-//            $last_name              = explode(' ', $name)[1];
-//
-//            // validation
-//            $v = Validator::make(array(
-//                'address_id'    => $shipping_address_id,
-//                'number'        => $number,
-//                'type'          => $type,
-//                'expire_month'  => $expire_month,
-//                'expire_year'   => $expire_year,
-//                'cvv'           => $cvv,
-//                'first_name'    => $first_name,
-//                'last_name'     => $last_name
-//            ), Paypal::rules());
-//
-//            if ($v->fails())
-//            {
-//                return redirect()->back()
-//                    ->withErrors($v->errors());
-//            }
-//
-//            // Paypal address
-//            $address = Address::find($shipping_address_id)->toArray();
-//
-//            // Paypal credit card
-//            $credit_card = array(
-//                'type'          => $type,
-//                'number'        => $number,
-//                'expire_month'  => $expire_month,
-//                'expire_year'   => $expire_year,
-//                'cvv'           => $cvv,
-//                'first_name'    => $first_name,
-//                'last_name'     => $last_name
-//            );
-//
-//            $paypal = new Paypal();
-//            $authorization = $paypal->authorizePaymentByCreditCard($address, $credit_card, $items, $subtotal, $shipping, $tax, $total);
-//
-//            // create buyer order
-//            $order = BuyerOrder::create([
-//                'buyer_id'              => Auth::id(),
-//                'shipping_address_id'   => $shipping_address_id,
-//                'tax'                   => $this->cart->tax(),
-//                'shipping'              => $this->cart->shipping(),
-//                'discount'              => $this->cart->discount(),
-//                'subtotal'              => $this->cart->subtotal(),
-//                'amount'                => Price::convertDecimalToInteger($total),
-//                'authorization_id'      => $authorization->getId()
-//
-//            ]);
-//
-//            // create seller order(s) according to the Cart items
-//            $this->createSellerOrders($order->id);
-//
-//            // remove payed items from Cart
-//            $this->cart->clear();
-//
-//            // send confirmation email to buyer
-//            event(new BuyerOrderWasPlaced($order));
-//
-//            return redirect('/order/confirmation')
-//                ->with('order', $order);
-//        }
     }
 
     /**
@@ -408,40 +327,37 @@ class BuyerOrderController extends Controller
     /**
      * Schedule delivery page.
      *
+     * @param $request
      * @param BuyerOrder $buyer_order
      * @return $this
      */
-    public function scheduleDelivery($buyer_order)
+    public function scheduleDelivery(ScheduleDeliveryRequest $request, $buyer_order)
     {
-        if ($buyer_order->belongsToUser(Auth::id()) && $buyer_order->isDeliverySchedulable())
+        if ($buyer_order->isDeliverySchedulable())
         {
             return view('order.buyer.scheduleDelivery')
                 ->with('buyer_order', $buyer_order);
         }
-
-        return redirect()->back()
-            ->with('error', 'You cannot update the delivery details for this order.');
+        else
+        {
+            return redirect()->back()
+                ->with('error', 'You cannot update the delivery details for this order.');
+        }
     }
 
     /**
      * Confirm delivery.
      *
+     * @param $request
      * @param BuyerOrder $buyer_order
      * @return mixed
      */
-    public function confirmDelivery($buyer_order)
+    public function confirmDelivery(ConfirmDeliveryRequest $request, $buyer_order)
     {
-        if (!$buyer_order->belongsToUser(Auth::id()) || !$buyer_order->isDeliverySchedulable())
+        if (!$buyer_order->isDeliverySchedulable())
         {
             return redirect()->back()
                 ->with('error', 'You cannot update the delivery details for this order.');
-        }
-
-        $v = Validator::make(Input::all(), BuyerOrder::confirmDeliveryRules());
-
-        if ($v->fails())
-        {
-            return redirect()->back()->withErrors($v->errors());
         }
 
         $buyer_order->update([
@@ -453,6 +369,6 @@ class BuyerOrderController extends Controller
         event(new BuyerOrderDeliveryWasScheduled($buyer_order));
 
         return redirect('order/buyer')
-            ->withSuccess("You have successfully scheduled the delivery and we'll notify you once your book is on the way.");
+            ->with('success', "You have successfully scheduled the delivery and we'll notify you once your book is on the way.");
     }
 }
