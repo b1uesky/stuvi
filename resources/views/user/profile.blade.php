@@ -55,7 +55,7 @@
 
                                 <!-- Sex -->
                                 <div class="form-group">
-                                    <label>Sex</label>
+                                    <label>Gender</label>
 
                                     <input type="radio" name="sex" value="male"
                                            @if ($profile->sex == 'male')
@@ -76,10 +76,10 @@
                                 </div>
 
                                 <!-- title -->
-                                <div class="form-group">
-                                    <label>Title</label>
-                                    <input type="text" class="form-control" name="title" value="{{ $profile->title }}">
-                                </div>
+                                {{--<div class="form-group">--}}
+                                    {{--<label>Title</label>--}}
+                                    {{--<input type="text" class="form-control" name="title" value="{{ $profile->title }}">--}}
+                                {{--</div>--}}
 
 
                                 <!-- Bio / About me -->
@@ -95,11 +95,11 @@
                                 {{--</div>--}}
 
                                 <!-- Grad -->
-                                <div class="form-group">
-                                    <label>Expected Graduation</label>
+                                {{--<div class="form-group">--}}
+                                    {{--<label>Expected Graduation</label>--}}
 
-                                    <input class="form-control" id="datetimepicker-profile-grad" type="text" name="grad" value={{$profile->graduation_date}}>
-                                </div>
+                                    {{--<input class="form-control" id="datetimepicker-profile-grad" type="text" name="grad" value={{$profile->graduation_date}}>--}}
+                                {{--</div>--}}
 
                                 <!-- Area of Study / Major -->
                                 <div class="form-group">
@@ -109,25 +109,25 @@
 
                                 <!-- facebook -->
                                 <div class="form-group">
-                                    <label>Facebook url</label>
+                                    <label>Facebook</label>
 
                                     <input type="url" class="form-control" name="facebook"value={{$profile->facebook}}>
                                 </div>
 
                                 <!-- Twitter -->
                                 <div class="form-group">
-                                    <label>Twitter handle</label>
-                                    <input type="text" class="form-control" name="twitter" value={{$profile->twitter or "@"}}>
+                                    <label>Twitter</label>
+                                    <input type="text" class="form-control" name="twitter" value={{$profile->twitter}}>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>LinkedIn url</label>
+                                    <label>LinkedIn</label>
                                     <input type="url" class="form-control" name="linkedin" value={{$profile->linkedin}}>
                                 </div>
 
                                 <!-- website -->
                                 <div class="form-group">
-                                    <label>Website URL</label>
+                                    <label>Website</label>
                                     <input type="url" class="form-control" name="site" value={{$profile->website}}>
                                 </div>
 
