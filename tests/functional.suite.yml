@@ -8,6 +8,7 @@ class_name: FunctionalTester
 modules:
     enabled:
         # add framework module here
-        - Laravel5
+        - Laravel5:
+            disable_events: true
         - Db
         - \Helper\Functional
