@@ -117,6 +117,20 @@ class Book extends Model
         return $query->where('created_at', '>=', $date);
     }
 
+    /**
+     * Get books that have products.
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeHasProducts($query)
+    {
+        return $query->join('products as p', 'p.book_id', '=', 'books.id')
+            ->where('books.is_verified', true)
+            ->select('books.*')
+            ->distinct();
+    }
+
     /*
 	|--------------------------------------------------------------------------
 	| Methods
