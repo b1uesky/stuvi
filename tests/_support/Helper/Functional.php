@@ -6,5 +6,8 @@ namespace Helper;
 
 class Functional extends \Codeception\Module
 {
-
+    public function seeResponseContains($text)
+    {
+        $this->assertContains($text, $this->getModule('Laravel5')->_getResponseContent(), "response contains");
+    }
 }
