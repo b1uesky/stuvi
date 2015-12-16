@@ -28,7 +28,7 @@
                     <div class="panel-body">
                         <div class="container-fluid">
                             <table class="table table-no-border">
-                                <caption>Stuvi will send all notification emails to your primary email.</caption>
+                                <caption>Stuvi will send all notification emails to your primary email address.</caption>
                                 <thead>
                                 <tr>
                                     <th>Emails</th>
@@ -75,7 +75,7 @@
                             <form action="{{ url('/user/email/add') }}" method="post" class="form-inline">
                                 {!! csrf_field() !!}
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Add a new email" value="{{ old('email') }}">
+                                    <input type="email" name="email" class="form-control" placeholder="Add a new email address" value="{{ old('email') }}">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
