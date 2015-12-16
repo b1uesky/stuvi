@@ -24,7 +24,7 @@
                         <h3 class="panel-title">Textbook reminders</h3>
                     </div>
                     <div class="panel-body">
-                        @foreach($book_reminders as $br)
+                        @forelse($book_reminders as $br)
                             <div class="row">
                                 <div class="col-sm-9 margin-bottom-15">
                                     <?php $book = $br->book; ?>
@@ -44,7 +44,9 @@
                             </div>
 
                             <hr>
-                        @endforeach
+                        @empty
+                            <p>You do not have any textbook reminder yet.</p>
+                        @endforelse
                     </div>
                 </div>
             </div>
