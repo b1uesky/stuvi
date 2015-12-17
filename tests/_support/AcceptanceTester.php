@@ -33,6 +33,7 @@ class AcceptanceTester extends \Codeception\Actor
     function login($email, $password)
     {
         $I = $this;
+        $I->amOnPage('auth/logout');
         $I->amOnPage('/auth/login');
         $I->fillField('email', $email);
         $I->fillField('password', $password);

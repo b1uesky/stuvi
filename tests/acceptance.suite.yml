@@ -7,13 +7,10 @@
 class_name: AcceptanceTester
 modules:
     enabled:
-#        - WebDriver:
-#            url: http://stuvi.app
-#            browser: firefox
-#            capabilities:
-#                unexpectedAlertBehaviour: 'accept'
+        - WebDriver:
+            url: http://stuvi.app
+            browser: firefox
+        - \Helper\Acceptance
+    config:
         - PhpBrowser:
             url: http://stuvi.app
-        - Laravel5:
-            disable_events: true
-        - \Helper\Acceptance
