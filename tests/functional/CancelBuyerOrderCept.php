@@ -1,7 +1,6 @@
 <?php
 use Step\Functional\Textbook as FunctionalTester;
-// After we figure out how to run acceptance test without problem, we should
-// migrate this test to acceptance test since js modal is involved.
+// TODO: migrate this test to acceptance test since js modal is involved.
 
 $buyer = \App\User::find(4);
 $product = \App\Product::where('sold', false)
@@ -11,7 +10,7 @@ $product = \App\Product::where('sold', false)
     ->first();
 
 $I = new FunctionalTester($scenario);
-$I->wantTo('cancel my order after buy a textbook');
+$I->wantTo('cancel my buyer order after buy a textbook');
 
 // login as a buyer and buy a textbook
 $I->amLoggedAs($buyer);
