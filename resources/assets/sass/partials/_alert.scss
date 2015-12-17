@@ -3,6 +3,10 @@
 // Alert messages
 .session-alert, .js-alert {
 
+  .alert {
+    margin-bottom: 0 !important;
+  }
+
   .alert-dismissible .close {
     position: relative;
     top: 0;
