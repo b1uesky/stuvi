@@ -8,4 +8,5 @@ modules:
         - Asserts
         - Laravel5:
             part: ORM
+        - Db
         - \Helper\Unit
