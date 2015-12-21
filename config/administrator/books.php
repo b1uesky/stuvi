@@ -10,7 +10,7 @@ return [
         'id'    => [
             'title' => 'ID',
         ],
-        
+
         'html_small_image'  => [
             'title' => 'Image'
         ],
