@@ -99,6 +99,11 @@ class Book extends Model
         $this->attributes['list_price'] = Price::convertDecimalToInteger($value);
     }
 
+    public function getHTMLSmallImageAttribute()
+    {
+        return '<img src="'.$this->imageSet->getImagePath('small').'"/>';
+    }
+
     /*
 	|--------------------------------------------------------------------------
 	| Query Scopes

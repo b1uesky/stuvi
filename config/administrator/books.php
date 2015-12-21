@@ -10,12 +10,9 @@ return [
         'id'    => [
             'title' => 'ID',
         ],
-
-        'image'    => [
-            'title'         => 'Image',
-            'relationship'  => 'imageSet',
-            'select'        => '(:table).small_image',
-            'output'        => '<img src="'.(app()->environment() == 'production' ? config('aws.url.stuvi-book-img') : config('aws.url.stuvi-test-book-img')).'(:value)"/>',
+        
+        'html_small_image'  => [
+            'title' => 'Image'
         ],
 
         'title' => [
