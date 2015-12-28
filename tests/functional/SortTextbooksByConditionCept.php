@@ -1,4 +1,6 @@
 <?php
+$scenario->skip('sort bars not in view');
+
 $book = \App\Book::hasProducts()->orderByRaw('RAND()')->first();
 
 $I = new FunctionalTester($scenario);

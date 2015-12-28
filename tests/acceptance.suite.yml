@@ -7,9 +7,9 @@
 class_name: AcceptanceTester
 modules:
     enabled:
-        - WebDriver:
-            url: http://stuvi.app
-            browser: firefox
+#        - WebDriver:
+#            url: http://stuvi.app
+#            browser: firefox
         - \Helper\Acceptance
     config:
         - PhpBrowser:

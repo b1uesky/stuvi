@@ -1,4 +1,6 @@
 <?php
+$scenario->incomplete();
+
 $I = new AcceptanceTester($scenario);
 $I->wantTo('sell a textbook');
 
