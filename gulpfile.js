@@ -63,7 +63,8 @@ elixir(function (mix) {
     //mix.copy('resources/assets/libs/bootstrap/fonts', 'public/build/fonts');
 
     mix.browserSync({
-        proxy: 'stuvi.app' // use your own proxy here, you can check your /etc/hosts file.
+        proxy: 'stuvi.app', // use your own proxy here, you can check your /etc/hosts file.
+        notify: false
     });
 
 });
