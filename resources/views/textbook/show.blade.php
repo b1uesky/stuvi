@@ -20,57 +20,15 @@
             </ol>
         </div>
 
+
         <div class="book-details">
             @include('includes.textbook.book-details-with-actions')
         </div>
 
+
+        <br>
+
         @if(count($products) > 0)
-            <div class="row">
-                <div class="col-xs-12 bar">
-                    <div class="sort-bar">
-                        <div class="dropdown">
-                            <button class="btn btn-default btn-no-border dropdown-toggle" id="dropdownMenuOrderBy" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                <span><strong>Sort by </strong></span>
-                                <span class="sort-by-type">
-                                    @if($order)
-                                        {{ $order }}
-                                    @else
-                                        Condition
-                                    @endif
-                                </span>
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuOrderBy">
-                                <li><a href="{{ Request::url().'?query='.$query.'&order=condition'.'&university_id='.$university_id }}">Condition</a></li>
-                                <li><a href="{{ Request::url().'?query='.$query.'&order=price'.'&university_id='.$university_id }}">Price</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="filter-bar">
-                        <div class="dropdown">
-                            <button class="btn btn-default btn-no-border dropdown-toggle" id="dropdownMenuFilterBy" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                <?php $university = \App\University::find($university_id); ?>
-                                <span class="filter-by"><strong>Available at </strong></span>
-
-                                @if($university)
-                                    {{ $university->abbreviation }}
-                                @else
-                                    All University / College
-                                @endif
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuFilterBy">
-                                <li><a href="{{ Request::url().'?query='.$query.'&order='.$order }}">All University / College</a></li>
-                                @foreach($universities as $u)
-                                    <li><a href="{{ Request::url().'?query='.$query.'&order='.$order.'&university_id='.$u->id }}">{{ $u->name }}</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
 
             {{-- Product list --}}
             <div class="row">
@@ -105,7 +63,9 @@
                                         @endforeach
                                     </td>
                                     <td>
-                                        <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}" class="btn btn-primary btn-block margin-bottom-5">View details</a>
+                                        <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}" class="btn btn-primary btn-block margin-bottom-5">
+                                            View details
+                                        </a>
 
                                         @if($loggedin)
                                             @if($product->isInCart(Auth::user()->id))
@@ -118,7 +78,7 @@
                                                         {!! csrf_field() !!}
                                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                                                         <button type="submit" class="btn btn-default btn-block add-cart-btn">
-                                                            <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
+                                                            Add to cart
                                                         </button>
                                                     </form>
                                                 @endif
