@@ -105,7 +105,7 @@
                                         @endforeach
                                     </td>
                                     <td>
-                                        <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}" class="btn btn-info btn-block margin-bottom-5">View details</a>
+                                        <a href="{{ url('textbook/buy/product/'.$product->id.'?query='.$query) }}" class="btn btn-primary btn-block margin-bottom-5">View details</a>
 
                                         @if($loggedin)
                                             @if($product->isInCart(Auth::user()->id))

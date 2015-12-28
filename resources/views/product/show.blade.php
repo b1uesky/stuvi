@@ -60,13 +60,13 @@
                             <a class="btn btn-default add-cart-btn disabled" href="#" role="button">
                                 Added to cart
                             </a>
-                        @elseif(!$product->isSold())
+                        @elseif(!$product->sold)
                             @if($product->seller_id == Auth::id())
-                                <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-primary">
+                                <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-default">
                                     <span class="glyphicon glyphicon-edit"></span> Edit
                                 </a>
 
-                                <button type="button" class="btn btn-danger" data-toggle="modal"
+                                <button type="button" class="btn btn-default" data-toggle="modal"
                                         data-target="#delete-product"
                                         data-product-id="{{ $product->id }}"
                                         data-book-title="{{ $product->book->title }}">

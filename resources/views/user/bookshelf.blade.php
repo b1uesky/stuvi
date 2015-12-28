@@ -33,7 +33,7 @@
                                 </div>
 
                                 <div class="col-sm-3">
-                                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-sm btn-primary btn-block">
+                                    <a href="{{ url('/textbook/sell/product/'.$product->id.'/edit') }}" class="btn btn-sm btn-default btn-block">
                                         <span class="glyphicon glyphicon-edit"></span> Edit
                                     </a>
                                     <button type="button" class="btn btn-sm btn-default btn-block" data-toggle="modal"
