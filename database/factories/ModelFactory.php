@@ -49,3 +49,14 @@ $factory->define(App\ProductImage::class, function (Faker\Generator $faker) {
         'large_image'   => $faker->imageUrl()
     ];
 });
+
+$factory->define(App\Book::class, function (Faker\Generator $faker) {
+    return [
+        'title'         => $faker->sentence,
+        'isbn10'        => $faker->isbn10,
+        'isbn13'        => $faker->isbn13,
+        'num_pages'     => $faker->numberBetween(50, 1000),
+        'language'      => 'English',
+        'is_verified'   => true
+    ];
+});
