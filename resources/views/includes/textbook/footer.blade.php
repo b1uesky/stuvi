@@ -34,7 +34,7 @@
 
         <div class="row">
             <div class="col-xs-12">
-                <span class="copyright">&copy; 2015 Stuvi, LLC.</span>
+                <span class="copyright">&copy; 2016 Stuvi, LLC.</span>
             </div>
         </div>
     </div>
